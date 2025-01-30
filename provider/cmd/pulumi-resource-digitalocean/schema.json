@@ -368,6 +368,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/AppSpecFunctionBitbucket:AppSpecFunctionBitbucket",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/AppSpecFunctionCors:AppSpecFunctionCors",
                     "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
@@ -459,6 +463,23 @@
                 "value",
                 "window"
             ]
+        },
+        "digitalocean:index/AppSpecFunctionBitbucket:AppSpecFunctionBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecFunctionCors:AppSpecFunctionCors": {
             "properties": {
@@ -901,6 +922,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/AppSpecJobBitbucket:AppSpecJobBitbucket",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -1007,6 +1032,23 @@
                 "value",
                 "window"
             ]
+        },
+        "digitalocean:index/AppSpecJobBitbucket:AppSpecJobBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecJobEnv:AppSpecJobEnv": {
             "properties": {
@@ -1271,6 +1313,10 @@
                     "$ref": "#/types/digitalocean:index/AppSpecServiceAutoscaling:AppSpecServiceAutoscaling",
                     "description": "Configuration for automatically scaling this component based on metrics.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/AppSpecServiceBitbucket:AppSpecServiceBitbucket",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -1455,6 +1501,23 @@
             "required": [
                 "percent"
             ]
+        },
+        "digitalocean:index/AppSpecServiceBitbucket:AppSpecServiceBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecServiceCors:AppSpecServiceCors": {
             "properties": {
@@ -1814,6 +1877,10 @@
         },
         "digitalocean:index/AppSpecStaticSite:AppSpecStaticSite": {
             "properties": {
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/AppSpecStaticSiteBitbucket:AppSpecStaticSiteBitbucket",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -1895,6 +1962,23 @@
                     ]
                 }
             }
+        },
+        "digitalocean:index/AppSpecStaticSiteBitbucket:AppSpecStaticSiteBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecStaticSiteCors:AppSpecStaticSiteCors": {
             "properties": {
@@ -2054,6 +2138,10 @@
                     "$ref": "#/types/digitalocean:index/AppSpecWorkerAutoscaling:AppSpecWorkerAutoscaling",
                     "description": "Configuration for automatically scaling this component based on metrics.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/AppSpecWorkerBitbucket:AppSpecWorkerBitbucket",
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -2199,6 +2287,23 @@
             "required": [
                 "percent"
             ]
+        },
+        "digitalocean:index/AppSpecWorkerBitbucket:AppSpecWorkerBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/AppSpecWorkerEnv:AppSpecWorkerEnv": {
             "properties": {
@@ -2470,11 +2575,11 @@
             "properties": {
                 "day": {
                     "type": "string",
-                    "description": "The day of the week on which to apply maintenance updates.\n"
+                    "description": "The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.\n"
                 },
                 "hour": {
                     "type": "string",
-                    "description": "The hour in UTC at which maintenance updates will be applied in 24 hour format.\n"
+                    "description": "The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.\n"
                 }
             },
             "type": "object",
@@ -3004,6 +3109,24 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall": {
+            "properties": {
+                "allowedAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedAddresses",
+                "enabled"
+            ]
         },
         "digitalocean:index/KubernetesClusterKubeConfig:KubernetesClusterKubeConfig": {
             "properties": {
@@ -3982,6 +4105,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecFunctionBitbucket:getAppSpecFunctionBitbucket",
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionCors:getAppSpecFunctionCors",
                     "description": "The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.\n",
@@ -4000,11 +4127,11 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionGithub:getAppSpecFunctionGithub",
-                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "gitlab": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionGitlab:getAppSpecFunctionGitlab",
-                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "logDestinations": {
                     "type": "array",
@@ -4075,6 +4202,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecFunctionBitbucket:getAppSpecFunctionBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecFunctionCors:getAppSpecFunctionCors": {
             "properties": {
@@ -4538,6 +4682,10 @@
                     },
                     "description": "Describes an alert policy for the component.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecJobBitbucket:getAppSpecJobBitbucket",
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -4563,15 +4711,15 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecJobGithub:getAppSpecJobGithub",
-                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "gitlab": {
                     "$ref": "#/types/digitalocean:index/getAppSpecJobGitlab:getAppSpecJobGitlab",
-                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "image": {
                     "$ref": "#/types/digitalocean:index/getAppSpecJobImage:getAppSpecJobImage",
-                    "description": "An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "instanceCount": {
                     "type": "integer",
@@ -4654,6 +4802,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecJobBitbucket:getAppSpecJobBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecJobEnv:getAppSpecJobEnv": {
             "properties": {
@@ -4941,6 +5106,10 @@
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceAutoscaling:getAppSpecServiceAutoscaling",
                     "description": "Configuration for automatically scaling this component based on metrics.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecServiceBitbucket:getAppSpecServiceBitbucket",
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -4971,11 +5140,11 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceGithub:getAppSpecServiceGithub",
-                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "gitlab": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceGitlab:getAppSpecServiceGitlab",
-                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "healthCheck": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceHealthCheck:getAppSpecServiceHealthCheck",
@@ -4987,7 +5156,7 @@
                 },
                 "image": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceImage:getAppSpecServiceImage",
-                    "description": "An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "instanceCount": {
                     "type": "integer",
@@ -5137,6 +5306,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecServiceBitbucket:getAppSpecServiceBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecServiceCors:getAppSpecServiceCors": {
             "properties": {
@@ -5519,6 +5705,10 @@
         },
         "digitalocean:index/getAppSpecStaticSite:getAppSpecStaticSite": {
             "properties": {
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteBitbucket:getAppSpecStaticSiteBitbucket",
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -5557,11 +5747,11 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGithub:getAppSpecStaticSiteGithub",
-                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "gitlab": {
                     "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteGitlab:getAppSpecStaticSiteGitlab",
-                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "indexDocument": {
                     "type": "string",
@@ -5597,6 +5787,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecStaticSiteBitbucket:getAppSpecStaticSiteBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecStaticSiteCors:getAppSpecStaticSiteCors": {
             "properties": {
@@ -5757,6 +5964,10 @@
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerAutoscaling:getAppSpecWorkerAutoscaling",
                     "description": "Configuration for automatically scaling this component based on metrics.\n"
                 },
+                "bitbucket": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecWorkerBitbucket:getAppSpecWorkerBitbucket",
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                },
                 "buildCommand": {
                     "type": "string",
                     "description": "An optional build command to run while building this component from source.\n"
@@ -5782,15 +5993,15 @@
                 },
                 "github": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerGithub:getAppSpecWorkerGithub",
-                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "gitlab": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerGitlab:getAppSpecWorkerGitlab",
-                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "image": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerImage:getAppSpecWorkerImage",
-                    "description": "An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.\n"
+                    "description": "An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
                 },
                 "instanceCount": {
                     "type": "integer",
@@ -5922,6 +6133,23 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getAppSpecWorkerBitbucket:getAppSpecWorkerBitbucket": {
+            "properties": {
+                "branch": {
+                    "type": "string",
+                    "description": "The name of the branch to use.\n"
+                },
+                "deployOnPush": {
+                    "type": "boolean",
+                    "description": "Whether to automatically deploy new commits made to the repo.\n"
+                },
+                "repo": {
+                    "type": "string",
+                    "description": "The name of the repo in the format `owner/repo`.\n"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getAppSpecWorkerEnv:getAppSpecWorkerEnv": {
             "properties": {
@@ -9026,7 +9254,7 @@
     },
     "resources": {
         "digitalocean:index/app:App": {
-            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-api\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .github(AppSpecStaticSiteGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: go-api\n            instanceCount: 2\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Log Destination Example with Opensearch\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n        logDestinations: [{\n            name: \"MyLogs\",\n            openSearch: {\n                endpoint: \"https://something:1234\",\n                basicAuth: {\n                    user: \"user\",\n                    password: \"hi\",\n                },\n            },\n        }],\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n        \"log_destinations\": [{\n            \"name\": \"MyLogs\",\n            \"open_search\": {\n                \"endpoint\": \"https://something:1234\",\n                \"basic_auth\": {\n                    \"user\": \"user\",\n                    \"password\": \"hi\",\n                },\n            },\n        }],\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                    LogDestinations = new[]\n                    {\n                        new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs\n                        {\n                            Name = \"MyLogs\",\n                            OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs\n                            {\n                                Endpoint = \"https://something:1234\",\n                                BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs\n                                {\n                                    User = \"user\",\n                                    Password = \"hi\",\n                                },\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tLogDestinations: digitalocean.AppSpecServiceLogDestinationArray{\n\t\t\t\t\t\t\t\u0026digitalocean.AppSpecServiceLogDestinationArgs{\n\t\t\t\t\t\t\t\tName: pulumi.String(\"MyLogs\"),\n\t\t\t\t\t\t\t\tOpenSearch: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{\n\t\t\t\t\t\t\t\t\tEndpoint: pulumi.String(\"https://something:1234\"),\n\t\t\t\t\t\t\t\t\tBasicAuth: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{\n\t\t\t\t\t\t\t\t\t\tUser:     pulumi.String(\"user\"),\n\t\t\t\t\t\t\t\t\t\tPassword: pulumi.String(\"hi\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()\n                            .endpoint(\"https://something:1234\")\n                            .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()\n                                .user(\"user\")\n                                .password(\"hi\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n            logDestinations:\n              - name: MyLogs\n                openSearch:\n                  endpoint: https://something:1234\n                  basicAuth:\n                    user: user\n                    password: hi\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
+            "description": "Provides a DigitalOcean App resource.\n\n## Example Usage\n\nTo create an app, provide a [DigitalOcean app spec](https://docs.digitalocean.com/products/app-platform/reference/app-spec/) specifying the app's components.\n\n### Basic Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Static Site Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst static_site_example = new digitalocean.App(\"static-site-example\", {spec: {\n    name: \"static-site-example\",\n    region: \"ams\",\n    staticSites: [{\n        name: \"sample-jekyll\",\n        buildCommand: \"bundle exec jekyll build -d ./public\",\n        outputDir: \"/public\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-jekyll.git\",\n            branch: \"main\",\n        },\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nstatic_site_example = digitalocean.App(\"static-site-example\", spec={\n    \"name\": \"static-site-example\",\n    \"region\": \"ams\",\n    \"static_sites\": [{\n        \"name\": \"sample-jekyll\",\n        \"build_command\": \"bundle exec jekyll build -d ./public\",\n        \"output_dir\": \"/public\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-jekyll.git\",\n            \"branch\": \"main\",\n        },\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var static_site_example = new DigitalOcean.App(\"static-site-example\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"static-site-example\",\n            Region = \"ams\",\n            StaticSites = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecStaticSiteArgs\n                {\n                    Name = \"sample-jekyll\",\n                    BuildCommand = \"bundle exec jekyll build -d ./public\",\n                    OutputDir = \"/public\",\n                    Git = new DigitalOcean.Inputs.AppSpecStaticSiteGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-jekyll.git\",\n                        Branch = \"main\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"static-site-example\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"static-site-example\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tStaticSites: digitalocean.AppSpecStaticSiteArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecStaticSiteArgs{\n\t\t\t\t\t\tName:         pulumi.String(\"sample-jekyll\"),\n\t\t\t\t\t\tBuildCommand: pulumi.String(\"bundle exec jekyll build -d ./public\"),\n\t\t\t\t\t\tOutputDir:    pulumi.String(\"/public\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecStaticSiteGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-jekyll.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var static_site_example = new App(\"static-site-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"static-site-example\")\n                .region(\"ams\")\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"sample-jekyll\")\n                    .buildCommand(\"bundle exec jekyll build -d ./public\")\n                    .outputDir(\"/public\")\n                    .git(AppSpecStaticSiteGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-jekyll.git\")\n                        .branch(\"main\")\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  static-site-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: static-site-example\n        region: ams\n        staticSites:\n          - name: sample-jekyll\n            buildCommand: bundle exec jekyll build -d ./public\n            outputDir: /public\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-jekyll.git\n              branch: main\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Multiple Components Example\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecIngressArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mono_repo_example = new App(\"mono-repo-example\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"mono-repo-example\")\n                .region(\"ams\")\n                .domains(Map.of(\"name\", \"foo.example.com\"))\n                .alerts(AppSpecAlertArgs.builder()\n                    .rule(\"DEPLOYMENT_FAILED\")\n                    .build())\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-api\")\n                    .instanceCount(2)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .github(AppSpecServiceGithubArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .sourceDir(\"api/\")\n                    .httpPort(3000)\n                    .alerts(AppSpecServiceAlertArgs.builder()\n                        .value(75)\n                        .operator(\"GREATER_THAN\")\n                        .window(\"TEN_MINUTES\")\n                        .rule(\"CPU_UTILIZATION\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .papertrail(AppSpecServiceLogDestinationPapertrailArgs.builder()\n                            .endpoint(\"syslog+tls://example.com:12345\")\n                            .build())\n                        .build())\n                    .runCommand(\"bin/api\")\n                    .build())\n                .staticSites(AppSpecStaticSiteArgs.builder()\n                    .name(\"web\")\n                    .buildCommand(\"npm run build\")\n                    .bitbucket(AppSpecStaticSiteBitbucketArgs.builder()\n                        .branch(\"main\")\n                        .deployOnPush(true)\n                        .repo(\"username/repo\")\n                        .build())\n                    .build())\n                .databases(AppSpecDatabaseArgs.builder()\n                    .name(\"starter-db\")\n                    .engine(\"PG\")\n                    .production(false)\n                    .build())\n                .ingress(AppSpecIngressArgs.builder()\n                    .rules(                    \n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"api\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/api\")\n                                    .build())\n                                .build())\n                            .build(),\n                        AppSpecIngressRuleArgs.builder()\n                            .component(AppSpecIngressRuleComponentArgs.builder()\n                                .name(\"web\")\n                                .build())\n                            .match(AppSpecIngressRuleMatchArgs.builder()\n                                .path(AppSpecIngressRuleMatchPathArgs.builder()\n                                    .prefix(\"/\")\n                                    .build())\n                                .build())\n                            .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mono-repo-example:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: mono-repo-example\n        region: ams\n        domains:\n          - name: foo.example.com\n        alerts:\n          - rule: DEPLOYMENT_FAILED\n        services:\n          - name: go-api\n            instanceCount: 2\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            github:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n            sourceDir: api/\n            httpPort: 3000\n            alerts:\n              - value: 75\n                operator: GREATER_THAN\n                window: TEN_MINUTES\n                rule: CPU_UTILIZATION\n            logDestinations:\n              - name: MyLogs\n                papertrail:\n                  endpoint: syslog+tls://example.com:12345\n            runCommand: bin/api\n        staticSites:\n          - name: web\n            buildCommand: npm run build\n            bitbucket:\n              branch: main\n              deployOnPush: true\n              repo: username/repo\n        databases:\n          - name: starter-db\n            engine: PG\n            production: false\n        ingress:\n          rules:\n            - component:\n                name: api\n              match:\n                path:\n                  prefix: /api\n            - component:\n                name: web\n              match:\n                path:\n                  prefix: /\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Log Destination Example with Opensearch\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst golang_sample = new digitalocean.App(\"golang-sample\", {spec: {\n    name: \"golang-sample\",\n    region: \"ams\",\n    services: [{\n        name: \"go-service\",\n        instanceCount: 1,\n        instanceSizeSlug: \"apps-s-1vcpu-1gb\",\n        git: {\n            repoCloneUrl: \"https://github.com/digitalocean/sample-golang.git\",\n            branch: \"main\",\n        },\n        logDestinations: [{\n            name: \"MyLogs\",\n            openSearch: {\n                endpoint: \"https://something:1234\",\n                basicAuth: {\n                    user: \"user\",\n                    password: \"hi\",\n                },\n            },\n        }],\n    }],\n}});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ngolang_sample = digitalocean.App(\"golang-sample\", spec={\n    \"name\": \"golang-sample\",\n    \"region\": \"ams\",\n    \"services\": [{\n        \"name\": \"go-service\",\n        \"instance_count\": 1,\n        \"instance_size_slug\": \"apps-s-1vcpu-1gb\",\n        \"git\": {\n            \"repo_clone_url\": \"https://github.com/digitalocean/sample-golang.git\",\n            \"branch\": \"main\",\n        },\n        \"log_destinations\": [{\n            \"name\": \"MyLogs\",\n            \"open_search\": {\n                \"endpoint\": \"https://something:1234\",\n                \"basic_auth\": {\n                    \"user\": \"user\",\n                    \"password\": \"hi\",\n                },\n            },\n        }],\n    }],\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var golang_sample = new DigitalOcean.App(\"golang-sample\", new()\n    {\n        Spec = new DigitalOcean.Inputs.AppSpecArgs\n        {\n            Name = \"golang-sample\",\n            Region = \"ams\",\n            Services = new[]\n            {\n                new DigitalOcean.Inputs.AppSpecServiceArgs\n                {\n                    Name = \"go-service\",\n                    InstanceCount = 1,\n                    InstanceSizeSlug = \"apps-s-1vcpu-1gb\",\n                    Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs\n                    {\n                        RepoCloneUrl = \"https://github.com/digitalocean/sample-golang.git\",\n                        Branch = \"main\",\n                    },\n                    LogDestinations = new[]\n                    {\n                        new DigitalOcean.Inputs.AppSpecServiceLogDestinationArgs\n                        {\n                            Name = \"MyLogs\",\n                            OpenSearch = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchArgs\n                            {\n                                Endpoint = \"https://something:1234\",\n                                BasicAuth = new DigitalOcean.Inputs.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs\n                                {\n                                    User = \"user\",\n                                    Password = \"hi\",\n                                },\n                            },\n                        },\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewApp(ctx, \"golang-sample\", \u0026digitalocean.AppArgs{\n\t\t\tSpec: \u0026digitalocean.AppSpecArgs{\n\t\t\t\tName:   pulumi.String(\"golang-sample\"),\n\t\t\t\tRegion: pulumi.String(\"ams\"),\n\t\t\t\tServices: digitalocean.AppSpecServiceArray{\n\t\t\t\t\t\u0026digitalocean.AppSpecServiceArgs{\n\t\t\t\t\t\tName:             pulumi.String(\"go-service\"),\n\t\t\t\t\t\tInstanceCount:    pulumi.Int(1),\n\t\t\t\t\t\tInstanceSizeSlug: pulumi.String(\"apps-s-1vcpu-1gb\"),\n\t\t\t\t\t\tGit: \u0026digitalocean.AppSpecServiceGitArgs{\n\t\t\t\t\t\t\tRepoCloneUrl: pulumi.String(\"https://github.com/digitalocean/sample-golang.git\"),\n\t\t\t\t\t\t\tBranch:       pulumi.String(\"main\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t\tLogDestinations: digitalocean.AppSpecServiceLogDestinationArray{\n\t\t\t\t\t\t\t\u0026digitalocean.AppSpecServiceLogDestinationArgs{\n\t\t\t\t\t\t\t\tName: pulumi.String(\"MyLogs\"),\n\t\t\t\t\t\t\t\tOpenSearch: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchArgs{\n\t\t\t\t\t\t\t\t\tEndpoint: pulumi.String(\"https://something:1234\"),\n\t\t\t\t\t\t\t\t\tBasicAuth: \u0026digitalocean.AppSpecServiceLogDestinationOpenSearchBasicAuthArgs{\n\t\t\t\t\t\t\t\t\t\tUser:     pulumi.String(\"user\"),\n\t\t\t\t\t\t\t\t\t\tPassword: pulumi.String(\"hi\"),\n\t\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t\t},\n\t\t\t\t\t\t\t},\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.App;\nimport com.pulumi.digitalocean.AppArgs;\nimport com.pulumi.digitalocean.inputs.AppSpecArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var golang_sample = new App(\"golang-sample\", AppArgs.builder()\n            .spec(AppSpecArgs.builder()\n                .name(\"golang-sample\")\n                .region(\"ams\")\n                .services(AppSpecServiceArgs.builder()\n                    .name(\"go-service\")\n                    .instanceCount(1)\n                    .instanceSizeSlug(\"apps-s-1vcpu-1gb\")\n                    .git(AppSpecServiceGitArgs.builder()\n                        .repoCloneUrl(\"https://github.com/digitalocean/sample-golang.git\")\n                        .branch(\"main\")\n                        .build())\n                    .logDestinations(AppSpecServiceLogDestinationArgs.builder()\n                        .name(\"MyLogs\")\n                        .openSearch(AppSpecServiceLogDestinationOpenSearchArgs.builder()\n                            .endpoint(\"https://something:1234\")\n                            .basicAuth(AppSpecServiceLogDestinationOpenSearchBasicAuthArgs.builder()\n                                .user(\"user\")\n                                .password(\"hi\")\n                                .build())\n                            .build())\n                        .build())\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  golang-sample:\n    type: digitalocean:App\n    properties:\n      spec:\n        name: golang-sample\n        region: ams\n        services:\n          - name: go-service\n            instanceCount: 1\n            instanceSizeSlug: apps-s-1vcpu-1gb\n            git:\n              repoCloneUrl: https://github.com/digitalocean/sample-golang.git\n              branch: main\n            logDestinations:\n              - name: MyLogs\n                openSearch:\n                  endpoint: https://something:1234\n                  basicAuth:\n                    user: user\n                    password: hi\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nAn app can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661\n```\n\n",
             "properties": {
                 "activeDeploymentId": {
                     "type": "string",
@@ -14214,13 +14442,16 @@
                     "type": "string",
                     "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                 },
+                "controlPlaneFirewall": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                },
                 "createdAt": {
                     "type": "string",
                     "description": "The date and time when the node was created.\n"
                 },
                 "destroyAllAssociatedResources": {
                     "type": "boolean",
-                    "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n"
                 },
                 "endpoint": {
                     "type": "string",
@@ -14241,6 +14472,10 @@
                     },
                     "description": "A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n",
                     "secret": true
+                },
+                "kubeconfigExpireSeconds": {
+                    "type": "integer",
+                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
                 },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14296,6 +14531,7 @@
             },
             "required": [
                 "clusterSubnet",
+                "controlPlaneFirewall",
                 "createdAt",
                 "endpoint",
                 "ipv4Address",
@@ -14321,13 +14557,20 @@
                     "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
                     "willReplaceOnChanges": true
                 },
+                "controlPlaneFirewall": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                },
                 "destroyAllAssociatedResources": {
                     "type": "boolean",
-                    "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n"
                 },
                 "ha": {
                     "type": "boolean",
                     "description": "Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false\n"
+                },
+                "kubeconfigExpireSeconds": {
+                    "type": "integer",
+                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
                 },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14406,13 +14649,16 @@
                         "type": "string",
                         "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                     },
+                    "controlPlaneFirewall": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                    },
                     "createdAt": {
                         "type": "string",
                         "description": "The date and time when the node was created.\n"
                     },
                     "destroyAllAssociatedResources": {
                         "type": "boolean",
-                        "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                        "description": "**Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.\n"
                     },
                     "endpoint": {
                         "type": "string",
@@ -14433,6 +14679,10 @@
                         },
                         "description": "A representation of the Kubernetes cluster's kubeconfig with the following attributes:\n",
                         "secret": true
+                    },
+                    "kubeconfigExpireSeconds": {
+                        "type": "integer",
+                        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
                     },
                     "maintenancePolicy": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14796,6 +15046,10 @@
                     "type": "string",
                     "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n"
                 },
+                "networkStack": {
+                    "type": "string",
+                    "description": "The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.\n**NOTE**: this feature is in private preview, and may not be available for public use\n"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.\n"
@@ -14932,6 +15186,11 @@
                 "network": {
                     "type": "string",
                     "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n",
+                    "willReplaceOnChanges": true
+                },
+                "networkStack": {
+                    "type": "string",
+                    "description": "The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.\n**NOTE**: this feature is in private preview, and may not be available for public use\n",
                     "willReplaceOnChanges": true
                 },
                 "projectId": {
@@ -15074,6 +15333,11 @@
                     "network": {
                         "type": "string",
                         "description": "The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "networkStack": {
+                        "type": "string",
+                        "description": "The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.\n**NOTE**: this feature is in private preview, and may not be available for public use\n",
                         "willReplaceOnChanges": true
                     },
                     "projectId": {
