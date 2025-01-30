@@ -57,6 +57,9 @@ namespace Pulumi.DigitalOcean
         [Output("clusterUrn")]
         public Output<string> ClusterUrn { get; private set; } = null!;
 
+        [Output("controlPlaneFirewall")]
+        public Output<Outputs.KubernetesClusterControlPlaneFirewall> ControlPlaneFirewall { get; private set; } = null!;
+
         /// <summary>
         /// The date and time when the node was created.
         /// </summary>
@@ -65,8 +68,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Output("destroyAllAssociatedResources")]
         public Output<bool?> DestroyAllAssociatedResources { get; private set; } = null!;
@@ -94,6 +95,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("kubeConfigs")]
         public Output<ImmutableArray<Outputs.KubernetesClusterKubeConfig>> KubeConfigs { get; private set; } = null!;
+
+        /// <summary>
+        /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Output("kubeconfigExpireSeconds")]
+        public Output<int?> KubeconfigExpireSeconds { get; private set; } = null!;
 
         /// <summary>
         /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -229,10 +238,11 @@ namespace Pulumi.DigitalOcean
         [Input("clusterSubnet")]
         public Input<string>? ClusterSubnet { get; set; }
 
+        [Input("controlPlaneFirewall")]
+        public Input<Inputs.KubernetesClusterControlPlaneFirewallArgs>? ControlPlaneFirewall { get; set; }
+
         /// <summary>
         /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Input("destroyAllAssociatedResources")]
         public Input<bool>? DestroyAllAssociatedResources { get; set; }
@@ -242,6 +252,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("ha")]
         public Input<bool>? Ha { get; set; }
+
+        /// <summary>
+        /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("kubeconfigExpireSeconds")]
+        public Input<int>? KubeconfigExpireSeconds { get; set; }
 
         /// <summary>
         /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
@@ -335,6 +353,9 @@ namespace Pulumi.DigitalOcean
         [Input("clusterUrn")]
         public Input<string>? ClusterUrn { get; set; }
 
+        [Input("controlPlaneFirewall")]
+        public Input<Inputs.KubernetesClusterControlPlaneFirewallGetArgs>? ControlPlaneFirewall { get; set; }
+
         /// <summary>
         /// The date and time when the node was created.
         /// </summary>
@@ -343,8 +364,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Input("destroyAllAssociatedResources")]
         public Input<bool>? DestroyAllAssociatedResources { get; set; }
@@ -382,6 +401,14 @@ namespace Pulumi.DigitalOcean
                 _kubeConfigs = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
+        [Input("kubeconfigExpireSeconds")]
+        public Input<int>? KubeconfigExpireSeconds { get; set; }
 
         /// <summary>
         /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.

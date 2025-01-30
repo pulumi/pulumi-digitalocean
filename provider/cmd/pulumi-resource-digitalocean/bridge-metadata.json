@@ -40,6 +40,9 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "cors": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -159,6 +162,9 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "env": {
                                                 "maxItemsOne": false
                                             },
@@ -236,6 +242,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
                                             },
                                             "cors": {
                                                 "maxItemsOne": true,
@@ -323,6 +332,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "cors": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -383,6 +395,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
                                             },
                                             "env": {
                                                 "maxItemsOne": false
@@ -716,6 +731,16 @@
                 "current": "digitalocean:index/kubernetesCluster:KubernetesCluster",
                 "majorVersion": 4,
                 "fields": {
+                    "control_plane_firewall": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "allowed_addresses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "kube_config": {
                         "maxItemsOne": false
                     },
@@ -1071,6 +1096,9 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "cors": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -1190,6 +1218,9 @@
                                             "alert": {
                                                 "maxItemsOne": false
                                             },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "env": {
                                                 "maxItemsOne": false
                                             },
@@ -1267,6 +1298,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
                                             },
                                             "cors": {
                                                 "maxItemsOne": true,
@@ -1354,6 +1388,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "bitbucket": {
+                                                "maxItemsOne": true
+                                            },
                                             "cors": {
                                                 "maxItemsOne": true,
                                                 "elem": {
@@ -1414,6 +1451,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "bitbucket": {
+                                                "maxItemsOne": true
                                             },
                                             "env": {
                                                 "maxItemsOne": false

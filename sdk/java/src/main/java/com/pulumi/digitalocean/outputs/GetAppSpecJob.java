@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobAlert;
+import com.pulumi.digitalocean.outputs.GetAppSpecJobBitbucket;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobGit;
 import com.pulumi.digitalocean.outputs.GetAppSpecJobGithub;
@@ -27,6 +28,11 @@ public final class GetAppSpecJob {
      * 
      */
     private @Nullable List<GetAppSpecJobAlert> alerts;
+    /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable GetAppSpecJobBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -53,17 +59,17 @@ public final class GetAppSpecJob {
      */
     private @Nullable GetAppSpecJobGit git;
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecJobGithub github;
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecJobGitlab gitlab;
     /**
-     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecJobImage image;
@@ -121,6 +127,13 @@ public final class GetAppSpecJob {
         return this.alerts == null ? List.of() : this.alerts;
     }
     /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<GetAppSpecJobBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
+    /**
      * @return An optional build command to run while building this component from source.
      * 
      */
@@ -156,21 +169,21 @@ public final class GetAppSpecJob {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecJobGithub> github() {
         return Optional.ofNullable(this.github);
     }
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecJobGitlab> gitlab() {
         return Optional.ofNullable(this.gitlab);
     }
     /**
-     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecJobImage> image() {
@@ -247,6 +260,7 @@ public final class GetAppSpecJob {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetAppSpecJobAlert> alerts;
+        private @Nullable GetAppSpecJobBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable String dockerfilePath;
         private @Nullable String environmentSlug;
@@ -267,6 +281,7 @@ public final class GetAppSpecJob {
         public Builder(GetAppSpecJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.dockerfilePath = defaults.dockerfilePath;
     	      this.environmentSlug = defaults.environmentSlug;
@@ -293,6 +308,12 @@ public final class GetAppSpecJob {
         }
         public Builder alerts(GetAppSpecJobAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable GetAppSpecJobBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
@@ -401,6 +422,7 @@ public final class GetAppSpecJob {
         public GetAppSpecJob build() {
             final var _resultValue = new GetAppSpecJob();
             _resultValue.alerts = alerts;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.dockerfilePath = dockerfilePath;
             _resultValue.environmentSlug = environmentSlug;

@@ -347,6 +347,22 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.network);
     }
     /**
+     * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     * 
+     */
+    @Export(name="networkStack", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> networkStack;
+
+    /**
+     * @return The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     * 
+     */
+    public Output<Optional<String>> networkStack() {
+        return Codegen.optional(this.networkStack);
+    }
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
      * 
      */

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecJobAlert;
+import com.pulumi.digitalocean.outputs.AppSpecJobBitbucket;
 import com.pulumi.digitalocean.outputs.AppSpecJobEnv;
 import com.pulumi.digitalocean.outputs.AppSpecJobGit;
 import com.pulumi.digitalocean.outputs.AppSpecJobGithub;
@@ -27,6 +28,11 @@ public final class AppSpecJob {
      * 
      */
     private @Nullable List<AppSpecJobAlert> alerts;
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable AppSpecJobBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -119,6 +125,13 @@ public final class AppSpecJob {
      */
     public List<AppSpecJobAlert> alerts() {
         return this.alerts == null ? List.of() : this.alerts;
+    }
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<AppSpecJobBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
     }
     /**
      * @return An optional build command to run while building this component from source.
@@ -247,6 +260,7 @@ public final class AppSpecJob {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecJobAlert> alerts;
+        private @Nullable AppSpecJobBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable String dockerfilePath;
         private @Nullable String environmentSlug;
@@ -267,6 +281,7 @@ public final class AppSpecJob {
         public Builder(AppSpecJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.dockerfilePath = defaults.dockerfilePath;
     	      this.environmentSlug = defaults.environmentSlug;
@@ -293,6 +308,12 @@ public final class AppSpecJob {
         }
         public Builder alerts(AppSpecJobAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable AppSpecJobBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
         }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
@@ -401,6 +422,7 @@ public final class AppSpecJob {
         public AppSpecJob build() {
             final var _resultValue = new AppSpecJob();
             _resultValue.alerts = alerts;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.dockerfilePath = dockerfilePath;
             _resultValue.environmentSlug = environmentSlug;

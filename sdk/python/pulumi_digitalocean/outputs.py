@@ -26,6 +26,7 @@ __all__ = [
     'AppSpecEnv',
     'AppSpecFunction',
     'AppSpecFunctionAlert',
+    'AppSpecFunctionBitbucket',
     'AppSpecFunctionCors',
     'AppSpecFunctionCorsAllowOrigins',
     'AppSpecFunctionEnv',
@@ -49,6 +50,7 @@ __all__ = [
     'AppSpecIngressRuleRedirect',
     'AppSpecJob',
     'AppSpecJobAlert',
+    'AppSpecJobBitbucket',
     'AppSpecJobEnv',
     'AppSpecJobGit',
     'AppSpecJobGithub',
@@ -67,6 +69,7 @@ __all__ = [
     'AppSpecServiceAutoscaling',
     'AppSpecServiceAutoscalingMetrics',
     'AppSpecServiceAutoscalingMetricsCpu',
+    'AppSpecServiceBitbucket',
     'AppSpecServiceCors',
     'AppSpecServiceCorsAllowOrigins',
     'AppSpecServiceEnv',
@@ -85,6 +88,7 @@ __all__ = [
     'AppSpecServiceRoute',
     'AppSpecServiceTermination',
     'AppSpecStaticSite',
+    'AppSpecStaticSiteBitbucket',
     'AppSpecStaticSiteCors',
     'AppSpecStaticSiteCorsAllowOrigins',
     'AppSpecStaticSiteEnv',
@@ -97,6 +101,7 @@ __all__ = [
     'AppSpecWorkerAutoscaling',
     'AppSpecWorkerAutoscalingMetrics',
     'AppSpecWorkerAutoscalingMetricsCpu',
+    'AppSpecWorkerBitbucket',
     'AppSpecWorkerEnv',
     'AppSpecWorkerGit',
     'AppSpecWorkerGithub',
@@ -126,6 +131,7 @@ __all__ = [
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
+    'KubernetesClusterControlPlaneFirewall',
     'KubernetesClusterKubeConfig',
     'KubernetesClusterMaintenancePolicy',
     'KubernetesClusterNodePool',
@@ -159,6 +165,7 @@ __all__ = [
     'GetAppSpecEnvResult',
     'GetAppSpecFunctionResult',
     'GetAppSpecFunctionAlertResult',
+    'GetAppSpecFunctionBitbucketResult',
     'GetAppSpecFunctionCorsResult',
     'GetAppSpecFunctionCorsAllowOriginsResult',
     'GetAppSpecFunctionEnvResult',
@@ -182,6 +189,7 @@ __all__ = [
     'GetAppSpecIngressRuleRedirectResult',
     'GetAppSpecJobResult',
     'GetAppSpecJobAlertResult',
+    'GetAppSpecJobBitbucketResult',
     'GetAppSpecJobEnvResult',
     'GetAppSpecJobGitResult',
     'GetAppSpecJobGithubResult',
@@ -200,6 +208,7 @@ __all__ = [
     'GetAppSpecServiceAutoscalingResult',
     'GetAppSpecServiceAutoscalingMetricsResult',
     'GetAppSpecServiceAutoscalingMetricsCpuResult',
+    'GetAppSpecServiceBitbucketResult',
     'GetAppSpecServiceCorsResult',
     'GetAppSpecServiceCorsAllowOriginsResult',
     'GetAppSpecServiceEnvResult',
@@ -218,6 +227,7 @@ __all__ = [
     'GetAppSpecServiceRouteResult',
     'GetAppSpecServiceTerminationResult',
     'GetAppSpecStaticSiteResult',
+    'GetAppSpecStaticSiteBitbucketResult',
     'GetAppSpecStaticSiteCorsResult',
     'GetAppSpecStaticSiteCorsAllowOriginsResult',
     'GetAppSpecStaticSiteEnvResult',
@@ -230,6 +240,7 @@ __all__ = [
     'GetAppSpecWorkerAutoscalingResult',
     'GetAppSpecWorkerAutoscalingMetricsResult',
     'GetAppSpecWorkerAutoscalingMetricsCpuResult',
+    'GetAppSpecWorkerBitbucketResult',
     'GetAppSpecWorkerEnvResult',
     'GetAppSpecWorkerGitResult',
     'GetAppSpecWorkerGithubResult',
@@ -822,6 +833,7 @@ class AppSpecFunction(dict):
     def __init__(__self__, *,
                  name: str,
                  alerts: Optional[Sequence['outputs.AppSpecFunctionAlert']] = None,
+                 bitbucket: Optional['outputs.AppSpecFunctionBitbucket'] = None,
                  cors: Optional['outputs.AppSpecFunctionCors'] = None,
                  envs: Optional[Sequence['outputs.AppSpecFunctionEnv']] = None,
                  git: Optional['outputs.AppSpecFunctionGit'] = None,
@@ -833,6 +845,7 @@ class AppSpecFunction(dict):
         """
         :param str name: The name of the component.
         :param Sequence['AppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'AppSpecFunctionBitbucketArgs' bitbucket: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param 'AppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param Sequence['AppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'AppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
@@ -845,6 +858,8 @@ class AppSpecFunction(dict):
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
         if envs is not None:
@@ -877,6 +892,14 @@ class AppSpecFunction(dict):
         Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.AppSpecFunctionBitbucket']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter
@@ -1006,6 +1029,66 @@ class AppSpecFunctionAlert(dict):
         Determines whether or not the alert is disabled (default: `false`).
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AppSpecFunctionBitbucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecFunctionBitbucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecFunctionBitbucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecFunctionBitbucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -2143,6 +2226,7 @@ class AppSpecJob(dict):
     def __init__(__self__, *,
                  name: str,
                  alerts: Optional[Sequence['outputs.AppSpecJobAlert']] = None,
+                 bitbucket: Optional['outputs.AppSpecJobBitbucket'] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -2161,6 +2245,7 @@ class AppSpecJob(dict):
         """
         :param str name: The name of the component.
         :param Sequence['AppSpecJobAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'AppSpecJobBitbucketArgs' bitbucket: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -2184,6 +2269,8 @@ class AppSpecJob(dict):
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -2230,6 +2317,14 @@ class AppSpecJob(dict):
         Describes an alert policy for the component.
         """
         return pulumi.get(self, "alerts")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.AppSpecJobBitbucket']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -2417,6 +2512,66 @@ class AppSpecJobAlert(dict):
         Determines whether or not the alert is disabled (default: `false`).
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class AppSpecJobBitbucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecJobBitbucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecJobBitbucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecJobBitbucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -3126,6 +3281,7 @@ class AppSpecService(dict):
                  name: str,
                  alerts: Optional[Sequence['outputs.AppSpecServiceAlert']] = None,
                  autoscaling: Optional['outputs.AppSpecServiceAutoscaling'] = None,
+                 bitbucket: Optional['outputs.AppSpecServiceBitbucket'] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.AppSpecServiceCors'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -3149,6 +3305,7 @@ class AppSpecService(dict):
         :param str name: The name of the component.
         :param Sequence['AppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'AppSpecServiceAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
+        :param 'AppSpecServiceBitbucketArgs' bitbucket: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param 'AppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -3174,6 +3331,8 @@ class AppSpecService(dict):
             pulumi.set(__self__, "alerts", alerts)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -3236,6 +3395,14 @@ class AppSpecService(dict):
         Configuration for automatically scaling this component based on metrics.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.AppSpecServiceBitbucket']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -3549,6 +3716,66 @@ class AppSpecServiceAutoscalingMetricsCpu(dict):
         The average target CPU utilization for the component.
         """
         return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
+class AppSpecServiceBitbucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecServiceBitbucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecServiceBitbucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecServiceBitbucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -4584,6 +4811,7 @@ class AppSpecStaticSite(dict):
 
     def __init__(__self__, *,
                  name: str,
+                 bitbucket: Optional['outputs.AppSpecStaticSiteBitbucket'] = None,
                  build_command: Optional[str] = None,
                  catchall_document: Optional[str] = None,
                  cors: Optional['outputs.AppSpecStaticSiteCors'] = None,
@@ -4600,6 +4828,7 @@ class AppSpecStaticSite(dict):
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param 'AppSpecStaticSiteBitbucketArgs' bitbucket: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         :param 'AppSpecStaticSiteCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -4616,6 +4845,8 @@ class AppSpecStaticSite(dict):
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if catchall_document is not None:
@@ -4652,6 +4883,14 @@ class AppSpecStaticSite(dict):
         The name of the component.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.AppSpecStaticSiteBitbucket']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -4766,6 +5005,66 @@ class AppSpecStaticSite(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class AppSpecStaticSiteBitbucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecStaticSiteBitbucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecStaticSiteBitbucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecStaticSiteBitbucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -5226,6 +5525,7 @@ class AppSpecWorker(dict):
                  name: str,
                  alerts: Optional[Sequence['outputs.AppSpecWorkerAlert']] = None,
                  autoscaling: Optional['outputs.AppSpecWorkerAutoscaling'] = None,
+                 bitbucket: Optional['outputs.AppSpecWorkerBitbucket'] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -5244,6 +5544,7 @@ class AppSpecWorker(dict):
         :param str name: The name of the component.
         :param Sequence['AppSpecWorkerAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'AppSpecWorkerAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
+        :param 'AppSpecWorkerBitbucketArgs' bitbucket: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
@@ -5264,6 +5565,8 @@ class AppSpecWorker(dict):
             pulumi.set(__self__, "alerts", alerts)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -5316,6 +5619,14 @@ class AppSpecWorker(dict):
         Configuration for automatically scaling this component based on metrics.
         """
         return pulumi.get(self, "autoscaling")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.AppSpecWorkerBitbucket']:
+        """
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -5587,6 +5898,66 @@ class AppSpecWorkerAutoscalingMetricsCpu(dict):
         The average target CPU utilization for the component.
         """
         return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
+class AppSpecWorkerBitbucket(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deployOnPush":
+            suggest = "deploy_on_push"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecWorkerBitbucket. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecWorkerBitbucket.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecWorkerBitbucket.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -6312,8 +6683,8 @@ class DatabaseClusterMaintenanceWindow(dict):
                  day: str,
                  hour: str):
         """
-        :param str day: The day of the week on which to apply maintenance updates.
-        :param str hour: The hour in UTC at which maintenance updates will be applied in 24 hour format.
+        :param str day: The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
+        :param str hour: The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
         """
         pulumi.set(__self__, "day", day)
         pulumi.set(__self__, "hour", hour)
@@ -6322,7 +6693,7 @@ class DatabaseClusterMaintenanceWindow(dict):
     @pulumi.getter
     def day(self) -> str:
         """
-        The day of the week on which to apply maintenance updates.
+        The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
         """
         return pulumi.get(self, "day")
 
@@ -6330,7 +6701,7 @@ class DatabaseClusterMaintenanceWindow(dict):
     @pulumi.getter
     def hour(self) -> str:
         """
-        The hour in UTC at which maintenance updates will be applied in 24 hour format.
+        The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
         """
         return pulumi.get(self, "hour")
 
@@ -7669,6 +8040,42 @@ class FirewallPendingChange(dict):
         This can be "waiting", "succeeded", or "failed".
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class KubernetesClusterControlPlaneFirewall(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowedAddresses":
+            suggest = "allowed_addresses"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterControlPlaneFirewall. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterControlPlaneFirewall.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterControlPlaneFirewall.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allowed_addresses: Sequence[str],
+                 enabled: bool):
+        pulumi.set(__self__, "allowed_addresses", allowed_addresses)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedAddresses")
+    def allowed_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_addresses")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -9770,6 +10177,7 @@ class GetAppSpecFunctionResult(dict):
                  name: str,
                  routes: Sequence['outputs.GetAppSpecFunctionRouteResult'],
                  alerts: Optional[Sequence['outputs.GetAppSpecFunctionAlertResult']] = None,
+                 bitbucket: Optional['outputs.GetAppSpecFunctionBitbucketResult'] = None,
                  cors: Optional['outputs.GetAppSpecFunctionCorsResult'] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecFunctionEnvResult']] = None,
                  git: Optional['outputs.GetAppSpecFunctionGitResult'] = None,
@@ -9780,11 +10188,12 @@ class GetAppSpecFunctionResult(dict):
         """
         :param str name: The name of the component.
         :param Sequence['GetAppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'GetAppSpecFunctionBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param 'GetAppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param Sequence['GetAppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-        :param 'GetAppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecFunctionGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecFunctionGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param Sequence['GetAppSpecFunctionLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
@@ -9792,6 +10201,8 @@ class GetAppSpecFunctionResult(dict):
         pulumi.set(__self__, "routes", routes)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if cors is not None:
             pulumi.set(__self__, "cors", cors)
         if envs is not None:
@@ -9831,6 +10242,14 @@ class GetAppSpecFunctionResult(dict):
 
     @property
     @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.GetAppSpecFunctionBitbucketResult']:
+        """
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
+
+    @property
+    @pulumi.getter
     @_utilities.deprecated("""Service level CORS rules are deprecated in favor of ingresses""")
     def cors(self) -> Optional['outputs.GetAppSpecFunctionCorsResult']:
         """
@@ -9858,7 +10277,7 @@ class GetAppSpecFunctionResult(dict):
     @pulumi.getter
     def github(self) -> Optional['outputs.GetAppSpecFunctionGithubResult']:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -9866,7 +10285,7 @@ class GetAppSpecFunctionResult(dict):
     @pulumi.getter
     def gitlab(self) -> Optional['outputs.GetAppSpecFunctionGitlabResult']:
         """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "gitlab")
 
@@ -9948,6 +10367,49 @@ class GetAppSpecFunctionAlertResult(dict):
         Determines whether or not the alert is disabled (default: `false`).
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetAppSpecFunctionBitbucketResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -10796,6 +11258,7 @@ class GetAppSpecJobResult(dict):
     def __init__(__self__, *,
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecJobAlertResult']] = None,
+                 bitbucket: Optional['outputs.GetAppSpecJobBitbucketResult'] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -10814,14 +11277,15 @@ class GetAppSpecJobResult(dict):
         """
         :param str name: The name of the component.
         :param Sequence['GetAppSpecJobAlertArgs'] alerts: Describes an alert policy for the component.
+        :param 'GetAppSpecJobBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['GetAppSpecJobEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecJobGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-        :param 'GetAppSpecJobGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecJobGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
@@ -10837,6 +11301,8 @@ class GetAppSpecJobResult(dict):
         pulumi.set(__self__, "name", name)
         if alerts is not None:
             pulumi.set(__self__, "alerts", alerts)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -10885,6 +11351,14 @@ class GetAppSpecJobResult(dict):
         return pulumi.get(self, "alerts")
 
     @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.GetAppSpecJobBitbucketResult']:
+        """
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
+
+    @property
     @pulumi.getter(name="buildCommand")
     def build_command(self) -> Optional[str]:
         """
@@ -10928,7 +11402,7 @@ class GetAppSpecJobResult(dict):
     @pulumi.getter
     def github(self) -> Optional['outputs.GetAppSpecJobGithubResult']:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -10936,7 +11410,7 @@ class GetAppSpecJobResult(dict):
     @pulumi.getter
     def gitlab(self) -> Optional['outputs.GetAppSpecJobGitlabResult']:
         """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "gitlab")
 
@@ -10944,7 +11418,7 @@ class GetAppSpecJobResult(dict):
     @pulumi.getter
     def image(self) -> Optional['outputs.GetAppSpecJobImageResult']:
         """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "image")
 
@@ -11070,6 +11544,49 @@ class GetAppSpecJobAlertResult(dict):
         Determines whether or not the alert is disabled (default: `false`).
         """
         return pulumi.get(self, "disabled")
+
+
+@pulumi.output_type
+class GetAppSpecJobBitbucketResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -11596,6 +12113,7 @@ class GetAppSpecServiceResult(dict):
                  run_command: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecServiceAlertResult']] = None,
                  autoscaling: Optional['outputs.GetAppSpecServiceAutoscalingResult'] = None,
+                 bitbucket: Optional['outputs.GetAppSpecServiceBitbucketResult'] = None,
                  build_command: Optional[str] = None,
                  cors: Optional['outputs.GetAppSpecServiceCorsResult'] = None,
                  dockerfile_path: Optional[str] = None,
@@ -11618,16 +12136,17 @@ class GetAppSpecServiceResult(dict):
         :param str run_command: An optional run command to override the component's default.
         :param Sequence['GetAppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'GetAppSpecServiceAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
+        :param 'GetAppSpecServiceBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param 'GetAppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['GetAppSpecServiceEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecServiceGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-        :param 'GetAppSpecServiceGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecServiceGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecServiceGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecServiceGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param 'GetAppSpecServiceHealthCheckArgs' health_check: A health check to determine the availability of this component.
-        :param 'GetAppSpecServiceImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecServiceImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param Sequence['GetAppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
@@ -11643,6 +12162,8 @@ class GetAppSpecServiceResult(dict):
             pulumi.set(__self__, "alerts", alerts)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if cors is not None:
@@ -11729,6 +12250,14 @@ class GetAppSpecServiceResult(dict):
         return pulumi.get(self, "autoscaling")
 
     @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.GetAppSpecServiceBitbucketResult']:
+        """
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
+
+    @property
     @pulumi.getter(name="buildCommand")
     def build_command(self) -> Optional[str]:
         """
@@ -11781,7 +12310,7 @@ class GetAppSpecServiceResult(dict):
     @pulumi.getter
     def github(self) -> Optional['outputs.GetAppSpecServiceGithubResult']:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -11789,7 +12318,7 @@ class GetAppSpecServiceResult(dict):
     @pulumi.getter
     def gitlab(self) -> Optional['outputs.GetAppSpecServiceGitlabResult']:
         """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "gitlab")
 
@@ -11805,7 +12334,7 @@ class GetAppSpecServiceResult(dict):
     @pulumi.getter
     def image(self) -> Optional['outputs.GetAppSpecServiceImageResult']:
         """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "image")
 
@@ -11988,6 +12517,49 @@ class GetAppSpecServiceAutoscalingMetricsCpuResult(dict):
         The average target CPU utilization for the component.
         """
         return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
+class GetAppSpecServiceBitbucketResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -12766,6 +13338,7 @@ class GetAppSpecStaticSiteResult(dict):
     def __init__(__self__, *,
                  name: str,
                  routes: Sequence['outputs.GetAppSpecStaticSiteRouteResult'],
+                 bitbucket: Optional['outputs.GetAppSpecStaticSiteBitbucketResult'] = None,
                  build_command: Optional[str] = None,
                  catchall_document: Optional[str] = None,
                  cors: Optional['outputs.GetAppSpecStaticSiteCorsResult'] = None,
@@ -12781,6 +13354,7 @@ class GetAppSpecStaticSiteResult(dict):
                  source_dir: Optional[str] = None):
         """
         :param str name: The name of the component.
+        :param 'GetAppSpecStaticSiteBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         :param 'GetAppSpecStaticSiteCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -12789,14 +13363,16 @@ class GetAppSpecStaticSiteResult(dict):
         :param Sequence['GetAppSpecStaticSiteEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param str error_document: The name of the error document to use when serving this static site.
         :param 'GetAppSpecStaticSiteGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-        :param 'GetAppSpecStaticSiteGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecStaticSiteGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecStaticSiteGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str index_document: The name of the index document to use when serving this static site.
         :param str output_dir: An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
         :param str source_dir: An optional path to the working directory to use for the build.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "routes", routes)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if catchall_document is not None:
@@ -12837,6 +13413,14 @@ class GetAppSpecStaticSiteResult(dict):
     @_utilities.deprecated("""Service level routes are deprecated in favor of ingresses""")
     def routes(self) -> Sequence['outputs.GetAppSpecStaticSiteRouteResult']:
         return pulumi.get(self, "routes")
+
+    @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.GetAppSpecStaticSiteBitbucketResult']:
+        """
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
 
     @property
     @pulumi.getter(name="buildCommand")
@@ -12907,7 +13491,7 @@ class GetAppSpecStaticSiteResult(dict):
     @pulumi.getter
     def github(self) -> Optional['outputs.GetAppSpecStaticSiteGithubResult']:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -12915,7 +13499,7 @@ class GetAppSpecStaticSiteResult(dict):
     @pulumi.getter
     def gitlab(self) -> Optional['outputs.GetAppSpecStaticSiteGitlabResult']:
         """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "gitlab")
 
@@ -12942,6 +13526,49 @@ class GetAppSpecStaticSiteResult(dict):
         An optional path to the working directory to use for the build.
         """
         return pulumi.get(self, "source_dir")
+
+
+@pulumi.output_type
+class GetAppSpecStaticSiteBitbucketResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type
@@ -13275,6 +13902,7 @@ class GetAppSpecWorkerResult(dict):
                  name: str,
                  alerts: Optional[Sequence['outputs.GetAppSpecWorkerAlertResult']] = None,
                  autoscaling: Optional['outputs.GetAppSpecWorkerAutoscalingResult'] = None,
+                 bitbucket: Optional['outputs.GetAppSpecWorkerBitbucketResult'] = None,
                  build_command: Optional[str] = None,
                  dockerfile_path: Optional[str] = None,
                  environment_slug: Optional[str] = None,
@@ -13293,14 +13921,15 @@ class GetAppSpecWorkerResult(dict):
         :param str name: The name of the component.
         :param Sequence['GetAppSpecWorkerAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'GetAppSpecWorkerAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
+        :param 'GetAppSpecWorkerBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param str build_command: An optional build command to run while building this component from source.
         :param str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param str environment_slug: An environment slug describing the type of this app.
         :param Sequence['GetAppSpecWorkerEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecWorkerGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
-        :param 'GetAppSpecWorkerGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        :param 'GetAppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecWorkerGithubArgs' github: A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
         :param str instance_size_slug: The instance size to use for this component.
         :param Sequence['GetAppSpecWorkerLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
@@ -13313,6 +13942,8 @@ class GetAppSpecWorkerResult(dict):
             pulumi.set(__self__, "alerts", alerts)
         if autoscaling is not None:
             pulumi.set(__self__, "autoscaling", autoscaling)
+        if bitbucket is not None:
+            pulumi.set(__self__, "bitbucket", bitbucket)
         if build_command is not None:
             pulumi.set(__self__, "build_command", build_command)
         if dockerfile_path is not None:
@@ -13367,6 +13998,14 @@ class GetAppSpecWorkerResult(dict):
         return pulumi.get(self, "autoscaling")
 
     @property
+    @pulumi.getter
+    def bitbucket(self) -> Optional['outputs.GetAppSpecWorkerBitbucketResult']:
+        """
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        """
+        return pulumi.get(self, "bitbucket")
+
+    @property
     @pulumi.getter(name="buildCommand")
     def build_command(self) -> Optional[str]:
         """
@@ -13410,7 +14049,7 @@ class GetAppSpecWorkerResult(dict):
     @pulumi.getter
     def github(self) -> Optional['outputs.GetAppSpecWorkerGithubResult']:
         """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "github")
 
@@ -13418,7 +14057,7 @@ class GetAppSpecWorkerResult(dict):
     @pulumi.getter
     def gitlab(self) -> Optional['outputs.GetAppSpecWorkerGitlabResult']:
         """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "gitlab")
 
@@ -13426,7 +14065,7 @@ class GetAppSpecWorkerResult(dict):
     @pulumi.getter
     def image(self) -> Optional['outputs.GetAppSpecWorkerImageResult']:
         """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         """
         return pulumi.get(self, "image")
 
@@ -13617,6 +14256,49 @@ class GetAppSpecWorkerAutoscalingMetricsCpuResult(dict):
         The average target CPU utilization for the component.
         """
         return pulumi.get(self, "percent")
+
+
+@pulumi.output_type
+class GetAppSpecWorkerBitbucketResult(dict):
+    def __init__(__self__, *,
+                 branch: Optional[str] = None,
+                 deploy_on_push: Optional[bool] = None,
+                 repo: Optional[str] = None):
+        """
+        :param str branch: The name of the branch to use.
+        :param bool deploy_on_push: Whether to automatically deploy new commits made to the repo.
+        :param str repo: The name of the repo in the format `owner/repo`.
+        """
+        if branch is not None:
+            pulumi.set(__self__, "branch", branch)
+        if deploy_on_push is not None:
+            pulumi.set(__self__, "deploy_on_push", deploy_on_push)
+        if repo is not None:
+            pulumi.set(__self__, "repo", repo)
+
+    @property
+    @pulumi.getter
+    def branch(self) -> Optional[str]:
+        """
+        The name of the branch to use.
+        """
+        return pulumi.get(self, "branch")
+
+    @property
+    @pulumi.getter(name="deployOnPush")
+    def deploy_on_push(self) -> Optional[bool]:
+        """
+        Whether to automatically deploy new commits made to the repo.
+        """
+        return pulumi.get(self, "deploy_on_push")
+
+    @property
+    @pulumi.getter
+    def repo(self) -> Optional[str]:
+        """
+        The name of the repo in the format `owner/repo`.
+        """
+        return pulumi.get(self, "repo")
 
 
 @pulumi.output_type

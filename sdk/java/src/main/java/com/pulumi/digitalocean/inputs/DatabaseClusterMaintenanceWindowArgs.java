@@ -15,14 +15,14 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
     public static final DatabaseClusterMaintenanceWindowArgs Empty = new DatabaseClusterMaintenanceWindowArgs();
 
     /**
-     * The day of the week on which to apply maintenance updates.
+     * The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      * 
      */
     @Import(name="day", required=true)
     private Output<String> day;
 
     /**
-     * @return The day of the week on which to apply maintenance updates.
+     * @return The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      * 
      */
     public Output<String> day() {
@@ -30,14 +30,14 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
     }
 
     /**
-     * The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      * 
      */
     @Import(name="hour", required=true)
     private Output<String> hour;
 
     /**
-     * @return The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * @return The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      * 
      */
     public Output<String> hour() {
@@ -70,7 +70,7 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
         }
 
         /**
-         * @param day The day of the week on which to apply maintenance updates.
+         * @param day The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
         }
 
         /**
-         * @param day The day of the week on which to apply maintenance updates.
+         * @param day The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
         }
 
         /**
-         * @param hour The hour in UTC at which maintenance updates will be applied in 24 hour format.
+         * @param hour The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class DatabaseClusterMaintenanceWindowArgs extends com.pulumi.resou
         }
 
         /**
-         * @param hour The hour in UTC at which maintenance updates will be applied in 24 hour format.
+         * @param hour The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
          * 
          * @return builder
          * 

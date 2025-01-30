@@ -183,7 +183,7 @@ import javax.annotation.Nullable;
  *                 .staticSites(AppSpecStaticSiteArgs.builder()
  *                     .name("web")
  *                     .buildCommand("npm run build")
- *                     .github(AppSpecStaticSiteGithubArgs.builder()
+ *                     .bitbucket(AppSpecStaticSiteBitbucketArgs.builder()
  *                         .branch("main")
  *                         .deployOnPush(true)
  *                         .repo("username/repo")

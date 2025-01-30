@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecJobAlertArgs;
+import com.pulumi.digitalocean.inputs.AppSpecJobBitbucketArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobGitArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobGithubArgs;
@@ -39,6 +40,21 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AppSpecJobAlertArgs>>> alerts() {
         return Optional.ofNullable(this.alerts);
+    }
+
+    /**
+     * A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    @Import(name="bitbucket")
+    private @Nullable Output<AppSpecJobBitbucketArgs> bitbucket;
+
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<Output<AppSpecJobBitbucketArgs>> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
     }
 
     /**
@@ -293,6 +309,7 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppSpecJobArgs(AppSpecJobArgs $) {
         this.alerts = $.alerts;
+        this.bitbucket = $.bitbucket;
         this.buildCommand = $.buildCommand;
         this.dockerfilePath = $.dockerfilePath;
         this.environmentSlug = $.environmentSlug;
@@ -358,6 +375,27 @@ public final class AppSpecJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder alerts(AppSpecJobAlertArgs... alerts) {
             return alerts(List.of(alerts));
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(@Nullable Output<AppSpecJobBitbucketArgs> bitbucket) {
+            $.bitbucket = bitbucket;
+            return this;
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(AppSpecJobBitbucketArgs bitbucket) {
+            return bitbucket(Output.of(bitbucket));
         }
 
         /**

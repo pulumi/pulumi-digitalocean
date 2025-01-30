@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetAppSpecStaticSiteResult
     {
         /// <summary>
+        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.GetAppSpecStaticSiteBitbucketResult? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -46,11 +50,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGitResult? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGithubResult? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecStaticSiteGitlabResult? Gitlab;
         /// <summary>
@@ -73,6 +77,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecStaticSiteResult(
+            Outputs.GetAppSpecStaticSiteBitbucketResult? bitbucket,
+
             string? buildCommand,
 
             string? catchallDocument,
@@ -103,6 +109,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? sourceDir)
         {
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             CatchallDocument = catchallDocument;
             Cors = cors;

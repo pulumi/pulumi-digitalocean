@@ -11,26 +11,26 @@ import java.util.Objects;
 @CustomType
 public final class DatabaseClusterMaintenanceWindow {
     /**
-     * @return The day of the week on which to apply maintenance updates.
+     * @return The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      * 
      */
     private String day;
     /**
-     * @return The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * @return The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      * 
      */
     private String hour;
 
     private DatabaseClusterMaintenanceWindow() {}
     /**
-     * @return The day of the week on which to apply maintenance updates.
+     * @return The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      * 
      */
     public String day() {
         return this.day;
     }
     /**
-     * @return The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * @return The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      * 
      */
     public String hour() {

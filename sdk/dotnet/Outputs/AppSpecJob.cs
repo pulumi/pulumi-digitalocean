@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecJobAlert> Alerts;
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecJobBitbucket? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -90,6 +94,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private AppSpecJob(
             ImmutableArray<Outputs.AppSpecJobAlert> alerts,
 
+            Outputs.AppSpecJobBitbucket? bitbucket,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -123,6 +129,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Outputs.AppSpecJobTermination? termination)
         {
             Alerts = alerts;
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;

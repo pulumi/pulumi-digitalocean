@@ -27,8 +27,10 @@ class KubernetesClusterArgs:
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
+                 control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
+                 kubeconfig_expire_seconds: Optional[pulumi.Input[int]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  registry_integration: Optional[pulumi.Input[bool]] = None,
@@ -44,9 +46,10 @@ class KubernetesClusterArgs:
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -62,10 +65,14 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_subnet is not None:
             pulumi.set(__self__, "cluster_subnet", cluster_subnet)
+        if control_plane_firewall is not None:
+            pulumi.set(__self__, "control_plane_firewall", control_plane_firewall)
         if destroy_all_associated_resources is not None:
             pulumi.set(__self__, "destroy_all_associated_resources", destroy_all_associated_resources)
         if ha is not None:
             pulumi.set(__self__, "ha", ha)
+        if kubeconfig_expire_seconds is not None:
+            pulumi.set(__self__, "kubeconfig_expire_seconds", kubeconfig_expire_seconds)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
@@ -142,12 +149,19 @@ class KubernetesClusterArgs:
         pulumi.set(self, "cluster_subnet", value)
 
     @property
+    @pulumi.getter(name="controlPlaneFirewall")
+    def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+        return pulumi.get(self, "control_plane_firewall")
+
+    @control_plane_firewall.setter
+    def control_plane_firewall(self, value: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]):
+        pulumi.set(self, "control_plane_firewall", value)
+
+    @property
     @pulumi.getter(name="destroyAllAssociatedResources")
     def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
         """
         **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "destroy_all_associated_resources")
 
@@ -166,6 +180,20 @@ class KubernetesClusterArgs:
     @ha.setter
     def ha(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ha", value)
+
+    @property
+    @pulumi.getter(name="kubeconfigExpireSeconds")
+    def kubeconfig_expire_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "kubeconfig_expire_seconds")
+
+    @kubeconfig_expire_seconds.setter
+    def kubeconfig_expire_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "kubeconfig_expire_seconds", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -258,12 +286,14 @@ class _KubernetesClusterState:
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  cluster_urn: Optional[pulumi.Input[str]] = None,
+                 control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
                  ipv4_address: Optional[pulumi.Input[str]] = None,
                  kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
+                 kubeconfig_expire_seconds: Optional[pulumi.Input[int]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
@@ -283,12 +313,13 @@ class _KubernetesClusterState:
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        :param pulumi.Input[int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -308,6 +339,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "cluster_subnet", cluster_subnet)
         if cluster_urn is not None:
             pulumi.set(__self__, "cluster_urn", cluster_urn)
+        if control_plane_firewall is not None:
+            pulumi.set(__self__, "control_plane_firewall", control_plane_firewall)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if destroy_all_associated_resources is not None:
@@ -320,6 +353,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "ipv4_address", ipv4_address)
         if kube_configs is not None:
             pulumi.set(__self__, "kube_configs", kube_configs)
+        if kubeconfig_expire_seconds is not None:
+            pulumi.set(__self__, "kubeconfig_expire_seconds", kubeconfig_expire_seconds)
         if maintenance_policy is not None:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
@@ -382,6 +417,15 @@ class _KubernetesClusterState:
         pulumi.set(self, "cluster_urn", value)
 
     @property
+    @pulumi.getter(name="controlPlaneFirewall")
+    def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+        return pulumi.get(self, "control_plane_firewall")
+
+    @control_plane_firewall.setter
+    def control_plane_firewall(self, value: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]):
+        pulumi.set(self, "control_plane_firewall", value)
+
+    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
         """
@@ -398,8 +442,6 @@ class _KubernetesClusterState:
     def destroy_all_associated_resources(self) -> Optional[pulumi.Input[bool]]:
         """
         **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "destroy_all_associated_resources")
 
@@ -454,6 +496,20 @@ class _KubernetesClusterState:
     @kube_configs.setter
     def kube_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]):
         pulumi.set(self, "kube_configs", value)
+
+    @property
+    @pulumi.getter(name="kubeconfigExpireSeconds")
+    def kubeconfig_expire_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "kubeconfig_expire_seconds")
+
+    @kubeconfig_expire_seconds.setter
+    def kubeconfig_expire_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "kubeconfig_expire_seconds", value)
 
     @property
     @pulumi.getter(name="maintenancePolicy")
@@ -607,8 +663,10 @@ class KubernetesCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
+                 control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
+                 kubeconfig_expire_seconds: Optional[pulumi.Input[int]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
@@ -652,9 +710,10 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
+        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
+        :param pulumi.Input[int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
                
                This resource supports customized create timeouts. The default timeout is 30 minutes.
-        :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -716,8 +775,10 @@ class KubernetesCluster(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
+                 control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
                  ha: Optional[pulumi.Input[bool]] = None,
+                 kubeconfig_expire_seconds: Optional[pulumi.Input[int]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
@@ -739,8 +800,10 @@ class KubernetesCluster(pulumi.CustomResource):
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cluster_subnet"] = cluster_subnet
+            __props__.__dict__["control_plane_firewall"] = control_plane_firewall
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
             __props__.__dict__["ha"] = ha
+            __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             if node_pool is None and not opts.urn:
@@ -779,12 +842,14 @@ class KubernetesCluster(pulumi.CustomResource):
             auto_upgrade: Optional[pulumi.Input[bool]] = None,
             cluster_subnet: Optional[pulumi.Input[str]] = None,
             cluster_urn: Optional[pulumi.Input[str]] = None,
+            control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
             ha: Optional[pulumi.Input[bool]] = None,
             ipv4_address: Optional[pulumi.Input[str]] = None,
             kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]]] = None,
+            kubeconfig_expire_seconds: Optional[pulumi.Input[int]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
@@ -809,12 +874,13 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[str] created_at: The date and time when the node was created.
         :param pulumi.Input[bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[str] endpoint: The base URL of the API server on the Kubernetes master node.
         :param pulumi.Input[bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[str] ipv4_address: The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]] kube_configs: A representation of the Kubernetes cluster's kubeconfig with the following attributes:
+        :param pulumi.Input[int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
@@ -835,12 +901,14 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["cluster_subnet"] = cluster_subnet
         __props__.__dict__["cluster_urn"] = cluster_urn
+        __props__.__dict__["control_plane_firewall"] = control_plane_firewall
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
         __props__.__dict__["endpoint"] = endpoint
         __props__.__dict__["ha"] = ha
         __props__.__dict__["ipv4_address"] = ipv4_address
         __props__.__dict__["kube_configs"] = kube_configs
+        __props__.__dict__["kubeconfig_expire_seconds"] = kubeconfig_expire_seconds
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["node_pool"] = node_pool
@@ -880,6 +948,11 @@ class KubernetesCluster(pulumi.CustomResource):
         return pulumi.get(self, "cluster_urn")
 
     @property
+    @pulumi.getter(name="controlPlaneFirewall")
+    def control_plane_firewall(self) -> pulumi.Output['outputs.KubernetesClusterControlPlaneFirewall']:
+        return pulumi.get(self, "control_plane_firewall")
+
+    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
         """
@@ -892,8 +965,6 @@ class KubernetesCluster(pulumi.CustomResource):
     def destroy_all_associated_resources(self) -> pulumi.Output[Optional[bool]]:
         """
         **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "destroy_all_associated_resources")
 
@@ -928,6 +999,16 @@ class KubernetesCluster(pulumi.CustomResource):
         A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         """
         return pulumi.get(self, "kube_configs")
+
+    @property
+    @pulumi.getter(name="kubeconfigExpireSeconds")
+    def kubeconfig_expire_seconds(self) -> pulumi.Output[Optional[int]]:
+        """
+        The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "kubeconfig_expire_seconds")
 
     @property
     @pulumi.getter(name="maintenancePolicy")

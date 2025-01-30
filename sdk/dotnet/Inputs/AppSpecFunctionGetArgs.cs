@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        [Input("bitbucket")]
+        public Input<Inputs.AppSpecFunctionBitbucketGetArgs>? Bitbucket { get; set; }
+
+        /// <summary>
         /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         [Input("cors")]

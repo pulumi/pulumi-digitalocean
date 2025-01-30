@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecStaticSite
     {
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecStaticSiteBitbucket? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -76,6 +80,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpecStaticSite(
+            Outputs.AppSpecStaticSiteBitbucket? bitbucket,
+
             string? buildCommand,
 
             string? catchallDocument,
@@ -106,6 +112,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? sourceDir)
         {
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             CatchallDocument = catchallDocument;
             Cors = cors;

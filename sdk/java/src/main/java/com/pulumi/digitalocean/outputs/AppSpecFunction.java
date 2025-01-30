@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecFunctionAlert;
+import com.pulumi.digitalocean.outputs.AppSpecFunctionBitbucket;
 import com.pulumi.digitalocean.outputs.AppSpecFunctionCors;
 import com.pulumi.digitalocean.outputs.AppSpecFunctionEnv;
 import com.pulumi.digitalocean.outputs.AppSpecFunctionGit;
@@ -26,6 +27,11 @@ public final class AppSpecFunction {
      * 
      */
     private @Nullable List<AppSpecFunctionAlert> alerts;
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable AppSpecFunctionBitbucket bitbucket;
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
@@ -87,6 +93,13 @@ public final class AppSpecFunction {
      */
     public List<AppSpecFunctionAlert> alerts() {
         return this.alerts == null ? List.of() : this.alerts;
+    }
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<AppSpecFunctionBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
     }
     /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -170,6 +183,7 @@ public final class AppSpecFunction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecFunctionAlert> alerts;
+        private @Nullable AppSpecFunctionBitbucket bitbucket;
         private @Nullable AppSpecFunctionCors cors;
         private @Nullable List<AppSpecFunctionEnv> envs;
         private @Nullable AppSpecFunctionGit git;
@@ -183,6 +197,7 @@ public final class AppSpecFunction {
         public Builder(AppSpecFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.cors = defaults.cors;
     	      this.envs = defaults.envs;
     	      this.git = defaults.git;
@@ -202,6 +217,12 @@ public final class AppSpecFunction {
         }
         public Builder alerts(AppSpecFunctionAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable AppSpecFunctionBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable AppSpecFunctionCors cors) {
@@ -271,6 +292,7 @@ public final class AppSpecFunction {
         public AppSpecFunction build() {
             final var _resultValue = new AppSpecFunction();
             _resultValue.alerts = alerts;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.cors = cors;
             _resultValue.envs = envs;
             _resultValue.git = git;

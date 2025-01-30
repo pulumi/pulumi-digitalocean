@@ -1127,6 +1127,8 @@ func (o AppSpecEnvArrayOutput) Index(i pulumi.IntInput) AppSpecEnvOutput {
 type AppSpecFunction struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecFunctionAlert `pulumi:"alerts"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *AppSpecFunctionBitbucket `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
@@ -1165,6 +1167,8 @@ type AppSpecFunctionInput interface {
 type AppSpecFunctionArgs struct {
 	// Describes an alert policy for the component.
 	Alerts AppSpecFunctionAlertArrayInput `pulumi:"alerts"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket AppSpecFunctionBitbucketPtrInput `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
@@ -1243,6 +1247,11 @@ func (o AppSpecFunctionOutput) ToAppSpecFunctionOutputWithContext(ctx context.Co
 // Describes an alert policy for the component.
 func (o AppSpecFunctionOutput) Alerts() AppSpecFunctionAlertArrayOutput {
 	return o.ApplyT(func(v AppSpecFunction) []AppSpecFunctionAlert { return v.Alerts }).(AppSpecFunctionAlertArrayOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o AppSpecFunctionOutput) Bitbucket() AppSpecFunctionBitbucketPtrOutput {
+	return o.ApplyT(func(v AppSpecFunction) *AppSpecFunctionBitbucket { return v.Bitbucket }).(AppSpecFunctionBitbucketPtrOutput)
 }
 
 // The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -1445,6 +1454,181 @@ func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionAlert {
 		return vs[0].([]AppSpecFunctionAlert)[vs[1].(int)]
 	}).(AppSpecFunctionAlertOutput)
+}
+
+type AppSpecFunctionBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecFunctionBitbucketInput is an input type that accepts AppSpecFunctionBitbucketArgs and AppSpecFunctionBitbucketOutput values.
+// You can construct a concrete instance of `AppSpecFunctionBitbucketInput` via:
+//
+//	AppSpecFunctionBitbucketArgs{...}
+type AppSpecFunctionBitbucketInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionBitbucketOutput() AppSpecFunctionBitbucketOutput
+	ToAppSpecFunctionBitbucketOutputWithContext(context.Context) AppSpecFunctionBitbucketOutput
+}
+
+type AppSpecFunctionBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecFunctionBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (i AppSpecFunctionBitbucketArgs) ToAppSpecFunctionBitbucketOutput() AppSpecFunctionBitbucketOutput {
+	return i.ToAppSpecFunctionBitbucketOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionBitbucketArgs) ToAppSpecFunctionBitbucketOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionBitbucketOutput)
+}
+
+func (i AppSpecFunctionBitbucketArgs) ToAppSpecFunctionBitbucketPtrOutput() AppSpecFunctionBitbucketPtrOutput {
+	return i.ToAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionBitbucketArgs) ToAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionBitbucketOutput).ToAppSpecFunctionBitbucketPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionBitbucketPtrInput is an input type that accepts AppSpecFunctionBitbucketArgs, AppSpecFunctionBitbucketPtr and AppSpecFunctionBitbucketPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionBitbucketPtrInput` via:
+//
+//	        AppSpecFunctionBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecFunctionBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionBitbucketPtrOutput() AppSpecFunctionBitbucketPtrOutput
+	ToAppSpecFunctionBitbucketPtrOutputWithContext(context.Context) AppSpecFunctionBitbucketPtrOutput
+}
+
+type appSpecFunctionBitbucketPtrType AppSpecFunctionBitbucketArgs
+
+func AppSpecFunctionBitbucketPtr(v *AppSpecFunctionBitbucketArgs) AppSpecFunctionBitbucketPtrInput {
+	return (*appSpecFunctionBitbucketPtrType)(v)
+}
+
+func (*appSpecFunctionBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (i *appSpecFunctionBitbucketPtrType) ToAppSpecFunctionBitbucketPtrOutput() AppSpecFunctionBitbucketPtrOutput {
+	return i.ToAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionBitbucketPtrType) ToAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionBitbucketPtrOutput)
+}
+
+type AppSpecFunctionBitbucketOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecFunctionBitbucketOutput) ToAppSpecFunctionBitbucketOutput() AppSpecFunctionBitbucketOutput {
+	return o
+}
+
+func (o AppSpecFunctionBitbucketOutput) ToAppSpecFunctionBitbucketOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketOutput {
+	return o
+}
+
+func (o AppSpecFunctionBitbucketOutput) ToAppSpecFunctionBitbucketPtrOutput() AppSpecFunctionBitbucketPtrOutput {
+	return o.ToAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionBitbucketOutput) ToAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionBitbucket) *AppSpecFunctionBitbucket {
+		return &v
+	}).(AppSpecFunctionBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecFunctionBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecFunctionBitbucketPtrOutput) ToAppSpecFunctionBitbucketPtrOutput() AppSpecFunctionBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionBitbucketPtrOutput) ToAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) AppSpecFunctionBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionBitbucketPtrOutput) Elem() AppSpecFunctionBitbucketOutput {
+	return o.ApplyT(func(v *AppSpecFunctionBitbucket) AppSpecFunctionBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionBitbucket
+		return ret
+	}).(AppSpecFunctionBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecFunctionBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecFunctionBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecFunctionBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecFunctionBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecFunctionCors struct {
@@ -4854,6 +5038,8 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 type AppSpecJob struct {
 	// Describes an alert policy for the component.
 	Alerts []AppSpecJobAlert `pulumi:"alerts"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *AppSpecJobBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -4906,6 +5092,8 @@ type AppSpecJobInput interface {
 type AppSpecJobArgs struct {
 	// Describes an alert policy for the component.
 	Alerts AppSpecJobAlertArrayInput `pulumi:"alerts"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket AppSpecJobBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -4998,6 +5186,11 @@ func (o AppSpecJobOutput) ToAppSpecJobOutputWithContext(ctx context.Context) App
 // Describes an alert policy for the component.
 func (o AppSpecJobOutput) Alerts() AppSpecJobAlertArrayOutput {
 	return o.ApplyT(func(v AppSpecJob) []AppSpecJobAlert { return v.Alerts }).(AppSpecJobAlertArrayOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o AppSpecJobOutput) Bitbucket() AppSpecJobBitbucketPtrOutput {
+	return o.ApplyT(func(v AppSpecJob) *AppSpecJobBitbucket { return v.Bitbucket }).(AppSpecJobBitbucketPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -5235,6 +5428,181 @@ func (o AppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) AppSpecJobAlertOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobAlert {
 		return vs[0].([]AppSpecJobAlert)[vs[1].(int)]
 	}).(AppSpecJobAlertOutput)
+}
+
+type AppSpecJobBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecJobBitbucketInput is an input type that accepts AppSpecJobBitbucketArgs and AppSpecJobBitbucketOutput values.
+// You can construct a concrete instance of `AppSpecJobBitbucketInput` via:
+//
+//	AppSpecJobBitbucketArgs{...}
+type AppSpecJobBitbucketInput interface {
+	pulumi.Input
+
+	ToAppSpecJobBitbucketOutput() AppSpecJobBitbucketOutput
+	ToAppSpecJobBitbucketOutputWithContext(context.Context) AppSpecJobBitbucketOutput
+}
+
+type AppSpecJobBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecJobBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (i AppSpecJobBitbucketArgs) ToAppSpecJobBitbucketOutput() AppSpecJobBitbucketOutput {
+	return i.ToAppSpecJobBitbucketOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobBitbucketArgs) ToAppSpecJobBitbucketOutputWithContext(ctx context.Context) AppSpecJobBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobBitbucketOutput)
+}
+
+func (i AppSpecJobBitbucketArgs) ToAppSpecJobBitbucketPtrOutput() AppSpecJobBitbucketPtrOutput {
+	return i.ToAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobBitbucketArgs) ToAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) AppSpecJobBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobBitbucketOutput).ToAppSpecJobBitbucketPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobBitbucketPtrInput is an input type that accepts AppSpecJobBitbucketArgs, AppSpecJobBitbucketPtr and AppSpecJobBitbucketPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobBitbucketPtrInput` via:
+//
+//	        AppSpecJobBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecJobBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobBitbucketPtrOutput() AppSpecJobBitbucketPtrOutput
+	ToAppSpecJobBitbucketPtrOutputWithContext(context.Context) AppSpecJobBitbucketPtrOutput
+}
+
+type appSpecJobBitbucketPtrType AppSpecJobBitbucketArgs
+
+func AppSpecJobBitbucketPtr(v *AppSpecJobBitbucketArgs) AppSpecJobBitbucketPtrInput {
+	return (*appSpecJobBitbucketPtrType)(v)
+}
+
+func (*appSpecJobBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (i *appSpecJobBitbucketPtrType) ToAppSpecJobBitbucketPtrOutput() AppSpecJobBitbucketPtrOutput {
+	return i.ToAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobBitbucketPtrType) ToAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) AppSpecJobBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobBitbucketPtrOutput)
+}
+
+type AppSpecJobBitbucketOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecJobBitbucketOutput) ToAppSpecJobBitbucketOutput() AppSpecJobBitbucketOutput {
+	return o
+}
+
+func (o AppSpecJobBitbucketOutput) ToAppSpecJobBitbucketOutputWithContext(ctx context.Context) AppSpecJobBitbucketOutput {
+	return o
+}
+
+func (o AppSpecJobBitbucketOutput) ToAppSpecJobBitbucketPtrOutput() AppSpecJobBitbucketPtrOutput {
+	return o.ToAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobBitbucketOutput) ToAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) AppSpecJobBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobBitbucket) *AppSpecJobBitbucket {
+		return &v
+	}).(AppSpecJobBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecJobBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecJobBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecJobBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecJobBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecJobBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecJobBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecJobBitbucketPtrOutput) ToAppSpecJobBitbucketPtrOutput() AppSpecJobBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecJobBitbucketPtrOutput) ToAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) AppSpecJobBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecJobBitbucketPtrOutput) Elem() AppSpecJobBitbucketOutput {
+	return o.ApplyT(func(v *AppSpecJobBitbucket) AppSpecJobBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobBitbucket
+		return ret
+	}).(AppSpecJobBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecJobBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecJobBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecJobBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecJobBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecJobEnv struct {
@@ -7280,6 +7648,8 @@ type AppSpecService struct {
 	Alerts []AppSpecServiceAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *AppSpecServiceAutoscaling `pulumi:"autoscaling"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *AppSpecServiceBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -7342,6 +7712,8 @@ type AppSpecServiceArgs struct {
 	Alerts AppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling AppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket AppSpecServiceBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -7447,6 +7819,11 @@ func (o AppSpecServiceOutput) Alerts() AppSpecServiceAlertArrayOutput {
 // Configuration for automatically scaling this component based on metrics.
 func (o AppSpecServiceOutput) Autoscaling() AppSpecServiceAutoscalingPtrOutput {
 	return o.ApplyT(func(v AppSpecService) *AppSpecServiceAutoscaling { return v.Autoscaling }).(AppSpecServiceAutoscalingPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o AppSpecServiceOutput) Bitbucket() AppSpecServiceBitbucketPtrOutput {
+	return o.ApplyT(func(v AppSpecService) *AppSpecServiceBitbucket { return v.Bitbucket }).(AppSpecServiceBitbucketPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -8153,6 +8530,181 @@ func (o AppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOut
 		}
 		return &v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type AppSpecServiceBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecServiceBitbucketInput is an input type that accepts AppSpecServiceBitbucketArgs and AppSpecServiceBitbucketOutput values.
+// You can construct a concrete instance of `AppSpecServiceBitbucketInput` via:
+//
+//	AppSpecServiceBitbucketArgs{...}
+type AppSpecServiceBitbucketInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceBitbucketOutput() AppSpecServiceBitbucketOutput
+	ToAppSpecServiceBitbucketOutputWithContext(context.Context) AppSpecServiceBitbucketOutput
+}
+
+type AppSpecServiceBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecServiceBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i AppSpecServiceBitbucketArgs) ToAppSpecServiceBitbucketOutput() AppSpecServiceBitbucketOutput {
+	return i.ToAppSpecServiceBitbucketOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceBitbucketArgs) ToAppSpecServiceBitbucketOutputWithContext(ctx context.Context) AppSpecServiceBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceBitbucketOutput)
+}
+
+func (i AppSpecServiceBitbucketArgs) ToAppSpecServiceBitbucketPtrOutput() AppSpecServiceBitbucketPtrOutput {
+	return i.ToAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceBitbucketArgs) ToAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) AppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceBitbucketOutput).ToAppSpecServiceBitbucketPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceBitbucketPtrInput is an input type that accepts AppSpecServiceBitbucketArgs, AppSpecServiceBitbucketPtr and AppSpecServiceBitbucketPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceBitbucketPtrInput` via:
+//
+//	        AppSpecServiceBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceBitbucketPtrOutput() AppSpecServiceBitbucketPtrOutput
+	ToAppSpecServiceBitbucketPtrOutputWithContext(context.Context) AppSpecServiceBitbucketPtrOutput
+}
+
+type appSpecServiceBitbucketPtrType AppSpecServiceBitbucketArgs
+
+func AppSpecServiceBitbucketPtr(v *AppSpecServiceBitbucketArgs) AppSpecServiceBitbucketPtrInput {
+	return (*appSpecServiceBitbucketPtrType)(v)
+}
+
+func (*appSpecServiceBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i *appSpecServiceBitbucketPtrType) ToAppSpecServiceBitbucketPtrOutput() AppSpecServiceBitbucketPtrOutput {
+	return i.ToAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceBitbucketPtrType) ToAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) AppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceBitbucketPtrOutput)
+}
+
+type AppSpecServiceBitbucketOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecServiceBitbucketOutput) ToAppSpecServiceBitbucketOutput() AppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o AppSpecServiceBitbucketOutput) ToAppSpecServiceBitbucketOutputWithContext(ctx context.Context) AppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o AppSpecServiceBitbucketOutput) ToAppSpecServiceBitbucketPtrOutput() AppSpecServiceBitbucketPtrOutput {
+	return o.ToAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceBitbucketOutput) ToAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) AppSpecServiceBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceBitbucket) *AppSpecServiceBitbucket {
+		return &v
+	}).(AppSpecServiceBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecServiceBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecServiceBitbucketPtrOutput) ToAppSpecServiceBitbucketPtrOutput() AppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceBitbucketPtrOutput) ToAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) AppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceBitbucketPtrOutput) Elem() AppSpecServiceBitbucketOutput {
+	return o.ApplyT(func(v *AppSpecServiceBitbucket) AppSpecServiceBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceBitbucket
+		return ret
+	}).(AppSpecServiceBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecServiceBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecServiceBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecServiceBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecServiceCors struct {
@@ -10993,6 +11545,8 @@ func (o AppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtrOu
 }
 
 type AppSpecStaticSite struct {
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *AppSpecStaticSiteBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
@@ -11041,6 +11595,8 @@ type AppSpecStaticSiteInput interface {
 }
 
 type AppSpecStaticSiteArgs struct {
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket AppSpecStaticSiteBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
@@ -11126,6 +11682,11 @@ func (o AppSpecStaticSiteOutput) ToAppSpecStaticSiteOutput() AppSpecStaticSiteOu
 
 func (o AppSpecStaticSiteOutput) ToAppSpecStaticSiteOutputWithContext(ctx context.Context) AppSpecStaticSiteOutput {
 	return o
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o AppSpecStaticSiteOutput) Bitbucket() AppSpecStaticSiteBitbucketPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSite) *AppSpecStaticSiteBitbucket { return v.Bitbucket }).(AppSpecStaticSiteBitbucketPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -11225,6 +11786,181 @@ func (o AppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) AppSpecStaticSite
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecStaticSite {
 		return vs[0].([]AppSpecStaticSite)[vs[1].(int)]
 	}).(AppSpecStaticSiteOutput)
+}
+
+type AppSpecStaticSiteBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecStaticSiteBitbucketInput is an input type that accepts AppSpecStaticSiteBitbucketArgs and AppSpecStaticSiteBitbucketOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteBitbucketInput` via:
+//
+//	AppSpecStaticSiteBitbucketArgs{...}
+type AppSpecStaticSiteBitbucketInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteBitbucketOutput() AppSpecStaticSiteBitbucketOutput
+	ToAppSpecStaticSiteBitbucketOutputWithContext(context.Context) AppSpecStaticSiteBitbucketOutput
+}
+
+type AppSpecStaticSiteBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecStaticSiteBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (i AppSpecStaticSiteBitbucketArgs) ToAppSpecStaticSiteBitbucketOutput() AppSpecStaticSiteBitbucketOutput {
+	return i.ToAppSpecStaticSiteBitbucketOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteBitbucketArgs) ToAppSpecStaticSiteBitbucketOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteBitbucketOutput)
+}
+
+func (i AppSpecStaticSiteBitbucketArgs) ToAppSpecStaticSiteBitbucketPtrOutput() AppSpecStaticSiteBitbucketPtrOutput {
+	return i.ToAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecStaticSiteBitbucketArgs) ToAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteBitbucketOutput).ToAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx)
+}
+
+// AppSpecStaticSiteBitbucketPtrInput is an input type that accepts AppSpecStaticSiteBitbucketArgs, AppSpecStaticSiteBitbucketPtr and AppSpecStaticSiteBitbucketPtrOutput values.
+// You can construct a concrete instance of `AppSpecStaticSiteBitbucketPtrInput` via:
+//
+//	        AppSpecStaticSiteBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecStaticSiteBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecStaticSiteBitbucketPtrOutput() AppSpecStaticSiteBitbucketPtrOutput
+	ToAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Context) AppSpecStaticSiteBitbucketPtrOutput
+}
+
+type appSpecStaticSiteBitbucketPtrType AppSpecStaticSiteBitbucketArgs
+
+func AppSpecStaticSiteBitbucketPtr(v *AppSpecStaticSiteBitbucketArgs) AppSpecStaticSiteBitbucketPtrInput {
+	return (*appSpecStaticSiteBitbucketPtrType)(v)
+}
+
+func (*appSpecStaticSiteBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (i *appSpecStaticSiteBitbucketPtrType) ToAppSpecStaticSiteBitbucketPtrOutput() AppSpecStaticSiteBitbucketPtrOutput {
+	return i.ToAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecStaticSiteBitbucketPtrType) ToAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecStaticSiteBitbucketPtrOutput)
+}
+
+type AppSpecStaticSiteBitbucketOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteBitbucketOutput) ToAppSpecStaticSiteBitbucketOutput() AppSpecStaticSiteBitbucketOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteBitbucketOutput) ToAppSpecStaticSiteBitbucketOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteBitbucketOutput) ToAppSpecStaticSiteBitbucketPtrOutput() AppSpecStaticSiteBitbucketPtrOutput {
+	return o.ToAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecStaticSiteBitbucketOutput) ToAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecStaticSiteBitbucket) *AppSpecStaticSiteBitbucket {
+		return &v
+	}).(AppSpecStaticSiteBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecStaticSiteBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecStaticSiteBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecStaticSiteBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecStaticSiteBitbucketPtrOutput) ToAppSpecStaticSiteBitbucketPtrOutput() AppSpecStaticSiteBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteBitbucketPtrOutput) ToAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) AppSpecStaticSiteBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecStaticSiteBitbucketPtrOutput) Elem() AppSpecStaticSiteBitbucketOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteBitbucket) AppSpecStaticSiteBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecStaticSiteBitbucket
+		return ret
+	}).(AppSpecStaticSiteBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecStaticSiteBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecStaticSiteBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecStaticSiteBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecStaticSiteBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecStaticSiteCors struct {
@@ -12383,6 +13119,8 @@ type AppSpecWorker struct {
 	Alerts []AppSpecWorkerAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *AppSpecWorkerAutoscaling `pulumi:"autoscaling"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *AppSpecWorkerBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -12431,6 +13169,8 @@ type AppSpecWorkerArgs struct {
 	Alerts AppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling AppSpecWorkerAutoscalingPtrInput `pulumi:"autoscaling"`
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket AppSpecWorkerBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -12522,6 +13262,11 @@ func (o AppSpecWorkerOutput) Alerts() AppSpecWorkerAlertArrayOutput {
 // Configuration for automatically scaling this component based on metrics.
 func (o AppSpecWorkerOutput) Autoscaling() AppSpecWorkerAutoscalingPtrOutput {
 	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerAutoscaling { return v.Autoscaling }).(AppSpecWorkerAutoscalingPtrOutput)
+}
+
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o AppSpecWorkerOutput) Bitbucket() AppSpecWorkerBitbucketPtrOutput {
+	return o.ApplyT(func(v AppSpecWorker) *AppSpecWorkerBitbucket { return v.Bitbucket }).(AppSpecWorkerBitbucketPtrOutput)
 }
 
 // An optional build command to run while building this component from source.
@@ -13199,6 +13944,181 @@ func (o AppSpecWorkerAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrOutp
 		}
 		return &v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type AppSpecWorkerBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// AppSpecWorkerBitbucketInput is an input type that accepts AppSpecWorkerBitbucketArgs and AppSpecWorkerBitbucketOutput values.
+// You can construct a concrete instance of `AppSpecWorkerBitbucketInput` via:
+//
+//	AppSpecWorkerBitbucketArgs{...}
+type AppSpecWorkerBitbucketInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerBitbucketOutput() AppSpecWorkerBitbucketOutput
+	ToAppSpecWorkerBitbucketOutputWithContext(context.Context) AppSpecWorkerBitbucketOutput
+}
+
+type AppSpecWorkerBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (AppSpecWorkerBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (i AppSpecWorkerBitbucketArgs) ToAppSpecWorkerBitbucketOutput() AppSpecWorkerBitbucketOutput {
+	return i.ToAppSpecWorkerBitbucketOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerBitbucketArgs) ToAppSpecWorkerBitbucketOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerBitbucketOutput)
+}
+
+func (i AppSpecWorkerBitbucketArgs) ToAppSpecWorkerBitbucketPtrOutput() AppSpecWorkerBitbucketPtrOutput {
+	return i.ToAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerBitbucketArgs) ToAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerBitbucketOutput).ToAppSpecWorkerBitbucketPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerBitbucketPtrInput is an input type that accepts AppSpecWorkerBitbucketArgs, AppSpecWorkerBitbucketPtr and AppSpecWorkerBitbucketPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerBitbucketPtrInput` via:
+//
+//	        AppSpecWorkerBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerBitbucketPtrOutput() AppSpecWorkerBitbucketPtrOutput
+	ToAppSpecWorkerBitbucketPtrOutputWithContext(context.Context) AppSpecWorkerBitbucketPtrOutput
+}
+
+type appSpecWorkerBitbucketPtrType AppSpecWorkerBitbucketArgs
+
+func AppSpecWorkerBitbucketPtr(v *AppSpecWorkerBitbucketArgs) AppSpecWorkerBitbucketPtrInput {
+	return (*appSpecWorkerBitbucketPtrType)(v)
+}
+
+func (*appSpecWorkerBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (i *appSpecWorkerBitbucketPtrType) ToAppSpecWorkerBitbucketPtrOutput() AppSpecWorkerBitbucketPtrOutput {
+	return i.ToAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerBitbucketPtrType) ToAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerBitbucketPtrOutput)
+}
+
+type AppSpecWorkerBitbucketOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecWorkerBitbucketOutput) ToAppSpecWorkerBitbucketOutput() AppSpecWorkerBitbucketOutput {
+	return o
+}
+
+func (o AppSpecWorkerBitbucketOutput) ToAppSpecWorkerBitbucketOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketOutput {
+	return o
+}
+
+func (o AppSpecWorkerBitbucketOutput) ToAppSpecWorkerBitbucketPtrOutput() AppSpecWorkerBitbucketPtrOutput {
+	return o.ToAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerBitbucketOutput) ToAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerBitbucket) *AppSpecWorkerBitbucket {
+		return &v
+	}).(AppSpecWorkerBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecWorkerBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (o AppSpecWorkerBitbucketPtrOutput) ToAppSpecWorkerBitbucketPtrOutput() AppSpecWorkerBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerBitbucketPtrOutput) ToAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) AppSpecWorkerBitbucketPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerBitbucketPtrOutput) Elem() AppSpecWorkerBitbucketOutput {
+	return o.ApplyT(func(v *AppSpecWorkerBitbucket) AppSpecWorkerBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerBitbucket
+		return ret
+	}).(AppSpecWorkerBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o AppSpecWorkerBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o AppSpecWorkerBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o AppSpecWorkerBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecWorkerBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecWorkerEnv struct {
@@ -15404,9 +16324,9 @@ func (o DatabaseClusterBackupRestorePtrOutput) DatabaseName() pulumi.StringPtrOu
 }
 
 type DatabaseClusterMaintenanceWindow struct {
-	// The day of the week on which to apply maintenance updates.
+	// The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
 	Day string `pulumi:"day"`
-	// The hour in UTC at which maintenance updates will be applied in 24 hour format.
+	// The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
 	Hour string `pulumi:"hour"`
 }
 
@@ -15422,9 +16342,9 @@ type DatabaseClusterMaintenanceWindowInput interface {
 }
 
 type DatabaseClusterMaintenanceWindowArgs struct {
-	// The day of the week on which to apply maintenance updates.
+	// The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
 	Day pulumi.StringInput `pulumi:"day"`
-	// The hour in UTC at which maintenance updates will be applied in 24 hour format.
+	// The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
 	Hour pulumi.StringInput `pulumi:"hour"`
 }
 
@@ -15479,12 +16399,12 @@ func (o DatabaseClusterMaintenanceWindowOutput) ToDatabaseClusterMaintenanceWind
 	return o
 }
 
-// The day of the week on which to apply maintenance updates.
+// The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
 func (o DatabaseClusterMaintenanceWindowOutput) Day() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseClusterMaintenanceWindow) string { return v.Day }).(pulumi.StringOutput)
 }
 
-// The hour in UTC at which maintenance updates will be applied in 24 hour format.
+// The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
 func (o DatabaseClusterMaintenanceWindowOutput) Hour() pulumi.StringOutput {
 	return o.ApplyT(func(v DatabaseClusterMaintenanceWindow) string { return v.Hour }).(pulumi.StringOutput)
 }
@@ -17813,6 +18733,154 @@ func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendi
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FirewallPendingChange {
 		return vs[0].([]FirewallPendingChange)[vs[1].(int)]
 	}).(FirewallPendingChangeOutput)
+}
+
+type KubernetesClusterControlPlaneFirewall struct {
+	AllowedAddresses []string `pulumi:"allowedAddresses"`
+	Enabled          bool     `pulumi:"enabled"`
+}
+
+// KubernetesClusterControlPlaneFirewallInput is an input type that accepts KubernetesClusterControlPlaneFirewallArgs and KubernetesClusterControlPlaneFirewallOutput values.
+// You can construct a concrete instance of `KubernetesClusterControlPlaneFirewallInput` via:
+//
+//	KubernetesClusterControlPlaneFirewallArgs{...}
+type KubernetesClusterControlPlaneFirewallInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterControlPlaneFirewallOutput() KubernetesClusterControlPlaneFirewallOutput
+	ToKubernetesClusterControlPlaneFirewallOutputWithContext(context.Context) KubernetesClusterControlPlaneFirewallOutput
+}
+
+type KubernetesClusterControlPlaneFirewallArgs struct {
+	AllowedAddresses pulumi.StringArrayInput `pulumi:"allowedAddresses"`
+	Enabled          pulumi.BoolInput        `pulumi:"enabled"`
+}
+
+func (KubernetesClusterControlPlaneFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (i KubernetesClusterControlPlaneFirewallArgs) ToKubernetesClusterControlPlaneFirewallOutput() KubernetesClusterControlPlaneFirewallOutput {
+	return i.ToKubernetesClusterControlPlaneFirewallOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterControlPlaneFirewallArgs) ToKubernetesClusterControlPlaneFirewallOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterControlPlaneFirewallOutput)
+}
+
+func (i KubernetesClusterControlPlaneFirewallArgs) ToKubernetesClusterControlPlaneFirewallPtrOutput() KubernetesClusterControlPlaneFirewallPtrOutput {
+	return i.ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterControlPlaneFirewallArgs) ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterControlPlaneFirewallOutput).ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterControlPlaneFirewallPtrInput is an input type that accepts KubernetesClusterControlPlaneFirewallArgs, KubernetesClusterControlPlaneFirewallPtr and KubernetesClusterControlPlaneFirewallPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterControlPlaneFirewallPtrInput` via:
+//
+//	        KubernetesClusterControlPlaneFirewallArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterControlPlaneFirewallPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterControlPlaneFirewallPtrOutput() KubernetesClusterControlPlaneFirewallPtrOutput
+	ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(context.Context) KubernetesClusterControlPlaneFirewallPtrOutput
+}
+
+type kubernetesClusterControlPlaneFirewallPtrType KubernetesClusterControlPlaneFirewallArgs
+
+func KubernetesClusterControlPlaneFirewallPtr(v *KubernetesClusterControlPlaneFirewallArgs) KubernetesClusterControlPlaneFirewallPtrInput {
+	return (*kubernetesClusterControlPlaneFirewallPtrType)(v)
+}
+
+func (*kubernetesClusterControlPlaneFirewallPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (i *kubernetesClusterControlPlaneFirewallPtrType) ToKubernetesClusterControlPlaneFirewallPtrOutput() KubernetesClusterControlPlaneFirewallPtrOutput {
+	return i.ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterControlPlaneFirewallPtrType) ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterControlPlaneFirewallPtrOutput)
+}
+
+type KubernetesClusterControlPlaneFirewallOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterControlPlaneFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) ToKubernetesClusterControlPlaneFirewallOutput() KubernetesClusterControlPlaneFirewallOutput {
+	return o
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) ToKubernetesClusterControlPlaneFirewallOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallOutput {
+	return o
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) ToKubernetesClusterControlPlaneFirewallPtrOutput() KubernetesClusterControlPlaneFirewallPtrOutput {
+	return o.ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterControlPlaneFirewall) *KubernetesClusterControlPlaneFirewall {
+		return &v
+	}).(KubernetesClusterControlPlaneFirewallPtrOutput)
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) AllowedAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) []string { return v.AllowedAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o KubernetesClusterControlPlaneFirewallOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterControlPlaneFirewallPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterControlPlaneFirewallPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (o KubernetesClusterControlPlaneFirewallPtrOutput) ToKubernetesClusterControlPlaneFirewallPtrOutput() KubernetesClusterControlPlaneFirewallPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterControlPlaneFirewallPtrOutput) ToKubernetesClusterControlPlaneFirewallPtrOutputWithContext(ctx context.Context) KubernetesClusterControlPlaneFirewallPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterControlPlaneFirewallPtrOutput) Elem() KubernetesClusterControlPlaneFirewallOutput {
+	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) KubernetesClusterControlPlaneFirewall {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterControlPlaneFirewall
+		return ret
+	}).(KubernetesClusterControlPlaneFirewallOutput)
+}
+
+func (o KubernetesClusterControlPlaneFirewallPtrOutput) AllowedAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedAddresses
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o KubernetesClusterControlPlaneFirewallPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type KubernetesClusterKubeConfig struct {
@@ -22490,6 +23558,8 @@ func (o GetAppSpecEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecEnvOutput {
 type GetAppSpecFunction struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecFunctionAlert `pulumi:"alerts"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *GetAppSpecFunctionBitbucket `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
@@ -22498,9 +23568,9 @@ type GetAppSpecFunction struct {
 	Envs []GetAppSpecFunctionEnv `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *GetAppSpecFunctionGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github *GetAppSpecFunctionGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab *GetAppSpecFunctionGitlab `pulumi:"gitlab"`
 	// Describes a log forwarding destination.
 	LogDestinations []GetAppSpecFunctionLogDestination `pulumi:"logDestinations"`
@@ -22526,6 +23596,8 @@ type GetAppSpecFunctionInput interface {
 type GetAppSpecFunctionArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecFunctionAlertArrayInput `pulumi:"alerts"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket GetAppSpecFunctionBitbucketPtrInput `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
 	// Deprecated: Service level CORS rules are deprecated in favor of ingresses
@@ -22534,9 +23606,9 @@ type GetAppSpecFunctionArgs struct {
 	Envs GetAppSpecFunctionEnvArrayInput `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git GetAppSpecFunctionGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github GetAppSpecFunctionGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab GetAppSpecFunctionGitlabPtrInput `pulumi:"gitlab"`
 	// Describes a log forwarding destination.
 	LogDestinations GetAppSpecFunctionLogDestinationArrayInput `pulumi:"logDestinations"`
@@ -22604,6 +23676,11 @@ func (o GetAppSpecFunctionOutput) Alerts() GetAppSpecFunctionAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionAlert { return v.Alerts }).(GetAppSpecFunctionAlertArrayOutput)
 }
 
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecFunctionOutput) Bitbucket() GetAppSpecFunctionBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionBitbucket { return v.Bitbucket }).(GetAppSpecFunctionBitbucketPtrOutput)
+}
+
 // The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 //
 // Deprecated: Service level CORS rules are deprecated in favor of ingresses
@@ -22621,12 +23698,12 @@ func (o GetAppSpecFunctionOutput) Git() GetAppSpecFunctionGitPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGit { return v.Git }).(GetAppSpecFunctionGitPtrOutput)
 }
 
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecFunctionOutput) Github() GetAppSpecFunctionGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGithub { return v.Github }).(GetAppSpecFunctionGithubPtrOutput)
 }
 
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecFunctionOutput) Gitlab() GetAppSpecFunctionGitlabPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionGitlab { return v.Gitlab }).(GetAppSpecFunctionGitlabPtrOutput)
 }
@@ -22802,6 +23879,181 @@ func (o GetAppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecF
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionAlert {
 		return vs[0].([]GetAppSpecFunctionAlert)[vs[1].(int)]
 	}).(GetAppSpecFunctionAlertOutput)
+}
+
+type GetAppSpecFunctionBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecFunctionBitbucketInput is an input type that accepts GetAppSpecFunctionBitbucketArgs and GetAppSpecFunctionBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionBitbucketInput` via:
+//
+//	GetAppSpecFunctionBitbucketArgs{...}
+type GetAppSpecFunctionBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionBitbucketOutput() GetAppSpecFunctionBitbucketOutput
+	ToGetAppSpecFunctionBitbucketOutputWithContext(context.Context) GetAppSpecFunctionBitbucketOutput
+}
+
+type GetAppSpecFunctionBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecFunctionBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionBitbucketArgs) ToGetAppSpecFunctionBitbucketOutput() GetAppSpecFunctionBitbucketOutput {
+	return i.ToGetAppSpecFunctionBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionBitbucketArgs) ToGetAppSpecFunctionBitbucketOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionBitbucketOutput)
+}
+
+func (i GetAppSpecFunctionBitbucketArgs) ToGetAppSpecFunctionBitbucketPtrOutput() GetAppSpecFunctionBitbucketPtrOutput {
+	return i.ToGetAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionBitbucketArgs) ToGetAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionBitbucketOutput).ToGetAppSpecFunctionBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionBitbucketPtrInput is an input type that accepts GetAppSpecFunctionBitbucketArgs, GetAppSpecFunctionBitbucketPtr and GetAppSpecFunctionBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionBitbucketPtrInput` via:
+//
+//	        GetAppSpecFunctionBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecFunctionBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionBitbucketPtrOutput() GetAppSpecFunctionBitbucketPtrOutput
+	ToGetAppSpecFunctionBitbucketPtrOutputWithContext(context.Context) GetAppSpecFunctionBitbucketPtrOutput
+}
+
+type getAppSpecFunctionBitbucketPtrType GetAppSpecFunctionBitbucketArgs
+
+func GetAppSpecFunctionBitbucketPtr(v *GetAppSpecFunctionBitbucketArgs) GetAppSpecFunctionBitbucketPtrInput {
+	return (*getAppSpecFunctionBitbucketPtrType)(v)
+}
+
+func (*getAppSpecFunctionBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionBitbucketPtrType) ToGetAppSpecFunctionBitbucketPtrOutput() GetAppSpecFunctionBitbucketPtrOutput {
+	return i.ToGetAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionBitbucketPtrType) ToGetAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionBitbucketPtrOutput)
+}
+
+type GetAppSpecFunctionBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionBitbucketOutput) ToGetAppSpecFunctionBitbucketOutput() GetAppSpecFunctionBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionBitbucketOutput) ToGetAppSpecFunctionBitbucketOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionBitbucketOutput) ToGetAppSpecFunctionBitbucketPtrOutput() GetAppSpecFunctionBitbucketPtrOutput {
+	return o.ToGetAppSpecFunctionBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionBitbucketOutput) ToGetAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionBitbucket) *GetAppSpecFunctionBitbucket {
+		return &v
+	}).(GetAppSpecFunctionBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecFunctionBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionBitbucketPtrOutput) ToGetAppSpecFunctionBitbucketPtrOutput() GetAppSpecFunctionBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionBitbucketPtrOutput) ToGetAppSpecFunctionBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionBitbucketPtrOutput) Elem() GetAppSpecFunctionBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionBitbucket) GetAppSpecFunctionBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionBitbucket
+		return ret
+	}).(GetAppSpecFunctionBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecFunctionBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecFunctionBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecFunctionBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecFunctionCors struct {
@@ -25688,6 +26940,8 @@ func (o GetAppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 type GetAppSpecJob struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecJobAlert `pulumi:"alerts"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *GetAppSpecJobBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -25698,11 +26952,11 @@ type GetAppSpecJob struct {
 	Envs []GetAppSpecJobEnv `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *GetAppSpecJobGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github *GetAppSpecJobGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab *GetAppSpecJobGitlab `pulumi:"gitlab"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image *GetAppSpecJobImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
@@ -25740,6 +26994,8 @@ type GetAppSpecJobInput interface {
 type GetAppSpecJobArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecJobAlertArrayInput `pulumi:"alerts"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket GetAppSpecJobBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -25750,11 +27006,11 @@ type GetAppSpecJobArgs struct {
 	Envs GetAppSpecJobEnvArrayInput `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git GetAppSpecJobGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github GetAppSpecJobGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab GetAppSpecJobGitlabPtrInput `pulumi:"gitlab"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image GetAppSpecJobImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
@@ -25834,6 +27090,11 @@ func (o GetAppSpecJobOutput) Alerts() GetAppSpecJobAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobAlert { return v.Alerts }).(GetAppSpecJobAlertArrayOutput)
 }
 
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecJobOutput) Bitbucket() GetAppSpecJobBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobBitbucket { return v.Bitbucket }).(GetAppSpecJobBitbucketPtrOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o GetAppSpecJobOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -25859,17 +27120,17 @@ func (o GetAppSpecJobOutput) Git() GetAppSpecJobGitPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobGit { return v.Git }).(GetAppSpecJobGitPtrOutput)
 }
 
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecJobOutput) Github() GetAppSpecJobGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobGithub { return v.Github }).(GetAppSpecJobGithubPtrOutput)
 }
 
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecJobOutput) Gitlab() GetAppSpecJobGitlabPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobGitlab { return v.Gitlab }).(GetAppSpecJobGitlabPtrOutput)
 }
 
-// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecJobOutput) Image() GetAppSpecJobImagePtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobImage { return v.Image }).(GetAppSpecJobImagePtrOutput)
 }
@@ -26069,6 +27330,181 @@ func (o GetAppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobAle
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobAlert {
 		return vs[0].([]GetAppSpecJobAlert)[vs[1].(int)]
 	}).(GetAppSpecJobAlertOutput)
+}
+
+type GetAppSpecJobBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecJobBitbucketInput is an input type that accepts GetAppSpecJobBitbucketArgs and GetAppSpecJobBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecJobBitbucketInput` via:
+//
+//	GetAppSpecJobBitbucketArgs{...}
+type GetAppSpecJobBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobBitbucketOutput() GetAppSpecJobBitbucketOutput
+	ToGetAppSpecJobBitbucketOutputWithContext(context.Context) GetAppSpecJobBitbucketOutput
+}
+
+type GetAppSpecJobBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecJobBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecJobBitbucketArgs) ToGetAppSpecJobBitbucketOutput() GetAppSpecJobBitbucketOutput {
+	return i.ToGetAppSpecJobBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobBitbucketArgs) ToGetAppSpecJobBitbucketOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobBitbucketOutput)
+}
+
+func (i GetAppSpecJobBitbucketArgs) ToGetAppSpecJobBitbucketPtrOutput() GetAppSpecJobBitbucketPtrOutput {
+	return i.ToGetAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobBitbucketArgs) ToGetAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobBitbucketOutput).ToGetAppSpecJobBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobBitbucketPtrInput is an input type that accepts GetAppSpecJobBitbucketArgs, GetAppSpecJobBitbucketPtr and GetAppSpecJobBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobBitbucketPtrInput` via:
+//
+//	        GetAppSpecJobBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobBitbucketPtrOutput() GetAppSpecJobBitbucketPtrOutput
+	ToGetAppSpecJobBitbucketPtrOutputWithContext(context.Context) GetAppSpecJobBitbucketPtrOutput
+}
+
+type getAppSpecJobBitbucketPtrType GetAppSpecJobBitbucketArgs
+
+func GetAppSpecJobBitbucketPtr(v *GetAppSpecJobBitbucketArgs) GetAppSpecJobBitbucketPtrInput {
+	return (*getAppSpecJobBitbucketPtrType)(v)
+}
+
+func (*getAppSpecJobBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecJobBitbucketPtrType) ToGetAppSpecJobBitbucketPtrOutput() GetAppSpecJobBitbucketPtrOutput {
+	return i.ToGetAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobBitbucketPtrType) ToGetAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobBitbucketPtrOutput)
+}
+
+type GetAppSpecJobBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecJobBitbucketOutput) ToGetAppSpecJobBitbucketOutput() GetAppSpecJobBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecJobBitbucketOutput) ToGetAppSpecJobBitbucketOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecJobBitbucketOutput) ToGetAppSpecJobBitbucketPtrOutput() GetAppSpecJobBitbucketPtrOutput {
+	return o.ToGetAppSpecJobBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobBitbucketOutput) ToGetAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobBitbucket) *GetAppSpecJobBitbucket {
+		return &v
+	}).(GetAppSpecJobBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecJobBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecJobBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecJobBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecJobBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecJobBitbucketPtrOutput) ToGetAppSpecJobBitbucketPtrOutput() GetAppSpecJobBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobBitbucketPtrOutput) ToGetAppSpecJobBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecJobBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobBitbucketPtrOutput) Elem() GetAppSpecJobBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecJobBitbucket) GetAppSpecJobBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobBitbucket
+		return ret
+	}).(GetAppSpecJobBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecJobBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecJobBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecJobBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecJobBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecJobEnv struct {
@@ -28106,6 +29542,8 @@ type GetAppSpecService struct {
 	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *GetAppSpecServiceAutoscaling `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *GetAppSpecServiceBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -28120,15 +29558,15 @@ type GetAppSpecService struct {
 	Envs []GetAppSpecServiceEnv `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *GetAppSpecServiceGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github *GetAppSpecServiceGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab *GetAppSpecServiceGitlab `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck *GetAppSpecServiceHealthCheck `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
 	HttpPort int `pulumi:"httpPort"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image *GetAppSpecServiceImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
@@ -28166,6 +29604,8 @@ type GetAppSpecServiceArgs struct {
 	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling GetAppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket GetAppSpecServiceBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -28180,15 +29620,15 @@ type GetAppSpecServiceArgs struct {
 	Envs GetAppSpecServiceEnvArrayInput `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git GetAppSpecServiceGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github GetAppSpecServiceGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab GetAppSpecServiceGitlabPtrInput `pulumi:"gitlab"`
 	// A health check to determine the availability of this component.
 	HealthCheck GetAppSpecServiceHealthCheckPtrInput `pulumi:"healthCheck"`
 	// The internal port on which this service's run command will listen.
 	HttpPort pulumi.IntInput `pulumi:"httpPort"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image GetAppSpecServiceImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
@@ -28271,6 +29711,11 @@ func (o GetAppSpecServiceOutput) Autoscaling() GetAppSpecServiceAutoscalingPtrOu
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceAutoscaling { return v.Autoscaling }).(GetAppSpecServiceAutoscalingPtrOutput)
 }
 
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecServiceOutput) Bitbucket() GetAppSpecServiceBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceBitbucket { return v.Bitbucket }).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o GetAppSpecServiceOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -28303,12 +29748,12 @@ func (o GetAppSpecServiceOutput) Git() GetAppSpecServiceGitPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGit { return v.Git }).(GetAppSpecServiceGitPtrOutput)
 }
 
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecServiceOutput) Github() GetAppSpecServiceGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGithub { return v.Github }).(GetAppSpecServiceGithubPtrOutput)
 }
 
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecServiceOutput) Gitlab() GetAppSpecServiceGitlabPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceGitlab { return v.Gitlab }).(GetAppSpecServiceGitlabPtrOutput)
 }
@@ -28323,7 +29768,7 @@ func (o GetAppSpecServiceOutput) HttpPort() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAppSpecService) int { return v.HttpPort }).(pulumi.IntOutput)
 }
 
-// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecServiceOutput) Image() GetAppSpecServiceImagePtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceImage { return v.Image }).(GetAppSpecServiceImagePtrOutput)
 }
@@ -28973,6 +30418,181 @@ func (o GetAppSpecServiceAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtr
 		}
 		return &v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecServiceBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecServiceBitbucketInput is an input type that accepts GetAppSpecServiceBitbucketArgs and GetAppSpecServiceBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceBitbucketInput` via:
+//
+//	GetAppSpecServiceBitbucketArgs{...}
+type GetAppSpecServiceBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput
+	ToGetAppSpecServiceBitbucketOutputWithContext(context.Context) GetAppSpecServiceBitbucketOutput
+}
+
+type GetAppSpecServiceBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecServiceBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
+	return i.ToGetAppSpecServiceBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput)
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceBitbucketArgs) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketOutput).ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceBitbucketPtrInput is an input type that accepts GetAppSpecServiceBitbucketArgs, GetAppSpecServiceBitbucketPtr and GetAppSpecServiceBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceBitbucketPtrInput` via:
+//
+//	        GetAppSpecServiceBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput
+	ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Context) GetAppSpecServiceBitbucketPtrOutput
+}
+
+type getAppSpecServiceBitbucketPtrType GetAppSpecServiceBitbucketArgs
+
+func GetAppSpecServiceBitbucketPtr(v *GetAppSpecServiceBitbucketArgs) GetAppSpecServiceBitbucketPtrInput {
+	return (*getAppSpecServiceBitbucketPtrType)(v)
+}
+
+func (*getAppSpecServiceBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return i.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceBitbucketPtrType) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
+type GetAppSpecServiceBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutput() GetAppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return o.ToGetAppSpecServiceBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceBitbucketOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceBitbucket) *GetAppSpecServiceBitbucket {
+		return &v
+	}).(GetAppSpecServiceBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecServiceBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutput() GetAppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) ToGetAppSpecServiceBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecServiceBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceBitbucketPtrOutput) Elem() GetAppSpecServiceBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) GetAppSpecServiceBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceBitbucket
+		return ret
+	}).(GetAppSpecServiceBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecServiceBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecServiceBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecServiceBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecServiceCors struct {
@@ -31801,6 +33421,8 @@ func (o GetAppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPt
 }
 
 type GetAppSpecStaticSite struct {
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *GetAppSpecStaticSiteBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
@@ -31819,9 +33441,9 @@ type GetAppSpecStaticSite struct {
 	ErrorDocument *string `pulumi:"errorDocument"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *GetAppSpecStaticSiteGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github *GetAppSpecStaticSiteGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab *GetAppSpecStaticSiteGitlab `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument *string `pulumi:"indexDocument"`
@@ -31847,6 +33469,8 @@ type GetAppSpecStaticSiteInput interface {
 }
 
 type GetAppSpecStaticSiteArgs struct {
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket GetAppSpecStaticSiteBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
@@ -31865,9 +33489,9 @@ type GetAppSpecStaticSiteArgs struct {
 	ErrorDocument pulumi.StringPtrInput `pulumi:"errorDocument"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git GetAppSpecStaticSiteGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github GetAppSpecStaticSiteGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab GetAppSpecStaticSiteGitlabPtrInput `pulumi:"gitlab"`
 	// The name of the index document to use when serving this static site.
 	IndexDocument pulumi.StringPtrInput `pulumi:"indexDocument"`
@@ -31932,6 +33556,11 @@ func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutputWithContext(ctx 
 	return o
 }
 
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecStaticSiteOutput) Bitbucket() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteBitbucket { return v.Bitbucket }).(GetAppSpecStaticSiteBitbucketPtrOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o GetAppSpecStaticSiteOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -31974,12 +33603,12 @@ func (o GetAppSpecStaticSiteOutput) Git() GetAppSpecStaticSiteGitPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGit { return v.Git }).(GetAppSpecStaticSiteGitPtrOutput)
 }
 
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecStaticSiteOutput) Github() GetAppSpecStaticSiteGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGithub { return v.Github }).(GetAppSpecStaticSiteGithubPtrOutput)
 }
 
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecStaticSiteOutput) Gitlab() GetAppSpecStaticSiteGitlabPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteGitlab { return v.Gitlab }).(GetAppSpecStaticSiteGitlabPtrOutput)
 }
@@ -32027,6 +33656,181 @@ func (o GetAppSpecStaticSiteArrayOutput) Index(i pulumi.IntInput) GetAppSpecStat
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecStaticSite {
 		return vs[0].([]GetAppSpecStaticSite)[vs[1].(int)]
 	}).(GetAppSpecStaticSiteOutput)
+}
+
+type GetAppSpecStaticSiteBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecStaticSiteBitbucketInput is an input type that accepts GetAppSpecStaticSiteBitbucketArgs and GetAppSpecStaticSiteBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteBitbucketInput` via:
+//
+//	GetAppSpecStaticSiteBitbucketArgs{...}
+type GetAppSpecStaticSiteBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteBitbucketOutput() GetAppSpecStaticSiteBitbucketOutput
+	ToGetAppSpecStaticSiteBitbucketOutputWithContext(context.Context) GetAppSpecStaticSiteBitbucketOutput
+}
+
+type GetAppSpecStaticSiteBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecStaticSiteBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecStaticSiteBitbucketArgs) ToGetAppSpecStaticSiteBitbucketOutput() GetAppSpecStaticSiteBitbucketOutput {
+	return i.ToGetAppSpecStaticSiteBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteBitbucketArgs) ToGetAppSpecStaticSiteBitbucketOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteBitbucketOutput)
+}
+
+func (i GetAppSpecStaticSiteBitbucketArgs) ToGetAppSpecStaticSiteBitbucketPtrOutput() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return i.ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecStaticSiteBitbucketArgs) ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteBitbucketOutput).ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecStaticSiteBitbucketPtrInput is an input type that accepts GetAppSpecStaticSiteBitbucketArgs, GetAppSpecStaticSiteBitbucketPtr and GetAppSpecStaticSiteBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecStaticSiteBitbucketPtrInput` via:
+//
+//	        GetAppSpecStaticSiteBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecStaticSiteBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecStaticSiteBitbucketPtrOutput() GetAppSpecStaticSiteBitbucketPtrOutput
+	ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Context) GetAppSpecStaticSiteBitbucketPtrOutput
+}
+
+type getAppSpecStaticSiteBitbucketPtrType GetAppSpecStaticSiteBitbucketArgs
+
+func GetAppSpecStaticSiteBitbucketPtr(v *GetAppSpecStaticSiteBitbucketArgs) GetAppSpecStaticSiteBitbucketPtrInput {
+	return (*getAppSpecStaticSiteBitbucketPtrType)(v)
+}
+
+func (*getAppSpecStaticSiteBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecStaticSiteBitbucketPtrType) ToGetAppSpecStaticSiteBitbucketPtrOutput() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return i.ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecStaticSiteBitbucketPtrType) ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecStaticSiteBitbucketPtrOutput)
+}
+
+type GetAppSpecStaticSiteBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteBitbucketOutput) ToGetAppSpecStaticSiteBitbucketOutput() GetAppSpecStaticSiteBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteBitbucketOutput) ToGetAppSpecStaticSiteBitbucketOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteBitbucketOutput) ToGetAppSpecStaticSiteBitbucketPtrOutput() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o.ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecStaticSiteBitbucketOutput) ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecStaticSiteBitbucket) *GetAppSpecStaticSiteBitbucket {
+		return &v
+	}).(GetAppSpecStaticSiteBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecStaticSiteBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecStaticSiteBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecStaticSiteBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecStaticSiteBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) ToGetAppSpecStaticSiteBitbucketPtrOutput() GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) ToGetAppSpecStaticSiteBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecStaticSiteBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) Elem() GetAppSpecStaticSiteBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteBitbucket) GetAppSpecStaticSiteBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecStaticSiteBitbucket
+		return ret
+	}).(GetAppSpecStaticSiteBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecStaticSiteBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecStaticSiteBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecStaticSiteCors struct {
@@ -33185,6 +34989,8 @@ type GetAppSpecWorker struct {
 	Alerts []GetAppSpecWorkerAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *GetAppSpecWorkerAutoscaling `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket *GetAppSpecWorkerBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -33195,11 +35001,11 @@ type GetAppSpecWorker struct {
 	Envs []GetAppSpecWorkerEnv `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git *GetAppSpecWorkerGit `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github *GetAppSpecWorkerGithub `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab *GetAppSpecWorkerGitlab `pulumi:"gitlab"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image *GetAppSpecWorkerImage `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount *int `pulumi:"instanceCount"`
@@ -33233,6 +35039,8 @@ type GetAppSpecWorkerArgs struct {
 	Alerts GetAppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling GetAppSpecWorkerAutoscalingPtrInput `pulumi:"autoscaling"`
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	Bitbucket GetAppSpecWorkerBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
 	// The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -33243,11 +35051,11 @@ type GetAppSpecWorkerArgs struct {
 	Envs GetAppSpecWorkerEnvArrayInput `pulumi:"envs"`
 	// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
 	Git GetAppSpecWorkerGitPtrInput `pulumi:"git"`
-	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Github GetAppSpecWorkerGithubPtrInput `pulumi:"github"`
-	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Gitlab GetAppSpecWorkerGitlabPtrInput `pulumi:"gitlab"`
-	// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+	// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 	Image GetAppSpecWorkerImagePtrInput `pulumi:"image"`
 	// The amount of instances that this component should be scaled to.
 	InstanceCount pulumi.IntPtrInput `pulumi:"instanceCount"`
@@ -33326,6 +35134,11 @@ func (o GetAppSpecWorkerOutput) Autoscaling() GetAppSpecWorkerAutoscalingPtrOutp
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerAutoscaling { return v.Autoscaling }).(GetAppSpecWorkerAutoscalingPtrOutput)
 }
 
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+func (o GetAppSpecWorkerOutput) Bitbucket() GetAppSpecWorkerBitbucketPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerBitbucket { return v.Bitbucket }).(GetAppSpecWorkerBitbucketPtrOutput)
+}
+
 // An optional build command to run while building this component from source.
 func (o GetAppSpecWorkerOutput) BuildCommand() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *string { return v.BuildCommand }).(pulumi.StringPtrOutput)
@@ -33351,17 +35164,17 @@ func (o GetAppSpecWorkerOutput) Git() GetAppSpecWorkerGitPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGit { return v.Git }).(GetAppSpecWorkerGitPtrOutput)
 }
 
-// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecWorkerOutput) Github() GetAppSpecWorkerGithubPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGithub { return v.Github }).(GetAppSpecWorkerGithubPtrOutput)
 }
 
-// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecWorkerOutput) Gitlab() GetAppSpecWorkerGitlabPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerGitlab { return v.Gitlab }).(GetAppSpecWorkerGitlabPtrOutput)
 }
 
-// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
 func (o GetAppSpecWorkerOutput) Image() GetAppSpecWorkerImagePtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerImage { return v.Image }).(GetAppSpecWorkerImagePtrOutput)
 }
@@ -34001,6 +35814,181 @@ func (o GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput) Percent() pulumi.IntPtrO
 		}
 		return &v.Percent
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetAppSpecWorkerBitbucket struct {
+	// The name of the branch to use.
+	Branch *string `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush *bool `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo *string `pulumi:"repo"`
+}
+
+// GetAppSpecWorkerBitbucketInput is an input type that accepts GetAppSpecWorkerBitbucketArgs and GetAppSpecWorkerBitbucketOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerBitbucketInput` via:
+//
+//	GetAppSpecWorkerBitbucketArgs{...}
+type GetAppSpecWorkerBitbucketInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerBitbucketOutput() GetAppSpecWorkerBitbucketOutput
+	ToGetAppSpecWorkerBitbucketOutputWithContext(context.Context) GetAppSpecWorkerBitbucketOutput
+}
+
+type GetAppSpecWorkerBitbucketArgs struct {
+	// The name of the branch to use.
+	Branch pulumi.StringPtrInput `pulumi:"branch"`
+	// Whether to automatically deploy new commits made to the repo.
+	DeployOnPush pulumi.BoolPtrInput `pulumi:"deployOnPush"`
+	// The name of the repo in the format `owner/repo`.
+	Repo pulumi.StringPtrInput `pulumi:"repo"`
+}
+
+func (GetAppSpecWorkerBitbucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerBitbucketArgs) ToGetAppSpecWorkerBitbucketOutput() GetAppSpecWorkerBitbucketOutput {
+	return i.ToGetAppSpecWorkerBitbucketOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerBitbucketArgs) ToGetAppSpecWorkerBitbucketOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerBitbucketOutput)
+}
+
+func (i GetAppSpecWorkerBitbucketArgs) ToGetAppSpecWorkerBitbucketPtrOutput() GetAppSpecWorkerBitbucketPtrOutput {
+	return i.ToGetAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerBitbucketArgs) ToGetAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerBitbucketOutput).ToGetAppSpecWorkerBitbucketPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerBitbucketPtrInput is an input type that accepts GetAppSpecWorkerBitbucketArgs, GetAppSpecWorkerBitbucketPtr and GetAppSpecWorkerBitbucketPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerBitbucketPtrInput` via:
+//
+//	        GetAppSpecWorkerBitbucketArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerBitbucketPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerBitbucketPtrOutput() GetAppSpecWorkerBitbucketPtrOutput
+	ToGetAppSpecWorkerBitbucketPtrOutputWithContext(context.Context) GetAppSpecWorkerBitbucketPtrOutput
+}
+
+type getAppSpecWorkerBitbucketPtrType GetAppSpecWorkerBitbucketArgs
+
+func GetAppSpecWorkerBitbucketPtr(v *GetAppSpecWorkerBitbucketArgs) GetAppSpecWorkerBitbucketPtrInput {
+	return (*getAppSpecWorkerBitbucketPtrType)(v)
+}
+
+func (*getAppSpecWorkerBitbucketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerBitbucketPtrType) ToGetAppSpecWorkerBitbucketPtrOutput() GetAppSpecWorkerBitbucketPtrOutput {
+	return i.ToGetAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerBitbucketPtrType) ToGetAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerBitbucketPtrOutput)
+}
+
+type GetAppSpecWorkerBitbucketOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerBitbucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerBitbucketOutput) ToGetAppSpecWorkerBitbucketOutput() GetAppSpecWorkerBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerBitbucketOutput) ToGetAppSpecWorkerBitbucketOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerBitbucketOutput) ToGetAppSpecWorkerBitbucketPtrOutput() GetAppSpecWorkerBitbucketPtrOutput {
+	return o.ToGetAppSpecWorkerBitbucketPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerBitbucketOutput) ToGetAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerBitbucket) *GetAppSpecWorkerBitbucket {
+		return &v
+	}).(GetAppSpecWorkerBitbucketPtrOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerBitbucketOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerBitbucket) *string { return v.Branch }).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerBitbucketOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerBitbucket) *bool { return v.DeployOnPush }).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerBitbucketOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerBitbucket) *string { return v.Repo }).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecWorkerBitbucketPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerBitbucketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerBitbucket)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerBitbucketPtrOutput) ToGetAppSpecWorkerBitbucketPtrOutput() GetAppSpecWorkerBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerBitbucketPtrOutput) ToGetAppSpecWorkerBitbucketPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerBitbucketPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerBitbucketPtrOutput) Elem() GetAppSpecWorkerBitbucketOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerBitbucket) GetAppSpecWorkerBitbucket {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerBitbucket
+		return ret
+	}).(GetAppSpecWorkerBitbucketOutput)
+}
+
+// The name of the branch to use.
+func (o GetAppSpecWorkerBitbucketPtrOutput) Branch() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Branch
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to automatically deploy new commits made to the repo.
+func (o GetAppSpecWorkerBitbucketPtrOutput) DeployOnPush() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerBitbucket) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeployOnPush
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The name of the repo in the format `owner/repo`.
+func (o GetAppSpecWorkerBitbucketPtrOutput) Repo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerBitbucket) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Repo
+	}).(pulumi.StringPtrOutput)
 }
 
 type GetAppSpecWorkerEnv struct {
@@ -43190,6 +45178,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionArrayInput)(nil)).Elem(), AppSpecFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertInput)(nil)).Elem(), AppSpecFunctionAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertArrayInput)(nil)).Elem(), AppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionBitbucketInput)(nil)).Elem(), AppSpecFunctionBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionBitbucketPtrInput)(nil)).Elem(), AppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsInput)(nil)).Elem(), AppSpecFunctionCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsPtrInput)(nil)).Elem(), AppSpecFunctionCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsAllowOriginsInput)(nil)).Elem(), AppSpecFunctionCorsAllowOriginsArgs{})
@@ -43236,6 +45226,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertInput)(nil)).Elem(), AppSpecJobAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertArrayInput)(nil)).Elem(), AppSpecJobAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobBitbucketInput)(nil)).Elem(), AppSpecJobBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobBitbucketPtrInput)(nil)).Elem(), AppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvInput)(nil)).Elem(), AppSpecJobEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvArrayInput)(nil)).Elem(), AppSpecJobEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobGitInput)(nil)).Elem(), AppSpecJobGitArgs{})
@@ -43272,6 +45264,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceBitbucketInput)(nil)).Elem(), AppSpecServiceBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceBitbucketPtrInput)(nil)).Elem(), AppSpecServiceBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsPtrInput)(nil)).Elem(), AppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), AppSpecServiceCorsAllowOriginsArgs{})
@@ -43308,6 +45302,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceTerminationPtrInput)(nil)).Elem(), AppSpecServiceTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteInput)(nil)).Elem(), AppSpecStaticSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteArrayInput)(nil)).Elem(), AppSpecStaticSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteBitbucketInput)(nil)).Elem(), AppSpecStaticSiteBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteBitbucketPtrInput)(nil)).Elem(), AppSpecStaticSiteBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsInput)(nil)).Elem(), AppSpecStaticSiteCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsPtrInput)(nil)).Elem(), AppSpecStaticSiteCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecStaticSiteCorsAllowOriginsInput)(nil)).Elem(), AppSpecStaticSiteCorsAllowOriginsArgs{})
@@ -43332,6 +45328,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpuInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsCpuPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerBitbucketInput)(nil)).Elem(), AppSpecWorkerBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerBitbucketPtrInput)(nil)).Elem(), AppSpecWorkerBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvInput)(nil)).Elem(), AppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerEnvArrayInput)(nil)).Elem(), AppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerGitInput)(nil)).Elem(), AppSpecWorkerGitArgs{})
@@ -43390,6 +45388,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleArrayInput)(nil)).Elem(), FirewallOutboundRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeInput)(nil)).Elem(), FirewallPendingChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeArrayInput)(nil)).Elem(), FirewallPendingChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallPtrInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigInput)(nil)).Elem(), KubernetesClusterKubeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigArrayInput)(nil)).Elem(), KubernetesClusterKubeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterMaintenancePolicyInput)(nil)).Elem(), KubernetesClusterMaintenancePolicyArgs{})
@@ -43456,6 +45456,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionArrayInput)(nil)).Elem(), GetAppSpecFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertInput)(nil)).Elem(), GetAppSpecFunctionAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertArrayInput)(nil)).Elem(), GetAppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionBitbucketInput)(nil)).Elem(), GetAppSpecFunctionBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionBitbucketPtrInput)(nil)).Elem(), GetAppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsInput)(nil)).Elem(), GetAppSpecFunctionCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsPtrInput)(nil)).Elem(), GetAppSpecFunctionCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecFunctionCorsAllowOriginsArgs{})
@@ -43497,6 +45499,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertArrayInput)(nil)).Elem(), GetAppSpecJobAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobBitbucketInput)(nil)).Elem(), GetAppSpecJobBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobBitbucketPtrInput)(nil)).Elem(), GetAppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvInput)(nil)).Elem(), GetAppSpecJobEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvArrayInput)(nil)).Elem(), GetAppSpecJobEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobGitInput)(nil)).Elem(), GetAppSpecJobGitArgs{})
@@ -43533,6 +45537,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceBitbucketPtrInput)(nil)).Elem(), GetAppSpecServiceBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsPtrInput)(nil)).Elem(), GetAppSpecServiceCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecServiceCorsAllowOriginsArgs{})
@@ -43569,6 +45575,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceTerminationPtrInput)(nil)).Elem(), GetAppSpecServiceTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteInput)(nil)).Elem(), GetAppSpecStaticSiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteArrayInput)(nil)).Elem(), GetAppSpecStaticSiteArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteBitbucketInput)(nil)).Elem(), GetAppSpecStaticSiteBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteBitbucketPtrInput)(nil)).Elem(), GetAppSpecStaticSiteBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsPtrInput)(nil)).Elem(), GetAppSpecStaticSiteCorsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecStaticSiteCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecStaticSiteCorsAllowOriginsArgs{})
@@ -43593,6 +45601,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpuInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsCpuArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsCpuPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsCpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerBitbucketInput)(nil)).Elem(), GetAppSpecWorkerBitbucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerBitbucketPtrInput)(nil)).Elem(), GetAppSpecWorkerBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvInput)(nil)).Elem(), GetAppSpecWorkerEnvArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerEnvArrayInput)(nil)).Elem(), GetAppSpecWorkerEnvArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerGitInput)(nil)).Elem(), GetAppSpecWorkerGitArgs{})
@@ -43741,6 +45751,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecFunctionArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionBitbucketOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionCorsOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionCorsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionCorsAllowOriginsOutput{})
@@ -43787,6 +45799,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecJobBitbucketOutput{})
+	pulumi.RegisterOutputType(AppSpecJobBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecJobEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobGitOutput{})
@@ -43823,6 +45837,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsCpuOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsCpuPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceBitbucketOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceCorsAllowOriginsOutput{})
@@ -43859,6 +45875,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceTerminationPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteBitbucketOutput{})
+	pulumi.RegisterOutputType(AppSpecStaticSiteBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteCorsOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteCorsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecStaticSiteCorsAllowOriginsOutput{})
@@ -43883,6 +45901,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsCpuOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsCpuPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerBitbucketOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerGitOutput{})
@@ -43941,6 +45961,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallOutboundRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallPendingChangeOutput{})
 	pulumi.RegisterOutputType(FirewallPendingChangeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterMaintenancePolicyOutput{})
@@ -44007,6 +46029,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecFunctionArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionCorsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionCorsAllowOriginsOutput{})
@@ -44048,6 +46072,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobGitOutput{})
@@ -44084,6 +46110,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceCorsAllowOriginsOutput{})
@@ -44120,6 +46148,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceTerminationPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecStaticSiteBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecStaticSiteCorsAllowOriginsOutput{})
@@ -44144,6 +46174,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsCpuOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsCpuPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerBitbucketOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerEnvArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerGitOutput{})

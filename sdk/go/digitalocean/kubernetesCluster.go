@@ -45,12 +45,11 @@ type KubernetesCluster struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
+	ClusterUrn           pulumi.StringOutput                         `pulumi:"clusterUrn"`
+	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallOutput `pulumi:"controlPlaneFirewall"`
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DestroyAllAssociatedResources pulumi.BoolPtrOutput `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
@@ -60,6 +59,10 @@ type KubernetesCluster struct {
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
+	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	KubeconfigExpireSeconds pulumi.IntPtrOutput `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
@@ -134,12 +137,11 @@ type kubernetesClusterState struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn *string `pulumi:"clusterUrn"`
+	ClusterUrn           *string                                `pulumi:"clusterUrn"`
+	ControlPlaneFirewall *KubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewall"`
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint *string `pulumi:"endpoint"`
@@ -149,6 +151,10 @@ type kubernetesClusterState struct {
 	Ipv4Address *string `pulumi:"ipv4Address"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
+	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
@@ -181,12 +187,11 @@ type KubernetesClusterState struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringPtrInput
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn pulumi.StringPtrInput
+	ClusterUrn           pulumi.StringPtrInput
+	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallPtrInput
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// The base URL of the API server on the Kubernetes master node.
 	Endpoint pulumi.StringPtrInput
@@ -196,6 +201,10 @@ type KubernetesClusterState struct {
 	Ipv4Address pulumi.StringPtrInput
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
+	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	KubeconfigExpireSeconds pulumi.IntPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the Kubernetes cluster.
@@ -230,13 +239,16 @@ type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ClusterSubnet *string `pulumi:"clusterSubnet"`
+	ClusterSubnet        *string                                `pulumi:"clusterSubnet"`
+	ControlPlaneFirewall *KubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewall"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha *bool `pulumi:"ha"`
+	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// A name for the Kubernetes cluster.
@@ -264,13 +276,16 @@ type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ClusterSubnet pulumi.StringPtrInput
+	ClusterSubnet        pulumi.StringPtrInput
+	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha pulumi.BoolPtrInput
+	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	KubeconfigExpireSeconds pulumi.IntPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
 	// A name for the Kubernetes cluster.
@@ -395,14 +410,16 @@ func (o KubernetesClusterOutput) ClusterUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterUrn }).(pulumi.StringOutput)
 }
 
+func (o KubernetesClusterOutput) ControlPlaneFirewall() KubernetesClusterControlPlaneFirewallOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterControlPlaneFirewallOutput { return v.ControlPlaneFirewall }).(KubernetesClusterControlPlaneFirewallOutput)
+}
+
 // The date and time when the node was created.
 func (o KubernetesClusterOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
 // **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterOutput) DestroyAllAssociatedResources() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.DestroyAllAssociatedResources }).(pulumi.BoolPtrOutput)
 }
@@ -425,6 +442,13 @@ func (o KubernetesClusterOutput) Ipv4Address() pulumi.StringOutput {
 // A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 func (o KubernetesClusterOutput) KubeConfigs() KubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterKubeConfigArrayOutput { return v.KubeConfigs }).(KubernetesClusterKubeConfigArrayOutput)
+}
+
+// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o KubernetesClusterOutput) KubeconfigExpireSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *KubernetesCluster) pulumi.IntPtrOutput { return v.KubeconfigExpireSeconds }).(pulumi.IntPtrOutput)
 }
 
 // A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.

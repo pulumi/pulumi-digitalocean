@@ -256,6 +256,23 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     * 
+     */
+    @Import(name="networkStack")
+    private @Nullable Output<String> networkStack;
+
+    /**
+     * @return The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     * 
+     */
+    public Optional<Output<String>> networkStack() {
+        return Optional.ofNullable(this.networkStack);
+    }
+
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user&#39;s default project.
      * 
      */
@@ -415,6 +432,7 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
         this.httpIdleTimeoutSeconds = $.httpIdleTimeoutSeconds;
         this.name = $.name;
         this.network = $.network;
+        this.networkStack = $.networkStack;
         this.projectId = $.projectId;
         this.redirectHttpToHttps = $.redirectHttpToHttps;
         this.region = $.region;
@@ -815,6 +833,29 @@ public final class LoadBalancerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param networkStack The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+         * **NOTE**: this feature is in private preview, and may not be available for public use
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkStack(@Nullable Output<String> networkStack) {
+            $.networkStack = networkStack;
+            return this;
+        }
+
+        /**
+         * @param networkStack The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+         * **NOTE**: this feature is in private preview, and may not be available for public use
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkStack(String networkStack) {
+            return networkStack(Output.of(networkStack));
         }
 
         /**

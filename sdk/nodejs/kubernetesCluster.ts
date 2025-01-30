@@ -74,14 +74,13 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
     public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
+    public readonly controlPlaneFirewall!: pulumi.Output<outputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * The date and time when the node was created.
      */
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     public readonly destroyAllAssociatedResources!: pulumi.Output<boolean | undefined>;
     /**
@@ -100,6 +99,12 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
+    /**
+     * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    public readonly kubeconfigExpireSeconds!: pulumi.Output<number | undefined>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */
@@ -165,12 +170,14 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
+            resourceInputs["controlPlaneFirewall"] = state ? state.controlPlaneFirewall : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["destroyAllAssociatedResources"] = state ? state.destroyAllAssociatedResources : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
             resourceInputs["ha"] = state ? state.ha : undefined;
             resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
             resourceInputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
+            resourceInputs["kubeconfigExpireSeconds"] = state ? state.kubeconfigExpireSeconds : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodePool"] = state ? state.nodePool : undefined;
@@ -196,8 +203,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
             }
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
             resourceInputs["clusterSubnet"] = args ? args.clusterSubnet : undefined;
+            resourceInputs["controlPlaneFirewall"] = args ? args.controlPlaneFirewall : undefined;
             resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
             resourceInputs["ha"] = args ? args.ha : undefined;
+            resourceInputs["kubeconfigExpireSeconds"] = args ? args.kubeconfigExpireSeconds : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodePool"] = args ? args.nodePool : undefined;
@@ -239,14 +248,13 @@ export interface KubernetesClusterState {
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
     clusterUrn?: pulumi.Input<string>;
+    controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * The date and time when the node was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
@@ -265,6 +273,12 @@ export interface KubernetesClusterState {
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
+    /**
+     * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */
@@ -327,16 +341,21 @@ export interface KubernetesClusterArgs {
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     clusterSubnet?: pulumi.Input<string>;
+    controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     destroyAllAssociatedResources?: pulumi.Input<boolean>;
     /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      */
     ha?: pulumi.Input<boolean>;
+    /**
+     * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */

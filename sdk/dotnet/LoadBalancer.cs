@@ -181,6 +181,13 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Network { get; private set; } = null!;
 
         /// <summary>
+        /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        /// **NOTE**: this feature is in private preview, and may not be available for public use
+        /// </summary>
+        [Output("networkStack")]
+        public Output<string?> NetworkStack { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         /// </summary>
         [Output("projectId")]
@@ -395,6 +402,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        /// **NOTE**: this feature is in private preview, and may not be available for public use
+        /// </summary>
+        [Input("networkStack")]
+        public Input<string>? NetworkStack { get; set; }
+
+        /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         /// </summary>
         [Input("projectId")]
@@ -587,6 +601,13 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        /// **NOTE**: this feature is in private preview, and may not be available for public use
+        /// </summary>
+        [Input("networkStack")]
+        public Input<string>? NetworkStack { get; set; }
 
         /// <summary>
         /// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.

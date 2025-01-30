@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecWorkerAutoscaling? Autoscaling;
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecWorkerBitbucket? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -88,6 +92,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             Outputs.AppSpecWorkerAutoscaling? autoscaling,
 
+            Outputs.AppSpecWorkerBitbucket? bitbucket,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -120,6 +126,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Autoscaling = autoscaling;
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;

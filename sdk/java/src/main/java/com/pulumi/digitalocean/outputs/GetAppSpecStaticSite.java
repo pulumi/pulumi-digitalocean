@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetAppSpecStaticSiteBitbucket;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSiteCors;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSiteEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSiteGit;
@@ -19,6 +20,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecStaticSite {
+    /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable GetAppSpecStaticSiteBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -64,12 +70,12 @@ public final class GetAppSpecStaticSite {
      */
     private @Nullable GetAppSpecStaticSiteGit git;
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecStaticSiteGithub github;
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecStaticSiteGitlab gitlab;
@@ -102,6 +108,13 @@ public final class GetAppSpecStaticSite {
     private @Nullable String sourceDir;
 
     private GetAppSpecStaticSite() {}
+    /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<GetAppSpecStaticSiteBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -163,14 +176,14 @@ public final class GetAppSpecStaticSite {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecStaticSiteGithub> github() {
         return Optional.ofNullable(this.github);
     }
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecStaticSiteGitlab> gitlab() {
@@ -223,6 +236,7 @@ public final class GetAppSpecStaticSite {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppSpecStaticSiteBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable String catchallDocument;
         private @Nullable GetAppSpecStaticSiteCors cors;
@@ -241,6 +255,7 @@ public final class GetAppSpecStaticSite {
         public Builder() {}
         public Builder(GetAppSpecStaticSite defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.catchallDocument = defaults.catchallDocument;
     	      this.cors = defaults.cors;
@@ -258,6 +273,12 @@ public final class GetAppSpecStaticSite {
     	      this.sourceDir = defaults.sourceDir;
         }
 
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable GetAppSpecStaticSiteBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
+        }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
 
@@ -360,6 +381,7 @@ public final class GetAppSpecStaticSite {
         }
         public GetAppSpecStaticSite build() {
             final var _resultValue = new GetAppSpecStaticSite();
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.catchallDocument = catchallDocument;
             _resultValue.cors = cors;

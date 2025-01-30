@@ -121,6 +121,9 @@ type LoadBalancer struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
+	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+	// **NOTE**: this feature is in private preview, and may not be available for public use
+	NetworkStack pulumi.StringPtrOutput `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -216,6 +219,9 @@ type loadBalancerState struct {
 	Name *string `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network *string `pulumi:"network"`
+	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+	// **NOTE**: this feature is in private preview, and may not be available for public use
+	NetworkStack *string `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -282,6 +288,9 @@ type LoadBalancerState struct {
 	Name pulumi.StringPtrInput
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrInput
+	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+	// **NOTE**: this feature is in private preview, and may not be available for public use
+	NetworkStack pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -347,6 +356,9 @@ type loadBalancerArgs struct {
 	Name *string `pulumi:"name"`
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network *string `pulumi:"network"`
+	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+	// **NOTE**: this feature is in private preview, and may not be available for public use
+	NetworkStack *string `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
 	// A boolean value indicating whether
@@ -408,6 +420,9 @@ type LoadBalancerArgs struct {
 	Name pulumi.StringPtrInput
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrInput
+	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+	// **NOTE**: this feature is in private preview, and may not be available for public use
+	NetworkStack pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
 	// A boolean value indicating whether
@@ -608,6 +623,12 @@ func (o LoadBalancerOutput) Name() pulumi.StringOutput {
 // The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 func (o LoadBalancerOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+// **NOTE**: this feature is in private preview, and may not be available for public use
+func (o LoadBalancerOutput) NetworkStack() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.NetworkStack }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.

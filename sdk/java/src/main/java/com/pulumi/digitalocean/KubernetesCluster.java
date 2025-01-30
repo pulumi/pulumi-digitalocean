@@ -10,10 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.KubernetesClusterArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.KubernetesClusterState;
+import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -91,6 +93,12 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<String> clusterUrn() {
         return this.clusterUrn;
     }
+    @Export(name="controlPlaneFirewall", refs={KubernetesClusterControlPlaneFirewall.class}, tree="[0]")
+    private Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall;
+
+    public Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall() {
+        return this.controlPlaneFirewall;
+    }
     /**
      * The date and time when the node was created.
      * 
@@ -108,16 +116,12 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Export(name="destroyAllAssociatedResources", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> destroyAllAssociatedResources;
 
     /**
      * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Output<Optional<Boolean>> destroyAllAssociatedResources() {
@@ -178,6 +182,24 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<List<KubernetesClusterKubeConfig>> kubeConfigs() {
         return this.kubeConfigs;
+    }
+    /**
+     * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Export(name="kubeconfigExpireSeconds", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> kubeconfigExpireSeconds;
+
+    /**
+     * @return The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Output<Optional<Integer>> kubeconfigExpireSeconds() {
+        return Codegen.optional(this.kubeconfigExpireSeconds);
     }
     /**
      * A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.

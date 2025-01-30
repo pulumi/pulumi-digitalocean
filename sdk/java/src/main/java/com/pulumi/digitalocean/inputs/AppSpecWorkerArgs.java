@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerAlertArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerAutoscalingArgs;
+import com.pulumi.digitalocean.inputs.AppSpecWorkerBitbucketArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGitArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerGithubArgs;
@@ -55,6 +56,21 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<AppSpecWorkerAutoscalingArgs>> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+
+    /**
+     * A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    @Import(name="bitbucket")
+    private @Nullable Output<AppSpecWorkerBitbucketArgs> bitbucket;
+
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<Output<AppSpecWorkerBitbucketArgs>> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
     }
 
     /**
@@ -287,6 +303,7 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
     private AppSpecWorkerArgs(AppSpecWorkerArgs $) {
         this.alerts = $.alerts;
         this.autoscaling = $.autoscaling;
+        this.bitbucket = $.bitbucket;
         this.buildCommand = $.buildCommand;
         this.dockerfilePath = $.dockerfilePath;
         this.environmentSlug = $.environmentSlug;
@@ -372,6 +389,27 @@ public final class AppSpecWorkerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoscaling(AppSpecWorkerAutoscalingArgs autoscaling) {
             return autoscaling(Output.of(autoscaling));
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(@Nullable Output<AppSpecWorkerBitbucketArgs> bitbucket) {
+            $.bitbucket = bitbucket;
+            return this;
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(AppSpecWorkerBitbucketArgs bitbucket) {
+            return bitbucket(Output.of(bitbucket));
         }
 
         /**

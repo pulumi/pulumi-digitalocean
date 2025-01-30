@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecStaticSiteBitbucketArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteCorsArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteGitArgs;
@@ -22,6 +23,21 @@ import javax.annotation.Nullable;
 public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecStaticSiteArgs Empty = new AppSpecStaticSiteArgs();
+
+    /**
+     * A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    @Import(name="bitbucket")
+    private @Nullable Output<AppSpecStaticSiteBitbucketArgs> bitbucket;
+
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<Output<AppSpecStaticSiteBitbucketArgs>> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
 
     /**
      * An optional build command to run while building this component from source.
@@ -267,6 +283,7 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
     private AppSpecStaticSiteArgs() {}
 
     private AppSpecStaticSiteArgs(AppSpecStaticSiteArgs $) {
+        this.bitbucket = $.bitbucket;
         this.buildCommand = $.buildCommand;
         this.catchallDocument = $.catchallDocument;
         this.cors = $.cors;
@@ -300,6 +317,27 @@ public final class AppSpecStaticSiteArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(AppSpecStaticSiteArgs defaults) {
             $ = new AppSpecStaticSiteArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(@Nullable Output<AppSpecStaticSiteBitbucketArgs> bitbucket) {
+            $.bitbucket = bitbucket;
+            return this;
+        }
+
+        /**
+         * @param bitbucket A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder bitbucket(AppSpecStaticSiteBitbucketArgs bitbucket) {
+            return bitbucket(Output.of(bitbucket));
         }
 
         /**
