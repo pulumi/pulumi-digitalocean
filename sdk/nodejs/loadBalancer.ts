@@ -155,6 +155,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string | undefined>;
     /**
+     * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     */
+    public readonly networkStack!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
     public readonly projectId!: pulumi.Output<string>;
@@ -226,6 +231,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkStack"] = state ? state.networkStack : undefined;
             resourceInputs["projectId"] = state ? state.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -252,6 +258,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkStack"] = args ? args.networkStack : undefined;
             resourceInputs["projectId"] = args ? args.projectId : undefined;
             resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
@@ -347,6 +354,11 @@ export interface LoadBalancerState {
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
      */
     network?: pulumi.Input<string>;
+    /**
+     * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     */
+    networkStack?: pulumi.Input<string>;
     /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
@@ -457,6 +469,11 @@ export interface LoadBalancerArgs {
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
      */
     network?: pulumi.Input<string>;
+    /**
+     * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+     * **NOTE**: this feature is in private preview, and may not be available for public use
+     */
+    networkStack?: pulumi.Input<string>;
     /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */

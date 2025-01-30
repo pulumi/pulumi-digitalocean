@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionAlert;
+import com.pulumi.digitalocean.outputs.GetAppSpecFunctionBitbucket;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionCors;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunctionGit;
@@ -27,6 +28,11 @@ public final class GetAppSpecFunction {
      */
     private @Nullable List<GetAppSpecFunctionAlert> alerts;
     /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable GetAppSpecFunctionBitbucket bitbucket;
+    /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
@@ -46,12 +52,12 @@ public final class GetAppSpecFunction {
      */
     private @Nullable GetAppSpecFunctionGit git;
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecFunctionGithub github;
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecFunctionGitlab gitlab;
@@ -87,6 +93,13 @@ public final class GetAppSpecFunction {
         return this.alerts == null ? List.of() : this.alerts;
     }
     /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<GetAppSpecFunctionBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
+    /**
      * @return The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      * 
      * @deprecated
@@ -112,14 +125,14 @@ public final class GetAppSpecFunction {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecFunctionGithub> github() {
         return Optional.ofNullable(this.github);
     }
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecFunctionGitlab> gitlab() {
@@ -166,6 +179,7 @@ public final class GetAppSpecFunction {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<GetAppSpecFunctionAlert> alerts;
+        private @Nullable GetAppSpecFunctionBitbucket bitbucket;
         private @Nullable GetAppSpecFunctionCors cors;
         private @Nullable List<GetAppSpecFunctionEnv> envs;
         private @Nullable GetAppSpecFunctionGit git;
@@ -179,6 +193,7 @@ public final class GetAppSpecFunction {
         public Builder(GetAppSpecFunction defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.cors = defaults.cors;
     	      this.envs = defaults.envs;
     	      this.git = defaults.git;
@@ -198,6 +213,12 @@ public final class GetAppSpecFunction {
         }
         public Builder alerts(GetAppSpecFunctionAlert... alerts) {
             return alerts(List.of(alerts));
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable GetAppSpecFunctionBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
         }
         @CustomType.Setter
         public Builder cors(@Nullable GetAppSpecFunctionCors cors) {
@@ -269,6 +290,7 @@ public final class GetAppSpecFunction {
         public GetAppSpecFunction build() {
             final var _resultValue = new GetAppSpecFunction();
             _resultValue.alerts = alerts;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.cors = cors;
             _resultValue.envs = envs;
             _resultValue.git = git;

@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecFunctionAlert> Alerts;
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.AppSpecFunctionBitbucket? Bitbucket;
+        /// <summary>
         /// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         /// </summary>
         public readonly Outputs.AppSpecFunctionCors? Cors;
@@ -58,6 +62,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private AppSpecFunction(
             ImmutableArray<Outputs.AppSpecFunctionAlert> alerts,
 
+            Outputs.AppSpecFunctionBitbucket? bitbucket,
+
             Outputs.AppSpecFunctionCors? cors,
 
             ImmutableArray<Outputs.AppSpecFunctionEnv> envs,
@@ -77,6 +83,7 @@ namespace Pulumi.DigitalOcean.Outputs
             string? sourceDir)
         {
             Alerts = alerts;
+            Bitbucket = bitbucket;
             Cors = cors;
             Envs = envs;
             Git = git;

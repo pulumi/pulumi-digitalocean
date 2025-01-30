@@ -22,6 +22,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecServiceAutoscalingResult? Autoscaling;
         /// <summary>
+        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.GetAppSpecServiceBitbucketResult? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -46,11 +50,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecServiceGitResult? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecServiceGithubResult? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecServiceGitlabResult? Gitlab;
         /// <summary>
@@ -62,7 +66,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int HttpPort;
         /// <summary>
-        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecServiceImageResult? Image;
         /// <summary>
@@ -104,6 +108,8 @@ namespace Pulumi.DigitalOcean.Outputs
             ImmutableArray<Outputs.GetAppSpecServiceAlertResult> alerts,
 
             Outputs.GetAppSpecServiceAutoscalingResult? autoscaling,
+
+            Outputs.GetAppSpecServiceBitbucketResult? bitbucket,
 
             string? buildCommand,
 
@@ -147,6 +153,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Autoscaling = autoscaling;
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             Cors = cors;
             DockerfilePath = dockerfilePath;

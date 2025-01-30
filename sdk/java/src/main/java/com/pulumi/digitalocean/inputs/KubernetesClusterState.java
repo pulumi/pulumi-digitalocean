@@ -7,10 +7,12 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -67,6 +69,13 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.clusterUrn);
     }
 
+    @Import(name="controlPlaneFirewall")
+    private @Nullable Output<KubernetesClusterControlPlaneFirewallArgs> controlPlaneFirewall;
+
+    public Optional<Output<KubernetesClusterControlPlaneFirewallArgs>> controlPlaneFirewall() {
+        return Optional.ofNullable(this.controlPlaneFirewall);
+    }
+
     /**
      * The date and time when the node was created.
      * 
@@ -85,16 +94,12 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Import(name="destroyAllAssociatedResources")
     private @Nullable Output<Boolean> destroyAllAssociatedResources;
 
     /**
      * @return **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<Boolean>> destroyAllAssociatedResources() {
@@ -159,6 +164,25 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<List<KubernetesClusterKubeConfigArgs>>> kubeConfigs() {
         return Optional.ofNullable(this.kubeConfigs);
+    }
+
+    /**
+     * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    @Import(name="kubeconfigExpireSeconds")
+    private @Nullable Output<Integer> kubeconfigExpireSeconds;
+
+    /**
+     * @return The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
+    public Optional<Output<Integer>> kubeconfigExpireSeconds() {
+        return Optional.ofNullable(this.kubeconfigExpireSeconds);
     }
 
     /**
@@ -347,12 +371,14 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.autoUpgrade = $.autoUpgrade;
         this.clusterSubnet = $.clusterSubnet;
         this.clusterUrn = $.clusterUrn;
+        this.controlPlaneFirewall = $.controlPlaneFirewall;
         this.createdAt = $.createdAt;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
         this.endpoint = $.endpoint;
         this.ha = $.ha;
         this.ipv4Address = $.ipv4Address;
         this.kubeConfigs = $.kubeConfigs;
+        this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.nodePool = $.nodePool;
@@ -448,6 +474,15 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
             return clusterUrn(Output.of(clusterUrn));
         }
 
+        public Builder controlPlaneFirewall(@Nullable Output<KubernetesClusterControlPlaneFirewallArgs> controlPlaneFirewall) {
+            $.controlPlaneFirewall = controlPlaneFirewall;
+            return this;
+        }
+
+        public Builder controlPlaneFirewall(KubernetesClusterControlPlaneFirewallArgs controlPlaneFirewall) {
+            return controlPlaneFirewall(Output.of(controlPlaneFirewall));
+        }
+
         /**
          * @param createdAt The date and time when the node was created.
          * 
@@ -472,8 +507,6 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         /**
          * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
          * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
-         * 
          * @return builder
          * 
          */
@@ -484,8 +517,6 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
 
         /**
          * @param destroyAllAssociatedResources **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 
@@ -586,6 +617,31 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder kubeConfigs(KubernetesClusterKubeConfigArgs... kubeConfigs) {
             return kubeConfigs(List.of(kubeConfigs));
+        }
+
+        /**
+         * @param kubeconfigExpireSeconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeconfigExpireSeconds(@Nullable Output<Integer> kubeconfigExpireSeconds) {
+            $.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
+            return this;
+        }
+
+        /**
+         * @param kubeconfigExpireSeconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kubeconfigExpireSeconds(Integer kubeconfigExpireSeconds) {
+            return kubeconfigExpireSeconds(Output.of(kubeconfigExpireSeconds));
         }
 
         /**

@@ -36,6 +36,7 @@ class LoadBalancerArgs:
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_stack: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -66,6 +67,8 @@ class LoadBalancerArgs:
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        :param pulumi.Input[str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -111,6 +114,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_stack is not None:
+            pulumi.set(__self__, "network_stack", network_stack)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
@@ -305,6 +310,19 @@ class LoadBalancerArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkStack")
+    def network_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        **NOTE**: this feature is in private preview, and may not be available for public use
+        """
+        return pulumi.get(self, "network_stack")
+
+    @network_stack.setter
+    def network_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_stack", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -437,6 +455,7 @@ class _LoadBalancerState:
                  load_balancer_urn: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_stack: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -470,6 +489,8 @@ class _LoadBalancerState:
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        :param pulumi.Input[str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -521,6 +542,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_stack is not None:
+            pulumi.set(__self__, "network_stack", network_stack)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if redirect_http_to_https is not None:
@@ -750,6 +773,19 @@ class _LoadBalancerState:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkStack")
+    def network_stack(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        **NOTE**: this feature is in private preview, and may not be available for public use
+        """
+        return pulumi.get(self, "network_stack")
+
+    @network_stack.setter
+    def network_stack(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_stack", value)
+
+    @property
     @pulumi.getter(name="projectId")
     def project_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -890,6 +926,7 @@ class LoadBalancer(pulumi.CustomResource):
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_stack: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -966,6 +1003,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[int] http_idle_timeout_seconds: Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        :param pulumi.Input[str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -1060,6 +1099,7 @@ class LoadBalancer(pulumi.CustomResource):
                  http_idle_timeout_seconds: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_stack: Optional[pulumi.Input[str]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
                  region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -1092,6 +1132,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["http_idle_timeout_seconds"] = http_idle_timeout_seconds
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["network_stack"] = network_stack
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
             __props__.__dict__["region"] = region
@@ -1132,6 +1173,7 @@ class LoadBalancer(pulumi.CustomResource):
             load_balancer_urn: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            network_stack: Optional[pulumi.Input[str]] = None,
             project_id: Optional[pulumi.Input[str]] = None,
             redirect_http_to_https: Optional[pulumi.Input[bool]] = None,
             region: Optional[pulumi.Input[Union[str, 'Region']]] = None,
@@ -1170,6 +1212,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_urn: The uniform resource name for the Load Balancer
         :param pulumi.Input[str] name: The Load Balancer name
         :param pulumi.Input[str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
+        :param pulumi.Input[str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -1205,6 +1249,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["load_balancer_urn"] = load_balancer_urn
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["network_stack"] = network_stack
         __props__.__dict__["project_id"] = project_id
         __props__.__dict__["redirect_http_to_https"] = redirect_http_to_https
         __props__.__dict__["region"] = region
@@ -1355,6 +1400,15 @@ class LoadBalancer(pulumi.CustomResource):
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkStack")
+    def network_stack(self) -> pulumi.Output[Optional[str]]:
+        """
+        The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
+        **NOTE**: this feature is in private preview, and may not be available for public use
+        """
+        return pulumi.get(self, "network_stack")
 
     @property
     @pulumi.getter(name="projectId")

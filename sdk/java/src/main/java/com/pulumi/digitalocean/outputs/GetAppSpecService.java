@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceAlert;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceAutoscaling;
+import com.pulumi.digitalocean.outputs.GetAppSpecServiceBitbucket;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceCors;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecServiceGit;
@@ -36,6 +37,11 @@ public final class GetAppSpecService {
      * 
      */
     private @Nullable GetAppSpecServiceAutoscaling autoscaling;
+    /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable GetAppSpecServiceBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -71,12 +77,12 @@ public final class GetAppSpecService {
      */
     private @Nullable GetAppSpecServiceGit git;
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecServiceGithub github;
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecServiceGitlab gitlab;
@@ -91,7 +97,7 @@ public final class GetAppSpecService {
      */
     private Integer httpPort;
     /**
-     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     private @Nullable GetAppSpecServiceImage image;
@@ -159,6 +165,13 @@ public final class GetAppSpecService {
         return Optional.ofNullable(this.autoscaling);
     }
     /**
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<GetAppSpecServiceBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
+    /**
      * @return An optional build command to run while building this component from source.
      * 
      */
@@ -205,14 +218,14 @@ public final class GetAppSpecService {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecServiceGithub> github() {
         return Optional.ofNullable(this.github);
     }
     /**
-     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return A Gitlab repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecServiceGitlab> gitlab() {
@@ -233,7 +246,7 @@ public final class GetAppSpecService {
         return this.httpPort;
     }
     /**
-     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * @return An image to use as the component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      * 
      */
     public Optional<GetAppSpecServiceImage> image() {
@@ -316,6 +329,7 @@ public final class GetAppSpecService {
     public static final class Builder {
         private @Nullable List<GetAppSpecServiceAlert> alerts;
         private @Nullable GetAppSpecServiceAutoscaling autoscaling;
+        private @Nullable GetAppSpecServiceBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable GetAppSpecServiceCors cors;
         private @Nullable String dockerfilePath;
@@ -341,6 +355,7 @@ public final class GetAppSpecService {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.autoscaling = defaults.autoscaling;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.cors = defaults.cors;
     	      this.dockerfilePath = defaults.dockerfilePath;
@@ -376,6 +391,12 @@ public final class GetAppSpecService {
         public Builder autoscaling(@Nullable GetAppSpecServiceAutoscaling autoscaling) {
 
             this.autoscaling = autoscaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable GetAppSpecServiceBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
             return this;
         }
         @CustomType.Setter
@@ -524,6 +545,7 @@ public final class GetAppSpecService {
             final var _resultValue = new GetAppSpecService();
             _resultValue.alerts = alerts;
             _resultValue.autoscaling = autoscaling;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.cors = cors;
             _resultValue.dockerfilePath = dockerfilePath;

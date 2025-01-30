@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecServiceAlert;
 import com.pulumi.digitalocean.outputs.AppSpecServiceAutoscaling;
+import com.pulumi.digitalocean.outputs.AppSpecServiceBitbucket;
 import com.pulumi.digitalocean.outputs.AppSpecServiceCors;
 import com.pulumi.digitalocean.outputs.AppSpecServiceEnv;
 import com.pulumi.digitalocean.outputs.AppSpecServiceGit;
@@ -36,6 +37,11 @@ public final class AppSpecService {
      * 
      */
     private @Nullable AppSpecServiceAutoscaling autoscaling;
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable AppSpecServiceBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -159,6 +165,13 @@ public final class AppSpecService {
      */
     public Optional<AppSpecServiceAutoscaling> autoscaling() {
         return Optional.ofNullable(this.autoscaling);
+    }
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<AppSpecServiceBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
     }
     /**
      * @return An optional build command to run while building this component from source.
@@ -320,6 +333,7 @@ public final class AppSpecService {
     public static final class Builder {
         private @Nullable List<AppSpecServiceAlert> alerts;
         private @Nullable AppSpecServiceAutoscaling autoscaling;
+        private @Nullable AppSpecServiceBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable AppSpecServiceCors cors;
         private @Nullable String dockerfilePath;
@@ -345,6 +359,7 @@ public final class AppSpecService {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.autoscaling = defaults.autoscaling;
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.cors = defaults.cors;
     	      this.dockerfilePath = defaults.dockerfilePath;
@@ -380,6 +395,12 @@ public final class AppSpecService {
         public Builder autoscaling(@Nullable AppSpecServiceAutoscaling autoscaling) {
 
             this.autoscaling = autoscaling;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable AppSpecServiceBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
             return this;
         }
         @CustomType.Setter
@@ -520,6 +541,7 @@ public final class AppSpecService {
             final var _resultValue = new AppSpecService();
             _resultValue.alerts = alerts;
             _resultValue.autoscaling = autoscaling;
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.cors = cors;
             _resultValue.dockerfilePath = dockerfilePath;

@@ -18,6 +18,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecJobAlertResult> Alerts;
         /// <summary>
+        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        public readonly Outputs.GetAppSpecJobBitbucketResult? Bitbucket;
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         public readonly string? BuildCommand;
@@ -38,15 +42,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecJobGitResult? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecJobGithubResult? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecJobGitlabResult? Gitlab;
         /// <summary>
-        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecJobImageResult? Image;
         /// <summary>
@@ -90,6 +94,8 @@ namespace Pulumi.DigitalOcean.Outputs
         private GetAppSpecJobResult(
             ImmutableArray<Outputs.GetAppSpecJobAlertResult> alerts,
 
+            Outputs.GetAppSpecJobBitbucketResult? bitbucket,
+
             string? buildCommand,
 
             string? dockerfilePath,
@@ -123,6 +129,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Outputs.GetAppSpecJobTerminationResult? termination)
         {
             Alerts = alerts;
+            Bitbucket = bitbucket;
             BuildCommand = buildCommand;
             DockerfilePath = dockerfilePath;
             EnvironmentSlug = environmentSlug;

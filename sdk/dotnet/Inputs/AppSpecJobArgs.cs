@@ -25,6 +25,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// </summary>
+        [Input("bitbucket")]
+        public Input<Inputs.AppSpecJobBitbucketArgs>? Bitbucket { get; set; }
+
+        /// <summary>
         /// An optional build command to run while building this component from source.
         /// </summary>
         [Input("buildCommand")]

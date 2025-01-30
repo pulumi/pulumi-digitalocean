@@ -164,6 +164,10 @@ export interface AppSpecFunction {
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlert>[]>;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: pulumi.Input<inputs.AppSpecFunctionBitbucket>;
+    /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
@@ -226,6 +230,21 @@ export interface AppSpecFunctionAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecFunctionBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
 }
 
 export interface AppSpecFunctionCors {
@@ -549,6 +568,10 @@ export interface AppSpecJob {
      */
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlert>[]>;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: pulumi.Input<inputs.AppSpecJobBitbucket>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -639,6 +662,21 @@ export interface AppSpecJobAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecJobBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
 }
 
 export interface AppSpecJobEnv {
@@ -836,6 +874,10 @@ export interface AppSpecService {
      */
     autoscaling?: pulumi.Input<inputs.AppSpecServiceAutoscaling>;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: pulumi.Input<inputs.AppSpecServiceBitbucket>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -971,6 +1013,21 @@ export interface AppSpecServiceAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: pulumi.Input<number>;
+}
+
+export interface AppSpecServiceBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceCors {
@@ -1252,6 +1309,10 @@ export interface AppSpecServiceTermination {
 
 export interface AppSpecStaticSite {
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: pulumi.Input<inputs.AppSpecStaticSiteBitbucket>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -1315,6 +1376,21 @@ export interface AppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: pulumi.Input<string>;
+}
+
+export interface AppSpecStaticSiteBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
 }
 
 export interface AppSpecStaticSiteCors {
@@ -1442,6 +1518,10 @@ export interface AppSpecWorker {
      */
     autoscaling?: pulumi.Input<inputs.AppSpecWorkerAutoscaling>;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: pulumi.Input<inputs.AppSpecWorkerBitbucket>;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: pulumi.Input<string>;
@@ -1553,6 +1633,21 @@ export interface AppSpecWorkerAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: pulumi.Input<number>;
+}
+
+export interface AppSpecWorkerBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: pulumi.Input<string>;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: pulumi.Input<boolean>;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: pulumi.Input<string>;
 }
 
 export interface AppSpecWorkerEnv {
@@ -1755,11 +1850,11 @@ export interface DatabaseClusterBackupRestore {
 
 export interface DatabaseClusterMaintenanceWindow {
     /**
-     * The day of the week on which to apply maintenance updates.
+     * The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      */
     day: pulumi.Input<string>;
     /**
-     * The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      */
     hour: pulumi.Input<string>;
 }
@@ -3015,6 +3110,11 @@ export interface GetTagsSortArgs {
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: pulumi.Input<string>;
+}
+
+export interface KubernetesClusterControlPlaneFirewall {
+    allowedAddresses: pulumi.Input<pulumi.Input<string>[]>;
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface KubernetesClusterKubeConfig {

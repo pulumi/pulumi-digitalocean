@@ -164,6 +164,10 @@ export interface AppSpecFunction {
      */
     alerts?: outputs.AppSpecFunctionAlert[];
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.AppSpecFunctionBitbucket;
+    /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
@@ -226,6 +230,21 @@ export interface AppSpecFunctionAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface AppSpecFunctionBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface AppSpecFunctionCors {
@@ -549,6 +568,10 @@ export interface AppSpecJob {
      */
     alerts?: outputs.AppSpecJobAlert[];
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.AppSpecJobBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -639,6 +662,21 @@ export interface AppSpecJobAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface AppSpecJobBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface AppSpecJobEnv {
@@ -836,6 +874,10 @@ export interface AppSpecService {
      */
     autoscaling?: outputs.AppSpecServiceAutoscaling;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.AppSpecServiceBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -971,6 +1013,21 @@ export interface AppSpecServiceAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: number;
+}
+
+export interface AppSpecServiceBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface AppSpecServiceCors {
@@ -1252,6 +1309,10 @@ export interface AppSpecServiceTermination {
 
 export interface AppSpecStaticSite {
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.AppSpecStaticSiteBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -1315,6 +1376,21 @@ export interface AppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface AppSpecStaticSiteBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface AppSpecStaticSiteCors {
@@ -1442,6 +1518,10 @@ export interface AppSpecWorker {
      */
     autoscaling?: outputs.AppSpecWorkerAutoscaling;
     /**
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.AppSpecWorkerBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -1553,6 +1633,21 @@ export interface AppSpecWorkerAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: number;
+}
+
+export interface AppSpecWorkerBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface AppSpecWorkerEnv {
@@ -1755,11 +1850,11 @@ export interface DatabaseClusterBackupRestore {
 
 export interface DatabaseClusterMaintenanceWindow {
     /**
-     * The day of the week on which to apply maintenance updates.
+     * The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
      */
     day: string;
     /**
-     * The hour in UTC at which maintenance updates will be applied in 24 hour format.
+     * The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
      */
     hour: string;
 }
@@ -2265,6 +2360,10 @@ export interface GetAppSpecFunction {
      */
     alerts?: outputs.GetAppSpecFunctionAlert[];
     /**
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.GetAppSpecFunctionBitbucket;
+    /**
      * The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
      *
      * @deprecated Service level CORS rules are deprecated in favor of ingresses
@@ -2279,11 +2378,11 @@ export interface GetAppSpecFunction {
      */
     git?: outputs.GetAppSpecFunctionGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecFunctionGithub;
     /**
-     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     gitlab?: outputs.GetAppSpecFunctionGitlab;
     /**
@@ -2325,6 +2424,21 @@ export interface GetAppSpecFunctionAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface GetAppSpecFunctionBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface GetAppSpecFunctionCors {
@@ -2621,6 +2735,10 @@ export interface GetAppSpecJob {
      */
     alerts?: outputs.GetAppSpecJobAlert[];
     /**
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.GetAppSpecJobBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -2641,15 +2759,15 @@ export interface GetAppSpecJob {
      */
     git?: outputs.GetAppSpecJobGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecJobGithub;
     /**
-     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     gitlab?: outputs.GetAppSpecJobGitlab;
     /**
-     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     image?: outputs.GetAppSpecJobImage;
     /**
@@ -2711,6 +2829,21 @@ export interface GetAppSpecJobAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: string;
+}
+
+export interface GetAppSpecJobBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface GetAppSpecJobEnv {
@@ -2906,6 +3039,10 @@ export interface GetAppSpecService {
      */
     autoscaling?: outputs.GetAppSpecServiceAutoscaling;
     /**
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.GetAppSpecServiceBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -2932,11 +3069,11 @@ export interface GetAppSpecService {
      */
     git?: outputs.GetAppSpecServiceGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecServiceGithub;
     /**
-     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     gitlab?: outputs.GetAppSpecServiceGitlab;
     /**
@@ -2948,7 +3085,7 @@ export interface GetAppSpecService {
      */
     httpPort: number;
     /**
-     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     image?: outputs.GetAppSpecServiceImage;
     /**
@@ -3039,6 +3176,21 @@ export interface GetAppSpecServiceAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: number;
+}
+
+export interface GetAppSpecServiceBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface GetAppSpecServiceCors {
@@ -3316,6 +3468,10 @@ export interface GetAppSpecServiceTermination {
 
 export interface GetAppSpecStaticSite {
     /**
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.GetAppSpecStaticSiteBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -3350,11 +3506,11 @@ export interface GetAppSpecStaticSite {
      */
     git?: outputs.GetAppSpecStaticSiteGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecStaticSiteGithub;
     /**
-     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     gitlab?: outputs.GetAppSpecStaticSiteGitlab;
     /**
@@ -3377,6 +3533,21 @@ export interface GetAppSpecStaticSite {
      * An optional path to the working directory to use for the build.
      */
     sourceDir?: string;
+}
+
+export interface GetAppSpecStaticSiteBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface GetAppSpecStaticSiteCors {
@@ -3504,6 +3675,10 @@ export interface GetAppSpecWorker {
      */
     autoscaling?: outputs.GetAppSpecWorkerAutoscaling;
     /**
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     */
+    bitbucket?: outputs.GetAppSpecWorkerBitbucket;
+    /**
      * An optional build command to run while building this component from source.
      */
     buildCommand?: string;
@@ -3524,15 +3699,15 @@ export interface GetAppSpecWorker {
      */
     git?: outputs.GetAppSpecWorkerGit;
     /**
-     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     github?: outputs.GetAppSpecWorkerGithub;
     /**
-     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     gitlab?: outputs.GetAppSpecWorkerGitlab;
     /**
-     * An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+     * An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
      */
     image?: outputs.GetAppSpecWorkerImage;
     /**
@@ -3615,6 +3790,21 @@ export interface GetAppSpecWorkerAutoscalingMetricsCpu {
      * The average target CPU utilization for the component.
      */
     percent: number;
+}
+
+export interface GetAppSpecWorkerBitbucket {
+    /**
+     * The name of the branch to use.
+     */
+    branch?: string;
+    /**
+     * Whether to automatically deploy new commits made to the repo.
+     */
+    deployOnPush?: boolean;
+    /**
+     * The name of the repo in the format `owner/repo`.
+     */
+    repo?: string;
 }
 
 export interface GetAppSpecWorkerEnv {
@@ -5039,6 +5229,11 @@ export interface GetTagsTag {
      * A count of the volumes that the tag is applied to.
      */
     volumesCount: number;
+}
+
+export interface KubernetesClusterControlPlaneFirewall {
+    allowedAddresses: string[];
+    enabled: boolean;
 }
 
 export interface KubernetesClusterKubeConfig {

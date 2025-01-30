@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.AppSpecStaticSiteBitbucket;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteCors;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteEnv;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSiteGit;
@@ -19,6 +20,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecStaticSite {
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    private @Nullable AppSpecStaticSiteBitbucket bitbucket;
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -104,6 +110,13 @@ public final class AppSpecStaticSite {
     private @Nullable String sourceDir;
 
     private AppSpecStaticSite() {}
+    /**
+     * @return A GitHub repo to use as the component&#39;s source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * 
+     */
+    public Optional<AppSpecStaticSiteBitbucket> bitbucket() {
+        return Optional.ofNullable(this.bitbucket);
+    }
     /**
      * @return An optional build command to run while building this component from source.
      * 
@@ -227,6 +240,7 @@ public final class AppSpecStaticSite {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppSpecStaticSiteBitbucket bitbucket;
         private @Nullable String buildCommand;
         private @Nullable String catchallDocument;
         private @Nullable AppSpecStaticSiteCors cors;
@@ -245,6 +259,7 @@ public final class AppSpecStaticSite {
         public Builder() {}
         public Builder(AppSpecStaticSite defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.bitbucket = defaults.bitbucket;
     	      this.buildCommand = defaults.buildCommand;
     	      this.catchallDocument = defaults.catchallDocument;
     	      this.cors = defaults.cors;
@@ -262,6 +277,12 @@ public final class AppSpecStaticSite {
     	      this.sourceDir = defaults.sourceDir;
         }
 
+        @CustomType.Setter
+        public Builder bitbucket(@Nullable AppSpecStaticSiteBitbucket bitbucket) {
+
+            this.bitbucket = bitbucket;
+            return this;
+        }
         @CustomType.Setter
         public Builder buildCommand(@Nullable String buildCommand) {
 
@@ -362,6 +383,7 @@ public final class AppSpecStaticSite {
         }
         public AppSpecStaticSite build() {
             final var _resultValue = new AppSpecStaticSite();
+            _resultValue.bitbucket = bitbucket;
             _resultValue.buildCommand = buildCommand;
             _resultValue.catchallDocument = catchallDocument;
             _resultValue.cors = cors;
