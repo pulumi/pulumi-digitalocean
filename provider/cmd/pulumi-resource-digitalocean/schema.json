@@ -7149,6 +7149,29 @@
                 "key"
             ]
         },
+        "digitalocean:index/getKubernetesClusterControlPlaneFirewall:getKubernetesClusterControlPlaneFirewall": {
+            "properties": {
+                "allowedAddresses": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "allowedAddresses",
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getKubernetesClusterKubeConfig:getKubernetesClusterKubeConfig": {
             "properties": {
                 "clientCertificate": {
@@ -19006,6 +19029,9 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKubernetesCluster.\n",
                 "properties": {
+                    "kubeconfigExpireSeconds": {
+                        "type": "integer"
+                    },
                     "name": {
                         "type": "string",
                         "description": "The name of Kubernetes cluster.\n"
@@ -19034,6 +19060,12 @@
                         "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n",
                         "type": "string"
                     },
+                    "controlPlaneFirewalls": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterControlPlaneFirewall:getKubernetesClusterControlPlaneFirewall"
+                        },
+                        "type": "array"
+                    },
                     "createdAt": {
                         "description": "The date and time when the node was created.\n",
                         "type": "string"
@@ -19060,6 +19092,9 @@
                         },
                         "secret": true,
                         "type": "array"
+                    },
+                    "kubeconfigExpireSeconds": {
+                        "type": "integer"
                     },
                     "maintenancePolicies": {
                         "description": "The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.\n",
@@ -19121,6 +19156,7 @@
                 "required": [
                     "autoUpgrade",
                     "clusterSubnet",
+                    "controlPlaneFirewalls",
                     "createdAt",
                     "endpoint",
                     "ha",

@@ -40746,6 +40746,106 @@ func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
 	}).(GetImagesSortOutput)
 }
 
+type GetKubernetesClusterControlPlaneFirewall struct {
+	AllowedAddresses []string `pulumi:"allowedAddresses"`
+	Enabled          bool     `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterControlPlaneFirewallInput is an input type that accepts GetKubernetesClusterControlPlaneFirewallArgs and GetKubernetesClusterControlPlaneFirewallOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterControlPlaneFirewallInput` via:
+//
+//	GetKubernetesClusterControlPlaneFirewallArgs{...}
+type GetKubernetesClusterControlPlaneFirewallInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterControlPlaneFirewallOutput() GetKubernetesClusterControlPlaneFirewallOutput
+	ToGetKubernetesClusterControlPlaneFirewallOutputWithContext(context.Context) GetKubernetesClusterControlPlaneFirewallOutput
+}
+
+type GetKubernetesClusterControlPlaneFirewallArgs struct {
+	AllowedAddresses pulumi.StringArrayInput `pulumi:"allowedAddresses"`
+	Enabled          pulumi.BoolInput        `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterControlPlaneFirewallArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterControlPlaneFirewallArgs) ToGetKubernetesClusterControlPlaneFirewallOutput() GetKubernetesClusterControlPlaneFirewallOutput {
+	return i.ToGetKubernetesClusterControlPlaneFirewallOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterControlPlaneFirewallArgs) ToGetKubernetesClusterControlPlaneFirewallOutputWithContext(ctx context.Context) GetKubernetesClusterControlPlaneFirewallOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterControlPlaneFirewallOutput)
+}
+
+// GetKubernetesClusterControlPlaneFirewallArrayInput is an input type that accepts GetKubernetesClusterControlPlaneFirewallArray and GetKubernetesClusterControlPlaneFirewallArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterControlPlaneFirewallArrayInput` via:
+//
+//	GetKubernetesClusterControlPlaneFirewallArray{ GetKubernetesClusterControlPlaneFirewallArgs{...} }
+type GetKubernetesClusterControlPlaneFirewallArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterControlPlaneFirewallArrayOutput() GetKubernetesClusterControlPlaneFirewallArrayOutput
+	ToGetKubernetesClusterControlPlaneFirewallArrayOutputWithContext(context.Context) GetKubernetesClusterControlPlaneFirewallArrayOutput
+}
+
+type GetKubernetesClusterControlPlaneFirewallArray []GetKubernetesClusterControlPlaneFirewallInput
+
+func (GetKubernetesClusterControlPlaneFirewallArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterControlPlaneFirewallArray) ToGetKubernetesClusterControlPlaneFirewallArrayOutput() GetKubernetesClusterControlPlaneFirewallArrayOutput {
+	return i.ToGetKubernetesClusterControlPlaneFirewallArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterControlPlaneFirewallArray) ToGetKubernetesClusterControlPlaneFirewallArrayOutputWithContext(ctx context.Context) GetKubernetesClusterControlPlaneFirewallArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterControlPlaneFirewallArrayOutput)
+}
+
+type GetKubernetesClusterControlPlaneFirewallOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterControlPlaneFirewallOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallOutput) ToGetKubernetesClusterControlPlaneFirewallOutput() GetKubernetesClusterControlPlaneFirewallOutput {
+	return o
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallOutput) ToGetKubernetesClusterControlPlaneFirewallOutputWithContext(ctx context.Context) GetKubernetesClusterControlPlaneFirewallOutput {
+	return o
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallOutput) AllowedAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesClusterControlPlaneFirewall) []string { return v.AllowedAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterControlPlaneFirewall) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterControlPlaneFirewallArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterControlPlaneFirewallArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterControlPlaneFirewall)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallArrayOutput) ToGetKubernetesClusterControlPlaneFirewallArrayOutput() GetKubernetesClusterControlPlaneFirewallArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallArrayOutput) ToGetKubernetesClusterControlPlaneFirewallArrayOutputWithContext(ctx context.Context) GetKubernetesClusterControlPlaneFirewallArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterControlPlaneFirewallArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterControlPlaneFirewallOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterControlPlaneFirewall {
+		return vs[0].([]GetKubernetesClusterControlPlaneFirewall)[vs[1].(int)]
+	}).(GetKubernetesClusterControlPlaneFirewallOutput)
+}
+
 type GetKubernetesClusterKubeConfig struct {
 	// The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
 	ClientCertificate string `pulumi:"clientCertificate"`
@@ -45667,6 +45767,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortInput)(nil)).Elem(), GetImagesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortArrayInput)(nil)).Elem(), GetImagesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallArrayInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigArrayInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterMaintenancePolicyInput)(nil)).Elem(), GetKubernetesClusterMaintenancePolicyArgs{})
@@ -46240,6 +46342,8 @@ func init() {
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesSortOutput{})
 	pulumi.RegisterOutputType(GetImagesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterMaintenancePolicyOutput{})

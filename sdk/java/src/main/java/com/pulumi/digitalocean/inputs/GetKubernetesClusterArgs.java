@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesClusterArgs Empty = new GetKubernetesClusterArgs();
+
+    @Import(name="kubeconfigExpireSeconds")
+    private @Nullable Output<Integer> kubeconfigExpireSeconds;
+
+    public Optional<Output<Integer>> kubeconfigExpireSeconds() {
+        return Optional.ofNullable(this.kubeconfigExpireSeconds);
+    }
 
     /**
      * The name of Kubernetes cluster.
@@ -50,6 +58,7 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
     private GetKubernetesClusterArgs() {}
 
     private GetKubernetesClusterArgs(GetKubernetesClusterArgs $) {
+        this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.tags = $.tags;
     }
@@ -70,6 +79,15 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetKubernetesClusterArgs defaults) {
             $ = new GetKubernetesClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder kubeconfigExpireSeconds(@Nullable Output<Integer> kubeconfigExpireSeconds) {
+            $.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
+            return this;
+        }
+
+        public Builder kubeconfigExpireSeconds(Integer kubeconfigExpireSeconds) {
+            return kubeconfigExpireSeconds(Output.of(kubeconfigExpireSeconds));
         }
 
         /**

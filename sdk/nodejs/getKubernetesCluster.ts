@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "tags": args.tags,
     }, opts);
@@ -33,6 +34,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterArgs {
+    kubeconfigExpireSeconds?: number;
     /**
      * The name of Kubernetes cluster.
      */
@@ -55,6 +57,7 @@ export interface GetKubernetesClusterResult {
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
     readonly clusterSubnet: string;
+    readonly controlPlaneFirewalls: outputs.GetKubernetesClusterControlPlaneFirewall[];
     /**
      * The date and time when the node was created.
      */
@@ -76,6 +79,7 @@ export interface GetKubernetesClusterResult {
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
     readonly kubeConfigs: outputs.GetKubernetesClusterKubeConfig[];
+    readonly kubeconfigExpireSeconds?: number;
     /**
      * The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
      */
@@ -139,6 +143,7 @@ export interface GetKubernetesClusterResult {
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "tags": args.tags,
     }, opts);
@@ -148,6 +153,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterOutputArgs {
+    kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
      * The name of Kubernetes cluster.
      */
