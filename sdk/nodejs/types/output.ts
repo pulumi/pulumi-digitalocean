@@ -4481,6 +4481,11 @@ export interface GetImagesSort {
     key: string;
 }
 
+export interface GetKubernetesClusterControlPlaneFirewall {
+    allowedAddresses: string[];
+    enabled: boolean;
+}
+
 export interface GetKubernetesClusterKubeConfig {
     /**
      * The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.

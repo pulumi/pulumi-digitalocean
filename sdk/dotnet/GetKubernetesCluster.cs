@@ -87,6 +87,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("kubeconfigExpireSeconds")]
+        public int? KubeconfigExpireSeconds { get; set; }
+
         /// <summary>
         /// The name of Kubernetes cluster.
         /// </summary>
@@ -113,6 +116,9 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("kubeconfigExpireSeconds")]
+        public Input<int>? KubeconfigExpireSeconds { get; set; }
+
         /// <summary>
         /// The name of Kubernetes cluster.
         /// </summary>
@@ -149,6 +155,7 @@ namespace Pulumi.DigitalOcean
         /// The range of IP addresses in the overlay network of the Kubernetes cluster.
         /// </summary>
         public readonly string ClusterSubnet;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterControlPlaneFirewallResult> ControlPlaneFirewalls;
         /// <summary>
         /// The date and time when the node was created.
         /// </summary>
@@ -170,6 +177,7 @@ namespace Pulumi.DigitalOcean
         /// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> KubeConfigs;
+        public readonly int? KubeconfigExpireSeconds;
         /// <summary>
         /// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
         /// </summary>
@@ -222,6 +230,8 @@ namespace Pulumi.DigitalOcean
 
             string clusterSubnet,
 
+            ImmutableArray<Outputs.GetKubernetesClusterControlPlaneFirewallResult> controlPlaneFirewalls,
+
             string createdAt,
 
             string endpoint,
@@ -233,6 +243,8 @@ namespace Pulumi.DigitalOcean
             string ipv4Address,
 
             ImmutableArray<Outputs.GetKubernetesClusterKubeConfigResult> kubeConfigs,
+
+            int? kubeconfigExpireSeconds,
 
             ImmutableArray<Outputs.GetKubernetesClusterMaintenancePolicyResult> maintenancePolicies,
 
@@ -260,12 +272,14 @@ namespace Pulumi.DigitalOcean
         {
             AutoUpgrade = autoUpgrade;
             ClusterSubnet = clusterSubnet;
+            ControlPlaneFirewalls = controlPlaneFirewalls;
             CreatedAt = createdAt;
             Endpoint = endpoint;
             Ha = ha;
             Id = id;
             Ipv4Address = ipv4Address;
             KubeConfigs = kubeConfigs;
+            KubeconfigExpireSeconds = kubeconfigExpireSeconds;
             MaintenancePolicies = maintenancePolicies;
             Name = name;
             NodePools = nodePools;

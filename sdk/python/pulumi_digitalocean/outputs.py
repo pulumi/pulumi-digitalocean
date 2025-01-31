@@ -273,6 +273,7 @@ __all__ = [
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetImagesSortResult',
+    'GetKubernetesClusterControlPlaneFirewallResult',
     'GetKubernetesClusterKubeConfigResult',
     'GetKubernetesClusterMaintenancePolicyResult',
     'GetKubernetesClusterNodePoolResult',
@@ -16171,6 +16172,25 @@ class GetImagesSortResult(dict):
         The sort direction. This may be either `asc` or `desc`.
         """
         return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetKubernetesClusterControlPlaneFirewallResult(dict):
+    def __init__(__self__, *,
+                 allowed_addresses: Sequence[str],
+                 enabled: bool):
+        pulumi.set(__self__, "allowed_addresses", allowed_addresses)
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter(name="allowedAddresses")
+    def allowed_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "allowed_addresses")
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

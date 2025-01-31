@@ -4,14 +4,17 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -26,6 +29,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String clusterSubnet;
+    private List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
     /**
      * @return The date and time when the node was created.
      * 
@@ -52,6 +56,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private List<GetKubernetesClusterKubeConfig> kubeConfigs;
+    private @Nullable Integer kubeconfigExpireSeconds;
     /**
      * @return The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
      * 
@@ -124,6 +129,9 @@ public final class GetKubernetesClusterResult {
     public String clusterSubnet() {
         return this.clusterSubnet;
     }
+    public List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls() {
+        return this.controlPlaneFirewalls;
+    }
     /**
      * @return The date and time when the node was created.
      * 
@@ -161,6 +169,9 @@ public final class GetKubernetesClusterResult {
      */
     public List<GetKubernetesClusterKubeConfig> kubeConfigs() {
         return this.kubeConfigs;
+    }
+    public Optional<Integer> kubeconfigExpireSeconds() {
+        return Optional.ofNullable(this.kubeconfigExpireSeconds);
     }
     /**
      * @return The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
@@ -254,12 +265,14 @@ public final class GetKubernetesClusterResult {
     public static final class Builder {
         private Boolean autoUpgrade;
         private String clusterSubnet;
+        private List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
         private String createdAt;
         private String endpoint;
         private Boolean ha;
         private String id;
         private String ipv4Address;
         private List<GetKubernetesClusterKubeConfig> kubeConfigs;
+        private @Nullable Integer kubeconfigExpireSeconds;
         private List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
         private String name;
         private List<GetKubernetesClusterNodePool> nodePools;
@@ -277,12 +290,14 @@ public final class GetKubernetesClusterResult {
     	      Objects.requireNonNull(defaults);
     	      this.autoUpgrade = defaults.autoUpgrade;
     	      this.clusterSubnet = defaults.clusterSubnet;
+    	      this.controlPlaneFirewalls = defaults.controlPlaneFirewalls;
     	      this.createdAt = defaults.createdAt;
     	      this.endpoint = defaults.endpoint;
     	      this.ha = defaults.ha;
     	      this.id = defaults.id;
     	      this.ipv4Address = defaults.ipv4Address;
     	      this.kubeConfigs = defaults.kubeConfigs;
+    	      this.kubeconfigExpireSeconds = defaults.kubeconfigExpireSeconds;
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.name = defaults.name;
     	      this.nodePools = defaults.nodePools;
@@ -312,6 +327,17 @@ public final class GetKubernetesClusterResult {
             }
             this.clusterSubnet = clusterSubnet;
             return this;
+        }
+        @CustomType.Setter
+        public Builder controlPlaneFirewalls(List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls) {
+            if (controlPlaneFirewalls == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "controlPlaneFirewalls");
+            }
+            this.controlPlaneFirewalls = controlPlaneFirewalls;
+            return this;
+        }
+        public Builder controlPlaneFirewalls(GetKubernetesClusterControlPlaneFirewall... controlPlaneFirewalls) {
+            return controlPlaneFirewalls(List.of(controlPlaneFirewalls));
         }
         @CustomType.Setter
         public Builder createdAt(String createdAt) {
@@ -363,6 +389,12 @@ public final class GetKubernetesClusterResult {
         }
         public Builder kubeConfigs(GetKubernetesClusterKubeConfig... kubeConfigs) {
             return kubeConfigs(List.of(kubeConfigs));
+        }
+        @CustomType.Setter
+        public Builder kubeconfigExpireSeconds(@Nullable Integer kubeconfigExpireSeconds) {
+
+            this.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
+            return this;
         }
         @CustomType.Setter
         public Builder maintenancePolicies(List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies) {
@@ -471,12 +503,14 @@ public final class GetKubernetesClusterResult {
             final var _resultValue = new GetKubernetesClusterResult();
             _resultValue.autoUpgrade = autoUpgrade;
             _resultValue.clusterSubnet = clusterSubnet;
+            _resultValue.controlPlaneFirewalls = controlPlaneFirewalls;
             _resultValue.createdAt = createdAt;
             _resultValue.endpoint = endpoint;
             _resultValue.ha = ha;
             _resultValue.id = id;
             _resultValue.ipv4Address = ipv4Address;
             _resultValue.kubeConfigs = kubeConfigs;
+            _resultValue.kubeconfigExpireSeconds = kubeconfigExpireSeconds;
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.name = name;
             _resultValue.nodePools = nodePools;

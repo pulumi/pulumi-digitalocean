@@ -50,6 +50,7 @@ func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterA
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterArgs struct {
+	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name string `pulumi:"name"`
 	// A list of tag names applied to the node pool.
@@ -61,7 +62,8 @@ type LookupKubernetesClusterResult struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade bool `pulumi:"autoUpgrade"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
-	ClusterSubnet string `pulumi:"clusterSubnet"`
+	ClusterSubnet         string                                     `pulumi:"clusterSubnet"`
+	ControlPlaneFirewalls []GetKubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewalls"`
 	// The date and time when the node was created.
 	CreatedAt string `pulumi:"createdAt"`
 	// The base URL of the API server on the Kubernetes master node.
@@ -72,7 +74,8 @@ type LookupKubernetesClusterResult struct {
 	// The public IPv4 address of the Kubernetes master node.
 	Ipv4Address string `pulumi:"ipv4Address"`
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
-	KubeConfigs []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
+	KubeConfigs             []GetKubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
+	KubeconfigExpireSeconds *int                             `pulumi:"kubeconfigExpireSeconds"`
 	// The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
 	MaintenancePolicies []GetKubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicies"`
 	// The auto-generated name for the node.
@@ -109,6 +112,7 @@ func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClu
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterOutputArgs struct {
+	KubeconfigExpireSeconds pulumi.IntPtrInput `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of tag names applied to the node pool.
@@ -144,6 +148,12 @@ func (o LookupKubernetesClusterResultOutput) ClusterSubnet() pulumi.StringOutput
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ClusterSubnet }).(pulumi.StringOutput)
 }
 
+func (o LookupKubernetesClusterResultOutput) ControlPlaneFirewalls() GetKubernetesClusterControlPlaneFirewallArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterControlPlaneFirewall {
+		return v.ControlPlaneFirewalls
+	}).(GetKubernetesClusterControlPlaneFirewallArrayOutput)
+}
+
 // The date and time when the node was created.
 func (o LookupKubernetesClusterResultOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.CreatedAt }).(pulumi.StringOutput)
@@ -171,6 +181,10 @@ func (o LookupKubernetesClusterResultOutput) Ipv4Address() pulumi.StringOutput {
 // A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 func (o LookupKubernetesClusterResultOutput) KubeConfigs() GetKubernetesClusterKubeConfigArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterKubeConfig { return v.KubeConfigs }).(GetKubernetesClusterKubeConfigArrayOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) KubeconfigExpireSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) *int { return v.KubeconfigExpireSeconds }).(pulumi.IntPtrOutput)
 }
 
 // The maintenance policy of the Kubernetes cluster. Digital Ocean has a default maintenancen window.
