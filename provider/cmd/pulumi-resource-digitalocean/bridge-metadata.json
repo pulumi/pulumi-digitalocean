@@ -1790,6 +1790,16 @@
                 "current": "digitalocean:index/getKubernetesCluster:getKubernetesCluster",
                 "majorVersion": 4,
                 "fields": {
+                    "control_plane_firewall": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_addresses": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
                     "kube_config": {
                         "maxItemsOne": false
                     },
