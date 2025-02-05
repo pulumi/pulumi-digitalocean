@@ -1,12 +1,12 @@
 ---
 # *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
-title: Digitalocean Provider
+title: DigitalOcean Provider
 meta_desc: Provides an overview on how to configure the Pulumi Digitalocean provider.
 layout: package
 ---
 ## Installation
 
-The Digitalocean provider is available as a package in all Pulumi languages:
+The DigitalOcean provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/digitalocean`](https://www.npmjs.com/package/@pulumi/digitalocean)
 * Python: [`pulumi-digitalocean`](https://pypi.org/project/pulumi-digitalocean/)
