@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getDatabaseCluster({
  *     name: "example-cluster",
  * });
- * const read-only = example.then(example => digitalocean.getDatabaseConnectionPool({
+ * const read_only = example.then(example => digitalocean.getDatabaseConnectionPool({
  *     clusterId: example.id,
  *     name: "pool-01",
  * }));
@@ -108,7 +108,7 @@ export interface GetDatabaseConnectionPoolResult {
  * const example = digitalocean.getDatabaseCluster({
  *     name: "example-cluster",
  * });
- * const read-only = example.then(example => digitalocean.getDatabaseConnectionPool({
+ * const read_only = example.then(example => digitalocean.getDatabaseConnectionPool({
  *     clusterId: example.id,
  *     name: "pool-01",
  * }));

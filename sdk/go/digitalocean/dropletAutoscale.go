@@ -36,14 +36,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewSshKey(ctx, "my-ssh-key", &digitalocean.SshKeyArgs{
+//			my_ssh_key, err := digitalocean.NewSshKey(ctx, "my-ssh-key", &digitalocean.SshKeyArgs{
 //				Name:      pulumi.String("terraform-example"),
 //				PublicKey: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewTag(ctx, "my-tag", &digitalocean.TagArgs{
+//			my_tag, err := digitalocean.NewTag(ctx, "my-tag", &digitalocean.TagArgs{
 //				Name: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {

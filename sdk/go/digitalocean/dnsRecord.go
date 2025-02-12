@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
+//			_default, err := digitalocean.NewDomain(ctx, "default", &digitalocean.DomainArgs{
 //				Name: pulumi.String("example.com"),
 //			})
 //			if err != nil {

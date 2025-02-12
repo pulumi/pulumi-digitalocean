@@ -44,7 +44,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const small-with-backups = digitalocean.getDroplets({
+ * const small_with_backups = digitalocean.getDroplets({
  *     filters: [
  *         {
  *             key: "size",
@@ -145,7 +145,7 @@ export interface GetDropletsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const small-with-backups = digitalocean.getDroplets({
+ * const small_with_backups = digitalocean.getDroplets({
  *     filters: [
  *         {
  *             key: "size",

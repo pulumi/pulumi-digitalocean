@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getDatabaseCluster({
  *     name: "example-cluster",
  * });
- * const read-only = example.then(example => digitalocean.getDatabaseReplica({
+ * const read_only = example.then(example => digitalocean.getDatabaseReplica({
  *     clusterId: example.id,
  *     name: "terra-test-ro",
  * }));
@@ -116,7 +116,7 @@ export interface GetDatabaseReplicaResult {
  * const example = digitalocean.getDatabaseCluster({
  *     name: "example-cluster",
  * });
- * const read-only = example.then(example => digitalocean.getDatabaseReplica({
+ * const read_only = example.then(example => digitalocean.getDatabaseReplica({
  *     clusterId: example.id,
  *     name: "terra-test-ro",
  * }));
