@@ -17,7 +17,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const web-snapshot = digitalocean.getDropletSnapshot({
+ * const web_snapshot = digitalocean.getDropletSnapshot({
  *     nameRegex: "^web",
  *     region: "nyc3",
  *     mostRecent: true,
@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const web-snapshot = digitalocean.getDropletSnapshot({
+ * const web_snapshot = digitalocean.getDropletSnapshot({
  *     nameRegex: "^web",
  *     region: "nyc3",
  *     mostRecent: true,
@@ -126,7 +126,7 @@ export interface GetDropletSnapshotResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const web-snapshot = digitalocean.getDropletSnapshot({
+ * const web_snapshot = digitalocean.getDropletSnapshot({
  *     nameRegex: "^web",
  *     region: "nyc3",
  *     mostRecent: true,
@@ -139,7 +139,7 @@ export interface GetDropletSnapshotResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const web-snapshot = digitalocean.getDropletSnapshot({
+ * const web_snapshot = digitalocean.getDropletSnapshot({
  *     nameRegex: "^web",
  *     region: "nyc3",
  *     mostRecent: true,

@@ -16,7 +16,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const my-imported-autoscale-pool = digitalocean.getDropletAutoscale({
+ * const my_imported_autoscale_pool = digitalocean.getDropletAutoscale({
  *     name: my_existing_autoscale_pool.name,
  * });
  * ```
@@ -27,7 +27,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const my-imported-autoscale-pool = digitalocean.getDropletAutoscale({
+ * const my_imported_autoscale_pool = digitalocean.getDropletAutoscale({
  *     id: my_existing_autoscale_pool.id,
  * });
  * ```
@@ -77,7 +77,7 @@ export interface GetDropletAutoscaleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const my-imported-autoscale-pool = digitalocean.getDropletAutoscale({
+ * const my_imported_autoscale_pool = digitalocean.getDropletAutoscale({
  *     name: my_existing_autoscale_pool.name,
  * });
  * ```
@@ -88,7 +88,7 @@ export interface GetDropletAutoscaleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const my-imported-autoscale-pool = digitalocean.getDropletAutoscale({
+ * const my_imported_autoscale_pool = digitalocean.getDropletAutoscale({
  *     id: my_existing_autoscale_pool.id,
  * });
  * ```

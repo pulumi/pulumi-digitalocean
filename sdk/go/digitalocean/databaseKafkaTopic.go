@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
+//			kafka_example, err := digitalocean.NewDatabaseCluster(ctx, "kafka-example", &digitalocean.DatabaseClusterArgs{
 //				Name:      pulumi.String("example-kafka-cluster"),
 //				Engine:    pulumi.String("kafka"),
 //				Version:   pulumi.String("3.5"),

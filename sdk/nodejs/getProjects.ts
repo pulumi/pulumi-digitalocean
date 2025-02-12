@@ -40,7 +40,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const non-default-production = digitalocean.getProjects({
+ * const non_default_production = digitalocean.getProjects({
  *     filters: [
  *         {
  *             key: "environment",
@@ -132,7 +132,7 @@ export interface GetProjectsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const non-default-production = digitalocean.getProjects({
+ * const non_default_production = digitalocean.getProjects({
  *     filters: [
  *         {
  *             key: "environment",

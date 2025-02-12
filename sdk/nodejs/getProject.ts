@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const default = digitalocean.getProject({});
+ * const _default = digitalocean.getProject({});
  * const staging = digitalocean.getProject({
  *     name: "My Staging Project",
  * });
@@ -94,7 +94,7 @@ export interface GetProjectResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const default = digitalocean.getProject({});
+ * const _default = digitalocean.getProject({});
  * const staging = digitalocean.getProject({
  *     name: "My Staging Project",
  * });
