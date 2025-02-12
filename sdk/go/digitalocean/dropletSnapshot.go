@@ -37,7 +37,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.NewDropletSnapshot(ctx, "web-snapshot", &digitalocean.DropletSnapshotArgs{
+//			web_snapshot, err := digitalocean.NewDropletSnapshot(ctx, "web-snapshot", &digitalocean.DropletSnapshotArgs{
 //				DropletId: web.ID(),
 //				Name:      pulumi.String("web-snapshot-01"),
 //			})

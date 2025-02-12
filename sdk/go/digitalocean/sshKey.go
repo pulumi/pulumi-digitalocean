@@ -39,7 +39,7 @@ import (
 //				return err
 //			}
 //			// Create a new SSH key
-//			_, err = digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
+//			_default, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
 //				Name:      pulumi.String("Example"),
 //				PublicKey: pulumi.String(invokeFile.Result),
 //			})
