@@ -87,6 +87,14 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("clusterAutoscalerConfigurations")]
+        private List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
+        public List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
+        {
+            get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>());
+            set => _clusterAutoscalerConfigurations = value;
+        }
+
         [Input("kubeconfigExpireSeconds")]
         public int? KubeconfigExpireSeconds { get; set; }
 
@@ -116,6 +124,14 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("clusterAutoscalerConfigurations")]
+        private InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs>? _clusterAutoscalerConfigurations;
+        public InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs> ClusterAutoscalerConfigurations
+        {
+            get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs>());
+            set => _clusterAutoscalerConfigurations = value;
+        }
+
         [Input("kubeconfigExpireSeconds")]
         public Input<int>? KubeconfigExpireSeconds { get; set; }
 
@@ -151,6 +167,7 @@ namespace Pulumi.DigitalOcean
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
         public readonly bool AutoUpgrade;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterClusterAutoscalerConfigurationResult> ClusterAutoscalerConfigurations;
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster.
         /// </summary>
@@ -228,6 +245,8 @@ namespace Pulumi.DigitalOcean
         private GetKubernetesClusterResult(
             bool autoUpgrade,
 
+            ImmutableArray<Outputs.GetKubernetesClusterClusterAutoscalerConfigurationResult> clusterAutoscalerConfigurations,
+
             string clusterSubnet,
 
             ImmutableArray<Outputs.GetKubernetesClusterControlPlaneFirewallResult> controlPlaneFirewalls,
@@ -271,6 +290,7 @@ namespace Pulumi.DigitalOcean
             string vpcUuid)
         {
             AutoUpgrade = autoUpgrade;
+            ClusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             ClusterSubnet = clusterSubnet;
             ControlPlaneFirewalls = controlPlaneFirewalls;
             CreatedAt = createdAt;

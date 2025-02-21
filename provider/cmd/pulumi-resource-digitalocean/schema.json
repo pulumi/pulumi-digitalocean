@@ -3110,6 +3110,17 @@
             },
             "type": "object"
         },
+        "digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration": {
+            "properties": {
+                "scaleDownUnneededTime": {
+                    "type": "string"
+                },
+                "scaleDownUtilizationThreshold": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall": {
             "properties": {
                 "allowedAddresses": {
@@ -7148,6 +7159,17 @@
             "required": [
                 "key"
             ]
+        },
+        "digitalocean:index/getKubernetesClusterClusterAutoscalerConfiguration:getKubernetesClusterClusterAutoscalerConfiguration": {
+            "properties": {
+                "scaleDownUnneededTime": {
+                    "type": "string"
+                },
+                "scaleDownUtilizationThreshold": {
+                    "type": "number"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getKubernetesClusterControlPlaneFirewall:getKubernetesClusterControlPlaneFirewall": {
             "properties": {
@@ -14457,6 +14479,12 @@
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
                 },
+                "clusterAutoscalerConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
+                    }
+                },
                 "clusterSubnet": {
                     "type": "string",
                     "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n"
@@ -14575,6 +14603,12 @@
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
                 },
+                "clusterAutoscalerConfigurations": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
+                    }
+                },
                 "clusterSubnet": {
                     "type": "string",
                     "description": "The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
@@ -14662,6 +14696,12 @@
                     "autoUpgrade": {
                         "type": "boolean",
                         "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
+                    },
+                    "clusterAutoscalerConfigurations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
+                        }
                     },
                     "clusterSubnet": {
                         "type": "string",
@@ -19029,6 +19069,12 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKubernetesCluster.\n",
                 "properties": {
+                    "clusterAutoscalerConfigurations": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterClusterAutoscalerConfiguration:getKubernetesClusterClusterAutoscalerConfiguration"
+                        }
+                    },
                     "kubeconfigExpireSeconds": {
                         "type": "integer"
                     },
@@ -19055,6 +19101,12 @@
                     "autoUpgrade": {
                         "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n",
                         "type": "boolean"
+                    },
+                    "clusterAutoscalerConfigurations": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterClusterAutoscalerConfiguration:getKubernetesClusterClusterAutoscalerConfiguration"
+                        },
+                        "type": "array"
                     },
                     "clusterSubnet": {
                         "description": "The range of IP addresses in the overlay network of the Kubernetes cluster.\n",

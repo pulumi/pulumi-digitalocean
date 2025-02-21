@@ -4481,6 +4481,11 @@ export interface GetImagesSort {
     key: string;
 }
 
+export interface GetKubernetesClusterClusterAutoscalerConfiguration {
+    scaleDownUnneededTime?: string;
+    scaleDownUtilizationThreshold?: number;
+}
+
 export interface GetKubernetesClusterControlPlaneFirewall {
     allowedAddresses: string[];
     enabled: boolean;
@@ -5234,6 +5239,11 @@ export interface GetTagsTag {
      * A count of the volumes that the tag is applied to.
      */
     volumesCount: number;
+}
+
+export interface KubernetesClusterClusterAutoscalerConfiguration {
+    scaleDownUnneededTime?: string;
+    scaleDownUtilizationThreshold?: number;
 }
 
 export interface KubernetesClusterControlPlaneFirewall {

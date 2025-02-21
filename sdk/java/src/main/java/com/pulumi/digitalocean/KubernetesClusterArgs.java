@@ -7,6 +7,7 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
@@ -37,6 +38,13 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
      */
     public Optional<Output<Boolean>> autoUpgrade() {
         return Optional.ofNullable(this.autoUpgrade);
+    }
+
+    @Import(name="clusterAutoscalerConfigurations")
+    private @Nullable Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations;
+
+    public Optional<Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>>> clusterAutoscalerConfigurations() {
+        return Optional.ofNullable(this.clusterAutoscalerConfigurations);
     }
 
     /**
@@ -264,6 +272,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
 
     private KubernetesClusterArgs(KubernetesClusterArgs $) {
         this.autoUpgrade = $.autoUpgrade;
+        this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.clusterSubnet = $.clusterSubnet;
         this.controlPlaneFirewall = $.controlPlaneFirewall;
         this.destroyAllAssociatedResources = $.destroyAllAssociatedResources;
@@ -318,6 +327,19 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder autoUpgrade(Boolean autoUpgrade) {
             return autoUpgrade(Output.of(autoUpgrade));
+        }
+
+        public Builder clusterAutoscalerConfigurations(@Nullable Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations) {
+            $.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
+            return this;
+        }
+
+        public Builder clusterAutoscalerConfigurations(List<KubernetesClusterClusterAutoscalerConfigurationArgs> clusterAutoscalerConfigurations) {
+            return clusterAutoscalerConfigurations(Output.of(clusterAutoscalerConfigurations));
+        }
+
+        public Builder clusterAutoscalerConfigurations(KubernetesClusterClusterAutoscalerConfigurationArgs... clusterAutoscalerConfigurations) {
+            return clusterAutoscalerConfigurations(List.of(clusterAutoscalerConfigurations));
         }
 
         /**

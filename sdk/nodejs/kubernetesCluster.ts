@@ -66,6 +66,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    public readonly clusterAutoscalerConfigurations!: pulumi.Output<outputs.KubernetesClusterClusterAutoscalerConfiguration[] | undefined>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
@@ -168,6 +169,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
             resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
+            resourceInputs["clusterAutoscalerConfigurations"] = state ? state.clusterAutoscalerConfigurations : undefined;
             resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
             resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
             resourceInputs["controlPlaneFirewall"] = state ? state.controlPlaneFirewall : undefined;
@@ -202,6 +204,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'version'");
             }
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
+            resourceInputs["clusterAutoscalerConfigurations"] = args ? args.clusterAutoscalerConfigurations : undefined;
             resourceInputs["clusterSubnet"] = args ? args.clusterSubnet : undefined;
             resourceInputs["controlPlaneFirewall"] = args ? args.controlPlaneFirewall : undefined;
             resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
@@ -240,6 +243,7 @@ export interface KubernetesClusterState {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[]>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
@@ -337,6 +341,7 @@ export interface KubernetesClusterArgs {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[]>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */

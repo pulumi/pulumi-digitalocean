@@ -24,6 +24,7 @@ import * as utilities from "./utilities";
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "tags": args.tags,
@@ -34,6 +35,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterArgs {
+    clusterAutoscalerConfigurations?: inputs.GetKubernetesClusterClusterAutoscalerConfiguration[];
     kubeconfigExpireSeconds?: number;
     /**
      * The name of Kubernetes cluster.
@@ -53,6 +55,7 @@ export interface GetKubernetesClusterResult {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     readonly autoUpgrade: boolean;
+    readonly clusterAutoscalerConfigurations?: outputs.GetKubernetesClusterClusterAutoscalerConfiguration[];
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster.
      */
@@ -143,6 +146,7 @@ export interface GetKubernetesClusterResult {
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
         "tags": args.tags,
@@ -153,6 +157,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterOutputArgs {
+    clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[]>;
     kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
      * The name of Kubernetes cluster.

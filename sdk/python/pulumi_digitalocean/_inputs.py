@@ -244,6 +244,8 @@ __all__ = [
     'FirewallOutboundRuleArgsDict',
     'FirewallPendingChangeArgs',
     'FirewallPendingChangeArgsDict',
+    'KubernetesClusterClusterAutoscalerConfigurationArgs',
+    'KubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'KubernetesClusterControlPlaneFirewallArgs',
     'KubernetesClusterControlPlaneFirewallArgsDict',
     'KubernetesClusterKubeConfigArgs',
@@ -312,6 +314,8 @@ __all__ = [
     'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
     'GetImagesSortArgsDict',
+    'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
+    'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'GetProjectsFilterArgs',
     'GetProjectsFilterArgsDict',
     'GetProjectsSortArgs',
@@ -10979,6 +10983,42 @@ class FirewallPendingChangeArgs:
 
 
 if not MYPY:
+    class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+        scale_down_unneeded_time: NotRequired[pulumi.Input[str]]
+        scale_down_utilization_threshold: NotRequired[pulumi.Input[float]]
+elif False:
+    KubernetesClusterClusterAutoscalerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterClusterAutoscalerConfigurationArgs:
+    def __init__(__self__, *,
+                 scale_down_unneeded_time: Optional[pulumi.Input[str]] = None,
+                 scale_down_utilization_threshold: Optional[pulumi.Input[float]] = None):
+        if scale_down_unneeded_time is not None:
+            pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
+        if scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter(name="scaleDownUnneededTime")
+    def scale_down_unneeded_time(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "scale_down_unneeded_time")
+
+    @scale_down_unneeded_time.setter
+    def scale_down_unneeded_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "scale_down_unneeded_time", value)
+
+    @property
+    @pulumi.getter(name="scaleDownUtilizationThreshold")
+    def scale_down_utilization_threshold(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "scale_down_utilization_threshold")
+
+    @scale_down_utilization_threshold.setter
+    def scale_down_utilization_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "scale_down_utilization_threshold", value)
+
+
+if not MYPY:
     class KubernetesClusterControlPlaneFirewallArgsDict(TypedDict):
         allowed_addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
         enabled: pulumi.Input[bool]
@@ -14175,6 +14215,42 @@ class GetImagesSortArgs:
     @direction.setter
     def direction(self, value: Optional[str]):
         pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+        scale_down_unneeded_time: NotRequired[str]
+        scale_down_utilization_threshold: NotRequired[float]
+elif False:
+    GetKubernetesClusterClusterAutoscalerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
+    def __init__(__self__, *,
+                 scale_down_unneeded_time: Optional[str] = None,
+                 scale_down_utilization_threshold: Optional[float] = None):
+        if scale_down_unneeded_time is not None:
+            pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
+        if scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter(name="scaleDownUnneededTime")
+    def scale_down_unneeded_time(self) -> Optional[str]:
+        return pulumi.get(self, "scale_down_unneeded_time")
+
+    @scale_down_unneeded_time.setter
+    def scale_down_unneeded_time(self, value: Optional[str]):
+        pulumi.set(self, "scale_down_unneeded_time", value)
+
+    @property
+    @pulumi.getter(name="scaleDownUtilizationThreshold")
+    def scale_down_utilization_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "scale_down_utilization_threshold")
+
+    @scale_down_utilization_threshold.setter
+    def scale_down_utilization_threshold(self, value: Optional[float]):
+        pulumi.set(self, "scale_down_utilization_threshold", value)
 
 
 if not MYPY:

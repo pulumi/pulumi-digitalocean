@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.KubernetesClusterArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.KubernetesClusterState;
+import com.pulumi.digitalocean.outputs.KubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
@@ -64,6 +65,12 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> autoUpgrade() {
         return Codegen.optional(this.autoUpgrade);
+    }
+    @Export(name="clusterAutoscalerConfigurations", refs={List.class,KubernetesClusterClusterAutoscalerConfiguration.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KubernetesClusterClusterAutoscalerConfiguration>> clusterAutoscalerConfigurations;
+
+    public Output<Optional<List<KubernetesClusterClusterAutoscalerConfiguration>>> clusterAutoscalerConfigurations() {
+        return Codegen.optional(this.clusterAutoscalerConfigurations);
     }
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
