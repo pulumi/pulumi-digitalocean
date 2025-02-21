@@ -731,6 +731,9 @@
                 "current": "digitalocean:index/kubernetesCluster:KubernetesCluster",
                 "majorVersion": 4,
                 "fields": {
+                    "cluster_autoscaler_configuration": {
+                        "maxItemsOne": false
+                    },
                     "control_plane_firewall": {
                         "maxItemsOne": true,
                         "elem": {
@@ -1790,6 +1793,9 @@
                 "current": "digitalocean:index/getKubernetesCluster:getKubernetesCluster",
                 "majorVersion": 4,
                 "fields": {
+                    "cluster_autoscaler_configuration": {
+                        "maxItemsOne": false
+                    },
                     "control_plane_firewall": {
                         "maxItemsOne": false,
                         "elem": {
