@@ -131,6 +131,7 @@ __all__ = [
     'FirewallInboundRule',
     'FirewallOutboundRule',
     'FirewallPendingChange',
+    'KubernetesClusterClusterAutoscalerConfiguration',
     'KubernetesClusterControlPlaneFirewall',
     'KubernetesClusterKubeConfig',
     'KubernetesClusterMaintenancePolicy',
@@ -273,6 +274,7 @@ __all__ = [
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetImagesSortResult',
+    'GetKubernetesClusterClusterAutoscalerConfigurationResult',
     'GetKubernetesClusterControlPlaneFirewallResult',
     'GetKubernetesClusterKubeConfigResult',
     'GetKubernetesClusterMaintenancePolicyResult',
@@ -8041,6 +8043,46 @@ class FirewallPendingChange(dict):
         This can be "waiting", "succeeded", or "failed".
         """
         return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class KubernetesClusterClusterAutoscalerConfiguration(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scaleDownUnneededTime":
+            suggest = "scale_down_unneeded_time"
+        elif key == "scaleDownUtilizationThreshold":
+            suggest = "scale_down_utilization_threshold"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in KubernetesClusterClusterAutoscalerConfiguration. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        KubernetesClusterClusterAutoscalerConfiguration.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        KubernetesClusterClusterAutoscalerConfiguration.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scale_down_unneeded_time: Optional[str] = None,
+                 scale_down_utilization_threshold: Optional[float] = None):
+        if scale_down_unneeded_time is not None:
+            pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
+        if scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter(name="scaleDownUnneededTime")
+    def scale_down_unneeded_time(self) -> Optional[str]:
+        return pulumi.get(self, "scale_down_unneeded_time")
+
+    @property
+    @pulumi.getter(name="scaleDownUtilizationThreshold")
+    def scale_down_utilization_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "scale_down_utilization_threshold")
 
 
 @pulumi.output_type
@@ -16172,6 +16214,27 @@ class GetImagesSortResult(dict):
         The sort direction. This may be either `asc` or `desc`.
         """
         return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetKubernetesClusterClusterAutoscalerConfigurationResult(dict):
+    def __init__(__self__, *,
+                 scale_down_unneeded_time: Optional[str] = None,
+                 scale_down_utilization_threshold: Optional[float] = None):
+        if scale_down_unneeded_time is not None:
+            pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
+        if scale_down_utilization_threshold is not None:
+            pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter(name="scaleDownUnneededTime")
+    def scale_down_unneeded_time(self) -> Optional[str]:
+        return pulumi.get(self, "scale_down_unneeded_time")
+
+    @property
+    @pulumi.getter(name="scaleDownUtilizationThreshold")
+    def scale_down_utilization_threshold(self) -> Optional[float]:
+        return pulumi.get(self, "scale_down_utilization_threshold")
 
 
 @pulumi.output_type

@@ -18735,6 +18735,108 @@ func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendi
 	}).(FirewallPendingChangeOutput)
 }
 
+type KubernetesClusterClusterAutoscalerConfiguration struct {
+	ScaleDownUnneededTime         *string  `pulumi:"scaleDownUnneededTime"`
+	ScaleDownUtilizationThreshold *float64 `pulumi:"scaleDownUtilizationThreshold"`
+}
+
+// KubernetesClusterClusterAutoscalerConfigurationInput is an input type that accepts KubernetesClusterClusterAutoscalerConfigurationArgs and KubernetesClusterClusterAutoscalerConfigurationOutput values.
+// You can construct a concrete instance of `KubernetesClusterClusterAutoscalerConfigurationInput` via:
+//
+//	KubernetesClusterClusterAutoscalerConfigurationArgs{...}
+type KubernetesClusterClusterAutoscalerConfigurationInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterClusterAutoscalerConfigurationOutput() KubernetesClusterClusterAutoscalerConfigurationOutput
+	ToKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(context.Context) KubernetesClusterClusterAutoscalerConfigurationOutput
+}
+
+type KubernetesClusterClusterAutoscalerConfigurationArgs struct {
+	ScaleDownUnneededTime         pulumi.StringPtrInput  `pulumi:"scaleDownUnneededTime"`
+	ScaleDownUtilizationThreshold pulumi.Float64PtrInput `pulumi:"scaleDownUtilizationThreshold"`
+}
+
+func (KubernetesClusterClusterAutoscalerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (i KubernetesClusterClusterAutoscalerConfigurationArgs) ToKubernetesClusterClusterAutoscalerConfigurationOutput() KubernetesClusterClusterAutoscalerConfigurationOutput {
+	return i.ToKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterClusterAutoscalerConfigurationArgs) ToKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) KubernetesClusterClusterAutoscalerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterClusterAutoscalerConfigurationOutput)
+}
+
+// KubernetesClusterClusterAutoscalerConfigurationArrayInput is an input type that accepts KubernetesClusterClusterAutoscalerConfigurationArray and KubernetesClusterClusterAutoscalerConfigurationArrayOutput values.
+// You can construct a concrete instance of `KubernetesClusterClusterAutoscalerConfigurationArrayInput` via:
+//
+//	KubernetesClusterClusterAutoscalerConfigurationArray{ KubernetesClusterClusterAutoscalerConfigurationArgs{...} }
+type KubernetesClusterClusterAutoscalerConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterClusterAutoscalerConfigurationArrayOutput() KubernetesClusterClusterAutoscalerConfigurationArrayOutput
+	ToKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(context.Context) KubernetesClusterClusterAutoscalerConfigurationArrayOutput
+}
+
+type KubernetesClusterClusterAutoscalerConfigurationArray []KubernetesClusterClusterAutoscalerConfigurationInput
+
+func (KubernetesClusterClusterAutoscalerConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (i KubernetesClusterClusterAutoscalerConfigurationArray) ToKubernetesClusterClusterAutoscalerConfigurationArrayOutput() KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return i.ToKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterClusterAutoscalerConfigurationArray) ToKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(ctx context.Context) KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterClusterAutoscalerConfigurationArrayOutput)
+}
+
+type KubernetesClusterClusterAutoscalerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterClusterAutoscalerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ToKubernetesClusterClusterAutoscalerConfigurationOutput() KubernetesClusterClusterAutoscalerConfigurationOutput {
+	return o
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ToKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) KubernetesClusterClusterAutoscalerConfigurationOutput {
+	return o
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUnneededTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterClusterAutoscalerConfiguration) *string { return v.ScaleDownUnneededTime }).(pulumi.StringPtrOutput)
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUtilizationThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v KubernetesClusterClusterAutoscalerConfiguration) *float64 {
+		return v.ScaleDownUtilizationThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type KubernetesClusterClusterAutoscalerConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterClusterAutoscalerConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationArrayOutput) ToKubernetesClusterClusterAutoscalerConfigurationArrayOutput() KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationArrayOutput) ToKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(ctx context.Context) KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationArrayOutput) Index(i pulumi.IntInput) KubernetesClusterClusterAutoscalerConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterClusterAutoscalerConfiguration {
+		return vs[0].([]KubernetesClusterClusterAutoscalerConfiguration)[vs[1].(int)]
+	}).(KubernetesClusterClusterAutoscalerConfigurationOutput)
+}
+
 type KubernetesClusterControlPlaneFirewall struct {
 	AllowedAddresses []string `pulumi:"allowedAddresses"`
 	Enabled          bool     `pulumi:"enabled"`
@@ -40746,6 +40848,108 @@ func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
 	}).(GetImagesSortOutput)
 }
 
+type GetKubernetesClusterClusterAutoscalerConfiguration struct {
+	ScaleDownUnneededTime         *string  `pulumi:"scaleDownUnneededTime"`
+	ScaleDownUtilizationThreshold *float64 `pulumi:"scaleDownUtilizationThreshold"`
+}
+
+// GetKubernetesClusterClusterAutoscalerConfigurationInput is an input type that accepts GetKubernetesClusterClusterAutoscalerConfigurationArgs and GetKubernetesClusterClusterAutoscalerConfigurationOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterClusterAutoscalerConfigurationInput` via:
+//
+//	GetKubernetesClusterClusterAutoscalerConfigurationArgs{...}
+type GetKubernetesClusterClusterAutoscalerConfigurationInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterClusterAutoscalerConfigurationOutput() GetKubernetesClusterClusterAutoscalerConfigurationOutput
+	ToGetKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(context.Context) GetKubernetesClusterClusterAutoscalerConfigurationOutput
+}
+
+type GetKubernetesClusterClusterAutoscalerConfigurationArgs struct {
+	ScaleDownUnneededTime         pulumi.StringPtrInput  `pulumi:"scaleDownUnneededTime"`
+	ScaleDownUtilizationThreshold pulumi.Float64PtrInput `pulumi:"scaleDownUtilizationThreshold"`
+}
+
+func (GetKubernetesClusterClusterAutoscalerConfigurationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterClusterAutoscalerConfigurationArgs) ToGetKubernetesClusterClusterAutoscalerConfigurationOutput() GetKubernetesClusterClusterAutoscalerConfigurationOutput {
+	return i.ToGetKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterClusterAutoscalerConfigurationArgs) ToGetKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) GetKubernetesClusterClusterAutoscalerConfigurationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterClusterAutoscalerConfigurationOutput)
+}
+
+// GetKubernetesClusterClusterAutoscalerConfigurationArrayInput is an input type that accepts GetKubernetesClusterClusterAutoscalerConfigurationArray and GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterClusterAutoscalerConfigurationArrayInput` via:
+//
+//	GetKubernetesClusterClusterAutoscalerConfigurationArray{ GetKubernetesClusterClusterAutoscalerConfigurationArgs{...} }
+type GetKubernetesClusterClusterAutoscalerConfigurationArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutput() GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput
+	ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(context.Context) GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput
+}
+
+type GetKubernetesClusterClusterAutoscalerConfigurationArray []GetKubernetesClusterClusterAutoscalerConfigurationInput
+
+func (GetKubernetesClusterClusterAutoscalerConfigurationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterClusterAutoscalerConfigurationArray) ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutput() GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return i.ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterClusterAutoscalerConfigurationArray) ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(ctx context.Context) GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput)
+}
+
+type GetKubernetesClusterClusterAutoscalerConfigurationOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterClusterAutoscalerConfigurationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ToGetKubernetesClusterClusterAutoscalerConfigurationOutput() GetKubernetesClusterClusterAutoscalerConfigurationOutput {
+	return o
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ToGetKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) GetKubernetesClusterClusterAutoscalerConfigurationOutput {
+	return o
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUnneededTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetKubernetesClusterClusterAutoscalerConfiguration) *string { return v.ScaleDownUnneededTime }).(pulumi.StringPtrOutput)
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUtilizationThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetKubernetesClusterClusterAutoscalerConfiguration) *float64 {
+		return v.ScaleDownUtilizationThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+type GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterClusterAutoscalerConfiguration)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput) ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutput() GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput) ToGetKubernetesClusterClusterAutoscalerConfigurationArrayOutputWithContext(ctx context.Context) GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterClusterAutoscalerConfigurationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterClusterAutoscalerConfiguration {
+		return vs[0].([]GetKubernetesClusterClusterAutoscalerConfiguration)[vs[1].(int)]
+	}).(GetKubernetesClusterClusterAutoscalerConfigurationOutput)
+}
+
 type GetKubernetesClusterControlPlaneFirewall struct {
 	AllowedAddresses []string `pulumi:"allowedAddresses"`
 	Enabled          bool     `pulumi:"enabled"`
@@ -45488,6 +45692,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallOutboundRuleArrayInput)(nil)).Elem(), FirewallOutboundRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeInput)(nil)).Elem(), FirewallPendingChangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FirewallPendingChangeArrayInput)(nil)).Elem(), FirewallPendingChangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallPtrInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterKubeConfigInput)(nil)).Elem(), KubernetesClusterKubeConfigArgs{})
@@ -45767,6 +45973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortInput)(nil)).Elem(), GetImagesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortArrayInput)(nil)).Elem(), GetImagesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), GetKubernetesClusterClusterAutoscalerConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), GetKubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallArrayInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterKubeConfigInput)(nil)).Elem(), GetKubernetesClusterKubeConfigArgs{})
@@ -46063,6 +46271,8 @@ func init() {
 	pulumi.RegisterOutputType(FirewallOutboundRuleArrayOutput{})
 	pulumi.RegisterOutputType(FirewallPendingChangeOutput{})
 	pulumi.RegisterOutputType(FirewallPendingChangeArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterKubeConfigOutput{})
@@ -46342,6 +46552,8 @@ func init() {
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesSortOutput{})
 	pulumi.RegisterOutputType(GetImagesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterClusterAutoscalerConfigurationOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterKubeConfigOutput{})

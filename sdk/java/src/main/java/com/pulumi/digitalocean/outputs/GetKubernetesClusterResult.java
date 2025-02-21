@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
@@ -24,6 +25,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private Boolean autoUpgrade;
+    private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
     /**
      * @return The range of IP addresses in the overlay network of the Kubernetes cluster.
      * 
@@ -121,6 +123,9 @@ public final class GetKubernetesClusterResult {
      */
     public Boolean autoUpgrade() {
         return this.autoUpgrade;
+    }
+    public List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations() {
+        return this.clusterAutoscalerConfigurations == null ? List.of() : this.clusterAutoscalerConfigurations;
     }
     /**
      * @return The range of IP addresses in the overlay network of the Kubernetes cluster.
@@ -264,6 +269,7 @@ public final class GetKubernetesClusterResult {
     @CustomType.Builder
     public static final class Builder {
         private Boolean autoUpgrade;
+        private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
         private String clusterSubnet;
         private List<GetKubernetesClusterControlPlaneFirewall> controlPlaneFirewalls;
         private String createdAt;
@@ -289,6 +295,7 @@ public final class GetKubernetesClusterResult {
         public Builder(GetKubernetesClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoUpgrade = defaults.autoUpgrade;
+    	      this.clusterAutoscalerConfigurations = defaults.clusterAutoscalerConfigurations;
     	      this.clusterSubnet = defaults.clusterSubnet;
     	      this.controlPlaneFirewalls = defaults.controlPlaneFirewalls;
     	      this.createdAt = defaults.createdAt;
@@ -319,6 +326,15 @@ public final class GetKubernetesClusterResult {
             }
             this.autoUpgrade = autoUpgrade;
             return this;
+        }
+        @CustomType.Setter
+        public Builder clusterAutoscalerConfigurations(@Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations) {
+
+            this.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
+            return this;
+        }
+        public Builder clusterAutoscalerConfigurations(GetKubernetesClusterClusterAutoscalerConfiguration... clusterAutoscalerConfigurations) {
+            return clusterAutoscalerConfigurations(List.of(clusterAutoscalerConfigurations));
         }
         @CustomType.Setter
         public Builder clusterSubnet(String clusterSubnet) {
@@ -502,6 +518,7 @@ public final class GetKubernetesClusterResult {
         public GetKubernetesClusterResult build() {
             final var _resultValue = new GetKubernetesClusterResult();
             _resultValue.autoUpgrade = autoUpgrade;
+            _resultValue.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             _resultValue.clusterSubnet = clusterSubnet;
             _resultValue.controlPlaneFirewalls = controlPlaneFirewalls;
             _resultValue.createdAt = createdAt;

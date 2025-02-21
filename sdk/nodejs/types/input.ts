@@ -2626,6 +2626,16 @@ export interface GetImagesSortArgs {
     key: pulumi.Input<string>;
 }
 
+export interface GetKubernetesClusterClusterAutoscalerConfiguration {
+    scaleDownUnneededTime?: string;
+    scaleDownUtilizationThreshold?: number;
+}
+
+export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
+    scaleDownUnneededTime?: pulumi.Input<string>;
+    scaleDownUtilizationThreshold?: pulumi.Input<number>;
+}
+
 export interface GetProjectsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -3110,6 +3120,11 @@ export interface GetTagsSortArgs {
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: pulumi.Input<string>;
+}
+
+export interface KubernetesClusterClusterAutoscalerConfiguration {
+    scaleDownUnneededTime?: pulumi.Input<string>;
+    scaleDownUtilizationThreshold?: pulumi.Input<number>;
 }
 
 export interface KubernetesClusterControlPlaneFirewall {

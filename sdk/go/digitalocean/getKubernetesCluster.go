@@ -50,7 +50,8 @@ func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterA
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterArgs struct {
-	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
+	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
+	KubeconfigExpireSeconds         *int                                                 `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name string `pulumi:"name"`
 	// A list of tag names applied to the node pool.
@@ -60,7 +61,8 @@ type LookupKubernetesClusterArgs struct {
 // A collection of values returned by getKubernetesCluster.
 type LookupKubernetesClusterResult struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade bool `pulumi:"autoUpgrade"`
+	AutoUpgrade                     bool                                                 `pulumi:"autoUpgrade"`
+	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster.
 	ClusterSubnet         string                                     `pulumi:"clusterSubnet"`
 	ControlPlaneFirewalls []GetKubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewalls"`
@@ -112,7 +114,8 @@ func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClu
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterOutputArgs struct {
-	KubeconfigExpireSeconds pulumi.IntPtrInput `pulumi:"kubeconfigExpireSeconds"`
+	ClusterAutoscalerConfigurations GetKubernetesClusterClusterAutoscalerConfigurationArrayInput `pulumi:"clusterAutoscalerConfigurations"`
+	KubeconfigExpireSeconds         pulumi.IntPtrInput                                           `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name pulumi.StringInput `pulumi:"name"`
 	// A list of tag names applied to the node pool.
@@ -141,6 +144,12 @@ func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutp
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 func (o LookupKubernetesClusterResultOutput) AutoUpgrade() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) bool { return v.AutoUpgrade }).(pulumi.BoolOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) ClusterAutoscalerConfigurations() GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterClusterAutoscalerConfiguration {
+		return v.ClusterAutoscalerConfigurations
+	}).(GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput)
 }
 
 // The range of IP addresses in the overlay network of the Kubernetes cluster.

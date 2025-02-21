@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -16,6 +17,13 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesClusterPlainArgs Empty = new GetKubernetesClusterPlainArgs();
+
+    @Import(name="clusterAutoscalerConfigurations")
+    private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
+
+    public Optional<List<GetKubernetesClusterClusterAutoscalerConfiguration>> clusterAutoscalerConfigurations() {
+        return Optional.ofNullable(this.clusterAutoscalerConfigurations);
+    }
 
     @Import(name="kubeconfigExpireSeconds")
     private @Nullable Integer kubeconfigExpireSeconds;
@@ -57,6 +65,7 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
     private GetKubernetesClusterPlainArgs() {}
 
     private GetKubernetesClusterPlainArgs(GetKubernetesClusterPlainArgs $) {
+        this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
         this.tags = $.tags;
@@ -78,6 +87,15 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
 
         public Builder(GetKubernetesClusterPlainArgs defaults) {
             $ = new GetKubernetesClusterPlainArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder clusterAutoscalerConfigurations(@Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations) {
+            $.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
+            return this;
+        }
+
+        public Builder clusterAutoscalerConfigurations(GetKubernetesClusterClusterAutoscalerConfiguration... clusterAutoscalerConfigurations) {
+            return clusterAutoscalerConfigurations(List.of(clusterAutoscalerConfigurations));
         }
 
         public Builder kubeconfigExpireSeconds(@Nullable Integer kubeconfigExpireSeconds) {

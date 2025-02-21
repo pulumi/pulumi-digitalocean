@@ -14,6 +14,7 @@ else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetKubernetesClusterResult',
@@ -27,10 +28,13 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if cluster_autoscaler_configurations and not isinstance(cluster_autoscaler_configurations, list):
+            raise TypeError("Expected argument 'cluster_autoscaler_configurations' to be a list")
+        pulumi.set(__self__, "cluster_autoscaler_configurations", cluster_autoscaler_configurations)
         if cluster_subnet and not isinstance(cluster_subnet, str):
             raise TypeError("Expected argument 'cluster_subnet' to be a str")
         pulumi.set(__self__, "cluster_subnet", cluster_subnet)
@@ -102,6 +106,11 @@ class GetKubernetesClusterResult:
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         """
         return pulumi.get(self, "auto_upgrade")
+
+    @property
+    @pulumi.getter(name="clusterAutoscalerConfigurations")
+    def cluster_autoscaler_configurations(self) -> Optional[Sequence['outputs.GetKubernetesClusterClusterAutoscalerConfigurationResult']]:
+        return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @property
     @pulumi.getter(name="clusterSubnet")
@@ -267,6 +276,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             yield self
         return GetKubernetesClusterResult(
             auto_upgrade=self.auto_upgrade,
+            cluster_autoscaler_configurations=self.cluster_autoscaler_configurations,
             cluster_subnet=self.cluster_subnet,
             control_plane_firewalls=self.control_plane_firewalls,
             created_at=self.created_at,
@@ -290,7 +300,8 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             vpc_uuid=self.vpc_uuid)
 
 
-def get_kubernetes_cluster(kubeconfig_expire_seconds: Optional[int] = None,
+def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]] = None,
+                           kubeconfig_expire_seconds: Optional[int] = None,
                            name: Optional[str] = None,
                            tags: Optional[Sequence[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
@@ -311,6 +322,7 @@ def get_kubernetes_cluster(kubeconfig_expire_seconds: Optional[int] = None,
     :param Sequence[str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
+    __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['tags'] = tags
@@ -319,6 +331,7 @@ def get_kubernetes_cluster(kubeconfig_expire_seconds: Optional[int] = None,
 
     return AwaitableGetKubernetesClusterResult(
         auto_upgrade=pulumi.get(__ret__, 'auto_upgrade'),
+        cluster_autoscaler_configurations=pulumi.get(__ret__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__ret__, 'cluster_subnet'),
         control_plane_firewalls=pulumi.get(__ret__, 'control_plane_firewalls'),
         created_at=pulumi.get(__ret__, 'created_at'),
@@ -340,7 +353,8 @@ def get_kubernetes_cluster(kubeconfig_expire_seconds: Optional[int] = None,
         urn=pulumi.get(__ret__, 'urn'),
         version=pulumi.get(__ret__, 'version'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_kubernetes_cluster_output(kubeconfig_expire_seconds: Optional[pulumi.Input[Optional[int]]] = None,
+def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                                  kubeconfig_expire_seconds: Optional[pulumi.Input[Optional[int]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
                                   tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesClusterResult]:
@@ -361,6 +375,7 @@ def get_kubernetes_cluster_output(kubeconfig_expire_seconds: Optional[pulumi.Inp
     :param Sequence[str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
+    __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
     __args__['tags'] = tags
@@ -368,6 +383,7 @@ def get_kubernetes_cluster_output(kubeconfig_expire_seconds: Optional[pulumi.Inp
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult)
     return __ret__.apply(lambda __response__: GetKubernetesClusterResult(
         auto_upgrade=pulumi.get(__response__, 'auto_upgrade'),
+        cluster_autoscaler_configurations=pulumi.get(__response__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__response__, 'cluster_subnet'),
         control_plane_firewalls=pulumi.get(__response__, 'control_plane_firewalls'),
         created_at=pulumi.get(__response__, 'created_at'),

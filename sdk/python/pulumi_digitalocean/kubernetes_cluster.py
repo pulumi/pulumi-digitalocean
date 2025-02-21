@@ -26,6 +26,7 @@ class KubernetesClusterArgs:
                  region: pulumi.Input[Union[str, 'Region']],
                  version: pulumi.Input[str],
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
@@ -63,6 +64,8 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "version", version)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if cluster_autoscaler_configurations is not None:
+            pulumi.set(__self__, "cluster_autoscaler_configurations", cluster_autoscaler_configurations)
         if cluster_subnet is not None:
             pulumi.set(__self__, "cluster_subnet", cluster_subnet)
         if control_plane_firewall is not None:
@@ -135,6 +138,15 @@ class KubernetesClusterArgs:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter(name="clusterAutoscalerConfigurations")
+    def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+        return pulumi.get(self, "cluster_autoscaler_configurations")
+
+    @cluster_autoscaler_configurations.setter
+    def cluster_autoscaler_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
+        pulumi.set(self, "cluster_autoscaler_configurations", value)
 
     @property
     @pulumi.getter(name="clusterSubnet")
@@ -284,6 +296,7 @@ class KubernetesClusterArgs:
 class _KubernetesClusterState:
     def __init__(__self__, *,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  cluster_urn: Optional[pulumi.Input[str]] = None,
                  control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
@@ -335,6 +348,8 @@ class _KubernetesClusterState:
         """
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
+        if cluster_autoscaler_configurations is not None:
+            pulumi.set(__self__, "cluster_autoscaler_configurations", cluster_autoscaler_configurations)
         if cluster_subnet is not None:
             pulumi.set(__self__, "cluster_subnet", cluster_subnet)
         if cluster_urn is not None:
@@ -391,6 +406,15 @@ class _KubernetesClusterState:
     @auto_upgrade.setter
     def auto_upgrade(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "auto_upgrade", value)
+
+    @property
+    @pulumi.getter(name="clusterAutoscalerConfigurations")
+    def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+        return pulumi.get(self, "cluster_autoscaler_configurations")
+
+    @cluster_autoscaler_configurations.setter
+    def cluster_autoscaler_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
+        pulumi.set(self, "cluster_autoscaler_configurations", value)
 
     @property
     @pulumi.getter(name="clusterSubnet")
@@ -662,6 +686,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
@@ -774,6 +799,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  auto_upgrade: Optional[pulumi.Input[bool]] = None,
+                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: Optional[pulumi.Input[str]] = None,
                  control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
                  destroy_all_associated_resources: Optional[pulumi.Input[bool]] = None,
@@ -799,6 +825,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
             __props__.__dict__["auto_upgrade"] = auto_upgrade
+            __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
             __props__.__dict__["cluster_subnet"] = cluster_subnet
             __props__.__dict__["control_plane_firewall"] = control_plane_firewall
             __props__.__dict__["destroy_all_associated_resources"] = destroy_all_associated_resources
@@ -840,6 +867,7 @@ class KubernetesCluster(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             auto_upgrade: Optional[pulumi.Input[bool]] = None,
+            cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
             cluster_subnet: Optional[pulumi.Input[str]] = None,
             cluster_urn: Optional[pulumi.Input[str]] = None,
             control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
@@ -899,6 +927,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__ = _KubernetesClusterState.__new__(_KubernetesClusterState)
 
         __props__.__dict__["auto_upgrade"] = auto_upgrade
+        __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
         __props__.__dict__["cluster_subnet"] = cluster_subnet
         __props__.__dict__["cluster_urn"] = cluster_urn
         __props__.__dict__["control_plane_firewall"] = control_plane_firewall
@@ -930,6 +959,11 @@ class KubernetesCluster(pulumi.CustomResource):
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         """
         return pulumi.get(self, "auto_upgrade")
+
+    @property
+    @pulumi.getter(name="clusterAutoscalerConfigurations")
+    def cluster_autoscaler_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesClusterClusterAutoscalerConfiguration']]]:
+        return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @property
     @pulumi.getter(name="clusterSubnet")

@@ -45,6 +45,9 @@ namespace Pulumi.DigitalOcean
         [Output("autoUpgrade")]
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
+        [Output("clusterAutoscalerConfigurations")]
+        public Output<ImmutableArray<Outputs.KubernetesClusterClusterAutoscalerConfiguration>> ClusterAutoscalerConfigurations { get; private set; } = null!;
+
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
@@ -232,6 +235,14 @@ namespace Pulumi.DigitalOcean
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
 
+        [Input("clusterAutoscalerConfigurations")]
+        private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
+        public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
+        {
+            get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs>());
+            set => _clusterAutoscalerConfigurations = value;
+        }
+
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         /// </summary>
@@ -340,6 +351,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("autoUpgrade")]
         public Input<bool>? AutoUpgrade { get; set; }
+
+        [Input("clusterAutoscalerConfigurations")]
+        private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs>? _clusterAutoscalerConfigurations;
+        public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs> ClusterAutoscalerConfigurations
+        {
+            get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs>());
+            set => _clusterAutoscalerConfigurations = value;
+        }
 
         /// <summary>
         /// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
