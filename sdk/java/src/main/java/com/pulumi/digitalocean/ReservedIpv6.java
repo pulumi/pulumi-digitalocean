@@ -14,6 +14,58 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+ * 
+ * &gt; **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+ * `digitalocean.ReservedIpv6Assignment` resource only.
+ * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.ReservedIpv6;
+ * import com.pulumi.digitalocean.ReservedIpv6Args;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new ReservedIpv6("foobar", ReservedIpv6Args.builder()
+ *             .regionSlug("nyc3")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * ## Import
+ * 
+ * Reserved IPv6s can be imported using the `ip`, e.g.
+ * 
+ * ```sh
+ * $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+ * ```
+ * 
+ * 2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+ * 
+ */
 @ResourceType(type="digitalocean:index/reservedIpv6:ReservedIpv6")
 public class ReservedIpv6 extends com.pulumi.resources.CustomResource {
     @Export(name="dropletId", refs={Integer.class}, tree="[0]")
@@ -28,9 +80,17 @@ public class ReservedIpv6 extends com.pulumi.resources.CustomResource {
     public Output<String> ip() {
         return this.ip;
     }
+    /**
+     * The region that the reserved IPv6 needs to be reserved to.
+     * 
+     */
     @Export(name="regionSlug", refs={String.class}, tree="[0]")
     private Output<String> regionSlug;
 
+    /**
+     * @return The region that the reserved IPv6 needs to be reserved to.
+     * 
+     */
     public Output<String> regionSlug() {
         return this.regionSlug;
     }

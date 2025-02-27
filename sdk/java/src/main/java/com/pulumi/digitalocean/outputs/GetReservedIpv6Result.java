@@ -11,6 +11,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetReservedIpv6Result {
+    /**
+     * @return The Droplet id that the reserved IP has been assigned to.
+     * 
+     */
     private Integer dropletId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -18,10 +22,22 @@ public final class GetReservedIpv6Result {
      */
     private String id;
     private String ip;
+    /**
+     * @return The region that the reserved IPv6 is reserved to.
+     * 
+     */
     private String regionSlug;
+    /**
+     * @return The uniform resource name of the reserved IPv6.
+     * 
+     */
     private String urn;
 
     private GetReservedIpv6Result() {}
+    /**
+     * @return The Droplet id that the reserved IP has been assigned to.
+     * 
+     */
     public Integer dropletId() {
         return this.dropletId;
     }
@@ -35,9 +51,17 @@ public final class GetReservedIpv6Result {
     public String ip() {
         return this.ip;
     }
+    /**
+     * @return The region that the reserved IPv6 is reserved to.
+     * 
+     */
     public String regionSlug() {
         return this.regionSlug;
     }
+    /**
+     * @return The uniform resource name of the reserved IPv6.
+     * 
+     */
     public String urn() {
         return this.urn;
     }

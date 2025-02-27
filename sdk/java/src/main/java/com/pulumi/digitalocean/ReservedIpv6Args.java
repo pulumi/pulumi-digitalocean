@@ -31,9 +31,17 @@ public final class ReservedIpv6Args extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.ip);
     }
 
+    /**
+     * The region that the reserved IPv6 needs to be reserved to.
+     * 
+     */
     @Import(name="regionSlug", required=true)
     private Output<String> regionSlug;
 
+    /**
+     * @return The region that the reserved IPv6 needs to be reserved to.
+     * 
+     */
     public Output<String> regionSlug() {
         return this.regionSlug;
     }
@@ -82,11 +90,23 @@ public final class ReservedIpv6Args extends com.pulumi.resources.ResourceArgs {
             return ip(Output.of(ip));
         }
 
+        /**
+         * @param regionSlug The region that the reserved IPv6 needs to be reserved to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionSlug(Output<String> regionSlug) {
             $.regionSlug = regionSlug;
             return this;
         }
 
+        /**
+         * @param regionSlug The region that the reserved IPv6 needs to be reserved to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder regionSlug(String regionSlug) {
             return regionSlug(Output.of(regionSlug));
         }

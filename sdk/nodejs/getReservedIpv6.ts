@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * Get the reserved IPv6:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foo = new digitalocean.ReservedIpv6("foo", {regionSlug: "nyc3"});
+ * const foobar = digitalocean.getReservedIpv6Output({
+ *     ip: foo.ip,
+ * });
+ * ```
+ */
 export function getReservedIpv6(args: GetReservedIpv6Args, opts?: pulumi.InvokeOptions): Promise<GetReservedIpv6Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getReservedIpv6:getReservedIpv6", {
@@ -15,6 +30,9 @@ export function getReservedIpv6(args: GetReservedIpv6Args, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getReservedIpv6.
  */
 export interface GetReservedIpv6Args {
+    /**
+     * The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+     */
     ip: string;
 }
 
@@ -22,15 +40,39 @@ export interface GetReservedIpv6Args {
  * A collection of values returned by getReservedIpv6.
  */
 export interface GetReservedIpv6Result {
+    /**
+     * The Droplet id that the reserved IP has been assigned to.
+     */
     readonly dropletId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
     readonly ip: string;
+    /**
+     * The region that the reserved IPv6 is reserved to.
+     */
     readonly regionSlug: string;
+    /**
+     * The uniform resource name of the reserved IPv6.
+     */
     readonly urn: string;
 }
+/**
+ * ## Example Usage
+ *
+ * Get the reserved IPv6:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foo = new digitalocean.ReservedIpv6("foo", {regionSlug: "nyc3"});
+ * const foobar = digitalocean.getReservedIpv6Output({
+ *     ip: foo.ip,
+ * });
+ * ```
+ */
 export function getReservedIpv6Output(args: GetReservedIpv6OutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReservedIpv6Result> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getReservedIpv6:getReservedIpv6", {
@@ -42,5 +84,8 @@ export function getReservedIpv6Output(args: GetReservedIpv6OutputArgs, opts?: pu
  * A collection of arguments for invoking getReservedIpv6.
  */
 export interface GetReservedIpv6OutputArgs {
+    /**
+     * The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+     */
     ip: pulumi.Input<string>;
 }

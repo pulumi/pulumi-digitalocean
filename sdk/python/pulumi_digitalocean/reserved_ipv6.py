@@ -24,6 +24,7 @@ class ReservedIpv6Args:
                  ip: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ReservedIpv6 resource.
+        :param pulumi.Input[str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         """
         pulumi.set(__self__, "region_slug", region_slug)
         if droplet_id is not None:
@@ -34,6 +35,9 @@ class ReservedIpv6Args:
     @property
     @pulumi.getter(name="regionSlug")
     def region_slug(self) -> pulumi.Input[str]:
+        """
+        The region that the reserved IPv6 needs to be reserved to.
+        """
         return pulumi.get(self, "region_slug")
 
     @region_slug.setter
@@ -68,6 +72,7 @@ class _ReservedIpv6State:
                  urn: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReservedIpv6 resources.
+        :param pulumi.Input[str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         :param pulumi.Input[str] urn: the uniform resource name for the reserved ipv6
         """
         if droplet_id is not None:
@@ -100,6 +105,9 @@ class _ReservedIpv6State:
     @property
     @pulumi.getter(name="regionSlug")
     def region_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        The region that the reserved IPv6 needs to be reserved to.
+        """
         return pulumi.get(self, "region_slug")
 
     @region_slug.setter
@@ -129,9 +137,33 @@ class ReservedIpv6(pulumi.CustomResource):
                  region_slug: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ReservedIpv6 resource with the given unique name, props, and options.
+        Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+
+        > **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+        `ReservedIpv6Assignment` resource only.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.ReservedIpv6("foobar", region_slug="nyc3")
+        ```
+
+        ## Import
+
+        Reserved IPv6s can be imported using the `ip`, e.g.
+
+        ```sh
+        $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+        ```
+
+        2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         """
         ...
     @overload
@@ -140,7 +172,30 @@ class ReservedIpv6(pulumi.CustomResource):
                  args: ReservedIpv6Args,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ReservedIpv6 resource with the given unique name, props, and options.
+        Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+
+        > **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+        `ReservedIpv6Assignment` resource only.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foobar = digitalocean.ReservedIpv6("foobar", region_slug="nyc3")
+        ```
+
+        ## Import
+
+        Reserved IPv6s can be imported using the `ip`, e.g.
+
+        ```sh
+        $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+        ```
+
+        2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+
         :param str resource_name: The name of the resource.
         :param ReservedIpv6Args args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -195,6 +250,7 @@ class ReservedIpv6(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         :param pulumi.Input[str] urn: the uniform resource name for the reserved ipv6
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -220,6 +276,9 @@ class ReservedIpv6(pulumi.CustomResource):
     @property
     @pulumi.getter(name="regionSlug")
     def region_slug(self) -> pulumi.Output[str]:
+        """
+        The region that the reserved IPv6 needs to be reserved to.
+        """
         return pulumi.get(self, "region_slug")
 
     @property

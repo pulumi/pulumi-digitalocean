@@ -9,12 +9,32 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+    /// makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+    /// 
+    /// ## Import
+    /// 
+    /// Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+    /// 
+    /// the Droplet joined with a comma. For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+    /// ```
+    /// </summary>
     [DigitalOceanResourceType("digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment")]
     public partial class ReservedIpv6Assignment : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The ID of Droplet that the reserved IPv6 will be assigned to.
+        /// </summary>
         [Output("dropletId")]
         public Output<int> DropletId { get; private set; } = null!;
 
+        /// <summary>
+        /// The reserved IPv6 to assign to the Droplet.
+        /// </summary>
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
@@ -64,9 +84,15 @@ namespace Pulumi.DigitalOcean
 
     public sealed class ReservedIpv6AssignmentArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of Droplet that the reserved IPv6 will be assigned to.
+        /// </summary>
         [Input("dropletId", required: true)]
         public Input<int> DropletId { get; set; } = null!;
 
+        /// <summary>
+        /// The reserved IPv6 to assign to the Droplet.
+        /// </summary>
         [Input("ip", required: true)]
         public Input<string> Ip { get; set; } = null!;
 
@@ -78,9 +104,15 @@ namespace Pulumi.DigitalOcean
 
     public sealed class ReservedIpv6AssignmentState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The ID of Droplet that the reserved IPv6 will be assigned to.
+        /// </summary>
         [Input("dropletId")]
         public Input<int>? DropletId { get; set; }
 
+        /// <summary>
+        /// The reserved IPv6 to assign to the Droplet.
+        /// </summary>
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 

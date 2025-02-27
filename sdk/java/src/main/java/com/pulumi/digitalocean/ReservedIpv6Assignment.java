@@ -14,17 +14,48 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+ * makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+ * 
+ * ## Import
+ * 
+ * Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+ * 
+ * the Droplet joined with a comma. For example:
+ * 
+ * ```sh
+ * $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+ * ```
+ * 
+ */
 @ResourceType(type="digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment")
 public class ReservedIpv6Assignment extends com.pulumi.resources.CustomResource {
+    /**
+     * The ID of Droplet that the reserved IPv6 will be assigned to.
+     * 
+     */
     @Export(name="dropletId", refs={Integer.class}, tree="[0]")
     private Output<Integer> dropletId;
 
+    /**
+     * @return The ID of Droplet that the reserved IPv6 will be assigned to.
+     * 
+     */
     public Output<Integer> dropletId() {
         return this.dropletId;
     }
+    /**
+     * The reserved IPv6 to assign to the Droplet.
+     * 
+     */
     @Export(name="ip", refs={String.class}, tree="[0]")
     private Output<String> ip;
 
+    /**
+     * @return The reserved IPv6 to assign to the Droplet.
+     * 
+     */
     public Output<String> ip() {
         return this.ip;
     }
