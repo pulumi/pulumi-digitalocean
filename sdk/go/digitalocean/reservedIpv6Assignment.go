@@ -12,11 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+// makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+//
+// ## Import
+//
+// # Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+//
+// the Droplet joined with a comma. For example:
+//
+// ```sh
+// $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+// ```
 type ReservedIpv6Assignment struct {
 	pulumi.CustomResourceState
 
-	DropletId pulumi.IntOutput    `pulumi:"dropletId"`
-	Ip        pulumi.StringOutput `pulumi:"ip"`
+	// The ID of Droplet that the reserved IPv6 will be assigned to.
+	DropletId pulumi.IntOutput `pulumi:"dropletId"`
+	// The reserved IPv6 to assign to the Droplet.
+	Ip pulumi.StringOutput `pulumi:"ip"`
 }
 
 // NewReservedIpv6Assignment registers a new resource with the given unique name, arguments, and options.
@@ -55,13 +69,17 @@ func GetReservedIpv6Assignment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReservedIpv6Assignment resources.
 type reservedIpv6AssignmentState struct {
-	DropletId *int    `pulumi:"dropletId"`
-	Ip        *string `pulumi:"ip"`
+	// The ID of Droplet that the reserved IPv6 will be assigned to.
+	DropletId *int `pulumi:"dropletId"`
+	// The reserved IPv6 to assign to the Droplet.
+	Ip *string `pulumi:"ip"`
 }
 
 type ReservedIpv6AssignmentState struct {
+	// The ID of Droplet that the reserved IPv6 will be assigned to.
 	DropletId pulumi.IntPtrInput
-	Ip        pulumi.StringPtrInput
+	// The reserved IPv6 to assign to the Droplet.
+	Ip pulumi.StringPtrInput
 }
 
 func (ReservedIpv6AssignmentState) ElementType() reflect.Type {
@@ -69,14 +87,18 @@ func (ReservedIpv6AssignmentState) ElementType() reflect.Type {
 }
 
 type reservedIpv6AssignmentArgs struct {
-	DropletId int    `pulumi:"dropletId"`
-	Ip        string `pulumi:"ip"`
+	// The ID of Droplet that the reserved IPv6 will be assigned to.
+	DropletId int `pulumi:"dropletId"`
+	// The reserved IPv6 to assign to the Droplet.
+	Ip string `pulumi:"ip"`
 }
 
 // The set of arguments for constructing a ReservedIpv6Assignment resource.
 type ReservedIpv6AssignmentArgs struct {
+	// The ID of Droplet that the reserved IPv6 will be assigned to.
 	DropletId pulumi.IntInput
-	Ip        pulumi.StringInput
+	// The reserved IPv6 to assign to the Droplet.
+	Ip pulumi.StringInput
 }
 
 func (ReservedIpv6AssignmentArgs) ElementType() reflect.Type {
@@ -166,10 +188,12 @@ func (o ReservedIpv6AssignmentOutput) ToReservedIpv6AssignmentOutputWithContext(
 	return o
 }
 
+// The ID of Droplet that the reserved IPv6 will be assigned to.
 func (o ReservedIpv6AssignmentOutput) DropletId() pulumi.IntOutput {
 	return o.ApplyT(func(v *ReservedIpv6Assignment) pulumi.IntOutput { return v.DropletId }).(pulumi.IntOutput)
 }
 
+// The reserved IPv6 to assign to the Droplet.
 func (o ReservedIpv6AssignmentOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpv6Assignment) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }

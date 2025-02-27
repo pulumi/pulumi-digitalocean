@@ -15932,6 +15932,7 @@
             }
         },
         "digitalocean:index/reservedIpv6:ReservedIpv6": {
+            "description": "Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.\n\n\u003e **NOTE:** Reserved IPv6s can be assigned to a Droplet using \n`digitalocean.ReservedIpv6Assignment` resource only.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.ReservedIpv6(\"foobar\", {regionSlug: \"nyc3\"});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.ReservedIpv6(\"foobar\", region_slug=\"nyc3\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.ReservedIpv6(\"foobar\", new()\n    {\n        RegionSlug = \"nyc3\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewReservedIpv6(ctx, \"foobar\", \u0026digitalocean.ReservedIpv6Args{\n\t\t\tRegionSlug: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.ReservedIpv6;\nimport com.pulumi.digitalocean.ReservedIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new ReservedIpv6(\"foobar\", ReservedIpv6Args.builder()\n            .regionSlug(\"nyc3\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:ReservedIpv6\n    properties:\n      regionSlug: nyc3\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nReserved IPv6s can be imported using the `ip`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip\n```\n\n2409:40d0:fa:27dd:9b24:7074:7b85:eee6\n\n",
             "properties": {
                 "dropletId": {
                     "type": "integer"
@@ -15940,7 +15941,8 @@
                     "type": "string"
                 },
                 "regionSlug": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The region that the reserved IPv6 needs to be reserved to.\n"
                 },
                 "urn": {
                     "type": "string",
@@ -15962,6 +15964,7 @@
                 },
                 "regionSlug": {
                     "type": "string",
+                    "description": "The region that the reserved IPv6 needs to be reserved to.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -15979,6 +15982,7 @@
                     },
                     "regionSlug": {
                         "type": "string",
+                        "description": "The region that the reserved IPv6 needs to be reserved to.\n",
                         "willReplaceOnChanges": true
                     },
                     "urn": {
@@ -15990,12 +15994,15 @@
             }
         },
         "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment": {
+            "description": "Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This\nmakes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.\n\n## Import\n\nReserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of\n\nthe Droplet joined with a comma. For example:\n\n```sh\n$ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456\n```\n\n",
             "properties": {
                 "dropletId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of Droplet that the reserved IPv6 will be assigned to.\n"
                 },
                 "ip": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The reserved IPv6 to assign to the Droplet.\n"
                 }
             },
             "required": [
@@ -16005,10 +16012,12 @@
             "inputProperties": {
                 "dropletId": {
                     "type": "integer",
+                    "description": "The ID of Droplet that the reserved IPv6 will be assigned to.\n",
                     "willReplaceOnChanges": true
                 },
                 "ip": {
                     "type": "string",
+                    "description": "The reserved IPv6 to assign to the Droplet.\n",
                     "willReplaceOnChanges": true
                 }
             },
@@ -16021,10 +16030,12 @@
                 "properties": {
                     "dropletId": {
                         "type": "integer",
+                        "description": "The ID of Droplet that the reserved IPv6 will be assigned to.\n",
                         "willReplaceOnChanges": true
                     },
                     "ip": {
                         "type": "string",
+                        "description": "The reserved IPv6 to assign to the Droplet.\n",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -19878,11 +19889,13 @@
             }
         },
         "digitalocean:index/getReservedIpv6:getReservedIpv6": {
+            "description": "## Example Usage\n\nGet the reserved IPv6:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foo = new digitalocean.ReservedIpv6(\"foo\", {regionSlug: \"nyc3\"});\nconst foobar = digitalocean.getReservedIpv6Output({\n    ip: foo.ip,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoo = digitalocean.ReservedIpv6(\"foo\", region_slug=\"nyc3\")\nfoobar = digitalocean.get_reserved_ipv6_output(ip=foo.ip)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foo = new DigitalOcean.ReservedIpv6(\"foo\", new()\n    {\n        RegionSlug = \"nyc3\",\n    });\n\n    var foobar = DigitalOcean.GetReservedIpv6.Invoke(new()\n    {\n        Ip = foo.Ip,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoo, err := digitalocean.NewReservedIpv6(ctx, \"foo\", \u0026digitalocean.ReservedIpv6Args{\n\t\t\tRegionSlug: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_ = digitalocean.LookupReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{\n\t\t\tIp: foo.Ip,\n\t\t}, nil)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.ReservedIpv6;\nimport com.pulumi.digitalocean.ReservedIpv6Args;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetReservedIpv6Args;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foo = new ReservedIpv6(\"foo\", ReservedIpv6Args.builder()\n            .regionSlug(\"nyc3\")\n            .build());\n\n        final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()\n            .ip(foo.ip())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foo:\n    type: digitalocean:ReservedIpv6\n    properties:\n      regionSlug: nyc3\nvariables:\n  foobar:\n    fn::invoke:\n      function: digitalocean:getReservedIpv6\n      arguments:\n        ip: ${foo.ip}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getReservedIpv6.\n",
                 "properties": {
                     "ip": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The allocated IPv6 address of the specific reserved IPv6 to retrieve.\n"
                     }
                 },
                 "type": "object",
@@ -19894,6 +19907,7 @@
                 "description": "A collection of values returned by getReservedIpv6.\n",
                 "properties": {
                     "dropletId": {
+                        "description": "The Droplet id that the reserved IP has been assigned to.\n",
                         "type": "integer"
                     },
                     "id": {
@@ -19904,9 +19918,11 @@
                         "type": "string"
                     },
                     "regionSlug": {
+                        "description": "The region that the reserved IPv6 is reserved to.\n",
                         "type": "string"
                     },
                     "urn": {
+                        "description": "The uniform resource name of the reserved IPv6.\n",
                         "type": "string"
                     }
                 },

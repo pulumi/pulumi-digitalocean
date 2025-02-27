@@ -4,6 +4,31 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+ *
+ * > **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+ * `digitalocean.ReservedIpv6Assignment` resource only.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const foobar = new digitalocean.ReservedIpv6("foobar", {regionSlug: "nyc3"});
+ * ```
+ *
+ * ## Import
+ *
+ * Reserved IPv6s can be imported using the `ip`, e.g.
+ *
+ * ```sh
+ * $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+ * ```
+ *
+ * 2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+ */
 export class ReservedIpv6 extends pulumi.CustomResource {
     /**
      * Get an existing ReservedIpv6 resource's state with the given name, ID, and optional extra
@@ -34,6 +59,9 @@ export class ReservedIpv6 extends pulumi.CustomResource {
 
     public readonly dropletId!: pulumi.Output<number>;
     public readonly ip!: pulumi.Output<string>;
+    /**
+     * The region that the reserved IPv6 needs to be reserved to.
+     */
     public readonly regionSlug!: pulumi.Output<string>;
     /**
      * the uniform resource name for the reserved ipv6
@@ -78,6 +106,9 @@ export class ReservedIpv6 extends pulumi.CustomResource {
 export interface ReservedIpv6State {
     dropletId?: pulumi.Input<number>;
     ip?: pulumi.Input<string>;
+    /**
+     * The region that the reserved IPv6 needs to be reserved to.
+     */
     regionSlug?: pulumi.Input<string>;
     /**
      * the uniform resource name for the reserved ipv6
@@ -91,5 +122,8 @@ export interface ReservedIpv6State {
 export interface ReservedIpv6Args {
     dropletId?: pulumi.Input<number>;
     ip?: pulumi.Input<string>;
+    /**
+     * The region that the reserved IPv6 needs to be reserved to.
+     */
     regionSlug: pulumi.Input<string>;
 }

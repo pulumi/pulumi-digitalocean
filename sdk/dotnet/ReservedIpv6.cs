@@ -9,6 +9,40 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    /// <summary>
+    /// Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+    /// 
+    /// &gt; **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+    /// `digitalocean.ReservedIpv6Assignment` resource only.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new DigitalOcean.ReservedIpv6("foobar", new()
+    ///     {
+    ///         RegionSlug = "nyc3",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## Import
+    /// 
+    /// Reserved IPv6s can be imported using the `ip`, e.g.
+    /// 
+    /// ```sh
+    /// $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+    /// ```
+    /// 
+    /// 2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+    /// </summary>
     [DigitalOceanResourceType("digitalocean:index/reservedIpv6:ReservedIpv6")]
     public partial class ReservedIpv6 : global::Pulumi.CustomResource
     {
@@ -18,6 +52,9 @@ namespace Pulumi.DigitalOcean
         [Output("ip")]
         public Output<string> Ip { get; private set; } = null!;
 
+        /// <summary>
+        /// The region that the reserved IPv6 needs to be reserved to.
+        /// </summary>
         [Output("regionSlug")]
         public Output<string> RegionSlug { get; private set; } = null!;
 
@@ -79,6 +116,9 @@ namespace Pulumi.DigitalOcean
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// The region that the reserved IPv6 needs to be reserved to.
+        /// </summary>
         [Input("regionSlug", required: true)]
         public Input<string> RegionSlug { get; set; } = null!;
 
@@ -96,6 +136,9 @@ namespace Pulumi.DigitalOcean
         [Input("ip")]
         public Input<string>? Ip { get; set; }
 
+        /// <summary>
+        /// The region that the reserved IPv6 needs to be reserved to.
+        /// </summary>
         [Input("regionSlug")]
         public Input<string>? RegionSlug { get; set; }
 

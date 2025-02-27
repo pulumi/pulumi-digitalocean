@@ -46,6 +46,9 @@ class GetReservedIpv6Result:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> int:
+        """
+        The Droplet id that the reserved IP has been assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
@@ -64,11 +67,17 @@ class GetReservedIpv6Result:
     @property
     @pulumi.getter(name="regionSlug")
     def region_slug(self) -> str:
+        """
+        The region that the reserved IPv6 is reserved to.
+        """
         return pulumi.get(self, "region_slug")
 
     @property
     @pulumi.getter
     def urn(self) -> str:
+        """
+        The uniform resource name of the reserved IPv6.
+        """
         return pulumi.get(self, "urn")
 
 
@@ -88,7 +97,20 @@ class AwaitableGetReservedIpv6Result(GetReservedIpv6Result):
 def get_reserved_ipv6(ip: Optional[str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReservedIpv6Result:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    Get the reserved IPv6:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    foo = digitalocean.ReservedIpv6("foo", region_slug="nyc3")
+    foobar = digitalocean.get_reserved_ipv6_output(ip=foo.ip)
+    ```
+
+
+    :param str ip: The allocated IPv6 address of the specific reserved IPv6 to retrieve.
     """
     __args__ = dict()
     __args__['ip'] = ip
@@ -104,7 +126,20 @@ def get_reserved_ipv6(ip: Optional[str] = None,
 def get_reserved_ipv6_output(ip: Optional[pulumi.Input[str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpv6Result]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    Get the reserved IPv6:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    foo = digitalocean.ReservedIpv6("foo", region_slug="nyc3")
+    foobar = digitalocean.get_reserved_ipv6_output(ip=foo.ip)
+    ```
+
+
+    :param str ip: The allocated IPv6 address of the specific reserved IPv6 to retrieve.
     """
     __args__ = dict()
     __args__['ip'] = ip

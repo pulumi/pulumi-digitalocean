@@ -4,6 +4,20 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+ * makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+ *
+ * ## Import
+ *
+ * Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+ *
+ * the Droplet joined with a comma. For example:
+ *
+ * ```sh
+ * $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+ * ```
+ */
 export class ReservedIpv6Assignment extends pulumi.CustomResource {
     /**
      * Get an existing ReservedIpv6Assignment resource's state with the given name, ID, and optional extra
@@ -32,7 +46,13 @@ export class ReservedIpv6Assignment extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReservedIpv6Assignment.__pulumiType;
     }
 
+    /**
+     * The ID of Droplet that the reserved IPv6 will be assigned to.
+     */
     public readonly dropletId!: pulumi.Output<number>;
+    /**
+     * The reserved IPv6 to assign to the Droplet.
+     */
     public readonly ip!: pulumi.Output<string>;
 
     /**
@@ -70,7 +90,13 @@ export class ReservedIpv6Assignment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ReservedIpv6Assignment resources.
  */
 export interface ReservedIpv6AssignmentState {
+    /**
+     * The ID of Droplet that the reserved IPv6 will be assigned to.
+     */
     dropletId?: pulumi.Input<number>;
+    /**
+     * The reserved IPv6 to assign to the Droplet.
+     */
     ip?: pulumi.Input<string>;
 }
 
@@ -78,6 +104,12 @@ export interface ReservedIpv6AssignmentState {
  * The set of arguments for constructing a ReservedIpv6Assignment resource.
  */
 export interface ReservedIpv6AssignmentArgs {
+    /**
+     * The ID of Droplet that the reserved IPv6 will be assigned to.
+     */
     dropletId: pulumi.Input<number>;
+    /**
+     * The reserved IPv6 to assign to the Droplet.
+     */
     ip: pulumi.Input<string>;
 }

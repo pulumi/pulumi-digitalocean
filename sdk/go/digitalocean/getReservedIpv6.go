@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// Get the reserved IPv6:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			foo, err := digitalocean.NewReservedIpv6(ctx, "foo", &digitalocean.ReservedIpv6Args{
+//				RegionSlug: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = digitalocean.LookupReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{
+//				Ip: foo.Ip,
+//			}, nil)
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupReservedIpv6(ctx *pulumi.Context, args *LookupReservedIpv6Args, opts ...pulumi.InvokeOption) (*LookupReservedIpv6Result, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupReservedIpv6Result
@@ -23,17 +53,21 @@ func LookupReservedIpv6(ctx *pulumi.Context, args *LookupReservedIpv6Args, opts 
 
 // A collection of arguments for invoking getReservedIpv6.
 type LookupReservedIpv6Args struct {
+	// The allocated IPv6 address of the specific reserved IPv6 to retrieve.
 	Ip string `pulumi:"ip"`
 }
 
 // A collection of values returned by getReservedIpv6.
 type LookupReservedIpv6Result struct {
+	// The Droplet id that the reserved IP has been assigned to.
 	DropletId int `pulumi:"dropletId"`
 	// The provider-assigned unique ID for this managed resource.
-	Id         string `pulumi:"id"`
-	Ip         string `pulumi:"ip"`
+	Id string `pulumi:"id"`
+	Ip string `pulumi:"ip"`
+	// The region that the reserved IPv6 is reserved to.
 	RegionSlug string `pulumi:"regionSlug"`
-	Urn        string `pulumi:"urn"`
+	// The uniform resource name of the reserved IPv6.
+	Urn string `pulumi:"urn"`
 }
 
 func LookupReservedIpv6Output(ctx *pulumi.Context, args LookupReservedIpv6OutputArgs, opts ...pulumi.InvokeOption) LookupReservedIpv6ResultOutput {
@@ -47,6 +81,7 @@ func LookupReservedIpv6Output(ctx *pulumi.Context, args LookupReservedIpv6Output
 
 // A collection of arguments for invoking getReservedIpv6.
 type LookupReservedIpv6OutputArgs struct {
+	// The allocated IPv6 address of the specific reserved IPv6 to retrieve.
 	Ip pulumi.StringInput `pulumi:"ip"`
 }
 
@@ -69,6 +104,7 @@ func (o LookupReservedIpv6ResultOutput) ToLookupReservedIpv6ResultOutputWithCont
 	return o
 }
 
+// The Droplet id that the reserved IP has been assigned to.
 func (o LookupReservedIpv6ResultOutput) DropletId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupReservedIpv6Result) int { return v.DropletId }).(pulumi.IntOutput)
 }
@@ -82,10 +118,12 @@ func (o LookupReservedIpv6ResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpv6Result) string { return v.Ip }).(pulumi.StringOutput)
 }
 
+// The region that the reserved IPv6 is reserved to.
 func (o LookupReservedIpv6ResultOutput) RegionSlug() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpv6Result) string { return v.RegionSlug }).(pulumi.StringOutput)
 }
 
+// The uniform resource name of the reserved IPv6.
 func (o LookupReservedIpv6ResultOutput) Urn() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupReservedIpv6Result) string { return v.Urn }).(pulumi.StringOutput)
 }

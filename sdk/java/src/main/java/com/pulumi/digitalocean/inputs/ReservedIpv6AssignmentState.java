@@ -16,16 +16,32 @@ public final class ReservedIpv6AssignmentState extends com.pulumi.resources.Reso
 
     public static final ReservedIpv6AssignmentState Empty = new ReservedIpv6AssignmentState();
 
+    /**
+     * The ID of Droplet that the reserved IPv6 will be assigned to.
+     * 
+     */
     @Import(name="dropletId")
     private @Nullable Output<Integer> dropletId;
 
+    /**
+     * @return The ID of Droplet that the reserved IPv6 will be assigned to.
+     * 
+     */
     public Optional<Output<Integer>> dropletId() {
         return Optional.ofNullable(this.dropletId);
     }
 
+    /**
+     * The reserved IPv6 to assign to the Droplet.
+     * 
+     */
     @Import(name="ip")
     private @Nullable Output<String> ip;
 
+    /**
+     * @return The reserved IPv6 to assign to the Droplet.
+     * 
+     */
     public Optional<Output<String>> ip() {
         return Optional.ofNullable(this.ip);
     }
@@ -55,20 +71,44 @@ public final class ReservedIpv6AssignmentState extends com.pulumi.resources.Reso
             $ = new ReservedIpv6AssignmentState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param dropletId The ID of Droplet that the reserved IPv6 will be assigned to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropletId(@Nullable Output<Integer> dropletId) {
             $.dropletId = dropletId;
             return this;
         }
 
+        /**
+         * @param dropletId The ID of Droplet that the reserved IPv6 will be assigned to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dropletId(Integer dropletId) {
             return dropletId(Output.of(dropletId));
         }
 
+        /**
+         * @param ip The reserved IPv6 to assign to the Droplet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(@Nullable Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip The reserved IPv6 to assign to the Droplet.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }

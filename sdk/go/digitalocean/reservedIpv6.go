@@ -12,11 +12,52 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a DigitalOcean reserved IPv6 to represent a publicly-accessible static IPv6 addresses that can be mapped to one of your Droplets.
+//
+// > **NOTE:** Reserved IPv6s can be assigned to a Droplet using
+// `ReservedIpv6Assignment` resource only.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewReservedIpv6(ctx, "foobar", &digitalocean.ReservedIpv6Args{
+//				RegionSlug: pulumi.String("nyc3"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// Reserved IPv6s can be imported using the `ip`, e.g.
+//
+// ```sh
+// $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+// ```
+//
+// 2409:40d0:fa:27dd:9b24:7074:7b85:eee6
 type ReservedIpv6 struct {
 	pulumi.CustomResourceState
 
-	DropletId  pulumi.IntOutput    `pulumi:"dropletId"`
-	Ip         pulumi.StringOutput `pulumi:"ip"`
+	DropletId pulumi.IntOutput    `pulumi:"dropletId"`
+	Ip        pulumi.StringOutput `pulumi:"ip"`
+	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug pulumi.StringOutput `pulumi:"regionSlug"`
 	// the uniform resource name for the reserved ipv6
 	Urn pulumi.StringOutput `pulumi:"urn"`
@@ -55,16 +96,18 @@ func GetReservedIpv6(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ReservedIpv6 resources.
 type reservedIpv6State struct {
-	DropletId  *int    `pulumi:"dropletId"`
-	Ip         *string `pulumi:"ip"`
+	DropletId *int    `pulumi:"dropletId"`
+	Ip        *string `pulumi:"ip"`
+	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug *string `pulumi:"regionSlug"`
 	// the uniform resource name for the reserved ipv6
 	Urn *string `pulumi:"urn"`
 }
 
 type ReservedIpv6State struct {
-	DropletId  pulumi.IntPtrInput
-	Ip         pulumi.StringPtrInput
+	DropletId pulumi.IntPtrInput
+	Ip        pulumi.StringPtrInput
+	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug pulumi.StringPtrInput
 	// the uniform resource name for the reserved ipv6
 	Urn pulumi.StringPtrInput
@@ -75,15 +118,17 @@ func (ReservedIpv6State) ElementType() reflect.Type {
 }
 
 type reservedIpv6Args struct {
-	DropletId  *int    `pulumi:"dropletId"`
-	Ip         *string `pulumi:"ip"`
-	RegionSlug string  `pulumi:"regionSlug"`
+	DropletId *int    `pulumi:"dropletId"`
+	Ip        *string `pulumi:"ip"`
+	// The region that the reserved IPv6 needs to be reserved to.
+	RegionSlug string `pulumi:"regionSlug"`
 }
 
 // The set of arguments for constructing a ReservedIpv6 resource.
 type ReservedIpv6Args struct {
-	DropletId  pulumi.IntPtrInput
-	Ip         pulumi.StringPtrInput
+	DropletId pulumi.IntPtrInput
+	Ip        pulumi.StringPtrInput
+	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug pulumi.StringInput
 }
 
@@ -182,6 +227,7 @@ func (o ReservedIpv6Output) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpv6) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
 }
 
+// The region that the reserved IPv6 needs to be reserved to.
 func (o ReservedIpv6Output) RegionSlug() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedIpv6) pulumi.StringOutput { return v.RegionSlug }).(pulumi.StringOutput)
 }

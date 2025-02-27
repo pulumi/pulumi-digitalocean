@@ -12346,18 +12346,243 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetReservedIpResult> getReservedIpPlain(GetReservedIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getReservedIp:getReservedIp", TypeShape.of(GetReservedIpResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IPv6:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.ReservedIpv6;
+     * import com.pulumi.digitalocean.ReservedIpv6Args;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foo = new ReservedIpv6("foo", ReservedIpv6Args.builder()
+     *             .regionSlug("nyc3")
+     *             .build());
+     * 
+     *         final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()
+     *             .ip(foo.ip())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args) {
         return getReservedIpv6(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IPv6:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.ReservedIpv6;
+     * import com.pulumi.digitalocean.ReservedIpv6Args;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foo = new ReservedIpv6("foo", ReservedIpv6Args.builder()
+     *             .regionSlug("nyc3")
+     *             .build());
+     * 
+     *         final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()
+     *             .ip(foo.ip())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetReservedIpv6Result> getReservedIpv6Plain(GetReservedIpv6PlainArgs args) {
         return getReservedIpv6Plain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IPv6:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.ReservedIpv6;
+     * import com.pulumi.digitalocean.ReservedIpv6Args;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foo = new ReservedIpv6("foo", ReservedIpv6Args.builder()
+     *             .regionSlug("nyc3")
+     *             .build());
+     * 
+     *         final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()
+     *             .ip(foo.ip())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IPv6:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.ReservedIpv6;
+     * import com.pulumi.digitalocean.ReservedIpv6Args;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foo = new ReservedIpv6("foo", ReservedIpv6Args.builder()
+     *             .regionSlug("nyc3")
+     *             .build());
+     * 
+     *         final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()
+     *             .ip(foo.ip())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetReservedIpv6Result> getReservedIpv6(GetReservedIpv6Args args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * Get the reserved IPv6:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.ReservedIpv6;
+     * import com.pulumi.digitalocean.ReservedIpv6Args;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var foo = new ReservedIpv6("foo", ReservedIpv6Args.builder()
+     *             .regionSlug("nyc3")
+     *             .build());
+     * 
+     *         final var foobar = DigitaloceanFunctions.getReservedIpv6(GetReservedIpv6Args.builder()
+     *             .ip(foo.ip())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetReservedIpv6Result> getReservedIpv6Plain(GetReservedIpv6PlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getReservedIpv6:getReservedIpv6", TypeShape.of(GetReservedIpv6Result.class), args, Utilities.withVersion(options));
     }

@@ -23,6 +23,8 @@ class ReservedIpv6AssignmentArgs:
                  ip: pulumi.Input[str]):
         """
         The set of arguments for constructing a ReservedIpv6Assignment resource.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
+        :param pulumi.Input[str] ip: The reserved IPv6 to assign to the Droplet.
         """
         pulumi.set(__self__, "droplet_id", droplet_id)
         pulumi.set(__self__, "ip", ip)
@@ -30,6 +32,9 @@ class ReservedIpv6AssignmentArgs:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Input[int]:
+        """
+        The ID of Droplet that the reserved IPv6 will be assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
@@ -39,6 +44,9 @@ class ReservedIpv6AssignmentArgs:
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Input[str]:
+        """
+        The reserved IPv6 to assign to the Droplet.
+        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -53,6 +61,8 @@ class _ReservedIpv6AssignmentState:
                  ip: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ReservedIpv6Assignment resources.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
+        :param pulumi.Input[str] ip: The reserved IPv6 to assign to the Droplet.
         """
         if droplet_id is not None:
             pulumi.set(__self__, "droplet_id", droplet_id)
@@ -62,6 +72,9 @@ class _ReservedIpv6AssignmentState:
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of Droplet that the reserved IPv6 will be assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
@@ -71,6 +84,9 @@ class _ReservedIpv6AssignmentState:
     @property
     @pulumi.getter
     def ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The reserved IPv6 to assign to the Droplet.
+        """
         return pulumi.get(self, "ip")
 
     @ip.setter
@@ -87,9 +103,23 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
                  ip: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ReservedIpv6Assignment resource with the given unique name, props, and options.
+        Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+        makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+
+        ## Import
+
+        Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+
+        the Droplet joined with a comma. For example:
+
+        ```sh
+        $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
+        :param pulumi.Input[str] ip: The reserved IPv6 to assign to the Droplet.
         """
         ...
     @overload
@@ -98,7 +128,19 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
                  args: ReservedIpv6AssignmentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ReservedIpv6Assignment resource with the given unique name, props, and options.
+        Provides a resource for assigning an existing DigitalOcean reserved IPv6 to a Droplet. This
+        makes it easy to provision reserved IPv6 addresses that are not tied to the lifecycle of your Droplet.
+
+        ## Import
+
+        Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
+
+        the Droplet joined with a comma. For example:
+
+        ```sh
+        $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
+        ```
+
         :param str resource_name: The name of the resource.
         :param ReservedIpv6AssignmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -150,6 +192,8 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
+        :param pulumi.Input[str] ip: The reserved IPv6 to assign to the Droplet.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -162,10 +206,16 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
     @property
     @pulumi.getter(name="dropletId")
     def droplet_id(self) -> pulumi.Output[int]:
+        """
+        The ID of Droplet that the reserved IPv6 will be assigned to.
+        """
         return pulumi.get(self, "droplet_id")
 
     @property
     @pulumi.getter
     def ip(self) -> pulumi.Output[str]:
+        """
+        The reserved IPv6 to assign to the Droplet.
+        """
         return pulumi.get(self, "ip")
 

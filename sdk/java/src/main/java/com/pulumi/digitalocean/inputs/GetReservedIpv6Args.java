@@ -14,9 +14,17 @@ public final class GetReservedIpv6Args extends com.pulumi.resources.InvokeArgs {
 
     public static final GetReservedIpv6Args Empty = new GetReservedIpv6Args();
 
+    /**
+     * The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+     * 
+     */
     @Import(name="ip", required=true)
     private Output<String> ip;
 
+    /**
+     * @return The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+     * 
+     */
     public Output<String> ip() {
         return this.ip;
     }
@@ -45,11 +53,23 @@ public final class GetReservedIpv6Args extends com.pulumi.resources.InvokeArgs {
             $ = new GetReservedIpv6Args(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param ip The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(Output<String> ip) {
             $.ip = ip;
             return this;
         }
 
+        /**
+         * @param ip The allocated IPv6 address of the specific reserved IPv6 to retrieve.
+         * 
+         * @return builder
+         * 
+         */
         public Builder ip(String ip) {
             return ip(Output.of(ip));
         }
