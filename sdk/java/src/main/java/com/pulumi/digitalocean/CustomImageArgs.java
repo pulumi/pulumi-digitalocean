@@ -33,14 +33,14 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      * 
      */
     @Import(name="distribution")
     private @Nullable Output<String> distribution;
 
     /**
-     * @return An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+     * @return An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      * 
      */
     public Optional<Output<String>> distribution() {
@@ -158,7 +158,7 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param distribution An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+         * @param distribution An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class CustomImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param distribution An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+         * @param distribution An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
          * 
          * @return builder
          * 

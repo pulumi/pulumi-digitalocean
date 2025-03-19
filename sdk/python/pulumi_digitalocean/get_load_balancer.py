@@ -27,7 +27,7 @@ class GetLoadBalancerResult:
     """
     A collection of values returned by getLoadBalancer.
     """
-    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, load_balancer_urn=None, name=None, network=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
+    def __init__(__self__, algorithm=None, disable_lets_encrypt_dns_records=None, domains=None, droplet_ids=None, droplet_tag=None, enable_backend_keepalive=None, enable_proxy_protocol=None, firewalls=None, forwarding_rules=None, glb_settings=None, healthchecks=None, http_idle_timeout_seconds=None, id=None, ip=None, ipv6=None, load_balancer_urn=None, name=None, network=None, project_id=None, redirect_http_to_https=None, region=None, size=None, size_unit=None, status=None, sticky_sessions=None, target_load_balancer_ids=None, type=None, vpc_uuid=None):
         if algorithm and not isinstance(algorithm, str):
             raise TypeError("Expected argument 'algorithm' to be a str")
         pulumi.set(__self__, "algorithm", algorithm)
@@ -70,6 +70,9 @@ class GetLoadBalancerResult:
         if ip and not isinstance(ip, str):
             raise TypeError("Expected argument 'ip' to be a str")
         pulumi.set(__self__, "ip", ip)
+        if ipv6 and not isinstance(ipv6, str):
+            raise TypeError("Expected argument 'ipv6' to be a str")
+        pulumi.set(__self__, "ipv6", ipv6)
         if load_balancer_urn and not isinstance(load_balancer_urn, str):
             raise TypeError("Expected argument 'load_balancer_urn' to be a str")
         pulumi.set(__self__, "load_balancer_urn", load_balancer_urn)
@@ -182,6 +185,11 @@ class GetLoadBalancerResult:
         return pulumi.get(self, "ip")
 
     @property
+    @pulumi.getter
+    def ipv6(self) -> str:
+        return pulumi.get(self, "ipv6")
+
+    @property
     @pulumi.getter(name="loadBalancerUrn")
     def load_balancer_urn(self) -> str:
         return pulumi.get(self, "load_balancer_urn")
@@ -267,6 +275,7 @@ class AwaitableGetLoadBalancerResult(GetLoadBalancerResult):
             http_idle_timeout_seconds=self.http_idle_timeout_seconds,
             id=self.id,
             ip=self.ip,
+            ipv6=self.ipv6,
             load_balancer_urn=self.load_balancer_urn,
             name=self.name,
             network=self.network,
@@ -339,6 +348,7 @@ def get_load_balancer(id: Optional[str] = None,
         http_idle_timeout_seconds=pulumi.get(__ret__, 'http_idle_timeout_seconds'),
         id=pulumi.get(__ret__, 'id'),
         ip=pulumi.get(__ret__, 'ip'),
+        ipv6=pulumi.get(__ret__, 'ipv6'),
         load_balancer_urn=pulumi.get(__ret__, 'load_balancer_urn'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
@@ -408,6 +418,7 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[str]]] = None,
         http_idle_timeout_seconds=pulumi.get(__response__, 'http_idle_timeout_seconds'),
         id=pulumi.get(__response__, 'id'),
         ip=pulumi.get(__response__, 'ip'),
+        ipv6=pulumi.get(__response__, 'ipv6'),
         load_balancer_urn=pulumi.get(__response__, 'load_balancer_urn'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),

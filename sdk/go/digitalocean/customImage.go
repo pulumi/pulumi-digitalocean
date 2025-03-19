@@ -72,7 +72,7 @@ type CustomImage struct {
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 	Distribution pulumi.StringPtrOutput `pulumi:"distribution"`
 	// A unique number that can be used to identify and reference a specific image.
 	ImageId pulumi.IntOutput `pulumi:"imageId"`
@@ -138,7 +138,7 @@ type customImageState struct {
 	CreatedAt *string `pulumi:"createdAt"`
 	// An optional description for the image.
 	Description *string `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 	Distribution *string `pulumi:"distribution"`
 	// A unique number that can be used to identify and reference a specific image.
 	ImageId *int `pulumi:"imageId"`
@@ -169,7 +169,7 @@ type CustomImageState struct {
 	CreatedAt pulumi.StringPtrInput
 	// An optional description for the image.
 	Description pulumi.StringPtrInput
-	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 	Distribution pulumi.StringPtrInput
 	// A unique number that can be used to identify and reference a specific image.
 	ImageId pulumi.IntPtrInput
@@ -202,7 +202,7 @@ func (CustomImageState) ElementType() reflect.Type {
 type customImageArgs struct {
 	// An optional description for the image.
 	Description *string `pulumi:"description"`
-	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 	Distribution *string `pulumi:"distribution"`
 	// A name for the Custom Image.
 	Name *string `pulumi:"name"`
@@ -218,7 +218,7 @@ type customImageArgs struct {
 type CustomImageArgs struct {
 	// An optional description for the image.
 	Description pulumi.StringPtrInput
-	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+	// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 	Distribution pulumi.StringPtrInput
 	// A name for the Custom Image.
 	Name pulumi.StringPtrInput
@@ -327,7 +327,7 @@ func (o CustomImageOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+// An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
 func (o CustomImageOutput) Distribution() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CustomImage) pulumi.StringPtrOutput { return v.Distribution }).(pulumi.StringPtrOutput)
 }

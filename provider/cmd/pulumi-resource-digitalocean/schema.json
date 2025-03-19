@@ -967,7 +967,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
                 },
                 "kind": {
                     "type": "string",
@@ -1371,7 +1371,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
                 },
                 "internalPorts": {
                     "type": "array",
@@ -2183,7 +2183,7 @@
                 },
                 "instanceSizeSlug": {
                     "type": "string",
-                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
+                    "description": "The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`\n"
                 },
                 "logDestinations": {
                     "type": "array",
@@ -9881,7 +9881,7 @@
                 },
                 "distribution": {
                     "type": "string",
-                    "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)\n"
+                    "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)\n"
                 },
                 "imageId": {
                     "type": "integer",
@@ -9954,7 +9954,7 @@
                 },
                 "distribution": {
                     "type": "string",
-                    "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)\n"
+                    "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)\n"
                 },
                 "name": {
                     "type": "string",
@@ -9997,7 +9997,7 @@
                     },
                     "distribution": {
                         "type": "string",
-                        "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)\n"
+                        "description": "An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)\n"
                     },
                     "imageId": {
                         "type": "integer",
@@ -10127,7 +10127,7 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).\n"
+                    "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).\n"
                 },
                 "sqlMode": {
                     "type": "string",
@@ -10181,7 +10181,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
+                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.\n"
                 }
             },
             "required": [
@@ -10272,7 +10272,7 @@
                             "$ref": "#/types/digitalocean:index:DatabaseSlug"
                         }
                     ],
-                    "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).\n"
+                    "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).\n"
                 },
                 "sqlMode": {
                     "type": "string",
@@ -10291,7 +10291,7 @@
                 },
                 "version": {
                     "type": "string",
-                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
+                    "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.\n"
                 }
             },
             "requiredInputs": [
@@ -10395,7 +10395,7 @@
                                 "$ref": "#/types/digitalocean:index:DatabaseSlug"
                             }
                         ],
-                        "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).\n"
+                        "description": "Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).\n"
                     },
                     "sqlMode": {
                         "type": "string",
@@ -10449,7 +10449,7 @@
                     },
                     "version": {
                         "type": "string",
-                        "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.\n"
+                        "description": "Engine version used by the cluster (ex. `14` for PostgreSQL 14).\nWhen this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.\n"
                     }
                 },
                 "type": "object"
@@ -13363,7 +13363,7 @@
             }
         },
         "digitalocean:index/dnsRecord:DnsRecord": {
-            "description": "Provides a DigitalOcean DNS record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst _default = new digitalocean.Domain(\"default\", {name: \"example.com\"});\n// Add an A record to the domain for www.example.com.\nconst www = new digitalocean.DnsRecord(\"www\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.A,\n    name: \"www\",\n    value: \"192.168.0.11\",\n});\n// Add a MX record for the example.com domain itself.\nconst mx = new digitalocean.DnsRecord(\"mx\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.MX,\n    name: \"@\",\n    priority: 10,\n    value: \"mail.example.com.\",\n});\nexport const wwwFqdn = www.fqdn;\nexport const mxFqdn = mx.fqdn;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ndefault = digitalocean.Domain(\"default\", name=\"example.com\")\n# Add an A record to the domain for www.example.com.\nwww = digitalocean.DnsRecord(\"www\",\n    domain=default.id,\n    type=digitalocean.RecordType.A,\n    name=\"www\",\n    value=\"192.168.0.11\")\n# Add a MX record for the example.com domain itself.\nmx = digitalocean.DnsRecord(\"mx\",\n    domain=default.id,\n    type=digitalocean.RecordType.MX,\n    name=\"@\",\n    priority=10,\n    value=\"mail.example.com.\")\npulumi.export(\"wwwFqdn\", www.fqdn)\npulumi.export(\"mxFqdn\", mx.fqdn)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = new DigitalOcean.Domain(\"default\", new()\n    {\n        Name = \"example.com\",\n    });\n\n    // Add an A record to the domain for www.example.com.\n    var www = new DigitalOcean.DnsRecord(\"www\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.A,\n        Name = \"www\",\n        Value = \"192.168.0.11\",\n    });\n\n    // Add a MX record for the example.com domain itself.\n    var mx = new DigitalOcean.DnsRecord(\"mx\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.MX,\n        Name = \"@\",\n        Priority = 10,\n        Value = \"mail.example.com.\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"wwwFqdn\"] = www.Fqdn,\n        [\"mxFqdn\"] = mx.Fqdn,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_default, err := digitalocean.NewDomain(ctx, \"default\", \u0026digitalocean.DomainArgs{\n\t\t\tName: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add an A record to the domain for www.example.com.\n\t\twww, err := digitalocean.NewDnsRecord(ctx, \"www\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain: _default.ID(),\n\t\t\tType:   pulumi.String(digitalocean.RecordTypeA),\n\t\t\tName:   pulumi.String(\"www\"),\n\t\t\tValue:  pulumi.String(\"192.168.0.11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a MX record for the example.com domain itself.\n\t\tmx, err := digitalocean.NewDnsRecord(ctx, \"mx\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain:   _default.ID(),\n\t\t\tType:     pulumi.String(digitalocean.RecordTypeMX),\n\t\t\tName:     pulumi.String(\"@\"),\n\t\t\tPriority: pulumi.Int(10),\n\t\t\tValue:    pulumi.String(\"mail.example.com.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"wwwFqdn\", www.Fqdn)\n\t\tctx.Export(\"mxFqdn\", mx.Fqdn)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Domain;\nimport com.pulumi.digitalocean.DomainArgs;\nimport com.pulumi.digitalocean.DnsRecord;\nimport com.pulumi.digitalocean.DnsRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var default_ = new Domain(\"default\", DomainArgs.builder()\n            .name(\"example.com\")\n            .build());\n\n        // Add an A record to the domain for www.example.com.\n        var www = new DnsRecord(\"www\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"A\")\n            .name(\"www\")\n            .value(\"192.168.0.11\")\n            .build());\n\n        // Add a MX record for the example.com domain itself.\n        var mx = new DnsRecord(\"mx\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"MX\")\n            .name(\"@\")\n            .priority(10)\n            .value(\"mail.example.com.\")\n            .build());\n\n        ctx.export(\"wwwFqdn\", www.fqdn());\n        ctx.export(\"mxFqdn\", mx.fqdn());\n    }\n}\n```\n```yaml\nresources:\n  default:\n    type: digitalocean:Domain\n    properties:\n      name: example.com\n  # Add an A record to the domain for www.example.com.\n  www:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: A\n      name: www\n      value: 192.168.0.11\n  # Add a MX record for the example.com domain itself.\n  mx:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: MX\n      name: '@'\n      priority: 10\n      value: mail.example.com.\noutputs:\n  # Output the FQDN for the www A record.\n  wwwFqdn: ${www.fqdn}\n  # Output the FQDN for the MX record.\n  mxFqdn: ${mx.fqdn}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRecords can be imported using the domain name and record `id` when joined with a comma. See the following example:\n\n```sh\n$ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678\n```\n\n~\u003e  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list \u003cdomain.name\u003e`\n\n",
+            "description": "Provides a DigitalOcean DNS record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst _default = new digitalocean.Domain(\"default\", {name: \"example.com\"});\n// Add an A record to the domain for www.example.com.\nconst www = new digitalocean.DnsRecord(\"www\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.A,\n    name: \"www\",\n    value: \"192.168.0.11\",\n});\n// Add a MX record for the example.com domain itself.\nconst mx = new digitalocean.DnsRecord(\"mx\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.MX,\n    name: \"@\",\n    priority: 10,\n    value: \"mail.example.com.\",\n});\nexport const wwwFqdn = www.fqdn;\nexport const mxFqdn = mx.fqdn;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ndefault = digitalocean.Domain(\"default\", name=\"example.com\")\n# Add an A record to the domain for www.example.com.\nwww = digitalocean.DnsRecord(\"www\",\n    domain=default.id,\n    type=digitalocean.RecordType.A,\n    name=\"www\",\n    value=\"192.168.0.11\")\n# Add a MX record for the example.com domain itself.\nmx = digitalocean.DnsRecord(\"mx\",\n    domain=default.id,\n    type=digitalocean.RecordType.MX,\n    name=\"@\",\n    priority=10,\n    value=\"mail.example.com.\")\npulumi.export(\"wwwFqdn\", www.fqdn)\npulumi.export(\"mxFqdn\", mx.fqdn)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = new DigitalOcean.Domain(\"default\", new()\n    {\n        Name = \"example.com\",\n    });\n\n    // Add an A record to the domain for www.example.com.\n    var www = new DigitalOcean.DnsRecord(\"www\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.A,\n        Name = \"www\",\n        Value = \"192.168.0.11\",\n    });\n\n    // Add a MX record for the example.com domain itself.\n    var mx = new DigitalOcean.DnsRecord(\"mx\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.MX,\n        Name = \"@\",\n        Priority = 10,\n        Value = \"mail.example.com.\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"wwwFqdn\"] = www.Fqdn,\n        [\"mxFqdn\"] = mx.Fqdn,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_default, err := digitalocean.NewDomain(ctx, \"default\", \u0026digitalocean.DomainArgs{\n\t\t\tName: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add an A record to the domain for www.example.com.\n\t\twww, err := digitalocean.NewDnsRecord(ctx, \"www\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain: _default.ID(),\n\t\t\tType:   pulumi.String(digitalocean.RecordTypeA),\n\t\t\tName:   pulumi.String(\"www\"),\n\t\t\tValue:  pulumi.String(\"192.168.0.11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a MX record for the example.com domain itself.\n\t\tmx, err := digitalocean.NewDnsRecord(ctx, \"mx\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain:   _default.ID(),\n\t\t\tType:     pulumi.String(digitalocean.RecordTypeMX),\n\t\t\tName:     pulumi.String(\"@\"),\n\t\t\tPriority: pulumi.Int(10),\n\t\t\tValue:    pulumi.String(\"mail.example.com.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"wwwFqdn\", www.Fqdn)\n\t\tctx.Export(\"mxFqdn\", mx.Fqdn)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Domain;\nimport com.pulumi.digitalocean.DomainArgs;\nimport com.pulumi.digitalocean.DnsRecord;\nimport com.pulumi.digitalocean.DnsRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var default_ = new Domain(\"default\", DomainArgs.builder()\n            .name(\"example.com\")\n            .build());\n\n        // Add an A record to the domain for www.example.com.\n        var www = new DnsRecord(\"www\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"A\")\n            .name(\"www\")\n            .value(\"192.168.0.11\")\n            .build());\n\n        // Add a MX record for the example.com domain itself.\n        var mx = new DnsRecord(\"mx\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"MX\")\n            .name(\"@\")\n            .priority(10)\n            .value(\"mail.example.com.\")\n            .build());\n\n        ctx.export(\"wwwFqdn\", www.fqdn());\n        ctx.export(\"mxFqdn\", mx.fqdn());\n    }\n}\n```\n```yaml\nresources:\n  default:\n    type: digitalocean:Domain\n    properties:\n      name: example.com\n  # Add an A record to the domain for www.example.com.\n  www:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: A\n      name: www\n      value: 192.168.0.11\n  # Add a MX record for the example.com domain itself.\n  mx:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: MX\n      name: '@'\n      priority: 10\n      value: mail.example.com.\noutputs:\n  # Output the FQDN for the www A record.\n  wwwFqdn: ${www.fqdn}\n  # Output the FQDN for the MX record.\n  mxFqdn: ${mx.fqdn}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRecords can be imported using the domain name and record `id` when joined with a comma. See the following example:\n\n```sh\n$ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678\n```\n\n~\u003e  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Domain-Records/operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list \u003cdomain.name\u003e`\n\n",
             "properties": {
                 "domain": {
                     "type": "string",
@@ -13635,7 +13635,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.\n"
+                    "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).\n"
                 },
                 "ipv4Address": {
                     "type": "string",
@@ -13691,14 +13691,14 @@
                 },
                 "size": {
                     "type": "string",
-                    "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                    "description": "The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).\n"
                 },
                 "sshKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n"
+                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n"
                 },
                 "status": {
                     "type": "string",
@@ -13772,7 +13772,7 @@
                 },
                 "image": {
                     "type": "string",
-                    "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.\n",
+                    "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).\n",
                     "willReplaceOnChanges": true
                 },
                 "ipv6": {
@@ -13826,14 +13826,14 @@
                             "$ref": "#/types/digitalocean:index:DropletSlug"
                         }
                     ],
-                    "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                    "description": "The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).\n"
                 },
                 "sshKeys": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n",
+                    "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n",
                     "willReplaceOnChanges": true
                 },
                 "tags": {
@@ -13898,7 +13898,7 @@
                     },
                     "image": {
                         "type": "string",
-                        "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.\n",
+                        "description": "The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).\n",
                         "willReplaceOnChanges": true
                     },
                     "ipv4Address": {
@@ -13975,14 +13975,14 @@
                                 "$ref": "#/types/digitalocean:index:DropletSlug"
                             }
                         ],
-                        "description": "The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).\n"
+                        "description": "The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).\n"
                     },
                     "sshKeys": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n",
+                        "description": "A list of SSH key IDs or fingerprints to enable in\nthe format `[12345, 123456]`. To retrieve this info, use the\n[DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)\nor CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not\nbe added or removed via this provider. Modifying this field will prompt you\nto destroy and recreate the Droplet.\n",
                         "willReplaceOnChanges": true
                     },
                     "status": {
@@ -15171,6 +15171,7 @@
                 "status",
                 "stickySessions",
                 "targetLoadBalancerIds",
+                "type",
                 "loadBalancerUrn",
                 "vpcUuid"
             ],
@@ -15462,7 +15463,7 @@
             }
         },
         "digitalocean:index/monitorAlert:MonitorAlert": {
-            "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)\nresource. Monitor alerts can be configured to alert about, e.g., disk or memory\nusage exceeding a certain threshold or traffic at a certain limit. Notifications\ncan be sent to either an email address or a Slack channel.\n\n\u003e **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.\n\n## Import\n\nMonitor alerts can be imported using the monitor alert `uuid`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n",
+            "description": "Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Monitoring)\nresource. Monitor alerts can be configured to alert about, e.g., disk or memory\nusage exceeding a certain threshold or traffic at a certain limit. Notifications\ncan be sent to either an email address or a Slack channel.\n\n## Import\n\nMonitor alerts can be imported using the monitor alert `uuid`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3\n```\n\n",
             "properties": {
                 "alerts": {
                     "$ref": "#/types/digitalocean:index/MonitorAlertAlerts:MonitorAlertAlerts",
@@ -16724,7 +16725,7 @@
             }
         },
         "digitalocean:index/uptimeAlert:UptimeAlert": {
-            "description": "Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/api-reference/#operation/uptime_alert_create)\nresource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.\n\n## Import\n\nUptime alerts can be imported using both the ID of the alert's parent check and\n\nits own separated by a comma in the format: `check_id,alert_id`. For example:\n\n```sh\n$ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n",
+            "description": "Provides a [DigitalOcean Uptime Alerts](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime/operation/uptime_create_alert)\nresource. Uptime Alerts provide the ability to add alerts to your [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime) when your endpoints are slow, unavailable, or SSL certificates are expiring.\n\n## Import\n\nUptime alerts can be imported using both the ID of the alert's parent check and\n\nits own separated by a comma in the format: `check_id,alert_id`. For example:\n\n```sh\n$ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n",
             "properties": {
                 "checkId": {
                     "type": "string",
@@ -16841,7 +16842,7 @@
             }
         },
         "digitalocean:index/uptimeCheck:UptimeCheck": {
-            "description": "Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime)\nresource. Uptime Checks provide the ability to monitor your endpoints from around the world, and alert you when they're slow, unavailable, or SSL certificates are expiring.\n\n## Import\n\nUptime checks can be imported using the uptime check's `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n",
+            "description": "Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime)\nresource. Uptime Checks provide the ability to monitor your endpoints from around the world, and alert you when they're slow, unavailable, or SSL certificates are expiring.\n\n## Import\n\nUptime checks can be imported using the uptime check's `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4\n```\n\n",
             "properties": {
                 "enabled": {
                     "type": "boolean",
@@ -17314,7 +17315,7 @@
             }
         },
         "digitalocean:index/vpc:Vpc": {
-            "description": "Provides a [DigitalOcean VPC](https://docs.digitalocean.com/reference/api/api-reference/#tag/VPCs) resource.\n\nVPCs are virtual networks containing resources that can communicate with each\nother in full isolation, using private IP addresses.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-project-network\",\n    region: \"nyc3\",\n    ipRange: \"10.10.10.0/24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-project-network\",\n    region=\"nyc3\",\n    ip_range=\"10.10.10.0/24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-project-network\",\n        Region = \"nyc3\",\n        IpRange = \"10.10.10.0/24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:    pulumi.String(\"example-project-network\"),\n\t\t\tRegion:  pulumi.String(\"nyc3\"),\n\t\t\tIpRange: pulumi.String(\"10.10.10.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-project-network\")\n            .region(\"nyc3\")\n            .ipRange(\"10.10.10.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-project-network\n      region: nyc3\n      ipRange: 10.10.10.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Resource Assignment\n\n`digitalocean.Droplet`, `digitalocean.KubernetesCluster`,\n`digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources\nmay be assigned to a VPC by referencing its `id`. For example:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-project-network\",\n    region: \"nyc3\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"example\", {\n    name: \"example-01\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: example.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-project-network\",\n    region=\"nyc3\")\nexample_droplet = digitalocean.Droplet(\"example\",\n    name=\"example-01\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=example.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-project-network\",\n        Region = \"nyc3\",\n    });\n\n    var exampleDroplet = new DigitalOcean.Droplet(\"example\", new()\n    {\n        Name = \"example-01\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = example.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-project-network\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example-01\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-project-network\")\n            .region(\"nyc3\")\n            .build());\n\n        var exampleDroplet = new Droplet(\"exampleDroplet\", DropletArgs.builder()\n            .name(\"example-01\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(example.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-project-network\n      region: nyc3\n  exampleDroplet:\n    type: digitalocean:Droplet\n    name: example\n    properties:\n      name: example-01\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${example.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VPC can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "description": "Provides a [DigitalOcean VPC](https://docs.digitalocean.com/reference/api/digitalocean/#tag/VPCs) resource.\n\nVPCs are virtual networks containing resources that can communicate with each\nother in full isolation, using private IP addresses.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-project-network\",\n    region: \"nyc3\",\n    ipRange: \"10.10.10.0/24\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-project-network\",\n    region=\"nyc3\",\n    ip_range=\"10.10.10.0/24\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-project-network\",\n        Region = \"nyc3\",\n        IpRange = \"10.10.10.0/24\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:    pulumi.String(\"example-project-network\"),\n\t\t\tRegion:  pulumi.String(\"nyc3\"),\n\t\t\tIpRange: pulumi.String(\"10.10.10.0/24\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-project-network\")\n            .region(\"nyc3\")\n            .ipRange(\"10.10.10.0/24\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-project-network\n      region: nyc3\n      ipRange: 10.10.10.0/24\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Resource Assignment\n\n`digitalocean.Droplet`, `digitalocean.KubernetesCluster`,\n`digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources\nmay be assigned to a VPC by referencing its `id`. For example:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-project-network\",\n    region: \"nyc3\",\n});\nconst exampleDroplet = new digitalocean.Droplet(\"example\", {\n    name: \"example-01\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-18-04-x64\",\n    region: digitalocean.Region.NYC3,\n    vpcUuid: example.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-project-network\",\n    region=\"nyc3\")\nexample_droplet = digitalocean.Droplet(\"example\",\n    name=\"example-01\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-18-04-x64\",\n    region=digitalocean.Region.NYC3,\n    vpc_uuid=example.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-project-network\",\n        Region = \"nyc3\",\n    });\n\n    var exampleDroplet = new DigitalOcean.Droplet(\"example\", new()\n    {\n        Name = \"example-01\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-18-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n        VpcUuid = example.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-project-network\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDroplet(ctx, \"example\", \u0026digitalocean.DropletArgs{\n\t\t\tName:    pulumi.String(\"example-01\"),\n\t\t\tSize:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:   pulumi.String(\"ubuntu-18-04-x64\"),\n\t\t\tRegion:  pulumi.String(digitalocean.RegionNYC3),\n\t\t\tVpcUuid: example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-project-network\")\n            .region(\"nyc3\")\n            .build());\n\n        var exampleDroplet = new Droplet(\"exampleDroplet\", DropletArgs.builder()\n            .name(\"example-01\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-18-04-x64\")\n            .region(\"nyc3\")\n            .vpcUuid(example.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-project-network\n      region: nyc3\n  exampleDroplet:\n    type: digitalocean:Droplet\n    name: example\n    properties:\n      name: example-01\n      size: s-1vcpu-1gb\n      image: ubuntu-18-04-x64\n      region: nyc3\n      vpcUuid: ${example.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA VPC can be imported using its `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -19363,6 +19364,9 @@
                     "ip": {
                         "type": "string"
                     },
+                    "ipv6": {
+                        "type": "string"
+                    },
                     "loadBalancerUrn": {
                         "type": "string"
                     },
@@ -19423,6 +19427,7 @@
                     "healthchecks",
                     "httpIdleTimeoutSeconds",
                     "ip",
+                    "ipv6",
                     "network",
                     "projectId",
                     "redirectHttpToHttps",

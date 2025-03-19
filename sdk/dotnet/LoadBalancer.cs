@@ -240,7 +240,7 @@ namespace Pulumi.DigitalOcean
         /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("type")]
-        public Output<string?> Type { get; private set; } = null!;
+        public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the VPC where the load balancer will be located.

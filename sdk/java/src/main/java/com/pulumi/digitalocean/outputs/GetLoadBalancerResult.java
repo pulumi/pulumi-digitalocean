@@ -41,6 +41,7 @@ public final class GetLoadBalancerResult {
     private Integer httpIdleTimeoutSeconds;
     private @Nullable String id;
     private String ip;
+    private String ipv6;
     private String loadBalancerUrn;
     private @Nullable String name;
     private String network;
@@ -103,6 +104,9 @@ public final class GetLoadBalancerResult {
     }
     public String ip() {
         return this.ip;
+    }
+    public String ipv6() {
+        return this.ipv6;
     }
     public String loadBalancerUrn() {
         return this.loadBalancerUrn;
@@ -167,6 +171,7 @@ public final class GetLoadBalancerResult {
         private Integer httpIdleTimeoutSeconds;
         private @Nullable String id;
         private String ip;
+        private String ipv6;
         private String loadBalancerUrn;
         private @Nullable String name;
         private String network;
@@ -197,6 +202,7 @@ public final class GetLoadBalancerResult {
     	      this.httpIdleTimeoutSeconds = defaults.httpIdleTimeoutSeconds;
     	      this.id = defaults.id;
     	      this.ip = defaults.ip;
+    	      this.ipv6 = defaults.ipv6;
     	      this.loadBalancerUrn = defaults.loadBalancerUrn;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
@@ -341,6 +347,14 @@ public final class GetLoadBalancerResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ipv6(String ipv6) {
+            if (ipv6 == null) {
+              throw new MissingRequiredPropertyException("GetLoadBalancerResult", "ipv6");
+            }
+            this.ipv6 = ipv6;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loadBalancerUrn(String loadBalancerUrn) {
             if (loadBalancerUrn == null) {
               throw new MissingRequiredPropertyException("GetLoadBalancerResult", "loadBalancerUrn");
@@ -464,6 +478,7 @@ public final class GetLoadBalancerResult {
             _resultValue.httpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             _resultValue.id = id;
             _resultValue.ip = ip;
+            _resultValue.ipv6 = ipv6;
             _resultValue.loadBalancerUrn = loadBalancerUrn;
             _resultValue.name = name;
             _resultValue.network = network;

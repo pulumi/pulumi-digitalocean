@@ -230,6 +230,7 @@ namespace Pulumi.DigitalOcean
         public readonly int HttpIdleTimeoutSeconds;
         public readonly string? Id;
         public readonly string Ip;
+        public readonly string Ipv6;
         public readonly string LoadBalancerUrn;
         public readonly string? Name;
         public readonly string Network;
@@ -274,6 +275,8 @@ namespace Pulumi.DigitalOcean
 
             string ip,
 
+            string ipv6,
+
             string loadBalancerUrn,
 
             string? name,
@@ -314,6 +317,7 @@ namespace Pulumi.DigitalOcean
             HttpIdleTimeoutSeconds = httpIdleTimeoutSeconds;
             Id = id;
             Ip = ip;
+            Ipv6 = ipv6;
             LoadBalancerUrn = loadBalancerUrn;
             Name = name;
             Network = network;

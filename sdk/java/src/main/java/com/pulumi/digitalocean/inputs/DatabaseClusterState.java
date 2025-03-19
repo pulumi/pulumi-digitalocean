@@ -255,14 +255,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      * 
      */
     @Import(name="size")
     private @Nullable Output<Either<String,DatabaseSlug>> size;
 
     /**
-     * @return Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * @return Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      * 
      */
     public Optional<Output<Either<String,DatabaseSlug>>> size() {
@@ -436,7 +436,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     @Import(name="version")
@@ -444,7 +444,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     public Optional<Output<String>> version() {
@@ -858,7 +858,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
          * 
          * @return builder
          * 
@@ -869,7 +869,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
          * 
          * @return builder
          * 
@@ -879,7 +879,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
          * 
          * @return builder
          * 
@@ -889,7 +889,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+         * @param size Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
          * 
          * @return builder
          * 
@@ -1141,7 +1141,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 
@@ -1153,7 +1153,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param version Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+         * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
          * 
          * @return builder
          * 

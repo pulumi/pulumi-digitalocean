@@ -416,12 +416,10 @@ class MonitorAlert(pulumi.CustomResource):
                  window: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Monitoring)
         resource. Monitor alerts can be configured to alert about, e.g., disk or memory
         usage exceeding a certain threshold or traffic at a certain limit. Notifications
         can be sent to either an email address or a Slack channel.
-
-        > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
 
         ## Import
 
@@ -467,12 +465,10 @@ class MonitorAlert(pulumi.CustomResource):
                  args: MonitorAlertArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/api-reference/#tag/Monitoring)
+        Provides a [DigitalOcean Monitoring](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Monitoring)
         resource. Monitor alerts can be configured to alert about, e.g., disk or memory
         usage exceeding a certain threshold or traffic at a certain limit. Notifications
         can be sent to either an email address or a Slack channel.
-
-        > **Note** Currently, the [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_alert_policy) only supports creating alerts for Droplets.
 
         ## Import
 

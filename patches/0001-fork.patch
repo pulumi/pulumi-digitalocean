@@ -371,7 +371,7 @@ index fb71cd6b..67df04e9 100644
    domains = ["example.com"]
  }
 diff --git a/docs/resources/droplet.md b/docs/resources/droplet.md
-index f2eacafe..37ea3ab4 100644
+index 43a0d419..6a126901 100644
 --- a/docs/resources/droplet.md
 +++ b/docs/resources/droplet.md
 @@ -6,8 +6,7 @@ subcategory: "Droplets"
