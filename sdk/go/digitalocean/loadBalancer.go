@@ -144,7 +144,7 @@ type LoadBalancer struct {
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
-	Type pulumi.StringPtrOutput `pulumi:"type"`
+	Type pulumi.StringOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
 }
@@ -675,8 +675,8 @@ func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
 
 // The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
 // **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
-func (o LoadBalancerOutput) Type() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
+func (o LoadBalancerOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
 // The ID of the VPC where the load balancer will be located.

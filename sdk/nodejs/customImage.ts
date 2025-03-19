@@ -74,7 +74,7 @@ export class CustomImage extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
     public readonly distribution!: pulumi.Output<string | undefined>;
     /**
@@ -190,7 +190,7 @@ export interface CustomImageState {
      */
     description?: pulumi.Input<string>;
     /**
-     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
     distribution?: pulumi.Input<string>;
     /**
@@ -248,7 +248,7 @@ export interface CustomImageArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/api-reference/#operation/create_custom_image)
+     * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
     distribution?: pulumi.Input<string>;
     /**

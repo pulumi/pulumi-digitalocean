@@ -290,7 +290,7 @@ type DatabaseCluster struct {
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrOutput `pulumi:"sqlMode"`
@@ -315,7 +315,7 @@ type DatabaseCluster struct {
 	// Username for the cluster's default user.
 	User pulumi.StringOutput `pulumi:"user"`
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
 }
 
@@ -400,7 +400,7 @@ type databaseClusterState struct {
 	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region *string `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 	Size *string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -425,7 +425,7 @@ type databaseClusterState struct {
 	// Username for the cluster's default user.
 	User *string `pulumi:"user"`
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
@@ -461,7 +461,7 @@ type DatabaseClusterState struct {
 	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringPtrInput
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 	Size pulumi.StringPtrInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
@@ -486,7 +486,7 @@ type DatabaseClusterState struct {
 	// Username for the cluster's default user.
 	User pulumi.StringPtrInput
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -512,7 +512,7 @@ type databaseClusterArgs struct {
 	ProjectId *string `pulumi:"projectId"`
 	// DigitalOcean region where the cluster will reside.
 	Region string `pulumi:"region"`
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 	Size string `pulumi:"size"`
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode *string `pulumi:"sqlMode"`
@@ -521,7 +521,7 @@ type databaseClusterArgs struct {
 	// A list of tag names to be applied to the database cluster.
 	Tags []string `pulumi:"tags"`
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 	Version *string `pulumi:"version"`
 }
 
@@ -544,7 +544,7 @@ type DatabaseClusterArgs struct {
 	ProjectId pulumi.StringPtrInput
 	// DigitalOcean region where the cluster will reside.
 	Region pulumi.StringInput
-	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+	// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 	Size pulumi.StringInput
 	// A comma separated string specifying the  SQL modes for a MySQL cluster.
 	SqlMode pulumi.StringPtrInput
@@ -553,7 +553,7 @@ type DatabaseClusterArgs struct {
 	// A list of tag names to be applied to the database cluster.
 	Tags pulumi.StringArrayInput
 	// Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+	// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 	Version pulumi.StringPtrInput
 }
 
@@ -723,7 +723,7 @@ func (o DatabaseClusterOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+// Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
 func (o DatabaseClusterOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
@@ -784,7 +784,7 @@ func (o DatabaseClusterOutput) User() pulumi.StringOutput {
 }
 
 // Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+// When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
 func (o DatabaseClusterOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.Version }).(pulumi.StringPtrOutput)
 }

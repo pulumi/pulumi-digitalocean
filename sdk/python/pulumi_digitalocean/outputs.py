@@ -2258,7 +2258,7 @@ class AppSpecJob(dict):
         :param 'AppSpecJobGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecJobImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param str kind: The type of job and when it will be run during the deployment process. It may be one of:
                - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
                - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
@@ -2405,7 +2405,7 @@ class AppSpecJob(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -3321,7 +3321,7 @@ class AppSpecService(dict):
         :param int http_port: The internal port on which this service's run command will listen.
         :param 'AppSpecServiceImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence[int] internal_ports: A list of ports on which this service will listen for internal traffic.
         :param Sequence['AppSpecServiceLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param Sequence['AppSpecServiceRouteArgs'] routes: An HTTP paths that should be routed to this component.
@@ -3508,7 +3508,7 @@ class AppSpecService(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 
@@ -5557,7 +5557,7 @@ class AppSpecWorker(dict):
         :param 'AppSpecWorkerGitlabArgs' gitlab: A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param 'AppSpecWorkerImageArgs' image: An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
         :param int instance_count: The amount of instances that this component should be scaled to.
-        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        :param str instance_size_slug: The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         :param Sequence['AppSpecWorkerLogDestinationArgs'] log_destinations: Describes a log forwarding destination.
         :param str run_command: An optional run command to override the component's default.
         :param str source_dir: An optional path to the working directory to use for the build.
@@ -5707,7 +5707,7 @@ class AppSpecWorker(dict):
     @pulumi.getter(name="instanceSizeSlug")
     def instance_size_slug(self) -> Optional[str]:
         """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/api-reference/#operation/list_instance_sizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
         """
         return pulumi.get(self, "instance_size_slug")
 

@@ -83,7 +83,7 @@ type Droplet struct {
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringOutput `pulumi:"image"`
 	// The IPv4 address
 	Ipv4Address pulumi.StringOutput `pulumi:"ipv4Address"`
@@ -121,11 +121,11 @@ type Droplet struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrOutput `pulumi:"resizeDisk"`
-	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 	Size pulumi.StringOutput `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
-	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 	// be added or removed via this provider. Modifying this field will prompt you
 	// to destroy and recreate the Droplet.
@@ -202,7 +202,7 @@ type dropletState struct {
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image *string `pulumi:"image"`
 	// The IPv4 address
 	Ipv4Address *string `pulumi:"ipv4Address"`
@@ -240,11 +240,11 @@ type dropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 	Size *string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
-	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 	// be added or removed via this provider. Modifying this field will prompt you
 	// to destroy and recreate the Droplet.
@@ -286,7 +286,7 @@ type DropletState struct {
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
-	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringPtrInput
 	// The IPv4 address
 	Ipv4Address pulumi.StringPtrInput
@@ -324,11 +324,11 @@ type DropletState struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 	Size pulumi.StringPtrInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
-	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 	// be added or removed via this provider. Modifying this field will prompt you
 	// to destroy and recreate the Droplet.
@@ -369,7 +369,7 @@ type dropletArgs struct {
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
-	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image string `pulumi:"image"`
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -396,11 +396,11 @@ type dropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk *bool `pulumi:"resizeDisk"`
-	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 	Size string `pulumi:"size"`
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
-	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 	// be added or removed via this provider. Modifying this field will prompt you
 	// to destroy and recreate the Droplet.
@@ -434,7 +434,7 @@ type DropletArgs struct {
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
-	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringInput
 	// Boolean controlling if IPv6 is enabled. Defaults to false.
 	// Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -461,11 +461,11 @@ type DropletArgs struct {
 	// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
 	// size is a permanent change**. Increasing only RAM and CPU is reversible.
 	ResizeDisk pulumi.BoolPtrInput
-	// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+	// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 	Size pulumi.StringInput
 	// A list of SSH key IDs or fingerprints to enable in
 	// the format `[12345, 123456]`. To retrieve this info, use the
-	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+	// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 	// or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 	// be added or removed via this provider. Modifying this field will prompt you
 	// to destroy and recreate the Droplet.
@@ -610,7 +610,7 @@ func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
 
-// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 func (o DropletOutput) Image() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.Image }).(pulumi.StringOutput)
 }
@@ -690,14 +690,14 @@ func (o DropletOutput) ResizeDisk() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.ResizeDisk }).(pulumi.BoolPtrOutput)
 }
 
-// The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+// The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
 func (o DropletOutput) Size() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.Size }).(pulumi.StringOutput)
 }
 
 // A list of SSH key IDs or fingerprints to enable in
 // the format `[12345, 123456]`. To retrieve this info, use the
-// [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+// [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
 // or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
 // be added or removed via this provider. Modifying this field will prompt you
 // to destroy and recreate the Droplet.

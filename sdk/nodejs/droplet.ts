@@ -103,7 +103,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly gracefulShutdown!: pulumi.Output<boolean | undefined>;
     /**
-     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      */
     public readonly image!: pulumi.Output<string>;
     /**
@@ -167,13 +167,13 @@ export class Droplet extends pulumi.CustomResource {
      */
     public readonly resizeDisk!: pulumi.Output<boolean | undefined>;
     /**
-     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      */
     public readonly size!: pulumi.Output<string>;
     /**
      * A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
-     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
      * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
@@ -328,7 +328,7 @@ export interface DropletState {
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
-     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      */
     image?: pulumi.Input<string>;
     /**
@@ -392,13 +392,13 @@ export interface DropletState {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      */
     size?: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
-     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
      * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
@@ -460,7 +460,7 @@ export interface DropletArgs {
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
-     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      */
     image: pulumi.Input<string>;
     /**
@@ -503,13 +503,13 @@ export interface DropletArgs {
      */
     resizeDisk?: pulumi.Input<boolean>;
     /**
-     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      */
     size: pulumi.Input<string | enums.DropletSlug>;
     /**
      * A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
-     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
      * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.

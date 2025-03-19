@@ -107,6 +107,7 @@ type LookupLoadBalancerResult struct {
 	HttpIdleTimeoutSeconds       int                             `pulumi:"httpIdleTimeoutSeconds"`
 	Id                           *string                         `pulumi:"id"`
 	Ip                           string                          `pulumi:"ip"`
+	Ipv6                         string                          `pulumi:"ipv6"`
 	LoadBalancerUrn              string                          `pulumi:"loadBalancerUrn"`
 	Name                         *string                         `pulumi:"name"`
 	Network                      string                          `pulumi:"network"`
@@ -213,6 +214,10 @@ func (o LookupLoadBalancerResultOutput) Id() pulumi.StringPtrOutput {
 
 func (o LookupLoadBalancerResultOutput) Ip() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+func (o LookupLoadBalancerResultOutput) Ipv6() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupLoadBalancerResult) string { return v.Ipv6 }).(pulumi.StringOutput)
 }
 
 func (o LookupLoadBalancerResultOutput) LoadBalancerUrn() pulumi.StringOutput {

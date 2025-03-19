@@ -231,7 +231,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      */
     public readonly size!: pulumi.Output<string>;
     /**
@@ -280,7 +280,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
     public /*out*/ readonly user!: pulumi.Output<string>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
     public readonly version!: pulumi.Output<string | undefined>;
 
@@ -443,7 +443,7 @@ export interface DatabaseClusterState {
      */
     region?: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      */
     size?: pulumi.Input<string | enums.DatabaseSlug>;
     /**
@@ -492,7 +492,7 @@ export interface DatabaseClusterState {
     user?: pulumi.Input<string>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
     version?: pulumi.Input<string>;
 }
@@ -535,7 +535,7 @@ export interface DatabaseClusterArgs {
      */
     region: pulumi.Input<string | enums.Region>;
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      */
     size: pulumi.Input<string | enums.DatabaseSlug>;
     /**
@@ -552,7 +552,7 @@ export interface DatabaseClusterArgs {
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
     version?: pulumi.Input<string>;
 }

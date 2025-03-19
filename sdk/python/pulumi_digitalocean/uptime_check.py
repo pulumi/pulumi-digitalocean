@@ -203,7 +203,7 @@ class UptimeCheck(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime)
+        Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime)
         resource. Uptime Checks provide the ability to monitor your endpoints from around the world, and alert you when they're slow, unavailable, or SSL certificates are expiring.
 
         ## Import
@@ -229,7 +229,7 @@ class UptimeCheck(pulumi.CustomResource):
                  args: UptimeCheckArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/api-reference/#tag/Uptime)
+        Provides a [DigitalOcean Uptime Checks](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Uptime)
         resource. Uptime Checks provide the ability to monitor your endpoints from around the world, and alert you when they're slow, unavailable, or SSL certificates are expiring.
 
         ## Import

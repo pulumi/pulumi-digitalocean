@@ -42,8 +42,8 @@ class DropletArgs:
                  vpc_uuid: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Droplet resource.
-        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         :param pulumi.Input['DropletBackupPolicyArgs'] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[bool] backups: Boolean controlling if backups are made. Defaults to
                false.
@@ -75,7 +75,7 @@ class DropletArgs:
                size is a permanent change**. Increasing only RAM and CPU is reversible.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
-               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
                or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
@@ -126,7 +126,7 @@ class DropletArgs:
     @pulumi.getter
     def image(self) -> pulumi.Input[str]:
         """
-        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         """
         return pulumi.get(self, "image")
 
@@ -138,7 +138,7 @@ class DropletArgs:
     @pulumi.getter
     def size(self) -> pulumi.Input[Union[str, 'DropletSlug']]:
         """
-        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -303,7 +303,7 @@ class DropletArgs:
         """
         A list of SSH key IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use the
-        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
         or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
         be added or removed via this provider. Modifying this field will prompt you
         to destroy and recreate the Droplet.
@@ -412,7 +412,7 @@ class _DropletState:
                should be gracefully shut down before it is deleted.
                
                > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
-        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -434,10 +434,10 @@ class _DropletState:
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
-               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
                or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
@@ -604,7 +604,7 @@ class _DropletState:
     @pulumi.getter
     def image(self) -> Optional[pulumi.Input[str]]:
         """
-        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         """
         return pulumi.get(self, "image")
 
@@ -779,7 +779,7 @@ class _DropletState:
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[Union[str, 'DropletSlug']]]:
         """
-        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -793,7 +793,7 @@ class _DropletState:
         """
         A list of SSH key IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use the
-        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
         or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
         be added or removed via this provider. Modifying this field will prompt you
         to destroy and recreate the Droplet.
@@ -948,7 +948,7 @@ class Droplet(pulumi.CustomResource):
                should be gracefully shut down before it is deleted.
                
                > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
-        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
                Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
                an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
@@ -965,10 +965,10 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
-               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
                or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
@@ -1151,7 +1151,7 @@ class Droplet(pulumi.CustomResource):
                should be gracefully shut down before it is deleted.
                
                > **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
-        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        :param pulumi.Input[str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[str] ipv4_address: The IPv4 address
         :param pulumi.Input[str] ipv4_address_private: The private networking IPv4 address
         :param pulumi.Input[bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
@@ -1173,10 +1173,10 @@ class Droplet(pulumi.CustomResource):
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
                only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
                size is a permanent change**. Increasing only RAM and CPU is reversible.
-        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        :param pulumi.Input[Union[str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ssh_keys: A list of SSH key IDs or fingerprints to enable in
                the format `[12345, 123456]`. To retrieve this info, use the
-               [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+               [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
                or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
                be added or removed via this provider. Modifying this field will prompt you
                to destroy and recreate the Droplet.
@@ -1288,7 +1288,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter
     def image(self) -> pulumi.Output[str]:
         """
-        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+        The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         """
         return pulumi.get(self, "image")
 
@@ -1407,7 +1407,7 @@ class Droplet(pulumi.CustomResource):
     @pulumi.getter
     def size(self) -> pulumi.Output[str]:
         """
-        The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+        The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
@@ -1417,7 +1417,7 @@ class Droplet(pulumi.CustomResource):
         """
         A list of SSH key IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use the
-        [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+        [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
         or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
         be added or removed via this provider. Modifying this field will prompt you
         to destroy and recreate the Droplet.

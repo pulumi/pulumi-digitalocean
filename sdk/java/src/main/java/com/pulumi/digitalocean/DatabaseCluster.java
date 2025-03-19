@@ -543,14 +543,14 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      * 
      */
     @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
-     * @return Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See here for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/api-reference/#tag/Databases).
+     * @return Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      * 
      */
     public Output<String> size() {
@@ -712,7 +712,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     @Export(name="version", refs={String.class}, tree="[0]")
@@ -720,7 +720,7 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Engine version used by the cluster (ex. `14` for PostgreSQL 14).
-     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/api-reference/#operation/databases_update_major_version) API operation is made with the new version.
+     * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      * 
      */
     public Output<Optional<String>> version() {

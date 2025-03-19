@@ -84,6 +84,7 @@ export interface GetLoadBalancerResult {
     readonly httpIdleTimeoutSeconds: number;
     readonly id?: string;
     readonly ip: string;
+    readonly ipv6: string;
     readonly loadBalancerUrn: string;
     readonly name?: string;
     readonly network: string;

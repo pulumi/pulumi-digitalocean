@@ -189,14 +189,14 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.gracefulShutdown);
     }
     /**
-     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+     * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      * 
      */
     @Export(name="image", refs={String.class}, tree="[0]")
     private Output<String> image;
 
     /**
-     * @return The Droplet image ID or slug. This could be either image ID or droplet snapshot ID.
+     * @return The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
      * 
      */
     public Output<String> image() {
@@ -399,14 +399,14 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resizeDisk);
     }
     /**
-     * The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      * 
      */
     @Export(name="size", refs={String.class}, tree="[0]")
     private Output<String> size;
 
     /**
-     * @return The unique slug that identifies the type of Droplet. You can find a list of available slugs on [DigitalOcean API documentation](https://docs.digitalocean.com/reference/api/api-reference/#tag/Sizes).
+     * @return The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
      * 
      */
     public Output<String> size() {
@@ -415,7 +415,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     /**
      * A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
-     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
      * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
@@ -427,7 +427,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     /**
      * @return A list of SSH key IDs or fingerprints to enable in
      * the format `[12345, 123456]`. To retrieve this info, use the
-     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/api-reference/#tag/SSH-Keys)
+     * [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/SSH-Keys)
      * or CLI (`doctl compute ssh-key list`). Once a Droplet is created keys can not
      * be added or removed via this provider. Modifying this field will prompt you
      * to destroy and recreate the Droplet.
