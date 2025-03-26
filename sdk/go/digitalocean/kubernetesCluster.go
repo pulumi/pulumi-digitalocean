@@ -61,8 +61,6 @@ type KubernetesCluster struct {
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayOutput `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	KubeconfigExpireSeconds pulumi.IntPtrOutput `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyOutput `pulumi:"maintenancePolicy"`
@@ -74,6 +72,8 @@ type KubernetesCluster struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrOutput `pulumi:"registryIntegration"`
+	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+	RoutingAgent KubernetesClusterRoutingAgentOutput `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -154,8 +154,6 @@ type kubernetesClusterState struct {
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs []KubernetesClusterKubeConfig `pulumi:"kubeConfigs"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -167,6 +165,8 @@ type kubernetesClusterState struct {
 	Region *string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration *bool `pulumi:"registryIntegration"`
+	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+	RoutingAgent *KubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -205,8 +205,6 @@ type KubernetesClusterState struct {
 	// A representation of the Kubernetes cluster's kubeconfig with the following attributes:
 	KubeConfigs KubernetesClusterKubeConfigArrayInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	KubeconfigExpireSeconds pulumi.IntPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
@@ -218,6 +216,8 @@ type KubernetesClusterState struct {
 	Region pulumi.StringPtrInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrInput
+	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+	RoutingAgent KubernetesClusterRoutingAgentPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringPtrInput
 	// A string indicating the current status of the individual node.
@@ -250,8 +250,6 @@ type kubernetesClusterArgs struct {
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha *bool `pulumi:"ha"`
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	KubeconfigExpireSeconds *int `pulumi:"kubeconfigExpireSeconds"`
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy *KubernetesClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
@@ -263,6 +261,8 @@ type kubernetesClusterArgs struct {
 	Region string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration *bool `pulumi:"registryIntegration"`
+	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+	RoutingAgent *KubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet *string `pulumi:"serviceSubnet"`
 	// Enable/disable surge upgrades for a cluster. Default: true
@@ -288,8 +288,6 @@ type KubernetesClusterArgs struct {
 	// Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
 	Ha pulumi.BoolPtrInput
 	// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	KubeconfigExpireSeconds pulumi.IntPtrInput
 	// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
 	MaintenancePolicy KubernetesClusterMaintenancePolicyPtrInput
@@ -301,6 +299,8 @@ type KubernetesClusterArgs struct {
 	Region pulumi.StringInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 	RegistryIntegration pulumi.BoolPtrInput
+	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+	RoutingAgent KubernetesClusterRoutingAgentPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringPtrInput
 	// Enable/disable surge upgrades for a cluster. Default: true
@@ -456,8 +456,6 @@ func (o KubernetesClusterOutput) KubeConfigs() KubernetesClusterKubeConfigArrayO
 }
 
 // The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterOutput) KubeconfigExpireSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.IntPtrOutput { return v.KubeconfigExpireSeconds }).(pulumi.IntPtrOutput)
 }
@@ -485,6 +483,11 @@ func (o KubernetesClusterOutput) Region() pulumi.StringOutput {
 // Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
 func (o KubernetesClusterOutput) RegistryIntegration() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.RegistryIntegration }).(pulumi.BoolPtrOutput)
+}
+
+// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+func (o KubernetesClusterOutput) RoutingAgent() KubernetesClusterRoutingAgentOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterRoutingAgentOutput { return v.RoutingAgent }).(KubernetesClusterRoutingAgentOutput)
 }
 
 // The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).

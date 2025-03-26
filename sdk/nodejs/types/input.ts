@@ -2636,6 +2636,14 @@ export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
     scaleDownUtilizationThreshold?: pulumi.Input<number>;
 }
 
+export interface GetKubernetesClusterRoutingAgent {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterRoutingAgentArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface GetProjectsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -3129,6 +3137,9 @@ export interface KubernetesClusterClusterAutoscalerConfiguration {
 
 export interface KubernetesClusterControlPlaneFirewall {
     allowedAddresses: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Boolean flag whether the routing-agent is enabled or not.
+     */
     enabled: pulumi.Input<boolean>;
 }
 
@@ -3269,6 +3280,16 @@ export interface KubernetesClusterNodePoolTaint {
      * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
      */
     value: pulumi.Input<string>;
+}
+
+export interface KubernetesClusterRoutingAgent {
+    /**
+     * Boolean flag whether the routing-agent should be enabled or not.
+     *
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface KubernetesNodePoolNode {
@@ -3582,6 +3603,17 @@ export interface SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      */
     enabled?: pulumi.Input<boolean>;
+}
+
+export interface SpacesKeyGrant {
+    /**
+     * Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+     */
+    bucket: pulumi.Input<string>;
+    /**
+     * Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+     */
+    permission: pulumi.Input<string>;
 }
 
 export interface UptimeAlertNotification {

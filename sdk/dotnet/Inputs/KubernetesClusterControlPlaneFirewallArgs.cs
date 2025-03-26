@@ -20,6 +20,9 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _allowedAddresses = value;
         }
 
+        /// <summary>
+        /// Boolean flag whether the routing-agent is enabled or not.
+        /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;
 

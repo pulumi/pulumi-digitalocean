@@ -103,6 +103,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SpacesBucketObject{}
 	case "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy":
 		r = &SpacesBucketPolicy{}
+	case "digitalocean:index/spacesKey:SpacesKey":
+		r = &SpacesKey{}
 	case "digitalocean:index/sshKey:SshKey":
 		r = &SshKey{}
 	case "digitalocean:index/tag:Tag":
@@ -355,6 +357,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/spacesBucketPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/spacesKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

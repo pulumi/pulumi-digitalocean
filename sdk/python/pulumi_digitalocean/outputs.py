@@ -138,6 +138,7 @@ __all__ = [
     'KubernetesClusterNodePool',
     'KubernetesClusterNodePoolNode',
     'KubernetesClusterNodePoolTaint',
+    'KubernetesClusterRoutingAgent',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
     'LoadBalancerDomain',
@@ -155,6 +156,7 @@ __all__ = [
     'SpacesBucketLifecycleRuleExpiration',
     'SpacesBucketLifecycleRuleNoncurrentVersionExpiration',
     'SpacesBucketVersioning',
+    'SpacesKeyGrant',
     'UptimeAlertNotification',
     'UptimeAlertNotificationSlack',
     'GetAppDedicatedIpResult',
@@ -281,6 +283,7 @@ __all__ = [
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
+    'GetKubernetesClusterRoutingAgentResult',
     'GetLoadBalancerDomainResult',
     'GetLoadBalancerFirewallResult',
     'GetLoadBalancerForwardingRuleResult',
@@ -303,6 +306,7 @@ __all__ = [
     'GetSpacesBucketsBucketResult',
     'GetSpacesBucketsFilterResult',
     'GetSpacesBucketsSortResult',
+    'GetSpacesKeyGrantResult',
     'GetSshKeysFilterResult',
     'GetSshKeysSortResult',
     'GetSshKeysSshKeyResult',
@@ -8107,6 +8111,9 @@ class KubernetesClusterControlPlaneFirewall(dict):
     def __init__(__self__, *,
                  allowed_addresses: Sequence[str],
                  enabled: bool):
+        """
+        :param bool enabled: Boolean flag whether the routing-agent is enabled or not.
+        """
         pulumi.set(__self__, "allowed_addresses", allowed_addresses)
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8118,6 +8125,9 @@ class KubernetesClusterControlPlaneFirewall(dict):
     @property
     @pulumi.getter
     def enabled(self) -> bool:
+        """
+        Boolean flag whether the routing-agent is enabled or not.
+        """
         return pulumi.get(self, "enabled")
 
 
@@ -8609,6 +8619,30 @@ class KubernetesClusterNodePoolTaint(dict):
         An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class KubernetesClusterRoutingAgent(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: Boolean flag whether the routing-agent should be enabled or not.
+               
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Boolean flag whether the routing-agent should be enabled or not.
+
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
@@ -9727,6 +9761,35 @@ class SpacesBucketVersioning(dict):
         state. You can, however, suspend versioning on that bucket.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class SpacesKeyGrant(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 permission: str):
+        """
+        :param str bucket: Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        :param str permission: Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type
@@ -16629,6 +16692,18 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
 
 
 @pulumi.output_type
+class GetKubernetesClusterRoutingAgentResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class GetLoadBalancerDomainResult(dict):
     def __init__(__self__, *,
                  certificate_id: str,
@@ -17981,6 +18056,35 @@ class GetSpacesBucketsSortResult(dict):
         The sort direction. This may be either `asc` or `desc`.
         """
         return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetSpacesKeyGrantResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 permission: str):
+        """
+        :param str bucket: The name of the bucket to grant the key access to.
+        :param str permission: The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        The name of the bucket to grant the key access to.
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter
+    def permission(self) -> str:
+        """
+        The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+        """
+        return pulumi.get(self, "permission")
 
 
 @pulumi.output_type

@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, routing_agent=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -74,6 +74,9 @@ class GetKubernetesClusterResult:
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
+        if routing_agent and not isinstance(routing_agent, dict):
+            raise TypeError("Expected argument 'routing_agent' to be a dict")
+        pulumi.set(__self__, "routing_agent", routing_agent)
         if service_subnet and not isinstance(service_subnet, str):
             raise TypeError("Expected argument 'service_subnet' to be a str")
         pulumi.set(__self__, "service_subnet", service_subnet)
@@ -208,6 +211,11 @@ class GetKubernetesClusterResult:
         return pulumi.get(self, "region")
 
     @property
+    @pulumi.getter(name="routingAgent")
+    def routing_agent(self) -> 'outputs.GetKubernetesClusterRoutingAgentResult':
+        return pulumi.get(self, "routing_agent")
+
+    @property
     @pulumi.getter(name="serviceSubnet")
     def service_subnet(self) -> str:
         """
@@ -290,6 +298,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             name=self.name,
             node_pools=self.node_pools,
             region=self.region,
+            routing_agent=self.routing_agent,
             service_subnet=self.service_subnet,
             status=self.status,
             surge_upgrade=self.surge_upgrade,
@@ -303,6 +312,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
 def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]] = None,
                            kubeconfig_expire_seconds: Optional[int] = None,
                            name: Optional[str] = None,
+                           routing_agent: Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']] = None,
                            tags: Optional[Sequence[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
@@ -325,6 +335,7 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
+    __args__['routingAgent'] = routing_agent
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult).value
@@ -345,6 +356,7 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
         name=pulumi.get(__ret__, 'name'),
         node_pools=pulumi.get(__ret__, 'node_pools'),
         region=pulumi.get(__ret__, 'region'),
+        routing_agent=pulumi.get(__ret__, 'routing_agent'),
         service_subnet=pulumi.get(__ret__, 'service_subnet'),
         status=pulumi.get(__ret__, 'status'),
         surge_upgrade=pulumi.get(__ret__, 'surge_upgrade'),
@@ -356,6 +368,7 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
 def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                                   kubeconfig_expire_seconds: Optional[pulumi.Input[Optional[int]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
+                                  routing_agent: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
                                   tags: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesClusterResult]:
     """
@@ -378,6 +391,7 @@ def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pu
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
+    __args__['routingAgent'] = routing_agent
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult)
@@ -397,6 +411,7 @@ def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pu
         name=pulumi.get(__response__, 'name'),
         node_pools=pulumi.get(__response__, 'node_pools'),
         region=pulumi.get(__response__, 'region'),
+        routing_agent=pulumi.get(__response__, 'routing_agent'),
         service_subnet=pulumi.get(__response__, 'service_subnet'),
         status=pulumi.get(__response__, 'status'),
         surge_upgrade=pulumi.get(__response__, 'surge_upgrade'),

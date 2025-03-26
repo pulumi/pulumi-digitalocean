@@ -53,7 +53,8 @@ type LookupKubernetesClusterArgs struct {
 	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
 	KubeconfigExpireSeconds         *int                                                 `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
-	Name string `pulumi:"name"`
+	Name         string                            `pulumi:"name"`
+	RoutingAgent *GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 }
@@ -85,7 +86,8 @@ type LookupKubernetesClusterResult struct {
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
 	NodePools []GetKubernetesClusterNodePool `pulumi:"nodePools"`
 	// The slug identifier for the region where the Kubernetes cluster is located.
-	Region string `pulumi:"region"`
+	Region       string                           `pulumi:"region"`
+	RoutingAgent GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
 	ServiceSubnet string `pulumi:"serviceSubnet"`
 	// A string indicating the current status of the individual node.
@@ -117,7 +119,8 @@ type LookupKubernetesClusterOutputArgs struct {
 	ClusterAutoscalerConfigurations GetKubernetesClusterClusterAutoscalerConfigurationArrayInput `pulumi:"clusterAutoscalerConfigurations"`
 	KubeconfigExpireSeconds         pulumi.IntPtrInput                                           `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
-	Name pulumi.StringInput `pulumi:"name"`
+	Name         pulumi.StringInput                       `pulumi:"name"`
+	RoutingAgent GetKubernetesClusterRoutingAgentPtrInput `pulumi:"routingAgent"`
 	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -216,6 +219,10 @@ func (o LookupKubernetesClusterResultOutput) NodePools() GetKubernetesClusterNod
 // The slug identifier for the region where the Kubernetes cluster is located.
 func (o LookupKubernetesClusterResultOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.Region }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) RoutingAgent() GetKubernetesClusterRoutingAgentOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterRoutingAgent { return v.RoutingAgent }).(GetKubernetesClusterRoutingAgentOutput)
 }
 
 // The range of assignable IP addresses for services running in the Kubernetes cluster.

@@ -18839,7 +18839,8 @@ func (o KubernetesClusterClusterAutoscalerConfigurationArrayOutput) Index(i pulu
 
 type KubernetesClusterControlPlaneFirewall struct {
 	AllowedAddresses []string `pulumi:"allowedAddresses"`
-	Enabled          bool     `pulumi:"enabled"`
+	// Boolean flag whether the routing-agent is enabled or not.
+	Enabled bool `pulumi:"enabled"`
 }
 
 // KubernetesClusterControlPlaneFirewallInput is an input type that accepts KubernetesClusterControlPlaneFirewallArgs and KubernetesClusterControlPlaneFirewallOutput values.
@@ -18855,7 +18856,8 @@ type KubernetesClusterControlPlaneFirewallInput interface {
 
 type KubernetesClusterControlPlaneFirewallArgs struct {
 	AllowedAddresses pulumi.StringArrayInput `pulumi:"allowedAddresses"`
-	Enabled          pulumi.BoolInput        `pulumi:"enabled"`
+	// Boolean flag whether the routing-agent is enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
 func (KubernetesClusterControlPlaneFirewallArgs) ElementType() reflect.Type {
@@ -18939,6 +18941,7 @@ func (o KubernetesClusterControlPlaneFirewallOutput) AllowedAddresses() pulumi.S
 	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) []string { return v.AllowedAddresses }).(pulumi.StringArrayOutput)
 }
 
+// Boolean flag whether the routing-agent is enabled or not.
 func (o KubernetesClusterControlPlaneFirewallOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -18976,6 +18979,7 @@ func (o KubernetesClusterControlPlaneFirewallPtrOutput) AllowedAddresses() pulum
 	}).(pulumi.StringArrayOutput)
 }
 
+// Boolean flag whether the routing-agent is enabled or not.
 func (o KubernetesClusterControlPlaneFirewallPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) *bool {
 		if v == nil {
@@ -19912,6 +19916,151 @@ func (o KubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) Kube
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterNodePoolTaint {
 		return vs[0].([]KubernetesClusterNodePoolTaint)[vs[1].(int)]
 	}).(KubernetesClusterNodePoolTaintOutput)
+}
+
+type KubernetesClusterRoutingAgent struct {
+	// Boolean flag whether the routing-agent should be enabled or not.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterRoutingAgentInput is an input type that accepts KubernetesClusterRoutingAgentArgs and KubernetesClusterRoutingAgentOutput values.
+// You can construct a concrete instance of `KubernetesClusterRoutingAgentInput` via:
+//
+//	KubernetesClusterRoutingAgentArgs{...}
+type KubernetesClusterRoutingAgentInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterRoutingAgentOutput() KubernetesClusterRoutingAgentOutput
+	ToKubernetesClusterRoutingAgentOutputWithContext(context.Context) KubernetesClusterRoutingAgentOutput
+}
+
+type KubernetesClusterRoutingAgentArgs struct {
+	// Boolean flag whether the routing-agent should be enabled or not.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterRoutingAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (i KubernetesClusterRoutingAgentArgs) ToKubernetesClusterRoutingAgentOutput() KubernetesClusterRoutingAgentOutput {
+	return i.ToKubernetesClusterRoutingAgentOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterRoutingAgentArgs) ToKubernetesClusterRoutingAgentOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoutingAgentOutput)
+}
+
+func (i KubernetesClusterRoutingAgentArgs) ToKubernetesClusterRoutingAgentPtrOutput() KubernetesClusterRoutingAgentPtrOutput {
+	return i.ToKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterRoutingAgentArgs) ToKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoutingAgentOutput).ToKubernetesClusterRoutingAgentPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterRoutingAgentPtrInput is an input type that accepts KubernetesClusterRoutingAgentArgs, KubernetesClusterRoutingAgentPtr and KubernetesClusterRoutingAgentPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterRoutingAgentPtrInput` via:
+//
+//	        KubernetesClusterRoutingAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterRoutingAgentPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterRoutingAgentPtrOutput() KubernetesClusterRoutingAgentPtrOutput
+	ToKubernetesClusterRoutingAgentPtrOutputWithContext(context.Context) KubernetesClusterRoutingAgentPtrOutput
+}
+
+type kubernetesClusterRoutingAgentPtrType KubernetesClusterRoutingAgentArgs
+
+func KubernetesClusterRoutingAgentPtr(v *KubernetesClusterRoutingAgentArgs) KubernetesClusterRoutingAgentPtrInput {
+	return (*kubernetesClusterRoutingAgentPtrType)(v)
+}
+
+func (*kubernetesClusterRoutingAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (i *kubernetesClusterRoutingAgentPtrType) ToKubernetesClusterRoutingAgentPtrOutput() KubernetesClusterRoutingAgentPtrOutput {
+	return i.ToKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterRoutingAgentPtrType) ToKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRoutingAgentPtrOutput)
+}
+
+type KubernetesClusterRoutingAgentOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterRoutingAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (o KubernetesClusterRoutingAgentOutput) ToKubernetesClusterRoutingAgentOutput() KubernetesClusterRoutingAgentOutput {
+	return o
+}
+
+func (o KubernetesClusterRoutingAgentOutput) ToKubernetesClusterRoutingAgentOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentOutput {
+	return o
+}
+
+func (o KubernetesClusterRoutingAgentOutput) ToKubernetesClusterRoutingAgentPtrOutput() KubernetesClusterRoutingAgentPtrOutput {
+	return o.ToKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterRoutingAgentOutput) ToKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterRoutingAgent) *KubernetesClusterRoutingAgent {
+		return &v
+	}).(KubernetesClusterRoutingAgentPtrOutput)
+}
+
+// Boolean flag whether the routing-agent should be enabled or not.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o KubernetesClusterRoutingAgentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterRoutingAgent) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterRoutingAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterRoutingAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (o KubernetesClusterRoutingAgentPtrOutput) ToKubernetesClusterRoutingAgentPtrOutput() KubernetesClusterRoutingAgentPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterRoutingAgentPtrOutput) ToKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) KubernetesClusterRoutingAgentPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterRoutingAgentPtrOutput) Elem() KubernetesClusterRoutingAgentOutput {
+	return o.ApplyT(func(v *KubernetesClusterRoutingAgent) KubernetesClusterRoutingAgent {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterRoutingAgent
+		return ret
+	}).(KubernetesClusterRoutingAgentOutput)
+}
+
+// Boolean flag whether the routing-agent should be enabled or not.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
+func (o KubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterRoutingAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type KubernetesNodePoolNode struct {
@@ -22533,6 +22682,112 @@ func (o SpacesBucketVersioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type SpacesKeyGrant struct {
+	// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+	Bucket string `pulumi:"bucket"`
+	// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+	Permission string `pulumi:"permission"`
+}
+
+// SpacesKeyGrantInput is an input type that accepts SpacesKeyGrantArgs and SpacesKeyGrantOutput values.
+// You can construct a concrete instance of `SpacesKeyGrantInput` via:
+//
+//	SpacesKeyGrantArgs{...}
+type SpacesKeyGrantInput interface {
+	pulumi.Input
+
+	ToSpacesKeyGrantOutput() SpacesKeyGrantOutput
+	ToSpacesKeyGrantOutputWithContext(context.Context) SpacesKeyGrantOutput
+}
+
+type SpacesKeyGrantArgs struct {
+	// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (SpacesKeyGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesKeyGrant)(nil)).Elem()
+}
+
+func (i SpacesKeyGrantArgs) ToSpacesKeyGrantOutput() SpacesKeyGrantOutput {
+	return i.ToSpacesKeyGrantOutputWithContext(context.Background())
+}
+
+func (i SpacesKeyGrantArgs) ToSpacesKeyGrantOutputWithContext(ctx context.Context) SpacesKeyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesKeyGrantOutput)
+}
+
+// SpacesKeyGrantArrayInput is an input type that accepts SpacesKeyGrantArray and SpacesKeyGrantArrayOutput values.
+// You can construct a concrete instance of `SpacesKeyGrantArrayInput` via:
+//
+//	SpacesKeyGrantArray{ SpacesKeyGrantArgs{...} }
+type SpacesKeyGrantArrayInput interface {
+	pulumi.Input
+
+	ToSpacesKeyGrantArrayOutput() SpacesKeyGrantArrayOutput
+	ToSpacesKeyGrantArrayOutputWithContext(context.Context) SpacesKeyGrantArrayOutput
+}
+
+type SpacesKeyGrantArray []SpacesKeyGrantInput
+
+func (SpacesKeyGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesKeyGrant)(nil)).Elem()
+}
+
+func (i SpacesKeyGrantArray) ToSpacesKeyGrantArrayOutput() SpacesKeyGrantArrayOutput {
+	return i.ToSpacesKeyGrantArrayOutputWithContext(context.Background())
+}
+
+func (i SpacesKeyGrantArray) ToSpacesKeyGrantArrayOutputWithContext(ctx context.Context) SpacesKeyGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SpacesKeyGrantArrayOutput)
+}
+
+type SpacesKeyGrantOutput struct{ *pulumi.OutputState }
+
+func (SpacesKeyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SpacesKeyGrant)(nil)).Elem()
+}
+
+func (o SpacesKeyGrantOutput) ToSpacesKeyGrantOutput() SpacesKeyGrantOutput {
+	return o
+}
+
+func (o SpacesKeyGrantOutput) ToSpacesKeyGrantOutputWithContext(ctx context.Context) SpacesKeyGrantOutput {
+	return o
+}
+
+// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+func (o SpacesKeyGrantOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v SpacesKeyGrant) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+func (o SpacesKeyGrantOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v SpacesKeyGrant) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type SpacesKeyGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (SpacesKeyGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SpacesKeyGrant)(nil)).Elem()
+}
+
+func (o SpacesKeyGrantArrayOutput) ToSpacesKeyGrantArrayOutput() SpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o SpacesKeyGrantArrayOutput) ToSpacesKeyGrantArrayOutputWithContext(ctx context.Context) SpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o SpacesKeyGrantArrayOutput) Index(i pulumi.IntInput) SpacesKeyGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SpacesKeyGrant {
+		return vs[0].([]SpacesKeyGrant)[vs[1].(int)]
+	}).(SpacesKeyGrantOutput)
 }
 
 type UptimeAlertNotification struct {
@@ -41766,6 +42021,139 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
+type GetKubernetesClusterRoutingAgent struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterRoutingAgentInput is an input type that accepts GetKubernetesClusterRoutingAgentArgs and GetKubernetesClusterRoutingAgentOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterRoutingAgentInput` via:
+//
+//	GetKubernetesClusterRoutingAgentArgs{...}
+type GetKubernetesClusterRoutingAgentInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterRoutingAgentOutput() GetKubernetesClusterRoutingAgentOutput
+	ToGetKubernetesClusterRoutingAgentOutputWithContext(context.Context) GetKubernetesClusterRoutingAgentOutput
+}
+
+type GetKubernetesClusterRoutingAgentArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterRoutingAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterRoutingAgentArgs) ToGetKubernetesClusterRoutingAgentOutput() GetKubernetesClusterRoutingAgentOutput {
+	return i.ToGetKubernetesClusterRoutingAgentOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterRoutingAgentArgs) ToGetKubernetesClusterRoutingAgentOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRoutingAgentOutput)
+}
+
+func (i GetKubernetesClusterRoutingAgentArgs) ToGetKubernetesClusterRoutingAgentPtrOutput() GetKubernetesClusterRoutingAgentPtrOutput {
+	return i.ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterRoutingAgentArgs) ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRoutingAgentOutput).ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterRoutingAgentPtrInput is an input type that accepts GetKubernetesClusterRoutingAgentArgs, GetKubernetesClusterRoutingAgentPtr and GetKubernetesClusterRoutingAgentPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterRoutingAgentPtrInput` via:
+//
+//	        GetKubernetesClusterRoutingAgentArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterRoutingAgentPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterRoutingAgentPtrOutput() GetKubernetesClusterRoutingAgentPtrOutput
+	ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(context.Context) GetKubernetesClusterRoutingAgentPtrOutput
+}
+
+type getKubernetesClusterRoutingAgentPtrType GetKubernetesClusterRoutingAgentArgs
+
+func GetKubernetesClusterRoutingAgentPtr(v *GetKubernetesClusterRoutingAgentArgs) GetKubernetesClusterRoutingAgentPtrInput {
+	return (*getKubernetesClusterRoutingAgentPtrType)(v)
+}
+
+func (*getKubernetesClusterRoutingAgentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterRoutingAgentPtrType) ToGetKubernetesClusterRoutingAgentPtrOutput() GetKubernetesClusterRoutingAgentPtrOutput {
+	return i.ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterRoutingAgentPtrType) ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRoutingAgentPtrOutput)
+}
+
+type GetKubernetesClusterRoutingAgentOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterRoutingAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterRoutingAgentOutput) ToGetKubernetesClusterRoutingAgentOutput() GetKubernetesClusterRoutingAgentOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRoutingAgentOutput) ToGetKubernetesClusterRoutingAgentOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRoutingAgentOutput) ToGetKubernetesClusterRoutingAgentPtrOutput() GetKubernetesClusterRoutingAgentPtrOutput {
+	return o.ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterRoutingAgentOutput) ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterRoutingAgent) *GetKubernetesClusterRoutingAgent {
+		return &v
+	}).(GetKubernetesClusterRoutingAgentPtrOutput)
+}
+
+func (o GetKubernetesClusterRoutingAgentOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterRoutingAgent) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterRoutingAgentPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterRoutingAgentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterRoutingAgent)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterRoutingAgentPtrOutput) ToGetKubernetesClusterRoutingAgentPtrOutput() GetKubernetesClusterRoutingAgentPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRoutingAgentPtrOutput) ToGetKubernetesClusterRoutingAgentPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRoutingAgentPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRoutingAgentPtrOutput) Elem() GetKubernetesClusterRoutingAgentOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterRoutingAgent) GetKubernetesClusterRoutingAgent {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterRoutingAgent
+		return ret
+	}).(GetKubernetesClusterRoutingAgentOutput)
+}
+
+func (o GetKubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterRoutingAgent) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetLoadBalancerDomain struct {
 	// certificate ID for TLS handshaking
 	CertificateId string `pulumi:"certificateId"`
@@ -44719,6 +45107,112 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 	}).(GetSpacesBucketsSortOutput)
 }
 
+type GetSpacesKeyGrant struct {
+	// The name of the bucket to grant the key access to.
+	Bucket string `pulumi:"bucket"`
+	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+	Permission string `pulumi:"permission"`
+}
+
+// GetSpacesKeyGrantInput is an input type that accepts GetSpacesKeyGrantArgs and GetSpacesKeyGrantOutput values.
+// You can construct a concrete instance of `GetSpacesKeyGrantInput` via:
+//
+//	GetSpacesKeyGrantArgs{...}
+type GetSpacesKeyGrantInput interface {
+	pulumi.Input
+
+	ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput
+	ToGetSpacesKeyGrantOutputWithContext(context.Context) GetSpacesKeyGrantOutput
+}
+
+type GetSpacesKeyGrantArgs struct {
+	// The name of the bucket to grant the key access to.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetSpacesKeyGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
+	return i.ToGetSpacesKeyGrantOutputWithContext(context.Background())
+}
+
+func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantOutput)
+}
+
+// GetSpacesKeyGrantArrayInput is an input type that accepts GetSpacesKeyGrantArray and GetSpacesKeyGrantArrayOutput values.
+// You can construct a concrete instance of `GetSpacesKeyGrantArrayInput` via:
+//
+//	GetSpacesKeyGrantArray{ GetSpacesKeyGrantArgs{...} }
+type GetSpacesKeyGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput
+	ToGetSpacesKeyGrantArrayOutputWithContext(context.Context) GetSpacesKeyGrantArrayOutput
+}
+
+type GetSpacesKeyGrantArray []GetSpacesKeyGrantInput
+
+func (GetSpacesKeyGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
+	return i.ToGetSpacesKeyGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantArrayOutput)
+}
+
+type GetSpacesKeyGrantOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesKeyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
+	return o
+}
+
+// The name of the bucket to grant the key access to.
+func (o GetSpacesKeyGrantOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+func (o GetSpacesKeyGrantOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetSpacesKeyGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesKeyGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantArrayOutput) Index(i pulumi.IntInput) GetSpacesKeyGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesKeyGrant {
+		return vs[0].([]GetSpacesKeyGrant)[vs[1].(int)]
+	}).(GetSpacesKeyGrantOutput)
+}
+
 type GetSshKeysFilter struct {
 	All *bool `pulumi:"all"`
 	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
@@ -45706,6 +46200,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), KubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeInput)(nil)).Elem(), KubernetesNodePoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
@@ -45740,6 +46236,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrInput)(nil)).Elem(), SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketVersioningPtrInput)(nil)).Elem(), SpacesBucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesKeyGrantInput)(nil)).Elem(), SpacesKeyGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SpacesKeyGrantArrayInput)(nil)).Elem(), SpacesKeyGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationInput)(nil)).Elem(), UptimeAlertNotificationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationArrayInput)(nil)).Elem(), UptimeAlertNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackInput)(nil)).Elem(), UptimeAlertNotificationSlackArgs{})
@@ -45987,6 +46485,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainInput)(nil)).Elem(), GetLoadBalancerDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainArrayInput)(nil)).Elem(), GetLoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallInput)(nil)).Elem(), GetLoadBalancerFirewallArgs{})
@@ -46031,6 +46531,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterArrayInput)(nil)).Elem(), GetSpacesBucketsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortInput)(nil)).Elem(), GetSpacesBucketsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortArrayInput)(nil)).Elem(), GetSpacesBucketsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantInput)(nil)).Elem(), GetSpacesKeyGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantArrayInput)(nil)).Elem(), GetSpacesKeyGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterInput)(nil)).Elem(), GetSshKeysFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterArrayInput)(nil)).Elem(), GetSshKeysFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortInput)(nil)).Elem(), GetSshKeysSortArgs{})
@@ -46285,6 +46787,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
@@ -46319,6 +46823,8 @@ func init() {
 	pulumi.RegisterOutputType(SpacesBucketLifecycleRuleNoncurrentVersionExpirationPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningOutput{})
 	pulumi.RegisterOutputType(SpacesBucketVersioningPtrOutput{})
+	pulumi.RegisterOutputType(SpacesKeyGrantOutput{})
+	pulumi.RegisterOutputType(SpacesKeyGrantArrayOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationArrayOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackOutput{})
@@ -46566,6 +47072,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentPtrOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerDomainOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallOutput{})
@@ -46610,6 +47118,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesKeyGrantOutput{})
+	pulumi.RegisterOutputType(GetSpacesKeyGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetSshKeysFilterOutput{})
 	pulumi.RegisterOutputType(GetSshKeysFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSshKeysSortOutput{})

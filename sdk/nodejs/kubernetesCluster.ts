@@ -102,8 +102,6 @@ export class KubernetesCluster extends pulumi.CustomResource {
     public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     public readonly kubeconfigExpireSeconds!: pulumi.Output<number | undefined>;
     /**
@@ -126,6 +124,10 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
      */
     public readonly registryIntegration!: pulumi.Output<boolean | undefined>;
+    /**
+     * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     */
+    public readonly routingAgent!: pulumi.Output<outputs.KubernetesClusterRoutingAgent>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
@@ -185,6 +187,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["nodePool"] = state ? state.nodePool : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["registryIntegration"] = state ? state.registryIntegration : undefined;
+            resourceInputs["routingAgent"] = state ? state.routingAgent : undefined;
             resourceInputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
@@ -215,6 +218,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["nodePool"] = args ? args.nodePool : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["registryIntegration"] = args ? args.registryIntegration : undefined;
+            resourceInputs["routingAgent"] = args ? args.routingAgent : undefined;
             resourceInputs["serviceSubnet"] = args ? args.serviceSubnet : undefined;
             resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
@@ -279,8 +283,6 @@ export interface KubernetesClusterState {
     kubeConfigs?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterKubeConfig>[]>;
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
@@ -303,6 +305,10 @@ export interface KubernetesClusterState {
      * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
      */
     registryIntegration?: pulumi.Input<boolean>;
+    /**
+     * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     */
+    routingAgent?: pulumi.Input<inputs.KubernetesClusterRoutingAgent>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
@@ -357,8 +363,6 @@ export interface KubernetesClusterArgs {
     ha?: pulumi.Input<boolean>;
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**
@@ -381,6 +385,10 @@ export interface KubernetesClusterArgs {
      * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
      */
     registryIntegration?: pulumi.Input<boolean>;
+    /**
+     * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     */
+    routingAgent?: pulumi.Input<inputs.KubernetesClusterRoutingAgent>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */

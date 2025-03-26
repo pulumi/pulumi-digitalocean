@@ -11,21 +11,19 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class KubernetesClusterControlPlaneFirewall
+    public sealed class KubernetesClusterRoutingAgent
     {
-        public readonly ImmutableArray<string> AllowedAddresses;
         /// <summary>
-        /// Boolean flag whether the routing-agent is enabled or not.
+        /// Boolean flag whether the routing-agent should be enabled or not.
+        /// 
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private KubernetesClusterControlPlaneFirewall(
-            ImmutableArray<string> allowedAddresses,
-
-            bool enabled)
+        private KubernetesClusterRoutingAgent(bool enabled)
         {
-            AllowedAddresses = allowedAddresses;
             Enabled = enabled;
         }
     }

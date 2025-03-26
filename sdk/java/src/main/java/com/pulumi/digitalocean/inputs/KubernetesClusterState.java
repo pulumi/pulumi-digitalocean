@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterRoutingAgentArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -177,16 +178,12 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Import(name="kubeconfigExpireSeconds")
     private @Nullable Output<Integer> kubeconfigExpireSeconds;
 
     /**
      * @return The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Optional<Output<Integer>> kubeconfigExpireSeconds() {
@@ -266,6 +263,21 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<Boolean>> registryIntegration() {
         return Optional.ofNullable(this.registryIntegration);
+    }
+
+    /**
+     * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     * 
+     */
+    @Import(name="routingAgent")
+    private @Nullable Output<KubernetesClusterRoutingAgentArgs> routingAgent;
+
+    /**
+     * @return Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     * 
+     */
+    public Optional<Output<KubernetesClusterRoutingAgentArgs>> routingAgent() {
+        return Optional.ofNullable(this.routingAgent);
     }
 
     /**
@@ -393,6 +405,7 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.nodePool = $.nodePool;
         this.region = $.region;
         this.registryIntegration = $.registryIntegration;
+        this.routingAgent = $.routingAgent;
         this.serviceSubnet = $.serviceSubnet;
         this.status = $.status;
         this.surgeUpgrade = $.surgeUpgrade;
@@ -644,8 +657,6 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         /**
          * @param kubeconfigExpireSeconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
          * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
-         * 
          * @return builder
          * 
          */
@@ -656,8 +667,6 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
 
         /**
          * @param kubeconfigExpireSeconds The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 
@@ -789,6 +798,27 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder registryIntegration(Boolean registryIntegration) {
             return registryIntegration(Output.of(registryIntegration));
+        }
+
+        /**
+         * @param routingAgent Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingAgent(@Nullable Output<KubernetesClusterRoutingAgentArgs> routingAgent) {
+            $.routingAgent = routingAgent;
+            return this;
+        }
+
+        /**
+         * @param routingAgent Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routingAgent(KubernetesClusterRoutingAgentArgs routingAgent) {
+            return routingAgent(Output.of(routingAgent));
         }
 
         /**

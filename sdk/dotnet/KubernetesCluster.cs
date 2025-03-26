@@ -101,8 +101,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Output("kubeconfigExpireSeconds")]
         public Output<int?> KubeconfigExpireSeconds { get; private set; } = null!;
@@ -136,6 +134,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("registryIntegration")]
         public Output<bool?> RegistryIntegration { get; private set; } = null!;
+
+        /// <summary>
+        /// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+        /// </summary>
+        [Output("routingAgent")]
+        public Output<Outputs.KubernetesClusterRoutingAgent> RoutingAgent { get; private set; } = null!;
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -266,8 +270,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Input("kubeconfigExpireSeconds")]
         public Input<int>? KubeconfigExpireSeconds { get; set; }
@@ -301,6 +303,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("registryIntegration")]
         public Input<bool>? RegistryIntegration { get; set; }
+
+        /// <summary>
+        /// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+        /// </summary>
+        [Input("routingAgent")]
+        public Input<Inputs.KubernetesClusterRoutingAgentArgs>? RoutingAgent { get; set; }
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -423,8 +431,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         [Input("kubeconfigExpireSeconds")]
         public Input<int>? KubeconfigExpireSeconds { get; set; }
@@ -458,6 +464,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("registryIntegration")]
         public Input<bool>? RegistryIntegration { get; set; }
+
+        /// <summary>
+        /// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+        /// </summary>
+        [Input("routingAgent")]
+        public Input<Inputs.KubernetesClusterRoutingAgentGetArgs>? RoutingAgent { get; set; }
 
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).

@@ -27,6 +27,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "routingAgent": args.routingAgent,
         "tags": args.tags,
     }, opts);
 }
@@ -41,6 +42,7 @@ export interface GetKubernetesClusterArgs {
      * The name of Kubernetes cluster.
      */
     name: string;
+    routingAgent?: inputs.GetKubernetesClusterRoutingAgent;
     /**
      * A list of tag names applied to the node pool.
      */
@@ -99,6 +101,7 @@ export interface GetKubernetesClusterResult {
      * The slug identifier for the region where the Kubernetes cluster is located.
      */
     readonly region: string;
+    readonly routingAgent: outputs.GetKubernetesClusterRoutingAgent;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
@@ -149,6 +152,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "routingAgent": args.routingAgent,
         "tags": args.tags,
     }, opts);
 }
@@ -163,6 +167,7 @@ export interface GetKubernetesClusterOutputArgs {
      * The name of Kubernetes cluster.
      */
     name: pulumi.Input<string>;
+    routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs>;
     /**
      * A list of tag names applied to the node pool.
      */

@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -47,6 +48,13 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         return this.name;
     }
 
+    @Import(name="routingAgent")
+    private @Nullable GetKubernetesClusterRoutingAgent routingAgent;
+
+    public Optional<GetKubernetesClusterRoutingAgent> routingAgent() {
+        return Optional.ofNullable(this.routingAgent);
+    }
+
     /**
      * A list of tag names applied to the node pool.
      * 
@@ -68,6 +76,7 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
+        this.routingAgent = $.routingAgent;
         this.tags = $.tags;
     }
 
@@ -111,6 +120,11 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder routingAgent(@Nullable GetKubernetesClusterRoutingAgent routingAgent) {
+            $.routingAgent = routingAgent;
             return this;
         }
 

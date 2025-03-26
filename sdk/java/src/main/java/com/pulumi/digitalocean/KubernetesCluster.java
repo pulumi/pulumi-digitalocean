@@ -15,6 +15,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.KubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
+import com.pulumi.digitalocean.outputs.KubernetesClusterRoutingAgent;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -193,16 +194,12 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Export(name="kubeconfigExpireSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> kubeconfigExpireSeconds;
 
     /**
      * @return The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Output<Optional<Integer>> kubeconfigExpireSeconds() {
@@ -277,6 +274,20 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> registryIntegration() {
         return Codegen.optional(this.registryIntegration);
+    }
+    /**
+     * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     * 
+     */
+    @Export(name="routingAgent", refs={KubernetesClusterRoutingAgent.class}, tree="[0]")
+    private Output<KubernetesClusterRoutingAgent> routingAgent;
+
+    /**
+     * @return Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
+     * 
+     */
+    public Output<KubernetesClusterRoutingAgent> routingAgent() {
+        return this.routingAgent;
     }
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).

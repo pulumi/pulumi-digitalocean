@@ -23,9 +23,17 @@ public final class KubernetesClusterControlPlaneFirewallArgs extends com.pulumi.
         return this.allowedAddresses;
     }
 
+    /**
+     * Boolean flag whether the routing-agent is enabled or not.
+     * 
+     */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
+    /**
+     * @return Boolean flag whether the routing-agent is enabled or not.
+     * 
+     */
     public Output<Boolean> enabled() {
         return this.enabled;
     }
@@ -68,11 +76,23 @@ public final class KubernetesClusterControlPlaneFirewallArgs extends com.pulumi.
             return allowedAddresses(List.of(allowedAddresses));
         }
 
+        /**
+         * @param enabled Boolean flag whether the routing-agent is enabled or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
+        /**
+         * @param enabled Boolean flag whether the routing-agent is enabled or not.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

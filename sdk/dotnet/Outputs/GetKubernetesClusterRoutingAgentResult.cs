@@ -11,21 +11,13 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class KubernetesClusterControlPlaneFirewall
+    public sealed class GetKubernetesClusterRoutingAgentResult
     {
-        public readonly ImmutableArray<string> AllowedAddresses;
-        /// <summary>
-        /// Boolean flag whether the routing-agent is enabled or not.
-        /// </summary>
         public readonly bool Enabled;
 
         [OutputConstructor]
-        private KubernetesClusterControlPlaneFirewall(
-            ImmutableArray<string> allowedAddresses,
-
-            bool enabled)
+        private GetKubernetesClusterRoutingAgentResult(bool enabled)
         {
-            AllowedAddresses = allowedAddresses;
             Enabled = enabled;
         }
     }
