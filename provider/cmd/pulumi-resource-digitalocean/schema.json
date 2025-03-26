@@ -3130,7 +3130,8 @@
                     }
                 },
                 "enabled": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Boolean flag whether the routing-agent is enabled or not.\n"
                 }
             },
             "type": "object",
@@ -3353,6 +3354,18 @@
                 "effect",
                 "key",
                 "value"
+            ]
+        },
+        "digitalocean:index/KubernetesClusterRoutingAgent:KubernetesClusterRoutingAgent": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the routing-agent should be enabled or not.\n\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
             ]
         },
         "digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode": {
@@ -3816,6 +3829,23 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/SpacesKeyGrant:SpacesKeyGrant": {
+            "properties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bucket",
+                "permission"
+            ]
         },
         "digitalocean:index/UptimeAlertNotification:UptimeAlertNotification": {
             "properties": {
@@ -7420,6 +7450,22 @@
                 }
             }
         },
+        "digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getLoadBalancerDomain:getLoadBalancerDomain": {
             "properties": {
                 "certificateId": {
@@ -8172,6 +8218,28 @@
             "required": [
                 "key"
             ]
+        },
+        "digitalocean:index/getSpacesKeyGrant:getSpacesKeyGrant": {
+            "properties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket to grant the key access to.\n"
+                },
+                "permission": {
+                    "type": "string",
+                    "description": "The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "bucket",
+                "permission"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getSshKeysFilter:getSshKeysFilter": {
             "properties": {
@@ -14526,7 +14594,7 @@
                 },
                 "kubeconfigExpireSeconds": {
                     "type": "integer",
-                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n"
                 },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14547,6 +14615,10 @@
                 "registryIntegration": {
                     "type": "boolean",
                     "description": "Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false\n"
+                },
+                "routingAgent": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterRoutingAgent:KubernetesClusterRoutingAgent",
+                    "description": "Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.\n"
                 },
                 "serviceSubnet": {
                     "type": "string",
@@ -14591,6 +14663,7 @@
                 "name",
                 "nodePool",
                 "region",
+                "routingAgent",
                 "serviceSubnet",
                 "status",
                 "updatedAt",
@@ -14627,7 +14700,7 @@
                 },
                 "kubeconfigExpireSeconds": {
                     "type": "integer",
-                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n"
                 },
                 "maintenancePolicy": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14658,6 +14731,10 @@
                 "registryIntegration": {
                     "type": "boolean",
                     "description": "Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false\n"
+                },
+                "routingAgent": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterRoutingAgent:KubernetesClusterRoutingAgent",
+                    "description": "Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.\n"
                 },
                 "serviceSubnet": {
                     "type": "string",
@@ -14745,7 +14822,7 @@
                     },
                     "kubeconfigExpireSeconds": {
                         "type": "integer",
-                        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                        "description": "The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.\n"
                     },
                     "maintenancePolicy": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterMaintenancePolicy:KubernetesClusterMaintenancePolicy",
@@ -14776,6 +14853,10 @@
                     "registryIntegration": {
                         "type": "boolean",
                         "description": "Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false\n"
+                    },
+                    "routingAgent": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterRoutingAgent:KubernetesClusterRoutingAgent",
+                        "description": "Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.\n"
                     },
                     "serviceSubnet": {
                         "type": "string",
@@ -16580,6 +16661,84 @@
                         "type": "string",
                         "description": "The region where the bucket resides.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/spacesKey:SpacesKey": {
+            "description": "Provides a key resource for Spaces, DigitalOcean's object storage product.\n\nThe [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was\ndesigned to be interoperable with Amazon's AWS S3 API. This allows users to\ninteract with the service while using the tools they already know. Spaces\nmirrors S3's authentication framework and requests to Spaces require a key pair\nsimilar to Amazon's Access ID and Secret Key.\n\nAs a Spaces owner, you limit others’ access to your buckets using Spaces access \nkeys. Access keys can provide several levels of permissions to create, destroy,\nread, and write to specific associated buckets. However, access keys only limit \naccess to certain commands using the S3 API or CLI, not the control panel or \nother DigitalOcean resources.\n\n## Example Usage\n\n### Create a New Key\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.SpacesKey(\"foobar\", {name: \"foobar\"});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.SpacesKey(\"foobar\", name=\"foobar\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.SpacesKey(\"foobar\", new()\n    {\n        Name = \"foobar\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewSpacesKey(ctx, \"foobar\", \u0026digitalocean.SpacesKeyArgs{\n\t\t\tName: pulumi.String(\"foobar\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SpacesKey;\nimport com.pulumi.digitalocean.SpacesKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new SpacesKey(\"foobar\", SpacesKeyArgs.builder()\n            .name(\"foobar\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:SpacesKey\n    properties:\n      name: foobar\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a New Key with Grants\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.SpacesKey(\"foobar\", {\n    name: \"foobar\",\n    grants: [{\n        bucket: \"my-bucket\",\n        permission: \"read\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.SpacesKey(\"foobar\",\n    name=\"foobar\",\n    grants=[{\n        \"bucket\": \"my-bucket\",\n        \"permission\": \"read\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.SpacesKey(\"foobar\", new()\n    {\n        Name = \"foobar\",\n        Grants = new[]\n        {\n            new DigitalOcean.Inputs.SpacesKeyGrantArgs\n            {\n                Bucket = \"my-bucket\",\n                Permission = \"read\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewSpacesKey(ctx, \"foobar\", \u0026digitalocean.SpacesKeyArgs{\n\t\t\tName: pulumi.String(\"foobar\"),\n\t\t\tGrants: digitalocean.SpacesKeyGrantArray{\n\t\t\t\t\u0026digitalocean.SpacesKeyGrantArgs{\n\t\t\t\t\tBucket:     pulumi.String(\"my-bucket\"),\n\t\t\t\t\tPermission: pulumi.String(\"read\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SpacesKey;\nimport com.pulumi.digitalocean.SpacesKeyArgs;\nimport com.pulumi.digitalocean.inputs.SpacesKeyGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new SpacesKey(\"foobar\", SpacesKeyArgs.builder()\n            .name(\"foobar\")\n            .grants(SpacesKeyGrantArgs.builder()\n                .bucket(\"my-bucket\")\n                .permission(\"read\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:SpacesKey\n    properties:\n      name: foobar\n      grants:\n        - bucket: my-bucket\n          permission: read\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Create a New Key with full access\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.SpacesKey(\"foobar\", {\n    name: \"foobar\",\n    grants: [{\n        bucket: \"\",\n        permission: \"fullaccess\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.SpacesKey(\"foobar\",\n    name=\"foobar\",\n    grants=[{\n        \"bucket\": \"\",\n        \"permission\": \"fullaccess\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.SpacesKey(\"foobar\", new()\n    {\n        Name = \"foobar\",\n        Grants = new[]\n        {\n            new DigitalOcean.Inputs.SpacesKeyGrantArgs\n            {\n                Bucket = \"\",\n                Permission = \"fullaccess\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewSpacesKey(ctx, \"foobar\", \u0026digitalocean.SpacesKeyArgs{\n\t\t\tName: pulumi.String(\"foobar\"),\n\t\t\tGrants: digitalocean.SpacesKeyGrantArray{\n\t\t\t\t\u0026digitalocean.SpacesKeyGrantArgs{\n\t\t\t\t\tBucket:     pulumi.String(\"\"),\n\t\t\t\t\tPermission: pulumi.String(\"fullaccess\"),\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SpacesKey;\nimport com.pulumi.digitalocean.SpacesKeyArgs;\nimport com.pulumi.digitalocean.inputs.SpacesKeyGrantArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new SpacesKey(\"foobar\", SpacesKeyArgs.builder()\n            .name(\"foobar\")\n            .grants(SpacesKeyGrantArgs.builder()\n                .bucket(\"\")\n                .permission(\"fullaccess\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:SpacesKey\n    properties:\n      name: foobar\n      grants:\n        - bucket: \"\"\n          permission: fullaccess\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "properties": {
+                "accessKey": {
+                    "type": "string",
+                    "description": "The access key ID of the key\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The creation time of the key\n"
+                },
+                "grants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/SpacesKeyGrant:SpacesKeyGrant"
+                    },
+                    "description": "A grant for the key (documented below).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the key\n"
+                },
+                "secretKey": {
+                    "type": "string",
+                    "description": "The access key secret of the key\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "accessKey",
+                "createdAt",
+                "name",
+                "secretKey"
+            ],
+            "inputProperties": {
+                "grants": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/SpacesKeyGrant:SpacesKeyGrant"
+                    },
+                    "description": "A grant for the key (documented below).\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the key\n"
+                }
+            },
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SpacesKey resources.\n",
+                "properties": {
+                    "accessKey": {
+                        "type": "string",
+                        "description": "The access key ID of the key\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The creation time of the key\n"
+                    },
+                    "grants": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/SpacesKeyGrant:SpacesKeyGrant"
+                        },
+                        "description": "A grant for the key (documented below).\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the key\n"
+                    },
+                    "secretKey": {
+                        "type": "string",
+                        "description": "The access key secret of the key\n",
+                        "secret": true
                     }
                 },
                 "type": "object"
@@ -19094,6 +19253,9 @@
                         "type": "string",
                         "description": "The name of Kubernetes cluster.\n"
                     },
+                    "routingAgent": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent"
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -19182,6 +19344,9 @@
                         "description": "The slug identifier for the region where the Kubernetes cluster is located.\n",
                         "type": "string"
                     },
+                    "routingAgent": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent"
+                    },
                     "serviceSubnet": {
                         "description": "The range of assignable IP addresses for services running in the Kubernetes cluster.\n",
                         "type": "string"
@@ -19230,6 +19395,7 @@
                     "name",
                     "nodePools",
                     "region",
+                    "routingAgent",
                     "serviceSubnet",
                     "status",
                     "surgeUpgrade",
@@ -20334,6 +20500,58 @@
                 },
                 "required": [
                     "buckets",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getSpacesKey:getSpacesKey": {
+            "description": "## Example Usage\n\nGet the key by access key ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getSpacesKey({\n    accessKey: \"ACCESS_KEY_ID\",\n});\nexport const keyGrants = example.then(example =\u003e example.grants);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_spaces_key(access_key=\"ACCESS_KEY_ID\")\npulumi.export(\"keyGrants\", example.grants)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetSpacesKey.Invoke(new()\n    {\n        AccessKey = \"ACCESS_KEY_ID\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"keyGrants\"] = example.Apply(getSpacesKeyResult =\u003e getSpacesKeyResult.Grants),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupSpacesKey(ctx, \u0026digitalocean.LookupSpacesKeyArgs{\n\t\t\tAccessKey: \"ACCESS_KEY_ID\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"keyGrants\", example.Grants)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()\n            .accessKey(\"ACCESS_KEY_ID\")\n            .build());\n\n        ctx.export(\"keyGrants\", example.applyValue(getSpacesKeyResult -\u003e getSpacesKeyResult.grants()));\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getSpacesKey\n      arguments:\n        accessKey: ACCESS_KEY_ID\noutputs:\n  keyGrants: ${example.grants}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getSpacesKey.\n",
+                "properties": {
+                    "accessKey": {
+                        "type": "string",
+                        "description": "The Access Key ID of the Spaces key.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accessKey"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getSpacesKey.\n",
+                "properties": {
+                    "accessKey": {
+                        "description": "The access key ID of the Spaces key\n",
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "description": "The creation time of the Spaces key\n",
+                        "type": "string"
+                    },
+                    "grants": {
+                        "description": "The list of grants associated with the Spaces key.\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getSpacesKeyGrant:getSpacesKeyGrant"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "The name of the Spaces key\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "accessKey",
+                    "createdAt",
+                    "grants",
+                    "name",
                     "id"
                 ],
                 "type": "object"
