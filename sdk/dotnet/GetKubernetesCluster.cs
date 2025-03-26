@@ -104,6 +104,9 @@ namespace Pulumi.DigitalOcean
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("routingAgent")]
+        public Inputs.GetKubernetesClusterRoutingAgentArgs? RoutingAgent { get; set; }
+
         [Input("tags")]
         private List<string>? _tags;
 
@@ -140,6 +143,9 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("routingAgent")]
+        public Input<Inputs.GetKubernetesClusterRoutingAgentInputArgs>? RoutingAgent { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -211,6 +217,7 @@ namespace Pulumi.DigitalOcean
         /// The slug identifier for the region where the Kubernetes cluster is located.
         /// </summary>
         public readonly string Region;
+        public readonly Outputs.GetKubernetesClusterRoutingAgentResult RoutingAgent;
         /// <summary>
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.
         /// </summary>
@@ -273,6 +280,8 @@ namespace Pulumi.DigitalOcean
 
             string region,
 
+            Outputs.GetKubernetesClusterRoutingAgentResult routingAgent,
+
             string serviceSubnet,
 
             string status,
@@ -304,6 +313,7 @@ namespace Pulumi.DigitalOcean
             Name = name;
             NodePools = nodePools;
             Region = region;
+            RoutingAgent = routingAgent;
             ServiceSubnet = serviceSubnet;
             Status = status;
             SurgeUpgrade = surgeUpgrade;

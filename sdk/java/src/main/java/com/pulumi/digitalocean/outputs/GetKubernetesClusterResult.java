@@ -9,6 +9,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -79,6 +80,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String region;
+    private GetKubernetesClusterRoutingAgent routingAgent;
     /**
      * @return The range of assignable IP addresses for services running in the Kubernetes cluster.
      * 
@@ -206,6 +208,9 @@ public final class GetKubernetesClusterResult {
     public String region() {
         return this.region;
     }
+    public GetKubernetesClusterRoutingAgent routingAgent() {
+        return this.routingAgent;
+    }
     /**
      * @return The range of assignable IP addresses for services running in the Kubernetes cluster.
      * 
@@ -283,6 +288,7 @@ public final class GetKubernetesClusterResult {
         private String name;
         private List<GetKubernetesClusterNodePool> nodePools;
         private String region;
+        private GetKubernetesClusterRoutingAgent routingAgent;
         private String serviceSubnet;
         private String status;
         private Boolean surgeUpgrade;
@@ -309,6 +315,7 @@ public final class GetKubernetesClusterResult {
     	      this.name = defaults.name;
     	      this.nodePools = defaults.nodePools;
     	      this.region = defaults.region;
+    	      this.routingAgent = defaults.routingAgent;
     	      this.serviceSubnet = defaults.serviceSubnet;
     	      this.status = defaults.status;
     	      this.surgeUpgrade = defaults.surgeUpgrade;
@@ -451,6 +458,14 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder routingAgent(GetKubernetesClusterRoutingAgent routingAgent) {
+            if (routingAgent == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "routingAgent");
+            }
+            this.routingAgent = routingAgent;
+            return this;
+        }
+        @CustomType.Setter
         public Builder serviceSubnet(String serviceSubnet) {
             if (serviceSubnet == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "serviceSubnet");
@@ -532,6 +547,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.name = name;
             _resultValue.nodePools = nodePools;
             _resultValue.region = region;
+            _resultValue.routingAgent = routingAgent;
             _resultValue.serviceSubnet = serviceSubnet;
             _resultValue.status = status;
             _resultValue.surgeUpgrade = surgeUpgrade;

@@ -77,6 +77,8 @@ import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetSpacesBucketPlainArgs;
 import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
 import com.pulumi.digitalocean.inputs.GetSpacesBucketsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+import com.pulumi.digitalocean.inputs.GetSpacesKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
 import com.pulumi.digitalocean.inputs.GetSshKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
@@ -128,6 +130,7 @@ import com.pulumi.digitalocean.outputs.GetSpacesBucketObjectResult;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketObjectsResult;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketResult;
 import com.pulumi.digitalocean.outputs.GetSpacesBucketsResult;
+import com.pulumi.digitalocean.outputs.GetSpacesKeyResult;
 import com.pulumi.digitalocean.outputs.GetSshKeyResult;
 import com.pulumi.digitalocean.outputs.GetSshKeysResult;
 import com.pulumi.digitalocean.outputs.GetTagResult;
@@ -13896,6 +13899,221 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetSpacesBucketsResult> getSpacesBucketsPlain(GetSpacesBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBuckets:getSpacesBuckets", TypeShape.of(GetSpacesBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the key by access key ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()
+     *             .accessKey("ACCESS_KEY_ID")
+     *             .build());
+     * 
+     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSpacesKeyResult> getSpacesKey(GetSpacesKeyArgs args) {
+        return getSpacesKey(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the key by access key ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()
+     *             .accessKey("ACCESS_KEY_ID")
+     *             .build());
+     * 
+     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSpacesKeyResult> getSpacesKeyPlain(GetSpacesKeyPlainArgs args) {
+        return getSpacesKeyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the key by access key ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()
+     *             .accessKey("ACCESS_KEY_ID")
+     *             .build());
+     * 
+     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSpacesKeyResult> getSpacesKey(GetSpacesKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesKey:getSpacesKey", TypeShape.of(GetSpacesKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the key by access key ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()
+     *             .accessKey("ACCESS_KEY_ID")
+     *             .build());
+     * 
+     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSpacesKeyResult> getSpacesKey(GetSpacesKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getSpacesKey:getSpacesKey", TypeShape.of(GetSpacesKeyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the key by access key ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getSpacesKey(GetSpacesKeyArgs.builder()
+     *             .accessKey("ACCESS_KEY_ID")
+     *             .build());
+     * 
+     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSpacesKeyResult> getSpacesKeyPlain(GetSpacesKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesKey:getSpacesKey", TypeShape.of(GetSpacesKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a ssh key. This data source provides the name, public key,

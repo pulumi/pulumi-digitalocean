@@ -13,12 +13,20 @@ import java.util.Objects;
 @CustomType
 public final class KubernetesClusterControlPlaneFirewall {
     private List<String> allowedAddresses;
+    /**
+     * @return Boolean flag whether the routing-agent is enabled or not.
+     * 
+     */
     private Boolean enabled;
 
     private KubernetesClusterControlPlaneFirewall() {}
     public List<String> allowedAddresses() {
         return this.allowedAddresses;
     }
+    /**
+     * @return Boolean flag whether the routing-agent is enabled or not.
+     * 
+     */
     public Boolean enabled() {
         return this.enabled;
     }

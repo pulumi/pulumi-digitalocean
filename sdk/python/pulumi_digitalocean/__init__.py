@@ -68,6 +68,7 @@ from .get_spaces_bucket import *
 from .get_spaces_bucket_object import *
 from .get_spaces_bucket_objects import *
 from .get_spaces_buckets import *
+from .get_spaces_key import *
 from .get_ssh_key import *
 from .get_ssh_keys import *
 from .get_tag import *
@@ -91,6 +92,7 @@ from .spaces_bucket import *
 from .spaces_bucket_cors_configuration import *
 from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
+from .spaces_key import *
 from .ssh_key import *
 from .tag import *
 from .uptime_alert import *
@@ -439,6 +441,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy": "SpacesBucketPolicy"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/spacesKey",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/spacesKey:SpacesKey": "SpacesKey"
   }
  },
  {

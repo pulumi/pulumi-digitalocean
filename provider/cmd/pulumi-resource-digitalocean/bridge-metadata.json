@@ -766,6 +766,9 @@
                             }
                         }
                     },
+                    "routing_agent": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -976,6 +979,15 @@
             "digitalocean_spaces_bucket_policy": {
                 "current": "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy",
                 "majorVersion": 4
+            },
+            "digitalocean_spaces_key": {
+                "current": "digitalocean:index/spacesKey:SpacesKey",
+                "majorVersion": 4,
+                "fields": {
+                    "grant": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "digitalocean_ssh_key": {
                 "current": "digitalocean:index/sshKey:SshKey",
@@ -1828,6 +1840,9 @@
                             }
                         }
                     },
+                    "routing_agent": {
+                        "maxItemsOne": true
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -2085,6 +2100,15 @@
                         }
                     },
                     "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_spaces_key": {
+                "current": "digitalocean:index/getSpacesKey:getSpacesKey",
+                "majorVersion": 4,
+                "fields": {
+                    "grant": {
                         "maxItemsOne": false
                     }
                 }

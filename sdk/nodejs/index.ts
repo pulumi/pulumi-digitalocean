@@ -315,6 +315,11 @@ export const getSpacesBuckets: typeof import("./getSpacesBuckets").getSpacesBuck
 export const getSpacesBucketsOutput: typeof import("./getSpacesBuckets").getSpacesBucketsOutput = null as any;
 utilities.lazyLoad(exports, ["getSpacesBuckets","getSpacesBucketsOutput"], () => require("./getSpacesBuckets"));
 
+export { GetSpacesKeyArgs, GetSpacesKeyResult, GetSpacesKeyOutputArgs } from "./getSpacesKey";
+export const getSpacesKey: typeof import("./getSpacesKey").getSpacesKey = null as any;
+export const getSpacesKeyOutput: typeof import("./getSpacesKey").getSpacesKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getSpacesKey","getSpacesKeyOutput"], () => require("./getSpacesKey"));
+
 export { GetSshKeyArgs, GetSshKeyResult, GetSshKeyOutputArgs } from "./getSshKey";
 export const getSshKey: typeof import("./getSshKey").getSshKey = null as any;
 export const getSshKeyOutput: typeof import("./getSshKey").getSshKeyOutput = null as any;
@@ -429,6 +434,11 @@ export { SpacesBucketPolicyArgs, SpacesBucketPolicyState } from "./spacesBucketP
 export type SpacesBucketPolicy = import("./spacesBucketPolicy").SpacesBucketPolicy;
 export const SpacesBucketPolicy: typeof import("./spacesBucketPolicy").SpacesBucketPolicy = null as any;
 utilities.lazyLoad(exports, ["SpacesBucketPolicy"], () => require("./spacesBucketPolicy"));
+
+export { SpacesKeyArgs, SpacesKeyState } from "./spacesKey";
+export type SpacesKey = import("./spacesKey").SpacesKey;
+export const SpacesKey: typeof import("./spacesKey").SpacesKey = null as any;
+utilities.lazyLoad(exports, ["SpacesKey"], () => require("./spacesKey"));
 
 export { SshKeyArgs, SshKeyState } from "./sshKey";
 export type SshKey = import("./sshKey").SshKey;
@@ -574,6 +584,8 @@ const _module = {
                 return new SpacesBucketObject(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy":
                 return new SpacesBucketPolicy(name, <any>undefined, { urn })
+            case "digitalocean:index/spacesKey:SpacesKey":
+                return new SpacesKey(name, <any>undefined, { urn })
             case "digitalocean:index/sshKey:SshKey":
                 return new SshKey(name, <any>undefined, { urn })
             case "digitalocean:index/tag:Tag":
@@ -638,6 +650,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _mod
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketCorsConfiguration", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketPolicy", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/spacesKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/sshKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/tag", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/uptimeAlert", _module)

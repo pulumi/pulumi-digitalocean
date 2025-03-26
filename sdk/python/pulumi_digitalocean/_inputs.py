@@ -258,6 +258,8 @@ __all__ = [
     'KubernetesClusterNodePoolNodeArgsDict',
     'KubernetesClusterNodePoolTaintArgs',
     'KubernetesClusterNodePoolTaintArgsDict',
+    'KubernetesClusterRoutingAgentArgs',
+    'KubernetesClusterRoutingAgentArgsDict',
     'KubernetesNodePoolNodeArgs',
     'KubernetesNodePoolNodeArgsDict',
     'KubernetesNodePoolTaintArgs',
@@ -292,6 +294,8 @@ __all__ = [
     'SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict',
     'SpacesBucketVersioningArgs',
     'SpacesBucketVersioningArgsDict',
+    'SpacesKeyGrantArgs',
+    'SpacesKeyGrantArgsDict',
     'UptimeAlertNotificationArgs',
     'UptimeAlertNotificationArgsDict',
     'UptimeAlertNotificationSlackArgs',
@@ -316,6 +320,8 @@ __all__ = [
     'GetImagesSortArgsDict',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
+    'GetKubernetesClusterRoutingAgentArgs',
+    'GetKubernetesClusterRoutingAgentArgsDict',
     'GetProjectsFilterArgs',
     'GetProjectsFilterArgsDict',
     'GetProjectsSortArgs',
@@ -11022,6 +11028,9 @@ if not MYPY:
     class KubernetesClusterControlPlaneFirewallArgsDict(TypedDict):
         allowed_addresses: pulumi.Input[Sequence[pulumi.Input[str]]]
         enabled: pulumi.Input[bool]
+        """
+        Boolean flag whether the routing-agent is enabled or not.
+        """
 elif False:
     KubernetesClusterControlPlaneFirewallArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11030,6 +11039,9 @@ class KubernetesClusterControlPlaneFirewallArgs:
     def __init__(__self__, *,
                  allowed_addresses: pulumi.Input[Sequence[pulumi.Input[str]]],
                  enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Boolean flag whether the routing-agent is enabled or not.
+        """
         pulumi.set(__self__, "allowed_addresses", allowed_addresses)
         pulumi.set(__self__, "enabled", enabled)
 
@@ -11045,6 +11057,9 @@ class KubernetesClusterControlPlaneFirewallArgs:
     @property
     @pulumi.getter
     def enabled(self) -> pulumi.Input[bool]:
+        """
+        Boolean flag whether the routing-agent is enabled or not.
+        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter
@@ -11725,6 +11740,46 @@ class KubernetesClusterNodePoolTaintArgs:
     @value.setter
     def value(self, value: pulumi.Input[str]):
         pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class KubernetesClusterRoutingAgentArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Boolean flag whether the routing-agent should be enabled or not.
+
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+elif False:
+    KubernetesClusterRoutingAgentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterRoutingAgentArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Boolean flag whether the routing-agent should be enabled or not.
+               
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Boolean flag whether the routing-agent should be enabled or not.
+
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:
@@ -13211,6 +13266,56 @@ class SpacesBucketVersioningArgs:
 
 
 if not MYPY:
+    class SpacesKeyGrantArgsDict(TypedDict):
+        bucket: pulumi.Input[str]
+        """
+        Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        """
+        permission: pulumi.Input[str]
+        """
+        Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        """
+elif False:
+    SpacesKeyGrantArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SpacesKeyGrantArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 permission: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] bucket: Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        :param pulumi.Input[str] permission: Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "permission", permission)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter
+    def permission(self) -> pulumi.Input[str]:
+        """
+        Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        """
+        return pulumi.get(self, "permission")
+
+    @permission.setter
+    def permission(self, value: pulumi.Input[str]):
+        pulumi.set(self, "permission", value)
+
+
+if not MYPY:
     class UptimeAlertNotificationArgsDict(TypedDict):
         emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -14251,6 +14356,28 @@ class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
     @scale_down_utilization_threshold.setter
     def scale_down_utilization_threshold(self, value: Optional[float]):
         pulumi.set(self, "scale_down_utilization_threshold", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterRoutingAgentArgsDict(TypedDict):
+        enabled: bool
+elif False:
+    GetKubernetesClusterRoutingAgentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterRoutingAgentArgs:
+    def __init__(__self__, *,
+                 enabled: bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: bool):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

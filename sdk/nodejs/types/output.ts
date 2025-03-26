@@ -4627,6 +4627,10 @@ export interface GetKubernetesClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetKubernetesClusterRoutingAgent {
+    enabled: boolean;
+}
+
 export interface GetLoadBalancerDomain {
     /**
      * certificate ID for TLS handshaking
@@ -5132,6 +5136,17 @@ export interface GetSpacesBucketsSort {
     key: string;
 }
 
+export interface GetSpacesKeyGrant {
+    /**
+     * The name of the bucket to grant the key access to.
+     */
+    bucket: string;
+    /**
+     * The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+     */
+    permission: string;
+}
+
 export interface GetSshKeysFilter {
     all?: boolean;
     /**
@@ -5248,6 +5263,9 @@ export interface KubernetesClusterClusterAutoscalerConfiguration {
 
 export interface KubernetesClusterControlPlaneFirewall {
     allowedAddresses: string[];
+    /**
+     * Boolean flag whether the routing-agent is enabled or not.
+     */
     enabled: boolean;
 }
 
@@ -5388,6 +5406,16 @@ export interface KubernetesClusterNodePoolTaint {
      * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
      */
     value: string;
+}
+
+export interface KubernetesClusterRoutingAgent {
+    /**
+     * Boolean flag whether the routing-agent should be enabled or not.
+     *
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
+    enabled: boolean;
 }
 
 export interface KubernetesNodePoolNode {
@@ -5701,6 +5729,17 @@ export interface SpacesBucketVersioning {
      * state. You can, however, suspend versioning on that bucket.
      */
     enabled?: boolean;
+}
+
+export interface SpacesKeyGrant {
+    /**
+     * Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+     */
+    bucket: string;
+    /**
+     * Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+     */
+    permission: string;
 }
 
 export interface UptimeAlertNotification {
