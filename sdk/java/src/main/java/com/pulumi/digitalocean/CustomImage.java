@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .name("example-01")
  *             .region("nyc3")
  *             .size("s-1vcpu-1gb")
- *             .sshKeys(12345)
+ *             .sshKeys("12345")
  *             .build());
  * 
  *     }
