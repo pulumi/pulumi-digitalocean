@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var barfoo = new ProjectResources("barfoo", ProjectResourcesArgs.builder()
- *             .project(playground.applyValue(getProjectResult -> getProjectResult.id()))
+ *             .project(playground.id())
  *             .resources(foobar.dropletUrn())
  *             .build());
  * 

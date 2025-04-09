@@ -14,7 +14,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
+ * const publicIp = config.requireObject<any>("publicIp");
  * const example = digitalocean.getReservedIp({
  *     ipAddress: publicIp,
  * });
@@ -70,7 +70,7 @@ export interface GetReservedIpResult {
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const config = new pulumi.Config();
- * const publicIp = config.requireObject("publicIp");
+ * const publicIp = config.requireObject<any>("publicIp");
  * const example = digitalocean.getReservedIp({
  *     ipAddress: publicIp,
  * });

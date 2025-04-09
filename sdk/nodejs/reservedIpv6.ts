@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  * Reserved IPv6s can be imported using the `ip`, e.g.
  *
  * ```sh
- * $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip
+ * $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip 
  * ```
  *
  * 2409:40d0:fa:27dd:9b24:7074:7b85:eee6

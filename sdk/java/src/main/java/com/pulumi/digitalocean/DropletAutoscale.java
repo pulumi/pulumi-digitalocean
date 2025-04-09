@@ -33,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.digitalocean.SshKey;
  * import com.pulumi.digitalocean.SshKeyArgs;
+ * import com.pulumi.std.StdFunctions;
+ * import com.pulumi.std.inputs.FileArgs;
  * import com.pulumi.digitalocean.Tag;
  * import com.pulumi.digitalocean.TagArgs;
  * import com.pulumi.digitalocean.DropletAutoscale;

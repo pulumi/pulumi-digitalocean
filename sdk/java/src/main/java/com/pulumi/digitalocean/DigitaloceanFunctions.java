@@ -172,7 +172,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -213,7 +213,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -254,7 +254,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -295,7 +295,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -336,7 +336,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -377,7 +377,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -418,7 +418,7 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getAccount();
+     *         final var example = DigitaloceanFunctions.getAccount(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
      * 
      *     }
      * }
@@ -464,7 +464,7 @@ public final class DigitaloceanFunctions {
      *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.defaultIngress());
      *     }
      * }
      * }
@@ -509,7 +509,7 @@ public final class DigitaloceanFunctions {
      *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.defaultIngress());
      *     }
      * }
      * }
@@ -554,7 +554,7 @@ public final class DigitaloceanFunctions {
      *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.defaultIngress());
      *     }
      * }
      * }
@@ -599,7 +599,7 @@ public final class DigitaloceanFunctions {
      *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.defaultIngress());
      *     }
      * }
      * }
@@ -644,7 +644,7 @@ public final class DigitaloceanFunctions {
      *             .appId("e665d18d-7b56-44a9-92ce-31979174d544")
      *             .build());
      * 
-     *         ctx.export("defaultIngress", example.applyValue(getAppResult -> getAppResult.defaultIngress()));
+     *         ctx.export("defaultIngress", example.defaultIngress());
      *     }
      * }
      * }
@@ -1187,7 +1187,7 @@ public final class DigitaloceanFunctions {
      *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.certificate());
      *     }
      * }
      * }
@@ -1230,7 +1230,7 @@ public final class DigitaloceanFunctions {
      *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.certificate());
      *     }
      * }
      * }
@@ -1273,7 +1273,7 @@ public final class DigitaloceanFunctions {
      *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.certificate());
      *     }
      * }
      * }
@@ -1316,7 +1316,7 @@ public final class DigitaloceanFunctions {
      *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.certificate());
      *     }
      * }
      * }
@@ -1359,7 +1359,7 @@ public final class DigitaloceanFunctions {
      *             .clusterId("aaa-bbb-ccc-ddd")
      *             .build());
      * 
-     *         ctx.export("caOutput", ca.applyValue(getDatabaseCaResult -> getDatabaseCaResult.certificate()));
+     *         ctx.export("caOutput", ca.certificate());
      *     }
      * }
      * }
@@ -1402,7 +1402,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.uri());
      *     }
      * }
      * }
@@ -1445,7 +1445,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.uri());
      *     }
      * }
      * }
@@ -1488,7 +1488,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.uri());
      *     }
      * }
      * }
@@ -1531,7 +1531,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.uri());
      *     }
      * }
      * }
@@ -1574,7 +1574,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-cluster")
      *             .build());
      * 
-     *         ctx.export("databaseOutput", example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.uri()));
+     *         ctx.export("databaseOutput", example.uri());
      *     }
      * }
      * }
@@ -1619,7 +1619,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("pool-01")
      *             .build());
      * 
@@ -1668,7 +1668,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("pool-01")
      *             .build());
      * 
@@ -1717,7 +1717,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("pool-01")
      *             .build());
      * 
@@ -1766,7 +1766,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("pool-01")
      *             .build());
      * 
@@ -1815,7 +1815,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseConnectionPool(GetDatabaseConnectionPoolArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("pool-01")
      *             .build());
      * 
@@ -1864,7 +1864,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("terra-test-ro")
      *             .build());
      * 
@@ -1913,7 +1913,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("terra-test-ro")
      *             .build());
      * 
@@ -1962,7 +1962,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("terra-test-ro")
      *             .build());
      * 
@@ -2011,7 +2011,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("terra-test-ro")
      *             .build());
      * 
@@ -2060,7 +2060,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var read-only = DigitaloceanFunctions.getDatabaseReplica(GetDatabaseReplicaArgs.builder()
-     *             .clusterId(example.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(example.id())
      *             .name("terra-test-ro")
      *             .build());
      * 
@@ -2109,11 +2109,11 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(main.id())
      *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.password());
      *     }
      * }
      * }
@@ -2158,11 +2158,11 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(main.id())
      *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.password());
      *     }
      * }
      * }
@@ -2207,11 +2207,11 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(main.id())
      *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.password());
      *     }
      * }
      * }
@@ -2256,11 +2256,11 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(main.id())
      *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.password());
      *     }
      * }
      * }
@@ -2305,11 +2305,11 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         final var example = DigitaloceanFunctions.getDatabaseUser(GetDatabaseUserArgs.builder()
-     *             .clusterId(main.applyValue(getDatabaseClusterResult -> getDatabaseClusterResult.id()))
+     *             .clusterId(main.id())
      *             .name("example-user")
      *             .build());
      * 
-     *         ctx.export("databaseUserPassword", example.applyValue(getDatabaseUserResult -> getDatabaseUserResult.password()));
+     *         ctx.export("databaseUserPassword", example.password());
      *     }
      * }
      * }
@@ -2360,7 +2360,7 @@ public final class DigitaloceanFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.zoneFile());
      *     }
      * }
      * }
@@ -2411,7 +2411,7 @@ public final class DigitaloceanFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.zoneFile());
      *     }
      * }
      * }
@@ -2462,7 +2462,7 @@ public final class DigitaloceanFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.zoneFile());
      *     }
      * }
      * }
@@ -2513,7 +2513,7 @@ public final class DigitaloceanFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.zoneFile());
      *     }
      * }
      * }
@@ -2564,7 +2564,7 @@ public final class DigitaloceanFunctions {
      *             .name("example.com")
      *             .build());
      * 
-     *         ctx.export("domainOutput", example.applyValue(getDomainResult -> getDomainResult.zoneFile()));
+     *         ctx.export("domainOutput", example.zoneFile());
      *     }
      * }
      * }
@@ -3007,7 +3007,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3128,7 +3128,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3249,7 +3249,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3370,7 +3370,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3491,7 +3491,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3612,7 +3612,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -3733,7 +3733,7 @@ public final class DigitaloceanFunctions {
      *             .name("web")
      *             .build());
      * 
-     *         ctx.export("dropletOutput", example.applyValue(getDropletResult -> getDropletResult.ipv4Address()));
+     *         ctx.export("dropletOutput", example.ipv4Address());
      *     }
      * }
      * }
@@ -5787,7 +5787,7 @@ public final class DigitaloceanFunctions {
      *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.name());
      *     }
      * }
      * }
@@ -5832,7 +5832,7 @@ public final class DigitaloceanFunctions {
      *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.name());
      *     }
      * }
      * }
@@ -5877,7 +5877,7 @@ public final class DigitaloceanFunctions {
      *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.name());
      *     }
      * }
      * }
@@ -5922,7 +5922,7 @@ public final class DigitaloceanFunctions {
      *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.name());
      *     }
      * }
      * }
@@ -5967,7 +5967,7 @@ public final class DigitaloceanFunctions {
      *             .firewallId("1df48973-6eef-4214-854f-fa7726e7e583")
      *             .build());
      * 
-     *         ctx.export("exampleFirewallName", example.applyValue(getFirewallResult -> getFirewallResult.name()));
+     *         ctx.export("exampleFirewallName", example.name());
      *     }
      * }
      * }
@@ -6021,7 +6021,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -6075,7 +6075,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -6129,7 +6129,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -6183,7 +6183,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -6237,7 +6237,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getFloatingIpResult -> getFloatingIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -6325,7 +6325,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -6453,7 +6453,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -6581,7 +6581,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -6709,7 +6709,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -6837,7 +6837,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -6965,7 +6965,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -7093,7 +7093,7 @@ public final class DigitaloceanFunctions {
      *             .build());
      * 
      *         var exampleDroplet = new Droplet("exampleDroplet", DropletArgs.builder()
-     *             .image(example.applyValue(getImageResult -> getImageResult.id()))
+     *             .image(example.id())
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
@@ -8112,9 +8112,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8149,12 +8150,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8203,7 +8205,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8251,9 +8253,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8288,12 +8291,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8342,7 +8346,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8390,9 +8394,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8427,12 +8432,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8481,7 +8487,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8529,9 +8535,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8566,12 +8573,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8620,7 +8628,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8668,9 +8676,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8705,12 +8714,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8759,7 +8769,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8807,9 +8817,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8844,12 +8855,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8898,7 +8910,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -8946,9 +8958,10 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
-     *         ctx.export("k8s-versions", example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.validVersions()));
+     *         ctx.export("k8s-versions", example.validVersions());
      *     }
      * }
      * }
@@ -8983,12 +8996,13 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var example = DigitaloceanFunctions.getKubernetesVersions();
+     *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+     *             .build());
      * 
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -9037,7 +9051,7 @@ public final class DigitaloceanFunctions {
      *         var example_cluster = new KubernetesCluster("example-cluster", KubernetesClusterArgs.builder()
      *             .name("example-cluster")
      *             .region("lon1")
-     *             .version(example.applyValue(getKubernetesVersionsResult -> getKubernetesVersionsResult.latestVersion()))
+     *             .version(example.latestVersion())
      *             .nodePool(KubernetesClusterNodePoolArgs.builder()
      *                 .name("default")
      *                 .size("s-1vcpu-2gb")
@@ -9094,7 +9108,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9179,7 +9193,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9264,7 +9278,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9349,7 +9363,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9434,7 +9448,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9519,7 +9533,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9604,7 +9618,7 @@ public final class DigitaloceanFunctions {
      *             .name("app")
      *             .build());
      * 
-     *         ctx.export("lbOutput", example.applyValue(getLoadBalancerResult -> getLoadBalancerResult.ip()));
+     *         ctx.export("lbOutput", example.ip());
      *     }
      * }
      * }
@@ -9679,7 +9693,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9724,7 +9739,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9769,7 +9785,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9814,7 +9831,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9859,7 +9877,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9904,7 +9923,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -9949,7 +9969,8 @@ public final class DigitaloceanFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var default = DigitaloceanFunctions.getProject();
+     *         final var default = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+     *             .build());
      * 
      *         final var staging = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
      *             .name("My Staging Project")
@@ -10719,8 +10740,8 @@ public final class DigitaloceanFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
-     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *         ctx.export("recordType", example.type());
+     *         ctx.export("recordTtl", example.ttl());
      *     }
      * }
      * }
@@ -10771,8 +10792,8 @@ public final class DigitaloceanFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
-     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *         ctx.export("recordType", example.type());
+     *         ctx.export("recordTtl", example.ttl());
      *     }
      * }
      * }
@@ -10823,8 +10844,8 @@ public final class DigitaloceanFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
-     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *         ctx.export("recordType", example.type());
+     *         ctx.export("recordTtl", example.ttl());
      *     }
      * }
      * }
@@ -10875,8 +10896,8 @@ public final class DigitaloceanFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
-     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *         ctx.export("recordType", example.type());
+     *         ctx.export("recordTtl", example.ttl());
      *     }
      * }
      * }
@@ -10927,8 +10948,8 @@ public final class DigitaloceanFunctions {
      *             .name("test")
      *             .build());
      * 
-     *         ctx.export("recordType", example.applyValue(getRecordResult -> getRecordResult.type()));
-     *         ctx.export("recordTtl", example.applyValue(getRecordResult -> getRecordResult.ttl()));
+     *         ctx.export("recordType", example.type());
+     *         ctx.export("recordTtl", example.ttl());
      *     }
      * }
      * }
@@ -10957,6 +10978,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -10980,7 +11003,7 @@ public final class DigitaloceanFunctions {
      * 
      *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
      *             .separator(",")
-     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
      *             .build()).result());
      *     }
      * }
@@ -11010,6 +11033,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11033,7 +11058,7 @@ public final class DigitaloceanFunctions {
      * 
      *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
      *             .separator(",")
-     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
      *             .build()).result());
      *     }
      * }
@@ -11063,6 +11088,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11086,7 +11113,7 @@ public final class DigitaloceanFunctions {
      * 
      *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
      *             .separator(",")
-     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
      *             .build()).result());
      *     }
      * }
@@ -11116,6 +11143,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11139,7 +11168,7 @@ public final class DigitaloceanFunctions {
      * 
      *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
      *             .separator(",")
-     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
      *             .build()).result());
      *     }
      * }
@@ -11169,6 +11198,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
+     * import com.pulumi.std.StdFunctions;
+     * import com.pulumi.std.inputs.JoinArgs;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -11192,7 +11223,7 @@ public final class DigitaloceanFunctions {
      * 
      *         ctx.export("mailServers", StdFunctions.join(JoinArgs.builder()
      *             .separator(",")
-     *             .input(example.applyValue(getRecordsResult -> getRecordsResult.records()).stream().map(element -> element.value()).collect(toList()))
+     *             .input(example.records().stream().map(element -> element.value()).collect(toList()))
      *             .build()).result());
      *     }
      * }
@@ -11237,7 +11268,7 @@ public final class DigitaloceanFunctions {
      *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.name());
      *     }
      * }
      * }
@@ -11281,7 +11312,7 @@ public final class DigitaloceanFunctions {
      *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.name());
      *     }
      * }
      * }
@@ -11325,7 +11356,7 @@ public final class DigitaloceanFunctions {
      *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.name());
      *     }
      * }
      * }
@@ -11369,7 +11400,7 @@ public final class DigitaloceanFunctions {
      *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.name());
      *     }
      * }
      * }
@@ -11413,7 +11444,7 @@ public final class DigitaloceanFunctions {
      *             .slug("sfo2")
      *             .build());
      * 
-     *         ctx.export("regionName", sfo2.applyValue(getRegionResult -> getRegionResult.name()));
+     *         ctx.export("regionName", sfo2.name());
      *     }
      * }
      * }
@@ -12158,7 +12189,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -12203,7 +12234,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -12248,7 +12279,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -12293,7 +12324,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -12338,7 +12369,7 @@ public final class DigitaloceanFunctions {
      *             .ipAddress(publicIp)
      *             .build());
      * 
-     *         ctx.export("fipOutput", example.applyValue(getReservedIpResult -> getReservedIpResult.dropletId()));
+     *         ctx.export("fipOutput", example.dropletId());
      *     }
      * }
      * }
@@ -12688,7 +12719,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.bucketDomainName());
      *     }
      * }
      * }
@@ -12735,7 +12766,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.bucketDomainName());
      *     }
      * }
      * }
@@ -12782,7 +12813,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.bucketDomainName());
      *     }
      * }
      * }
@@ -12829,7 +12860,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.bucketDomainName());
      *     }
      * }
      * }
@@ -12876,7 +12907,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .build());
      * 
-     *         ctx.export("bucketDomainName", example.applyValue(getSpacesBucketResult -> getSpacesBucketResult.bucketDomainName()));
+     *         ctx.export("bucketDomainName", example.bucketDomainName());
      *     }
      * }
      * }
@@ -12936,7 +12967,7 @@ public final class DigitaloceanFunctions {
      *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .userData(bootstrapScript.body())
      *             .build());
      * 
      *     }
@@ -12998,7 +13029,7 @@ public final class DigitaloceanFunctions {
      *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .userData(bootstrapScript.body())
      *             .build());
      * 
      *     }
@@ -13060,7 +13091,7 @@ public final class DigitaloceanFunctions {
      *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .userData(bootstrapScript.body())
      *             .build());
      * 
      *     }
@@ -13122,7 +13153,7 @@ public final class DigitaloceanFunctions {
      *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .userData(bootstrapScript.body())
      *             .build());
      * 
      *     }
@@ -13184,7 +13215,7 @@ public final class DigitaloceanFunctions {
      *             .name("web-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .userData(bootstrapScript.applyValue(getSpacesBucketObjectResult -> getSpacesBucketObjectResult.body()))
+     *             .userData(bootstrapScript.body())
      *             .build());
      * 
      *     }
@@ -13932,7 +13963,7 @@ public final class DigitaloceanFunctions {
      *             .accessKey("ACCESS_KEY_ID")
      *             .build());
      * 
-     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *         ctx.export("keyGrants", example.grants());
      *     }
      * }
      * }
@@ -13975,7 +14006,7 @@ public final class DigitaloceanFunctions {
      *             .accessKey("ACCESS_KEY_ID")
      *             .build());
      * 
-     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *         ctx.export("keyGrants", example.grants());
      *     }
      * }
      * }
@@ -14018,7 +14049,7 @@ public final class DigitaloceanFunctions {
      *             .accessKey("ACCESS_KEY_ID")
      *             .build());
      * 
-     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *         ctx.export("keyGrants", example.grants());
      *     }
      * }
      * }
@@ -14061,7 +14092,7 @@ public final class DigitaloceanFunctions {
      *             .accessKey("ACCESS_KEY_ID")
      *             .build());
      * 
-     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *         ctx.export("keyGrants", example.grants());
      *     }
      * }
      * }
@@ -14104,7 +14135,7 @@ public final class DigitaloceanFunctions {
      *             .accessKey("ACCESS_KEY_ID")
      *             .build());
      * 
-     *         ctx.export("keyGrants", example.applyValue(getSpacesKeyResult -> getSpacesKeyResult.grants()));
+     *         ctx.export("keyGrants", example.grants());
      *     }
      * }
      * }
@@ -14161,7 +14192,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.id())
      *             .build());
      * 
      *     }
@@ -14220,7 +14251,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.id())
      *             .build());
      * 
      *     }
@@ -14279,7 +14310,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.id())
      *             .build());
      * 
      *     }
@@ -14338,7 +14369,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.id())
      *             .build());
      * 
      *     }
@@ -14397,7 +14428,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .sshKeys(example.applyValue(getSshKeyResult -> getSshKeyResult.id()))
+     *             .sshKeys(example.id())
      *             .build());
      * 
      *     }
@@ -15106,7 +15137,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.name())
      *             .build());
      * 
      *     }
@@ -15164,7 +15195,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.name())
      *             .build());
      * 
      *     }
@@ -15222,7 +15253,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.name())
      *             .build());
      * 
      *     }
@@ -15280,7 +15311,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.name())
      *             .build());
      * 
      *     }
@@ -15338,7 +15369,7 @@ public final class DigitaloceanFunctions {
      *             .name("example-1")
      *             .region("nyc2")
      *             .size("s-1vcpu-1gb")
-     *             .tags(example.applyValue(getTagResult -> getTagResult.name()))
+     *             .tags(example.name())
      *             .build());
      * 
      *     }
@@ -15388,7 +15419,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15436,7 +15467,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15484,7 +15515,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15532,7 +15563,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15580,7 +15611,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15628,7 +15659,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15676,7 +15707,7 @@ public final class DigitaloceanFunctions {
      *                 .build())
      *             .build());
      * 
-     *         ctx.export("sortedTags", list.applyValue(getTagsResult -> getTagsResult.tags()));
+     *         ctx.export("sortedTags", list.tags());
      *     }
      * }
      * }
@@ -15776,7 +15807,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.id())
      *             .build());
      * 
      *     }
@@ -15878,7 +15909,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.id())
      *             .build());
      * 
      *     }
@@ -15980,7 +16011,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.id())
      *             .build());
      * 
      *     }
@@ -16082,7 +16113,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.id())
      *             .build());
      * 
      *     }
@@ -16184,7 +16215,7 @@ public final class DigitaloceanFunctions {
      * 
      *         var foobar = new VolumeAttachment("foobar", VolumeAttachmentArgs.builder()
      *             .dropletId(exampleDroplet.id())
-     *             .volumeId(example.applyValue(getVolumeResult -> getVolumeResult.id()))
+     *             .volumeId(example.id())
      *             .build());
      * 
      *     }
@@ -16278,7 +16309,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16372,7 +16403,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16466,7 +16497,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16560,7 +16591,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16654,7 +16685,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16748,7 +16779,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16842,7 +16873,7 @@ public final class DigitaloceanFunctions {
      *             .region("nyc3")
      *             .name("baz")
      *             .size(100)
-     *             .snapshotId(snapshot.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+     *             .snapshotId(snapshot.id())
      *             .build());
      * 
      *     }
@@ -16938,7 +16969,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17034,7 +17065,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17130,7 +17161,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17226,7 +17257,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17322,7 +17353,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17418,7 +17449,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17514,7 +17545,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcResult -> getVpcResult.id()))
+     *             .vpcUuid(example.id())
      *             .build());
      * 
      *     }
@@ -17601,7 +17632,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -17681,7 +17712,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -17768,7 +17799,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -17848,7 +17879,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -17935,7 +17966,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18015,7 +18046,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18102,7 +18133,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18182,7 +18213,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18269,7 +18300,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18349,7 +18380,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18436,7 +18467,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18516,7 +18547,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18603,7 +18634,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
@@ -18683,7 +18714,7 @@ public final class DigitaloceanFunctions {
      *             .size("s-1vcpu-1gb")
      *             .image("ubuntu-18-04-x64")
      *             .region("nyc3")
-     *             .vpcUuid(example.applyValue(getVpcPeeringResult -> getVpcPeeringResult.vpcIds()[0]))
+     *             .vpcUuid(example.vpcIds()[0])
      *             .build());
      * 
      *     }
