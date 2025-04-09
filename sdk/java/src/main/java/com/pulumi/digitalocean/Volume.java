@@ -108,8 +108,8 @@ import javax.annotation.Nullable;
  *         var foobarVolume = new Volume("foobarVolume", VolumeArgs.builder()
  *             .region("lon1")
  *             .name("foo")
- *             .size(foobar.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.minDiskSize()))
- *             .snapshotId(foobar.applyValue(getVolumeSnapshotResult -> getVolumeSnapshotResult.id()))
+ *             .size(foobar.minDiskSize())
+ *             .snapshotId(foobar.id())
  *             .build());
  * 
  *     }
