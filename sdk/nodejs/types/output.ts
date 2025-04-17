@@ -4776,6 +4776,12 @@ export interface GetLoadBalancerStickySession {
     type: string;
 }
 
+export interface GetPartnerAttachmentBgp {
+    localRouterIp?: string;
+    peerRouterAsn?: number;
+    peerRouterIp?: string;
+}
+
 export interface GetProjectsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -5621,6 +5627,13 @@ export interface MonitorAlertAlertsSlack {
      * The webhook URL for Slack
      */
     url: string;
+}
+
+export interface PartnerAttachmentBgp {
+    authKey?: string;
+    localRouterIp?: string;
+    peerRouterAsn?: number;
+    peerRouterIp?: string;
 }
 
 export interface SpacesBucketCorsConfigurationCorsRule {

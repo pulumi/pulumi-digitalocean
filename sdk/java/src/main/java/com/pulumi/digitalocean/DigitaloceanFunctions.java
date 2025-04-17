@@ -51,6 +51,8 @@ import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
+import com.pulumi.digitalocean.inputs.GetPartnerAttachmentArgs;
+import com.pulumi.digitalocean.inputs.GetPartnerAttachmentPlainArgs;
 import com.pulumi.digitalocean.inputs.GetProjectArgs;
 import com.pulumi.digitalocean.inputs.GetProjectPlainArgs;
 import com.pulumi.digitalocean.inputs.GetProjectsArgs;
@@ -117,6 +119,7 @@ import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
+import com.pulumi.digitalocean.outputs.GetPartnerAttachmentResult;
 import com.pulumi.digitalocean.outputs.GetProjectResult;
 import com.pulumi.digitalocean.outputs.GetProjectsResult;
 import com.pulumi.digitalocean.outputs.GetRecordResult;
@@ -9663,6 +9666,27 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPartnerAttachmentResult> getPartnerAttachment() {
+        return getPartnerAttachment(GetPartnerAttachmentArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPartnerAttachmentResult> getPartnerAttachmentPlain() {
+        return getPartnerAttachmentPlain(GetPartnerAttachmentPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetPartnerAttachmentResult> getPartnerAttachment(GetPartnerAttachmentArgs args) {
+        return getPartnerAttachment(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPartnerAttachmentResult> getPartnerAttachmentPlain(GetPartnerAttachmentPlainArgs args) {
+        return getPartnerAttachmentPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetPartnerAttachmentResult> getPartnerAttachment(GetPartnerAttachmentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getPartnerAttachment:getPartnerAttachment", TypeShape.of(GetPartnerAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPartnerAttachmentResult> getPartnerAttachment(GetPartnerAttachmentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getPartnerAttachment:getPartnerAttachment", TypeShape.of(GetPartnerAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetPartnerAttachmentResult> getPartnerAttachmentPlain(GetPartnerAttachmentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getPartnerAttachment:getPartnerAttachment", TypeShape.of(GetPartnerAttachmentResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,

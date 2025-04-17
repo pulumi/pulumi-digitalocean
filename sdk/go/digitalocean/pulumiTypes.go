@@ -21804,6 +21804,184 @@ func (o MonitorAlertAlertsSlackArrayOutput) Index(i pulumi.IntInput) MonitorAler
 	}).(MonitorAlertAlertsSlackOutput)
 }
 
+type PartnerAttachmentBgp struct {
+	AuthKey       *string `pulumi:"authKey"`
+	LocalRouterIp *string `pulumi:"localRouterIp"`
+	PeerRouterAsn *int    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  *string `pulumi:"peerRouterIp"`
+}
+
+// PartnerAttachmentBgpInput is an input type that accepts PartnerAttachmentBgpArgs and PartnerAttachmentBgpOutput values.
+// You can construct a concrete instance of `PartnerAttachmentBgpInput` via:
+//
+//	PartnerAttachmentBgpArgs{...}
+type PartnerAttachmentBgpInput interface {
+	pulumi.Input
+
+	ToPartnerAttachmentBgpOutput() PartnerAttachmentBgpOutput
+	ToPartnerAttachmentBgpOutputWithContext(context.Context) PartnerAttachmentBgpOutput
+}
+
+type PartnerAttachmentBgpArgs struct {
+	AuthKey       pulumi.StringPtrInput `pulumi:"authKey"`
+	LocalRouterIp pulumi.StringPtrInput `pulumi:"localRouterIp"`
+	PeerRouterAsn pulumi.IntPtrInput    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  pulumi.StringPtrInput `pulumi:"peerRouterIp"`
+}
+
+func (PartnerAttachmentBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i PartnerAttachmentBgpArgs) ToPartnerAttachmentBgpOutput() PartnerAttachmentBgpOutput {
+	return i.ToPartnerAttachmentBgpOutputWithContext(context.Background())
+}
+
+func (i PartnerAttachmentBgpArgs) ToPartnerAttachmentBgpOutputWithContext(ctx context.Context) PartnerAttachmentBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartnerAttachmentBgpOutput)
+}
+
+func (i PartnerAttachmentBgpArgs) ToPartnerAttachmentBgpPtrOutput() PartnerAttachmentBgpPtrOutput {
+	return i.ToPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i PartnerAttachmentBgpArgs) ToPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) PartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartnerAttachmentBgpOutput).ToPartnerAttachmentBgpPtrOutputWithContext(ctx)
+}
+
+// PartnerAttachmentBgpPtrInput is an input type that accepts PartnerAttachmentBgpArgs, PartnerAttachmentBgpPtr and PartnerAttachmentBgpPtrOutput values.
+// You can construct a concrete instance of `PartnerAttachmentBgpPtrInput` via:
+//
+//	        PartnerAttachmentBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type PartnerAttachmentBgpPtrInput interface {
+	pulumi.Input
+
+	ToPartnerAttachmentBgpPtrOutput() PartnerAttachmentBgpPtrOutput
+	ToPartnerAttachmentBgpPtrOutputWithContext(context.Context) PartnerAttachmentBgpPtrOutput
+}
+
+type partnerAttachmentBgpPtrType PartnerAttachmentBgpArgs
+
+func PartnerAttachmentBgpPtr(v *PartnerAttachmentBgpArgs) PartnerAttachmentBgpPtrInput {
+	return (*partnerAttachmentBgpPtrType)(v)
+}
+
+func (*partnerAttachmentBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i *partnerAttachmentBgpPtrType) ToPartnerAttachmentBgpPtrOutput() PartnerAttachmentBgpPtrOutput {
+	return i.ToPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *partnerAttachmentBgpPtrType) ToPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) PartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PartnerAttachmentBgpPtrOutput)
+}
+
+type PartnerAttachmentBgpOutput struct{ *pulumi.OutputState }
+
+func (PartnerAttachmentBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o PartnerAttachmentBgpOutput) ToPartnerAttachmentBgpOutput() PartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o PartnerAttachmentBgpOutput) ToPartnerAttachmentBgpOutputWithContext(ctx context.Context) PartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o PartnerAttachmentBgpOutput) ToPartnerAttachmentBgpPtrOutput() PartnerAttachmentBgpPtrOutput {
+	return o.ToPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (o PartnerAttachmentBgpOutput) ToPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) PartnerAttachmentBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PartnerAttachmentBgp) *PartnerAttachmentBgp {
+		return &v
+	}).(PartnerAttachmentBgpPtrOutput)
+}
+
+func (o PartnerAttachmentBgpOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerAttachmentBgp) *string { return v.AuthKey }).(pulumi.StringPtrOutput)
+}
+
+func (o PartnerAttachmentBgpOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerAttachmentBgp) *string { return v.LocalRouterIp }).(pulumi.StringPtrOutput)
+}
+
+func (o PartnerAttachmentBgpOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PartnerAttachmentBgp) *int { return v.PeerRouterAsn }).(pulumi.IntPtrOutput)
+}
+
+func (o PartnerAttachmentBgpOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PartnerAttachmentBgp) *string { return v.PeerRouterIp }).(pulumi.StringPtrOutput)
+}
+
+type PartnerAttachmentBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (PartnerAttachmentBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o PartnerAttachmentBgpPtrOutput) ToPartnerAttachmentBgpPtrOutput() PartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o PartnerAttachmentBgpPtrOutput) ToPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) PartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o PartnerAttachmentBgpPtrOutput) Elem() PartnerAttachmentBgpOutput {
+	return o.ApplyT(func(v *PartnerAttachmentBgp) PartnerAttachmentBgp {
+		if v != nil {
+			return *v
+		}
+		var ret PartnerAttachmentBgp
+		return ret
+	}).(PartnerAttachmentBgpOutput)
+}
+
+func (o PartnerAttachmentBgpPtrOutput) AuthKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AuthKey
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PartnerAttachmentBgpPtrOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o PartnerAttachmentBgpPtrOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachmentBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o PartnerAttachmentBgpPtrOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
 type SpacesBucketCorsConfigurationCorsRule struct {
 	// Set of Headers that are specified in the Access-Control-Request-Headers header.
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -43049,6 +43227,169 @@ func (o GetLoadBalancerStickySessionArrayOutput) Index(i pulumi.IntInput) GetLoa
 	}).(GetLoadBalancerStickySessionOutput)
 }
 
+type GetPartnerAttachmentBgp struct {
+	LocalRouterIp *string `pulumi:"localRouterIp"`
+	PeerRouterAsn *int    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  *string `pulumi:"peerRouterIp"`
+}
+
+// GetPartnerAttachmentBgpInput is an input type that accepts GetPartnerAttachmentBgpArgs and GetPartnerAttachmentBgpOutput values.
+// You can construct a concrete instance of `GetPartnerAttachmentBgpInput` via:
+//
+//	GetPartnerAttachmentBgpArgs{...}
+type GetPartnerAttachmentBgpInput interface {
+	pulumi.Input
+
+	ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput
+	ToGetPartnerAttachmentBgpOutputWithContext(context.Context) GetPartnerAttachmentBgpOutput
+}
+
+type GetPartnerAttachmentBgpArgs struct {
+	LocalRouterIp pulumi.StringPtrInput `pulumi:"localRouterIp"`
+	PeerRouterAsn pulumi.IntPtrInput    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  pulumi.StringPtrInput `pulumi:"peerRouterIp"`
+}
+
+func (GetPartnerAttachmentBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
+	return i.ToGetPartnerAttachmentBgpOutputWithContext(context.Background())
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput)
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput).ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx)
+}
+
+// GetPartnerAttachmentBgpPtrInput is an input type that accepts GetPartnerAttachmentBgpArgs, GetPartnerAttachmentBgpPtr and GetPartnerAttachmentBgpPtrOutput values.
+// You can construct a concrete instance of `GetPartnerAttachmentBgpPtrInput` via:
+//
+//	        GetPartnerAttachmentBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPartnerAttachmentBgpPtrInput interface {
+	pulumi.Input
+
+	ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput
+	ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Context) GetPartnerAttachmentBgpPtrOutput
+}
+
+type getPartnerAttachmentBgpPtrType GetPartnerAttachmentBgpArgs
+
+func GetPartnerAttachmentBgpPtr(v *GetPartnerAttachmentBgpArgs) GetPartnerAttachmentBgpPtrInput {
+	return (*getPartnerAttachmentBgpPtrType)(v)
+}
+
+func (*getPartnerAttachmentBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpPtrOutput)
+}
+
+type GetPartnerAttachmentBgpOutput struct{ *pulumi.OutputState }
+
+func (GetPartnerAttachmentBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return o.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPartnerAttachmentBgp) *GetPartnerAttachmentBgp {
+		return &v
+	}).(GetPartnerAttachmentBgpPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.LocalRouterIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *int { return v.PeerRouterAsn }).(pulumi.IntPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.PeerRouterIp }).(pulumi.StringPtrOutput)
+}
+
+type GetPartnerAttachmentBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPartnerAttachmentBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) Elem() GetPartnerAttachmentBgpOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) GetPartnerAttachmentBgp {
+		if v != nil {
+			return *v
+		}
+		var ret GetPartnerAttachmentBgp
+		return ret
+	}).(GetPartnerAttachmentBgpOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetProjectsFilter struct {
 	// Set to `true` to require that a field match all of the `values` instead of just one or more of
 	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
@@ -46224,6 +46565,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsPtrInput)(nil)).Elem(), MonitorAlertAlertsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackInput)(nil)).Elem(), MonitorAlertAlertsSlackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitorAlertAlertsSlackArrayInput)(nil)).Elem(), MonitorAlertAlertsSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartnerAttachmentBgpInput)(nil)).Elem(), PartnerAttachmentBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PartnerAttachmentBgpPtrInput)(nil)).Elem(), PartnerAttachmentBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRuleInput)(nil)).Elem(), SpacesBucketCorsConfigurationCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsConfigurationCorsRuleArrayInput)(nil)).Elem(), SpacesBucketCorsConfigurationCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SpacesBucketCorsRuleInput)(nil)).Elem(), SpacesBucketCorsRuleArgs{})
@@ -46501,6 +46844,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionArrayInput)(nil)).Elem(), GetLoadBalancerStickySessionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpPtrInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterInput)(nil)).Elem(), GetProjectsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterArrayInput)(nil)).Elem(), GetProjectsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
@@ -46811,6 +47156,8 @@ func init() {
 	pulumi.RegisterOutputType(MonitorAlertAlertsPtrOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackOutput{})
 	pulumi.RegisterOutputType(MonitorAlertAlertsSlackArrayOutput{})
+	pulumi.RegisterOutputType(PartnerAttachmentBgpOutput{})
+	pulumi.RegisterOutputType(PartnerAttachmentBgpPtrOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsConfigurationCorsRuleOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsConfigurationCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(SpacesBucketCorsRuleOutput{})
@@ -47088,6 +47435,8 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionArrayOutput{})
+	pulumi.RegisterOutputType(GetPartnerAttachmentBgpOutput{})
+	pulumi.RegisterOutputType(GetPartnerAttachmentBgpPtrOutput{})
 	pulumi.RegisterOutputType(GetProjectsFilterOutput{})
 	pulumi.RegisterOutputType(GetProjectsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetProjectsProjectOutput{})

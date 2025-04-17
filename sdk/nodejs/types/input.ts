@@ -2644,6 +2644,18 @@ export interface GetKubernetesClusterRoutingAgentArgs {
     enabled?: pulumi.Input<boolean>;
 }
 
+export interface GetPartnerAttachmentBgp {
+    localRouterIp?: string;
+    peerRouterAsn?: number;
+    peerRouterIp?: string;
+}
+
+export interface GetPartnerAttachmentBgpArgs {
+    localRouterIp?: pulumi.Input<string>;
+    peerRouterAsn?: pulumi.Input<number>;
+    peerRouterIp?: pulumi.Input<string>;
+}
+
 export interface GetProjectsFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -3495,6 +3507,13 @@ export interface MonitorAlertAlertsSlack {
      * The webhook URL for Slack
      */
     url: pulumi.Input<string>;
+}
+
+export interface PartnerAttachmentBgp {
+    authKey?: pulumi.Input<string>;
+    localRouterIp?: pulumi.Input<string>;
+    peerRouterAsn?: pulumi.Input<number>;
+    peerRouterIp?: pulumi.Input<string>;
 }
 
 export interface SpacesBucketCorsConfigurationCorsRule {

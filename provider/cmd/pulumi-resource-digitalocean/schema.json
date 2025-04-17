@@ -3676,6 +3676,24 @@
                 "url"
             ]
         },
+        "digitalocean:index/PartnerAttachmentBgp:PartnerAttachmentBgp": {
+            "properties": {
+                "authKey": {
+                    "type": "string",
+                    "secret": true
+                },
+                "localRouterIp": {
+                    "type": "string"
+                },
+                "peerRouterAsn": {
+                    "type": "integer"
+                },
+                "peerRouterIp": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
         "digitalocean:index/SpacesBucketCorsConfigurationCorsRule:SpacesBucketCorsConfigurationCorsRule": {
             "properties": {
                 "allowedHeaders": {
@@ -7722,6 +7740,20 @@
                     "requiredInputs": []
                 }
             }
+        },
+        "digitalocean:index/getPartnerAttachmentBgp:getPartnerAttachmentBgp": {
+            "properties": {
+                "localRouterIp": {
+                    "type": "string"
+                },
+                "peerRouterAsn": {
+                    "type": "integer"
+                },
+                "peerRouterIp": {
+                    "type": "string"
+                }
+            },
+            "type": "object"
         },
         "digitalocean:index/getProjectsFilter:getProjectsFilter": {
             "properties": {
@@ -15707,6 +15739,135 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/partnerAttachment:PartnerAttachment": {
+            "properties": {
+                "bgp": {
+                    "$ref": "#/types/digitalocean:index/PartnerAttachmentBgp:PartnerAttachmentBgp"
+                },
+                "connectionBandwidthInMbps": {
+                    "type": "integer",
+                    "description": "The connection bandwidth in Mbps\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the Partner Attachment was created\n"
+                },
+                "naasProvider": {
+                    "type": "string",
+                    "description": "The NaaS provider\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Partner Attachment\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the Partner Attachment will be created\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "The state of the Partner Attachment\n"
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                }
+            },
+            "required": [
+                "connectionBandwidthInMbps",
+                "createdAt",
+                "naasProvider",
+                "name",
+                "region",
+                "state",
+                "vpcIds"
+            ],
+            "inputProperties": {
+                "bgp": {
+                    "$ref": "#/types/digitalocean:index/PartnerAttachmentBgp:PartnerAttachmentBgp",
+                    "willReplaceOnChanges": true
+                },
+                "connectionBandwidthInMbps": {
+                    "type": "integer",
+                    "description": "The connection bandwidth in Mbps\n",
+                    "willReplaceOnChanges": true
+                },
+                "naasProvider": {
+                    "type": "string",
+                    "description": "The NaaS provider\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the Partner Attachment\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the Partner Attachment will be created\n",
+                    "willReplaceOnChanges": true
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                }
+            },
+            "requiredInputs": [
+                "connectionBandwidthInMbps",
+                "naasProvider",
+                "region",
+                "vpcIds"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering PartnerAttachment resources.\n",
+                "properties": {
+                    "bgp": {
+                        "$ref": "#/types/digitalocean:index/PartnerAttachmentBgp:PartnerAttachmentBgp",
+                        "willReplaceOnChanges": true
+                    },
+                    "connectionBandwidthInMbps": {
+                        "type": "integer",
+                        "description": "The connection bandwidth in Mbps\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the Partner Attachment was created\n"
+                    },
+                    "naasProvider": {
+                        "type": "string",
+                        "description": "The NaaS provider\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the Partner Attachment\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the Partner Attachment will be created\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "The state of the Partner Attachment\n"
+                    },
+                    "vpcIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/project:Project": {
             "description": "Provides a DigitalOcean Project resource.\n\nProjects allow you to organize your resources into groups that fit the way you work.\nYou can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)\nin ways that align with the applications you host on DigitalOcean.\n\nThe following resource types can be associated with a project:\n\n* App Platform Apps\n* Database Clusters\n* Domains\n* Droplets\n* Floating IPs\n* Kubernetes Clusters\n* Load Balancers\n* Spaces Buckets\n* Volumes\n\n**Note:** A provider managed project cannot be set as a default project.\n\n## Example Usage\n\nThe following example demonstrates the creation of an empty project:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst playground = new digitalocean.Project(\"playground\", {\n    name: \"playground\",\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nplayground = digitalocean.Project(\"playground\",\n    name=\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var playground = new DigitalOcean.Project(\"playground\", new()\n    {\n        Name = \"playground\",\n        Description = \"A project to represent development resources.\",\n        Purpose = \"Web Application\",\n        Environment = \"Development\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tName:        pulumi.String(\"playground\"),\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Project;\nimport com.pulumi.digitalocean.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var playground = new Project(\"playground\", ProjectArgs.builder()\n            .name(\"playground\")\n            .description(\"A project to represent development resources.\")\n            .purpose(\"Web Application\")\n            .environment(\"Development\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  playground:\n    type: digitalocean:Project\n    properties:\n      name: playground\n      description: A project to represent development resources.\n      purpose: Web Application\n      environment: Development\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following example demonstrates the creation of a project with a Droplet resource:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Droplet(\"foobar\", {\n    name: \"example\",\n    size: digitalocean.DropletSlug.DropletS1VCPU1GB,\n    image: \"ubuntu-22-04-x64\",\n    region: digitalocean.Region.NYC3,\n});\nconst playground = new digitalocean.Project(\"playground\", {\n    name: \"playground\",\n    description: \"A project to represent development resources.\",\n    purpose: \"Web Application\",\n    environment: \"Development\",\n    resources: [foobar.dropletUrn],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Droplet(\"foobar\",\n    name=\"example\",\n    size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,\n    image=\"ubuntu-22-04-x64\",\n    region=digitalocean.Region.NYC3)\nplayground = digitalocean.Project(\"playground\",\n    name=\"playground\",\n    description=\"A project to represent development resources.\",\n    purpose=\"Web Application\",\n    environment=\"Development\",\n    resources=[foobar.droplet_urn])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Droplet(\"foobar\", new()\n    {\n        Name = \"example\",\n        Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,\n        Image = \"ubuntu-22-04-x64\",\n        Region = DigitalOcean.Region.NYC3,\n    });\n\n    var playground = new DigitalOcean.Project(\"playground\", new()\n    {\n        Name = \"playground\",\n        Description = \"A project to represent development resources.\",\n        Purpose = \"Web Application\",\n        Environment = \"Development\",\n        Resources = new[]\n        {\n            foobar.DropletUrn,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewDroplet(ctx, \"foobar\", \u0026digitalocean.DropletArgs{\n\t\t\tName:   pulumi.String(\"example\"),\n\t\t\tSize:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),\n\t\t\tImage:  pulumi.String(\"ubuntu-22-04-x64\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewProject(ctx, \"playground\", \u0026digitalocean.ProjectArgs{\n\t\t\tName:        pulumi.String(\"playground\"),\n\t\t\tDescription: pulumi.String(\"A project to represent development resources.\"),\n\t\t\tPurpose:     pulumi.String(\"Web Application\"),\n\t\t\tEnvironment: pulumi.String(\"Development\"),\n\t\t\tResources: pulumi.StringArray{\n\t\t\t\tfoobar.DropletUrn,\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Droplet;\nimport com.pulumi.digitalocean.DropletArgs;\nimport com.pulumi.digitalocean.Project;\nimport com.pulumi.digitalocean.ProjectArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Droplet(\"foobar\", DropletArgs.builder()\n            .name(\"example\")\n            .size(\"s-1vcpu-1gb\")\n            .image(\"ubuntu-22-04-x64\")\n            .region(\"nyc3\")\n            .build());\n\n        var playground = new Project(\"playground\", ProjectArgs.builder()\n            .name(\"playground\")\n            .description(\"A project to represent development resources.\")\n            .purpose(\"Web Application\")\n            .environment(\"Development\")\n            .resources(foobar.dropletUrn())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Droplet\n    properties:\n      name: example\n      size: s-1vcpu-1gb\n      image: ubuntu-22-04-x64\n      region: nyc3\n  playground:\n    type: digitalocean:Project\n    properties:\n      name: playground\n      description: A project to represent development resources.\n      purpose: Web Application\n      environment: Development\n      resources:\n        - ${foobar.dropletUrn}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nProjects can be imported using the `id` returned from DigitalOcean, e.g.\n\n```sh\n$ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
             "properties": {
@@ -19606,6 +19767,69 @@
                     "type",
                     "loadBalancerUrn",
                     "vpcUuid"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getPartnerAttachment:getPartnerAttachment": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getPartnerAttachment.\n",
+                "properties": {
+                    "bgp": {
+                        "$ref": "#/types/digitalocean:index/getPartnerAttachmentBgp:getPartnerAttachmentBgp"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getPartnerAttachment.\n",
+                "properties": {
+                    "bgp": {
+                        "$ref": "#/types/digitalocean:index/getPartnerAttachmentBgp:getPartnerAttachmentBgp"
+                    },
+                    "connectionBandwidthInMbps": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "naasProvider": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "vpcIds": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "connectionBandwidthInMbps",
+                    "createdAt",
+                    "id",
+                    "naasProvider",
+                    "name",
+                    "region",
+                    "state",
+                    "vpcIds"
                 ],
                 "type": "object"
             }
