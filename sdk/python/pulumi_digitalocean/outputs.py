@@ -151,6 +151,7 @@ __all__ = [
     'LoadBalancerStickySessions',
     'MonitorAlertAlerts',
     'MonitorAlertAlertsSlack',
+    'PartnerAttachmentBgp',
     'SpacesBucketCorsConfigurationCorsRule',
     'SpacesBucketCorsRule',
     'SpacesBucketLifecycleRule',
@@ -292,6 +293,7 @@ __all__ = [
     'GetLoadBalancerGlbSettingCdnResult',
     'GetLoadBalancerHealthcheckResult',
     'GetLoadBalancerStickySessionResult',
+    'GetPartnerAttachmentBgpResult',
     'GetProjectsFilterResult',
     'GetProjectsProjectResult',
     'GetProjectsSortResult',
@@ -9380,6 +9382,66 @@ class MonitorAlertAlertsSlack(dict):
 
 
 @pulumi.output_type
+class PartnerAttachmentBgp(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "authKey":
+            suggest = "auth_key"
+        elif key == "localRouterIp":
+            suggest = "local_router_ip"
+        elif key == "peerRouterAsn":
+            suggest = "peer_router_asn"
+        elif key == "peerRouterIp":
+            suggest = "peer_router_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PartnerAttachmentBgp. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PartnerAttachmentBgp.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PartnerAttachmentBgp.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auth_key: Optional[builtins.str] = None,
+                 local_router_ip: Optional[builtins.str] = None,
+                 peer_router_asn: Optional[builtins.int] = None,
+                 peer_router_ip: Optional[builtins.str] = None):
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
+        if local_router_ip is not None:
+            pulumi.set(__self__, "local_router_ip", local_router_ip)
+        if peer_router_asn is not None:
+            pulumi.set(__self__, "peer_router_asn", peer_router_asn)
+        if peer_router_ip is not None:
+            pulumi.set(__self__, "peer_router_ip", peer_router_ip)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "auth_key")
+
+    @property
+    @pulumi.getter(name="localRouterIp")
+    def local_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "local_router_ip")
+
+    @property
+    @pulumi.getter(name="peerRouterAsn")
+    def peer_router_asn(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "peer_router_asn")
+
+    @property
+    @pulumi.getter(name="peerRouterIp")
+    def peer_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "peer_router_ip")
+
+
+@pulumi.output_type
 class SpacesBucketCorsConfigurationCorsRule(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17092,6 +17154,35 @@ class GetLoadBalancerStickySessionResult(dict):
         how and if requests from a client will be persistently served by the same backend droplet
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetPartnerAttachmentBgpResult(dict):
+    def __init__(__self__, *,
+                 local_router_ip: Optional[builtins.str] = None,
+                 peer_router_asn: Optional[builtins.int] = None,
+                 peer_router_ip: Optional[builtins.str] = None):
+        if local_router_ip is not None:
+            pulumi.set(__self__, "local_router_ip", local_router_ip)
+        if peer_router_asn is not None:
+            pulumi.set(__self__, "peer_router_asn", peer_router_asn)
+        if peer_router_ip is not None:
+            pulumi.set(__self__, "peer_router_ip", peer_router_ip)
+
+    @property
+    @pulumi.getter(name="localRouterIp")
+    def local_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "local_router_ip")
+
+    @property
+    @pulumi.getter(name="peerRouterAsn")
+    def peer_router_asn(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "peer_router_asn")
+
+    @property
+    @pulumi.getter(name="peerRouterIp")
+    def peer_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "peer_router_ip")
 
 
 @pulumi.output_type

@@ -250,6 +250,11 @@ export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
 
+export { GetPartnerAttachmentArgs, GetPartnerAttachmentResult, GetPartnerAttachmentOutputArgs } from "./getPartnerAttachment";
+export const getPartnerAttachment: typeof import("./getPartnerAttachment").getPartnerAttachment = null as any;
+export const getPartnerAttachmentOutput: typeof import("./getPartnerAttachment").getPartnerAttachmentOutput = null as any;
+utilities.lazyLoad(exports, ["getPartnerAttachment","getPartnerAttachmentOutput"], () => require("./getPartnerAttachment"));
+
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
@@ -379,6 +384,11 @@ export { MonitorAlertArgs, MonitorAlertState } from "./monitorAlert";
 export type MonitorAlert = import("./monitorAlert").MonitorAlert;
 export const MonitorAlert: typeof import("./monitorAlert").MonitorAlert = null as any;
 utilities.lazyLoad(exports, ["MonitorAlert"], () => require("./monitorAlert"));
+
+export { PartnerAttachmentArgs, PartnerAttachmentState } from "./partnerAttachment";
+export type PartnerAttachment = import("./partnerAttachment").PartnerAttachment;
+export const PartnerAttachment: typeof import("./partnerAttachment").PartnerAttachment = null as any;
+utilities.lazyLoad(exports, ["PartnerAttachment"], () => require("./partnerAttachment"));
 
 export { ProjectArgs, ProjectState } from "./project";
 export type Project = import("./project").Project;
@@ -564,6 +574,8 @@ const _module = {
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "digitalocean:index/monitorAlert:MonitorAlert":
                 return new MonitorAlert(name, <any>undefined, { urn })
+            case "digitalocean:index/partnerAttachment:PartnerAttachment":
+                return new PartnerAttachment(name, <any>undefined, { urn })
             case "digitalocean:index/project:Project":
                 return new Project(name, <any>undefined, { urn })
             case "digitalocean:index/projectResources:ProjectResources":
@@ -640,6 +652,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster",
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/partnerAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIp", _module)

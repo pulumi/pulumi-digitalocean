@@ -56,6 +56,7 @@ from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
+from .get_partner_attachment import *
 from .get_project import *
 from .get_projects import *
 from .get_record import *
@@ -82,6 +83,7 @@ from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
 from .monitor_alert import *
+from .partner_attachment import *
 from .project import *
 from .project_resources import *
 from .provider import *
@@ -362,6 +364,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/monitorAlert:MonitorAlert": "MonitorAlert"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/partnerAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/partnerAttachment:PartnerAttachment": "PartnerAttachment"
   }
  },
  {

@@ -283,6 +283,8 @@ __all__ = [
     'MonitorAlertAlertsArgsDict',
     'MonitorAlertAlertsSlackArgs',
     'MonitorAlertAlertsSlackArgsDict',
+    'PartnerAttachmentBgpArgs',
+    'PartnerAttachmentBgpArgsDict',
     'SpacesBucketCorsConfigurationCorsRuleArgs',
     'SpacesBucketCorsConfigurationCorsRuleArgsDict',
     'SpacesBucketCorsRuleArgs',
@@ -323,6 +325,8 @@ __all__ = [
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'GetKubernetesClusterRoutingAgentArgs',
     'GetKubernetesClusterRoutingAgentArgsDict',
+    'GetPartnerAttachmentBgpArgs',
+    'GetPartnerAttachmentBgpArgsDict',
     'GetProjectsFilterArgs',
     'GetProjectsFilterArgsDict',
     'GetProjectsSortArgs',
@@ -12762,6 +12766,68 @@ class MonitorAlertAlertsSlackArgs:
 
 
 if not MYPY:
+    class PartnerAttachmentBgpArgsDict(TypedDict):
+        auth_key: NotRequired[pulumi.Input[builtins.str]]
+        local_router_ip: NotRequired[pulumi.Input[builtins.str]]
+        peer_router_asn: NotRequired[pulumi.Input[builtins.int]]
+        peer_router_ip: NotRequired[pulumi.Input[builtins.str]]
+elif False:
+    PartnerAttachmentBgpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PartnerAttachmentBgpArgs:
+    def __init__(__self__, *,
+                 auth_key: Optional[pulumi.Input[builtins.str]] = None,
+                 local_router_ip: Optional[pulumi.Input[builtins.str]] = None,
+                 peer_router_asn: Optional[pulumi.Input[builtins.int]] = None,
+                 peer_router_ip: Optional[pulumi.Input[builtins.str]] = None):
+        if auth_key is not None:
+            pulumi.set(__self__, "auth_key", auth_key)
+        if local_router_ip is not None:
+            pulumi.set(__self__, "local_router_ip", local_router_ip)
+        if peer_router_asn is not None:
+            pulumi.set(__self__, "peer_router_asn", peer_router_asn)
+        if peer_router_ip is not None:
+            pulumi.set(__self__, "peer_router_ip", peer_router_ip)
+
+    @property
+    @pulumi.getter(name="authKey")
+    def auth_key(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "auth_key")
+
+    @auth_key.setter
+    def auth_key(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "auth_key", value)
+
+    @property
+    @pulumi.getter(name="localRouterIp")
+    def local_router_ip(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "local_router_ip")
+
+    @local_router_ip.setter
+    def local_router_ip(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "local_router_ip", value)
+
+    @property
+    @pulumi.getter(name="peerRouterAsn")
+    def peer_router_asn(self) -> Optional[pulumi.Input[builtins.int]]:
+        return pulumi.get(self, "peer_router_asn")
+
+    @peer_router_asn.setter
+    def peer_router_asn(self, value: Optional[pulumi.Input[builtins.int]]):
+        pulumi.set(self, "peer_router_asn", value)
+
+    @property
+    @pulumi.getter(name="peerRouterIp")
+    def peer_router_ip(self) -> Optional[pulumi.Input[builtins.str]]:
+        return pulumi.get(self, "peer_router_ip")
+
+    @peer_router_ip.setter
+    def peer_router_ip(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "peer_router_ip", value)
+
+
+if not MYPY:
     class SpacesBucketCorsConfigurationCorsRuleArgsDict(TypedDict):
         allowed_methods: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
         """
@@ -14379,6 +14445,55 @@ class GetKubernetesClusterRoutingAgentArgs:
     @enabled.setter
     def enabled(self, value: builtins.bool):
         pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class GetPartnerAttachmentBgpArgsDict(TypedDict):
+        local_router_ip: NotRequired[builtins.str]
+        peer_router_asn: NotRequired[builtins.int]
+        peer_router_ip: NotRequired[builtins.str]
+elif False:
+    GetPartnerAttachmentBgpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetPartnerAttachmentBgpArgs:
+    def __init__(__self__, *,
+                 local_router_ip: Optional[builtins.str] = None,
+                 peer_router_asn: Optional[builtins.int] = None,
+                 peer_router_ip: Optional[builtins.str] = None):
+        if local_router_ip is not None:
+            pulumi.set(__self__, "local_router_ip", local_router_ip)
+        if peer_router_asn is not None:
+            pulumi.set(__self__, "peer_router_asn", peer_router_asn)
+        if peer_router_ip is not None:
+            pulumi.set(__self__, "peer_router_ip", peer_router_ip)
+
+    @property
+    @pulumi.getter(name="localRouterIp")
+    def local_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "local_router_ip")
+
+    @local_router_ip.setter
+    def local_router_ip(self, value: Optional[builtins.str]):
+        pulumi.set(self, "local_router_ip", value)
+
+    @property
+    @pulumi.getter(name="peerRouterAsn")
+    def peer_router_asn(self) -> Optional[builtins.int]:
+        return pulumi.get(self, "peer_router_asn")
+
+    @peer_router_asn.setter
+    def peer_router_asn(self, value: Optional[builtins.int]):
+        pulumi.set(self, "peer_router_asn", value)
+
+    @property
+    @pulumi.getter(name="peerRouterIp")
+    def peer_router_ip(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "peer_router_ip")
+
+    @peer_router_ip.setter
+    def peer_router_ip(self, value: Optional[builtins.str]):
+        pulumi.set(self, "peer_router_ip", value)
 
 
 if not MYPY:
