@@ -871,6 +871,18 @@
                     }
                 }
             },
+            "digitalocean_partner_attachment": {
+                "current": "digitalocean:index/partnerAttachment:PartnerAttachment",
+                "majorVersion": 4,
+                "fields": {
+                    "bgp": {
+                        "maxItemsOne": true
+                    },
+                    "vpc_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_project": {
                 "current": "digitalocean:index/project:Project",
                 "majorVersion": 4,
@@ -1910,6 +1922,18 @@
                         "maxItemsOne": false
                     },
                     "target_load_balancer_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_partner_attachment": {
+                "current": "digitalocean:index/getPartnerAttachment:getPartnerAttachment",
+                "majorVersion": 4,
+                "fields": {
+                    "bgp": {
+                        "maxItemsOne": true
+                    },
+                    "vpc_ids": {
                         "maxItemsOne": false
                     }
                 }
