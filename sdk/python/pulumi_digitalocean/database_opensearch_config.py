@@ -1281,6 +1281,9 @@ class _DatabaseOpensearchConfigState:
 
 
 class DatabaseOpensearchConfig(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -98,6 +98,9 @@ class _DatabaseFirewallState:
 
 
 class DatabaseFirewall(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseFirewall:DatabaseFirewall"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -425,6 +425,9 @@ class _DatabaseRedisConfigState:
 
 
 class DatabaseRedisConfig(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

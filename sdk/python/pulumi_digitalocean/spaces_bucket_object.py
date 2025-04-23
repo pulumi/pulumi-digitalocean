@@ -579,6 +579,9 @@ class _SpacesBucketObjectState:
 
 
 class SpacesBucketObject(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/spacesBucketObject:SpacesBucketObject"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -96,6 +96,9 @@ class _ReservedIpAssignmentState:
 
 
 class ReservedIpAssignment(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/reservedIpAssignment:ReservedIpAssignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -233,6 +233,9 @@ class _CdnState:
 
 
 class Cdn(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/cdn:Cdn"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

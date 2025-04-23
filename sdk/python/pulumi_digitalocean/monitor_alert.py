@@ -402,6 +402,9 @@ class _MonitorAlertState:
 
 
 class MonitorAlert(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/monitorAlert:MonitorAlert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

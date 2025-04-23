@@ -717,6 +717,9 @@ class _DatabaseClusterState:
 
 
 class DatabaseCluster(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseCluster:DatabaseCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

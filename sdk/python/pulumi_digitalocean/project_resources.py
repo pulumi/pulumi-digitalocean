@@ -96,6 +96,9 @@ class _ProjectResourcesState:
 
 
 class ProjectResources(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/projectResources:ProjectResources"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

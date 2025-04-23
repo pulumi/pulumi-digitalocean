@@ -706,6 +706,9 @@ class _KubernetesClusterState:
 
 
 class KubernetesCluster(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/kubernetesCluster:KubernetesCluster"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

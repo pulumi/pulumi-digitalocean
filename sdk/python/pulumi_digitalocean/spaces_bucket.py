@@ -317,6 +317,9 @@ class _SpacesBucketState:
 
 
 class SpacesBucket(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/spacesBucket:SpacesBucket"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
