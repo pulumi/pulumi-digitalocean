@@ -225,6 +225,9 @@ class _DatabaseMongodbConfigState:
 
 
 class DatabaseMongodbConfig(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

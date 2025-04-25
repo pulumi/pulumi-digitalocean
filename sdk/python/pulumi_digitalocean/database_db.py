@@ -97,6 +97,9 @@ class _DatabaseDbState:
 
 
 class DatabaseDb(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseDb:DatabaseDb"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

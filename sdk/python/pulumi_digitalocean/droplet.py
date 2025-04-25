@@ -879,6 +879,9 @@ class _DropletState:
 
 
 class Droplet(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/droplet:Droplet"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

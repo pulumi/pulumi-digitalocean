@@ -145,6 +145,9 @@ class _ReservedIpState:
 
 
 class ReservedIp(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/reservedIp:ReservedIp"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

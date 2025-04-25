@@ -909,6 +909,9 @@ class _LoadBalancerState:
 
 
 class LoadBalancer(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/loadBalancer:LoadBalancer"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

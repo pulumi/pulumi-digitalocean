@@ -248,6 +248,9 @@ class _PartnerAttachmentState:
 
 
 class PartnerAttachment(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/partnerAttachment:PartnerAttachment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

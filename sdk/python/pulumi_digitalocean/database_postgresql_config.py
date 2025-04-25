@@ -1699,6 +1699,9 @@ class _DatabasePostgresqlConfigState:
 
 
 class DatabasePostgresqlConfig(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
