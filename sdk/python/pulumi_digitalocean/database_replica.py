@@ -394,6 +394,9 @@ class _DatabaseReplicaState:
 
 
 class DatabaseReplica(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseReplica:DatabaseReplica"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

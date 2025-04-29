@@ -161,6 +161,9 @@ class _ContainerRegistryDockerCredentialsState:
 
 
 class ContainerRegistryDockerCredentials(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

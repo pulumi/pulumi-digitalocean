@@ -318,6 +318,9 @@ class _DatabaseConnectionPoolState:
 
 
 class DatabaseConnectionPool(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseConnectionPool:DatabaseConnectionPool"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

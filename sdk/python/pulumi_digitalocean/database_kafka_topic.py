@@ -215,6 +215,9 @@ class _DatabaseKafkaTopicState:
 
 
 class DatabaseKafkaTopic(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

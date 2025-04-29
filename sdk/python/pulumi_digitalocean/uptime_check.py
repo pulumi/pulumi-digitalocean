@@ -193,6 +193,9 @@ class _UptimeCheckState:
 
 
 class UptimeCheck(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/uptimeCheck:UptimeCheck"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
