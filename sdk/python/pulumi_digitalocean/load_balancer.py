@@ -45,6 +45,7 @@ class LoadBalancerArgs:
                  size_unit: Optional[pulumi.Input[builtins.int]] = None,
                  sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_uuid: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -69,7 +70,6 @@ class LoadBalancerArgs:
         :param pulumi.Input[builtins.str] name: The Load Balancer name
         :param pulumi.Input[builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[builtins.str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[builtins.bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -80,8 +80,8 @@ class LoadBalancerArgs:
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        :param pulumi.Input[builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[builtins.str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -131,6 +131,8 @@ class LoadBalancerArgs:
             pulumi.set(__self__, "sticky_sessions", sticky_sessions)
         if target_load_balancer_ids is not None:
             pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
+        if tls_cipher_policy is not None:
+            pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vpc_uuid is not None:
@@ -315,7 +317,6 @@ class LoadBalancerArgs:
     def network_stack(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        **NOTE**: this feature is in private preview, and may not be available for public use
         """
         return pulumi.get(self, "network_stack")
 
@@ -411,11 +412,22 @@ class LoadBalancerArgs:
         pulumi.set(self, "target_load_balancer_ids", value)
 
     @property
+    @pulumi.getter(name="tlsCipherPolicy")
+    def tls_cipher_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        """
+        return pulumi.get(self, "tls_cipher_policy")
+
+    @tls_cipher_policy.setter
+    def tls_cipher_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "tls_cipher_policy", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -465,6 +477,7 @@ class _LoadBalancerState:
                  status: Optional[pulumi.Input[builtins.str]] = None,
                  sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_uuid: Optional[pulumi.Input[builtins.str]] = None):
         """
@@ -491,7 +504,6 @@ class _LoadBalancerState:
         :param pulumi.Input[builtins.str] name: The Load Balancer name
         :param pulumi.Input[builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[builtins.str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[builtins.bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -502,8 +514,8 @@ class _LoadBalancerState:
         :param pulumi.Input['LoadBalancerStickySessionsArgs'] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        :param pulumi.Input[builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[builtins.str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         if algorithm is not None:
@@ -561,6 +573,8 @@ class _LoadBalancerState:
             pulumi.set(__self__, "sticky_sessions", sticky_sessions)
         if target_load_balancer_ids is not None:
             pulumi.set(__self__, "target_load_balancer_ids", target_load_balancer_ids)
+        if tls_cipher_policy is not None:
+            pulumi.set(__self__, "tls_cipher_policy", tls_cipher_policy)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if vpc_uuid is not None:
@@ -778,7 +792,6 @@ class _LoadBalancerState:
     def network_stack(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        **NOTE**: this feature is in private preview, and may not be available for public use
         """
         return pulumi.get(self, "network_stack")
 
@@ -883,11 +896,22 @@ class _LoadBalancerState:
         pulumi.set(self, "target_load_balancer_ids", value)
 
     @property
+    @pulumi.getter(name="tlsCipherPolicy")
+    def tls_cipher_policy(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        """
+        return pulumi.get(self, "tls_cipher_policy")
+
+    @tls_cipher_policy.setter
+    def tls_cipher_policy(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "tls_cipher_policy", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 
@@ -935,6 +959,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size_unit: Optional[pulumi.Input[builtins.int]] = None,
                  sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_uuid: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1005,7 +1030,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The Load Balancer name
         :param pulumi.Input[builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[builtins.str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[builtins.bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -1016,8 +1040,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        :param pulumi.Input[builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[builtins.str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         ...
@@ -1108,6 +1132,7 @@ class LoadBalancer(pulumi.CustomResource):
                  size_unit: Optional[pulumi.Input[builtins.int]] = None,
                  sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
                  target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+                 tls_cipher_policy: Optional[pulumi.Input[builtins.str]] = None,
                  type: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_uuid: Optional[pulumi.Input[builtins.str]] = None,
                  __props__=None):
@@ -1141,6 +1166,7 @@ class LoadBalancer(pulumi.CustomResource):
             __props__.__dict__["size_unit"] = size_unit
             __props__.__dict__["sticky_sessions"] = sticky_sessions
             __props__.__dict__["target_load_balancer_ids"] = target_load_balancer_ids
+            __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
             __props__.__dict__["type"] = type
             __props__.__dict__["vpc_uuid"] = vpc_uuid
             __props__.__dict__["ip"] = None
@@ -1183,6 +1209,7 @@ class LoadBalancer(pulumi.CustomResource):
             status: Optional[pulumi.Input[builtins.str]] = None,
             sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
             target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
+            tls_cipher_policy: Optional[pulumi.Input[builtins.str]] = None,
             type: Optional[pulumi.Input[builtins.str]] = None,
             vpc_uuid: Optional[pulumi.Input[builtins.str]] = None) -> 'LoadBalancer':
         """
@@ -1214,7 +1241,6 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] name: The Load Balancer name
         :param pulumi.Input[builtins.str] network: The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         :param pulumi.Input[builtins.str] network_stack: The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-               **NOTE**: this feature is in private preview, and may not be available for public use
         :param pulumi.Input[builtins.str] project_id: The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         :param pulumi.Input[builtins.bool] redirect_http_to_https: A boolean value indicating whether
                HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -1225,8 +1251,8 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']] sticky_sessions: A `sticky_sessions` block to be assigned to the
                Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] target_load_balancer_ids: A list of Load Balancer IDs to be attached behind a Global Load Balancer.
+        :param pulumi.Input[builtins.str] tls_cipher_policy: The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         :param pulumi.Input[builtins.str] type: The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-               **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         :param pulumi.Input[builtins.str] vpc_uuid: The ID of the VPC where the load balancer will be located.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1259,6 +1285,7 @@ class LoadBalancer(pulumi.CustomResource):
         __props__.__dict__["status"] = status
         __props__.__dict__["sticky_sessions"] = sticky_sessions
         __props__.__dict__["target_load_balancer_ids"] = target_load_balancer_ids
+        __props__.__dict__["tls_cipher_policy"] = tls_cipher_policy
         __props__.__dict__["type"] = type
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return LoadBalancer(resource_name, opts=opts, __props__=__props__)
@@ -1407,7 +1434,6 @@ class LoadBalancer(pulumi.CustomResource):
     def network_stack(self) -> pulumi.Output[Optional[builtins.str]]:
         """
         The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        **NOTE**: this feature is in private preview, and may not be available for public use
         """
         return pulumi.get(self, "network_stack")
 
@@ -1476,11 +1502,18 @@ class LoadBalancer(pulumi.CustomResource):
         return pulumi.get(self, "target_load_balancer_ids")
 
     @property
+    @pulumi.getter(name="tlsCipherPolicy")
+    def tls_cipher_policy(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        """
+        return pulumi.get(self, "tls_cipher_policy")
+
+    @property
     @pulumi.getter
     def type(self) -> pulumi.Output[builtins.str]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         """
         return pulumi.get(self, "type")
 

@@ -294,7 +294,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      * 
      */
     @Import(name="networkStack")
@@ -302,7 +301,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      * 
      */
     public Optional<Output<String>> networkStack() {
@@ -428,8 +426,22 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     * 
+     */
+    @Import(name="tlsCipherPolicy")
+    private @Nullable Output<String> tlsCipherPolicy;
+
+    /**
+     * @return The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     * 
+     */
+    public Optional<Output<String>> tlsCipherPolicy() {
+        return Optional.ofNullable(this.tlsCipherPolicy);
+    }
+
+    /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Import(name="type")
@@ -437,7 +449,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Optional<Output<String>> type() {
@@ -488,6 +499,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         this.status = $.status;
         this.stickySessions = $.stickySessions;
         this.targetLoadBalancerIds = $.targetLoadBalancerIds;
+        this.tlsCipherPolicy = $.tlsCipherPolicy;
         this.type = $.type;
         this.vpcUuid = $.vpcUuid;
     }
@@ -936,7 +948,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkStack The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-         * **NOTE**: this feature is in private preview, and may not be available for public use
          * 
          * @return builder
          * 
@@ -948,7 +959,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param networkStack The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-         * **NOTE**: this feature is in private preview, and may not be available for public use
          * 
          * @return builder
          * 
@@ -1150,8 +1160,28 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param tlsCipherPolicy The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCipherPolicy(@Nullable Output<String> tlsCipherPolicy) {
+            $.tlsCipherPolicy = tlsCipherPolicy;
+            return this;
+        }
+
+        /**
+         * @param tlsCipherPolicy The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tlsCipherPolicy(String tlsCipherPolicy) {
+            return tlsCipherPolicy(Output.of(tlsCipherPolicy));
+        }
+
+        /**
          * @param type The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-         * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 
@@ -1163,7 +1193,6 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-         * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
          * 
          * @return builder
          * 

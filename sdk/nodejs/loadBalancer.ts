@@ -156,7 +156,6 @@ export class LoadBalancer extends pulumi.CustomResource {
     public readonly network!: pulumi.Output<string | undefined>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      */
     public readonly networkStack!: pulumi.Output<string | undefined>;
     /**
@@ -192,8 +191,11 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
     /**
+     * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     */
+    public readonly tlsCipherPolicy!: pulumi.Output<string | undefined>;
+    /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -240,6 +242,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
             resourceInputs["targetLoadBalancerIds"] = state ? state.targetLoadBalancerIds : undefined;
+            resourceInputs["tlsCipherPolicy"] = state ? state.tlsCipherPolicy : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
         } else {
@@ -266,6 +269,7 @@ export class LoadBalancer extends pulumi.CustomResource {
             resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
             resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
             resourceInputs["targetLoadBalancerIds"] = args ? args.targetLoadBalancerIds : undefined;
+            resourceInputs["tlsCipherPolicy"] = args ? args.tlsCipherPolicy : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
             resourceInputs["ip"] = undefined /*out*/;
@@ -356,7 +360,6 @@ export interface LoadBalancerState {
     network?: pulumi.Input<string>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      */
     networkStack?: pulumi.Input<string>;
     /**
@@ -392,8 +395,11 @@ export interface LoadBalancerState {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     */
+    tlsCipherPolicy?: pulumi.Input<string>;
+    /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**
@@ -471,7 +477,6 @@ export interface LoadBalancerArgs {
     network?: pulumi.Input<string>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      */
     networkStack?: pulumi.Input<string>;
     /**
@@ -506,8 +511,11 @@ export interface LoadBalancerArgs {
      */
     targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     */
+    tlsCipherPolicy?: pulumi.Input<string>;
+    /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      */
     type?: pulumi.Input<string>;
     /**

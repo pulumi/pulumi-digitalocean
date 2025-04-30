@@ -348,7 +348,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     }
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      * 
      */
     @Export(name="networkStack", refs={String.class}, tree="[0]")
@@ -356,7 +355,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-     * **NOTE**: this feature is in private preview, and may not be available for public use
      * 
      */
     public Output<Optional<String>> networkStack() {
@@ -473,8 +471,21 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.targetLoadBalancerIds;
     }
     /**
+     * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     * 
+     */
+    @Export(name="tlsCipherPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> tlsCipherPolicy;
+
+    /**
+     * @return The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+     * 
+     */
+    public Output<Optional<String>> tlsCipherPolicy() {
+        return Codegen.optional(this.tlsCipherPolicy);
+    }
+    /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -482,7 +493,6 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-     * **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
      * 
      */
     public Output<String> type() {
