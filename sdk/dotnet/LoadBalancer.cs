@@ -182,7 +182,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        /// **NOTE**: this feature is in private preview, and may not be available for public use
         /// </summary>
         [Output("networkStack")]
         public Output<string?> NetworkStack { get; private set; } = null!;
@@ -236,8 +235,13 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<string>> TargetLoadBalancerIds { get; private set; } = null!;
 
         /// <summary>
+        /// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        /// </summary>
+        [Output("tlsCipherPolicy")]
+        public Output<string?> TlsCipherPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -403,7 +407,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        /// **NOTE**: this feature is in private preview, and may not be available for public use
         /// </summary>
         [Input("networkStack")]
         public Input<string>? NetworkStack { get; set; }
@@ -460,8 +463,13 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
+        /// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        /// </summary>
+        [Input("tlsCipherPolicy")]
+        public Input<string>? TlsCipherPolicy { get; set; }
+
+        /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -604,7 +612,6 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-        /// **NOTE**: this feature is in private preview, and may not be available for public use
         /// </summary>
         [Input("networkStack")]
         public Input<string>? NetworkStack { get; set; }
@@ -664,8 +671,13 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
+        /// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+        /// </summary>
+        [Input("tlsCipherPolicy")]
+        public Input<string>? TlsCipherPolicy { get; set; }
+
+        /// <summary>
         /// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-        /// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

@@ -122,7 +122,6 @@ type LoadBalancer struct {
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrOutput `pulumi:"network"`
 	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-	// **NOTE**: this feature is in private preview, and may not be available for public use
 	NetworkStack pulumi.StringPtrOutput `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringOutput `pulumi:"projectId"`
@@ -142,8 +141,9 @@ type LoadBalancer struct {
 	StickySessions LoadBalancerStickySessionsOutput `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayOutput `pulumi:"targetLoadBalancerIds"`
+	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+	TlsCipherPolicy pulumi.StringPtrOutput `pulumi:"tlsCipherPolicy"`
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -220,7 +220,6 @@ type loadBalancerState struct {
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network *string `pulumi:"network"`
 	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-	// **NOTE**: this feature is in private preview, and may not be available for public use
 	NetworkStack *string `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
@@ -240,8 +239,9 @@ type loadBalancerState struct {
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
+	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -289,7 +289,6 @@ type LoadBalancerState struct {
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrInput
 	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-	// **NOTE**: this feature is in private preview, and may not be available for public use
 	NetworkStack pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
@@ -309,8 +308,9 @@ type LoadBalancerState struct {
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
+	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+	TlsCipherPolicy pulumi.StringPtrInput
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -357,7 +357,6 @@ type loadBalancerArgs struct {
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network *string `pulumi:"network"`
 	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-	// **NOTE**: this feature is in private preview, and may not be available for public use
 	NetworkStack *string `pulumi:"networkStack"`
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId *string `pulumi:"projectId"`
@@ -376,8 +375,9 @@ type loadBalancerArgs struct {
 	StickySessions *LoadBalancerStickySessions `pulumi:"stickySessions"`
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds []string `pulumi:"targetLoadBalancerIds"`
+	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+	TlsCipherPolicy *string `pulumi:"tlsCipherPolicy"`
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type *string `pulumi:"type"`
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -421,7 +421,6 @@ type LoadBalancerArgs struct {
 	// The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
 	Network pulumi.StringPtrInput
 	// The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-	// **NOTE**: this feature is in private preview, and may not be available for public use
 	NetworkStack pulumi.StringPtrInput
 	// The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
 	ProjectId pulumi.StringPtrInput
@@ -440,8 +439,9 @@ type LoadBalancerArgs struct {
 	StickySessions LoadBalancerStickySessionsPtrInput
 	// A list of Load Balancer IDs to be attached behind a Global Load Balancer.
 	TargetLoadBalancerIds pulumi.StringArrayInput
+	// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+	TlsCipherPolicy pulumi.StringPtrInput
 	// The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-	// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 	Type pulumi.StringPtrInput
 	// The ID of the VPC where the load balancer will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -626,7 +626,6 @@ func (o LoadBalancerOutput) Network() pulumi.StringPtrOutput {
 }
 
 // The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
-// **NOTE**: this feature is in private preview, and may not be available for public use
 func (o LoadBalancerOutput) NetworkStack() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.NetworkStack }).(pulumi.StringPtrOutput)
 }
@@ -673,8 +672,12 @@ func (o LoadBalancerOutput) TargetLoadBalancerIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.TargetLoadBalancerIds }).(pulumi.StringArrayOutput)
 }
 
+// The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
+func (o LoadBalancerOutput) TlsCipherPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LoadBalancer) pulumi.StringPtrOutput { return v.TlsCipherPolicy }).(pulumi.StringPtrOutput)
+}
+
 // The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
-// **NOTE**: non-`REGIONAL/GLOBAL` type may be part of closed beta feature and not available for public use.
 func (o LoadBalancerOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
