@@ -206,6 +206,9 @@ class _DropletAutoscaleState:
 
 
 class DropletAutoscale(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/dropletAutoscale:DropletAutoscale"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

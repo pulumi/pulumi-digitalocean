@@ -148,6 +148,9 @@ class _SpacesKeyState:
 
 
 class SpacesKey(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/spacesKey:SpacesKey"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

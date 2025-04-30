@@ -260,6 +260,9 @@ class _AppState:
 
 
 class App(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/app:App"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

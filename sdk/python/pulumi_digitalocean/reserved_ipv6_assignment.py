@@ -96,6 +96,9 @@ class _ReservedIpv6AssignmentState:
 
 
 class ReservedIpv6Assignment(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

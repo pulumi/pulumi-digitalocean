@@ -929,6 +929,9 @@ class _DatabaseMysqlConfigState:
 
 
 class DatabaseMysqlConfig(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

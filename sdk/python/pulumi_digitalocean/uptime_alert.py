@@ -257,6 +257,9 @@ class _UptimeAlertState:
 
 
 class UptimeAlert(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/uptimeAlert:UptimeAlert"
+
     @overload
     def __init__(__self__,
                  resource_name: str,

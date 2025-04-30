@@ -193,6 +193,9 @@ class _ContainerRegistryState:
 
 
 class ContainerRegistry(pulumi.CustomResource):
+
+    pulumi_type = "digitalocean:index/containerRegistry:ContainerRegistry"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
