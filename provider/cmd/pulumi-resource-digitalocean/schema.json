@@ -9395,6 +9395,9 @@
                 "type": "string",
                 "description": "The token key for API operations.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:digitalocean/terraformConfig"
         }
     },
     "resources": {
@@ -21307,6 +21310,35 @@
                     "name",
                     "status",
                     "vpcIds"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:digitalocean/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:digitalocean"
+                    }
+                },
+                "type": "pulumi:providers:digitalocean/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
