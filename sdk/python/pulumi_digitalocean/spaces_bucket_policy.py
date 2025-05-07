@@ -126,10 +126,8 @@ class _SpacesBucketPolicyState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy")
 class SpacesBucketPolicy(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

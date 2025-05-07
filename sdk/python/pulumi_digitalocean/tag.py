@@ -161,10 +161,8 @@ class _TagState:
         pulumi.set(self, "volumes_count", value)
 
 
+@pulumi.type_token("digitalocean:index/tag:Tag")
 class Tag(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/tag:Tag"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

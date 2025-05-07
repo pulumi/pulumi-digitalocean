@@ -230,10 +230,8 @@ class _DatabaseUserState:
         pulumi.set(self, "settings", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseUser:DatabaseUser")
 class DatabaseUser(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseUser:DatabaseUser"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

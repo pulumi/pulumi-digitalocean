@@ -128,10 +128,8 @@ class _ReservedIpv6State:
         pulumi.set(self, "urn", value)
 
 
+@pulumi.type_token("digitalocean:index/reservedIpv6:ReservedIpv6")
 class ReservedIpv6(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/reservedIpv6:ReservedIpv6"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

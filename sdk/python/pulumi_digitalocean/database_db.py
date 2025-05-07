@@ -96,10 +96,8 @@ class _DatabaseDbState:
         pulumi.set(self, "name", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseDb:DatabaseDb")
 class DatabaseDb(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseDb:DatabaseDb"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

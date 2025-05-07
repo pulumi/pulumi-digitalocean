@@ -192,10 +192,8 @@ class _UptimeCheckState:
         pulumi.set(self, "type", value)
 
 
+@pulumi.type_token("digitalocean:index/uptimeCheck:UptimeCheck")
 class UptimeCheck(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/uptimeCheck:UptimeCheck"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -116,10 +116,8 @@ class _SshKeyState:
         pulumi.set(self, "public_key", value)
 
 
+@pulumi.type_token("digitalocean:index/sshKey:SshKey")
 class SshKey(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/sshKey:SshKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

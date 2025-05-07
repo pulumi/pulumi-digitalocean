@@ -376,10 +376,8 @@ class _VolumeState:
         pulumi.set(self, "volume_urn", value)
 
 
+@pulumi.type_token("digitalocean:index/volume:Volume")
 class Volume(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/volume:Volume"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

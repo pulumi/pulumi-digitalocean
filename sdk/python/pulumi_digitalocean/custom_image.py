@@ -351,10 +351,8 @@ class _CustomImageState:
         pulumi.set(self, "url", value)
 
 
+@pulumi.type_token("digitalocean:index/customImage:CustomImage")
 class CustomImage(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/customImage:CustomImage"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

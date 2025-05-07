@@ -716,10 +716,8 @@ class _DatabaseClusterState:
         pulumi.set(self, "version", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseCluster:DatabaseCluster")
 class DatabaseCluster(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseCluster:DatabaseCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

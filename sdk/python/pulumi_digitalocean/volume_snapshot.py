@@ -192,10 +192,8 @@ class _VolumeSnapshotState:
         pulumi.set(self, "volume_id", value)
 
 
+@pulumi.type_token("digitalocean:index/volumeSnapshot:VolumeSnapshot")
 class VolumeSnapshot(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/volumeSnapshot:VolumeSnapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

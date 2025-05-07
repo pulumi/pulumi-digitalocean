@@ -132,10 +132,8 @@ class _DomainState:
         pulumi.set(self, "ttl", value)
 
 
+@pulumi.type_token("digitalocean:index/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

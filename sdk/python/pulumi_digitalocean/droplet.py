@@ -878,10 +878,8 @@ class _DropletState:
         pulumi.set(self, "vpc_uuid", value)
 
 
+@pulumi.type_token("digitalocean:index/droplet:Droplet")
 class Droplet(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/droplet:Droplet"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

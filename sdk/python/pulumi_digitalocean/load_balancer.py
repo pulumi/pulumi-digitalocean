@@ -932,10 +932,8 @@ class _LoadBalancerState:
         pulumi.set(self, "vpc_uuid", value)
 
 
+@pulumi.type_token("digitalocean:index/loadBalancer:LoadBalancer")
 class LoadBalancer(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/loadBalancer:LoadBalancer"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

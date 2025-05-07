@@ -147,10 +147,8 @@ class _SpacesKeyState:
         pulumi.set(self, "secret_key", value)
 
 
+@pulumi.type_token("digitalocean:index/spacesKey:SpacesKey")
 class SpacesKey(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/spacesKey:SpacesKey"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

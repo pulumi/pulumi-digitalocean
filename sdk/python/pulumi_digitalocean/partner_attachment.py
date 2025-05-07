@@ -247,10 +247,8 @@ class _PartnerAttachmentState:
         pulumi.set(self, "vpc_ids", value)
 
 
+@pulumi.type_token("digitalocean:index/partnerAttachment:PartnerAttachment")
 class PartnerAttachment(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/partnerAttachment:PartnerAttachment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
