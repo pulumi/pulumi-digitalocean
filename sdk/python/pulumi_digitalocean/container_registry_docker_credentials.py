@@ -160,10 +160,8 @@ class _ContainerRegistryDockerCredentialsState:
         pulumi.set(self, "write", value)
 
 
+@pulumi.type_token("digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials")
 class ContainerRegistryDockerCredentials(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

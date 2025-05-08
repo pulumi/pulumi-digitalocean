@@ -367,10 +367,8 @@ class _DnsRecordState:
         pulumi.set(self, "weight", value)
 
 
+@pulumi.type_token("digitalocean:index/dnsRecord:DnsRecord")
 class DnsRecord(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/dnsRecord:DnsRecord"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

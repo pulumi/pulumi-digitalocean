@@ -128,10 +128,8 @@ class _SpacesBucketCorsConfigurationState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration")
 class SpacesBucketCorsConfiguration(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

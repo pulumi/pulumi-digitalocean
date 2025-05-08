@@ -269,10 +269,8 @@ class _FirewallState:
         pulumi.set(self, "tags", value)
 
 
+@pulumi.type_token("digitalocean:index/firewall:Firewall")
 class Firewall(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/firewall:Firewall"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

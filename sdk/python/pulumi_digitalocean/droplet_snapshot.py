@@ -160,10 +160,8 @@ class _DropletSnapshotState:
         pulumi.set(self, "size", value)
 
 
+@pulumi.type_token("digitalocean:index/dropletSnapshot:DropletSnapshot")
 class DropletSnapshot(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/dropletSnapshot:DropletSnapshot"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

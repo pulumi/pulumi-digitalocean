@@ -224,10 +224,8 @@ class _DatabaseMongodbConfigState:
         pulumi.set(self, "verbosity", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig")
 class DatabaseMongodbConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

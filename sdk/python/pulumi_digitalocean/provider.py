@@ -173,10 +173,8 @@ class ProviderArgs:
         pulumi.set(self, "token", value)
 
 
+@pulumi.type_token("pulumi:providers:digitalocean")
 class Provider(pulumi.ProviderResource):
-
-    pulumi_type = "pulumi:providers:digitalocean"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -312,4 +310,24 @@ class Provider(pulumi.ProviderResource):
         The token key for API operations.
         """
         return pulumi.get(self, "token")
+
+    @pulumi.output_type
+    class TerraformConfigResult:
+        def __init__(__self__, result=None):
+            if result and not isinstance(result, dict):
+                raise TypeError("Expected argument 'result' to be a dict")
+            pulumi.set(__self__, "result", result)
+
+        @property
+        @pulumi.getter
+        def result(self) -> Mapping[str, Any]:
+            return pulumi.get(self, "result")
+
+    def terraform_config(__self__) -> pulumi.Output['Provider.TerraformConfigResult']:
+        """
+        This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.
+        """
+        __args__ = dict()
+        __args__['__self__'] = __self__
+        return pulumi.runtime.call('pulumi:providers:digitalocean/terraformConfig', __args__, res=__self__, typ=Provider.TerraformConfigResult)
 

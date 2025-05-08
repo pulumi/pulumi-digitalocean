@@ -705,10 +705,8 @@ class _KubernetesClusterState:
         pulumi.set(self, "vpc_uuid", value)
 
 
+@pulumi.type_token("digitalocean:index/kubernetesCluster:KubernetesCluster")
 class KubernetesCluster(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/kubernetesCluster:KubernetesCluster"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

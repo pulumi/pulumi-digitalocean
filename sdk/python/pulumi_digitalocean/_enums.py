@@ -3,7 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import builtins
-import builtins
+import pulumi
 from enum import Enum
 
 __all__ = [
@@ -18,16 +18,19 @@ __all__ = [
 ]
 
 
+@pulumi.type_token("digitalocean:index:Algorithm")
 class Algorithm(builtins.str, Enum):
     ROUND_ROBIN = "round_robin"
     LEAST_CONNECTIONS = "least_connections"
 
 
+@pulumi.type_token("digitalocean:index:CertificateType")
 class CertificateType(builtins.str, Enum):
     LETS_ENCRYPT = "lets_encrypt"
     CUSTOM = "custom"
 
 
+@pulumi.type_token("digitalocean:index:DatabaseSlug")
 class DatabaseSlug(builtins.str, Enum):
     D_B_1_VPCU1_GB = "db-s-1vcpu-1gb"
     D_B_1_VPCU2_GB = "db-s-1vcpu-2gb"
@@ -38,6 +41,7 @@ class DatabaseSlug(builtins.str, Enum):
     D_B_16_VPCU64_GB = "db-s-16vcpu-64gb"
 
 
+@pulumi.type_token("digitalocean:index:DropletSlug")
 class DropletSlug(builtins.str, Enum):
     DROPLET_S1_VCPU512_MB10_GB = "s-1vcpu-512mb-10gb"
     DROPLET_S1_VCPU1_GB = "s-1vcpu-1gb"
@@ -208,11 +212,13 @@ class DropletSlug(builtins.str, Enum):
     DROPLET_SO158_VCPU64_GB = "so1_5-8vcpu-64gb"
 
 
+@pulumi.type_token("digitalocean:index:FileSystemType")
 class FileSystemType(builtins.str, Enum):
     EXT4 = "ext4"
     XFS = "xfs"
 
 
+@pulumi.type_token("digitalocean:index:Protocol")
 class Protocol(builtins.str, Enum):
     TCP = "tcp"
     UDP = "udp"
@@ -221,6 +227,7 @@ class Protocol(builtins.str, Enum):
     HTTPS = "https"
 
 
+@pulumi.type_token("digitalocean:index:RecordType")
 class RecordType(builtins.str, Enum):
     A = "A"
     AAAA = "AAAA"
@@ -232,6 +239,7 @@ class RecordType(builtins.str, Enum):
     SRV = "SRV"
 
 
+@pulumi.type_token("digitalocean:index:Region")
 class Region(builtins.str, Enum):
     NYC1 = "nyc1"
     NYC2 = "nyc2"
