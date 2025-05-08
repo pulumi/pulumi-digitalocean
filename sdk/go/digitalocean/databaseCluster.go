@@ -76,7 +76,7 @@ import (
 //
 // ```
 //
-// ### Create a new Redis database cluster
+// ### Create a new Valkey database cluster
 // ```go
 // package main
 //
@@ -89,10 +89,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.NewDatabaseCluster(ctx, "redis-example", &digitalocean.DatabaseClusterArgs{
-//				Name:      pulumi.String("example-redis-cluster"),
-//				Engine:    pulumi.String("redis"),
-//				Version:   pulumi.String("7"),
+//			_, err := digitalocean.NewDatabaseCluster(ctx, "valkey-example", &digitalocean.DatabaseClusterArgs{
+//				Name:      pulumi.String("example-valkey-cluster"),
+//				Engine:    pulumi.String("valkey"),
+//				Version:   pulumi.String("8"),
 //				Size:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),
 //				Region:    pulumi.String(digitalocean.RegionNYC1),
 //				NodeCount: pulumi.Int(1),
@@ -264,9 +264,9 @@ type DatabaseCluster struct {
 	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database pulumi.StringOutput `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringOutput `pulumi:"engine"`
-	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrOutput `pulumi:"evictionPolicy"`
 	// Database cluster's hostname.
 	Host pulumi.StringOutput `pulumi:"host"`
@@ -374,9 +374,9 @@ type databaseClusterState struct {
 	ClusterUrn *string `pulumi:"clusterUrn"`
 	// Name of the cluster's default database.
 	Database *string `pulumi:"database"`
-	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine *string `pulumi:"engine"`
-	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
 	// Database cluster's hostname.
 	Host *string `pulumi:"host"`
@@ -435,9 +435,9 @@ type DatabaseClusterState struct {
 	ClusterUrn pulumi.StringPtrInput
 	// Name of the cluster's default database.
 	Database pulumi.StringPtrInput
-	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringPtrInput
-	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
 	// Database cluster's hostname.
 	Host pulumi.StringPtrInput
@@ -496,9 +496,9 @@ func (DatabaseClusterState) ElementType() reflect.Type {
 
 type databaseClusterArgs struct {
 	BackupRestore *DatabaseClusterBackupRestore `pulumi:"backupRestore"`
-	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine string `pulumi:"engine"`
-	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy *string `pulumi:"evictionPolicy"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
@@ -528,9 +528,9 @@ type databaseClusterArgs struct {
 // The set of arguments for constructing a DatabaseCluster resource.
 type DatabaseClusterArgs struct {
 	BackupRestore DatabaseClusterBackupRestorePtrInput
-	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+	// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 	Engine pulumi.StringInput
-	// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+	// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 	EvictionPolicy pulumi.StringPtrInput
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
@@ -658,12 +658,12 @@ func (o DatabaseClusterOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
 }
 
-// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
 func (o DatabaseClusterOutput) Engine() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringOutput { return v.Engine }).(pulumi.StringOutput)
 }
 
-// A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
 func (o DatabaseClusterOutput) EvictionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringPtrOutput { return v.EvictionPolicy }).(pulumi.StringPtrOutput)
 }

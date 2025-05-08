@@ -42,15 +42,15 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
- * ### Create a new Redis database cluster
+ * ### Create a new Valkey database cluster
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
- * const redis_example = new digitalocean.DatabaseCluster("redis-example", {
- *     name: "example-redis-cluster",
- *     engine: "redis",
- *     version: "7",
+ * const valkey_example = new digitalocean.DatabaseCluster("valkey-example", {
+ *     name: "example-valkey-cluster",
+ *     engine: "valkey",
+ *     version: "8",
  *     size: digitalocean.DatabaseSlug.DB_1VPCU1GB,
  *     region: digitalocean.Region.NYC1,
  *     nodeCount: 1,
@@ -179,11 +179,11 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly database!: pulumi.Output<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     public readonly engine!: pulumi.Output<string>;
     /**
-     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
     public readonly evictionPolicy!: pulumi.Output<string | undefined>;
     /**
@@ -391,11 +391,11 @@ export interface DatabaseClusterState {
      */
     database?: pulumi.Input<string>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine?: pulumi.Input<string>;
     /**
-     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
     evictionPolicy?: pulumi.Input<string>;
     /**
@@ -503,11 +503,11 @@ export interface DatabaseClusterState {
 export interface DatabaseClusterArgs {
     backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
     /**
-     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
     engine: pulumi.Input<string>;
     /**
-     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
     evictionPolicy?: pulumi.Input<string>;
     /**

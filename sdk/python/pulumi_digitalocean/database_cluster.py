@@ -39,11 +39,11 @@ class DatabaseClusterArgs:
                  version: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseCluster resource.
-        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[Union[builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
         :param pulumi.Input[Union[builtins.str, 'DatabaseSlug']] size: Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
-        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[builtins.str] name: The name of the database cluster.
         :param pulumi.Input[builtins.str] private_network_uuid: The ID of the VPC where the database cluster will be located.
@@ -83,7 +83,7 @@ class DatabaseClusterArgs:
     @pulumi.getter
     def engine(self) -> pulumi.Input[builtins.str]:
         """
-        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         """
         return pulumi.get(self, "engine")
 
@@ -140,7 +140,7 @@ class DatabaseClusterArgs:
     @pulumi.getter(name="evictionPolicy")
     def eviction_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
         return pulumi.get(self, "eviction_policy")
 
@@ -282,8 +282,8 @@ class _DatabaseClusterState:
         Input properties used for looking up and filtering DatabaseCluster resources.
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[builtins.str] database: Name of the cluster's default database.
-        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
-        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[builtins.str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[builtins.str] name: The name of the database cluster.
@@ -406,7 +406,7 @@ class _DatabaseClusterState:
     @pulumi.getter
     def engine(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         """
         return pulumi.get(self, "engine")
 
@@ -418,7 +418,7 @@ class _DatabaseClusterState:
     @pulumi.getter(name="evictionPolicy")
     def eviction_policy(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
         return pulumi.get(self, "eviction_policy")
 
@@ -772,15 +772,15 @@ class DatabaseCluster(pulumi.CustomResource):
             node_count=1)
         ```
 
-        ### Create a new Redis database cluster
+        ### Create a new Valkey database cluster
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        redis_example = digitalocean.DatabaseCluster("redis-example",
-            name="example-redis-cluster",
-            engine="redis",
-            version="7",
+        valkey_example = digitalocean.DatabaseCluster("valkey-example",
+            name="example-valkey-cluster",
+            engine="valkey",
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -866,8 +866,8 @@ class DatabaseCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
-        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[builtins.str] name: The name of the database cluster.
         :param pulumi.Input[builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
@@ -920,15 +920,15 @@ class DatabaseCluster(pulumi.CustomResource):
             node_count=1)
         ```
 
-        ### Create a new Redis database cluster
+        ### Create a new Valkey database cluster
         ```python
         import pulumi
         import pulumi_digitalocean as digitalocean
 
-        redis_example = digitalocean.DatabaseCluster("redis-example",
-            name="example-redis-cluster",
-            engine="redis",
-            version="7",
+        valkey_example = digitalocean.DatabaseCluster("valkey-example",
+            name="example-valkey-cluster",
+            engine="valkey",
+            version="8",
             size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,
             region=digitalocean.Region.NYC1,
             node_count=1)
@@ -1137,8 +1137,8 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[builtins.str] database: Name of the cluster's default database.
-        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
-        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        :param pulumi.Input[builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        :param pulumi.Input[builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[builtins.str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
         :param pulumi.Input[builtins.str] name: The name of the database cluster.
@@ -1225,7 +1225,7 @@ class DatabaseCluster(pulumi.CustomResource):
     @pulumi.getter
     def engine(self) -> pulumi.Output[builtins.str]:
         """
-        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+        Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         """
         return pulumi.get(self, "engine")
 
@@ -1233,7 +1233,7 @@ class DatabaseCluster(pulumi.CustomResource):
     @pulumi.getter(name="evictionPolicy")
     def eviction_policy(self) -> pulumi.Output[Optional[builtins.str]]:
         """
-        A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         """
         return pulumi.get(self, "eviction_policy")
 
