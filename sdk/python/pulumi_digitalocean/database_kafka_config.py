@@ -608,10 +608,8 @@ class _DatabaseKafkaConfigState:
         pulumi.set(self, "message_max_bytes", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig")
 class DatabaseKafkaConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

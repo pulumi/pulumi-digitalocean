@@ -144,10 +144,8 @@ class _ReservedIpState:
         pulumi.set(self, "reserved_ip_urn", value)
 
 
+@pulumi.type_token("digitalocean:index/reservedIp:ReservedIp")
 class ReservedIp(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/reservedIp:ReservedIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

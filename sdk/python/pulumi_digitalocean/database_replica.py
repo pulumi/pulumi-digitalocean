@@ -393,10 +393,8 @@ class _DatabaseReplicaState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseReplica:DatabaseReplica")
 class DatabaseReplica(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseReplica:DatabaseReplica"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

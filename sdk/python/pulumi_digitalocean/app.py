@@ -259,10 +259,8 @@ class _AppState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("digitalocean:index/app:App")
 class App(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/app:App"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

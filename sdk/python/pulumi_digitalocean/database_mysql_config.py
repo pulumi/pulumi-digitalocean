@@ -928,10 +928,8 @@ class _DatabaseMysqlConfigState:
         pulumi.set(self, "wait_timeout", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig")
 class DatabaseMysqlConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

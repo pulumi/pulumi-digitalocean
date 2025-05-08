@@ -394,10 +394,8 @@ class _KubernetesNodePoolState:
         pulumi.set(self, "taints", value)
 
 
+@pulumi.type_token("digitalocean:index/kubernetesNodePool:KubernetesNodePool")
 class KubernetesNodePool(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/kubernetesNodePool:KubernetesNodePool"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

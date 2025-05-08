@@ -1698,10 +1698,8 @@ class _DatabasePostgresqlConfigState:
         pulumi.set(self, "work_mem", value)
 
 
+@pulumi.type_token("digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig")
 class DatabasePostgresqlConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

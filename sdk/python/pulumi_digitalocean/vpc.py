@@ -208,10 +208,8 @@ class _VpcState:
         pulumi.set(self, "vpc_urn", value)
 
 
+@pulumi.type_token("digitalocean:index/vpc:Vpc")
 class Vpc(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/vpc:Vpc"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

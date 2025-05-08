@@ -578,10 +578,8 @@ class _SpacesBucketObjectState:
         pulumi.set(self, "website_redirect", value)
 
 
+@pulumi.type_token("digitalocean:index/spacesBucketObject:SpacesBucketObject")
 class SpacesBucketObject(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/spacesBucketObject:SpacesBucketObject"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

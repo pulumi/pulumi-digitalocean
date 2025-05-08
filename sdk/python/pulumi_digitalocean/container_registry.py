@@ -192,10 +192,8 @@ class _ContainerRegistryState:
         pulumi.set(self, "subscription_tier_slug", value)
 
 
+@pulumi.type_token("digitalocean:index/containerRegistry:ContainerRegistry")
 class ContainerRegistry(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/containerRegistry:ContainerRegistry"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

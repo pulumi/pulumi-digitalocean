@@ -1280,10 +1280,8 @@ class _DatabaseOpensearchConfigState:
         pulumi.set(self, "thread_pool_write_size", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig")
 class DatabaseOpensearchConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

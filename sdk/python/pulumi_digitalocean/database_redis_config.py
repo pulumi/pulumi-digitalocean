@@ -424,10 +424,8 @@ class _DatabaseRedisConfigState:
         pulumi.set(self, "timeout", value)
 
 
+@pulumi.type_token("digitalocean:index/databaseRedisConfig:DatabaseRedisConfig")
 class DatabaseRedisConfig(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/databaseRedisConfig:DatabaseRedisConfig"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

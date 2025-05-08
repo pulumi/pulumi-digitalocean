@@ -314,10 +314,8 @@ class _CertificateState:
         pulumi.set(self, "uuid", value)
 
 
+@pulumi.type_token("digitalocean:index/certificate:Certificate")
 class Certificate(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/certificate:Certificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

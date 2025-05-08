@@ -95,10 +95,8 @@ class _ProjectResourcesState:
         pulumi.set(self, "resources", value)
 
 
+@pulumi.type_token("digitalocean:index/projectResources:ProjectResources")
 class ProjectResources(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/projectResources:ProjectResources"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

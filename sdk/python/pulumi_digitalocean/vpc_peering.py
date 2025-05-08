@@ -128,10 +128,8 @@ class _VpcPeeringState:
         pulumi.set(self, "vpc_ids", value)
 
 
+@pulumi.type_token("digitalocean:index/vpcPeering:VpcPeering")
 class VpcPeering(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/vpcPeering:VpcPeering"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

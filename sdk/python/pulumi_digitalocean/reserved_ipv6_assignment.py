@@ -95,10 +95,8 @@ class _ReservedIpv6AssignmentState:
         pulumi.set(self, "ip", value)
 
 
+@pulumi.type_token("digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment")
 class ReservedIpv6Assignment(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

@@ -144,10 +144,8 @@ class _FloatingIpState:
         pulumi.set(self, "region", value)
 
 
+@pulumi.type_token("digitalocean:index/floatingIp:FloatingIp")
 class FloatingIp(pulumi.CustomResource):
-
-    pulumi_type = "digitalocean:index/floatingIp:FloatingIp"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
