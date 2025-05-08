@@ -101,7 +101,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### Create a new Redis database cluster
+ * ### Create a new Valkey database cluster
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -125,10 +125,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var redis_example = new DatabaseCluster("redis-example", DatabaseClusterArgs.builder()
- *             .name("example-redis-cluster")
- *             .engine("redis")
- *             .version("7")
+ *         var valkey_example = new DatabaseCluster("valkey-example", DatabaseClusterArgs.builder()
+ *             .name("example-valkey-cluster")
+ *             .engine("valkey")
+ *             .version("8")
  *             .size("db-s-1vcpu-1gb")
  *             .region("nyc1")
  *             .nodeCount(1)
@@ -361,28 +361,28 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return this.database;
     }
     /**
-     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Output<String> engine() {
         return this.engine;
     }
     /**
-     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
      * 
      */
     @Export(name="evictionPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> evictionPolicy;
 
     /**
-     * @return A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * @return A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
      * 
      */
     public Output<Optional<String>> evictionPolicy() {

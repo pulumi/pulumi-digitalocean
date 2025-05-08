@@ -60,14 +60,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     @Import(name="engine")
     private @Nullable Output<String> engine;
 
     /**
-     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+     * @return Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      * 
      */
     public Optional<Output<String>> engine() {
@@ -75,14 +75,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
      * 
      */
     @Import(name="evictionPolicy")
     private @Nullable Output<String> evictionPolicy;
 
     /**
-     * @return A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * @return A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
      * 
      */
     public Optional<Output<String>> evictionPolicy() {
@@ -555,7 +555,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -566,7 +566,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `redis` for Redis, `mongodb` for MongoDB, or `kafka` for Kafka).
+         * @param engine Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
          * 
          * @return builder
          * 
@@ -576,7 +576,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evictionPolicy A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
          * 
          * @return builder
          * 
@@ -587,7 +587,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evictionPolicy A string specifying the eviction policy for a Redis cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
          * 
          * @return builder
          * 
