@@ -13,7 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class LoadBalancerDomainGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// name of certificate required for TLS handshaking
+        /// The certificate id associated with the domain used for TLS handshaking.
+        /// </summary>
+        [Input("certificateId")]
+        public Input<string>? CertificateId { get; set; }
+
+        /// <summary>
+        /// The certificate name to be used for TLS handshaking.
         /// </summary>
         [Input("certificateName")]
         public Input<string>? CertificateName { get; set; }

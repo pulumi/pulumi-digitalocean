@@ -14,7 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerDomain
     {
         /// <summary>
-        /// name of certificate required for TLS handshaking
+        /// The certificate id associated with the domain used for TLS handshaking.
+        /// </summary>
+        public readonly string? CertificateId;
+        /// <summary>
+        /// The certificate name to be used for TLS handshaking.
         /// </summary>
         public readonly string? CertificateName;
         /// <summary>
@@ -36,6 +40,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private LoadBalancerDomain(
+            string? certificateId,
+
             string? certificateName,
 
             bool? isManaged,
@@ -46,6 +52,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<string> verificationErrorReasons)
         {
+            CertificateId = certificateId;
             CertificateName = certificateName;
             IsManaged = isManaged;
             Name = name;

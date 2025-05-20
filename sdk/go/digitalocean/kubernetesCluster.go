@@ -41,7 +41,8 @@ type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade                     pulumi.BoolPtrOutput                                       `pulumi:"autoUpgrade"`
+	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
+	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations KubernetesClusterClusterAutoscalerConfigurationArrayOutput `pulumi:"clusterAutoscalerConfigurations"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
@@ -134,7 +135,8 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering KubernetesCluster resources.
 type kubernetesClusterState struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade                     *bool                                             `pulumi:"autoUpgrade"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations []KubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
@@ -185,7 +187,8 @@ type kubernetesClusterState struct {
 
 type KubernetesClusterState struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade                     pulumi.BoolPtrInput
+	AutoUpgrade pulumi.BoolPtrInput
+	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations KubernetesClusterClusterAutoscalerConfigurationArrayInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringPtrInput
@@ -240,7 +243,8 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 
 type kubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade                     *bool                                             `pulumi:"autoUpgrade"`
+	AutoUpgrade *bool `pulumi:"autoUpgrade"`
+	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations []KubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet        *string                                `pulumi:"clusterSubnet"`
@@ -278,7 +282,8 @@ type kubernetesClusterArgs struct {
 // The set of arguments for constructing a KubernetesCluster resource.
 type KubernetesClusterArgs struct {
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
-	AutoUpgrade                     pulumi.BoolPtrInput
+	AutoUpgrade pulumi.BoolPtrInput
+	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations KubernetesClusterClusterAutoscalerConfigurationArrayInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet        pulumi.StringPtrInput
@@ -405,6 +410,7 @@ func (o KubernetesClusterOutput) AutoUpgrade() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.BoolPtrOutput { return v.AutoUpgrade }).(pulumi.BoolPtrOutput)
 }
 
+// Block containing options for cluster auto-scaling.
 func (o KubernetesClusterOutput) ClusterAutoscalerConfigurations() KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterClusterAutoscalerConfigurationArrayOutput {
 		return v.ClusterAutoscalerConfigurations

@@ -41,9 +41,17 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.autoUpgrade);
     }
 
+    /**
+     * Block containing options for cluster auto-scaling.
+     * 
+     */
     @Import(name="clusterAutoscalerConfigurations")
     private @Nullable Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations;
 
+    /**
+     * @return Block containing options for cluster auto-scaling.
+     * 
+     */
     public Optional<Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>>> clusterAutoscalerConfigurations() {
         return Optional.ofNullable(this.clusterAutoscalerConfigurations);
     }
@@ -454,15 +462,33 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
             return autoUpgrade(Output.of(autoUpgrade));
         }
 
+        /**
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterAutoscalerConfigurations(@Nullable Output<List<KubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations) {
             $.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             return this;
         }
 
+        /**
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterAutoscalerConfigurations(List<KubernetesClusterClusterAutoscalerConfigurationArgs> clusterAutoscalerConfigurations) {
             return clusterAutoscalerConfigurations(Output.of(clusterAutoscalerConfigurations));
         }
 
+        /**
+         * @param clusterAutoscalerConfigurations Block containing options for cluster auto-scaling.
+         * 
+         * @return builder
+         * 
+         */
         public Builder clusterAutoscalerConfigurations(KubernetesClusterClusterAutoscalerConfigurationArgs... clusterAutoscalerConfigurations) {
             return clusterAutoscalerConfigurations(List.of(clusterAutoscalerConfigurations));
         }

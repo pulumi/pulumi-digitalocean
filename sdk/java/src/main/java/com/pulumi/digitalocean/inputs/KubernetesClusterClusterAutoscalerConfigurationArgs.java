@@ -16,16 +16,36 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
 
     public static final KubernetesClusterClusterAutoscalerConfigurationArgs Empty = new KubernetesClusterClusterAutoscalerConfigurationArgs();
 
+    /**
+     * String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     @Import(name="scaleDownUnneededTime")
     private @Nullable Output<String> scaleDownUnneededTime;
 
+    /**
+     * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     public Optional<Output<String>> scaleDownUnneededTime() {
         return Optional.ofNullable(this.scaleDownUnneededTime);
     }
 
+    /**
+     * Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     * 
+     */
     @Import(name="scaleDownUtilizationThreshold")
     private @Nullable Output<Double> scaleDownUtilizationThreshold;
 
+    /**
+     * @return Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     * 
+     */
     public Optional<Output<Double>> scaleDownUtilizationThreshold() {
         return Optional.ofNullable(this.scaleDownUtilizationThreshold);
     }
@@ -55,20 +75,48 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
             $ = new KubernetesClusterClusterAutoscalerConfigurationArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param scaleDownUnneededTime String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownUnneededTime(@Nullable Output<String> scaleDownUnneededTime) {
             $.scaleDownUnneededTime = scaleDownUnneededTime;
             return this;
         }
 
+        /**
+         * @param scaleDownUnneededTime String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+         * 
+         * This resource supports customized create timeouts. The default timeout is 30 minutes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownUnneededTime(String scaleDownUnneededTime) {
             return scaleDownUnneededTime(Output.of(scaleDownUnneededTime));
         }
 
+        /**
+         * @param scaleDownUtilizationThreshold Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownUtilizationThreshold(@Nullable Output<Double> scaleDownUtilizationThreshold) {
             $.scaleDownUtilizationThreshold = scaleDownUtilizationThreshold;
             return this;
         }
 
+        /**
+         * @param scaleDownUtilizationThreshold Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+         * 
+         * @return builder
+         * 
+         */
         public Builder scaleDownUtilizationThreshold(Double scaleDownUtilizationThreshold) {
             return scaleDownUtilizationThreshold(Output.of(scaleDownUtilizationThreshold));
         }

@@ -35,7 +35,7 @@ public final class GetAppSpecWorker {
      */
     private @Nullable GetAppSpecWorkerAutoscaling autoscaling;
     /**
-     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      * 
      */
     private @Nullable GetAppSpecWorkerBitbucket bitbucket;
@@ -131,7 +131,7 @@ public final class GetAppSpecWorker {
         return Optional.ofNullable(this.autoscaling);
     }
     /**
-     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      * 
      */
     public Optional<GetAppSpecWorkerBitbucket> bitbucket() {

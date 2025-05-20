@@ -433,6 +433,11 @@ export type SpacesBucketCorsConfiguration = import("./spacesBucketCorsConfigurat
 export const SpacesBucketCorsConfiguration: typeof import("./spacesBucketCorsConfiguration").SpacesBucketCorsConfiguration = null as any;
 utilities.lazyLoad(exports, ["SpacesBucketCorsConfiguration"], () => require("./spacesBucketCorsConfiguration"));
 
+export { SpacesBucketLoggingArgs, SpacesBucketLoggingState } from "./spacesBucketLogging";
+export type SpacesBucketLogging = import("./spacesBucketLogging").SpacesBucketLogging;
+export const SpacesBucketLogging: typeof import("./spacesBucketLogging").SpacesBucketLogging = null as any;
+utilities.lazyLoad(exports, ["SpacesBucketLogging"], () => require("./spacesBucketLogging"));
+
 export { SpacesBucketObjectArgs, SpacesBucketObjectState } from "./spacesBucketObject";
 export type SpacesBucketObject = import("./spacesBucketObject").SpacesBucketObject;
 export const SpacesBucketObject: typeof import("./spacesBucketObject").SpacesBucketObject = null as any;
@@ -590,6 +595,8 @@ const _module = {
                 return new SpacesBucket(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration":
                 return new SpacesBucketCorsConfiguration(name, <any>undefined, { urn })
+            case "digitalocean:index/spacesBucketLogging:SpacesBucketLogging":
+                return new SpacesBucketLogging(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketObject:SpacesBucketObject":
                 return new SpacesBucketObject(name, <any>undefined, { urn })
             case "digitalocean:index/spacesBucketPolicy:SpacesBucketPolicy":
@@ -659,6 +666,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpv6", _mod
 pulumi.runtime.registerResourceModule("digitalocean", "index/reservedIpv6Assignment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucket", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketCorsConfiguration", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketLogging", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketObject", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesBucketPolicy", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/spacesKey", _module)

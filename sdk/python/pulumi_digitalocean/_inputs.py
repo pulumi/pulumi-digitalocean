@@ -10996,7 +10996,15 @@ class FirewallPendingChangeArgs:
 if not MYPY:
     class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
         scale_down_unneeded_time: NotRequired[pulumi.Input[builtins.str]]
+        """
+        String setting how long a node should be unneeded before it's eligible for scale down.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
         scale_down_utilization_threshold: NotRequired[pulumi.Input[builtins.float]]
+        """
+        Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        """
 elif False:
     KubernetesClusterClusterAutoscalerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -11005,6 +11013,12 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
     def __init__(__self__, *,
                  scale_down_unneeded_time: Optional[pulumi.Input[builtins.str]] = None,
                  scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None):
+        """
+        :param pulumi.Input[builtins.str] scale_down_unneeded_time: String setting how long a node should be unneeded before it's eligible for scale down.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        :param pulumi.Input[builtins.float] scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        """
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
@@ -11013,6 +11027,11 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
     @property
     @pulumi.getter(name="scaleDownUnneededTime")
     def scale_down_unneeded_time(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        String setting how long a node should be unneeded before it's eligible for scale down.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
         return pulumi.get(self, "scale_down_unneeded_time")
 
     @scale_down_unneeded_time.setter
@@ -11022,6 +11041,9 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
     @property
     @pulumi.getter(name="scaleDownUtilizationThreshold")
     def scale_down_utilization_threshold(self) -> Optional[pulumi.Input[builtins.float]]:
+        """
+        Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        """
         return pulumi.get(self, "scale_down_utilization_threshold")
 
     @scale_down_utilization_threshold.setter
@@ -11752,9 +11774,6 @@ if not MYPY:
         enabled: pulumi.Input[builtins.bool]
         """
         Boolean flag whether the routing-agent should be enabled or not.
-
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
 elif False:
     KubernetesClusterRoutingAgentArgsDict: TypeAlias = Mapping[str, Any]
@@ -11765,9 +11784,6 @@ class KubernetesClusterRoutingAgentArgs:
                  enabled: pulumi.Input[builtins.bool]):
         """
         :param pulumi.Input[builtins.bool] enabled: Boolean flag whether the routing-agent should be enabled or not.
-               
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -11776,9 +11792,6 @@ class KubernetesClusterRoutingAgentArgs:
     def enabled(self) -> pulumi.Input[builtins.bool]:
         """
         Boolean flag whether the routing-agent should be enabled or not.
-
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "enabled")
 
@@ -11994,9 +12007,13 @@ if not MYPY:
         """
         The domain name to be used for ingressing traffic to a Global Load Balancer.
         """
+        certificate_id: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The certificate id associated with the domain used for TLS handshaking.
+        """
         certificate_name: NotRequired[pulumi.Input[builtins.str]]
         """
-        name of certificate required for TLS handshaking
+        The certificate name to be used for TLS handshaking.
         """
         is_managed: NotRequired[pulumi.Input[builtins.bool]]
         """
@@ -12017,18 +12034,22 @@ elif False:
 class LoadBalancerDomainArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[builtins.str],
+                 certificate_id: Optional[pulumi.Input[builtins.str]] = None,
                  certificate_name: Optional[pulumi.Input[builtins.str]] = None,
                  is_managed: Optional[pulumi.Input[builtins.bool]] = None,
                  ssl_validation_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  verification_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] name: The domain name to be used for ingressing traffic to a Global Load Balancer.
-        :param pulumi.Input[builtins.str] certificate_name: name of certificate required for TLS handshaking
+        :param pulumi.Input[builtins.str] certificate_id: The certificate id associated with the domain used for TLS handshaking.
+        :param pulumi.Input[builtins.str] certificate_name: The certificate name to be used for TLS handshaking.
         :param pulumi.Input[builtins.bool] is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ssl_validation_error_reasons: list of domain SSL validation errors
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] verification_error_reasons: list of domain verification errors
         """
         pulumi.set(__self__, "name", name)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if certificate_name is not None:
             pulumi.set(__self__, "certificate_name", certificate_name)
         if is_managed is not None:
@@ -12051,10 +12072,22 @@ class LoadBalancerDomainArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The certificate id associated with the domain used for TLS handshaking.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @certificate_id.setter
+    def certificate_id(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "certificate_id", value)
+
+    @property
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        name of certificate required for TLS handshaking
+        The certificate name to be used for TLS handshaking.
         """
         return pulumi.get(self, "certificate_name")
 

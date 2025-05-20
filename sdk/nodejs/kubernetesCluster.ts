@@ -66,6 +66,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    /**
+     * Block containing options for cluster auto-scaling.
+     */
     public readonly clusterAutoscalerConfigurations!: pulumi.Output<outputs.KubernetesClusterClusterAutoscalerConfiguration[] | undefined>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -247,6 +250,9 @@ export interface KubernetesClusterState {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * Block containing options for cluster auto-scaling.
+     */
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[]>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -347,6 +353,9 @@ export interface KubernetesClusterArgs {
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     autoUpgrade?: pulumi.Input<boolean>;
+    /**
+     * Block containing options for cluster auto-scaling.
+     */
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterClusterAutoscalerConfiguration>[]>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).

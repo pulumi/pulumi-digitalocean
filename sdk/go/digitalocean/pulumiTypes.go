@@ -18736,7 +18736,11 @@ func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendi
 }
 
 type KubernetesClusterClusterAutoscalerConfiguration struct {
-	ScaleDownUnneededTime         *string  `pulumi:"scaleDownUnneededTime"`
+	// String setting how long a node should be unneeded before it's eligible for scale down.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	ScaleDownUnneededTime *string `pulumi:"scaleDownUnneededTime"`
+	// Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
 	ScaleDownUtilizationThreshold *float64 `pulumi:"scaleDownUtilizationThreshold"`
 }
 
@@ -18752,7 +18756,11 @@ type KubernetesClusterClusterAutoscalerConfigurationInput interface {
 }
 
 type KubernetesClusterClusterAutoscalerConfigurationArgs struct {
-	ScaleDownUnneededTime         pulumi.StringPtrInput  `pulumi:"scaleDownUnneededTime"`
+	// String setting how long a node should be unneeded before it's eligible for scale down.
+	//
+	// This resource supports customized create timeouts. The default timeout is 30 minutes.
+	ScaleDownUnneededTime pulumi.StringPtrInput `pulumi:"scaleDownUnneededTime"`
+	// Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
 	ScaleDownUtilizationThreshold pulumi.Float64PtrInput `pulumi:"scaleDownUtilizationThreshold"`
 }
 
@@ -18807,10 +18815,14 @@ func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ToKubernetesClust
 	return o
 }
 
+// String setting how long a node should be unneeded before it's eligible for scale down.
+//
+// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUnneededTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesClusterClusterAutoscalerConfiguration) *string { return v.ScaleDownUnneededTime }).(pulumi.StringPtrOutput)
 }
 
+// Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
 func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUtilizationThreshold() pulumi.Float64PtrOutput {
 	return o.ApplyT(func(v KubernetesClusterClusterAutoscalerConfiguration) *float64 {
 		return v.ScaleDownUtilizationThreshold
@@ -19920,8 +19932,6 @@ func (o KubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) Kube
 
 type KubernetesClusterRoutingAgent struct {
 	// Boolean flag whether the routing-agent should be enabled or not.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -19938,8 +19948,6 @@ type KubernetesClusterRoutingAgentInput interface {
 
 type KubernetesClusterRoutingAgentArgs struct {
 	// Boolean flag whether the routing-agent should be enabled or not.
-	//
-	// This resource supports customized create timeouts. The default timeout is 30 minutes.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -20021,8 +20029,6 @@ func (o KubernetesClusterRoutingAgentOutput) ToKubernetesClusterRoutingAgentPtrO
 }
 
 // Boolean flag whether the routing-agent should be enabled or not.
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterRoutingAgentOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterRoutingAgent) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -20052,8 +20058,6 @@ func (o KubernetesClusterRoutingAgentPtrOutput) Elem() KubernetesClusterRoutingA
 }
 
 // Boolean flag whether the routing-agent should be enabled or not.
-//
-// This resource supports customized create timeouts. The default timeout is 30 minutes.
 func (o KubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterRoutingAgent) *bool {
 		if v == nil {
@@ -20321,7 +20325,9 @@ func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesN
 }
 
 type LoadBalancerDomain struct {
-	// name of certificate required for TLS handshaking
+	// The certificate id associated with the domain used for TLS handshaking.
+	CertificateId *string `pulumi:"certificateId"`
+	// The certificate name to be used for TLS handshaking.
 	CertificateName *string `pulumi:"certificateName"`
 	// Control flag to specify whether the domain is managed by DigitalOcean.
 	IsManaged *bool `pulumi:"isManaged"`
@@ -20345,7 +20351,9 @@ type LoadBalancerDomainInput interface {
 }
 
 type LoadBalancerDomainArgs struct {
-	// name of certificate required for TLS handshaking
+	// The certificate id associated with the domain used for TLS handshaking.
+	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
+	// The certificate name to be used for TLS handshaking.
 	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
 	// Control flag to specify whether the domain is managed by DigitalOcean.
 	IsManaged pulumi.BoolPtrInput `pulumi:"isManaged"`
@@ -20408,7 +20416,12 @@ func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutputWithContext(ctx cont
 	return o
 }
 
-// name of certificate required for TLS handshaking
+// The certificate id associated with the domain used for TLS handshaking.
+func (o LoadBalancerDomainOutput) CertificateId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
+}
+
+// The certificate name to be used for TLS handshaking.
 func (o LoadBalancerDomainOutput) CertificateName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateName }).(pulumi.StringPtrOutput)
 }
@@ -24093,7 +24106,7 @@ func (o GetAppSpecEnvArrayOutput) Index(i pulumi.IntInput) GetAppSpecEnvOutput {
 type GetAppSpecFunction struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecFunctionAlert `pulumi:"alerts"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket *GetAppSpecFunctionBitbucket `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
@@ -24131,7 +24144,7 @@ type GetAppSpecFunctionInput interface {
 type GetAppSpecFunctionArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecFunctionAlertArrayInput `pulumi:"alerts"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket GetAppSpecFunctionBitbucketPtrInput `pulumi:"bitbucket"`
 	// The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
 	//
@@ -24211,7 +24224,7 @@ func (o GetAppSpecFunctionOutput) Alerts() GetAppSpecFunctionAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) []GetAppSpecFunctionAlert { return v.Alerts }).(GetAppSpecFunctionAlertArrayOutput)
 }
 
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 func (o GetAppSpecFunctionOutput) Bitbucket() GetAppSpecFunctionBitbucketPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunction) *GetAppSpecFunctionBitbucket { return v.Bitbucket }).(GetAppSpecFunctionBitbucketPtrOutput)
 }
@@ -27475,7 +27488,7 @@ func (o GetAppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 type GetAppSpecJob struct {
 	// Describes an alert policy for the component.
 	Alerts []GetAppSpecJobAlert `pulumi:"alerts"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket *GetAppSpecJobBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -27529,7 +27542,7 @@ type GetAppSpecJobInput interface {
 type GetAppSpecJobArgs struct {
 	// Describes an alert policy for the component.
 	Alerts GetAppSpecJobAlertArrayInput `pulumi:"alerts"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket GetAppSpecJobBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -27625,7 +27638,7 @@ func (o GetAppSpecJobOutput) Alerts() GetAppSpecJobAlertArrayOutput {
 	return o.ApplyT(func(v GetAppSpecJob) []GetAppSpecJobAlert { return v.Alerts }).(GetAppSpecJobAlertArrayOutput)
 }
 
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 func (o GetAppSpecJobOutput) Bitbucket() GetAppSpecJobBitbucketPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJob) *GetAppSpecJobBitbucket { return v.Bitbucket }).(GetAppSpecJobBitbucketPtrOutput)
 }
@@ -30077,7 +30090,7 @@ type GetAppSpecService struct {
 	Alerts []GetAppSpecServiceAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *GetAppSpecServiceAutoscaling `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket *GetAppSpecServiceBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -30139,7 +30152,7 @@ type GetAppSpecServiceArgs struct {
 	Alerts GetAppSpecServiceAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling GetAppSpecServiceAutoscalingPtrInput `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket GetAppSpecServiceBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -30246,7 +30259,7 @@ func (o GetAppSpecServiceOutput) Autoscaling() GetAppSpecServiceAutoscalingPtrOu
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceAutoscaling { return v.Autoscaling }).(GetAppSpecServiceAutoscalingPtrOutput)
 }
 
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 func (o GetAppSpecServiceOutput) Bitbucket() GetAppSpecServiceBitbucketPtrOutput {
 	return o.ApplyT(func(v GetAppSpecService) *GetAppSpecServiceBitbucket { return v.Bitbucket }).(GetAppSpecServiceBitbucketPtrOutput)
 }
@@ -33956,7 +33969,7 @@ func (o GetAppSpecServiceTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPt
 }
 
 type GetAppSpecStaticSite struct {
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket *GetAppSpecStaticSiteBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -34004,7 +34017,7 @@ type GetAppSpecStaticSiteInput interface {
 }
 
 type GetAppSpecStaticSiteArgs struct {
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket GetAppSpecStaticSiteBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -34091,7 +34104,7 @@ func (o GetAppSpecStaticSiteOutput) ToGetAppSpecStaticSiteOutputWithContext(ctx 
 	return o
 }
 
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 func (o GetAppSpecStaticSiteOutput) Bitbucket() GetAppSpecStaticSiteBitbucketPtrOutput {
 	return o.ApplyT(func(v GetAppSpecStaticSite) *GetAppSpecStaticSiteBitbucket { return v.Bitbucket }).(GetAppSpecStaticSiteBitbucketPtrOutput)
 }
@@ -35524,7 +35537,7 @@ type GetAppSpecWorker struct {
 	Alerts []GetAppSpecWorkerAlert `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling *GetAppSpecWorkerAutoscaling `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket *GetAppSpecWorkerBitbucket `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand *string `pulumi:"buildCommand"`
@@ -35574,7 +35587,7 @@ type GetAppSpecWorkerArgs struct {
 	Alerts GetAppSpecWorkerAlertArrayInput `pulumi:"alerts"`
 	// Configuration for automatically scaling this component based on metrics.
 	Autoscaling GetAppSpecWorkerAutoscalingPtrInput `pulumi:"autoscaling"`
-	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+	// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 	Bitbucket GetAppSpecWorkerBitbucketPtrInput `pulumi:"bitbucket"`
 	// An optional build command to run while building this component from source.
 	BuildCommand pulumi.StringPtrInput `pulumi:"buildCommand"`
@@ -35669,7 +35682,7 @@ func (o GetAppSpecWorkerOutput) Autoscaling() GetAppSpecWorkerAutoscalingPtrOutp
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerAutoscaling { return v.Autoscaling }).(GetAppSpecWorkerAutoscalingPtrOutput)
 }
 
-// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
 func (o GetAppSpecWorkerOutput) Bitbucket() GetAppSpecWorkerBitbucketPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorker) *GetAppSpecWorkerBitbucket { return v.Bitbucket }).(GetAppSpecWorkerBitbucketPtrOutput)
 }

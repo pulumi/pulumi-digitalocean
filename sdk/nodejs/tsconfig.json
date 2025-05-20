@@ -102,6 +102,7 @@
         "reservedIpv6Assignment.ts",
         "spacesBucket.ts",
         "spacesBucketCorsConfiguration.ts",
+        "spacesBucketLogging.ts",
         "spacesBucketObject.ts",
         "spacesBucketPolicy.ts",
         "spacesKey.ts",

@@ -67,9 +67,17 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> autoUpgrade() {
         return Codegen.optional(this.autoUpgrade);
     }
+    /**
+     * Block containing options for cluster auto-scaling.
+     * 
+     */
     @Export(name="clusterAutoscalerConfigurations", refs={List.class,KubernetesClusterClusterAutoscalerConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesClusterClusterAutoscalerConfiguration>> clusterAutoscalerConfigurations;
 
+    /**
+     * @return Block containing options for cluster auto-scaling.
+     * 
+     */
     public Output<Optional<List<KubernetesClusterClusterAutoscalerConfiguration>>> clusterAutoscalerConfigurations() {
         return Codegen.optional(this.clusterAutoscalerConfigurations);
     }

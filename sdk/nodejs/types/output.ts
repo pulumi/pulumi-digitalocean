@@ -2360,7 +2360,7 @@ export interface GetAppSpecFunction {
      */
     alerts?: outputs.GetAppSpecFunctionAlert[];
     /**
-     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      */
     bitbucket?: outputs.GetAppSpecFunctionBitbucket;
     /**
@@ -2735,7 +2735,7 @@ export interface GetAppSpecJob {
      */
     alerts?: outputs.GetAppSpecJobAlert[];
     /**
-     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      */
     bitbucket?: outputs.GetAppSpecJobBitbucket;
     /**
@@ -3039,7 +3039,7 @@ export interface GetAppSpecService {
      */
     autoscaling?: outputs.GetAppSpecServiceAutoscaling;
     /**
-     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      */
     bitbucket?: outputs.GetAppSpecServiceBitbucket;
     /**
@@ -3468,7 +3468,7 @@ export interface GetAppSpecServiceTermination {
 
 export interface GetAppSpecStaticSite {
     /**
-     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      */
     bitbucket?: outputs.GetAppSpecStaticSiteBitbucket;
     /**
@@ -3675,7 +3675,7 @@ export interface GetAppSpecWorker {
      */
     autoscaling?: outputs.GetAppSpecWorkerAutoscaling;
     /**
-     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      */
     bitbucket?: outputs.GetAppSpecWorkerBitbucket;
     /**
@@ -5263,7 +5263,15 @@ export interface GetTagsTag {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * String setting how long a node should be unneeded before it's eligible for scale down.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
     scaleDownUnneededTime?: string;
+    /**
+     * Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     */
     scaleDownUtilizationThreshold?: number;
 }
 
@@ -5417,9 +5425,6 @@ export interface KubernetesClusterNodePoolTaint {
 export interface KubernetesClusterRoutingAgent {
     /**
      * Boolean flag whether the routing-agent should be enabled or not.
-     *
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     enabled: boolean;
 }
@@ -5468,7 +5473,11 @@ export interface KubernetesNodePoolTaint {
 
 export interface LoadBalancerDomain {
     /**
-     * name of certificate required for TLS handshaking
+     * The certificate id associated with the domain used for TLS handshaking.
+     */
+    certificateId: string;
+    /**
+     * The certificate name to be used for TLS handshaking.
      */
     certificateName: string;
     /**

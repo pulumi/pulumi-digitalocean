@@ -19,14 +19,29 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
     public static final LoadBalancerDomainArgs Empty = new LoadBalancerDomainArgs();
 
     /**
-     * name of certificate required for TLS handshaking
+     * The certificate id associated with the domain used for TLS handshaking.
+     * 
+     */
+    @Import(name="certificateId")
+    private @Nullable Output<String> certificateId;
+
+    /**
+     * @return The certificate id associated with the domain used for TLS handshaking.
+     * 
+     */
+    public Optional<Output<String>> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+
+    /**
+     * The certificate name to be used for TLS handshaking.
      * 
      */
     @Import(name="certificateName")
     private @Nullable Output<String> certificateName;
 
     /**
-     * @return name of certificate required for TLS handshaking
+     * @return The certificate name to be used for TLS handshaking.
      * 
      */
     public Optional<Output<String>> certificateName() {
@@ -96,6 +111,7 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
     private LoadBalancerDomainArgs() {}
 
     private LoadBalancerDomainArgs(LoadBalancerDomainArgs $) {
+        this.certificateId = $.certificateId;
         this.certificateName = $.certificateName;
         this.isManaged = $.isManaged;
         this.name = $.name;
@@ -122,7 +138,28 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName name of certificate required for TLS handshaking
+         * @param certificateId The certificate id associated with the domain used for TLS handshaking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(@Nullable Output<String> certificateId) {
+            $.certificateId = certificateId;
+            return this;
+        }
+
+        /**
+         * @param certificateId The certificate id associated with the domain used for TLS handshaking.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder certificateId(String certificateId) {
+            return certificateId(Output.of(certificateId));
+        }
+
+        /**
+         * @param certificateName The certificate name to be used for TLS handshaking.
          * 
          * @return builder
          * 
@@ -133,7 +170,7 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateName name of certificate required for TLS handshaking
+         * @param certificateName The certificate name to be used for TLS handshaking.
          * 
          * @return builder
          * 

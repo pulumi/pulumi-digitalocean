@@ -15,9 +15,6 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         /// <summary>
         /// Boolean flag whether the routing-agent should be enabled or not.
-        /// 
-        /// 
-        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
         /// </summary>
         public readonly bool Enabled;
 
