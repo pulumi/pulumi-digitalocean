@@ -45,6 +45,9 @@ namespace Pulumi.DigitalOcean
         [Output("autoUpgrade")]
         public Output<bool?> AutoUpgrade { get; private set; } = null!;
 
+        /// <summary>
+        /// Block containing options for cluster auto-scaling.
+        /// </summary>
         [Output("clusterAutoscalerConfigurations")]
         public Output<ImmutableArray<Outputs.KubernetesClusterClusterAutoscalerConfiguration>> ClusterAutoscalerConfigurations { get; private set; } = null!;
 
@@ -241,6 +244,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("clusterAutoscalerConfigurations")]
         private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
+
+        /// <summary>
+        /// Block containing options for cluster auto-scaling.
+        /// </summary>
         public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
         {
             get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationArgs>());
@@ -362,6 +369,10 @@ namespace Pulumi.DigitalOcean
 
         [Input("clusterAutoscalerConfigurations")]
         private InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs>? _clusterAutoscalerConfigurations;
+
+        /// <summary>
+        /// Block containing options for cluster auto-scaling.
+        /// </summary>
         public InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs> ClusterAutoscalerConfigurations
         {
             get => _clusterAutoscalerConfigurations ?? (_clusterAutoscalerConfigurations = new InputList<Inputs.KubernetesClusterClusterAutoscalerConfigurationGetArgs>());

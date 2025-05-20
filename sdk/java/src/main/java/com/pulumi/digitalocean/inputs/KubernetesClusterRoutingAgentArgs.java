@@ -17,16 +17,12 @@ public final class KubernetesClusterRoutingAgentArgs extends com.pulumi.resource
     /**
      * Boolean flag whether the routing-agent should be enabled or not.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
      * @return Boolean flag whether the routing-agent should be enabled or not.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Output<Boolean> enabled() {
@@ -60,8 +56,6 @@ public final class KubernetesClusterRoutingAgentArgs extends com.pulumi.resource
         /**
          * @param enabled Boolean flag whether the routing-agent should be enabled or not.
          * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class KubernetesClusterRoutingAgentArgs extends com.pulumi.resource
 
         /**
          * @param enabled Boolean flag whether the routing-agent should be enabled or not.
-         * 
-         * This resource supports customized create timeouts. The default timeout is 30 minutes.
          * 
          * @return builder
          * 

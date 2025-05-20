@@ -12,13 +12,33 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     private @Nullable String scaleDownUnneededTime;
+    /**
+     * @return Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     * 
+     */
     private @Nullable Double scaleDownUtilizationThreshold;
 
     private KubernetesClusterClusterAutoscalerConfiguration() {}
+    /**
+     * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
+     * 
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     * 
+     */
     public Optional<String> scaleDownUnneededTime() {
         return Optional.ofNullable(this.scaleDownUnneededTime);
     }
+    /**
+     * @return Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     * 
+     */
     public Optional<Double> scaleDownUtilizationThreshold() {
         return Optional.ofNullable(this.scaleDownUtilizationThreshold);
     }

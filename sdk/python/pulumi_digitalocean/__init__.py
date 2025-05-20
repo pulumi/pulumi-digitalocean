@@ -93,6 +93,7 @@ from .reserved_ipv6 import *
 from .reserved_ipv6_assignment import *
 from .spaces_bucket import *
 from .spaces_bucket_cors_configuration import *
+from .spaces_bucket_logging import *
 from .spaces_bucket_object import *
 from .spaces_bucket_policy import *
 from .spaces_key import *
@@ -436,6 +437,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration": "SpacesBucketCorsConfiguration"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/spacesBucketLogging",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/spacesBucketLogging:SpacesBucketLogging": "SpacesBucketLogging"
   }
  },
  {

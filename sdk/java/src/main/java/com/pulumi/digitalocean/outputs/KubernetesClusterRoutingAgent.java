@@ -13,16 +13,12 @@ public final class KubernetesClusterRoutingAgent {
     /**
      * @return Boolean flag whether the routing-agent should be enabled or not.
      * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
-     * 
      */
     private Boolean enabled;
 
     private KubernetesClusterRoutingAgent() {}
     /**
      * @return Boolean flag whether the routing-agent should be enabled or not.
-     * 
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      * 
      */
     public Boolean enabled() {

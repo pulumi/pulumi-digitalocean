@@ -47,6 +47,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[Union[builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
@@ -145,6 +146,9 @@ class KubernetesClusterArgs:
     @property
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+        """
+        Block containing options for cluster auto-scaling.
+        """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @cluster_autoscaler_configurations.setter
@@ -336,6 +340,7 @@ class _KubernetesClusterState:
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[builtins.str] created_at: The date and time when the node was created.
@@ -425,6 +430,9 @@ class _KubernetesClusterState:
     @property
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+        """
+        Block containing options for cluster auto-scaling.
+        """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @cluster_autoscaler_configurations.setter
@@ -760,6 +768,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
@@ -927,6 +936,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
         :param pulumi.Input[builtins.str] created_at: The date and time when the node was created.
@@ -992,6 +1002,9 @@ class KubernetesCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="clusterAutoscalerConfigurations")
     def cluster_autoscaler_configurations(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesClusterClusterAutoscalerConfiguration']]]:
+        """
+        Block containing options for cluster auto-scaling.
+        """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @property

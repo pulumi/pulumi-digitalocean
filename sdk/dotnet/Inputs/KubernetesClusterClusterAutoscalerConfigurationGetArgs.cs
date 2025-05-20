@@ -12,9 +12,17 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class KubernetesClusterClusterAutoscalerConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// String setting how long a node should be unneeded before it's eligible for scale down.
+        /// 
+        /// This resource supports customized create timeouts. The default timeout is 30 minutes.
+        /// </summary>
         [Input("scaleDownUnneededTime")]
         public Input<string>? ScaleDownUnneededTime { get; set; }
 
+        /// <summary>
+        /// Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        /// </summary>
         [Input("scaleDownUtilizationThreshold")]
         public Input<double>? ScaleDownUtilizationThreshold { get; set; }
 

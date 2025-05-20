@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecServiceAutoscalingResult? Autoscaling;
         /// <summary>
-        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         /// </summary>
         public readonly Outputs.GetAppSpecServiceBitbucketResult? Bitbucket;
         /// <summary>

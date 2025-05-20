@@ -3143,7 +3143,15 @@ export interface GetTagsSortArgs {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    /**
+     * String setting how long a node should be unneeded before it's eligible for scale down.
+     *
+     * This resource supports customized create timeouts. The default timeout is 30 minutes.
+     */
     scaleDownUnneededTime?: pulumi.Input<string>;
+    /**
+     * Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+     */
     scaleDownUtilizationThreshold?: pulumi.Input<number>;
 }
 
@@ -3297,9 +3305,6 @@ export interface KubernetesClusterNodePoolTaint {
 export interface KubernetesClusterRoutingAgent {
     /**
      * Boolean flag whether the routing-agent should be enabled or not.
-     *
-     *
-     * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -3348,7 +3353,11 @@ export interface KubernetesNodePoolTaint {
 
 export interface LoadBalancerDomain {
     /**
-     * name of certificate required for TLS handshaking
+     * The certificate id associated with the domain used for TLS handshaking.
+     */
+    certificateId?: pulumi.Input<string>;
+    /**
+     * The certificate name to be used for TLS handshaking.
      */
     certificateName?: pulumi.Input<string>;
     /**

@@ -28,7 +28,7 @@ public final class GetAppSpecFunction {
      */
     private @Nullable List<GetAppSpecFunctionAlert> alerts;
     /**
-     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      * 
      */
     private @Nullable GetAppSpecFunctionBitbucket bitbucket;
@@ -93,7 +93,7 @@ public final class GetAppSpecFunction {
         return this.alerts == null ? List.of() : this.alerts;
     }
     /**
-     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+     * @return A Bitbucket repo to use as component&#39;s source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
      * 
      */
     public Optional<GetAppSpecFunctionBitbucket> bitbucket() {

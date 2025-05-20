@@ -8076,6 +8076,12 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
     def __init__(__self__, *,
                  scale_down_unneeded_time: Optional[builtins.str] = None,
                  scale_down_utilization_threshold: Optional[builtins.float] = None):
+        """
+        :param builtins.str scale_down_unneeded_time: String setting how long a node should be unneeded before it's eligible for scale down.
+               
+               This resource supports customized create timeouts. The default timeout is 30 minutes.
+        :param builtins.float scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        """
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
@@ -8084,11 +8090,19 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
     @property
     @pulumi.getter(name="scaleDownUnneededTime")
     def scale_down_unneeded_time(self) -> Optional[builtins.str]:
+        """
+        String setting how long a node should be unneeded before it's eligible for scale down.
+
+        This resource supports customized create timeouts. The default timeout is 30 minutes.
+        """
         return pulumi.get(self, "scale_down_unneeded_time")
 
     @property
     @pulumi.getter(name="scaleDownUtilizationThreshold")
     def scale_down_utilization_threshold(self) -> Optional[builtins.float]:
+        """
+        Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+        """
         return pulumi.get(self, "scale_down_utilization_threshold")
 
 
@@ -8630,9 +8644,6 @@ class KubernetesClusterRoutingAgent(dict):
                  enabled: builtins.bool):
         """
         :param builtins.bool enabled: Boolean flag whether the routing-agent should be enabled or not.
-               
-               
-               This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -8641,9 +8652,6 @@ class KubernetesClusterRoutingAgent(dict):
     def enabled(self) -> builtins.bool:
         """
         Boolean flag whether the routing-agent should be enabled or not.
-
-
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
         """
         return pulumi.get(self, "enabled")
 
@@ -8793,7 +8801,9 @@ class LoadBalancerDomain(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "certificateName":
+        if key == "certificateId":
+            suggest = "certificate_id"
+        elif key == "certificateName":
             suggest = "certificate_name"
         elif key == "isManaged":
             suggest = "is_managed"
@@ -8815,18 +8825,22 @@ class LoadBalancerDomain(dict):
 
     def __init__(__self__, *,
                  name: builtins.str,
+                 certificate_id: Optional[builtins.str] = None,
                  certificate_name: Optional[builtins.str] = None,
                  is_managed: Optional[builtins.bool] = None,
                  ssl_validation_error_reasons: Optional[Sequence[builtins.str]] = None,
                  verification_error_reasons: Optional[Sequence[builtins.str]] = None):
         """
         :param builtins.str name: The domain name to be used for ingressing traffic to a Global Load Balancer.
-        :param builtins.str certificate_name: name of certificate required for TLS handshaking
+        :param builtins.str certificate_id: The certificate id associated with the domain used for TLS handshaking.
+        :param builtins.str certificate_name: The certificate name to be used for TLS handshaking.
         :param builtins.bool is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
         :param Sequence[builtins.str] ssl_validation_error_reasons: list of domain SSL validation errors
         :param Sequence[builtins.str] verification_error_reasons: list of domain verification errors
         """
         pulumi.set(__self__, "name", name)
+        if certificate_id is not None:
+            pulumi.set(__self__, "certificate_id", certificate_id)
         if certificate_name is not None:
             pulumi.set(__self__, "certificate_name", certificate_name)
         if is_managed is not None:
@@ -8845,10 +8859,18 @@ class LoadBalancerDomain(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="certificateId")
+    def certificate_id(self) -> Optional[builtins.str]:
+        """
+        The certificate id associated with the domain used for TLS handshaking.
+        """
+        return pulumi.get(self, "certificate_id")
+
+    @property
     @pulumi.getter(name="certificateName")
     def certificate_name(self) -> Optional[builtins.str]:
         """
-        name of certificate required for TLS handshaking
+        The certificate name to be used for TLS handshaking.
         """
         return pulumi.get(self, "certificate_name")
 
@@ -10357,7 +10379,7 @@ class GetAppSpecFunctionResult(dict):
         """
         :param builtins.str name: The name of the component.
         :param Sequence['GetAppSpecFunctionAlertArgs'] alerts: Describes an alert policy for the component.
-        :param 'GetAppSpecFunctionBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecFunctionBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         :param 'GetAppSpecFunctionCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param Sequence['GetAppSpecFunctionEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param 'GetAppSpecFunctionGitArgs' git: A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
@@ -10413,7 +10435,7 @@ class GetAppSpecFunctionResult(dict):
     @pulumi.getter
     def bitbucket(self) -> Optional['outputs.GetAppSpecFunctionBitbucketResult']:
         """
-        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         """
         return pulumi.get(self, "bitbucket")
 
@@ -11446,7 +11468,7 @@ class GetAppSpecJobResult(dict):
         """
         :param builtins.str name: The name of the component.
         :param Sequence['GetAppSpecJobAlertArgs'] alerts: Describes an alert policy for the component.
-        :param 'GetAppSpecJobBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecJobBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         :param builtins.str build_command: An optional build command to run while building this component from source.
         :param builtins.str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param builtins.str environment_slug: An environment slug describing the type of this app.
@@ -11523,7 +11545,7 @@ class GetAppSpecJobResult(dict):
     @pulumi.getter
     def bitbucket(self) -> Optional['outputs.GetAppSpecJobBitbucketResult']:
         """
-        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         """
         return pulumi.get(self, "bitbucket")
 
@@ -12305,7 +12327,7 @@ class GetAppSpecServiceResult(dict):
         :param builtins.str run_command: An optional run command to override the component's default.
         :param Sequence['GetAppSpecServiceAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'GetAppSpecServiceAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
-        :param 'GetAppSpecServiceBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecServiceBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         :param builtins.str build_command: An optional build command to run while building this component from source.
         :param 'GetAppSpecServiceCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
         :param builtins.str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
@@ -12422,7 +12444,7 @@ class GetAppSpecServiceResult(dict):
     @pulumi.getter
     def bitbucket(self) -> Optional['outputs.GetAppSpecServiceBitbucketResult']:
         """
-        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         """
         return pulumi.get(self, "bitbucket")
 
@@ -13523,7 +13545,7 @@ class GetAppSpecStaticSiteResult(dict):
                  source_dir: Optional[builtins.str] = None):
         """
         :param builtins.str name: The name of the component.
-        :param 'GetAppSpecStaticSiteBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecStaticSiteBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         :param builtins.str build_command: An optional build command to run while building this component from source.
         :param builtins.str catchall_document: The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
         :param 'GetAppSpecStaticSiteCorsArgs' cors: The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
@@ -13587,7 +13609,7 @@ class GetAppSpecStaticSiteResult(dict):
     @pulumi.getter
     def bitbucket(self) -> Optional['outputs.GetAppSpecStaticSiteBitbucketResult']:
         """
-        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         """
         return pulumi.get(self, "bitbucket")
 
@@ -14090,7 +14112,7 @@ class GetAppSpecWorkerResult(dict):
         :param builtins.str name: The name of the component.
         :param Sequence['GetAppSpecWorkerAlertArgs'] alerts: Describes an alert policy for the component.
         :param 'GetAppSpecWorkerAutoscalingArgs' autoscaling: Configuration for automatically scaling this component based on metrics.
-        :param 'GetAppSpecWorkerBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        :param 'GetAppSpecWorkerBitbucketArgs' bitbucket: A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         :param builtins.str build_command: An optional build command to run while building this component from source.
         :param builtins.str dockerfile_path: The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
         :param builtins.str environment_slug: An environment slug describing the type of this app.
@@ -14170,7 +14192,7 @@ class GetAppSpecWorkerResult(dict):
     @pulumi.getter
     def bitbucket(self) -> Optional['outputs.GetAppSpecWorkerBitbucketResult']:
         """
-        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         """
         return pulumi.get(self, "bitbucket")
 

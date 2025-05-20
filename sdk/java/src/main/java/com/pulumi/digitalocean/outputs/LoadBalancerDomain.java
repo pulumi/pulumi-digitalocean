@@ -15,7 +15,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerDomain {
     /**
-     * @return name of certificate required for TLS handshaking
+     * @return The certificate id associated with the domain used for TLS handshaking.
+     * 
+     */
+    private @Nullable String certificateId;
+    /**
+     * @return The certificate name to be used for TLS handshaking.
      * 
      */
     private @Nullable String certificateName;
@@ -42,7 +47,14 @@ public final class LoadBalancerDomain {
 
     private LoadBalancerDomain() {}
     /**
-     * @return name of certificate required for TLS handshaking
+     * @return The certificate id associated with the domain used for TLS handshaking.
+     * 
+     */
+    public Optional<String> certificateId() {
+        return Optional.ofNullable(this.certificateId);
+    }
+    /**
+     * @return The certificate name to be used for TLS handshaking.
      * 
      */
     public Optional<String> certificateName() {
@@ -86,6 +98,7 @@ public final class LoadBalancerDomain {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String certificateId;
         private @Nullable String certificateName;
         private @Nullable Boolean isManaged;
         private String name;
@@ -94,6 +107,7 @@ public final class LoadBalancerDomain {
         public Builder() {}
         public Builder(LoadBalancerDomain defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.certificateId = defaults.certificateId;
     	      this.certificateName = defaults.certificateName;
     	      this.isManaged = defaults.isManaged;
     	      this.name = defaults.name;
@@ -101,6 +115,12 @@ public final class LoadBalancerDomain {
     	      this.verificationErrorReasons = defaults.verificationErrorReasons;
         }
 
+        @CustomType.Setter
+        public Builder certificateId(@Nullable String certificateId) {
+
+            this.certificateId = certificateId;
+            return this;
+        }
         @CustomType.Setter
         public Builder certificateName(@Nullable String certificateName) {
 
@@ -141,6 +161,7 @@ public final class LoadBalancerDomain {
         }
         public LoadBalancerDomain build() {
             final var _resultValue = new LoadBalancerDomain();
+            _resultValue.certificateId = certificateId;
             _resultValue.certificateName = certificateName;
             _resultValue.isManaged = isManaged;
             _resultValue.name = name;
