@@ -438,7 +438,7 @@ index 445db717..c244db31 100644
  ```hcl
  data "digitalocean_project" "playground" {
 diff --git a/docs/resources/spaces_bucket_object.md b/docs/resources/spaces_bucket_object.md
-index 59efb2e3..7cede2c8 100644
+index e618c66e..227816bb 100644
 --- a/docs/resources/spaces_bucket_object.md
 +++ b/docs/resources/spaces_bucket_object.md
 @@ -6,7 +6,7 @@ subcategory: "Spaces Object Storage"

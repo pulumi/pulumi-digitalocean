@@ -3113,10 +3113,12 @@
         "digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration": {
             "properties": {
                 "scaleDownUnneededTime": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "String setting how long a node should be unneeded before it's eligible for scale down.\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
                 },
                 "scaleDownUtilizationThreshold": {
-                    "type": "number"
+                    "type": "number",
+                    "description": "Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.\n"
                 }
             },
             "type": "object"
@@ -3360,7 +3362,7 @@
             "properties": {
                 "enabled": {
                     "type": "boolean",
-                    "description": "Boolean flag whether the routing-agent should be enabled or not.\n\n\nThis resource supports customized create timeouts. The default timeout is 30 minutes.\n"
+                    "description": "Boolean flag whether the routing-agent should be enabled or not.\n"
                 }
             },
             "type": "object",
@@ -3433,9 +3435,13 @@
         },
         "digitalocean:index/LoadBalancerDomain:LoadBalancerDomain": {
             "properties": {
+                "certificateId": {
+                    "type": "string",
+                    "description": "The certificate id associated with the domain used for TLS handshaking.\n"
+                },
                 "certificateName": {
                     "type": "string",
-                    "description": "name of certificate required for TLS handshaking\n"
+                    "description": "The certificate name to be used for TLS handshaking.\n"
                 },
                 "isManaged": {
                     "type": "boolean",
@@ -3467,6 +3473,7 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "certificateId",
                         "certificateName",
                         "name",
                         "sslValidationErrorReasons",
@@ -4166,7 +4173,7 @@
                 },
                 "bitbucket": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionBitbucket:getAppSpecFunctionBitbucket",
-                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.\n"
                 },
                 "cors": {
                     "$ref": "#/types/digitalocean:index/getAppSpecFunctionCors:getAppSpecFunctionCors",
@@ -4743,7 +4750,7 @@
                 },
                 "bitbucket": {
                     "$ref": "#/types/digitalocean:index/getAppSpecJobBitbucket:getAppSpecJobBitbucket",
-                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.\n"
                 },
                 "buildCommand": {
                     "type": "string",
@@ -5167,7 +5174,7 @@
                 },
                 "bitbucket": {
                     "$ref": "#/types/digitalocean:index/getAppSpecServiceBitbucket:getAppSpecServiceBitbucket",
-                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.\n"
                 },
                 "buildCommand": {
                     "type": "string",
@@ -5766,7 +5773,7 @@
             "properties": {
                 "bitbucket": {
                     "$ref": "#/types/digitalocean:index/getAppSpecStaticSiteBitbucket:getAppSpecStaticSiteBitbucket",
-                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.\n"
                 },
                 "buildCommand": {
                     "type": "string",
@@ -6025,7 +6032,7 @@
                 },
                 "bitbucket": {
                     "$ref": "#/types/digitalocean:index/getAppSpecWorkerBitbucket:getAppSpecWorkerBitbucket",
-                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.\n"
+                    "description": "A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.\n"
                 },
                 "buildCommand": {
                     "type": "string",
@@ -14586,7 +14593,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
-                    }
+                    },
+                    "description": "Block containing options for cluster auto-scaling.\n"
                 },
                 "clusterSubnet": {
                     "type": "string",
@@ -14715,7 +14723,8 @@
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
-                    }
+                    },
+                    "description": "Block containing options for cluster auto-scaling.\n"
                 },
                 "clusterSubnet": {
                     "type": "string",
@@ -14813,7 +14822,8 @@
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration"
-                        }
+                        },
+                        "description": "Block containing options for cluster auto-scaling.\n"
                     },
                     "clusterSubnet": {
                         "type": "string",
@@ -16535,6 +16545,83 @@
                         "type": "string",
                         "description": "The region where the bucket resides.\n",
                         "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/spacesBucketLogging:SpacesBucketLogging": {
+            "description": "## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst assets = new digitalocean.SpacesBucket(\"assets\", {\n    name: \"assets\",\n    region: digitalocean.Region.NYC3,\n});\nconst logs = new digitalocean.SpacesBucket(\"logs\", {\n    name: \"logs\",\n    region: digitalocean.Region.NYC3,\n});\nconst example = new digitalocean.SpacesBucketLogging(\"example\", {\n    region: \"%s\",\n    bucket: assets.id,\n    targetBucket: logs.id,\n    targetPrefix: \"access-logs/\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nassets = digitalocean.SpacesBucket(\"assets\",\n    name=\"assets\",\n    region=digitalocean.Region.NYC3)\nlogs = digitalocean.SpacesBucket(\"logs\",\n    name=\"logs\",\n    region=digitalocean.Region.NYC3)\nexample = digitalocean.SpacesBucketLogging(\"example\",\n    region=\"%s\",\n    bucket=assets.id,\n    target_bucket=logs.id,\n    target_prefix=\"access-logs/\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var assets = new DigitalOcean.SpacesBucket(\"assets\", new()\n    {\n        Name = \"assets\",\n        Region = DigitalOcean.Region.NYC3,\n    });\n\n    var logs = new DigitalOcean.SpacesBucket(\"logs\", new()\n    {\n        Name = \"logs\",\n        Region = DigitalOcean.Region.NYC3,\n    });\n\n    var example = new DigitalOcean.SpacesBucketLogging(\"example\", new()\n    {\n        Region = \"%s\",\n        Bucket = assets.Id,\n        TargetBucket = logs.Id,\n        TargetPrefix = \"access-logs/\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tassets, err := digitalocean.NewSpacesBucket(ctx, \"assets\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tName:   pulumi.String(\"assets\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tlogs, err := digitalocean.NewSpacesBucket(ctx, \"logs\", \u0026digitalocean.SpacesBucketArgs{\n\t\t\tName:   pulumi.String(\"logs\"),\n\t\t\tRegion: pulumi.String(digitalocean.RegionNYC3),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewSpacesBucketLogging(ctx, \"example\", \u0026digitalocean.SpacesBucketLoggingArgs{\n\t\t\tRegion:       pulumi.String(\"%s\"),\n\t\t\tBucket:       assets.ID(),\n\t\t\tTargetBucket: logs.ID(),\n\t\t\tTargetPrefix: pulumi.String(\"access-logs/\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SpacesBucket;\nimport com.pulumi.digitalocean.SpacesBucketArgs;\nimport com.pulumi.digitalocean.SpacesBucketLogging;\nimport com.pulumi.digitalocean.SpacesBucketLoggingArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var assets = new SpacesBucket(\"assets\", SpacesBucketArgs.builder()\n            .name(\"assets\")\n            .region(\"nyc3\")\n            .build());\n\n        var logs = new SpacesBucket(\"logs\", SpacesBucketArgs.builder()\n            .name(\"logs\")\n            .region(\"nyc3\")\n            .build());\n\n        var example = new SpacesBucketLogging(\"example\", SpacesBucketLoggingArgs.builder()\n            .region(\"%s\")\n            .bucket(assets.id())\n            .targetBucket(logs.id())\n            .targetPrefix(\"access-logs/\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  assets:\n    type: digitalocean:SpacesBucket\n    properties:\n      name: assets\n      region: nyc3\n  logs:\n    type: digitalocean:SpacesBucket\n    properties:\n      name: logs\n      region: nyc3\n  example:\n    type: digitalocean:SpacesBucketLogging\n    properties:\n      region: '%s'\n      bucket: ${assets.id}\n      targetBucket: ${logs.id}\n      targetPrefix: access-logs/\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nSpaces bucket logging can be imported using the `region` and `bucket` attributes (delimited by a comma):\n\n```sh\n$ pulumi import digitalocean:index/spacesBucketLogging:SpacesBucketLogging example `region`,`bucket`\n```\n\n",
+            "properties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket which will be logged.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket resides.\n"
+                },
+                "targetBucket": {
+                    "type": "string",
+                    "description": "The name of the bucket which will store the logs.\n"
+                },
+                "targetPrefix": {
+                    "type": "string",
+                    "description": "The prefix for the log files.\n"
+                }
+            },
+            "required": [
+                "bucket",
+                "region",
+                "targetBucket",
+                "targetPrefix"
+            ],
+            "inputProperties": {
+                "bucket": {
+                    "type": "string",
+                    "description": "The name of the bucket which will be logged.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the bucket resides.\n",
+                    "willReplaceOnChanges": true
+                },
+                "targetBucket": {
+                    "type": "string",
+                    "description": "The name of the bucket which will store the logs.\n"
+                },
+                "targetPrefix": {
+                    "type": "string",
+                    "description": "The prefix for the log files.\n"
+                }
+            },
+            "requiredInputs": [
+                "bucket",
+                "region",
+                "targetBucket",
+                "targetPrefix"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering SpacesBucketLogging resources.\n",
+                "properties": {
+                    "bucket": {
+                        "type": "string",
+                        "description": "The name of the bucket which will be logged.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the bucket resides.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "targetBucket": {
+                        "type": "string",
+                        "description": "The name of the bucket which will store the logs.\n"
+                    },
+                    "targetPrefix": {
+                        "type": "string",
+                        "description": "The prefix for the log files.\n"
                     }
                 },
                 "type": "object"

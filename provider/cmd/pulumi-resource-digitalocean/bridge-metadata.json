@@ -984,6 +984,10 @@
                     }
                 }
             },
+            "digitalocean_spaces_bucket_logging": {
+                "current": "digitalocean:index/spacesBucketLogging:SpacesBucketLogging",
+                "majorVersion": 4
+            },
             "digitalocean_spaces_bucket_object": {
                 "current": "digitalocean:index/spacesBucketObject:SpacesBucketObject",
                 "majorVersion": 4
