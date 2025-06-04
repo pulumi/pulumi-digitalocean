@@ -14,6 +14,7 @@ export function getPartnerAttachment(args?: GetPartnerAttachmentArgs, opts?: pul
         "bgp": args.bgp,
         "id": args.id,
         "name": args.name,
+        "redundancyZone": args.redundancyZone,
     }, opts);
 }
 
@@ -24,6 +25,7 @@ export interface GetPartnerAttachmentArgs {
     bgp?: inputs.GetPartnerAttachmentBgp;
     id?: string;
     name?: string;
+    redundancyZone?: string;
 }
 
 /**
@@ -36,6 +38,7 @@ export interface GetPartnerAttachmentResult {
     readonly id: string;
     readonly naasProvider: string;
     readonly name: string;
+    readonly redundancyZone?: string;
     readonly region: string;
     readonly state: string;
     readonly vpcIds: string[];
@@ -47,6 +50,7 @@ export function getPartnerAttachmentOutput(args?: GetPartnerAttachmentOutputArgs
         "bgp": args.bgp,
         "id": args.id,
         "name": args.name,
+        "redundancyZone": args.redundancyZone,
     }, opts);
 }
 
@@ -57,4 +61,5 @@ export interface GetPartnerAttachmentOutputArgs {
     bgp?: pulumi.Input<inputs.GetPartnerAttachmentBgpArgs>;
     id?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
+    redundancyZone?: pulumi.Input<string>;
 }

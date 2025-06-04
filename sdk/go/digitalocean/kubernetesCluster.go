@@ -47,7 +47,8 @@ type KubernetesCluster struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringOutput `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn           pulumi.StringOutput                         `pulumi:"clusterUrn"`
+	ClusterUrn pulumi.StringOutput `pulumi:"clusterUrn"`
+	// A block representing the cluster's control plane firewall
 	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallOutput `pulumi:"controlPlaneFirewall"`
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
@@ -141,7 +142,8 @@ type kubernetesClusterState struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet *string `pulumi:"clusterSubnet"`
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn           *string                                `pulumi:"clusterUrn"`
+	ClusterUrn *string `pulumi:"clusterUrn"`
+	// A block representing the cluster's control plane firewall
 	ControlPlaneFirewall *KubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewall"`
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -193,7 +195,8 @@ type KubernetesClusterState struct {
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ClusterSubnet pulumi.StringPtrInput
 	// The uniform resource name (URN) for the Kubernetes cluster.
-	ClusterUrn           pulumi.StringPtrInput
+	ClusterUrn pulumi.StringPtrInput
+	// A block representing the cluster's control plane firewall
 	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallPtrInput
 	// The date and time when the node was created.
 	CreatedAt pulumi.StringPtrInput
@@ -247,7 +250,8 @@ type kubernetesClusterArgs struct {
 	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations []KubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ClusterSubnet        *string                                `pulumi:"clusterSubnet"`
+	ClusterSubnet *string `pulumi:"clusterSubnet"`
+	// A block representing the cluster's control plane firewall
 	ControlPlaneFirewall *KubernetesClusterControlPlaneFirewall `pulumi:"controlPlaneFirewall"`
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources *bool `pulumi:"destroyAllAssociatedResources"`
@@ -286,7 +290,8 @@ type KubernetesClusterArgs struct {
 	// Block containing options for cluster auto-scaling.
 	ClusterAutoscalerConfigurations KubernetesClusterClusterAutoscalerConfigurationArrayInput
 	// The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ClusterSubnet        pulumi.StringPtrInput
+	ClusterSubnet pulumi.StringPtrInput
+	// A block representing the cluster's control plane firewall
 	ControlPlaneFirewall KubernetesClusterControlPlaneFirewallPtrInput
 	// **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
 	DestroyAllAssociatedResources pulumi.BoolPtrInput
@@ -427,6 +432,7 @@ func (o KubernetesClusterOutput) ClusterUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ClusterUrn }).(pulumi.StringOutput)
 }
 
+// A block representing the cluster's control plane firewall
 func (o KubernetesClusterOutput) ControlPlaneFirewall() KubernetesClusterControlPlaneFirewallOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterControlPlaneFirewallOutput { return v.ControlPlaneFirewall }).(KubernetesClusterControlPlaneFirewallOutput)
 }

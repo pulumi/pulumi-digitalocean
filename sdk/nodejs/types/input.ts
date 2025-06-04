@@ -3156,9 +3156,12 @@ export interface KubernetesClusterClusterAutoscalerConfiguration {
 }
 
 export interface KubernetesClusterControlPlaneFirewall {
+    /**
+     * A list of addresses allowed (CIDR notation).
+     */
     allowedAddresses: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Boolean flag whether the routing-agent is enabled or not.
+     * Boolean flag whether the firewall should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
 }
@@ -3353,7 +3356,7 @@ export interface KubernetesNodePoolTaint {
 
 export interface LoadBalancerDomain {
     /**
-     * The certificate id associated with the domain used for TLS handshaking.
+     * **Deprecated** The certificate ID to be used for TLS handshaking.
      */
     certificateId?: pulumi.Input<string>;
     /**
@@ -3392,7 +3395,7 @@ export interface LoadBalancerFirewall {
 
 export interface LoadBalancerForwardingRule {
     /**
-     * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+     * **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
@@ -3661,4 +3664,33 @@ export interface UptimeAlertNotificationSlack {
      * The webhook URL for Slack.
      */
     url: pulumi.Input<string>;
+}
+
+export interface VpcNatGatewayEgress {
+    /**
+     * List of public gateway IPs
+     */
+    publicGateways?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgressPublicGateway>[]>;
+}
+
+export interface VpcNatGatewayEgressPublicGateway {
+    /**
+     * IPv4 address
+     */
+    ipv4?: pulumi.Input<string>;
+}
+
+export interface VpcNatGatewayVpc {
+    /**
+     * Boolean flag indicating if this should be the default gateway in this VPC
+     */
+    defaultGateway?: pulumi.Input<boolean>;
+    /**
+     * The private IP of the VPC NAT Gateway
+     */
+    gatewayIp?: pulumi.Input<string>;
+    /**
+     * The ID of the ingress VPC
+     */
+    vpcUuid: pulumi.Input<string>;
 }

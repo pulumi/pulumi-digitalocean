@@ -24,6 +24,8 @@ type PartnerAttachment struct {
 	NaasProvider pulumi.StringOutput `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The redundancy zone for the NaaS
+	RedundancyZone pulumi.StringPtrOutput `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The state of the Partner Attachment
@@ -83,6 +85,8 @@ type partnerAttachmentState struct {
 	NaasProvider *string `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name *string `pulumi:"name"`
+	// The redundancy zone for the NaaS
+	RedundancyZone *string `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
 	Region *string `pulumi:"region"`
 	// The state of the Partner Attachment
@@ -101,6 +105,8 @@ type PartnerAttachmentState struct {
 	NaasProvider pulumi.StringPtrInput
 	// The name of the Partner Attachment
 	Name pulumi.StringPtrInput
+	// The redundancy zone for the NaaS
+	RedundancyZone pulumi.StringPtrInput
 	// The region where the Partner Attachment will be created
 	Region pulumi.StringPtrInput
 	// The state of the Partner Attachment
@@ -121,6 +127,8 @@ type partnerAttachmentArgs struct {
 	NaasProvider string `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name *string `pulumi:"name"`
+	// The redundancy zone for the NaaS
+	RedundancyZone *string `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
 	Region string `pulumi:"region"`
 	// The list of VPC IDs to attach the Partner Attachment to
@@ -136,6 +144,8 @@ type PartnerAttachmentArgs struct {
 	NaasProvider pulumi.StringInput
 	// The name of the Partner Attachment
 	Name pulumi.StringPtrInput
+	// The redundancy zone for the NaaS
+	RedundancyZone pulumi.StringPtrInput
 	// The region where the Partner Attachment will be created
 	Region pulumi.StringInput
 	// The list of VPC IDs to attach the Partner Attachment to
@@ -251,6 +261,11 @@ func (o PartnerAttachmentOutput) NaasProvider() pulumi.StringOutput {
 // The name of the Partner Attachment
 func (o PartnerAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The redundancy zone for the NaaS
+func (o PartnerAttachmentOutput) RedundancyZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringPtrOutput { return v.RedundancyZone }).(pulumi.StringPtrOutput)
 }
 
 // The region where the Partner Attachment will be created

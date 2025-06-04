@@ -303,6 +303,12 @@ __all__ = [
     'UptimeAlertNotificationArgsDict',
     'UptimeAlertNotificationSlackArgs',
     'UptimeAlertNotificationSlackArgsDict',
+    'VpcNatGatewayEgressArgs',
+    'VpcNatGatewayEgressArgsDict',
+    'VpcNatGatewayEgressPublicGatewayArgs',
+    'VpcNatGatewayEgressPublicGatewayArgsDict',
+    'VpcNatGatewayVpcArgs',
+    'VpcNatGatewayVpcArgsDict',
     'GetAppDedicatedIpArgs',
     'GetAppDedicatedIpArgsDict',
     'GetDomainsFilterArgs',
@@ -11054,9 +11060,12 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
 if not MYPY:
     class KubernetesClusterControlPlaneFirewallArgsDict(TypedDict):
         allowed_addresses: pulumi.Input[Sequence[pulumi.Input[builtins.str]]]
+        """
+        A list of addresses allowed (CIDR notation).
+        """
         enabled: pulumi.Input[builtins.bool]
         """
-        Boolean flag whether the routing-agent is enabled or not.
+        Boolean flag whether the firewall should be enabled or not.
         """
 elif False:
     KubernetesClusterControlPlaneFirewallArgsDict: TypeAlias = Mapping[str, Any]
@@ -11067,7 +11076,8 @@ class KubernetesClusterControlPlaneFirewallArgs:
                  allowed_addresses: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  enabled: pulumi.Input[builtins.bool]):
         """
-        :param pulumi.Input[builtins.bool] enabled: Boolean flag whether the routing-agent is enabled or not.
+        :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] allowed_addresses: A list of addresses allowed (CIDR notation).
+        :param pulumi.Input[builtins.bool] enabled: Boolean flag whether the firewall should be enabled or not.
         """
         pulumi.set(__self__, "allowed_addresses", allowed_addresses)
         pulumi.set(__self__, "enabled", enabled)
@@ -11075,6 +11085,9 @@ class KubernetesClusterControlPlaneFirewallArgs:
     @property
     @pulumi.getter(name="allowedAddresses")
     def allowed_addresses(self) -> pulumi.Input[Sequence[pulumi.Input[builtins.str]]]:
+        """
+        A list of addresses allowed (CIDR notation).
+        """
         return pulumi.get(self, "allowed_addresses")
 
     @allowed_addresses.setter
@@ -11085,7 +11098,7 @@ class KubernetesClusterControlPlaneFirewallArgs:
     @pulumi.getter
     def enabled(self) -> pulumi.Input[builtins.bool]:
         """
-        Boolean flag whether the routing-agent is enabled or not.
+        Boolean flag whether the firewall should be enabled or not.
         """
         return pulumi.get(self, "enabled")
 
@@ -12009,7 +12022,7 @@ if not MYPY:
         """
         certificate_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        The certificate id associated with the domain used for TLS handshaking.
+        **Deprecated** The certificate ID to be used for TLS handshaking.
         """
         certificate_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -12041,7 +12054,7 @@ class LoadBalancerDomainArgs:
                  verification_error_reasons: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
         """
         :param pulumi.Input[builtins.str] name: The domain name to be used for ingressing traffic to a Global Load Balancer.
-        :param pulumi.Input[builtins.str] certificate_id: The certificate id associated with the domain used for TLS handshaking.
+        :param pulumi.Input[builtins.str] certificate_id: **Deprecated** The certificate ID to be used for TLS handshaking.
         :param pulumi.Input[builtins.str] certificate_name: The certificate name to be used for TLS handshaking.
         :param pulumi.Input[builtins.bool] is_managed: Control flag to specify whether the domain is managed by DigitalOcean.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] ssl_validation_error_reasons: list of domain SSL validation errors
@@ -12075,7 +12088,7 @@ class LoadBalancerDomainArgs:
     @pulumi.getter(name="certificateId")
     def certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        The certificate id associated with the domain used for TLS handshaking.
+        **Deprecated** The certificate ID to be used for TLS handshaking.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -12207,7 +12220,7 @@ if not MYPY:
         """
         certificate_id: NotRequired[pulumi.Input[builtins.str]]
         """
-        **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
         """
         certificate_name: NotRequired[pulumi.Input[builtins.str]]
         """
@@ -12235,7 +12248,7 @@ class LoadBalancerForwardingRuleArgs:
         :param pulumi.Input[builtins.str] entry_protocol: The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
         :param pulumi.Input[builtins.int] target_port: An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
         :param pulumi.Input[builtins.str] target_protocol: The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
-        :param pulumi.Input[builtins.str] certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        :param pulumi.Input[builtins.str] certificate_id: **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
         :param pulumi.Input[builtins.str] certificate_name: The unique name of the TLS certificate to be used for SSL termination.
         :param pulumi.Input[builtins.bool] tls_passthrough: A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
         """
@@ -12306,7 +12319,7 @@ class LoadBalancerForwardingRuleArgs:
     @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
     def certificate_id(self) -> Optional[pulumi.Input[builtins.str]]:
         """
-        **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
         """
         return pulumi.get(self, "certificate_id")
 
@@ -13508,6 +13521,141 @@ class UptimeAlertNotificationSlackArgs:
     @url.setter
     def url(self, value: pulumi.Input[builtins.str]):
         pulumi.set(self, "url", value)
+
+
+if not MYPY:
+    class VpcNatGatewayEgressArgsDict(TypedDict):
+        public_gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgsDict']]]]
+        """
+        List of public gateway IPs
+        """
+elif False:
+    VpcNatGatewayEgressArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VpcNatGatewayEgressArgs:
+    def __init__(__self__, *,
+                 public_gateways: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]] public_gateways: List of public gateway IPs
+        """
+        if public_gateways is not None:
+            pulumi.set(__self__, "public_gateways", public_gateways)
+
+    @property
+    @pulumi.getter(name="publicGateways")
+    def public_gateways(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]]:
+        """
+        List of public gateway IPs
+        """
+        return pulumi.get(self, "public_gateways")
+
+    @public_gateways.setter
+    def public_gateways(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgs']]]]):
+        pulumi.set(self, "public_gateways", value)
+
+
+if not MYPY:
+    class VpcNatGatewayEgressPublicGatewayArgsDict(TypedDict):
+        ipv4: NotRequired[pulumi.Input[builtins.str]]
+        """
+        IPv4 address
+        """
+elif False:
+    VpcNatGatewayEgressPublicGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VpcNatGatewayEgressPublicGatewayArgs:
+    def __init__(__self__, *,
+                 ipv4: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] ipv4: IPv4 address
+        """
+        if ipv4 is not None:
+            pulumi.set(__self__, "ipv4", ipv4)
+
+    @property
+    @pulumi.getter
+    def ipv4(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        IPv4 address
+        """
+        return pulumi.get(self, "ipv4")
+
+    @ipv4.setter
+    def ipv4(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "ipv4", value)
+
+
+if not MYPY:
+    class VpcNatGatewayVpcArgsDict(TypedDict):
+        vpc_uuid: pulumi.Input[builtins.str]
+        """
+        The ID of the ingress VPC
+        """
+        default_gateway: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        Boolean flag indicating if this should be the default gateway in this VPC
+        """
+        gateway_ip: NotRequired[pulumi.Input[builtins.str]]
+        """
+        The private IP of the VPC NAT Gateway
+        """
+elif False:
+    VpcNatGatewayVpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VpcNatGatewayVpcArgs:
+    def __init__(__self__, *,
+                 vpc_uuid: pulumi.Input[builtins.str],
+                 default_gateway: Optional[pulumi.Input[builtins.bool]] = None,
+                 gateway_ip: Optional[pulumi.Input[builtins.str]] = None):
+        """
+        :param pulumi.Input[builtins.str] vpc_uuid: The ID of the ingress VPC
+        :param pulumi.Input[builtins.bool] default_gateway: Boolean flag indicating if this should be the default gateway in this VPC
+        :param pulumi.Input[builtins.str] gateway_ip: The private IP of the VPC NAT Gateway
+        """
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+        if default_gateway is not None:
+            pulumi.set(__self__, "default_gateway", default_gateway)
+        if gateway_ip is not None:
+            pulumi.set(__self__, "gateway_ip", gateway_ip)
+
+    @property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> pulumi.Input[builtins.str]:
+        """
+        The ID of the ingress VPC
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+    @vpc_uuid.setter
+    def vpc_uuid(self, value: pulumi.Input[builtins.str]):
+        pulumi.set(self, "vpc_uuid", value)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        Boolean flag indicating if this should be the default gateway in this VPC
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @default_gateway.setter
+    def default_gateway(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "default_gateway", value)
+
+    @property
+    @pulumi.getter(name="gatewayIp")
+    def gateway_ip(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The private IP of the VPC NAT Gateway
+        """
+        return pulumi.get(self, "gateway_ip")
+
+    @gateway_ip.setter
+    def gateway_ip(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "gateway_ip", value)
 
 
 if not MYPY:

@@ -33,6 +33,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public string? Name { get; set; }
 
+        [Input("redundancyZone")]
+        public string? RedundancyZone { get; set; }
+
         public GetPartnerAttachmentArgs()
         {
         }
@@ -50,6 +53,9 @@ namespace Pulumi.DigitalOcean
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("redundancyZone")]
+        public Input<string>? RedundancyZone { get; set; }
+
         public GetPartnerAttachmentInvokeArgs()
         {
         }
@@ -66,6 +72,7 @@ namespace Pulumi.DigitalOcean
         public readonly string Id;
         public readonly string NaasProvider;
         public readonly string Name;
+        public readonly string? RedundancyZone;
         public readonly string Region;
         public readonly string State;
         public readonly ImmutableArray<string> VpcIds;
@@ -84,6 +91,8 @@ namespace Pulumi.DigitalOcean
 
             string name,
 
+            string? redundancyZone,
+
             string region,
 
             string state,
@@ -96,6 +105,7 @@ namespace Pulumi.DigitalOcean
             Id = id;
             NaasProvider = naasProvider;
             Name = name;
+            RedundancyZone = redundancyZone;
             Region = region;
             State = state;
             VpcIds = vpcIds;

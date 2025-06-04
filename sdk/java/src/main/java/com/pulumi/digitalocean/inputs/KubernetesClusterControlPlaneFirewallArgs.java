@@ -16,22 +16,30 @@ public final class KubernetesClusterControlPlaneFirewallArgs extends com.pulumi.
 
     public static final KubernetesClusterControlPlaneFirewallArgs Empty = new KubernetesClusterControlPlaneFirewallArgs();
 
+    /**
+     * A list of addresses allowed (CIDR notation).
+     * 
+     */
     @Import(name="allowedAddresses", required=true)
     private Output<List<String>> allowedAddresses;
 
+    /**
+     * @return A list of addresses allowed (CIDR notation).
+     * 
+     */
     public Output<List<String>> allowedAddresses() {
         return this.allowedAddresses;
     }
 
     /**
-     * Boolean flag whether the routing-agent is enabled or not.
+     * Boolean flag whether the firewall should be enabled or not.
      * 
      */
     @Import(name="enabled", required=true)
     private Output<Boolean> enabled;
 
     /**
-     * @return Boolean flag whether the routing-agent is enabled or not.
+     * @return Boolean flag whether the firewall should be enabled or not.
      * 
      */
     public Output<Boolean> enabled() {
@@ -63,21 +71,39 @@ public final class KubernetesClusterControlPlaneFirewallArgs extends com.pulumi.
             $ = new KubernetesClusterControlPlaneFirewallArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param allowedAddresses A list of addresses allowed (CIDR notation).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedAddresses(Output<List<String>> allowedAddresses) {
             $.allowedAddresses = allowedAddresses;
             return this;
         }
 
+        /**
+         * @param allowedAddresses A list of addresses allowed (CIDR notation).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedAddresses(List<String> allowedAddresses) {
             return allowedAddresses(Output.of(allowedAddresses));
         }
 
+        /**
+         * @param allowedAddresses A list of addresses allowed (CIDR notation).
+         * 
+         * @return builder
+         * 
+         */
         public Builder allowedAddresses(String... allowedAddresses) {
             return allowedAddresses(List.of(allowedAddresses));
         }
 
         /**
-         * @param enabled Boolean flag whether the routing-agent is enabled or not.
+         * @param enabled Boolean flag whether the firewall should be enabled or not.
          * 
          * @return builder
          * 
@@ -88,7 +114,7 @@ public final class KubernetesClusterControlPlaneFirewallArgs extends com.pulumi.
         }
 
         /**
-         * @param enabled Boolean flag whether the routing-agent is enabled or not.
+         * @param enabled Boolean flag whether the firewall should be enabled or not.
          * 
          * @return builder
          * 

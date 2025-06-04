@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         [Input("allowedAddresses", required: true)]
         private InputList<string>? _allowedAddresses;
+
+        /// <summary>
+        /// A list of addresses allowed (CIDR notation).
+        /// </summary>
         public InputList<string> AllowedAddresses
         {
             get => _allowedAddresses ?? (_allowedAddresses = new InputList<string>());
@@ -21,7 +25,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// Boolean flag whether the routing-agent is enabled or not.
+        /// Boolean flag whether the firewall should be enabled or not.
         /// </summary>
         [Input("enabled", required: true)]
         public Input<bool> Enabled { get; set; } = null!;

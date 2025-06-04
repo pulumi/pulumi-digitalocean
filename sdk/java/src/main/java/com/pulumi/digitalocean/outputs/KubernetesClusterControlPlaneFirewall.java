@@ -12,19 +12,27 @@ import java.util.Objects;
 
 @CustomType
 public final class KubernetesClusterControlPlaneFirewall {
+    /**
+     * @return A list of addresses allowed (CIDR notation).
+     * 
+     */
     private List<String> allowedAddresses;
     /**
-     * @return Boolean flag whether the routing-agent is enabled or not.
+     * @return Boolean flag whether the firewall should be enabled or not.
      * 
      */
     private Boolean enabled;
 
     private KubernetesClusterControlPlaneFirewall() {}
+    /**
+     * @return A list of addresses allowed (CIDR notation).
+     * 
+     */
     public List<String> allowedAddresses() {
         return this.allowedAddresses;
     }
     /**
-     * @return Boolean flag whether the routing-agent is enabled or not.
+     * @return Boolean flag whether the firewall should be enabled or not.
      * 
      */
     public Boolean enabled() {

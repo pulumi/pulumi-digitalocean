@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerDomain
     {
         /// <summary>
-        /// The certificate id associated with the domain used for TLS handshaking.
+        /// **Deprecated** The certificate ID to be used for TLS handshaking.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>

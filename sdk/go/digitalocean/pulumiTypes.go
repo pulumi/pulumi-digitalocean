@@ -18850,8 +18850,9 @@ func (o KubernetesClusterClusterAutoscalerConfigurationArrayOutput) Index(i pulu
 }
 
 type KubernetesClusterControlPlaneFirewall struct {
+	// A list of addresses allowed (CIDR notation).
 	AllowedAddresses []string `pulumi:"allowedAddresses"`
-	// Boolean flag whether the routing-agent is enabled or not.
+	// Boolean flag whether the firewall should be enabled or not.
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -18867,8 +18868,9 @@ type KubernetesClusterControlPlaneFirewallInput interface {
 }
 
 type KubernetesClusterControlPlaneFirewallArgs struct {
+	// A list of addresses allowed (CIDR notation).
 	AllowedAddresses pulumi.StringArrayInput `pulumi:"allowedAddresses"`
-	// Boolean flag whether the routing-agent is enabled or not.
+	// Boolean flag whether the firewall should be enabled or not.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -18949,11 +18951,12 @@ func (o KubernetesClusterControlPlaneFirewallOutput) ToKubernetesClusterControlP
 	}).(KubernetesClusterControlPlaneFirewallPtrOutput)
 }
 
+// A list of addresses allowed (CIDR notation).
 func (o KubernetesClusterControlPlaneFirewallOutput) AllowedAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) []string { return v.AllowedAddresses }).(pulumi.StringArrayOutput)
 }
 
-// Boolean flag whether the routing-agent is enabled or not.
+// Boolean flag whether the firewall should be enabled or not.
 func (o KubernetesClusterControlPlaneFirewallOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v KubernetesClusterControlPlaneFirewall) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -18982,6 +18985,7 @@ func (o KubernetesClusterControlPlaneFirewallPtrOutput) Elem() KubernetesCluster
 	}).(KubernetesClusterControlPlaneFirewallOutput)
 }
 
+// A list of addresses allowed (CIDR notation).
 func (o KubernetesClusterControlPlaneFirewallPtrOutput) AllowedAddresses() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) []string {
 		if v == nil {
@@ -18991,7 +18995,7 @@ func (o KubernetesClusterControlPlaneFirewallPtrOutput) AllowedAddresses() pulum
 	}).(pulumi.StringArrayOutput)
 }
 
-// Boolean flag whether the routing-agent is enabled or not.
+// Boolean flag whether the firewall should be enabled or not.
 func (o KubernetesClusterControlPlaneFirewallPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KubernetesClusterControlPlaneFirewall) *bool {
 		if v == nil {
@@ -20325,7 +20329,7 @@ func (o KubernetesNodePoolTaintArrayOutput) Index(i pulumi.IntInput) KubernetesN
 }
 
 type LoadBalancerDomain struct {
-	// The certificate id associated with the domain used for TLS handshaking.
+	// **Deprecated** The certificate ID to be used for TLS handshaking.
 	CertificateId *string `pulumi:"certificateId"`
 	// The certificate name to be used for TLS handshaking.
 	CertificateName *string `pulumi:"certificateName"`
@@ -20351,7 +20355,7 @@ type LoadBalancerDomainInput interface {
 }
 
 type LoadBalancerDomainArgs struct {
-	// The certificate id associated with the domain used for TLS handshaking.
+	// **Deprecated** The certificate ID to be used for TLS handshaking.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
 	// The certificate name to be used for TLS handshaking.
 	CertificateName pulumi.StringPtrInput `pulumi:"certificateName"`
@@ -20416,7 +20420,7 @@ func (o LoadBalancerDomainOutput) ToLoadBalancerDomainOutputWithContext(ctx cont
 	return o
 }
 
-// The certificate id associated with the domain used for TLS handshaking.
+// **Deprecated** The certificate ID to be used for TLS handshaking.
 func (o LoadBalancerDomainOutput) CertificateId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LoadBalancerDomain) *string { return v.CertificateId }).(pulumi.StringPtrOutput)
 }
@@ -20627,7 +20631,7 @@ func (o LoadBalancerFirewallPtrOutput) Denies() pulumi.StringArrayOutput {
 }
 
 type LoadBalancerForwardingRule struct {
-	// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+	// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
 	//
 	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId *string `pulumi:"certificateId"`
@@ -20657,7 +20661,7 @@ type LoadBalancerForwardingRuleInput interface {
 }
 
 type LoadBalancerForwardingRuleArgs struct {
-	// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+	// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
 	//
 	// Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 	CertificateId pulumi.StringPtrInput `pulumi:"certificateId"`
@@ -20726,7 +20730,7 @@ func (o LoadBalancerForwardingRuleOutput) ToLoadBalancerForwardingRuleOutputWith
 	return o
 }
 
-// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
 //
 // Deprecated: Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
 func (o LoadBalancerForwardingRuleOutput) CertificateId() pulumi.StringPtrOutput {
@@ -23188,6 +23192,315 @@ func (o UptimeAlertNotificationSlackArrayOutput) Index(i pulumi.IntInput) Uptime
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) UptimeAlertNotificationSlack {
 		return vs[0].([]UptimeAlertNotificationSlack)[vs[1].(int)]
 	}).(UptimeAlertNotificationSlackOutput)
+}
+
+type VpcNatGatewayEgress struct {
+	// List of public gateway IPs
+	PublicGateways []VpcNatGatewayEgressPublicGateway `pulumi:"publicGateways"`
+}
+
+// VpcNatGatewayEgressInput is an input type that accepts VpcNatGatewayEgressArgs and VpcNatGatewayEgressOutput values.
+// You can construct a concrete instance of `VpcNatGatewayEgressInput` via:
+//
+//	VpcNatGatewayEgressArgs{...}
+type VpcNatGatewayEgressInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayEgressOutput() VpcNatGatewayEgressOutput
+	ToVpcNatGatewayEgressOutputWithContext(context.Context) VpcNatGatewayEgressOutput
+}
+
+type VpcNatGatewayEgressArgs struct {
+	// List of public gateway IPs
+	PublicGateways VpcNatGatewayEgressPublicGatewayArrayInput `pulumi:"publicGateways"`
+}
+
+func (VpcNatGatewayEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (i VpcNatGatewayEgressArgs) ToVpcNatGatewayEgressOutput() VpcNatGatewayEgressOutput {
+	return i.ToVpcNatGatewayEgressOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayEgressArgs) ToVpcNatGatewayEgressOutputWithContext(ctx context.Context) VpcNatGatewayEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayEgressOutput)
+}
+
+// VpcNatGatewayEgressArrayInput is an input type that accepts VpcNatGatewayEgressArray and VpcNatGatewayEgressArrayOutput values.
+// You can construct a concrete instance of `VpcNatGatewayEgressArrayInput` via:
+//
+//	VpcNatGatewayEgressArray{ VpcNatGatewayEgressArgs{...} }
+type VpcNatGatewayEgressArrayInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayEgressArrayOutput() VpcNatGatewayEgressArrayOutput
+	ToVpcNatGatewayEgressArrayOutputWithContext(context.Context) VpcNatGatewayEgressArrayOutput
+}
+
+type VpcNatGatewayEgressArray []VpcNatGatewayEgressInput
+
+func (VpcNatGatewayEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (i VpcNatGatewayEgressArray) ToVpcNatGatewayEgressArrayOutput() VpcNatGatewayEgressArrayOutput {
+	return i.ToVpcNatGatewayEgressArrayOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayEgressArray) ToVpcNatGatewayEgressArrayOutputWithContext(ctx context.Context) VpcNatGatewayEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayEgressArrayOutput)
+}
+
+type VpcNatGatewayEgressOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (o VpcNatGatewayEgressOutput) ToVpcNatGatewayEgressOutput() VpcNatGatewayEgressOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressOutput) ToVpcNatGatewayEgressOutputWithContext(ctx context.Context) VpcNatGatewayEgressOutput {
+	return o
+}
+
+// List of public gateway IPs
+func (o VpcNatGatewayEgressOutput) PublicGateways() VpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o.ApplyT(func(v VpcNatGatewayEgress) []VpcNatGatewayEgressPublicGateway { return v.PublicGateways }).(VpcNatGatewayEgressPublicGatewayArrayOutput)
+}
+
+type VpcNatGatewayEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (o VpcNatGatewayEgressArrayOutput) ToVpcNatGatewayEgressArrayOutput() VpcNatGatewayEgressArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressArrayOutput) ToVpcNatGatewayEgressArrayOutputWithContext(ctx context.Context) VpcNatGatewayEgressArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressArrayOutput) Index(i pulumi.IntInput) VpcNatGatewayEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcNatGatewayEgress {
+		return vs[0].([]VpcNatGatewayEgress)[vs[1].(int)]
+	}).(VpcNatGatewayEgressOutput)
+}
+
+type VpcNatGatewayEgressPublicGateway struct {
+	// IPv4 address
+	Ipv4 *string `pulumi:"ipv4"`
+}
+
+// VpcNatGatewayEgressPublicGatewayInput is an input type that accepts VpcNatGatewayEgressPublicGatewayArgs and VpcNatGatewayEgressPublicGatewayOutput values.
+// You can construct a concrete instance of `VpcNatGatewayEgressPublicGatewayInput` via:
+//
+//	VpcNatGatewayEgressPublicGatewayArgs{...}
+type VpcNatGatewayEgressPublicGatewayInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayEgressPublicGatewayOutput() VpcNatGatewayEgressPublicGatewayOutput
+	ToVpcNatGatewayEgressPublicGatewayOutputWithContext(context.Context) VpcNatGatewayEgressPublicGatewayOutput
+}
+
+type VpcNatGatewayEgressPublicGatewayArgs struct {
+	// IPv4 address
+	Ipv4 pulumi.StringPtrInput `pulumi:"ipv4"`
+}
+
+func (VpcNatGatewayEgressPublicGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (i VpcNatGatewayEgressPublicGatewayArgs) ToVpcNatGatewayEgressPublicGatewayOutput() VpcNatGatewayEgressPublicGatewayOutput {
+	return i.ToVpcNatGatewayEgressPublicGatewayOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayEgressPublicGatewayArgs) ToVpcNatGatewayEgressPublicGatewayOutputWithContext(ctx context.Context) VpcNatGatewayEgressPublicGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayEgressPublicGatewayOutput)
+}
+
+// VpcNatGatewayEgressPublicGatewayArrayInput is an input type that accepts VpcNatGatewayEgressPublicGatewayArray and VpcNatGatewayEgressPublicGatewayArrayOutput values.
+// You can construct a concrete instance of `VpcNatGatewayEgressPublicGatewayArrayInput` via:
+//
+//	VpcNatGatewayEgressPublicGatewayArray{ VpcNatGatewayEgressPublicGatewayArgs{...} }
+type VpcNatGatewayEgressPublicGatewayArrayInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayEgressPublicGatewayArrayOutput() VpcNatGatewayEgressPublicGatewayArrayOutput
+	ToVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(context.Context) VpcNatGatewayEgressPublicGatewayArrayOutput
+}
+
+type VpcNatGatewayEgressPublicGatewayArray []VpcNatGatewayEgressPublicGatewayInput
+
+func (VpcNatGatewayEgressPublicGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (i VpcNatGatewayEgressPublicGatewayArray) ToVpcNatGatewayEgressPublicGatewayArrayOutput() VpcNatGatewayEgressPublicGatewayArrayOutput {
+	return i.ToVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayEgressPublicGatewayArray) ToVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(ctx context.Context) VpcNatGatewayEgressPublicGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayEgressPublicGatewayArrayOutput)
+}
+
+type VpcNatGatewayEgressPublicGatewayOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayEgressPublicGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (o VpcNatGatewayEgressPublicGatewayOutput) ToVpcNatGatewayEgressPublicGatewayOutput() VpcNatGatewayEgressPublicGatewayOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressPublicGatewayOutput) ToVpcNatGatewayEgressPublicGatewayOutputWithContext(ctx context.Context) VpcNatGatewayEgressPublicGatewayOutput {
+	return o
+}
+
+// IPv4 address
+func (o VpcNatGatewayEgressPublicGatewayOutput) Ipv4() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNatGatewayEgressPublicGateway) *string { return v.Ipv4 }).(pulumi.StringPtrOutput)
+}
+
+type VpcNatGatewayEgressPublicGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayEgressPublicGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (o VpcNatGatewayEgressPublicGatewayArrayOutput) ToVpcNatGatewayEgressPublicGatewayArrayOutput() VpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressPublicGatewayArrayOutput) ToVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(ctx context.Context) VpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayEgressPublicGatewayArrayOutput) Index(i pulumi.IntInput) VpcNatGatewayEgressPublicGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcNatGatewayEgressPublicGateway {
+		return vs[0].([]VpcNatGatewayEgressPublicGateway)[vs[1].(int)]
+	}).(VpcNatGatewayEgressPublicGatewayOutput)
+}
+
+type VpcNatGatewayVpc struct {
+	// Boolean flag indicating if this should be the default gateway in this VPC
+	DefaultGateway *bool `pulumi:"defaultGateway"`
+	// The private IP of the VPC NAT Gateway
+	GatewayIp *string `pulumi:"gatewayIp"`
+	// The ID of the ingress VPC
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// VpcNatGatewayVpcInput is an input type that accepts VpcNatGatewayVpcArgs and VpcNatGatewayVpcOutput values.
+// You can construct a concrete instance of `VpcNatGatewayVpcInput` via:
+//
+//	VpcNatGatewayVpcArgs{...}
+type VpcNatGatewayVpcInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayVpcOutput() VpcNatGatewayVpcOutput
+	ToVpcNatGatewayVpcOutputWithContext(context.Context) VpcNatGatewayVpcOutput
+}
+
+type VpcNatGatewayVpcArgs struct {
+	// Boolean flag indicating if this should be the default gateway in this VPC
+	DefaultGateway pulumi.BoolPtrInput `pulumi:"defaultGateway"`
+	// The private IP of the VPC NAT Gateway
+	GatewayIp pulumi.StringPtrInput `pulumi:"gatewayIp"`
+	// The ID of the ingress VPC
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (VpcNatGatewayVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (i VpcNatGatewayVpcArgs) ToVpcNatGatewayVpcOutput() VpcNatGatewayVpcOutput {
+	return i.ToVpcNatGatewayVpcOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayVpcArgs) ToVpcNatGatewayVpcOutputWithContext(ctx context.Context) VpcNatGatewayVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayVpcOutput)
+}
+
+// VpcNatGatewayVpcArrayInput is an input type that accepts VpcNatGatewayVpcArray and VpcNatGatewayVpcArrayOutput values.
+// You can construct a concrete instance of `VpcNatGatewayVpcArrayInput` via:
+//
+//	VpcNatGatewayVpcArray{ VpcNatGatewayVpcArgs{...} }
+type VpcNatGatewayVpcArrayInput interface {
+	pulumi.Input
+
+	ToVpcNatGatewayVpcArrayOutput() VpcNatGatewayVpcArrayOutput
+	ToVpcNatGatewayVpcArrayOutputWithContext(context.Context) VpcNatGatewayVpcArrayOutput
+}
+
+type VpcNatGatewayVpcArray []VpcNatGatewayVpcInput
+
+func (VpcNatGatewayVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (i VpcNatGatewayVpcArray) ToVpcNatGatewayVpcArrayOutput() VpcNatGatewayVpcArrayOutput {
+	return i.ToVpcNatGatewayVpcArrayOutputWithContext(context.Background())
+}
+
+func (i VpcNatGatewayVpcArray) ToVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) VpcNatGatewayVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VpcNatGatewayVpcArrayOutput)
+}
+
+type VpcNatGatewayVpcOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (o VpcNatGatewayVpcOutput) ToVpcNatGatewayVpcOutput() VpcNatGatewayVpcOutput {
+	return o
+}
+
+func (o VpcNatGatewayVpcOutput) ToVpcNatGatewayVpcOutputWithContext(ctx context.Context) VpcNatGatewayVpcOutput {
+	return o
+}
+
+// Boolean flag indicating if this should be the default gateway in this VPC
+func (o VpcNatGatewayVpcOutput) DefaultGateway() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VpcNatGatewayVpc) *bool { return v.DefaultGateway }).(pulumi.BoolPtrOutput)
+}
+
+// The private IP of the VPC NAT Gateway
+func (o VpcNatGatewayVpcOutput) GatewayIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VpcNatGatewayVpc) *string { return v.GatewayIp }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the ingress VPC
+func (o VpcNatGatewayVpcOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v VpcNatGatewayVpc) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type VpcNatGatewayVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (VpcNatGatewayVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (o VpcNatGatewayVpcArrayOutput) ToVpcNatGatewayVpcArrayOutput() VpcNatGatewayVpcArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayVpcArrayOutput) ToVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) VpcNatGatewayVpcArrayOutput {
+	return o
+}
+
+func (o VpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) VpcNatGatewayVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VpcNatGatewayVpc {
+		return vs[0].([]VpcNatGatewayVpc)[vs[1].(int)]
+	}).(VpcNatGatewayVpcOutput)
 }
 
 type GetAppDedicatedIp struct {
@@ -46311,6 +46624,315 @@ func (o GetTagsTagArrayOutput) Index(i pulumi.IntInput) GetTagsTagOutput {
 	}).(GetTagsTagOutput)
 }
 
+type GetVpcNatGatewayEgress struct {
+	// List of public gateway IPs
+	PublicGateways []GetVpcNatGatewayEgressPublicGateway `pulumi:"publicGateways"`
+}
+
+// GetVpcNatGatewayEgressInput is an input type that accepts GetVpcNatGatewayEgressArgs and GetVpcNatGatewayEgressOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayEgressInput` via:
+//
+//	GetVpcNatGatewayEgressArgs{...}
+type GetVpcNatGatewayEgressInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayEgressOutput() GetVpcNatGatewayEgressOutput
+	ToGetVpcNatGatewayEgressOutputWithContext(context.Context) GetVpcNatGatewayEgressOutput
+}
+
+type GetVpcNatGatewayEgressArgs struct {
+	// List of public gateway IPs
+	PublicGateways GetVpcNatGatewayEgressPublicGatewayArrayInput `pulumi:"publicGateways"`
+}
+
+func (GetVpcNatGatewayEgressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayEgressArgs) ToGetVpcNatGatewayEgressOutput() GetVpcNatGatewayEgressOutput {
+	return i.ToGetVpcNatGatewayEgressOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayEgressArgs) ToGetVpcNatGatewayEgressOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayEgressOutput)
+}
+
+// GetVpcNatGatewayEgressArrayInput is an input type that accepts GetVpcNatGatewayEgressArray and GetVpcNatGatewayEgressArrayOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayEgressArrayInput` via:
+//
+//	GetVpcNatGatewayEgressArray{ GetVpcNatGatewayEgressArgs{...} }
+type GetVpcNatGatewayEgressArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayEgressArrayOutput() GetVpcNatGatewayEgressArrayOutput
+	ToGetVpcNatGatewayEgressArrayOutputWithContext(context.Context) GetVpcNatGatewayEgressArrayOutput
+}
+
+type GetVpcNatGatewayEgressArray []GetVpcNatGatewayEgressInput
+
+func (GetVpcNatGatewayEgressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayEgressArray) ToGetVpcNatGatewayEgressArrayOutput() GetVpcNatGatewayEgressArrayOutput {
+	return i.ToGetVpcNatGatewayEgressArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayEgressArray) ToGetVpcNatGatewayEgressArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayEgressArrayOutput)
+}
+
+type GetVpcNatGatewayEgressOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayEgressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayEgressOutput) ToGetVpcNatGatewayEgressOutput() GetVpcNatGatewayEgressOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressOutput) ToGetVpcNatGatewayEgressOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressOutput {
+	return o
+}
+
+// List of public gateway IPs
+func (o GetVpcNatGatewayEgressOutput) PublicGateways() GetVpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o.ApplyT(func(v GetVpcNatGatewayEgress) []GetVpcNatGatewayEgressPublicGateway { return v.PublicGateways }).(GetVpcNatGatewayEgressPublicGatewayArrayOutput)
+}
+
+type GetVpcNatGatewayEgressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayEgressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayEgress)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayEgressArrayOutput) ToGetVpcNatGatewayEgressArrayOutput() GetVpcNatGatewayEgressArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressArrayOutput) ToGetVpcNatGatewayEgressArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewayEgressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcNatGatewayEgress {
+		return vs[0].([]GetVpcNatGatewayEgress)[vs[1].(int)]
+	}).(GetVpcNatGatewayEgressOutput)
+}
+
+type GetVpcNatGatewayEgressPublicGateway struct {
+	// IPv4 address
+	Ipv4 string `pulumi:"ipv4"`
+}
+
+// GetVpcNatGatewayEgressPublicGatewayInput is an input type that accepts GetVpcNatGatewayEgressPublicGatewayArgs and GetVpcNatGatewayEgressPublicGatewayOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayEgressPublicGatewayInput` via:
+//
+//	GetVpcNatGatewayEgressPublicGatewayArgs{...}
+type GetVpcNatGatewayEgressPublicGatewayInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayEgressPublicGatewayOutput() GetVpcNatGatewayEgressPublicGatewayOutput
+	ToGetVpcNatGatewayEgressPublicGatewayOutputWithContext(context.Context) GetVpcNatGatewayEgressPublicGatewayOutput
+}
+
+type GetVpcNatGatewayEgressPublicGatewayArgs struct {
+	// IPv4 address
+	Ipv4 pulumi.StringInput `pulumi:"ipv4"`
+}
+
+func (GetVpcNatGatewayEgressPublicGatewayArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayEgressPublicGatewayArgs) ToGetVpcNatGatewayEgressPublicGatewayOutput() GetVpcNatGatewayEgressPublicGatewayOutput {
+	return i.ToGetVpcNatGatewayEgressPublicGatewayOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayEgressPublicGatewayArgs) ToGetVpcNatGatewayEgressPublicGatewayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressPublicGatewayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayEgressPublicGatewayOutput)
+}
+
+// GetVpcNatGatewayEgressPublicGatewayArrayInput is an input type that accepts GetVpcNatGatewayEgressPublicGatewayArray and GetVpcNatGatewayEgressPublicGatewayArrayOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayEgressPublicGatewayArrayInput` via:
+//
+//	GetVpcNatGatewayEgressPublicGatewayArray{ GetVpcNatGatewayEgressPublicGatewayArgs{...} }
+type GetVpcNatGatewayEgressPublicGatewayArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayEgressPublicGatewayArrayOutput() GetVpcNatGatewayEgressPublicGatewayArrayOutput
+	ToGetVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(context.Context) GetVpcNatGatewayEgressPublicGatewayArrayOutput
+}
+
+type GetVpcNatGatewayEgressPublicGatewayArray []GetVpcNatGatewayEgressPublicGatewayInput
+
+func (GetVpcNatGatewayEgressPublicGatewayArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayEgressPublicGatewayArray) ToGetVpcNatGatewayEgressPublicGatewayArrayOutput() GetVpcNatGatewayEgressPublicGatewayArrayOutput {
+	return i.ToGetVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayEgressPublicGatewayArray) ToGetVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressPublicGatewayArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayEgressPublicGatewayArrayOutput)
+}
+
+type GetVpcNatGatewayEgressPublicGatewayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayEgressPublicGatewayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayEgressPublicGatewayOutput) ToGetVpcNatGatewayEgressPublicGatewayOutput() GetVpcNatGatewayEgressPublicGatewayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressPublicGatewayOutput) ToGetVpcNatGatewayEgressPublicGatewayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressPublicGatewayOutput {
+	return o
+}
+
+// IPv4 address
+func (o GetVpcNatGatewayEgressPublicGatewayOutput) Ipv4() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcNatGatewayEgressPublicGateway) string { return v.Ipv4 }).(pulumi.StringOutput)
+}
+
+type GetVpcNatGatewayEgressPublicGatewayArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayEgressPublicGatewayArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayEgressPublicGateway)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayEgressPublicGatewayArrayOutput) ToGetVpcNatGatewayEgressPublicGatewayArrayOutput() GetVpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressPublicGatewayArrayOutput) ToGetVpcNatGatewayEgressPublicGatewayArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayEgressPublicGatewayArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayEgressPublicGatewayArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewayEgressPublicGatewayOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcNatGatewayEgressPublicGateway {
+		return vs[0].([]GetVpcNatGatewayEgressPublicGateway)[vs[1].(int)]
+	}).(GetVpcNatGatewayEgressPublicGatewayOutput)
+}
+
+type GetVpcNatGatewayVpc struct {
+	// Indicates if this is the default VPC NAT Gateway in the VPC
+	DefaultGateway bool `pulumi:"defaultGateway"`
+	// Gateway IP of the VPC NAT Gateway
+	GatewayIp string `pulumi:"gatewayIp"`
+	// ID of the ingress VPC
+	VpcUuid string `pulumi:"vpcUuid"`
+}
+
+// GetVpcNatGatewayVpcInput is an input type that accepts GetVpcNatGatewayVpcArgs and GetVpcNatGatewayVpcOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayVpcInput` via:
+//
+//	GetVpcNatGatewayVpcArgs{...}
+type GetVpcNatGatewayVpcInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput
+	ToGetVpcNatGatewayVpcOutputWithContext(context.Context) GetVpcNatGatewayVpcOutput
+}
+
+type GetVpcNatGatewayVpcArgs struct {
+	// Indicates if this is the default VPC NAT Gateway in the VPC
+	DefaultGateway pulumi.BoolInput `pulumi:"defaultGateway"`
+	// Gateway IP of the VPC NAT Gateway
+	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
+	// ID of the ingress VPC
+	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
+}
+
+func (GetVpcNatGatewayVpcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayVpcArgs) ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput {
+	return i.ToGetVpcNatGatewayVpcOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayVpcArgs) ToGetVpcNatGatewayVpcOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayVpcOutput)
+}
+
+// GetVpcNatGatewayVpcArrayInput is an input type that accepts GetVpcNatGatewayVpcArray and GetVpcNatGatewayVpcArrayOutput values.
+// You can construct a concrete instance of `GetVpcNatGatewayVpcArrayInput` via:
+//
+//	GetVpcNatGatewayVpcArray{ GetVpcNatGatewayVpcArgs{...} }
+type GetVpcNatGatewayVpcArrayInput interface {
+	pulumi.Input
+
+	ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput
+	ToGetVpcNatGatewayVpcArrayOutputWithContext(context.Context) GetVpcNatGatewayVpcArrayOutput
+}
+
+type GetVpcNatGatewayVpcArray []GetVpcNatGatewayVpcInput
+
+func (GetVpcNatGatewayVpcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (i GetVpcNatGatewayVpcArray) ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput {
+	return i.ToGetVpcNatGatewayVpcArrayOutputWithContext(context.Background())
+}
+
+func (i GetVpcNatGatewayVpcArray) ToGetVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayVpcArrayOutput)
+}
+
+type GetVpcNatGatewayVpcOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayVpcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetVpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayVpcOutput) ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayVpcOutput) ToGetVpcNatGatewayVpcOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcOutput {
+	return o
+}
+
+// Indicates if this is the default VPC NAT Gateway in the VPC
+func (o GetVpcNatGatewayVpcOutput) DefaultGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetVpcNatGatewayVpc) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
+}
+
+// Gateway IP of the VPC NAT Gateway
+func (o GetVpcNatGatewayVpcOutput) GatewayIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcNatGatewayVpc) string { return v.GatewayIp }).(pulumi.StringOutput)
+}
+
+// ID of the ingress VPC
+func (o GetVpcNatGatewayVpcOutput) VpcUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetVpcNatGatewayVpc) string { return v.VpcUuid }).(pulumi.StringOutput)
+}
+
+type GetVpcNatGatewayVpcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetVpcNatGatewayVpcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetVpcNatGatewayVpc)(nil)).Elem()
+}
+
+func (o GetVpcNatGatewayVpcArrayOutput) ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayVpcArrayOutput) ToGetVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcArrayOutput {
+	return o
+}
+
+func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewayVpcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcNatGatewayVpc {
+		return vs[0].([]GetVpcNatGatewayVpc)[vs[1].(int)]
+	}).(GetVpcNatGatewayVpcOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -46598,6 +47220,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationArrayInput)(nil)).Elem(), UptimeAlertNotificationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackInput)(nil)).Elem(), UptimeAlertNotificationSlackArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*UptimeAlertNotificationSlackArrayInput)(nil)).Elem(), UptimeAlertNotificationSlackArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayEgressInput)(nil)).Elem(), VpcNatGatewayEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayEgressArrayInput)(nil)).Elem(), VpcNatGatewayEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayEgressPublicGatewayInput)(nil)).Elem(), VpcNatGatewayEgressPublicGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), VpcNatGatewayEgressPublicGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayVpcInput)(nil)).Elem(), VpcNatGatewayVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VpcNatGatewayVpcArrayInput)(nil)).Elem(), VpcNatGatewayVpcArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpInput)(nil)).Elem(), GetAppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppDedicatedIpArrayInput)(nil)).Elem(), GetAppDedicatedIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecInput)(nil)).Elem(), GetAppSpecArgs{})
@@ -46903,6 +47531,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressInput)(nil)).Elem(), GetVpcNatGatewayEgressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -47189,6 +47823,12 @@ func init() {
 	pulumi.RegisterOutputType(UptimeAlertNotificationArrayOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackOutput{})
 	pulumi.RegisterOutputType(UptimeAlertNotificationSlackArrayOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayEgressOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayEgressArrayOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayEgressPublicGatewayOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayEgressPublicGatewayArrayOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayVpcOutput{})
+	pulumi.RegisterOutputType(VpcNatGatewayVpcArrayOutput{})
 	pulumi.RegisterOutputType(GetAppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(GetAppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecOutput{})
@@ -47494,4 +48134,10 @@ func init() {
 	pulumi.RegisterOutputType(GetTagsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsTagOutput{})
 	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayEgressOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayEgressArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayEgressPublicGatewayOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayEgressPublicGatewayArrayOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayVpcOutput{})
+	pulumi.RegisterOutputType(GetVpcNatGatewayVpcArrayOutput{})
 }

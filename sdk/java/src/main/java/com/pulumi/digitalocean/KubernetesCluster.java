@@ -109,9 +109,17 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
     public Output<String> clusterUrn() {
         return this.clusterUrn;
     }
+    /**
+     * A block representing the cluster&#39;s control plane firewall
+     * 
+     */
     @Export(name="controlPlaneFirewall", refs={KubernetesClusterControlPlaneFirewall.class}, tree="[0]")
     private Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall;
 
+    /**
+     * @return A block representing the cluster&#39;s control plane firewall
+     * 
+     */
     public Output<KubernetesClusterControlPlaneFirewall> controlPlaneFirewall() {
         return this.controlPlaneFirewall;
     }

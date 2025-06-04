@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class LoadBalancerForwardingRuleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
         /// </summary>
         [Input("certificateId")]
         public Input<string>? CertificateId { get; set; }

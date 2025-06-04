@@ -19,14 +19,14 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
     public static final LoadBalancerDomainArgs Empty = new LoadBalancerDomainArgs();
 
     /**
-     * The certificate id associated with the domain used for TLS handshaking.
+     * **Deprecated** The certificate ID to be used for TLS handshaking.
      * 
      */
     @Import(name="certificateId")
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return The certificate id associated with the domain used for TLS handshaking.
+     * @return **Deprecated** The certificate ID to be used for TLS handshaking.
      * 
      */
     public Optional<Output<String>> certificateId() {
@@ -138,7 +138,7 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateId The certificate id associated with the domain used for TLS handshaking.
+         * @param certificateId **Deprecated** The certificate ID to be used for TLS handshaking.
          * 
          * @return builder
          * 
@@ -149,7 +149,7 @@ public final class LoadBalancerDomainArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param certificateId The certificate id associated with the domain used for TLS handshaking.
+         * @param certificateId **Deprecated** The certificate ID to be used for TLS handshaking.
          * 
          * @return builder
          * 

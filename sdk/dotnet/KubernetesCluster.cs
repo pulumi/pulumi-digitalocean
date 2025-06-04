@@ -63,6 +63,9 @@ namespace Pulumi.DigitalOcean
         [Output("clusterUrn")]
         public Output<string> ClusterUrn { get; private set; } = null!;
 
+        /// <summary>
+        /// A block representing the cluster's control plane firewall
+        /// </summary>
         [Output("controlPlaneFirewall")]
         public Output<Outputs.KubernetesClusterControlPlaneFirewall> ControlPlaneFirewall { get; private set; } = null!;
 
@@ -260,6 +263,9 @@ namespace Pulumi.DigitalOcean
         [Input("clusterSubnet")]
         public Input<string>? ClusterSubnet { get; set; }
 
+        /// <summary>
+        /// A block representing the cluster's control plane firewall
+        /// </summary>
         [Input("controlPlaneFirewall")]
         public Input<Inputs.KubernetesClusterControlPlaneFirewallArgs>? ControlPlaneFirewall { get; set; }
 
@@ -391,6 +397,9 @@ namespace Pulumi.DigitalOcean
         [Input("clusterUrn")]
         public Input<string>? ClusterUrn { get; set; }
 
+        /// <summary>
+        /// A block representing the cluster's control plane firewall
+        /// </summary>
         [Input("controlPlaneFirewall")]
         public Input<Inputs.KubernetesClusterControlPlaneFirewallGetArgs>? ControlPlaneFirewall { get; set; }
 

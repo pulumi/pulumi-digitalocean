@@ -125,6 +125,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VolumeSnapshot{}
 	case "digitalocean:index/vpc:Vpc":
 		r = &Vpc{}
+	case "digitalocean:index/vpcNatGateway:VpcNatGateway":
+		r = &VpcNatGateway{}
 	case "digitalocean:index/vpcPeering:VpcPeering":
 		r = &VpcPeering{}
 	default:
@@ -416,6 +418,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/vpc",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/vpcNatGateway",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

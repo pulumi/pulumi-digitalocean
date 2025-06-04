@@ -29,7 +29,7 @@ class GetPartnerAttachmentResult:
     """
     A collection of values returned by getPartnerAttachment.
     """
-    def __init__(__self__, bgp=None, connection_bandwidth_in_mbps=None, created_at=None, id=None, naas_provider=None, name=None, region=None, state=None, vpc_ids=None):
+    def __init__(__self__, bgp=None, connection_bandwidth_in_mbps=None, created_at=None, id=None, naas_provider=None, name=None, redundancy_zone=None, region=None, state=None, vpc_ids=None):
         if bgp and not isinstance(bgp, dict):
             raise TypeError("Expected argument 'bgp' to be a dict")
         pulumi.set(__self__, "bgp", bgp)
@@ -48,6 +48,9 @@ class GetPartnerAttachmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if redundancy_zone and not isinstance(redundancy_zone, str):
+            raise TypeError("Expected argument 'redundancy_zone' to be a str")
+        pulumi.set(__self__, "redundancy_zone", redundancy_zone)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -89,6 +92,11 @@ class GetPartnerAttachmentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="redundancyZone")
+    def redundancy_zone(self) -> Optional[builtins.str]:
+        return pulumi.get(self, "redundancy_zone")
+
+    @property
     @pulumi.getter
     def region(self) -> builtins.str:
         return pulumi.get(self, "region")
@@ -116,6 +124,7 @@ class AwaitableGetPartnerAttachmentResult(GetPartnerAttachmentResult):
             id=self.id,
             naas_provider=self.naas_provider,
             name=self.name,
+            redundancy_zone=self.redundancy_zone,
             region=self.region,
             state=self.state,
             vpc_ids=self.vpc_ids)
@@ -124,6 +133,7 @@ class AwaitableGetPartnerAttachmentResult(GetPartnerAttachmentResult):
 def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']] = None,
                            id: Optional[builtins.str] = None,
                            name: Optional[builtins.str] = None,
+                           redundancy_zone: Optional[builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPartnerAttachmentResult:
     """
     Use this data source to access information about an existing resource.
@@ -132,6 +142,7 @@ def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'G
     __args__['bgp'] = bgp
     __args__['id'] = id
     __args__['name'] = name
+    __args__['redundancyZone'] = redundancy_zone
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getPartnerAttachment:getPartnerAttachment', __args__, opts=opts, typ=GetPartnerAttachmentResult).value
 
@@ -142,12 +153,14 @@ def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'G
         id=pulumi.get(__ret__, 'id'),
         naas_provider=pulumi.get(__ret__, 'naas_provider'),
         name=pulumi.get(__ret__, 'name'),
+        redundancy_zone=pulumi.get(__ret__, 'redundancy_zone'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
 def get_partner_attachment_output(bgp: Optional[pulumi.Input[Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']]]] = None,
                                   id: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                   name: Optional[pulumi.Input[Optional[builtins.str]]] = None,
+                                  redundancy_zone: Optional[pulumi.Input[Optional[builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPartnerAttachmentResult]:
     """
     Use this data source to access information about an existing resource.
@@ -156,6 +169,7 @@ def get_partner_attachment_output(bgp: Optional[pulumi.Input[Optional[Union['Get
     __args__['bgp'] = bgp
     __args__['id'] = id
     __args__['name'] = name
+    __args__['redundancyZone'] = redundancy_zone
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getPartnerAttachment:getPartnerAttachment', __args__, opts=opts, typ=GetPartnerAttachmentResult)
     return __ret__.apply(lambda __response__: GetPartnerAttachmentResult(
@@ -165,6 +179,7 @@ def get_partner_attachment_output(bgp: Optional[pulumi.Input[Optional[Union['Get
         id=pulumi.get(__response__, 'id'),
         naas_provider=pulumi.get(__response__, 'naas_provider'),
         name=pulumi.get(__response__, 'name'),
+        redundancy_zone=pulumi.get(__response__, 'redundancy_zone'),
         region=pulumi.get(__response__, 'region'),
         state=pulumi.get(__response__, 'state'),
         vpc_ids=pulumi.get(__response__, 'vpc_ids')))

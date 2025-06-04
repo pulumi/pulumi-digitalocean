@@ -78,6 +78,9 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
     public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
+    /**
+     * A block representing the cluster's control plane firewall
+     */
     public readonly controlPlaneFirewall!: pulumi.Output<outputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * The date and time when the node was created.
@@ -262,6 +265,9 @@ export interface KubernetesClusterState {
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
     clusterUrn?: pulumi.Input<string>;
+    /**
+     * A block representing the cluster's control plane firewall
+     */
     controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * The date and time when the node was created.
@@ -361,6 +367,9 @@ export interface KubernetesClusterArgs {
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     clusterSubnet?: pulumi.Input<string>;
+    /**
+     * A block representing the cluster's control plane firewall
+     */
     controlPlaneFirewall?: pulumi.Input<inputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.

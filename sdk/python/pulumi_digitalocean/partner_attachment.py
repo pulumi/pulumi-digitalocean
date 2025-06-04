@@ -27,7 +27,8 @@ class PartnerAttachmentArgs:
                  region: pulumi.Input[builtins.str],
                  vpc_ids: pulumi.Input[Sequence[pulumi.Input[builtins.str]]],
                  bgp: Optional[pulumi.Input['PartnerAttachmentBgpArgs']] = None,
-                 name: Optional[pulumi.Input[builtins.str]] = None):
+                 name: Optional[pulumi.Input[builtins.str]] = None,
+                 redundancy_zone: Optional[pulumi.Input[builtins.str]] = None):
         """
         The set of arguments for constructing a PartnerAttachment resource.
         :param pulumi.Input[builtins.int] connection_bandwidth_in_mbps: The connection bandwidth in Mbps
@@ -35,6 +36,7 @@ class PartnerAttachmentArgs:
         :param pulumi.Input[builtins.str] region: The region where the Partner Attachment will be created
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vpc_ids: The list of VPC IDs to attach the Partner Attachment to
         :param pulumi.Input[builtins.str] name: The name of the Partner Attachment
+        :param pulumi.Input[builtins.str] redundancy_zone: The redundancy zone for the NaaS
         """
         pulumi.set(__self__, "connection_bandwidth_in_mbps", connection_bandwidth_in_mbps)
         pulumi.set(__self__, "naas_provider", naas_provider)
@@ -44,6 +46,8 @@ class PartnerAttachmentArgs:
             pulumi.set(__self__, "bgp", bgp)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if redundancy_zone is not None:
+            pulumi.set(__self__, "redundancy_zone", redundancy_zone)
 
     @property
     @pulumi.getter(name="connectionBandwidthInMbps")
@@ -114,6 +118,18 @@ class PartnerAttachmentArgs:
     def name(self, value: Optional[pulumi.Input[builtins.str]]):
         pulumi.set(self, "name", value)
 
+    @property
+    @pulumi.getter(name="redundancyZone")
+    def redundancy_zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The redundancy zone for the NaaS
+        """
+        return pulumi.get(self, "redundancy_zone")
+
+    @redundancy_zone.setter
+    def redundancy_zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "redundancy_zone", value)
+
 
 @pulumi.input_type
 class _PartnerAttachmentState:
@@ -123,6 +139,7 @@ class _PartnerAttachmentState:
                  created_at: Optional[pulumi.Input[builtins.str]] = None,
                  naas_provider: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 redundancy_zone: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  state: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None):
@@ -132,6 +149,7 @@ class _PartnerAttachmentState:
         :param pulumi.Input[builtins.str] created_at: The date and time when the Partner Attachment was created
         :param pulumi.Input[builtins.str] naas_provider: The NaaS provider
         :param pulumi.Input[builtins.str] name: The name of the Partner Attachment
+        :param pulumi.Input[builtins.str] redundancy_zone: The redundancy zone for the NaaS
         :param pulumi.Input[builtins.str] region: The region where the Partner Attachment will be created
         :param pulumi.Input[builtins.str] state: The state of the Partner Attachment
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vpc_ids: The list of VPC IDs to attach the Partner Attachment to
@@ -146,6 +164,8 @@ class _PartnerAttachmentState:
             pulumi.set(__self__, "naas_provider", naas_provider)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if redundancy_zone is not None:
+            pulumi.set(__self__, "redundancy_zone", redundancy_zone)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if state is not None:
@@ -211,6 +231,18 @@ class _PartnerAttachmentState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="redundancyZone")
+    def redundancy_zone(self) -> Optional[pulumi.Input[builtins.str]]:
+        """
+        The redundancy zone for the NaaS
+        """
+        return pulumi.get(self, "redundancy_zone")
+
+    @redundancy_zone.setter
+    def redundancy_zone(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "redundancy_zone", value)
+
+    @property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[builtins.str]]:
         """
@@ -257,6 +289,7 @@ class PartnerAttachment(pulumi.CustomResource):
                  connection_bandwidth_in_mbps: Optional[pulumi.Input[builtins.int]] = None,
                  naas_provider: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 redundancy_zone: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
@@ -267,6 +300,7 @@ class PartnerAttachment(pulumi.CustomResource):
         :param pulumi.Input[builtins.int] connection_bandwidth_in_mbps: The connection bandwidth in Mbps
         :param pulumi.Input[builtins.str] naas_provider: The NaaS provider
         :param pulumi.Input[builtins.str] name: The name of the Partner Attachment
+        :param pulumi.Input[builtins.str] redundancy_zone: The redundancy zone for the NaaS
         :param pulumi.Input[builtins.str] region: The region where the Partner Attachment will be created
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vpc_ids: The list of VPC IDs to attach the Partner Attachment to
         """
@@ -297,6 +331,7 @@ class PartnerAttachment(pulumi.CustomResource):
                  connection_bandwidth_in_mbps: Optional[pulumi.Input[builtins.int]] = None,
                  naas_provider: Optional[pulumi.Input[builtins.str]] = None,
                  name: Optional[pulumi.Input[builtins.str]] = None,
+                 redundancy_zone: Optional[pulumi.Input[builtins.str]] = None,
                  region: Optional[pulumi.Input[builtins.str]] = None,
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  __props__=None):
@@ -316,6 +351,7 @@ class PartnerAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'naas_provider'")
             __props__.__dict__["naas_provider"] = naas_provider
             __props__.__dict__["name"] = name
+            __props__.__dict__["redundancy_zone"] = redundancy_zone
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -339,6 +375,7 @@ class PartnerAttachment(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[builtins.str]] = None,
             naas_provider: Optional[pulumi.Input[builtins.str]] = None,
             name: Optional[pulumi.Input[builtins.str]] = None,
+            redundancy_zone: Optional[pulumi.Input[builtins.str]] = None,
             region: Optional[pulumi.Input[builtins.str]] = None,
             state: Optional[pulumi.Input[builtins.str]] = None,
             vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None) -> 'PartnerAttachment':
@@ -353,6 +390,7 @@ class PartnerAttachment(pulumi.CustomResource):
         :param pulumi.Input[builtins.str] created_at: The date and time when the Partner Attachment was created
         :param pulumi.Input[builtins.str] naas_provider: The NaaS provider
         :param pulumi.Input[builtins.str] name: The name of the Partner Attachment
+        :param pulumi.Input[builtins.str] redundancy_zone: The redundancy zone for the NaaS
         :param pulumi.Input[builtins.str] region: The region where the Partner Attachment will be created
         :param pulumi.Input[builtins.str] state: The state of the Partner Attachment
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] vpc_ids: The list of VPC IDs to attach the Partner Attachment to
@@ -366,6 +404,7 @@ class PartnerAttachment(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["naas_provider"] = naas_provider
         __props__.__dict__["name"] = name
+        __props__.__dict__["redundancy_zone"] = redundancy_zone
         __props__.__dict__["region"] = region
         __props__.__dict__["state"] = state
         __props__.__dict__["vpc_ids"] = vpc_ids
@@ -407,6 +446,14 @@ class PartnerAttachment(pulumi.CustomResource):
         The name of the Partner Attachment
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="redundancyZone")
+    def redundancy_zone(self) -> pulumi.Output[Optional[builtins.str]]:
+        """
+        The redundancy zone for the NaaS
+        """
+        return pulumi.get(self, "redundancy_zone")
 
     @property
     @pulumi.getter

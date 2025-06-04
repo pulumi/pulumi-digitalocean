@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerForwardingRule
     {
         /// <summary>
-        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>

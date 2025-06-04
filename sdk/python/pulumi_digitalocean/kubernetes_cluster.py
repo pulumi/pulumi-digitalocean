@@ -49,6 +49,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -170,6 +171,9 @@ class KubernetesClusterArgs:
     @property
     @pulumi.getter(name="controlPlaneFirewall")
     def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+        """
+        A block representing the cluster's control plane firewall
+        """
         return pulumi.get(self, "control_plane_firewall")
 
     @control_plane_firewall.setter
@@ -343,6 +347,7 @@ class _KubernetesClusterState:
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
+        :param pulumi.Input['KubernetesClusterControlPlaneFirewallArgs'] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
@@ -466,6 +471,9 @@ class _KubernetesClusterState:
     @property
     @pulumi.getter(name="controlPlaneFirewall")
     def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+        """
+        A block representing the cluster's control plane firewall
+        """
         return pulumi.get(self, "control_plane_firewall")
 
     @control_plane_firewall.setter
@@ -770,6 +778,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
+        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.bool] ha: Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         :param pulumi.Input[builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
@@ -939,6 +948,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         :param pulumi.Input[builtins.str] cluster_urn: The uniform resource name (URN) for the Kubernetes cluster.
+        :param pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']] control_plane_firewall: A block representing the cluster's control plane firewall
         :param pulumi.Input[builtins.str] created_at: The date and time when the node was created.
         :param pulumi.Input[builtins.bool] destroy_all_associated_resources: **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         :param pulumi.Input[builtins.str] endpoint: The base URL of the API server on the Kubernetes master node.
@@ -1026,6 +1036,9 @@ class KubernetesCluster(pulumi.CustomResource):
     @property
     @pulumi.getter(name="controlPlaneFirewall")
     def control_plane_firewall(self) -> pulumi.Output['outputs.KubernetesClusterControlPlaneFirewall']:
+        """
+        A block representing the cluster's control plane firewall
+        """
         return pulumi.get(self, "control_plane_firewall")
 
     @property
