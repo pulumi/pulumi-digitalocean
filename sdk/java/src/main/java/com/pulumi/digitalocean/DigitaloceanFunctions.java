@@ -94,6 +94,8 @@ import com.pulumi.digitalocean.inputs.GetVolumePlainArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
 import com.pulumi.digitalocean.inputs.GetVolumeSnapshotPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcArgs;
+import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+import com.pulumi.digitalocean.inputs.GetVpcNatGatewayPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPeeringPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
@@ -140,6 +142,7 @@ import com.pulumi.digitalocean.outputs.GetTagResult;
 import com.pulumi.digitalocean.outputs.GetTagsResult;
 import com.pulumi.digitalocean.outputs.GetVolumeResult;
 import com.pulumi.digitalocean.outputs.GetVolumeSnapshotResult;
+import com.pulumi.digitalocean.outputs.GetVpcNatGatewayResult;
 import com.pulumi.digitalocean.outputs.GetVpcPeeringResult;
 import com.pulumi.digitalocean.outputs.GetVpcResult;
 import com.pulumi.resources.InvokeArgs;
@@ -17581,6 +17584,545 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetVpcResult> getVpcPlain(GetVpcPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcNatGatewayResult> getVpcNatGateway() {
+        return getVpcNatGateway(GetVpcNatGatewayArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcNatGatewayResult> getVpcNatGatewayPlain() {
+        return getVpcNatGatewayPlain(GetVpcNatGatewayPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcNatGatewayResult> getVpcNatGateway(GetVpcNatGatewayArgs args) {
+        return getVpcNatGateway(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcNatGatewayResult> getVpcNatGatewayPlain(GetVpcNatGatewayPlainArgs args) {
+        return getVpcNatGatewayPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcNatGatewayResult> getVpcNatGateway(GetVpcNatGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVpcNatGateway:getVpcNatGateway", TypeShape.of(GetVpcNatGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetVpcNatGatewayResult> getVpcNatGateway(GetVpcNatGatewayArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getVpcNatGateway:getVpcNatGateway", TypeShape.of(GetVpcNatGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the VPC NAT Gateway by name:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .name(my_existing_vpc_nat_gateway.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * Get the VPC NAT Gateway by ID:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()
+     *             .id(my_existing_vpc_nat_gateway.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetVpcNatGatewayResult> getVpcNatGatewayPlain(GetVpcNatGatewayPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getVpcNatGateway:getVpcNatGateway", TypeShape.of(GetVpcNatGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

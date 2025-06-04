@@ -86,6 +86,21 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The redundancy zone for the NaaS
+     * 
+     */
+    @Import(name="redundancyZone")
+    private @Nullable Output<String> redundancyZone;
+
+    /**
+     * @return The redundancy zone for the NaaS
+     * 
+     */
+    public Optional<Output<String>> redundancyZone() {
+        return Optional.ofNullable(this.redundancyZone);
+    }
+
+    /**
      * The region where the Partner Attachment will be created
      * 
      */
@@ -138,6 +153,7 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
         this.createdAt = $.createdAt;
         this.naasProvider = $.naasProvider;
         this.name = $.name;
+        this.redundancyZone = $.redundancyZone;
         this.region = $.region;
         this.state = $.state;
         this.vpcIds = $.vpcIds;
@@ -252,6 +268,27 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param redundancyZone The redundancy zone for the NaaS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyZone(@Nullable Output<String> redundancyZone) {
+            $.redundancyZone = redundancyZone;
+            return this;
+        }
+
+        /**
+         * @param redundancyZone The redundancy zone for the NaaS
+         * 
+         * @return builder
+         * 
+         */
+        public Builder redundancyZone(String redundancyZone) {
+            return redundancyZone(Output.of(redundancyZone));
         }
 
         /**

@@ -82,6 +82,20 @@ public class PartnerAttachment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The redundancy zone for the NaaS
+     * 
+     */
+    @Export(name="redundancyZone", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> redundancyZone;
+
+    /**
+     * @return The redundancy zone for the NaaS
+     * 
+     */
+    public Output<Optional<String>> redundancyZone() {
+        return Codegen.optional(this.redundancyZone);
+    }
+    /**
      * The region where the Partner Attachment will be created
      * 
      */

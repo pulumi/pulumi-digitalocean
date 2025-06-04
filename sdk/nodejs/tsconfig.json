@@ -86,6 +86,7 @@
         "getVolume.ts",
         "getVolumeSnapshot.ts",
         "getVpc.ts",
+        "getVpcNatGateway.ts",
         "getVpcPeering.ts",
         "index.ts",
         "kubernetesCluster.ts",
@@ -119,6 +120,7 @@
         "volumeAttachment.ts",
         "volumeSnapshot.ts",
         "vpc.ts",
+        "vpcNatGateway.ts",
         "vpcPeering.ts"
     ]
 }

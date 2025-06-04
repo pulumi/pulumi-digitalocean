@@ -21,6 +21,7 @@ public final class GetPartnerAttachmentResult {
     private String id;
     private String naasProvider;
     private String name;
+    private @Nullable String redundancyZone;
     private String region;
     private String state;
     private List<String> vpcIds;
@@ -43,6 +44,9 @@ public final class GetPartnerAttachmentResult {
     }
     public String name() {
         return this.name;
+    }
+    public Optional<String> redundancyZone() {
+        return Optional.ofNullable(this.redundancyZone);
     }
     public String region() {
         return this.region;
@@ -69,6 +73,7 @@ public final class GetPartnerAttachmentResult {
         private String id;
         private String naasProvider;
         private String name;
+        private @Nullable String redundancyZone;
         private String region;
         private String state;
         private List<String> vpcIds;
@@ -81,6 +86,7 @@ public final class GetPartnerAttachmentResult {
     	      this.id = defaults.id;
     	      this.naasProvider = defaults.naasProvider;
     	      this.name = defaults.name;
+    	      this.redundancyZone = defaults.redundancyZone;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
     	      this.vpcIds = defaults.vpcIds;
@@ -133,6 +139,12 @@ public final class GetPartnerAttachmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder redundancyZone(@Nullable String redundancyZone) {
+
+            this.redundancyZone = redundancyZone;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetPartnerAttachmentResult", "region");
@@ -167,6 +179,7 @@ public final class GetPartnerAttachmentResult {
             _resultValue.id = id;
             _resultValue.naasProvider = naasProvider;
             _resultValue.name = name;
+            _resultValue.redundancyZone = redundancyZone;
             _resultValue.region = region;
             _resultValue.state = state;
             _resultValue.vpcIds = vpcIds;

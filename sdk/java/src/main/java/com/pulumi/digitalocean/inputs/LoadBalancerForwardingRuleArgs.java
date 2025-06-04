@@ -19,7 +19,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
     public static final LoadBalancerForwardingRuleArgs Empty = new LoadBalancerForwardingRuleArgs();
 
     /**
-     * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+     * **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
      * 
      * @deprecated
      * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
@@ -30,7 +30,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
     private @Nullable Output<String> certificateId;
 
     /**
-     * @return **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+     * @return **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
      * 
      * @deprecated
      * Certificate IDs may change, for example when a Let&#39;s Encrypt certificate is auto-renewed. Please specify &#39;certificate_name&#39; instead.
@@ -162,7 +162,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certificateId **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+         * @param certificateId **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class LoadBalancerForwardingRuleArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param certificateId **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+         * @param certificateId **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
          * 
          * @return builder
          * 

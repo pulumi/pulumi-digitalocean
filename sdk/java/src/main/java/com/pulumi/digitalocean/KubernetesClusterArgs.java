@@ -71,9 +71,17 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.clusterSubnet);
     }
 
+    /**
+     * A block representing the cluster&#39;s control plane firewall
+     * 
+     */
     @Import(name="controlPlaneFirewall")
     private @Nullable Output<KubernetesClusterControlPlaneFirewallArgs> controlPlaneFirewall;
 
+    /**
+     * @return A block representing the cluster&#39;s control plane firewall
+     * 
+     */
     public Optional<Output<KubernetesClusterControlPlaneFirewallArgs>> controlPlaneFirewall() {
         return Optional.ofNullable(this.controlPlaneFirewall);
     }
@@ -402,11 +410,23 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
             return clusterSubnet(Output.of(clusterSubnet));
         }
 
+        /**
+         * @param controlPlaneFirewall A block representing the cluster&#39;s control plane firewall
+         * 
+         * @return builder
+         * 
+         */
         public Builder controlPlaneFirewall(@Nullable Output<KubernetesClusterControlPlaneFirewallArgs> controlPlaneFirewall) {
             $.controlPlaneFirewall = controlPlaneFirewall;
             return this;
         }
 
+        /**
+         * @param controlPlaneFirewall A block representing the cluster&#39;s control plane firewall
+         * 
+         * @return builder
+         * 
+         */
         public Builder controlPlaneFirewall(KubernetesClusterControlPlaneFirewallArgs controlPlaneFirewall) {
             return controlPlaneFirewall(Output.of(controlPlaneFirewall));
         }

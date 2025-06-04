@@ -37,12 +37,20 @@ public final class GetPartnerAttachmentArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="redundancyZone")
+    private @Nullable Output<String> redundancyZone;
+
+    public Optional<Output<String>> redundancyZone() {
+        return Optional.ofNullable(this.redundancyZone);
+    }
+
     private GetPartnerAttachmentArgs() {}
 
     private GetPartnerAttachmentArgs(GetPartnerAttachmentArgs $) {
         this.bgp = $.bgp;
         this.id = $.id;
         this.name = $.name;
+        this.redundancyZone = $.redundancyZone;
     }
 
     public static Builder builder() {
@@ -88,6 +96,15 @@ public final class GetPartnerAttachmentArgs extends com.pulumi.resources.InvokeA
 
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder redundancyZone(@Nullable Output<String> redundancyZone) {
+            $.redundancyZone = redundancyZone;
+            return this;
+        }
+
+        public Builder redundancyZone(String redundancyZone) {
+            return redundancyZone(Output.of(redundancyZone));
         }
 
         public GetPartnerAttachmentArgs build() {

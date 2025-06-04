@@ -40,6 +40,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The redundancy zone for the NaaS
+        /// </summary>
+        [Output("redundancyZone")]
+        public Output<string?> RedundancyZone { get; private set; } = null!;
+
+        /// <summary>
         /// The region where the Partner Attachment will be created
         /// </summary>
         [Output("region")]
@@ -125,6 +131,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The redundancy zone for the NaaS
+        /// </summary>
+        [Input("redundancyZone")]
+        public Input<string>? RedundancyZone { get; set; }
+
+        /// <summary>
         /// The region where the Partner Attachment will be created
         /// </summary>
         [Input("region", required: true)]
@@ -176,6 +188,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The redundancy zone for the NaaS
+        /// </summary>
+        [Input("redundancyZone")]
+        public Input<string>? RedundancyZone { get; set; }
 
         /// <summary>
         /// The region where the Partner Attachment will be created

@@ -23,9 +23,10 @@ func LookupPartnerAttachment(ctx *pulumi.Context, args *LookupPartnerAttachmentA
 
 // A collection of arguments for invoking getPartnerAttachment.
 type LookupPartnerAttachmentArgs struct {
-	Bgp  *GetPartnerAttachmentBgp `pulumi:"bgp"`
-	Id   *string                  `pulumi:"id"`
-	Name *string                  `pulumi:"name"`
+	Bgp            *GetPartnerAttachmentBgp `pulumi:"bgp"`
+	Id             *string                  `pulumi:"id"`
+	Name           *string                  `pulumi:"name"`
+	RedundancyZone *string                  `pulumi:"redundancyZone"`
 }
 
 // A collection of values returned by getPartnerAttachment.
@@ -36,6 +37,7 @@ type LookupPartnerAttachmentResult struct {
 	Id                        string                   `pulumi:"id"`
 	NaasProvider              string                   `pulumi:"naasProvider"`
 	Name                      string                   `pulumi:"name"`
+	RedundancyZone            *string                  `pulumi:"redundancyZone"`
 	Region                    string                   `pulumi:"region"`
 	State                     string                   `pulumi:"state"`
 	VpcIds                    []string                 `pulumi:"vpcIds"`
@@ -52,9 +54,10 @@ func LookupPartnerAttachmentOutput(ctx *pulumi.Context, args LookupPartnerAttach
 
 // A collection of arguments for invoking getPartnerAttachment.
 type LookupPartnerAttachmentOutputArgs struct {
-	Bgp  GetPartnerAttachmentBgpPtrInput `pulumi:"bgp"`
-	Id   pulumi.StringPtrInput           `pulumi:"id"`
-	Name pulumi.StringPtrInput           `pulumi:"name"`
+	Bgp            GetPartnerAttachmentBgpPtrInput `pulumi:"bgp"`
+	Id             pulumi.StringPtrInput           `pulumi:"id"`
+	Name           pulumi.StringPtrInput           `pulumi:"name"`
+	RedundancyZone pulumi.StringPtrInput           `pulumi:"redundancyZone"`
 }
 
 func (LookupPartnerAttachmentOutputArgs) ElementType() reflect.Type {
@@ -98,6 +101,10 @@ func (o LookupPartnerAttachmentResultOutput) NaasProvider() pulumi.StringOutput 
 
 func (o LookupPartnerAttachmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupPartnerAttachmentResultOutput) RedundancyZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupPartnerAttachmentResult) *string { return v.RedundancyZone }).(pulumi.StringPtrOutput)
 }
 
 func (o LookupPartnerAttachmentResultOutput) Region() pulumi.StringOutput {

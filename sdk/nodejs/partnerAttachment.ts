@@ -53,6 +53,10 @@ export class PartnerAttachment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The redundancy zone for the NaaS
+     */
+    public readonly redundancyZone!: pulumi.Output<string | undefined>;
+    /**
      * The region where the Partner Attachment will be created
      */
     public readonly region!: pulumi.Output<string>;
@@ -83,6 +87,7 @@ export class PartnerAttachment extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["naasProvider"] = state ? state.naasProvider : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["redundancyZone"] = state ? state.redundancyZone : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["vpcIds"] = state ? state.vpcIds : undefined;
@@ -104,6 +109,7 @@ export class PartnerAttachment extends pulumi.CustomResource {
             resourceInputs["connectionBandwidthInMbps"] = args ? args.connectionBandwidthInMbps : undefined;
             resourceInputs["naasProvider"] = args ? args.naasProvider : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["redundancyZone"] = args ? args.redundancyZone : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export interface PartnerAttachmentState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The redundancy zone for the NaaS
+     */
+    redundancyZone?: pulumi.Input<string>;
+    /**
      * The region where the Partner Attachment will be created
      */
     region?: pulumi.Input<string>;
@@ -166,6 +176,10 @@ export interface PartnerAttachmentArgs {
      * The name of the Partner Attachment
      */
     name?: pulumi.Input<string>;
+    /**
+     * The redundancy zone for the NaaS
+     */
+    redundancyZone?: pulumi.Input<string>;
     /**
      * The region where the Partner Attachment will be created
      */

@@ -36,12 +36,20 @@ public final class GetPartnerAttachmentPlainArgs extends com.pulumi.resources.In
         return Optional.ofNullable(this.name);
     }
 
+    @Import(name="redundancyZone")
+    private @Nullable String redundancyZone;
+
+    public Optional<String> redundancyZone() {
+        return Optional.ofNullable(this.redundancyZone);
+    }
+
     private GetPartnerAttachmentPlainArgs() {}
 
     private GetPartnerAttachmentPlainArgs(GetPartnerAttachmentPlainArgs $) {
         this.bgp = $.bgp;
         this.id = $.id;
         this.name = $.name;
+        this.redundancyZone = $.redundancyZone;
     }
 
     public static Builder builder() {
@@ -74,6 +82,11 @@ public final class GetPartnerAttachmentPlainArgs extends com.pulumi.resources.In
 
         public Builder name(@Nullable String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder redundancyZone(@Nullable String redundancyZone) {
+            $.redundancyZone = redundancyZone;
             return this;
         }
 

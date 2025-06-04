@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LoadBalancerDomain {
     /**
-     * @return The certificate id associated with the domain used for TLS handshaking.
+     * @return **Deprecated** The certificate ID to be used for TLS handshaking.
      * 
      */
     private @Nullable String certificateId;
@@ -47,7 +47,7 @@ public final class LoadBalancerDomain {
 
     private LoadBalancerDomain() {}
     /**
-     * @return The certificate id associated with the domain used for TLS handshaking.
+     * @return **Deprecated** The certificate ID to be used for TLS handshaking.
      * 
      */
     public Optional<String> certificateId() {

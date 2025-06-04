@@ -360,6 +360,11 @@ export const getVpc: typeof import("./getVpc").getVpc = null as any;
 export const getVpcOutput: typeof import("./getVpc").getVpcOutput = null as any;
 utilities.lazyLoad(exports, ["getVpc","getVpcOutput"], () => require("./getVpc"));
 
+export { GetVpcNatGatewayArgs, GetVpcNatGatewayResult, GetVpcNatGatewayOutputArgs } from "./getVpcNatGateway";
+export const getVpcNatGateway: typeof import("./getVpcNatGateway").getVpcNatGateway = null as any;
+export const getVpcNatGatewayOutput: typeof import("./getVpcNatGateway").getVpcNatGatewayOutput = null as any;
+utilities.lazyLoad(exports, ["getVpcNatGateway","getVpcNatGatewayOutput"], () => require("./getVpcNatGateway"));
+
 export { GetVpcPeeringArgs, GetVpcPeeringResult, GetVpcPeeringOutputArgs } from "./getVpcPeering";
 export const getVpcPeering: typeof import("./getVpcPeering").getVpcPeering = null as any;
 export const getVpcPeeringOutput: typeof import("./getVpcPeering").getVpcPeeringOutput = null as any;
@@ -493,6 +498,11 @@ export type Vpc = import("./vpc").Vpc;
 export const Vpc: typeof import("./vpc").Vpc = null as any;
 utilities.lazyLoad(exports, ["Vpc"], () => require("./vpc"));
 
+export { VpcNatGatewayArgs, VpcNatGatewayState } from "./vpcNatGateway";
+export type VpcNatGateway = import("./vpcNatGateway").VpcNatGateway;
+export const VpcNatGateway: typeof import("./vpcNatGateway").VpcNatGateway = null as any;
+utilities.lazyLoad(exports, ["VpcNatGateway"], () => require("./vpcNatGateway"));
+
 export { VpcPeeringArgs, VpcPeeringState } from "./vpcPeering";
 export type VpcPeering = import("./vpcPeering").VpcPeering;
 export const VpcPeering: typeof import("./vpcPeering").VpcPeering = null as any;
@@ -619,6 +629,8 @@ const _module = {
                 return new VolumeSnapshot(name, <any>undefined, { urn })
             case "digitalocean:index/vpc:Vpc":
                 return new Vpc(name, <any>undefined, { urn })
+            case "digitalocean:index/vpcNatGateway:VpcNatGateway":
+                return new VpcNatGateway(name, <any>undefined, { urn })
             case "digitalocean:index/vpcPeering:VpcPeering":
                 return new VpcPeering(name, <any>undefined, { urn })
             default:
@@ -678,6 +690,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/volume", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/volumeSnapshot", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/vpc", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/vpcNatGateway", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/vpcPeering", _module)
 pulumi.runtime.registerResourcePackage("digitalocean", {
     version: utilities.getVersion(),

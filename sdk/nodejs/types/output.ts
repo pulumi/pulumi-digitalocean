@@ -5262,6 +5262,35 @@ export interface GetTagsTag {
     volumesCount: number;
 }
 
+export interface GetVpcNatGatewayEgress {
+    /**
+     * List of public gateway IPs
+     */
+    publicGateways: outputs.GetVpcNatGatewayEgressPublicGateway[];
+}
+
+export interface GetVpcNatGatewayEgressPublicGateway {
+    /**
+     * IPv4 address
+     */
+    ipv4: string;
+}
+
+export interface GetVpcNatGatewayVpc {
+    /**
+     * Indicates if this is the default VPC NAT Gateway in the VPC
+     */
+    defaultGateway: boolean;
+    /**
+     * Gateway IP of the VPC NAT Gateway
+     */
+    gatewayIp: string;
+    /**
+     * ID of the ingress VPC
+     */
+    vpcUuid: string;
+}
+
 export interface KubernetesClusterClusterAutoscalerConfiguration {
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
@@ -5276,9 +5305,12 @@ export interface KubernetesClusterClusterAutoscalerConfiguration {
 }
 
 export interface KubernetesClusterControlPlaneFirewall {
+    /**
+     * A list of addresses allowed (CIDR notation).
+     */
     allowedAddresses: string[];
     /**
-     * Boolean flag whether the routing-agent is enabled or not.
+     * Boolean flag whether the firewall should be enabled or not.
      */
     enabled: boolean;
 }
@@ -5473,7 +5505,7 @@ export interface KubernetesNodePoolTaint {
 
 export interface LoadBalancerDomain {
     /**
-     * The certificate id associated with the domain used for TLS handshaking.
+     * **Deprecated** The certificate ID to be used for TLS handshaking.
      */
     certificateId: string;
     /**
@@ -5512,7 +5544,7 @@ export interface LoadBalancerFirewall {
 
 export interface LoadBalancerForwardingRule {
     /**
-     * **Deprecated** The ID of the TLS certificate to be used for SSL termination.
+     * **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificateName` instead.
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
@@ -5781,5 +5813,34 @@ export interface UptimeAlertNotificationSlack {
      * The webhook URL for Slack.
      */
     url: string;
+}
+
+export interface VpcNatGatewayEgress {
+    /**
+     * List of public gateway IPs
+     */
+    publicGateways: outputs.VpcNatGatewayEgressPublicGateway[];
+}
+
+export interface VpcNatGatewayEgressPublicGateway {
+    /**
+     * IPv4 address
+     */
+    ipv4: string;
+}
+
+export interface VpcNatGatewayVpc {
+    /**
+     * Boolean flag indicating if this should be the default gateway in this VPC
+     */
+    defaultGateway?: boolean;
+    /**
+     * The private IP of the VPC NAT Gateway
+     */
+    gatewayIp: string;
+    /**
+     * The ID of the ingress VPC
+     */
+    vpcUuid: string;
 }
 

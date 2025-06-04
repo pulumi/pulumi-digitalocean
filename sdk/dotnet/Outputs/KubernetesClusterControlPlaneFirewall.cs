@@ -13,9 +13,12 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class KubernetesClusterControlPlaneFirewall
     {
+        /// <summary>
+        /// A list of addresses allowed (CIDR notation).
+        /// </summary>
         public readonly ImmutableArray<string> AllowedAddresses;
         /// <summary>
-        /// Boolean flag whether the routing-agent is enabled or not.
+        /// Boolean flag whether the firewall should be enabled or not.
         /// </summary>
         public readonly bool Enabled;
 
