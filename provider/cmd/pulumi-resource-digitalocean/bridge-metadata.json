@@ -1073,6 +1073,25 @@
                 "current": "digitalocean:index/vpc:Vpc",
                 "majorVersion": 4
             },
+            "digitalocean_vpc_nat_gateway": {
+                "current": "digitalocean:index/vpcNatGateway:VpcNatGateway",
+                "majorVersion": 4,
+                "fields": {
+                    "egresses": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "public_gateways": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpcs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_vpc_peering": {
                 "current": "digitalocean:index/vpcPeering:VpcPeering",
                 "majorVersion": 4,
@@ -2220,6 +2239,25 @@
             "digitalocean_vpc": {
                 "current": "digitalocean:index/getVpc:getVpc",
                 "majorVersion": 4
+            },
+            "digitalocean_vpc_nat_gateway": {
+                "current": "digitalocean:index/getVpcNatGateway:getVpcNatGateway",
+                "majorVersion": 4,
+                "fields": {
+                    "egresses": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "public_gateways": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "vpcs": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "digitalocean_vpc_peering": {
                 "current": "digitalocean:index/getVpcPeering:getVpcPeering",

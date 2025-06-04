@@ -3129,11 +3129,12 @@
                     "type": "array",
                     "items": {
                         "type": "string"
-                    }
+                    },
+                    "description": "A list of addresses allowed (CIDR notation).\n"
                 },
                 "enabled": {
                     "type": "boolean",
-                    "description": "Boolean flag whether the routing-agent is enabled or not.\n"
+                    "description": "Boolean flag whether the firewall should be enabled or not.\n"
                 }
             },
             "type": "object",
@@ -3437,7 +3438,7 @@
             "properties": {
                 "certificateId": {
                     "type": "string",
-                    "description": "The certificate id associated with the domain used for TLS handshaking.\n"
+                    "description": "**Deprecated** The certificate ID to be used for TLS handshaking.\n"
                 },
                 "certificateName": {
                     "type": "string",
@@ -3505,7 +3506,7 @@
             "properties": {
                 "certificateId": {
                     "type": "string",
-                    "description": "**Deprecated** The ID of the TLS certificate to be used for SSL termination.\n",
+                    "description": "**Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.\n",
                     "deprecationMessage": "Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead."
                 },
                 "certificateName": {
@@ -3906,6 +3907,69 @@
                 "channel",
                 "url"
             ]
+        },
+        "digitalocean:index/VpcNatGatewayEgress:VpcNatGatewayEgress": {
+            "properties": {
+                "publicGateways": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/VpcNatGatewayEgressPublicGateway:VpcNatGatewayEgressPublicGateway"
+                    },
+                    "description": "List of public gateway IPs\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "publicGateways"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/VpcNatGatewayEgressPublicGateway:VpcNatGatewayEgressPublicGateway": {
+            "properties": {
+                "ipv4": {
+                    "type": "string",
+                    "description": "IPv4 address\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "ipv4"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/VpcNatGatewayVpc:VpcNatGatewayVpc": {
+            "properties": {
+                "defaultGateway": {
+                    "type": "boolean",
+                    "description": "Boolean flag indicating if this should be the default gateway in this VPC\n"
+                },
+                "gatewayIp": {
+                    "type": "string",
+                    "description": "The private IP of the VPC NAT Gateway\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The ID of the ingress VPC\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "vpcUuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "gatewayIp",
+                        "vpcUuid"
+                    ]
+                }
+            }
         },
         "digitalocean:index/getAppDedicatedIp:getAppDedicatedIp": {
             "properties": {
@@ -8438,6 +8502,70 @@
                 "totalResourceCount",
                 "volumeSnapshotsCount",
                 "volumesCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getVpcNatGatewayEgress:getVpcNatGatewayEgress": {
+            "properties": {
+                "publicGateways": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getVpcNatGatewayEgressPublicGateway:getVpcNatGatewayEgressPublicGateway"
+                    },
+                    "description": "List of public gateway IPs\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "publicGateways"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getVpcNatGatewayEgressPublicGateway:getVpcNatGatewayEgressPublicGateway": {
+            "properties": {
+                "ipv4": {
+                    "type": "string",
+                    "description": "IPv4 address\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "ipv4"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getVpcNatGatewayVpc:getVpcNatGatewayVpc": {
+            "properties": {
+                "defaultGateway": {
+                    "type": "boolean",
+                    "description": "Indicates if this is the default VPC NAT Gateway in the VPC\n"
+                },
+                "gatewayIp": {
+                    "type": "string",
+                    "description": "Gateway IP of the VPC NAT Gateway\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "ID of the ingress VPC\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "defaultGateway",
+                "gatewayIp",
+                "vpcUuid"
             ],
             "language": {
                 "nodejs": {
@@ -14605,7 +14733,8 @@
                     "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                 },
                 "controlPlaneFirewall": {
-                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
+                    "description": "A block representing the cluster's control plane firewall\n"
                 },
                 "createdAt": {
                     "type": "string",
@@ -14732,7 +14861,8 @@
                     "willReplaceOnChanges": true
                 },
                 "controlPlaneFirewall": {
-                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
+                    "description": "A block representing the cluster's control plane firewall\n"
                 },
                 "destroyAllAssociatedResources": {
                     "type": "boolean",
@@ -14835,7 +14965,8 @@
                         "description": "The uniform resource name (URN) for the Kubernetes cluster.\n"
                     },
                     "controlPlaneFirewall": {
-                        "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall"
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterControlPlaneFirewall:KubernetesClusterControlPlaneFirewall",
+                        "description": "A block representing the cluster's control plane firewall\n"
                     },
                     "createdAt": {
                         "type": "string",
@@ -15787,6 +15918,10 @@
                     "type": "string",
                     "description": "The name of the Partner Attachment\n"
                 },
+                "redundancyZone": {
+                    "type": "string",
+                    "description": "The redundancy zone for the NaaS\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "The region where the Partner Attachment will be created\n"
@@ -15831,6 +15966,11 @@
                     "type": "string",
                     "description": "The name of the Partner Attachment\n"
                 },
+                "redundancyZone": {
+                    "type": "string",
+                    "description": "The redundancy zone for the NaaS\n",
+                    "willReplaceOnChanges": true
+                },
                 "region": {
                     "type": "string",
                     "description": "The region where the Partner Attachment will be created\n",
@@ -15874,6 +16014,11 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the Partner Attachment\n"
+                    },
+                    "redundancyZone": {
+                        "type": "string",
+                        "description": "The redundancy zone for the NaaS\n",
+                        "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
@@ -17833,6 +17978,182 @@
                     "vpcUrn": {
                         "type": "string",
                         "description": "The uniform resource name (URN) for the VPC.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/vpcNatGateway:VpcNatGateway": {
+            "description": "Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify, \nread and delete VPC NAT Gateways.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst my_vpc = new digitalocean.Vpc(\"my-vpc\", {\n    name: \"terraform-example\",\n    region: \"nyc3\",\n});\nconst my_vpc_nat_gateway = new digitalocean.VpcNatGateway(\"my-vpc-nat-gateway\", {\n    name: \"terraform-example\",\n    type: \"PUBLIC\",\n    region: \"nyc3\",\n    size: 1,\n    vpcs: [{\n        vpcUuid: my_vpc.id,\n    }],\n    udpTimeoutSeconds: 30,\n    icmpTimeoutSeconds: 30,\n    tcpTimeoutSeconds: 30,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_vpc = digitalocean.Vpc(\"my-vpc\",\n    name=\"terraform-example\",\n    region=\"nyc3\")\nmy_vpc_nat_gateway = digitalocean.VpcNatGateway(\"my-vpc-nat-gateway\",\n    name=\"terraform-example\",\n    type=\"PUBLIC\",\n    region=\"nyc3\",\n    size=1,\n    vpcs=[{\n        \"vpc_uuid\": my_vpc.id,\n    }],\n    udp_timeout_seconds=30,\n    icmp_timeout_seconds=30,\n    tcp_timeout_seconds=30)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_vpc = new DigitalOcean.Vpc(\"my-vpc\", new()\n    {\n        Name = \"terraform-example\",\n        Region = \"nyc3\",\n    });\n\n    var my_vpc_nat_gateway = new DigitalOcean.VpcNatGateway(\"my-vpc-nat-gateway\", new()\n    {\n        Name = \"terraform-example\",\n        Type = \"PUBLIC\",\n        Region = \"nyc3\",\n        Size = 1,\n        Vpcs = new[]\n        {\n            new DigitalOcean.Inputs.VpcNatGatewayVpcArgs\n            {\n                VpcUuid = my_vpc.Id,\n            },\n        },\n        UdpTimeoutSeconds = 30,\n        IcmpTimeoutSeconds = 30,\n        TcpTimeoutSeconds = 30,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmy_vpc, err := digitalocean.NewVpc(ctx, \"my-vpc\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"terraform-example\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewVpcNatGateway(ctx, \"my-vpc-nat-gateway\", \u0026digitalocean.VpcNatGatewayArgs{\n\t\t\tName:   pulumi.String(\"terraform-example\"),\n\t\t\tType:   pulumi.String(\"PUBLIC\"),\n\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\tSize:   pulumi.Int(1),\n\t\t\tVpcs: digitalocean.VpcNatGatewayVpcArray{\n\t\t\t\t\u0026digitalocean.VpcNatGatewayVpcArgs{\n\t\t\t\t\tVpcUuid: my_vpc.ID(),\n\t\t\t\t},\n\t\t\t},\n\t\t\tUdpTimeoutSeconds:  pulumi.Int(30),\n\t\t\tIcmpTimeoutSeconds: pulumi.Int(30),\n\t\t\tTcpTimeoutSeconds:  pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.VpcNatGateway;\nimport com.pulumi.digitalocean.VpcNatGatewayArgs;\nimport com.pulumi.digitalocean.inputs.VpcNatGatewayVpcArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_vpc = new Vpc(\"my-vpc\", VpcArgs.builder()\n            .name(\"terraform-example\")\n            .region(\"nyc3\")\n            .build());\n\n        var my_vpc_nat_gateway = new VpcNatGateway(\"my-vpc-nat-gateway\", VpcNatGatewayArgs.builder()\n            .name(\"terraform-example\")\n            .type(\"PUBLIC\")\n            .region(\"nyc3\")\n            .size(1)\n            .vpcs(VpcNatGatewayVpcArgs.builder()\n                .vpcUuid(my_vpc.id())\n                .build())\n            .udpTimeoutSeconds(30)\n            .icmpTimeoutSeconds(30)\n            .tcpTimeoutSeconds(30)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-vpc:\n    type: digitalocean:Vpc\n    properties:\n      name: terraform-example\n      region: nyc3\n  my-vpc-nat-gateway:\n    type: digitalocean:VpcNatGateway\n    properties:\n      name: terraform-example\n      type: PUBLIC\n      region: nyc3\n      size: '1'\n      vpcs:\n        - vpcUuid: ${[\"my-vpc\"].id}\n      udpTimeoutSeconds: 30\n      icmpTimeoutSeconds: 30\n      tcpTimeoutSeconds: 30\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nVPC NAT Gateways can be imported using their `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/vpcNatGateway:VpcNatGateway my-vpc-nat-gateway-id 38e66834-d741-47ec-88e7-c70cbdcz0445\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created at timestamp for the VPC NAT Gateway.\n"
+                },
+                "egresses": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/VpcNatGatewayEgress:VpcNatGatewayEgress"
+                    },
+                    "description": "Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of\n`public_gateways` embedding the reserved `ipv4` addresses.\n"
+                },
+                "icmpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for ICMP connections of the VPC NAT Gateway.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VPC NAT Gateway.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the VPC NAT Gateway.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The size of the VPC NAT Gateway.\n"
+                },
+                "state": {
+                    "type": "string",
+                    "description": "State of the VPC NAT Gateway\n"
+                },
+                "tcpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for TCP connections of the VPC NAT Gateway.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the VPC NAT Gateway.\n"
+                },
+                "udpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for UDP connections of the VPC NAT Gateway.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Updated at timestamp for the VPC NAT Gateway.\n"
+                },
+                "vpcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/VpcNatGatewayVpc:VpcNatGatewayVpc"
+                    },
+                    "description": "The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are\ndocumented below.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "egresses",
+                "icmpTimeoutSeconds",
+                "name",
+                "region",
+                "size",
+                "state",
+                "tcpTimeoutSeconds",
+                "type",
+                "udpTimeoutSeconds",
+                "updatedAt",
+                "vpcs"
+            ],
+            "inputProperties": {
+                "icmpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for ICMP connections of the VPC NAT Gateway.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the VPC NAT Gateway.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region for the VPC NAT Gateway.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The size of the VPC NAT Gateway.\n"
+                },
+                "tcpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for TCP connections of the VPC NAT Gateway.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The type of the VPC NAT Gateway.\n"
+                },
+                "udpTimeoutSeconds": {
+                    "type": "integer",
+                    "description": "The egress timeout value for UDP connections of the VPC NAT Gateway.\n"
+                },
+                "vpcs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/VpcNatGatewayVpc:VpcNatGatewayVpc"
+                    },
+                    "description": "The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are\ndocumented below.\n"
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "size",
+                "type",
+                "vpcs"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering VpcNatGateway resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "Created at timestamp for the VPC NAT Gateway.\n"
+                    },
+                    "egresses": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/VpcNatGatewayEgress:VpcNatGatewayEgress"
+                        },
+                        "description": "Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of\n`public_gateways` embedding the reserved `ipv4` addresses.\n"
+                    },
+                    "icmpTimeoutSeconds": {
+                        "type": "integer",
+                        "description": "The egress timeout value for ICMP connections of the VPC NAT Gateway.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the VPC NAT Gateway.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region for the VPC NAT Gateway.\n"
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The size of the VPC NAT Gateway.\n"
+                    },
+                    "state": {
+                        "type": "string",
+                        "description": "State of the VPC NAT Gateway\n"
+                    },
+                    "tcpTimeoutSeconds": {
+                        "type": "integer",
+                        "description": "The egress timeout value for TCP connections of the VPC NAT Gateway.\n"
+                    },
+                    "type": {
+                        "type": "string",
+                        "description": "The type of the VPC NAT Gateway.\n"
+                    },
+                    "udpTimeoutSeconds": {
+                        "type": "integer",
+                        "description": "The egress timeout value for UDP connections of the VPC NAT Gateway.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "Updated at timestamp for the VPC NAT Gateway.\n"
+                    },
+                    "vpcs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/VpcNatGatewayVpc:VpcNatGatewayVpc"
+                        },
+                        "description": "The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are\ndocumented below.\n"
                     }
                 },
                 "type": "object"
@@ -19887,6 +20208,9 @@
                     },
                     "name": {
                         "type": "string"
+                    },
+                    "redundancyZone": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -19910,6 +20234,9 @@
                         "type": "string"
                     },
                     "name": {
+                        "type": "string"
+                    },
+                    "redundancyZone": {
                         "type": "string"
                     },
                     "region": {
@@ -21337,6 +21664,87 @@
                     "name",
                     "region",
                     "urn"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getVpcNatGateway:getVpcNatGateway": {
+            "description": "## Example Usage\n\nGet the VPC NAT Gateway by name:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst my_imported_vpc_nat_gateway = digitalocean.getVpcNatGateway({\n    name: my_existing_vpc_nat_gateway.name,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_imported_vpc_nat_gateway = digitalocean.get_vpc_nat_gateway(name=my_existing_vpc_nat_gateway[\"name\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()\n    {\n        Name = my_existing_vpc_nat_gateway.Name,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupVpcNatGateway(ctx, \u0026digitalocean.LookupVpcNatGatewayArgs{\n\t\t\tName: pulumi.StringRef(my_existing_vpc_nat_gateway.Name),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()\n            .name(my_existing_vpc_nat_gateway.name())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-imported-vpc-nat-gateway:\n    fn::invoke:\n      function: digitalocean:getVpcNatGateway\n      arguments:\n        name: ${[\"my-existing-vpc-nat-gateway\"].name}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nGet the VPC NAT Gateway by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst my_imported_vpc_nat_gateway = digitalocean.getVpcNatGateway({\n    id: my_existing_vpc_nat_gateway.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmy_imported_vpc_nat_gateway = digitalocean.get_vpc_nat_gateway(id=my_existing_vpc_nat_gateway[\"id\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()\n    {\n        Id = my_existing_vpc_nat_gateway.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupVpcNatGateway(ctx, \u0026digitalocean.LookupVpcNatGatewayArgs{\n\t\t\tId: pulumi.StringRef(my_existing_vpc_nat_gateway.Id),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var my-imported-vpc-nat-gateway = DigitaloceanFunctions.getVpcNatGateway(GetVpcNatGatewayArgs.builder()\n            .id(my_existing_vpc_nat_gateway.id())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  my-imported-vpc-nat-gateway:\n    fn::invoke:\n      function: digitalocean:getVpcNatGateway\n      arguments:\n        id: ${[\"my-existing-vpc-nat-gateway\"].id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getVpcNatGateway.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of VPC NAT Gateway.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of VPC NAT Gateway.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getVpcNatGateway.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "egresses": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getVpcNatGatewayEgress:getVpcNatGatewayEgress"
+                        },
+                        "type": "array"
+                    },
+                    "icmpTimeoutSeconds": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "tcpTimeoutSeconds": {
+                        "type": "integer"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "udpTimeoutSeconds": {
+                        "type": "integer"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "vpcs": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getVpcNatGatewayVpc:getVpcNatGatewayVpc"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "egresses",
+                    "icmpTimeoutSeconds",
+                    "region",
+                    "size",
+                    "state",
+                    "tcpTimeoutSeconds",
+                    "type",
+                    "udpTimeoutSeconds",
+                    "updatedAt",
+                    "vpcs"
                 ],
                 "type": "object"
             }
