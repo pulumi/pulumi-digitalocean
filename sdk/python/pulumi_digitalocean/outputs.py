@@ -372,8 +372,14 @@ class AppSpec(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "domainNames":
+        if key == "disableEdgeCache":
+            suggest = "disable_edge_cache"
+        elif key == "disableEmailObfuscation":
+            suggest = "disable_email_obfuscation"
+        elif key == "domainNames":
             suggest = "domain_names"
+        elif key == "enhancedThreatControlEnabled":
+            suggest = "enhanced_threat_control_enabled"
         elif key == "staticSites":
             suggest = "static_sites"
 
@@ -392,9 +398,12 @@ class AppSpec(dict):
                  name: builtins.str,
                  alerts: Optional[Sequence['outputs.AppSpecAlert']] = None,
                  databases: Optional[Sequence['outputs.AppSpecDatabase']] = None,
+                 disable_edge_cache: Optional[builtins.bool] = None,
+                 disable_email_obfuscation: Optional[builtins.bool] = None,
                  domain_names: Optional[Sequence['outputs.AppSpecDomainName']] = None,
                  domains: Optional[Sequence[builtins.str]] = None,
                  egresses: Optional[Sequence['outputs.AppSpecEgress']] = None,
+                 enhanced_threat_control_enabled: Optional[builtins.bool] = None,
                  envs: Optional[Sequence['outputs.AppSpecEnv']] = None,
                  features: Optional[Sequence[builtins.str]] = None,
                  functions: Optional[Sequence['outputs.AppSpecFunction']] = None,
@@ -407,8 +416,11 @@ class AppSpec(dict):
         """
         :param builtins.str name: The name of the component.
         :param Sequence['AppSpecAlertArgs'] alerts: Describes an alert policy for the component.
+        :param builtins.bool disable_edge_cache: A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        :param builtins.bool disable_email_obfuscation: A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
         :param Sequence['AppSpecDomainNameArgs'] domain_names: Describes a domain where the application will be made available.
         :param Sequence['AppSpecEgressArgs'] egresses: Specification for app egress configurations.
+        :param builtins.bool enhanced_threat_control_enabled: A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
         :param Sequence['AppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param Sequence[builtins.str] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param 'AppSpecIngressArgs' ingress: Specification for component routing, rewrites, and redirects.
@@ -419,12 +431,18 @@ class AppSpec(dict):
             pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if disable_edge_cache is not None:
+            pulumi.set(__self__, "disable_edge_cache", disable_edge_cache)
+        if disable_email_obfuscation is not None:
+            pulumi.set(__self__, "disable_email_obfuscation", disable_email_obfuscation)
         if domain_names is not None:
             pulumi.set(__self__, "domain_names", domain_names)
         if domains is not None:
             pulumi.set(__self__, "domains", domains)
         if egresses is not None:
             pulumi.set(__self__, "egresses", egresses)
+        if enhanced_threat_control_enabled is not None:
+            pulumi.set(__self__, "enhanced_threat_control_enabled", enhanced_threat_control_enabled)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -466,6 +484,22 @@ class AppSpec(dict):
         return pulumi.get(self, "databases")
 
     @property
+    @pulumi.getter(name="disableEdgeCache")
+    def disable_edge_cache(self) -> Optional[builtins.bool]:
+        """
+        A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "disable_edge_cache")
+
+    @property
+    @pulumi.getter(name="disableEmailObfuscation")
+    def disable_email_obfuscation(self) -> Optional[builtins.bool]:
+        """
+        A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "disable_email_obfuscation")
+
+    @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[Sequence['outputs.AppSpecDomainName']]:
         """
@@ -486,6 +520,14 @@ class AppSpec(dict):
         Specification for app egress configurations.
         """
         return pulumi.get(self, "egresses")
+
+    @property
+    @pulumi.getter(name="enhancedThreatControlEnabled")
+    def enhanced_threat_control_enabled(self) -> Optional[builtins.bool]:
+        """
+        A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "enhanced_threat_control_enabled")
 
     @property
     @pulumi.getter
@@ -10111,7 +10153,10 @@ class GetAppSpecResult(dict):
                  name: builtins.str,
                  alerts: Optional[Sequence['outputs.GetAppSpecAlertResult']] = None,
                  databases: Optional[Sequence['outputs.GetAppSpecDatabaseResult']] = None,
+                 disable_edge_cache: Optional[builtins.bool] = None,
+                 disable_email_obfuscation: Optional[builtins.bool] = None,
                  egresses: Optional[Sequence['outputs.GetAppSpecEgressResult']] = None,
+                 enhanced_threat_control_enabled: Optional[builtins.bool] = None,
                  envs: Optional[Sequence['outputs.GetAppSpecEnvResult']] = None,
                  functions: Optional[Sequence['outputs.GetAppSpecFunctionResult']] = None,
                  jobs: Optional[Sequence['outputs.GetAppSpecJobResult']] = None,
@@ -10123,6 +10168,9 @@ class GetAppSpecResult(dict):
         :param Sequence[builtins.str] features: List of features which is applied to the app
         :param builtins.str name: The name of the component.
         :param Sequence['GetAppSpecAlertArgs'] alerts: Describes an alert policy for the component.
+        :param builtins.bool disable_edge_cache: Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+        :param builtins.bool disable_email_obfuscation: Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+        :param builtins.bool enhanced_threat_control_enabled: Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
         :param Sequence['GetAppSpecEnvArgs'] envs: Describes an environment variable made available to an app competent.
         :param builtins.str region: The slug for the DigitalOcean data center region hosting the app
         """
@@ -10135,8 +10183,14 @@ class GetAppSpecResult(dict):
             pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if disable_edge_cache is not None:
+            pulumi.set(__self__, "disable_edge_cache", disable_edge_cache)
+        if disable_email_obfuscation is not None:
+            pulumi.set(__self__, "disable_email_obfuscation", disable_email_obfuscation)
         if egresses is not None:
             pulumi.set(__self__, "egresses", egresses)
+        if enhanced_threat_control_enabled is not None:
+            pulumi.set(__self__, "enhanced_threat_control_enabled", enhanced_threat_control_enabled)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if functions is not None:
@@ -10198,9 +10252,33 @@ class GetAppSpecResult(dict):
         return pulumi.get(self, "databases")
 
     @property
+    @pulumi.getter(name="disableEdgeCache")
+    def disable_edge_cache(self) -> Optional[builtins.bool]:
+        """
+        Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+        """
+        return pulumi.get(self, "disable_edge_cache")
+
+    @property
+    @pulumi.getter(name="disableEmailObfuscation")
+    def disable_email_obfuscation(self) -> Optional[builtins.bool]:
+        """
+        Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+        """
+        return pulumi.get(self, "disable_email_obfuscation")
+
+    @property
     @pulumi.getter
     def egresses(self) -> Optional[Sequence['outputs.GetAppSpecEgressResult']]:
         return pulumi.get(self, "egresses")
+
+    @property
+    @pulumi.getter(name="enhancedThreatControlEnabled")
+    def enhanced_threat_control_enabled(self) -> Optional[builtins.bool]:
+        """
+        Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+        """
+        return pulumi.get(self, "enhanced_threat_control_enabled")
 
     @property
     @pulumi.getter

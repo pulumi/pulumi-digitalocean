@@ -132,12 +132,18 @@ type AppSpec struct {
 	// Describes an alert policy for the component.
 	Alerts    []AppSpecAlert    `pulumi:"alerts"`
 	Databases []AppSpecDatabase `pulumi:"databases"`
+	// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+	DisableEdgeCache *bool `pulumi:"disableEdgeCache"`
+	// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+	DisableEmailObfuscation *bool `pulumi:"disableEmailObfuscation"`
 	// Describes a domain where the application will be made available.
 	DomainNames []AppSpecDomainName `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains []string `pulumi:"domains"`
 	// Specification for app egress configurations.
 	Egresses []AppSpecEgress `pulumi:"egresses"`
+	// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+	EnhancedThreatControlEnabled *bool `pulumi:"enhancedThreatControlEnabled"`
 	// Describes an environment variable made available to an app competent.
 	Envs []AppSpecEnv `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
@@ -170,12 +176,18 @@ type AppSpecArgs struct {
 	// Describes an alert policy for the component.
 	Alerts    AppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases AppSpecDatabaseArrayInput `pulumi:"databases"`
+	// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+	DisableEdgeCache pulumi.BoolPtrInput `pulumi:"disableEdgeCache"`
+	// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+	DisableEmailObfuscation pulumi.BoolPtrInput `pulumi:"disableEmailObfuscation"`
 	// Describes a domain where the application will be made available.
 	DomainNames AppSpecDomainNameArrayInput `pulumi:"domainNames"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
 	// Specification for app egress configurations.
 	Egresses AppSpecEgressArrayInput `pulumi:"egresses"`
+	// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+	EnhancedThreatControlEnabled pulumi.BoolPtrInput `pulumi:"enhancedThreatControlEnabled"`
 	// Describes an environment variable made available to an app competent.
 	Envs AppSpecEnvArrayInput `pulumi:"envs"`
 	// A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
@@ -279,6 +291,16 @@ func (o AppSpecOutput) Databases() AppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecDatabase { return v.Databases }).(AppSpecDatabaseArrayOutput)
 }
 
+// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecOutput) DisableEdgeCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpec) *bool { return v.DisableEdgeCache }).(pulumi.BoolPtrOutput)
+}
+
+// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecOutput) DisableEmailObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpec) *bool { return v.DisableEmailObfuscation }).(pulumi.BoolPtrOutput)
+}
+
 // Describes a domain where the application will be made available.
 func (o AppSpecOutput) DomainNames() AppSpecDomainNameArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecDomainName { return v.DomainNames }).(AppSpecDomainNameArrayOutput)
@@ -292,6 +314,11 @@ func (o AppSpecOutput) Domains() pulumi.StringArrayOutput {
 // Specification for app egress configurations.
 func (o AppSpecOutput) Egresses() AppSpecEgressArrayOutput {
 	return o.ApplyT(func(v AppSpec) []AppSpecEgress { return v.Egresses }).(AppSpecEgressArrayOutput)
+}
+
+// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecOutput) EnhancedThreatControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AppSpec) *bool { return v.EnhancedThreatControlEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Describes an environment variable made available to an app competent.
@@ -382,6 +409,26 @@ func (o AppSpecPtrOutput) Databases() AppSpecDatabaseArrayOutput {
 	}).(AppSpecDatabaseArrayOutput)
 }
 
+// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecPtrOutput) DisableEdgeCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableEdgeCache
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecPtrOutput) DisableEmailObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableEmailObfuscation
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Describes a domain where the application will be made available.
 func (o AppSpecPtrOutput) DomainNames() AppSpecDomainNameArrayOutput {
 	return o.ApplyT(func(v *AppSpec) []AppSpecDomainName {
@@ -410,6 +457,16 @@ func (o AppSpecPtrOutput) Egresses() AppSpecEgressArrayOutput {
 		}
 		return v.Egresses
 	}).(AppSpecEgressArrayOutput)
+}
+
+// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+func (o AppSpecPtrOutput) EnhancedThreatControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnhancedThreatControlEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Describes an environment variable made available to an app competent.
@@ -23622,10 +23679,16 @@ type GetAppSpec struct {
 	// Describes an alert policy for the component.
 	Alerts    []GetAppSpecAlert    `pulumi:"alerts"`
 	Databases []GetAppSpecDatabase `pulumi:"databases"`
-	Domain    []GetAppSpecDomain   `pulumi:"domain"`
+	// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+	DisableEdgeCache *bool `pulumi:"disableEdgeCache"`
+	// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+	DisableEmailObfuscation *bool              `pulumi:"disableEmailObfuscation"`
+	Domain                  []GetAppSpecDomain `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains  []string           `pulumi:"domains"`
 	Egresses []GetAppSpecEgress `pulumi:"egresses"`
+	// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+	EnhancedThreatControlEnabled *bool `pulumi:"enhancedThreatControlEnabled"`
 	// Describes an environment variable made available to an app competent.
 	Envs []GetAppSpecEnv `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -23657,10 +23720,16 @@ type GetAppSpecArgs struct {
 	// Describes an alert policy for the component.
 	Alerts    GetAppSpecAlertArrayInput    `pulumi:"alerts"`
 	Databases GetAppSpecDatabaseArrayInput `pulumi:"databases"`
-	Domain    GetAppSpecDomainArrayInput   `pulumi:"domain"`
+	// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+	DisableEdgeCache pulumi.BoolPtrInput `pulumi:"disableEdgeCache"`
+	// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+	DisableEmailObfuscation pulumi.BoolPtrInput        `pulumi:"disableEmailObfuscation"`
+	Domain                  GetAppSpecDomainArrayInput `pulumi:"domain"`
 	// Deprecated: This attribute has been replaced by `domain` which supports additional functionality.
 	Domains  pulumi.StringArrayInput    `pulumi:"domains"`
 	Egresses GetAppSpecEgressArrayInput `pulumi:"egresses"`
+	// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+	EnhancedThreatControlEnabled pulumi.BoolPtrInput `pulumi:"enhancedThreatControlEnabled"`
 	// Describes an environment variable made available to an app competent.
 	Envs GetAppSpecEnvArrayInput `pulumi:"envs"`
 	// List of features which is applied to the app
@@ -23737,6 +23806,16 @@ func (o GetAppSpecOutput) Databases() GetAppSpecDatabaseArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDatabase { return v.Databases }).(GetAppSpecDatabaseArrayOutput)
 }
 
+// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+func (o GetAppSpecOutput) DisableEdgeCache() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpec) *bool { return v.DisableEdgeCache }).(pulumi.BoolPtrOutput)
+}
+
+// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+func (o GetAppSpecOutput) DisableEmailObfuscation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpec) *bool { return v.DisableEmailObfuscation }).(pulumi.BoolPtrOutput)
+}
+
 func (o GetAppSpecOutput) Domain() GetAppSpecDomainArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecDomain { return v.Domain }).(GetAppSpecDomainArrayOutput)
 }
@@ -23748,6 +23827,11 @@ func (o GetAppSpecOutput) Domains() pulumi.StringArrayOutput {
 
 func (o GetAppSpecOutput) Egresses() GetAppSpecEgressArrayOutput {
 	return o.ApplyT(func(v GetAppSpec) []GetAppSpecEgress { return v.Egresses }).(GetAppSpecEgressArrayOutput)
+}
+
+// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+func (o GetAppSpecOutput) EnhancedThreatControlEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetAppSpec) *bool { return v.EnhancedThreatControlEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Describes an environment variable made available to an app competent.

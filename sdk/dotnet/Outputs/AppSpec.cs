@@ -19,6 +19,14 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly ImmutableArray<Outputs.AppSpecAlert> Alerts;
         public readonly ImmutableArray<Outputs.AppSpecDatabase> Databases;
         /// <summary>
+        /// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        public readonly bool? DisableEdgeCache;
+        /// <summary>
+        /// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        public readonly bool? DisableEmailObfuscation;
+        /// <summary>
         /// Describes a domain where the application will be made available.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecDomainName> DomainNames;
@@ -27,6 +35,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Specification for app egress configurations.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEgress> Egresses;
+        /// <summary>
+        /// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        public readonly bool? EnhancedThreatControlEnabled;
         /// <summary>
         /// Describes an environment variable made available to an app competent.
         /// </summary>
@@ -59,11 +71,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.AppSpecDatabase> databases,
 
+            bool? disableEdgeCache,
+
+            bool? disableEmailObfuscation,
+
             ImmutableArray<Outputs.AppSpecDomainName> domainNames,
 
             ImmutableArray<string> domains,
 
             ImmutableArray<Outputs.AppSpecEgress> egresses,
+
+            bool? enhancedThreatControlEnabled,
 
             ImmutableArray<Outputs.AppSpecEnv> envs,
 
@@ -87,9 +105,12 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Databases = databases;
+            DisableEdgeCache = disableEdgeCache;
+            DisableEmailObfuscation = disableEmailObfuscation;
             DomainNames = domainNames;
             Domains = domains;
             Egresses = egresses;
+            EnhancedThreatControlEnabled = enhancedThreatControlEnabled;
             Envs = envs;
             Features = features;
             Functions = functions;

@@ -349,6 +349,30 @@ class App(pulumi.CustomResource):
         })
         ```
 
+        ### Edge Controls Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "disable_edge_cache": True,
+            "disable_email_obfuscation": False,
+            "enhanced_threat_control_enabled": True,
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+            }],
+        })
+        ```
+
         ## Import
 
         An app can be imported using its `id`, e.g.
@@ -449,6 +473,30 @@ class App(pulumi.CustomResource):
                         },
                     },
                 }],
+            }],
+        })
+        ```
+
+        ### Edge Controls Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        golang_sample = digitalocean.App("golang-sample", spec={
+            "name": "golang-sample",
+            "region": "ams",
+            "disable_edge_cache": True,
+            "disable_email_obfuscation": False,
+            "enhanced_threat_control_enabled": True,
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
             }],
         })
         ```

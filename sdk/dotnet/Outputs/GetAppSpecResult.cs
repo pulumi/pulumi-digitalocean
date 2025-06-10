@@ -18,9 +18,21 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecAlertResult> Alerts;
         public readonly ImmutableArray<Outputs.GetAppSpecDatabaseResult> Databases;
+        /// <summary>
+        /// Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+        /// </summary>
+        public readonly bool? DisableEdgeCache;
+        /// <summary>
+        /// Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+        /// </summary>
+        public readonly bool? DisableEmailObfuscation;
         public readonly ImmutableArray<Outputs.GetAppSpecDomainResult> Domain;
         public readonly ImmutableArray<string> Domains;
         public readonly ImmutableArray<Outputs.GetAppSpecEgressResult> Egresses;
+        /// <summary>
+        /// Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+        /// </summary>
+        public readonly bool? EnhancedThreatControlEnabled;
         /// <summary>
         /// Describes an environment variable made available to an app competent.
         /// </summary>
@@ -50,11 +62,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecDatabaseResult> databases,
 
+            bool? disableEdgeCache,
+
+            bool? disableEmailObfuscation,
+
             ImmutableArray<Outputs.GetAppSpecDomainResult> domain,
 
             ImmutableArray<string> domains,
 
             ImmutableArray<Outputs.GetAppSpecEgressResult> egresses,
+
+            bool? enhancedThreatControlEnabled,
 
             ImmutableArray<Outputs.GetAppSpecEnvResult> envs,
 
@@ -78,9 +96,12 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             Alerts = alerts;
             Databases = databases;
+            DisableEdgeCache = disableEdgeCache;
+            DisableEmailObfuscation = disableEmailObfuscation;
             Domain = domain;
             Domains = domains;
             Egresses = egresses;
+            EnhancedThreatControlEnabled = enhancedThreatControlEnabled;
             Envs = envs;
             Features = features;
             Functions = functions;

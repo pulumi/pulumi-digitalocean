@@ -28,6 +28,14 @@ export interface AppSpec {
     alerts?: pulumi.Input<pulumi.Input<inputs.AppSpecAlert>[]>;
     databases?: pulumi.Input<pulumi.Input<inputs.AppSpecDatabase>[]>;
     /**
+     * A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+     */
+    disableEdgeCache?: pulumi.Input<boolean>;
+    /**
+     * A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     */
+    disableEmailObfuscation?: pulumi.Input<boolean>;
+    /**
      * Describes a domain where the application will be made available.
      */
     domainNames?: pulumi.Input<pulumi.Input<inputs.AppSpecDomainName>[]>;
@@ -39,6 +47,10 @@ export interface AppSpec {
      * Specification for app egress configurations.
      */
     egresses?: pulumi.Input<pulumi.Input<inputs.AppSpecEgress>[]>;
+    /**
+     * A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     */
+    enhancedThreatControlEnabled?: pulumi.Input<boolean>;
     /**
      * Describes an environment variable made available to an app competent.
      */

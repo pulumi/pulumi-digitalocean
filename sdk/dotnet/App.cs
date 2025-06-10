@@ -140,6 +140,45 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Edge Controls Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
+    ///     {
+    ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
+    ///         {
+    ///             Name = "golang-sample",
+    ///             Region = "ams",
+    ///             DisableEdgeCache = true,
+    ///             DisableEmailObfuscation = false,
+    ///             EnhancedThreatControlEnabled = true,
+    ///             Services = new[]
+    ///             {
+    ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
+    ///                 {
+    ///                     Name = "go-service",
+    ///                     InstanceCount = 1,
+    ///                     InstanceSizeSlug = "apps-s-1vcpu-1gb",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
+    ///                     {
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
+    ///                         Branch = "main",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An app can be imported using its `id`, e.g.

@@ -16,6 +16,7 @@ import com.pulumi.digitalocean.outputs.GetAppSpecService;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSite;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorker;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -30,6 +31,16 @@ public final class GetAppSpec {
      */
     private @Nullable List<GetAppSpecAlert> alerts;
     private @Nullable List<GetAppSpecDatabase> databases;
+    /**
+     * @return Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+     * 
+     */
+    private @Nullable Boolean disableEdgeCache;
+    /**
+     * @return Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+     * 
+     */
+    private @Nullable Boolean disableEmailObfuscation;
     private List<GetAppSpecDomain> domain;
     /**
      * @deprecated
@@ -39,6 +50,11 @@ public final class GetAppSpec {
     @Deprecated /* This attribute has been replaced by `domain` which supports additional functionality. */
     private List<String> domains;
     private @Nullable List<GetAppSpecEgress> egresses;
+    /**
+     * @return Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+     * 
+     */
+    private @Nullable Boolean enhancedThreatControlEnabled;
     /**
      * @return Describes an environment variable made available to an app competent.
      * 
@@ -77,6 +93,20 @@ public final class GetAppSpec {
     public List<GetAppSpecDatabase> databases() {
         return this.databases == null ? List.of() : this.databases;
     }
+    /**
+     * @return Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+     * 
+     */
+    public Optional<Boolean> disableEdgeCache() {
+        return Optional.ofNullable(this.disableEdgeCache);
+    }
+    /**
+     * @return Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+     * 
+     */
+    public Optional<Boolean> disableEmailObfuscation() {
+        return Optional.ofNullable(this.disableEmailObfuscation);
+    }
     public List<GetAppSpecDomain> domain() {
         return this.domain;
     }
@@ -91,6 +121,13 @@ public final class GetAppSpec {
     }
     public List<GetAppSpecEgress> egresses() {
         return this.egresses == null ? List.of() : this.egresses;
+    }
+    /**
+     * @return Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+     * 
+     */
+    public Optional<Boolean> enhancedThreatControlEnabled() {
+        return Optional.ofNullable(this.enhancedThreatControlEnabled);
     }
     /**
      * @return Describes an environment variable made available to an app competent.
@@ -150,9 +187,12 @@ public final class GetAppSpec {
     public static final class Builder {
         private @Nullable List<GetAppSpecAlert> alerts;
         private @Nullable List<GetAppSpecDatabase> databases;
+        private @Nullable Boolean disableEdgeCache;
+        private @Nullable Boolean disableEmailObfuscation;
         private List<GetAppSpecDomain> domain;
         private List<String> domains;
         private @Nullable List<GetAppSpecEgress> egresses;
+        private @Nullable Boolean enhancedThreatControlEnabled;
         private @Nullable List<GetAppSpecEnv> envs;
         private List<String> features;
         private @Nullable List<GetAppSpecFunction> functions;
@@ -168,9 +208,12 @@ public final class GetAppSpec {
     	      Objects.requireNonNull(defaults);
     	      this.alerts = defaults.alerts;
     	      this.databases = defaults.databases;
+    	      this.disableEdgeCache = defaults.disableEdgeCache;
+    	      this.disableEmailObfuscation = defaults.disableEmailObfuscation;
     	      this.domain = defaults.domain;
     	      this.domains = defaults.domains;
     	      this.egresses = defaults.egresses;
+    	      this.enhancedThreatControlEnabled = defaults.enhancedThreatControlEnabled;
     	      this.envs = defaults.envs;
     	      this.features = defaults.features;
     	      this.functions = defaults.functions;
@@ -202,6 +245,18 @@ public final class GetAppSpec {
             return databases(List.of(databases));
         }
         @CustomType.Setter
+        public Builder disableEdgeCache(@Nullable Boolean disableEdgeCache) {
+
+            this.disableEdgeCache = disableEdgeCache;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableEmailObfuscation(@Nullable Boolean disableEmailObfuscation) {
+
+            this.disableEmailObfuscation = disableEmailObfuscation;
+            return this;
+        }
+        @CustomType.Setter
         public Builder domain(List<GetAppSpecDomain> domain) {
             if (domain == null) {
               throw new MissingRequiredPropertyException("GetAppSpec", "domain");
@@ -231,6 +286,12 @@ public final class GetAppSpec {
         }
         public Builder egresses(GetAppSpecEgress... egresses) {
             return egresses(List.of(egresses));
+        }
+        @CustomType.Setter
+        public Builder enhancedThreatControlEnabled(@Nullable Boolean enhancedThreatControlEnabled) {
+
+            this.enhancedThreatControlEnabled = enhancedThreatControlEnabled;
+            return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<GetAppSpecEnv> envs) {
@@ -323,9 +384,12 @@ public final class GetAppSpec {
             final var _resultValue = new GetAppSpec();
             _resultValue.alerts = alerts;
             _resultValue.databases = databases;
+            _resultValue.disableEdgeCache = disableEdgeCache;
+            _resultValue.disableEmailObfuscation = disableEmailObfuscation;
             _resultValue.domain = domain;
             _resultValue.domains = domains;
             _resultValue.egresses = egresses;
+            _resultValue.enhancedThreatControlEnabled = enhancedThreatControlEnabled;
             _resultValue.envs = envs;
             _resultValue.features = features;
             _resultValue.functions = functions;

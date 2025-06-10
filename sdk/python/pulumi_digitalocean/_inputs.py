@@ -448,6 +448,14 @@ if not MYPY:
         Describes an alert policy for the component.
         """
         databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgsDict']]]]
+        disable_edge_cache: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        """
+        disable_email_obfuscation: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        """
         domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgsDict']]]]
         """
         Describes a domain where the application will be made available.
@@ -456,6 +464,10 @@ if not MYPY:
         egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgsDict']]]]
         """
         Specification for app egress configurations.
+        """
+        enhanced_threat_control_enabled: NotRequired[pulumi.Input[builtins.bool]]
+        """
+        A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
         """
         envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgsDict']]]]
         """
@@ -487,9 +499,12 @@ class AppSpecArgs:
                  name: pulumi.Input[builtins.str],
                  alerts: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]]] = None,
                  databases: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgs']]]] = None,
+                 disable_edge_cache: Optional[pulumi.Input[builtins.bool]] = None,
+                 disable_email_obfuscation: Optional[pulumi.Input[builtins.bool]] = None,
                  domain_names: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]] = None,
                  domains: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  egresses: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]] = None,
+                 enhanced_threat_control_enabled: Optional[pulumi.Input[builtins.bool]] = None,
                  envs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]]] = None,
                  features: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
@@ -502,8 +517,11 @@ class AppSpecArgs:
         """
         :param pulumi.Input[builtins.str] name: The name of the component.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgs']]] alerts: Describes an alert policy for the component.
+        :param pulumi.Input[builtins.bool] disable_edge_cache: A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        :param pulumi.Input[builtins.bool] disable_email_obfuscation: A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]] domain_names: Describes a domain where the application will be made available.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]] egresses: Specification for app egress configurations.
+        :param pulumi.Input[builtins.bool] enhanced_threat_control_enabled: A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[Sequence[pulumi.Input[builtins.str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
@@ -514,6 +532,10 @@ class AppSpecArgs:
             pulumi.set(__self__, "alerts", alerts)
         if databases is not None:
             pulumi.set(__self__, "databases", databases)
+        if disable_edge_cache is not None:
+            pulumi.set(__self__, "disable_edge_cache", disable_edge_cache)
+        if disable_email_obfuscation is not None:
+            pulumi.set(__self__, "disable_email_obfuscation", disable_email_obfuscation)
         if domain_names is not None:
             pulumi.set(__self__, "domain_names", domain_names)
         if domains is not None:
@@ -523,6 +545,8 @@ class AppSpecArgs:
             pulumi.set(__self__, "domains", domains)
         if egresses is not None:
             pulumi.set(__self__, "egresses", egresses)
+        if enhanced_threat_control_enabled is not None:
+            pulumi.set(__self__, "enhanced_threat_control_enabled", enhanced_threat_control_enabled)
         if envs is not None:
             pulumi.set(__self__, "envs", envs)
         if features is not None:
@@ -576,6 +600,30 @@ class AppSpecArgs:
         pulumi.set(self, "databases", value)
 
     @property
+    @pulumi.getter(name="disableEdgeCache")
+    def disable_edge_cache(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "disable_edge_cache")
+
+    @disable_edge_cache.setter
+    def disable_edge_cache(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable_edge_cache", value)
+
+    @property
+    @pulumi.getter(name="disableEmailObfuscation")
+    def disable_email_obfuscation(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "disable_email_obfuscation")
+
+    @disable_email_obfuscation.setter
+    def disable_email_obfuscation(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "disable_email_obfuscation", value)
+
+    @property
     @pulumi.getter(name="domainNames")
     def domain_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgs']]]]:
         """
@@ -608,6 +656,18 @@ class AppSpecArgs:
     @egresses.setter
     def egresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgs']]]]):
         pulumi.set(self, "egresses", value)
+
+    @property
+    @pulumi.getter(name="enhancedThreatControlEnabled")
+    def enhanced_threat_control_enabled(self) -> Optional[pulumi.Input[builtins.bool]]:
+        """
+        A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        """
+        return pulumi.get(self, "enhanced_threat_control_enabled")
+
+    @enhanced_threat_control_enabled.setter
+    def enhanced_threat_control_enabled(self, value: Optional[pulumi.Input[builtins.bool]]):
+        pulumi.set(self, "enhanced_threat_control_enabled", value)
 
     @property
     @pulumi.getter
