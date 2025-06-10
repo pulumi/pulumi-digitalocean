@@ -28,6 +28,14 @@ export interface AppSpec {
     alerts?: outputs.AppSpecAlert[];
     databases?: outputs.AppSpecDatabase[];
     /**
+     * A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+     */
+    disableEdgeCache?: boolean;
+    /**
+     * A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     */
+    disableEmailObfuscation?: boolean;
+    /**
      * Describes a domain where the application will be made available.
      */
     domainNames: outputs.AppSpecDomainName[];
@@ -39,6 +47,10 @@ export interface AppSpec {
      * Specification for app egress configurations.
      */
     egresses?: outputs.AppSpecEgress[];
+    /**
+     * A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     */
+    enhancedThreatControlEnabled?: boolean;
     /**
      * Describes an environment variable made available to an app competent.
      */
@@ -2237,12 +2249,24 @@ export interface GetAppSpec {
      */
     alerts?: outputs.GetAppSpecAlert[];
     databases?: outputs.GetAppSpecDatabase[];
+    /**
+     * Whether to disable the edge cache for the app. Default is false, which enables the edge cache.
+     */
+    disableEdgeCache?: boolean;
+    /**
+     * Email obfuscation configuration for the app. Default is false, which keeps the email obfuscated.
+     */
+    disableEmailObfuscation?: boolean;
     domain: outputs.GetAppSpecDomain[];
     /**
      * @deprecated This attribute has been replaced by `domain` which supports additional functionality.
      */
     domains: string[];
     egresses?: outputs.GetAppSpecEgress[];
+    /**
+     * Whether to enable enhanced threat control for the app. Default is false. Set to true to enable enhanced threat control, putting additional security measures for Layer 7 DDoS attacks.
+     */
+    enhancedThreatControlEnabled?: boolean;
     /**
      * Describes an environment variable made available to an app competent.
      */

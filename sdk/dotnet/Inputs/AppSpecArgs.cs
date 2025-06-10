@@ -32,6 +32,18 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _databases = value;
         }
 
+        /// <summary>
+        /// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        [Input("disableEdgeCache")]
+        public Input<bool>? DisableEdgeCache { get; set; }
+
+        /// <summary>
+        /// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        [Input("disableEmailObfuscation")]
+        public Input<bool>? DisableEmailObfuscation { get; set; }
+
         [Input("domainNames")]
         private InputList<Inputs.AppSpecDomainNameArgs>? _domainNames;
 
@@ -64,6 +76,12 @@ namespace Pulumi.DigitalOcean.Inputs
             get => _egresses ?? (_egresses = new InputList<Inputs.AppSpecEgressArgs>());
             set => _egresses = value;
         }
+
+        /// <summary>
+        /// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// </summary>
+        [Input("enhancedThreatControlEnabled")]
+        public Input<bool>? EnhancedThreatControlEnabled { get; set; }
 
         [Input("envs")]
         private InputList<Inputs.AppSpecEnvArgs>? _envs;

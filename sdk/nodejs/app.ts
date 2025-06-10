@@ -87,6 +87,30 @@ import * as utilities from "./utilities";
  * }});
  * ```
  *
+ * ### Edge Controls Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const golang_sample = new digitalocean.App("golang-sample", {spec: {
+ *     name: "golang-sample",
+ *     region: "ams",
+ *     disableEdgeCache: true,
+ *     disableEmailObfuscation: false,
+ *     enhancedThreatControlEnabled: true,
+ *     services: [{
+ *         name: "go-service",
+ *         instanceCount: 1,
+ *         instanceSizeSlug: "apps-s-1vcpu-1gb",
+ *         git: {
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
+ *             branch: "main",
+ *         },
+ *     }],
+ * }});
+ * ```
+ *
  * ## Import
  *
  * An app can be imported using its `id`, e.g.

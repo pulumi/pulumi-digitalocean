@@ -17,6 +17,7 @@ import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +49,36 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<List<AppSpecDatabaseArgs>>> databases() {
         return Optional.ofNullable(this.databases);
+    }
+
+    /**
+     * A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    @Import(name="disableEdgeCache")
+    private @Nullable Output<Boolean> disableEdgeCache;
+
+    /**
+     * @return A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    public Optional<Output<Boolean>> disableEdgeCache() {
+        return Optional.ofNullable(this.disableEdgeCache);
+    }
+
+    /**
+     * A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    @Import(name="disableEmailObfuscation")
+    private @Nullable Output<Boolean> disableEmailObfuscation;
+
+    /**
+     * @return A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    public Optional<Output<Boolean>> disableEmailObfuscation() {
+        return Optional.ofNullable(this.disableEmailObfuscation);
     }
 
     /**
@@ -97,6 +128,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AppSpecEgressArgs>>> egresses() {
         return Optional.ofNullable(this.egresses);
+    }
+
+    /**
+     * A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    @Import(name="enhancedThreatControlEnabled")
+    private @Nullable Output<Boolean> enhancedThreatControlEnabled;
+
+    /**
+     * @return A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+     * 
+     */
+    public Optional<Output<Boolean>> enhancedThreatControlEnabled() {
+        return Optional.ofNullable(this.enhancedThreatControlEnabled);
     }
 
     /**
@@ -214,9 +260,12 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     private AppSpecArgs(AppSpecArgs $) {
         this.alerts = $.alerts;
         this.databases = $.databases;
+        this.disableEdgeCache = $.disableEdgeCache;
+        this.disableEmailObfuscation = $.disableEmailObfuscation;
         this.domainNames = $.domainNames;
         this.domains = $.domains;
         this.egresses = $.egresses;
+        this.enhancedThreatControlEnabled = $.enhancedThreatControlEnabled;
         this.envs = $.envs;
         this.features = $.features;
         this.functions = $.functions;
@@ -289,6 +338,48 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder databases(AppSpecDatabaseArgs... databases) {
             return databases(List.of(databases));
+        }
+
+        /**
+         * @param disableEdgeCache A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEdgeCache(@Nullable Output<Boolean> disableEdgeCache) {
+            $.disableEdgeCache = disableEdgeCache;
+            return this;
+        }
+
+        /**
+         * @param disableEdgeCache A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEdgeCache(Boolean disableEdgeCache) {
+            return disableEdgeCache(Output.of(disableEdgeCache));
+        }
+
+        /**
+         * @param disableEmailObfuscation A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEmailObfuscation(@Nullable Output<Boolean> disableEmailObfuscation) {
+            $.disableEmailObfuscation = disableEmailObfuscation;
+            return this;
+        }
+
+        /**
+         * @param disableEmailObfuscation A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableEmailObfuscation(Boolean disableEmailObfuscation) {
+            return disableEmailObfuscation(Output.of(disableEmailObfuscation));
         }
 
         /**
@@ -388,6 +479,27 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder egresses(AppSpecEgressArgs... egresses) {
             return egresses(List.of(egresses));
+        }
+
+        /**
+         * @param enhancedThreatControlEnabled A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enhancedThreatControlEnabled(@Nullable Output<Boolean> enhancedThreatControlEnabled) {
+            $.enhancedThreatControlEnabled = enhancedThreatControlEnabled;
+            return this;
+        }
+
+        /**
+         * @param enhancedThreatControlEnabled A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enhancedThreatControlEnabled(Boolean enhancedThreatControlEnabled) {
+            return enhancedThreatControlEnabled(Output.of(enhancedThreatControlEnabled));
         }
 
         /**

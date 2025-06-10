@@ -183,6 +183,57 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Edge Controls Example
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.App;
+ * import com.pulumi.digitalocean.AppArgs;
+ * import com.pulumi.digitalocean.inputs.AppSpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var golang_sample = new App("golang-sample", AppArgs.builder()
+ *             .spec(AppSpecArgs.builder()
+ *                 .name("golang-sample")
+ *                 .region("ams")
+ *                 .disableEdgeCache(true)
+ *                 .disableEmailObfuscation(false)
+ *                 .enhancedThreatControlEnabled(true)
+ *                 .services(AppSpecServiceArgs.builder()
+ *                     .name("go-service")
+ *                     .instanceCount(1)
+ *                     .instanceSizeSlug("apps-s-1vcpu-1gb")
+ *                     .git(AppSpecServiceGitArgs.builder()
+ *                         .repoCloneUrl("https://github.com/digitalocean/sample-golang.git")
+ *                         .branch("main")
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * An app can be imported using its `id`, e.g.
