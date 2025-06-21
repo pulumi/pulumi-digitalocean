@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterClusterAutoscalerConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final GetKubernetesClusterClusterAutoscalerConfigurationArgs Empty = new GetKubernetesClusterClusterAutoscalerConfigurationArgs();
+
+    @Import(name="expanders")
+    private @Nullable Output<List<String>> expanders;
+
+    public Optional<Output<List<String>>> expanders() {
+        return Optional.ofNullable(this.expanders);
+    }
 
     @Import(name="scaleDownUnneededTime")
     private @Nullable Output<String> scaleDownUnneededTime;
@@ -33,6 +41,7 @@ public final class GetKubernetesClusterClusterAutoscalerConfigurationArgs extend
     private GetKubernetesClusterClusterAutoscalerConfigurationArgs() {}
 
     private GetKubernetesClusterClusterAutoscalerConfigurationArgs(GetKubernetesClusterClusterAutoscalerConfigurationArgs $) {
+        this.expanders = $.expanders;
         this.scaleDownUnneededTime = $.scaleDownUnneededTime;
         this.scaleDownUtilizationThreshold = $.scaleDownUtilizationThreshold;
     }
@@ -53,6 +62,19 @@ public final class GetKubernetesClusterClusterAutoscalerConfigurationArgs extend
 
         public Builder(GetKubernetesClusterClusterAutoscalerConfigurationArgs defaults) {
             $ = new GetKubernetesClusterClusterAutoscalerConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder expanders(@Nullable Output<List<String>> expanders) {
+            $.expanders = expanders;
+            return this;
+        }
+
+        public Builder expanders(List<String> expanders) {
+            return expanders(Output.of(expanders));
+        }
+
+        public Builder expanders(String... expanders) {
+            return expanders(List.of(expanders));
         }
 
         public Builder scaleDownUnneededTime(@Nullable Output<String> scaleDownUnneededTime) {

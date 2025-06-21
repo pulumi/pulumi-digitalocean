@@ -8122,6 +8122,7 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 expanders: Optional[Sequence[builtins.str]] = None,
                  scale_down_unneeded_time: Optional[builtins.str] = None,
                  scale_down_utilization_threshold: Optional[builtins.float] = None):
         """
@@ -8130,10 +8131,17 @@ class KubernetesClusterClusterAutoscalerConfiguration(dict):
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param builtins.float scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
         """
+        if expanders is not None:
+            pulumi.set(__self__, "expanders", expanders)
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter
+    def expanders(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "expanders")
 
     @property
     @pulumi.getter(name="scaleDownUnneededTime")
@@ -16573,12 +16581,20 @@ class GetImagesSortResult(dict):
 @pulumi.output_type
 class GetKubernetesClusterClusterAutoscalerConfigurationResult(dict):
     def __init__(__self__, *,
+                 expanders: Optional[Sequence[builtins.str]] = None,
                  scale_down_unneeded_time: Optional[builtins.str] = None,
                  scale_down_utilization_threshold: Optional[builtins.float] = None):
+        if expanders is not None:
+            pulumi.set(__self__, "expanders", expanders)
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter
+    def expanders(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "expanders")
 
     @property
     @pulumi.getter(name="scaleDownUnneededTime")

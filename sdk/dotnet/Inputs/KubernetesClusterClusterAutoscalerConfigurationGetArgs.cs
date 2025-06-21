@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class KubernetesClusterClusterAutoscalerConfigurationGetArgs : global::Pulumi.ResourceArgs
     {
+        [Input("expanders")]
+        private InputList<string>? _expanders;
+        public InputList<string> Expanders
+        {
+            get => _expanders ?? (_expanders = new InputList<string>());
+            set => _expanders = value;
+        }
+
         /// <summary>
         /// String setting how long a node should be unneeded before it's eligible for scale down.
         /// 

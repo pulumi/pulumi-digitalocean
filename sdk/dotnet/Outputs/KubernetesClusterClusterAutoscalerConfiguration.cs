@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class KubernetesClusterClusterAutoscalerConfiguration
     {
+        public readonly ImmutableArray<string> Expanders;
         /// <summary>
         /// String setting how long a node should be unneeded before it's eligible for scale down.
         /// 
@@ -26,10 +27,13 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private KubernetesClusterClusterAutoscalerConfiguration(
+            ImmutableArray<string> expanders,
+
             string? scaleDownUnneededTime,
 
             double? scaleDownUtilizationThreshold)
         {
+            Expanders = expanders;
             ScaleDownUnneededTime = scaleDownUnneededTime;
             ScaleDownUtilizationThreshold = scaleDownUtilizationThreshold;
         }

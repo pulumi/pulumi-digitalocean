@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterClusterAutoscalerConfiguration extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesClusterClusterAutoscalerConfiguration Empty = new GetKubernetesClusterClusterAutoscalerConfiguration();
+
+    @Import(name="expanders")
+    private @Nullable List<String> expanders;
+
+    public Optional<List<String>> expanders() {
+        return Optional.ofNullable(this.expanders);
+    }
 
     @Import(name="scaleDownUnneededTime")
     private @Nullable String scaleDownUnneededTime;
@@ -32,6 +40,7 @@ public final class GetKubernetesClusterClusterAutoscalerConfiguration extends co
     private GetKubernetesClusterClusterAutoscalerConfiguration() {}
 
     private GetKubernetesClusterClusterAutoscalerConfiguration(GetKubernetesClusterClusterAutoscalerConfiguration $) {
+        this.expanders = $.expanders;
         this.scaleDownUnneededTime = $.scaleDownUnneededTime;
         this.scaleDownUtilizationThreshold = $.scaleDownUtilizationThreshold;
     }
@@ -52,6 +61,15 @@ public final class GetKubernetesClusterClusterAutoscalerConfiguration extends co
 
         public Builder(GetKubernetesClusterClusterAutoscalerConfiguration defaults) {
             $ = new GetKubernetesClusterClusterAutoscalerConfiguration(Objects.requireNonNull(defaults));
+        }
+
+        public Builder expanders(@Nullable List<String> expanders) {
+            $.expanders = expanders;
+            return this;
+        }
+
+        public Builder expanders(String... expanders) {
+            return expanders(List.of(expanders));
         }
 
         public Builder scaleDownUnneededTime(@Nullable String scaleDownUnneededTime) {

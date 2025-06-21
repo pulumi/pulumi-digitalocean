@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -15,6 +16,13 @@ import javax.annotation.Nullable;
 public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KubernetesClusterClusterAutoscalerConfigurationArgs Empty = new KubernetesClusterClusterAutoscalerConfigurationArgs();
+
+    @Import(name="expanders")
+    private @Nullable Output<List<String>> expanders;
+
+    public Optional<Output<List<String>>> expanders() {
+        return Optional.ofNullable(this.expanders);
+    }
 
     /**
      * String setting how long a node should be unneeded before it&#39;s eligible for scale down.
@@ -53,6 +61,7 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
     private KubernetesClusterClusterAutoscalerConfigurationArgs() {}
 
     private KubernetesClusterClusterAutoscalerConfigurationArgs(KubernetesClusterClusterAutoscalerConfigurationArgs $) {
+        this.expanders = $.expanders;
         this.scaleDownUnneededTime = $.scaleDownUnneededTime;
         this.scaleDownUtilizationThreshold = $.scaleDownUtilizationThreshold;
     }
@@ -73,6 +82,19 @@ public final class KubernetesClusterClusterAutoscalerConfigurationArgs extends c
 
         public Builder(KubernetesClusterClusterAutoscalerConfigurationArgs defaults) {
             $ = new KubernetesClusterClusterAutoscalerConfigurationArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder expanders(@Nullable Output<List<String>> expanders) {
+            $.expanders = expanders;
+            return this;
+        }
+
+        public Builder expanders(List<String> expanders) {
+            return expanders(Output.of(expanders));
+        }
+
+        public Builder expanders(String... expanders) {
+            return expanders(List.of(expanders));
         }
 
         /**
