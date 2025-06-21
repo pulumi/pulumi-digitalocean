@@ -13,15 +13,19 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetKubernetesClusterClusterAutoscalerConfigurationResult
     {
+        public readonly ImmutableArray<string> Expanders;
         public readonly string? ScaleDownUnneededTime;
         public readonly double? ScaleDownUtilizationThreshold;
 
         [OutputConstructor]
         private GetKubernetesClusterClusterAutoscalerConfigurationResult(
+            ImmutableArray<string> expanders,
+
             string? scaleDownUnneededTime,
 
             double? scaleDownUtilizationThreshold)
         {
+            Expanders = expanders;
             ScaleDownUnneededTime = scaleDownUnneededTime;
             ScaleDownUtilizationThreshold = scaleDownUtilizationThreshold;
         }

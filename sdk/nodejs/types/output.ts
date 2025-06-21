@@ -4506,6 +4506,7 @@ export interface GetImagesSort {
 }
 
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
+    expanders?: string[];
     scaleDownUnneededTime?: string;
     scaleDownUtilizationThreshold?: number;
 }
@@ -5316,6 +5317,7 @@ export interface GetVpcNatGatewayVpc {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    expanders?: string[];
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
      *

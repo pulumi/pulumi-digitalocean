@@ -376,6 +376,8 @@ class VpcNatGateway(pulumi.CustomResource):
         Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
         read and delete VPC NAT Gateways.
 
+        NOTE: VPC NAT Gateway is currently in Private Preview.
+
         ## Example Usage
 
         ```python
@@ -427,6 +429,8 @@ class VpcNatGateway(pulumi.CustomResource):
         """
         Provides a DigitalOcean VPC NAT Gateway resource. This can be used to create, modify,
         read and delete VPC NAT Gateways.
+
+        NOTE: VPC NAT Gateway is currently in Private Preview.
 
         ## Example Usage
 

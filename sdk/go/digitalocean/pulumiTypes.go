@@ -18793,6 +18793,7 @@ func (o FirewallPendingChangeArrayOutput) Index(i pulumi.IntInput) FirewallPendi
 }
 
 type KubernetesClusterClusterAutoscalerConfiguration struct {
+	Expanders []string `pulumi:"expanders"`
 	// String setting how long a node should be unneeded before it's eligible for scale down.
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -18813,6 +18814,7 @@ type KubernetesClusterClusterAutoscalerConfigurationInput interface {
 }
 
 type KubernetesClusterClusterAutoscalerConfigurationArgs struct {
+	Expanders pulumi.StringArrayInput `pulumi:"expanders"`
 	// String setting how long a node should be unneeded before it's eligible for scale down.
 	//
 	// This resource supports customized create timeouts. The default timeout is 30 minutes.
@@ -18870,6 +18872,10 @@ func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ToKubernetesClust
 
 func (o KubernetesClusterClusterAutoscalerConfigurationOutput) ToKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) KubernetesClusterClusterAutoscalerConfigurationOutput {
 	return o
+}
+
+func (o KubernetesClusterClusterAutoscalerConfigurationOutput) Expanders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v KubernetesClusterClusterAutoscalerConfiguration) []string { return v.Expanders }).(pulumi.StringArrayOutput)
 }
 
 // String setting how long a node should be unneeded before it's eligible for scale down.
@@ -41692,6 +41698,7 @@ func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
 }
 
 type GetKubernetesClusterClusterAutoscalerConfiguration struct {
+	Expanders                     []string `pulumi:"expanders"`
 	ScaleDownUnneededTime         *string  `pulumi:"scaleDownUnneededTime"`
 	ScaleDownUtilizationThreshold *float64 `pulumi:"scaleDownUtilizationThreshold"`
 }
@@ -41708,8 +41715,9 @@ type GetKubernetesClusterClusterAutoscalerConfigurationInput interface {
 }
 
 type GetKubernetesClusterClusterAutoscalerConfigurationArgs struct {
-	ScaleDownUnneededTime         pulumi.StringPtrInput  `pulumi:"scaleDownUnneededTime"`
-	ScaleDownUtilizationThreshold pulumi.Float64PtrInput `pulumi:"scaleDownUtilizationThreshold"`
+	Expanders                     pulumi.StringArrayInput `pulumi:"expanders"`
+	ScaleDownUnneededTime         pulumi.StringPtrInput   `pulumi:"scaleDownUnneededTime"`
+	ScaleDownUtilizationThreshold pulumi.Float64PtrInput  `pulumi:"scaleDownUtilizationThreshold"`
 }
 
 func (GetKubernetesClusterClusterAutoscalerConfigurationArgs) ElementType() reflect.Type {
@@ -41761,6 +41769,10 @@ func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ToGetKubernete
 
 func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ToGetKubernetesClusterClusterAutoscalerConfigurationOutputWithContext(ctx context.Context) GetKubernetesClusterClusterAutoscalerConfigurationOutput {
 	return o
+}
+
+func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) Expanders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetKubernetesClusterClusterAutoscalerConfiguration) []string { return v.Expanders }).(pulumi.StringArrayOutput)
 }
 
 func (o GetKubernetesClusterClusterAutoscalerConfigurationOutput) ScaleDownUnneededTime() pulumi.StringPtrOutput {

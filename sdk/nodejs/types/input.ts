@@ -2639,11 +2639,13 @@ export interface GetImagesSortArgs {
 }
 
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
+    expanders?: string[];
     scaleDownUnneededTime?: string;
     scaleDownUtilizationThreshold?: number;
 }
 
 export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
+    expanders?: pulumi.Input<pulumi.Input<string>[]>;
     scaleDownUnneededTime?: pulumi.Input<string>;
     scaleDownUtilizationThreshold?: pulumi.Input<number>;
 }
@@ -3155,6 +3157,7 @@ export interface GetTagsSortArgs {
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {
+    expanders?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * String setting how long a node should be unneeded before it's eligible for scale down.
      *

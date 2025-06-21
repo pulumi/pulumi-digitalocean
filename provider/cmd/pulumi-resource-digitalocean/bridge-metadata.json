@@ -732,7 +732,14 @@
                 "majorVersion": 4,
                 "fields": {
                     "cluster_autoscaler_configuration": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "expanders": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "control_plane_firewall": {
                         "maxItemsOne": true,
@@ -1841,7 +1848,14 @@
                 "majorVersion": 4,
                 "fields": {
                     "cluster_autoscaler_configuration": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "expanders": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "control_plane_firewall": {
                         "maxItemsOne": false,

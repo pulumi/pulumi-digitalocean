@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean.Inputs
 
     public sealed class GetKubernetesClusterClusterAutoscalerConfigurationInputArgs : global::Pulumi.ResourceArgs
     {
+        [Input("expanders")]
+        private InputList<string>? _expanders;
+        public InputList<string> Expanders
+        {
+            get => _expanders ?? (_expanders = new InputList<string>());
+            set => _expanders = value;
+        }
+
         [Input("scaleDownUnneededTime")]
         public Input<string>? ScaleDownUnneededTime { get; set; }
 

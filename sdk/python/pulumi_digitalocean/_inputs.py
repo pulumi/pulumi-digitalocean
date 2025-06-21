@@ -11061,6 +11061,7 @@ class FirewallPendingChangeArgs:
 
 if not MYPY:
     class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+        expanders: NotRequired[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]
         scale_down_unneeded_time: NotRequired[pulumi.Input[builtins.str]]
         """
         String setting how long a node should be unneeded before it's eligible for scale down.
@@ -11077,6 +11078,7 @@ elif False:
 @pulumi.input_type
 class KubernetesClusterClusterAutoscalerConfigurationArgs:
     def __init__(__self__, *,
+                 expanders: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]] = None,
                  scale_down_unneeded_time: Optional[pulumi.Input[builtins.str]] = None,
                  scale_down_utilization_threshold: Optional[pulumi.Input[builtins.float]] = None):
         """
@@ -11085,10 +11087,21 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
                This resource supports customized create timeouts. The default timeout is 30 minutes.
         :param pulumi.Input[builtins.float] scale_down_utilization_threshold: Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
         """
+        if expanders is not None:
+            pulumi.set(__self__, "expanders", expanders)
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter
+    def expanders(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]:
+        return pulumi.get(self, "expanders")
+
+    @expanders.setter
+    def expanders(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[builtins.str]]]]):
+        pulumi.set(self, "expanders", value)
 
     @property
     @pulumi.getter(name="scaleDownUnneededTime")
@@ -14632,6 +14645,7 @@ class GetImagesSortArgs:
 
 if not MYPY:
     class GetKubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+        expanders: NotRequired[Sequence[builtins.str]]
         scale_down_unneeded_time: NotRequired[builtins.str]
         scale_down_utilization_threshold: NotRequired[builtins.float]
 elif False:
@@ -14640,12 +14654,24 @@ elif False:
 @pulumi.input_type
 class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
     def __init__(__self__, *,
+                 expanders: Optional[Sequence[builtins.str]] = None,
                  scale_down_unneeded_time: Optional[builtins.str] = None,
                  scale_down_utilization_threshold: Optional[builtins.float] = None):
+        if expanders is not None:
+            pulumi.set(__self__, "expanders", expanders)
         if scale_down_unneeded_time is not None:
             pulumi.set(__self__, "scale_down_unneeded_time", scale_down_unneeded_time)
         if scale_down_utilization_threshold is not None:
             pulumi.set(__self__, "scale_down_utilization_threshold", scale_down_utilization_threshold)
+
+    @property
+    @pulumi.getter
+    def expanders(self) -> Optional[Sequence[builtins.str]]:
+        return pulumi.get(self, "expanders")
+
+    @expanders.setter
+    def expanders(self, value: Optional[Sequence[builtins.str]]):
+        pulumi.set(self, "expanders", value)
 
     @property
     @pulumi.getter(name="scaleDownUnneededTime")

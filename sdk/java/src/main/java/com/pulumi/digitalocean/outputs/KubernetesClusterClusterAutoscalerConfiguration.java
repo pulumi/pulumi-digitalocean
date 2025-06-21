@@ -6,12 +6,14 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Double;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
 public final class KubernetesClusterClusterAutoscalerConfiguration {
+    private @Nullable List<String> expanders;
     /**
      * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
      * 
@@ -26,6 +28,9 @@ public final class KubernetesClusterClusterAutoscalerConfiguration {
     private @Nullable Double scaleDownUtilizationThreshold;
 
     private KubernetesClusterClusterAutoscalerConfiguration() {}
+    public List<String> expanders() {
+        return this.expanders == null ? List.of() : this.expanders;
+    }
     /**
      * @return String setting how long a node should be unneeded before it&#39;s eligible for scale down.
      * 
@@ -52,15 +57,26 @@ public final class KubernetesClusterClusterAutoscalerConfiguration {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable List<String> expanders;
         private @Nullable String scaleDownUnneededTime;
         private @Nullable Double scaleDownUtilizationThreshold;
         public Builder() {}
         public Builder(KubernetesClusterClusterAutoscalerConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.expanders = defaults.expanders;
     	      this.scaleDownUnneededTime = defaults.scaleDownUnneededTime;
     	      this.scaleDownUtilizationThreshold = defaults.scaleDownUtilizationThreshold;
         }
 
+        @CustomType.Setter
+        public Builder expanders(@Nullable List<String> expanders) {
+
+            this.expanders = expanders;
+            return this;
+        }
+        public Builder expanders(String... expanders) {
+            return expanders(List.of(expanders));
+        }
         @CustomType.Setter
         public Builder scaleDownUnneededTime(@Nullable String scaleDownUnneededTime) {
 
@@ -75,6 +91,7 @@ public final class KubernetesClusterClusterAutoscalerConfiguration {
         }
         public KubernetesClusterClusterAutoscalerConfiguration build() {
             final var _resultValue = new KubernetesClusterClusterAutoscalerConfiguration();
+            _resultValue.expanders = expanders;
             _resultValue.scaleDownUnneededTime = scaleDownUnneededTime;
             _resultValue.scaleDownUtilizationThreshold = scaleDownUtilizationThreshold;
             return _resultValue;
