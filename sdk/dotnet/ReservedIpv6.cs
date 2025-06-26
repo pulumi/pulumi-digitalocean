@@ -61,8 +61,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// the uniform resource name for the reserved ipv6
         /// </summary>
-        [Output("urn")]
-        public Output<string> Urn { get; private set; } = null!;
+        [Output("reservedIpv6Urn")]
+        public Output<string> ReservedIpv6Urn { get; private set; } = null!;
 
 
         /// <summary>
@@ -145,8 +145,8 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// the uniform resource name for the reserved ipv6
         /// </summary>
-        [Input("urn")]
-        public Input<string>? Urn { get; set; }
+        [Input("reservedIpv6Urn")]
+        public Input<string>? ReservedIpv6Urn { get; set; }
 
         public ReservedIpv6State()
         {

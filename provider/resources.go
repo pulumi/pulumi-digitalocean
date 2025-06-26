@@ -303,7 +303,12 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"digitalocean_reserved_ip_assignment": {Tok: makeResource(digitalOceanMod, "ReservedIpAssignment")},
 
-			"digitalocean_reserved_ipv6":            {Docs: &info.Doc{AllowMissing: true}},
+			"digitalocean_reserved_ipv6": {
+				Docs: &info.Doc{AllowMissing: true},
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"urn": {Name: "reservedIpv6Urn"},
+				},
+			},
 			"digitalocean_reserved_ipv6_assignment": {Docs: &info.Doc{AllowMissing: true}},
 		},
 		ExtraTypes: map[string]schema.ComplexTypeSpec{

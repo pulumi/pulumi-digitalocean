@@ -98,15 +98,15 @@ public class ReservedIpv6 extends com.pulumi.resources.CustomResource {
      * the uniform resource name for the reserved ipv6
      * 
      */
-    @Export(name="urn", refs={String.class}, tree="[0]")
-    private Output<String> urn;
+    @Export(name="reservedIpv6Urn", refs={String.class}, tree="[0]")
+    private Output<String> reservedIpv6Urn;
 
     /**
      * @return the uniform resource name for the reserved ipv6
      * 
      */
-    public Output<String> urn_() {
-        return this.urn;
+    public Output<String> reservedIpv6Urn() {
+        return this.reservedIpv6Urn;
     }
 
     /**
