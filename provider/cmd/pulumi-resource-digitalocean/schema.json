@@ -16393,7 +16393,7 @@
                     "type": "string",
                     "description": "The region that the reserved IPv6 needs to be reserved to.\n"
                 },
-                "urn": {
+                "reservedIpv6Urn": {
                     "type": "string",
                     "description": "the uniform resource name for the reserved ipv6\n"
                 }
@@ -16402,7 +16402,7 @@
                 "dropletId",
                 "ip",
                 "regionSlug",
-                "urn"
+                "reservedIpv6Urn"
             ],
             "inputProperties": {
                 "dropletId": {
@@ -16434,7 +16434,7 @@
                         "description": "The region that the reserved IPv6 needs to be reserved to.\n",
                         "willReplaceOnChanges": true
                     },
-                    "urn": {
+                    "reservedIpv6Urn": {
                         "type": "string",
                         "description": "the uniform resource name for the reserved ipv6\n"
                     }

@@ -60,7 +60,7 @@ type ReservedIpv6 struct {
 	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug pulumi.StringOutput `pulumi:"regionSlug"`
 	// the uniform resource name for the reserved ipv6
-	Urn pulumi.StringOutput `pulumi:"urn"`
+	ReservedIpv6Urn pulumi.StringOutput `pulumi:"reservedIpv6Urn"`
 }
 
 // NewReservedIpv6 registers a new resource with the given unique name, arguments, and options.
@@ -101,7 +101,7 @@ type reservedIpv6State struct {
 	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug *string `pulumi:"regionSlug"`
 	// the uniform resource name for the reserved ipv6
-	Urn *string `pulumi:"urn"`
+	ReservedIpv6Urn *string `pulumi:"reservedIpv6Urn"`
 }
 
 type ReservedIpv6State struct {
@@ -110,7 +110,7 @@ type ReservedIpv6State struct {
 	// The region that the reserved IPv6 needs to be reserved to.
 	RegionSlug pulumi.StringPtrInput
 	// the uniform resource name for the reserved ipv6
-	Urn pulumi.StringPtrInput
+	ReservedIpv6Urn pulumi.StringPtrInput
 }
 
 func (ReservedIpv6State) ElementType() reflect.Type {
@@ -233,8 +233,8 @@ func (o ReservedIpv6Output) RegionSlug() pulumi.StringOutput {
 }
 
 // the uniform resource name for the reserved ipv6
-func (o ReservedIpv6Output) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v *ReservedIpv6) pulumi.StringOutput { return v.Urn }).(pulumi.StringOutput)
+func (o ReservedIpv6Output) ReservedIpv6Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v *ReservedIpv6) pulumi.StringOutput { return v.ReservedIpv6Urn }).(pulumi.StringOutput)
 }
 
 type ReservedIpv6ArrayOutput struct{ *pulumi.OutputState }

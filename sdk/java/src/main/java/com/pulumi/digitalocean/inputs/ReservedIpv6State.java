@@ -49,15 +49,15 @@ public final class ReservedIpv6State extends com.pulumi.resources.ResourceArgs {
      * the uniform resource name for the reserved ipv6
      * 
      */
-    @Import(name="urn")
-    private @Nullable Output<String> urn;
+    @Import(name="reservedIpv6Urn")
+    private @Nullable Output<String> reservedIpv6Urn;
 
     /**
      * @return the uniform resource name for the reserved ipv6
      * 
      */
-    public Optional<Output<String>> urn() {
-        return Optional.ofNullable(this.urn);
+    public Optional<Output<String>> reservedIpv6Urn() {
+        return Optional.ofNullable(this.reservedIpv6Urn);
     }
 
     private ReservedIpv6State() {}
@@ -66,7 +66,7 @@ public final class ReservedIpv6State extends com.pulumi.resources.ResourceArgs {
         this.dropletId = $.dropletId;
         this.ip = $.ip;
         this.regionSlug = $.regionSlug;
-        this.urn = $.urn;
+        this.reservedIpv6Urn = $.reservedIpv6Urn;
     }
 
     public static Builder builder() {
@@ -127,24 +127,24 @@ public final class ReservedIpv6State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param urn the uniform resource name for the reserved ipv6
+         * @param reservedIpv6Urn the uniform resource name for the reserved ipv6
          * 
          * @return builder
          * 
          */
-        public Builder urn(@Nullable Output<String> urn) {
-            $.urn = urn;
+        public Builder reservedIpv6Urn(@Nullable Output<String> reservedIpv6Urn) {
+            $.reservedIpv6Urn = reservedIpv6Urn;
             return this;
         }
 
         /**
-         * @param urn the uniform resource name for the reserved ipv6
+         * @param reservedIpv6Urn the uniform resource name for the reserved ipv6
          * 
          * @return builder
          * 
          */
-        public Builder urn(String urn) {
-            return urn(Output.of(urn));
+        public Builder reservedIpv6Urn(String reservedIpv6Urn) {
+            return reservedIpv6Urn(Output.of(reservedIpv6Urn));
         }
 
         public ReservedIpv6State build() {

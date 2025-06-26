@@ -70,11 +70,11 @@ class _ReservedIpv6State:
                  droplet_id: Optional[pulumi.Input[builtins.int]] = None,
                  ip: Optional[pulumi.Input[builtins.str]] = None,
                  region_slug: Optional[pulumi.Input[builtins.str]] = None,
-                 urn: Optional[pulumi.Input[builtins.str]] = None):
+                 reserved_ipv6_urn: Optional[pulumi.Input[builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservedIpv6 resources.
         :param pulumi.Input[builtins.str] region_slug: The region that the reserved IPv6 needs to be reserved to.
-        :param pulumi.Input[builtins.str] urn: the uniform resource name for the reserved ipv6
+        :param pulumi.Input[builtins.str] reserved_ipv6_urn: the uniform resource name for the reserved ipv6
         """
         if droplet_id is not None:
             pulumi.set(__self__, "droplet_id", droplet_id)
@@ -82,8 +82,8 @@ class _ReservedIpv6State:
             pulumi.set(__self__, "ip", ip)
         if region_slug is not None:
             pulumi.set(__self__, "region_slug", region_slug)
-        if urn is not None:
-            pulumi.set(__self__, "urn", urn)
+        if reserved_ipv6_urn is not None:
+            pulumi.set(__self__, "reserved_ipv6_urn", reserved_ipv6_urn)
 
     @property
     @pulumi.getter(name="dropletId")
@@ -116,16 +116,16 @@ class _ReservedIpv6State:
         pulumi.set(self, "region_slug", value)
 
     @property
-    @pulumi.getter
-    def urn(self) -> Optional[pulumi.Input[builtins.str]]:
+    @pulumi.getter(name="reservedIpv6Urn")
+    def reserved_ipv6_urn(self) -> Optional[pulumi.Input[builtins.str]]:
         """
         the uniform resource name for the reserved ipv6
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "reserved_ipv6_urn")
 
-    @urn.setter
-    def urn(self, value: Optional[pulumi.Input[builtins.str]]):
-        pulumi.set(self, "urn", value)
+    @reserved_ipv6_urn.setter
+    def reserved_ipv6_urn(self, value: Optional[pulumi.Input[builtins.str]]):
+        pulumi.set(self, "reserved_ipv6_urn", value)
 
 
 @pulumi.type_token("digitalocean:index/reservedIpv6:ReservedIpv6")
@@ -230,7 +230,7 @@ class ReservedIpv6(pulumi.CustomResource):
             if region_slug is None and not opts.urn:
                 raise TypeError("Missing required property 'region_slug'")
             __props__.__dict__["region_slug"] = region_slug
-            __props__.__dict__["urn"] = None
+            __props__.__dict__["reserved_ipv6_urn"] = None
         super(ReservedIpv6, __self__).__init__(
             'digitalocean:index/reservedIpv6:ReservedIpv6',
             resource_name,
@@ -244,7 +244,7 @@ class ReservedIpv6(pulumi.CustomResource):
             droplet_id: Optional[pulumi.Input[builtins.int]] = None,
             ip: Optional[pulumi.Input[builtins.str]] = None,
             region_slug: Optional[pulumi.Input[builtins.str]] = None,
-            urn: Optional[pulumi.Input[builtins.str]] = None) -> 'ReservedIpv6':
+            reserved_ipv6_urn: Optional[pulumi.Input[builtins.str]] = None) -> 'ReservedIpv6':
         """
         Get an existing ReservedIpv6 resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -253,7 +253,7 @@ class ReservedIpv6(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[builtins.str] region_slug: The region that the reserved IPv6 needs to be reserved to.
-        :param pulumi.Input[builtins.str] urn: the uniform resource name for the reserved ipv6
+        :param pulumi.Input[builtins.str] reserved_ipv6_urn: the uniform resource name for the reserved ipv6
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -262,7 +262,7 @@ class ReservedIpv6(pulumi.CustomResource):
         __props__.__dict__["droplet_id"] = droplet_id
         __props__.__dict__["ip"] = ip
         __props__.__dict__["region_slug"] = region_slug
-        __props__.__dict__["urn"] = urn
+        __props__.__dict__["reserved_ipv6_urn"] = reserved_ipv6_urn
         return ReservedIpv6(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -284,10 +284,10 @@ class ReservedIpv6(pulumi.CustomResource):
         return pulumi.get(self, "region_slug")
 
     @property
-    @pulumi.getter
-    def urn(self) -> pulumi.Output[builtins.str]:
+    @pulumi.getter(name="reservedIpv6Urn")
+    def reserved_ipv6_urn(self) -> pulumi.Output[builtins.str]:
         """
         the uniform resource name for the reserved ipv6
         """
-        return pulumi.get(self, "urn")
+        return pulumi.get(self, "reserved_ipv6_urn")
 

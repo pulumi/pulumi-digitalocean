@@ -66,7 +66,7 @@ export class ReservedIpv6 extends pulumi.CustomResource {
     /**
      * the uniform resource name for the reserved ipv6
      */
-    public /*out*/ readonly urn!: pulumi.Output<string>;
+    public /*out*/ readonly reservedIpv6Urn!: pulumi.Output<string>;
 
     /**
      * Create a ReservedIpv6 resource with the given unique name, arguments, and options.
@@ -84,7 +84,7 @@ export class ReservedIpv6 extends pulumi.CustomResource {
             resourceInputs["dropletId"] = state ? state.dropletId : undefined;
             resourceInputs["ip"] = state ? state.ip : undefined;
             resourceInputs["regionSlug"] = state ? state.regionSlug : undefined;
-            resourceInputs["urn"] = state ? state.urn : undefined;
+            resourceInputs["reservedIpv6Urn"] = state ? state.reservedIpv6Urn : undefined;
         } else {
             const args = argsOrState as ReservedIpv6Args | undefined;
             if ((!args || args.regionSlug === undefined) && !opts.urn) {
@@ -93,7 +93,7 @@ export class ReservedIpv6 extends pulumi.CustomResource {
             resourceInputs["dropletId"] = args ? args.dropletId : undefined;
             resourceInputs["ip"] = args ? args.ip : undefined;
             resourceInputs["regionSlug"] = args ? args.regionSlug : undefined;
-            resourceInputs["urn"] = undefined /*out*/;
+            resourceInputs["reservedIpv6Urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReservedIpv6.__pulumiType, name, resourceInputs, opts);
@@ -113,7 +113,7 @@ export interface ReservedIpv6State {
     /**
      * the uniform resource name for the reserved ipv6
      */
-    urn?: pulumi.Input<string>;
+    reservedIpv6Urn?: pulumi.Input<string>;
 }
 
 /**
