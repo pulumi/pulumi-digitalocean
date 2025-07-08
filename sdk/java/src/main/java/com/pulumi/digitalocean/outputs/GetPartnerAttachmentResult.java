@@ -16,11 +16,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetPartnerAttachmentResult {
     private @Nullable GetPartnerAttachmentBgp bgp;
+    private List<String> childrens;
     private Integer connectionBandwidthInMbps;
     private String createdAt;
     private String id;
     private String naasProvider;
     private String name;
+    private String parentUuid;
     private @Nullable String redundancyZone;
     private String region;
     private String state;
@@ -29,6 +31,9 @@ public final class GetPartnerAttachmentResult {
     private GetPartnerAttachmentResult() {}
     public Optional<GetPartnerAttachmentBgp> bgp() {
         return Optional.ofNullable(this.bgp);
+    }
+    public List<String> childrens() {
+        return this.childrens;
     }
     public Integer connectionBandwidthInMbps() {
         return this.connectionBandwidthInMbps;
@@ -44,6 +49,9 @@ public final class GetPartnerAttachmentResult {
     }
     public String name() {
         return this.name;
+    }
+    public String parentUuid() {
+        return this.parentUuid;
     }
     public Optional<String> redundancyZone() {
         return Optional.ofNullable(this.redundancyZone);
@@ -68,11 +76,13 @@ public final class GetPartnerAttachmentResult {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable GetPartnerAttachmentBgp bgp;
+        private List<String> childrens;
         private Integer connectionBandwidthInMbps;
         private String createdAt;
         private String id;
         private String naasProvider;
         private String name;
+        private String parentUuid;
         private @Nullable String redundancyZone;
         private String region;
         private String state;
@@ -81,11 +91,13 @@ public final class GetPartnerAttachmentResult {
         public Builder(GetPartnerAttachmentResult defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.bgp = defaults.bgp;
+    	      this.childrens = defaults.childrens;
     	      this.connectionBandwidthInMbps = defaults.connectionBandwidthInMbps;
     	      this.createdAt = defaults.createdAt;
     	      this.id = defaults.id;
     	      this.naasProvider = defaults.naasProvider;
     	      this.name = defaults.name;
+    	      this.parentUuid = defaults.parentUuid;
     	      this.redundancyZone = defaults.redundancyZone;
     	      this.region = defaults.region;
     	      this.state = defaults.state;
@@ -97,6 +109,17 @@ public final class GetPartnerAttachmentResult {
 
             this.bgp = bgp;
             return this;
+        }
+        @CustomType.Setter
+        public Builder childrens(List<String> childrens) {
+            if (childrens == null) {
+              throw new MissingRequiredPropertyException("GetPartnerAttachmentResult", "childrens");
+            }
+            this.childrens = childrens;
+            return this;
+        }
+        public Builder childrens(String... childrens) {
+            return childrens(List.of(childrens));
         }
         @CustomType.Setter
         public Builder connectionBandwidthInMbps(Integer connectionBandwidthInMbps) {
@@ -139,6 +162,14 @@ public final class GetPartnerAttachmentResult {
             return this;
         }
         @CustomType.Setter
+        public Builder parentUuid(String parentUuid) {
+            if (parentUuid == null) {
+              throw new MissingRequiredPropertyException("GetPartnerAttachmentResult", "parentUuid");
+            }
+            this.parentUuid = parentUuid;
+            return this;
+        }
+        @CustomType.Setter
         public Builder redundancyZone(@Nullable String redundancyZone) {
 
             this.redundancyZone = redundancyZone;
@@ -174,11 +205,13 @@ public final class GetPartnerAttachmentResult {
         public GetPartnerAttachmentResult build() {
             final var _resultValue = new GetPartnerAttachmentResult();
             _resultValue.bgp = bgp;
+            _resultValue.childrens = childrens;
             _resultValue.connectionBandwidthInMbps = connectionBandwidthInMbps;
             _resultValue.createdAt = createdAt;
             _resultValue.id = id;
             _resultValue.naasProvider = naasProvider;
             _resultValue.name = name;
+            _resultValue.parentUuid = parentUuid;
             _resultValue.redundancyZone = redundancyZone;
             _resultValue.region = region;
             _resultValue.state = state;

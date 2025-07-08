@@ -26,6 +26,21 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The children uuids of Partner Attachment
+     * 
+     */
+    @Import(name="childrens")
+    private @Nullable Output<List<String>> childrens;
+
+    /**
+     * @return The children uuids of Partner Attachment
+     * 
+     */
+    public Optional<Output<List<String>>> childrens() {
+        return Optional.ofNullable(this.childrens);
+    }
+
+    /**
      * The connection bandwidth in Mbps
      * 
      */
@@ -83,6 +98,21 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * The UUID of the Parent Partner Attachment
+     * 
+     */
+    @Import(name="parentUuid")
+    private @Nullable Output<String> parentUuid;
+
+    /**
+     * @return The UUID of the Parent Partner Attachment
+     * 
+     */
+    public Optional<Output<String>> parentUuid() {
+        return Optional.ofNullable(this.parentUuid);
     }
 
     /**
@@ -149,10 +179,12 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
 
     private PartnerAttachmentState(PartnerAttachmentState $) {
         this.bgp = $.bgp;
+        this.childrens = $.childrens;
         this.connectionBandwidthInMbps = $.connectionBandwidthInMbps;
         this.createdAt = $.createdAt;
         this.naasProvider = $.naasProvider;
         this.name = $.name;
+        this.parentUuid = $.parentUuid;
         this.redundancyZone = $.redundancyZone;
         this.region = $.region;
         this.state = $.state;
@@ -184,6 +216,37 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
 
         public Builder bgp(PartnerAttachmentBgpArgs bgp) {
             return bgp(Output.of(bgp));
+        }
+
+        /**
+         * @param childrens The children uuids of Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childrens(@Nullable Output<List<String>> childrens) {
+            $.childrens = childrens;
+            return this;
+        }
+
+        /**
+         * @param childrens The children uuids of Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childrens(List<String> childrens) {
+            return childrens(Output.of(childrens));
+        }
+
+        /**
+         * @param childrens The children uuids of Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder childrens(String... childrens) {
+            return childrens(List.of(childrens));
         }
 
         /**
@@ -268,6 +331,27 @@ public final class PartnerAttachmentState extends com.pulumi.resources.ResourceA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parentUuid The UUID of the Parent Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentUuid(@Nullable Output<String> parentUuid) {
+            $.parentUuid = parentUuid;
+            return this;
+        }
+
+        /**
+         * @param parentUuid The UUID of the Parent Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentUuid(String parentUuid) {
+            return parentUuid(Output.of(parentUuid));
         }
 
         /**

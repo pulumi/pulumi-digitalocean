@@ -35,7 +35,11 @@ export class PartnerAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PartnerAttachment.__pulumiType;
     }
 
-    public readonly bgp!: pulumi.Output<outputs.PartnerAttachmentBgp | undefined>;
+    public readonly bgp!: pulumi.Output<outputs.PartnerAttachmentBgp>;
+    /**
+     * The children uuids of Partner Attachment
+     */
+    public /*out*/ readonly childrens!: pulumi.Output<string[]>;
     /**
      * The connection bandwidth in Mbps
      */
@@ -53,9 +57,13 @@ export class PartnerAttachment extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * The UUID of the Parent Partner Attachment
+     */
+    public readonly parentUuid!: pulumi.Output<string | undefined>;
+    /**
      * The redundancy zone for the NaaS
      */
-    public readonly redundancyZone!: pulumi.Output<string | undefined>;
+    public readonly redundancyZone!: pulumi.Output<string>;
     /**
      * The region where the Partner Attachment will be created
      */
@@ -83,10 +91,12 @@ export class PartnerAttachment extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PartnerAttachmentState | undefined;
             resourceInputs["bgp"] = state ? state.bgp : undefined;
+            resourceInputs["childrens"] = state ? state.childrens : undefined;
             resourceInputs["connectionBandwidthInMbps"] = state ? state.connectionBandwidthInMbps : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["naasProvider"] = state ? state.naasProvider : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["parentUuid"] = state ? state.parentUuid : undefined;
             resourceInputs["redundancyZone"] = state ? state.redundancyZone : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
@@ -109,9 +119,11 @@ export class PartnerAttachment extends pulumi.CustomResource {
             resourceInputs["connectionBandwidthInMbps"] = args ? args.connectionBandwidthInMbps : undefined;
             resourceInputs["naasProvider"] = args ? args.naasProvider : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["parentUuid"] = args ? args.parentUuid : undefined;
             resourceInputs["redundancyZone"] = args ? args.redundancyZone : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
+            resourceInputs["childrens"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
@@ -125,6 +137,10 @@ export class PartnerAttachment extends pulumi.CustomResource {
  */
 export interface PartnerAttachmentState {
     bgp?: pulumi.Input<inputs.PartnerAttachmentBgp>;
+    /**
+     * The children uuids of Partner Attachment
+     */
+    childrens?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The connection bandwidth in Mbps
      */
@@ -141,6 +157,10 @@ export interface PartnerAttachmentState {
      * The name of the Partner Attachment
      */
     name?: pulumi.Input<string>;
+    /**
+     * The UUID of the Parent Partner Attachment
+     */
+    parentUuid?: pulumi.Input<string>;
     /**
      * The redundancy zone for the NaaS
      */
@@ -176,6 +196,10 @@ export interface PartnerAttachmentArgs {
      * The name of the Partner Attachment
      */
     name?: pulumi.Input<string>;
+    /**
+     * The UUID of the Parent Partner Attachment
+     */
+    parentUuid?: pulumi.Input<string>;
     /**
      * The redundancy zone for the NaaS
      */

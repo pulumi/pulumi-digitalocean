@@ -75,6 +75,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FloatingIp{}
 	case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
 		r = &FloatingIpAssignment{}
+	case "digitalocean:index/genaiAgent:GenaiAgent":
+		r = &GenaiAgent{}
 	case "digitalocean:index/kubernetesCluster:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -293,6 +295,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/floatingIpAssignment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiAgent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

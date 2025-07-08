@@ -41,6 +41,10 @@ import com.pulumi.digitalocean.inputs.GetFirewallArgs;
 import com.pulumi.digitalocean.inputs.GetFirewallPlainArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -53,6 +57,8 @@ import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
 import com.pulumi.digitalocean.inputs.GetPartnerAttachmentArgs;
 import com.pulumi.digitalocean.inputs.GetPartnerAttachmentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetPartnerAttachmentServiceKeyArgs;
+import com.pulumi.digitalocean.inputs.GetPartnerAttachmentServiceKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetProjectArgs;
 import com.pulumi.digitalocean.inputs.GetProjectPlainArgs;
 import com.pulumi.digitalocean.inputs.GetProjectsArgs;
@@ -116,12 +122,15 @@ import com.pulumi.digitalocean.outputs.GetDropletSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetDropletsResult;
 import com.pulumi.digitalocean.outputs.GetFirewallResult;
 import com.pulumi.digitalocean.outputs.GetFloatingIpResult;
+import com.pulumi.digitalocean.outputs.GetGenaiAgentResult;
+import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
 import com.pulumi.digitalocean.outputs.GetPartnerAttachmentResult;
+import com.pulumi.digitalocean.outputs.GetPartnerAttachmentServiceKeyResult;
 import com.pulumi.digitalocean.outputs.GetProjectResult;
 import com.pulumi.digitalocean.outputs.GetProjectsResult;
 import com.pulumi.digitalocean.outputs.GetRecordResult;
@@ -6254,6 +6263,42 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args) {
+        return getGenaiAgent(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args) {
+        return getGenaiAgentPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentsResult> getGenaiAgents() {
+        return getGenaiAgents(GetGenaiAgentsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain() {
+        return getGenaiAgentsPlain(GetGenaiAgentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args) {
+        return getGenaiAgents(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args) {
+        return getGenaiAgentsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Get information on an image for use in other resources (e.g. creating a Droplet
      * based on snapshot). This data source provides all of the image properties as
@@ -9690,6 +9735,21 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetPartnerAttachmentResult> getPartnerAttachmentPlain(GetPartnerAttachmentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getPartnerAttachment:getPartnerAttachment", TypeShape.of(GetPartnerAttachmentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(GetPartnerAttachmentServiceKeyArgs args) {
+        return getPartnerAttachmentServiceKey(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKeyPlain(GetPartnerAttachmentServiceKeyPlainArgs args) {
+        return getPartnerAttachmentServiceKeyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(GetPartnerAttachmentServiceKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey", TypeShape.of(GetPartnerAttachmentServiceKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKey(GetPartnerAttachmentServiceKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey", TypeShape.of(GetPartnerAttachmentServiceKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetPartnerAttachmentServiceKeyResult> getPartnerAttachmentServiceKeyPlain(GetPartnerAttachmentServiceKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey", TypeShape.of(GetPartnerAttachmentServiceKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,

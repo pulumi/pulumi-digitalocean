@@ -20,10 +20,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="digitalocean:index/partnerAttachment:PartnerAttachment")
 public class PartnerAttachment extends com.pulumi.resources.CustomResource {
     @Export(name="bgp", refs={PartnerAttachmentBgp.class}, tree="[0]")
-    private Output</* @Nullable */ PartnerAttachmentBgp> bgp;
+    private Output<PartnerAttachmentBgp> bgp;
 
-    public Output<Optional<PartnerAttachmentBgp>> bgp() {
-        return Codegen.optional(this.bgp);
+    public Output<PartnerAttachmentBgp> bgp() {
+        return this.bgp;
+    }
+    /**
+     * The children uuids of Partner Attachment
+     * 
+     */
+    @Export(name="childrens", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> childrens;
+
+    /**
+     * @return The children uuids of Partner Attachment
+     * 
+     */
+    public Output<List<String>> childrens() {
+        return this.childrens;
     }
     /**
      * The connection bandwidth in Mbps
@@ -82,18 +96,32 @@ public class PartnerAttachment extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * The UUID of the Parent Partner Attachment
+     * 
+     */
+    @Export(name="parentUuid", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parentUuid;
+
+    /**
+     * @return The UUID of the Parent Partner Attachment
+     * 
+     */
+    public Output<Optional<String>> parentUuid() {
+        return Codegen.optional(this.parentUuid);
+    }
+    /**
      * The redundancy zone for the NaaS
      * 
      */
     @Export(name="redundancyZone", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> redundancyZone;
+    private Output<String> redundancyZone;
 
     /**
      * @return The redundancy zone for the NaaS
      * 
      */
-    public Output<Optional<String>> redundancyZone() {
-        return Codegen.optional(this.redundancyZone);
+    public Output<String> redundancyZone() {
+        return this.redundancyZone;
     }
     /**
      * The region where the Partner Attachment will be created

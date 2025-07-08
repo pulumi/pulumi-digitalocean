@@ -34,6 +34,7 @@ from .droplet_snapshot import *
 from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
+from .genai_agent import *
 from .get_account import *
 from .get_app import *
 from .get_certificate import *
@@ -51,12 +52,15 @@ from .get_droplet_snapshot import *
 from .get_droplets import *
 from .get_firewall import *
 from .get_floating_ip import *
+from .get_genai_agent import *
+from .get_genai_agents import *
 from .get_image import *
 from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
 from .get_partner_attachment import *
+from .get_partner_attachment_service_key import *
 from .get_project import *
 from .get_projects import *
 from .get_record import *
@@ -335,6 +339,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/floatingIpAssignment:FloatingIpAssignment": "FloatingIpAssignment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiAgent",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiAgent:GenaiAgent": "GenaiAgent"
   }
  },
  {

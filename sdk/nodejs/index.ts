@@ -140,6 +140,11 @@ export type FloatingIpAssignment = import("./floatingIpAssignment").FloatingIpAs
 export const FloatingIpAssignment: typeof import("./floatingIpAssignment").FloatingIpAssignment = null as any;
 utilities.lazyLoad(exports, ["FloatingIpAssignment"], () => require("./floatingIpAssignment"));
 
+export { GenaiAgentArgs, GenaiAgentState } from "./genaiAgent";
+export type GenaiAgent = import("./genaiAgent").GenaiAgent;
+export const GenaiAgent: typeof import("./genaiAgent").GenaiAgent = null as any;
+utilities.lazyLoad(exports, ["GenaiAgent"], () => require("./genaiAgent"));
+
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -225,6 +230,16 @@ export const getFloatingIp: typeof import("./getFloatingIp").getFloatingIp = nul
 export const getFloatingIpOutput: typeof import("./getFloatingIp").getFloatingIpOutput = null as any;
 utilities.lazyLoad(exports, ["getFloatingIp","getFloatingIpOutput"], () => require("./getFloatingIp"));
 
+export { GetGenaiAgentArgs, GetGenaiAgentResult, GetGenaiAgentOutputArgs } from "./getGenaiAgent";
+export const getGenaiAgent: typeof import("./getGenaiAgent").getGenaiAgent = null as any;
+export const getGenaiAgentOutput: typeof import("./getGenaiAgent").getGenaiAgentOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiAgent","getGenaiAgentOutput"], () => require("./getGenaiAgent"));
+
+export { GetGenaiAgentsArgs, GetGenaiAgentsResult, GetGenaiAgentsOutputArgs } from "./getGenaiAgents";
+export const getGenaiAgents: typeof import("./getGenaiAgents").getGenaiAgents = null as any;
+export const getGenaiAgentsOutput: typeof import("./getGenaiAgents").getGenaiAgentsOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiAgents","getGenaiAgentsOutput"], () => require("./getGenaiAgents"));
+
 export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
 export const getImage: typeof import("./getImage").getImage = null as any;
 export const getImageOutput: typeof import("./getImage").getImageOutput = null as any;
@@ -254,6 +269,11 @@ export { GetPartnerAttachmentArgs, GetPartnerAttachmentResult, GetPartnerAttachm
 export const getPartnerAttachment: typeof import("./getPartnerAttachment").getPartnerAttachment = null as any;
 export const getPartnerAttachmentOutput: typeof import("./getPartnerAttachment").getPartnerAttachmentOutput = null as any;
 utilities.lazyLoad(exports, ["getPartnerAttachment","getPartnerAttachmentOutput"], () => require("./getPartnerAttachment"));
+
+export { GetPartnerAttachmentServiceKeyArgs, GetPartnerAttachmentServiceKeyResult, GetPartnerAttachmentServiceKeyOutputArgs } from "./getPartnerAttachmentServiceKey";
+export const getPartnerAttachmentServiceKey: typeof import("./getPartnerAttachmentServiceKey").getPartnerAttachmentServiceKey = null as any;
+export const getPartnerAttachmentServiceKeyOutput: typeof import("./getPartnerAttachmentServiceKey").getPartnerAttachmentServiceKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getPartnerAttachmentServiceKey","getPartnerAttachmentServiceKeyOutput"], () => require("./getPartnerAttachmentServiceKey"));
 
 export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
 export const getProject: typeof import("./getProject").getProject = null as any;
@@ -579,6 +599,8 @@ const _module = {
                 return new FloatingIp(name, <any>undefined, { urn })
             case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
                 return new FloatingIpAssignment(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiAgent:GenaiAgent":
+                return new GenaiAgent(name, <any>undefined, { urn })
             case "digitalocean:index/kubernetesCluster:KubernetesCluster":
                 return new KubernetesCluster(name, <any>undefined, { urn })
             case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -665,6 +687,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/dropletSnapshot", _
 pulumi.runtime.registerResourceModule("digitalocean", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIp", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIpAssignment", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgent", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
