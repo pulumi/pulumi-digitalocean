@@ -32,11 +32,13 @@ type LookupPartnerAttachmentArgs struct {
 // A collection of values returned by getPartnerAttachment.
 type LookupPartnerAttachmentResult struct {
 	Bgp                       *GetPartnerAttachmentBgp `pulumi:"bgp"`
+	Childrens                 []string                 `pulumi:"childrens"`
 	ConnectionBandwidthInMbps int                      `pulumi:"connectionBandwidthInMbps"`
 	CreatedAt                 string                   `pulumi:"createdAt"`
 	Id                        string                   `pulumi:"id"`
 	NaasProvider              string                   `pulumi:"naasProvider"`
 	Name                      string                   `pulumi:"name"`
+	ParentUuid                string                   `pulumi:"parentUuid"`
 	RedundancyZone            *string                  `pulumi:"redundancyZone"`
 	Region                    string                   `pulumi:"region"`
 	State                     string                   `pulumi:"state"`
@@ -83,6 +85,10 @@ func (o LookupPartnerAttachmentResultOutput) Bgp() GetPartnerAttachmentBgpPtrOut
 	return o.ApplyT(func(v LookupPartnerAttachmentResult) *GetPartnerAttachmentBgp { return v.Bgp }).(GetPartnerAttachmentBgpPtrOutput)
 }
 
+func (o LookupPartnerAttachmentResultOutput) Childrens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupPartnerAttachmentResult) []string { return v.Childrens }).(pulumi.StringArrayOutput)
+}
+
 func (o LookupPartnerAttachmentResultOutput) ConnectionBandwidthInMbps() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupPartnerAttachmentResult) int { return v.ConnectionBandwidthInMbps }).(pulumi.IntOutput)
 }
@@ -101,6 +107,10 @@ func (o LookupPartnerAttachmentResultOutput) NaasProvider() pulumi.StringOutput 
 
 func (o LookupPartnerAttachmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPartnerAttachmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o LookupPartnerAttachmentResultOutput) ParentUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPartnerAttachmentResult) string { return v.ParentUuid }).(pulumi.StringOutput)
 }
 
 func (o LookupPartnerAttachmentResultOutput) RedundancyZone() pulumi.StringPtrOutput {

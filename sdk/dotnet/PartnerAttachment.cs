@@ -13,7 +13,13 @@ namespace Pulumi.DigitalOcean
     public partial class PartnerAttachment : global::Pulumi.CustomResource
     {
         [Output("bgp")]
-        public Output<Outputs.PartnerAttachmentBgp?> Bgp { get; private set; } = null!;
+        public Output<Outputs.PartnerAttachmentBgp> Bgp { get; private set; } = null!;
+
+        /// <summary>
+        /// The children uuids of Partner Attachment
+        /// </summary>
+        [Output("childrens")]
+        public Output<ImmutableArray<string>> Childrens { get; private set; } = null!;
 
         /// <summary>
         /// The connection bandwidth in Mbps
@@ -40,10 +46,16 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The UUID of the Parent Partner Attachment
+        /// </summary>
+        [Output("parentUuid")]
+        public Output<string?> ParentUuid { get; private set; } = null!;
+
+        /// <summary>
         /// The redundancy zone for the NaaS
         /// </summary>
         [Output("redundancyZone")]
-        public Output<string?> RedundancyZone { get; private set; } = null!;
+        public Output<string> RedundancyZone { get; private set; } = null!;
 
         /// <summary>
         /// The region where the Partner Attachment will be created
@@ -131,6 +143,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The UUID of the Parent Partner Attachment
+        /// </summary>
+        [Input("parentUuid")]
+        public Input<string>? ParentUuid { get; set; }
+
+        /// <summary>
         /// The redundancy zone for the NaaS
         /// </summary>
         [Input("redundancyZone")]
@@ -165,6 +183,18 @@ namespace Pulumi.DigitalOcean
         [Input("bgp")]
         public Input<Inputs.PartnerAttachmentBgpGetArgs>? Bgp { get; set; }
 
+        [Input("childrens")]
+        private InputList<string>? _childrens;
+
+        /// <summary>
+        /// The children uuids of Partner Attachment
+        /// </summary>
+        public InputList<string> Childrens
+        {
+            get => _childrens ?? (_childrens = new InputList<string>());
+            set => _childrens = value;
+        }
+
         /// <summary>
         /// The connection bandwidth in Mbps
         /// </summary>
@@ -188,6 +218,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The UUID of the Parent Partner Attachment
+        /// </summary>
+        [Input("parentUuid")]
+        public Input<string>? ParentUuid { get; set; }
 
         /// <summary>
         /// The redundancy zone for the NaaS

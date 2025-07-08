@@ -29,10 +29,13 @@ class GetPartnerAttachmentResult:
     """
     A collection of values returned by getPartnerAttachment.
     """
-    def __init__(__self__, bgp=None, connection_bandwidth_in_mbps=None, created_at=None, id=None, naas_provider=None, name=None, redundancy_zone=None, region=None, state=None, vpc_ids=None):
+    def __init__(__self__, bgp=None, childrens=None, connection_bandwidth_in_mbps=None, created_at=None, id=None, naas_provider=None, name=None, parent_uuid=None, redundancy_zone=None, region=None, state=None, vpc_ids=None):
         if bgp and not isinstance(bgp, dict):
             raise TypeError("Expected argument 'bgp' to be a dict")
         pulumi.set(__self__, "bgp", bgp)
+        if childrens and not isinstance(childrens, list):
+            raise TypeError("Expected argument 'childrens' to be a list")
+        pulumi.set(__self__, "childrens", childrens)
         if connection_bandwidth_in_mbps and not isinstance(connection_bandwidth_in_mbps, int):
             raise TypeError("Expected argument 'connection_bandwidth_in_mbps' to be a int")
         pulumi.set(__self__, "connection_bandwidth_in_mbps", connection_bandwidth_in_mbps)
@@ -48,6 +51,9 @@ class GetPartnerAttachmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if parent_uuid and not isinstance(parent_uuid, str):
+            raise TypeError("Expected argument 'parent_uuid' to be a str")
+        pulumi.set(__self__, "parent_uuid", parent_uuid)
         if redundancy_zone and not isinstance(redundancy_zone, str):
             raise TypeError("Expected argument 'redundancy_zone' to be a str")
         pulumi.set(__self__, "redundancy_zone", redundancy_zone)
@@ -65,6 +71,11 @@ class GetPartnerAttachmentResult:
     @pulumi.getter
     def bgp(self) -> Optional['outputs.GetPartnerAttachmentBgpResult']:
         return pulumi.get(self, "bgp")
+
+    @property
+    @pulumi.getter
+    def childrens(self) -> Sequence[builtins.str]:
+        return pulumi.get(self, "childrens")
 
     @property
     @pulumi.getter(name="connectionBandwidthInMbps")
@@ -90,6 +101,11 @@ class GetPartnerAttachmentResult:
     @pulumi.getter
     def name(self) -> builtins.str:
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> builtins.str:
+        return pulumi.get(self, "parent_uuid")
 
     @property
     @pulumi.getter(name="redundancyZone")
@@ -119,11 +135,13 @@ class AwaitableGetPartnerAttachmentResult(GetPartnerAttachmentResult):
             yield self
         return GetPartnerAttachmentResult(
             bgp=self.bgp,
+            childrens=self.childrens,
             connection_bandwidth_in_mbps=self.connection_bandwidth_in_mbps,
             created_at=self.created_at,
             id=self.id,
             naas_provider=self.naas_provider,
             name=self.name,
+            parent_uuid=self.parent_uuid,
             redundancy_zone=self.redundancy_zone,
             region=self.region,
             state=self.state,
@@ -148,11 +166,13 @@ def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'G
 
     return AwaitableGetPartnerAttachmentResult(
         bgp=pulumi.get(__ret__, 'bgp'),
+        childrens=pulumi.get(__ret__, 'childrens'),
         connection_bandwidth_in_mbps=pulumi.get(__ret__, 'connection_bandwidth_in_mbps'),
         created_at=pulumi.get(__ret__, 'created_at'),
         id=pulumi.get(__ret__, 'id'),
         naas_provider=pulumi.get(__ret__, 'naas_provider'),
         name=pulumi.get(__ret__, 'name'),
+        parent_uuid=pulumi.get(__ret__, 'parent_uuid'),
         redundancy_zone=pulumi.get(__ret__, 'redundancy_zone'),
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
@@ -174,11 +194,13 @@ def get_partner_attachment_output(bgp: Optional[pulumi.Input[Optional[Union['Get
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getPartnerAttachment:getPartnerAttachment', __args__, opts=opts, typ=GetPartnerAttachmentResult)
     return __ret__.apply(lambda __response__: GetPartnerAttachmentResult(
         bgp=pulumi.get(__response__, 'bgp'),
+        childrens=pulumi.get(__response__, 'childrens'),
         connection_bandwidth_in_mbps=pulumi.get(__response__, 'connection_bandwidth_in_mbps'),
         created_at=pulumi.get(__response__, 'created_at'),
         id=pulumi.get(__response__, 'id'),
         naas_provider=pulumi.get(__response__, 'naas_provider'),
         name=pulumi.get(__response__, 'name'),
+        parent_uuid=pulumi.get(__response__, 'parent_uuid'),
         redundancy_zone=pulumi.get(__response__, 'redundancy_zone'),
         region=pulumi.get(__response__, 'region'),
         state=pulumi.get(__response__, 'state'),

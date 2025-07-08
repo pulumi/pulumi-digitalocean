@@ -727,6 +727,174 @@
                 "current": "digitalocean:index/floatingIpAssignment:FloatingIpAssignment",
                 "majorVersion": 4
             },
+            "digitalocean_genai_agent": {
+                "current": "digitalocean:index/genaiAgent:GenaiAgent",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_guardrail": {
+                        "maxItemsOne": false
+                    },
+                    "anthropic_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "api_key_infos": {
+                        "maxItemsOne": false
+                    },
+                    "api_keys": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot_identifiers": {
+                        "maxItemsOne": false
+                    },
+                    "child_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "deployment": {
+                        "maxItemsOne": false
+                    },
+                    "functions": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_base_uuid": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "datasource_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "open_ai_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "parent_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "datasource_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "digitalocean_kubernetes_cluster": {
                 "current": "digitalocean:index/kubernetesCluster:KubernetesCluster",
                 "majorVersion": 4,
@@ -884,6 +1052,9 @@
                 "fields": {
                     "bgp": {
                         "maxItemsOne": true
+                    },
+                    "children": {
+                        "maxItemsOne": false
                     },
                     "vpc_ids": {
                         "maxItemsOne": false
@@ -1799,6 +1970,356 @@
                 "current": "digitalocean:index/getFloatingIp:getFloatingIp",
                 "majorVersion": 4
             },
+            "digitalocean_genai_agent": {
+                "current": "digitalocean:index/getGenaiAgent:getGenaiAgent",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_guardrail": {
+                        "maxItemsOne": false
+                    },
+                    "anthropic_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "api_key_infos": {
+                        "maxItemsOne": false
+                    },
+                    "api_keys": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot": {
+                        "maxItemsOne": false
+                    },
+                    "chatbot_identifiers": {
+                        "maxItemsOne": false
+                    },
+                    "child_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "deployment": {
+                        "maxItemsOne": false
+                    },
+                    "functions": {
+                        "maxItemsOne": false
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "datasource_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "model": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "usecases": {
+                                    "maxItemsOne": false
+                                },
+                                "versions": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "open_ai_api_key": {
+                        "maxItemsOne": false
+                    },
+                    "parent_agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "template": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "datasource_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_genai_agents": {
+                "current": "digitalocean:index/getGenaiAgents:getGenaiAgents",
+                "majorVersion": 4,
+                "fields": {
+                    "agents": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agent_guardrail": {
+                                    "maxItemsOne": false
+                                },
+                                "anthropic_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "api_key_infos": {
+                                    "maxItemsOne": false
+                                },
+                                "api_keys": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot": {
+                                    "maxItemsOne": false
+                                },
+                                "chatbot_identifiers": {
+                                    "maxItemsOne": false
+                                },
+                                "child_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "deployment": {
+                                    "maxItemsOne": false
+                                },
+                                "functions": {
+                                    "maxItemsOne": false
+                                },
+                                "knowledge_bases": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "last_indexing_job": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "datasource_uuids": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "tags": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "model": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "agreement": {
+                                                "maxItemsOne": false
+                                            },
+                                            "usecases": {
+                                                "maxItemsOne": false
+                                            },
+                                            "versions": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "open_ai_api_key": {
+                                    "maxItemsOne": false
+                                },
+                                "parent_agents": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "anthropic_api_key": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_key_infos": {
+                                                "maxItemsOne": false
+                                            },
+                                            "api_keys": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot": {
+                                                "maxItemsOne": false
+                                            },
+                                            "chatbot_identifiers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "deployment": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "template": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "knowledge_bases": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "last_indexing_job": {
+                                                            "maxItemsOne": false,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "datasource_uuids": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "tags": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "model": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "agreement": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "usecases": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "versions": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_image": {
                 "current": "digitalocean:index/getImage:getImage",
                 "majorVersion": 4,
@@ -1970,10 +2491,17 @@
                     "bgp": {
                         "maxItemsOne": true
                     },
+                    "children": {
+                        "maxItemsOne": false
+                    },
                     "vpc_ids": {
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_partner_attachment_service_key": {
+                "current": "digitalocean:index/getPartnerAttachmentServiceKey:getPartnerAttachmentServiceKey",
+                "majorVersion": 4
             },
             "digitalocean_project": {
                 "current": "digitalocean:index/getProject:getProject",

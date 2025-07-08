@@ -33,11 +33,13 @@ export interface GetPartnerAttachmentArgs {
  */
 export interface GetPartnerAttachmentResult {
     readonly bgp?: outputs.GetPartnerAttachmentBgp;
+    readonly childrens: string[];
     readonly connectionBandwidthInMbps: number;
     readonly createdAt: string;
     readonly id: string;
     readonly naasProvider: string;
     readonly name: string;
+    readonly parentUuid: string;
     readonly redundancyZone?: string;
     readonly region: string;
     readonly state: string;

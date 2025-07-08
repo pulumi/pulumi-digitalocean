@@ -72,6 +72,21 @@ public final class PartnerAttachmentArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * The UUID of the Parent Partner Attachment
+     * 
+     */
+    @Import(name="parentUuid")
+    private @Nullable Output<String> parentUuid;
+
+    /**
+     * @return The UUID of the Parent Partner Attachment
+     * 
+     */
+    public Optional<Output<String>> parentUuid() {
+        return Optional.ofNullable(this.parentUuid);
+    }
+
+    /**
      * The redundancy zone for the NaaS
      * 
      */
@@ -123,6 +138,7 @@ public final class PartnerAttachmentArgs extends com.pulumi.resources.ResourceAr
         this.connectionBandwidthInMbps = $.connectionBandwidthInMbps;
         this.naasProvider = $.naasProvider;
         this.name = $.name;
+        this.parentUuid = $.parentUuid;
         this.redundancyZone = $.redundancyZone;
         this.region = $.region;
         this.vpcIds = $.vpcIds;
@@ -216,6 +232,27 @@ public final class PartnerAttachmentArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param parentUuid The UUID of the Parent Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentUuid(@Nullable Output<String> parentUuid) {
+            $.parentUuid = parentUuid;
+            return this;
+        }
+
+        /**
+         * @param parentUuid The UUID of the Parent Partner Attachment
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parentUuid(String parentUuid) {
+            return parentUuid(Output.of(parentUuid));
         }
 
         /**

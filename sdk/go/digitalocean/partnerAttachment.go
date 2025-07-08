@@ -15,7 +15,9 @@ import (
 type PartnerAttachment struct {
 	pulumi.CustomResourceState
 
-	Bgp PartnerAttachmentBgpPtrOutput `pulumi:"bgp"`
+	Bgp PartnerAttachmentBgpOutput `pulumi:"bgp"`
+	// The children uuids of Partner Attachment
+	Childrens pulumi.StringArrayOutput `pulumi:"childrens"`
 	// The connection bandwidth in Mbps
 	ConnectionBandwidthInMbps pulumi.IntOutput `pulumi:"connectionBandwidthInMbps"`
 	// The date and time when the Partner Attachment was created
@@ -24,8 +26,10 @@ type PartnerAttachment struct {
 	NaasProvider pulumi.StringOutput `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The UUID of the Parent Partner Attachment
+	ParentUuid pulumi.StringPtrOutput `pulumi:"parentUuid"`
 	// The redundancy zone for the NaaS
-	RedundancyZone pulumi.StringPtrOutput `pulumi:"redundancyZone"`
+	RedundancyZone pulumi.StringOutput `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The state of the Partner Attachment
@@ -77,6 +81,8 @@ func GetPartnerAttachment(ctx *pulumi.Context,
 // Input properties used for looking up and filtering PartnerAttachment resources.
 type partnerAttachmentState struct {
 	Bgp *PartnerAttachmentBgp `pulumi:"bgp"`
+	// The children uuids of Partner Attachment
+	Childrens []string `pulumi:"childrens"`
 	// The connection bandwidth in Mbps
 	ConnectionBandwidthInMbps *int `pulumi:"connectionBandwidthInMbps"`
 	// The date and time when the Partner Attachment was created
@@ -85,6 +91,8 @@ type partnerAttachmentState struct {
 	NaasProvider *string `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name *string `pulumi:"name"`
+	// The UUID of the Parent Partner Attachment
+	ParentUuid *string `pulumi:"parentUuid"`
 	// The redundancy zone for the NaaS
 	RedundancyZone *string `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
@@ -97,6 +105,8 @@ type partnerAttachmentState struct {
 
 type PartnerAttachmentState struct {
 	Bgp PartnerAttachmentBgpPtrInput
+	// The children uuids of Partner Attachment
+	Childrens pulumi.StringArrayInput
 	// The connection bandwidth in Mbps
 	ConnectionBandwidthInMbps pulumi.IntPtrInput
 	// The date and time when the Partner Attachment was created
@@ -105,6 +115,8 @@ type PartnerAttachmentState struct {
 	NaasProvider pulumi.StringPtrInput
 	// The name of the Partner Attachment
 	Name pulumi.StringPtrInput
+	// The UUID of the Parent Partner Attachment
+	ParentUuid pulumi.StringPtrInput
 	// The redundancy zone for the NaaS
 	RedundancyZone pulumi.StringPtrInput
 	// The region where the Partner Attachment will be created
@@ -127,6 +139,8 @@ type partnerAttachmentArgs struct {
 	NaasProvider string `pulumi:"naasProvider"`
 	// The name of the Partner Attachment
 	Name *string `pulumi:"name"`
+	// The UUID of the Parent Partner Attachment
+	ParentUuid *string `pulumi:"parentUuid"`
 	// The redundancy zone for the NaaS
 	RedundancyZone *string `pulumi:"redundancyZone"`
 	// The region where the Partner Attachment will be created
@@ -144,6 +158,8 @@ type PartnerAttachmentArgs struct {
 	NaasProvider pulumi.StringInput
 	// The name of the Partner Attachment
 	Name pulumi.StringPtrInput
+	// The UUID of the Parent Partner Attachment
+	ParentUuid pulumi.StringPtrInput
 	// The redundancy zone for the NaaS
 	RedundancyZone pulumi.StringPtrInput
 	// The region where the Partner Attachment will be created
@@ -239,8 +255,13 @@ func (o PartnerAttachmentOutput) ToPartnerAttachmentOutputWithContext(ctx contex
 	return o
 }
 
-func (o PartnerAttachmentOutput) Bgp() PartnerAttachmentBgpPtrOutput {
-	return o.ApplyT(func(v *PartnerAttachment) PartnerAttachmentBgpPtrOutput { return v.Bgp }).(PartnerAttachmentBgpPtrOutput)
+func (o PartnerAttachmentOutput) Bgp() PartnerAttachmentBgpOutput {
+	return o.ApplyT(func(v *PartnerAttachment) PartnerAttachmentBgpOutput { return v.Bgp }).(PartnerAttachmentBgpOutput)
+}
+
+// The children uuids of Partner Attachment
+func (o PartnerAttachmentOutput) Childrens() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringArrayOutput { return v.Childrens }).(pulumi.StringArrayOutput)
 }
 
 // The connection bandwidth in Mbps
@@ -263,9 +284,14 @@ func (o PartnerAttachmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The UUID of the Parent Partner Attachment
+func (o PartnerAttachmentOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringPtrOutput { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
 // The redundancy zone for the NaaS
-func (o PartnerAttachmentOutput) RedundancyZone() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringPtrOutput { return v.RedundancyZone }).(pulumi.StringPtrOutput)
+func (o PartnerAttachmentOutput) RedundancyZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *PartnerAttachment) pulumi.StringOutput { return v.RedundancyZone }).(pulumi.StringOutput)
 }
 
 // The region where the Partner Attachment will be created

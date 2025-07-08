@@ -67,11 +67,13 @@ namespace Pulumi.DigitalOcean
     public sealed class GetPartnerAttachmentResult
     {
         public readonly Outputs.GetPartnerAttachmentBgpResult? Bgp;
+        public readonly ImmutableArray<string> Childrens;
         public readonly int ConnectionBandwidthInMbps;
         public readonly string CreatedAt;
         public readonly string Id;
         public readonly string NaasProvider;
         public readonly string Name;
+        public readonly string ParentUuid;
         public readonly string? RedundancyZone;
         public readonly string Region;
         public readonly string State;
@@ -80,6 +82,8 @@ namespace Pulumi.DigitalOcean
         [OutputConstructor]
         private GetPartnerAttachmentResult(
             Outputs.GetPartnerAttachmentBgpResult? bgp,
+
+            ImmutableArray<string> childrens,
 
             int connectionBandwidthInMbps,
 
@@ -91,6 +95,8 @@ namespace Pulumi.DigitalOcean
 
             string name,
 
+            string parentUuid,
+
             string? redundancyZone,
 
             string region,
@@ -100,11 +106,13 @@ namespace Pulumi.DigitalOcean
             ImmutableArray<string> vpcIds)
         {
             Bgp = bgp;
+            Childrens = childrens;
             ConnectionBandwidthInMbps = connectionBandwidthInMbps;
             CreatedAt = createdAt;
             Id = id;
             NaasProvider = naasProvider;
             Name = name;
+            ParentUuid = parentUuid;
             RedundancyZone = redundancyZone;
             Region = region;
             State = state;
