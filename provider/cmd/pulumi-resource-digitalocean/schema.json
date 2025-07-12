@@ -3719,15 +3719,11 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
@@ -3736,11 +3732,6 @@
                     "requiredOutputs": [
                         "addedToAgentAt",
                         "createdAt",
-                        "databaseId",
-                        "embeddingModelUuid",
-                        "isPublic",
-                        "name",
-                        "projectId",
                         "updatedAt"
                     ]
                 }
@@ -3756,7 +3747,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -3769,7 +3760,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -3793,7 +3784,7 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
@@ -3802,6 +3793,7 @@
                     "requiredOutputs": [
                         "createdAt",
                         "finishedAt",
+                        "knowledgeBaseUuid",
                         "startedAt",
                         "updatedAt"
                     ]
@@ -4338,15 +4330,11 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
@@ -4355,11 +4343,6 @@
                     "requiredOutputs": [
                         "addedToAgentAt",
                         "createdAt",
-                        "databaseId",
-                        "embeddingModelUuid",
-                        "isPublic",
-                        "name",
-                        "projectId",
                         "updatedAt"
                     ]
                 }
@@ -4375,7 +4358,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -4388,7 +4371,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -4412,7 +4395,7 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
@@ -4421,6 +4404,7 @@
                     "requiredOutputs": [
                         "createdAt",
                         "finishedAt",
+                        "knowledgeBaseUuid",
                         "startedAt",
                         "updatedAt"
                     ]
@@ -4538,6 +4522,270 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The name of the Spaces bucket\n"
+                },
+                "itemPath": {
+                    "type": "string",
+                    "description": "The path to the item in the bucket\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Spaces bucket\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource": {
+            "properties": {
+                "baseUrl": {
+                    "type": "string",
+                    "description": "The base URL to crawl\n"
+                },
+                "crawlingOption": {
+                    "type": "string",
+                    "description": "Options for specifying how URLs found on pages should be handled. \n- UNKNOWN: Default unknown value\n- SCOPED: Only include the base URL.\n- PATH: Crawl the base URL and linked pages within the URL path.\n- DOMAIN: Crawl the base URL and linked pages within the same domain.\n- SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.\n"
+                },
+                "embedMedia": {
+                    "type": "boolean",
+                    "description": "Whether to embed media content\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the Knowledge Base\n"
+                },
+                "fileUploadDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceFileUploadDataSource:GenaiKnowledgeBaseDatasourceFileUploadDataSource"
+                    },
+                    "description": "File upload data source configuration\n"
+                },
+                "lastIndexingJobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceLastIndexingJob:GenaiKnowledgeBaseDatasourceLastIndexingJob"
+                    },
+                    "description": "Last indexing job for the data source\n"
+                },
+                "spacesDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceSpacesDataSource:GenaiKnowledgeBaseDatasourceSpacesDataSource"
+                    },
+                    "description": "Spaces data source configuration\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Knowledge Base was updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the Knowledge Base\n"
+                },
+                "webCrawlerDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceWebCrawlerDataSource:GenaiKnowledgeBaseDatasourceWebCrawlerDataSource"
+                    },
+                    "description": "Web crawler data source configuration\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDatasourceFileUploadDataSource:GenaiKnowledgeBaseDatasourceFileUploadDataSource": {
+            "properties": {
+                "originalFileName": {
+                    "type": "string",
+                    "description": "The original name of the uploaded file\n"
+                },
+                "sizeInBytes": {
+                    "type": "string",
+                    "description": "The size of the file in bytes\n"
+                },
+                "storedObjectKey": {
+                    "type": "string",
+                    "description": "The stored object key for the file\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDatasourceLastIndexingJob:GenaiKnowledgeBaseDatasourceLastIndexingJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of completed datasources in the last indexing job\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the last indexing job\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Datasource UUIDs for the last indexing job\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job finished\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Phase of the last indexing job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job started\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed in the last indexing job\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources in the last indexing job\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID  of the last indexing job\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "finishedAt",
+                        "knowledgeBaseUuid",
+                        "startedAt",
+                        "updatedAt"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDatasourceSpacesDataSource:GenaiKnowledgeBaseDatasourceSpacesDataSource": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The name of the Spaces bucket\n"
+                },
+                "itemPath": {
+                    "type": "string",
+                    "description": "The path to the item in the bucket\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Spaces bucket\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseDatasourceWebCrawlerDataSource:GenaiKnowledgeBaseDatasourceWebCrawlerDataSource": {
+            "properties": {
+                "baseUrl": {
+                    "type": "string",
+                    "description": "The base URL to crawl\n"
+                },
+                "crawlingOption": {
+                    "type": "string",
+                    "description": "Options for specifying how URLs found on pages should be handled. \n- UNKNOWN: Default unknown value\n- SCOPED: Only include the base URL.\n- PATH: Crawl the base URL and linked pages within the URL path.\n- DOMAIN: Crawl the base URL and linked pages within the same domain.\n- SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.\n"
+                },
+                "embedMedia": {
+                    "type": "boolean",
+                    "description": "Whether to embed media content\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of completed datasources in the last indexing job\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the last indexing job\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Datasource UUIDs for the last indexing job\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job finished\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Phase of the last indexing job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job started\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed in the last indexing job\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources in the last indexing job\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID  of the last indexing job\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "createdAt",
+                        "finishedAt",
+                        "knowledgeBaseUuid",
+                        "startedAt",
+                        "updatedAt"
+                    ]
+                }
+            }
         },
         "digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration": {
             "properties": {
@@ -9183,26 +9431,17 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
             "required": [
                 "addedToAgentAt",
                 "createdAt",
-                "databaseId",
-                "embeddingModelUuid",
-                "isPublic",
-                "name",
-                "projectId",
                 "updatedAt"
             ],
             "language": {
@@ -9221,7 +9460,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -9234,7 +9473,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -9258,13 +9497,14 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
             "required": [
                 "createdAt",
                 "finishedAt",
+                "knowledgeBaseUuid",
                 "startedAt",
                 "updatedAt"
             ],
@@ -9775,26 +10015,17 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
             "required": [
                 "addedToAgentAt",
                 "createdAt",
-                "databaseId",
-                "embeddingModelUuid",
-                "isPublic",
-                "name",
-                "projectId",
                 "updatedAt"
             ],
             "language": {
@@ -9813,7 +10044,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -9826,7 +10057,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -9850,13 +10081,14 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
             "required": [
                 "createdAt",
                 "finishedAt",
+                "knowledgeBaseUuid",
                 "startedAt",
                 "updatedAt"
             ],
@@ -9978,6 +10210,319 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/getGenaiAgentVersionsAgentVersion:getGenaiAgentVersionsAgentVersion": {
+            "properties": {
+                "agentUuid": {
+                    "type": "string",
+                    "description": "ID of the Agent to retrieve versions for\n"
+                },
+                "attachedChildAgents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedChildAgent:getGenaiAgentVersionsAgentVersionAttachedChildAgent"
+                    },
+                    "description": "List of child agents attached to this version\n"
+                },
+                "attachedFunctions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedFunction:getGenaiAgentVersionsAgentVersionAttachedFunction"
+                    },
+                    "description": "List of functions attached to this version\n"
+                },
+                "attachedGuardrails": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedGuardrail:getGenaiAgentVersionsAgentVersionAttachedGuardrail"
+                    },
+                    "description": "List of guardrails attached to this version\n"
+                },
+                "attachedKnowledgeBases": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedKnowledgeBase:getGenaiAgentVersionsAgentVersionAttachedKnowledgeBase"
+                    },
+                    "description": "List of Knowledge Bases agent versions\n"
+                },
+                "canRollback": {
+                    "type": "boolean",
+                    "description": "Indicates if the version can be rolled back\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Agent Version was created\n"
+                },
+                "createdByEmail": {
+                    "type": "string",
+                    "description": "Email of the user who created this version\n"
+                },
+                "currentlyApplied": {
+                    "type": "boolean",
+                    "description": "Indicates if this version is currently applied configuration\n"
+                },
+                "description": {
+                    "type": "string",
+                    "description": "Description of the Agent Version\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "Id of the Agent Version\n"
+                },
+                "instruction": {
+                    "type": "string",
+                    "description": "Instruction for the Agent Version\n"
+                },
+                "k": {
+                    "type": "integer",
+                    "description": "K value for the Agent Version\n"
+                },
+                "maxTokens": {
+                    "type": "integer",
+                    "description": "Maximum tokens allowed for the Agent\n"
+                },
+                "modelName": {
+                    "type": "string",
+                    "description": "Name of model associated to the agent version\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Agent\n"
+                },
+                "provideCitations": {
+                    "type": "boolean",
+                    "description": "Indicates if the should provide in-response citations\n"
+                },
+                "retrievalMethod": {
+                    "type": "string",
+                    "description": "Retrieval method used. \n- RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown\n- RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite\n- RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back\n- RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries\n- RETRIEVAL_METHOD_NONE: The retrieval method is none.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of Tags\n"
+                },
+                "temperature": {
+                    "type": "number",
+                    "description": "Temperature setting for the Agent Version\n"
+                },
+                "topP": {
+                    "type": "number",
+                    "description": "Top P sampling parameter for the Agent Version\n"
+                },
+                "triggerAction": {
+                    "type": "string",
+                    "description": "Trigger action for the Agent Version\n"
+                },
+                "versionHash": {
+                    "type": "string",
+                    "description": "Hash of the Agent Version\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "agentUuid",
+                "attachedChildAgents",
+                "attachedFunctions",
+                "attachedGuardrails",
+                "attachedKnowledgeBases",
+                "canRollback",
+                "createdAt",
+                "createdByEmail",
+                "currentlyApplied",
+                "description",
+                "id",
+                "instruction",
+                "k",
+                "maxTokens",
+                "modelName",
+                "name",
+                "provideCitations",
+                "retrievalMethod",
+                "tags",
+                "temperature",
+                "topP",
+                "triggerAction",
+                "versionHash"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedChildAgent:getGenaiAgentVersionsAgentVersionAttachedChildAgent": {
+            "properties": {
+                "agentName": {
+                    "type": "string",
+                    "description": "Name of the child agent\n"
+                },
+                "childAgentUuid": {
+                    "type": "string",
+                    "description": "Child agent unique identifier\n"
+                },
+                "ifCase": {
+                    "type": "string",
+                    "description": "If case\n"
+                },
+                "isDeleted": {
+                    "type": "boolean",
+                    "description": "Child agent is deleted\n"
+                },
+                "routeName": {
+                    "type": "string",
+                    "description": "Route name\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "agentName",
+                "childAgentUuid",
+                "ifCase",
+                "isDeleted",
+                "routeName"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedFunction:getGenaiAgentVersionsAgentVersionAttachedFunction": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the function\n"
+                },
+                "faasName": {
+                    "type": "string",
+                    "description": "FaaS name of the function\n"
+                },
+                "faasNamespace": {
+                    "type": "string",
+                    "description": "FaaS namespace of the function\n"
+                },
+                "isDeleted": {
+                    "type": "boolean",
+                    "description": "Function is deleted\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the function\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "description",
+                "faasName",
+                "faasNamespace",
+                "isDeleted",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedGuardrail:getGenaiAgentVersionsAgentVersionAttachedGuardrail": {
+            "properties": {
+                "isDeleted": {
+                    "type": "boolean",
+                    "description": "Whether the guardrail is deleted\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the guardrail\n"
+                },
+                "priority": {
+                    "type": "integer",
+                    "description": "Guardrail priority\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Guardrail UUID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isDeleted",
+                "name",
+                "priority",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiAgentVersionsAgentVersionAttachedKnowledgeBase:getGenaiAgentVersionsAgentVersionAttachedKnowledgeBase": {
+            "properties": {
+                "isDeleted": {
+                    "type": "boolean",
+                    "description": "Whether the knowledge base is deleted\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the knowledge base\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Knowledge base UUID\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "isDeleted",
+                "name",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiAgentVersionsFilter:getGenaiAgentVersionsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "matchBy": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getGenaiAgentVersionsSort:getGenaiAgentVersionsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
         },
         "digitalocean:index/getGenaiAgentsAgent:getGenaiAgentsAgent": {
             "properties": {
@@ -10106,7 +10651,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/getGenaiAgentsAgentParentAgent:getGenaiAgentsAgentParentAgent"
                     },
-                    "description": "List of child agents\n"
+                    "description": "List of parent agents\n"
                 },
                 "projectId": {
                     "type": "string",
@@ -10810,26 +11355,17 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
             "required": [
                 "addedToAgentAt",
                 "createdAt",
-                "databaseId",
-                "embeddingModelUuid",
-                "isPublic",
-                "name",
-                "projectId",
                 "updatedAt"
             ],
             "language": {
@@ -10848,7 +11384,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -10861,7 +11397,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -10885,13 +11421,14 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
             "required": [
                 "createdAt",
                 "finishedAt",
+                "knowledgeBaseUuid",
                 "startedAt",
                 "updatedAt"
             ],
@@ -11402,26 +11939,17 @@
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Updated At timestamp for the Knowledge Base\n"
+                    "description": "Timestamp when the Knowledge Base was updated\n"
                 },
                 "userId": {
                     "type": "string",
                     "description": "User ID of the Knowledge Base\n"
-                },
-                "uuid": {
-                    "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
                 }
             },
             "type": "object",
             "required": [
                 "addedToAgentAt",
                 "createdAt",
-                "databaseId",
-                "embeddingModelUuid",
-                "isPublic",
-                "name",
-                "projectId",
                 "updatedAt"
             ],
             "language": {
@@ -11440,7 +11968,7 @@
                     "type": "string",
                     "description": "Created At timestamp for the last indexing job\n"
                 },
-                "datasourceUuids": {
+                "dataSourceUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
@@ -11453,7 +11981,7 @@
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID\tof the Knowledge Base for the last indexing job\n"
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
                 },
                 "phase": {
                     "type": "string",
@@ -11477,13 +12005,14 @@
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "UUID\tof the last indexing job\n"
+                    "description": "UUID  of the last indexing job\n"
                 }
             },
             "type": "object",
             "required": [
                 "createdAt",
                 "finishedAt",
+                "knowledgeBaseUuid",
                 "startedAt",
                 "updatedAt"
             ],
@@ -11631,6 +12160,424 @@
             ]
         },
         "digitalocean:index/getGenaiAgentsSort:getGenaiAgentsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasource:getGenaiKnowledgeBaseDataSourcesDatasource": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the Knowledge Base\n"
+                },
+                "fileUploadDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource"
+                    },
+                    "description": "File upload data source configuration\n"
+                },
+                "lastIndexingJobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob:getGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob"
+                    },
+                    "description": "Last indexing job for the data source\n"
+                },
+                "spacesDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource"
+                    },
+                    "description": "Spaces data source configuration\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Knowledge Base was updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the Knowledge Base\n"
+                },
+                "webCrawlerDataSources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource"
+                    },
+                    "description": "Web crawler data source configuration\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource": {
+            "properties": {
+                "originalFileName": {
+                    "type": "string",
+                    "description": "The original name of the uploaded file\n"
+                },
+                "sizeInBytes": {
+                    "type": "string",
+                    "description": "The size of the file in bytes\n"
+                },
+                "storedObjectKey": {
+                    "type": "string",
+                    "description": "The stored object key for the file\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob:getGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of completed datasources in the last indexing job\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the last indexing job\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Datasource UUIDs for the last indexing job\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job finished\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Phase of the last indexing job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job started\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed in the last indexing job\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources in the last indexing job\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID  of the last indexing job\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "finishedAt",
+                "knowledgeBaseUuid",
+                "startedAt",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource": {
+            "properties": {
+                "bucketName": {
+                    "type": "string",
+                    "description": "The name of the Spaces bucket\n"
+                },
+                "itemPath": {
+                    "type": "string",
+                    "description": "The path to the item in the bucket\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region of the Spaces bucket\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource:getGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource": {
+            "properties": {
+                "baseUrl": {
+                    "type": "string",
+                    "description": "The base URL to crawl\n"
+                },
+                "crawlingOption": {
+                    "type": "string",
+                    "description": "Options for specifying how URLs found on pages should be handled. \n- UNKNOWN: Default unknown value\n- SCOPED: Only include the base URL.\n- PATH: Crawl the base URL and linked pages within the URL path.\n- DOMAIN: Crawl the base URL and linked pages within the same domain.\n- SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.\n"
+                },
+                "embedMedia": {
+                    "type": "boolean",
+                    "description": "Whether to embed media content\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBaseLastIndexingJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of completed datasources in the last indexing job\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the last indexing job\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Datasource UUIDs for the last indexing job\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job finished\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Phase of the last indexing job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job started\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed in the last indexing job\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources in the last indexing job\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID  of the last indexing job\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "finishedAt",
+                "knowledgeBaseUuid",
+                "startedAt",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBasesFilter:getGenaiKnowledgeBasesFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "matchBy": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getGenaiKnowledgeBasesKnowledgeBase:getGenaiKnowledgeBasesKnowledgeBase": {
+            "properties": {
+                "addedToAgentAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Knowledge Base was added to the Agent\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the Knowledge Base\n"
+                },
+                "databaseId": {
+                    "type": "string",
+                    "description": "Database ID of the Knowledge Base\n"
+                },
+                "embeddingModelUuid": {
+                    "type": "string",
+                    "description": "Embedding model UUID for the Knowledge Base\n"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Indicates if the Knowledge Base is public\n"
+                },
+                "lastIndexingJobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob"
+                    },
+                    "description": "Last indexing job for the Knowledge Base\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Knowledge Base\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "Project ID of the Knowledge Base\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region of the Knowledge Base\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of tags\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Knowledge Base was updated\n"
+                },
+                "userId": {
+                    "type": "string",
+                    "description": "User ID of the Knowledge Base\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the Knowledge Base\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "addedToAgentAt",
+                "createdAt",
+                "databaseId",
+                "embeddingModelUuid",
+                "isPublic",
+                "lastIndexingJobs",
+                "name",
+                "projectId",
+                "region",
+                "tags",
+                "updatedAt",
+                "userId",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of completed datasources in the last indexing job\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the last indexing job\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "Datasource UUIDs for the last indexing job\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job finished\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID  of the Knowledge Base for the last indexing job\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Phase of the last indexing job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job started\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed in the last indexing job\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources in the last indexing job\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the last indexing job updated\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID  of the last indexing job\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "finishedAt",
+                "knowledgeBaseUuid",
+                "startedAt",
+                "updatedAt"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBasesSort:getGenaiKnowledgeBasesSort": {
             "properties": {
                 "direction": {
                     "type": "string"
@@ -19853,6 +20800,301 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment": {
+            "properties": {
+                "agentUuid": {
+                    "type": "string",
+                    "description": "A unique identifier for an agent.\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "A unique identifier for a knowledge base.\n"
+                }
+            },
+            "required": [
+                "agentUuid",
+                "knowledgeBaseUuid"
+            ],
+            "inputProperties": {
+                "agentUuid": {
+                    "type": "string",
+                    "description": "A unique identifier for an agent.\n",
+                    "willReplaceOnChanges": true
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "A unique identifier for a knowledge base.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "agentUuid",
+                "knowledgeBaseUuid"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GenaiAgentKnowledgeBaseAttachment resources.\n",
+                "properties": {
+                    "agentUuid": {
+                        "type": "string",
+                        "description": "A unique identifier for an agent.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "knowledgeBaseUuid": {
+                        "type": "string",
+                        "description": "A unique identifier for a knowledge base.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase": {
+            "properties": {
+                "addedToAgentAt": {
+                    "type": "string",
+                    "description": "The time when the knowledge base was added to the agent.\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "The time when the knowledge base was created.\n"
+                },
+                "databaseId": {
+                    "type": "string",
+                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                },
+                "datasources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                    },
+                    "description": "Data sources for the knowledge base\n"
+                },
+                "embeddingModelUuid": {
+                    "type": "string",
+                    "description": "The unique identifier of the embedding model\n"
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Indicates whether the knowledge base is public or private.\n"
+                },
+                "lastIndexingJobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
+                    },
+                    "description": "The last indexing job for the knowledge base.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the knowledge base.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The unique identifier of the VPC to which the knowledge base belongs.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "datasources",
+                "embeddingModelUuid",
+                "name",
+                "projectId",
+                "region"
+            ],
+            "inputProperties": {
+                "addedToAgentAt": {
+                    "type": "string",
+                    "description": "The time when the knowledge base was added to the agent.\n"
+                },
+                "databaseId": {
+                    "type": "string",
+                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                },
+                "datasources": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                    },
+                    "description": "Data sources for the knowledge base\n",
+                    "willReplaceOnChanges": true
+                },
+                "embeddingModelUuid": {
+                    "type": "string",
+                    "description": "The unique identifier of the embedding model\n",
+                    "willReplaceOnChanges": true
+                },
+                "isPublic": {
+                    "type": "boolean",
+                    "description": "Indicates whether the knowledge base is public or private.\n"
+                },
+                "lastIndexingJobs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
+                    },
+                    "description": "The last indexing job for the knowledge base.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the knowledge base.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The unique identifier of the VPC to which the knowledge base belongs.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "datasources",
+                "embeddingModelUuid",
+                "projectId",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GenaiKnowledgeBase resources.\n",
+                "properties": {
+                    "addedToAgentAt": {
+                        "type": "string",
+                        "description": "The time when the knowledge base was added to the agent.\n"
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The time when the knowledge base was created.\n"
+                    },
+                    "databaseId": {
+                        "type": "string",
+                        "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                    },
+                    "datasources": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                        },
+                        "description": "Data sources for the knowledge base\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "embeddingModelUuid": {
+                        "type": "string",
+                        "description": "The unique identifier of the embedding model\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "isPublic": {
+                        "type": "boolean",
+                        "description": "Indicates whether the knowledge base is public or private.\n"
+                    },
+                    "lastIndexingJobs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
+                        },
+                        "description": "The last indexing job for the knowledge base.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the knowledge base.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "vpcUuid": {
+                        "type": "string",
+                        "description": "The unique identifier of the VPC to which the knowledge base belongs.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource": {
+            "properties": {
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID of the Knowledge Base\n"
+                },
+                "spacesDataSource": {
+                    "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource"
+                },
+                "webCrawlerDataSource": {
+                    "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource"
+                }
+            },
+            "required": [
+                "knowledgeBaseUuid"
+            ],
+            "inputProperties": {
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "UUID of the Knowledge Base\n",
+                    "willReplaceOnChanges": true
+                },
+                "spacesDataSource": {
+                    "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource",
+                    "willReplaceOnChanges": true
+                },
+                "webCrawlerDataSource": {
+                    "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "knowledgeBaseUuid"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GenaiKnowledgeBaseDataSource resources.\n",
+                "properties": {
+                    "knowledgeBaseUuid": {
+                        "type": "string",
+                        "description": "UUID of the Knowledge Base\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "spacesDataSource": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource",
+                        "willReplaceOnChanges": true
+                    },
+                    "webCrawlerDataSource": {
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/kubernetesCluster:KubernetesCluster": {
             "description": "\n\n## Import\n\nBefore importing a Kubernetes cluster, the cluster's default node pool must be tagged with\n\nthe `terraform:default-node-pool` tag. The provider will automatically add this tag if\n\nthe cluster only has a single node pool. Clusters with more than one node pool, however, will require\n\nthat you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be\n\nthe default node pool.\n\nThen the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af\n```\n\nAdditional node pools must be imported separately as `digitalocean_kubernetes_cluster`\n\nresources, e.g.\n\n```sh\n$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n",
             "properties": {
@@ -25121,6 +26363,68 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiAgentVersions.\n",
+                "properties": {
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsFilter:getGenaiAgentVersionsFilter"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsSort:getGenaiAgentVersionsSort"
+                        }
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "agentId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiAgentVersions.\n",
+                "properties": {
+                    "agentId": {
+                        "type": "string"
+                    },
+                    "agentVersions": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsAgentVersion:getGenaiAgentVersionsAgentVersion"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsFilter:getGenaiAgentVersionsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiAgentVersionsSort:getGenaiAgentVersionsSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "agentId",
+                    "agentVersions",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getGenaiAgents:getGenaiAgents": {
             "inputs": {
                 "description": "A collection of arguments for invoking getGenaiAgents.\n",
@@ -25174,6 +26478,203 @@
                 },
                 "required": [
                     "agents",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiKnowledgeBase.\n",
+                "properties": {
+                    "addedToAgentAt": {
+                        "type": "string"
+                    },
+                    "databaseId": {
+                        "type": "string"
+                    },
+                    "embeddingModelUuid": {
+                        "type": "string"
+                    },
+                    "isPublic": {
+                        "type": "boolean"
+                    },
+                    "lastIndexingJobs": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBaseLastIndexingJob"
+                        }
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiKnowledgeBase.\n",
+                "properties": {
+                    "addedToAgentAt": {
+                        "type": "string"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "databaseId": {
+                        "type": "string"
+                    },
+                    "embeddingModelUuid": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "isPublic": {
+                        "type": "boolean"
+                    },
+                    "lastIndexingJobs": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBaseLastIndexingJob"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "projectId": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "userId": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "updatedAt",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiKnowledgeBaseDataSources.\n",
+                "properties": {
+                    "knowledgeBaseUuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "knowledgeBaseUuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiKnowledgeBaseDataSources.\n",
+                "properties": {
+                    "datasources": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasource:getGenaiKnowledgeBaseDataSourcesDatasource"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "knowledgeBaseUuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "datasources",
+                    "knowledgeBaseUuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiKnowledgeBases.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesFilter:getGenaiKnowledgeBasesFilter"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesSort:getGenaiKnowledgeBasesSort"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiKnowledgeBases.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesFilter:getGenaiKnowledgeBasesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "type": "string"
+                    },
+                    "knowledgeBases": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesKnowledgeBase:getGenaiKnowledgeBasesKnowledgeBase"
+                        },
+                        "type": "array"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBasesSort:getGenaiKnowledgeBasesSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "knowledgeBases",
                     "id"
                 ],
                 "type": "object"
