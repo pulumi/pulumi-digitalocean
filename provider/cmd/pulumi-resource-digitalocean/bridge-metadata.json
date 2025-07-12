@@ -791,7 +791,7 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "datasource_uuids": {
+                                            "data_source_uuids": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -862,7 +862,7 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "datasource_uuids": {
+                                                        "data_source_uuids": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -892,6 +892,67 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "digitalocean_genai_agent_knowledge_base_attachment": {
+                "current": "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment",
+                "majorVersion": 4
+            },
+            "digitalocean_genai_knowledge_base": {
+                "current": "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase",
+                "majorVersion": 4,
+                "fields": {
+                    "datasources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "file_upload_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "spaces_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "web_crawler_data_source": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "last_indexing_job": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_genai_knowledge_base_data_source": {
+                "current": "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource",
+                "majorVersion": 4,
+                "fields": {
+                    "spaces_data_source": {
+                        "maxItemsOne": true
+                    },
+                    "web_crawler_data_source": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -2031,7 +2092,7 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
-                                            "datasource_uuids": {
+                                            "data_source_uuids": {
                                                 "maxItemsOne": false
                                             }
                                         }
@@ -2102,7 +2163,7 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "datasource_uuids": {
+                                                        "data_source_uuids": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -2132,6 +2193,47 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "digitalocean_genai_agent_versions": {
+                "current": "digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions",
+                "majorVersion": 4,
+                "fields": {
+                    "agent_versions": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "attached_child_agents": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_functions": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_guardrails": {
+                                    "maxItemsOne": false
+                                },
+                                "attached_knowledge_bases": {
+                                    "maxItemsOne": false
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -2200,7 +2302,7 @@
                                                 "maxItemsOne": false,
                                                 "elem": {
                                                     "fields": {
-                                                        "datasource_uuids": {
+                                                        "data_source_uuids": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -2271,7 +2373,7 @@
                                                             "maxItemsOne": false,
                                                             "elem": {
                                                                 "fields": {
-                                                                    "datasource_uuids": {
+                                                                    "data_source_uuids": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -2310,6 +2412,96 @@
                         "elem": {
                             "fields": {
                                 "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_genai_knowledge_base": {
+                "current": "digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase",
+                "majorVersion": 4,
+                "fields": {
+                    "last_indexing_job": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_genai_knowledge_base_data_sources": {
+                "current": "digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources",
+                "majorVersion": 4,
+                "fields": {
+                    "datasources": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "file_upload_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "spaces_data_source": {
+                                    "maxItemsOne": false
+                                },
+                                "web_crawler_data_source": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_genai_knowledge_bases": {
+                "current": "digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "knowledge_bases": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "last_indexing_job": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "data_source_uuids": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -2817,6 +3009,26 @@
             "digitalocean_database_postgresql_config": {
                 "maxItemsOneOverrides": {
                     "timescaledb": false
+                }
+            },
+            "digitalocean_genai_agent": {
+                "maxItemsOneOverrides": {
+                    "knowledge_bases.$.last_indexing_job": false,
+                    "template.$.knowledge_bases.$.last_indexing_job": false
+                }
+            }
+        },
+        "datasources": {
+            "digitalocean_genai_agent": {
+                "maxItemsOneOverrides": {
+                    "knowledge_bases.$.last_indexing_job": false,
+                    "template.$.knowledge_bases.$.last_indexing_job": false
+                }
+            },
+            "digitalocean_genai_agents": {
+                "maxItemsOneOverrides": {
+                    "agents.$.knowledge_bases.$.last_indexing_job": false,
+                    "agents.$.template.$.knowledge_bases.$.last_indexing_job": false
                 }
             }
         }

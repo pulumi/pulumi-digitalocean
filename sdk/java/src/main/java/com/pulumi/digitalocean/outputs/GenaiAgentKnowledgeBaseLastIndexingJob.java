@@ -27,14 +27,14 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
      * @return Datasource UUIDs for the last indexing job
      * 
      */
-    private @Nullable List<String> datasourceUuids;
+    private @Nullable List<String> dataSourceUuids;
     /**
      * @return Timestamp when the last indexing job finished
      * 
      */
     private @Nullable String finishedAt;
     /**
-     * @return UUID	of the Knowledge Base for the last indexing job
+     * @return UUID  of the Knowledge Base for the last indexing job
      * 
      */
     private @Nullable String knowledgeBaseUuid;
@@ -64,7 +64,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
      */
     private @Nullable String updatedAt;
     /**
-     * @return UUID	of the last indexing job
+     * @return UUID  of the last indexing job
      * 
      */
     private @Nullable String uuid;
@@ -88,8 +88,8 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
      * @return Datasource UUIDs for the last indexing job
      * 
      */
-    public List<String> datasourceUuids() {
-        return this.datasourceUuids == null ? List.of() : this.datasourceUuids;
+    public List<String> dataSourceUuids() {
+        return this.dataSourceUuids == null ? List.of() : this.dataSourceUuids;
     }
     /**
      * @return Timestamp when the last indexing job finished
@@ -99,7 +99,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
         return Optional.ofNullable(this.finishedAt);
     }
     /**
-     * @return UUID	of the Knowledge Base for the last indexing job
+     * @return UUID  of the Knowledge Base for the last indexing job
      * 
      */
     public Optional<String> knowledgeBaseUuid() {
@@ -141,7 +141,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
         return Optional.ofNullable(this.updatedAt);
     }
     /**
-     * @return UUID	of the last indexing job
+     * @return UUID  of the last indexing job
      * 
      */
     public Optional<String> uuid() {
@@ -159,7 +159,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
     public static final class Builder {
         private @Nullable Integer completedDatasources;
         private @Nullable String createdAt;
-        private @Nullable List<String> datasourceUuids;
+        private @Nullable List<String> dataSourceUuids;
         private @Nullable String finishedAt;
         private @Nullable String knowledgeBaseUuid;
         private @Nullable String phase;
@@ -173,7 +173,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
     	      Objects.requireNonNull(defaults);
     	      this.completedDatasources = defaults.completedDatasources;
     	      this.createdAt = defaults.createdAt;
-    	      this.datasourceUuids = defaults.datasourceUuids;
+    	      this.dataSourceUuids = defaults.dataSourceUuids;
     	      this.finishedAt = defaults.finishedAt;
     	      this.knowledgeBaseUuid = defaults.knowledgeBaseUuid;
     	      this.phase = defaults.phase;
@@ -197,13 +197,13 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
             return this;
         }
         @CustomType.Setter
-        public Builder datasourceUuids(@Nullable List<String> datasourceUuids) {
+        public Builder dataSourceUuids(@Nullable List<String> dataSourceUuids) {
 
-            this.datasourceUuids = datasourceUuids;
+            this.dataSourceUuids = dataSourceUuids;
             return this;
         }
-        public Builder datasourceUuids(String... datasourceUuids) {
-            return datasourceUuids(List.of(datasourceUuids));
+        public Builder dataSourceUuids(String... dataSourceUuids) {
+            return dataSourceUuids(List.of(dataSourceUuids));
         }
         @CustomType.Setter
         public Builder finishedAt(@Nullable String finishedAt) {
@@ -257,7 +257,7 @@ public final class GenaiAgentKnowledgeBaseLastIndexingJob {
             final var _resultValue = new GenaiAgentKnowledgeBaseLastIndexingJob();
             _resultValue.completedDatasources = completedDatasources;
             _resultValue.createdAt = createdAt;
-            _resultValue.datasourceUuids = datasourceUuids;
+            _resultValue.dataSourceUuids = dataSourceUuids;
             _resultValue.finishedAt = finishedAt;
             _resultValue.knowledgeBaseUuid = knowledgeBaseUuid;
             _resultValue.phase = phase;
