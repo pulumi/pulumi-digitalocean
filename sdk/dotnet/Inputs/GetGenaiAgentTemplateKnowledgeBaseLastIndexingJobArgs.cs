@@ -24,16 +24,16 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("createdAt", required: true)]
         public Input<string> CreatedAt { get; set; } = null!;
 
-        [Input("datasourceUuids")]
-        private InputList<string>? _datasourceUuids;
+        [Input("dataSourceUuids")]
+        private InputList<string>? _dataSourceUuids;
 
         /// <summary>
         /// Datasource UUIDs for the last indexing job
         /// </summary>
-        public InputList<string> DatasourceUuids
+        public InputList<string> DataSourceUuids
         {
-            get => _datasourceUuids ?? (_datasourceUuids = new InputList<string>());
-            set => _datasourceUuids = value;
+            get => _dataSourceUuids ?? (_dataSourceUuids = new InputList<string>());
+            set => _dataSourceUuids = value;
         }
 
         /// <summary>
@@ -43,10 +43,10 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string> FinishedAt { get; set; } = null!;
 
         /// <summary>
-        /// UUID	of the Knowledge Base for the last indexing job
+        /// UUID  of the Knowledge Base for the last indexing job
         /// </summary>
-        [Input("knowledgeBaseUuid")]
-        public Input<string>? KnowledgeBaseUuid { get; set; }
+        [Input("knowledgeBaseUuid", required: true)]
+        public Input<string> KnowledgeBaseUuid { get; set; } = null!;
 
         /// <summary>
         /// Phase of the last indexing job
@@ -79,7 +79,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string> UpdatedAt { get; set; } = null!;
 
         /// <summary>
-        /// UUID	of the last indexing job
+        /// UUID  of the last indexing job
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }

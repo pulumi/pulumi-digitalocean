@@ -98,7 +98,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGenaiAgentsAgentOpenAiApiKeyResult> OpenAiApiKeys;
         /// <summary>
-        /// List of child agents
+        /// List of parent agents
         /// </summary>
         public readonly ImmutableArray<Outputs.GetGenaiAgentsAgentParentAgentResult> ParentAgents;
         /// <summary>

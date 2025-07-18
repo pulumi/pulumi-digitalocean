@@ -2635,15 +2635,15 @@ export interface GenaiAgentKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -2651,11 +2651,11 @@ export interface GenaiAgentKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -2665,17 +2665,13 @@ export interface GenaiAgentKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GenaiAgentKnowledgeBaseLastIndexingJob {
@@ -2690,15 +2686,15 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -2720,7 +2716,7 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -3082,15 +3078,15 @@ export interface GenaiAgentTemplateKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -3098,11 +3094,11 @@ export interface GenaiAgentTemplateKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -3112,17 +3108,13 @@ export interface GenaiAgentTemplateKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -3137,15 +3129,15 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -3167,7 +3159,7 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -3259,6 +3251,216 @@ export interface GenaiAgentTemplateModelVersion {
      * Patch version of the model
      */
     patch?: number;
+}
+
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GenaiKnowledgeBaseDatasource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource[];
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob[];
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource[];
+}
+
+export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: string;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: string;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: string;
+}
+
+export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
 }
 
 export interface GetAppDedicatedIp {
@@ -5845,15 +6047,15 @@ export interface GetGenaiAgentKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -5861,11 +6063,11 @@ export interface GetGenaiAgentKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -5875,17 +6077,13 @@ export interface GetGenaiAgentKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
@@ -5900,15 +6098,15 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -5930,7 +6128,7 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -6272,15 +6470,15 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -6288,11 +6486,11 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -6302,17 +6500,13 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -6327,15 +6521,15 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -6357,7 +6551,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -6451,6 +6645,198 @@ export interface GetGenaiAgentTemplateModelVersion {
     patch?: number;
 }
 
+export interface GetGenaiAgentVersionsAgentVersion {
+    /**
+     * ID of the Agent to retrieve versions for
+     */
+    agentUuid: string;
+    /**
+     * List of child agents attached to this version
+     */
+    attachedChildAgents: outputs.GetGenaiAgentVersionsAgentVersionAttachedChildAgent[];
+    /**
+     * List of functions attached to this version
+     */
+    attachedFunctions: outputs.GetGenaiAgentVersionsAgentVersionAttachedFunction[];
+    /**
+     * List of guardrails attached to this version
+     */
+    attachedGuardrails: outputs.GetGenaiAgentVersionsAgentVersionAttachedGuardrail[];
+    /**
+     * List of Knowledge Bases agent versions
+     */
+    attachedKnowledgeBases: outputs.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase[];
+    /**
+     * Indicates if the version can be rolled back
+     */
+    canRollback: boolean;
+    /**
+     * Timestamp when the Agent Version was created
+     */
+    createdAt: string;
+    /**
+     * Email of the user who created this version
+     */
+    createdByEmail: string;
+    /**
+     * Indicates if this version is currently applied configuration
+     */
+    currentlyApplied: boolean;
+    /**
+     * Description of the Agent Version
+     */
+    description: string;
+    /**
+     * Id of the Agent Version
+     */
+    id: string;
+    /**
+     * Instruction for the Agent Version
+     */
+    instruction: string;
+    /**
+     * K value for the Agent Version
+     */
+    k: number;
+    /**
+     * Maximum tokens allowed for the Agent
+     */
+    maxTokens: number;
+    /**
+     * Name of model associated to the agent version
+     */
+    modelName: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Indicates if the should provide in-response citations
+     */
+    provideCitations: boolean;
+    /**
+     * Retrieval method used. 
+     * - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+     * - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+     * - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+     * - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+     * - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+     */
+    retrievalMethod: string;
+    /**
+     * List of Tags
+     */
+    tags: string[];
+    /**
+     * Temperature setting for the Agent Version
+     */
+    temperature: number;
+    /**
+     * Top P sampling parameter for the Agent Version
+     */
+    topP: number;
+    /**
+     * Trigger action for the Agent Version
+     */
+    triggerAction: string;
+    /**
+     * Hash of the Agent Version
+     */
+    versionHash: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
+    /**
+     * Name of the child agent
+     */
+    agentName: string;
+    /**
+     * Child agent unique identifier
+     */
+    childAgentUuid: string;
+    /**
+     * If case
+     */
+    ifCase: string;
+    /**
+     * Child agent is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Route name
+     */
+    routeName: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedFunction {
+    /**
+     * Description of the function
+     */
+    description: string;
+    /**
+     * FaaS name of the function
+     */
+    faasName: string;
+    /**
+     * FaaS namespace of the function
+     */
+    faasNamespace: string;
+    /**
+     * Function is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the function
+     */
+    name: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
+    /**
+     * Whether the guardrail is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the guardrail
+     */
+    name: string;
+    /**
+     * Guardrail priority
+     */
+    priority: number;
+    /**
+     * Guardrail UUID
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
+    /**
+     * Whether the knowledge base is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the knowledge base
+     */
+    name: string;
+    /**
+     * Knowledge base UUID
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
 export interface GetGenaiAgentsAgent {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
@@ -6537,7 +6923,7 @@ export interface GetGenaiAgentsAgent {
      */
     openAiApiKeys: outputs.GetGenaiAgentsAgentOpenAiApiKey[];
     /**
-     * List of child agents
+     * List of parent agents
      */
     parentAgents: outputs.GetGenaiAgentsAgentParentAgent[];
     /**
@@ -7008,15 +7394,15 @@ export interface GetGenaiAgentsAgentKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -7024,11 +7410,11 @@ export interface GetGenaiAgentsAgentKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -7038,17 +7424,13 @@ export interface GetGenaiAgentsAgentKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob {
@@ -7063,15 +7445,15 @@ export interface GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -7093,7 +7475,7 @@ export interface GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -7435,15 +7817,15 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBase {
     /**
      * Database ID of the Knowledge Base
      */
-    databaseId: string;
+    databaseId?: string;
     /**
      * Embedding model UUID for the Knowledge Base
      */
-    embeddingModelUuid: string;
+    embeddingModelUuid?: string;
     /**
      * Indicates if the Knowledge Base is public
      */
-    isPublic: boolean;
+    isPublic?: boolean;
     /**
      * Last indexing job for the Knowledge Base
      */
@@ -7451,11 +7833,11 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBase {
     /**
      * Name of the Knowledge Base
      */
-    name: string;
+    name?: string;
     /**
      * Project ID of the Knowledge Base
      */
-    projectId: string;
+    projectId?: string;
     /**
      * Region of the Knowledge Base
      */
@@ -7465,17 +7847,13 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -7490,15 +7868,15 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
-    knowledgeBaseUuid?: string;
+    knowledgeBaseUuid: string;
     /**
      * Phase of the last indexing job
      */
@@ -7520,7 +7898,7 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -7622,6 +8000,295 @@ export interface GetGenaiAgentsFilter {
 }
 
 export interface GetGenaiAgentsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource[];
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob[];
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource[];
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: string;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: string;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiKnowledgeBasesKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJobs: outputs.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob[];
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region: string;
+    /**
+     * List of tags
+     */
+    tags: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBasesSort {
     direction?: string;
     key: string;
 }

@@ -2665,17 +2665,13 @@ export interface GenaiAgentKnowledgeBase {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
      * User ID of the Knowledge Base
      */
     userId?: pulumi.Input<string>;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: pulumi.Input<string>;
 }
 
 export interface GenaiAgentKnowledgeBaseLastIndexingJob {
@@ -2690,13 +2686,13 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -2720,7 +2716,7 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -3112,17 +3108,13 @@ export interface GenaiAgentTemplateKnowledgeBase {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
      * User ID of the Knowledge Base
      */
     userId?: pulumi.Input<string>;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: pulumi.Input<string>;
 }
 
 export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -3137,13 +3129,13 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -3167,7 +3159,7 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -3259,6 +3251,216 @@ export interface GenaiAgentTemplateModelVersion {
      * Patch version of the model
      */
     patch?: pulumi.Input<number>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: pulumi.Input<string>;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: pulumi.Input<string>;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: pulumi.Input<boolean>;
+}
+
+export interface GenaiKnowledgeBaseDatasource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource>[]>;
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceLastIndexingJob>[]>;
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceSpacesDataSource>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource>[]>;
+}
+
+export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: pulumi.Input<string>;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: pulumi.Input<string>;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: pulumi.Input<string>;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: pulumi.Input<string>;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: pulumi.Input<boolean>;
+}
+
+export interface GenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
 }
 
 export interface GetAppDedicatedIp {
@@ -4077,17 +4279,13 @@ export interface GetGenaiAgentKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentKnowledgeBaseArgs {
@@ -4132,17 +4330,13 @@ export interface GetGenaiAgentKnowledgeBaseArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
      * User ID of the Knowledge Base
      */
     userId?: pulumi.Input<string>;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: pulumi.Input<string>;
 }
 
 export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
@@ -4157,13 +4351,13 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: string;
     /**
@@ -4187,7 +4381,7 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -4204,13 +4398,13 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -4234,7 +4428,7 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -4575,17 +4769,13 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: string;
     /**
      * User ID of the Knowledge Base
      */
     userId?: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
 }
 
 export interface GetGenaiAgentTemplateKnowledgeBaseArgs {
@@ -4630,17 +4820,13 @@ export interface GetGenaiAgentTemplateKnowledgeBaseArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
      * User ID of the Knowledge Base
      */
     userId?: pulumi.Input<string>;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: pulumi.Input<string>;
 }
 
 export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
@@ -4655,13 +4841,13 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: string;
     /**
@@ -4685,7 +4871,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -4702,13 +4888,13 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -4732,7 +4918,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -4915,6 +5101,30 @@ export interface GetGenaiAgentTemplateModelVersionArgs {
     patch?: pulumi.Input<number>;
 }
 
+export interface GetGenaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentVersionsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiAgentVersionsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
 export interface GetGenaiAgentsFilter {
     all?: boolean;
     key: string;
@@ -4935,6 +5145,124 @@ export interface GetGenaiAgentsSort {
 }
 
 export interface GetGenaiAgentsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJobArgs {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiKnowledgeBasesFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiKnowledgeBasesSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiKnowledgeBasesSortArgs {
     direction?: pulumi.Input<string>;
     key: pulumi.Input<string>;
 }

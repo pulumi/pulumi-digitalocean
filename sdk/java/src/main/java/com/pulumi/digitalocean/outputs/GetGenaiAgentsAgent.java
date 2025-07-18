@@ -133,7 +133,7 @@ public final class GetGenaiAgentsAgent {
      */
     private List<GetGenaiAgentsAgentOpenAiApiKey> openAiApiKeys;
     /**
-     * @return List of child agents
+     * @return List of parent agents
      * 
      */
     private List<GetGenaiAgentsAgentParentAgent> parentAgents;
@@ -357,7 +357,7 @@ public final class GetGenaiAgentsAgent {
         return this.openAiApiKeys;
     }
     /**
-     * @return List of child agents
+     * @return List of parent agents
      * 
      */
     public List<GetGenaiAgentsAgentParentAgent> parentAgents() {
