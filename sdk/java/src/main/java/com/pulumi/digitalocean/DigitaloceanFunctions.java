@@ -43,8 +43,16 @@ import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasePlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -123,7 +131,11 @@ import com.pulumi.digitalocean.outputs.GetDropletsResult;
 import com.pulumi.digitalocean.outputs.GetFirewallResult;
 import com.pulumi.digitalocean.outputs.GetFloatingIpResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentResult;
+import com.pulumi.digitalocean.outputs.GetGenaiAgentVersionsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBasesResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
@@ -6278,6 +6290,21 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args) {
+        return getGenaiAgentVersions(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args) {
+        return getGenaiAgentVersionsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetGenaiAgentsResult> getGenaiAgents() {
         return getGenaiAgents(GetGenaiAgentsArgs.Empty, InvokeOptions.Empty);
     }
@@ -6298,6 +6325,63 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase() {
+        return getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain() {
+        return getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args) {
+        return getGenaiKnowledgeBase(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args) {
+        return getGenaiKnowledgeBasePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args) {
+        return getGenaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args) {
+        return getGenaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases() {
+        return getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain() {
+        return getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args) {
+        return getGenaiKnowledgeBases(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args) {
+        return getGenaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on an image for use in other resources (e.g. creating a Droplet
