@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecAlertResult
     {
+        public readonly Outputs.GetAppSpecAlertDestinationsResult? Destinations;
         /// <summary>
         /// Determines whether or not the alert is disabled (default: `false`).
         /// </summary>
@@ -24,10 +25,13 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecAlertResult(
+            Outputs.GetAppSpecAlertDestinationsResult? destinations,
+
             bool? disabled,
 
             string rule)
         {
+            Destinations = destinations;
             Disabled = disabled;
             Rule = rule;
         }
