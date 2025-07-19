@@ -169,14 +169,14 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
     }
 
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -198,21 +198,6 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
         return Optional.ofNullable(this.userId);
     }
 
-    /**
-     * UUID of the Knowledge Base
-     * 
-     */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
-
-    /**
-     * @return UUID of the Knowledge Base
-     * 
-     */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
-    }
-
     private GenaiAgentTemplateKnowledgeBaseArgs() {}
 
     private GenaiAgentTemplateKnowledgeBaseArgs(GenaiAgentTemplateKnowledgeBaseArgs $) {
@@ -228,7 +213,6 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
         this.tags = $.tags;
         this.updatedAt = $.updatedAt;
         this.userId = $.userId;
-        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -480,7 +464,7 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 
@@ -491,7 +475,7 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 
@@ -519,27 +503,6 @@ public final class GenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.resour
          */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
-        }
-
-        /**
-         * @param uuid UUID of the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(@Nullable Output<String> uuid) {
-            $.uuid = uuid;
-            return this;
-        }
-
-        /**
-         * @param uuid UUID of the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(String uuid) {
-            return uuid(Output.of(uuid));
         }
 
         public GenaiAgentTemplateKnowledgeBaseArgs build() {

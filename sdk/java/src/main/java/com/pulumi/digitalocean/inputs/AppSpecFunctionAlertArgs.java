@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecFunctionAlertDestinationsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AppSpecFunctionAlertArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecFunctionAlertArgs Empty = new AppSpecFunctionAlertArgs();
+
+    /**
+     * Specification for alert destination.
+     * 
+     */
+    @Import(name="destinations")
+    private @Nullable Output<AppSpecFunctionAlertDestinationsArgs> destinations;
+
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    public Optional<Output<AppSpecFunctionAlertDestinationsArgs>> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
 
     /**
      * Determines whether or not the alert is disabled (default: `false`).
@@ -96,6 +112,7 @@ public final class AppSpecFunctionAlertArgs extends com.pulumi.resources.Resourc
     private AppSpecFunctionAlertArgs() {}
 
     private AppSpecFunctionAlertArgs(AppSpecFunctionAlertArgs $) {
+        this.destinations = $.destinations;
         this.disabled = $.disabled;
         this.operator = $.operator;
         this.rule = $.rule;
@@ -119,6 +136,27 @@ public final class AppSpecFunctionAlertArgs extends com.pulumi.resources.Resourc
 
         public Builder(AppSpecFunctionAlertArgs defaults) {
             $ = new AppSpecFunctionAlertArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(@Nullable Output<AppSpecFunctionAlertDestinationsArgs> destinations) {
+            $.destinations = destinations;
+            return this;
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(AppSpecFunctionAlertDestinationsArgs destinations) {
+            return destinations(Output.of(destinations));
         }
 
         /**

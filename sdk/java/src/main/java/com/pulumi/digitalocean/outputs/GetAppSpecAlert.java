@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetAppSpecAlertDestinations;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,6 +14,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecAlert {
+    private @Nullable GetAppSpecAlertDestinations destinations;
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -25,6 +27,9 @@ public final class GetAppSpecAlert {
     private String rule;
 
     private GetAppSpecAlert() {}
+    public Optional<GetAppSpecAlertDestinations> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -49,15 +54,23 @@ public final class GetAppSpecAlert {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppSpecAlertDestinations destinations;
         private @Nullable Boolean disabled;
         private String rule;
         public Builder() {}
         public Builder(GetAppSpecAlert defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinations = defaults.destinations;
     	      this.disabled = defaults.disabled;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
+        public Builder destinations(@Nullable GetAppSpecAlertDestinations destinations) {
+
+            this.destinations = destinations;
+            return this;
+        }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
@@ -74,6 +87,7 @@ public final class GetAppSpecAlert {
         }
         public GetAppSpecAlert build() {
             final var _resultValue = new GetAppSpecAlert();
+            _resultValue.destinations = destinations;
             _resultValue.disabled = disabled;
             _resultValue.rule = rule;
             return _resultValue;
