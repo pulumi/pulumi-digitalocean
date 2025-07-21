@@ -27,20 +27,20 @@ namespace Pulumi.DigitalOcean.Inputs
         /// <summary>
         /// Database ID of the Knowledge Base
         /// </summary>
-        [Input("databaseId", required: true)]
-        public string DatabaseId { get; set; } = null!;
+        [Input("databaseId")]
+        public string? DatabaseId { get; set; }
 
         /// <summary>
         /// Embedding model UUID for the Knowledge Base
         /// </summary>
-        [Input("embeddingModelUuid", required: true)]
-        public string EmbeddingModelUuid { get; set; } = null!;
+        [Input("embeddingModelUuid")]
+        public string? EmbeddingModelUuid { get; set; }
 
         /// <summary>
         /// Indicates if the Knowledge Base is public
         /// </summary>
-        [Input("isPublic", required: true)]
-        public bool IsPublic { get; set; }
+        [Input("isPublic")]
+        public bool? IsPublic { get; set; }
 
         [Input("lastIndexingJobs")]
         private List<Inputs.GetGenaiAgentKnowledgeBaseLastIndexingJobArgs>? _lastIndexingJobs;
@@ -57,14 +57,14 @@ namespace Pulumi.DigitalOcean.Inputs
         /// <summary>
         /// Name of the Knowledge Base
         /// </summary>
-        [Input("name", required: true)]
-        public string Name { get; set; } = null!;
+        [Input("name")]
+        public string? Name { get; set; }
 
         /// <summary>
         /// Project ID of the Knowledge Base
         /// </summary>
-        [Input("projectId", required: true)]
-        public string ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public string? ProjectId { get; set; }
 
         /// <summary>
         /// Region of the Knowledge Base
@@ -85,7 +85,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         [Input("updatedAt", required: true)]
         public string UpdatedAt { get; set; } = null!;
@@ -95,12 +95,6 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("userId")]
         public string? UserId { get; set; }
-
-        /// <summary>
-        /// UUID of the Knowledge Base
-        /// </summary>
-        [Input("uuid")]
-        public string? Uuid { get; set; }
 
         public GetGenaiAgentKnowledgeBaseArgs()
         {

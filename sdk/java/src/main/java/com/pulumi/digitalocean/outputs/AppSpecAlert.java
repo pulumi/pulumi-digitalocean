@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.AppSpecAlertDestinations;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -13,6 +14,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecAlert {
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    private @Nullable AppSpecAlertDestinations destinations;
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -25,6 +31,13 @@ public final class AppSpecAlert {
     private String rule;
 
     private AppSpecAlert() {}
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    public Optional<AppSpecAlertDestinations> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -49,15 +62,23 @@ public final class AppSpecAlert {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppSpecAlertDestinations destinations;
         private @Nullable Boolean disabled;
         private String rule;
         public Builder() {}
         public Builder(AppSpecAlert defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinations = defaults.destinations;
     	      this.disabled = defaults.disabled;
     	      this.rule = defaults.rule;
         }
 
+        @CustomType.Setter
+        public Builder destinations(@Nullable AppSpecAlertDestinations destinations) {
+
+            this.destinations = destinations;
+            return this;
+        }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
@@ -74,6 +95,7 @@ public final class AppSpecAlert {
         }
         public AppSpecAlert build() {
             final var _resultValue = new AppSpecAlert();
+            _resultValue.destinations = destinations;
             _resultValue.disabled = disabled;
             _resultValue.rule = rule;
             return _resultValue;
