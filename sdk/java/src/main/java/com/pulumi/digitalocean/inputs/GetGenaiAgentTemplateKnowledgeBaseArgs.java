@@ -53,45 +53,45 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
      * Database ID of the Knowledge Base
      * 
      */
-    @Import(name="databaseId", required=true)
-    private Output<String> databaseId;
+    @Import(name="databaseId")
+    private @Nullable Output<String> databaseId;
 
     /**
      * @return Database ID of the Knowledge Base
      * 
      */
-    public Output<String> databaseId() {
-        return this.databaseId;
+    public Optional<Output<String>> databaseId() {
+        return Optional.ofNullable(this.databaseId);
     }
 
     /**
      * Embedding model UUID for the Knowledge Base
      * 
      */
-    @Import(name="embeddingModelUuid", required=true)
-    private Output<String> embeddingModelUuid;
+    @Import(name="embeddingModelUuid")
+    private @Nullable Output<String> embeddingModelUuid;
 
     /**
      * @return Embedding model UUID for the Knowledge Base
      * 
      */
-    public Output<String> embeddingModelUuid() {
-        return this.embeddingModelUuid;
+    public Optional<Output<String>> embeddingModelUuid() {
+        return Optional.ofNullable(this.embeddingModelUuid);
     }
 
     /**
      * Indicates if the Knowledge Base is public
      * 
      */
-    @Import(name="isPublic", required=true)
-    private Output<Boolean> isPublic;
+    @Import(name="isPublic")
+    private @Nullable Output<Boolean> isPublic;
 
     /**
      * @return Indicates if the Knowledge Base is public
      * 
      */
-    public Output<Boolean> isPublic() {
-        return this.isPublic;
+    public Optional<Output<Boolean>> isPublic() {
+        return Optional.ofNullable(this.isPublic);
     }
 
     /**
@@ -113,30 +113,30 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
      * Name of the Knowledge Base
      * 
      */
-    @Import(name="name", required=true)
-    private Output<String> name;
+    @Import(name="name")
+    private @Nullable Output<String> name;
 
     /**
      * @return Name of the Knowledge Base
      * 
      */
-    public Output<String> name() {
-        return this.name;
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
     }
 
     /**
      * Project ID of the Knowledge Base
      * 
      */
-    @Import(name="projectId", required=true)
-    private Output<String> projectId;
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
 
     /**
      * @return Project ID of the Knowledge Base
      * 
      */
-    public Output<String> projectId() {
-        return this.projectId;
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
 
     /**
@@ -170,14 +170,14 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
     }
 
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      * 
      */
     @Import(name="updatedAt", required=true)
     private Output<String> updatedAt;
 
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public Output<String> updatedAt() {
@@ -199,21 +199,6 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
         return Optional.ofNullable(this.userId);
     }
 
-    /**
-     * UUID of the Knowledge Base
-     * 
-     */
-    @Import(name="uuid")
-    private @Nullable Output<String> uuid;
-
-    /**
-     * @return UUID of the Knowledge Base
-     * 
-     */
-    public Optional<Output<String>> uuid() {
-        return Optional.ofNullable(this.uuid);
-    }
-
     private GetGenaiAgentTemplateKnowledgeBaseArgs() {}
 
     private GetGenaiAgentTemplateKnowledgeBaseArgs(GetGenaiAgentTemplateKnowledgeBaseArgs $) {
@@ -229,7 +214,6 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
         this.tags = $.tags;
         this.updatedAt = $.updatedAt;
         this.userId = $.userId;
-        this.uuid = $.uuid;
     }
 
     public static Builder builder() {
@@ -298,7 +282,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder databaseId(Output<String> databaseId) {
+        public Builder databaseId(@Nullable Output<String> databaseId) {
             $.databaseId = databaseId;
             return this;
         }
@@ -319,7 +303,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder embeddingModelUuid(Output<String> embeddingModelUuid) {
+        public Builder embeddingModelUuid(@Nullable Output<String> embeddingModelUuid) {
             $.embeddingModelUuid = embeddingModelUuid;
             return this;
         }
@@ -340,7 +324,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder isPublic(Output<Boolean> isPublic) {
+        public Builder isPublic(@Nullable Output<Boolean> isPublic) {
             $.isPublic = isPublic;
             return this;
         }
@@ -392,7 +376,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder name(Output<String> name) {
+        public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
@@ -413,7 +397,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
          * @return builder
          * 
          */
-        public Builder projectId(Output<String> projectId) {
+        public Builder projectId(@Nullable Output<String> projectId) {
             $.projectId = projectId;
             return this;
         }
@@ -481,7 +465,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 
@@ -492,7 +476,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 
@@ -522,48 +506,12 @@ public final class GetGenaiAgentTemplateKnowledgeBaseArgs extends com.pulumi.res
             return userId(Output.of(userId));
         }
 
-        /**
-         * @param uuid UUID of the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(@Nullable Output<String> uuid) {
-            $.uuid = uuid;
-            return this;
-        }
-
-        /**
-         * @param uuid UUID of the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder uuid(String uuid) {
-            return uuid(Output.of(uuid));
-        }
-
         public GetGenaiAgentTemplateKnowledgeBaseArgs build() {
             if ($.addedToAgentAt == null) {
                 throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "addedToAgentAt");
             }
             if ($.createdAt == null) {
                 throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "createdAt");
-            }
-            if ($.databaseId == null) {
-                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "databaseId");
-            }
-            if ($.embeddingModelUuid == null) {
-                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "embeddingModelUuid");
-            }
-            if ($.isPublic == null) {
-                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "isPublic");
-            }
-            if ($.name == null) {
-                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "name");
-            }
-            if ($.projectId == null) {
-                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "projectId");
             }
             if ($.updatedAt == null) {
                 throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseArgs", "updatedAt");

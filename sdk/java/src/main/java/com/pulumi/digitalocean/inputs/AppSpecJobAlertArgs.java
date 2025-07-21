@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecJobAlertDestinationsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class AppSpecJobAlertArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecJobAlertArgs Empty = new AppSpecJobAlertArgs();
+
+    /**
+     * Specification for alert destination.
+     * 
+     */
+    @Import(name="destinations")
+    private @Nullable Output<AppSpecJobAlertDestinationsArgs> destinations;
+
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    public Optional<Output<AppSpecJobAlertDestinationsArgs>> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
 
     /**
      * Determines whether or not the alert is disabled (default: `false`).
@@ -96,6 +112,7 @@ public final class AppSpecJobAlertArgs extends com.pulumi.resources.ResourceArgs
     private AppSpecJobAlertArgs() {}
 
     private AppSpecJobAlertArgs(AppSpecJobAlertArgs $) {
+        this.destinations = $.destinations;
         this.disabled = $.disabled;
         this.operator = $.operator;
         this.rule = $.rule;
@@ -119,6 +136,27 @@ public final class AppSpecJobAlertArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(AppSpecJobAlertArgs defaults) {
             $ = new AppSpecJobAlertArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(@Nullable Output<AppSpecJobAlertDestinationsArgs> destinations) {
+            $.destinations = destinations;
+            return this;
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(AppSpecJobAlertDestinationsArgs destinations) {
+            return destinations(Output.of(destinations));
         }
 
         /**

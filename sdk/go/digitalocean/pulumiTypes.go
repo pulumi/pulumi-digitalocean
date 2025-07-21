@@ -565,6 +565,8 @@ func (o AppSpecPtrOutput) Workers() AppSpecWorkerArrayOutput {
 }
 
 type AppSpecAlert struct {
+	// Specification for alert destination.
+	Destinations *AppSpecAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -583,6 +585,8 @@ type AppSpecAlertInput interface {
 }
 
 type AppSpecAlertArgs struct {
+	// Specification for alert destination.
+	Destinations AppSpecAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -640,6 +644,11 @@ func (o AppSpecAlertOutput) ToAppSpecAlertOutputWithContext(ctx context.Context)
 	return o
 }
 
+// Specification for alert destination.
+func (o AppSpecAlertOutput) Destinations() AppSpecAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v AppSpecAlert) *AppSpecAlertDestinations { return v.Destinations }).(AppSpecAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o AppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -668,6 +677,268 @@ func (o AppSpecAlertArrayOutput) Index(i pulumi.IntInput) AppSpecAlertOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecAlert {
 		return vs[0].([]AppSpecAlert)[vs[1].(int)]
 	}).(AppSpecAlertOutput)
+}
+
+type AppSpecAlertDestinations struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails []string `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks []AppSpecAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// AppSpecAlertDestinationsInput is an input type that accepts AppSpecAlertDestinationsArgs and AppSpecAlertDestinationsOutput values.
+// You can construct a concrete instance of `AppSpecAlertDestinationsInput` via:
+//
+//	AppSpecAlertDestinationsArgs{...}
+type AppSpecAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertDestinationsOutput() AppSpecAlertDestinationsOutput
+	ToAppSpecAlertDestinationsOutputWithContext(context.Context) AppSpecAlertDestinationsOutput
+}
+
+type AppSpecAlertDestinationsArgs struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks AppSpecAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (AppSpecAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (i AppSpecAlertDestinationsArgs) ToAppSpecAlertDestinationsOutput() AppSpecAlertDestinationsOutput {
+	return i.ToAppSpecAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertDestinationsArgs) ToAppSpecAlertDestinationsOutputWithContext(ctx context.Context) AppSpecAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertDestinationsOutput)
+}
+
+func (i AppSpecAlertDestinationsArgs) ToAppSpecAlertDestinationsPtrOutput() AppSpecAlertDestinationsPtrOutput {
+	return i.ToAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertDestinationsArgs) ToAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertDestinationsOutput).ToAppSpecAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// AppSpecAlertDestinationsPtrInput is an input type that accepts AppSpecAlertDestinationsArgs, AppSpecAlertDestinationsPtr and AppSpecAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `AppSpecAlertDestinationsPtrInput` via:
+//
+//	        AppSpecAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertDestinationsPtrOutput() AppSpecAlertDestinationsPtrOutput
+	ToAppSpecAlertDestinationsPtrOutputWithContext(context.Context) AppSpecAlertDestinationsPtrOutput
+}
+
+type appSpecAlertDestinationsPtrType AppSpecAlertDestinationsArgs
+
+func AppSpecAlertDestinationsPtr(v *AppSpecAlertDestinationsArgs) AppSpecAlertDestinationsPtrInput {
+	return (*appSpecAlertDestinationsPtrType)(v)
+}
+
+func (*appSpecAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (i *appSpecAlertDestinationsPtrType) ToAppSpecAlertDestinationsPtrOutput() AppSpecAlertDestinationsPtrOutput {
+	return i.ToAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecAlertDestinationsPtrType) ToAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertDestinationsPtrOutput)
+}
+
+type AppSpecAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecAlertDestinationsOutput) ToAppSpecAlertDestinationsOutput() AppSpecAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsOutput) ToAppSpecAlertDestinationsOutputWithContext(ctx context.Context) AppSpecAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsOutput) ToAppSpecAlertDestinationsPtrOutput() AppSpecAlertDestinationsPtrOutput {
+	return o.ToAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecAlertDestinationsOutput) ToAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecAlertDestinations) *AppSpecAlertDestinations {
+		return &v
+	}).(AppSpecAlertDestinationsPtrOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecAlertDestinationsOutput) SlackWebhooks() AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v AppSpecAlertDestinations) []AppSpecAlertDestinationsSlackWebhook { return v.SlackWebhooks }).(AppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecAlertDestinationsPtrOutput) ToAppSpecAlertDestinationsPtrOutput() AppSpecAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsPtrOutput) ToAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsPtrOutput) Elem() AppSpecAlertDestinationsOutput {
+	return o.ApplyT(func(v *AppSpecAlertDestinations) AppSpecAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecAlertDestinations
+		return ret
+	}).(AppSpecAlertDestinationsOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecAlertDestinationsPtrOutput) SlackWebhooks() AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *AppSpecAlertDestinations) []AppSpecAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(AppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// AppSpecAlertDestinationsSlackWebhookInput is an input type that accepts AppSpecAlertDestinationsSlackWebhookArgs and AppSpecAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `AppSpecAlertDestinationsSlackWebhookInput` via:
+//
+//	AppSpecAlertDestinationsSlackWebhookArgs{...}
+type AppSpecAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertDestinationsSlackWebhookOutput() AppSpecAlertDestinationsSlackWebhookOutput
+	ToAppSpecAlertDestinationsSlackWebhookOutputWithContext(context.Context) AppSpecAlertDestinationsSlackWebhookOutput
+}
+
+type AppSpecAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AppSpecAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecAlertDestinationsSlackWebhookArgs) ToAppSpecAlertDestinationsSlackWebhookOutput() AppSpecAlertDestinationsSlackWebhookOutput {
+	return i.ToAppSpecAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertDestinationsSlackWebhookArgs) ToAppSpecAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertDestinationsSlackWebhookOutput)
+}
+
+// AppSpecAlertDestinationsSlackWebhookArrayInput is an input type that accepts AppSpecAlertDestinationsSlackWebhookArray and AppSpecAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `AppSpecAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	AppSpecAlertDestinationsSlackWebhookArray{ AppSpecAlertDestinationsSlackWebhookArgs{...} }
+type AppSpecAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecAlertDestinationsSlackWebhookArrayOutput() AppSpecAlertDestinationsSlackWebhookArrayOutput
+	ToAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) AppSpecAlertDestinationsSlackWebhookArrayOutput
+}
+
+type AppSpecAlertDestinationsSlackWebhookArray []AppSpecAlertDestinationsSlackWebhookInput
+
+func (AppSpecAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecAlertDestinationsSlackWebhookArray) ToAppSpecAlertDestinationsSlackWebhookArrayOutput() AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecAlertDestinationsSlackWebhookArray) ToAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecAlertDestinationsSlackWebhookOutput) ToAppSpecAlertDestinationsSlackWebhookOutput() AppSpecAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsSlackWebhookOutput) ToAppSpecAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o AppSpecAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o AppSpecAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AppSpecAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecAlertDestinationsSlackWebhookArrayOutput) ToAppSpecAlertDestinationsSlackWebhookArrayOutput() AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsSlackWebhookArrayOutput) ToAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) AppSpecAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecAlertDestinationsSlackWebhook {
+		return vs[0].([]AppSpecAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(AppSpecAlertDestinationsSlackWebhookOutput)
 }
 
 type AppSpecDatabase struct {
@@ -1381,6 +1652,8 @@ func (o AppSpecFunctionArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionOutp
 }
 
 type AppSpecFunctionAlert struct {
+	// Specification for alert destination.
+	Destinations *AppSpecFunctionAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -1405,6 +1678,8 @@ type AppSpecFunctionAlertInput interface {
 }
 
 type AppSpecFunctionAlertArgs struct {
+	// Specification for alert destination.
+	Destinations AppSpecFunctionAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -1468,6 +1743,11 @@ func (o AppSpecFunctionAlertOutput) ToAppSpecFunctionAlertOutputWithContext(ctx 
 	return o
 }
 
+// Specification for alert destination.
+func (o AppSpecFunctionAlertOutput) Destinations() AppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlert) *AppSpecFunctionAlertDestinations { return v.Destinations }).(AppSpecFunctionAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o AppSpecFunctionAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecFunctionAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -1511,6 +1791,270 @@ func (o AppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionAlert {
 		return vs[0].([]AppSpecFunctionAlert)[vs[1].(int)]
 	}).(AppSpecFunctionAlertOutput)
+}
+
+type AppSpecFunctionAlertDestinations struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails []string `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks []AppSpecFunctionAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// AppSpecFunctionAlertDestinationsInput is an input type that accepts AppSpecFunctionAlertDestinationsArgs and AppSpecFunctionAlertDestinationsOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertDestinationsInput` via:
+//
+//	AppSpecFunctionAlertDestinationsArgs{...}
+type AppSpecFunctionAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertDestinationsOutput() AppSpecFunctionAlertDestinationsOutput
+	ToAppSpecFunctionAlertDestinationsOutputWithContext(context.Context) AppSpecFunctionAlertDestinationsOutput
+}
+
+type AppSpecFunctionAlertDestinationsArgs struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks AppSpecFunctionAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (AppSpecFunctionAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (i AppSpecFunctionAlertDestinationsArgs) ToAppSpecFunctionAlertDestinationsOutput() AppSpecFunctionAlertDestinationsOutput {
+	return i.ToAppSpecFunctionAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertDestinationsArgs) ToAppSpecFunctionAlertDestinationsOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertDestinationsOutput)
+}
+
+func (i AppSpecFunctionAlertDestinationsArgs) ToAppSpecFunctionAlertDestinationsPtrOutput() AppSpecFunctionAlertDestinationsPtrOutput {
+	return i.ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertDestinationsArgs) ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertDestinationsOutput).ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// AppSpecFunctionAlertDestinationsPtrInput is an input type that accepts AppSpecFunctionAlertDestinationsArgs, AppSpecFunctionAlertDestinationsPtr and AppSpecFunctionAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertDestinationsPtrInput` via:
+//
+//	        AppSpecFunctionAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecFunctionAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertDestinationsPtrOutput() AppSpecFunctionAlertDestinationsPtrOutput
+	ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Context) AppSpecFunctionAlertDestinationsPtrOutput
+}
+
+type appSpecFunctionAlertDestinationsPtrType AppSpecFunctionAlertDestinationsArgs
+
+func AppSpecFunctionAlertDestinationsPtr(v *AppSpecFunctionAlertDestinationsArgs) AppSpecFunctionAlertDestinationsPtrInput {
+	return (*appSpecFunctionAlertDestinationsPtrType)(v)
+}
+
+func (*appSpecFunctionAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (i *appSpecFunctionAlertDestinationsPtrType) ToAppSpecFunctionAlertDestinationsPtrOutput() AppSpecFunctionAlertDestinationsPtrOutput {
+	return i.ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecFunctionAlertDestinationsPtrType) ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertDestinationsPtrOutput)
+}
+
+type AppSpecFunctionAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertDestinationsOutput) ToAppSpecFunctionAlertDestinationsOutput() AppSpecFunctionAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsOutput) ToAppSpecFunctionAlertDestinationsOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsOutput) ToAppSpecFunctionAlertDestinationsPtrOutput() AppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecFunctionAlertDestinationsOutput) ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecFunctionAlertDestinations) *AppSpecFunctionAlertDestinations {
+		return &v
+	}).(AppSpecFunctionAlertDestinationsPtrOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecFunctionAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecFunctionAlertDestinationsOutput) SlackWebhooks() AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlertDestinations) []AppSpecFunctionAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecFunctionAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertDestinationsPtrOutput) ToAppSpecFunctionAlertDestinationsPtrOutput() AppSpecFunctionAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsPtrOutput) ToAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsPtrOutput) Elem() AppSpecFunctionAlertDestinationsOutput {
+	return o.ApplyT(func(v *AppSpecFunctionAlertDestinations) AppSpecFunctionAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecFunctionAlertDestinations
+		return ret
+	}).(AppSpecFunctionAlertDestinationsOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecFunctionAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecFunctionAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecFunctionAlertDestinationsPtrOutput) SlackWebhooks() AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *AppSpecFunctionAlertDestinations) []AppSpecFunctionAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecFunctionAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// AppSpecFunctionAlertDestinationsSlackWebhookInput is an input type that accepts AppSpecFunctionAlertDestinationsSlackWebhookArgs and AppSpecFunctionAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertDestinationsSlackWebhookInput` via:
+//
+//	AppSpecFunctionAlertDestinationsSlackWebhookArgs{...}
+type AppSpecFunctionAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertDestinationsSlackWebhookOutput() AppSpecFunctionAlertDestinationsSlackWebhookOutput
+	ToAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(context.Context) AppSpecFunctionAlertDestinationsSlackWebhookOutput
+}
+
+type AppSpecFunctionAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AppSpecFunctionAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecFunctionAlertDestinationsSlackWebhookArgs) ToAppSpecFunctionAlertDestinationsSlackWebhookOutput() AppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return i.ToAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertDestinationsSlackWebhookArgs) ToAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertDestinationsSlackWebhookOutput)
+}
+
+// AppSpecFunctionAlertDestinationsSlackWebhookArrayInput is an input type that accepts AppSpecFunctionAlertDestinationsSlackWebhookArray and AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `AppSpecFunctionAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	AppSpecFunctionAlertDestinationsSlackWebhookArray{ AppSpecFunctionAlertDestinationsSlackWebhookArgs{...} }
+type AppSpecFunctionAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput
+	ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput
+}
+
+type AppSpecFunctionAlertDestinationsSlackWebhookArray []AppSpecFunctionAlertDestinationsSlackWebhookInput
+
+func (AppSpecFunctionAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecFunctionAlertDestinationsSlackWebhookArray) ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecFunctionAlertDestinationsSlackWebhookArray) ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecFunctionAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertDestinationsSlackWebhookOutput) ToAppSpecFunctionAlertDestinationsSlackWebhookOutput() AppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsSlackWebhookOutput) ToAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o AppSpecFunctionAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o AppSpecFunctionAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecFunctionAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ToAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) AppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecFunctionAlertDestinationsSlackWebhook {
+		return vs[0].([]AppSpecFunctionAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(AppSpecFunctionAlertDestinationsSlackWebhookOutput)
 }
 
 type AppSpecFunctionBitbucket struct {
@@ -5355,6 +5899,8 @@ func (o AppSpecJobArrayOutput) Index(i pulumi.IntInput) AppSpecJobOutput {
 }
 
 type AppSpecJobAlert struct {
+	// Specification for alert destination.
+	Destinations *AppSpecJobAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -5379,6 +5925,8 @@ type AppSpecJobAlertInput interface {
 }
 
 type AppSpecJobAlertArgs struct {
+	// Specification for alert destination.
+	Destinations AppSpecJobAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -5442,6 +5990,11 @@ func (o AppSpecJobAlertOutput) ToAppSpecJobAlertOutputWithContext(ctx context.Co
 	return o
 }
 
+// Specification for alert destination.
+func (o AppSpecJobAlertOutput) Destinations() AppSpecJobAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v AppSpecJobAlert) *AppSpecJobAlertDestinations { return v.Destinations }).(AppSpecJobAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o AppSpecJobAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecJobAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -5485,6 +6038,268 @@ func (o AppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) AppSpecJobAlertOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobAlert {
 		return vs[0].([]AppSpecJobAlert)[vs[1].(int)]
 	}).(AppSpecJobAlertOutput)
+}
+
+type AppSpecJobAlertDestinations struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails []string `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks []AppSpecJobAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// AppSpecJobAlertDestinationsInput is an input type that accepts AppSpecJobAlertDestinationsArgs and AppSpecJobAlertDestinationsOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertDestinationsInput` via:
+//
+//	AppSpecJobAlertDestinationsArgs{...}
+type AppSpecJobAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertDestinationsOutput() AppSpecJobAlertDestinationsOutput
+	ToAppSpecJobAlertDestinationsOutputWithContext(context.Context) AppSpecJobAlertDestinationsOutput
+}
+
+type AppSpecJobAlertDestinationsArgs struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks AppSpecJobAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (AppSpecJobAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (i AppSpecJobAlertDestinationsArgs) ToAppSpecJobAlertDestinationsOutput() AppSpecJobAlertDestinationsOutput {
+	return i.ToAppSpecJobAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertDestinationsArgs) ToAppSpecJobAlertDestinationsOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertDestinationsOutput)
+}
+
+func (i AppSpecJobAlertDestinationsArgs) ToAppSpecJobAlertDestinationsPtrOutput() AppSpecJobAlertDestinationsPtrOutput {
+	return i.ToAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertDestinationsArgs) ToAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertDestinationsOutput).ToAppSpecJobAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// AppSpecJobAlertDestinationsPtrInput is an input type that accepts AppSpecJobAlertDestinationsArgs, AppSpecJobAlertDestinationsPtr and AppSpecJobAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertDestinationsPtrInput` via:
+//
+//	        AppSpecJobAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecJobAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertDestinationsPtrOutput() AppSpecJobAlertDestinationsPtrOutput
+	ToAppSpecJobAlertDestinationsPtrOutputWithContext(context.Context) AppSpecJobAlertDestinationsPtrOutput
+}
+
+type appSpecJobAlertDestinationsPtrType AppSpecJobAlertDestinationsArgs
+
+func AppSpecJobAlertDestinationsPtr(v *AppSpecJobAlertDestinationsArgs) AppSpecJobAlertDestinationsPtrInput {
+	return (*appSpecJobAlertDestinationsPtrType)(v)
+}
+
+func (*appSpecJobAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (i *appSpecJobAlertDestinationsPtrType) ToAppSpecJobAlertDestinationsPtrOutput() AppSpecJobAlertDestinationsPtrOutput {
+	return i.ToAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecJobAlertDestinationsPtrType) ToAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertDestinationsPtrOutput)
+}
+
+type AppSpecJobAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertDestinationsOutput) ToAppSpecJobAlertDestinationsOutput() AppSpecJobAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsOutput) ToAppSpecJobAlertDestinationsOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsOutput) ToAppSpecJobAlertDestinationsPtrOutput() AppSpecJobAlertDestinationsPtrOutput {
+	return o.ToAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecJobAlertDestinationsOutput) ToAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecJobAlertDestinations) *AppSpecJobAlertDestinations {
+		return &v
+	}).(AppSpecJobAlertDestinationsPtrOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecJobAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecJobAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecJobAlertDestinationsOutput) SlackWebhooks() AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v AppSpecJobAlertDestinations) []AppSpecJobAlertDestinationsSlackWebhook { return v.SlackWebhooks }).(AppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecJobAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertDestinationsPtrOutput) ToAppSpecJobAlertDestinationsPtrOutput() AppSpecJobAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsPtrOutput) ToAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsPtrOutput) Elem() AppSpecJobAlertDestinationsOutput {
+	return o.ApplyT(func(v *AppSpecJobAlertDestinations) AppSpecJobAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecJobAlertDestinations
+		return ret
+	}).(AppSpecJobAlertDestinationsOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecJobAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecJobAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecJobAlertDestinationsPtrOutput) SlackWebhooks() AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *AppSpecJobAlertDestinations) []AppSpecJobAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(AppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecJobAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// AppSpecJobAlertDestinationsSlackWebhookInput is an input type that accepts AppSpecJobAlertDestinationsSlackWebhookArgs and AppSpecJobAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertDestinationsSlackWebhookInput` via:
+//
+//	AppSpecJobAlertDestinationsSlackWebhookArgs{...}
+type AppSpecJobAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertDestinationsSlackWebhookOutput() AppSpecJobAlertDestinationsSlackWebhookOutput
+	ToAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(context.Context) AppSpecJobAlertDestinationsSlackWebhookOutput
+}
+
+type AppSpecJobAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AppSpecJobAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecJobAlertDestinationsSlackWebhookArgs) ToAppSpecJobAlertDestinationsSlackWebhookOutput() AppSpecJobAlertDestinationsSlackWebhookOutput {
+	return i.ToAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertDestinationsSlackWebhookArgs) ToAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertDestinationsSlackWebhookOutput)
+}
+
+// AppSpecJobAlertDestinationsSlackWebhookArrayInput is an input type that accepts AppSpecJobAlertDestinationsSlackWebhookArray and AppSpecJobAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `AppSpecJobAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	AppSpecJobAlertDestinationsSlackWebhookArray{ AppSpecJobAlertDestinationsSlackWebhookArgs{...} }
+type AppSpecJobAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecJobAlertDestinationsSlackWebhookArrayOutput() AppSpecJobAlertDestinationsSlackWebhookArrayOutput
+	ToAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) AppSpecJobAlertDestinationsSlackWebhookArrayOutput
+}
+
+type AppSpecJobAlertDestinationsSlackWebhookArray []AppSpecJobAlertDestinationsSlackWebhookInput
+
+func (AppSpecJobAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecJobAlertDestinationsSlackWebhookArray) ToAppSpecJobAlertDestinationsSlackWebhookArrayOutput() AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecJobAlertDestinationsSlackWebhookArray) ToAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecJobAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertDestinationsSlackWebhookOutput) ToAppSpecJobAlertDestinationsSlackWebhookOutput() AppSpecJobAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsSlackWebhookOutput) ToAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o AppSpecJobAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o AppSpecJobAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecJobAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AppSpecJobAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecJobAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecJobAlertDestinationsSlackWebhookArrayOutput) ToAppSpecJobAlertDestinationsSlackWebhookArrayOutput() AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsSlackWebhookArrayOutput) ToAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecJobAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) AppSpecJobAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecJobAlertDestinationsSlackWebhook {
+		return vs[0].([]AppSpecJobAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(AppSpecJobAlertDestinationsSlackWebhookOutput)
 }
 
 type AppSpecJobBitbucket struct {
@@ -8008,6 +8823,8 @@ func (o AppSpecServiceArrayOutput) Index(i pulumi.IntInput) AppSpecServiceOutput
 }
 
 type AppSpecServiceAlert struct {
+	// Specification for alert destination.
+	Destinations *AppSpecServiceAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -8032,6 +8849,8 @@ type AppSpecServiceAlertInput interface {
 }
 
 type AppSpecServiceAlertArgs struct {
+	// Specification for alert destination.
+	Destinations AppSpecServiceAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -8095,6 +8914,11 @@ func (o AppSpecServiceAlertOutput) ToAppSpecServiceAlertOutputWithContext(ctx co
 	return o
 }
 
+// Specification for alert destination.
+func (o AppSpecServiceAlertOutput) Destinations() AppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v AppSpecServiceAlert) *AppSpecServiceAlertDestinations { return v.Destinations }).(AppSpecServiceAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o AppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -8138,6 +8962,270 @@ func (o AppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) AppSpecServiceA
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceAlert {
 		return vs[0].([]AppSpecServiceAlert)[vs[1].(int)]
 	}).(AppSpecServiceAlertOutput)
+}
+
+type AppSpecServiceAlertDestinations struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails []string `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks []AppSpecServiceAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// AppSpecServiceAlertDestinationsInput is an input type that accepts AppSpecServiceAlertDestinationsArgs and AppSpecServiceAlertDestinationsOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertDestinationsInput` via:
+//
+//	AppSpecServiceAlertDestinationsArgs{...}
+type AppSpecServiceAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertDestinationsOutput() AppSpecServiceAlertDestinationsOutput
+	ToAppSpecServiceAlertDestinationsOutputWithContext(context.Context) AppSpecServiceAlertDestinationsOutput
+}
+
+type AppSpecServiceAlertDestinationsArgs struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks AppSpecServiceAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (AppSpecServiceAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i AppSpecServiceAlertDestinationsArgs) ToAppSpecServiceAlertDestinationsOutput() AppSpecServiceAlertDestinationsOutput {
+	return i.ToAppSpecServiceAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertDestinationsArgs) ToAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertDestinationsOutput)
+}
+
+func (i AppSpecServiceAlertDestinationsArgs) ToAppSpecServiceAlertDestinationsPtrOutput() AppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertDestinationsArgs) ToAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertDestinationsOutput).ToAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// AppSpecServiceAlertDestinationsPtrInput is an input type that accepts AppSpecServiceAlertDestinationsArgs, AppSpecServiceAlertDestinationsPtr and AppSpecServiceAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertDestinationsPtrInput` via:
+//
+//	        AppSpecServiceAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecServiceAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertDestinationsPtrOutput() AppSpecServiceAlertDestinationsPtrOutput
+	ToAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Context) AppSpecServiceAlertDestinationsPtrOutput
+}
+
+type appSpecServiceAlertDestinationsPtrType AppSpecServiceAlertDestinationsArgs
+
+func AppSpecServiceAlertDestinationsPtr(v *AppSpecServiceAlertDestinationsArgs) AppSpecServiceAlertDestinationsPtrInput {
+	return (*appSpecServiceAlertDestinationsPtrType)(v)
+}
+
+func (*appSpecServiceAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i *appSpecServiceAlertDestinationsPtrType) ToAppSpecServiceAlertDestinationsPtrOutput() AppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecServiceAlertDestinationsPtrType) ToAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertDestinationsPtrOutput)
+}
+
+type AppSpecServiceAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertDestinationsOutput) ToAppSpecServiceAlertDestinationsOutput() AppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsOutput) ToAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsOutput) ToAppSpecServiceAlertDestinationsPtrOutput() AppSpecServiceAlertDestinationsPtrOutput {
+	return o.ToAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecServiceAlertDestinationsOutput) ToAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecServiceAlertDestinations) *AppSpecServiceAlertDestinations {
+		return &v
+	}).(AppSpecServiceAlertDestinationsPtrOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecServiceAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecServiceAlertDestinationsOutput) SlackWebhooks() AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v AppSpecServiceAlertDestinations) []AppSpecServiceAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(AppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecServiceAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertDestinationsPtrOutput) ToAppSpecServiceAlertDestinationsPtrOutput() AppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsPtrOutput) ToAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsPtrOutput) Elem() AppSpecServiceAlertDestinationsOutput {
+	return o.ApplyT(func(v *AppSpecServiceAlertDestinations) AppSpecServiceAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecServiceAlertDestinations
+		return ret
+	}).(AppSpecServiceAlertDestinationsOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecServiceAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecServiceAlertDestinationsPtrOutput) SlackWebhooks() AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *AppSpecServiceAlertDestinations) []AppSpecServiceAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(AppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecServiceAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// AppSpecServiceAlertDestinationsSlackWebhookInput is an input type that accepts AppSpecServiceAlertDestinationsSlackWebhookArgs and AppSpecServiceAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertDestinationsSlackWebhookInput` via:
+//
+//	AppSpecServiceAlertDestinationsSlackWebhookArgs{...}
+type AppSpecServiceAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertDestinationsSlackWebhookOutput() AppSpecServiceAlertDestinationsSlackWebhookOutput
+	ToAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Context) AppSpecServiceAlertDestinationsSlackWebhookOutput
+}
+
+type AppSpecServiceAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AppSpecServiceAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecServiceAlertDestinationsSlackWebhookArgs) ToAppSpecServiceAlertDestinationsSlackWebhookOutput() AppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return i.ToAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertDestinationsSlackWebhookArgs) ToAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertDestinationsSlackWebhookOutput)
+}
+
+// AppSpecServiceAlertDestinationsSlackWebhookArrayInput is an input type that accepts AppSpecServiceAlertDestinationsSlackWebhookArray and AppSpecServiceAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `AppSpecServiceAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	AppSpecServiceAlertDestinationsSlackWebhookArray{ AppSpecServiceAlertDestinationsSlackWebhookArgs{...} }
+type AppSpecServiceAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() AppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+	ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) AppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+}
+
+type AppSpecServiceAlertDestinationsSlackWebhookArray []AppSpecServiceAlertDestinationsSlackWebhookInput
+
+func (AppSpecServiceAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecServiceAlertDestinationsSlackWebhookArray) ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecServiceAlertDestinationsSlackWebhookArray) ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecServiceAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertDestinationsSlackWebhookOutput) ToAppSpecServiceAlertDestinationsSlackWebhookOutput() AppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsSlackWebhookOutput) ToAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o AppSpecServiceAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o AppSpecServiceAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecServiceAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AppSpecServiceAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecServiceAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) AppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecServiceAlertDestinationsSlackWebhook {
+		return vs[0].([]AppSpecServiceAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(AppSpecServiceAlertDestinationsSlackWebhookOutput)
 }
 
 type AppSpecServiceAutoscaling struct {
@@ -13422,6 +14510,8 @@ func (o AppSpecWorkerArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerOutput {
 }
 
 type AppSpecWorkerAlert struct {
+	// Specification for alert destination.
+	Destinations *AppSpecWorkerAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -13446,6 +14536,8 @@ type AppSpecWorkerAlertInput interface {
 }
 
 type AppSpecWorkerAlertArgs struct {
+	// Specification for alert destination.
+	Destinations AppSpecWorkerAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -13509,6 +14601,11 @@ func (o AppSpecWorkerAlertOutput) ToAppSpecWorkerAlertOutputWithContext(ctx cont
 	return o
 }
 
+// Specification for alert destination.
+func (o AppSpecWorkerAlertOutput) Destinations() AppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlert) *AppSpecWorkerAlertDestinations { return v.Destinations }).(AppSpecWorkerAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o AppSpecWorkerAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v AppSpecWorkerAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -13552,6 +14649,270 @@ func (o AppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerAle
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerAlert {
 		return vs[0].([]AppSpecWorkerAlert)[vs[1].(int)]
 	}).(AppSpecWorkerAlertOutput)
+}
+
+type AppSpecWorkerAlertDestinations struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails []string `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks []AppSpecWorkerAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// AppSpecWorkerAlertDestinationsInput is an input type that accepts AppSpecWorkerAlertDestinationsArgs and AppSpecWorkerAlertDestinationsOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertDestinationsInput` via:
+//
+//	AppSpecWorkerAlertDestinationsArgs{...}
+type AppSpecWorkerAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertDestinationsOutput() AppSpecWorkerAlertDestinationsOutput
+	ToAppSpecWorkerAlertDestinationsOutputWithContext(context.Context) AppSpecWorkerAlertDestinationsOutput
+}
+
+type AppSpecWorkerAlertDestinationsArgs struct {
+	// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+	Emails pulumi.StringArrayInput `pulumi:"emails"`
+	// Determines which slack channels or users receive alerts.
+	SlackWebhooks AppSpecWorkerAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (AppSpecWorkerAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAlertDestinationsArgs) ToAppSpecWorkerAlertDestinationsOutput() AppSpecWorkerAlertDestinationsOutput {
+	return i.ToAppSpecWorkerAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertDestinationsArgs) ToAppSpecWorkerAlertDestinationsOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertDestinationsOutput)
+}
+
+func (i AppSpecWorkerAlertDestinationsArgs) ToAppSpecWorkerAlertDestinationsPtrOutput() AppSpecWorkerAlertDestinationsPtrOutput {
+	return i.ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertDestinationsArgs) ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertDestinationsOutput).ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// AppSpecWorkerAlertDestinationsPtrInput is an input type that accepts AppSpecWorkerAlertDestinationsArgs, AppSpecWorkerAlertDestinationsPtr and AppSpecWorkerAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertDestinationsPtrInput` via:
+//
+//	        AppSpecWorkerAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecWorkerAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertDestinationsPtrOutput() AppSpecWorkerAlertDestinationsPtrOutput
+	ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Context) AppSpecWorkerAlertDestinationsPtrOutput
+}
+
+type appSpecWorkerAlertDestinationsPtrType AppSpecWorkerAlertDestinationsArgs
+
+func AppSpecWorkerAlertDestinationsPtr(v *AppSpecWorkerAlertDestinationsArgs) AppSpecWorkerAlertDestinationsPtrInput {
+	return (*appSpecWorkerAlertDestinationsPtrType)(v)
+}
+
+func (*appSpecWorkerAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (i *appSpecWorkerAlertDestinationsPtrType) ToAppSpecWorkerAlertDestinationsPtrOutput() AppSpecWorkerAlertDestinationsPtrOutput {
+	return i.ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecWorkerAlertDestinationsPtrType) ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertDestinationsPtrOutput)
+}
+
+type AppSpecWorkerAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertDestinationsOutput) ToAppSpecWorkerAlertDestinationsOutput() AppSpecWorkerAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsOutput) ToAppSpecWorkerAlertDestinationsOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsOutput) ToAppSpecWorkerAlertDestinationsPtrOutput() AppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecWorkerAlertDestinationsOutput) ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecWorkerAlertDestinations) *AppSpecWorkerAlertDestinations {
+		return &v
+	}).(AppSpecWorkerAlertDestinationsPtrOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecWorkerAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecWorkerAlertDestinationsOutput) SlackWebhooks() AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlertDestinations) []AppSpecWorkerAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecWorkerAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertDestinationsPtrOutput) ToAppSpecWorkerAlertDestinationsPtrOutput() AppSpecWorkerAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsPtrOutput) ToAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsPtrOutput) Elem() AppSpecWorkerAlertDestinationsOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAlertDestinations) AppSpecWorkerAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecWorkerAlertDestinations
+		return ret
+	}).(AppSpecWorkerAlertDestinationsOutput)
+}
+
+// Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+func (o AppSpecWorkerAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+// Determines which slack channels or users receive alerts.
+func (o AppSpecWorkerAlertDestinationsPtrOutput) SlackWebhooks() AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *AppSpecWorkerAlertDestinations) []AppSpecWorkerAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecWorkerAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// AppSpecWorkerAlertDestinationsSlackWebhookInput is an input type that accepts AppSpecWorkerAlertDestinationsSlackWebhookArgs and AppSpecWorkerAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertDestinationsSlackWebhookInput` via:
+//
+//	AppSpecWorkerAlertDestinationsSlackWebhookArgs{...}
+type AppSpecWorkerAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertDestinationsSlackWebhookOutput() AppSpecWorkerAlertDestinationsSlackWebhookOutput
+	ToAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(context.Context) AppSpecWorkerAlertDestinationsSlackWebhookOutput
+}
+
+type AppSpecWorkerAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (AppSpecWorkerAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAlertDestinationsSlackWebhookArgs) ToAppSpecWorkerAlertDestinationsSlackWebhookOutput() AppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return i.ToAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertDestinationsSlackWebhookArgs) ToAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertDestinationsSlackWebhookOutput)
+}
+
+// AppSpecWorkerAlertDestinationsSlackWebhookArrayInput is an input type that accepts AppSpecWorkerAlertDestinationsSlackWebhookArray and AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `AppSpecWorkerAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	AppSpecWorkerAlertDestinationsSlackWebhookArray{ AppSpecWorkerAlertDestinationsSlackWebhookArgs{...} }
+type AppSpecWorkerAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput
+	ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput
+}
+
+type AppSpecWorkerAlertDestinationsSlackWebhookArray []AppSpecWorkerAlertDestinationsSlackWebhookInput
+
+func (AppSpecWorkerAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i AppSpecWorkerAlertDestinationsSlackWebhookArray) ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i AppSpecWorkerAlertDestinationsSlackWebhookArray) ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type AppSpecWorkerAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertDestinationsSlackWebhookOutput) ToAppSpecWorkerAlertDestinationsSlackWebhookOutput() AppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsSlackWebhookOutput) ToAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o AppSpecWorkerAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o AppSpecWorkerAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v AppSpecWorkerAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ToAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) AppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AppSpecWorkerAlertDestinationsSlackWebhook {
+		return vs[0].([]AppSpecWorkerAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(AppSpecWorkerAlertDestinationsSlackWebhookOutput)
 }
 
 type AppSpecWorkerAutoscaling struct {
@@ -20928,12 +22289,10 @@ type GenaiAgentKnowledgeBase struct {
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GenaiAgentKnowledgeBaseInput is an input type that accepts GenaiAgentKnowledgeBaseArgs and GenaiAgentKnowledgeBaseOutput values.
@@ -20968,12 +22327,10 @@ type GenaiAgentKnowledgeBaseArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GenaiAgentKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -21077,7 +22434,7 @@ func (o GenaiAgentKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GenaiAgentKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GenaiAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentKnowledgeBase) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -21085,11 +22442,6 @@ func (o GenaiAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringPtrOutput {
 // User ID of the Knowledge Base
 func (o GenaiAgentKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GenaiAgentKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiAgentKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GenaiAgentKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -21118,10 +22470,10 @@ type GenaiAgentKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt *string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt *string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
+	// UUID  of the Knowledge Base for the last indexing job
 	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
@@ -21133,7 +22485,7 @@ type GenaiAgentKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -21154,10 +22506,10 @@ type GenaiAgentKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
+	// UUID  of the Knowledge Base for the last indexing job
 	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
@@ -21169,7 +22521,7 @@ type GenaiAgentKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -21235,8 +22587,8 @@ func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringP
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -21244,7 +22596,7 @@ func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.String
 	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
+// UUID  of the Knowledge Base for the last indexing job
 func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
 }
@@ -21274,7 +22626,7 @@ func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringP
 	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GenaiAgentKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -23075,12 +24427,10 @@ type GenaiAgentTemplateKnowledgeBase struct {
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GenaiAgentTemplateKnowledgeBaseInput is an input type that accepts GenaiAgentTemplateKnowledgeBaseArgs and GenaiAgentTemplateKnowledgeBaseOutput values.
@@ -23115,12 +24465,10 @@ type GenaiAgentTemplateKnowledgeBaseArgs struct {
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GenaiAgentTemplateKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -23226,7 +24574,7 @@ func (o GenaiAgentTemplateKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GenaiAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBase) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
@@ -23234,11 +24582,6 @@ func (o GenaiAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringPtrOutpu
 // User ID of the Knowledge Base
 func (o GenaiAgentTemplateKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GenaiAgentTemplateKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GenaiAgentTemplateKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -23267,10 +24610,10 @@ type GenaiAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt *string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt *string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
+	// UUID  of the Knowledge Base for the last indexing job
 	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
@@ -23282,7 +24625,7 @@ type GenaiAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt *string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -23303,10 +24646,10 @@ type GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
+	// UUID  of the Knowledge Base for the last indexing job
 	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
@@ -23318,7 +24661,7 @@ type GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -23384,8 +24727,8 @@ func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -23393,7 +24736,7 @@ func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulum
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
+// UUID  of the Knowledge Base for the last indexing job
 func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
 }
@@ -23423,7 +24766,7 @@ func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -23890,6 +25233,1713 @@ func (o GenaiAgentTemplateModelVersionArrayOutput) Index(i pulumi.IntInput) Gena
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiAgentTemplateModelVersion {
 		return vs[0].([]GenaiAgentTemplateModelVersion)[vs[1].(int)]
 	}).(GenaiAgentTemplateModelVersionOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceSpacesDataSource struct {
+	// The name of the Spaces bucket
+	BucketName *string `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath *string `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region *string `pulumi:"region"`
+}
+
+// GenaiKnowledgeBaseDataSourceSpacesDataSourceInput is an input type that accepts GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs and GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceSpacesDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{...}
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs struct {
+	// The name of the Spaces bucket
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath pulumi.StringPtrInput `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput)
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput).ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx)
+}
+
+// GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput is an input type that accepts GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs, GenaiKnowledgeBaseDataSourceSpacesDataSourcePtr and GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput` via:
+//
+//	        GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput
+}
+
+type genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs
+
+func GenaiKnowledgeBaseDataSourceSpacesDataSourcePtr(v *GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput {
+	return (*genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType)(v)
+}
+
+func (*genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i *genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return o.ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenaiKnowledgeBaseDataSourceSpacesDataSource) *GenaiKnowledgeBaseDataSourceSpacesDataSource {
+		return &v
+	}).(GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput)
+}
+
+// The name of the Spaces bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceSpacesDataSource) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The path to the item in the bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) ItemPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceSpacesDataSource) *string { return v.ItemPath }).(pulumi.StringPtrOutput)
+}
+
+// The region of the Spaces bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceSpacesDataSource) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) Elem() GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceSpacesDataSource) GenaiKnowledgeBaseDataSourceSpacesDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret GenaiKnowledgeBaseDataSourceSpacesDataSource
+		return ret
+	}).(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput)
+}
+
+// The name of the Spaces bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceSpacesDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The path to the item in the bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) ItemPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceSpacesDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ItemPath
+	}).(pulumi.StringPtrOutput)
+}
+
+// The region of the Spaces bucket
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceSpacesDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Region
+	}).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSource struct {
+	// The base URL to crawl
+	BaseUrl *string `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption *string `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia *bool `pulumi:"embedMedia"`
+}
+
+// GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput is an input type that accepts GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs and GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{...}
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs struct {
+	// The base URL to crawl
+	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption pulumi.StringPtrInput `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia pulumi.BoolPtrInput `pulumi:"embedMedia"`
+}
+
+func (GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput)
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput).ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx)
+}
+
+// GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput is an input type that accepts GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs, GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtr and GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput` via:
+//
+//	        GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput
+}
+
+type genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs
+
+func GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtr(v *GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput {
+	return (*genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType)(v)
+}
+
+func (*genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i *genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return o.ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+		return &v
+	}).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput)
+}
+
+// The base URL to crawl
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// Options for specifying how URLs found on pages should be handled.
+// - UNKNOWN: Default unknown value
+// - SCOPED: Only include the base URL.
+// - PATH: Crawl the base URL and linked pages within the URL path.
+// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) CrawlingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *string { return v.CrawlingOption }).(pulumi.StringPtrOutput)
+}
+
+// Whether to embed media content
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput) EmbedMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *bool { return v.EmbedMedia }).(pulumi.BoolPtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) Elem() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret GenaiKnowledgeBaseDataSourceWebCrawlerDataSource
+		return ret
+	}).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput)
+}
+
+// The base URL to crawl
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseUrl
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options for specifying how URLs found on pages should be handled.
+// - UNKNOWN: Default unknown value
+// - SCOPED: Only include the base URL.
+// - PATH: Crawl the base URL and linked pages within the URL path.
+// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) CrawlingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CrawlingOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to embed media content
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) EmbedMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBaseDataSourceWebCrawlerDataSource) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EmbedMedia
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceType struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt *string `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources []GenaiKnowledgeBaseDatasourceFileUploadDataSource `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs []GenaiKnowledgeBaseDatasourceLastIndexingJob `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources []GenaiKnowledgeBaseDatasourceSpacesDataSource `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid *string `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources []GenaiKnowledgeBaseDatasourceWebCrawlerDataSource `pulumi:"webCrawlerDataSources"`
+}
+
+// GenaiKnowledgeBaseDatasourceTypeInput is an input type that accepts GenaiKnowledgeBaseDatasourceTypeArgs and GenaiKnowledgeBaseDatasourceTypeOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceTypeInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceTypeArgs{...}
+type GenaiKnowledgeBaseDatasourceTypeInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput
+	ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceTypeOutput
+}
+
+type GenaiKnowledgeBaseDatasourceTypeArgs struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput `pulumi:"webCrawlerDataSources"`
+}
+
+func (GenaiKnowledgeBaseDatasourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceTypeArgs) ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceTypeArgs) ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceTypeOutput)
+}
+
+// GenaiKnowledgeBaseDatasourceTypeArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceTypeArray and GenaiKnowledgeBaseDatasourceTypeArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceTypeArrayInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceTypeArray{ GenaiKnowledgeBaseDatasourceTypeArgs{...} }
+type GenaiKnowledgeBaseDatasourceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput
+	ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput
+}
+
+type GenaiKnowledgeBaseDatasourceTypeArray []GenaiKnowledgeBaseDatasourceTypeInput
+
+func (GenaiKnowledgeBaseDatasourceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceTypeArray) ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceTypeArray) ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceTypeArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeOutput {
+	return o
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// File upload data source configuration
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) FileUploadDataSources() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+		return v.FileUploadDataSources
+	}).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput)
+}
+
+// Last indexing job for the data source
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) LastIndexingJobs() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceLastIndexingJob {
+		return v.LastIndexingJobs
+	}).(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput)
+}
+
+// Spaces data source configuration
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) SpacesDataSources() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceSpacesDataSource {
+		return v.SpacesDataSources
+	}).(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the Knowledge Base
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Web crawler data source configuration
+func (o GenaiKnowledgeBaseDatasourceTypeOutput) WebCrawlerDataSources() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+		return v.WebCrawlerDataSources
+	}).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceType {
+		return vs[0].([]GenaiKnowledgeBaseDatasourceType)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDatasourceTypeOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceFileUploadDataSource struct {
+	// The original name of the uploaded file
+	OriginalFileName *string `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes *string `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey *string `pulumi:"storedObjectKey"`
+}
+
+// GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs and GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{...}
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput
+	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs struct {
+	// The original name of the uploaded file
+	OriginalFileName pulumi.StringPtrInput `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes pulumi.StringPtrInput `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey pulumi.StringPtrInput `pulumi:"storedObjectKey"`
+}
+
+func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput)
+}
+
+// GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray and GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray{ GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{...} }
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray []GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput
+
+func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
+	return o
+}
+
+// The original name of the uploaded file
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) OriginalFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.OriginalFileName }).(pulumi.StringPtrOutput)
+}
+
+// The size of the file in bytes
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) SizeInBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.SizeInBytes }).(pulumi.StringPtrOutput)
+}
+
+// The stored object key for the file
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) StoredObjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.StoredObjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDatasourceFileUploadDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt *string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt *string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt *string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GenaiKnowledgeBaseDatasourceLastIndexingJobInput is an input type that accepts GenaiKnowledgeBaseDatasourceLastIndexingJobArgs and GenaiKnowledgeBaseDatasourceLastIndexingJobOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceLastIndexingJobInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{...}
+type GenaiKnowledgeBaseDatasourceLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput
+	ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput
+}
+
+type GenaiKnowledgeBaseDatasourceLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringPtrInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput)
+}
+
+// GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceLastIndexingJobArray and GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceLastIndexingJobArray{ GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{...} }
+type GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput
+	ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput
+}
+
+type GenaiKnowledgeBaseDatasourceLastIndexingJobArray []GenaiKnowledgeBaseDatasourceLastIndexingJobInput
+
+func (GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) FinishedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+}
+
+// Phase of the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) StartedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.StartedAt }).(pulumi.StringPtrOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the last indexing job
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceLastIndexingJob {
+		return vs[0].([]GenaiKnowledgeBaseDatasourceLastIndexingJob)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceSpacesDataSource struct {
+	// The name of the Spaces bucket
+	BucketName *string `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath *string `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region *string `pulumi:"region"`
+}
+
+// GenaiKnowledgeBaseDatasourceSpacesDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs and GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceSpacesDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{...}
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput
+	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs struct {
+	// The name of the Spaces bucket
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath pulumi.StringPtrInput `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput)
+}
+
+// GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceSpacesDataSourceArray and GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceSpacesDataSourceArray{ GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{...} }
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceArray []GenaiKnowledgeBaseDatasourceSpacesDataSourceInput
+
+func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
+	return o
+}
+
+// The name of the Spaces bucket
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The path to the item in the bucket
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ItemPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.ItemPath }).(pulumi.StringPtrOutput)
+}
+
+// The region of the Spaces bucket
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceSpacesDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDatasourceSpacesDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSource struct {
+	// The base URL to crawl
+	BaseUrl *string `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption *string `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia *bool `pulumi:"embedMedia"`
+}
+
+// GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs and GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{...}
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput
+	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs struct {
+	// The base URL to crawl
+	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption pulumi.StringPtrInput `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia pulumi.BoolPtrInput `pulumi:"embedMedia"`
+}
+
+func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput)
+}
+
+// GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray and GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray{ GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{...} }
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray []GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput
+
+func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+// The base URL to crawl
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// Options for specifying how URLs found on pages should be handled.
+// - UNKNOWN: Default unknown value
+// - SCOPED: Only include the base URL.
+// - PATH: Crawl the base URL and linked pages within the URL path.
+// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) CrawlingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *string { return v.CrawlingOption }).(pulumi.StringPtrOutput)
+}
+
+// Whether to embed media content
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) EmbedMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *bool { return v.EmbedMedia }).(pulumi.BoolPtrOutput)
+}
+
+type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput)
+}
+
+type GenaiKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt *string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt *string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt *string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GenaiKnowledgeBaseLastIndexingJobInput is an input type that accepts GenaiKnowledgeBaseLastIndexingJobArgs and GenaiKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GenaiKnowledgeBaseLastIndexingJobArgs{...}
+type GenaiKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseLastIndexingJobOutput() GenaiKnowledgeBaseLastIndexingJobOutput
+	ToGenaiKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GenaiKnowledgeBaseLastIndexingJobOutput
+}
+
+type GenaiKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringPtrInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GenaiKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseLastIndexingJobArgs) ToGenaiKnowledgeBaseLastIndexingJobOutput() GenaiKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGenaiKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseLastIndexingJobArgs) ToGenaiKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseLastIndexingJobOutput)
+}
+
+// GenaiKnowledgeBaseLastIndexingJobArrayInput is an input type that accepts GenaiKnowledgeBaseLastIndexingJobArray and GenaiKnowledgeBaseLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseLastIndexingJobArrayInput` via:
+//
+//	GenaiKnowledgeBaseLastIndexingJobArray{ GenaiKnowledgeBaseLastIndexingJobArgs{...} }
+type GenaiKnowledgeBaseLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseLastIndexingJobArrayOutput() GenaiKnowledgeBaseLastIndexingJobArrayOutput
+	ToGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Context) GenaiKnowledgeBaseLastIndexingJobArrayOutput
+}
+
+type GenaiKnowledgeBaseLastIndexingJobArray []GenaiKnowledgeBaseLastIndexingJobInput
+
+func (GenaiKnowledgeBaseLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseLastIndexingJobArray) ToGenaiKnowledgeBaseLastIndexingJobArrayOutput() GenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return i.ToGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseLastIndexingJobArray) ToGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+type GenaiKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) ToGenaiKnowledgeBaseLastIndexingJobOutput() GenaiKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) ToGenaiKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+}
+
+// Phase of the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.StartedAt }).(pulumi.StringPtrOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the last indexing job
+func (o GenaiKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseLastIndexingJobArrayOutput() GenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseLastIndexingJob {
+		return vs[0].([]GenaiKnowledgeBaseLastIndexingJob)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseLastIndexingJobOutput)
+}
+
+type GenaiOpenaiApiKeyModel struct {
+	// Agreement information for the model
+	Agreements []GenaiOpenaiApiKeyModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt *string `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName *string `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion *string `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational *bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid *string `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider *string `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete *bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url *string `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases []string `pulumi:"usecases"`
+	// URL of the Model
+	Versions []GenaiOpenaiApiKeyModelVersion `pulumi:"versions"`
+}
+
+// GenaiOpenaiApiKeyModelInput is an input type that accepts GenaiOpenaiApiKeyModelArgs and GenaiOpenaiApiKeyModelOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelInput` via:
+//
+//	GenaiOpenaiApiKeyModelArgs{...}
+type GenaiOpenaiApiKeyModelInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelOutput() GenaiOpenaiApiKeyModelOutput
+	ToGenaiOpenaiApiKeyModelOutputWithContext(context.Context) GenaiOpenaiApiKeyModelOutput
+}
+
+type GenaiOpenaiApiKeyModelArgs struct {
+	// Agreement information for the model
+	Agreements GenaiOpenaiApiKeyModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
+	// URL of the Model
+	Versions GenaiOpenaiApiKeyModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GenaiOpenaiApiKeyModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelArgs) ToGenaiOpenaiApiKeyModelOutput() GenaiOpenaiApiKeyModelOutput {
+	return i.ToGenaiOpenaiApiKeyModelOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelArgs) ToGenaiOpenaiApiKeyModelOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelOutput)
+}
+
+// GenaiOpenaiApiKeyModelArrayInput is an input type that accepts GenaiOpenaiApiKeyModelArray and GenaiOpenaiApiKeyModelArrayOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelArrayInput` via:
+//
+//	GenaiOpenaiApiKeyModelArray{ GenaiOpenaiApiKeyModelArgs{...} }
+type GenaiOpenaiApiKeyModelArrayInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelArrayOutput() GenaiOpenaiApiKeyModelArrayOutput
+	ToGenaiOpenaiApiKeyModelArrayOutputWithContext(context.Context) GenaiOpenaiApiKeyModelArrayOutput
+}
+
+type GenaiOpenaiApiKeyModelArray []GenaiOpenaiApiKeyModelInput
+
+func (GenaiOpenaiApiKeyModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelArray) ToGenaiOpenaiApiKeyModelArrayOutput() GenaiOpenaiApiKeyModelArrayOutput {
+	return i.ToGenaiOpenaiApiKeyModelArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelArray) ToGenaiOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelArrayOutput)
+}
+
+type GenaiOpenaiApiKeyModelOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelOutput) ToGenaiOpenaiApiKeyModelOutput() GenaiOpenaiApiKeyModelOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelOutput) ToGenaiOpenaiApiKeyModelOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GenaiOpenaiApiKeyModelOutput) Agreements() GenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) []GenaiOpenaiApiKeyModelAgreement { return v.Agreements }).(GenaiOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GenaiOpenaiApiKeyModelOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Inference name of the model
+func (o GenaiOpenaiApiKeyModelOutput) InferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
+}
+
+// Infernce version of the model
+func (o GenaiOpenaiApiKeyModelOutput) InferenceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GenaiOpenaiApiKeyModelOutput) IsFoundational() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GenaiOpenaiApiKeyModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parent UUID of the Model
+func (o GenaiOpenaiApiKeyModelOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Provider of the Model
+func (o GenaiOpenaiApiKeyModelOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GenaiOpenaiApiKeyModelOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GenaiOpenaiApiKeyModelOutput) UploadComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the Model
+func (o GenaiOpenaiApiKeyModelOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// List of Usecases for the Model
+func (o GenaiOpenaiApiKeyModelOutput) Usecases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Model
+func (o GenaiOpenaiApiKeyModelOutput) Versions() GenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModel) []GenaiOpenaiApiKeyModelVersion { return v.Versions }).(GenaiOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GenaiOpenaiApiKeyModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelArrayOutput) ToGenaiOpenaiApiKeyModelArrayOutput() GenaiOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelArrayOutput) ToGenaiOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelArrayOutput) Index(i pulumi.IntInput) GenaiOpenaiApiKeyModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiOpenaiApiKeyModel {
+		return vs[0].([]GenaiOpenaiApiKeyModel)[vs[1].(int)]
+	}).(GenaiOpenaiApiKeyModelOutput)
+}
+
+type GenaiOpenaiApiKeyModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GenaiOpenaiApiKeyModelAgreementInput is an input type that accepts GenaiOpenaiApiKeyModelAgreementArgs and GenaiOpenaiApiKeyModelAgreementOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelAgreementInput` via:
+//
+//	GenaiOpenaiApiKeyModelAgreementArgs{...}
+type GenaiOpenaiApiKeyModelAgreementInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelAgreementOutput() GenaiOpenaiApiKeyModelAgreementOutput
+	ToGenaiOpenaiApiKeyModelAgreementOutputWithContext(context.Context) GenaiOpenaiApiKeyModelAgreementOutput
+}
+
+type GenaiOpenaiApiKeyModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GenaiOpenaiApiKeyModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelAgreementArgs) ToGenaiOpenaiApiKeyModelAgreementOutput() GenaiOpenaiApiKeyModelAgreementOutput {
+	return i.ToGenaiOpenaiApiKeyModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelAgreementArgs) ToGenaiOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelAgreementOutput)
+}
+
+// GenaiOpenaiApiKeyModelAgreementArrayInput is an input type that accepts GenaiOpenaiApiKeyModelAgreementArray and GenaiOpenaiApiKeyModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelAgreementArrayInput` via:
+//
+//	GenaiOpenaiApiKeyModelAgreementArray{ GenaiOpenaiApiKeyModelAgreementArgs{...} }
+type GenaiOpenaiApiKeyModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelAgreementArrayOutput() GenaiOpenaiApiKeyModelAgreementArrayOutput
+	ToGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Context) GenaiOpenaiApiKeyModelAgreementArrayOutput
+}
+
+type GenaiOpenaiApiKeyModelAgreementArray []GenaiOpenaiApiKeyModelAgreementInput
+
+func (GenaiOpenaiApiKeyModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelAgreementArray) ToGenaiOpenaiApiKeyModelAgreementArrayOutput() GenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return i.ToGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelAgreementArray) ToGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+type GenaiOpenaiApiKeyModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelAgreementOutput) ToGenaiOpenaiApiKeyModelAgreementOutput() GenaiOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelAgreementOutput) ToGenaiOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GenaiOpenaiApiKeyModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GenaiOpenaiApiKeyModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GenaiOpenaiApiKeyModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GenaiOpenaiApiKeyModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GenaiOpenaiApiKeyModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelAgreementArrayOutput) ToGenaiOpenaiApiKeyModelAgreementArrayOutput() GenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelAgreementArrayOutput) ToGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelAgreementArrayOutput) Index(i pulumi.IntInput) GenaiOpenaiApiKeyModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiOpenaiApiKeyModelAgreement {
+		return vs[0].([]GenaiOpenaiApiKeyModelAgreement)[vs[1].(int)]
+	}).(GenaiOpenaiApiKeyModelAgreementOutput)
+}
+
+type GenaiOpenaiApiKeyModelVersion struct {
+	// Major version of the model
+	Major *int `pulumi:"major"`
+	// Minor version of the model
+	Minor *int `pulumi:"minor"`
+	// Patch version of the model
+	Patch *int `pulumi:"patch"`
+}
+
+// GenaiOpenaiApiKeyModelVersionInput is an input type that accepts GenaiOpenaiApiKeyModelVersionArgs and GenaiOpenaiApiKeyModelVersionOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelVersionInput` via:
+//
+//	GenaiOpenaiApiKeyModelVersionArgs{...}
+type GenaiOpenaiApiKeyModelVersionInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelVersionOutput() GenaiOpenaiApiKeyModelVersionOutput
+	ToGenaiOpenaiApiKeyModelVersionOutputWithContext(context.Context) GenaiOpenaiApiKeyModelVersionOutput
+}
+
+type GenaiOpenaiApiKeyModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntPtrInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntPtrInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntPtrInput `pulumi:"patch"`
+}
+
+func (GenaiOpenaiApiKeyModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelVersionArgs) ToGenaiOpenaiApiKeyModelVersionOutput() GenaiOpenaiApiKeyModelVersionOutput {
+	return i.ToGenaiOpenaiApiKeyModelVersionOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelVersionArgs) ToGenaiOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelVersionOutput)
+}
+
+// GenaiOpenaiApiKeyModelVersionArrayInput is an input type that accepts GenaiOpenaiApiKeyModelVersionArray and GenaiOpenaiApiKeyModelVersionArrayOutput values.
+// You can construct a concrete instance of `GenaiOpenaiApiKeyModelVersionArrayInput` via:
+//
+//	GenaiOpenaiApiKeyModelVersionArray{ GenaiOpenaiApiKeyModelVersionArgs{...} }
+type GenaiOpenaiApiKeyModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGenaiOpenaiApiKeyModelVersionArrayOutput() GenaiOpenaiApiKeyModelVersionArrayOutput
+	ToGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(context.Context) GenaiOpenaiApiKeyModelVersionArrayOutput
+}
+
+type GenaiOpenaiApiKeyModelVersionArray []GenaiOpenaiApiKeyModelVersionInput
+
+func (GenaiOpenaiApiKeyModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GenaiOpenaiApiKeyModelVersionArray) ToGenaiOpenaiApiKeyModelVersionArrayOutput() GenaiOpenaiApiKeyModelVersionArrayOutput {
+	return i.ToGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiOpenaiApiKeyModelVersionArray) ToGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GenaiOpenaiApiKeyModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelVersionOutput) ToGenaiOpenaiApiKeyModelVersionOutput() GenaiOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelVersionOutput) ToGenaiOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GenaiOpenaiApiKeyModelVersionOutput) Major() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
+}
+
+// Minor version of the model
+func (o GenaiOpenaiApiKeyModelVersionOutput) Minor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
+}
+
+// Patch version of the model
+func (o GenaiOpenaiApiKeyModelVersionOutput) Patch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiOpenaiApiKeyModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
+}
+
+type GenaiOpenaiApiKeyModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiOpenaiApiKeyModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GenaiOpenaiApiKeyModelVersionArrayOutput) ToGenaiOpenaiApiKeyModelVersionArrayOutput() GenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelVersionArrayOutput) ToGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GenaiOpenaiApiKeyModelVersionArrayOutput) Index(i pulumi.IntInput) GenaiOpenaiApiKeyModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiOpenaiApiKeyModelVersion {
+		return vs[0].([]GenaiOpenaiApiKeyModelVersion)[vs[1].(int)]
+	}).(GenaiOpenaiApiKeyModelVersionOutput)
 }
 
 type KubernetesClusterClusterAutoscalerConfiguration struct {
@@ -29005,6 +32055,7 @@ func (o GetAppSpecArrayOutput) Index(i pulumi.IntInput) GetAppSpecOutput {
 }
 
 type GetAppSpecAlert struct {
+	Destinations *GetAppSpecAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -29023,6 +32074,7 @@ type GetAppSpecAlertInput interface {
 }
 
 type GetAppSpecAlertArgs struct {
+	Destinations GetAppSpecAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
@@ -29080,6 +32132,10 @@ func (o GetAppSpecAlertOutput) ToGetAppSpecAlertOutputWithContext(ctx context.Co
 	return o
 }
 
+func (o GetAppSpecAlertOutput) Destinations() GetAppSpecAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecAlert) *GetAppSpecAlertDestinations { return v.Destinations }).(GetAppSpecAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -29108,6 +32164,260 @@ func (o GetAppSpecAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecAlertOutp
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecAlert {
 		return vs[0].([]GetAppSpecAlert)[vs[1].(int)]
 	}).(GetAppSpecAlertOutput)
+}
+
+type GetAppSpecAlertDestinations struct {
+	Emails        []string                                  `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecAlertDestinationsInput is an input type that accepts GetAppSpecAlertDestinationsArgs and GetAppSpecAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertDestinationsInput` via:
+//
+//	GetAppSpecAlertDestinationsArgs{...}
+type GetAppSpecAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertDestinationsOutput() GetAppSpecAlertDestinationsOutput
+	ToGetAppSpecAlertDestinationsOutputWithContext(context.Context) GetAppSpecAlertDestinationsOutput
+}
+
+type GetAppSpecAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                           `pulumi:"emails"`
+	SlackWebhooks GetAppSpecAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecAlertDestinationsArgs) ToGetAppSpecAlertDestinationsOutput() GetAppSpecAlertDestinationsOutput {
+	return i.ToGetAppSpecAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertDestinationsArgs) ToGetAppSpecAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertDestinationsOutput)
+}
+
+func (i GetAppSpecAlertDestinationsArgs) ToGetAppSpecAlertDestinationsPtrOutput() GetAppSpecAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertDestinationsArgs) ToGetAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertDestinationsOutput).ToGetAppSpecAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecAlertDestinationsPtrInput is an input type that accepts GetAppSpecAlertDestinationsArgs, GetAppSpecAlertDestinationsPtr and GetAppSpecAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertDestinationsPtrOutput() GetAppSpecAlertDestinationsPtrOutput
+	ToGetAppSpecAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecAlertDestinationsPtrOutput
+}
+
+type getAppSpecAlertDestinationsPtrType GetAppSpecAlertDestinationsArgs
+
+func GetAppSpecAlertDestinationsPtr(v *GetAppSpecAlertDestinationsArgs) GetAppSpecAlertDestinationsPtrInput {
+	return (*getAppSpecAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecAlertDestinationsPtrType) ToGetAppSpecAlertDestinationsPtrOutput() GetAppSpecAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecAlertDestinationsPtrType) ToGetAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertDestinationsOutput) ToGetAppSpecAlertDestinationsOutput() GetAppSpecAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsOutput) ToGetAppSpecAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsOutput) ToGetAppSpecAlertDestinationsPtrOutput() GetAppSpecAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecAlertDestinationsOutput) ToGetAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecAlertDestinations) *GetAppSpecAlertDestinations {
+		return &v
+	}).(GetAppSpecAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecAlertDestinationsOutput) SlackWebhooks() GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecAlertDestinations) []GetAppSpecAlertDestinationsSlackWebhook { return v.SlackWebhooks }).(GetAppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertDestinationsPtrOutput) ToGetAppSpecAlertDestinationsPtrOutput() GetAppSpecAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsPtrOutput) ToGetAppSpecAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsPtrOutput) Elem() GetAppSpecAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecAlertDestinations) GetAppSpecAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecAlertDestinations
+		return ret
+	}).(GetAppSpecAlertDestinationsOutput)
+}
+
+func (o GetAppSpecAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecAlertDestinations) []GetAppSpecAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecAlertDestinationsSlackWebhookArgs and GetAppSpecAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertDestinationsSlackWebhookOutput() GetAppSpecAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecAlertDestinationsSlackWebhookArgs) ToGetAppSpecAlertDestinationsSlackWebhookOutput() GetAppSpecAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertDestinationsSlackWebhookArgs) ToGetAppSpecAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecAlertDestinationsSlackWebhookArray and GetAppSpecAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecAlertDestinationsSlackWebhookArray{ GetAppSpecAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecAlertDestinationsSlackWebhookArrayOutput() GetAppSpecAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecAlertDestinationsSlackWebhookArray []GetAppSpecAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecAlertDestinationsSlackWebhookArray) ToGetAppSpecAlertDestinationsSlackWebhookArrayOutput() GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecAlertDestinationsSlackWebhookArray) ToGetAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertDestinationsSlackWebhookOutput) ToGetAppSpecAlertDestinationsSlackWebhookOutput() GetAppSpecAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsSlackWebhookOutput) ToGetAppSpecAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecAlertDestinationsSlackWebhookArrayOutput() GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecAlertDestinationsSlackWebhookOutput)
 }
 
 type GetAppSpecDatabase struct {
@@ -29800,6 +33110,7 @@ func (o GetAppSpecFunctionArrayOutput) Index(i pulumi.IntInput) GetAppSpecFuncti
 }
 
 type GetAppSpecFunctionAlert struct {
+	Destinations *GetAppSpecFunctionAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -29824,6 +33135,7 @@ type GetAppSpecFunctionAlertInput interface {
 }
 
 type GetAppSpecFunctionAlertArgs struct {
+	Destinations GetAppSpecFunctionAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -29887,6 +33199,10 @@ func (o GetAppSpecFunctionAlertOutput) ToGetAppSpecFunctionAlertOutputWithContex
 	return o
 }
 
+func (o GetAppSpecFunctionAlertOutput) Destinations() GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlert) *GetAppSpecFunctionAlertDestinations { return v.Destinations }).(GetAppSpecFunctionAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecFunctionAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecFunctionAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -29930,6 +33246,262 @@ func (o GetAppSpecFunctionAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecF
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionAlert {
 		return vs[0].([]GetAppSpecFunctionAlert)[vs[1].(int)]
 	}).(GetAppSpecFunctionAlertOutput)
+}
+
+type GetAppSpecFunctionAlertDestinations struct {
+	Emails        []string                                          `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecFunctionAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecFunctionAlertDestinationsInput is an input type that accepts GetAppSpecFunctionAlertDestinationsArgs and GetAppSpecFunctionAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertDestinationsInput` via:
+//
+//	GetAppSpecFunctionAlertDestinationsArgs{...}
+type GetAppSpecFunctionAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertDestinationsOutput() GetAppSpecFunctionAlertDestinationsOutput
+	ToGetAppSpecFunctionAlertDestinationsOutputWithContext(context.Context) GetAppSpecFunctionAlertDestinationsOutput
+}
+
+type GetAppSpecFunctionAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                                   `pulumi:"emails"`
+	SlackWebhooks GetAppSpecFunctionAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecFunctionAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionAlertDestinationsArgs) ToGetAppSpecFunctionAlertDestinationsOutput() GetAppSpecFunctionAlertDestinationsOutput {
+	return i.ToGetAppSpecFunctionAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertDestinationsArgs) ToGetAppSpecFunctionAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertDestinationsOutput)
+}
+
+func (i GetAppSpecFunctionAlertDestinationsArgs) ToGetAppSpecFunctionAlertDestinationsPtrOutput() GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertDestinationsArgs) ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertDestinationsOutput).ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecFunctionAlertDestinationsPtrInput is an input type that accepts GetAppSpecFunctionAlertDestinationsArgs, GetAppSpecFunctionAlertDestinationsPtr and GetAppSpecFunctionAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecFunctionAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecFunctionAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertDestinationsPtrOutput() GetAppSpecFunctionAlertDestinationsPtrOutput
+	ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecFunctionAlertDestinationsPtrOutput
+}
+
+type getAppSpecFunctionAlertDestinationsPtrType GetAppSpecFunctionAlertDestinationsArgs
+
+func GetAppSpecFunctionAlertDestinationsPtr(v *GetAppSpecFunctionAlertDestinationsArgs) GetAppSpecFunctionAlertDestinationsPtrInput {
+	return (*getAppSpecFunctionAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecFunctionAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecFunctionAlertDestinationsPtrType) ToGetAppSpecFunctionAlertDestinationsPtrOutput() GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecFunctionAlertDestinationsPtrType) ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecFunctionAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) ToGetAppSpecFunctionAlertDestinationsOutput() GetAppSpecFunctionAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) ToGetAppSpecFunctionAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) ToGetAppSpecFunctionAlertDestinationsPtrOutput() GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecFunctionAlertDestinations) *GetAppSpecFunctionAlertDestinations {
+		return &v
+	}).(GetAppSpecFunctionAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecFunctionAlertDestinationsOutput) SlackWebhooks() GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlertDestinations) []GetAppSpecFunctionAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecFunctionAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecFunctionAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertDestinationsPtrOutput) ToGetAppSpecFunctionAlertDestinationsPtrOutput() GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsPtrOutput) ToGetAppSpecFunctionAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsPtrOutput) Elem() GetAppSpecFunctionAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionAlertDestinations) GetAppSpecFunctionAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecFunctionAlertDestinations
+		return ret
+	}).(GetAppSpecFunctionAlertDestinationsOutput)
+}
+
+func (o GetAppSpecFunctionAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecFunctionAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecFunctionAlertDestinations) []GetAppSpecFunctionAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecFunctionAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecFunctionAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecFunctionAlertDestinationsSlackWebhookArgs and GetAppSpecFunctionAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecFunctionAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecFunctionAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecFunctionAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecFunctionAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionAlertDestinationsSlackWebhookArgs) ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertDestinationsSlackWebhookArgs) ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecFunctionAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecFunctionAlertDestinationsSlackWebhookArray and GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecFunctionAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecFunctionAlertDestinationsSlackWebhookArray{ GetAppSpecFunctionAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecFunctionAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecFunctionAlertDestinationsSlackWebhookArray []GetAppSpecFunctionAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecFunctionAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecFunctionAlertDestinationsSlackWebhookArray) ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecFunctionAlertDestinationsSlackWebhookArray) ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecFunctionAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookOutput) ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookOutput) ToGetAppSpecFunctionAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecFunctionAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecFunctionAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput() GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecFunctionAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecFunctionAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecFunctionAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecFunctionAlertDestinationsSlackWebhookOutput)
 }
 
 type GetAppSpecFunctionBitbucket struct {
@@ -33251,6 +36823,7 @@ func (o GetAppSpecJobArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobOutput {
 }
 
 type GetAppSpecJobAlert struct {
+	Destinations *GetAppSpecJobAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -33275,6 +36848,7 @@ type GetAppSpecJobAlertInput interface {
 }
 
 type GetAppSpecJobAlertArgs struct {
+	Destinations GetAppSpecJobAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -33338,6 +36912,10 @@ func (o GetAppSpecJobAlertOutput) ToGetAppSpecJobAlertOutputWithContext(ctx cont
 	return o
 }
 
+func (o GetAppSpecJobAlertOutput) Destinations() GetAppSpecJobAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlert) *GetAppSpecJobAlertDestinations { return v.Destinations }).(GetAppSpecJobAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecJobAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecJobAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -33381,6 +36959,262 @@ func (o GetAppSpecJobAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobAle
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobAlert {
 		return vs[0].([]GetAppSpecJobAlert)[vs[1].(int)]
 	}).(GetAppSpecJobAlertOutput)
+}
+
+type GetAppSpecJobAlertDestinations struct {
+	Emails        []string                                     `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecJobAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecJobAlertDestinationsInput is an input type that accepts GetAppSpecJobAlertDestinationsArgs and GetAppSpecJobAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertDestinationsInput` via:
+//
+//	GetAppSpecJobAlertDestinationsArgs{...}
+type GetAppSpecJobAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertDestinationsOutput() GetAppSpecJobAlertDestinationsOutput
+	ToGetAppSpecJobAlertDestinationsOutputWithContext(context.Context) GetAppSpecJobAlertDestinationsOutput
+}
+
+type GetAppSpecJobAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                              `pulumi:"emails"`
+	SlackWebhooks GetAppSpecJobAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecJobAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecJobAlertDestinationsArgs) ToGetAppSpecJobAlertDestinationsOutput() GetAppSpecJobAlertDestinationsOutput {
+	return i.ToGetAppSpecJobAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertDestinationsArgs) ToGetAppSpecJobAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertDestinationsOutput)
+}
+
+func (i GetAppSpecJobAlertDestinationsArgs) ToGetAppSpecJobAlertDestinationsPtrOutput() GetAppSpecJobAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertDestinationsArgs) ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertDestinationsOutput).ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecJobAlertDestinationsPtrInput is an input type that accepts GetAppSpecJobAlertDestinationsArgs, GetAppSpecJobAlertDestinationsPtr and GetAppSpecJobAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecJobAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecJobAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertDestinationsPtrOutput() GetAppSpecJobAlertDestinationsPtrOutput
+	ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecJobAlertDestinationsPtrOutput
+}
+
+type getAppSpecJobAlertDestinationsPtrType GetAppSpecJobAlertDestinationsArgs
+
+func GetAppSpecJobAlertDestinationsPtr(v *GetAppSpecJobAlertDestinationsArgs) GetAppSpecJobAlertDestinationsPtrInput {
+	return (*getAppSpecJobAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecJobAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecJobAlertDestinationsPtrType) ToGetAppSpecJobAlertDestinationsPtrOutput() GetAppSpecJobAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecJobAlertDestinationsPtrType) ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecJobAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) ToGetAppSpecJobAlertDestinationsOutput() GetAppSpecJobAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) ToGetAppSpecJobAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) ToGetAppSpecJobAlertDestinationsPtrOutput() GetAppSpecJobAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecJobAlertDestinations) *GetAppSpecJobAlertDestinations {
+		return &v
+	}).(GetAppSpecJobAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecJobAlertDestinationsOutput) SlackWebhooks() GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlertDestinations) []GetAppSpecJobAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecJobAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecJobAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertDestinationsPtrOutput) ToGetAppSpecJobAlertDestinationsPtrOutput() GetAppSpecJobAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsPtrOutput) ToGetAppSpecJobAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsPtrOutput) Elem() GetAppSpecJobAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecJobAlertDestinations) GetAppSpecJobAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecJobAlertDestinations
+		return ret
+	}).(GetAppSpecJobAlertDestinationsOutput)
+}
+
+func (o GetAppSpecJobAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecJobAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecJobAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecJobAlertDestinations) []GetAppSpecJobAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecJobAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecJobAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecJobAlertDestinationsSlackWebhookArgs and GetAppSpecJobAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecJobAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecJobAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertDestinationsSlackWebhookOutput() GetAppSpecJobAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecJobAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecJobAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecJobAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecJobAlertDestinationsSlackWebhookArgs) ToGetAppSpecJobAlertDestinationsSlackWebhookOutput() GetAppSpecJobAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertDestinationsSlackWebhookArgs) ToGetAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecJobAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecJobAlertDestinationsSlackWebhookArray and GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecJobAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecJobAlertDestinationsSlackWebhookArray{ GetAppSpecJobAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecJobAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutput() GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecJobAlertDestinationsSlackWebhookArray []GetAppSpecJobAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecJobAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecJobAlertDestinationsSlackWebhookArray) ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutput() GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecJobAlertDestinationsSlackWebhookArray) ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecJobAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertDestinationsSlackWebhookOutput) ToGetAppSpecJobAlertDestinationsSlackWebhookOutput() GetAppSpecJobAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsSlackWebhookOutput) ToGetAppSpecJobAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecJobAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecJobAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecJobAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecJobAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutput() GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecJobAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecJobAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecJobAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecJobAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecJobAlertDestinationsSlackWebhookOutput)
 }
 
 type GetAppSpecJobBitbucket struct {
@@ -35890,6 +39724,7 @@ func (o GetAppSpecServiceArrayOutput) Index(i pulumi.IntInput) GetAppSpecService
 }
 
 type GetAppSpecServiceAlert struct {
+	Destinations *GetAppSpecServiceAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -35914,6 +39749,7 @@ type GetAppSpecServiceAlertInput interface {
 }
 
 type GetAppSpecServiceAlertArgs struct {
+	Destinations GetAppSpecServiceAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -35977,6 +39813,10 @@ func (o GetAppSpecServiceAlertOutput) ToGetAppSpecServiceAlertOutputWithContext(
 	return o
 }
 
+func (o GetAppSpecServiceAlertOutput) Destinations() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlert) *GetAppSpecServiceAlertDestinations { return v.Destinations }).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecServiceAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecServiceAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -36020,6 +39860,262 @@ func (o GetAppSpecServiceAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecSe
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlert {
 		return vs[0].([]GetAppSpecServiceAlert)[vs[1].(int)]
 	}).(GetAppSpecServiceAlertOutput)
+}
+
+type GetAppSpecServiceAlertDestinations struct {
+	Emails        []string                                         `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecServiceAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecServiceAlertDestinationsInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs and GetAppSpecServiceAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsArgs{...}
+type GetAppSpecServiceAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput
+	ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsOutput
+}
+
+type GetAppSpecServiceAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                                  `pulumi:"emails"`
+	SlackWebhooks GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecServiceAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput)
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsArgs) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsOutput).ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecServiceAlertDestinationsPtrInput is an input type that accepts GetAppSpecServiceAlertDestinationsArgs, GetAppSpecServiceAlertDestinationsPtr and GetAppSpecServiceAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecServiceAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecServiceAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput
+	ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsPtrOutput
+}
+
+type getAppSpecServiceAlertDestinationsPtrType GetAppSpecServiceAlertDestinationsArgs
+
+func GetAppSpecServiceAlertDestinationsPtr(v *GetAppSpecServiceAlertDestinationsArgs) GetAppSpecServiceAlertDestinationsPtrInput {
+	return (*getAppSpecServiceAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecServiceAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecServiceAlertDestinationsPtrType) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutput() GetAppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecServiceAlertDestinations) *GetAppSpecServiceAlertDestinations {
+		return &v
+	}).(GetAppSpecServiceAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecServiceAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutput() GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) ToGetAppSpecServiceAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) Elem() GetAppSpecServiceAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) GetAppSpecServiceAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecServiceAlertDestinations
+		return ret
+	}).(GetAppSpecServiceAlertDestinationsOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecServiceAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecServiceAlertDestinations) []GetAppSpecServiceAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecServiceAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArgs and GetAppSpecServiceAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecServiceAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArgs) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecServiceAlertDestinationsSlackWebhookArray and GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecServiceAlertDestinationsSlackWebhookArray{ GetAppSpecServiceAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArray []GetAppSpecServiceAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecServiceAlertDestinationsSlackWebhookArray) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutput() GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecServiceAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecServiceAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput() GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecServiceAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecServiceAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecServiceAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecServiceAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecServiceAlertDestinationsSlackWebhookOutput)
 }
 
 type GetAppSpecServiceAutoscaling struct {
@@ -41286,6 +45382,7 @@ func (o GetAppSpecWorkerArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerOu
 }
 
 type GetAppSpecWorkerAlert struct {
+	Destinations *GetAppSpecWorkerAlertDestinations `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled *bool `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -41310,6 +45407,7 @@ type GetAppSpecWorkerAlertInput interface {
 }
 
 type GetAppSpecWorkerAlertArgs struct {
+	Destinations GetAppSpecWorkerAlertDestinationsPtrInput `pulumi:"destinations"`
 	// Determines whether or not the alert is disabled (default: `false`).
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
 	// The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
@@ -41373,6 +45471,10 @@ func (o GetAppSpecWorkerAlertOutput) ToGetAppSpecWorkerAlertOutputWithContext(ct
 	return o
 }
 
+func (o GetAppSpecWorkerAlertOutput) Destinations() GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlert) *GetAppSpecWorkerAlertDestinations { return v.Destinations }).(GetAppSpecWorkerAlertDestinationsPtrOutput)
+}
+
 // Determines whether or not the alert is disabled (default: `false`).
 func (o GetAppSpecWorkerAlertOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GetAppSpecWorkerAlert) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
@@ -41416,6 +45518,262 @@ func (o GetAppSpecWorkerAlertArrayOutput) Index(i pulumi.IntInput) GetAppSpecWor
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerAlert {
 		return vs[0].([]GetAppSpecWorkerAlert)[vs[1].(int)]
 	}).(GetAppSpecWorkerAlertOutput)
+}
+
+type GetAppSpecWorkerAlertDestinations struct {
+	Emails        []string                                        `pulumi:"emails"`
+	SlackWebhooks []GetAppSpecWorkerAlertDestinationsSlackWebhook `pulumi:"slackWebhooks"`
+}
+
+// GetAppSpecWorkerAlertDestinationsInput is an input type that accepts GetAppSpecWorkerAlertDestinationsArgs and GetAppSpecWorkerAlertDestinationsOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertDestinationsInput` via:
+//
+//	GetAppSpecWorkerAlertDestinationsArgs{...}
+type GetAppSpecWorkerAlertDestinationsInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertDestinationsOutput() GetAppSpecWorkerAlertDestinationsOutput
+	ToGetAppSpecWorkerAlertDestinationsOutputWithContext(context.Context) GetAppSpecWorkerAlertDestinationsOutput
+}
+
+type GetAppSpecWorkerAlertDestinationsArgs struct {
+	Emails        pulumi.StringArrayInput                                 `pulumi:"emails"`
+	SlackWebhooks GetAppSpecWorkerAlertDestinationsSlackWebhookArrayInput `pulumi:"slackWebhooks"`
+}
+
+func (GetAppSpecWorkerAlertDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAlertDestinationsArgs) ToGetAppSpecWorkerAlertDestinationsOutput() GetAppSpecWorkerAlertDestinationsOutput {
+	return i.ToGetAppSpecWorkerAlertDestinationsOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertDestinationsArgs) ToGetAppSpecWorkerAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertDestinationsOutput)
+}
+
+func (i GetAppSpecWorkerAlertDestinationsArgs) ToGetAppSpecWorkerAlertDestinationsPtrOutput() GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertDestinationsArgs) ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertDestinationsOutput).ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx)
+}
+
+// GetAppSpecWorkerAlertDestinationsPtrInput is an input type that accepts GetAppSpecWorkerAlertDestinationsArgs, GetAppSpecWorkerAlertDestinationsPtr and GetAppSpecWorkerAlertDestinationsPtrOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertDestinationsPtrInput` via:
+//
+//	        GetAppSpecWorkerAlertDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetAppSpecWorkerAlertDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertDestinationsPtrOutput() GetAppSpecWorkerAlertDestinationsPtrOutput
+	ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Context) GetAppSpecWorkerAlertDestinationsPtrOutput
+}
+
+type getAppSpecWorkerAlertDestinationsPtrType GetAppSpecWorkerAlertDestinationsArgs
+
+func GetAppSpecWorkerAlertDestinationsPtr(v *GetAppSpecWorkerAlertDestinationsArgs) GetAppSpecWorkerAlertDestinationsPtrInput {
+	return (*getAppSpecWorkerAlertDestinationsPtrType)(v)
+}
+
+func (*getAppSpecWorkerAlertDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (i *getAppSpecWorkerAlertDestinationsPtrType) ToGetAppSpecWorkerAlertDestinationsPtrOutput() GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return i.ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *getAppSpecWorkerAlertDestinationsPtrType) ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertDestinationsPtrOutput)
+}
+
+type GetAppSpecWorkerAlertDestinationsOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) ToGetAppSpecWorkerAlertDestinationsOutput() GetAppSpecWorkerAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) ToGetAppSpecWorkerAlertDestinationsOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) ToGetAppSpecWorkerAlertDestinationsPtrOutput() GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetAppSpecWorkerAlertDestinations) *GetAppSpecWorkerAlertDestinations {
+		return &v
+	}).(GetAppSpecWorkerAlertDestinationsPtrOutput)
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlertDestinations) []string { return v.Emails }).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecWorkerAlertDestinationsOutput) SlackWebhooks() GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlertDestinations) []GetAppSpecWorkerAlertDestinationsSlackWebhook {
+		return v.SlackWebhooks
+	}).(GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecWorkerAlertDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetAppSpecWorkerAlertDestinations)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertDestinationsPtrOutput) ToGetAppSpecWorkerAlertDestinationsPtrOutput() GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsPtrOutput) ToGetAppSpecWorkerAlertDestinationsPtrOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsPtrOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsPtrOutput) Elem() GetAppSpecWorkerAlertDestinationsOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAlertDestinations) GetAppSpecWorkerAlertDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret GetAppSpecWorkerAlertDestinations
+		return ret
+	}).(GetAppSpecWorkerAlertDestinationsOutput)
+}
+
+func (o GetAppSpecWorkerAlertDestinationsPtrOutput) Emails() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAlertDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Emails
+	}).(pulumi.StringArrayOutput)
+}
+
+func (o GetAppSpecWorkerAlertDestinationsPtrOutput) SlackWebhooks() GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o.ApplyT(func(v *GetAppSpecWorkerAlertDestinations) []GetAppSpecWorkerAlertDestinationsSlackWebhook {
+		if v == nil {
+			return nil
+		}
+		return v.SlackWebhooks
+	}).(GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecWorkerAlertDestinationsSlackWebhook struct {
+	// The Slack channel to send notifications to.
+	Channel string `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url string `pulumi:"url"`
+}
+
+// GetAppSpecWorkerAlertDestinationsSlackWebhookInput is an input type that accepts GetAppSpecWorkerAlertDestinationsSlackWebhookArgs and GetAppSpecWorkerAlertDestinationsSlackWebhookOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertDestinationsSlackWebhookInput` via:
+//
+//	GetAppSpecWorkerAlertDestinationsSlackWebhookArgs{...}
+type GetAppSpecWorkerAlertDestinationsSlackWebhookInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookOutput
+	ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookOutput
+}
+
+type GetAppSpecWorkerAlertDestinationsSlackWebhookArgs struct {
+	// The Slack channel to send notifications to.
+	Channel pulumi.StringInput `pulumi:"channel"`
+	// The Slack webhook URL.
+	Url pulumi.StringInput `pulumi:"url"`
+}
+
+func (GetAppSpecWorkerAlertDestinationsSlackWebhookArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAlertDestinationsSlackWebhookArgs) ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return i.ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertDestinationsSlackWebhookArgs) ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertDestinationsSlackWebhookOutput)
+}
+
+// GetAppSpecWorkerAlertDestinationsSlackWebhookArrayInput is an input type that accepts GetAppSpecWorkerAlertDestinationsSlackWebhookArray and GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput values.
+// You can construct a concrete instance of `GetAppSpecWorkerAlertDestinationsSlackWebhookArrayInput` via:
+//
+//	GetAppSpecWorkerAlertDestinationsSlackWebhookArray{ GetAppSpecWorkerAlertDestinationsSlackWebhookArgs{...} }
+type GetAppSpecWorkerAlertDestinationsSlackWebhookArrayInput interface {
+	pulumi.Input
+
+	ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput
+	ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput
+}
+
+type GetAppSpecWorkerAlertDestinationsSlackWebhookArray []GetAppSpecWorkerAlertDestinationsSlackWebhookInput
+
+func (GetAppSpecWorkerAlertDestinationsSlackWebhookArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (i GetAppSpecWorkerAlertDestinationsSlackWebhookArray) ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return i.ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecWorkerAlertDestinationsSlackWebhookArray) ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput)
+}
+
+type GetAppSpecWorkerAlertDestinationsSlackWebhookOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertDestinationsSlackWebhookOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookOutput) ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookOutput) ToGetAppSpecWorkerAlertDestinationsSlackWebhookOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return o
+}
+
+// The Slack channel to send notifications to.
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlertDestinationsSlackWebhook) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The Slack webhook URL.
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecWorkerAlertDestinationsSlackWebhook) string { return v.Url }).(pulumi.StringOutput)
+}
+
+type GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetAppSpecWorkerAlertDestinationsSlackWebhook)(nil)).Elem()
+}
+
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput() GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) ToGetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutputWithContext(ctx context.Context) GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput {
+	return o
+}
+
+func (o GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput) Index(i pulumi.IntInput) GetAppSpecWorkerAlertDestinationsSlackWebhookOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetAppSpecWorkerAlertDestinationsSlackWebhook {
+		return vs[0].([]GetAppSpecWorkerAlertDestinationsSlackWebhook)[vs[1].(int)]
+	}).(GetAppSpecWorkerAlertDestinationsSlackWebhookOutput)
 }
 
 type GetAppSpecWorkerAutoscaling struct {
@@ -48440,27 +52798,25 @@ type GetGenaiAgentKnowledgeBase struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt string `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId string `pulumi:"databaseId"`
+	DatabaseId *string `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic bool `pulumi:"isPublic"`
+	IsPublic *bool `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs []GetGenaiAgentKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GetGenaiAgentKnowledgeBaseInput is an input type that accepts GetGenaiAgentKnowledgeBaseArgs and GetGenaiAgentKnowledgeBaseOutput values.
@@ -48480,27 +52836,25 @@ type GetGenaiAgentKnowledgeBaseArgs struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs GetGenaiAgentKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GetGenaiAgentKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -48565,18 +52919,18 @@ func (o GetGenaiAgentKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
 }
 
 // Database ID of the Knowledge Base
-func (o GetGenaiAgentKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+func (o GetGenaiAgentKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Embedding model UUID for the Knowledge Base
-func (o GetGenaiAgentKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+func (o GetGenaiAgentKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
 }
 
 // Indicates if the Knowledge Base is public
-func (o GetGenaiAgentKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+func (o GetGenaiAgentKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
 // Last indexing job for the Knowledge Base
@@ -48587,13 +52941,13 @@ func (o GetGenaiAgentKnowledgeBaseOutput) LastIndexingJobs() GetGenaiAgentKnowle
 }
 
 // Name of the Knowledge Base
-func (o GetGenaiAgentKnowledgeBaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+func (o GetGenaiAgentKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Project ID of the Knowledge Base
-func (o GetGenaiAgentKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GetGenaiAgentKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Region of the Knowledge Base
@@ -48606,7 +52960,7 @@ func (o GetGenaiAgentKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GetGenaiAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -48614,11 +52968,6 @@ func (o GetGenaiAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
 // User ID of the Knowledge Base
 func (o GetGenaiAgentKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GetGenaiAgentKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GetGenaiAgentKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -48647,11 +52996,11 @@ type GetGenaiAgentKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -48662,7 +53011,7 @@ type GetGenaiAgentKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -48683,11 +53032,11 @@ type GetGenaiAgentKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -48698,7 +53047,7 @@ type GetGenaiAgentKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -48764,8 +53113,8 @@ func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.Stri
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -48773,9 +53122,9 @@ func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.Str
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
-func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
 }
 
 // Phase of the last indexing job
@@ -48803,7 +53152,7 @@ func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.Stri
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GetGenaiAgentKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -50546,27 +54895,25 @@ type GetGenaiAgentTemplateKnowledgeBase struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt string `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId string `pulumi:"databaseId"`
+	DatabaseId *string `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic bool `pulumi:"isPublic"`
+	IsPublic *bool `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs []GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GetGenaiAgentTemplateKnowledgeBaseInput is an input type that accepts GetGenaiAgentTemplateKnowledgeBaseArgs and GetGenaiAgentTemplateKnowledgeBaseOutput values.
@@ -50586,27 +54933,25 @@ type GetGenaiAgentTemplateKnowledgeBaseArgs struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GetGenaiAgentTemplateKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -50671,18 +55016,18 @@ func (o GetGenaiAgentTemplateKnowledgeBaseOutput) CreatedAt() pulumi.StringOutpu
 }
 
 // Database ID of the Knowledge Base
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Embedding model UUID for the Knowledge Base
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
 }
 
 // Indicates if the Knowledge Base is public
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
 // Last indexing job for the Knowledge Base
@@ -50693,13 +55038,13 @@ func (o GetGenaiAgentTemplateKnowledgeBaseOutput) LastIndexingJobs() GetGenaiAge
 }
 
 // Name of the Knowledge Base
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Project ID of the Knowledge Base
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Region of the Knowledge Base
@@ -50712,7 +55057,7 @@ func (o GetGenaiAgentTemplateKnowledgeBaseOutput) Tags() pulumi.StringArrayOutpu
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GetGenaiAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -50720,11 +55065,6 @@ func (o GetGenaiAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutpu
 // User ID of the Knowledge Base
 func (o GetGenaiAgentTemplateKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GetGenaiAgentTemplateKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GetGenaiAgentTemplateKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -50753,11 +55093,11 @@ type GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -50768,7 +55108,7 @@ type GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -50789,11 +55129,11 @@ type GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -50804,7 +55144,7 @@ type GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -50870,8 +55210,8 @@ func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) CreatedAt() pul
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -50879,9 +55219,9 @@ func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) FinishedAt() pu
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
-func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
 }
 
 // Phase of the last indexing job
@@ -50909,7 +55249,7 @@ func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pul
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -51378,6 +55718,1041 @@ func (o GetGenaiAgentTemplateModelVersionArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetGenaiAgentTemplateModelVersionOutput)
 }
 
+type GetGenaiAgentVersionsAgentVersion struct {
+	// ID of the Agent to retrieve versions for
+	AgentUuid string `pulumi:"agentUuid"`
+	// List of child agents attached to this version
+	AttachedChildAgents []GetGenaiAgentVersionsAgentVersionAttachedChildAgent `pulumi:"attachedChildAgents"`
+	// List of functions attached to this version
+	AttachedFunctions []GetGenaiAgentVersionsAgentVersionAttachedFunction `pulumi:"attachedFunctions"`
+	// List of guardrails attached to this version
+	AttachedGuardrails []GetGenaiAgentVersionsAgentVersionAttachedGuardrail `pulumi:"attachedGuardrails"`
+	// List of Knowledge Bases agent versions
+	AttachedKnowledgeBases []GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase `pulumi:"attachedKnowledgeBases"`
+	// Indicates if the version can be rolled back
+	CanRollback bool `pulumi:"canRollback"`
+	// Timestamp when the Agent Version was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Email of the user who created this version
+	CreatedByEmail string `pulumi:"createdByEmail"`
+	// Indicates if this version is currently applied configuration
+	CurrentlyApplied bool `pulumi:"currentlyApplied"`
+	// Description of the Agent Version
+	Description string `pulumi:"description"`
+	// Id of the Agent Version
+	Id string `pulumi:"id"`
+	// Instruction for the Agent Version
+	Instruction string `pulumi:"instruction"`
+	// K value for the Agent Version
+	K int `pulumi:"k"`
+	// Maximum tokens allowed for the Agent
+	MaxTokens int `pulumi:"maxTokens"`
+	// Name of model associated to the agent version
+	ModelName string `pulumi:"modelName"`
+	// Name of the Agent
+	Name string `pulumi:"name"`
+	// Indicates if the should provide in-response citations
+	ProvideCitations bool `pulumi:"provideCitations"`
+	// Retrieval method used.
+	// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+	// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+	// - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+	// - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+	// - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+	RetrievalMethod string `pulumi:"retrievalMethod"`
+	// List of Tags
+	Tags []string `pulumi:"tags"`
+	// Temperature setting for the Agent Version
+	Temperature float64 `pulumi:"temperature"`
+	// Top P sampling parameter for the Agent Version
+	TopP float64 `pulumi:"topP"`
+	// Trigger action for the Agent Version
+	TriggerAction string `pulumi:"triggerAction"`
+	// Hash of the Agent Version
+	VersionHash string `pulumi:"versionHash"`
+}
+
+// GetGenaiAgentVersionsAgentVersionInput is an input type that accepts GetGenaiAgentVersionsAgentVersionArgs and GetGenaiAgentVersionsAgentVersionOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionArgs{...}
+type GetGenaiAgentVersionsAgentVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionOutput() GetGenaiAgentVersionsAgentVersionOutput
+	ToGetGenaiAgentVersionsAgentVersionOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionArgs struct {
+	// ID of the Agent to retrieve versions for
+	AgentUuid pulumi.StringInput `pulumi:"agentUuid"`
+	// List of child agents attached to this version
+	AttachedChildAgents GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayInput `pulumi:"attachedChildAgents"`
+	// List of functions attached to this version
+	AttachedFunctions GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayInput `pulumi:"attachedFunctions"`
+	// List of guardrails attached to this version
+	AttachedGuardrails GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayInput `pulumi:"attachedGuardrails"`
+	// List of Knowledge Bases agent versions
+	AttachedKnowledgeBases GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayInput `pulumi:"attachedKnowledgeBases"`
+	// Indicates if the version can be rolled back
+	CanRollback pulumi.BoolInput `pulumi:"canRollback"`
+	// Timestamp when the Agent Version was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Email of the user who created this version
+	CreatedByEmail pulumi.StringInput `pulumi:"createdByEmail"`
+	// Indicates if this version is currently applied configuration
+	CurrentlyApplied pulumi.BoolInput `pulumi:"currentlyApplied"`
+	// Description of the Agent Version
+	Description pulumi.StringInput `pulumi:"description"`
+	// Id of the Agent Version
+	Id pulumi.StringInput `pulumi:"id"`
+	// Instruction for the Agent Version
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// K value for the Agent Version
+	K pulumi.IntInput `pulumi:"k"`
+	// Maximum tokens allowed for the Agent
+	MaxTokens pulumi.IntInput `pulumi:"maxTokens"`
+	// Name of model associated to the agent version
+	ModelName pulumi.StringInput `pulumi:"modelName"`
+	// Name of the Agent
+	Name pulumi.StringInput `pulumi:"name"`
+	// Indicates if the should provide in-response citations
+	ProvideCitations pulumi.BoolInput `pulumi:"provideCitations"`
+	// Retrieval method used.
+	// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+	// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+	// - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+	// - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+	// - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+	RetrievalMethod pulumi.StringInput `pulumi:"retrievalMethod"`
+	// List of Tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Temperature setting for the Agent Version
+	Temperature pulumi.Float64Input `pulumi:"temperature"`
+	// Top P sampling parameter for the Agent Version
+	TopP pulumi.Float64Input `pulumi:"topP"`
+	// Trigger action for the Agent Version
+	TriggerAction pulumi.StringInput `pulumi:"triggerAction"`
+	// Hash of the Agent Version
+	VersionHash pulumi.StringInput `pulumi:"versionHash"`
+}
+
+func (GetGenaiAgentVersionsAgentVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionArgs) ToGetGenaiAgentVersionsAgentVersionOutput() GetGenaiAgentVersionsAgentVersionOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionArgs) ToGetGenaiAgentVersionsAgentVersionOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionOutput)
+}
+
+// GetGenaiAgentVersionsAgentVersionArrayInput is an input type that accepts GetGenaiAgentVersionsAgentVersionArray and GetGenaiAgentVersionsAgentVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionArrayInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionArray{ GetGenaiAgentVersionsAgentVersionArgs{...} }
+type GetGenaiAgentVersionsAgentVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionArrayOutput() GetGenaiAgentVersionsAgentVersionArrayOutput
+	ToGetGenaiAgentVersionsAgentVersionArrayOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionArrayOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionArray []GetGenaiAgentVersionsAgentVersionInput
+
+func (GetGenaiAgentVersionsAgentVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionArray) ToGetGenaiAgentVersionsAgentVersionArrayOutput() GetGenaiAgentVersionsAgentVersionArrayOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionArray) ToGetGenaiAgentVersionsAgentVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionArrayOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionOutput) ToGetGenaiAgentVersionsAgentVersionOutput() GetGenaiAgentVersionsAgentVersionOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionOutput) ToGetGenaiAgentVersionsAgentVersionOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionOutput {
+	return o
+}
+
+// ID of the Agent to retrieve versions for
+func (o GetGenaiAgentVersionsAgentVersionOutput) AgentUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.AgentUuid }).(pulumi.StringOutput)
+}
+
+// List of child agents attached to this version
+func (o GetGenaiAgentVersionsAgentVersionOutput) AttachedChildAgents() GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) []GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
+		return v.AttachedChildAgents
+	}).(GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput)
+}
+
+// List of functions attached to this version
+func (o GetGenaiAgentVersionsAgentVersionOutput) AttachedFunctions() GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) []GetGenaiAgentVersionsAgentVersionAttachedFunction {
+		return v.AttachedFunctions
+	}).(GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput)
+}
+
+// List of guardrails attached to this version
+func (o GetGenaiAgentVersionsAgentVersionOutput) AttachedGuardrails() GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) []GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
+		return v.AttachedGuardrails
+	}).(GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput)
+}
+
+// List of Knowledge Bases agent versions
+func (o GetGenaiAgentVersionsAgentVersionOutput) AttachedKnowledgeBases() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) []GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
+		return v.AttachedKnowledgeBases
+	}).(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput)
+}
+
+// Indicates if the version can be rolled back
+func (o GetGenaiAgentVersionsAgentVersionOutput) CanRollback() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) bool { return v.CanRollback }).(pulumi.BoolOutput)
+}
+
+// Timestamp when the Agent Version was created
+func (o GetGenaiAgentVersionsAgentVersionOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Email of the user who created this version
+func (o GetGenaiAgentVersionsAgentVersionOutput) CreatedByEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.CreatedByEmail }).(pulumi.StringOutput)
+}
+
+// Indicates if this version is currently applied configuration
+func (o GetGenaiAgentVersionsAgentVersionOutput) CurrentlyApplied() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) bool { return v.CurrentlyApplied }).(pulumi.BoolOutput)
+}
+
+// Description of the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Id of the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Instruction for the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// K value for the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) K() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) int { return v.K }).(pulumi.IntOutput)
+}
+
+// Maximum tokens allowed for the Agent
+func (o GetGenaiAgentVersionsAgentVersionOutput) MaxTokens() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) int { return v.MaxTokens }).(pulumi.IntOutput)
+}
+
+// Name of model associated to the agent version
+func (o GetGenaiAgentVersionsAgentVersionOutput) ModelName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.ModelName }).(pulumi.StringOutput)
+}
+
+// Name of the Agent
+func (o GetGenaiAgentVersionsAgentVersionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Indicates if the should provide in-response citations
+func (o GetGenaiAgentVersionsAgentVersionOutput) ProvideCitations() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) bool { return v.ProvideCitations }).(pulumi.BoolOutput)
+}
+
+// Retrieval method used.
+// - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+// - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+// - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+// - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+// - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+func (o GetGenaiAgentVersionsAgentVersionOutput) RetrievalMethod() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.RetrievalMethod }).(pulumi.StringOutput)
+}
+
+// List of Tags
+func (o GetGenaiAgentVersionsAgentVersionOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Temperature setting for the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) Temperature() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) float64 { return v.Temperature }).(pulumi.Float64Output)
+}
+
+// Top P sampling parameter for the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) TopP() pulumi.Float64Output {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) float64 { return v.TopP }).(pulumi.Float64Output)
+}
+
+// Trigger action for the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) TriggerAction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.TriggerAction }).(pulumi.StringOutput)
+}
+
+// Hash of the Agent Version
+func (o GetGenaiAgentVersionsAgentVersionOutput) VersionHash() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersion) string { return v.VersionHash }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionArrayOutput) ToGetGenaiAgentVersionsAgentVersionArrayOutput() GetGenaiAgentVersionsAgentVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionArrayOutput) ToGetGenaiAgentVersionsAgentVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsAgentVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsAgentVersion {
+		return vs[0].([]GetGenaiAgentVersionsAgentVersion)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsAgentVersionOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgent struct {
+	// Name of the child agent
+	AgentName string `pulumi:"agentName"`
+	// Child agent unique identifier
+	ChildAgentUuid string `pulumi:"childAgentUuid"`
+	// If case
+	IfCase string `pulumi:"ifCase"`
+	// Child agent is deleted
+	IsDeleted bool `pulumi:"isDeleted"`
+	// Route name
+	RouteName string `pulumi:"routeName"`
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedChildAgentInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs and GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedChildAgentInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs{...}
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs struct {
+	// Name of the child agent
+	AgentName pulumi.StringInput `pulumi:"agentName"`
+	// Child agent unique identifier
+	ChildAgentUuid pulumi.StringInput `pulumi:"childAgentUuid"`
+	// If case
+	IfCase pulumi.StringInput `pulumi:"ifCase"`
+	// Child agent is deleted
+	IsDeleted pulumi.BoolInput `pulumi:"isDeleted"`
+	// Route name
+	RouteName pulumi.StringInput `pulumi:"routeName"`
+}
+
+func (GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedChildAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput)
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray and GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray{ GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs{...} }
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray []GetGenaiAgentVersionsAgentVersionAttachedChildAgentInput
+
+func (GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedChildAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedChildAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput {
+	return o
+}
+
+// Name of the child agent
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) AgentName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedChildAgent) string { return v.AgentName }).(pulumi.StringOutput)
+}
+
+// Child agent unique identifier
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) ChildAgentUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedChildAgent) string { return v.ChildAgentUuid }).(pulumi.StringOutput)
+}
+
+// If case
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) IfCase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedChildAgent) string { return v.IfCase }).(pulumi.StringOutput)
+}
+
+// Child agent is deleted
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) IsDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedChildAgent) bool { return v.IsDeleted }).(pulumi.BoolOutput)
+}
+
+// Route name
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput) RouteName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedChildAgent) string { return v.RouteName }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedChildAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
+		return vs[0].([]GetGenaiAgentVersionsAgentVersionAttachedChildAgent)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedFunction struct {
+	// Description of the function
+	Description string `pulumi:"description"`
+	// FaaS name of the function
+	FaasName string `pulumi:"faasName"`
+	// FaaS namespace of the function
+	FaasNamespace string `pulumi:"faasNamespace"`
+	// Function is deleted
+	IsDeleted bool `pulumi:"isDeleted"`
+	// Name of the function
+	Name string `pulumi:"name"`
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedFunctionInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs and GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedFunctionInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs{...}
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs struct {
+	// Description of the function
+	Description pulumi.StringInput `pulumi:"description"`
+	// FaaS name of the function
+	FaasName pulumi.StringInput `pulumi:"faasName"`
+	// FaaS namespace of the function
+	FaasNamespace pulumi.StringInput `pulumi:"faasNamespace"`
+	// Function is deleted
+	IsDeleted pulumi.BoolInput `pulumi:"isDeleted"`
+	// Name of the function
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedFunction)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput)
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedFunctionArray and GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedFunctionArray{ GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs{...} }
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionArray []GetGenaiAgentVersionsAgentVersionAttachedFunctionInput
+
+func (GetGenaiAgentVersionsAgentVersionAttachedFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedFunction)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedFunctionArray) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedFunctionArray) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedFunction)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput {
+	return o
+}
+
+// Description of the function
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedFunction) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// FaaS name of the function
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) FaasName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedFunction) string { return v.FaasName }).(pulumi.StringOutput)
+}
+
+// FaaS namespace of the function
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) FaasNamespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedFunction) string { return v.FaasNamespace }).(pulumi.StringOutput)
+}
+
+// Function is deleted
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) IsDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedFunction) bool { return v.IsDeleted }).(pulumi.BoolOutput)
+}
+
+// Name of the function
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedFunction) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedFunction)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsAgentVersionAttachedFunction {
+		return vs[0].([]GetGenaiAgentVersionsAgentVersionAttachedFunction)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrail struct {
+	// Whether the guardrail is deleted
+	IsDeleted bool `pulumi:"isDeleted"`
+	// Name of the guardrail
+	Name string `pulumi:"name"`
+	// Guardrail priority
+	Priority int `pulumi:"priority"`
+	// Guardrail UUID
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedGuardrailInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs and GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedGuardrailInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs{...}
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs struct {
+	// Whether the guardrail is deleted
+	IsDeleted pulumi.BoolInput `pulumi:"isDeleted"`
+	// Name of the guardrail
+	Name pulumi.StringInput `pulumi:"name"`
+	// Guardrail priority
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// Guardrail UUID
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedGuardrail)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput)
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray and GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray{ GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs{...} }
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray []GetGenaiAgentVersionsAgentVersionAttachedGuardrailInput
+
+func (GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedGuardrail)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedGuardrail)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput {
+	return o
+}
+
+// Whether the guardrail is deleted
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) IsDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedGuardrail) bool { return v.IsDeleted }).(pulumi.BoolOutput)
+}
+
+// Name of the guardrail
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedGuardrail) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Guardrail priority
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedGuardrail) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// Guardrail UUID
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedGuardrail) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedGuardrail)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
+		return vs[0].([]GetGenaiAgentVersionsAgentVersionAttachedGuardrail)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase struct {
+	// Whether the knowledge base is deleted
+	IsDeleted bool `pulumi:"isDeleted"`
+	// Name of the knowledge base
+	Name string `pulumi:"name"`
+	// Knowledge base UUID
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs and GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs{...}
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs struct {
+	// Whether the knowledge base is deleted
+	IsDeleted pulumi.BoolInput `pulumi:"isDeleted"`
+	// Name of the knowledge base
+	Name pulumi.StringInput `pulumi:"name"`
+	// Knowledge base UUID
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput)
+}
+
+// GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayInput is an input type that accepts GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray and GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayInput` via:
+//
+//	GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray{ GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs{...} }
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput
+	ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray []GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseInput
+
+func (GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput {
+	return i.ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput {
+	return o
+}
+
+// Whether the knowledge base is deleted
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) IsDeleted() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase) bool { return v.IsDeleted }).(pulumi.BoolOutput)
+}
+
+// Name of the knowledge base
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Knowledge base UUID
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput() GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput) ToGetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
+		return vs[0].([]GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput)
+}
+
+type GetGenaiAgentVersionsFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiAgentVersionsFilterInput is an input type that accepts GetGenaiAgentVersionsFilterArgs and GetGenaiAgentVersionsFilterOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsFilterInput` via:
+//
+//	GetGenaiAgentVersionsFilterArgs{...}
+type GetGenaiAgentVersionsFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsFilterOutput() GetGenaiAgentVersionsFilterOutput
+	ToGetGenaiAgentVersionsFilterOutputWithContext(context.Context) GetGenaiAgentVersionsFilterOutput
+}
+
+type GetGenaiAgentVersionsFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiAgentVersionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsFilterArgs) ToGetGenaiAgentVersionsFilterOutput() GetGenaiAgentVersionsFilterOutput {
+	return i.ToGetGenaiAgentVersionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsFilterArgs) ToGetGenaiAgentVersionsFilterOutputWithContext(ctx context.Context) GetGenaiAgentVersionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsFilterOutput)
+}
+
+// GetGenaiAgentVersionsFilterArrayInput is an input type that accepts GetGenaiAgentVersionsFilterArray and GetGenaiAgentVersionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsFilterArrayInput` via:
+//
+//	GetGenaiAgentVersionsFilterArray{ GetGenaiAgentVersionsFilterArgs{...} }
+type GetGenaiAgentVersionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsFilterArrayOutput() GetGenaiAgentVersionsFilterArrayOutput
+	ToGetGenaiAgentVersionsFilterArrayOutputWithContext(context.Context) GetGenaiAgentVersionsFilterArrayOutput
+}
+
+type GetGenaiAgentVersionsFilterArray []GetGenaiAgentVersionsFilterInput
+
+func (GetGenaiAgentVersionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsFilterArray) ToGetGenaiAgentVersionsFilterArrayOutput() GetGenaiAgentVersionsFilterArrayOutput {
+	return i.ToGetGenaiAgentVersionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsFilterArray) ToGetGenaiAgentVersionsFilterArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsFilterArrayOutput)
+}
+
+type GetGenaiAgentVersionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) ToGetGenaiAgentVersionsFilterOutput() GetGenaiAgentVersionsFilterOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) ToGetGenaiAgentVersionsFilterOutputWithContext(ctx context.Context) GetGenaiAgentVersionsFilterOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiAgentVersionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiAgentVersionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsFilterArrayOutput) ToGetGenaiAgentVersionsFilterArrayOutput() GetGenaiAgentVersionsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsFilterArrayOutput) ToGetGenaiAgentVersionsFilterArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsFilter {
+		return vs[0].([]GetGenaiAgentVersionsFilter)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsFilterOutput)
+}
+
+type GetGenaiAgentVersionsSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGenaiAgentVersionsSortInput is an input type that accepts GetGenaiAgentVersionsSortArgs and GetGenaiAgentVersionsSortOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsSortInput` via:
+//
+//	GetGenaiAgentVersionsSortArgs{...}
+type GetGenaiAgentVersionsSortInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsSortOutput() GetGenaiAgentVersionsSortOutput
+	ToGetGenaiAgentVersionsSortOutputWithContext(context.Context) GetGenaiAgentVersionsSortOutput
+}
+
+type GetGenaiAgentVersionsSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGenaiAgentVersionsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsSort)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsSortArgs) ToGetGenaiAgentVersionsSortOutput() GetGenaiAgentVersionsSortOutput {
+	return i.ToGetGenaiAgentVersionsSortOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsSortArgs) ToGetGenaiAgentVersionsSortOutputWithContext(ctx context.Context) GetGenaiAgentVersionsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsSortOutput)
+}
+
+// GetGenaiAgentVersionsSortArrayInput is an input type that accepts GetGenaiAgentVersionsSortArray and GetGenaiAgentVersionsSortArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentVersionsSortArrayInput` via:
+//
+//	GetGenaiAgentVersionsSortArray{ GetGenaiAgentVersionsSortArgs{...} }
+type GetGenaiAgentVersionsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentVersionsSortArrayOutput() GetGenaiAgentVersionsSortArrayOutput
+	ToGetGenaiAgentVersionsSortArrayOutputWithContext(context.Context) GetGenaiAgentVersionsSortArrayOutput
+}
+
+type GetGenaiAgentVersionsSortArray []GetGenaiAgentVersionsSortInput
+
+func (GetGenaiAgentVersionsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsSort)(nil)).Elem()
+}
+
+func (i GetGenaiAgentVersionsSortArray) ToGetGenaiAgentVersionsSortArrayOutput() GetGenaiAgentVersionsSortArrayOutput {
+	return i.ToGetGenaiAgentVersionsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentVersionsSortArray) ToGetGenaiAgentVersionsSortArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentVersionsSortArrayOutput)
+}
+
+type GetGenaiAgentVersionsSortOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentVersionsSort)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsSortOutput) ToGetGenaiAgentVersionsSortOutput() GetGenaiAgentVersionsSortOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsSortOutput) ToGetGenaiAgentVersionsSortOutputWithContext(ctx context.Context) GetGenaiAgentVersionsSortOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiAgentVersionsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentVersionsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentVersionsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentVersionsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentVersionsSort)(nil)).Elem()
+}
+
+func (o GetGenaiAgentVersionsSortArrayOutput) ToGetGenaiAgentVersionsSortArrayOutput() GetGenaiAgentVersionsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsSortArrayOutput) ToGetGenaiAgentVersionsSortArrayOutputWithContext(ctx context.Context) GetGenaiAgentVersionsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentVersionsSortArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentVersionsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentVersionsSort {
+		return vs[0].([]GetGenaiAgentVersionsSort)[vs[1].(int)]
+	}).(GetGenaiAgentVersionsSortOutput)
+}
+
 type GetGenaiAgentsAgent struct {
 	// AgentGuardrail represents a Guardrail attached to Gen AI Agent
 	AgentGuardrails []GetGenaiAgentsAgentAgentGuardrail `pulumi:"agentGuardrails"`
@@ -51421,7 +56796,7 @@ type GetGenaiAgentsAgent struct {
 	Name string `pulumi:"name"`
 	// OpenAI API Key information
 	OpenAiApiKeys []GetGenaiAgentsAgentOpenAiApiKey `pulumi:"openAiApiKeys"`
-	// List of child agents
+	// List of parent agents
 	ParentAgents []GetGenaiAgentsAgentParentAgent `pulumi:"parentAgents"`
 	// Project ID of the Agent
 	ProjectId string `pulumi:"projectId"`
@@ -51507,7 +56882,7 @@ type GetGenaiAgentsAgentArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// OpenAI API Key information
 	OpenAiApiKeys GetGenaiAgentsAgentOpenAiApiKeyArrayInput `pulumi:"openAiApiKeys"`
-	// List of child agents
+	// List of parent agents
 	ParentAgents GetGenaiAgentsAgentParentAgentArrayInput `pulumi:"parentAgents"`
 	// Project ID of the Agent
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
@@ -51695,7 +57070,7 @@ func (o GetGenaiAgentsAgentOutput) OpenAiApiKeys() GetGenaiAgentsAgentOpenAiApiK
 	return o.ApplyT(func(v GetGenaiAgentsAgent) []GetGenaiAgentsAgentOpenAiApiKey { return v.OpenAiApiKeys }).(GetGenaiAgentsAgentOpenAiApiKeyArrayOutput)
 }
 
-// List of child agents
+// List of parent agents
 func (o GetGenaiAgentsAgentOutput) ParentAgents() GetGenaiAgentsAgentParentAgentArrayOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgent) []GetGenaiAgentsAgentParentAgent { return v.ParentAgents }).(GetGenaiAgentsAgentParentAgentArrayOutput)
 }
@@ -53918,27 +59293,25 @@ type GetGenaiAgentsAgentKnowledgeBase struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt string `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId string `pulumi:"databaseId"`
+	DatabaseId *string `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic bool `pulumi:"isPublic"`
+	IsPublic *bool `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs []GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GetGenaiAgentsAgentKnowledgeBaseInput is an input type that accepts GetGenaiAgentsAgentKnowledgeBaseArgs and GetGenaiAgentsAgentKnowledgeBaseOutput values.
@@ -53958,27 +59331,25 @@ type GetGenaiAgentsAgentKnowledgeBaseArgs struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GetGenaiAgentsAgentKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -54043,18 +59414,18 @@ func (o GetGenaiAgentsAgentKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput 
 }
 
 // Database ID of the Knowledge Base
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Embedding model UUID for the Knowledge Base
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
 }
 
 // Indicates if the Knowledge Base is public
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
 // Last indexing job for the Knowledge Base
@@ -54065,13 +59436,13 @@ func (o GetGenaiAgentsAgentKnowledgeBaseOutput) LastIndexingJobs() GetGenaiAgent
 }
 
 // Name of the Knowledge Base
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Project ID of the Knowledge Base
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Region of the Knowledge Base
@@ -54084,7 +59455,7 @@ func (o GetGenaiAgentsAgentKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput 
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GetGenaiAgentsAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -54092,11 +59463,6 @@ func (o GetGenaiAgentsAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput 
 // User ID of the Knowledge Base
 func (o GetGenaiAgentsAgentKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GetGenaiAgentsAgentKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GetGenaiAgentsAgentKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -54125,11 +59491,11 @@ type GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -54140,7 +59506,7 @@ type GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -54161,11 +59527,11 @@ type GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -54176,7 +59542,7 @@ type GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -54242,8 +59608,8 @@ func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulum
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -54251,9 +59617,9 @@ func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulu
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
-func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
 }
 
 // Phase of the last indexing job
@@ -54281,7 +59647,7 @@ func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulum
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -56032,27 +61398,25 @@ type GetGenaiAgentsAgentTemplateKnowledgeBase struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt string `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId string `pulumi:"databaseId"`
+	DatabaseId *string `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic bool `pulumi:"isPublic"`
+	IsPublic *bool `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs []GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name string `pulumi:"name"`
+	Name *string `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region *string `pulumi:"region"`
 	// List of tags
 	Tags []string `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt string `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId *string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
 }
 
 // GetGenaiAgentsAgentTemplateKnowledgeBaseInput is an input type that accepts GetGenaiAgentsAgentTemplateKnowledgeBaseArgs and GetGenaiAgentsAgentTemplateKnowledgeBaseOutput values.
@@ -56072,27 +61436,25 @@ type GetGenaiAgentsAgentTemplateKnowledgeBaseArgs struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Database ID of the Knowledge Base
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
 	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
 	// Indicates if the Knowledge Base is public
-	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
 	// Last indexing job for the Knowledge Base
 	LastIndexingJobs GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
 	// Name of the Knowledge Base
-	Name pulumi.StringInput `pulumi:"name"`
+	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Project ID of the Knowledge Base
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
 	// Region of the Knowledge Base
 	Region pulumi.StringPtrInput `pulumi:"region"`
 	// List of tags
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Updated At timestamp for the Knowledge Base
+	// Timestamp when the Knowledge Base was updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
 	// User ID of the Knowledge Base
 	UserId pulumi.StringPtrInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
 func (GetGenaiAgentsAgentTemplateKnowledgeBaseArgs) ElementType() reflect.Type {
@@ -56157,18 +61519,18 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) CreatedAt() pulumi.Strin
 }
 
 // Database ID of the Knowledge Base
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
 }
 
 // Embedding model UUID for the Knowledge Base
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
 }
 
 // Indicates if the Knowledge Base is public
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
 }
 
 // Last indexing job for the Knowledge Base
@@ -56179,13 +61541,13 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) LastIndexingJobs() GetGe
 }
 
 // Name of the Knowledge Base
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
 // Project ID of the Knowledge Base
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
 }
 
 // Region of the Knowledge Base
@@ -56198,7 +61560,7 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) Tags() pulumi.StringArra
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
 }
 
-// Updated At timestamp for the Knowledge Base
+// Timestamp when the Knowledge Base was updated
 func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
@@ -56206,11 +61568,6 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.Strin
 // User ID of the Knowledge Base
 func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBase) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
 type GetGenaiAgentsAgentTemplateKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
@@ -56239,11 +61596,11 @@ type GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt string `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids []string `pulumi:"datasourceUuids"`
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt string `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase *string `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -56254,7 +61611,7 @@ type GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob struct {
 	TotalDatasources *int `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt string `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid *string `pulumi:"uuid"`
 }
 
@@ -56275,11 +61632,11 @@ type GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	// Created At timestamp for the last indexing job
 	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
 	// Datasource UUIDs for the last indexing job
-	DatasourceUuids pulumi.StringArrayInput `pulumi:"datasourceUuids"`
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
 	// Timestamp when the last indexing job finished
 	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
-	// UUID	of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
 	// Phase of the last indexing job
 	Phase pulumi.StringPtrInput `pulumi:"phase"`
 	// Timestamp when the last indexing job started
@@ -56290,7 +61647,7 @@ type GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
 	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
 	// Timestamp when the last indexing job updated
 	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// UUID	of the last indexing job
+	// UUID  of the last indexing job
 	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
 }
 
@@ -56356,8 +61713,8 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) CreatedAt
 }
 
 // Datasource UUIDs for the last indexing job
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) DatasourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DatasourceUuids }).(pulumi.StringArrayOutput)
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
 }
 
 // Timestamp when the last indexing job finished
@@ -56365,9 +61722,9 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) FinishedA
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the Knowledge Base for the last indexing job
-func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
 }
 
 // Phase of the last indexing job
@@ -56395,7 +61752,7 @@ func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) UpdatedAt
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
-// UUID	of the last indexing job
+// UUID  of the last indexing job
 func (o GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
 }
@@ -56866,6 +62223,5822 @@ func (o GetGenaiAgentsAgentTemplateModelVersionArrayOutput) Index(i pulumi.IntIn
 	}).(GetGenaiAgentsAgentTemplateModelVersionOutput)
 }
 
+type GetGenaiAgentsByOpenaiApiKeyAgent struct {
+	// AgentGuardrail represents a Guardrail attached to Gen AI Agent
+	AgentGuardrails []GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail `pulumi:"agentGuardrails"`
+	// ID of the Agent to retrieve
+	AgentId string `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos []GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentApiKey `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers []GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots []GetGenaiAgentsByOpenaiApiKeyAgentChatbot `pulumi:"chatbots"`
+	// List of child agents
+	ChildAgents []GetGenaiAgentsByOpenaiApiKeyAgentChildAgent `pulumi:"childAgents"`
+	// Timestamp when the Agent was created
+	CreatedAt string `pulumi:"createdAt"`
+	// List of API Key Infos
+	Deployments []GetGenaiAgentsByOpenaiApiKeyAgentDeployment `pulumi:"deployments"`
+	// Description for the Agent
+	Description *string `pulumi:"description"`
+	// List of API Key Infos
+	Functions []GetGenaiAgentsByOpenaiApiKeyAgentFunction `pulumi:"functions"`
+	// If case condition
+	IfCase *string `pulumi:"ifCase"`
+	// Instruction for the Agent
+	Instruction string `pulumi:"instruction"`
+	// K value
+	K *int `pulumi:"k"`
+	// List of Knowledge Bases
+	KnowledgeBases []GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase `pulumi:"knowledgeBases"`
+	// Maximum tokens allowed
+	MaxTokens *int `pulumi:"maxTokens"`
+	// Model UUID of the Agent
+	ModelUuid string `pulumi:"modelUuid"`
+	// Model of the Agent
+	Models []GetGenaiAgentsByOpenaiApiKeyAgentModel `pulumi:"models"`
+	// Name of the Agent
+	Name string `pulumi:"name"`
+	// OpenAI API Key information
+	OpenAiApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey `pulumi:"openAiApiKeys"`
+	// List of parent agents
+	ParentAgents []GetGenaiAgentsByOpenaiApiKeyAgentParentAgent `pulumi:"parentAgents"`
+	// Project ID of the Agent
+	ProjectId string `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region string `pulumi:"region"`
+	// Retrieval method used
+	RetrievalMethod *string `pulumi:"retrievalMethod"`
+	// Timestamp when the route was created
+	RouteCreatedAt string `pulumi:"routeCreatedAt"`
+	// User who created the route
+	RouteCreatedBy *string `pulumi:"routeCreatedBy"`
+	// Route name
+	RouteName *string `pulumi:"routeName"`
+	// Route UUID
+	RouteUuid *string `pulumi:"routeUuid"`
+	// List of Tags
+	Tags []string `pulumi:"tags"`
+	// Agent temperature setting
+	Temperature *float64 `pulumi:"temperature"`
+	// Agent Template
+	Templates []GetGenaiAgentsByOpenaiApiKeyAgentTemplate `pulumi:"templates"`
+	// Top P sampling parameter
+	TopP *float64 `pulumi:"topP"`
+	// Timestamp when the Agent was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// URL for the Agent
+	Url *string `pulumi:"url"`
+	// User ID linked with the Agent
+	UserId *string `pulumi:"userId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentArgs and GetGenaiAgentsByOpenaiApiKeyAgentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentArgs struct {
+	// AgentGuardrail represents a Guardrail attached to Gen AI Agent
+	AgentGuardrails GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayInput `pulumi:"agentGuardrails"`
+	// ID of the Agent to retrieve
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayInput `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayInput `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayInput `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayInput `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayInput `pulumi:"chatbots"`
+	// List of child agents
+	ChildAgents GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayInput `pulumi:"childAgents"`
+	// Timestamp when the Agent was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// List of API Key Infos
+	Deployments GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput `pulumi:"deployments"`
+	// Description for the Agent
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// List of API Key Infos
+	Functions GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayInput `pulumi:"functions"`
+	// If case condition
+	IfCase pulumi.StringPtrInput `pulumi:"ifCase"`
+	// Instruction for the Agent
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// K value
+	K pulumi.IntPtrInput `pulumi:"k"`
+	// List of Knowledge Bases
+	KnowledgeBases GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput `pulumi:"knowledgeBases"`
+	// Maximum tokens allowed
+	MaxTokens pulumi.IntPtrInput `pulumi:"maxTokens"`
+	// Model UUID of the Agent
+	ModelUuid pulumi.StringInput `pulumi:"modelUuid"`
+	// Model of the Agent
+	Models GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput `pulumi:"models"`
+	// Name of the Agent
+	Name pulumi.StringInput `pulumi:"name"`
+	// OpenAI API Key information
+	OpenAiApiKeys GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput `pulumi:"openAiApiKeys"`
+	// List of parent agents
+	ParentAgents GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput `pulumi:"parentAgents"`
+	// Project ID of the Agent
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region pulumi.StringInput `pulumi:"region"`
+	// Retrieval method used
+	RetrievalMethod pulumi.StringPtrInput `pulumi:"retrievalMethod"`
+	// Timestamp when the route was created
+	RouteCreatedAt pulumi.StringInput `pulumi:"routeCreatedAt"`
+	// User who created the route
+	RouteCreatedBy pulumi.StringPtrInput `pulumi:"routeCreatedBy"`
+	// Route name
+	RouteName pulumi.StringPtrInput `pulumi:"routeName"`
+	// Route UUID
+	RouteUuid pulumi.StringPtrInput `pulumi:"routeUuid"`
+	// List of Tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Agent temperature setting
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// Agent Template
+	Templates GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayInput `pulumi:"templates"`
+	// Top P sampling parameter
+	TopP pulumi.Float64PtrInput `pulumi:"topP"`
+	// Timestamp when the Agent was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// URL for the Agent
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// User ID linked with the Agent
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentArray and GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentArray{ GetGenaiAgentsByOpenaiApiKeyAgentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentArray []GetGenaiAgentsByOpenaiApiKeyAgentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOutput {
+	return o
+}
+
+// AgentGuardrail represents a Guardrail attached to Gen AI Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) AgentGuardrails() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
+		return v.AgentGuardrails
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput)
+}
+
+// ID of the Agent to retrieve
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Anthropic API Key information
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) AnthropicApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey {
+		return v.AnthropicApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ApiKeyInfos() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo {
+		return v.ApiKeyInfos
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput)
+}
+
+// List of API Keys
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentApiKey { return v.ApiKeys }).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput)
+}
+
+// List of Chatbot Identifiers
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ChatbotIdentifiers() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
+		return v.ChatbotIdentifiers
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput)
+}
+
+// ChatBot configuration
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Chatbots() GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChatbot {
+		return v.Chatbots
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput)
+}
+
+// List of child agents
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ChildAgents() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgent {
+		return v.ChildAgents
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput)
+}
+
+// Timestamp when the Agent was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Deployments() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentDeployment {
+		return v.Deployments
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput)
+}
+
+// Description for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Functions() GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentFunction {
+		return v.Functions
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput)
+}
+
+// If case condition
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) IfCase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.IfCase }).(pulumi.StringPtrOutput)
+}
+
+// Instruction for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// K value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) K() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *int { return v.K }).(pulumi.IntPtrOutput)
+}
+
+// List of Knowledge Bases
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) KnowledgeBases() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase {
+		return v.KnowledgeBases
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput)
+}
+
+// Maximum tokens allowed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *int { return v.MaxTokens }).(pulumi.IntPtrOutput)
+}
+
+// Model UUID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.ModelUuid }).(pulumi.StringOutput)
+}
+
+// Model of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Models() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentModel { return v.Models }).(GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput)
+}
+
+// Name of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// OpenAI API Key information
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) OpenAiApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
+		return v.OpenAiApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput)
+}
+
+// List of parent agents
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ParentAgents() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgent {
+		return v.ParentAgents
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput)
+}
+
+// Project ID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region where the Agent is deployed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Retrieval method used
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) RetrievalMethod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.RetrievalMethod }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the route was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) RouteCreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.RouteCreatedAt }).(pulumi.StringOutput)
+}
+
+// User who created the route
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) RouteCreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.RouteCreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Route name
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) RouteName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.RouteName }).(pulumi.StringPtrOutput)
+}
+
+// Route UUID
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) RouteUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.RouteUuid }).(pulumi.StringPtrOutput)
+}
+
+// List of Tags
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Agent temperature setting
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Templates() GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) []GetGenaiAgentsByOpenaiApiKeyAgentTemplate {
+		return v.Templates
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput)
+}
+
+// Top P sampling parameter
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *float64 { return v.TopP }).(pulumi.Float64PtrOutput)
+}
+
+// Timestamp when the Agent was updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// URL for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// User ID linked with the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgent) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgent {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgent)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail struct {
+	// Agent UUID for the Guardrail
+	AgentUuid *string `pulumi:"agentUuid"`
+	// Created At timestamp for the Guardrail
+	CreatedAt string `pulumi:"createdAt"`
+	// Default response for the Guardrail
+	DefaultResponse *string `pulumi:"defaultResponse"`
+	// Description of the Guardrail
+	Description *string `pulumi:"description"`
+	// Guardrail UUID
+	GuardrailUuid *string `pulumi:"guardrailUuid"`
+	// Indicates if the Guardrail is attached
+	IsAttached bool `pulumi:"isAttached"`
+	// Indicates if the Guardrail is default
+	IsDefault *bool `pulumi:"isDefault"`
+	// Name of Guardrail
+	Name *string `pulumi:"name"`
+	// Priority of the Guardrail
+	Priority *int `pulumi:"priority"`
+	// Type of the Guardrail
+	Type *string `pulumi:"type"`
+	// Updated At timestamp for the Guardrail
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Guardrail UUID
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs and GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs struct {
+	// Agent UUID for the Guardrail
+	AgentUuid pulumi.StringPtrInput `pulumi:"agentUuid"`
+	// Created At timestamp for the Guardrail
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Default response for the Guardrail
+	DefaultResponse pulumi.StringPtrInput `pulumi:"defaultResponse"`
+	// Description of the Guardrail
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Guardrail UUID
+	GuardrailUuid pulumi.StringPtrInput `pulumi:"guardrailUuid"`
+	// Indicates if the Guardrail is attached
+	IsAttached pulumi.BoolInput `pulumi:"isAttached"`
+	// Indicates if the Guardrail is default
+	IsDefault pulumi.BoolPtrInput `pulumi:"isDefault"`
+	// Name of Guardrail
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Priority of the Guardrail
+	Priority pulumi.IntPtrInput `pulumi:"priority"`
+	// Type of the Guardrail
+	Type pulumi.StringPtrInput `pulumi:"type"`
+	// Updated At timestamp for the Guardrail
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Guardrail UUID
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray and GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray{ GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray []GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput {
+	return o
+}
+
+// Agent UUID for the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) AgentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.AgentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Created At timestamp for the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Default response for the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) DefaultResponse() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.DefaultResponse }).(pulumi.StringPtrOutput)
+}
+
+// Description of the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Guardrail UUID
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) GuardrailUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.GuardrailUuid }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Guardrail is attached
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) IsAttached() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) bool { return v.IsAttached }).(pulumi.BoolOutput)
+}
+
+// Indicates if the Guardrail is default
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) IsDefault() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *bool { return v.IsDefault }).(pulumi.BoolPtrOutput)
+}
+
+// Name of Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Priority of the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) Priority() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *int { return v.Priority }).(pulumi.IntPtrOutput)
+}
+
+// Type of the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Guardrail
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Guardrail UUID
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey struct {
+	// Timestamp when the API Key was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt string `pulumi:"updatedAt"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs struct {
+	// Timestamp when the API Key was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput {
+	return o
+}
+
+// Timestamp when the API Key was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKey struct {
+	// API Key value
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs struct {
+	// API Key value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey *string `pulumi:"secretKey"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs and GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray and GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray{ GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray []GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbot struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor *string `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo *string `pulumi:"logo"`
+	// Name of the chatbot
+	Name *string `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor *string `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor *string `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage *string `pulumi:"startingMessage"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChatbotInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs and GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChatbotInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor pulumi.StringPtrInput `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo pulumi.StringPtrInput `pulumi:"logo"`
+	// Name of the chatbot
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor pulumi.StringPtrInput `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor pulumi.StringPtrInput `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage pulumi.StringPtrInput `pulumi:"startingMessage"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray and GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray{ GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray []GetGenaiAgentsByOpenaiApiKeyAgentChatbotInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput {
+	return o
+}
+
+// Background color for the chatbot button
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) ButtonBackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.ButtonBackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Logo for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// Name of the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Primary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.PrimaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Secondary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) SecondaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.SecondaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Starting message for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput) StartingMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbot) *string { return v.StartingMessage }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChatbot {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChatbot)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier struct {
+	// Chatbot ID
+	ChatbotId *string `pulumi:"chatbotId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs and GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs struct {
+	// Chatbot ID
+	ChatbotId pulumi.StringPtrInput `pulumi:"chatbotId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray and GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray{ GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray []GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput {
+	return o
+}
+
+// Chatbot ID
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput) ChatbotId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier) *string { return v.ChatbotId }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgent struct {
+	// ID of the child agent
+	AgentId string `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment `pulumi:"deployments"`
+	// Description for the Agent
+	Description *string `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction string `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid string `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name string `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId string `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region string `pulumi:"region"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs struct {
+	// ID of the child agent
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayInput `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayInput `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput `pulumi:"deployments"`
+	// Description for the Agent
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid pulumi.StringInput `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput {
+	return o
+}
+
+// ID of the child agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Anthropic API Key information
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) AnthropicApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey {
+		return v.AnthropicApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ApiKeyInfos() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo {
+		return v.ApiKeyInfos
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput)
+}
+
+// List of API Keys
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey {
+		return v.ApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput)
+}
+
+// List of Chatbot Identifiers
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ChatbotIdentifiers() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
+		return v.ChatbotIdentifiers
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput)
+}
+
+// ChatBot configuration
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Chatbots() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot {
+		return v.Chatbots
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Deployments() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
+		return v.Deployments
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput)
+}
+
+// Description for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Instruction for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// Model UUID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.ModelUuid }).(pulumi.StringOutput)
+}
+
+// Name of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region where the Agent is deployed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgent) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgent {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgent)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey struct {
+	// Timestamp when the API Key was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt string `pulumi:"updatedAt"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs struct {
+	// Timestamp when the API Key was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput {
+	return o
+}
+
+// Timestamp when the API Key was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey struct {
+	// API Key value
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs struct {
+	// API Key value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey *string `pulumi:"secretKey"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor *string `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo *string `pulumi:"logo"`
+	// Name of the chatbot
+	Name *string `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor *string `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor *string `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage *string `pulumi:"startingMessage"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor pulumi.StringPtrInput `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo pulumi.StringPtrInput `pulumi:"logo"`
+	// Name of the chatbot
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor pulumi.StringPtrInput `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor pulumi.StringPtrInput `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage pulumi.StringPtrInput `pulumi:"startingMessage"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput {
+	return o
+}
+
+// Background color for the chatbot button
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) ButtonBackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.ButtonBackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Logo for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// Name of the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Primary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.PrimaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Secondary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) SecondaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.SecondaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Starting message for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput) StartingMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot) *string { return v.StartingMessage }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier struct {
+	ChatbotId string `pulumi:"chatbotId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs struct {
+	ChatbotId pulumi.StringInput `pulumi:"chatbotId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput) ChatbotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier) string { return v.ChatbotId }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Status of the Deployment
+	Status *string `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url *string `pulumi:"url"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility *string `pulumi:"visibility"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Status of the Deployment
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Url of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Visibility of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentDeployment struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Status of the Deployment
+	Status *string `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url *string `pulumi:"url"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility *string `pulumi:"visibility"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Status of the Deployment
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Url of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Visibility of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentDeployment {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentDeployment)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentFunction struct {
+	// API Key value
+	ApiKey *string `pulumi:"apiKey"`
+	// Created At timestamp for the Function
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the Function
+	Description *string `pulumi:"description"`
+	// Name of function
+	Faasname *string `pulumi:"faasname"`
+	// Namespace of function
+	Faasnamespace *string `pulumi:"faasnamespace"`
+	// Guardrail UUID for the Function
+	GuardrailUuid *string `pulumi:"guardrailUuid"`
+	// Name of function
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the Agent
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url *string `pulumi:"url"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs and GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs struct {
+	// API Key value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+	// Created At timestamp for the Function
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Description of the Function
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of function
+	Faasname pulumi.StringPtrInput `pulumi:"faasname"`
+	// Namespace of function
+	Faasnamespace pulumi.StringPtrInput `pulumi:"faasnamespace"`
+	// Guardrail UUID for the Function
+	GuardrailUuid pulumi.StringPtrInput `pulumi:"guardrailUuid"`
+	// Name of function
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the Agent
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentFunction)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray and GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray{ GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray []GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentFunction)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentFunction)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+// Created At timestamp for the Function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the Function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Faasname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Faasname }).(pulumi.StringPtrOutput)
+}
+
+// Namespace of function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Faasnamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Faasnamespace }).(pulumi.StringPtrOutput)
+}
+
+// Guardrail UUID for the Function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) GuardrailUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.GuardrailUuid }).(pulumi.StringPtrOutput)
+}
+
+// Name of function
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Url of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentFunction) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentFunction)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentFunction {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentFunction)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt string `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId *string `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic *bool `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJob *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJob"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId *string `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region *string `pulumi:"region"`
+	// List of tags
+	Tags []string `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId *string `pulumi:"userId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs and GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt pulumi.StringInput `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJob GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput `pulumi:"lastIndexingJob"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// List of tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray and GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray{ GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray []GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput {
+	return o
+}
+
+// Timestamp when the Knowledge Base was added to the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) AddedToAgentAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) string { return v.AddedToAgentAt }).(pulumi.StringOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Database ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Embedding model UUID for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Knowledge Base is public
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// Last indexing job for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) LastIndexingJob() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob {
+		return v.LastIndexingJob
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Project ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Region of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// List of tags
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// User ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs and GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput)
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput).ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs, GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtr and GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput` via:
+//
+//	        GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput
+}
+
+type getGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrType GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs
+
+func GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtr(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput {
+	return (*getGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrType)(v)
+}
+
+func (*getGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i *getGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrType) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (i *getGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrType) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob {
+		return &v
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int {
+		return v.CompletedDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) []string {
+		return v.DataSourceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) string {
+		return v.KnowledgeBaseUuid
+	}).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) Elem() GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob {
+		if v != nil {
+			return *v
+		}
+		var ret GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob
+		return ret
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput)
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CompletedDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSourceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) FinishedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FinishedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KnowledgeBaseUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Phase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) StartedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Tokens
+	}).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModel struct {
+	// Agreement information for the model
+	Agreements []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName *string `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion *string `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational *bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid *string `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider *string `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete *bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url *string `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases []string `pulumi:"usecases"`
+	// URL of the Model
+	Versions []GetGenaiAgentsByOpenaiApiKeyAgentModelVersion `pulumi:"versions"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentModelInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelArgs struct {
+	// Agreement information for the model
+	Agreements GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
+	// URL of the Model
+	Versions GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelArray and GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelArray []GetGenaiAgentsByOpenaiApiKeyAgentModelInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Agreements() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
+		return v.Agreements
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Inference name of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) InferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
+}
+
+// Infernce version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) InferenceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) IsFoundational() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parent UUID of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Provider of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) UploadComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// List of Usecases for the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Usecases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelOutput) Versions() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModel) []GetGenaiAgentsByOpenaiApiKeyAgentModelVersion {
+		return v.Versions
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModel)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModel {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModel)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray and GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray []GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersion struct {
+	// Major version of the model
+	Major *int `pulumi:"major"`
+	// Minor version of the model
+	Minor *int `pulumi:"minor"`
+	// Patch version of the model
+	Patch *int `pulumi:"patch"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs and GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntPtrInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntPtrInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntPtrInput `pulumi:"patch"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray and GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray{ GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray []GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Major() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
+}
+
+// Minor version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Minor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
+}
+
+// Patch version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput) Patch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentModelVersion {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentModelVersion)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey struct {
+	// OpenAI API Key
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs struct {
+	// OpenAI API Key
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
+	return o
+}
+
+// OpenAI API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgent struct {
+	// ID of the child agent
+	AgentId string `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment `pulumi:"deployments"`
+	// Description for the Agent
+	Description *string `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction string `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid string `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name string `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId string `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region string `pulumi:"region"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs struct {
+	// ID of the child agent
+	AgentId pulumi.StringInput `pulumi:"agentId"`
+	// Anthropic API Key information
+	AnthropicApiKeys GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput `pulumi:"anthropicApiKeys"`
+	// List of API Key Infos
+	ApiKeyInfos GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput `pulumi:"apiKeyInfos"`
+	// List of API Keys
+	ApiKeys GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput `pulumi:"apiKeys"`
+	// List of Chatbot Identifiers
+	ChatbotIdentifiers GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput `pulumi:"chatbotIdentifiers"`
+	// ChatBot configuration
+	Chatbots GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput `pulumi:"chatbots"`
+	// List of API Key Infos
+	Deployments GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput `pulumi:"deployments"`
+	// Description for the Agent
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction pulumi.StringInput `pulumi:"instruction"`
+	// Model UUID of the Agent
+	ModelUuid pulumi.StringInput `pulumi:"modelUuid"`
+	// Name of the Agent
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project ID of the Agent
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region where the Agent is deployed
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return o
+}
+
+// ID of the child agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) AgentId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.AgentId }).(pulumi.StringOutput)
+}
+
+// Anthropic API Key information
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) AnthropicApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+		return v.AnthropicApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ApiKeyInfos() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+		return v.ApiKeyInfos
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput)
+}
+
+// List of API Keys
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ApiKeys() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+		return v.ApiKeys
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput)
+}
+
+// List of Chatbot Identifiers
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ChatbotIdentifiers() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+		return v.ChatbotIdentifiers
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput)
+}
+
+// ChatBot configuration
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Chatbots() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+		return v.Chatbots
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput)
+}
+
+// List of API Key Infos
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Deployments() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
+		return v.Deployments
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput)
+}
+
+// Description for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Instruction for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Instruction() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Instruction }).(pulumi.StringOutput)
+}
+
+// Model UUID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.ModelUuid }).(pulumi.StringOutput)
+}
+
+// Name of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID of the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region where the Agent is deployed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgent) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgent {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgent)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey struct {
+	// Timestamp when the API Key was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt string `pulumi:"updatedAt"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs struct {
+	// Timestamp when the API Key was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return o
+}
+
+// Timestamp when the API Key was created
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey struct {
+	// API Key value
+	ApiKey *string `pulumi:"apiKey"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs struct {
+	// API Key value
+	ApiKey pulumi.StringPtrInput `pulumi:"apiKey"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput) ApiKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey) *string { return v.ApiKey }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy *string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey *string `pulumi:"secretKey"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringPtrInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	SecretKey pulumi.StringPtrInput `pulumi:"secretKey"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) CreatedBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.CreatedBy }).(pulumi.StringPtrOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) SecretKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.SecretKey }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor *string `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo *string `pulumi:"logo"`
+	// Name of the chatbot
+	Name *string `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor *string `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor *string `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage *string `pulumi:"startingMessage"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs struct {
+	// Background color for the chatbot button
+	ButtonBackgroundColor pulumi.StringPtrInput `pulumi:"buttonBackgroundColor"`
+	// Logo for the chatbot
+	Logo pulumi.StringPtrInput `pulumi:"logo"`
+	// Name of the chatbot
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Primary color for the chatbot
+	PrimaryColor pulumi.StringPtrInput `pulumi:"primaryColor"`
+	// Secondary color for the chatbot
+	SecondaryColor pulumi.StringPtrInput `pulumi:"secondaryColor"`
+	// Starting message for the chatbot
+	StartingMessage pulumi.StringPtrInput `pulumi:"startingMessage"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return o
+}
+
+// Background color for the chatbot button
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) ButtonBackgroundColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.ButtonBackgroundColor }).(pulumi.StringPtrOutput)
+}
+
+// Logo for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) Logo() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.Logo }).(pulumi.StringPtrOutput)
+}
+
+// Name of the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Primary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) PrimaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.PrimaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Secondary color for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) SecondaryColor() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.SecondaryColor }).(pulumi.StringPtrOutput)
+}
+
+// Starting message for the chatbot
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput) StartingMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot) *string { return v.StartingMessage }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier struct {
+	ChatbotId string `pulumi:"chatbotId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs struct {
+	ChatbotId pulumi.StringInput `pulumi:"chatbotId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput) ChatbotId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier) string { return v.ChatbotId }).(pulumi.StringOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment struct {
+	// API Key value
+	CreatedAt string `pulumi:"createdAt"`
+	// Name of the API Key
+	Name *string `pulumi:"name"`
+	// Status of the Deployment
+	Status *string `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url *string `pulumi:"url"`
+	// API Key value
+	Uuid *string `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility *string `pulumi:"visibility"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs struct {
+	// API Key value
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Name of the API Key
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Status of the Deployment
+	Status pulumi.StringPtrInput `pulumi:"status"`
+	// Updated At timestamp for the Agent
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Url of the Deployment
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// API Key value
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Visibility of the Deployment
+	Visibility pulumi.StringPtrInput `pulumi:"visibility"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray and GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray{ GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray []GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput {
+	return o
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Status of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) *string { return v.Status }).(pulumi.StringPtrOutput)
+}
+
+// Updated At timestamp for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Url of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// API Key value
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Visibility of the Deployment
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput) Visibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment) *string { return v.Visibility }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplate struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Description of the Agent Template
+	Description *string `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction *string `pulumi:"instruction"`
+	// K value for the Agent Template
+	K *int `pulumi:"k"`
+	// List of Knowledge Bases
+	KnowledgeBases []GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase `pulumi:"knowledgeBases"`
+	// Maximum tokens allowed
+	MaxTokens *int `pulumi:"maxTokens"`
+	// Model of the Agent Template
+	Models []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel `pulumi:"models"`
+	// Name of the Agent Template
+	Name *string `pulumi:"name"`
+	// Agent temperature setting
+	Temperature *float64 `pulumi:"temperature"`
+	// Top P sampling parameter
+	TopP *float64 `pulumi:"topP"`
+	// Updated At timestamp for the Agent Template
+	UpdatedAt string `pulumi:"updatedAt"`
+	// uuid of the Agent Template
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Description of the Agent Template
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Instruction for the Agent
+	Instruction pulumi.StringPtrInput `pulumi:"instruction"`
+	// K value for the Agent Template
+	K pulumi.IntPtrInput `pulumi:"k"`
+	// List of Knowledge Bases
+	KnowledgeBases GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayInput `pulumi:"knowledgeBases"`
+	// Maximum tokens allowed
+	MaxTokens pulumi.IntPtrInput `pulumi:"maxTokens"`
+	// Model of the Agent Template
+	Models GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayInput `pulumi:"models"`
+	// Name of the Agent Template
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Agent temperature setting
+	Temperature pulumi.Float64PtrInput `pulumi:"temperature"`
+	// Top P sampling parameter
+	TopP pulumi.Float64PtrInput `pulumi:"topP"`
+	// Updated At timestamp for the Agent Template
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// uuid of the Agent Template
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplate)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray and GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray{ GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray []GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplate)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplate)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput {
+	return o
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Description of the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Instruction for the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Instruction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *string { return v.Instruction }).(pulumi.StringPtrOutput)
+}
+
+// K value for the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) K() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *int { return v.K }).(pulumi.IntPtrOutput)
+}
+
+// List of Knowledge Bases
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) KnowledgeBases() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) []GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase {
+		return v.KnowledgeBases
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput)
+}
+
+// Maximum tokens allowed
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) MaxTokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *int { return v.MaxTokens }).(pulumi.IntPtrOutput)
+}
+
+// Model of the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Models() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel {
+		return v.Models
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput)
+}
+
+// Name of the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Agent temperature setting
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Temperature() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *float64 { return v.Temperature }).(pulumi.Float64PtrOutput)
+}
+
+// Top P sampling parameter
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) TopP() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *float64 { return v.TopP }).(pulumi.Float64PtrOutput)
+}
+
+// Updated At timestamp for the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// uuid of the Agent Template
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplate) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplate)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentTemplate {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentTemplate)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt string `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId *string `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic *bool `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJob *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJob"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId *string `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region *string `pulumi:"region"`
+	// List of tags
+	Tags []string `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId *string `pulumi:"userId"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt pulumi.StringInput `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId pulumi.StringPtrInput `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid pulumi.StringPtrInput `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic pulumi.BoolPtrInput `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJob GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput `pulumi:"lastIndexingJob"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region pulumi.StringPtrInput `pulumi:"region"`
+	// List of tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId pulumi.StringPtrInput `pulumi:"userId"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray and GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray{ GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray []GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput {
+	return o
+}
+
+// Timestamp when the Knowledge Base was added to the Agent
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) AddedToAgentAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) string { return v.AddedToAgentAt }).(pulumi.StringOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Database ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.DatabaseId }).(pulumi.StringPtrOutput)
+}
+
+// Embedding model UUID for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.EmbeddingModelUuid }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Knowledge Base is public
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) IsPublic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *bool { return v.IsPublic }).(pulumi.BoolPtrOutput)
+}
+
+// Last indexing job for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) LastIndexingJob() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob {
+		return v.LastIndexingJob
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Project ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.ProjectId }).(pulumi.StringPtrOutput)
+}
+
+// Region of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+// List of tags
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// User ID of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput) UserId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase) *string { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput)
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput).ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs, GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtr and GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput` via:
+//
+//	        GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput
+}
+
+type getGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrType GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs
+
+func GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtr(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput {
+	return (*getGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrType)(v)
+}
+
+func (*getGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i *getGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrType) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (i *getGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrType) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(context.Background())
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob {
+		return &v
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput)
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int {
+		return v.CompletedDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) string {
+		return v.CreatedAt
+	}).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) []string {
+		return v.DataSourceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) string {
+		return v.FinishedAt
+	}).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) string {
+		return v.KnowledgeBaseUuid
+	}).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) string {
+		return v.StartedAt
+	}).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int {
+		return v.TotalDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) string {
+		return v.UpdatedAt
+	}).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) Elem() GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob {
+		if v != nil {
+			return *v
+		}
+		var ret GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob
+		return ret
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput)
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CompletedDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CreatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DataSourceUuids
+	}).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) FinishedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.FinishedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.KnowledgeBaseUuid
+	}).(pulumi.StringPtrOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Phase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) StartedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Tokens
+	}).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *int {
+		if v == nil {
+			return nil
+		}
+		return v.TotalDatasources
+	}).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.UpdatedAt
+	}).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uuid
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel struct {
+	// Agreement information for the model
+	Agreements []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName *string `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion *string `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational *bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid *string `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider *string `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete *bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url *string `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases []string `pulumi:"usecases"`
+	// URL of the Model
+	Versions []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion `pulumi:"versions"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs struct {
+	// Agreement information for the model
+	Agreements GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
+	// URL of the Model
+	Versions GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray{ GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Agreements() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement {
+		return v.Agreements
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Inference name of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) InferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
+}
+
+// Infernce version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) InferenceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) IsFoundational() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parent UUID of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Provider of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) UploadComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// List of Usecases for the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Usecases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput) Versions() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel) []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
+		return v.Versions
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray{ GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion struct {
+	// Major version of the model
+	Major *int `pulumi:"major"`
+	// Minor version of the model
+	Minor *int `pulumi:"minor"`
+	// Patch version of the model
+	Patch *int `pulumi:"patch"`
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs{...}
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntPtrInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntPtrInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntPtrInput `pulumi:"patch"`
+}
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput)
+}
+
+// GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayInput is an input type that accepts GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray and GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayInput` via:
+//
+//	GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray{ GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs{...} }
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput
+	ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutputWithContext(context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray []GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionInput
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput {
+	return i.ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) Major() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
+}
+
+// Minor version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) Minor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
+}
+
+// Patch version of the model
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput) Patch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
+}
+
+type GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput() GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput) ToGetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
+		return vs[0].([]GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion)[vs[1].(int)]
+	}).(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput)
+}
+
 type GetGenaiAgentsFilter struct {
 	All     *bool    `pulumi:"all"`
 	Key     string   `pulumi:"key"`
@@ -57076,6 +68249,2766 @@ func (o GetGenaiAgentsSortArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsSo
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiAgentsSort {
 		return vs[0].([]GetGenaiAgentsSort)[vs[1].(int)]
 	}).(GetGenaiAgentsSortOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasource struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources []GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs []GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources []GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid *string `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources []GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource `pulumi:"webCrawlerDataSources"`
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceArgs and GetGenaiKnowledgeBaseDataSourcesDatasourceOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceArgs{...}
+type GetGenaiKnowledgeBaseDataSourcesDatasourceInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceArgs struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayInput `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput `pulumi:"webCrawlerDataSources"`
+}
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceOutput)
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceArrayInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceArray and GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceArray{ GetGenaiKnowledgeBaseDataSourcesDatasourceArgs{...} }
+type GetGenaiKnowledgeBaseDataSourcesDatasourceArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceArray []GetGenaiKnowledgeBaseDataSourcesDatasourceInput
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceOutput {
+	return o
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// File upload data source configuration
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) FileUploadDataSources() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) []GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
+		return v.FileUploadDataSources
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput)
+}
+
+// Last indexing job for the data source
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) LastIndexingJobs() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) []GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
+		return v.LastIndexingJobs
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput)
+}
+
+// Spaces data source configuration
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) SpacesDataSources() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) []GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
+		return v.SpacesDataSources
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID of the Knowledge Base
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Web crawler data source configuration
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceOutput) WebCrawlerDataSources() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasource) []GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
+		return v.WebCrawlerDataSources
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseDataSourcesDatasourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasource {
+		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasource)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource struct {
+	// The original name of the uploaded file
+	OriginalFileName *string `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes *string `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey *string `pulumi:"storedObjectKey"`
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs and GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs{...}
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs struct {
+	// The original name of the uploaded file
+	OriginalFileName pulumi.StringPtrInput `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes pulumi.StringPtrInput `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey pulumi.StringPtrInput `pulumi:"storedObjectKey"`
+}
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput)
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray and GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray{ GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs{...} }
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray []GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput {
+	return o
+}
+
+// The original name of the uploaded file
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) OriginalFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource) *string {
+		return v.OriginalFileName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The size of the file in bytes
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) SizeInBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource) *string { return v.SizeInBytes }).(pulumi.StringPtrOutput)
+}
+
+// The stored object key for the file
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput) StoredObjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource) *string {
+		return v.StoredObjectKey
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
+		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs and GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs{...}
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput)
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray and GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray{ GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs{...} }
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray []GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobInput
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
+		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource struct {
+	// The name of the Spaces bucket
+	BucketName *string `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath *string `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region *string `pulumi:"region"`
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs and GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs{...}
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs struct {
+	// The name of the Spaces bucket
+	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
+	// The path to the item in the bucket
+	ItemPath pulumi.StringPtrInput `pulumi:"itemPath"`
+	// The region of the Spaces bucket
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput)
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray and GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray{ GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs{...} }
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray []GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceInput
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput {
+	return o
+}
+
+// The name of the Spaces bucket
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource) *string { return v.BucketName }).(pulumi.StringPtrOutput)
+}
+
+// The path to the item in the bucket
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) ItemPath() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource) *string { return v.ItemPath }).(pulumi.StringPtrOutput)
+}
+
+// The region of the Spaces bucket
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
+		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource struct {
+	// The base URL to crawl
+	BaseUrl *string `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption *string `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia *bool `pulumi:"embedMedia"`
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs and GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs{...}
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs struct {
+	// The base URL to crawl
+	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
+	// Options for specifying how URLs found on pages should be handled.
+	// - UNKNOWN: Default unknown value
+	// - SCOPED: Only include the base URL.
+	// - PATH: Crawl the base URL and linked pages within the URL path.
+	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+	CrawlingOption pulumi.StringPtrInput `pulumi:"crawlingOption"`
+	// Whether to embed media content
+	EmbedMedia pulumi.BoolPtrInput `pulumi:"embedMedia"`
+}
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput)
+}
+
+// GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput is an input type that accepts GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray and GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray{ GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs{...} }
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput
+	ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray []GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput {
+	return o
+}
+
+// The base URL to crawl
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) BaseUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
+}
+
+// Options for specifying how URLs found on pages should be handled.
+// - UNKNOWN: Default unknown value
+// - SCOPED: Only include the base URL.
+// - PATH: Crawl the base URL and linked pages within the URL path.
+// - DOMAIN: Crawl the base URL and linked pages within the same domain.
+// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) CrawlingOption() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource) *string {
+		return v.CrawlingOption
+	}).(pulumi.StringPtrOutput)
+}
+
+// Whether to embed media content
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput) EmbedMedia() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource) *bool { return v.EmbedMedia }).(pulumi.BoolPtrOutput)
+}
+
+type GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput() GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput) ToGetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
+		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput)
+}
+
+type GetGenaiKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiKnowledgeBaseLastIndexingJobArgs and GetGenaiKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GetGenaiKnowledgeBaseLastIndexingJobArgs{...}
+type GetGenaiKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBaseLastIndexingJobOutput
+	ToGetGenaiKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiKnowledgeBaseLastIndexingJobOutput
+}
+
+type GetGenaiKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGetGenaiKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseLastIndexingJobOutput)
+}
+
+// GetGenaiKnowledgeBaseLastIndexingJobArrayInput is an input type that accepts GetGenaiKnowledgeBaseLastIndexingJobArray and GetGenaiKnowledgeBaseLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseLastIndexingJobArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseLastIndexingJobArray{ GetGenaiKnowledgeBaseLastIndexingJobArgs{...} }
+type GetGenaiKnowledgeBaseLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseLastIndexingJobArrayOutput
+	ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseLastIndexingJobArrayOutput
+}
+
+type GetGenaiKnowledgeBaseLastIndexingJobArray []GetGenaiKnowledgeBaseLastIndexingJobInput
+
+func (GetGenaiKnowledgeBaseLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBaseLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseLastIndexingJob {
+		return vs[0].([]GetGenaiKnowledgeBaseLastIndexingJob)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseLastIndexingJobOutput)
+}
+
+type GetGenaiKnowledgeBasesFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiKnowledgeBasesFilterInput is an input type that accepts GetGenaiKnowledgeBasesFilterArgs and GetGenaiKnowledgeBasesFilterOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterInput` via:
+//
+//	GetGenaiKnowledgeBasesFilterArgs{...}
+type GetGenaiKnowledgeBasesFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput
+	ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterOutput
+}
+
+type GetGenaiKnowledgeBasesFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiKnowledgeBasesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
+	return i.ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterOutput)
+}
+
+// GetGenaiKnowledgeBasesFilterArrayInput is an input type that accepts GetGenaiKnowledgeBasesFilterArray and GetGenaiKnowledgeBasesFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesFilterArray{ GetGenaiKnowledgeBasesFilterArgs{...} }
+type GetGenaiKnowledgeBasesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput
+	ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterArrayOutput
+}
+
+type GetGenaiKnowledgeBasesFilterArray []GetGenaiKnowledgeBasesFilterInput
+
+func (GetGenaiKnowledgeBasesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesFilter {
+		return vs[0].([]GetGenaiKnowledgeBasesFilter)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesFilterOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBase struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt string `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId string `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic bool `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJobs []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
+	// Name of the Knowledge Base
+	Name string `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId string `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region string `pulumi:"region"`
+	// List of tags
+	Tags []string `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId string `pulumi:"userId"`
+	// UUID of the Knowledge Base
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArgs and GetGenaiKnowledgeBasesKnowledgeBaseOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseArgs{...}
+type GetGenaiKnowledgeBasesKnowledgeBaseInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArgs struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt pulumi.StringInput `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJobs GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
+	// Name of the Knowledge Base
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region pulumi.StringInput `pulumi:"region"`
+	// List of tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// UUID of the Knowledge Base
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArray and GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseArray{ GetGenaiKnowledgeBasesKnowledgeBaseArgs{...} }
+type GetGenaiKnowledgeBasesKnowledgeBaseArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArray []GetGenaiKnowledgeBasesKnowledgeBaseInput
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return o
+}
+
+// Timestamp when the Knowledge Base was added to the Agent
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) AddedToAgentAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.AddedToAgentAt }).(pulumi.StringOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Database ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// Embedding model UUID for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+}
+
+// Indicates if the Knowledge Base is public
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// Last indexing job for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) LastIndexingJobs() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+		return v.LastIndexingJobs
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// List of tags
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// User ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// UUID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBase {
+		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBase)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...}
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{ GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...} }
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
+}
+
+type GetGenaiKnowledgeBasesSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGenaiKnowledgeBasesSortInput is an input type that accepts GetGenaiKnowledgeBasesSortArgs and GetGenaiKnowledgeBasesSortOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesSortInput` via:
+//
+//	GetGenaiKnowledgeBasesSortArgs{...}
+type GetGenaiKnowledgeBasesSortInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesSortOutput() GetGenaiKnowledgeBasesSortOutput
+	ToGetGenaiKnowledgeBasesSortOutputWithContext(context.Context) GetGenaiKnowledgeBasesSortOutput
+}
+
+type GetGenaiKnowledgeBasesSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGenaiKnowledgeBasesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesSort)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesSortArgs) ToGetGenaiKnowledgeBasesSortOutput() GetGenaiKnowledgeBasesSortOutput {
+	return i.ToGetGenaiKnowledgeBasesSortOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesSortArgs) ToGetGenaiKnowledgeBasesSortOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesSortOutput)
+}
+
+// GetGenaiKnowledgeBasesSortArrayInput is an input type that accepts GetGenaiKnowledgeBasesSortArray and GetGenaiKnowledgeBasesSortArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesSortArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesSortArray{ GetGenaiKnowledgeBasesSortArgs{...} }
+type GetGenaiKnowledgeBasesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesSortArrayOutput() GetGenaiKnowledgeBasesSortArrayOutput
+	ToGetGenaiKnowledgeBasesSortArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesSortArrayOutput
+}
+
+type GetGenaiKnowledgeBasesSortArray []GetGenaiKnowledgeBasesSortInput
+
+func (GetGenaiKnowledgeBasesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesSort)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesSortArray) ToGetGenaiKnowledgeBasesSortArrayOutput() GetGenaiKnowledgeBasesSortArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesSortArray) ToGetGenaiKnowledgeBasesSortArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesSortArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesSortOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesSort)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesSortOutput) ToGetGenaiKnowledgeBasesSortOutput() GetGenaiKnowledgeBasesSortOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesSortOutput) ToGetGenaiKnowledgeBasesSortOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesSortOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiKnowledgeBasesSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGenaiKnowledgeBasesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesSort)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesSortArrayOutput) ToGetGenaiKnowledgeBasesSortArrayOutput() GetGenaiKnowledgeBasesSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesSortArrayOutput) ToGetGenaiKnowledgeBasesSortArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesSortArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesSort {
+		return vs[0].([]GetGenaiKnowledgeBasesSort)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesSortOutput)
+}
+
+type GetGenaiOpenaiApiKeyModel struct {
+	// Agreement information for the model
+	Agreements []GetGenaiOpenaiApiKeyModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName *string `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion *string `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational *bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid *string `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider *string `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete *bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url *string `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases []string `pulumi:"usecases"`
+	// URL of the Model
+	Versions []GetGenaiOpenaiApiKeyModelVersion `pulumi:"versions"`
+}
+
+// GetGenaiOpenaiApiKeyModelInput is an input type that accepts GetGenaiOpenaiApiKeyModelArgs and GetGenaiOpenaiApiKeyModelOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelArgs{...}
+type GetGenaiOpenaiApiKeyModelInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeyModelOutput
+	ToGetGenaiOpenaiApiKeyModelOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelOutput
+}
+
+type GetGenaiOpenaiApiKeyModelArgs struct {
+	// Agreement information for the model
+	Agreements GetGenaiOpenaiApiKeyModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
+	// URL of the Model
+	Versions GetGenaiOpenaiApiKeyModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetGenaiOpenaiApiKeyModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelArgs) ToGetGenaiOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeyModelOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelArgs) ToGetGenaiOpenaiApiKeyModelOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelOutput)
+}
+
+// GetGenaiOpenaiApiKeyModelArrayInput is an input type that accepts GetGenaiOpenaiApiKeyModelArray and GetGenaiOpenaiApiKeyModelArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelArray{ GetGenaiOpenaiApiKeyModelArgs{...} }
+type GetGenaiOpenaiApiKeyModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeyModelArrayOutput
+	ToGetGenaiOpenaiApiKeyModelArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelArrayOutput
+}
+
+type GetGenaiOpenaiApiKeyModelArray []GetGenaiOpenaiApiKeyModelInput
+
+func (GetGenaiOpenaiApiKeyModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelArray) ToGetGenaiOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeyModelArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelArray) ToGetGenaiOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelOutput) ToGetGenaiOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeyModelOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelOutput) ToGetGenaiOpenaiApiKeyModelOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GetGenaiOpenaiApiKeyModelOutput) Agreements() GetGenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) []GetGenaiOpenaiApiKeyModelAgreement { return v.Agreements }).(GetGenaiOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiOpenaiApiKeyModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Inference name of the model
+func (o GetGenaiOpenaiApiKeyModelOutput) InferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
+}
+
+// Infernce version of the model
+func (o GetGenaiOpenaiApiKeyModelOutput) InferenceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GetGenaiOpenaiApiKeyModelOutput) IsFoundational() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiOpenaiApiKeyModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parent UUID of the Model
+func (o GetGenaiOpenaiApiKeyModelOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Provider of the Model
+func (o GetGenaiOpenaiApiKeyModelOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiOpenaiApiKeyModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GetGenaiOpenaiApiKeyModelOutput) UploadComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the Model
+func (o GetGenaiOpenaiApiKeyModelOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// List of Usecases for the Model
+func (o GetGenaiOpenaiApiKeyModelOutput) Usecases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Model
+func (o GetGenaiOpenaiApiKeyModelOutput) Versions() GetGenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModel) []GetGenaiOpenaiApiKeyModelVersion { return v.Versions }).(GetGenaiOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelArrayOutput) ToGetGenaiOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelArrayOutput) ToGetGenaiOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeyModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeyModel {
+		return vs[0].([]GetGenaiOpenaiApiKeyModel)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeyModelOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiOpenaiApiKeyModelAgreementInput is an input type that accepts GetGenaiOpenaiApiKeyModelAgreementArgs and GetGenaiOpenaiApiKeyModelAgreementOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelAgreementInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelAgreementArgs{...}
+type GetGenaiOpenaiApiKeyModelAgreementInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeyModelAgreementOutput
+	ToGetGenaiOpenaiApiKeyModelAgreementOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelAgreementOutput
+}
+
+type GetGenaiOpenaiApiKeyModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiOpenaiApiKeyModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelAgreementArgs) ToGetGenaiOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeyModelAgreementOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelAgreementArgs) ToGetGenaiOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelAgreementOutput)
+}
+
+// GetGenaiOpenaiApiKeyModelAgreementArrayInput is an input type that accepts GetGenaiOpenaiApiKeyModelAgreementArray and GetGenaiOpenaiApiKeyModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelAgreementArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelAgreementArray{ GetGenaiOpenaiApiKeyModelAgreementArgs{...} }
+type GetGenaiOpenaiApiKeyModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeyModelAgreementArrayOutput
+	ToGetGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelAgreementArrayOutput
+}
+
+type GetGenaiOpenaiApiKeyModelAgreementArray []GetGenaiOpenaiApiKeyModelAgreementInput
+
+func (GetGenaiOpenaiApiKeyModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelAgreementArray) ToGetGenaiOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelAgreementArray) ToGetGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) ToGetGenaiOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) ToGetGenaiOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GetGenaiOpenaiApiKeyModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelAgreementArrayOutput) ToGetGenaiOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelAgreementArrayOutput) ToGetGenaiOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeyModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeyModelAgreement {
+		return vs[0].([]GetGenaiOpenaiApiKeyModelAgreement)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeyModelAgreementOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelVersion struct {
+	// Major version of the model
+	Major *int `pulumi:"major"`
+	// Minor version of the model
+	Minor *int `pulumi:"minor"`
+	// Patch version of the model
+	Patch *int `pulumi:"patch"`
+}
+
+// GetGenaiOpenaiApiKeyModelVersionInput is an input type that accepts GetGenaiOpenaiApiKeyModelVersionArgs and GetGenaiOpenaiApiKeyModelVersionOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelVersionInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelVersionArgs{...}
+type GetGenaiOpenaiApiKeyModelVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeyModelVersionOutput
+	ToGetGenaiOpenaiApiKeyModelVersionOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelVersionOutput
+}
+
+type GetGenaiOpenaiApiKeyModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntPtrInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntPtrInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntPtrInput `pulumi:"patch"`
+}
+
+func (GetGenaiOpenaiApiKeyModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelVersionArgs) ToGetGenaiOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeyModelVersionOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelVersionArgs) ToGetGenaiOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelVersionOutput)
+}
+
+// GetGenaiOpenaiApiKeyModelVersionArrayInput is an input type that accepts GetGenaiOpenaiApiKeyModelVersionArray and GetGenaiOpenaiApiKeyModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeyModelVersionArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeyModelVersionArray{ GetGenaiOpenaiApiKeyModelVersionArgs{...} }
+type GetGenaiOpenaiApiKeyModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeyModelVersionArrayOutput
+	ToGetGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeyModelVersionArrayOutput
+}
+
+type GetGenaiOpenaiApiKeyModelVersionArray []GetGenaiOpenaiApiKeyModelVersionInput
+
+func (GetGenaiOpenaiApiKeyModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeyModelVersionArray) ToGetGenaiOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeyModelVersionArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeyModelVersionArray) ToGetGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelVersionOutput) ToGetGenaiOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelVersionOutput) ToGetGenaiOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GetGenaiOpenaiApiKeyModelVersionOutput) Major() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
+}
+
+// Minor version of the model
+func (o GetGenaiOpenaiApiKeyModelVersionOutput) Minor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
+}
+
+// Patch version of the model
+func (o GetGenaiOpenaiApiKeyModelVersionOutput) Patch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeyModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
+}
+
+type GetGenaiOpenaiApiKeyModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeyModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeyModelVersionArrayOutput) ToGetGenaiOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelVersionArrayOutput) ToGetGenaiOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeyModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeyModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeyModelVersion {
+		return vs[0].([]GetGenaiOpenaiApiKeyModelVersion)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeyModelVersionOutput)
+}
+
+type GetGenaiOpenaiApiKeysFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiOpenaiApiKeysFilterInput is an input type that accepts GetGenaiOpenaiApiKeysFilterArgs and GetGenaiOpenaiApiKeysFilterOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysFilterInput` via:
+//
+//	GetGenaiOpenaiApiKeysFilterArgs{...}
+type GetGenaiOpenaiApiKeysFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysFilterOutput() GetGenaiOpenaiApiKeysFilterOutput
+	ToGetGenaiOpenaiApiKeysFilterOutputWithContext(context.Context) GetGenaiOpenaiApiKeysFilterOutput
+}
+
+type GetGenaiOpenaiApiKeysFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiOpenaiApiKeysFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysFilter)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysFilterArgs) ToGetGenaiOpenaiApiKeysFilterOutput() GetGenaiOpenaiApiKeysFilterOutput {
+	return i.ToGetGenaiOpenaiApiKeysFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysFilterArgs) ToGetGenaiOpenaiApiKeysFilterOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysFilterOutput)
+}
+
+// GetGenaiOpenaiApiKeysFilterArrayInput is an input type that accepts GetGenaiOpenaiApiKeysFilterArray and GetGenaiOpenaiApiKeysFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysFilterArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysFilterArray{ GetGenaiOpenaiApiKeysFilterArgs{...} }
+type GetGenaiOpenaiApiKeysFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysFilterArrayOutput() GetGenaiOpenaiApiKeysFilterArrayOutput
+	ToGetGenaiOpenaiApiKeysFilterArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysFilterArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysFilterArray []GetGenaiOpenaiApiKeysFilterInput
+
+func (GetGenaiOpenaiApiKeysFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysFilter)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysFilterArray) ToGetGenaiOpenaiApiKeysFilterArrayOutput() GetGenaiOpenaiApiKeysFilterArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysFilterArray) ToGetGenaiOpenaiApiKeysFilterArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysFilterArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysFilter)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) ToGetGenaiOpenaiApiKeysFilterOutput() GetGenaiOpenaiApiKeysFilterOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) ToGetGenaiOpenaiApiKeysFilterOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysFilterOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiOpenaiApiKeysFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysFilter)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysFilterArrayOutput) ToGetGenaiOpenaiApiKeysFilterArrayOutput() GetGenaiOpenaiApiKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysFilterArrayOutput) ToGetGenaiOpenaiApiKeysFilterArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysFilter {
+		return vs[0].([]GetGenaiOpenaiApiKeysFilter)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysFilterOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKey struct {
+	// Timestamp when the API Key was created
+	CreatedAt string `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy string `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt string `pulumi:"deletedAt"`
+	// List of models associated with the API Key
+	Models []GetGenaiOpenaiApiKeysOpenaiApiKeyModel `pulumi:"models"`
+	// Name of the API Key
+	Name string `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt string `pulumi:"updatedAt"`
+	// OpenAI API Key Uuid
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyArgs and GetGenaiOpenaiApiKeysOpenaiApiKeyOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyArgs{...}
+type GetGenaiOpenaiApiKeysOpenaiApiKeyInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyArgs struct {
+	// Timestamp when the API Key was created
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Created By user ID for the API Key
+	CreatedBy pulumi.StringInput `pulumi:"createdBy"`
+	// Deleted At timestamp for the API Key
+	DeletedAt pulumi.StringInput `pulumi:"deletedAt"`
+	// List of models associated with the API Key
+	Models GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayInput `pulumi:"models"`
+	// Name of the API Key
+	Name pulumi.StringInput `pulumi:"name"`
+	// Updated At timestamp for the API Key
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// OpenAI API Key Uuid
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyOutput)
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyArrayInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyArray and GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyArray{ GetGenaiOpenaiApiKeysOpenaiApiKeyArgs{...} }
+type GetGenaiOpenaiApiKeysOpenaiApiKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyArray []GetGenaiOpenaiApiKeysOpenaiApiKeyInput
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKey)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyOutput {
+	return o
+}
+
+// Timestamp when the API Key was created
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Created By user ID for the API Key
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) CreatedBy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.CreatedBy }).(pulumi.StringOutput)
+}
+
+// Deleted At timestamp for the API Key
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) DeletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.DeletedAt }).(pulumi.StringOutput)
+}
+
+// List of models associated with the API Key
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) Models() GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) []GetGenaiOpenaiApiKeysOpenaiApiKeyModel { return v.Models }).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput)
+}
+
+// Name of the API Key
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Updated At timestamp for the API Key
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// OpenAI API Key Uuid
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKey) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKey)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysOpenaiApiKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysOpenaiApiKey {
+		return vs[0].([]GetGenaiOpenaiApiKeysOpenaiApiKey)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModel struct {
+	// Agreement information for the model
+	Agreements []GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName *string `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion *string `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational *bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name *string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid *string `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider *string `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete *bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url *string `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases []string `pulumi:"usecases"`
+	// URL of the Model
+	Versions []GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion `pulumi:"versions"`
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs and GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs{...}
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs struct {
+	// Agreement information for the model
+	Agreements GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Inference name of the model
+	InferenceName pulumi.StringPtrInput `pulumi:"inferenceName"`
+	// Infernce version of the model
+	InferenceVersion pulumi.StringPtrInput `pulumi:"inferenceVersion"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolPtrInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringPtrInput `pulumi:"parentUuid"`
+	// Provider of the Model
+	Provider pulumi.StringPtrInput `pulumi:"provider"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolPtrInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// List of Usecases for the Model
+	Usecases pulumi.StringArrayInput `pulumi:"usecases"`
+	// URL of the Model
+	Versions GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput)
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray and GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray{ GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs{...} }
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray []GetGenaiOpenaiApiKeysOpenaiApiKeyModelInput
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Agreements() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) []GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement {
+		return v.Agreements
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Inference name of the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) InferenceName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.InferenceName }).(pulumi.StringPtrOutput)
+}
+
+// Infernce version of the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) InferenceVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.InferenceVersion }).(pulumi.StringPtrOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) IsFoundational() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *bool { return v.IsFoundational }).(pulumi.BoolPtrOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Parent UUID of the Model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) ParentUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.ParentUuid }).(pulumi.StringPtrOutput)
+}
+
+// Provider of the Model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Provider() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.Provider }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) UploadComplete() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *bool { return v.UploadComplete }).(pulumi.BoolPtrOutput)
+}
+
+// URL of the Model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// List of Usecases for the Model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Usecases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) []string { return v.Usecases }).(pulumi.StringArrayOutput)
+}
+
+// URL of the Model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput) Versions() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModel) []GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion {
+		return v.Versions
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModel)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysOpenaiApiKeyModel {
+		return vs[0].([]GetGenaiOpenaiApiKeysOpenaiApiKeyModel)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs and GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs{...}
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput)
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray and GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray{ GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs{...} }
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray []GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementInput
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement {
+		return vs[0].([]GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion struct {
+	// Major version of the model
+	Major *int `pulumi:"major"`
+	// Minor version of the model
+	Minor *int `pulumi:"minor"`
+	// Patch version of the model
+	Patch *int `pulumi:"patch"`
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs and GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs{...}
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntPtrInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntPtrInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntPtrInput `pulumi:"patch"`
+}
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput)
+}
+
+// GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput is an input type that accepts GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray and GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray{ GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs{...} }
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput
+	ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray []GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionInput
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) Major() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion) *int { return v.Major }).(pulumi.IntPtrOutput)
+}
+
+// Minor version of the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) Minor() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion) *int { return v.Minor }).(pulumi.IntPtrOutput)
+}
+
+// Patch version of the model
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput) Patch() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion) *int { return v.Patch }).(pulumi.IntPtrOutput)
+}
+
+type GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput() GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput) ToGetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion {
+		return vs[0].([]GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput)
+}
+
+type GetGenaiOpenaiApiKeysSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGenaiOpenaiApiKeysSortInput is an input type that accepts GetGenaiOpenaiApiKeysSortArgs and GetGenaiOpenaiApiKeysSortOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysSortInput` via:
+//
+//	GetGenaiOpenaiApiKeysSortArgs{...}
+type GetGenaiOpenaiApiKeysSortInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysSortOutput() GetGenaiOpenaiApiKeysSortOutput
+	ToGetGenaiOpenaiApiKeysSortOutputWithContext(context.Context) GetGenaiOpenaiApiKeysSortOutput
+}
+
+type GetGenaiOpenaiApiKeysSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGenaiOpenaiApiKeysSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysSort)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysSortArgs) ToGetGenaiOpenaiApiKeysSortOutput() GetGenaiOpenaiApiKeysSortOutput {
+	return i.ToGetGenaiOpenaiApiKeysSortOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysSortArgs) ToGetGenaiOpenaiApiKeysSortOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysSortOutput)
+}
+
+// GetGenaiOpenaiApiKeysSortArrayInput is an input type that accepts GetGenaiOpenaiApiKeysSortArray and GetGenaiOpenaiApiKeysSortArrayOutput values.
+// You can construct a concrete instance of `GetGenaiOpenaiApiKeysSortArrayInput` via:
+//
+//	GetGenaiOpenaiApiKeysSortArray{ GetGenaiOpenaiApiKeysSortArgs{...} }
+type GetGenaiOpenaiApiKeysSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiOpenaiApiKeysSortArrayOutput() GetGenaiOpenaiApiKeysSortArrayOutput
+	ToGetGenaiOpenaiApiKeysSortArrayOutputWithContext(context.Context) GetGenaiOpenaiApiKeysSortArrayOutput
+}
+
+type GetGenaiOpenaiApiKeysSortArray []GetGenaiOpenaiApiKeysSortInput
+
+func (GetGenaiOpenaiApiKeysSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysSort)(nil)).Elem()
+}
+
+func (i GetGenaiOpenaiApiKeysSortArray) ToGetGenaiOpenaiApiKeysSortArrayOutput() GetGenaiOpenaiApiKeysSortArrayOutput {
+	return i.ToGetGenaiOpenaiApiKeysSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiOpenaiApiKeysSortArray) ToGetGenaiOpenaiApiKeysSortArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiOpenaiApiKeysSortArrayOutput)
+}
+
+type GetGenaiOpenaiApiKeysSortOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiOpenaiApiKeysSort)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysSortOutput) ToGetGenaiOpenaiApiKeysSortOutput() GetGenaiOpenaiApiKeysSortOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysSortOutput) ToGetGenaiOpenaiApiKeysSortOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysSortOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiOpenaiApiKeysSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiOpenaiApiKeysSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGenaiOpenaiApiKeysSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiOpenaiApiKeysSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiOpenaiApiKeysSort)(nil)).Elem()
+}
+
+func (o GetGenaiOpenaiApiKeysSortArrayOutput) ToGetGenaiOpenaiApiKeysSortArrayOutput() GetGenaiOpenaiApiKeysSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysSortArrayOutput) ToGetGenaiOpenaiApiKeysSortArrayOutputWithContext(ctx context.Context) GetGenaiOpenaiApiKeysSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiOpenaiApiKeysSortArrayOutput) Index(i pulumi.IntInput) GetGenaiOpenaiApiKeysSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysSort {
+		return vs[0].([]GetGenaiOpenaiApiKeysSort)[vs[1].(int)]
+	}).(GetGenaiOpenaiApiKeysSortOutput)
 }
 
 type GetImagesFilter struct {
@@ -62778,121 +76711,6 @@ func (o GetVpcNatGatewayEgressPublicGatewayArrayOutput) Index(i pulumi.IntInput)
 	}).(GetVpcNatGatewayEgressPublicGatewayOutput)
 }
 
-type GetVpcNatGatewayVpc struct {
-	// Indicates if this is the default VPC NAT Gateway in the VPC
-	DefaultGateway bool `pulumi:"defaultGateway"`
-	// Gateway IP of the VPC NAT Gateway
-	GatewayIp string `pulumi:"gatewayIp"`
-	// ID of the ingress VPC
-	VpcUuid string `pulumi:"vpcUuid"`
-}
-
-// GetVpcNatGatewayVpcInput is an input type that accepts GetVpcNatGatewayVpcArgs and GetVpcNatGatewayVpcOutput values.
-// You can construct a concrete instance of `GetVpcNatGatewayVpcInput` via:
-//
-//	GetVpcNatGatewayVpcArgs{...}
-type GetVpcNatGatewayVpcInput interface {
-	pulumi.Input
-
-	ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput
-	ToGetVpcNatGatewayVpcOutputWithContext(context.Context) GetVpcNatGatewayVpcOutput
-}
-
-type GetVpcNatGatewayVpcArgs struct {
-	// Indicates if this is the default VPC NAT Gateway in the VPC
-	DefaultGateway pulumi.BoolInput `pulumi:"defaultGateway"`
-	// Gateway IP of the VPC NAT Gateway
-	GatewayIp pulumi.StringInput `pulumi:"gatewayIp"`
-	// ID of the ingress VPC
-	VpcUuid pulumi.StringInput `pulumi:"vpcUuid"`
-}
-
-func (GetVpcNatGatewayVpcArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcNatGatewayVpc)(nil)).Elem()
-}
-
-func (i GetVpcNatGatewayVpcArgs) ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput {
-	return i.ToGetVpcNatGatewayVpcOutputWithContext(context.Background())
-}
-
-func (i GetVpcNatGatewayVpcArgs) ToGetVpcNatGatewayVpcOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayVpcOutput)
-}
-
-// GetVpcNatGatewayVpcArrayInput is an input type that accepts GetVpcNatGatewayVpcArray and GetVpcNatGatewayVpcArrayOutput values.
-// You can construct a concrete instance of `GetVpcNatGatewayVpcArrayInput` via:
-//
-//	GetVpcNatGatewayVpcArray{ GetVpcNatGatewayVpcArgs{...} }
-type GetVpcNatGatewayVpcArrayInput interface {
-	pulumi.Input
-
-	ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput
-	ToGetVpcNatGatewayVpcArrayOutputWithContext(context.Context) GetVpcNatGatewayVpcArrayOutput
-}
-
-type GetVpcNatGatewayVpcArray []GetVpcNatGatewayVpcInput
-
-func (GetVpcNatGatewayVpcArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcNatGatewayVpc)(nil)).Elem()
-}
-
-func (i GetVpcNatGatewayVpcArray) ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput {
-	return i.ToGetVpcNatGatewayVpcArrayOutputWithContext(context.Background())
-}
-
-func (i GetVpcNatGatewayVpcArray) ToGetVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetVpcNatGatewayVpcArrayOutput)
-}
-
-type GetVpcNatGatewayVpcOutput struct{ *pulumi.OutputState }
-
-func (GetVpcNatGatewayVpcOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetVpcNatGatewayVpc)(nil)).Elem()
-}
-
-func (o GetVpcNatGatewayVpcOutput) ToGetVpcNatGatewayVpcOutput() GetVpcNatGatewayVpcOutput {
-	return o
-}
-
-func (o GetVpcNatGatewayVpcOutput) ToGetVpcNatGatewayVpcOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcOutput {
-	return o
-}
-
-// Indicates if this is the default VPC NAT Gateway in the VPC
-func (o GetVpcNatGatewayVpcOutput) DefaultGateway() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetVpcNatGatewayVpc) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
-}
-
-// Gateway IP of the VPC NAT Gateway
-func (o GetVpcNatGatewayVpcOutput) GatewayIp() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcNatGatewayVpc) string { return v.GatewayIp }).(pulumi.StringOutput)
-}
-
-// ID of the ingress VPC
-func (o GetVpcNatGatewayVpcOutput) VpcUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetVpcNatGatewayVpc) string { return v.VpcUuid }).(pulumi.StringOutput)
-}
-
-type GetVpcNatGatewayVpcArrayOutput struct{ *pulumi.OutputState }
-
-func (GetVpcNatGatewayVpcArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetVpcNatGatewayVpc)(nil)).Elem()
-}
-
-func (o GetVpcNatGatewayVpcArrayOutput) ToGetVpcNatGatewayVpcArrayOutput() GetVpcNatGatewayVpcArrayOutput {
-	return o
-}
-
-func (o GetVpcNatGatewayVpcArrayOutput) ToGetVpcNatGatewayVpcArrayOutputWithContext(ctx context.Context) GetVpcNatGatewayVpcArrayOutput {
-	return o
-}
-
-func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewayVpcOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetVpcNatGatewayVpc {
-		return vs[0].([]GetVpcNatGatewayVpc)[vs[1].(int)]
-	}).(GetVpcNatGatewayVpcOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -62900,6 +76718,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecPtrInput)(nil)).Elem(), AppSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertInput)(nil)).Elem(), AppSpecAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertArrayInput)(nil)).Elem(), AppSpecAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertDestinationsInput)(nil)).Elem(), AppSpecAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertDestinationsPtrInput)(nil)).Elem(), AppSpecAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertDestinationsSlackWebhookInput)(nil)).Elem(), AppSpecAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), AppSpecAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseInput)(nil)).Elem(), AppSpecDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDatabaseArrayInput)(nil)).Elem(), AppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecDomainNameInput)(nil)).Elem(), AppSpecDomainNameArgs{})
@@ -62912,6 +76734,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionArrayInput)(nil)).Elem(), AppSpecFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertInput)(nil)).Elem(), AppSpecFunctionAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertArrayInput)(nil)).Elem(), AppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertDestinationsInput)(nil)).Elem(), AppSpecFunctionAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertDestinationsPtrInput)(nil)).Elem(), AppSpecFunctionAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertDestinationsSlackWebhookInput)(nil)).Elem(), AppSpecFunctionAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), AppSpecFunctionAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionBitbucketInput)(nil)).Elem(), AppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionBitbucketPtrInput)(nil)).Elem(), AppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecFunctionCorsInput)(nil)).Elem(), AppSpecFunctionCorsArgs{})
@@ -62960,6 +76786,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertInput)(nil)).Elem(), AppSpecJobAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertArrayInput)(nil)).Elem(), AppSpecJobAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertDestinationsInput)(nil)).Elem(), AppSpecJobAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertDestinationsPtrInput)(nil)).Elem(), AppSpecJobAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertDestinationsSlackWebhookInput)(nil)).Elem(), AppSpecJobAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), AppSpecJobAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobBitbucketInput)(nil)).Elem(), AppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobBitbucketPtrInput)(nil)).Elem(), AppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobEnvInput)(nil)).Elem(), AppSpecJobEnvArgs{})
@@ -62992,6 +76822,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceArrayInput)(nil)).Elem(), AppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertInput)(nil)).Elem(), AppSpecServiceAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertArrayInput)(nil)).Elem(), AppSpecServiceAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertDestinationsInput)(nil)).Elem(), AppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertDestinationsPtrInput)(nil)).Elem(), AppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertDestinationsSlackWebhookInput)(nil)).Elem(), AppSpecServiceAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), AppSpecServiceAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingInput)(nil)).Elem(), AppSpecServiceAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingPtrInput)(nil)).Elem(), AppSpecServiceAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), AppSpecServiceAutoscalingMetricsArgs{})
@@ -63056,6 +76890,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerArrayInput)(nil)).Elem(), AppSpecWorkerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertInput)(nil)).Elem(), AppSpecWorkerAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertArrayInput)(nil)).Elem(), AppSpecWorkerAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertDestinationsInput)(nil)).Elem(), AppSpecWorkerAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertDestinationsPtrInput)(nil)).Elem(), AppSpecWorkerAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertDestinationsSlackWebhookInput)(nil)).Elem(), AppSpecWorkerAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), AppSpecWorkerAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingInput)(nil)).Elem(), AppSpecWorkerAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingPtrInput)(nil)).Elem(), AppSpecWorkerAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecWorkerAutoscalingMetricsInput)(nil)).Elem(), AppSpecWorkerAutoscalingMetricsArgs{})
@@ -63190,6 +77028,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelAgreementArrayInput)(nil)).Elem(), GenaiAgentTemplateModelAgreementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelVersionInput)(nil)).Elem(), GenaiAgentTemplateModelVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelVersionArrayInput)(nil)).Elem(), GenaiAgentTemplateModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceTypeInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceTypeArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJobInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceLastIndexingJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceSpacesDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GenaiKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GenaiKnowledgeBaseLastIndexingJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelInput)(nil)).Elem(), GenaiOpenaiApiKeyModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelArrayInput)(nil)).Elem(), GenaiOpenaiApiKeyModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelAgreementInput)(nil)).Elem(), GenaiOpenaiApiKeyModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelAgreementArrayInput)(nil)).Elem(), GenaiOpenaiApiKeyModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelVersionInput)(nil)).Elem(), GenaiOpenaiApiKeyModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelVersionArrayInput)(nil)).Elem(), GenaiOpenaiApiKeyModelVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
@@ -63260,6 +77120,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecArrayInput)(nil)).Elem(), GetAppSpecArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertInput)(nil)).Elem(), GetAppSpecAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertArrayInput)(nil)).Elem(), GetAppSpecAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertDestinationsInput)(nil)).Elem(), GetAppSpecAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseInput)(nil)).Elem(), GetAppSpecDatabaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDatabaseArrayInput)(nil)).Elem(), GetAppSpecDatabaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecDomainInput)(nil)).Elem(), GetAppSpecDomainArgs{})
@@ -63272,6 +77136,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionArrayInput)(nil)).Elem(), GetAppSpecFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertInput)(nil)).Elem(), GetAppSpecFunctionAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertArrayInput)(nil)).Elem(), GetAppSpecFunctionAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsInput)(nil)).Elem(), GetAppSpecFunctionAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecFunctionAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecFunctionAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecFunctionAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionBitbucketInput)(nil)).Elem(), GetAppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionBitbucketPtrInput)(nil)).Elem(), GetAppSpecFunctionBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecFunctionCorsInput)(nil)).Elem(), GetAppSpecFunctionCorsArgs{})
@@ -63315,6 +77183,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertArrayInput)(nil)).Elem(), GetAppSpecJobAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertDestinationsInput)(nil)).Elem(), GetAppSpecJobAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecJobAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecJobAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecJobAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobBitbucketInput)(nil)).Elem(), GetAppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobBitbucketPtrInput)(nil)).Elem(), GetAppSpecJobBitbucketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobEnvInput)(nil)).Elem(), GetAppSpecJobEnvArgs{})
@@ -63347,6 +77219,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceArrayInput)(nil)).Elem(), GetAppSpecServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertInput)(nil)).Elem(), GetAppSpecServiceAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertArrayInput)(nil)).Elem(), GetAppSpecServiceAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecServiceAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingPtrInput)(nil)).Elem(), GetAppSpecServiceAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecServiceAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecServiceAutoscalingMetricsArgs{})
@@ -63411,6 +77287,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerArrayInput)(nil)).Elem(), GetAppSpecWorkerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertInput)(nil)).Elem(), GetAppSpecWorkerAlertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertArrayInput)(nil)).Elem(), GetAppSpecWorkerAlertArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsInput)(nil)).Elem(), GetAppSpecWorkerAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsPtrInput)(nil)).Elem(), GetAppSpecWorkerAlertDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsSlackWebhookInput)(nil)).Elem(), GetAppSpecWorkerAlertDestinationsSlackWebhookArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAlertDestinationsSlackWebhookArrayInput)(nil)).Elem(), GetAppSpecWorkerAlertDestinationsSlackWebhookArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingPtrInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerAutoscalingMetricsInput)(nil)).Elem(), GetAppSpecWorkerAutoscalingMetricsArgs{})
@@ -63545,6 +77425,20 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentTemplateModelAgreementArrayInput)(nil)).Elem(), GetGenaiAgentTemplateModelAgreementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentTemplateModelVersionInput)(nil)).Elem(), GetGenaiAgentTemplateModelVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentTemplateModelVersionArrayInput)(nil)).Elem(), GetGenaiAgentTemplateModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionArrayInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedChildAgentInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedChildAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedChildAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedFunctionInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedGuardrailInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedGuardrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedGuardrailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsFilterInput)(nil)).Elem(), GetGenaiAgentVersionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsFilterArrayInput)(nil)).Elem(), GetGenaiAgentVersionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsSortInput)(nil)).Elem(), GetGenaiAgentVersionsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentVersionsSortArrayInput)(nil)).Elem(), GetGenaiAgentVersionsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentInput)(nil)).Elem(), GetGenaiAgentsAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentArrayInput)(nil)).Elem(), GetGenaiAgentsAgentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentAgentGuardrailInput)(nil)).Elem(), GetGenaiAgentsAgentAgentGuardrailArgs{})
@@ -63615,10 +77509,118 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentTemplateModelAgreementArrayInput)(nil)).Elem(), GetGenaiAgentsAgentTemplateModelAgreementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentTemplateModelVersionInput)(nil)).Elem(), GetGenaiAgentsAgentTemplateModelVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsAgentTemplateModelVersionArrayInput)(nil)).Elem(), GetGenaiAgentsAgentTemplateModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChatbotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChatbotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentFunctionInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentFunctionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentFunctionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersionInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayInput)(nil)).Elem(), GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsFilterInput)(nil)).Elem(), GetGenaiAgentsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsFilterArrayInput)(nil)).Elem(), GetGenaiAgentsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsSortInput)(nil)).Elem(), GetGenaiAgentsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsSortArrayInput)(nil)).Elem(), GetGenaiAgentsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelAgreementInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelAgreementArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelVersionInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelVersionArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysFilterInput)(nil)).Elem(), GetGenaiOpenaiApiKeysFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysFilterArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysSortInput)(nil)).Elem(), GetGenaiOpenaiApiKeysSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysSortArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
@@ -63705,14 +77707,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
 	pulumi.RegisterOutputType(AppSpecPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(AppSpecAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(AppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecDomainNameOutput{})
@@ -63725,6 +77729,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecFunctionArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(AppSpecFunctionAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionBitbucketOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecFunctionCorsOutput{})
@@ -63773,6 +77781,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(AppSpecJobAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobBitbucketOutput{})
 	pulumi.RegisterOutputType(AppSpecJobBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobEnvOutput{})
@@ -63805,6 +77817,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(AppSpecServiceAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecServiceAutoscalingMetricsOutput{})
@@ -63869,6 +77885,10 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecWorkerArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAlertOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAlertArrayOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(AppSpecWorkerAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecWorkerAutoscalingMetricsOutput{})
@@ -64003,6 +78023,28 @@ func init() {
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelAgreementArrayOutput{})
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelVersionOutput{})
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceTypeOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseLastIndexingJobArrayOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelArrayOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelAgreementOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelVersionOutput{})
+	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelVersionArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallOutput{})
@@ -64073,6 +78115,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDatabaseArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecDomainOutput{})
@@ -64085,6 +78131,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecFunctionArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecFunctionAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionBitbucketOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecFunctionCorsOutput{})
@@ -64128,6 +78178,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecJobAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobBitbucketOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobBitbucketPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobEnvOutput{})
@@ -64160,6 +78214,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecServiceArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecServiceAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecServiceAutoscalingMetricsOutput{})
@@ -64224,6 +78282,10 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAlertOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAlertArrayOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertDestinationsOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertDestinationsPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertDestinationsSlackWebhookOutput{})
+	pulumi.RegisterOutputType(GetAppSpecWorkerAlertDestinationsSlackWebhookArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerAutoscalingMetricsOutput{})
@@ -64358,6 +78420,20 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentTemplateModelAgreementArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentTemplateModelVersionOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentTemplateModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedChildAgentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedChildAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedFunctionOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedGuardrailOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedGuardrailArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBaseArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsSortOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentVersionsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentAgentGuardrailOutput{})
@@ -64428,10 +78504,118 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentTemplateModelAgreementArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentTemplateModelVersionOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsAgentTemplateModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrailArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChatbotOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChatbotArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentFunctionOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentFunctionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJobPtrOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifierArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJobPtrOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsFilterOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsSortOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelAgreementOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysSortOutput{})
+	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysSortArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
@@ -64518,6 +78702,4 @@ func init() {
 	pulumi.RegisterOutputType(GetVpcNatGatewayEgressArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcNatGatewayEgressPublicGatewayOutput{})
 	pulumi.RegisterOutputType(GetVpcNatGatewayEgressPublicGatewayArrayOutput{})
-	pulumi.RegisterOutputType(GetVpcNatGatewayVpcOutput{})
-	pulumi.RegisterOutputType(GetVpcNatGatewayVpcArrayOutput{})
 }
