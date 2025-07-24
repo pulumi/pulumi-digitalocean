@@ -24,15 +24,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Database ID of the Knowledge Base
         /// </summary>
-        public readonly string DatabaseId;
+        public readonly string? DatabaseId;
         /// <summary>
         /// Embedding model UUID for the Knowledge Base
         /// </summary>
-        public readonly string EmbeddingModelUuid;
+        public readonly string? EmbeddingModelUuid;
         /// <summary>
         /// Indicates if the Knowledge Base is public
         /// </summary>
-        public readonly bool IsPublic;
+        public readonly bool? IsPublic;
         /// <summary>
         /// Last indexing job for the Knowledge Base
         /// </summary>
@@ -40,11 +40,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Name of the Knowledge Base
         /// </summary>
-        public readonly string Name;
+        public readonly string? Name;
         /// <summary>
         /// Project ID of the Knowledge Base
         /// </summary>
-        public readonly string ProjectId;
+        public readonly string? ProjectId;
         /// <summary>
         /// Region of the Knowledge Base
         /// </summary>
@@ -54,17 +54,13 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
         /// User ID of the Knowledge Base
         /// </summary>
         public readonly string? UserId;
-        /// <summary>
-        /// UUID of the Knowledge Base
-        /// </summary>
-        public readonly string? Uuid;
 
         [OutputConstructor]
         private GetGenaiAgentTemplateKnowledgeBaseResult(
@@ -72,17 +68,17 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string createdAt,
 
-            string databaseId,
+            string? databaseId,
 
-            string embeddingModelUuid,
+            string? embeddingModelUuid,
 
-            bool isPublic,
+            bool? isPublic,
 
             ImmutableArray<Outputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobResult> lastIndexingJobs,
 
-            string name,
+            string? name,
 
-            string projectId,
+            string? projectId,
 
             string? region,
 
@@ -90,9 +86,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string updatedAt,
 
-            string? userId,
-
-            string? uuid)
+            string? userId)
         {
             AddedToAgentAt = addedToAgentAt;
             CreatedAt = createdAt;
@@ -106,7 +100,6 @@ namespace Pulumi.DigitalOcean.Outputs
             Tags = tags;
             UpdatedAt = updatedAt;
             UserId = userId;
-            Uuid = uuid;
         }
     }
 }

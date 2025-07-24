@@ -54,17 +54,13 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         public readonly string? UpdatedAt;
         /// <summary>
         /// User ID of the Knowledge Base
         /// </summary>
         public readonly string? UserId;
-        /// <summary>
-        /// UUID of the Knowledge Base
-        /// </summary>
-        public readonly string? Uuid;
 
         [OutputConstructor]
         private GenaiAgentTemplateKnowledgeBase(
@@ -90,9 +86,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? updatedAt,
 
-            string? userId,
-
-            string? uuid)
+            string? userId)
         {
             AddedToAgentAt = addedToAgentAt;
             CreatedAt = createdAt;
@@ -106,7 +100,6 @@ namespace Pulumi.DigitalOcean.Outputs
             Tags = tags;
             UpdatedAt = updatedAt;
             UserId = userId;
-            Uuid = uuid;
         }
     }
 }
