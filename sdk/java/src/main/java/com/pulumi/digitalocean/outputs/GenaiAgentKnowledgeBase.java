@@ -65,7 +65,7 @@ public final class GenaiAgentKnowledgeBase {
      */
     private @Nullable List<String> tags;
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     private @Nullable String updatedAt;
@@ -74,11 +74,6 @@ public final class GenaiAgentKnowledgeBase {
      * 
      */
     private @Nullable String userId;
-    /**
-     * @return UUID of the Knowledge Base
-     * 
-     */
-    private @Nullable String uuid;
 
     private GenaiAgentKnowledgeBase() {}
     /**
@@ -152,7 +147,7 @@ public final class GenaiAgentKnowledgeBase {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public Optional<String> updatedAt() {
@@ -164,13 +159,6 @@ public final class GenaiAgentKnowledgeBase {
      */
     public Optional<String> userId() {
         return Optional.ofNullable(this.userId);
-    }
-    /**
-     * @return UUID of the Knowledge Base
-     * 
-     */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
     }
 
     public static Builder builder() {
@@ -194,7 +182,6 @@ public final class GenaiAgentKnowledgeBase {
         private @Nullable List<String> tags;
         private @Nullable String updatedAt;
         private @Nullable String userId;
-        private @Nullable String uuid;
         public Builder() {}
         public Builder(GenaiAgentKnowledgeBase defaults) {
     	      Objects.requireNonNull(defaults);
@@ -210,7 +197,6 @@ public final class GenaiAgentKnowledgeBase {
     	      this.tags = defaults.tags;
     	      this.updatedAt = defaults.updatedAt;
     	      this.userId = defaults.userId;
-    	      this.uuid = defaults.uuid;
         }
 
         @CustomType.Setter
@@ -291,12 +277,6 @@ public final class GenaiAgentKnowledgeBase {
             this.userId = userId;
             return this;
         }
-        @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
-            this.uuid = uuid;
-            return this;
-        }
         public GenaiAgentKnowledgeBase build() {
             final var _resultValue = new GenaiAgentKnowledgeBase();
             _resultValue.addedToAgentAt = addedToAgentAt;
@@ -311,7 +291,6 @@ public final class GenaiAgentKnowledgeBase {
             _resultValue.tags = tags;
             _resultValue.updatedAt = updatedAt;
             _resultValue.userId = userId;
-            _resultValue.uuid = uuid;
             return _resultValue;
         }
     }

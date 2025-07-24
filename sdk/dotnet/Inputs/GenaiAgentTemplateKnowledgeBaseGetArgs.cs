@@ -85,7 +85,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
@@ -95,12 +95,6 @@ namespace Pulumi.DigitalOcean.Inputs
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
-
-        /// <summary>
-        /// UUID of the Knowledge Base
-        /// </summary>
-        [Input("uuid")]
-        public Input<string>? Uuid { get; set; }
 
         public GenaiAgentTemplateKnowledgeBaseGetArgs()
         {

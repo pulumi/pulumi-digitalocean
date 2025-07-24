@@ -28,17 +28,17 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
      * @return Datasource UUIDs for the last indexing job
      * 
      */
-    private @Nullable List<String> datasourceUuids;
+    private @Nullable List<String> dataSourceUuids;
     /**
      * @return Timestamp when the last indexing job finished
      * 
      */
     private String finishedAt;
     /**
-     * @return UUID	of the Knowledge Base for the last indexing job
+     * @return UUID  of the Knowledge Base for the last indexing job
      * 
      */
-    private @Nullable String knowledgeBaseUuid;
+    private String knowledgeBaseUuid;
     /**
      * @return Phase of the last indexing job
      * 
@@ -65,7 +65,7 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
      */
     private String updatedAt;
     /**
-     * @return UUID	of the last indexing job
+     * @return UUID  of the last indexing job
      * 
      */
     private @Nullable String uuid;
@@ -89,8 +89,8 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
      * @return Datasource UUIDs for the last indexing job
      * 
      */
-    public List<String> datasourceUuids() {
-        return this.datasourceUuids == null ? List.of() : this.datasourceUuids;
+    public List<String> dataSourceUuids() {
+        return this.dataSourceUuids == null ? List.of() : this.dataSourceUuids;
     }
     /**
      * @return Timestamp when the last indexing job finished
@@ -100,11 +100,11 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
         return this.finishedAt;
     }
     /**
-     * @return UUID	of the Knowledge Base for the last indexing job
+     * @return UUID  of the Knowledge Base for the last indexing job
      * 
      */
-    public Optional<String> knowledgeBaseUuid() {
-        return Optional.ofNullable(this.knowledgeBaseUuid);
+    public String knowledgeBaseUuid() {
+        return this.knowledgeBaseUuid;
     }
     /**
      * @return Phase of the last indexing job
@@ -142,7 +142,7 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
         return this.updatedAt;
     }
     /**
-     * @return UUID	of the last indexing job
+     * @return UUID  of the last indexing job
      * 
      */
     public Optional<String> uuid() {
@@ -160,9 +160,9 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
     public static final class Builder {
         private @Nullable Integer completedDatasources;
         private String createdAt;
-        private @Nullable List<String> datasourceUuids;
+        private @Nullable List<String> dataSourceUuids;
         private String finishedAt;
-        private @Nullable String knowledgeBaseUuid;
+        private String knowledgeBaseUuid;
         private @Nullable String phase;
         private String startedAt;
         private @Nullable Integer tokens;
@@ -174,7 +174,7 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
     	      Objects.requireNonNull(defaults);
     	      this.completedDatasources = defaults.completedDatasources;
     	      this.createdAt = defaults.createdAt;
-    	      this.datasourceUuids = defaults.datasourceUuids;
+    	      this.dataSourceUuids = defaults.dataSourceUuids;
     	      this.finishedAt = defaults.finishedAt;
     	      this.knowledgeBaseUuid = defaults.knowledgeBaseUuid;
     	      this.phase = defaults.phase;
@@ -200,13 +200,13 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
             return this;
         }
         @CustomType.Setter
-        public Builder datasourceUuids(@Nullable List<String> datasourceUuids) {
+        public Builder dataSourceUuids(@Nullable List<String> dataSourceUuids) {
 
-            this.datasourceUuids = datasourceUuids;
+            this.dataSourceUuids = dataSourceUuids;
             return this;
         }
-        public Builder datasourceUuids(String... datasourceUuids) {
-            return datasourceUuids(List.of(datasourceUuids));
+        public Builder dataSourceUuids(String... dataSourceUuids) {
+            return dataSourceUuids(List.of(dataSourceUuids));
         }
         @CustomType.Setter
         public Builder finishedAt(String finishedAt) {
@@ -217,8 +217,10 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
             return this;
         }
         @CustomType.Setter
-        public Builder knowledgeBaseUuid(@Nullable String knowledgeBaseUuid) {
-
+        public Builder knowledgeBaseUuid(String knowledgeBaseUuid) {
+            if (knowledgeBaseUuid == null) {
+              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBaseLastIndexingJob", "knowledgeBaseUuid");
+            }
             this.knowledgeBaseUuid = knowledgeBaseUuid;
             return this;
         }
@@ -266,7 +268,7 @@ public final class GetGenaiAgentKnowledgeBaseLastIndexingJob {
             final var _resultValue = new GetGenaiAgentKnowledgeBaseLastIndexingJob();
             _resultValue.completedDatasources = completedDatasources;
             _resultValue.createdAt = createdAt;
-            _resultValue.datasourceUuids = datasourceUuids;
+            _resultValue.dataSourceUuids = dataSourceUuids;
             _resultValue.finishedAt = finishedAt;
             _resultValue.knowledgeBaseUuid = knowledgeBaseUuid;
             _resultValue.phase = phase;
