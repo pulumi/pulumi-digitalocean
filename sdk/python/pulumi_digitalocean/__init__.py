@@ -35,6 +35,11 @@ from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
 from .genai_agent import *
+from .genai_agent_knowledge_base_attachment import *
+from .genai_function import *
+from .genai_knowledge_base import *
+from .genai_knowledge_base_data_source import *
+from .genai_openai_api_key import *
 from .get_account import *
 from .get_app import *
 from .get_certificate import *
@@ -53,7 +58,14 @@ from .get_droplets import *
 from .get_firewall import *
 from .get_floating_ip import *
 from .get_genai_agent import *
+from .get_genai_agent_versions import *
 from .get_genai_agents import *
+from .get_genai_agents_by_openai_api_key import *
+from .get_genai_knowledge_base import *
+from .get_genai_knowledge_base_data_sources import *
+from .get_genai_knowledge_bases import *
+from .get_genai_openai_api_key import *
+from .get_genai_openai_api_keys import *
 from .get_image import *
 from .get_images import *
 from .get_kubernetes_cluster import *
@@ -347,6 +359,46 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/genaiAgent:GenaiAgent": "GenaiAgent"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiAgentKnowledgeBaseAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment": "GenaiAgentKnowledgeBaseAttachment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiFunction",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiFunction:GenaiFunction": "GenaiFunction"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiKnowledgeBase",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase": "GenaiKnowledgeBase"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiKnowledgeBaseDataSource",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource": "GenaiKnowledgeBaseDataSource"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiOpenaiApiKey",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey": "GenaiOpenaiApiKey"
   }
  },
  {

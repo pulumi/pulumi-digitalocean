@@ -51,15 +51,15 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
      * Datasource UUIDs for the last indexing job
      * 
      */
-    @Import(name="datasourceUuids")
-    private @Nullable List<String> datasourceUuids;
+    @Import(name="dataSourceUuids")
+    private @Nullable List<String> dataSourceUuids;
 
     /**
      * @return Datasource UUIDs for the last indexing job
      * 
      */
-    public Optional<List<String>> datasourceUuids() {
-        return Optional.ofNullable(this.datasourceUuids);
+    public Optional<List<String>> dataSourceUuids() {
+        return Optional.ofNullable(this.dataSourceUuids);
     }
 
     /**
@@ -78,18 +78,18 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
     }
 
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      * 
      */
-    @Import(name="knowledgeBaseUuid")
-    private @Nullable String knowledgeBaseUuid;
+    @Import(name="knowledgeBaseUuid", required=true)
+    private String knowledgeBaseUuid;
 
     /**
-     * @return UUID	of the Knowledge Base for the last indexing job
+     * @return UUID  of the Knowledge Base for the last indexing job
      * 
      */
-    public Optional<String> knowledgeBaseUuid() {
-        return Optional.ofNullable(this.knowledgeBaseUuid);
+    public String knowledgeBaseUuid() {
+        return this.knowledgeBaseUuid;
     }
 
     /**
@@ -168,14 +168,14 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
     }
 
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      * 
      */
     @Import(name="uuid")
     private @Nullable String uuid;
 
     /**
-     * @return UUID	of the last indexing job
+     * @return UUID  of the last indexing job
      * 
      */
     public Optional<String> uuid() {
@@ -187,7 +187,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
     private GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob(GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob $) {
         this.completedDatasources = $.completedDatasources;
         this.createdAt = $.createdAt;
-        this.datasourceUuids = $.datasourceUuids;
+        this.dataSourceUuids = $.dataSourceUuids;
         this.finishedAt = $.finishedAt;
         this.knowledgeBaseUuid = $.knowledgeBaseUuid;
         this.phase = $.phase;
@@ -239,24 +239,24 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
         }
 
         /**
-         * @param datasourceUuids Datasource UUIDs for the last indexing job
+         * @param dataSourceUuids Datasource UUIDs for the last indexing job
          * 
          * @return builder
          * 
          */
-        public Builder datasourceUuids(@Nullable List<String> datasourceUuids) {
-            $.datasourceUuids = datasourceUuids;
+        public Builder dataSourceUuids(@Nullable List<String> dataSourceUuids) {
+            $.dataSourceUuids = dataSourceUuids;
             return this;
         }
 
         /**
-         * @param datasourceUuids Datasource UUIDs for the last indexing job
+         * @param dataSourceUuids Datasource UUIDs for the last indexing job
          * 
          * @return builder
          * 
          */
-        public Builder datasourceUuids(String... datasourceUuids) {
-            return datasourceUuids(List.of(datasourceUuids));
+        public Builder dataSourceUuids(String... dataSourceUuids) {
+            return dataSourceUuids(List.of(dataSourceUuids));
         }
 
         /**
@@ -271,12 +271,12 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
         }
 
         /**
-         * @param knowledgeBaseUuid UUID	of the Knowledge Base for the last indexing job
+         * @param knowledgeBaseUuid UUID  of the Knowledge Base for the last indexing job
          * 
          * @return builder
          * 
          */
-        public Builder knowledgeBaseUuid(@Nullable String knowledgeBaseUuid) {
+        public Builder knowledgeBaseUuid(String knowledgeBaseUuid) {
             $.knowledgeBaseUuid = knowledgeBaseUuid;
             return this;
         }
@@ -337,7 +337,7 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
         }
 
         /**
-         * @param uuid UUID	of the last indexing job
+         * @param uuid UUID  of the last indexing job
          * 
          * @return builder
          * 
@@ -353,6 +353,9 @@ public final class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob extends com
             }
             if ($.finishedAt == null) {
                 throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob", "finishedAt");
+            }
+            if ($.knowledgeBaseUuid == null) {
+                throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob", "knowledgeBaseUuid");
             }
             if ($.startedAt == null) {
                 throw new MissingRequiredPropertyException("GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob", "startedAt");

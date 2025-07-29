@@ -14,6 +14,10 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecAlert
     {
         /// <summary>
+        /// Specification for alert destination.
+        /// </summary>
+        public readonly Outputs.AppSpecAlertDestinations? Destinations;
+        /// <summary>
         /// Determines whether or not the alert is disabled (default: `false`).
         /// </summary>
         public readonly bool? Disabled;
@@ -24,10 +28,13 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private AppSpecAlert(
+            Outputs.AppSpecAlertDestinations? destinations,
+
             bool? disabled,
 
             string rule)
         {
+            Destinations = destinations;
             Disabled = disabled;
             Rule = rule;
         }
