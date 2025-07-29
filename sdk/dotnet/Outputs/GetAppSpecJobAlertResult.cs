@@ -13,6 +13,7 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecJobAlertResult
     {
+        public readonly Outputs.GetAppSpecJobAlertDestinationsResult? Destinations;
         /// <summary>
         /// Determines whether or not the alert is disabled (default: `false`).
         /// </summary>
@@ -36,6 +37,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
         [OutputConstructor]
         private GetAppSpecJobAlertResult(
+            Outputs.GetAppSpecJobAlertDestinationsResult? destinations,
+
             bool? disabled,
 
             string @operator,
@@ -46,6 +49,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string window)
         {
+            Destinations = destinations;
             Disabled = disabled;
             Operator = @operator;
             Rule = rule;

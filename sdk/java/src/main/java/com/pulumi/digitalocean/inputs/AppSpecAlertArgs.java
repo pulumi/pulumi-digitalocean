@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecAlertDestinationsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecAlertArgs Empty = new AppSpecAlertArgs();
+
+    /**
+     * Specification for alert destination.
+     * 
+     */
+    @Import(name="destinations")
+    private @Nullable Output<AppSpecAlertDestinationsArgs> destinations;
+
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    public Optional<Output<AppSpecAlertDestinationsArgs>> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
 
     /**
      * Determines whether or not the alert is disabled (default: `false`).
@@ -50,6 +66,7 @@ public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
     private AppSpecAlertArgs() {}
 
     private AppSpecAlertArgs(AppSpecAlertArgs $) {
+        this.destinations = $.destinations;
         this.disabled = $.disabled;
         this.rule = $.rule;
     }
@@ -70,6 +87,27 @@ public final class AppSpecAlertArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(AppSpecAlertArgs defaults) {
             $ = new AppSpecAlertArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(@Nullable Output<AppSpecAlertDestinationsArgs> destinations) {
+            $.destinations = destinations;
+            return this;
+        }
+
+        /**
+         * @param destinations Specification for alert destination.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destinations(AppSpecAlertDestinationsArgs destinations) {
+            return destinations(Output.of(destinations));
         }
 
         /**

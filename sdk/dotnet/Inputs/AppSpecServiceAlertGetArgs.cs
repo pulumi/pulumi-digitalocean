@@ -13,6 +13,12 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecServiceAlertGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specification for alert destination.
+        /// </summary>
+        [Input("destinations")]
+        public Input<Inputs.AppSpecServiceAlertDestinationsGetArgs>? Destinations { get; set; }
+
+        /// <summary>
         /// Determines whether or not the alert is disabled (default: `false`).
         /// </summary>
         [Input("disabled")]

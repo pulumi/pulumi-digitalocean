@@ -24,15 +24,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Datasource UUIDs for the last indexing job
         /// </summary>
-        public readonly ImmutableArray<string> DatasourceUuids;
+        public readonly ImmutableArray<string> DataSourceUuids;
         /// <summary>
         /// Timestamp when the last indexing job finished
         /// </summary>
         public readonly string FinishedAt;
         /// <summary>
-        /// UUID	of the Knowledge Base for the last indexing job
+        /// UUID  of the Knowledge Base for the last indexing job
         /// </summary>
-        public readonly string? KnowledgeBaseUuid;
+        public readonly string KnowledgeBaseUuid;
         /// <summary>
         /// Phase of the last indexing job
         /// </summary>
@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string UpdatedAt;
         /// <summary>
-        /// UUID	of the last indexing job
+        /// UUID  of the last indexing job
         /// </summary>
         public readonly string? Uuid;
 
@@ -64,11 +64,11 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string createdAt,
 
-            ImmutableArray<string> datasourceUuids,
+            ImmutableArray<string> dataSourceUuids,
 
             string finishedAt,
 
-            string? knowledgeBaseUuid,
+            string knowledgeBaseUuid,
 
             string? phase,
 
@@ -84,7 +84,7 @@ namespace Pulumi.DigitalOcean.Outputs
         {
             CompletedDatasources = completedDatasources;
             CreatedAt = createdAt;
-            DatasourceUuids = datasourceUuids;
+            DataSourceUuids = dataSourceUuids;
             FinishedAt = finishedAt;
             KnowledgeBaseUuid = knowledgeBaseUuid;
             Phase = phase;

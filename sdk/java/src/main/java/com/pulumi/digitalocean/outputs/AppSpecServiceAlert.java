@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.AppSpecServiceAlertDestinations;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class AppSpecServiceAlert {
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    private @Nullable AppSpecServiceAlertDestinations destinations;
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -41,6 +47,13 @@ public final class AppSpecServiceAlert {
     private String window;
 
     private AppSpecServiceAlert() {}
+    /**
+     * @return Specification for alert destination.
+     * 
+     */
+    public Optional<AppSpecServiceAlertDestinations> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -86,6 +99,7 @@ public final class AppSpecServiceAlert {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppSpecServiceAlertDestinations destinations;
         private @Nullable Boolean disabled;
         private String operator;
         private String rule;
@@ -94,6 +108,7 @@ public final class AppSpecServiceAlert {
         public Builder() {}
         public Builder(AppSpecServiceAlert defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinations = defaults.destinations;
     	      this.disabled = defaults.disabled;
     	      this.operator = defaults.operator;
     	      this.rule = defaults.rule;
@@ -101,6 +116,12 @@ public final class AppSpecServiceAlert {
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
+        public Builder destinations(@Nullable AppSpecServiceAlertDestinations destinations) {
+
+            this.destinations = destinations;
+            return this;
+        }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
@@ -141,6 +162,7 @@ public final class AppSpecServiceAlert {
         }
         public AppSpecServiceAlert build() {
             final var _resultValue = new AppSpecServiceAlert();
+            _resultValue.destinations = destinations;
             _resultValue.disabled = disabled;
             _resultValue.operator = operator;
             _resultValue.rule = rule;
