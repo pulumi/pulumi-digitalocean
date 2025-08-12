@@ -195,6 +195,10 @@ export class DatabaseCluster extends pulumi.CustomResource {
      */
     public readonly maintenanceWindows!: pulumi.Output<outputs.DatabaseClusterMaintenanceWindow[] | undefined>;
     /**
+     * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     */
+    public /*out*/ readonly metricsEndpoints!: pulumi.Output<string[]>;
+    /**
      * The name of the database cluster.
      */
     public readonly name!: pulumi.Output<string>;
@@ -304,6 +308,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
             resourceInputs["host"] = state ? state.host : undefined;
             resourceInputs["maintenanceWindows"] = state ? state.maintenanceWindows : undefined;
+            resourceInputs["metricsEndpoints"] = state ? state.metricsEndpoints : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
             resourceInputs["password"] = state ? state.password : undefined;
@@ -357,6 +362,7 @@ export class DatabaseCluster extends pulumi.CustomResource {
             resourceInputs["clusterUrn"] = undefined /*out*/;
             resourceInputs["database"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
+            resourceInputs["metricsEndpoints"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;
             resourceInputs["privateHost"] = undefined /*out*/;
@@ -406,6 +412,10 @@ export interface DatabaseClusterState {
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
     maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
+    /**
+     * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     */
+    metricsEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The name of the database cluster.
      */

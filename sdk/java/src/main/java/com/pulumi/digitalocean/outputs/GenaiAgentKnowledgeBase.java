@@ -65,7 +65,7 @@ public final class GenaiAgentKnowledgeBase {
      */
     private @Nullable List<String> tags;
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     private @Nullable String updatedAt;
@@ -152,7 +152,7 @@ public final class GenaiAgentKnowledgeBase {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public Optional<String> updatedAt() {

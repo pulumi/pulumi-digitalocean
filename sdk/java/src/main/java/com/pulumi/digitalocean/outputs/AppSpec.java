@@ -12,8 +12,10 @@ import com.pulumi.digitalocean.outputs.AppSpecEnv;
 import com.pulumi.digitalocean.outputs.AppSpecFunction;
 import com.pulumi.digitalocean.outputs.AppSpecIngress;
 import com.pulumi.digitalocean.outputs.AppSpecJob;
+import com.pulumi.digitalocean.outputs.AppSpecMaintenance;
 import com.pulumi.digitalocean.outputs.AppSpecService;
 import com.pulumi.digitalocean.outputs.AppSpecStaticSite;
+import com.pulumi.digitalocean.outputs.AppSpecVpc;
 import com.pulumi.digitalocean.outputs.AppSpecWorker;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -81,6 +83,11 @@ public final class AppSpec {
     private @Nullable AppSpecIngress ingress;
     private @Nullable List<AppSpecJob> jobs;
     /**
+     * @return Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    private @Nullable AppSpecMaintenance maintenance;
+    /**
      * @return The name of the component.
      * 
      */
@@ -92,6 +99,11 @@ public final class AppSpec {
     private @Nullable String region;
     private @Nullable List<AppSpecService> services;
     private @Nullable List<AppSpecStaticSite> staticSites;
+    /**
+     * @return Specification for VPC.
+     * 
+     */
+    private @Nullable List<AppSpecVpc> vpcs;
     private @Nullable List<AppSpecWorker> workers;
 
     private AppSpec() {}
@@ -177,6 +189,13 @@ public final class AppSpec {
         return this.jobs == null ? List.of() : this.jobs;
     }
     /**
+     * @return Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    public Optional<AppSpecMaintenance> maintenance() {
+        return Optional.ofNullable(this.maintenance);
+    }
+    /**
      * @return The name of the component.
      * 
      */
@@ -195,6 +214,13 @@ public final class AppSpec {
     }
     public List<AppSpecStaticSite> staticSites() {
         return this.staticSites == null ? List.of() : this.staticSites;
+    }
+    /**
+     * @return Specification for VPC.
+     * 
+     */
+    public List<AppSpecVpc> vpcs() {
+        return this.vpcs == null ? List.of() : this.vpcs;
     }
     public List<AppSpecWorker> workers() {
         return this.workers == null ? List.of() : this.workers;
@@ -222,10 +248,12 @@ public final class AppSpec {
         private @Nullable List<AppSpecFunction> functions;
         private @Nullable AppSpecIngress ingress;
         private @Nullable List<AppSpecJob> jobs;
+        private @Nullable AppSpecMaintenance maintenance;
         private String name;
         private @Nullable String region;
         private @Nullable List<AppSpecService> services;
         private @Nullable List<AppSpecStaticSite> staticSites;
+        private @Nullable List<AppSpecVpc> vpcs;
         private @Nullable List<AppSpecWorker> workers;
         public Builder() {}
         public Builder(AppSpec defaults) {
@@ -243,10 +271,12 @@ public final class AppSpec {
     	      this.functions = defaults.functions;
     	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
+    	      this.maintenance = defaults.maintenance;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.services = defaults.services;
     	      this.staticSites = defaults.staticSites;
+    	      this.vpcs = defaults.vpcs;
     	      this.workers = defaults.workers;
         }
 
@@ -356,6 +386,12 @@ public final class AppSpec {
             return jobs(List.of(jobs));
         }
         @CustomType.Setter
+        public Builder maintenance(@Nullable AppSpecMaintenance maintenance) {
+
+            this.maintenance = maintenance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("AppSpec", "name");
@@ -388,6 +424,15 @@ public final class AppSpec {
             return staticSites(List.of(staticSites));
         }
         @CustomType.Setter
+        public Builder vpcs(@Nullable List<AppSpecVpc> vpcs) {
+
+            this.vpcs = vpcs;
+            return this;
+        }
+        public Builder vpcs(AppSpecVpc... vpcs) {
+            return vpcs(List.of(vpcs));
+        }
+        @CustomType.Setter
         public Builder workers(@Nullable List<AppSpecWorker> workers) {
 
             this.workers = workers;
@@ -411,10 +456,12 @@ public final class AppSpec {
             _resultValue.functions = functions;
             _resultValue.ingress = ingress;
             _resultValue.jobs = jobs;
+            _resultValue.maintenance = maintenance;
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.services = services;
             _resultValue.staticSites = staticSites;
+            _resultValue.vpcs = vpcs;
             _resultValue.workers = workers;
             return _resultValue;
         }

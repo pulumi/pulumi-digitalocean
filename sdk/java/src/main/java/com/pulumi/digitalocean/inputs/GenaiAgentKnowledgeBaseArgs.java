@@ -169,14 +169,14 @@ public final class GenaiAgentKnowledgeBaseArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -480,7 +480,7 @@ public final class GenaiAgentKnowledgeBaseArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 
@@ -491,7 +491,7 @@ public final class GenaiAgentKnowledgeBaseArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt Updated At timestamp for the Knowledge Base
+         * @param updatedAt Timestamp when the Knowledge Base was updated
          * 
          * @return builder
          * 

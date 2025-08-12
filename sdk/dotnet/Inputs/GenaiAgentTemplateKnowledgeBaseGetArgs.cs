@@ -85,7 +85,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }

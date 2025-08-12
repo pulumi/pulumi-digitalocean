@@ -130,6 +130,12 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
+        /// Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+        /// </summary>
+        [Input("maintenance")]
+        public Input<Inputs.AppSpecMaintenanceArgs>? Maintenance { get; set; }
+
+        /// <summary>
         /// The name of the component.
         /// </summary>
         [Input("name", required: true)]
@@ -155,6 +161,18 @@ namespace Pulumi.DigitalOcean.Inputs
         {
             get => _staticSites ?? (_staticSites = new InputList<Inputs.AppSpecStaticSiteArgs>());
             set => _staticSites = value;
+        }
+
+        [Input("vpcs")]
+        private InputList<Inputs.AppSpecVpcArgs>? _vpcs;
+
+        /// <summary>
+        /// Specification for VPC.
+        /// </summary>
+        public InputList<Inputs.AppSpecVpcArgs> Vpcs
+        {
+            get => _vpcs ?? (_vpcs = new InputList<Inputs.AppSpecVpcArgs>());
+            set => _vpcs = value;
         }
 
         [Input("workers")]

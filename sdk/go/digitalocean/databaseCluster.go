@@ -272,6 +272,8 @@ type DatabaseCluster struct {
 	Host pulumi.StringOutput `pulumi:"host"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayOutput `pulumi:"maintenanceWindows"`
+	// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+	MetricsEndpoints pulumi.StringArrayOutput `pulumi:"metricsEndpoints"`
 	// The name of the database cluster.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
@@ -382,6 +384,8 @@ type databaseClusterState struct {
 	Host *string `pulumi:"host"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows []DatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
+	// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+	MetricsEndpoints []string `pulumi:"metricsEndpoints"`
 	// The name of the database cluster.
 	Name *string `pulumi:"name"`
 	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
@@ -443,6 +447,8 @@ type DatabaseClusterState struct {
 	Host pulumi.StringPtrInput
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows DatabaseClusterMaintenanceWindowArrayInput
+	// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+	MetricsEndpoints pulumi.StringArrayInput
 	// The name of the database cluster.
 	Name pulumi.StringPtrInput
 	// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
@@ -676,6 +682,11 @@ func (o DatabaseClusterOutput) Host() pulumi.StringOutput {
 // Defines when the automatic maintenance should be performed for the database cluster.
 func (o DatabaseClusterOutput) MaintenanceWindows() DatabaseClusterMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v *DatabaseCluster) DatabaseClusterMaintenanceWindowArrayOutput { return v.MaintenanceWindows }).(DatabaseClusterMaintenanceWindowArrayOutput)
+}
+
+// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+func (o DatabaseClusterOutput) MetricsEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DatabaseCluster) pulumi.StringArrayOutput { return v.MetricsEndpoints }).(pulumi.StringArrayOutput)
 }
 
 // The name of the database cluster.

@@ -248,6 +248,12 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.DatabaseClusterMaintenanceWindow>> MaintenanceWindows { get; private set; } = null!;
 
         /// <summary>
+        /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        /// </summary>
+        [Output("metricsEndpoints")]
+        public Output<ImmutableArray<string>> MetricsEndpoints { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the database cluster.
         /// </summary>
         [Output("name")]
@@ -579,6 +585,18 @@ namespace Pulumi.DigitalOcean
         {
             get => _maintenanceWindows ?? (_maintenanceWindows = new InputList<Inputs.DatabaseClusterMaintenanceWindowGetArgs>());
             set => _maintenanceWindows = value;
+        }
+
+        [Input("metricsEndpoints")]
+        private InputList<string>? _metricsEndpoints;
+
+        /// <summary>
+        /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        /// </summary>
+        public InputList<string> MetricsEndpoints
+        {
+            get => _metricsEndpoints ?? (_metricsEndpoints = new InputList<string>());
+            set => _metricsEndpoints = value;
         }
 
         /// <summary>

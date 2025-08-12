@@ -45,6 +45,10 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly Outputs.GetAppSpecIngressResult Ingress;
         public readonly ImmutableArray<Outputs.GetAppSpecJobResult> Jobs;
         /// <summary>
+        /// Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+        /// </summary>
+        public readonly Outputs.GetAppSpecMaintenanceResult? Maintenance;
+        /// <summary>
         /// The name of the component.
         /// </summary>
         public readonly string Name;
@@ -54,6 +58,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? Region;
         public readonly ImmutableArray<Outputs.GetAppSpecServiceResult> Services;
         public readonly ImmutableArray<Outputs.GetAppSpecStaticSiteResult> StaticSites;
+        public readonly ImmutableArray<Outputs.GetAppSpecVpcResult> Vpcs;
         public readonly ImmutableArray<Outputs.GetAppSpecWorkerResult> Workers;
 
         [OutputConstructor]
@@ -84,6 +89,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             ImmutableArray<Outputs.GetAppSpecJobResult> jobs,
 
+            Outputs.GetAppSpecMaintenanceResult? maintenance,
+
             string name,
 
             string? region,
@@ -91,6 +98,8 @@ namespace Pulumi.DigitalOcean.Outputs
             ImmutableArray<Outputs.GetAppSpecServiceResult> services,
 
             ImmutableArray<Outputs.GetAppSpecStaticSiteResult> staticSites,
+
+            ImmutableArray<Outputs.GetAppSpecVpcResult> vpcs,
 
             ImmutableArray<Outputs.GetAppSpecWorkerResult> workers)
         {
@@ -107,10 +116,12 @@ namespace Pulumi.DigitalOcean.Outputs
             Functions = functions;
             Ingress = ingress;
             Jobs = jobs;
+            Maintenance = maintenance;
             Name = name;
             Region = region;
             Services = services;
             StaticSites = staticSites;
+            Vpcs = vpcs;
             Workers = workers;
         }
     }

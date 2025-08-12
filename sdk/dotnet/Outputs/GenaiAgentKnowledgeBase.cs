@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<string> Tags;
         /// <summary>
-        /// Updated At timestamp for the Knowledge Base
+        /// Timestamp when the Knowledge Base was updated
         /// </summary>
         public readonly string? UpdatedAt;
         /// <summary>

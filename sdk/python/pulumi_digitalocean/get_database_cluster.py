@@ -27,7 +27,7 @@ class GetDatabaseClusterResult:
     """
     A collection of values returned by getDatabaseCluster.
     """
-    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, ui_database=None, ui_host=None, ui_password=None, ui_port=None, ui_uri=None, ui_user=None, uri=None, urn=None, user=None, version=None):
+    def __init__(__self__, database=None, engine=None, host=None, id=None, maintenance_windows=None, metrics_endpoints=None, name=None, node_count=None, password=None, port=None, private_host=None, private_network_uuid=None, private_uri=None, project_id=None, region=None, size=None, storage_size_mib=None, tags=None, ui_database=None, ui_host=None, ui_password=None, ui_port=None, ui_uri=None, ui_user=None, uri=None, urn=None, user=None, version=None):
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
@@ -43,6 +43,9 @@ class GetDatabaseClusterResult:
         if maintenance_windows and not isinstance(maintenance_windows, list):
             raise TypeError("Expected argument 'maintenance_windows' to be a list")
         pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if metrics_endpoints and not isinstance(metrics_endpoints, list):
+            raise TypeError("Expected argument 'metrics_endpoints' to be a list")
+        pulumi.set(__self__, "metrics_endpoints", metrics_endpoints)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -149,6 +152,14 @@ class GetDatabaseClusterResult:
         Defines when the automatic maintenance should be performed for the database cluster.
         """
         return pulumi.get(self, "maintenance_windows")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsEndpoints")
+    def metrics_endpoints(self) -> Sequence[_builtins.str]:
+        """
+        A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        """
+        return pulumi.get(self, "metrics_endpoints")
 
     @_builtins.property
     @pulumi.getter
@@ -329,6 +340,7 @@ class AwaitableGetDatabaseClusterResult(GetDatabaseClusterResult):
             host=self.host,
             id=self.id,
             maintenance_windows=self.maintenance_windows,
+            metrics_endpoints=self.metrics_endpoints,
             name=self.name,
             node_count=self.node_count,
             password=self.password,
@@ -384,6 +396,7 @@ def get_database_cluster(name: Optional[_builtins.str] = None,
         host=pulumi.get(__ret__, 'host'),
         id=pulumi.get(__ret__, 'id'),
         maintenance_windows=pulumi.get(__ret__, 'maintenance_windows'),
+        metrics_endpoints=pulumi.get(__ret__, 'metrics_endpoints'),
         name=pulumi.get(__ret__, 'name'),
         node_count=pulumi.get(__ret__, 'node_count'),
         password=pulumi.get(__ret__, 'password'),
@@ -436,6 +449,7 @@ def get_database_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = No
         host=pulumi.get(__response__, 'host'),
         id=pulumi.get(__response__, 'id'),
         maintenance_windows=pulumi.get(__response__, 'maintenance_windows'),
+        metrics_endpoints=pulumi.get(__response__, 'metrics_endpoints'),
         name=pulumi.get(__response__, 'name'),
         node_count=pulumi.get(__response__, 'node_count'),
         password=pulumi.get(__response__, 'password'),

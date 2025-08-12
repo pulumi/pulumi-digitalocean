@@ -22,6 +22,10 @@ __all__ = [
     'AppSpecArgsDict',
     'AppSpecAlertArgs',
     'AppSpecAlertArgsDict',
+    'AppSpecAlertDestinationsArgs',
+    'AppSpecAlertDestinationsArgsDict',
+    'AppSpecAlertDestinationsSlackWebhookArgs',
+    'AppSpecAlertDestinationsSlackWebhookArgsDict',
     'AppSpecDatabaseArgs',
     'AppSpecDatabaseArgsDict',
     'AppSpecDomainNameArgs',
@@ -34,6 +38,10 @@ __all__ = [
     'AppSpecFunctionArgsDict',
     'AppSpecFunctionAlertArgs',
     'AppSpecFunctionAlertArgsDict',
+    'AppSpecFunctionAlertDestinationsArgs',
+    'AppSpecFunctionAlertDestinationsArgsDict',
+    'AppSpecFunctionAlertDestinationsSlackWebhookArgs',
+    'AppSpecFunctionAlertDestinationsSlackWebhookArgsDict',
     'AppSpecFunctionBitbucketArgs',
     'AppSpecFunctionBitbucketArgsDict',
     'AppSpecFunctionCorsArgs',
@@ -82,6 +90,10 @@ __all__ = [
     'AppSpecJobArgsDict',
     'AppSpecJobAlertArgs',
     'AppSpecJobAlertArgsDict',
+    'AppSpecJobAlertDestinationsArgs',
+    'AppSpecJobAlertDestinationsArgsDict',
+    'AppSpecJobAlertDestinationsSlackWebhookArgs',
+    'AppSpecJobAlertDestinationsSlackWebhookArgsDict',
     'AppSpecJobBitbucketArgs',
     'AppSpecJobBitbucketArgsDict',
     'AppSpecJobEnvArgs',
@@ -110,10 +122,16 @@ __all__ = [
     'AppSpecJobLogDestinationPapertrailArgsDict',
     'AppSpecJobTerminationArgs',
     'AppSpecJobTerminationArgsDict',
+    'AppSpecMaintenanceArgs',
+    'AppSpecMaintenanceArgsDict',
     'AppSpecServiceArgs',
     'AppSpecServiceArgsDict',
     'AppSpecServiceAlertArgs',
     'AppSpecServiceAlertArgsDict',
+    'AppSpecServiceAlertDestinationsArgs',
+    'AppSpecServiceAlertDestinationsArgsDict',
+    'AppSpecServiceAlertDestinationsSlackWebhookArgs',
+    'AppSpecServiceAlertDestinationsSlackWebhookArgsDict',
     'AppSpecServiceAutoscalingArgs',
     'AppSpecServiceAutoscalingArgsDict',
     'AppSpecServiceAutoscalingMetricsArgs',
@@ -174,10 +192,16 @@ __all__ = [
     'AppSpecStaticSiteGitlabArgsDict',
     'AppSpecStaticSiteRouteArgs',
     'AppSpecStaticSiteRouteArgsDict',
+    'AppSpecVpcArgs',
+    'AppSpecVpcArgsDict',
     'AppSpecWorkerArgs',
     'AppSpecWorkerArgsDict',
     'AppSpecWorkerAlertArgs',
     'AppSpecWorkerAlertArgsDict',
+    'AppSpecWorkerAlertDestinationsArgs',
+    'AppSpecWorkerAlertDestinationsArgsDict',
+    'AppSpecWorkerAlertDestinationsSlackWebhookArgs',
+    'AppSpecWorkerAlertDestinationsSlackWebhookArgsDict',
     'AppSpecWorkerAutoscalingArgs',
     'AppSpecWorkerAutoscalingArgsDict',
     'AppSpecWorkerAutoscalingMetricsArgs',
@@ -220,6 +244,8 @@ __all__ = [
     'DatabaseFirewallRuleArgsDict',
     'DatabaseKafkaTopicConfigArgs',
     'DatabaseKafkaTopicConfigArgsDict',
+    'DatabaseOnlineMigrationSourceArgs',
+    'DatabaseOnlineMigrationSourceArgsDict',
     'DatabasePostgresqlConfigPgbouncerArgs',
     'DatabasePostgresqlConfigPgbouncerArgsDict',
     'DatabasePostgresqlConfigTimescaledbArgs',
@@ -312,6 +338,28 @@ __all__ = [
     'GenaiAgentTemplateModelAgreementArgsDict',
     'GenaiAgentTemplateModelVersionArgs',
     'GenaiAgentTemplateModelVersionArgsDict',
+    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict',
+    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict',
+    'GenaiKnowledgeBaseDatasourceArgs',
+    'GenaiKnowledgeBaseDatasourceArgsDict',
+    'GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs',
+    'GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict',
+    'GenaiKnowledgeBaseDatasourceLastIndexingJobArgs',
+    'GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict',
+    'GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs',
+    'GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict',
+    'GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs',
+    'GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict',
+    'GenaiKnowledgeBaseLastIndexingJobArgs',
+    'GenaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GenaiOpenaiApiKeyModelArgs',
+    'GenaiOpenaiApiKeyModelArgsDict',
+    'GenaiOpenaiApiKeyModelAgreementArgs',
+    'GenaiOpenaiApiKeyModelAgreementArgsDict',
+    'GenaiOpenaiApiKeyModelVersionArgs',
+    'GenaiOpenaiApiKeyModelVersionArgsDict',
     'KubernetesClusterClusterAutoscalerConfigurationArgs',
     'KubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'KubernetesClusterControlPlaneFirewallArgs',
@@ -430,10 +478,24 @@ __all__ = [
     'GetGenaiAgentTemplateModelAgreementArgsDict',
     'GetGenaiAgentTemplateModelVersionArgs',
     'GetGenaiAgentTemplateModelVersionArgsDict',
+    'GetGenaiAgentVersionsFilterArgs',
+    'GetGenaiAgentVersionsFilterArgsDict',
+    'GetGenaiAgentVersionsSortArgs',
+    'GetGenaiAgentVersionsSortArgsDict',
     'GetGenaiAgentsFilterArgs',
     'GetGenaiAgentsFilterArgsDict',
     'GetGenaiAgentsSortArgs',
     'GetGenaiAgentsSortArgsDict',
+    'GetGenaiKnowledgeBaseLastIndexingJobArgs',
+    'GetGenaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGenaiKnowledgeBasesFilterArgs',
+    'GetGenaiKnowledgeBasesFilterArgsDict',
+    'GetGenaiKnowledgeBasesSortArgs',
+    'GetGenaiKnowledgeBasesSortArgsDict',
+    'GetGenaiOpenaiApiKeysFilterArgs',
+    'GetGenaiOpenaiApiKeysFilterArgsDict',
+    'GetGenaiOpenaiApiKeysSortArgs',
+    'GetGenaiOpenaiApiKeysSortArgsDict',
     'GetImagesFilterArgs',
     'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
@@ -594,12 +656,20 @@ if not MYPY:
         Specification for component routing, rewrites, and redirects.
         """
         jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgsDict']]]]
+        maintenance: NotRequired[pulumi.Input['AppSpecMaintenanceArgsDict']]
+        """
+        Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+        """
         region: NotRequired[pulumi.Input[_builtins.str]]
         """
         The slug for the DigitalOcean data center region hosting the app.
         """
         services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgsDict']]]]
         static_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgsDict']]]]
+        vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgsDict']]]]
+        """
+        Specification for VPC.
+        """
         workers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgsDict']]]]
 elif False:
     AppSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -621,9 +691,11 @@ class AppSpecArgs:
                  functions: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgs']]]] = None,
                  ingress: Optional[pulumi.Input['AppSpecIngressArgs']] = None,
                  jobs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgs']]]] = None,
+                 maintenance: Optional[pulumi.Input['AppSpecMaintenanceArgs']] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  services: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgs']]]] = None,
                  static_sites: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgs']]]] = None,
+                 vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgs']]]] = None,
                  workers: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] name: The name of the component.
@@ -636,7 +708,9 @@ class AppSpecArgs:
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgs']]] envs: Describes an environment variable made available to an app competent.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] features: A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
         :param pulumi.Input['AppSpecIngressArgs'] ingress: Specification for component routing, rewrites, and redirects.
+        :param pulumi.Input['AppSpecMaintenanceArgs'] maintenance: Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
         :param pulumi.Input[_builtins.str] region: The slug for the DigitalOcean data center region hosting the app.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgs']]] vpcs: Specification for VPC.
         """
         pulumi.set(__self__, "name", name)
         if alerts is not None:
@@ -668,12 +742,16 @@ class AppSpecArgs:
             pulumi.set(__self__, "ingress", ingress)
         if jobs is not None:
             pulumi.set(__self__, "jobs", jobs)
+        if maintenance is not None:
+            pulumi.set(__self__, "maintenance", maintenance)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if services is not None:
             pulumi.set(__self__, "services", services)
         if static_sites is not None:
             pulumi.set(__self__, "static_sites", static_sites)
+        if vpcs is not None:
+            pulumi.set(__self__, "vpcs", vpcs)
         if workers is not None:
             pulumi.set(__self__, "workers", workers)
 
@@ -836,6 +914,18 @@ class AppSpecArgs:
 
     @_builtins.property
     @pulumi.getter
+    def maintenance(self) -> Optional[pulumi.Input['AppSpecMaintenanceArgs']]:
+        """
+        Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+        """
+        return pulumi.get(self, "maintenance")
+
+    @maintenance.setter
+    def maintenance(self, value: Optional[pulumi.Input['AppSpecMaintenanceArgs']]):
+        pulumi.set(self, "maintenance", value)
+
+    @_builtins.property
+    @pulumi.getter
     def region(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         The slug for the DigitalOcean data center region hosting the app.
@@ -866,6 +956,18 @@ class AppSpecArgs:
 
     @_builtins.property
     @pulumi.getter
+    def vpcs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgs']]]]:
+        """
+        Specification for VPC.
+        """
+        return pulumi.get(self, "vpcs")
+
+    @vpcs.setter
+    def vpcs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgs']]]]):
+        pulumi.set(self, "vpcs", value)
+
+    @_builtins.property
+    @pulumi.getter
     def workers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgs']]]]:
         return pulumi.get(self, "workers")
 
@@ -880,6 +982,10 @@ if not MYPY:
         """
         The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """
+        destinations: NotRequired[pulumi.Input['AppSpecAlertDestinationsArgsDict']]
+        """
+        Specification for alert destination.
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -891,12 +997,16 @@ elif False:
 class AppSpecAlertArgs:
     def __init__(__self__, *,
                  rule: pulumi.Input[_builtins.str],
+                 destinations: Optional[pulumi.Input['AppSpecAlertDestinationsArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+        :param pulumi.Input['AppSpecAlertDestinationsArgs'] destinations: Specification for alert destination.
         :param pulumi.Input[_builtins.bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "rule", rule)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
 
@@ -914,6 +1024,18 @@ class AppSpecAlertArgs:
 
     @_builtins.property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input['AppSpecAlertDestinationsArgs']]:
+        """
+        Specification for alert destination.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input['AppSpecAlertDestinationsArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -923,6 +1045,108 @@ class AppSpecAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecAlertDestinationsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgsDict']]]]
+        """
+        Determines which slack channels or users receive alerts.
+        """
+elif False:
+    AppSpecAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecAlertDestinationsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slack_webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgs']]] slack_webhooks: Determines which slack channels or users receive alerts.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slack_webhooks is not None:
+            pulumi.set(__self__, "slack_webhooks", slack_webhooks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slackWebhooks")
+    def slack_webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgs']]]]:
+        """
+        Determines which slack channels or users receive alerts.
+        """
+        return pulumi.get(self, "slack_webhooks")
+
+    @slack_webhooks.setter
+    def slack_webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgs']]]]):
+        pulumi.set(self, "slack_webhooks", value)
+
+
+if not MYPY:
+    class AppSpecAlertDestinationsSlackWebhookArgsDict(TypedDict):
+        channel: pulumi.Input[_builtins.str]
+        """
+        The Slack channel to send notifications to.
+        """
+        url: pulumi.Input[_builtins.str]
+        """
+        The Slack webhook URL.
+        """
+elif False:
+    AppSpecAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecAlertDestinationsSlackWebhookArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] channel: The Slack channel to send notifications to.
+        :param pulumi.Input[_builtins.str] url: The Slack webhook URL.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack channel to send notifications to.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:
@@ -1564,6 +1788,10 @@ if not MYPY:
         """
         The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
         """
+        destinations: NotRequired[pulumi.Input['AppSpecFunctionAlertDestinationsArgsDict']]
+        """
+        Specification for alert destination.
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -1578,18 +1806,22 @@ class AppSpecFunctionAlertArgs:
                  rule: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.float],
                  window: pulumi.Input[_builtins.str],
+                 destinations: Optional[pulumi.Input['AppSpecFunctionAlertDestinationsArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
         :param pulumi.Input[_builtins.str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param pulumi.Input[_builtins.float] value: The threshold for the type of the warning.
         :param pulumi.Input[_builtins.str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input['AppSpecFunctionAlertDestinationsArgs'] destinations: Specification for alert destination.
         :param pulumi.Input[_builtins.bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "window", window)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
 
@@ -1643,6 +1875,18 @@ class AppSpecFunctionAlertArgs:
 
     @_builtins.property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input['AppSpecFunctionAlertDestinationsArgs']]:
+        """
+        Specification for alert destination.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input['AppSpecFunctionAlertDestinationsArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -1652,6 +1896,108 @@ class AppSpecFunctionAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecFunctionAlertDestinationsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgsDict']]]]
+        """
+        Determines which slack channels or users receive alerts.
+        """
+elif False:
+    AppSpecFunctionAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecFunctionAlertDestinationsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slack_webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgs']]] slack_webhooks: Determines which slack channels or users receive alerts.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slack_webhooks is not None:
+            pulumi.set(__self__, "slack_webhooks", slack_webhooks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slackWebhooks")
+    def slack_webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgs']]]]:
+        """
+        Determines which slack channels or users receive alerts.
+        """
+        return pulumi.get(self, "slack_webhooks")
+
+    @slack_webhooks.setter
+    def slack_webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgs']]]]):
+        pulumi.set(self, "slack_webhooks", value)
+
+
+if not MYPY:
+    class AppSpecFunctionAlertDestinationsSlackWebhookArgsDict(TypedDict):
+        channel: pulumi.Input[_builtins.str]
+        """
+        The Slack channel to send notifications to.
+        """
+        url: pulumi.Input[_builtins.str]
+        """
+        The Slack webhook URL.
+        """
+elif False:
+    AppSpecFunctionAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecFunctionAlertDestinationsSlackWebhookArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] channel: The Slack channel to send notifications to.
+        :param pulumi.Input[_builtins.str] url: The Slack webhook URL.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack channel to send notifications to.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:
@@ -3622,6 +3968,10 @@ if not MYPY:
         """
         The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
         """
+        destinations: NotRequired[pulumi.Input['AppSpecJobAlertDestinationsArgsDict']]
+        """
+        Specification for alert destination.
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -3636,18 +3986,22 @@ class AppSpecJobAlertArgs:
                  rule: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.float],
                  window: pulumi.Input[_builtins.str],
+                 destinations: Optional[pulumi.Input['AppSpecJobAlertDestinationsArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
         :param pulumi.Input[_builtins.str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param pulumi.Input[_builtins.float] value: The threshold for the type of the warning.
         :param pulumi.Input[_builtins.str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input['AppSpecJobAlertDestinationsArgs'] destinations: Specification for alert destination.
         :param pulumi.Input[_builtins.bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "window", window)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
 
@@ -3701,6 +4055,18 @@ class AppSpecJobAlertArgs:
 
     @_builtins.property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input['AppSpecJobAlertDestinationsArgs']]:
+        """
+        Specification for alert destination.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input['AppSpecJobAlertDestinationsArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -3710,6 +4076,108 @@ class AppSpecJobAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecJobAlertDestinationsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgsDict']]]]
+        """
+        Determines which slack channels or users receive alerts.
+        """
+elif False:
+    AppSpecJobAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecJobAlertDestinationsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slack_webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgs']]] slack_webhooks: Determines which slack channels or users receive alerts.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slack_webhooks is not None:
+            pulumi.set(__self__, "slack_webhooks", slack_webhooks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slackWebhooks")
+    def slack_webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgs']]]]:
+        """
+        Determines which slack channels or users receive alerts.
+        """
+        return pulumi.get(self, "slack_webhooks")
+
+    @slack_webhooks.setter
+    def slack_webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgs']]]]):
+        pulumi.set(self, "slack_webhooks", value)
+
+
+if not MYPY:
+    class AppSpecJobAlertDestinationsSlackWebhookArgsDict(TypedDict):
+        channel: pulumi.Input[_builtins.str]
+        """
+        The Slack channel to send notifications to.
+        """
+        url: pulumi.Input[_builtins.str]
+        """
+        The Slack webhook URL.
+        """
+elif False:
+    AppSpecJobAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecJobAlertDestinationsSlackWebhookArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] channel: The Slack channel to send notifications to.
+        :param pulumi.Input[_builtins.str] url: The Slack webhook URL.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack channel to send notifications to.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:
@@ -4660,6 +5128,78 @@ class AppSpecJobTerminationArgs:
 
 
 if not MYPY:
+    class AppSpecMaintenanceArgsDict(TypedDict):
+        archive: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+        """
+        enabled: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates whether maintenance mode should be enabled for the app.
+        """
+        offline_page_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        A custom offline page to display when maintenance mode is enabled or the app is archived.
+        """
+elif False:
+    AppSpecMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecMaintenanceArgs:
+    def __init__(__self__, *,
+                 archive: Optional[pulumi.Input[_builtins.bool]] = None,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 offline_page_url: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] archive: Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+        :param pulumi.Input[_builtins.bool] enabled: Indicates whether maintenance mode should be enabled for the app.
+        :param pulumi.Input[_builtins.str] offline_page_url: A custom offline page to display when maintenance mode is enabled or the app is archived.
+        """
+        if archive is not None:
+            pulumi.set(__self__, "archive", archive)
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if offline_page_url is not None:
+            pulumi.set(__self__, "offline_page_url", offline_page_url)
+
+    @_builtins.property
+    @pulumi.getter
+    def archive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+        """
+        return pulumi.get(self, "archive")
+
+    @archive.setter
+    def archive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "archive", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates whether maintenance mode should be enabled for the app.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter(name="offlinePageUrl")
+    def offline_page_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A custom offline page to display when maintenance mode is enabled or the app is archived.
+        """
+        return pulumi.get(self, "offline_page_url")
+
+    @offline_page_url.setter
+    def offline_page_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "offline_page_url", value)
+
+
+if not MYPY:
     class AppSpecServiceArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -5156,6 +5696,10 @@ if not MYPY:
         """
         The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
         """
+        destinations: NotRequired[pulumi.Input['AppSpecServiceAlertDestinationsArgsDict']]
+        """
+        Specification for alert destination.
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -5170,18 +5714,22 @@ class AppSpecServiceAlertArgs:
                  rule: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.float],
                  window: pulumi.Input[_builtins.str],
+                 destinations: Optional[pulumi.Input['AppSpecServiceAlertDestinationsArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
         :param pulumi.Input[_builtins.str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param pulumi.Input[_builtins.float] value: The threshold for the type of the warning.
         :param pulumi.Input[_builtins.str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input['AppSpecServiceAlertDestinationsArgs'] destinations: Specification for alert destination.
         :param pulumi.Input[_builtins.bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "window", window)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
 
@@ -5235,6 +5783,18 @@ class AppSpecServiceAlertArgs:
 
     @_builtins.property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input['AppSpecServiceAlertDestinationsArgs']]:
+        """
+        Specification for alert destination.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input['AppSpecServiceAlertDestinationsArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -5244,6 +5804,108 @@ class AppSpecServiceAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecServiceAlertDestinationsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgsDict']]]]
+        """
+        Determines which slack channels or users receive alerts.
+        """
+elif False:
+    AppSpecServiceAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecServiceAlertDestinationsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slack_webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgs']]] slack_webhooks: Determines which slack channels or users receive alerts.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slack_webhooks is not None:
+            pulumi.set(__self__, "slack_webhooks", slack_webhooks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slackWebhooks")
+    def slack_webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgs']]]]:
+        """
+        Determines which slack channels or users receive alerts.
+        """
+        return pulumi.get(self, "slack_webhooks")
+
+    @slack_webhooks.setter
+    def slack_webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgs']]]]):
+        pulumi.set(self, "slack_webhooks", value)
+
+
+if not MYPY:
+    class AppSpecServiceAlertDestinationsSlackWebhookArgsDict(TypedDict):
+        channel: pulumi.Input[_builtins.str]
+        """
+        The Slack channel to send notifications to.
+        """
+        url: pulumi.Input[_builtins.str]
+        """
+        The Slack webhook URL.
+        """
+elif False:
+    AppSpecServiceAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecServiceAlertDestinationsSlackWebhookArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] channel: The Slack channel to send notifications to.
+        :param pulumi.Input[_builtins.str] url: The Slack webhook URL.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack channel to send notifications to.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:
@@ -7723,6 +8385,37 @@ class AppSpecStaticSiteRouteArgs:
 
 
 if not MYPY:
+    class AppSpecVpcArgsDict(TypedDict):
+        id: pulumi.Input[_builtins.str]
+        """
+        The ID of the VPC.
+        """
+elif False:
+    AppSpecVpcArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecVpcArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] id: The ID of the VPC.
+        """
+        pulumi.set(__self__, "id", id)
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[_builtins.str]:
+        """
+        The ID of the VPC.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "id", value)
+
+
+if not MYPY:
     class AppSpecWorkerArgsDict(TypedDict):
         name: pulumi.Input[_builtins.str]
         """
@@ -8111,6 +8804,10 @@ if not MYPY:
         """
         The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
         """
+        destinations: NotRequired[pulumi.Input['AppSpecWorkerAlertDestinationsArgsDict']]
+        """
+        Specification for alert destination.
+        """
         disabled: NotRequired[pulumi.Input[_builtins.bool]]
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -8125,18 +8822,22 @@ class AppSpecWorkerAlertArgs:
                  rule: pulumi.Input[_builtins.str],
                  value: pulumi.Input[_builtins.float],
                  window: pulumi.Input[_builtins.str],
+                 destinations: Optional[pulumi.Input['AppSpecWorkerAlertDestinationsArgs']] = None,
                  disabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         :param pulumi.Input[_builtins.str] operator: The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
         :param pulumi.Input[_builtins.str] rule: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         :param pulumi.Input[_builtins.float] value: The threshold for the type of the warning.
         :param pulumi.Input[_builtins.str] window: The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+        :param pulumi.Input['AppSpecWorkerAlertDestinationsArgs'] destinations: Specification for alert destination.
         :param pulumi.Input[_builtins.bool] disabled: Determines whether or not the alert is disabled (default: `false`).
         """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "rule", rule)
         pulumi.set(__self__, "value", value)
         pulumi.set(__self__, "window", window)
+        if destinations is not None:
+            pulumi.set(__self__, "destinations", destinations)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
 
@@ -8190,6 +8891,18 @@ class AppSpecWorkerAlertArgs:
 
     @_builtins.property
     @pulumi.getter
+    def destinations(self) -> Optional[pulumi.Input['AppSpecWorkerAlertDestinationsArgs']]:
+        """
+        Specification for alert destination.
+        """
+        return pulumi.get(self, "destinations")
+
+    @destinations.setter
+    def destinations(self, value: Optional[pulumi.Input['AppSpecWorkerAlertDestinationsArgs']]):
+        pulumi.set(self, "destinations", value)
+
+    @_builtins.property
+    @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
         Determines whether or not the alert is disabled (default: `false`).
@@ -8199,6 +8912,108 @@ class AppSpecWorkerAlertArgs:
     @disabled.setter
     def disabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "disabled", value)
+
+
+if not MYPY:
+    class AppSpecWorkerAlertDestinationsArgsDict(TypedDict):
+        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgsDict']]]]
+        """
+        Determines which slack channels or users receive alerts.
+        """
+elif False:
+    AppSpecWorkerAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerAlertDestinationsArgs:
+    def __init__(__self__, *,
+                 emails: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 slack_webhooks: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] emails: Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        :param pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgs']]] slack_webhooks: Determines which slack channels or users receive alerts.
+        """
+        if emails is not None:
+            pulumi.set(__self__, "emails", emails)
+        if slack_webhooks is not None:
+            pulumi.set(__self__, "slack_webhooks", slack_webhooks)
+
+    @_builtins.property
+    @pulumi.getter
+    def emails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+        """
+        return pulumi.get(self, "emails")
+
+    @emails.setter
+    def emails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "emails", value)
+
+    @_builtins.property
+    @pulumi.getter(name="slackWebhooks")
+    def slack_webhooks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgs']]]]:
+        """
+        Determines which slack channels or users receive alerts.
+        """
+        return pulumi.get(self, "slack_webhooks")
+
+    @slack_webhooks.setter
+    def slack_webhooks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgs']]]]):
+        pulumi.set(self, "slack_webhooks", value)
+
+
+if not MYPY:
+    class AppSpecWorkerAlertDestinationsSlackWebhookArgsDict(TypedDict):
+        channel: pulumi.Input[_builtins.str]
+        """
+        The Slack channel to send notifications to.
+        """
+        url: pulumi.Input[_builtins.str]
+        """
+        The Slack webhook URL.
+        """
+elif False:
+    AppSpecWorkerAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecWorkerAlertDestinationsSlackWebhookArgs:
+    def __init__(__self__, *,
+                 channel: pulumi.Input[_builtins.str],
+                 url: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] channel: The Slack channel to send notifications to.
+        :param pulumi.Input[_builtins.str] url: The Slack webhook URL.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "url", url)
+
+    @_builtins.property
+    @pulumi.getter
+    def channel(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack channel to send notifications to.
+        """
+        return pulumi.get(self, "channel")
+
+    @channel.setter
+    def channel(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "channel", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> pulumi.Input[_builtins.str]:
+        """
+        The Slack webhook URL.
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "url", value)
 
 
 if not MYPY:
@@ -9946,6 +10761,113 @@ class DatabaseKafkaTopicConfigArgs:
     @segment_ms.setter
     def segment_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "segment_ms", value)
+
+
+if not MYPY:
+    class DatabaseOnlineMigrationSourceArgsDict(TypedDict):
+        db_name: pulumi.Input[_builtins.str]
+        """
+        The name of the default database
+        """
+        host: pulumi.Input[_builtins.str]
+        """
+        The FQDN pointing to the database cluster's current primary node.
+        """
+        password: pulumi.Input[_builtins.str]
+        """
+        A randomly generated password for the default user.
+        """
+        port: pulumi.Input[_builtins.int]
+        """
+        The port on which the database cluster is listening.
+        """
+        username: pulumi.Input[_builtins.str]
+        """
+        The default user for the database.
+        """
+elif False:
+    DatabaseOnlineMigrationSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseOnlineMigrationSourceArgs:
+    def __init__(__self__, *,
+                 db_name: pulumi.Input[_builtins.str],
+                 host: pulumi.Input[_builtins.str],
+                 password: pulumi.Input[_builtins.str],
+                 port: pulumi.Input[_builtins.int],
+                 username: pulumi.Input[_builtins.str]):
+        """
+        :param pulumi.Input[_builtins.str] db_name: The name of the default database
+        :param pulumi.Input[_builtins.str] host: The FQDN pointing to the database cluster's current primary node.
+        :param pulumi.Input[_builtins.str] password: A randomly generated password for the default user.
+        :param pulumi.Input[_builtins.int] port: The port on which the database cluster is listening.
+        :param pulumi.Input[_builtins.str] username: The default user for the database.
+        """
+        pulumi.set(__self__, "db_name", db_name)
+        pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+
+    @_builtins.property
+    @pulumi.getter(name="dbName")
+    def db_name(self) -> pulumi.Input[_builtins.str]:
+        """
+        The name of the default database
+        """
+        return pulumi.get(self, "db_name")
+
+    @db_name.setter
+    def db_name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "db_name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def host(self) -> pulumi.Input[_builtins.str]:
+        """
+        The FQDN pointing to the database cluster's current primary node.
+        """
+        return pulumi.get(self, "host")
+
+    @host.setter
+    def host(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "host", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[_builtins.str]:
+        """
+        A randomly generated password for the default user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "password", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[_builtins.int]:
+        """
+        The port on which the database cluster is listening.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[_builtins.int]):
+        pulumi.set(self, "port", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[_builtins.str]:
+        """
+        The default user for the database.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "username", value)
 
 
 if not MYPY:
@@ -13151,7 +14073,7 @@ if not MYPY:
         """
         updated_at: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         user_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -13191,7 +14113,7 @@ class GenaiAgentKnowledgeBaseArgs:
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of tags
-        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
         :param pulumi.Input[_builtins.str] user_id: User ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
         """
@@ -13346,7 +14268,7 @@ class GenaiAgentKnowledgeBaseArgs:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         return pulumi.get(self, "updated_at")
 
@@ -13389,7 +14311,7 @@ if not MYPY:
         """
         Created At timestamp for the last indexing job
         """
-        datasource_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Datasource UUIDs for the last indexing job
         """
@@ -13399,7 +14321,7 @@ if not MYPY:
         """
         knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
-        UUID	of the Knowledge Base for the last indexing job
+        UUID  of the Knowledge Base for the last indexing job
         """
         phase: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -13423,7 +14345,7 @@ if not MYPY:
         """
         uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
 elif False:
     GenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
@@ -13433,7 +14355,7 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasource_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  finished_at: Optional[pulumi.Input[_builtins.str]] = None,
                  knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13445,22 +14367,22 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
         """
         :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] datasource_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
         :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
-        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID	of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
         :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
         :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
         :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
         :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
-        :param pulumi.Input[_builtins.str] uuid: UUID	of the last indexing job
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
         """
         if completed_datasources is not None:
             pulumi.set(__self__, "completed_datasources", completed_datasources)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
-        if datasource_uuids is not None:
-            pulumi.set(__self__, "datasource_uuids", datasource_uuids)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
         if finished_at is not None:
             pulumi.set(__self__, "finished_at", finished_at)
         if knowledge_base_uuid is not None:
@@ -13503,16 +14425,16 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
-    @pulumi.getter(name="datasourceUuids")
-    def datasource_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Datasource UUIDs for the last indexing job
         """
-        return pulumi.get(self, "datasource_uuids")
+        return pulumi.get(self, "data_source_uuids")
 
-    @datasource_uuids.setter
-    def datasource_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "datasource_uuids", value)
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
 
     @_builtins.property
     @pulumi.getter(name="finishedAt")
@@ -13530,7 +14452,7 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter(name="knowledgeBaseUuid")
     def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        UUID	of the Knowledge Base for the last indexing job
+        UUID  of the Knowledge Base for the last indexing job
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
@@ -13602,7 +14524,7 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
         return pulumi.get(self, "uuid")
 
@@ -15345,7 +16267,7 @@ if not MYPY:
         """
         updated_at: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         user_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -15385,7 +16307,7 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of tags
-        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
         :param pulumi.Input[_builtins.str] user_id: User ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
         """
@@ -15540,7 +16462,7 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         return pulumi.get(self, "updated_at")
 
@@ -15583,7 +16505,7 @@ if not MYPY:
         """
         Created At timestamp for the last indexing job
         """
-        datasource_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         """
         Datasource UUIDs for the last indexing job
         """
@@ -15593,7 +16515,7 @@ if not MYPY:
         """
         knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
-        UUID	of the Knowledge Base for the last indexing job
+        UUID  of the Knowledge Base for the last indexing job
         """
         phase: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -15617,7 +16539,7 @@ if not MYPY:
         """
         uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
 elif False:
     GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
@@ -15627,7 +16549,7 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 datasource_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  finished_at: Optional[pulumi.Input[_builtins.str]] = None,
                  knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  phase: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15639,22 +16561,22 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         """
         :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] datasource_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
         :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
-        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID	of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
         :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
         :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
         :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
         :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
-        :param pulumi.Input[_builtins.str] uuid: UUID	of the last indexing job
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
         """
         if completed_datasources is not None:
             pulumi.set(__self__, "completed_datasources", completed_datasources)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
-        if datasource_uuids is not None:
-            pulumi.set(__self__, "datasource_uuids", datasource_uuids)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
         if finished_at is not None:
             pulumi.set(__self__, "finished_at", finished_at)
         if knowledge_base_uuid is not None:
@@ -15697,16 +16619,16 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
-    @pulumi.getter(name="datasourceUuids")
-    def datasource_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Datasource UUIDs for the last indexing job
         """
-        return pulumi.get(self, "datasource_uuids")
+        return pulumi.get(self, "data_source_uuids")
 
-    @datasource_uuids.setter
-    def datasource_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
-        pulumi.set(self, "datasource_uuids", value)
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
 
     @_builtins.property
     @pulumi.getter(name="finishedAt")
@@ -15724,7 +16646,7 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter(name="knowledgeBaseUuid")
     def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        UUID	of the Knowledge Base for the last indexing job
+        UUID  of the Knowledge Base for the last indexing job
         """
         return pulumi.get(self, "knowledge_base_uuid")
 
@@ -15796,7 +16718,7 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
         return pulumi.get(self, "uuid")
 
@@ -16188,6 +17110,1448 @@ elif False:
 
 @pulumi.input_type
 class GenaiAgentTemplateModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[pulumi.Input[_builtins.int]] = None,
+                 minor: Optional[pulumi.Input[_builtins.int]] = None,
+                 patch: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] major: Major version of the model
+        :param pulumi.Input[_builtins.int] minor: Minor version of the model
+        :param pulumi.Input[_builtins.int] patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the Spaces bucket
+        """
+        item_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The path to the item in the bucket
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region of the Spaces bucket
+        """
+elif False:
+    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 item_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket_name: The name of the Spaces bucket
+        :param pulumi.Input[_builtins.str] item_path: The path to the item in the bucket
+        :param pulumi.Input[_builtins.str] region: The region of the Spaces bucket
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if item_path is not None:
+            pulumi.set(__self__, "item_path", item_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Spaces bucket
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="itemPath")
+    def item_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The path to the item in the bucket
+        """
+        return pulumi.get(self, "item_path")
+
+    @item_path.setter
+    def item_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "item_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region of the Spaces bucket
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
+        base_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The base URL to crawl
+        """
+        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to embed media content
+        """
+elif False:
+    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
+    def __init__(__self__, *,
+                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 crawling_option: Optional[pulumi.Input[_builtins.str]] = None,
+                 embed_media: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
+        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
+               - UNKNOWN: Default unknown value
+               - SCOPED: Only include the base URL.
+               - PATH: Crawl the base URL and linked pages within the URL path.
+               - DOMAIN: Crawl the base URL and linked pages within the same domain.
+               - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        :param pulumi.Input[_builtins.bool] embed_media: Whether to embed media content
+        """
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if crawling_option is not None:
+            pulumi.set(__self__, "crawling_option", crawling_option)
+        if embed_media is not None:
+            pulumi.set(__self__, "embed_media", embed_media)
+
+    @_builtins.property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The base URL to crawl
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "base_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crawlingOption")
+    def crawling_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        return pulumi.get(self, "crawling_option")
+
+    @crawling_option.setter
+    def crawling_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "crawling_option", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embedMedia")
+    def embed_media(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to embed media content
+        """
+        return pulumi.get(self, "embed_media")
+
+    @embed_media.setter
+    def embed_media(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "embed_media", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDatasourceArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict']]]]
+        """
+        File upload data source configuration
+        """
+        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict']]]]
+        """
+        Last indexing job for the data source
+        """
+        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict']]]]
+        """
+        Spaces data source configuration
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Knowledge Base
+        """
+        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict']]]]
+        """
+        Web crawler data source configuration
+        """
+elif False:
+    GenaiKnowledgeBaseDatasourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDatasourceArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 file_upload_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]] = None,
+                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]] = None,
+                 spaces_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 web_crawler_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]] file_upload_data_sources: File upload data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the data source
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]] spaces_data_sources: Spaces data source configuration
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]] web_crawler_data_sources: Web crawler data source configuration
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if file_upload_data_sources is not None:
+            pulumi.set(__self__, "file_upload_data_sources", file_upload_data_sources)
+        if last_indexing_jobs is not None:
+            pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if spaces_data_sources is not None:
+            pulumi.set(__self__, "spaces_data_sources", spaces_data_sources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if web_crawler_data_sources is not None:
+            pulumi.set(__self__, "web_crawler_data_sources", web_crawler_data_sources)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="fileUploadDataSources")
+    def file_upload_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]]:
+        """
+        File upload data source configuration
+        """
+        return pulumi.get(self, "file_upload_data_sources")
+
+    @file_upload_data_sources.setter
+    def file_upload_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]]):
+        pulumi.set(self, "file_upload_data_sources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastIndexingJobs")
+    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]]:
+        """
+        Last indexing job for the data source
+        """
+        return pulumi.get(self, "last_indexing_jobs")
+
+    @last_indexing_jobs.setter
+    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]]):
+        pulumi.set(self, "last_indexing_jobs", value)
+
+    @_builtins.property
+    @pulumi.getter(name="spacesDataSources")
+    def spaces_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]]:
+        """
+        Spaces data source configuration
+        """
+        return pulumi.get(self, "spaces_data_sources")
+
+    @spaces_data_sources.setter
+    def spaces_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]]):
+        pulumi.set(self, "spaces_data_sources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="webCrawlerDataSources")
+    def web_crawler_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]]:
+        """
+        Web crawler data source configuration
+        """
+        return pulumi.get(self, "web_crawler_data_sources")
+
+    @web_crawler_data_sources.setter
+    def web_crawler_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]]):
+        pulumi.set(self, "web_crawler_data_sources", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict(TypedDict):
+        original_file_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The original name of the uploaded file
+        """
+        size_in_bytes: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The size of the file in bytes
+        """
+        stored_object_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The stored object key for the file
+        """
+elif False:
+    GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs:
+    def __init__(__self__, *,
+                 original_file_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 size_in_bytes: Optional[pulumi.Input[_builtins.str]] = None,
+                 stored_object_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] original_file_name: The original name of the uploaded file
+        :param pulumi.Input[_builtins.str] size_in_bytes: The size of the file in bytes
+        :param pulumi.Input[_builtins.str] stored_object_key: The stored object key for the file
+        """
+        if original_file_name is not None:
+            pulumi.set(__self__, "original_file_name", original_file_name)
+        if size_in_bytes is not None:
+            pulumi.set(__self__, "size_in_bytes", size_in_bytes)
+        if stored_object_key is not None:
+            pulumi.set(__self__, "stored_object_key", stored_object_key)
+
+    @_builtins.property
+    @pulumi.getter(name="originalFileName")
+    def original_file_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The original name of the uploaded file
+        """
+        return pulumi.get(self, "original_file_name")
+
+    @original_file_name.setter
+    def original_file_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "original_file_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeInBytes")
+    def size_in_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The size of the file in bytes
+        """
+        return pulumi.get(self, "size_in_bytes")
+
+    @size_in_bytes.setter
+    def size_in_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "size_in_bytes", value)
+
+    @_builtins.property
+    @pulumi.getter(name="storedObjectKey")
+    def stored_object_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The stored object key for the file
+        """
+        return pulumi.get(self, "stored_object_key")
+
+    @stored_object_key.setter
+    def stored_object_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "stored_object_key", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict(TypedDict):
+        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the last indexing job
+        """
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        finished_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Phase of the last indexing job
+        """
+        started_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job started
+        """
+        tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Total number of datasources in the last indexing job
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
+                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
+        :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
+        :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
+        :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
+        """
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if finished_at is not None:
+            pulumi.set(__self__, "finished_at", finished_at)
+        if knowledge_base_uuid is not None:
+            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if started_at is not None:
+            pulumi.set(__self__, "started_at", started_at)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the Spaces bucket
+        """
+        item_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The path to the item in the bucket
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region of the Spaces bucket
+        """
+elif False:
+    GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 item_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket_name: The name of the Spaces bucket
+        :param pulumi.Input[_builtins.str] item_path: The path to the item in the bucket
+        :param pulumi.Input[_builtins.str] region: The region of the Spaces bucket
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if item_path is not None:
+            pulumi.set(__self__, "item_path", item_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Spaces bucket
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="itemPath")
+    def item_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The path to the item in the bucket
+        """
+        return pulumi.get(self, "item_path")
+
+    @item_path.setter
+    def item_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "item_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region of the Spaces bucket
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict(TypedDict):
+        base_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The base URL to crawl
+        """
+        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to embed media content
+        """
+elif False:
+    GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs:
+    def __init__(__self__, *,
+                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 crawling_option: Optional[pulumi.Input[_builtins.str]] = None,
+                 embed_media: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
+        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
+               - UNKNOWN: Default unknown value
+               - SCOPED: Only include the base URL.
+               - PATH: Crawl the base URL and linked pages within the URL path.
+               - DOMAIN: Crawl the base URL and linked pages within the same domain.
+               - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        :param pulumi.Input[_builtins.bool] embed_media: Whether to embed media content
+        """
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if crawling_option is not None:
+            pulumi.set(__self__, "crawling_option", crawling_option)
+        if embed_media is not None:
+            pulumi.set(__self__, "embed_media", embed_media)
+
+    @_builtins.property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The base URL to crawl
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "base_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crawlingOption")
+    def crawling_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        return pulumi.get(self, "crawling_option")
+
+    @crawling_option.setter
+    def crawling_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "crawling_option", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embedMedia")
+    def embed_media(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to embed media content
+        """
+        return pulumi.get(self, "embed_media")
+
+    @embed_media.setter
+    def embed_media(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "embed_media", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the last indexing job
+        """
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        finished_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Phase of the last indexing job
+        """
+        started_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job started
+        """
+        tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Total number of datasources in the last indexing job
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
+                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
+        :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
+        :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
+        :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
+        """
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if finished_at is not None:
+            pulumi.set(__self__, "finished_at", finished_at)
+        if knowledge_base_uuid is not None:
+            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if started_at is not None:
+            pulumi.set(__self__, "started_at", started_at)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]
+        """
+        Agreement information for the model
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        inference_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provider of the Model
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]
+        """
+        URL of the Model
+        """
+elif False:
+    GenaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelArgs:
+    def __init__(__self__, *,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_foundational: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
+        :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
+        :param pulumi.Input[_builtins.bool] is_foundational: Indicates if the Model Base is foundational
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] parent_uuid: Parent UUID of the Model
+        :param pulumi.Input[_builtins.str] provider: Provider of the Model
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
+        :param pulumi.Input[_builtins.str] url: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]] versions: URL of the Model
+        """
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GenaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the agreement
+        :param pulumi.Input[_builtins.str] name: Name of the agreement
+        :param pulumi.Input[_builtins.str] url: URL of the agreement
+        :param pulumi.Input[_builtins.str] uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
+        major: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Patch version of the model
+        """
+elif False:
+    GenaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[pulumi.Input[_builtins.int]] = None,
                  minor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -20734,33 +23098,37 @@ if not MYPY:
         """
         Created At timestamp for the Knowledge Base
         """
-        database_id: _builtins.str
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        uuid: _builtins.str
+        """
+        UUID of the Knowledge Base
+        """
+        database_id: NotRequired[_builtins.str]
         """
         Database ID of the Knowledge Base
         """
-        embedding_model_uuid: _builtins.str
+        embedding_model_uuid: NotRequired[_builtins.str]
         """
         Embedding model UUID for the Knowledge Base
         """
-        is_public: _builtins.bool
+        is_public: NotRequired[_builtins.bool]
         """
         Indicates if the Knowledge Base is public
-        """
-        name: _builtins.str
-        """
-        Name of the Knowledge Base
-        """
-        project_id: _builtins.str
-        """
-        Project ID of the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Knowledge Base
         """
         last_indexing_jobs: NotRequired[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
         """
         Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[_builtins.str]
+        """
+        Project ID of the Knowledge Base
         """
         region: NotRequired[_builtins.str]
         """
@@ -20774,10 +23142,6 @@ if not MYPY:
         """
         User ID of the Knowledge Base
         """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the Knowledge Base
-        """
 elif False:
     GetGenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -20786,50 +23150,54 @@ class GetGenaiAgentKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: _builtins.str,
                  created_at: _builtins.str,
-                 database_id: _builtins.str,
-                 embedding_model_uuid: _builtins.str,
-                 is_public: _builtins.bool,
-                 name: _builtins.str,
-                 project_id: _builtins.str,
                  updated_at: _builtins.str,
+                 uuid: _builtins.str,
+                 database_id: Optional[_builtins.str] = None,
+                 embedding_model_uuid: Optional[_builtins.str] = None,
+                 is_public: Optional[_builtins.bool] = None,
                  last_indexing_jobs: Optional[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']] = None,
+                 name: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
-                 user_id: Optional[_builtins.str] = None,
-                 uuid: Optional[_builtins.str] = None):
+                 user_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
         :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param _builtins.str uuid: UUID of the Knowledge Base
         :param _builtins.str database_id: Database ID of the Knowledge Base
         :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param _builtins.bool is_public: Indicates if the Knowledge Base is public
+        :param Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
         :param _builtins.str name: Name of the Knowledge Base
         :param _builtins.str project_id: Project ID of the Knowledge Base
-        :param _builtins.str updated_at: Updated At timestamp for the Knowledge Base
-        :param Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
         :param _builtins.str region: Region of the Knowledge Base
         :param Sequence[_builtins.str] tags: List of tags
         :param _builtins.str user_id: User ID of the Knowledge Base
-        :param _builtins.str uuid: UUID of the Knowledge Base
         """
         pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
         pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
-        pulumi.set(__self__, "is_public", is_public)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
         if last_indexing_jobs is not None:
             pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @_builtins.property
     @pulumi.getter(name="addedToAgentAt")
@@ -20856,76 +23224,64 @@ class GetGenaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
-    @pulumi.getter(name="databaseId")
-    def database_id(self) -> _builtins.str:
-        """
-        Database ID of the Knowledge Base
-        """
-        return pulumi.get(self, "database_id")
-
-    @database_id.setter
-    def database_id(self, value: _builtins.str):
-        pulumi.set(self, "database_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="embeddingModelUuid")
-    def embedding_model_uuid(self) -> _builtins.str:
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        return pulumi.get(self, "embedding_model_uuid")
-
-    @embedding_model_uuid.setter
-    def embedding_model_uuid(self, value: _builtins.str):
-        pulumi.set(self, "embedding_model_uuid", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isPublic")
-    def is_public(self) -> _builtins.bool:
-        """
-        Indicates if the Knowledge Base is public
-        """
-        return pulumi.get(self, "is_public")
-
-    @is_public.setter
-    def is_public(self, value: _builtins.bool):
-        pulumi.set(self, "is_public", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Name of the Knowledge Base
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> _builtins.str:
-        """
-        Project ID of the Knowledge Base
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: _builtins.str):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
     def updated_at(self, value: _builtins.str):
         pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: _builtins.str):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[_builtins.str]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[_builtins.str]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
@@ -20938,6 +23294,30 @@ class GetGenaiAgentKnowledgeBaseArgs:
     @last_indexing_jobs.setter
     def last_indexing_jobs(self, value: Optional[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']]):
         pulumi.set(self, "last_indexing_jobs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -20975,18 +23355,6 @@ class GetGenaiAgentKnowledgeBaseArgs:
     def user_id(self, value: Optional[_builtins.str]):
         pulumi.set(self, "user_id", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def uuid(self) -> Optional[_builtins.str]:
-        """
-        UUID of the Knowledge Base
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "uuid", value)
-
 
 if not MYPY:
     class GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
@@ -20997,6 +23365,10 @@ if not MYPY:
         finished_at: _builtins.str
         """
         Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
         """
         started_at: _builtins.str
         """
@@ -21010,13 +23382,9 @@ if not MYPY:
         """
         Number of completed datasources in the last indexing job
         """
-        datasource_uuids: NotRequired[Sequence[_builtins.str]]
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
         """
         Datasource UUIDs for the last indexing job
-        """
-        knowledge_base_uuid: NotRequired[_builtins.str]
-        """
-        UUID	of the Knowledge Base for the last indexing job
         """
         phase: NotRequired[_builtins.str]
         """
@@ -21032,7 +23400,7 @@ if not MYPY:
         """
         uuid: NotRequired[_builtins.str]
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
 elif False:
     GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
@@ -21042,11 +23410,11 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
                  started_at: _builtins.str,
                  updated_at: _builtins.str,
                  completed_datasources: Optional[_builtins.int] = None,
-                 datasource_uuids: Optional[Sequence[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[_builtins.str] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
                  phase: Optional[_builtins.str] = None,
                  tokens: Optional[_builtins.int] = None,
                  total_datasources: Optional[_builtins.int] = None,
@@ -21054,26 +23422,25 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
         """
         :param _builtins.str created_at: Created At timestamp for the last indexing job
         :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
         :param _builtins.str started_at: Timestamp when the last indexing job started
         :param _builtins.str updated_at: Timestamp when the last indexing job updated
         :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
-        :param Sequence[_builtins.str] datasource_uuids: Datasource UUIDs for the last indexing job
-        :param _builtins.str knowledge_base_uuid: UUID	of the Knowledge Base for the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
         :param _builtins.str phase: Phase of the last indexing job
         :param _builtins.int tokens: Number of tokens processed in the last indexing job
         :param _builtins.int total_datasources: Total number of datasources in the last indexing job
-        :param _builtins.str uuid: UUID	of the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
         pulumi.set(__self__, "started_at", started_at)
         pulumi.set(__self__, "updated_at", updated_at)
         if completed_datasources is not None:
             pulumi.set(__self__, "completed_datasources", completed_datasources)
-        if datasource_uuids is not None:
-            pulumi.set(__self__, "datasource_uuids", datasource_uuids)
-        if knowledge_base_uuid is not None:
-            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
         if phase is not None:
             pulumi.set(__self__, "phase", phase)
         if tokens is not None:
@@ -21106,6 +23473,18 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
     @finished_at.setter
     def finished_at(self, value: _builtins.str):
         pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="startedAt")
@@ -21144,28 +23523,16 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "completed_datasources", value)
 
     @_builtins.property
-    @pulumi.getter(name="datasourceUuids")
-    def datasource_uuids(self) -> Optional[Sequence[_builtins.str]]:
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
         """
         Datasource UUIDs for the last indexing job
         """
-        return pulumi.get(self, "datasource_uuids")
+        return pulumi.get(self, "data_source_uuids")
 
-    @datasource_uuids.setter
-    def datasource_uuids(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "datasource_uuids", value)
-
-    @_builtins.property
-    @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[_builtins.str]:
-        """
-        UUID	of the Knowledge Base for the last indexing job
-        """
-        return pulumi.get(self, "knowledge_base_uuid")
-
-    @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "knowledge_base_uuid", value)
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
 
     @_builtins.property
     @pulumi.getter
@@ -21207,7 +23574,7 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter
     def uuid(self) -> Optional[_builtins.str]:
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
         return pulumi.get(self, "uuid")
 
@@ -21942,33 +24309,37 @@ if not MYPY:
         """
         Created At timestamp for the Knowledge Base
         """
-        database_id: _builtins.str
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        uuid: _builtins.str
+        """
+        UUID of the Knowledge Base
+        """
+        database_id: NotRequired[_builtins.str]
         """
         Database ID of the Knowledge Base
         """
-        embedding_model_uuid: _builtins.str
+        embedding_model_uuid: NotRequired[_builtins.str]
         """
         Embedding model UUID for the Knowledge Base
         """
-        is_public: _builtins.bool
+        is_public: NotRequired[_builtins.bool]
         """
         Indicates if the Knowledge Base is public
-        """
-        name: _builtins.str
-        """
-        Name of the Knowledge Base
-        """
-        project_id: _builtins.str
-        """
-        Project ID of the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Knowledge Base
         """
         last_indexing_jobs: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
         """
         Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[_builtins.str]
+        """
+        Project ID of the Knowledge Base
         """
         region: NotRequired[_builtins.str]
         """
@@ -21982,10 +24353,6 @@ if not MYPY:
         """
         User ID of the Knowledge Base
         """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the Knowledge Base
-        """
 elif False:
     GetGenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -21994,50 +24361,54 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: _builtins.str,
                  created_at: _builtins.str,
-                 database_id: _builtins.str,
-                 embedding_model_uuid: _builtins.str,
-                 is_public: _builtins.bool,
-                 name: _builtins.str,
-                 project_id: _builtins.str,
                  updated_at: _builtins.str,
+                 uuid: _builtins.str,
+                 database_id: Optional[_builtins.str] = None,
+                 embedding_model_uuid: Optional[_builtins.str] = None,
+                 is_public: Optional[_builtins.bool] = None,
                  last_indexing_jobs: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']] = None,
+                 name: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
-                 user_id: Optional[_builtins.str] = None,
-                 uuid: Optional[_builtins.str] = None):
+                 user_id: Optional[_builtins.str] = None):
         """
         :param _builtins.str added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
         :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param _builtins.str uuid: UUID of the Knowledge Base
         :param _builtins.str database_id: Database ID of the Knowledge Base
         :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param _builtins.bool is_public: Indicates if the Knowledge Base is public
+        :param Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
         :param _builtins.str name: Name of the Knowledge Base
         :param _builtins.str project_id: Project ID of the Knowledge Base
-        :param _builtins.str updated_at: Updated At timestamp for the Knowledge Base
-        :param Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
         :param _builtins.str region: Region of the Knowledge Base
         :param Sequence[_builtins.str] tags: List of tags
         :param _builtins.str user_id: User ID of the Knowledge Base
-        :param _builtins.str uuid: UUID of the Knowledge Base
         """
         pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
         pulumi.set(__self__, "created_at", created_at)
-        pulumi.set(__self__, "database_id", database_id)
-        pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
-        pulumi.set(__self__, "is_public", is_public)
-        pulumi.set(__self__, "name", name)
-        pulumi.set(__self__, "project_id", project_id)
         pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
         if last_indexing_jobs is not None:
             pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
-        if uuid is not None:
-            pulumi.set(__self__, "uuid", uuid)
 
     @_builtins.property
     @pulumi.getter(name="addedToAgentAt")
@@ -22064,76 +24435,64 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
-    @pulumi.getter(name="databaseId")
-    def database_id(self) -> _builtins.str:
-        """
-        Database ID of the Knowledge Base
-        """
-        return pulumi.get(self, "database_id")
-
-    @database_id.setter
-    def database_id(self, value: _builtins.str):
-        pulumi.set(self, "database_id", value)
-
-    @_builtins.property
-    @pulumi.getter(name="embeddingModelUuid")
-    def embedding_model_uuid(self) -> _builtins.str:
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        return pulumi.get(self, "embedding_model_uuid")
-
-    @embedding_model_uuid.setter
-    def embedding_model_uuid(self, value: _builtins.str):
-        pulumi.set(self, "embedding_model_uuid", value)
-
-    @_builtins.property
-    @pulumi.getter(name="isPublic")
-    def is_public(self) -> _builtins.bool:
-        """
-        Indicates if the Knowledge Base is public
-        """
-        return pulumi.get(self, "is_public")
-
-    @is_public.setter
-    def is_public(self, value: _builtins.bool):
-        pulumi.set(self, "is_public", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def name(self) -> _builtins.str:
-        """
-        Name of the Knowledge Base
-        """
-        return pulumi.get(self, "name")
-
-    @name.setter
-    def name(self, value: _builtins.str):
-        pulumi.set(self, "name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> _builtins.str:
-        """
-        Project ID of the Knowledge Base
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: _builtins.str):
-        pulumi.set(self, "project_id", value)
-
-    @_builtins.property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> _builtins.str:
         """
-        Updated At timestamp for the Knowledge Base
+        Timestamp when the Knowledge Base was updated
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
     def updated_at(self, value: _builtins.str):
         pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: _builtins.str):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[_builtins.str]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[_builtins.str]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_public", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
@@ -22146,6 +24505,30 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
     @last_indexing_jobs.setter
     def last_indexing_jobs(self, value: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]):
         pulumi.set(self, "last_indexing_jobs", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter
@@ -22183,18 +24566,6 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
     def user_id(self, value: Optional[_builtins.str]):
         pulumi.set(self, "user_id", value)
 
-    @_builtins.property
-    @pulumi.getter
-    def uuid(self) -> Optional[_builtins.str]:
-        """
-        UUID of the Knowledge Base
-        """
-        return pulumi.get(self, "uuid")
-
-    @uuid.setter
-    def uuid(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "uuid", value)
-
 
 if not MYPY:
     class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
@@ -22205,6 +24576,10 @@ if not MYPY:
         finished_at: _builtins.str
         """
         Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
         """
         started_at: _builtins.str
         """
@@ -22218,13 +24593,9 @@ if not MYPY:
         """
         Number of completed datasources in the last indexing job
         """
-        datasource_uuids: NotRequired[Sequence[_builtins.str]]
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
         """
         Datasource UUIDs for the last indexing job
-        """
-        knowledge_base_uuid: NotRequired[_builtins.str]
-        """
-        UUID	of the Knowledge Base for the last indexing job
         """
         phase: NotRequired[_builtins.str]
         """
@@ -22240,7 +24611,7 @@ if not MYPY:
         """
         uuid: NotRequired[_builtins.str]
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
 elif False:
     GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
@@ -22250,11 +24621,11 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
                  started_at: _builtins.str,
                  updated_at: _builtins.str,
                  completed_datasources: Optional[_builtins.int] = None,
-                 datasource_uuids: Optional[Sequence[_builtins.str]] = None,
-                 knowledge_base_uuid: Optional[_builtins.str] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
                  phase: Optional[_builtins.str] = None,
                  tokens: Optional[_builtins.int] = None,
                  total_datasources: Optional[_builtins.int] = None,
@@ -22262,26 +24633,25 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         """
         :param _builtins.str created_at: Created At timestamp for the last indexing job
         :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
         :param _builtins.str started_at: Timestamp when the last indexing job started
         :param _builtins.str updated_at: Timestamp when the last indexing job updated
         :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
-        :param Sequence[_builtins.str] datasource_uuids: Datasource UUIDs for the last indexing job
-        :param _builtins.str knowledge_base_uuid: UUID	of the Knowledge Base for the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
         :param _builtins.str phase: Phase of the last indexing job
         :param _builtins.int tokens: Number of tokens processed in the last indexing job
         :param _builtins.int total_datasources: Total number of datasources in the last indexing job
-        :param _builtins.str uuid: UUID	of the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
         pulumi.set(__self__, "started_at", started_at)
         pulumi.set(__self__, "updated_at", updated_at)
         if completed_datasources is not None:
             pulumi.set(__self__, "completed_datasources", completed_datasources)
-        if datasource_uuids is not None:
-            pulumi.set(__self__, "datasource_uuids", datasource_uuids)
-        if knowledge_base_uuid is not None:
-            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
         if phase is not None:
             pulumi.set(__self__, "phase", phase)
         if tokens is not None:
@@ -22314,6 +24684,18 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     @finished_at.setter
     def finished_at(self, value: _builtins.str):
         pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="startedAt")
@@ -22352,28 +24734,16 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "completed_datasources", value)
 
     @_builtins.property
-    @pulumi.getter(name="datasourceUuids")
-    def datasource_uuids(self) -> Optional[Sequence[_builtins.str]]:
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
         """
         Datasource UUIDs for the last indexing job
         """
-        return pulumi.get(self, "datasource_uuids")
+        return pulumi.get(self, "data_source_uuids")
 
-    @datasource_uuids.setter
-    def datasource_uuids(self, value: Optional[Sequence[_builtins.str]]):
-        pulumi.set(self, "datasource_uuids", value)
-
-    @_builtins.property
-    @pulumi.getter(name="knowledgeBaseUuid")
-    def knowledge_base_uuid(self) -> Optional[_builtins.str]:
-        """
-        UUID	of the Knowledge Base for the last indexing job
-        """
-        return pulumi.get(self, "knowledge_base_uuid")
-
-    @knowledge_base_uuid.setter
-    def knowledge_base_uuid(self, value: Optional[_builtins.str]):
-        pulumi.set(self, "knowledge_base_uuid", value)
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
 
     @_builtins.property
     @pulumi.getter
@@ -22415,7 +24785,7 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     @pulumi.getter
     def uuid(self) -> Optional[_builtins.str]:
         """
-        UUID	of the last indexing job
+        UUID  of the last indexing job
         """
         return pulumi.get(self, "uuid")
 
@@ -22859,6 +25229,101 @@ class GetGenaiAgentTemplateModelVersionArgs:
 
 
 if not MYPY:
+    class GetGenaiAgentVersionsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentVersionsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiAgentVersionsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentVersionsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
     class GetGenaiAgentsFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
@@ -22927,6 +25392,423 @@ elif False:
 
 @pulumi.input_type
 class GetGenaiAgentsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the last indexing job
+        """
+        finished_at: _builtins.str
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        started_at: _builtins.str
+        """
+        Timestamp when the last indexing job started
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the last indexing job updated
+        """
+        completed_datasources: NotRequired[_builtins.int]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        phase: NotRequired[_builtins.str]
+        """
+        Phase of the last indexing job
+        """
+        tokens: NotRequired[_builtins.int]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[_builtins.int]
+        """
+        Total number of datasources in the last indexing job
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GetGenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
+                 started_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 completed_datasources: Optional[_builtins.int] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
+                 phase: Optional[_builtins.str] = None,
+                 tokens: Optional[_builtins.int] = None,
+                 total_datasources: Optional[_builtins.int] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the last indexing job
+        :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param _builtins.str started_at: Timestamp when the last indexing job started
+        :param _builtins.str updated_at: Timestamp when the last indexing job updated
+        :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param _builtins.str phase: Phase of the last indexing job
+        :param _builtins.int tokens: Number of tokens processed in the last indexing job
+        :param _builtins.int total_datasources: Total number of datasources in the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: _builtins.str):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: _builtins.str):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[_builtins.int]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[_builtins.str]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[_builtins.int]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[_builtins.int]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBasesFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBasesFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBasesSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBasesSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiOpenaiApiKeysFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiOpenaiApiKeysSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiOpenaiApiKeysSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):

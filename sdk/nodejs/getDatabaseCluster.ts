@@ -65,6 +65,10 @@ export interface GetDatabaseClusterResult {
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
     readonly maintenanceWindows: outputs.GetDatabaseClusterMaintenanceWindow[];
+    /**
+     * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     */
+    readonly metricsEndpoints: string[];
     readonly name: string;
     /**
      * Number of nodes that will be included in the cluster.

@@ -75,6 +75,11 @@ export type DatabaseMysqlConfig = import("./databaseMysqlConfig").DatabaseMysqlC
 export const DatabaseMysqlConfig: typeof import("./databaseMysqlConfig").DatabaseMysqlConfig = null as any;
 utilities.lazyLoad(exports, ["DatabaseMysqlConfig"], () => require("./databaseMysqlConfig"));
 
+export { DatabaseOnlineMigrationArgs, DatabaseOnlineMigrationState } from "./databaseOnlineMigration";
+export type DatabaseOnlineMigration = import("./databaseOnlineMigration").DatabaseOnlineMigration;
+export const DatabaseOnlineMigration: typeof import("./databaseOnlineMigration").DatabaseOnlineMigration = null as any;
+utilities.lazyLoad(exports, ["DatabaseOnlineMigration"], () => require("./databaseOnlineMigration"));
+
 export { DatabaseOpensearchConfigArgs, DatabaseOpensearchConfigState } from "./databaseOpensearchConfig";
 export type DatabaseOpensearchConfig = import("./databaseOpensearchConfig").DatabaseOpensearchConfig;
 export const DatabaseOpensearchConfig: typeof import("./databaseOpensearchConfig").DatabaseOpensearchConfig = null as any;
@@ -99,6 +104,11 @@ export { DatabaseUserArgs, DatabaseUserState } from "./databaseUser";
 export type DatabaseUser = import("./databaseUser").DatabaseUser;
 export const DatabaseUser: typeof import("./databaseUser").DatabaseUser = null as any;
 utilities.lazyLoad(exports, ["DatabaseUser"], () => require("./databaseUser"));
+
+export { DatabaseValkeyConfigArgs, DatabaseValkeyConfigState } from "./databaseValkeyConfig";
+export type DatabaseValkeyConfig = import("./databaseValkeyConfig").DatabaseValkeyConfig;
+export const DatabaseValkeyConfig: typeof import("./databaseValkeyConfig").DatabaseValkeyConfig = null as any;
+utilities.lazyLoad(exports, ["DatabaseValkeyConfig"], () => require("./databaseValkeyConfig"));
 
 export { DnsRecordArgs, DnsRecordState } from "./dnsRecord";
 export type DnsRecord = import("./dnsRecord").DnsRecord;
@@ -145,6 +155,36 @@ export type GenaiAgent = import("./genaiAgent").GenaiAgent;
 export const GenaiAgent: typeof import("./genaiAgent").GenaiAgent = null as any;
 utilities.lazyLoad(exports, ["GenaiAgent"], () => require("./genaiAgent"));
 
+export { GenaiAgentKnowledgeBaseAttachmentArgs, GenaiAgentKnowledgeBaseAttachmentState } from "./genaiAgentKnowledgeBaseAttachment";
+export type GenaiAgentKnowledgeBaseAttachment = import("./genaiAgentKnowledgeBaseAttachment").GenaiAgentKnowledgeBaseAttachment;
+export const GenaiAgentKnowledgeBaseAttachment: typeof import("./genaiAgentKnowledgeBaseAttachment").GenaiAgentKnowledgeBaseAttachment = null as any;
+utilities.lazyLoad(exports, ["GenaiAgentKnowledgeBaseAttachment"], () => require("./genaiAgentKnowledgeBaseAttachment"));
+
+export { GenaiAgentRouteArgs, GenaiAgentRouteState } from "./genaiAgentRoute";
+export type GenaiAgentRoute = import("./genaiAgentRoute").GenaiAgentRoute;
+export const GenaiAgentRoute: typeof import("./genaiAgentRoute").GenaiAgentRoute = null as any;
+utilities.lazyLoad(exports, ["GenaiAgentRoute"], () => require("./genaiAgentRoute"));
+
+export { GenaiFunctionArgs, GenaiFunctionState } from "./genaiFunction";
+export type GenaiFunction = import("./genaiFunction").GenaiFunction;
+export const GenaiFunction: typeof import("./genaiFunction").GenaiFunction = null as any;
+utilities.lazyLoad(exports, ["GenaiFunction"], () => require("./genaiFunction"));
+
+export { GenaiKnowledgeBaseArgs, GenaiKnowledgeBaseState } from "./genaiKnowledgeBase";
+export type GenaiKnowledgeBase = import("./genaiKnowledgeBase").GenaiKnowledgeBase;
+export const GenaiKnowledgeBase: typeof import("./genaiKnowledgeBase").GenaiKnowledgeBase = null as any;
+utilities.lazyLoad(exports, ["GenaiKnowledgeBase"], () => require("./genaiKnowledgeBase"));
+
+export { GenaiKnowledgeBaseDataSourceArgs, GenaiKnowledgeBaseDataSourceState } from "./genaiKnowledgeBaseDataSource";
+export type GenaiKnowledgeBaseDataSource = import("./genaiKnowledgeBaseDataSource").GenaiKnowledgeBaseDataSource;
+export const GenaiKnowledgeBaseDataSource: typeof import("./genaiKnowledgeBaseDataSource").GenaiKnowledgeBaseDataSource = null as any;
+utilities.lazyLoad(exports, ["GenaiKnowledgeBaseDataSource"], () => require("./genaiKnowledgeBaseDataSource"));
+
+export { GenaiOpenaiApiKeyArgs, GenaiOpenaiApiKeyState } from "./genaiOpenaiApiKey";
+export type GenaiOpenaiApiKey = import("./genaiOpenaiApiKey").GenaiOpenaiApiKey;
+export const GenaiOpenaiApiKey: typeof import("./genaiOpenaiApiKey").GenaiOpenaiApiKey = null as any;
+utilities.lazyLoad(exports, ["GenaiOpenaiApiKey"], () => require("./genaiOpenaiApiKey"));
+
 export { GetAccountResult } from "./getAccount";
 export const getAccount: typeof import("./getAccount").getAccount = null as any;
 export const getAccountOutput: typeof import("./getAccount").getAccountOutput = null as any;
@@ -179,6 +219,11 @@ export { GetDatabaseConnectionPoolArgs, GetDatabaseConnectionPoolResult, GetData
 export const getDatabaseConnectionPool: typeof import("./getDatabaseConnectionPool").getDatabaseConnectionPool = null as any;
 export const getDatabaseConnectionPoolOutput: typeof import("./getDatabaseConnectionPool").getDatabaseConnectionPoolOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseConnectionPool","getDatabaseConnectionPoolOutput"], () => require("./getDatabaseConnectionPool"));
+
+export { GetDatabaseMetricsCredentialsResult } from "./getDatabaseMetricsCredentials";
+export const getDatabaseMetricsCredentials: typeof import("./getDatabaseMetricsCredentials").getDatabaseMetricsCredentials = null as any;
+export const getDatabaseMetricsCredentialsOutput: typeof import("./getDatabaseMetricsCredentials").getDatabaseMetricsCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getDatabaseMetricsCredentials","getDatabaseMetricsCredentialsOutput"], () => require("./getDatabaseMetricsCredentials"));
 
 export { GetDatabaseReplicaArgs, GetDatabaseReplicaResult, GetDatabaseReplicaOutputArgs } from "./getDatabaseReplica";
 export const getDatabaseReplica: typeof import("./getDatabaseReplica").getDatabaseReplica = null as any;
@@ -235,10 +280,45 @@ export const getGenaiAgent: typeof import("./getGenaiAgent").getGenaiAgent = nul
 export const getGenaiAgentOutput: typeof import("./getGenaiAgent").getGenaiAgentOutput = null as any;
 utilities.lazyLoad(exports, ["getGenaiAgent","getGenaiAgentOutput"], () => require("./getGenaiAgent"));
 
+export { GetGenaiAgentVersionsArgs, GetGenaiAgentVersionsResult, GetGenaiAgentVersionsOutputArgs } from "./getGenaiAgentVersions";
+export const getGenaiAgentVersions: typeof import("./getGenaiAgentVersions").getGenaiAgentVersions = null as any;
+export const getGenaiAgentVersionsOutput: typeof import("./getGenaiAgentVersions").getGenaiAgentVersionsOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiAgentVersions","getGenaiAgentVersionsOutput"], () => require("./getGenaiAgentVersions"));
+
 export { GetGenaiAgentsArgs, GetGenaiAgentsResult, GetGenaiAgentsOutputArgs } from "./getGenaiAgents";
 export const getGenaiAgents: typeof import("./getGenaiAgents").getGenaiAgents = null as any;
 export const getGenaiAgentsOutput: typeof import("./getGenaiAgents").getGenaiAgentsOutput = null as any;
 utilities.lazyLoad(exports, ["getGenaiAgents","getGenaiAgentsOutput"], () => require("./getGenaiAgents"));
+
+export { GetGenaiAgentsByOpenaiApiKeyArgs, GetGenaiAgentsByOpenaiApiKeyResult, GetGenaiAgentsByOpenaiApiKeyOutputArgs } from "./getGenaiAgentsByOpenaiApiKey";
+export const getGenaiAgentsByOpenaiApiKey: typeof import("./getGenaiAgentsByOpenaiApiKey").getGenaiAgentsByOpenaiApiKey = null as any;
+export const getGenaiAgentsByOpenaiApiKeyOutput: typeof import("./getGenaiAgentsByOpenaiApiKey").getGenaiAgentsByOpenaiApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiAgentsByOpenaiApiKey","getGenaiAgentsByOpenaiApiKeyOutput"], () => require("./getGenaiAgentsByOpenaiApiKey"));
+
+export { GetGenaiKnowledgeBaseArgs, GetGenaiKnowledgeBaseResult, GetGenaiKnowledgeBaseOutputArgs } from "./getGenaiKnowledgeBase";
+export const getGenaiKnowledgeBase: typeof import("./getGenaiKnowledgeBase").getGenaiKnowledgeBase = null as any;
+export const getGenaiKnowledgeBaseOutput: typeof import("./getGenaiKnowledgeBase").getGenaiKnowledgeBaseOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiKnowledgeBase","getGenaiKnowledgeBaseOutput"], () => require("./getGenaiKnowledgeBase"));
+
+export { GetGenaiKnowledgeBaseDataSourcesArgs, GetGenaiKnowledgeBaseDataSourcesResult, GetGenaiKnowledgeBaseDataSourcesOutputArgs } from "./getGenaiKnowledgeBaseDataSources";
+export const getGenaiKnowledgeBaseDataSources: typeof import("./getGenaiKnowledgeBaseDataSources").getGenaiKnowledgeBaseDataSources = null as any;
+export const getGenaiKnowledgeBaseDataSourcesOutput: typeof import("./getGenaiKnowledgeBaseDataSources").getGenaiKnowledgeBaseDataSourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiKnowledgeBaseDataSources","getGenaiKnowledgeBaseDataSourcesOutput"], () => require("./getGenaiKnowledgeBaseDataSources"));
+
+export { GetGenaiKnowledgeBasesArgs, GetGenaiKnowledgeBasesResult, GetGenaiKnowledgeBasesOutputArgs } from "./getGenaiKnowledgeBases";
+export const getGenaiKnowledgeBases: typeof import("./getGenaiKnowledgeBases").getGenaiKnowledgeBases = null as any;
+export const getGenaiKnowledgeBasesOutput: typeof import("./getGenaiKnowledgeBases").getGenaiKnowledgeBasesOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiKnowledgeBases","getGenaiKnowledgeBasesOutput"], () => require("./getGenaiKnowledgeBases"));
+
+export { GetGenaiOpenaiApiKeyArgs, GetGenaiOpenaiApiKeyResult, GetGenaiOpenaiApiKeyOutputArgs } from "./getGenaiOpenaiApiKey";
+export const getGenaiOpenaiApiKey: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKey = null as any;
+export const getGenaiOpenaiApiKeyOutput: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKeyOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiOpenaiApiKey","getGenaiOpenaiApiKeyOutput"], () => require("./getGenaiOpenaiApiKey"));
+
+export { GetGenaiOpenaiApiKeysArgs, GetGenaiOpenaiApiKeysResult, GetGenaiOpenaiApiKeysOutputArgs } from "./getGenaiOpenaiApiKeys";
+export const getGenaiOpenaiApiKeys: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeys = null as any;
+export const getGenaiOpenaiApiKeysOutput: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeysOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiOpenaiApiKeys","getGenaiOpenaiApiKeysOutput"], () => require("./getGenaiOpenaiApiKeys"));
 
 export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
 export const getImage: typeof import("./getImage").getImage = null as any;
@@ -573,6 +653,8 @@ const _module = {
                 return new DatabaseMongodbConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
                 return new DatabaseMysqlConfig(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration":
+                return new DatabaseOnlineMigration(name, <any>undefined, { urn })
             case "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig":
                 return new DatabaseOpensearchConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
@@ -583,6 +665,8 @@ const _module = {
                 return new DatabaseReplica(name, <any>undefined, { urn })
             case "digitalocean:index/databaseUser:DatabaseUser":
                 return new DatabaseUser(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig":
+                return new DatabaseValkeyConfig(name, <any>undefined, { urn })
             case "digitalocean:index/dnsRecord:DnsRecord":
                 return new DnsRecord(name, <any>undefined, { urn })
             case "digitalocean:index/domain:Domain":
@@ -601,6 +685,18 @@ const _module = {
                 return new FloatingIpAssignment(name, <any>undefined, { urn })
             case "digitalocean:index/genaiAgent:GenaiAgent":
                 return new GenaiAgent(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment":
+                return new GenaiAgentKnowledgeBaseAttachment(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiAgentRoute:GenaiAgentRoute":
+                return new GenaiAgentRoute(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiFunction:GenaiFunction":
+                return new GenaiFunction(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
+                return new GenaiKnowledgeBase(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
+                return new GenaiKnowledgeBaseDataSource(name, <any>undefined, { urn })
+            case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
+                return new GenaiOpenaiApiKey(name, <any>undefined, { urn })
             case "digitalocean:index/kubernetesCluster:KubernetesCluster":
                 return new KubernetesCluster(name, <any>undefined, { urn })
             case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -674,11 +770,13 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaConfig
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMongodbConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseOnlineMigration", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseOpensearchConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databasePostgresqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseRedisConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseReplica", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseUser", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseValkeyConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/domain", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/droplet", _module)
@@ -688,6 +786,12 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/firewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIp", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/floatingIpAssignment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgent", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgentKnowledgeBaseAttachment", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiAgentRoute", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiFunction", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiKnowledgeBase", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiKnowledgeBaseDataSource", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/genaiOpenaiApiKey", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)

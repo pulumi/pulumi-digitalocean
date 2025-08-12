@@ -179,6 +179,47 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Maintenance Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var maintenance_example = new DigitalOcean.App("maintenance-example", new()
+    ///     {
+    ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
+    ///         {
+    ///             Name = "maintenance-example",
+    ///             Region = "ams",
+    ///             Maintenance = new DigitalOcean.Inputs.AppSpecMaintenanceArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 OfflinePageUrl = "https://example.com/maintenance.html",
+    ///             },
+    ///             Services = new[]
+    ///             {
+    ///                 new DigitalOcean.Inputs.AppSpecServiceArgs
+    ///                 {
+    ///                     Name = "go-service",
+    ///                     InstanceCount = 1,
+    ///                     InstanceSizeSlug = "apps-s-1vcpu-1gb",
+    ///                     Git = new DigitalOcean.Inputs.AppSpecServiceGitArgs
+    ///                     {
+    ///                         RepoCloneUrl = "https://github.com/digitalocean/sample-golang.git",
+    ///                         Branch = "main",
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// An app can be imported using its `id`, e.g.
