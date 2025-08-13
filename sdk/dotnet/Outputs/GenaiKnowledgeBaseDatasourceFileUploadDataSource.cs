@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class GenaiKnowledgeBaseDatasourceFileUploadDataSource
+    public sealed class GenaiKnowledgeBaseDataSourceFileUploadDataSource
     {
         /// <summary>
         /// The original name of the uploaded file
@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? StoredObjectKey;
 
         [OutputConstructor]
-        private GenaiKnowledgeBaseDatasourceFileUploadDataSource(
+        private GenaiKnowledgeBaseDataSourceFileUploadDataSource(
             string? originalFileName,
 
             string? sizeInBytes,

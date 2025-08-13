@@ -178,13 +178,11 @@ __all__ = [
     'GenaiAgentTemplateModel',
     'GenaiAgentTemplateModelAgreement',
     'GenaiAgentTemplateModelVersion',
+    'GenaiKnowledgeBaseDataSource',
+    'GenaiKnowledgeBaseDataSourceFileUploadDataSource',
+    'GenaiKnowledgeBaseDataSourceLastIndexingJob',
     'GenaiKnowledgeBaseDataSourceSpacesDataSource',
     'GenaiKnowledgeBaseDataSourceWebCrawlerDataSource',
-    'GenaiKnowledgeBaseDatasource',
-    'GenaiKnowledgeBaseDatasourceFileUploadDataSource',
-    'GenaiKnowledgeBaseDatasourceLastIndexingJob',
-    'GenaiKnowledgeBaseDatasourceSpacesDataSource',
-    'GenaiKnowledgeBaseDatasourceWebCrawlerDataSource',
     'GenaiKnowledgeBaseLastIndexingJob',
     'GenaiOpenaiApiKeyModel',
     'GenaiOpenaiApiKeyModelAgreement',
@@ -12668,143 +12666,7 @@ class GenaiAgentTemplateModelVersion(dict):
 
 
 @pulumi.output_type
-class GenaiKnowledgeBaseDataSourceSpacesDataSource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "bucketName":
-            suggest = "bucket_name"
-        elif key == "itemPath":
-            suggest = "item_path"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceSpacesDataSource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDataSourceSpacesDataSource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDataSourceSpacesDataSource.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 bucket_name: Optional[_builtins.str] = None,
-                 item_path: Optional[_builtins.str] = None,
-                 region: Optional[_builtins.str] = None):
-        """
-        :param _builtins.str bucket_name: The name of the Spaces bucket
-        :param _builtins.str item_path: The path to the item in the bucket
-        :param _builtins.str region: The region of the Spaces bucket
-        """
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if item_path is not None:
-            pulumi.set(__self__, "item_path", item_path)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[_builtins.str]:
-        """
-        The name of the Spaces bucket
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @_builtins.property
-    @pulumi.getter(name="itemPath")
-    def item_path(self) -> Optional[_builtins.str]:
-        """
-        The path to the item in the bucket
-        """
-        return pulumi.get(self, "item_path")
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[_builtins.str]:
-        """
-        The region of the Spaces bucket
-        """
-        return pulumi.get(self, "region")
-
-
-@pulumi.output_type
-class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "baseUrl":
-            suggest = "base_url"
-        elif key == "crawlingOption":
-            suggest = "crawling_option"
-        elif key == "embedMedia":
-            suggest = "embed_media"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceWebCrawlerDataSource. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 base_url: Optional[_builtins.str] = None,
-                 crawling_option: Optional[_builtins.str] = None,
-                 embed_media: Optional[_builtins.bool] = None):
-        """
-        :param _builtins.str base_url: The base URL to crawl
-        :param _builtins.str crawling_option: Options for specifying how URLs found on pages should be handled. 
-               - UNKNOWN: Default unknown value
-               - SCOPED: Only include the base URL.
-               - PATH: Crawl the base URL and linked pages within the URL path.
-               - DOMAIN: Crawl the base URL and linked pages within the same domain.
-               - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        :param _builtins.bool embed_media: Whether to embed media content
-        """
-        if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
-        if crawling_option is not None:
-            pulumi.set(__self__, "crawling_option", crawling_option)
-        if embed_media is not None:
-            pulumi.set(__self__, "embed_media", embed_media)
-
-    @_builtins.property
-    @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[_builtins.str]:
-        """
-        The base URL to crawl
-        """
-        return pulumi.get(self, "base_url")
-
-    @_builtins.property
-    @pulumi.getter(name="crawlingOption")
-    def crawling_option(self) -> Optional[_builtins.str]:
-        """
-        Options for specifying how URLs found on pages should be handled. 
-        - UNKNOWN: Default unknown value
-        - SCOPED: Only include the base URL.
-        - PATH: Crawl the base URL and linked pages within the URL path.
-        - DOMAIN: Crawl the base URL and linked pages within the same domain.
-        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        """
-        return pulumi.get(self, "crawling_option")
-
-    @_builtins.property
-    @pulumi.getter(name="embedMedia")
-    def embed_media(self) -> Optional[_builtins.bool]:
-        """
-        Whether to embed media content
-        """
-        return pulumi.get(self, "embed_media")
-
-
-@pulumi.output_type
-class GenaiKnowledgeBaseDatasource(dict):
+class GenaiKnowledgeBaseDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12822,32 +12684,32 @@ class GenaiKnowledgeBaseDatasource(dict):
             suggest = "web_crawler_data_sources"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDatasource. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSource. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDatasource.__key_warning(key)
+        GenaiKnowledgeBaseDataSource.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDatasource.__key_warning(key)
+        GenaiKnowledgeBaseDataSource.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
                  created_at: Optional[_builtins.str] = None,
-                 file_upload_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource']] = None,
-                 last_indexing_jobs: Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob']] = None,
-                 spaces_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource']] = None,
+                 file_upload_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource']] = None,
+                 last_indexing_jobs: Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob']] = None,
+                 spaces_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource']] = None,
                  updated_at: Optional[_builtins.str] = None,
                  uuid: Optional[_builtins.str] = None,
-                 web_crawler_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource']] = None):
+                 web_crawler_data_sources: Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource']] = None):
         """
         :param _builtins.str created_at: Created At timestamp for the Knowledge Base
-        :param Sequence['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs'] file_upload_data_sources: File upload data source configuration
-        :param Sequence['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the data source
-        :param Sequence['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs'] spaces_data_sources: Spaces data source configuration
+        :param Sequence['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs'] file_upload_data_sources: File upload data source configuration
+        :param Sequence['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the data source
+        :param Sequence['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs'] spaces_data_sources: Spaces data source configuration
         :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
         :param _builtins.str uuid: UUID of the Knowledge Base
-        :param Sequence['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs'] web_crawler_data_sources: Web crawler data source configuration
+        :param Sequence['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs'] web_crawler_data_sources: Web crawler data source configuration
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -12874,7 +12736,7 @@ class GenaiKnowledgeBaseDatasource(dict):
 
     @_builtins.property
     @pulumi.getter(name="fileUploadDataSources")
-    def file_upload_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource']]:
+    def file_upload_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource']]:
         """
         File upload data source configuration
         """
@@ -12882,7 +12744,7 @@ class GenaiKnowledgeBaseDatasource(dict):
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob']]:
+    def last_indexing_jobs(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob']]:
         """
         Last indexing job for the data source
         """
@@ -12890,7 +12752,7 @@ class GenaiKnowledgeBaseDatasource(dict):
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSources")
-    def spaces_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource']]:
+    def spaces_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource']]:
         """
         Spaces data source configuration
         """
@@ -12914,7 +12776,7 @@ class GenaiKnowledgeBaseDatasource(dict):
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSources")
-    def web_crawler_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource']]:
+    def web_crawler_data_sources(self) -> Optional[Sequence['outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource']]:
         """
         Web crawler data source configuration
         """
@@ -12922,7 +12784,7 @@ class GenaiKnowledgeBaseDatasource(dict):
 
 
 @pulumi.output_type
-class GenaiKnowledgeBaseDatasourceFileUploadDataSource(dict):
+class GenaiKnowledgeBaseDataSourceFileUploadDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -12934,14 +12796,14 @@ class GenaiKnowledgeBaseDatasourceFileUploadDataSource(dict):
             suggest = "stored_object_key"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDatasourceFileUploadDataSource. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceFileUploadDataSource. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDatasourceFileUploadDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceFileUploadDataSource.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDatasourceFileUploadDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceFileUploadDataSource.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -12986,7 +12848,7 @@ class GenaiKnowledgeBaseDatasourceFileUploadDataSource(dict):
 
 
 @pulumi.output_type
-class GenaiKnowledgeBaseDatasourceLastIndexingJob(dict):
+class GenaiKnowledgeBaseDataSourceLastIndexingJob(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13008,14 +12870,14 @@ class GenaiKnowledgeBaseDatasourceLastIndexingJob(dict):
             suggest = "updated_at"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDatasourceLastIndexingJob. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceLastIndexingJob. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDatasourceLastIndexingJob.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceLastIndexingJob.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDatasourceLastIndexingJob.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceLastIndexingJob.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -13156,7 +13018,7 @@ class GenaiKnowledgeBaseDatasourceLastIndexingJob(dict):
 
 
 @pulumi.output_type
-class GenaiKnowledgeBaseDatasourceSpacesDataSource(dict):
+class GenaiKnowledgeBaseDataSourceSpacesDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13166,14 +13028,14 @@ class GenaiKnowledgeBaseDatasourceSpacesDataSource(dict):
             suggest = "item_path"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDatasourceSpacesDataSource. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceSpacesDataSource. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDatasourceSpacesDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceSpacesDataSource.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDatasourceSpacesDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceSpacesDataSource.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,
@@ -13218,7 +13080,7 @@ class GenaiKnowledgeBaseDatasourceSpacesDataSource(dict):
 
 
 @pulumi.output_type
-class GenaiKnowledgeBaseDatasourceWebCrawlerDataSource(dict):
+class GenaiKnowledgeBaseDataSourceWebCrawlerDataSource(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
@@ -13230,14 +13092,14 @@ class GenaiKnowledgeBaseDatasourceWebCrawlerDataSource(dict):
             suggest = "embed_media"
 
         if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDatasourceWebCrawlerDataSource. Access the value via the '{suggest}' property getter instead.")
+            pulumi.log.warn(f"Key '{key}' not found in GenaiKnowledgeBaseDataSourceWebCrawlerDataSource. Access the value via the '{suggest}' property getter instead.")
 
     def __getitem__(self, key: str) -> Any:
-        GenaiKnowledgeBaseDatasourceWebCrawlerDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.__key_warning(key)
         return super().__getitem__(key)
 
     def get(self, key: str, default = None) -> Any:
-        GenaiKnowledgeBaseDatasourceWebCrawlerDataSource.__key_warning(key)
+        GenaiKnowledgeBaseDataSourceWebCrawlerDataSource.__key_warning(key)
         return super().get(key, default)
 
     def __init__(__self__, *,

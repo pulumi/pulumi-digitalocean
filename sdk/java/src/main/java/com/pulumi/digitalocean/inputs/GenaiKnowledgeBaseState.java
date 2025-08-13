@@ -5,7 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDatasourceArgs;
+import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceArgs;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseLastIndexingJobArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -69,13 +69,13 @@ public final class GenaiKnowledgeBaseState extends com.pulumi.resources.Resource
      * 
      */
     @Import(name="datasources")
-    private @Nullable Output<List<GenaiKnowledgeBaseDatasourceArgs>> datasources;
+    private @Nullable Output<List<GenaiKnowledgeBaseDataSourceArgs>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Optional<Output<List<GenaiKnowledgeBaseDatasourceArgs>>> datasources() {
+    public Optional<Output<List<GenaiKnowledgeBaseDataSourceArgs>>> datasources() {
         return Optional.ofNullable(this.datasources);
     }
 
@@ -287,7 +287,7 @@ public final class GenaiKnowledgeBaseState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder datasources(@Nullable Output<List<GenaiKnowledgeBaseDatasourceArgs>> datasources) {
+        public Builder datasources(@Nullable Output<List<GenaiKnowledgeBaseDataSourceArgs>> datasources) {
             $.datasources = datasources;
             return this;
         }
@@ -298,7 +298,7 @@ public final class GenaiKnowledgeBaseState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder datasources(List<GenaiKnowledgeBaseDatasourceArgs> datasources) {
+        public Builder datasources(List<GenaiKnowledgeBaseDataSourceArgs> datasources) {
             return datasources(Output.of(datasources));
         }
 
@@ -308,7 +308,7 @@ public final class GenaiKnowledgeBaseState extends com.pulumi.resources.Resource
          * @return builder
          * 
          */
-        public Builder datasources(GenaiKnowledgeBaseDatasourceArgs... datasources) {
+        public Builder datasources(GenaiKnowledgeBaseDataSourceArgs... datasources) {
             return datasources(List.of(datasources));
         }
 

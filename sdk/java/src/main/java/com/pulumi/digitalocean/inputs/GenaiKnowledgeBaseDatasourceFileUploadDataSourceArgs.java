@@ -11,9 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs extends com.pulumi.resources.ResourceArgs {
+public final class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs Empty = new GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs();
+    public static final GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs Empty = new GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs();
 
     /**
      * The original name of the uploaded file
@@ -60,9 +60,9 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs extends 
         return Optional.ofNullable(this.storedObjectKey);
     }
 
-    private GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs() {}
+    private GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs() {}
 
-    private GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs $) {
+    private GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs $) {
         this.originalFileName = $.originalFileName;
         this.sizeInBytes = $.sizeInBytes;
         this.storedObjectKey = $.storedObjectKey;
@@ -71,19 +71,19 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs extends 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs $;
+        private GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs $;
 
         public Builder() {
-            $ = new GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs();
+            $ = new GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs();
         }
 
-        public Builder(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs defaults) {
-            $ = new GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs(Objects.requireNonNull(defaults));
+        public Builder(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs defaults) {
+            $ = new GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -149,7 +149,7 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs extends 
             return storedObjectKey(Output.of(storedObjectKey));
         }
 
-        public GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs build() {
+        public GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs build() {
             return $;
         }
     }

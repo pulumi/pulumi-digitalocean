@@ -25776,6 +25776,467 @@ func (o GenaiAgentTemplateModelVersionArrayOutput) Index(i pulumi.IntInput) Gena
 	}).(GenaiAgentTemplateModelVersionOutput)
 }
 
+type GenaiKnowledgeBaseDataSourceType struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt *string `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources []GenaiKnowledgeBaseDataSourceFileUploadDataSource `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs []GenaiKnowledgeBaseDataSourceLastIndexingJob `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources []GenaiKnowledgeBaseDataSourceSpacesDataSource `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid *string `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources []GenaiKnowledgeBaseDataSourceWebCrawlerDataSource `pulumi:"webCrawlerDataSources"`
+}
+
+// GenaiKnowledgeBaseDataSourceTypeInput is an input type that accepts GenaiKnowledgeBaseDataSourceTypeArgs and GenaiKnowledgeBaseDataSourceTypeOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceTypeInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceTypeArgs{...}
+type GenaiKnowledgeBaseDataSourceTypeInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceTypeOutput() GenaiKnowledgeBaseDataSourceTypeOutput
+	ToGenaiKnowledgeBaseDataSourceTypeOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceTypeOutput
+}
+
+type GenaiKnowledgeBaseDataSourceTypeArgs struct {
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// File upload data source configuration
+	FileUploadDataSources GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayInput `pulumi:"fileUploadDataSources"`
+	// Last indexing job for the data source
+	LastIndexingJobs GenaiKnowledgeBaseDataSourceLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
+	// Spaces data source configuration
+	SpacesDataSources GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayInput `pulumi:"spacesDataSources"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// UUID of the Knowledge Base
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+	// Web crawler data source configuration
+	WebCrawlerDataSources GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayInput `pulumi:"webCrawlerDataSources"`
+}
+
+func (GenaiKnowledgeBaseDataSourceTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceType)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceTypeArgs) ToGenaiKnowledgeBaseDataSourceTypeOutput() GenaiKnowledgeBaseDataSourceTypeOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceTypeOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceTypeArgs) ToGenaiKnowledgeBaseDataSourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceTypeOutput)
+}
+
+// GenaiKnowledgeBaseDataSourceTypeArrayInput is an input type that accepts GenaiKnowledgeBaseDataSourceTypeArray and GenaiKnowledgeBaseDataSourceTypeArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceTypeArrayInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceTypeArray{ GenaiKnowledgeBaseDataSourceTypeArgs{...} }
+type GenaiKnowledgeBaseDataSourceTypeArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceTypeArrayOutput() GenaiKnowledgeBaseDataSourceTypeArrayOutput
+	ToGenaiKnowledgeBaseDataSourceTypeArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceTypeArrayOutput
+}
+
+type GenaiKnowledgeBaseDataSourceTypeArray []GenaiKnowledgeBaseDataSourceTypeInput
+
+func (GenaiKnowledgeBaseDataSourceTypeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceType)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceTypeArray) ToGenaiKnowledgeBaseDataSourceTypeArrayOutput() GenaiKnowledgeBaseDataSourceTypeArrayOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceTypeArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceTypeArray) ToGenaiKnowledgeBaseDataSourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceTypeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceTypeArrayOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceTypeOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceType)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) ToGenaiKnowledgeBaseDataSourceTypeOutput() GenaiKnowledgeBaseDataSourceTypeOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) ToGenaiKnowledgeBaseDataSourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceTypeOutput {
+	return o
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// File upload data source configuration
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) FileUploadDataSources() GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) []GenaiKnowledgeBaseDataSourceFileUploadDataSource {
+		return v.FileUploadDataSources
+	}).(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput)
+}
+
+// Last indexing job for the data source
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) LastIndexingJobs() GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) []GenaiKnowledgeBaseDataSourceLastIndexingJob {
+		return v.LastIndexingJobs
+	}).(GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput)
+}
+
+// Spaces data source configuration
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) SpacesDataSources() GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) []GenaiKnowledgeBaseDataSourceSpacesDataSource {
+		return v.SpacesDataSources
+	}).(GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the Knowledge Base
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+// Web crawler data source configuration
+func (o GenaiKnowledgeBaseDataSourceTypeOutput) WebCrawlerDataSources() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceType) []GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+		return v.WebCrawlerDataSources
+	}).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceTypeArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceTypeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceType)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceTypeArrayOutput) ToGenaiKnowledgeBaseDataSourceTypeArrayOutput() GenaiKnowledgeBaseDataSourceTypeArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceTypeArrayOutput) ToGenaiKnowledgeBaseDataSourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceTypeArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceTypeArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDataSourceTypeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDataSourceType {
+		return vs[0].([]GenaiKnowledgeBaseDataSourceType)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDataSourceTypeOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceFileUploadDataSource struct {
+	// The original name of the uploaded file
+	OriginalFileName *string `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes *string `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey *string `pulumi:"storedObjectKey"`
+}
+
+// GenaiKnowledgeBaseDataSourceFileUploadDataSourceInput is an input type that accepts GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs and GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceFileUploadDataSourceInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs{...}
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput
+	ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput
+}
+
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs struct {
+	// The original name of the uploaded file
+	OriginalFileName pulumi.StringPtrInput `pulumi:"originalFileName"`
+	// The size of the file in bytes
+	SizeInBytes pulumi.StringPtrInput `pulumi:"sizeInBytes"`
+	// The stored object key for the file
+	StoredObjectKey pulumi.StringPtrInput `pulumi:"storedObjectKey"`
+}
+
+func (GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput)
+}
+
+// GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray and GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray{ GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs{...} }
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray []GenaiKnowledgeBaseDataSourceFileUploadDataSourceInput
+
+func (GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput {
+	return o
+}
+
+// The original name of the uploaded file
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) OriginalFileName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceFileUploadDataSource) *string { return v.OriginalFileName }).(pulumi.StringPtrOutput)
+}
+
+// The size of the file in bytes
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) SizeInBytes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceFileUploadDataSource) *string { return v.SizeInBytes }).(pulumi.StringPtrOutput)
+}
+
+// The stored object key for the file
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput) StoredObjectKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceFileUploadDataSource) *string { return v.StoredObjectKey }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceFileUploadDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDataSourceFileUploadDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDataSourceFileUploadDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt *string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt *string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt *string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt *string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GenaiKnowledgeBaseDataSourceLastIndexingJobInput is an input type that accepts GenaiKnowledgeBaseDataSourceLastIndexingJobArgs and GenaiKnowledgeBaseDataSourceLastIndexingJobOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceLastIndexingJobInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceLastIndexingJobArgs{...}
+type GenaiKnowledgeBaseDataSourceLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobOutput
+	ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobOutput
+}
+
+type GenaiKnowledgeBaseDataSourceLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringPtrInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GenaiKnowledgeBaseDataSourceLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceLastIndexingJobOutput)
+}
+
+// GenaiKnowledgeBaseDataSourceLastIndexingJobArrayInput is an input type that accepts GenaiKnowledgeBaseDataSourceLastIndexingJobArray and GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceLastIndexingJobArrayInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceLastIndexingJobArray{ GenaiKnowledgeBaseDataSourceLastIndexingJobArgs{...} }
+type GenaiKnowledgeBaseDataSourceLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput
+	ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput
+}
+
+type GenaiKnowledgeBaseDataSourceLastIndexingJobArray []GenaiKnowledgeBaseDataSourceLastIndexingJobInput
+
+func (GenaiKnowledgeBaseDataSourceLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceLastIndexingJob)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceLastIndexingJobArray) ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceLastIndexingJobArray) ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GenaiKnowledgeBaseDataSourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDataSourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) CreatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) FinishedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
+}
+
+// Phase of the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) StartedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.StartedAt }).(pulumi.StringPtrOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) UpdatedAt() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
+}
+
+// UUID  of the last indexing job
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GenaiKnowledgeBaseDataSourceLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceLastIndexingJob)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDataSourceLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDataSourceLastIndexingJob {
+		return vs[0].([]GenaiKnowledgeBaseDataSourceLastIndexingJob)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDataSourceLastIndexingJobOutput)
+}
+
 type GenaiKnowledgeBaseDataSourceSpacesDataSource struct {
 	// The name of the Spaces bucket
 	BucketName *string `pulumi:"bucketName"`
@@ -25856,6 +26317,31 @@ func (i *genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType) ToGenaiKnowledgeBa
 
 func (i *genaiKnowledgeBaseDataSourceSpacesDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput)
+}
+
+// GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDataSourceSpacesDataSourceArray and GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceSpacesDataSourceArray{ GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{...} }
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceArray []GenaiKnowledgeBaseDataSourceSpacesDataSourceInput
+
+func (GenaiKnowledgeBaseDataSourceSpacesDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput)
 }
 
 type GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput struct{ *pulumi.OutputState }
@@ -25951,6 +26437,26 @@ func (o GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput) Region() pulumi.S
 	}).(pulumi.StringPtrOutput)
 }
 
+type GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceSpacesDataSource)(nil)).Elem()
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput {
+	return o
+}
+
+func (o GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDataSourceSpacesDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDataSourceSpacesDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput)
+}
+
 type GenaiKnowledgeBaseDataSourceWebCrawlerDataSource struct {
 	// The base URL to crawl
 	BaseUrl *string `pulumi:"baseUrl"`
@@ -26041,6 +26547,31 @@ func (i *genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType) ToGenaiKnowled
 
 func (i *genaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrType) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput)
+}
+
+// GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray and GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput values.
+// You can construct a concrete instance of `GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayInput` via:
+//
+//	GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray{ GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{...} }
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput
+	ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput
+}
+
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray []GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput
+
+func (GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput {
+	return i.ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput)
 }
 
 type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput struct{ *pulumi.OutputState }
@@ -26146,710 +26677,24 @@ func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput) EmbedMedia() 
 	}).(pulumi.BoolPtrOutput)
 }
 
-type GenaiKnowledgeBaseDatasourceType struct {
-	// Created At timestamp for the Knowledge Base
-	CreatedAt *string `pulumi:"createdAt"`
-	// File upload data source configuration
-	FileUploadDataSources []GenaiKnowledgeBaseDatasourceFileUploadDataSource `pulumi:"fileUploadDataSources"`
-	// Last indexing job for the data source
-	LastIndexingJobs []GenaiKnowledgeBaseDatasourceLastIndexingJob `pulumi:"lastIndexingJobs"`
-	// Spaces data source configuration
-	SpacesDataSources []GenaiKnowledgeBaseDatasourceSpacesDataSource `pulumi:"spacesDataSources"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// UUID of the Knowledge Base
-	Uuid *string `pulumi:"uuid"`
-	// Web crawler data source configuration
-	WebCrawlerDataSources []GenaiKnowledgeBaseDatasourceWebCrawlerDataSource `pulumi:"webCrawlerDataSources"`
+type GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)(nil)).Elem()
 }
 
-// GenaiKnowledgeBaseDatasourceTypeInput is an input type that accepts GenaiKnowledgeBaseDatasourceTypeArgs and GenaiKnowledgeBaseDatasourceTypeOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceTypeInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceTypeArgs{...}
-type GenaiKnowledgeBaseDatasourceTypeInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput
-	ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceTypeOutput
-}
-
-type GenaiKnowledgeBaseDatasourceTypeArgs struct {
-	// Created At timestamp for the Knowledge Base
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// File upload data source configuration
-	FileUploadDataSources GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput `pulumi:"fileUploadDataSources"`
-	// Last indexing job for the data source
-	LastIndexingJobs GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
-	// Spaces data source configuration
-	SpacesDataSources GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput `pulumi:"spacesDataSources"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-	// Web crawler data source configuration
-	WebCrawlerDataSources GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput `pulumi:"webCrawlerDataSources"`
-}
-
-func (GenaiKnowledgeBaseDatasourceTypeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceTypeArgs) ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceTypeArgs) ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceTypeOutput)
-}
-
-// GenaiKnowledgeBaseDatasourceTypeArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceTypeArray and GenaiKnowledgeBaseDatasourceTypeArrayOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceTypeArrayInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceTypeArray{ GenaiKnowledgeBaseDatasourceTypeArgs{...} }
-type GenaiKnowledgeBaseDatasourceTypeArrayInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput
-	ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput
-}
-
-type GenaiKnowledgeBaseDatasourceTypeArray []GenaiKnowledgeBaseDatasourceTypeInput
-
-func (GenaiKnowledgeBaseDatasourceTypeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceTypeArray) ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceTypeArray) ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceTypeArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceTypeOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceTypeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) ToGenaiKnowledgeBaseDatasourceTypeOutput() GenaiKnowledgeBaseDatasourceTypeOutput {
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput {
 	return o
 }
 
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) ToGenaiKnowledgeBaseDatasourceTypeOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeOutput {
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput {
 	return o
 }
 
-// Created At timestamp for the Knowledge Base
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// File upload data source configuration
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) FileUploadDataSources() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceFileUploadDataSource {
-		return v.FileUploadDataSources
-	}).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput)
-}
-
-// Last indexing job for the data source
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) LastIndexingJobs() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceLastIndexingJob {
-		return v.LastIndexingJobs
-	}).(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput)
-}
-
-// Spaces data source configuration
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) SpacesDataSources() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceSpacesDataSource {
-		return v.SpacesDataSources
-	}).(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput)
-}
-
-// Timestamp when the Knowledge Base was updated
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-// Web crawler data source configuration
-func (o GenaiKnowledgeBaseDatasourceTypeOutput) WebCrawlerDataSources() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceType) []GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
-		return v.WebCrawlerDataSources
-	}).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceTypeArrayOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceTypeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceType)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) ToGenaiKnowledgeBaseDatasourceTypeArrayOutput() GenaiKnowledgeBaseDatasourceTypeArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) ToGenaiKnowledgeBaseDatasourceTypeArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceTypeArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceTypeArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceTypeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceType {
-		return vs[0].([]GenaiKnowledgeBaseDatasourceType)[vs[1].(int)]
-	}).(GenaiKnowledgeBaseDatasourceTypeOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceFileUploadDataSource struct {
-	// The original name of the uploaded file
-	OriginalFileName *string `pulumi:"originalFileName"`
-	// The size of the file in bytes
-	SizeInBytes *string `pulumi:"sizeInBytes"`
-	// The stored object key for the file
-	StoredObjectKey *string `pulumi:"storedObjectKey"`
-}
-
-// GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs and GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{...}
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput
-	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput
-}
-
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs struct {
-	// The original name of the uploaded file
-	OriginalFileName pulumi.StringPtrInput `pulumi:"originalFileName"`
-	// The size of the file in bytes
-	SizeInBytes pulumi.StringPtrInput `pulumi:"sizeInBytes"`
-	// The stored object key for the file
-	StoredObjectKey pulumi.StringPtrInput `pulumi:"storedObjectKey"`
-}
-
-func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput)
-}
-
-// GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray and GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray{ GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{...} }
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput
-	ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput
-}
-
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray []GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput
-
-func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
-	return o
-}
-
-// The original name of the uploaded file
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) OriginalFileName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.OriginalFileName }).(pulumi.StringPtrOutput)
-}
-
-// The size of the file in bytes
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) SizeInBytes() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.SizeInBytes }).(pulumi.StringPtrOutput)
-}
-
-// The stored object key for the file
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput) StoredObjectKey() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceFileUploadDataSource) *string { return v.StoredObjectKey }).(pulumi.StringPtrOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceFileUploadDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceFileUploadDataSource {
-		return vs[0].([]GenaiKnowledgeBaseDatasourceFileUploadDataSource)[vs[1].(int)]
-	}).(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceLastIndexingJob struct {
-	// Number of completed datasources in the last indexing job
-	CompletedDatasources *int `pulumi:"completedDatasources"`
-	// Created At timestamp for the last indexing job
-	CreatedAt *string `pulumi:"createdAt"`
-	// Datasource UUIDs for the last indexing job
-	DataSourceUuids []string `pulumi:"dataSourceUuids"`
-	// Timestamp when the last indexing job finished
-	FinishedAt *string `pulumi:"finishedAt"`
-	// UUID  of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid *string `pulumi:"knowledgeBaseUuid"`
-	// Phase of the last indexing job
-	Phase *string `pulumi:"phase"`
-	// Timestamp when the last indexing job started
-	StartedAt *string `pulumi:"startedAt"`
-	// Number of tokens processed in the last indexing job
-	Tokens *int `pulumi:"tokens"`
-	// Total number of datasources in the last indexing job
-	TotalDatasources *int `pulumi:"totalDatasources"`
-	// Timestamp when the last indexing job updated
-	UpdatedAt *string `pulumi:"updatedAt"`
-	// UUID  of the last indexing job
-	Uuid *string `pulumi:"uuid"`
-}
-
-// GenaiKnowledgeBaseDatasourceLastIndexingJobInput is an input type that accepts GenaiKnowledgeBaseDatasourceLastIndexingJobArgs and GenaiKnowledgeBaseDatasourceLastIndexingJobOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceLastIndexingJobInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{...}
-type GenaiKnowledgeBaseDatasourceLastIndexingJobInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput
-	ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput
-}
-
-type GenaiKnowledgeBaseDatasourceLastIndexingJobArgs struct {
-	// Number of completed datasources in the last indexing job
-	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
-	// Created At timestamp for the last indexing job
-	CreatedAt pulumi.StringPtrInput `pulumi:"createdAt"`
-	// Datasource UUIDs for the last indexing job
-	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
-	// Timestamp when the last indexing job finished
-	FinishedAt pulumi.StringPtrInput `pulumi:"finishedAt"`
-	// UUID  of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringPtrInput `pulumi:"knowledgeBaseUuid"`
-	// Phase of the last indexing job
-	Phase pulumi.StringPtrInput `pulumi:"phase"`
-	// Timestamp when the last indexing job started
-	StartedAt pulumi.StringPtrInput `pulumi:"startedAt"`
-	// Number of tokens processed in the last indexing job
-	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
-	// Total number of datasources in the last indexing job
-	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
-	// Timestamp when the last indexing job updated
-	UpdatedAt pulumi.StringPtrInput `pulumi:"updatedAt"`
-	// UUID  of the last indexing job
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-}
-
-func (GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArgs) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput)
-}
-
-// GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceLastIndexingJobArray and GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceLastIndexingJobArray{ GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{...} }
-type GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput
-	ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput
-}
-
-type GenaiKnowledgeBaseDatasourceLastIndexingJobArray []GenaiKnowledgeBaseDatasourceLastIndexingJobInput
-
-func (GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceLastIndexingJobArray) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceLastIndexingJobOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
-	return o
-}
-
-// Number of completed datasources in the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
-}
-
-// Created At timestamp for the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) CreatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.CreatedAt }).(pulumi.StringPtrOutput)
-}
-
-// Datasource UUIDs for the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
-}
-
-// Timestamp when the last indexing job finished
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) FinishedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.FinishedAt }).(pulumi.StringPtrOutput)
-}
-
-// UUID  of the Knowledge Base for the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.KnowledgeBaseUuid }).(pulumi.StringPtrOutput)
-}
-
-// Phase of the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
-}
-
-// Timestamp when the last indexing job started
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) StartedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.StartedAt }).(pulumi.StringPtrOutput)
-}
-
-// Number of tokens processed in the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
-}
-
-// Total number of datasources in the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
-}
-
-// Timestamp when the last indexing job updated
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) UpdatedAt() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.UpdatedAt }).(pulumi.StringPtrOutput)
-}
-
-// UUID  of the last indexing job
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceLastIndexingJob)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput() GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) ToGenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceLastIndexingJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceLastIndexingJob {
-		return vs[0].([]GenaiKnowledgeBaseDatasourceLastIndexingJob)[vs[1].(int)]
-	}).(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceSpacesDataSource struct {
-	// The name of the Spaces bucket
-	BucketName *string `pulumi:"bucketName"`
-	// The path to the item in the bucket
-	ItemPath *string `pulumi:"itemPath"`
-	// The region of the Spaces bucket
-	Region *string `pulumi:"region"`
-}
-
-// GenaiKnowledgeBaseDatasourceSpacesDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs and GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceSpacesDataSourceInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{...}
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput
-	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput
-}
-
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs struct {
-	// The name of the Spaces bucket
-	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
-	// The path to the item in the bucket
-	ItemPath pulumi.StringPtrInput `pulumi:"itemPath"`
-	// The region of the Spaces bucket
-	Region pulumi.StringPtrInput `pulumi:"region"`
-}
-
-func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput)
-}
-
-// GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceSpacesDataSourceArray and GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceSpacesDataSourceArray{ GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{...} }
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput
-	ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput
-}
-
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceArray []GenaiKnowledgeBaseDatasourceSpacesDataSourceInput
-
-func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceSpacesDataSourceArray) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
-	return o
-}
-
-// The name of the Spaces bucket
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) BucketName() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.BucketName }).(pulumi.StringPtrOutput)
-}
-
-// The path to the item in the bucket
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) ItemPath() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.ItemPath }).(pulumi.StringPtrOutput)
-}
-
-// The region of the Spaces bucket
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput) Region() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceSpacesDataSource) *string { return v.Region }).(pulumi.StringPtrOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceSpacesDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceSpacesDataSource {
-		return vs[0].([]GenaiKnowledgeBaseDatasourceSpacesDataSource)[vs[1].(int)]
-	}).(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSource struct {
-	// The base URL to crawl
-	BaseUrl *string `pulumi:"baseUrl"`
-	// Options for specifying how URLs found on pages should be handled.
-	// - UNKNOWN: Default unknown value
-	// - SCOPED: Only include the base URL.
-	// - PATH: Crawl the base URL and linked pages within the URL path.
-	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
-	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-	CrawlingOption *string `pulumi:"crawlingOption"`
-	// Whether to embed media content
-	EmbedMedia *bool `pulumi:"embedMedia"`
-}
-
-// GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput is an input type that accepts GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs and GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{...}
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput
-	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput
-}
-
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs struct {
-	// The base URL to crawl
-	BaseUrl pulumi.StringPtrInput `pulumi:"baseUrl"`
-	// Options for specifying how URLs found on pages should be handled.
-	// - UNKNOWN: Default unknown value
-	// - SCOPED: Only include the base URL.
-	// - PATH: Crawl the base URL and linked pages within the URL path.
-	// - DOMAIN: Crawl the base URL and linked pages within the same domain.
-	// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-	CrawlingOption pulumi.StringPtrInput `pulumi:"crawlingOption"`
-	// Whether to embed media content
-	EmbedMedia pulumi.BoolPtrInput `pulumi:"embedMedia"`
-}
-
-func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput)
-}
-
-// GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput is an input type that accepts GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray and GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput values.
-// You can construct a concrete instance of `GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput` via:
-//
-//	GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray{ GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{...} }
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput interface {
-	pulumi.Input
-
-	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput
-	ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput
-}
-
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray []GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput
-
-func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
-}
-
-func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
-	return i.ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(context.Background())
-}
-
-func (i GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
-	return o
-}
-
-// The base URL to crawl
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) BaseUrl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *string { return v.BaseUrl }).(pulumi.StringPtrOutput)
-}
-
-// Options for specifying how URLs found on pages should be handled.
-// - UNKNOWN: Default unknown value
-// - SCOPED: Only include the base URL.
-// - PATH: Crawl the base URL and linked pages within the URL path.
-// - DOMAIN: Crawl the base URL and linked pages within the same domain.
-// - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) CrawlingOption() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *string { return v.CrawlingOption }).(pulumi.StringPtrOutput)
-}
-
-// Whether to embed media content
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput) EmbedMedia() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GenaiKnowledgeBaseDatasourceWebCrawlerDataSource) *bool { return v.EmbedMedia }).(pulumi.BoolPtrOutput)
-}
-
-type GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput struct{ *pulumi.OutputState }
-
-func (GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)(nil)).Elem()
-}
-
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput() GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) ToGenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutputWithContext(ctx context.Context) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput {
-	return o
-}
-
-func (o GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
-		return vs[0].([]GenaiKnowledgeBaseDatasourceWebCrawlerDataSource)[vs[1].(int)]
-	}).(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput)
+func (o GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput) Index(i pulumi.IntInput) GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+		return vs[0].([]GenaiKnowledgeBaseDataSourceWebCrawlerDataSource)[vs[1].(int)]
+	}).(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput)
 }
 
 type GenaiKnowledgeBaseLastIndexingJob struct {
@@ -77003,6 +76848,251 @@ func (o GetSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetSshKeysSshKeyOu
 	}).(GetSshKeysSshKeyOutput)
 }
 
+type GetTagsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetTagsFilterInput is an input type that accepts GetTagsFilterArgs and GetTagsFilterOutput values.
+// You can construct a concrete instance of `GetTagsFilterInput` via:
+//
+//	GetTagsFilterArgs{...}
+type GetTagsFilterInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterOutput() GetTagsFilterOutput
+	ToGetTagsFilterOutputWithContext(context.Context) GetTagsFilterOutput
+}
+
+type GetTagsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTagsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return i.ToGetTagsFilterOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterOutput)
+}
+
+// GetTagsFilterArrayInput is an input type that accepts GetTagsFilterArray and GetTagsFilterArrayOutput values.
+// You can construct a concrete instance of `GetTagsFilterArrayInput` via:
+//
+//	GetTagsFilterArray{ GetTagsFilterArgs{...} }
+type GetTagsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput
+	ToGetTagsFilterArrayOutputWithContext(context.Context) GetTagsFilterArrayOutput
+}
+
+type GetTagsFilterArray []GetTagsFilterInput
+
+func (GetTagsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return i.ToGetTagsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterArrayOutput)
+}
+
+type GetTagsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return o
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetTagsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetTagsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// Only retrieves tags which keys has value that matches
+// one of the values provided here.
+func (o GetTagsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTagsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTagsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) Index(i pulumi.IntInput) GetTagsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsFilter {
+		return vs[0].([]GetTagsFilter)[vs[1].(int)]
+	}).(GetTagsFilterOutput)
+}
+
+type GetTagsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+}
+
+// GetTagsSortInput is an input type that accepts GetTagsSortArgs and GetTagsSortOutput values.
+// You can construct a concrete instance of `GetTagsSortInput` via:
+//
+//	GetTagsSortArgs{...}
+type GetTagsSortInput interface {
+	pulumi.Input
+
+	ToGetTagsSortOutput() GetTagsSortOutput
+	ToGetTagsSortOutputWithContext(context.Context) GetTagsSortOutput
+}
+
+type GetTagsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetTagsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutput() GetTagsSortOutput {
+	return i.ToGetTagsSortOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortOutput)
+}
+
+// GetTagsSortArrayInput is an input type that accepts GetTagsSortArray and GetTagsSortArrayOutput values.
+// You can construct a concrete instance of `GetTagsSortArrayInput` via:
+//
+//	GetTagsSortArray{ GetTagsSortArgs{...} }
+type GetTagsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsSortArrayOutput() GetTagsSortArrayOutput
+	ToGetTagsSortArrayOutputWithContext(context.Context) GetTagsSortArrayOutput
+}
+
+type GetTagsSortArray []GetTagsSortInput
+
+func (GetTagsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return i.ToGetTagsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortArrayOutput)
+}
+
+type GetTagsSortOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutput() GetTagsSortOutput {
+	return o
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetTagsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetTagsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) Index(i pulumi.IntInput) GetTagsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsSort {
+		return vs[0].([]GetTagsSort)[vs[1].(int)]
+	}).(GetTagsSortOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -77326,20 +77416,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelAgreementArrayInput)(nil)).Elem(), GenaiAgentTemplateModelAgreementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelVersionInput)(nil)).Elem(), GenaiAgentTemplateModelVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiAgentTemplateModelVersionArrayInput)(nil)).Elem(), GenaiAgentTemplateModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceTypeInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceTypeArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceFileUploadDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceFileUploadDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceLastIndexingJobInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceLastIndexingJobArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceSpacesDataSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceTypeInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceTypeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceTypeArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceTypeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceFileUploadDataSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJobInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceLastIndexingJobArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceLastIndexingJobArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceLastIndexingJobArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceSpacesDataSourceArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayInput)(nil)).Elem(), GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GenaiKnowledgeBaseLastIndexingJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GenaiKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelInput)(nil)).Elem(), GenaiOpenaiApiKeyModelArgs{})
@@ -77999,6 +78087,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortArrayInput)(nil)).Elem(), GetSshKeysSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyInput)(nil)).Elem(), GetSshKeysSshKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyArrayInput)(nil)).Elem(), GetSshKeysSshKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterInput)(nil)).Elem(), GetTagsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterArrayInput)(nil)).Elem(), GetTagsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortInput)(nil)).Elem(), GetTagsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -78321,20 +78413,18 @@ func init() {
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelAgreementArrayOutput{})
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelVersionOutput{})
 	pulumi.RegisterOutputType(GenaiAgentTemplateModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceTypeOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceTypeArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceFileUploadDataSourceOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceSpacesDataSourceOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceSpacesDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceSpacesDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourcePtrOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceTypeOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceTypeArrayOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceFileUploadDataSourceOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArrayOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceLastIndexingJobOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceLastIndexingJobArrayOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceSpacesDataSourceOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceSpacesDataSourceArrayOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceOutput{})
-	pulumi.RegisterOutputType(GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseLastIndexingJobOutput{})
 	pulumi.RegisterOutputType(GenaiKnowledgeBaseLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelOutput{})
@@ -78994,4 +79084,8 @@ func init() {
 	pulumi.RegisterOutputType(GetSshKeysSortArrayOutput{})
 	pulumi.RegisterOutputType(GetSshKeysSshKeyOutput{})
 	pulumi.RegisterOutputType(GetSshKeysSshKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsSortOutput{})
+	pulumi.RegisterOutputType(GetTagsSortArrayOutput{})
 }

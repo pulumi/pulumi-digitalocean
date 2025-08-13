@@ -50,7 +50,7 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
     /**
      * Data sources for the knowledge base
      */
-    public readonly datasources!: pulumi.Output<outputs.GenaiKnowledgeBaseDatasource[]>;
+    public readonly datasources!: pulumi.Output<outputs.GenaiKnowledgeBaseDataSource[]>;
     /**
      * The unique identifier of the embedding model
      */
@@ -154,7 +154,7 @@ export interface GenaiKnowledgeBaseState {
     /**
      * Data sources for the knowledge base
      */
-    datasources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasource>[]>;
+    datasources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSource>[]>;
     /**
      * The unique identifier of the embedding model
      */
@@ -198,7 +198,7 @@ export interface GenaiKnowledgeBaseArgs {
     /**
      * Data sources for the knowledge base
      */
-    datasources: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasource>[]>;
+    datasources: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSource>[]>;
     /**
      * The unique identifier of the embedding model
      */

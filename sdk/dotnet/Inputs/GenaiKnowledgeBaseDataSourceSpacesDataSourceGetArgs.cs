@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GenaiKnowledgeBaseDatasourceSpacesDataSourceGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GenaiKnowledgeBaseDataSourceSpacesDataSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Spaces bucket
@@ -30,9 +30,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("region")]
         public Input<string>? Region { get; set; }
 
-        public GenaiKnowledgeBaseDatasourceSpacesDataSourceGetArgs()
+        public GenaiKnowledgeBaseDataSourceSpacesDataSourceGetArgs()
         {
         }
-        public static new GenaiKnowledgeBaseDatasourceSpacesDataSourceGetArgs Empty => new GenaiKnowledgeBaseDatasourceSpacesDataSourceGetArgs();
+        public static new GenaiKnowledgeBaseDataSourceSpacesDataSourceGetArgs Empty => new GenaiKnowledgeBaseDataSourceSpacesDataSourceGetArgs();
     }
 }

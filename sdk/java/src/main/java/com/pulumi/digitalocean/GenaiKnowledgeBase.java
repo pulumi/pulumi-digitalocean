@@ -10,7 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.GenaiKnowledgeBaseArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseState;
-import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDatasource;
+import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSource;
 import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseLastIndexingJob;
 import java.lang.Boolean;
 import java.lang.String;
@@ -66,14 +66,14 @@ public class GenaiKnowledgeBase extends com.pulumi.resources.CustomResource {
      * Data sources for the knowledge base
      * 
      */
-    @Export(name="datasources", refs={List.class,GenaiKnowledgeBaseDatasource.class}, tree="[0,1]")
-    private Output<List<GenaiKnowledgeBaseDatasource>> datasources;
+    @Export(name="datasources", refs={List.class,GenaiKnowledgeBaseDataSource.class}, tree="[0,1]")
+    private Output<List<GenaiKnowledgeBaseDataSource>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Output<List<GenaiKnowledgeBaseDatasource>> datasources() {
+    public Output<List<GenaiKnowledgeBaseDataSource>> datasources() {
         return this.datasources;
     }
     /**

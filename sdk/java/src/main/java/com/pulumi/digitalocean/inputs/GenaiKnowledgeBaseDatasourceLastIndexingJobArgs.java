@@ -13,9 +13,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs extends com.pulumi.resources.ResourceArgs {
+public final class GenaiKnowledgeBaseDataSourceLastIndexingJobArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GenaiKnowledgeBaseDatasourceLastIndexingJobArgs Empty = new GenaiKnowledgeBaseDatasourceLastIndexingJobArgs();
+    public static final GenaiKnowledgeBaseDataSourceLastIndexingJobArgs Empty = new GenaiKnowledgeBaseDataSourceLastIndexingJobArgs();
 
     /**
      * Number of completed datasources in the last indexing job
@@ -182,9 +182,9 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs extends com.p
         return Optional.ofNullable(this.uuid);
     }
 
-    private GenaiKnowledgeBaseDatasourceLastIndexingJobArgs() {}
+    private GenaiKnowledgeBaseDataSourceLastIndexingJobArgs() {}
 
-    private GenaiKnowledgeBaseDatasourceLastIndexingJobArgs(GenaiKnowledgeBaseDatasourceLastIndexingJobArgs $) {
+    private GenaiKnowledgeBaseDataSourceLastIndexingJobArgs(GenaiKnowledgeBaseDataSourceLastIndexingJobArgs $) {
         this.completedDatasources = $.completedDatasources;
         this.createdAt = $.createdAt;
         this.dataSourceUuids = $.dataSourceUuids;
@@ -201,19 +201,19 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs extends com.p
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GenaiKnowledgeBaseDatasourceLastIndexingJobArgs defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSourceLastIndexingJobArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GenaiKnowledgeBaseDatasourceLastIndexingJobArgs $;
+        private GenaiKnowledgeBaseDataSourceLastIndexingJobArgs $;
 
         public Builder() {
-            $ = new GenaiKnowledgeBaseDatasourceLastIndexingJobArgs();
+            $ = new GenaiKnowledgeBaseDataSourceLastIndexingJobArgs();
         }
 
-        public Builder(GenaiKnowledgeBaseDatasourceLastIndexingJobArgs defaults) {
-            $ = new GenaiKnowledgeBaseDatasourceLastIndexingJobArgs(Objects.requireNonNull(defaults));
+        public Builder(GenaiKnowledgeBaseDataSourceLastIndexingJobArgs defaults) {
+            $ = new GenaiKnowledgeBaseDataSourceLastIndexingJobArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -457,7 +457,7 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs extends com.p
             return uuid(Output.of(uuid));
         }
 
-        public GenaiKnowledgeBaseDatasourceLastIndexingJobArgs build() {
+        public GenaiKnowledgeBaseDataSourceLastIndexingJobArgs build() {
             return $;
         }
     }

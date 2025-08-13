@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class GenaiKnowledgeBaseDatasourceLastIndexingJob
+    public sealed class GenaiKnowledgeBaseDataSourceLastIndexingJob
     {
         /// <summary>
         /// Number of completed datasources in the last indexing job
@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? Uuid;
 
         [OutputConstructor]
-        private GenaiKnowledgeBaseDatasourceLastIndexingJob(
+        private GenaiKnowledgeBaseDataSourceLastIndexingJob(
             int? completedDatasources,
 
             string? createdAt,

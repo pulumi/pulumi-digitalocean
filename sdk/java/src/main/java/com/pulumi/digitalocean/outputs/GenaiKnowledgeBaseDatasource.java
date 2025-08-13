@@ -4,10 +4,10 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource;
+import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob;
 import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource;
 import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource;
-import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource;
-import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,7 +15,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GenaiKnowledgeBaseDatasource {
+public final class GenaiKnowledgeBaseDataSource {
     /**
      * @return Created At timestamp for the Knowledge Base
      * 
@@ -25,12 +25,12 @@ public final class GenaiKnowledgeBaseDatasource {
      * @return File upload data source configuration
      * 
      */
-    private @Nullable List<GenaiKnowledgeBaseDatasourceFileUploadDataSource> fileUploadDataSources;
+    private @Nullable List<GenaiKnowledgeBaseDataSourceFileUploadDataSource> fileUploadDataSources;
     /**
      * @return Last indexing job for the data source
      * 
      */
-    private @Nullable List<GenaiKnowledgeBaseDatasourceLastIndexingJob> lastIndexingJobs;
+    private @Nullable List<GenaiKnowledgeBaseDataSourceLastIndexingJob> lastIndexingJobs;
     /**
      * @return Spaces data source configuration
      * 
@@ -52,7 +52,7 @@ public final class GenaiKnowledgeBaseDatasource {
      */
     private @Nullable List<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource> webCrawlerDataSources;
 
-    private GenaiKnowledgeBaseDatasource() {}
+    private GenaiKnowledgeBaseDataSource() {}
     /**
      * @return Created At timestamp for the Knowledge Base
      * 
@@ -64,14 +64,14 @@ public final class GenaiKnowledgeBaseDatasource {
      * @return File upload data source configuration
      * 
      */
-    public List<GenaiKnowledgeBaseDatasourceFileUploadDataSource> fileUploadDataSources() {
+    public List<GenaiKnowledgeBaseDataSourceFileUploadDataSource> fileUploadDataSources() {
         return this.fileUploadDataSources == null ? List.of() : this.fileUploadDataSources;
     }
     /**
      * @return Last indexing job for the data source
      * 
      */
-    public List<GenaiKnowledgeBaseDatasourceLastIndexingJob> lastIndexingJobs() {
+    public List<GenaiKnowledgeBaseDataSourceLastIndexingJob> lastIndexingJobs() {
         return this.lastIndexingJobs == null ? List.of() : this.lastIndexingJobs;
     }
     /**
@@ -107,20 +107,20 @@ public final class GenaiKnowledgeBaseDatasource {
         return new Builder();
     }
 
-    public static Builder builder(GenaiKnowledgeBaseDatasource defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSource defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String createdAt;
-        private @Nullable List<GenaiKnowledgeBaseDatasourceFileUploadDataSource> fileUploadDataSources;
-        private @Nullable List<GenaiKnowledgeBaseDatasourceLastIndexingJob> lastIndexingJobs;
+        private @Nullable List<GenaiKnowledgeBaseDataSourceFileUploadDataSource> fileUploadDataSources;
+        private @Nullable List<GenaiKnowledgeBaseDataSourceLastIndexingJob> lastIndexingJobs;
         private @Nullable List<GenaiKnowledgeBaseDataSourceSpacesDataSource> spacesDataSources;
         private @Nullable String updatedAt;
         private @Nullable String uuid;
         private @Nullable List<GenaiKnowledgeBaseDataSourceWebCrawlerDataSource> webCrawlerDataSources;
         public Builder() {}
-        public Builder(GenaiKnowledgeBaseDatasource defaults) {
+        public Builder(GenaiKnowledgeBaseDataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.createdAt = defaults.createdAt;
     	      this.fileUploadDataSources = defaults.fileUploadDataSources;
@@ -138,21 +138,21 @@ public final class GenaiKnowledgeBaseDatasource {
             return this;
         }
         @CustomType.Setter
-        public Builder fileUploadDataSources(@Nullable List<GenaiKnowledgeBaseDatasourceFileUploadDataSource> fileUploadDataSources) {
+        public Builder fileUploadDataSources(@Nullable List<GenaiKnowledgeBaseDataSourceFileUploadDataSource> fileUploadDataSources) {
 
             this.fileUploadDataSources = fileUploadDataSources;
             return this;
         }
-        public Builder fileUploadDataSources(GenaiKnowledgeBaseDatasourceFileUploadDataSource... fileUploadDataSources) {
+        public Builder fileUploadDataSources(GenaiKnowledgeBaseDataSourceFileUploadDataSource... fileUploadDataSources) {
             return fileUploadDataSources(List.of(fileUploadDataSources));
         }
         @CustomType.Setter
-        public Builder lastIndexingJobs(@Nullable List<GenaiKnowledgeBaseDatasourceLastIndexingJob> lastIndexingJobs) {
+        public Builder lastIndexingJobs(@Nullable List<GenaiKnowledgeBaseDataSourceLastIndexingJob> lastIndexingJobs) {
 
             this.lastIndexingJobs = lastIndexingJobs;
             return this;
         }
-        public Builder lastIndexingJobs(GenaiKnowledgeBaseDatasourceLastIndexingJob... lastIndexingJobs) {
+        public Builder lastIndexingJobs(GenaiKnowledgeBaseDataSourceLastIndexingJob... lastIndexingJobs) {
             return lastIndexingJobs(List.of(lastIndexingJobs));
         }
         @CustomType.Setter
@@ -185,8 +185,8 @@ public final class GenaiKnowledgeBaseDatasource {
         public Builder webCrawlerDataSources(GenaiKnowledgeBaseDataSourceWebCrawlerDataSource... webCrawlerDataSources) {
             return webCrawlerDataSources(List.of(webCrawlerDataSources));
         }
-        public GenaiKnowledgeBaseDatasource build() {
-            final var _resultValue = new GenaiKnowledgeBaseDatasource();
+        public GenaiKnowledgeBaseDataSource build() {
+            final var _resultValue = new GenaiKnowledgeBaseDataSource();
             _resultValue.createdAt = createdAt;
             _resultValue.fileUploadDataSources = fileUploadDataSources;
             _resultValue.lastIndexingJobs = lastIndexingJobs;

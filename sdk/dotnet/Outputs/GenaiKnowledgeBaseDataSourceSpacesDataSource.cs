@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class GenaiKnowledgeBaseDatasourceSpacesDataSource
+    public sealed class GenaiKnowledgeBaseDataSourceSpacesDataSource
     {
         /// <summary>
         /// The name of the Spaces bucket
@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? Region;
 
         [OutputConstructor]
-        private GenaiKnowledgeBaseDatasourceSpacesDataSource(
+        private GenaiKnowledgeBaseDataSourceSpacesDataSource(
             string? bucketName,
 
             string? itemPath,

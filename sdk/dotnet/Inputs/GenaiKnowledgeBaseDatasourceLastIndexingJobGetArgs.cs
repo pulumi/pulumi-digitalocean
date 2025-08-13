@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GenaiKnowledgeBaseDatasourceLastIndexingJobGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GenaiKnowledgeBaseDataSourceLastIndexingJobGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of completed datasources in the last indexing job
@@ -84,9 +84,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
-        public GenaiKnowledgeBaseDatasourceLastIndexingJobGetArgs()
+        public GenaiKnowledgeBaseDataSourceLastIndexingJobGetArgs()
         {
         }
-        public static new GenaiKnowledgeBaseDatasourceLastIndexingJobGetArgs Empty => new GenaiKnowledgeBaseDatasourceLastIndexingJobGetArgs();
+        public static new GenaiKnowledgeBaseDataSourceLastIndexingJobGetArgs Empty => new GenaiKnowledgeBaseDataSourceLastIndexingJobGetArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GenaiKnowledgeBaseDatasourceFileUploadDataSourceGetArgs : global::Pulumi.ResourceArgs
+    public sealed class GenaiKnowledgeBaseDataSourceFileUploadDataSourceGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The original name of the uploaded file
@@ -30,9 +30,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("storedObjectKey")]
         public Input<string>? StoredObjectKey { get; set; }
 
-        public GenaiKnowledgeBaseDatasourceFileUploadDataSourceGetArgs()
+        public GenaiKnowledgeBaseDataSourceFileUploadDataSourceGetArgs()
         {
         }
-        public static new GenaiKnowledgeBaseDatasourceFileUploadDataSourceGetArgs Empty => new GenaiKnowledgeBaseDatasourceFileUploadDataSourceGetArgs();
+        public static new GenaiKnowledgeBaseDataSourceFileUploadDataSourceGetArgs Empty => new GenaiKnowledgeBaseDataSourceFileUploadDataSourceGetArgs();
     }
 }

@@ -3444,42 +3444,7 @@ export interface GenaiAgentTemplateModelVersion {
     patch?: pulumi.Input<number>;
 }
 
-export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
-    /**
-     * The name of the Spaces bucket
-     */
-    bucketName?: pulumi.Input<string>;
-    /**
-     * The path to the item in the bucket
-     */
-    itemPath?: pulumi.Input<string>;
-    /**
-     * The region of the Spaces bucket
-     */
-    region?: pulumi.Input<string>;
-}
-
-export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
-    /**
-     * The base URL to crawl
-     */
-    baseUrl?: pulumi.Input<string>;
-    /**
-     * Options for specifying how URLs found on pages should be handled. 
-     * - UNKNOWN: Default unknown value
-     * - SCOPED: Only include the base URL.
-     * - PATH: Crawl the base URL and linked pages within the URL path.
-     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
-     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-     */
-    crawlingOption?: pulumi.Input<string>;
-    /**
-     * Whether to embed media content
-     */
-    embedMedia?: pulumi.Input<boolean>;
-}
-
-export interface GenaiKnowledgeBaseDatasource {
+export interface GenaiKnowledgeBaseDataSource {
     /**
      * Created At timestamp for the Knowledge Base
      */
@@ -3487,15 +3452,15 @@ export interface GenaiKnowledgeBaseDatasource {
     /**
      * File upload data source configuration
      */
-    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource>[]>;
+    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource>[]>;
     /**
      * Last indexing job for the data source
      */
-    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceLastIndexingJob>[]>;
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceLastIndexingJob>[]>;
     /**
      * Spaces data source configuration
      */
-    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceSpacesDataSource>[]>;
+    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource>[]>;
     /**
      * Timestamp when the Knowledge Base was updated
      */
@@ -3507,10 +3472,10 @@ export interface GenaiKnowledgeBaseDatasource {
     /**
      * Web crawler data source configuration
      */
-    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource>[]>;
+    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>[]>;
 }
 
-export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+export interface GenaiKnowledgeBaseDataSourceFileUploadDataSource {
     /**
      * The original name of the uploaded file
      */
@@ -3525,7 +3490,7 @@ export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
     storedObjectKey?: pulumi.Input<string>;
 }
 
-export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
+export interface GenaiKnowledgeBaseDataSourceLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
@@ -3572,7 +3537,7 @@ export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
     uuid?: pulumi.Input<string>;
 }
 
-export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
     /**
      * The name of the Spaces bucket
      */
@@ -3587,7 +3552,7 @@ export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
     region?: pulumi.Input<string>;
 }
 
-export interface GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
     /**
      * The base URL to crawl
      */

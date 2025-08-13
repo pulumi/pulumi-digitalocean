@@ -10,7 +10,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+public final class GenaiKnowledgeBaseDataSourceFileUploadDataSource {
     /**
      * @return The original name of the uploaded file
      * 
@@ -27,7 +27,7 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSource {
      */
     private @Nullable String storedObjectKey;
 
-    private GenaiKnowledgeBaseDatasourceFileUploadDataSource() {}
+    private GenaiKnowledgeBaseDataSourceFileUploadDataSource() {}
     /**
      * @return The original name of the uploaded file
      * 
@@ -54,7 +54,7 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSource {
         return new Builder();
     }
 
-    public static Builder builder(GenaiKnowledgeBaseDatasourceFileUploadDataSource defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSourceFileUploadDataSource defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -63,7 +63,7 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSource {
         private @Nullable String sizeInBytes;
         private @Nullable String storedObjectKey;
         public Builder() {}
-        public Builder(GenaiKnowledgeBaseDatasourceFileUploadDataSource defaults) {
+        public Builder(GenaiKnowledgeBaseDataSourceFileUploadDataSource defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.originalFileName = defaults.originalFileName;
     	      this.sizeInBytes = defaults.sizeInBytes;
@@ -88,8 +88,8 @@ public final class GenaiKnowledgeBaseDatasourceFileUploadDataSource {
             this.storedObjectKey = storedObjectKey;
             return this;
         }
-        public GenaiKnowledgeBaseDatasourceFileUploadDataSource build() {
-            final var _resultValue = new GenaiKnowledgeBaseDatasourceFileUploadDataSource();
+        public GenaiKnowledgeBaseDataSourceFileUploadDataSource build() {
+            final var _resultValue = new GenaiKnowledgeBaseDataSourceFileUploadDataSource();
             _resultValue.originalFileName = originalFileName;
             _resultValue.sizeInBytes = sizeInBytes;
             _resultValue.storedObjectKey = storedObjectKey;

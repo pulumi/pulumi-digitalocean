@@ -12,7 +12,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
-public final class GenaiKnowledgeBaseDatasourceLastIndexingJob {
+public final class GenaiKnowledgeBaseDataSourceLastIndexingJob {
     /**
      * @return Number of completed datasources in the last indexing job
      * 
@@ -69,7 +69,7 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJob {
      */
     private @Nullable String uuid;
 
-    private GenaiKnowledgeBaseDatasourceLastIndexingJob() {}
+    private GenaiKnowledgeBaseDataSourceLastIndexingJob() {}
     /**
      * @return Number of completed datasources in the last indexing job
      * 
@@ -152,7 +152,7 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJob {
         return new Builder();
     }
 
-    public static Builder builder(GenaiKnowledgeBaseDatasourceLastIndexingJob defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSourceLastIndexingJob defaults) {
         return new Builder(defaults);
     }
     @CustomType.Builder
@@ -169,7 +169,7 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJob {
         private @Nullable String updatedAt;
         private @Nullable String uuid;
         public Builder() {}
-        public Builder(GenaiKnowledgeBaseDatasourceLastIndexingJob defaults) {
+        public Builder(GenaiKnowledgeBaseDataSourceLastIndexingJob defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.completedDatasources = defaults.completedDatasources;
     	      this.createdAt = defaults.createdAt;
@@ -253,8 +253,8 @@ public final class GenaiKnowledgeBaseDatasourceLastIndexingJob {
             this.uuid = uuid;
             return this;
         }
-        public GenaiKnowledgeBaseDatasourceLastIndexingJob build() {
-            final var _resultValue = new GenaiKnowledgeBaseDatasourceLastIndexingJob();
+        public GenaiKnowledgeBaseDataSourceLastIndexingJob build() {
+            final var _resultValue = new GenaiKnowledgeBaseDataSourceLastIndexingJob();
             _resultValue.completedDatasources = completedDatasources;
             _resultValue.createdAt = createdAt;
             _resultValue.dataSourceUuids = dataSourceUuids;

@@ -4805,41 +4805,7 @@
             },
             "type": "object"
         },
-        "digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource": {
-            "properties": {
-                "bucketName": {
-                    "type": "string",
-                    "description": "The name of the Spaces bucket\n"
-                },
-                "itemPath": {
-                    "type": "string",
-                    "description": "The path to the item in the bucket\n"
-                },
-                "region": {
-                    "type": "string",
-                    "description": "The region of the Spaces bucket\n"
-                }
-            },
-            "type": "object"
-        },
-        "digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource": {
-            "properties": {
-                "baseUrl": {
-                    "type": "string",
-                    "description": "The base URL to crawl\n"
-                },
-                "crawlingOption": {
-                    "type": "string",
-                    "description": "Options for specifying how URLs found on pages should be handled. \n- UNKNOWN: Default unknown value\n- SCOPED: Only include the base URL.\n- PATH: Crawl the base URL and linked pages within the URL path.\n- DOMAIN: Crawl the base URL and linked pages within the same domain.\n- SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.\n"
-                },
-                "embedMedia": {
-                    "type": "boolean",
-                    "description": "Whether to embed media content\n"
-                }
-            },
-            "type": "object"
-        },
-        "digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource": {
+        "digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource": {
             "properties": {
                 "createdAt": {
                     "type": "string",
@@ -4848,21 +4814,21 @@
                 "fileUploadDataSources": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceFileUploadDataSource:GenaiKnowledgeBaseDatasourceFileUploadDataSource"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceFileUploadDataSource:GenaiKnowledgeBaseDataSourceFileUploadDataSource"
                     },
                     "description": "File upload data source configuration\n"
                 },
                 "lastIndexingJobs": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceLastIndexingJob:GenaiKnowledgeBaseDatasourceLastIndexingJob"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceLastIndexingJob:GenaiKnowledgeBaseDataSourceLastIndexingJob"
                     },
                     "description": "Last indexing job for the data source\n"
                 },
                 "spacesDataSources": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceSpacesDataSource:GenaiKnowledgeBaseDatasourceSpacesDataSource"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource"
                     },
                     "description": "Spaces data source configuration\n"
                 },
@@ -4877,7 +4843,7 @@
                 "webCrawlerDataSources": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasourceWebCrawlerDataSource:GenaiKnowledgeBaseDatasourceWebCrawlerDataSource"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource"
                     },
                     "description": "Web crawler data source configuration\n"
                 }
@@ -4892,7 +4858,7 @@
                 }
             }
         },
-        "digitalocean:index/GenaiKnowledgeBaseDatasourceFileUploadDataSource:GenaiKnowledgeBaseDatasourceFileUploadDataSource": {
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceFileUploadDataSource:GenaiKnowledgeBaseDataSourceFileUploadDataSource": {
             "properties": {
                 "originalFileName": {
                     "type": "string",
@@ -4909,7 +4875,7 @@
             },
             "type": "object"
         },
-        "digitalocean:index/GenaiKnowledgeBaseDatasourceLastIndexingJob:GenaiKnowledgeBaseDatasourceLastIndexingJob": {
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceLastIndexingJob:GenaiKnowledgeBaseDataSourceLastIndexingJob": {
             "properties": {
                 "completedDatasources": {
                     "type": "integer",
@@ -4972,7 +4938,7 @@
                 }
             }
         },
-        "digitalocean:index/GenaiKnowledgeBaseDatasourceSpacesDataSource:GenaiKnowledgeBaseDatasourceSpacesDataSource": {
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource": {
             "properties": {
                 "bucketName": {
                     "type": "string",
@@ -4989,7 +4955,7 @@
             },
             "type": "object"
         },
-        "digitalocean:index/GenaiKnowledgeBaseDatasourceWebCrawlerDataSource:GenaiKnowledgeBaseDatasourceWebCrawlerDataSource": {
+        "digitalocean:index/GenaiKnowledgeBaseDataSourceWebCrawlerDataSource:GenaiKnowledgeBaseDataSourceWebCrawlerDataSource": {
             "properties": {
                 "baseUrl": {
                     "type": "string",
@@ -23945,7 +23911,7 @@
                 "datasources": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                     },
                     "description": "Data sources for the knowledge base\n"
                 },
@@ -24006,7 +23972,7 @@
                 "datasources": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                        "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                     },
                     "description": "Data sources for the knowledge base\n",
                     "willReplaceOnChanges": true
@@ -24074,7 +24040,7 @@
                     "datasources": {
                         "type": "array",
                         "items": {
-                            "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDatasource:GenaiKnowledgeBaseDatasource"
+                            "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                         },
                         "description": "Data sources for the knowledge base\n",
                         "willReplaceOnChanges": true

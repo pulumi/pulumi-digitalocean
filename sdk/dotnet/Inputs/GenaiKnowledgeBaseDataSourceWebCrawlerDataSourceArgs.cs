@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs : global::Pulumi.ResourceArgs
+    public sealed class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base URL to crawl
@@ -35,9 +35,9 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("embedMedia")]
         public Input<bool>? EmbedMedia { get; set; }
 
-        public GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs()
+        public GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs()
         {
         }
-        public static new GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs Empty => new GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs();
+        public static new GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs Empty => new GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs();
     }
 }

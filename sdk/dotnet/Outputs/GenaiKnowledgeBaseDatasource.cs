@@ -11,7 +11,7 @@ namespace Pulumi.DigitalOcean.Outputs
 {
 
     [OutputType]
-    public sealed class GenaiKnowledgeBaseDatasource
+    public sealed class GenaiKnowledgeBaseDataSource
     {
         /// <summary>
         /// Created At timestamp for the Knowledge Base
@@ -20,15 +20,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// File upload data source configuration
         /// </summary>
-        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource> FileUploadDataSources;
+        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource> FileUploadDataSources;
         /// <summary>
         /// Last indexing job for the data source
         /// </summary>
-        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob> LastIndexingJobs;
+        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob> LastIndexingJobs;
         /// <summary>
         /// Spaces data source configuration
         /// </summary>
-        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource> SpacesDataSources;
+        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource> SpacesDataSources;
         /// <summary>
         /// Timestamp when the Knowledge Base was updated
         /// </summary>
@@ -40,23 +40,23 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Web crawler data source configuration
         /// </summary>
-        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource> WebCrawlerDataSources;
+        public readonly ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource> WebCrawlerDataSources;
 
         [OutputConstructor]
-        private GenaiKnowledgeBaseDatasource(
+        private GenaiKnowledgeBaseDataSource(
             string? createdAt,
 
-            ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource> fileUploadDataSources,
+            ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource> fileUploadDataSources,
 
-            ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob> lastIndexingJobs,
+            ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob> lastIndexingJobs,
 
-            ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource> spacesDataSources,
+            ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource> spacesDataSources,
 
             string? updatedAt,
 
             string? uuid,
 
-            ImmutableArray<Outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource> webCrawlerDataSources)
+            ImmutableArray<Outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource> webCrawlerDataSources)
         {
             CreatedAt = createdAt;
             FileUploadDataSources = fileUploadDataSources;

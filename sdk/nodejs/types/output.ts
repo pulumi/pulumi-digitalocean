@@ -3444,42 +3444,7 @@ export interface GenaiAgentTemplateModelVersion {
     patch?: number;
 }
 
-export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
-    /**
-     * The name of the Spaces bucket
-     */
-    bucketName?: string;
-    /**
-     * The path to the item in the bucket
-     */
-    itemPath?: string;
-    /**
-     * The region of the Spaces bucket
-     */
-    region?: string;
-}
-
-export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
-    /**
-     * The base URL to crawl
-     */
-    baseUrl?: string;
-    /**
-     * Options for specifying how URLs found on pages should be handled. 
-     * - UNKNOWN: Default unknown value
-     * - SCOPED: Only include the base URL.
-     * - PATH: Crawl the base URL and linked pages within the URL path.
-     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
-     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-     */
-    crawlingOption?: string;
-    /**
-     * Whether to embed media content
-     */
-    embedMedia?: boolean;
-}
-
-export interface GenaiKnowledgeBaseDatasource {
+export interface GenaiKnowledgeBaseDataSource {
     /**
      * Created At timestamp for the Knowledge Base
      */
@@ -3487,15 +3452,15 @@ export interface GenaiKnowledgeBaseDatasource {
     /**
      * File upload data source configuration
      */
-    fileUploadDataSources?: outputs.GenaiKnowledgeBaseDatasourceFileUploadDataSource[];
+    fileUploadDataSources?: outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource[];
     /**
      * Last indexing job for the data source
      */
-    lastIndexingJobs?: outputs.GenaiKnowledgeBaseDatasourceLastIndexingJob[];
+    lastIndexingJobs?: outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob[];
     /**
      * Spaces data source configuration
      */
-    spacesDataSources?: outputs.GenaiKnowledgeBaseDatasourceSpacesDataSource[];
+    spacesDataSources?: outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource[];
     /**
      * Timestamp when the Knowledge Base was updated
      */
@@ -3507,10 +3472,10 @@ export interface GenaiKnowledgeBaseDatasource {
     /**
      * Web crawler data source configuration
      */
-    webCrawlerDataSources?: outputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSource[];
+    webCrawlerDataSources?: outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource[];
 }
 
-export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
+export interface GenaiKnowledgeBaseDataSourceFileUploadDataSource {
     /**
      * The original name of the uploaded file
      */
@@ -3525,7 +3490,7 @@ export interface GenaiKnowledgeBaseDatasourceFileUploadDataSource {
     storedObjectKey?: string;
 }
 
-export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
+export interface GenaiKnowledgeBaseDataSourceLastIndexingJob {
     /**
      * Number of completed datasources in the last indexing job
      */
@@ -3572,7 +3537,7 @@ export interface GenaiKnowledgeBaseDatasourceLastIndexingJob {
     uuid?: string;
 }
 
-export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
     /**
      * The name of the Spaces bucket
      */
@@ -3587,7 +3552,7 @@ export interface GenaiKnowledgeBaseDatasourceSpacesDataSource {
     region?: string;
 }
 
-export interface GenaiKnowledgeBaseDatasourceWebCrawlerDataSource {
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
     /**
      * The base URL to crawl
      */

@@ -338,20 +338,16 @@ __all__ = [
     'GenaiAgentTemplateModelAgreementArgsDict',
     'GenaiAgentTemplateModelVersionArgs',
     'GenaiAgentTemplateModelVersionArgsDict',
+    'GenaiKnowledgeBaseDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceArgsDict',
+    'GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict',
+    'GenaiKnowledgeBaseDataSourceLastIndexingJobArgs',
+    'GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict',
     'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs',
     'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict',
     'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs',
     'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict',
-    'GenaiKnowledgeBaseDatasourceArgs',
-    'GenaiKnowledgeBaseDatasourceArgsDict',
-    'GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs',
-    'GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict',
-    'GenaiKnowledgeBaseDatasourceLastIndexingJobArgs',
-    'GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict',
-    'GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs',
-    'GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict',
-    'GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs',
-    'GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict',
     'GenaiKnowledgeBaseLastIndexingJobArgs',
     'GenaiKnowledgeBaseLastIndexingJobArgsDict',
     'GenaiOpenaiApiKeyModelArgs',
@@ -17164,179 +17160,20 @@ class GenaiAgentTemplateModelVersionArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Spaces bucket
-        """
-        item_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the item in the bucket
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the Spaces bucket
-        """
-elif False:
-    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
-    def __init__(__self__, *,
-                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 item_path: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
-        """
-        :param pulumi.Input[_builtins.str] bucket_name: The name of the Spaces bucket
-        :param pulumi.Input[_builtins.str] item_path: The path to the item in the bucket
-        :param pulumi.Input[_builtins.str] region: The region of the Spaces bucket
-        """
-        if bucket_name is not None:
-            pulumi.set(__self__, "bucket_name", bucket_name)
-        if item_path is not None:
-            pulumi.set(__self__, "item_path", item_path)
-        if region is not None:
-            pulumi.set(__self__, "region", region)
-
-    @_builtins.property
-    @pulumi.getter(name="bucketName")
-    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The name of the Spaces bucket
-        """
-        return pulumi.get(self, "bucket_name")
-
-    @bucket_name.setter
-    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "bucket_name", value)
-
-    @_builtins.property
-    @pulumi.getter(name="itemPath")
-    def item_path(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The path to the item in the bucket
-        """
-        return pulumi.get(self, "item_path")
-
-    @item_path.setter
-    def item_path(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "item_path", value)
-
-    @_builtins.property
-    @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The region of the Spaces bucket
-        """
-        return pulumi.get(self, "region")
-
-    @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "region", value)
-
-
-if not MYPY:
-    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
-        base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base URL to crawl
-        """
-        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Options for specifying how URLs found on pages should be handled. 
-        - UNKNOWN: Default unknown value
-        - SCOPED: Only include the base URL.
-        - PATH: Crawl the base URL and linked pages within the URL path.
-        - DOMAIN: Crawl the base URL and linked pages within the same domain.
-        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        """
-        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to embed media content
-        """
-elif False:
-    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
-
-@pulumi.input_type
-class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
-    def __init__(__self__, *,
-                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 crawling_option: Optional[pulumi.Input[_builtins.str]] = None,
-                 embed_media: Optional[pulumi.Input[_builtins.bool]] = None):
-        """
-        :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
-        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
-               - UNKNOWN: Default unknown value
-               - SCOPED: Only include the base URL.
-               - PATH: Crawl the base URL and linked pages within the URL path.
-               - DOMAIN: Crawl the base URL and linked pages within the same domain.
-               - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        :param pulumi.Input[_builtins.bool] embed_media: Whether to embed media content
-        """
-        if base_url is not None:
-            pulumi.set(__self__, "base_url", base_url)
-        if crawling_option is not None:
-            pulumi.set(__self__, "crawling_option", crawling_option)
-        if embed_media is not None:
-            pulumi.set(__self__, "embed_media", embed_media)
-
-    @_builtins.property
-    @pulumi.getter(name="baseUrl")
-    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        The base URL to crawl
-        """
-        return pulumi.get(self, "base_url")
-
-    @base_url.setter
-    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "base_url", value)
-
-    @_builtins.property
-    @pulumi.getter(name="crawlingOption")
-    def crawling_option(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        Options for specifying how URLs found on pages should be handled. 
-        - UNKNOWN: Default unknown value
-        - SCOPED: Only include the base URL.
-        - PATH: Crawl the base URL and linked pages within the URL path.
-        - DOMAIN: Crawl the base URL and linked pages within the same domain.
-        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        """
-        return pulumi.get(self, "crawling_option")
-
-    @crawling_option.setter
-    def crawling_option(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "crawling_option", value)
-
-    @_builtins.property
-    @pulumi.getter(name="embedMedia")
-    def embed_media(self) -> Optional[pulumi.Input[_builtins.bool]]:
-        """
-        Whether to embed media content
-        """
-        return pulumi.get(self, "embed_media")
-
-    @embed_media.setter
-    def embed_media(self, value: Optional[pulumi.Input[_builtins.bool]]):
-        pulumi.set(self, "embed_media", value)
-
-
-if not MYPY:
-    class GenaiKnowledgeBaseDatasourceArgsDict(TypedDict):
+    class GenaiKnowledgeBaseDataSourceArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Created At timestamp for the Knowledge Base
         """
-        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict']]]]
+        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]
         """
         File upload data source configuration
         """
-        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict']]]]
+        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]
         """
         Last indexing job for the data source
         """
-        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict']]]]
+        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]
         """
         Spaces data source configuration
         """
@@ -17348,31 +17185,31 @@ if not MYPY:
         """
         UUID of the Knowledge Base
         """
-        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict']]]]
+        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]
         """
         Web crawler data source configuration
         """
 elif False:
-    GenaiKnowledgeBaseDatasourceArgsDict: TypeAlias = Mapping[str, Any]
+    GenaiKnowledgeBaseDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDatasourceArgs:
+class GenaiKnowledgeBaseDataSourceArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_upload_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]] = None,
-                 spaces_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]] = None,
+                 file_upload_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]] = None,
+                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]] = None,
+                 spaces_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_crawler_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]] = None):
+                 web_crawler_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]] file_upload_data_sources: File upload data source configuration
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the data source
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]] spaces_data_sources: Spaces data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]] file_upload_data_sources: File upload data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the data source
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]] spaces_data_sources: Spaces data source configuration
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
         :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]] web_crawler_data_sources: Web crawler data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]] web_crawler_data_sources: Web crawler data source configuration
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -17403,38 +17240,38 @@ class GenaiKnowledgeBaseDatasourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileUploadDataSources")
-    def file_upload_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]]:
+    def file_upload_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]:
         """
         File upload data source configuration
         """
         return pulumi.get(self, "file_upload_data_sources")
 
     @file_upload_data_sources.setter
-    def file_upload_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs']]]]):
+    def file_upload_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]):
         pulumi.set(self, "file_upload_data_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]]:
+    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]:
         """
         Last indexing job for the data source
         """
         return pulumi.get(self, "last_indexing_jobs")
 
     @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceLastIndexingJobArgs']]]]):
+    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]):
         pulumi.set(self, "last_indexing_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSources")
-    def spaces_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]]:
+    def spaces_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]:
         """
         Spaces data source configuration
         """
         return pulumi.get(self, "spaces_data_sources")
 
     @spaces_data_sources.setter
-    def spaces_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs']]]]):
+    def spaces_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]):
         pulumi.set(self, "spaces_data_sources", value)
 
     @_builtins.property
@@ -17463,19 +17300,19 @@ class GenaiKnowledgeBaseDatasourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSources")
-    def web_crawler_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]]:
+    def web_crawler_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]:
         """
         Web crawler data source configuration
         """
         return pulumi.get(self, "web_crawler_data_sources")
 
     @web_crawler_data_sources.setter
-    def web_crawler_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs']]]]):
+    def web_crawler_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]):
         pulumi.set(self, "web_crawler_data_sources", value)
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict(TypedDict):
+    class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict(TypedDict):
         original_file_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The original name of the uploaded file
@@ -17489,10 +17326,10 @@ if not MYPY:
         The stored object key for the file
         """
 elif False:
-    GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs:
+class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
     def __init__(__self__, *,
                  original_file_name: Optional[pulumi.Input[_builtins.str]] = None,
                  size_in_bytes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17547,7 +17384,7 @@ class GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict(TypedDict):
+    class GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict(TypedDict):
         completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of completed datasources in the last indexing job
@@ -17593,10 +17430,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GenaiKnowledgeBaseDatasourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs:
+class GenaiKnowledgeBaseDataSourceLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17779,7 +17616,7 @@ class GenaiKnowledgeBaseDatasourceLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict(TypedDict):
+    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
         bucket_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The name of the Spaces bucket
@@ -17793,10 +17630,10 @@ if not MYPY:
         The region of the Spaces bucket
         """
 elif False:
-    GenaiKnowledgeBaseDatasourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs:
+class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
                  item_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17851,7 +17688,7 @@ class GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict(TypedDict):
+    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
         base_url: NotRequired[pulumi.Input[_builtins.str]]
         """
         The base URL to crawl
@@ -17870,10 +17707,10 @@ if not MYPY:
         Whether to embed media content
         """
 elif False:
-    GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs:
+class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
     def __init__(__self__, *,
                  base_url: Optional[pulumi.Input[_builtins.str]] = None,
                  crawling_option: Optional[pulumi.Input[_builtins.str]] = None,

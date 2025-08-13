@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean.Inputs
 {
 
-    public sealed class GenaiKnowledgeBaseDatasourceArgs : global::Pulumi.ResourceArgs
+    public sealed class GenaiKnowledgeBaseDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Created At timestamp for the Knowledge Base
@@ -19,38 +19,38 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? CreatedAt { get; set; }
 
         [Input("fileUploadDataSources")]
-        private InputList<Inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs>? _fileUploadDataSources;
+        private InputList<Inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs>? _fileUploadDataSources;
 
         /// <summary>
         /// File upload data source configuration
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs> FileUploadDataSources
+        public InputList<Inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs> FileUploadDataSources
         {
-            get => _fileUploadDataSources ?? (_fileUploadDataSources = new InputList<Inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs>());
+            get => _fileUploadDataSources ?? (_fileUploadDataSources = new InputList<Inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs>());
             set => _fileUploadDataSources = value;
         }
 
         [Input("lastIndexingJobs")]
-        private InputList<Inputs.GenaiKnowledgeBaseDatasourceLastIndexingJobArgs>? _lastIndexingJobs;
+        private InputList<Inputs.GenaiKnowledgeBaseDataSourceLastIndexingJobArgs>? _lastIndexingJobs;
 
         /// <summary>
         /// Last indexing job for the data source
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDatasourceLastIndexingJobArgs> LastIndexingJobs
+        public InputList<Inputs.GenaiKnowledgeBaseDataSourceLastIndexingJobArgs> LastIndexingJobs
         {
-            get => _lastIndexingJobs ?? (_lastIndexingJobs = new InputList<Inputs.GenaiKnowledgeBaseDatasourceLastIndexingJobArgs>());
+            get => _lastIndexingJobs ?? (_lastIndexingJobs = new InputList<Inputs.GenaiKnowledgeBaseDataSourceLastIndexingJobArgs>());
             set => _lastIndexingJobs = value;
         }
 
         [Input("spacesDataSources")]
-        private InputList<Inputs.GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs>? _spacesDataSources;
+        private InputList<Inputs.GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs>? _spacesDataSources;
 
         /// <summary>
         /// Spaces data source configuration
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs> SpacesDataSources
+        public InputList<Inputs.GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs> SpacesDataSources
         {
-            get => _spacesDataSources ?? (_spacesDataSources = new InputList<Inputs.GenaiKnowledgeBaseDatasourceSpacesDataSourceArgs>());
+            get => _spacesDataSources ?? (_spacesDataSources = new InputList<Inputs.GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs>());
             set => _spacesDataSources = value;
         }
 
@@ -67,20 +67,20 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? Uuid { get; set; }
 
         [Input("webCrawlerDataSources")]
-        private InputList<Inputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs>? _webCrawlerDataSources;
+        private InputList<Inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs>? _webCrawlerDataSources;
 
         /// <summary>
         /// Web crawler data source configuration
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs> WebCrawlerDataSources
+        public InputList<Inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs> WebCrawlerDataSources
         {
-            get => _webCrawlerDataSources ?? (_webCrawlerDataSources = new InputList<Inputs.GenaiKnowledgeBaseDatasourceWebCrawlerDataSourceArgs>());
+            get => _webCrawlerDataSources ?? (_webCrawlerDataSources = new InputList<Inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs>());
             set => _webCrawlerDataSources = value;
         }
 
-        public GenaiKnowledgeBaseDatasourceArgs()
+        public GenaiKnowledgeBaseDataSourceArgs()
         {
         }
-        public static new GenaiKnowledgeBaseDatasourceArgs Empty => new GenaiKnowledgeBaseDatasourceArgs();
+        public static new GenaiKnowledgeBaseDataSourceArgs Empty => new GenaiKnowledgeBaseDataSourceArgs();
     }
 }

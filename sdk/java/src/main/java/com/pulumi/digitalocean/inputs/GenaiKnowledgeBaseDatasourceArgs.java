@@ -5,10 +5,10 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs;
+import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceLastIndexingJobArgs;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs;
-import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs;
-import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDatasourceLastIndexingJobArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -16,9 +16,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources.ResourceArgs {
+public final class GenaiKnowledgeBaseDataSourceArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final GenaiKnowledgeBaseDatasourceArgs Empty = new GenaiKnowledgeBaseDatasourceArgs();
+    public static final GenaiKnowledgeBaseDataSourceArgs Empty = new GenaiKnowledgeBaseDataSourceArgs();
 
     /**
      * Created At timestamp for the Knowledge Base
@@ -40,13 +40,13 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
      * 
      */
     @Import(name="fileUploadDataSources")
-    private @Nullable Output<List<GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs>> fileUploadDataSources;
+    private @Nullable Output<List<GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs>> fileUploadDataSources;
 
     /**
      * @return File upload data source configuration
      * 
      */
-    public Optional<Output<List<GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs>>> fileUploadDataSources() {
+    public Optional<Output<List<GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs>>> fileUploadDataSources() {
         return Optional.ofNullable(this.fileUploadDataSources);
     }
 
@@ -55,13 +55,13 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
      * 
      */
     @Import(name="lastIndexingJobs")
-    private @Nullable Output<List<GenaiKnowledgeBaseDatasourceLastIndexingJobArgs>> lastIndexingJobs;
+    private @Nullable Output<List<GenaiKnowledgeBaseDataSourceLastIndexingJobArgs>> lastIndexingJobs;
 
     /**
      * @return Last indexing job for the data source
      * 
      */
-    public Optional<Output<List<GenaiKnowledgeBaseDatasourceLastIndexingJobArgs>>> lastIndexingJobs() {
+    public Optional<Output<List<GenaiKnowledgeBaseDataSourceLastIndexingJobArgs>>> lastIndexingJobs() {
         return Optional.ofNullable(this.lastIndexingJobs);
     }
 
@@ -125,9 +125,9 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
         return Optional.ofNullable(this.webCrawlerDataSources);
     }
 
-    private GenaiKnowledgeBaseDatasourceArgs() {}
+    private GenaiKnowledgeBaseDataSourceArgs() {}
 
-    private GenaiKnowledgeBaseDatasourceArgs(GenaiKnowledgeBaseDatasourceArgs $) {
+    private GenaiKnowledgeBaseDataSourceArgs(GenaiKnowledgeBaseDataSourceArgs $) {
         this.createdAt = $.createdAt;
         this.fileUploadDataSources = $.fileUploadDataSources;
         this.lastIndexingJobs = $.lastIndexingJobs;
@@ -140,19 +140,19 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(GenaiKnowledgeBaseDatasourceArgs defaults) {
+    public static Builder builder(GenaiKnowledgeBaseDataSourceArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private GenaiKnowledgeBaseDatasourceArgs $;
+        private GenaiKnowledgeBaseDataSourceArgs $;
 
         public Builder() {
-            $ = new GenaiKnowledgeBaseDatasourceArgs();
+            $ = new GenaiKnowledgeBaseDataSourceArgs();
         }
 
-        public Builder(GenaiKnowledgeBaseDatasourceArgs defaults) {
-            $ = new GenaiKnowledgeBaseDatasourceArgs(Objects.requireNonNull(defaults));
+        public Builder(GenaiKnowledgeBaseDataSourceArgs defaults) {
+            $ = new GenaiKnowledgeBaseDataSourceArgs(Objects.requireNonNull(defaults));
         }
 
         /**
@@ -182,7 +182,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder fileUploadDataSources(@Nullable Output<List<GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs>> fileUploadDataSources) {
+        public Builder fileUploadDataSources(@Nullable Output<List<GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs>> fileUploadDataSources) {
             $.fileUploadDataSources = fileUploadDataSources;
             return this;
         }
@@ -193,7 +193,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder fileUploadDataSources(List<GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs> fileUploadDataSources) {
+        public Builder fileUploadDataSources(List<GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs> fileUploadDataSources) {
             return fileUploadDataSources(Output.of(fileUploadDataSources));
         }
 
@@ -203,7 +203,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder fileUploadDataSources(GenaiKnowledgeBaseDatasourceFileUploadDataSourceArgs... fileUploadDataSources) {
+        public Builder fileUploadDataSources(GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs... fileUploadDataSources) {
             return fileUploadDataSources(List.of(fileUploadDataSources));
         }
 
@@ -213,7 +213,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder lastIndexingJobs(@Nullable Output<List<GenaiKnowledgeBaseDatasourceLastIndexingJobArgs>> lastIndexingJobs) {
+        public Builder lastIndexingJobs(@Nullable Output<List<GenaiKnowledgeBaseDataSourceLastIndexingJobArgs>> lastIndexingJobs) {
             $.lastIndexingJobs = lastIndexingJobs;
             return this;
         }
@@ -224,7 +224,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder lastIndexingJobs(List<GenaiKnowledgeBaseDatasourceLastIndexingJobArgs> lastIndexingJobs) {
+        public Builder lastIndexingJobs(List<GenaiKnowledgeBaseDataSourceLastIndexingJobArgs> lastIndexingJobs) {
             return lastIndexingJobs(Output.of(lastIndexingJobs));
         }
 
@@ -234,7 +234,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
          * @return builder
          * 
          */
-        public Builder lastIndexingJobs(GenaiKnowledgeBaseDatasourceLastIndexingJobArgs... lastIndexingJobs) {
+        public Builder lastIndexingJobs(GenaiKnowledgeBaseDataSourceLastIndexingJobArgs... lastIndexingJobs) {
             return lastIndexingJobs(List.of(lastIndexingJobs));
         }
 
@@ -342,7 +342,7 @@ public final class GenaiKnowledgeBaseDatasourceArgs extends com.pulumi.resources
             return webCrawlerDataSources(List.of(webCrawlerDataSources));
         }
 
-        public GenaiKnowledgeBaseDatasourceArgs build() {
+        public GenaiKnowledgeBaseDataSourceArgs build() {
             return $;
         }
     }
