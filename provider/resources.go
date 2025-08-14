@@ -181,6 +181,20 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
+			"digitalocean_genai_knowledge_base": {
+				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBase"),
+				Fields: map[string]*info.Schema{
+					"datasources": {
+						Elem: &info.Schema{
+							TypeName: tfbridge.Ref("GenaiKnowledgeBaseDataSource"),
+						},
+					},
+				},
+			},
+			"digitalocean_genai_knowledge_base_data_source": {
+				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBaseDataSource"),
+			},
+
 			"digitalocean_kubernetes_cluster": {
 				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
 				Fields: map[string]*tfbridge.SchemaInfo{

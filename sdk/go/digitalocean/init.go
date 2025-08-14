@@ -49,6 +49,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseMongodbConfig{}
 	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
 		r = &DatabaseMysqlConfig{}
+	case "digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration":
+		r = &DatabaseOnlineMigration{}
 	case "digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig":
 		r = &DatabaseOpensearchConfig{}
 	case "digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig":
@@ -59,6 +61,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseReplica{}
 	case "digitalocean:index/databaseUser:DatabaseUser":
 		r = &DatabaseUser{}
+	case "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig":
+		r = &DatabaseValkeyConfig{}
 	case "digitalocean:index/dnsRecord:DnsRecord":
 		r = &DnsRecord{}
 	case "digitalocean:index/domain:Domain":
@@ -77,6 +81,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FloatingIpAssignment{}
 	case "digitalocean:index/genaiAgent:GenaiAgent":
 		r = &GenaiAgent{}
+	case "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment":
+		r = &GenaiAgentKnowledgeBaseAttachment{}
+	case "digitalocean:index/genaiAgentRoute:GenaiAgentRoute":
+		r = &GenaiAgentRoute{}
+	case "digitalocean:index/genaiFunction:GenaiFunction":
+		r = &GenaiFunction{}
+	case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
+		r = &GenaiKnowledgeBase{}
+	case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
+		r = &GenaiKnowledgeBaseDataSource{}
+	case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
+		r = &GenaiOpenaiApiKey{}
 	case "digitalocean:index/kubernetesCluster:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -234,6 +250,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/databaseOnlineMigration",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/databaseOpensearchConfig",
 		&module{version},
 	)
@@ -255,6 +276,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseUser",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseValkeyConfig",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -300,6 +326,36 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/genaiAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiAgentKnowledgeBaseAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiAgentRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiFunction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiKnowledgeBase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiKnowledgeBaseDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiOpenaiApiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

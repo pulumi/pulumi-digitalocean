@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetAppSpecFunctionAlertDestinations;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
@@ -14,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetAppSpecFunctionAlert {
+    private @Nullable GetAppSpecFunctionAlertDestinations destinations;
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -41,6 +43,9 @@ public final class GetAppSpecFunctionAlert {
     private String window;
 
     private GetAppSpecFunctionAlert() {}
+    public Optional<GetAppSpecFunctionAlertDestinations> destinations() {
+        return Optional.ofNullable(this.destinations);
+    }
     /**
      * @return Determines whether or not the alert is disabled (default: `false`).
      * 
@@ -86,6 +91,7 @@ public final class GetAppSpecFunctionAlert {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable GetAppSpecFunctionAlertDestinations destinations;
         private @Nullable Boolean disabled;
         private String operator;
         private String rule;
@@ -94,6 +100,7 @@ public final class GetAppSpecFunctionAlert {
         public Builder() {}
         public Builder(GetAppSpecFunctionAlert defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.destinations = defaults.destinations;
     	      this.disabled = defaults.disabled;
     	      this.operator = defaults.operator;
     	      this.rule = defaults.rule;
@@ -101,6 +108,12 @@ public final class GetAppSpecFunctionAlert {
     	      this.window = defaults.window;
         }
 
+        @CustomType.Setter
+        public Builder destinations(@Nullable GetAppSpecFunctionAlertDestinations destinations) {
+
+            this.destinations = destinations;
+            return this;
+        }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
 
@@ -141,6 +154,7 @@ public final class GetAppSpecFunctionAlert {
         }
         public GetAppSpecFunctionAlert build() {
             final var _resultValue = new GetAppSpecFunctionAlert();
+            _resultValue.destinations = destinations;
             _resultValue.disabled = disabled;
             _resultValue.operator = operator;
             _resultValue.rule = rule;

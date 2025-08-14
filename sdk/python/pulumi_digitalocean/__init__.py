@@ -21,11 +21,13 @@ from .database_kafka_config import *
 from .database_kafka_topic import *
 from .database_mongodb_config import *
 from .database_mysql_config import *
+from .database_online_migration import *
 from .database_opensearch_config import *
 from .database_postgresql_config import *
 from .database_redis_config import *
 from .database_replica import *
 from .database_user import *
+from .database_valkey_config import *
 from .dns_record import *
 from .domain import *
 from .droplet import *
@@ -35,6 +37,12 @@ from .firewall import *
 from .floating_ip import *
 from .floating_ip_assignment import *
 from .genai_agent import *
+from .genai_agent_knowledge_base_attachment import *
+from .genai_agent_route import *
+from .genai_function import *
+from .genai_knowledge_base import *
+from .genai_knowledge_base_data_source import *
+from .genai_openai_api_key import *
 from .get_account import *
 from .get_app import *
 from .get_certificate import *
@@ -42,6 +50,7 @@ from .get_container_registry import *
 from .get_database_ca import *
 from .get_database_cluster import *
 from .get_database_connection_pool import *
+from .get_database_metrics_credentials import *
 from .get_database_replica import *
 from .get_database_user import *
 from .get_domain import *
@@ -53,7 +62,14 @@ from .get_droplets import *
 from .get_firewall import *
 from .get_floating_ip import *
 from .get_genai_agent import *
+from .get_genai_agent_versions import *
 from .get_genai_agents import *
+from .get_genai_agents_by_openai_api_key import *
+from .get_genai_knowledge_base import *
+from .get_genai_knowledge_base_data_sources import *
+from .get_genai_knowledge_bases import *
+from .get_genai_openai_api_key import *
+from .get_genai_openai_api_keys import *
 from .get_image import *
 from .get_images import *
 from .get_kubernetes_cluster import *
@@ -239,6 +255,14 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/databaseOnlineMigration",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration": "DatabaseOnlineMigration"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/databaseOpensearchConfig",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -275,6 +299,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseUser:DatabaseUser": "DatabaseUser"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseValkeyConfig",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig": "DatabaseValkeyConfig"
   }
  },
  {
@@ -347,6 +379,54 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/genaiAgent:GenaiAgent": "GenaiAgent"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiAgentKnowledgeBaseAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment": "GenaiAgentKnowledgeBaseAttachment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiAgentRoute",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiAgentRoute:GenaiAgentRoute": "GenaiAgentRoute"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiFunction",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiFunction:GenaiFunction": "GenaiFunction"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiKnowledgeBase",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase": "GenaiKnowledgeBase"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiKnowledgeBaseDataSource",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource": "GenaiKnowledgeBaseDataSource"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiOpenaiApiKey",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey": "GenaiOpenaiApiKey"
   }
  },
  {

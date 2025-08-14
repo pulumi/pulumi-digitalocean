@@ -68,7 +68,9 @@ type LookupDatabaseClusterResult struct {
 	Id string `pulumi:"id"`
 	// Defines when the automatic maintenance should be performed for the database cluster.
 	MaintenanceWindows []GetDatabaseClusterMaintenanceWindow `pulumi:"maintenanceWindows"`
-	Name               string                                `pulumi:"name"`
+	// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+	MetricsEndpoints []string `pulumi:"metricsEndpoints"`
+	Name             string   `pulumi:"name"`
 	// Number of nodes that will be included in the cluster.
 	NodeCount int `pulumi:"nodeCount"`
 	// Password for the cluster's default user.
@@ -169,6 +171,11 @@ func (o LookupDatabaseClusterResultOutput) Id() pulumi.StringOutput {
 // Defines when the automatic maintenance should be performed for the database cluster.
 func (o LookupDatabaseClusterResultOutput) MaintenanceWindows() GetDatabaseClusterMaintenanceWindowArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseClusterResult) []GetDatabaseClusterMaintenanceWindow { return v.MaintenanceWindows }).(GetDatabaseClusterMaintenanceWindowArrayOutput)
+}
+
+// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+func (o LookupDatabaseClusterResultOutput) MetricsEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseClusterResult) []string { return v.MetricsEndpoints }).(pulumi.StringArrayOutput)
 }
 
 func (o LookupDatabaseClusterResultOutput) Name() pulumi.StringOutput {

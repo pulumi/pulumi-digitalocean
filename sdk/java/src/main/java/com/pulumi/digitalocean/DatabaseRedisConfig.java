@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a virtual resource that can be used to change advanced configuration
  * options for a DigitalOcean managed Redis database cluster.
  * 
+ * &gt; **Note** DigitalOcean managed Redis cluster product is discontinued as of 30 June 2025 and is replaced by the Managed Valkey product. Use the `digitalocean.DatabaseValkeyConfig` resource instead of `digitalocean.DatabaseRedisConfig`
+ * 
  * &gt; **Note** Redis configurations are only removed from state when destroyed. The remote configuration is not unset.
  * 
  * ## Example Usage

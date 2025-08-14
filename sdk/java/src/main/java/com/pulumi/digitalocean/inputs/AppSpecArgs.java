@@ -13,8 +13,10 @@ import com.pulumi.digitalocean.inputs.AppSpecEnvArgs;
 import com.pulumi.digitalocean.inputs.AppSpecFunctionArgs;
 import com.pulumi.digitalocean.inputs.AppSpecIngressArgs;
 import com.pulumi.digitalocean.inputs.AppSpecJobArgs;
+import com.pulumi.digitalocean.inputs.AppSpecMaintenanceArgs;
 import com.pulumi.digitalocean.inputs.AppSpecServiceArgs;
 import com.pulumi.digitalocean.inputs.AppSpecStaticSiteArgs;
+import com.pulumi.digitalocean.inputs.AppSpecVpcArgs;
 import com.pulumi.digitalocean.inputs.AppSpecWorkerArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -205,6 +207,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    @Import(name="maintenance")
+    private @Nullable Output<AppSpecMaintenanceArgs> maintenance;
+
+    /**
+     * @return Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    public Optional<Output<AppSpecMaintenanceArgs>> maintenance() {
+        return Optional.ofNullable(this.maintenance);
+    }
+
+    /**
      * The name of the component.
      * 
      */
@@ -248,6 +265,21 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.staticSites);
     }
 
+    /**
+     * Specification for VPC.
+     * 
+     */
+    @Import(name="vpcs")
+    private @Nullable Output<List<AppSpecVpcArgs>> vpcs;
+
+    /**
+     * @return Specification for VPC.
+     * 
+     */
+    public Optional<Output<List<AppSpecVpcArgs>>> vpcs() {
+        return Optional.ofNullable(this.vpcs);
+    }
+
     @Import(name="workers")
     private @Nullable Output<List<AppSpecWorkerArgs>> workers;
 
@@ -271,10 +303,12 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         this.functions = $.functions;
         this.ingress = $.ingress;
         this.jobs = $.jobs;
+        this.maintenance = $.maintenance;
         this.name = $.name;
         this.region = $.region;
         this.services = $.services;
         this.staticSites = $.staticSites;
+        this.vpcs = $.vpcs;
         this.workers = $.workers;
     }
 
@@ -612,6 +646,27 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param maintenance Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenance(@Nullable Output<AppSpecMaintenanceArgs> maintenance) {
+            $.maintenance = maintenance;
+            return this;
+        }
+
+        /**
+         * @param maintenance Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maintenance(AppSpecMaintenanceArgs maintenance) {
+            return maintenance(Output.of(maintenance));
+        }
+
+        /**
          * @param name The name of the component.
          * 
          * @return builder
@@ -677,6 +732,37 @@ public final class AppSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder staticSites(AppSpecStaticSiteArgs... staticSites) {
             return staticSites(List.of(staticSites));
+        }
+
+        /**
+         * @param vpcs Specification for VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(@Nullable Output<List<AppSpecVpcArgs>> vpcs) {
+            $.vpcs = vpcs;
+            return this;
+        }
+
+        /**
+         * @param vpcs Specification for VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(List<AppSpecVpcArgs> vpcs) {
+            return vpcs(Output.of(vpcs));
+        }
+
+        /**
+         * @param vpcs Specification for VPC.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcs(AppSpecVpcArgs... vpcs) {
+            return vpcs(List.of(vpcs));
         }
 
         public Builder workers(@Nullable Output<List<AppSpecWorkerArgs>> workers) {

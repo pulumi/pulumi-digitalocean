@@ -12,8 +12,10 @@ import com.pulumi.digitalocean.outputs.GetAppSpecEnv;
 import com.pulumi.digitalocean.outputs.GetAppSpecFunction;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngress;
 import com.pulumi.digitalocean.outputs.GetAppSpecJob;
+import com.pulumi.digitalocean.outputs.GetAppSpecMaintenance;
 import com.pulumi.digitalocean.outputs.GetAppSpecService;
 import com.pulumi.digitalocean.outputs.GetAppSpecStaticSite;
+import com.pulumi.digitalocean.outputs.GetAppSpecVpc;
 import com.pulumi.digitalocean.outputs.GetAppSpecWorker;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -69,6 +71,11 @@ public final class GetAppSpec {
     private GetAppSpecIngress ingress;
     private @Nullable List<GetAppSpecJob> jobs;
     /**
+     * @return Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    private @Nullable GetAppSpecMaintenance maintenance;
+    /**
      * @return The name of the component.
      * 
      */
@@ -80,6 +87,7 @@ public final class GetAppSpec {
     private @Nullable String region;
     private @Nullable List<GetAppSpecService> services;
     private @Nullable List<GetAppSpecStaticSite> staticSites;
+    private @Nullable List<GetAppSpecVpc> vpcs;
     private @Nullable List<GetAppSpecWorker> workers;
 
     private GetAppSpec() {}
@@ -153,6 +161,13 @@ public final class GetAppSpec {
         return this.jobs == null ? List.of() : this.jobs;
     }
     /**
+     * @return Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     * 
+     */
+    public Optional<GetAppSpecMaintenance> maintenance() {
+        return Optional.ofNullable(this.maintenance);
+    }
+    /**
      * @return The name of the component.
      * 
      */
@@ -171,6 +186,9 @@ public final class GetAppSpec {
     }
     public List<GetAppSpecStaticSite> staticSites() {
         return this.staticSites == null ? List.of() : this.staticSites;
+    }
+    public List<GetAppSpecVpc> vpcs() {
+        return this.vpcs == null ? List.of() : this.vpcs;
     }
     public List<GetAppSpecWorker> workers() {
         return this.workers == null ? List.of() : this.workers;
@@ -198,10 +216,12 @@ public final class GetAppSpec {
         private @Nullable List<GetAppSpecFunction> functions;
         private GetAppSpecIngress ingress;
         private @Nullable List<GetAppSpecJob> jobs;
+        private @Nullable GetAppSpecMaintenance maintenance;
         private String name;
         private @Nullable String region;
         private @Nullable List<GetAppSpecService> services;
         private @Nullable List<GetAppSpecStaticSite> staticSites;
+        private @Nullable List<GetAppSpecVpc> vpcs;
         private @Nullable List<GetAppSpecWorker> workers;
         public Builder() {}
         public Builder(GetAppSpec defaults) {
@@ -219,10 +239,12 @@ public final class GetAppSpec {
     	      this.functions = defaults.functions;
     	      this.ingress = defaults.ingress;
     	      this.jobs = defaults.jobs;
+    	      this.maintenance = defaults.maintenance;
     	      this.name = defaults.name;
     	      this.region = defaults.region;
     	      this.services = defaults.services;
     	      this.staticSites = defaults.staticSites;
+    	      this.vpcs = defaults.vpcs;
     	      this.workers = defaults.workers;
         }
 
@@ -340,6 +362,12 @@ public final class GetAppSpec {
             return jobs(List.of(jobs));
         }
         @CustomType.Setter
+        public Builder maintenance(@Nullable GetAppSpecMaintenance maintenance) {
+
+            this.maintenance = maintenance;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetAppSpec", "name");
@@ -372,6 +400,15 @@ public final class GetAppSpec {
             return staticSites(List.of(staticSites));
         }
         @CustomType.Setter
+        public Builder vpcs(@Nullable List<GetAppSpecVpc> vpcs) {
+
+            this.vpcs = vpcs;
+            return this;
+        }
+        public Builder vpcs(GetAppSpecVpc... vpcs) {
+            return vpcs(List.of(vpcs));
+        }
+        @CustomType.Setter
         public Builder workers(@Nullable List<GetAppSpecWorker> workers) {
 
             this.workers = workers;
@@ -395,10 +432,12 @@ public final class GetAppSpec {
             _resultValue.functions = functions;
             _resultValue.ingress = ingress;
             _resultValue.jobs = jobs;
+            _resultValue.maintenance = maintenance;
             _resultValue.name = name;
             _resultValue.region = region;
             _resultValue.services = services;
             _resultValue.staticSites = staticSites;
+            _resultValue.vpcs = vpcs;
             _resultValue.workers = workers;
             return _resultValue;
         }

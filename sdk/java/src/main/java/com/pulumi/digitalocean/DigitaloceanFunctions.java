@@ -43,8 +43,22 @@ import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasePlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -112,6 +126,7 @@ import com.pulumi.digitalocean.outputs.GetContainerRegistryResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseCaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseConnectionPoolResult;
+import com.pulumi.digitalocean.outputs.GetDatabaseMetricsCredentialsResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseReplicaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserResult;
 import com.pulumi.digitalocean.outputs.GetDomainResult;
@@ -123,7 +138,14 @@ import com.pulumi.digitalocean.outputs.GetDropletsResult;
 import com.pulumi.digitalocean.outputs.GetFirewallResult;
 import com.pulumi.digitalocean.outputs.GetFloatingIpResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentResult;
+import com.pulumi.digitalocean.outputs.GetGenaiAgentVersionsResult;
+import com.pulumi.digitalocean.outputs.GetGenaiAgentsByOpenaiApiKeyResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBasesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeyResult;
+import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeysResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
@@ -1844,6 +1866,293 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetDatabaseConnectionPoolResult> getDatabaseConnectionPoolPlain(GetDatabaseConnectionPoolPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseConnectionPool:getDatabaseConnectionPool", TypeShape.of(GetDatabaseConnectionPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials() {
+        return getDatabaseMetricsCredentials(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentialsPlain() {
+        return getDatabaseMetricsCredentialsPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(InvokeArgs args) {
+        return getDatabaseMetricsCredentials(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentialsPlain(InvokeArgs args) {
+        return getDatabaseMetricsCredentialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials", TypeShape.of(GetDatabaseMetricsCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentials(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials", TypeShape.of(GetDatabaseMetricsCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to the metrics credentials for DigitalOcean database clusters. These credentials are account-wide and can be used to access metrics for any database cluster in the account.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDatabaseMetricsCredentials(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("metricsUsername", example.username());
+     *         ctx.export("metricsPassword", example.password());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetDatabaseMetricsCredentialsResult> getDatabaseMetricsCredentialsPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseMetricsCredentials:getDatabaseMetricsCredentials", TypeShape.of(GetDatabaseMetricsCredentialsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provides information on a DigitalOcean database replica.
@@ -6278,6 +6587,21 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args) {
+        return getGenaiAgentVersions(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args) {
+        return getGenaiAgentVersionsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetGenaiAgentsResult> getGenaiAgents() {
         return getGenaiAgents(GetGenaiAgentsArgs.Empty, InvokeOptions.Empty);
     }
@@ -6298,6 +6622,114 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args) {
+        return getGenaiAgentsByOpenaiApiKey(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args) {
+        return getGenaiAgentsByOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase() {
+        return getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain() {
+        return getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args) {
+        return getGenaiKnowledgeBase(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args) {
+        return getGenaiKnowledgeBasePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args) {
+        return getGenaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args) {
+        return getGenaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases() {
+        return getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain() {
+        return getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args) {
+        return getGenaiKnowledgeBases(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args) {
+        return getGenaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args) {
+        return getGenaiOpenaiApiKey(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args) {
+        return getGenaiOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys() {
+        return getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain() {
+        return getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args) {
+        return getGenaiOpenaiApiKeys(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args) {
+        return getGenaiOpenaiApiKeysPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on an image for use in other resources (e.g. creating a Droplet

@@ -255,6 +255,7 @@ class _DatabaseClusterState:
                  eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]] = None,
+                 metrics_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_count: Optional[pulumi.Input[_builtins.int]] = None,
                  password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -285,6 +286,7 @@ class _DatabaseClusterState:
         :param pulumi.Input[_builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[_builtins.str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metrics_endpoints: A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
         :param pulumi.Input[_builtins.str] name: The name of the database cluster.
         :param pulumi.Input[_builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[_builtins.str] password: Password for the cluster's default user.
@@ -323,6 +325,8 @@ class _DatabaseClusterState:
             pulumi.set(__self__, "host", host)
         if maintenance_windows is not None:
             pulumi.set(__self__, "maintenance_windows", maintenance_windows)
+        if metrics_endpoints is not None:
+            pulumi.set(__self__, "metrics_endpoints", metrics_endpoints)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_count is not None:
@@ -448,6 +452,18 @@ class _DatabaseClusterState:
     @maintenance_windows.setter
     def maintenance_windows(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseClusterMaintenanceWindowArgs']]]]):
         pulumi.set(self, "maintenance_windows", value)
+
+    @_builtins.property
+    @pulumi.getter(name="metricsEndpoints")
+    def metrics_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        """
+        return pulumi.get(self, "metrics_endpoints")
+
+    @metrics_endpoints.setter
+    def metrics_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "metrics_endpoints", value)
 
     @_builtins.property
     @pulumi.getter
@@ -1072,6 +1088,7 @@ class DatabaseCluster(pulumi.CustomResource):
             __props__.__dict__["cluster_urn"] = None
             __props__.__dict__["database"] = None
             __props__.__dict__["host"] = None
+            __props__.__dict__["metrics_endpoints"] = None
             __props__.__dict__["password"] = None
             __props__.__dict__["port"] = None
             __props__.__dict__["private_host"] = None
@@ -1103,6 +1120,7 @@ class DatabaseCluster(pulumi.CustomResource):
             eviction_policy: Optional[pulumi.Input[_builtins.str]] = None,
             host: Optional[pulumi.Input[_builtins.str]] = None,
             maintenance_windows: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]]] = None,
+            metrics_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_count: Optional[pulumi.Input[_builtins.int]] = None,
             password: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1138,6 +1156,7 @@ class DatabaseCluster(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] eviction_policy: A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
         :param pulumi.Input[_builtins.str] host: Database cluster's hostname.
         :param pulumi.Input[Sequence[pulumi.Input[Union['DatabaseClusterMaintenanceWindowArgs', 'DatabaseClusterMaintenanceWindowArgsDict']]]] maintenance_windows: Defines when the automatic maintenance should be performed for the database cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] metrics_endpoints: A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
         :param pulumi.Input[_builtins.str] name: The name of the database cluster.
         :param pulumi.Input[_builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[_builtins.str] password: Password for the cluster's default user.
@@ -1173,6 +1192,7 @@ class DatabaseCluster(pulumi.CustomResource):
         __props__.__dict__["eviction_policy"] = eviction_policy
         __props__.__dict__["host"] = host
         __props__.__dict__["maintenance_windows"] = maintenance_windows
+        __props__.__dict__["metrics_endpoints"] = metrics_endpoints
         __props__.__dict__["name"] = name
         __props__.__dict__["node_count"] = node_count
         __props__.__dict__["password"] = password
@@ -1249,6 +1269,14 @@ class DatabaseCluster(pulumi.CustomResource):
         Defines when the automatic maintenance should be performed for the database cluster.
         """
         return pulumi.get(self, "maintenance_windows")
+
+    @_builtins.property
+    @pulumi.getter(name="metricsEndpoints")
+    def metrics_endpoints(self) -> pulumi.Output[Sequence[_builtins.str]]:
+        """
+        A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        """
+        return pulumi.get(self, "metrics_endpoints")
 
     @_builtins.property
     @pulumi.getter

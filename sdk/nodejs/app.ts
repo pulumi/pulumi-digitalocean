@@ -111,6 +111,31 @@ import * as utilities from "./utilities";
  * }});
  * ```
  *
+ * ### Maintenance Example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const maintenance_example = new digitalocean.App("maintenance-example", {spec: {
+ *     name: "maintenance-example",
+ *     region: "ams",
+ *     maintenance: {
+ *         enabled: true,
+ *         offlinePageUrl: "https://example.com/maintenance.html",
+ *     },
+ *     services: [{
+ *         name: "go-service",
+ *         instanceCount: 1,
+ *         instanceSizeSlug: "apps-s-1vcpu-1gb",
+ *         git: {
+ *             repoCloneUrl: "https://github.com/digitalocean/sample-golang.git",
+ *             branch: "main",
+ *         },
+ *     }],
+ * }});
+ * ```
+ *
  * ## Import
  *
  * An app can be imported using its `id`, e.g.

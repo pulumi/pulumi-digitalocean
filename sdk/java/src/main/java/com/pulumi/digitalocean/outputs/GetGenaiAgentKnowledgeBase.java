@@ -29,17 +29,17 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return Database ID of the Knowledge Base
      * 
      */
-    private String databaseId;
+    private @Nullable String databaseId;
     /**
      * @return Embedding model UUID for the Knowledge Base
      * 
      */
-    private String embeddingModelUuid;
+    private @Nullable String embeddingModelUuid;
     /**
      * @return Indicates if the Knowledge Base is public
      * 
      */
-    private Boolean isPublic;
+    private @Nullable Boolean isPublic;
     /**
      * @return Last indexing job for the Knowledge Base
      * 
@@ -49,12 +49,12 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return Name of the Knowledge Base
      * 
      */
-    private String name;
+    private @Nullable String name;
     /**
      * @return Project ID of the Knowledge Base
      * 
      */
-    private String projectId;
+    private @Nullable String projectId;
     /**
      * @return Region of the Knowledge Base
      * 
@@ -66,7 +66,7 @@ public final class GetGenaiAgentKnowledgeBase {
      */
     private @Nullable List<String> tags;
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     private String updatedAt;
@@ -79,7 +79,7 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return UUID of the Knowledge Base
      * 
      */
-    private @Nullable String uuid;
+    private String uuid;
 
     private GetGenaiAgentKnowledgeBase() {}
     /**
@@ -100,22 +100,22 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return Database ID of the Knowledge Base
      * 
      */
-    public String databaseId() {
-        return this.databaseId;
+    public Optional<String> databaseId() {
+        return Optional.ofNullable(this.databaseId);
     }
     /**
      * @return Embedding model UUID for the Knowledge Base
      * 
      */
-    public String embeddingModelUuid() {
-        return this.embeddingModelUuid;
+    public Optional<String> embeddingModelUuid() {
+        return Optional.ofNullable(this.embeddingModelUuid);
     }
     /**
      * @return Indicates if the Knowledge Base is public
      * 
      */
-    public Boolean isPublic() {
-        return this.isPublic;
+    public Optional<Boolean> isPublic() {
+        return Optional.ofNullable(this.isPublic);
     }
     /**
      * @return Last indexing job for the Knowledge Base
@@ -128,15 +128,15 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return Name of the Knowledge Base
      * 
      */
-    public String name() {
-        return this.name;
+    public Optional<String> name() {
+        return Optional.ofNullable(this.name);
     }
     /**
      * @return Project ID of the Knowledge Base
      * 
      */
-    public String projectId() {
-        return this.projectId;
+    public Optional<String> projectId() {
+        return Optional.ofNullable(this.projectId);
     }
     /**
      * @return Region of the Knowledge Base
@@ -153,7 +153,7 @@ public final class GetGenaiAgentKnowledgeBase {
         return this.tags == null ? List.of() : this.tags;
     }
     /**
-     * @return Updated At timestamp for the Knowledge Base
+     * @return Timestamp when the Knowledge Base was updated
      * 
      */
     public String updatedAt() {
@@ -170,8 +170,8 @@ public final class GetGenaiAgentKnowledgeBase {
      * @return UUID of the Knowledge Base
      * 
      */
-    public Optional<String> uuid() {
-        return Optional.ofNullable(this.uuid);
+    public String uuid() {
+        return this.uuid;
     }
 
     public static Builder builder() {
@@ -185,17 +185,17 @@ public final class GetGenaiAgentKnowledgeBase {
     public static final class Builder {
         private String addedToAgentAt;
         private String createdAt;
-        private String databaseId;
-        private String embeddingModelUuid;
-        private Boolean isPublic;
+        private @Nullable String databaseId;
+        private @Nullable String embeddingModelUuid;
+        private @Nullable Boolean isPublic;
         private @Nullable List<GetGenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
-        private String name;
-        private String projectId;
+        private @Nullable String name;
+        private @Nullable String projectId;
         private @Nullable String region;
         private @Nullable List<String> tags;
         private String updatedAt;
         private @Nullable String userId;
-        private @Nullable String uuid;
+        private String uuid;
         public Builder() {}
         public Builder(GetGenaiAgentKnowledgeBase defaults) {
     	      Objects.requireNonNull(defaults);
@@ -231,26 +231,20 @@ public final class GetGenaiAgentKnowledgeBase {
             return this;
         }
         @CustomType.Setter
-        public Builder databaseId(String databaseId) {
-            if (databaseId == null) {
-              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "databaseId");
-            }
+        public Builder databaseId(@Nullable String databaseId) {
+
             this.databaseId = databaseId;
             return this;
         }
         @CustomType.Setter
-        public Builder embeddingModelUuid(String embeddingModelUuid) {
-            if (embeddingModelUuid == null) {
-              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "embeddingModelUuid");
-            }
+        public Builder embeddingModelUuid(@Nullable String embeddingModelUuid) {
+
             this.embeddingModelUuid = embeddingModelUuid;
             return this;
         }
         @CustomType.Setter
-        public Builder isPublic(Boolean isPublic) {
-            if (isPublic == null) {
-              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "isPublic");
-            }
+        public Builder isPublic(@Nullable Boolean isPublic) {
+
             this.isPublic = isPublic;
             return this;
         }
@@ -264,18 +258,14 @@ public final class GetGenaiAgentKnowledgeBase {
             return lastIndexingJobs(List.of(lastIndexingJobs));
         }
         @CustomType.Setter
-        public Builder name(String name) {
-            if (name == null) {
-              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "name");
-            }
+        public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
-        public Builder projectId(String projectId) {
-            if (projectId == null) {
-              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "projectId");
-            }
+        public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
@@ -309,8 +299,10 @@ public final class GetGenaiAgentKnowledgeBase {
             return this;
         }
         @CustomType.Setter
-        public Builder uuid(@Nullable String uuid) {
-
+        public Builder uuid(String uuid) {
+            if (uuid == null) {
+              throw new MissingRequiredPropertyException("GetGenaiAgentKnowledgeBase", "uuid");
+            }
             this.uuid = uuid;
             return this;
         }

@@ -8,7 +8,7 @@ config:
 resources:
   myDroplet:
     properties:
-      image: ubuntu-20-04-x64
+      image: ubuntu-24-04-x64
       monitoring: true
       region: nyc3
       size: s-1vcpu-1gb

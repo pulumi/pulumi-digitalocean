@@ -39,6 +39,11 @@ public final class GetDatabaseClusterResult {
      * 
      */
     private List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows;
+    /**
+     * @return A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    private List<String> metricsEndpoints;
     private String name;
     /**
      * @return Number of nodes that will be included in the cluster.
@@ -173,6 +178,13 @@ public final class GetDatabaseClusterResult {
      */
     public List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows() {
         return this.maintenanceWindows;
+    }
+    /**
+     * @return A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    public List<String> metricsEndpoints() {
+        return this.metricsEndpoints;
     }
     public String name() {
         return this.name;
@@ -331,6 +343,7 @@ public final class GetDatabaseClusterResult {
         private String host;
         private String id;
         private List<GetDatabaseClusterMaintenanceWindow> maintenanceWindows;
+        private List<String> metricsEndpoints;
         private String name;
         private Integer nodeCount;
         private String password;
@@ -361,6 +374,7 @@ public final class GetDatabaseClusterResult {
     	      this.host = defaults.host;
     	      this.id = defaults.id;
     	      this.maintenanceWindows = defaults.maintenanceWindows;
+    	      this.metricsEndpoints = defaults.metricsEndpoints;
     	      this.name = defaults.name;
     	      this.nodeCount = defaults.nodeCount;
     	      this.password = defaults.password;
@@ -427,6 +441,17 @@ public final class GetDatabaseClusterResult {
         }
         public Builder maintenanceWindows(GetDatabaseClusterMaintenanceWindow... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
+        }
+        @CustomType.Setter
+        public Builder metricsEndpoints(List<String> metricsEndpoints) {
+            if (metricsEndpoints == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseClusterResult", "metricsEndpoints");
+            }
+            this.metricsEndpoints = metricsEndpoints;
+            return this;
+        }
+        public Builder metricsEndpoints(String... metricsEndpoints) {
+            return metricsEndpoints(List.of(metricsEndpoints));
         }
         @CustomType.Setter
         public Builder name(String name) {
@@ -612,6 +637,7 @@ public final class GetDatabaseClusterResult {
             _resultValue.host = host;
             _resultValue.id = id;
             _resultValue.maintenanceWindows = maintenanceWindows;
+            _resultValue.metricsEndpoints = metricsEndpoints;
             _resultValue.name = name;
             _resultValue.nodeCount = nodeCount;
             _resultValue.password = password;

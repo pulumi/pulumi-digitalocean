@@ -417,6 +417,20 @@ public class DatabaseCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.maintenanceWindows);
     }
     /**
+     * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    @Export(name="metricsEndpoints", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> metricsEndpoints;
+
+    /**
+     * @return A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    public Output<List<String>> metricsEndpoints() {
+        return this.metricsEndpoints;
+    }
+    /**
      * The name of the database cluster.
      * 
      */

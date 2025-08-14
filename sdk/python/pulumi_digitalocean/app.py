@@ -372,6 +372,31 @@ class App(pulumi.CustomResource):
         })
         ```
 
+        ### Maintenance Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        maintenance_example = digitalocean.App("maintenance-example", spec={
+            "name": "maintenance-example",
+            "region": "ams",
+            "maintenance": {
+                "enabled": True,
+                "offline_page_url": "https://example.com/maintenance.html",
+            },
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+            }],
+        })
+        ```
+
         ## Import
 
         An app can be imported using its `id`, e.g.
@@ -488,6 +513,31 @@ class App(pulumi.CustomResource):
             "disable_edge_cache": True,
             "disable_email_obfuscation": False,
             "enhanced_threat_control_enabled": True,
+            "services": [{
+                "name": "go-service",
+                "instance_count": 1,
+                "instance_size_slug": "apps-s-1vcpu-1gb",
+                "git": {
+                    "repo_clone_url": "https://github.com/digitalocean/sample-golang.git",
+                    "branch": "main",
+                },
+            }],
+        })
+        ```
+
+        ### Maintenance Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        maintenance_example = digitalocean.App("maintenance-example", spec={
+            "name": "maintenance-example",
+            "region": "ams",
+            "maintenance": {
+                "enabled": True,
+                "offline_page_url": "https://example.com/maintenance.html",
+            },
             "services": [{
                 "name": "go-service",
                 "instance_count": 1,

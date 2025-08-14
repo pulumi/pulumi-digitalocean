@@ -120,6 +120,21 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    @Import(name="metricsEndpoints")
+    private @Nullable Output<List<String>> metricsEndpoints;
+
+    /**
+     * @return A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+     * 
+     */
+    public Optional<Output<List<String>>> metricsEndpoints() {
+        return Optional.ofNullable(this.metricsEndpoints);
+    }
+
+    /**
      * The name of the database cluster.
      * 
      */
@@ -461,6 +476,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         this.evictionPolicy = $.evictionPolicy;
         this.host = $.host;
         this.maintenanceWindows = $.maintenanceWindows;
+        this.metricsEndpoints = $.metricsEndpoints;
         this.name = $.name;
         this.nodeCount = $.nodeCount;
         this.password = $.password;
@@ -646,6 +662,37 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
          */
         public Builder maintenanceWindows(DatabaseClusterMaintenanceWindowArgs... maintenanceWindows) {
             return maintenanceWindows(List.of(maintenanceWindows));
+        }
+
+        /**
+         * @param metricsEndpoints A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricsEndpoints(@Nullable Output<List<String>> metricsEndpoints) {
+            $.metricsEndpoints = metricsEndpoints;
+            return this;
+        }
+
+        /**
+         * @param metricsEndpoints A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricsEndpoints(List<String> metricsEndpoints) {
+            return metricsEndpoints(Output.of(metricsEndpoints));
+        }
+
+        /**
+         * @param metricsEndpoints A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder metricsEndpoints(String... metricsEndpoints) {
+            return metricsEndpoints(List.of(metricsEndpoints));
         }
 
         /**

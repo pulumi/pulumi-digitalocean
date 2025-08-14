@@ -165,6 +165,10 @@ namespace Pulumi.DigitalOcean
         /// Defines when the automatic maintenance should be performed for the database cluster.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowResult> MaintenanceWindows;
+        /// <summary>
+        /// A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
+        /// </summary>
+        public readonly ImmutableArray<string> MetricsEndpoints;
         public readonly string Name;
         /// <summary>
         /// Number of nodes that will be included in the cluster.
@@ -257,6 +261,8 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetDatabaseClusterMaintenanceWindowResult> maintenanceWindows,
 
+            ImmutableArray<string> metricsEndpoints,
+
             string name,
 
             int nodeCount,
@@ -306,6 +312,7 @@ namespace Pulumi.DigitalOcean
             Host = host;
             Id = id;
             MaintenanceWindows = maintenanceWindows;
+            MetricsEndpoints = metricsEndpoints;
             Name = name;
             NodeCount = nodeCount;
             Password = password;

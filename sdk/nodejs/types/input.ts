@@ -66,6 +66,10 @@ export interface AppSpec {
     ingress?: pulumi.Input<inputs.AppSpecIngress>;
     jobs?: pulumi.Input<pulumi.Input<inputs.AppSpecJob>[]>;
     /**
+     * Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+     */
+    maintenance?: pulumi.Input<inputs.AppSpecMaintenance>;
+    /**
      * The name of the component.
      */
     name: pulumi.Input<string>;
@@ -75,10 +79,18 @@ export interface AppSpec {
     region?: pulumi.Input<string>;
     services?: pulumi.Input<pulumi.Input<inputs.AppSpecService>[]>;
     staticSites?: pulumi.Input<pulumi.Input<inputs.AppSpecStaticSite>[]>;
+    /**
+     * Specification for VPC.
+     */
+    vpcs?: pulumi.Input<pulumi.Input<inputs.AppSpecVpc>[]>;
     workers?: pulumi.Input<pulumi.Input<inputs.AppSpecWorker>[]>;
 }
 
 export interface AppSpecAlert {
+    /**
+     * Specification for alert destination.
+     */
+    destinations?: pulumi.Input<inputs.AppSpecAlertDestinations>;
     /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
@@ -87,6 +99,28 @@ export interface AppSpecAlert {
      * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rule: pulumi.Input<string>;
+}
+
+export interface AppSpecAlertDestinations {
+    /**
+     * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines which slack channels or users receive alerts.
+     */
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecAlertDestinationsSlackWebhook>[]>;
+}
+
+export interface AppSpecAlertDestinationsSlackWebhook {
+    /**
+     * The Slack channel to send notifications to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The Slack webhook URL.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppSpecDatabase {
@@ -223,6 +257,10 @@ export interface AppSpecFunction {
 
 export interface AppSpecFunctionAlert {
     /**
+     * Specification for alert destination.
+     */
+    destinations?: pulumi.Input<inputs.AppSpecFunctionAlertDestinations>;
+    /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
     disabled?: pulumi.Input<boolean>;
@@ -242,6 +280,28 @@ export interface AppSpecFunctionAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecFunctionAlertDestinations {
+    /**
+     * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines which slack channels or users receive alerts.
+     */
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecFunctionAlertDestinationsSlackWebhook>[]>;
+}
+
+export interface AppSpecFunctionAlertDestinationsSlackWebhook {
+    /**
+     * The Slack channel to send notifications to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The Slack webhook URL.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppSpecFunctionBitbucket {
@@ -655,6 +715,10 @@ export interface AppSpecJob {
 
 export interface AppSpecJobAlert {
     /**
+     * Specification for alert destination.
+     */
+    destinations?: pulumi.Input<inputs.AppSpecJobAlertDestinations>;
+    /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
     disabled?: pulumi.Input<boolean>;
@@ -674,6 +738,28 @@ export interface AppSpecJobAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecJobAlertDestinations {
+    /**
+     * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines which slack channels or users receive alerts.
+     */
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecJobAlertDestinationsSlackWebhook>[]>;
+}
+
+export interface AppSpecJobAlertDestinationsSlackWebhook {
+    /**
+     * The Slack channel to send notifications to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The Slack webhook URL.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppSpecJobBitbucket {
@@ -876,6 +962,21 @@ export interface AppSpecJobTermination {
     gracePeriodSeconds?: pulumi.Input<number>;
 }
 
+export interface AppSpecMaintenance {
+    /**
+     * Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+     */
+    archive?: pulumi.Input<boolean>;
+    /**
+     * Indicates whether maintenance mode should be enabled for the app.
+     */
+    enabled?: pulumi.Input<boolean>;
+    /**
+     * A custom offline page to display when maintenance mode is enabled or the app is archived.
+     */
+    offlinePageUrl?: pulumi.Input<string>;
+}
+
 export interface AppSpecService {
     /**
      * Describes an alert policy for the component.
@@ -977,6 +1078,10 @@ export interface AppSpecService {
 
 export interface AppSpecServiceAlert {
     /**
+     * Specification for alert destination.
+     */
+    destinations?: pulumi.Input<inputs.AppSpecServiceAlertDestinations>;
+    /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
     disabled?: pulumi.Input<boolean>;
@@ -996,6 +1101,28 @@ export interface AppSpecServiceAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecServiceAlertDestinations {
+    /**
+     * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines which slack channels or users receive alerts.
+     */
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecServiceAlertDestinationsSlackWebhook>[]>;
+}
+
+export interface AppSpecServiceAlertDestinationsSlackWebhook {
+    /**
+     * The Slack channel to send notifications to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The Slack webhook URL.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppSpecServiceAutoscaling {
@@ -1520,6 +1647,13 @@ export interface AppSpecStaticSiteRoute {
     preservePathPrefix?: pulumi.Input<boolean>;
 }
 
+export interface AppSpecVpc {
+    /**
+     * The ID of the VPC.
+     */
+    id: pulumi.Input<string>;
+}
+
 export interface AppSpecWorker {
     /**
      * Describes an alert policy for the component.
@@ -1597,6 +1731,10 @@ export interface AppSpecWorker {
 
 export interface AppSpecWorkerAlert {
     /**
+     * Specification for alert destination.
+     */
+    destinations?: pulumi.Input<inputs.AppSpecWorkerAlertDestinations>;
+    /**
      * Determines whether or not the alert is disabled (default: `false`).
      */
     disabled?: pulumi.Input<boolean>;
@@ -1616,6 +1754,28 @@ export interface AppSpecWorkerAlert {
      * The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
      */
     window: pulumi.Input<string>;
+}
+
+export interface AppSpecWorkerAlertDestinations {
+    /**
+     * Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+     */
+    emails?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Determines which slack channels or users receive alerts.
+     */
+    slackWebhooks?: pulumi.Input<pulumi.Input<inputs.AppSpecWorkerAlertDestinationsSlackWebhook>[]>;
+}
+
+export interface AppSpecWorkerAlertDestinationsSlackWebhook {
+    /**
+     * The Slack channel to send notifications to.
+     */
+    channel: pulumi.Input<string>;
+    /**
+     * The Slack webhook URL.
+     */
+    url: pulumi.Input<string>;
 }
 
 export interface AppSpecWorkerAutoscaling {
@@ -1982,6 +2142,29 @@ export interface DatabaseKafkaTopicConfig {
      * The maximum time, in ms, before the topic log will flush to disk.
      */
     segmentMs?: pulumi.Input<string>;
+}
+
+export interface DatabaseOnlineMigrationSource {
+    /**
+     * The name of the default database
+     */
+    dbName: pulumi.Input<string>;
+    /**
+     * The FQDN pointing to the database cluster's current primary node.
+     */
+    host: pulumi.Input<string>;
+    /**
+     * A randomly generated password for the default user.
+     */
+    password: pulumi.Input<string>;
+    /**
+     * The port on which the database cluster is listening.
+     */
+    port: pulumi.Input<number>;
+    /**
+     * The default user for the database.
+     */
+    username: pulumi.Input<string>;
 }
 
 export interface DatabasePostgresqlConfigPgbouncer {
@@ -2665,7 +2848,7 @@ export interface GenaiAgentKnowledgeBase {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -2690,13 +2873,13 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -2720,7 +2903,7 @@ export interface GenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -3112,7 +3295,7 @@ export interface GenaiAgentTemplateKnowledgeBase {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -3137,13 +3320,13 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -3167,7 +3350,7 @@ export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -3247,6 +3430,270 @@ export interface GenaiAgentTemplateModelAgreement {
 }
 
 export interface GenaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
+export interface GenaiKnowledgeBaseDataSource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource>[]>;
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceLastIndexingJob>[]>;
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceSpacesDataSource>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource>[]>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: pulumi.Input<string>;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: pulumi.Input<string>;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: pulumi.Input<string>;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: pulumi.Input<string>;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: pulumi.Input<boolean>;
+}
+
+export interface GenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelAgreement>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelVersion>[]>;
+}
+
+export interface GenaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiOpenaiApiKeyModelVersion {
     /**
      * Major version of the model
      */
@@ -4077,7 +4524,7 @@ export interface GetGenaiAgentKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: string;
     /**
@@ -4132,7 +4579,7 @@ export interface GetGenaiAgentKnowledgeBaseArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -4157,13 +4604,13 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: string;
     /**
@@ -4187,7 +4634,7 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -4204,13 +4651,13 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -4234,7 +4681,7 @@ export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -4575,7 +5022,7 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
      */
     tags?: string[];
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: string;
     /**
@@ -4630,7 +5077,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseArgs {
      */
     tags?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Updated At timestamp for the Knowledge Base
+     * Timestamp when the Knowledge Base was updated
      */
     updatedAt?: pulumi.Input<string>;
     /**
@@ -4655,13 +5102,13 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: string[];
+    dataSourceUuids?: string[];
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: string;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: string;
     /**
@@ -4685,7 +5132,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
      */
     updatedAt?: string;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: string;
 }
@@ -4702,13 +5149,13 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
     /**
      * Datasource UUIDs for the last indexing job
      */
-    datasourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Timestamp when the last indexing job finished
      */
     finishedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the Knowledge Base for the last indexing job
+     * UUID  of the Knowledge Base for the last indexing job
      */
     knowledgeBaseUuid?: pulumi.Input<string>;
     /**
@@ -4732,7 +5179,7 @@ export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * UUID	of the last indexing job
+     * UUID  of the last indexing job
      */
     uuid?: pulumi.Input<string>;
 }
@@ -4915,6 +5362,30 @@ export interface GetGenaiAgentTemplateModelVersionArgs {
     patch?: pulumi.Input<number>;
 }
 
+export interface GetGenaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentVersionsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiAgentVersionsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
 export interface GetGenaiAgentsFilter {
     all?: boolean;
     key: string;
@@ -4935,6 +5406,148 @@ export interface GetGenaiAgentsSort {
 }
 
 export interface GetGenaiAgentsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJobArgs {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiKnowledgeBasesFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiKnowledgeBasesSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiKnowledgeBasesSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiOpenaiApiKeysFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiOpenaiApiKeysFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiOpenaiApiKeysSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiOpenaiApiKeysSortArgs {
     direction?: pulumi.Input<string>;
     key: pulumi.Input<string>;
 }

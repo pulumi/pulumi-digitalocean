@@ -26,7 +26,7 @@ const sshKey = new digitalocean.SshKey("my-ssh-key", {
 const foobar = new digitalocean.Tag("foobar");
 
 new digitalocean.Droplet("web", {
-    image: "ubuntu-20-04-x64",
+    image: "ubuntu-24-04-x64",
     region: digitalocean.Region.NYC3,
     size: "s-1vcpu-1gb",
     tags: [foobar.id],
