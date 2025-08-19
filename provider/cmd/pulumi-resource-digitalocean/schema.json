@@ -32239,7 +32239,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:digitalocean"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:digitalocean/terraformConfig",
