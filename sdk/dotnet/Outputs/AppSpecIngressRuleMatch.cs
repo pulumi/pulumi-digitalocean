@@ -14,13 +14,21 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecIngressRuleMatch
     {
         /// <summary>
+        /// The authority (domain) to match on.
+        /// </summary>
+        public readonly Outputs.AppSpecIngressRuleMatchAuthority? Authority;
+        /// <summary>
         /// The path to match on.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleMatchPath? Path;
 
         [OutputConstructor]
-        private AppSpecIngressRuleMatch(Outputs.AppSpecIngressRuleMatchPath? path)
+        private AppSpecIngressRuleMatch(
+            Outputs.AppSpecIngressRuleMatchAuthority? authority,
+
+            Outputs.AppSpecIngressRuleMatchPath? path)
         {
+            Authority = authority;
             Path = path;
         }
     }

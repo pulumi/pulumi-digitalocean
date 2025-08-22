@@ -87,6 +87,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterArgs : global::Pulumi.InvokeArgs
     {
+        [Input("amdGpuDeviceMetricsExporterPlugin")]
+        public Inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs? AmdGpuDeviceMetricsExporterPlugin { get; set; }
+
+        [Input("amdGpuDevicePlugin")]
+        public Inputs.GetKubernetesClusterAmdGpuDevicePluginArgs? AmdGpuDevicePlugin { get; set; }
+
         [Input("clusterAutoscalerConfigurations")]
         private List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>? _clusterAutoscalerConfigurations;
         public List<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs> ClusterAutoscalerConfigurations
@@ -127,6 +133,12 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetKubernetesClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
+        [Input("amdGpuDeviceMetricsExporterPlugin")]
+        public Input<Inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginInputArgs>? AmdGpuDeviceMetricsExporterPlugin { get; set; }
+
+        [Input("amdGpuDevicePlugin")]
+        public Input<Inputs.GetKubernetesClusterAmdGpuDevicePluginInputArgs>? AmdGpuDevicePlugin { get; set; }
+
         [Input("clusterAutoscalerConfigurations")]
         private InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs>? _clusterAutoscalerConfigurations;
         public InputList<Inputs.GetKubernetesClusterClusterAutoscalerConfigurationInputArgs> ClusterAutoscalerConfigurations
@@ -169,6 +181,8 @@ namespace Pulumi.DigitalOcean
     [OutputType]
     public sealed class GetKubernetesClusterResult
     {
+        public readonly Outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult AmdGpuDeviceMetricsExporterPlugin;
+        public readonly Outputs.GetKubernetesClusterAmdGpuDevicePluginResult AmdGpuDevicePlugin;
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
@@ -250,6 +264,10 @@ namespace Pulumi.DigitalOcean
 
         [OutputConstructor]
         private GetKubernetesClusterResult(
+            Outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult amdGpuDeviceMetricsExporterPlugin,
+
+            Outputs.GetKubernetesClusterAmdGpuDevicePluginResult amdGpuDevicePlugin,
+
             bool autoUpgrade,
 
             ImmutableArray<Outputs.GetKubernetesClusterClusterAutoscalerConfigurationResult> clusterAutoscalerConfigurations,
@@ -298,6 +316,8 @@ namespace Pulumi.DigitalOcean
 
             string vpcUuid)
         {
+            AmdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
+            AmdGpuDevicePlugin = amdGpuDevicePlugin;
             AutoUpgrade = autoUpgrade;
             ClusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             ClusterSubnet = clusterSubnet;

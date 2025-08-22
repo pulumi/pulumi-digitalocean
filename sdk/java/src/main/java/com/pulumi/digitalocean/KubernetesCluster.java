@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.KubernetesClusterArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.KubernetesClusterState;
+import com.pulumi.digitalocean.outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
+import com.pulumi.digitalocean.outputs.KubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.KubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.KubernetesClusterKubeConfig;
@@ -53,6 +55,34 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="digitalocean:index/kubernetesCluster:KubernetesCluster")
 public class KubernetesCluster extends com.pulumi.resources.CustomResource {
+    /**
+     * Block containing options for the AMD GPU device metrics exporter component.
+     * 
+     */
+    @Export(name="amdGpuDeviceMetricsExporterPlugin", refs={KubernetesClusterAmdGpuDeviceMetricsExporterPlugin.class}, tree="[0]")
+    private Output<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> amdGpuDeviceMetricsExporterPlugin;
+
+    /**
+     * @return Block containing options for the AMD GPU device metrics exporter component.
+     * 
+     */
+    public Output<KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> amdGpuDeviceMetricsExporterPlugin() {
+        return this.amdGpuDeviceMetricsExporterPlugin;
+    }
+    /**
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * 
+     */
+    @Export(name="amdGpuDevicePlugin", refs={KubernetesClusterAmdGpuDevicePlugin.class}, tree="[0]")
+    private Output<KubernetesClusterAmdGpuDevicePlugin> amdGpuDevicePlugin;
+
+    /**
+     * @return Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * 
+     */
+    public Output<KubernetesClusterAmdGpuDevicePlugin> amdGpuDevicePlugin() {
+        return this.amdGpuDevicePlugin;
+    }
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * 

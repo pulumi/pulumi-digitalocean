@@ -50,8 +50,10 @@ func LookupKubernetesCluster(ctx *pulumi.Context, args *LookupKubernetesClusterA
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterArgs struct {
-	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
-	KubeconfigExpireSeconds         *int                                                 `pulumi:"kubeconfigExpireSeconds"`
+	AmdGpuDeviceMetricsExporterPlugin *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	AmdGpuDevicePlugin                *GetKubernetesClusterAmdGpuDevicePlugin                `pulumi:"amdGpuDevicePlugin"`
+	ClusterAutoscalerConfigurations   []GetKubernetesClusterClusterAutoscalerConfiguration   `pulumi:"clusterAutoscalerConfigurations"`
+	KubeconfigExpireSeconds           *int                                                   `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name         string                            `pulumi:"name"`
 	RoutingAgent *GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
@@ -61,6 +63,8 @@ type LookupKubernetesClusterArgs struct {
 
 // A collection of values returned by getKubernetesCluster.
 type LookupKubernetesClusterResult struct {
+	AmdGpuDeviceMetricsExporterPlugin GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	AmdGpuDevicePlugin                GetKubernetesClusterAmdGpuDevicePlugin                `pulumi:"amdGpuDevicePlugin"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade                     bool                                                 `pulumi:"autoUpgrade"`
 	ClusterAutoscalerConfigurations []GetKubernetesClusterClusterAutoscalerConfiguration `pulumi:"clusterAutoscalerConfigurations"`
@@ -116,8 +120,10 @@ func LookupKubernetesClusterOutput(ctx *pulumi.Context, args LookupKubernetesClu
 
 // A collection of arguments for invoking getKubernetesCluster.
 type LookupKubernetesClusterOutputArgs struct {
-	ClusterAutoscalerConfigurations GetKubernetesClusterClusterAutoscalerConfigurationArrayInput `pulumi:"clusterAutoscalerConfigurations"`
-	KubeconfigExpireSeconds         pulumi.IntPtrInput                                           `pulumi:"kubeconfigExpireSeconds"`
+	AmdGpuDeviceMetricsExporterPlugin GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	AmdGpuDevicePlugin                GetKubernetesClusterAmdGpuDevicePluginPtrInput                `pulumi:"amdGpuDevicePlugin"`
+	ClusterAutoscalerConfigurations   GetKubernetesClusterClusterAutoscalerConfigurationArrayInput  `pulumi:"clusterAutoscalerConfigurations"`
+	KubeconfigExpireSeconds           pulumi.IntPtrInput                                            `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
 	Name         pulumi.StringInput                       `pulumi:"name"`
 	RoutingAgent GetKubernetesClusterRoutingAgentPtrInput `pulumi:"routingAgent"`
@@ -142,6 +148,18 @@ func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutp
 
 func (o LookupKubernetesClusterResultOutput) ToLookupKubernetesClusterResultOutputWithContext(ctx context.Context) LookupKubernetesClusterResultOutput {
 	return o
+}
+
+func (o LookupKubernetesClusterResultOutput) AmdGpuDeviceMetricsExporterPlugin() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+		return v.AmdGpuDeviceMetricsExporterPlugin
+	}).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) AmdGpuDevicePlugin() GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterAmdGpuDevicePlugin {
+		return v.AmdGpuDevicePlugin
+	}).(GetKubernetesClusterAmdGpuDevicePluginOutput)
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.

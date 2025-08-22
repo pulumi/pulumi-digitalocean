@@ -63,6 +63,14 @@ export class KubernetesCluster extends pulumi.CustomResource {
     }
 
     /**
+     * Block containing options for the AMD GPU device metrics exporter component.
+     */
+    public readonly amdGpuDeviceMetricsExporterPlugin!: pulumi.Output<outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>;
+    /**
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     */
+    public readonly amdGpuDevicePlugin!: pulumi.Output<outputs.KubernetesClusterAmdGpuDevicePlugin>;
+    /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
     public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
@@ -176,6 +184,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
+            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = state ? state.amdGpuDeviceMetricsExporterPlugin : undefined;
+            resourceInputs["amdGpuDevicePlugin"] = state ? state.amdGpuDevicePlugin : undefined;
             resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
             resourceInputs["clusterAutoscalerConfigurations"] = state ? state.clusterAutoscalerConfigurations : undefined;
             resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
@@ -212,6 +222,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
             if ((!args || args.version === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
+            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = args ? args.amdGpuDeviceMetricsExporterPlugin : undefined;
+            resourceInputs["amdGpuDevicePlugin"] = args ? args.amdGpuDevicePlugin : undefined;
             resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
             resourceInputs["clusterAutoscalerConfigurations"] = args ? args.clusterAutoscalerConfigurations : undefined;
             resourceInputs["clusterSubnet"] = args ? args.clusterSubnet : undefined;
@@ -249,6 +261,14 @@ export class KubernetesCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering KubernetesCluster resources.
  */
 export interface KubernetesClusterState {
+    /**
+     * Block containing options for the AMD GPU device metrics exporter component.
+     */
+    amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>;
+    /**
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     */
+    amdGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterAmdGpuDevicePlugin>;
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
@@ -355,6 +375,14 @@ export interface KubernetesClusterState {
  * The set of arguments for constructing a KubernetesCluster resource.
  */
 export interface KubernetesClusterArgs {
+    /**
+     * Block containing options for the AMD GPU device metrics exporter component.
+     */
+    amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>;
+    /**
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     */
+    amdGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterAmdGpuDevicePlugin>;
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */

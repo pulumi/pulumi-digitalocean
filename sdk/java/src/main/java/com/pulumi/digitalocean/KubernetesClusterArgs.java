@@ -7,6 +7,8 @@ import com.pulumi.core.Either;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.enums.Region;
+import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterAmdGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
@@ -25,6 +27,36 @@ import javax.annotation.Nullable;
 public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final KubernetesClusterArgs Empty = new KubernetesClusterArgs();
+
+    /**
+     * Block containing options for the AMD GPU device metrics exporter component.
+     * 
+     */
+    @Import(name="amdGpuDeviceMetricsExporterPlugin")
+    private @Nullable Output<KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs> amdGpuDeviceMetricsExporterPlugin;
+
+    /**
+     * @return Block containing options for the AMD GPU device metrics exporter component.
+     * 
+     */
+    public Optional<Output<KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>> amdGpuDeviceMetricsExporterPlugin() {
+        return Optional.ofNullable(this.amdGpuDeviceMetricsExporterPlugin);
+    }
+
+    /**
+     * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * 
+     */
+    @Import(name="amdGpuDevicePlugin")
+    private @Nullable Output<KubernetesClusterAmdGpuDevicePluginArgs> amdGpuDevicePlugin;
+
+    /**
+     * @return Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+     * 
+     */
+    public Optional<Output<KubernetesClusterAmdGpuDevicePluginArgs>> amdGpuDevicePlugin() {
+        return Optional.ofNullable(this.amdGpuDevicePlugin);
+    }
 
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -299,6 +331,8 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
     private KubernetesClusterArgs() {}
 
     private KubernetesClusterArgs(KubernetesClusterArgs $) {
+        this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
+        this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
         this.autoUpgrade = $.autoUpgrade;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.clusterSubnet = $.clusterSubnet;
@@ -335,6 +369,48 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
 
         public Builder(KubernetesClusterArgs defaults) {
             $ = new KubernetesClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDeviceMetricsExporterPlugin(@Nullable Output<KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs> amdGpuDeviceMetricsExporterPlugin) {
+            $.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
+            return this;
+        }
+
+        /**
+         * @param amdGpuDeviceMetricsExporterPlugin Block containing options for the AMD GPU device metrics exporter component.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDeviceMetricsExporterPlugin(KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs amdGpuDeviceMetricsExporterPlugin) {
+            return amdGpuDeviceMetricsExporterPlugin(Output.of(amdGpuDeviceMetricsExporterPlugin));
+        }
+
+        /**
+         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDevicePlugin(@Nullable Output<KubernetesClusterAmdGpuDevicePluginArgs> amdGpuDevicePlugin) {
+            $.amdGpuDevicePlugin = amdGpuDevicePlugin;
+            return this;
+        }
+
+        /**
+         * @param amdGpuDevicePlugin Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder amdGpuDevicePlugin(KubernetesClusterAmdGpuDevicePluginArgs amdGpuDevicePlugin) {
+            return amdGpuDevicePlugin(Output.of(amdGpuDevicePlugin));
         }
 
         /**

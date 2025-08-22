@@ -28,7 +28,13 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, routing_agent=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, region=None, routing_agent=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+        if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
+            raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
+        pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
+        if amd_gpu_device_plugin and not isinstance(amd_gpu_device_plugin, dict):
+            raise TypeError("Expected argument 'amd_gpu_device_plugin' to be a dict")
+        pulumi.set(__self__, "amd_gpu_device_plugin", amd_gpu_device_plugin)
         if auto_upgrade and not isinstance(auto_upgrade, bool):
             raise TypeError("Expected argument 'auto_upgrade' to be a bool")
         pulumi.set(__self__, "auto_upgrade", auto_upgrade)
@@ -101,6 +107,16 @@ class GetKubernetesClusterResult:
         if vpc_uuid and not isinstance(vpc_uuid, str):
             raise TypeError("Expected argument 'vpc_uuid' to be a str")
         pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
+    def amd_gpu_device_metrics_exporter_plugin(self) -> 'outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult':
+        return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDevicePlugin")
+    def amd_gpu_device_plugin(self) -> 'outputs.GetKubernetesClusterAmdGpuDevicePluginResult':
+        return pulumi.get(self, "amd_gpu_device_plugin")
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -283,6 +299,8 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
         if False:
             yield self
         return GetKubernetesClusterResult(
+            amd_gpu_device_metrics_exporter_plugin=self.amd_gpu_device_metrics_exporter_plugin,
+            amd_gpu_device_plugin=self.amd_gpu_device_plugin,
             auto_upgrade=self.auto_upgrade,
             cluster_autoscaler_configurations=self.cluster_autoscaler_configurations,
             cluster_subnet=self.cluster_subnet,
@@ -309,7 +327,9 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             vpc_uuid=self.vpc_uuid)
 
 
-def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]] = None,
+def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] = None,
+                           amd_gpu_device_plugin: Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']] = None,
+                           cluster_autoscaler_configurations: Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]] = None,
                            kubeconfig_expire_seconds: Optional[_builtins.int] = None,
                            name: Optional[_builtins.str] = None,
                            routing_agent: Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']] = None,
@@ -332,6 +352,8 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
     :param Sequence[_builtins.str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
+    __args__['amdGpuDeviceMetricsExporterPlugin'] = amd_gpu_device_metrics_exporter_plugin
+    __args__['amdGpuDevicePlugin'] = amd_gpu_device_plugin
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
@@ -341,6 +363,8 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult).value
 
     return AwaitableGetKubernetesClusterResult(
+        amd_gpu_device_metrics_exporter_plugin=pulumi.get(__ret__, 'amd_gpu_device_metrics_exporter_plugin'),
+        amd_gpu_device_plugin=pulumi.get(__ret__, 'amd_gpu_device_plugin'),
         auto_upgrade=pulumi.get(__ret__, 'auto_upgrade'),
         cluster_autoscaler_configurations=pulumi.get(__ret__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__ret__, 'cluster_subnet'),
@@ -365,7 +389,9 @@ def get_kubernetes_cluster(cluster_autoscaler_configurations: Optional[Sequence[
         urn=pulumi.get(__ret__, 'urn'),
         version=pulumi.get(__ret__, 'version'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]]] = None,
+                                  amd_gpu_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterAmdGpuDevicePluginArgs', 'GetKubernetesClusterAmdGpuDevicePluginArgsDict']]]] = None,
+                                  cluster_autoscaler_configurations: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterClusterAutoscalerConfigurationArgs', 'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                                   kubeconfig_expire_seconds: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                                   name: Optional[pulumi.Input[_builtins.str]] = None,
                                   routing_agent: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
@@ -388,6 +414,8 @@ def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pu
     :param Sequence[_builtins.str] tags: A list of tag names applied to the node pool.
     """
     __args__ = dict()
+    __args__['amdGpuDeviceMetricsExporterPlugin'] = amd_gpu_device_metrics_exporter_plugin
+    __args__['amdGpuDevicePlugin'] = amd_gpu_device_plugin
     __args__['clusterAutoscalerConfigurations'] = cluster_autoscaler_configurations
     __args__['kubeconfigExpireSeconds'] = kubeconfig_expire_seconds
     __args__['name'] = name
@@ -396,6 +424,8 @@ def get_kubernetes_cluster_output(cluster_autoscaler_configurations: Optional[pu
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult)
     return __ret__.apply(lambda __response__: GetKubernetesClusterResult(
+        amd_gpu_device_metrics_exporter_plugin=pulumi.get(__response__, 'amd_gpu_device_metrics_exporter_plugin'),
+        amd_gpu_device_plugin=pulumi.get(__response__, 'amd_gpu_device_plugin'),
         auto_upgrade=pulumi.get(__response__, 'auto_upgrade'),
         cluster_autoscaler_configurations=pulumi.get(__response__, 'cluster_autoscaler_configurations'),
         cluster_subnet=pulumi.get(__response__, 'cluster_subnet'),

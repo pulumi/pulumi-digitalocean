@@ -5,6 +5,7 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.AppSpecIngressRuleMatchAuthorityArgs;
 import com.pulumi.digitalocean.inputs.AppSpecIngressRuleMatchPathArgs;
 import java.util.Objects;
 import java.util.Optional;
@@ -14,6 +15,21 @@ import javax.annotation.Nullable;
 public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final AppSpecIngressRuleMatchArgs Empty = new AppSpecIngressRuleMatchArgs();
+
+    /**
+     * The authority (domain) to match on.
+     * 
+     */
+    @Import(name="authority")
+    private @Nullable Output<AppSpecIngressRuleMatchAuthorityArgs> authority;
+
+    /**
+     * @return The authority (domain) to match on.
+     * 
+     */
+    public Optional<Output<AppSpecIngressRuleMatchAuthorityArgs>> authority() {
+        return Optional.ofNullable(this.authority);
+    }
 
     /**
      * The path to match on.
@@ -33,6 +49,7 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
     private AppSpecIngressRuleMatchArgs() {}
 
     private AppSpecIngressRuleMatchArgs(AppSpecIngressRuleMatchArgs $) {
+        this.authority = $.authority;
         this.path = $.path;
     }
 
@@ -52,6 +69,27 @@ public final class AppSpecIngressRuleMatchArgs extends com.pulumi.resources.Reso
 
         public Builder(AppSpecIngressRuleMatchArgs defaults) {
             $ = new AppSpecIngressRuleMatchArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param authority The authority (domain) to match on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authority(@Nullable Output<AppSpecIngressRuleMatchAuthorityArgs> authority) {
+            $.authority = authority;
+            return this;
+        }
+
+        /**
+         * @param authority The authority (domain) to match on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder authority(AppSpecIngressRuleMatchAuthorityArgs authority) {
+            return authority(Output.of(authority));
         }
 
         /**

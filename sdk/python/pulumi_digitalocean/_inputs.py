@@ -82,6 +82,8 @@ __all__ = [
     'AppSpecIngressRuleCorsAllowOriginsArgsDict',
     'AppSpecIngressRuleMatchArgs',
     'AppSpecIngressRuleMatchArgsDict',
+    'AppSpecIngressRuleMatchAuthorityArgs',
+    'AppSpecIngressRuleMatchAuthorityArgsDict',
     'AppSpecIngressRuleMatchPathArgs',
     'AppSpecIngressRuleMatchPathArgsDict',
     'AppSpecIngressRuleRedirectArgs',
@@ -356,6 +358,10 @@ __all__ = [
     'GenaiOpenaiApiKeyModelAgreementArgsDict',
     'GenaiOpenaiApiKeyModelVersionArgs',
     'GenaiOpenaiApiKeyModelVersionArgsDict',
+    'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs',
+    'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict',
+    'KubernetesClusterAmdGpuDevicePluginArgs',
+    'KubernetesClusterAmdGpuDevicePluginArgsDict',
     'KubernetesClusterClusterAutoscalerConfigurationArgs',
     'KubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'KubernetesClusterControlPlaneFirewallArgs',
@@ -496,6 +502,10 @@ __all__ = [
     'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
     'GetImagesSortArgsDict',
+    'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs',
+    'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict',
+    'GetKubernetesClusterAmdGpuDevicePluginArgs',
+    'GetKubernetesClusterAmdGpuDevicePluginArgsDict',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
     'GetKubernetesClusterRoutingAgentArgs',
@@ -3389,6 +3399,10 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
 
 if not MYPY:
     class AppSpecIngressRuleMatchArgsDict(TypedDict):
+        authority: NotRequired[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgsDict']]
+        """
+        The authority (domain) to match on.
+        """
         path: NotRequired[pulumi.Input['AppSpecIngressRuleMatchPathArgsDict']]
         """
         The path to match on.
@@ -3399,12 +3413,28 @@ elif False:
 @pulumi.input_type
 class AppSpecIngressRuleMatchArgs:
     def __init__(__self__, *,
+                 authority: Optional[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgs']] = None,
                  path: Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']] = None):
         """
+        :param pulumi.Input['AppSpecIngressRuleMatchAuthorityArgs'] authority: The authority (domain) to match on.
         :param pulumi.Input['AppSpecIngressRuleMatchPathArgs'] path: The path to match on.
         """
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
         if path is not None:
             pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def authority(self) -> Optional[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgs']]:
+        """
+        The authority (domain) to match on.
+        """
+        return pulumi.get(self, "authority")
+
+    @authority.setter
+    def authority(self, value: Optional[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgs']]):
+        pulumi.set(self, "authority", value)
 
     @_builtins.property
     @pulumi.getter
@@ -3417,6 +3447,38 @@ class AppSpecIngressRuleMatchArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input['AppSpecIngressRuleMatchPathArgs']]):
         pulumi.set(self, "path", value)
+
+
+if not MYPY:
+    class AppSpecIngressRuleMatchAuthorityArgsDict(TypedDict):
+        exact: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Exact match.
+        """
+elif False:
+    AppSpecIngressRuleMatchAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class AppSpecIngressRuleMatchAuthorityArgs:
+    def __init__(__self__, *,
+                 exact: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] exact: Exact match.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Exact match.
+        """
+        return pulumi.get(self, "exact")
+
+    @exact.setter
+    def exact(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "exact", value)
 
 
 if not MYPY:
@@ -18443,6 +18505,71 @@ class GenaiOpenaiApiKeyModelVersionArgs:
 
 
 if not MYPY:
+    class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+elif False:
+    KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class KubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Boolean flag whether the component should be enabled or not.
+        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+elif False:
+    KubernetesClusterAmdGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterAmdGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
+               `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component should be enabled or not.
+        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
         expanders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
         scale_down_unneeded_time: NotRequired[pulumi.Input[_builtins.str]]
@@ -25835,6 +25962,50 @@ class GetImagesSortArgs:
     @direction.setter
     def direction(self, value: Optional[_builtins.str]):
         pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
+        enabled: _builtins.bool
+elif False:
+    GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
+        enabled: _builtins.bool
+elif False:
+    GetKubernetesClusterAmdGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterAmdGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

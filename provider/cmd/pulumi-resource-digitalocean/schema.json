@@ -961,6 +961,10 @@
         },
         "digitalocean:index/AppSpecIngressRuleMatch:AppSpecIngressRuleMatch": {
             "properties": {
+                "authority": {
+                    "$ref": "#/types/digitalocean:index/AppSpecIngressRuleMatchAuthority:AppSpecIngressRuleMatchAuthority",
+                    "description": "The authority (domain) to match on.\n"
+                },
                 "path": {
                     "$ref": "#/types/digitalocean:index/AppSpecIngressRuleMatchPath:AppSpecIngressRuleMatchPath",
                     "description": "The path to match on.\n"
@@ -970,7 +974,24 @@
             "language": {
                 "nodejs": {
                     "requiredOutputs": [
+                        "authority",
                         "path"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/AppSpecIngressRuleMatchAuthority:AppSpecIngressRuleMatchAuthority": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "description": "Exact match.\n"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "exact"
                     ]
                 }
             }
@@ -5147,6 +5168,30 @@
             },
             "type": "object"
         },
+        "digitalocean:index/KubernetesClusterAmdGpuDeviceMetricsExporterPlugin:KubernetesClusterAmdGpuDeviceMetricsExporterPlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the component is enabled or not.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "digitalocean:index/KubernetesClusterAmdGpuDevicePlugin:KubernetesClusterAmdGpuDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the component should be enabled or not.\n`amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
         "digitalocean:index/KubernetesClusterClusterAutoscalerConfiguration:KubernetesClusterClusterAutoscalerConfiguration": {
             "properties": {
                 "expanders": {
@@ -5998,7 +6043,8 @@
                 },
                 "vpcUuid": {
                     "type": "string",
-                    "description": "The ID of the ingress VPC\n"
+                    "description": "The ID of the ingress VPC\n",
+                    "willReplaceOnChanges": true
                 }
             },
             "type": "object",
@@ -6900,6 +6946,9 @@
         },
         "digitalocean:index/getAppSpecIngressRuleMatch:getAppSpecIngressRuleMatch": {
             "properties": {
+                "authority": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecIngressRuleMatchAuthority:getAppSpecIngressRuleMatchAuthority"
+                },
                 "path": {
                     "$ref": "#/types/digitalocean:index/getAppSpecIngressRuleMatchPath:getAppSpecIngressRuleMatchPath",
                     "description": "Paths must start with `/` and must be unique within the app.\n"
@@ -6907,7 +6956,25 @@
             },
             "type": "object",
             "required": [
+                "authority",
                 "path"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getAppSpecIngressRuleMatchAuthority:getAppSpecIngressRuleMatchAuthority": {
+            "properties": {
+                "exact": {
+                    "type": "string",
+                    "description": "The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "exact"
             ],
             "language": {
                 "nodejs": {
@@ -15266,6 +15333,38 @@
             "required": [
                 "key"
             ]
+        },
+        "digitalocean:index/getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin:getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getKubernetesClusterAmdGpuDevicePlugin:getKubernetesClusterAmdGpuDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getKubernetesClusterClusterAutoscalerConfiguration:getKubernetesClusterClusterAutoscalerConfiguration": {
             "properties": {
@@ -24254,6 +24353,14 @@
         "digitalocean:index/kubernetesCluster:KubernetesCluster": {
             "description": "\n\n## Import\n\nBefore importing a Kubernetes cluster, the cluster's default node pool must be tagged with\n\nthe `terraform:default-node-pool` tag. The provider will automatically add this tag if\n\nthe cluster only has a single node pool. Clusters with more than one node pool, however, will require\n\nthat you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be\n\nthe default node pool.\n\nThen the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af\n```\n\nAdditional node pools must be imported separately as `digitalocean_kubernetes_cluster`\n\nresources, e.g.\n\n```sh\n$ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8\n```\n\n",
             "properties": {
+                "amdGpuDeviceMetricsExporterPlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDeviceMetricsExporterPlugin:KubernetesClusterAmdGpuDeviceMetricsExporterPlugin",
+                    "description": "Block containing options for the AMD GPU device metrics exporter component.\n"
+                },
+                "amdGpuDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDevicePlugin:KubernetesClusterAmdGpuDevicePlugin",
+                    "description": "Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.\n"
+                },
                 "autoUpgrade": {
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
@@ -24366,6 +24473,8 @@
                 }
             },
             "required": [
+                "amdGpuDeviceMetricsExporterPlugin",
+                "amdGpuDevicePlugin",
                 "clusterSubnet",
                 "controlPlaneFirewall",
                 "createdAt",
@@ -24385,6 +24494,14 @@
                 "vpcUuid"
             ],
             "inputProperties": {
+                "amdGpuDeviceMetricsExporterPlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDeviceMetricsExporterPlugin:KubernetesClusterAmdGpuDeviceMetricsExporterPlugin",
+                    "description": "Block containing options for the AMD GPU device metrics exporter component.\n"
+                },
+                "amdGpuDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDevicePlugin:KubernetesClusterAmdGpuDevicePlugin",
+                    "description": "Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.\n"
+                },
                 "autoUpgrade": {
                     "type": "boolean",
                     "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
@@ -24485,6 +24602,14 @@
             "stateInputs": {
                 "description": "Input properties used for looking up and filtering KubernetesCluster resources.\n",
                 "properties": {
+                    "amdGpuDeviceMetricsExporterPlugin": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDeviceMetricsExporterPlugin:KubernetesClusterAmdGpuDeviceMetricsExporterPlugin",
+                        "description": "Block containing options for the AMD GPU device metrics exporter component.\n"
+                    },
+                    "amdGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterAmdGpuDevicePlugin:KubernetesClusterAmdGpuDevicePlugin",
+                        "description": "Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.\n"
+                    },
                     "autoUpgrade": {
                         "type": "boolean",
                         "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n"
@@ -30196,6 +30321,12 @@
             "inputs": {
                 "description": "A collection of arguments for invoking getKubernetesCluster.\n",
                 "properties": {
+                    "amdGpuDeviceMetricsExporterPlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin:getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin"
+                    },
+                    "amdGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterAmdGpuDevicePlugin:getKubernetesClusterAmdGpuDevicePlugin"
+                    },
                     "clusterAutoscalerConfigurations": {
                         "type": "array",
                         "items": {
@@ -30228,6 +30359,12 @@
             "outputs": {
                 "description": "A collection of values returned by getKubernetesCluster.\n",
                 "properties": {
+                    "amdGpuDeviceMetricsExporterPlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin:getKubernetesClusterAmdGpuDeviceMetricsExporterPlugin"
+                    },
+                    "amdGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterAmdGpuDevicePlugin:getKubernetesClusterAmdGpuDevicePlugin"
+                    },
                     "autoUpgrade": {
                         "description": "A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.\n",
                         "type": "boolean"
@@ -30339,6 +30476,8 @@
                     }
                 },
                 "required": [
+                    "amdGpuDeviceMetricsExporterPlugin",
+                    "amdGpuDevicePlugin",
                     "autoUpgrade",
                     "clusterSubnet",
                     "controlPlaneFirewalls",

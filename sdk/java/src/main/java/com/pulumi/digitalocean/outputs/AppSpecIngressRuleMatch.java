@@ -4,6 +4,7 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.AppSpecIngressRuleMatchAuthority;
 import com.pulumi.digitalocean.outputs.AppSpecIngressRuleMatchPath;
 import java.util.Objects;
 import java.util.Optional;
@@ -12,12 +13,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AppSpecIngressRuleMatch {
     /**
+     * @return The authority (domain) to match on.
+     * 
+     */
+    private @Nullable AppSpecIngressRuleMatchAuthority authority;
+    /**
      * @return The path to match on.
      * 
      */
     private @Nullable AppSpecIngressRuleMatchPath path;
 
     private AppSpecIngressRuleMatch() {}
+    /**
+     * @return The authority (domain) to match on.
+     * 
+     */
+    public Optional<AppSpecIngressRuleMatchAuthority> authority() {
+        return Optional.ofNullable(this.authority);
+    }
     /**
      * @return The path to match on.
      * 
@@ -35,13 +48,21 @@ public final class AppSpecIngressRuleMatch {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable AppSpecIngressRuleMatchAuthority authority;
         private @Nullable AppSpecIngressRuleMatchPath path;
         public Builder() {}
         public Builder(AppSpecIngressRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authority = defaults.authority;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
+        public Builder authority(@Nullable AppSpecIngressRuleMatchAuthority authority) {
+
+            this.authority = authority;
+            return this;
+        }
         @CustomType.Setter
         public Builder path(@Nullable AppSpecIngressRuleMatchPath path) {
 
@@ -50,6 +71,7 @@ public final class AppSpecIngressRuleMatch {
         }
         public AppSpecIngressRuleMatch build() {
             final var _resultValue = new AppSpecIngressRuleMatch();
+            _resultValue.authority = authority;
             _resultValue.path = path;
             return _resultValue;
         }

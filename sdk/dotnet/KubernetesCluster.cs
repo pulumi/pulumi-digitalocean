@@ -40,6 +40,18 @@ namespace Pulumi.DigitalOcean
     public partial class KubernetesCluster : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// </summary>
+        [Output("amdGpuDeviceMetricsExporterPlugin")]
+        public Output<Outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin> AmdGpuDeviceMetricsExporterPlugin { get; private set; } = null!;
+
+        /// <summary>
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// </summary>
+        [Output("amdGpuDevicePlugin")]
+        public Output<Outputs.KubernetesClusterAmdGpuDevicePlugin> AmdGpuDevicePlugin { get; private set; } = null!;
+
+        /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
         [Output("autoUpgrade")]
@@ -240,6 +252,18 @@ namespace Pulumi.DigitalOcean
     public sealed class KubernetesClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// </summary>
+        [Input("amdGpuDeviceMetricsExporterPlugin")]
+        public Input<Inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>? AmdGpuDeviceMetricsExporterPlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// </summary>
+        [Input("amdGpuDevicePlugin")]
+        public Input<Inputs.KubernetesClusterAmdGpuDevicePluginArgs>? AmdGpuDevicePlugin { get; set; }
+
+        /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
         [Input("autoUpgrade")]
@@ -367,6 +391,18 @@ namespace Pulumi.DigitalOcean
 
     public sealed class KubernetesClusterState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Block containing options for the AMD GPU device metrics exporter component.
+        /// </summary>
+        [Input("amdGpuDeviceMetricsExporterPlugin")]
+        public Input<Inputs.KubernetesClusterAmdGpuDeviceMetricsExporterPluginGetArgs>? AmdGpuDeviceMetricsExporterPlugin { get; set; }
+
+        /// <summary>
+        /// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        /// </summary>
+        [Input("amdGpuDevicePlugin")]
+        public Input<Inputs.KubernetesClusterAmdGpuDevicePluginGetArgs>? AmdGpuDevicePlugin { get; set; }
+
         /// <summary>
         /// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         /// </summary>
