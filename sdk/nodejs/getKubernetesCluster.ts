@@ -24,6 +24,8 @@ import * as utilities from "./utilities";
 export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulumi.InvokeOptions): Promise<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
+        "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
@@ -36,6 +38,8 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterArgs {
+    amdGpuDeviceMetricsExporterPlugin?: inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
+    amdGpuDevicePlugin?: inputs.GetKubernetesClusterAmdGpuDevicePlugin;
     clusterAutoscalerConfigurations?: inputs.GetKubernetesClusterClusterAutoscalerConfiguration[];
     kubeconfigExpireSeconds?: number;
     /**
@@ -53,6 +57,8 @@ export interface GetKubernetesClusterArgs {
  * A collection of values returned by getKubernetesCluster.
  */
 export interface GetKubernetesClusterResult {
+    readonly amdGpuDeviceMetricsExporterPlugin: outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
+    readonly amdGpuDevicePlugin: outputs.GetKubernetesClusterAmdGpuDevicePlugin;
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
@@ -149,6 +155,8 @@ export interface GetKubernetesClusterResult {
 export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKubernetesClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getKubernetesCluster:getKubernetesCluster", {
+        "amdGpuDeviceMetricsExporterPlugin": args.amdGpuDeviceMetricsExporterPlugin,
+        "amdGpuDevicePlugin": args.amdGpuDevicePlugin,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
@@ -161,6 +169,8 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterOutputArgs {
+    amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>;
+    amdGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDevicePluginArgs>;
     clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[]>;
     kubeconfigExpireSeconds?: pulumi.Input<number>;
     /**

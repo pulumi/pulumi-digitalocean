@@ -4,6 +4,8 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterClusterAutoscalerConfiguration;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
@@ -21,6 +23,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetKubernetesClusterResult {
+    private GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin;
+    private GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin;
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * 
@@ -119,6 +123,12 @@ public final class GetKubernetesClusterResult {
     private String vpcUuid;
 
     private GetKubernetesClusterResult() {}
+    public GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin() {
+        return this.amdGpuDeviceMetricsExporterPlugin;
+    }
+    public GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin() {
+        return this.amdGpuDevicePlugin;
+    }
     /**
      * @return A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      * 
@@ -273,6 +283,8 @@ public final class GetKubernetesClusterResult {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin;
+        private GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin;
         private Boolean autoUpgrade;
         private @Nullable List<GetKubernetesClusterClusterAutoscalerConfiguration> clusterAutoscalerConfigurations;
         private String clusterSubnet;
@@ -300,6 +312,8 @@ public final class GetKubernetesClusterResult {
         public Builder() {}
         public Builder(GetKubernetesClusterResult defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.amdGpuDeviceMetricsExporterPlugin = defaults.amdGpuDeviceMetricsExporterPlugin;
+    	      this.amdGpuDevicePlugin = defaults.amdGpuDevicePlugin;
     	      this.autoUpgrade = defaults.autoUpgrade;
     	      this.clusterAutoscalerConfigurations = defaults.clusterAutoscalerConfigurations;
     	      this.clusterSubnet = defaults.clusterSubnet;
@@ -326,6 +340,22 @@ public final class GetKubernetesClusterResult {
     	      this.vpcUuid = defaults.vpcUuid;
         }
 
+        @CustomType.Setter
+        public Builder amdGpuDeviceMetricsExporterPlugin(GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin amdGpuDeviceMetricsExporterPlugin) {
+            if (amdGpuDeviceMetricsExporterPlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "amdGpuDeviceMetricsExporterPlugin");
+            }
+            this.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder amdGpuDevicePlugin(GetKubernetesClusterAmdGpuDevicePlugin amdGpuDevicePlugin) {
+            if (amdGpuDevicePlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "amdGpuDevicePlugin");
+            }
+            this.amdGpuDevicePlugin = amdGpuDevicePlugin;
+            return this;
+        }
         @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
             if (autoUpgrade == null) {
@@ -532,6 +562,8 @@ public final class GetKubernetesClusterResult {
         }
         public GetKubernetesClusterResult build() {
             final var _resultValue = new GetKubernetesClusterResult();
+            _resultValue.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
+            _resultValue.amdGpuDevicePlugin = amdGpuDevicePlugin;
             _resultValue.autoUpgrade = autoUpgrade;
             _resultValue.clusterAutoscalerConfigurations = clusterAutoscalerConfigurations;
             _resultValue.clusterSubnet = clusterSubnet;

@@ -40,6 +40,10 @@ import (
 type KubernetesCluster struct {
 	pulumi.CustomResourceState
 
+	// Block containing options for the AMD GPU device metrics exporter component.
+	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginOutput `pulumi:"amdGpuDevicePlugin"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrOutput `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling.
@@ -135,6 +139,10 @@ func GetKubernetesCluster(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KubernetesCluster resources.
 type kubernetesClusterState struct {
+	// Block containing options for the AMD GPU device metrics exporter component.
+	AmdGpuDeviceMetricsExporterPlugin *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	AmdGpuDevicePlugin *KubernetesClusterAmdGpuDevicePlugin `pulumi:"amdGpuDevicePlugin"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling.
@@ -188,6 +196,10 @@ type kubernetesClusterState struct {
 }
 
 type KubernetesClusterState struct {
+	// Block containing options for the AMD GPU device metrics exporter component.
+	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginPtrInput
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
 	// Block containing options for cluster auto-scaling.
@@ -245,6 +257,10 @@ func (KubernetesClusterState) ElementType() reflect.Type {
 }
 
 type kubernetesClusterArgs struct {
+	// Block containing options for the AMD GPU device metrics exporter component.
+	AmdGpuDeviceMetricsExporterPlugin *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin `pulumi:"amdGpuDeviceMetricsExporterPlugin"`
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	AmdGpuDevicePlugin *KubernetesClusterAmdGpuDevicePlugin `pulumi:"amdGpuDevicePlugin"`
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade *bool `pulumi:"autoUpgrade"`
 	// Block containing options for cluster auto-scaling.
@@ -285,6 +301,10 @@ type kubernetesClusterArgs struct {
 
 // The set of arguments for constructing a KubernetesCluster resource.
 type KubernetesClusterArgs struct {
+	// Block containing options for the AMD GPU device metrics exporter component.
+	AmdGpuDeviceMetricsExporterPlugin KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput
+	// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+	AmdGpuDevicePlugin KubernetesClusterAmdGpuDevicePluginPtrInput
 	// A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
 	AutoUpgrade pulumi.BoolPtrInput
 	// Block containing options for cluster auto-scaling.
@@ -408,6 +428,18 @@ func (o KubernetesClusterOutput) ToKubernetesClusterOutput() KubernetesClusterOu
 
 func (o KubernetesClusterOutput) ToKubernetesClusterOutputWithContext(ctx context.Context) KubernetesClusterOutput {
 	return o
+}
+
+// Block containing options for the AMD GPU device metrics exporter component.
+func (o KubernetesClusterOutput) AmdGpuDeviceMetricsExporterPlugin() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+		return v.AmdGpuDeviceMetricsExporterPlugin
+	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+// Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+func (o KubernetesClusterOutput) AmdGpuDevicePlugin() KubernetesClusterAmdGpuDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterAmdGpuDevicePluginOutput { return v.AmdGpuDevicePlugin }).(KubernetesClusterAmdGpuDevicePluginOutput)
 }
 
 // A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.

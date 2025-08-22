@@ -599,9 +599,20 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
 
 export interface AppSpecIngressRuleMatch {
     /**
+     * The authority (domain) to match on.
+     */
+    authority?: pulumi.Input<inputs.AppSpecIngressRuleMatchAuthority>;
+    /**
      * The path to match on.
      */
     path?: pulumi.Input<inputs.AppSpecIngressRuleMatchPath>;
+}
+
+export interface AppSpecIngressRuleMatchAuthority {
+    /**
+     * Exact match.
+     */
+    exact?: pulumi.Input<string>;
 }
 
 export interface AppSpecIngressRuleMatchPath {
@@ -5628,6 +5639,22 @@ export interface GetImagesSortArgs {
     key: pulumi.Input<string>;
 }
 
+export interface GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetKubernetesClusterAmdGpuDevicePlugin {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterAmdGpuDevicePluginArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
     expanders?: string[];
     scaleDownUnneededTime?: string;
@@ -6144,6 +6171,21 @@ export interface GetTagsSortArgs {
      * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      */
     key: pulumi.Input<string>;
+}
+
+export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterAmdGpuDevicePlugin {
+    /**
+     * Boolean flag whether the component should be enabled or not.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     */
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {

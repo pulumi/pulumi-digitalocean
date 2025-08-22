@@ -4,12 +4,14 @@
 package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatchAuthority;
 import com.pulumi.digitalocean.outputs.GetAppSpecIngressRuleMatchPath;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.util.Objects;
 
 @CustomType
 public final class GetAppSpecIngressRuleMatch {
+    private GetAppSpecIngressRuleMatchAuthority authority;
     /**
      * @return Paths must start with `/` and must be unique within the app.
      * 
@@ -17,6 +19,9 @@ public final class GetAppSpecIngressRuleMatch {
     private GetAppSpecIngressRuleMatchPath path;
 
     private GetAppSpecIngressRuleMatch() {}
+    public GetAppSpecIngressRuleMatchAuthority authority() {
+        return this.authority;
+    }
     /**
      * @return Paths must start with `/` and must be unique within the app.
      * 
@@ -34,13 +39,23 @@ public final class GetAppSpecIngressRuleMatch {
     }
     @CustomType.Builder
     public static final class Builder {
+        private GetAppSpecIngressRuleMatchAuthority authority;
         private GetAppSpecIngressRuleMatchPath path;
         public Builder() {}
         public Builder(GetAppSpecIngressRuleMatch defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.authority = defaults.authority;
     	      this.path = defaults.path;
         }
 
+        @CustomType.Setter
+        public Builder authority(GetAppSpecIngressRuleMatchAuthority authority) {
+            if (authority == null) {
+              throw new MissingRequiredPropertyException("GetAppSpecIngressRuleMatch", "authority");
+            }
+            this.authority = authority;
+            return this;
+        }
         @CustomType.Setter
         public Builder path(GetAppSpecIngressRuleMatchPath path) {
             if (path == null) {
@@ -51,6 +66,7 @@ public final class GetAppSpecIngressRuleMatch {
         }
         public GetAppSpecIngressRuleMatch build() {
             final var _resultValue = new GetAppSpecIngressRuleMatch();
+            _resultValue.authority = authority;
             _resultValue.path = path;
             return _resultValue;
         }

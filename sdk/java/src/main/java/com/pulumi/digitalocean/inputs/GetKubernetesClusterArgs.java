@@ -5,6 +5,8 @@ package com.pulumi.digitalocean.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgentArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
@@ -19,6 +21,20 @@ import javax.annotation.Nullable;
 public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetKubernetesClusterArgs Empty = new GetKubernetesClusterArgs();
+
+    @Import(name="amdGpuDeviceMetricsExporterPlugin")
+    private @Nullable Output<GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs> amdGpuDeviceMetricsExporterPlugin;
+
+    public Optional<Output<GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>> amdGpuDeviceMetricsExporterPlugin() {
+        return Optional.ofNullable(this.amdGpuDeviceMetricsExporterPlugin);
+    }
+
+    @Import(name="amdGpuDevicePlugin")
+    private @Nullable Output<GetKubernetesClusterAmdGpuDevicePluginArgs> amdGpuDevicePlugin;
+
+    public Optional<Output<GetKubernetesClusterAmdGpuDevicePluginArgs>> amdGpuDevicePlugin() {
+        return Optional.ofNullable(this.amdGpuDevicePlugin);
+    }
 
     @Import(name="clusterAutoscalerConfigurations")
     private @Nullable Output<List<GetKubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations;
@@ -74,6 +90,8 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
     private GetKubernetesClusterArgs() {}
 
     private GetKubernetesClusterArgs(GetKubernetesClusterArgs $) {
+        this.amdGpuDeviceMetricsExporterPlugin = $.amdGpuDeviceMetricsExporterPlugin;
+        this.amdGpuDevicePlugin = $.amdGpuDevicePlugin;
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
@@ -97,6 +115,24 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder(GetKubernetesClusterArgs defaults) {
             $ = new GetKubernetesClusterArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder amdGpuDeviceMetricsExporterPlugin(@Nullable Output<GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs> amdGpuDeviceMetricsExporterPlugin) {
+            $.amdGpuDeviceMetricsExporterPlugin = amdGpuDeviceMetricsExporterPlugin;
+            return this;
+        }
+
+        public Builder amdGpuDeviceMetricsExporterPlugin(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs amdGpuDeviceMetricsExporterPlugin) {
+            return amdGpuDeviceMetricsExporterPlugin(Output.of(amdGpuDeviceMetricsExporterPlugin));
+        }
+
+        public Builder amdGpuDevicePlugin(@Nullable Output<GetKubernetesClusterAmdGpuDevicePluginArgs> amdGpuDevicePlugin) {
+            $.amdGpuDevicePlugin = amdGpuDevicePlugin;
+            return this;
+        }
+
+        public Builder amdGpuDevicePlugin(GetKubernetesClusterAmdGpuDevicePluginArgs amdGpuDevicePlugin) {
+            return amdGpuDevicePlugin(Output.of(amdGpuDevicePlugin));
         }
 
         public Builder clusterAutoscalerConfigurations(@Nullable Output<List<GetKubernetesClusterClusterAutoscalerConfigurationArgs>> clusterAutoscalerConfigurations) {

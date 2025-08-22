@@ -599,9 +599,20 @@ export interface AppSpecIngressRuleCorsAllowOrigins {
 
 export interface AppSpecIngressRuleMatch {
     /**
+     * The authority (domain) to match on.
+     */
+    authority: outputs.AppSpecIngressRuleMatchAuthority;
+    /**
      * The path to match on.
      */
     path: outputs.AppSpecIngressRuleMatchPath;
+}
+
+export interface AppSpecIngressRuleMatchAuthority {
+    /**
+     * Exact match.
+     */
+    exact: string;
 }
 
 export interface AppSpecIngressRuleMatchPath {
@@ -4251,10 +4262,18 @@ export interface GetAppSpecIngressRuleCorsAllowOrigins {
 }
 
 export interface GetAppSpecIngressRuleMatch {
+    authority: outputs.GetAppSpecIngressRuleMatchAuthority;
     /**
      * Paths must start with `/` and must be unique within the app.
      */
     path: outputs.GetAppSpecIngressRuleMatchPath;
+}
+
+export interface GetAppSpecIngressRuleMatchAuthority {
+    /**
+     * The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+     */
+    exact: string;
 }
 
 export interface GetAppSpecIngressRuleMatchPath {
@@ -10153,6 +10172,14 @@ export interface GetImagesSort {
     key: string;
 }
 
+export interface GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+    enabled: boolean;
+}
+
+export interface GetKubernetesClusterAmdGpuDevicePlugin {
+    enabled: boolean;
+}
+
 export interface GetKubernetesClusterClusterAutoscalerConfiguration {
     expanders?: string[];
     scaleDownUnneededTime?: string;
@@ -10962,6 +10989,21 @@ export interface GetVpcNatGatewayVpc {
      * ID of the ingress VPC
      */
     vpcUuid: string;
+}
+
+export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled: boolean;
+}
+
+export interface KubernetesClusterAmdGpuDevicePlugin {
+    /**
+     * Boolean flag whether the component should be enabled or not.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     */
+    enabled: boolean;
 }
 
 export interface KubernetesClusterClusterAutoscalerConfiguration {

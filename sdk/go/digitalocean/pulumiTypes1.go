@@ -13,6 +13,705 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetSpacesKeyGrant struct {
+	// The name of the bucket to grant the key access to.
+	Bucket string `pulumi:"bucket"`
+	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+	Permission string `pulumi:"permission"`
+}
+
+// GetSpacesKeyGrantInput is an input type that accepts GetSpacesKeyGrantArgs and GetSpacesKeyGrantOutput values.
+// You can construct a concrete instance of `GetSpacesKeyGrantInput` via:
+//
+//	GetSpacesKeyGrantArgs{...}
+type GetSpacesKeyGrantInput interface {
+	pulumi.Input
+
+	ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput
+	ToGetSpacesKeyGrantOutputWithContext(context.Context) GetSpacesKeyGrantOutput
+}
+
+type GetSpacesKeyGrantArgs struct {
+	// The name of the bucket to grant the key access to.
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+	Permission pulumi.StringInput `pulumi:"permission"`
+}
+
+func (GetSpacesKeyGrantArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
+	return i.ToGetSpacesKeyGrantOutputWithContext(context.Background())
+}
+
+func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantOutput)
+}
+
+// GetSpacesKeyGrantArrayInput is an input type that accepts GetSpacesKeyGrantArray and GetSpacesKeyGrantArrayOutput values.
+// You can construct a concrete instance of `GetSpacesKeyGrantArrayInput` via:
+//
+//	GetSpacesKeyGrantArray{ GetSpacesKeyGrantArgs{...} }
+type GetSpacesKeyGrantArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput
+	ToGetSpacesKeyGrantArrayOutputWithContext(context.Context) GetSpacesKeyGrantArrayOutput
+}
+
+type GetSpacesKeyGrantArray []GetSpacesKeyGrantInput
+
+func (GetSpacesKeyGrantArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
+	return i.ToGetSpacesKeyGrantArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantArrayOutput)
+}
+
+type GetSpacesKeyGrantOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesKeyGrantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
+	return o
+}
+
+// The name of the bucket to grant the key access to.
+func (o GetSpacesKeyGrantOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+func (o GetSpacesKeyGrantOutput) Permission() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Permission }).(pulumi.StringOutput)
+}
+
+type GetSpacesKeyGrantArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesKeyGrantArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
+}
+
+func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
+	return o
+}
+
+func (o GetSpacesKeyGrantArrayOutput) Index(i pulumi.IntInput) GetSpacesKeyGrantOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesKeyGrant {
+		return vs[0].([]GetSpacesKeyGrant)[vs[1].(int)]
+	}).(GetSpacesKeyGrantOutput)
+}
+
+type GetSshKeysFilter struct {
+	All *bool `pulumi:"all"`
+	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key     string  `pulumi:"key"`
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetSshKeysFilterInput is an input type that accepts GetSshKeysFilterArgs and GetSshKeysFilterOutput values.
+// You can construct a concrete instance of `GetSshKeysFilterInput` via:
+//
+//	GetSshKeysFilterArgs{...}
+type GetSshKeysFilterInput interface {
+	pulumi.Input
+
+	ToGetSshKeysFilterOutput() GetSshKeysFilterOutput
+	ToGetSshKeysFilterOutputWithContext(context.Context) GetSshKeysFilterOutput
+}
+
+type GetSshKeysFilterArgs struct {
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key     pulumi.StringInput    `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSshKeysFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
+}
+
+func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
+	return i.ToGetSshKeysFilterOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterOutput)
+}
+
+// GetSshKeysFilterArrayInput is an input type that accepts GetSshKeysFilterArray and GetSshKeysFilterArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysFilterArrayInput` via:
+//
+//	GetSshKeysFilterArray{ GetSshKeysFilterArgs{...} }
+type GetSshKeysFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput
+	ToGetSshKeysFilterArrayOutputWithContext(context.Context) GetSshKeysFilterArrayOutput
+}
+
+type GetSshKeysFilterArray []GetSshKeysFilterInput
+
+func (GetSshKeysFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
+}
+
+func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
+	return i.ToGetSshKeysFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterArrayOutput)
+}
+
+type GetSshKeysFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
+}
+
+func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
+	return o
+}
+
+func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
+	return o
+}
+
+func (o GetSshKeysFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+func (o GetSshKeysFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetSshKeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+func (o GetSshKeysFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSshKeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSshKeysFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
+}
+
+func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
+	return o
+}
+
+func (o GetSshKeysFilterArrayOutput) Index(i pulumi.IntInput) GetSshKeysFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysFilter {
+		return vs[0].([]GetSshKeysFilter)[vs[1].(int)]
+	}).(GetSshKeysFilterOutput)
+}
+
+type GetSshKeysSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key string `pulumi:"key"`
+}
+
+// GetSshKeysSortInput is an input type that accepts GetSshKeysSortArgs and GetSshKeysSortOutput values.
+// You can construct a concrete instance of `GetSshKeysSortInput` via:
+//
+//	GetSshKeysSortArgs{...}
+type GetSshKeysSortInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSortOutput() GetSshKeysSortOutput
+	ToGetSshKeysSortOutputWithContext(context.Context) GetSshKeysSortOutput
+}
+
+type GetSshKeysSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetSshKeysSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
+}
+
+func (i GetSshKeysSortArgs) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
+	return i.ToGetSshKeysSortOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSortArgs) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortOutput)
+}
+
+// GetSshKeysSortArrayInput is an input type that accepts GetSshKeysSortArray and GetSshKeysSortArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysSortArrayInput` via:
+//
+//	GetSshKeysSortArray{ GetSshKeysSortArgs{...} }
+type GetSshKeysSortArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput
+	ToGetSshKeysSortArrayOutputWithContext(context.Context) GetSshKeysSortArrayOutput
+}
+
+type GetSshKeysSortArray []GetSshKeysSortInput
+
+func (GetSshKeysSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
+}
+
+func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
+	return i.ToGetSshKeysSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortArrayOutput)
+}
+
+type GetSshKeysSortOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
+}
+
+func (o GetSshKeysSortOutput) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
+	return o
+}
+
+func (o GetSshKeysSortOutput) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetSshKeysSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSshKeysSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
+func (o GetSshKeysSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetSshKeysSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
+}
+
+func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSortArrayOutput) Index(i pulumi.IntInput) GetSshKeysSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSort {
+		return vs[0].([]GetSshKeysSort)[vs[1].(int)]
+	}).(GetSshKeysSortOutput)
+}
+
+type GetSshKeysSshKey struct {
+	// The fingerprint of the public key of the ssh key.
+	Fingerprint string `pulumi:"fingerprint"`
+	// The ID of the ssh key.
+	Id int `pulumi:"id"`
+	// The name of the ssh key.
+	Name string `pulumi:"name"`
+	// The public key of the ssh key.
+	PublicKey string `pulumi:"publicKey"`
+}
+
+// GetSshKeysSshKeyInput is an input type that accepts GetSshKeysSshKeyArgs and GetSshKeysSshKeyOutput values.
+// You can construct a concrete instance of `GetSshKeysSshKeyInput` via:
+//
+//	GetSshKeysSshKeyArgs{...}
+type GetSshKeysSshKeyInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput
+	ToGetSshKeysSshKeyOutputWithContext(context.Context) GetSshKeysSshKeyOutput
+}
+
+type GetSshKeysSshKeyArgs struct {
+	// The fingerprint of the public key of the ssh key.
+	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
+	// The ID of the ssh key.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the ssh key.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The public key of the ssh key.
+	PublicKey pulumi.StringInput `pulumi:"publicKey"`
+}
+
+func (GetSshKeysSshKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
+	return i.ToGetSshKeysSshKeyOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyOutput)
+}
+
+// GetSshKeysSshKeyArrayInput is an input type that accepts GetSshKeysSshKeyArray and GetSshKeysSshKeyArrayOutput values.
+// You can construct a concrete instance of `GetSshKeysSshKeyArrayInput` via:
+//
+//	GetSshKeysSshKeyArray{ GetSshKeysSshKeyArgs{...} }
+type GetSshKeysSshKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput
+	ToGetSshKeysSshKeyArrayOutputWithContext(context.Context) GetSshKeysSshKeyArrayOutput
+}
+
+type GetSshKeysSshKeyArray []GetSshKeysSshKeyInput
+
+func (GetSshKeysSshKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
+	return i.ToGetSshKeysSshKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyArrayOutput)
+}
+
+type GetSshKeysSshKeyOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSshKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
+	return o
+}
+
+// The fingerprint of the public key of the ssh key.
+func (o GetSshKeysSshKeyOutput) Fingerprint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Fingerprint }).(pulumi.StringOutput)
+}
+
+// The ID of the ssh key.
+func (o GetSshKeysSshKeyOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the ssh key.
+func (o GetSshKeysSshKeyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The public key of the ssh key.
+func (o GetSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
+}
+
+type GetSshKeysSshKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSshKeysSshKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
+}
+
+func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
+	return o
+}
+
+func (o GetSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetSshKeysSshKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSshKey {
+		return vs[0].([]GetSshKeysSshKey)[vs[1].(int)]
+	}).(GetSshKeysSshKeyOutput)
+}
+
+type GetTagsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetTagsFilterInput is an input type that accepts GetTagsFilterArgs and GetTagsFilterOutput values.
+// You can construct a concrete instance of `GetTagsFilterInput` via:
+//
+//	GetTagsFilterArgs{...}
+type GetTagsFilterInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterOutput() GetTagsFilterOutput
+	ToGetTagsFilterOutputWithContext(context.Context) GetTagsFilterOutput
+}
+
+type GetTagsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// Only retrieves tags which keys has value that matches
+	// one of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetTagsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return i.ToGetTagsFilterOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArgs) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterOutput)
+}
+
+// GetTagsFilterArrayInput is an input type that accepts GetTagsFilterArray and GetTagsFilterArrayOutput values.
+// You can construct a concrete instance of `GetTagsFilterArrayInput` via:
+//
+//	GetTagsFilterArray{ GetTagsFilterArgs{...} }
+type GetTagsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput
+	ToGetTagsFilterArrayOutputWithContext(context.Context) GetTagsFilterArrayOutput
+}
+
+type GetTagsFilterArray []GetTagsFilterInput
+
+func (GetTagsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return i.ToGetTagsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsFilterArray) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterArrayOutput)
+}
+
+type GetTagsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutput() GetTagsFilterOutput {
+	return o
+}
+
+func (o GetTagsFilterOutput) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetTagsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetTagsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// Only retrieves tags which keys has value that matches
+// one of the values provided here.
+func (o GetTagsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetTagsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetTagsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
+	return o
+}
+
+func (o GetTagsFilterArrayOutput) Index(i pulumi.IntInput) GetTagsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsFilter {
+		return vs[0].([]GetTagsFilter)[vs[1].(int)]
+	}).(GetTagsFilterOutput)
+}
+
+type GetTagsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key string `pulumi:"key"`
+}
+
+// GetTagsSortInput is an input type that accepts GetTagsSortArgs and GetTagsSortOutput values.
+// You can construct a concrete instance of `GetTagsSortInput` via:
+//
+//	GetTagsSortArgs{...}
+type GetTagsSortInput interface {
+	pulumi.Input
+
+	ToGetTagsSortOutput() GetTagsSortOutput
+	ToGetTagsSortOutputWithContext(context.Context) GetTagsSortOutput
+}
+
+type GetTagsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetTagsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutput() GetTagsSortOutput {
+	return i.ToGetTagsSortOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArgs) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortOutput)
+}
+
+// GetTagsSortArrayInput is an input type that accepts GetTagsSortArray and GetTagsSortArrayOutput values.
+// You can construct a concrete instance of `GetTagsSortArrayInput` via:
+//
+//	GetTagsSortArray{ GetTagsSortArgs{...} }
+type GetTagsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetTagsSortArrayOutput() GetTagsSortArrayOutput
+	ToGetTagsSortArrayOutputWithContext(context.Context) GetTagsSortArrayOutput
+}
+
+type GetTagsSortArray []GetTagsSortInput
+
+func (GetTagsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return i.ToGetTagsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetTagsSortArray) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortArrayOutput)
+}
+
+type GetTagsSortOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutput() GetTagsSortOutput {
+	return o
+}
+
+func (o GetTagsSortOutput) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetTagsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetTagsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
+func (o GetTagsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTagsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetTagsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTagsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
+	return o
+}
+
+func (o GetTagsSortArrayOutput) Index(i pulumi.IntInput) GetTagsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsSort {
+		return vs[0].([]GetTagsSort)[vs[1].(int)]
+	}).(GetTagsSortOutput)
+}
+
 type GetTagsTag struct {
 	// A count of the database clusters that the tag is applied to.
 	DatabasesCount int `pulumi:"databasesCount"`
@@ -474,6 +1173,18 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantInput)(nil)).Elem(), GetSpacesKeyGrantArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantArrayInput)(nil)).Elem(), GetSpacesKeyGrantArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterInput)(nil)).Elem(), GetSshKeysFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterArrayInput)(nil)).Elem(), GetSshKeysFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortInput)(nil)).Elem(), GetSshKeysSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortArrayInput)(nil)).Elem(), GetSshKeysSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyInput)(nil)).Elem(), GetSshKeysSshKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyArrayInput)(nil)).Elem(), GetSshKeysSshKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterInput)(nil)).Elem(), GetTagsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterArrayInput)(nil)).Elem(), GetTagsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortInput)(nil)).Elem(), GetTagsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagInput)(nil)).Elem(), GetTagsTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsTagArrayInput)(nil)).Elem(), GetTagsTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressInput)(nil)).Elem(), GetVpcNatGatewayEgressArgs{})
@@ -482,6 +1193,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetSpacesKeyGrantOutput{})
+	pulumi.RegisterOutputType(GetSpacesKeyGrantArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysFilterOutput{})
+	pulumi.RegisterOutputType(GetSshKeysFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSortOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSshKeyOutput{})
+	pulumi.RegisterOutputType(GetSshKeysSshKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterOutput{})
+	pulumi.RegisterOutputType(GetTagsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetTagsSortOutput{})
+	pulumi.RegisterOutputType(GetTagsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetTagsTagOutput{})
 	pulumi.RegisterOutputType(GetTagsTagArrayOutput{})
 	pulumi.RegisterOutputType(GetVpcNatGatewayEgressOutput{})

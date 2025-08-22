@@ -13,6 +13,12 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecIngressRuleMatchGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The authority (domain) to match on.
+        /// </summary>
+        [Input("authority")]
+        public Input<Inputs.AppSpecIngressRuleMatchAuthorityGetArgs>? Authority { get; set; }
+
+        /// <summary>
         /// The path to match on.
         /// </summary>
         [Input("path")]

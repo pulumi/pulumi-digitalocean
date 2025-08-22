@@ -25,6 +25,8 @@ class KubernetesClusterArgs:
                  node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
                  region: pulumi.Input[Union[_builtins.str, 'Region']],
                  version: pulumi.Input[_builtins.str],
+                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
+                 amd_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
                  auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -45,6 +47,8 @@ class KubernetesClusterArgs:
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
+        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
+        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -64,6 +68,10 @@ class KubernetesClusterArgs:
         pulumi.set(__self__, "node_pool", node_pool)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "version", version)
+        if amd_gpu_device_metrics_exporter_plugin is not None:
+            pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
+        if amd_gpu_device_plugin is not None:
+            pulumi.set(__self__, "amd_gpu_device_plugin", amd_gpu_device_plugin)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_autoscaler_configurations is not None:
@@ -130,6 +138,30 @@ class KubernetesClusterArgs:
     @version.setter
     def version(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
+    def amd_gpu_device_metrics_exporter_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
+        """
+        Block containing options for the AMD GPU device metrics exporter component.
+        """
+        return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
+
+    @amd_gpu_device_metrics_exporter_plugin.setter
+    def amd_gpu_device_metrics_exporter_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
+        pulumi.set(self, "amd_gpu_device_metrics_exporter_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDevicePlugin")
+    def amd_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]:
+        """
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        """
+        return pulumi.get(self, "amd_gpu_device_plugin")
+
+    @amd_gpu_device_plugin.setter
+    def amd_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]):
+        pulumi.set(self, "amd_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -315,6 +347,8 @@ class KubernetesClusterArgs:
 @pulumi.input_type
 class _KubernetesClusterState:
     def __init__(__self__, *,
+                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
+                 amd_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
                  auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
                  cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -342,6 +376,8 @@ class _KubernetesClusterState:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
+        :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
+        :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -368,6 +404,10 @@ class _KubernetesClusterState:
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         :param pulumi.Input[_builtins.str] vpc_uuid: The ID of the VPC where the Kubernetes cluster will be located.
         """
+        if amd_gpu_device_metrics_exporter_plugin is not None:
+            pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
+        if amd_gpu_device_plugin is not None:
+            pulumi.set(__self__, "amd_gpu_device_plugin", amd_gpu_device_plugin)
         if auto_upgrade is not None:
             pulumi.set(__self__, "auto_upgrade", auto_upgrade)
         if cluster_autoscaler_configurations is not None:
@@ -418,6 +458,30 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "version", version)
         if vpc_uuid is not None:
             pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
+    def amd_gpu_device_metrics_exporter_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
+        """
+        Block containing options for the AMD GPU device metrics exporter component.
+        """
+        return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
+
+    @amd_gpu_device_metrics_exporter_plugin.setter
+    def amd_gpu_device_metrics_exporter_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
+        pulumi.set(self, "amd_gpu_device_metrics_exporter_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDevicePlugin")
+    def amd_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]:
+        """
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        """
+        return pulumi.get(self, "amd_gpu_device_plugin")
+
+    @amd_gpu_device_plugin.setter
+    def amd_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]):
+        pulumi.set(self, "amd_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
@@ -726,6 +790,8 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+                 amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
                  auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -774,6 +840,8 @@ class KubernetesCluster(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -841,6 +909,8 @@ class KubernetesCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+                 amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
                  auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
                  cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -868,6 +938,8 @@ class KubernetesCluster(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = KubernetesClusterArgs.__new__(KubernetesClusterArgs)
 
+            __props__.__dict__["amd_gpu_device_metrics_exporter_plugin"] = amd_gpu_device_metrics_exporter_plugin
+            __props__.__dict__["amd_gpu_device_plugin"] = amd_gpu_device_plugin
             __props__.__dict__["auto_upgrade"] = auto_upgrade
             __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
             __props__.__dict__["cluster_subnet"] = cluster_subnet
@@ -911,6 +983,8 @@ class KubernetesCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+            amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
             auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
             cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
             cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -943,6 +1017,8 @@ class KubernetesCluster(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
+        :param pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         :param pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]] cluster_autoscaler_configurations: Block containing options for cluster auto-scaling.
         :param pulumi.Input[_builtins.str] cluster_subnet: The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -973,6 +1049,8 @@ class KubernetesCluster(pulumi.CustomResource):
 
         __props__ = _KubernetesClusterState.__new__(_KubernetesClusterState)
 
+        __props__.__dict__["amd_gpu_device_metrics_exporter_plugin"] = amd_gpu_device_metrics_exporter_plugin
+        __props__.__dict__["amd_gpu_device_plugin"] = amd_gpu_device_plugin
         __props__.__dict__["auto_upgrade"] = auto_upgrade
         __props__.__dict__["cluster_autoscaler_configurations"] = cluster_autoscaler_configurations
         __props__.__dict__["cluster_subnet"] = cluster_subnet
@@ -999,6 +1077,22 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["version"] = version
         __props__.__dict__["vpc_uuid"] = vpc_uuid
         return KubernetesCluster(resource_name, opts=opts, __props__=__props__)
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
+    def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin']:
+        """
+        Block containing options for the AMD GPU device metrics exporter component.
+        """
+        return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
+
+    @_builtins.property
+    @pulumi.getter(name="amdGpuDevicePlugin")
+    def amd_gpu_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterAmdGpuDevicePlugin']:
+        """
+        Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
+        """
+        return pulumi.get(self, "amd_gpu_device_plugin")
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")

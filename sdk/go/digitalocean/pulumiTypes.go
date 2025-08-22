@@ -5188,6 +5188,8 @@ func (o AppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtrOut
 }
 
 type AppSpecIngressRuleMatch struct {
+	// The authority (domain) to match on.
+	Authority *AppSpecIngressRuleMatchAuthority `pulumi:"authority"`
 	// The path to match on.
 	Path *AppSpecIngressRuleMatchPath `pulumi:"path"`
 }
@@ -5204,6 +5206,8 @@ type AppSpecIngressRuleMatchInput interface {
 }
 
 type AppSpecIngressRuleMatchArgs struct {
+	// The authority (domain) to match on.
+	Authority AppSpecIngressRuleMatchAuthorityPtrInput `pulumi:"authority"`
 	// The path to match on.
 	Path AppSpecIngressRuleMatchPathPtrInput `pulumi:"path"`
 }
@@ -5285,6 +5289,11 @@ func (o AppSpecIngressRuleMatchOutput) ToAppSpecIngressRuleMatchPtrOutputWithCon
 	}).(AppSpecIngressRuleMatchPtrOutput)
 }
 
+// The authority (domain) to match on.
+func (o AppSpecIngressRuleMatchOutput) Authority() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchAuthority { return v.Authority }).(AppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
 // The path to match on.
 func (o AppSpecIngressRuleMatchOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath { return v.Path }).(AppSpecIngressRuleMatchPathPtrOutput)
@@ -5314,6 +5323,16 @@ func (o AppSpecIngressRuleMatchPtrOutput) Elem() AppSpecIngressRuleMatchOutput {
 	}).(AppSpecIngressRuleMatchOutput)
 }
 
+// The authority (domain) to match on.
+func (o AppSpecIngressRuleMatchPtrOutput) Authority() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchAuthority {
+		if v == nil {
+			return nil
+		}
+		return v.Authority
+	}).(AppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
 // The path to match on.
 func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrOutput {
 	return o.ApplyT(func(v *AppSpecIngressRuleMatch) *AppSpecIngressRuleMatchPath {
@@ -5322,6 +5341,143 @@ func (o AppSpecIngressRuleMatchPtrOutput) Path() AppSpecIngressRuleMatchPathPtrO
 		}
 		return v.Path
 	}).(AppSpecIngressRuleMatchPathPtrOutput)
+}
+
+type AppSpecIngressRuleMatchAuthority struct {
+	// Exact match.
+	Exact *string `pulumi:"exact"`
+}
+
+// AppSpecIngressRuleMatchAuthorityInput is an input type that accepts AppSpecIngressRuleMatchAuthorityArgs and AppSpecIngressRuleMatchAuthorityOutput values.
+// You can construct a concrete instance of `AppSpecIngressRuleMatchAuthorityInput` via:
+//
+//	AppSpecIngressRuleMatchAuthorityArgs{...}
+type AppSpecIngressRuleMatchAuthorityInput interface {
+	pulumi.Input
+
+	ToAppSpecIngressRuleMatchAuthorityOutput() AppSpecIngressRuleMatchAuthorityOutput
+	ToAppSpecIngressRuleMatchAuthorityOutputWithContext(context.Context) AppSpecIngressRuleMatchAuthorityOutput
+}
+
+type AppSpecIngressRuleMatchAuthorityArgs struct {
+	// Exact match.
+	Exact pulumi.StringPtrInput `pulumi:"exact"`
+}
+
+func (AppSpecIngressRuleMatchAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (i AppSpecIngressRuleMatchAuthorityArgs) ToAppSpecIngressRuleMatchAuthorityOutput() AppSpecIngressRuleMatchAuthorityOutput {
+	return i.ToAppSpecIngressRuleMatchAuthorityOutputWithContext(context.Background())
+}
+
+func (i AppSpecIngressRuleMatchAuthorityArgs) ToAppSpecIngressRuleMatchAuthorityOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressRuleMatchAuthorityOutput)
+}
+
+func (i AppSpecIngressRuleMatchAuthorityArgs) ToAppSpecIngressRuleMatchAuthorityPtrOutput() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return i.ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecIngressRuleMatchAuthorityArgs) ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressRuleMatchAuthorityOutput).ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx)
+}
+
+// AppSpecIngressRuleMatchAuthorityPtrInput is an input type that accepts AppSpecIngressRuleMatchAuthorityArgs, AppSpecIngressRuleMatchAuthorityPtr and AppSpecIngressRuleMatchAuthorityPtrOutput values.
+// You can construct a concrete instance of `AppSpecIngressRuleMatchAuthorityPtrInput` via:
+//
+//	        AppSpecIngressRuleMatchAuthorityArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecIngressRuleMatchAuthorityPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecIngressRuleMatchAuthorityPtrOutput() AppSpecIngressRuleMatchAuthorityPtrOutput
+	ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Context) AppSpecIngressRuleMatchAuthorityPtrOutput
+}
+
+type appSpecIngressRuleMatchAuthorityPtrType AppSpecIngressRuleMatchAuthorityArgs
+
+func AppSpecIngressRuleMatchAuthorityPtr(v *AppSpecIngressRuleMatchAuthorityArgs) AppSpecIngressRuleMatchAuthorityPtrInput {
+	return (*appSpecIngressRuleMatchAuthorityPtrType)(v)
+}
+
+func (*appSpecIngressRuleMatchAuthorityPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (i *appSpecIngressRuleMatchAuthorityPtrType) ToAppSpecIngressRuleMatchAuthorityPtrOutput() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return i.ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecIngressRuleMatchAuthorityPtrType) ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
+type AppSpecIngressRuleMatchAuthorityOutput struct{ *pulumi.OutputState }
+
+func (AppSpecIngressRuleMatchAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (o AppSpecIngressRuleMatchAuthorityOutput) ToAppSpecIngressRuleMatchAuthorityOutput() AppSpecIngressRuleMatchAuthorityOutput {
+	return o
+}
+
+func (o AppSpecIngressRuleMatchAuthorityOutput) ToAppSpecIngressRuleMatchAuthorityOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityOutput {
+	return o
+}
+
+func (o AppSpecIngressRuleMatchAuthorityOutput) ToAppSpecIngressRuleMatchAuthorityPtrOutput() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecIngressRuleMatchAuthorityOutput) ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecIngressRuleMatchAuthority) *AppSpecIngressRuleMatchAuthority {
+		return &v
+	}).(AppSpecIngressRuleMatchAuthorityPtrOutput)
+}
+
+// Exact match.
+func (o AppSpecIngressRuleMatchAuthorityOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecIngressRuleMatchAuthority) *string { return v.Exact }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecIngressRuleMatchAuthorityPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecIngressRuleMatchAuthorityPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (o AppSpecIngressRuleMatchAuthorityPtrOutput) ToAppSpecIngressRuleMatchAuthorityPtrOutput() AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o
+}
+
+func (o AppSpecIngressRuleMatchAuthorityPtrOutput) ToAppSpecIngressRuleMatchAuthorityPtrOutputWithContext(ctx context.Context) AppSpecIngressRuleMatchAuthorityPtrOutput {
+	return o
+}
+
+func (o AppSpecIngressRuleMatchAuthorityPtrOutput) Elem() AppSpecIngressRuleMatchAuthorityOutput {
+	return o.ApplyT(func(v *AppSpecIngressRuleMatchAuthority) AppSpecIngressRuleMatchAuthority {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecIngressRuleMatchAuthority
+		return ret
+	}).(AppSpecIngressRuleMatchAuthorityOutput)
+}
+
+// Exact match.
+func (o AppSpecIngressRuleMatchAuthorityPtrOutput) Exact() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecIngressRuleMatchAuthority) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Exact
+	}).(pulumi.StringPtrOutput)
 }
 
 type AppSpecIngressRuleMatchPath struct {
@@ -27328,6 +27484,284 @@ func (o GenaiOpenaiApiKeyModelVersionArrayOutput) Index(i pulumi.IntInput) Genai
 	}).(GenaiOpenaiApiKeyModelVersionOutput)
 }
 
+type KubernetesClusterAmdGpuDeviceMetricsExporterPlugin struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterAmdGpuDeviceMetricsExporterPluginInput is an input type that accepts KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs and KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDeviceMetricsExporterPluginInput` via:
+//
+//	KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{...}
+type KubernetesClusterAmdGpuDeviceMetricsExporterPluginInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput
+	ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput
+}
+
+type KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (i KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return i.ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+func (i KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput).ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput is an input type that accepts KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs, KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtr and KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput` via:
+//
+//	        KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput
+	ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput
+}
+
+type kubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs
+
+func KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtr(v *KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput {
+	return (*kubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType)(v)
+}
+
+func (*kubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (i *kubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput)
+}
+
+type KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o.ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+		return &v
+	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput)
+}
+
+// Boolean flag whether the component is enabled or not.
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ToKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Elem() KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterAmdGpuDeviceMetricsExporterPlugin
+		return ret
+	}).(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+// Boolean flag whether the component is enabled or not.
+func (o KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDeviceMetricsExporterPlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterAmdGpuDevicePlugin struct {
+	// Boolean flag whether the component should be enabled or not.
+	// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterAmdGpuDevicePluginInput is an input type that accepts KubernetesClusterAmdGpuDevicePluginArgs and KubernetesClusterAmdGpuDevicePluginOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDevicePluginInput` via:
+//
+//	KubernetesClusterAmdGpuDevicePluginArgs{...}
+type KubernetesClusterAmdGpuDevicePluginInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDevicePluginOutput() KubernetesClusterAmdGpuDevicePluginOutput
+	ToKubernetesClusterAmdGpuDevicePluginOutputWithContext(context.Context) KubernetesClusterAmdGpuDevicePluginOutput
+}
+
+type KubernetesClusterAmdGpuDevicePluginArgs struct {
+	// Boolean flag whether the component should be enabled or not.
+	// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterAmdGpuDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i KubernetesClusterAmdGpuDevicePluginArgs) ToKubernetesClusterAmdGpuDevicePluginOutput() KubernetesClusterAmdGpuDevicePluginOutput {
+	return i.ToKubernetesClusterAmdGpuDevicePluginOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDevicePluginArgs) ToKubernetesClusterAmdGpuDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+func (i KubernetesClusterAmdGpuDevicePluginArgs) ToKubernetesClusterAmdGpuDevicePluginPtrOutput() KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterAmdGpuDevicePluginArgs) ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDevicePluginOutput).ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterAmdGpuDevicePluginPtrInput is an input type that accepts KubernetesClusterAmdGpuDevicePluginArgs, KubernetesClusterAmdGpuDevicePluginPtr and KubernetesClusterAmdGpuDevicePluginPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterAmdGpuDevicePluginPtrInput` via:
+//
+//	        KubernetesClusterAmdGpuDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterAmdGpuDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterAmdGpuDevicePluginPtrOutput() KubernetesClusterAmdGpuDevicePluginPtrOutput
+	ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Context) KubernetesClusterAmdGpuDevicePluginPtrOutput
+}
+
+type kubernetesClusterAmdGpuDevicePluginPtrType KubernetesClusterAmdGpuDevicePluginArgs
+
+func KubernetesClusterAmdGpuDevicePluginPtr(v *KubernetesClusterAmdGpuDevicePluginArgs) KubernetesClusterAmdGpuDevicePluginPtrInput {
+	return (*kubernetesClusterAmdGpuDevicePluginPtrType)(v)
+}
+
+func (*kubernetesClusterAmdGpuDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i *kubernetesClusterAmdGpuDevicePluginPtrType) ToKubernetesClusterAmdGpuDevicePluginPtrOutput() KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return i.ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterAmdGpuDevicePluginPtrType) ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterAmdGpuDevicePluginPtrOutput)
+}
+
+type KubernetesClusterAmdGpuDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginOutput) ToKubernetesClusterAmdGpuDevicePluginOutput() KubernetesClusterAmdGpuDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginOutput) ToKubernetesClusterAmdGpuDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginOutput) ToKubernetesClusterAmdGpuDevicePluginPtrOutput() KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o.ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginOutput) ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterAmdGpuDevicePlugin) *KubernetesClusterAmdGpuDevicePlugin {
+		return &v
+	}).(KubernetesClusterAmdGpuDevicePluginPtrOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+func (o KubernetesClusterAmdGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterAmdGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterAmdGpuDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterAmdGpuDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) ToKubernetesClusterAmdGpuDevicePluginPtrOutput() KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) ToKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) Elem() KubernetesClusterAmdGpuDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDevicePlugin) KubernetesClusterAmdGpuDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterAmdGpuDevicePlugin
+		return ret
+	}).(KubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+// `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+func (o KubernetesClusterAmdGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterAmdGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type KubernetesClusterClusterAutoscalerConfiguration struct {
 	Expanders []string `pulumi:"expanders"`
 	// String setting how long a node should be unneeded before it's eligible for scale down.
@@ -36665,6 +37099,7 @@ func (o GetAppSpecIngressRuleCorsAllowOriginsPtrOutput) Regex() pulumi.StringPtr
 }
 
 type GetAppSpecIngressRuleMatch struct {
+	Authority GetAppSpecIngressRuleMatchAuthority `pulumi:"authority"`
 	// Paths must start with `/` and must be unique within the app.
 	Path GetAppSpecIngressRuleMatchPath `pulumi:"path"`
 }
@@ -36681,6 +37116,7 @@ type GetAppSpecIngressRuleMatchInput interface {
 }
 
 type GetAppSpecIngressRuleMatchArgs struct {
+	Authority GetAppSpecIngressRuleMatchAuthorityInput `pulumi:"authority"`
 	// Paths must start with `/` and must be unique within the app.
 	Path GetAppSpecIngressRuleMatchPathInput `pulumi:"path"`
 }
@@ -36711,9 +37147,65 @@ func (o GetAppSpecIngressRuleMatchOutput) ToGetAppSpecIngressRuleMatchOutputWith
 	return o
 }
 
+func (o GetAppSpecIngressRuleMatchOutput) Authority() GetAppSpecIngressRuleMatchAuthorityOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) GetAppSpecIngressRuleMatchAuthority { return v.Authority }).(GetAppSpecIngressRuleMatchAuthorityOutput)
+}
+
 // Paths must start with `/` and must be unique within the app.
 func (o GetAppSpecIngressRuleMatchOutput) Path() GetAppSpecIngressRuleMatchPathOutput {
 	return o.ApplyT(func(v GetAppSpecIngressRuleMatch) GetAppSpecIngressRuleMatchPath { return v.Path }).(GetAppSpecIngressRuleMatchPathOutput)
+}
+
+type GetAppSpecIngressRuleMatchAuthority struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact string `pulumi:"exact"`
+}
+
+// GetAppSpecIngressRuleMatchAuthorityInput is an input type that accepts GetAppSpecIngressRuleMatchAuthorityArgs and GetAppSpecIngressRuleMatchAuthorityOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressRuleMatchAuthorityInput` via:
+//
+//	GetAppSpecIngressRuleMatchAuthorityArgs{...}
+type GetAppSpecIngressRuleMatchAuthorityInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressRuleMatchAuthorityOutput() GetAppSpecIngressRuleMatchAuthorityOutput
+	ToGetAppSpecIngressRuleMatchAuthorityOutputWithContext(context.Context) GetAppSpecIngressRuleMatchAuthorityOutput
+}
+
+type GetAppSpecIngressRuleMatchAuthorityArgs struct {
+	// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+	Exact pulumi.StringInput `pulumi:"exact"`
+}
+
+func (GetAppSpecIngressRuleMatchAuthorityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAuthorityOutput() GetAppSpecIngressRuleMatchAuthorityOutput {
+	return i.ToGetAppSpecIngressRuleMatchAuthorityOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressRuleMatchAuthorityArgs) ToGetAppSpecIngressRuleMatchAuthorityOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressRuleMatchAuthorityOutput)
+}
+
+type GetAppSpecIngressRuleMatchAuthorityOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressRuleMatchAuthorityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecIngressRuleMatchAuthority)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) ToGetAppSpecIngressRuleMatchAuthorityOutput() GetAppSpecIngressRuleMatchAuthorityOutput {
+	return o
+}
+
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) ToGetAppSpecIngressRuleMatchAuthorityOutputWithContext(ctx context.Context) GetAppSpecIngressRuleMatchAuthorityOutput {
+	return o
+}
+
+// The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+func (o GetAppSpecIngressRuleMatchAuthorityOutput) Exact() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecIngressRuleMatchAuthority) string { return v.Exact }).(pulumi.StringOutput)
 }
 
 type GetAppSpecIngressRuleMatchPath struct {
@@ -72221,6 +72713,272 @@ func (o GetImagesSortArrayOutput) Index(i pulumi.IntInput) GetImagesSortOutput {
 	}).(GetImagesSortOutput)
 }
 
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginInput is an input type that accepts GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs and GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginInput` via:
+//
+//	GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{...}
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput
+	ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput
+}
+
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return i.ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+func (i GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return i.ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput).ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput is an input type that accepts GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs, GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtr and GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput` via:
+//
+//	        GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput
+	ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput
+}
+
+type getKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs
+
+func GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtr(v *GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput {
+	return (*getKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType)(v)
+}
+
+func (*getKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return i.ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrType) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput)
+}
+
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o.ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin) *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+		return &v
+	}).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput)
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) ToGetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Elem() GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin) GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin
+		return ret
+	}).(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput)
+}
+
+func (o GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKubernetesClusterAmdGpuDevicePlugin struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterAmdGpuDevicePluginInput is an input type that accepts GetKubernetesClusterAmdGpuDevicePluginArgs and GetKubernetesClusterAmdGpuDevicePluginOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterAmdGpuDevicePluginInput` via:
+//
+//	GetKubernetesClusterAmdGpuDevicePluginArgs{...}
+type GetKubernetesClusterAmdGpuDevicePluginInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterAmdGpuDevicePluginOutput() GetKubernetesClusterAmdGpuDevicePluginOutput
+	ToGetKubernetesClusterAmdGpuDevicePluginOutputWithContext(context.Context) GetKubernetesClusterAmdGpuDevicePluginOutput
+}
+
+type GetKubernetesClusterAmdGpuDevicePluginArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterAmdGpuDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterAmdGpuDevicePluginArgs) ToGetKubernetesClusterAmdGpuDevicePluginOutput() GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return i.ToGetKubernetesClusterAmdGpuDevicePluginOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterAmdGpuDevicePluginArgs) ToGetKubernetesClusterAmdGpuDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+func (i GetKubernetesClusterAmdGpuDevicePluginArgs) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutput() GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterAmdGpuDevicePluginArgs) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDevicePluginOutput).ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterAmdGpuDevicePluginPtrInput is an input type that accepts GetKubernetesClusterAmdGpuDevicePluginArgs, GetKubernetesClusterAmdGpuDevicePluginPtr and GetKubernetesClusterAmdGpuDevicePluginPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterAmdGpuDevicePluginPtrInput` via:
+//
+//	        GetKubernetesClusterAmdGpuDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterAmdGpuDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterAmdGpuDevicePluginPtrOutput() GetKubernetesClusterAmdGpuDevicePluginPtrOutput
+	ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Context) GetKubernetesClusterAmdGpuDevicePluginPtrOutput
+}
+
+type getKubernetesClusterAmdGpuDevicePluginPtrType GetKubernetesClusterAmdGpuDevicePluginArgs
+
+func GetKubernetesClusterAmdGpuDevicePluginPtr(v *GetKubernetesClusterAmdGpuDevicePluginArgs) GetKubernetesClusterAmdGpuDevicePluginPtrInput {
+	return (*getKubernetesClusterAmdGpuDevicePluginPtrType)(v)
+}
+
+func (*getKubernetesClusterAmdGpuDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterAmdGpuDevicePluginPtrType) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutput() GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterAmdGpuDevicePluginPtrType) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterAmdGpuDevicePluginPtrOutput)
+}
+
+type GetKubernetesClusterAmdGpuDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterAmdGpuDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginOutput) ToGetKubernetesClusterAmdGpuDevicePluginOutput() GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginOutput) ToGetKubernetesClusterAmdGpuDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginOutput) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutput() GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o.ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginOutput) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterAmdGpuDevicePlugin) *GetKubernetesClusterAmdGpuDevicePlugin {
+		return &v
+	}).(GetKubernetesClusterAmdGpuDevicePluginPtrOutput)
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterAmdGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterAmdGpuDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterAmdGpuDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterAmdGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginPtrOutput) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutput() GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginPtrOutput) ToGetKubernetesClusterAmdGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterAmdGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginPtrOutput) Elem() GetKubernetesClusterAmdGpuDevicePluginOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterAmdGpuDevicePlugin) GetKubernetesClusterAmdGpuDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterAmdGpuDevicePlugin
+		return ret
+	}).(GetKubernetesClusterAmdGpuDevicePluginOutput)
+}
+
+func (o GetKubernetesClusterAmdGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterAmdGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetKubernetesClusterClusterAutoscalerConfiguration struct {
 	Expanders                     []string `pulumi:"expanders"`
 	ScaleDownUnneededTime         *string  `pulumi:"scaleDownUnneededTime"`
@@ -76394,705 +77152,6 @@ func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucke
 	}).(GetSpacesBucketsSortOutput)
 }
 
-type GetSpacesKeyGrant struct {
-	// The name of the bucket to grant the key access to.
-	Bucket string `pulumi:"bucket"`
-	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
-	Permission string `pulumi:"permission"`
-}
-
-// GetSpacesKeyGrantInput is an input type that accepts GetSpacesKeyGrantArgs and GetSpacesKeyGrantOutput values.
-// You can construct a concrete instance of `GetSpacesKeyGrantInput` via:
-//
-//	GetSpacesKeyGrantArgs{...}
-type GetSpacesKeyGrantInput interface {
-	pulumi.Input
-
-	ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput
-	ToGetSpacesKeyGrantOutputWithContext(context.Context) GetSpacesKeyGrantOutput
-}
-
-type GetSpacesKeyGrantArgs struct {
-	// The name of the bucket to grant the key access to.
-	Bucket pulumi.StringInput `pulumi:"bucket"`
-	// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
-	Permission pulumi.StringInput `pulumi:"permission"`
-}
-
-func (GetSpacesKeyGrantArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
-}
-
-func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
-	return i.ToGetSpacesKeyGrantOutputWithContext(context.Background())
-}
-
-func (i GetSpacesKeyGrantArgs) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantOutput)
-}
-
-// GetSpacesKeyGrantArrayInput is an input type that accepts GetSpacesKeyGrantArray and GetSpacesKeyGrantArrayOutput values.
-// You can construct a concrete instance of `GetSpacesKeyGrantArrayInput` via:
-//
-//	GetSpacesKeyGrantArray{ GetSpacesKeyGrantArgs{...} }
-type GetSpacesKeyGrantArrayInput interface {
-	pulumi.Input
-
-	ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput
-	ToGetSpacesKeyGrantArrayOutputWithContext(context.Context) GetSpacesKeyGrantArrayOutput
-}
-
-type GetSpacesKeyGrantArray []GetSpacesKeyGrantInput
-
-func (GetSpacesKeyGrantArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
-}
-
-func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
-	return i.ToGetSpacesKeyGrantArrayOutputWithContext(context.Background())
-}
-
-func (i GetSpacesKeyGrantArray) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesKeyGrantArrayOutput)
-}
-
-type GetSpacesKeyGrantOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesKeyGrantOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesKeyGrant)(nil)).Elem()
-}
-
-func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutput() GetSpacesKeyGrantOutput {
-	return o
-}
-
-func (o GetSpacesKeyGrantOutput) ToGetSpacesKeyGrantOutputWithContext(ctx context.Context) GetSpacesKeyGrantOutput {
-	return o
-}
-
-// The name of the bucket to grant the key access to.
-func (o GetSpacesKeyGrantOutput) Bucket() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Bucket }).(pulumi.StringOutput)
-}
-
-// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
-func (o GetSpacesKeyGrantOutput) Permission() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesKeyGrant) string { return v.Permission }).(pulumi.StringOutput)
-}
-
-type GetSpacesKeyGrantArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesKeyGrantArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesKeyGrant)(nil)).Elem()
-}
-
-func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutput() GetSpacesKeyGrantArrayOutput {
-	return o
-}
-
-func (o GetSpacesKeyGrantArrayOutput) ToGetSpacesKeyGrantArrayOutputWithContext(ctx context.Context) GetSpacesKeyGrantArrayOutput {
-	return o
-}
-
-func (o GetSpacesKeyGrantArrayOutput) Index(i pulumi.IntInput) GetSpacesKeyGrantOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesKeyGrant {
-		return vs[0].([]GetSpacesKeyGrant)[vs[1].(int)]
-	}).(GetSpacesKeyGrantOutput)
-}
-
-type GetSshKeysFilter struct {
-	All *bool `pulumi:"all"`
-	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key     string  `pulumi:"key"`
-	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetSshKeysFilterInput is an input type that accepts GetSshKeysFilterArgs and GetSshKeysFilterOutput values.
-// You can construct a concrete instance of `GetSshKeysFilterInput` via:
-//
-//	GetSshKeysFilterArgs{...}
-type GetSshKeysFilterInput interface {
-	pulumi.Input
-
-	ToGetSshKeysFilterOutput() GetSshKeysFilterOutput
-	ToGetSshKeysFilterOutputWithContext(context.Context) GetSshKeysFilterOutput
-}
-
-type GetSshKeysFilterArgs struct {
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key     pulumi.StringInput    `pulumi:"key"`
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetSshKeysFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
-}
-
-func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
-	return i.ToGetSshKeysFilterOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysFilterArgs) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterOutput)
-}
-
-// GetSshKeysFilterArrayInput is an input type that accepts GetSshKeysFilterArray and GetSshKeysFilterArrayOutput values.
-// You can construct a concrete instance of `GetSshKeysFilterArrayInput` via:
-//
-//	GetSshKeysFilterArray{ GetSshKeysFilterArgs{...} }
-type GetSshKeysFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput
-	ToGetSshKeysFilterArrayOutputWithContext(context.Context) GetSshKeysFilterArrayOutput
-}
-
-type GetSshKeysFilterArray []GetSshKeysFilterInput
-
-func (GetSshKeysFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
-}
-
-func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
-	return i.ToGetSshKeysFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysFilterArray) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysFilterArrayOutput)
-}
-
-type GetSshKeysFilterOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysFilter)(nil)).Elem()
-}
-
-func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutput() GetSshKeysFilterOutput {
-	return o
-}
-
-func (o GetSshKeysFilterOutput) ToGetSshKeysFilterOutputWithContext(ctx context.Context) GetSshKeysFilterOutput {
-	return o
-}
-
-func (o GetSshKeysFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSshKeysFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-func (o GetSshKeysFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSshKeysFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-func (o GetSshKeysFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSshKeysFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-func (o GetSshKeysFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSshKeysFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetSshKeysFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysFilter)(nil)).Elem()
-}
-
-func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutput() GetSshKeysFilterArrayOutput {
-	return o
-}
-
-func (o GetSshKeysFilterArrayOutput) ToGetSshKeysFilterArrayOutputWithContext(ctx context.Context) GetSshKeysFilterArrayOutput {
-	return o
-}
-
-func (o GetSshKeysFilterArrayOutput) Index(i pulumi.IntInput) GetSshKeysFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysFilter {
-		return vs[0].([]GetSshKeysFilter)[vs[1].(int)]
-	}).(GetSshKeysFilterOutput)
-}
-
-type GetSshKeysSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key string `pulumi:"key"`
-}
-
-// GetSshKeysSortInput is an input type that accepts GetSshKeysSortArgs and GetSshKeysSortOutput values.
-// You can construct a concrete instance of `GetSshKeysSortInput` via:
-//
-//	GetSshKeysSortArgs{...}
-type GetSshKeysSortInput interface {
-	pulumi.Input
-
-	ToGetSshKeysSortOutput() GetSshKeysSortOutput
-	ToGetSshKeysSortOutputWithContext(context.Context) GetSshKeysSortOutput
-}
-
-type GetSshKeysSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetSshKeysSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
-}
-
-func (i GetSshKeysSortArgs) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
-	return i.ToGetSshKeysSortOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysSortArgs) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortOutput)
-}
-
-// GetSshKeysSortArrayInput is an input type that accepts GetSshKeysSortArray and GetSshKeysSortArrayOutput values.
-// You can construct a concrete instance of `GetSshKeysSortArrayInput` via:
-//
-//	GetSshKeysSortArray{ GetSshKeysSortArgs{...} }
-type GetSshKeysSortArrayInput interface {
-	pulumi.Input
-
-	ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput
-	ToGetSshKeysSortArrayOutputWithContext(context.Context) GetSshKeysSortArrayOutput
-}
-
-type GetSshKeysSortArray []GetSshKeysSortInput
-
-func (GetSshKeysSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
-}
-
-func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
-	return i.ToGetSshKeysSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysSortArray) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSortArrayOutput)
-}
-
-type GetSshKeysSortOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysSort)(nil)).Elem()
-}
-
-func (o GetSshKeysSortOutput) ToGetSshKeysSortOutput() GetSshKeysSortOutput {
-	return o
-}
-
-func (o GetSshKeysSortOutput) ToGetSshKeysSortOutputWithContext(ctx context.Context) GetSshKeysSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetSshKeysSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSshKeysSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
-func (o GetSshKeysSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSshKeysSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetSshKeysSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysSort)(nil)).Elem()
-}
-
-func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutput() GetSshKeysSortArrayOutput {
-	return o
-}
-
-func (o GetSshKeysSortArrayOutput) ToGetSshKeysSortArrayOutputWithContext(ctx context.Context) GetSshKeysSortArrayOutput {
-	return o
-}
-
-func (o GetSshKeysSortArrayOutput) Index(i pulumi.IntInput) GetSshKeysSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSort {
-		return vs[0].([]GetSshKeysSort)[vs[1].(int)]
-	}).(GetSshKeysSortOutput)
-}
-
-type GetSshKeysSshKey struct {
-	// The fingerprint of the public key of the ssh key.
-	Fingerprint string `pulumi:"fingerprint"`
-	// The ID of the ssh key.
-	Id int `pulumi:"id"`
-	// The name of the ssh key.
-	Name string `pulumi:"name"`
-	// The public key of the ssh key.
-	PublicKey string `pulumi:"publicKey"`
-}
-
-// GetSshKeysSshKeyInput is an input type that accepts GetSshKeysSshKeyArgs and GetSshKeysSshKeyOutput values.
-// You can construct a concrete instance of `GetSshKeysSshKeyInput` via:
-//
-//	GetSshKeysSshKeyArgs{...}
-type GetSshKeysSshKeyInput interface {
-	pulumi.Input
-
-	ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput
-	ToGetSshKeysSshKeyOutputWithContext(context.Context) GetSshKeysSshKeyOutput
-}
-
-type GetSshKeysSshKeyArgs struct {
-	// The fingerprint of the public key of the ssh key.
-	Fingerprint pulumi.StringInput `pulumi:"fingerprint"`
-	// The ID of the ssh key.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The name of the ssh key.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The public key of the ssh key.
-	PublicKey pulumi.StringInput `pulumi:"publicKey"`
-}
-
-func (GetSshKeysSshKeyArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
-}
-
-func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
-	return i.ToGetSshKeysSshKeyOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysSshKeyArgs) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyOutput)
-}
-
-// GetSshKeysSshKeyArrayInput is an input type that accepts GetSshKeysSshKeyArray and GetSshKeysSshKeyArrayOutput values.
-// You can construct a concrete instance of `GetSshKeysSshKeyArrayInput` via:
-//
-//	GetSshKeysSshKeyArray{ GetSshKeysSshKeyArgs{...} }
-type GetSshKeysSshKeyArrayInput interface {
-	pulumi.Input
-
-	ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput
-	ToGetSshKeysSshKeyArrayOutputWithContext(context.Context) GetSshKeysSshKeyArrayOutput
-}
-
-type GetSshKeysSshKeyArray []GetSshKeysSshKeyInput
-
-func (GetSshKeysSshKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
-}
-
-func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
-	return i.ToGetSshKeysSshKeyArrayOutputWithContext(context.Background())
-}
-
-func (i GetSshKeysSshKeyArray) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSshKeysSshKeyArrayOutput)
-}
-
-type GetSshKeysSshKeyOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysSshKeyOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSshKeysSshKey)(nil)).Elem()
-}
-
-func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutput() GetSshKeysSshKeyOutput {
-	return o
-}
-
-func (o GetSshKeysSshKeyOutput) ToGetSshKeysSshKeyOutputWithContext(ctx context.Context) GetSshKeysSshKeyOutput {
-	return o
-}
-
-// The fingerprint of the public key of the ssh key.
-func (o GetSshKeysSshKeyOutput) Fingerprint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Fingerprint }).(pulumi.StringOutput)
-}
-
-// The ID of the ssh key.
-func (o GetSshKeysSshKeyOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSshKeysSshKey) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The name of the ssh key.
-func (o GetSshKeysSshKeyOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The public key of the ssh key.
-func (o GetSshKeysSshKeyOutput) PublicKey() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSshKeysSshKey) string { return v.PublicKey }).(pulumi.StringOutput)
-}
-
-type GetSshKeysSshKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSshKeysSshKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSshKeysSshKey)(nil)).Elem()
-}
-
-func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutput() GetSshKeysSshKeyArrayOutput {
-	return o
-}
-
-func (o GetSshKeysSshKeyArrayOutput) ToGetSshKeysSshKeyArrayOutputWithContext(ctx context.Context) GetSshKeysSshKeyArrayOutput {
-	return o
-}
-
-func (o GetSshKeysSshKeyArrayOutput) Index(i pulumi.IntInput) GetSshKeysSshKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSshKeysSshKey {
-		return vs[0].([]GetSshKeysSshKey)[vs[1].(int)]
-	}).(GetSshKeysSshKeyOutput)
-}
-
-type GetTagsFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// Only retrieves tags which keys has value that matches
-	// one of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetTagsFilterInput is an input type that accepts GetTagsFilterArgs and GetTagsFilterOutput values.
-// You can construct a concrete instance of `GetTagsFilterInput` via:
-//
-//	GetTagsFilterArgs{...}
-type GetTagsFilterInput interface {
-	pulumi.Input
-
-	ToGetTagsFilterOutput() GetTagsFilterOutput
-	ToGetTagsFilterOutputWithContext(context.Context) GetTagsFilterOutput
-}
-
-type GetTagsFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// Only retrieves tags which keys has value that matches
-	// one of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetTagsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
-}
-
-func (i GetTagsFilterArgs) ToGetTagsFilterOutput() GetTagsFilterOutput {
-	return i.ToGetTagsFilterOutputWithContext(context.Background())
-}
-
-func (i GetTagsFilterArgs) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterOutput)
-}
-
-// GetTagsFilterArrayInput is an input type that accepts GetTagsFilterArray and GetTagsFilterArrayOutput values.
-// You can construct a concrete instance of `GetTagsFilterArrayInput` via:
-//
-//	GetTagsFilterArray{ GetTagsFilterArgs{...} }
-type GetTagsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput
-	ToGetTagsFilterArrayOutputWithContext(context.Context) GetTagsFilterArrayOutput
-}
-
-type GetTagsFilterArray []GetTagsFilterInput
-
-func (GetTagsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
-}
-
-func (i GetTagsFilterArray) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
-	return i.ToGetTagsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetTagsFilterArray) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTagsFilterArrayOutput)
-}
-
-type GetTagsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetTagsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTagsFilter)(nil)).Elem()
-}
-
-func (o GetTagsFilterOutput) ToGetTagsFilterOutput() GetTagsFilterOutput {
-	return o
-}
-
-func (o GetTagsFilterOutput) ToGetTagsFilterOutputWithContext(ctx context.Context) GetTagsFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetTagsFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetTagsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-func (o GetTagsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTagsFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetTagsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTagsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// Only retrieves tags which keys has value that matches
-// one of the values provided here.
-func (o GetTagsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetTagsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetTagsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTagsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTagsFilter)(nil)).Elem()
-}
-
-func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutput() GetTagsFilterArrayOutput {
-	return o
-}
-
-func (o GetTagsFilterArrayOutput) ToGetTagsFilterArrayOutputWithContext(ctx context.Context) GetTagsFilterArrayOutput {
-	return o
-}
-
-func (o GetTagsFilterArrayOutput) Index(i pulumi.IntInput) GetTagsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsFilter {
-		return vs[0].([]GetTagsFilter)[vs[1].(int)]
-	}).(GetTagsFilterOutput)
-}
-
-type GetTagsSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-	Key string `pulumi:"key"`
-}
-
-// GetTagsSortInput is an input type that accepts GetTagsSortArgs and GetTagsSortOutput values.
-// You can construct a concrete instance of `GetTagsSortInput` via:
-//
-//	GetTagsSortArgs{...}
-type GetTagsSortInput interface {
-	pulumi.Input
-
-	ToGetTagsSortOutput() GetTagsSortOutput
-	ToGetTagsSortOutputWithContext(context.Context) GetTagsSortOutput
-}
-
-type GetTagsSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetTagsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
-}
-
-func (i GetTagsSortArgs) ToGetTagsSortOutput() GetTagsSortOutput {
-	return i.ToGetTagsSortOutputWithContext(context.Background())
-}
-
-func (i GetTagsSortArgs) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortOutput)
-}
-
-// GetTagsSortArrayInput is an input type that accepts GetTagsSortArray and GetTagsSortArrayOutput values.
-// You can construct a concrete instance of `GetTagsSortArrayInput` via:
-//
-//	GetTagsSortArray{ GetTagsSortArgs{...} }
-type GetTagsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetTagsSortArrayOutput() GetTagsSortArrayOutput
-	ToGetTagsSortArrayOutputWithContext(context.Context) GetTagsSortArrayOutput
-}
-
-type GetTagsSortArray []GetTagsSortInput
-
-func (GetTagsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
-}
-
-func (i GetTagsSortArray) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
-	return i.ToGetTagsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetTagsSortArray) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetTagsSortArrayOutput)
-}
-
-type GetTagsSortOutput struct{ *pulumi.OutputState }
-
-func (GetTagsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetTagsSort)(nil)).Elem()
-}
-
-func (o GetTagsSortOutput) ToGetTagsSortOutput() GetTagsSortOutput {
-	return o
-}
-
-func (o GetTagsSortOutput) ToGetTagsSortOutputWithContext(ctx context.Context) GetTagsSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetTagsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetTagsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
-func (o GetTagsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetTagsSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetTagsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetTagsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetTagsSort)(nil)).Elem()
-}
-
-func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutput() GetTagsSortArrayOutput {
-	return o
-}
-
-func (o GetTagsSortArrayOutput) ToGetTagsSortArrayOutputWithContext(ctx context.Context) GetTagsSortArrayOutput {
-	return o
-}
-
-func (o GetTagsSortArrayOutput) Index(i pulumi.IntInput) GetTagsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTagsSort {
-		return vs[0].([]GetTagsSort)[vs[1].(int)]
-	}).(GetTagsSortOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -77160,6 +77219,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleCorsAllowOriginsPtrInput)(nil)).Elem(), AppSpecIngressRuleCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchInput)(nil)).Elem(), AppSpecIngressRuleMatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchPtrInput)(nil)).Elem(), AppSpecIngressRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchAuthorityInput)(nil)).Elem(), AppSpecIngressRuleMatchAuthorityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchAuthorityPtrInput)(nil)).Elem(), AppSpecIngressRuleMatchAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchPathInput)(nil)).Elem(), AppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchPathPtrInput)(nil)).Elem(), AppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleRedirectInput)(nil)).Elem(), AppSpecIngressRuleRedirectArgs{})
@@ -77436,6 +77497,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelAgreementArrayInput)(nil)).Elem(), GenaiOpenaiApiKeyModelAgreementArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelVersionInput)(nil)).Elem(), GenaiOpenaiApiKeyModelVersionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GenaiOpenaiApiKeyModelVersionArrayInput)(nil)).Elem(), GenaiOpenaiApiKeyModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDeviceMetricsExporterPluginInput)(nil)).Elem(), KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput)(nil)).Elem(), KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDevicePluginInput)(nil)).Elem(), KubernetesClusterAmdGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterAmdGpuDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterAmdGpuDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), KubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), KubernetesClusterControlPlaneFirewallArgs{})
@@ -77562,6 +77627,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsAllowOriginsInput)(nil)).Elem(), GetAppSpecIngressRuleCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleCorsAllowOriginsPtrInput)(nil)).Elem(), GetAppSpecIngressRuleCorsAllowOriginsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchInput)(nil)).Elem(), GetAppSpecIngressRuleMatchArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchAuthorityInput)(nil)).Elem(), GetAppSpecIngressRuleMatchAuthorityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchPathInput)(nil)).Elem(), GetAppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectPtrInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
@@ -78017,6 +78083,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageArrayInput)(nil)).Elem(), GetImagesImageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortInput)(nil)).Elem(), GetImagesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesSortArrayInput)(nil)).Elem(), GetImagesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginInput)(nil)).Elem(), GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrInput)(nil)).Elem(), GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterAmdGpuDevicePluginInput)(nil)).Elem(), GetKubernetesClusterAmdGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterAmdGpuDevicePluginPtrInput)(nil)).Elem(), GetKubernetesClusterAmdGpuDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfigurationInput)(nil)).Elem(), GetKubernetesClusterClusterAutoscalerConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterClusterAutoscalerConfigurationArrayInput)(nil)).Elem(), GetKubernetesClusterClusterAutoscalerConfigurationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterControlPlaneFirewallInput)(nil)).Elem(), GetKubernetesClusterControlPlaneFirewallArgs{})
@@ -78079,18 +78149,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterArrayInput)(nil)).Elem(), GetSpacesBucketsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortInput)(nil)).Elem(), GetSpacesBucketsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortArrayInput)(nil)).Elem(), GetSpacesBucketsSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantInput)(nil)).Elem(), GetSpacesKeyGrantArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantArrayInput)(nil)).Elem(), GetSpacesKeyGrantArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterInput)(nil)).Elem(), GetSshKeysFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterArrayInput)(nil)).Elem(), GetSshKeysFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortInput)(nil)).Elem(), GetSshKeysSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSortArrayInput)(nil)).Elem(), GetSshKeysSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyInput)(nil)).Elem(), GetSshKeysSshKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysSshKeyArrayInput)(nil)).Elem(), GetSshKeysSshKeyArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterInput)(nil)).Elem(), GetTagsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsFilterArrayInput)(nil)).Elem(), GetTagsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortInput)(nil)).Elem(), GetTagsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetTagsSortArrayInput)(nil)).Elem(), GetTagsSortArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -78157,6 +78215,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecIngressRuleCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleMatchOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleMatchPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecIngressRuleMatchAuthorityOutput{})
+	pulumi.RegisterOutputType(AppSpecIngressRuleMatchAuthorityPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleMatchPathOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleMatchPathPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleRedirectOutput{})
@@ -78433,6 +78493,10 @@ func init() {
 	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelAgreementArrayOutput{})
 	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelVersionOutput{})
 	pulumi.RegisterOutputType(GenaiOpenaiApiKeyModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDevicePluginOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterAmdGpuDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterControlPlaneFirewallOutput{})
@@ -78559,6 +78623,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsAllowOriginsOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleCorsAllowOriginsPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchAuthorityOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchPathOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectPtrOutput{})
@@ -79014,6 +79079,10 @@ func init() {
 	pulumi.RegisterOutputType(GetImagesImageArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesSortOutput{})
 	pulumi.RegisterOutputType(GetImagesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginPtrOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterAmdGpuDevicePluginOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterAmdGpuDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterClusterAutoscalerConfigurationOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterClusterAutoscalerConfigurationArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterControlPlaneFirewallOutput{})
@@ -79076,16 +79145,4 @@ func init() {
 	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
 	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
-	pulumi.RegisterOutputType(GetSpacesKeyGrantOutput{})
-	pulumi.RegisterOutputType(GetSpacesKeyGrantArrayOutput{})
-	pulumi.RegisterOutputType(GetSshKeysFilterOutput{})
-	pulumi.RegisterOutputType(GetSshKeysFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetSshKeysSortOutput{})
-	pulumi.RegisterOutputType(GetSshKeysSortArrayOutput{})
-	pulumi.RegisterOutputType(GetSshKeysSshKeyOutput{})
-	pulumi.RegisterOutputType(GetSshKeysSshKeyArrayOutput{})
-	pulumi.RegisterOutputType(GetTagsFilterOutput{})
-	pulumi.RegisterOutputType(GetTagsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetTagsSortOutput{})
-	pulumi.RegisterOutputType(GetTagsSortArrayOutput{})
 }

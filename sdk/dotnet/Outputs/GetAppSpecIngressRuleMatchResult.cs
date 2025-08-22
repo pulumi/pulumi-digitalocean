@@ -13,14 +13,19 @@ namespace Pulumi.DigitalOcean.Outputs
     [OutputType]
     public sealed class GetAppSpecIngressRuleMatchResult
     {
+        public readonly Outputs.GetAppSpecIngressRuleMatchAuthorityResult Authority;
         /// <summary>
         /// Paths must start with `/` and must be unique within the app.
         /// </summary>
         public readonly Outputs.GetAppSpecIngressRuleMatchPathResult Path;
 
         [OutputConstructor]
-        private GetAppSpecIngressRuleMatchResult(Outputs.GetAppSpecIngressRuleMatchPathResult path)
+        private GetAppSpecIngressRuleMatchResult(
+            Outputs.GetAppSpecIngressRuleMatchAuthorityResult authority,
+
+            Outputs.GetAppSpecIngressRuleMatchPathResult path)
         {
+            Authority = authority;
             Path = path;
         }
     }

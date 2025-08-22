@@ -50,6 +50,7 @@ __all__ = [
     'AppSpecIngressRuleCors',
     'AppSpecIngressRuleCorsAllowOrigins',
     'AppSpecIngressRuleMatch',
+    'AppSpecIngressRuleMatchAuthority',
     'AppSpecIngressRuleMatchPath',
     'AppSpecIngressRuleRedirect',
     'AppSpecJob',
@@ -187,6 +188,8 @@ __all__ = [
     'GenaiOpenaiApiKeyModel',
     'GenaiOpenaiApiKeyModelAgreement',
     'GenaiOpenaiApiKeyModelVersion',
+    'KubernetesClusterAmdGpuDeviceMetricsExporterPlugin',
+    'KubernetesClusterAmdGpuDevicePlugin',
     'KubernetesClusterClusterAutoscalerConfiguration',
     'KubernetesClusterControlPlaneFirewall',
     'KubernetesClusterKubeConfig',
@@ -252,6 +255,7 @@ __all__ = [
     'GetAppSpecIngressRuleCorsResult',
     'GetAppSpecIngressRuleCorsAllowOriginsResult',
     'GetAppSpecIngressRuleMatchResult',
+    'GetAppSpecIngressRuleMatchAuthorityResult',
     'GetAppSpecIngressRuleMatchPathResult',
     'GetAppSpecIngressRuleRedirectResult',
     'GetAppSpecJobResult',
@@ -480,6 +484,8 @@ __all__ = [
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetImagesSortResult',
+    'GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult',
+    'GetKubernetesClusterAmdGpuDevicePluginResult',
     'GetKubernetesClusterClusterAutoscalerConfigurationResult',
     'GetKubernetesClusterControlPlaneFirewallResult',
     'GetKubernetesClusterKubeConfigResult',
@@ -2530,12 +2536,24 @@ class AppSpecIngressRuleCorsAllowOrigins(dict):
 @pulumi.output_type
 class AppSpecIngressRuleMatch(dict):
     def __init__(__self__, *,
+                 authority: Optional['outputs.AppSpecIngressRuleMatchAuthority'] = None,
                  path: Optional['outputs.AppSpecIngressRuleMatchPath'] = None):
         """
+        :param 'AppSpecIngressRuleMatchAuthorityArgs' authority: The authority (domain) to match on.
         :param 'AppSpecIngressRuleMatchPathArgs' path: The path to match on.
         """
+        if authority is not None:
+            pulumi.set(__self__, "authority", authority)
         if path is not None:
             pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def authority(self) -> Optional['outputs.AppSpecIngressRuleMatchAuthority']:
+        """
+        The authority (domain) to match on.
+        """
+        return pulumi.get(self, "authority")
 
     @_builtins.property
     @pulumi.getter
@@ -2544,6 +2562,25 @@ class AppSpecIngressRuleMatch(dict):
         The path to match on.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class AppSpecIngressRuleMatchAuthority(dict):
+    def __init__(__self__, *,
+                 exact: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str exact: Exact match.
+        """
+        if exact is not None:
+            pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> Optional[_builtins.str]:
+        """
+        Exact match.
+        """
+        return pulumi.get(self, "exact")
 
 
 @pulumi.output_type
@@ -13614,6 +13651,44 @@ class GenaiOpenaiApiKeyModelVersion(dict):
 
 
 @pulumi.output_type
+class KubernetesClusterAmdGpuDeviceMetricsExporterPlugin(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterAmdGpuDevicePlugin(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
+               `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component should be enabled or not.
+        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class KubernetesClusterClusterAutoscalerConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -17229,11 +17304,18 @@ class GetAppSpecIngressRuleCorsAllowOriginsResult(dict):
 @pulumi.output_type
 class GetAppSpecIngressRuleMatchResult(dict):
     def __init__(__self__, *,
+                 authority: 'outputs.GetAppSpecIngressRuleMatchAuthorityResult',
                  path: 'outputs.GetAppSpecIngressRuleMatchPathResult'):
         """
         :param 'GetAppSpecIngressRuleMatchPathArgs' path: Paths must start with `/` and must be unique within the app.
         """
+        pulumi.set(__self__, "authority", authority)
         pulumi.set(__self__, "path", path)
+
+    @_builtins.property
+    @pulumi.getter
+    def authority(self) -> 'outputs.GetAppSpecIngressRuleMatchAuthorityResult':
+        return pulumi.get(self, "authority")
 
     @_builtins.property
     @pulumi.getter
@@ -17242,6 +17324,24 @@ class GetAppSpecIngressRuleMatchResult(dict):
         Paths must start with `/` and must be unique within the app.
         """
         return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class GetAppSpecIngressRuleMatchAuthorityResult(dict):
+    def __init__(__self__, *,
+                 exact: _builtins.str):
+        """
+        :param _builtins.str exact: The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        pulumi.set(__self__, "exact", exact)
+
+    @_builtins.property
+    @pulumi.getter
+    def exact(self) -> _builtins.str:
+        """
+        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+        """
+        return pulumi.get(self, "exact")
 
 
 @pulumi.output_type
@@ -34143,6 +34243,30 @@ class GetImagesSortResult(dict):
         The sort direction. This may be either `asc` or `desc`.
         """
         return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetKubernetesClusterAmdGpuDevicePluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type
