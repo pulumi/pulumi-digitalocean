@@ -98,28 +98,28 @@ export class DatabaseKafkaTopic extends pulumi.CustomResource {
     /**
      * The ID of the source database cluster. Note: This must be a Kafka cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
      * The `config` block is documented below.
      */
-    public readonly configs!: pulumi.Output<outputs.DatabaseKafkaTopicConfig[]>;
+    declare public readonly configs: pulumi.Output<outputs.DatabaseKafkaTopicConfig[]>;
     /**
      * The name for the topic.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
      */
-    public readonly partitionCount!: pulumi.Output<number | undefined>;
+    declare public readonly partitionCount: pulumi.Output<number | undefined>;
     /**
      * The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
      */
-    public readonly replicationFactor!: pulumi.Output<number | undefined>;
+    declare public readonly replicationFactor: pulumi.Output<number | undefined>;
     /**
      * The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
 
     /**
      * Create a DatabaseKafkaTopic resource with the given unique name, arguments, and options.
@@ -134,22 +134,22 @@ export class DatabaseKafkaTopic extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseKafkaTopicState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["configs"] = state ? state.configs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["partitionCount"] = state ? state.partitionCount : undefined;
-            resourceInputs["replicationFactor"] = state ? state.replicationFactor : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["configs"] = state?.configs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["partitionCount"] = state?.partitionCount;
+            resourceInputs["replicationFactor"] = state?.replicationFactor;
+            resourceInputs["state"] = state?.state;
         } else {
             const args = argsOrState as DatabaseKafkaTopicArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["configs"] = args ? args.configs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["partitionCount"] = args ? args.partitionCount : undefined;
-            resourceInputs["replicationFactor"] = args ? args.replicationFactor : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["configs"] = args?.configs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["partitionCount"] = args?.partitionCount;
+            resourceInputs["replicationFactor"] = args?.replicationFactor;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

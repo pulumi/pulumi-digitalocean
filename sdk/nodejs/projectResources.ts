@@ -78,11 +78,11 @@ export class ProjectResources extends pulumi.CustomResource {
     /**
      * the ID of the project
      */
-    public readonly project!: pulumi.Output<string>;
+    declare public readonly project: pulumi.Output<string>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    public readonly resources!: pulumi.Output<string[]>;
+    declare public readonly resources: pulumi.Output<string[]>;
 
     /**
      * Create a ProjectResources resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class ProjectResources extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectResourcesState | undefined;
-            resourceInputs["project"] = state ? state.project : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
+            resourceInputs["project"] = state?.project;
+            resourceInputs["resources"] = state?.resources;
         } else {
             const args = argsOrState as ProjectResourcesArgs | undefined;
-            if ((!args || args.project === undefined) && !opts.urn) {
+            if (args?.project === undefined && !opts.urn) {
                 throw new Error("Missing required property 'project'");
             }
-            if ((!args || args.resources === undefined) && !opts.urn) {
+            if (args?.resources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'resources'");
             }
-            resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["project"] = args?.project;
+            resourceInputs["resources"] = args?.resources;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ProjectResources.__pulumiType, name, resourceInputs, opts);

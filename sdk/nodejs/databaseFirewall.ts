@@ -143,11 +143,11 @@ export class DatabaseFirewall extends pulumi.CustomResource {
     /**
      * The ID of the target database cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
      */
-    public readonly rules!: pulumi.Output<outputs.DatabaseFirewallRule[]>;
+    declare public readonly rules: pulumi.Output<outputs.DatabaseFirewallRule[]>;
 
     /**
      * Create a DatabaseFirewall resource with the given unique name, arguments, and options.
@@ -162,18 +162,18 @@ export class DatabaseFirewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseFirewallState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["rules"] = state ? state.rules : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["rules"] = state?.rules;
         } else {
             const args = argsOrState as DatabaseFirewallArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.rules === undefined) && !opts.urn) {
+            if (args?.rules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'rules'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["rules"] = args ? args.rules : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["rules"] = args?.rules;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseFirewall.__pulumiType, name, resourceInputs, opts);

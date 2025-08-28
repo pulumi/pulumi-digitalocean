@@ -70,9 +70,7 @@ type DatabaseValkeyConfig struct {
 	AclChannelsDefault pulumi.StringOutput `pulumi:"aclChannelsDefault"`
 	// The ID of the target Valkey cluster.
 	ClusterId pulumi.StringOutput `pulumi:"clusterId"`
-	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-	// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-	// valkeyPersistence is set to off.
+	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 	FrequentSnapshots pulumi.BoolOutput `pulumi:"frequentSnapshots"`
 	// The Valkey IO thread count.
 	IoThreads pulumi.IntOutput `pulumi:"ioThreads"`
@@ -92,9 +90,7 @@ type DatabaseValkeyConfig struct {
 	Ssl pulumi.BoolOutput `pulumi:"ssl"`
 	// The Valkey idle connection timeout in seconds.
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
-	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-	// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-	// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntOutput `pulumi:"valkeyActiveExpireEffort"`
 }
 
@@ -135,9 +131,7 @@ type databaseValkeyConfigState struct {
 	AclChannelsDefault *string `pulumi:"aclChannelsDefault"`
 	// The ID of the target Valkey cluster.
 	ClusterId *string `pulumi:"clusterId"`
-	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-	// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-	// valkeyPersistence is set to off.
+	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 	FrequentSnapshots *bool `pulumi:"frequentSnapshots"`
 	// The Valkey IO thread count.
 	IoThreads *int `pulumi:"ioThreads"`
@@ -157,9 +151,7 @@ type databaseValkeyConfigState struct {
 	Ssl *bool `pulumi:"ssl"`
 	// The Valkey idle connection timeout in seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-	// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-	// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
 }
 
@@ -168,9 +160,7 @@ type DatabaseValkeyConfigState struct {
 	AclChannelsDefault pulumi.StringPtrInput
 	// The ID of the target Valkey cluster.
 	ClusterId pulumi.StringPtrInput
-	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-	// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-	// valkeyPersistence is set to off.
+	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 	FrequentSnapshots pulumi.BoolPtrInput
 	// The Valkey IO thread count.
 	IoThreads pulumi.IntPtrInput
@@ -190,9 +180,7 @@ type DatabaseValkeyConfigState struct {
 	Ssl pulumi.BoolPtrInput
 	// The Valkey idle connection timeout in seconds.
 	Timeout pulumi.IntPtrInput
-	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-	// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-	// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput
 }
 
@@ -205,9 +193,7 @@ type databaseValkeyConfigArgs struct {
 	AclChannelsDefault *string `pulumi:"aclChannelsDefault"`
 	// The ID of the target Valkey cluster.
 	ClusterId string `pulumi:"clusterId"`
-	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-	// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-	// valkeyPersistence is set to off.
+	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 	FrequentSnapshots *bool `pulumi:"frequentSnapshots"`
 	// The Valkey IO thread count.
 	IoThreads *int `pulumi:"ioThreads"`
@@ -227,9 +213,7 @@ type databaseValkeyConfigArgs struct {
 	Ssl *bool `pulumi:"ssl"`
 	// The Valkey idle connection timeout in seconds.
 	Timeout *int `pulumi:"timeout"`
-	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-	// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-	// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
 }
 
@@ -239,9 +223,7 @@ type DatabaseValkeyConfigArgs struct {
 	AclChannelsDefault pulumi.StringPtrInput
 	// The ID of the target Valkey cluster.
 	ClusterId pulumi.StringInput
-	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-	// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-	// valkeyPersistence is set to off.
+	// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 	FrequentSnapshots pulumi.BoolPtrInput
 	// The Valkey IO thread count.
 	IoThreads pulumi.IntPtrInput
@@ -261,9 +243,7 @@ type DatabaseValkeyConfigArgs struct {
 	Ssl pulumi.BoolPtrInput
 	// The Valkey idle connection timeout in seconds.
 	Timeout pulumi.IntPtrInput
-	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-	// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-	// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput
 }
 
@@ -364,9 +344,7 @@ func (o DatabaseValkeyConfigOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.StringOutput { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-// valkeyPersistence is set to off.
+// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
 func (o DatabaseValkeyConfigOutput) FrequentSnapshots() pulumi.BoolOutput {
 	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.BoolOutput { return v.FrequentSnapshots }).(pulumi.BoolOutput)
 }
@@ -416,9 +394,7 @@ func (o DatabaseValkeyConfigOutput) Timeout() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.IntOutput { return v.Timeout }).(pulumi.IntOutput)
 }
 
-// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 func (o DatabaseValkeyConfigOutput) ValkeyActiveExpireEffort() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.IntOutput { return v.ValkeyActiveExpireEffort }).(pulumi.IntOutput)
 }

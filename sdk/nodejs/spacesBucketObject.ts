@@ -86,43 +86,43 @@ export class SpacesBucketObject extends pulumi.CustomResource {
     /**
      * The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * The name of the bucket to put the file in.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      */
-    public readonly cacheControl!: pulumi.Output<string | undefined>;
+    declare public readonly cacheControl: pulumi.Output<string | undefined>;
     /**
      * Literal string value to use as the object content, which will be uploaded as UTF-8-encoded text.
      */
-    public readonly content!: pulumi.Output<string | undefined>;
+    declare public readonly content: pulumi.Output<string | undefined>;
     /**
      * Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
      */
-    public readonly contentBase64!: pulumi.Output<string | undefined>;
+    declare public readonly contentBase64: pulumi.Output<string | undefined>;
     /**
      * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      */
-    public readonly contentDisposition!: pulumi.Output<string | undefined>;
+    declare public readonly contentDisposition: pulumi.Output<string | undefined>;
     /**
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
      */
-    public readonly contentEncoding!: pulumi.Output<string | undefined>;
+    declare public readonly contentEncoding: pulumi.Output<string | undefined>;
     /**
      * The language the content is in e.g. en-US or en-GB.
      */
-    public readonly contentLanguage!: pulumi.Output<string | undefined>;
+    declare public readonly contentLanguage: pulumi.Output<string | undefined>;
     /**
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
-    public readonly contentType!: pulumi.Output<string>;
+    declare public readonly contentType: pulumi.Output<string>;
     /**
      * Used to trigger updates.
      */
-    public readonly etag!: pulumi.Output<string>;
+    declare public readonly etag: pulumi.Output<string>;
     /**
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
@@ -131,31 +131,31 @@ export class SpacesBucketObject extends pulumi.CustomResource {
      *
      * > **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The name of the object once it is in the bucket.
      */
-    public readonly key!: pulumi.Output<string>;
+    declare public readonly key: pulumi.Output<string>;
     /**
      * A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
      */
-    public readonly metadata!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly metadata: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The path to a file that will be read and uploaded as raw bytes for the object content.
      */
-    public readonly source!: pulumi.Output<string | undefined>;
+    declare public readonly source: pulumi.Output<string | undefined>;
     /**
      * A unique version ID value for the object, if bucket versioning is enabled.
      */
-    public /*out*/ readonly versionId!: pulumi.Output<string>;
+    declare public /*out*/ readonly versionId: pulumi.Output<string>;
     /**
      * Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
      */
-    public readonly websiteRedirect!: pulumi.Output<string | undefined>;
+    declare public readonly websiteRedirect: pulumi.Output<string | undefined>;
 
     /**
      * Create a SpacesBucketObject resource with the given unique name, arguments, and options.
@@ -170,50 +170,50 @@ export class SpacesBucketObject extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpacesBucketObjectState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["cacheControl"] = state ? state.cacheControl : undefined;
-            resourceInputs["content"] = state ? state.content : undefined;
-            resourceInputs["contentBase64"] = state ? state.contentBase64 : undefined;
-            resourceInputs["contentDisposition"] = state ? state.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = state ? state.contentEncoding : undefined;
-            resourceInputs["contentLanguage"] = state ? state.contentLanguage : undefined;
-            resourceInputs["contentType"] = state ? state.contentType : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["key"] = state ? state.key : undefined;
-            resourceInputs["metadata"] = state ? state.metadata : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["versionId"] = state ? state.versionId : undefined;
-            resourceInputs["websiteRedirect"] = state ? state.websiteRedirect : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["cacheControl"] = state?.cacheControl;
+            resourceInputs["content"] = state?.content;
+            resourceInputs["contentBase64"] = state?.contentBase64;
+            resourceInputs["contentDisposition"] = state?.contentDisposition;
+            resourceInputs["contentEncoding"] = state?.contentEncoding;
+            resourceInputs["contentLanguage"] = state?.contentLanguage;
+            resourceInputs["contentType"] = state?.contentType;
+            resourceInputs["etag"] = state?.etag;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["key"] = state?.key;
+            resourceInputs["metadata"] = state?.metadata;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["versionId"] = state?.versionId;
+            resourceInputs["websiteRedirect"] = state?.websiteRedirect;
         } else {
             const args = argsOrState as SpacesBucketObjectArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.key === undefined) && !opts.urn) {
+            if (args?.key === undefined && !opts.urn) {
                 throw new Error("Missing required property 'key'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["cacheControl"] = args ? args.cacheControl : undefined;
-            resourceInputs["content"] = args ? args.content : undefined;
-            resourceInputs["contentBase64"] = args ? args.contentBase64 : undefined;
-            resourceInputs["contentDisposition"] = args ? args.contentDisposition : undefined;
-            resourceInputs["contentEncoding"] = args ? args.contentEncoding : undefined;
-            resourceInputs["contentLanguage"] = args ? args.contentLanguage : undefined;
-            resourceInputs["contentType"] = args ? args.contentType : undefined;
-            resourceInputs["etag"] = args ? args.etag : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["key"] = args ? args.key : undefined;
-            resourceInputs["metadata"] = args ? args.metadata : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
-            resourceInputs["websiteRedirect"] = args ? args.websiteRedirect : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["cacheControl"] = args?.cacheControl;
+            resourceInputs["content"] = args?.content;
+            resourceInputs["contentBase64"] = args?.contentBase64;
+            resourceInputs["contentDisposition"] = args?.contentDisposition;
+            resourceInputs["contentEncoding"] = args?.contentEncoding;
+            resourceInputs["contentLanguage"] = args?.contentLanguage;
+            resourceInputs["contentType"] = args?.contentType;
+            resourceInputs["etag"] = args?.etag;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["key"] = args?.key;
+            resourceInputs["metadata"] = args?.metadata;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["source"] = args?.source;
+            resourceInputs["websiteRedirect"] = args?.websiteRedirect;
             resourceInputs["versionId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

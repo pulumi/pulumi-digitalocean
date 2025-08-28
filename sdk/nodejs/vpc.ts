@@ -85,31 +85,31 @@ export class Vpc extends pulumi.CustomResource {
     /**
      * The date and time of when the VPC was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A boolean indicating whether or not the VPC is the default one for the region.
      */
-    public /*out*/ readonly default!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly default: pulumi.Output<boolean>;
     /**
      * A free-form text field up to a limit of 255 characters to describe the VPC.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
      */
-    public readonly ipRange!: pulumi.Output<string>;
+    declare public readonly ipRange: pulumi.Output<string>;
     /**
      * A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The DigitalOcean region slug for the VPC's location.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    public /*out*/ readonly vpcUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly vpcUrn: pulumi.Output<string>;
 
     /**
      * Create a Vpc resource with the given unique name, arguments, and options.
@@ -124,22 +124,22 @@ export class Vpc extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["default"] = state ? state.default : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["ipRange"] = state ? state.ipRange : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["vpcUrn"] = state ? state.vpcUrn : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["default"] = state?.default;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["ipRange"] = state?.ipRange;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["vpcUrn"] = state?.vpcUrn;
         } else {
             const args = argsOrState as VpcArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["ipRange"] = args ? args.ipRange : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["ipRange"] = args?.ipRange;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["default"] = undefined /*out*/;
             resourceInputs["vpcUrn"] = undefined /*out*/;

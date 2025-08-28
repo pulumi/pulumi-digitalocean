@@ -47,23 +47,23 @@ export class UptimeCheck extends pulumi.CustomResource {
     /**
      * A boolean value indicating whether the check is enabled/disabled.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * A human-friendly display name for the check.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
      */
-    public readonly regions!: pulumi.Output<string[] | undefined>;
+    declare public readonly regions: pulumi.Output<string[] | undefined>;
     /**
      * The endpoint to perform healthchecks on.
      */
-    public readonly target!: pulumi.Output<string>;
+    declare public readonly target: pulumi.Output<string>;
     /**
      * The type of health check to perform: 'ping' 'http' 'https'.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
 
     /**
      * Create a UptimeCheck resource with the given unique name, arguments, and options.
@@ -78,21 +78,21 @@ export class UptimeCheck extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UptimeCheckState | undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["target"] = state ? state.target : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["target"] = state?.target;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as UptimeCheckArgs | undefined;
-            if ((!args || args.target === undefined) && !opts.urn) {
+            if (args?.target === undefined && !opts.urn) {
                 throw new Error("Missing required property 'target'");
             }
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["target"] = args ? args.target : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["target"] = args?.target;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UptimeCheck.__pulumiType, name, resourceInputs, opts);

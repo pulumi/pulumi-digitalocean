@@ -54,28 +54,28 @@ export class MonitorAlert extends pulumi.CustomResource {
      * Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
      * read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
      */
-    public readonly alerts!: pulumi.Output<outputs.MonitorAlertAlerts>;
+    declare public readonly alerts: pulumi.Output<outputs.MonitorAlertAlerts>;
     /**
      * The comparison for `value`.
      * This may be either `GreaterThan` or `LessThan`.
      */
-    public readonly compare!: pulumi.Output<string>;
+    declare public readonly compare: pulumi.Output<string>;
     /**
      * The description of the alert.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The status of the alert.
      */
-    public readonly enabled!: pulumi.Output<boolean | undefined>;
+    declare public readonly enabled: pulumi.Output<boolean | undefined>;
     /**
      * A list of IDs for the resources to which the alert policy applies.
      */
-    public readonly entities!: pulumi.Output<string[] | undefined>;
+    declare public readonly entities: pulumi.Output<string[] | undefined>;
     /**
      * A list of tags. When an included tag is added to a resource, the alert policy will apply to it.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The type of the alert.
      * This may be one of `v1/insights/droplet/load_1`, `v1/insights/droplet/load_5`, `v1/insights/droplet/load_15`,
@@ -92,20 +92,20 @@ export class MonitorAlert extends pulumi.CustomResource {
      * `v1/dbaas/alerts/load_15_alerts`, `v1/dbaas/alerts/cpu_alerts`, `v1/dbaas/alerts/memory_utilization_alerts`, or
      * `v1/dbaas/alerts/disk_utilization_alerts`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The uuid of the alert.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
     /**
      * The value to start alerting at, e.g., 90% or 85Mbps. This is a floating-point number.
      * DigitalOcean will show the correct unit in the web panel.
      */
-    public readonly value!: pulumi.Output<number>;
+    declare public readonly value: pulumi.Output<number>;
     /**
      * The time frame of the alert. Either `5m`, `10m`, `30m`, or `1h`.
      */
-    public readonly window!: pulumi.Output<string>;
+    declare public readonly window: pulumi.Output<string>;
 
     /**
      * Create a MonitorAlert resource with the given unique name, arguments, and options.
@@ -120,45 +120,45 @@ export class MonitorAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as MonitorAlertState | undefined;
-            resourceInputs["alerts"] = state ? state.alerts : undefined;
-            resourceInputs["compare"] = state ? state.compare : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["enabled"] = state ? state.enabled : undefined;
-            resourceInputs["entities"] = state ? state.entities : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["window"] = state ? state.window : undefined;
+            resourceInputs["alerts"] = state?.alerts;
+            resourceInputs["compare"] = state?.compare;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["enabled"] = state?.enabled;
+            resourceInputs["entities"] = state?.entities;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uuid"] = state?.uuid;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["window"] = state?.window;
         } else {
             const args = argsOrState as MonitorAlertArgs | undefined;
-            if ((!args || args.alerts === undefined) && !opts.urn) {
+            if (args?.alerts === undefined && !opts.urn) {
                 throw new Error("Missing required property 'alerts'");
             }
-            if ((!args || args.compare === undefined) && !opts.urn) {
+            if (args?.compare === undefined && !opts.urn) {
                 throw new Error("Missing required property 'compare'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.window === undefined) && !opts.urn) {
+            if (args?.window === undefined && !opts.urn) {
                 throw new Error("Missing required property 'window'");
             }
-            resourceInputs["alerts"] = args ? args.alerts : undefined;
-            resourceInputs["compare"] = args ? args.compare : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["enabled"] = args ? args.enabled : undefined;
-            resourceInputs["entities"] = args ? args.entities : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["window"] = args ? args.window : undefined;
+            resourceInputs["alerts"] = args?.alerts;
+            resourceInputs["compare"] = args?.compare;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["enabled"] = args?.enabled;
+            resourceInputs["entities"] = args?.entities;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["window"] = args?.window;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

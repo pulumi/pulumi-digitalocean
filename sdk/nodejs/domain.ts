@@ -59,20 +59,20 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The uniform resource name of the domain
      */
-    public /*out*/ readonly domainUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly domainUrn: pulumi.Output<string>;
     /**
      * The IP address of the domain. If specified, this IP
      * is used to created an initial A record for the domain.
      */
-    public readonly ipAddress!: pulumi.Output<string | undefined>;
+    declare public readonly ipAddress: pulumi.Output<string | undefined>;
     /**
      * The name of the domain
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The TTL value of the domain
      */
-    public /*out*/ readonly ttl!: pulumi.Output<number>;
+    declare public /*out*/ readonly ttl: pulumi.Output<number>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -87,17 +87,17 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["domainUrn"] = state ? state.domainUrn : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["domainUrn"] = state?.domainUrn;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["name"] = args?.name;
             resourceInputs["domainUrn"] = undefined /*out*/;
             resourceInputs["ttl"] = undefined /*out*/;
         }

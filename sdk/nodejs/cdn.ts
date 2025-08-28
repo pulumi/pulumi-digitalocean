@@ -93,31 +93,31 @@ export class Cdn extends pulumi.CustomResource {
      *
      * @deprecated Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.
      */
-    public readonly certificateId!: pulumi.Output<string>;
+    declare public readonly certificateId: pulumi.Output<string>;
     /**
      * The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
      */
-    public readonly certificateName!: pulumi.Output<string>;
+    declare public readonly certificateName: pulumi.Output<string>;
     /**
      * The date and time when the CDN Endpoint was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
      */
-    public readonly customDomain!: pulumi.Output<string | undefined>;
+    declare public readonly customDomain: pulumi.Output<string | undefined>;
     /**
      * The fully qualified domain name (FQDN) from which the CDN-backed content is served.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * The fully qualified domain name, (FQDN) for a Space.
      */
-    public readonly origin!: pulumi.Output<string>;
+    declare public readonly origin: pulumi.Output<string>;
     /**
      * The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
 
     /**
      * Create a Cdn resource with the given unique name, arguments, and options.
@@ -132,23 +132,23 @@ export class Cdn extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CdnState | undefined;
-            resourceInputs["certificateId"] = state ? state.certificateId : undefined;
-            resourceInputs["certificateName"] = state ? state.certificateName : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["customDomain"] = state ? state.customDomain : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["origin"] = state ? state.origin : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
+            resourceInputs["certificateId"] = state?.certificateId;
+            resourceInputs["certificateName"] = state?.certificateName;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["customDomain"] = state?.customDomain;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["origin"] = state?.origin;
+            resourceInputs["ttl"] = state?.ttl;
         } else {
             const args = argsOrState as CdnArgs | undefined;
-            if ((!args || args.origin === undefined) && !opts.urn) {
+            if (args?.origin === undefined && !opts.urn) {
                 throw new Error("Missing required property 'origin'");
             }
-            resourceInputs["certificateId"] = args ? args.certificateId : undefined;
-            resourceInputs["certificateName"] = args ? args.certificateName : undefined;
-            resourceInputs["customDomain"] = args ? args.customDomain : undefined;
-            resourceInputs["origin"] = args ? args.origin : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
+            resourceInputs["certificateId"] = args?.certificateId;
+            resourceInputs["certificateName"] = args?.certificateName;
+            resourceInputs["customDomain"] = args?.customDomain;
+            resourceInputs["origin"] = args?.origin;
+            resourceInputs["ttl"] = args?.ttl;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
         }

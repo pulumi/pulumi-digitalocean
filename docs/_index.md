@@ -1,9 +1,10 @@
 ---
 # *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
 title: DigitalOcean Provider
-meta_desc: Provides an overview on how to configure the Pulumi Digitalocean provider.
+meta_desc: Provides an overview on how to configure the Pulumi DigitalOcean provider.
 layout: package
 ---
+
 ## Installation
 
 The DigitalOcean provider is available as a package in all Pulumi languages:
@@ -13,6 +14,7 @@ The DigitalOcean provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean`](https://github.com/pulumi/pulumi-digitalocean)
 * .NET: [`Pulumi.Digitalocean`](https://www.nuget.org/packages/Pulumi.Digitalocean)
 * Java: [`com.pulumi/digitalocean`](https://central.sonatype.com/artifact/com.pulumi/digitalocean)
+
 ## Overview
 
 The DigitalOcean (DO) provider is used to interact with the
@@ -38,7 +40,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as digitalocean from "@pulumi/digitalocean";
 
 const config = new pulumi.Config();
-const doToken = config.requireObject("doToken");
+const doToken = config.requireObject<any>("doToken");
 // Create a web server
 const web = new digitalocean.Droplet("web", {});
 ```
@@ -215,7 +217,7 @@ The following configuration inputs are supported:
   to `0.0` (Defaults to the value of the `DIGITALOCEAN_REQUESTS_PER_SECOND` environment
   variable or `0.0` if unset).
 * `httpRetryMax` - (Optional) This can be used to override the maximum number
-  of retries on a failed API request (client errors, 422, 500, 502...), the exponential
+  of retries on a failed API request (client errors, 429, 500, 502...), the exponential
   backoff can be configured by the `httpRetryWaitMin` and `httpRetryWaitMax` arguments
   (Defaults to the value of the `DIGITALOCEAN_HTTP_RETRY_MAX` environment variable or
   `4` if unset).

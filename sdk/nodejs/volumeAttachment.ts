@@ -65,11 +65,11 @@ export class VolumeAttachment extends pulumi.CustomResource {
     /**
      * ID of the Droplet to attach the volume to.
      */
-    public readonly dropletId!: pulumi.Output<number>;
+    declare public readonly dropletId: pulumi.Output<number>;
     /**
      * ID of the Volume to be attached to the Droplet.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a VolumeAttachment resource with the given unique name, arguments, and options.
@@ -84,18 +84,18 @@ export class VolumeAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeAttachmentState | undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as VolumeAttachmentArgs | undefined;
-            if ((!args || args.dropletId === undefined) && !opts.urn) {
+            if (args?.dropletId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["volumeId"] = args?.volumeId;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(VolumeAttachment.__pulumiType, name, resourceInputs, opts);

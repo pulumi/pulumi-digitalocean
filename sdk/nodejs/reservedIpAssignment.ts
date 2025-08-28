@@ -71,11 +71,11 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
     /**
      * The ID of Droplet that the reserved IP will be assigned to.
      */
-    public readonly dropletId!: pulumi.Output<number>;
+    declare public readonly dropletId: pulumi.Output<number>;
     /**
      * The reserved IP to assign to the Droplet.
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
 
     /**
      * Create a ReservedIpAssignment resource with the given unique name, arguments, and options.
@@ -90,18 +90,18 @@ export class ReservedIpAssignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservedIpAssignmentState | undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["ipAddress"] = state?.ipAddress;
         } else {
             const args = argsOrState as ReservedIpAssignmentArgs | undefined;
-            if ((!args || args.dropletId === undefined) && !opts.urn) {
+            if (args?.dropletId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            if ((!args || args.ipAddress === undefined) && !opts.urn) {
+            if (args?.ipAddress === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ipAddress'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["ipAddress"] = args?.ipAddress;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReservedIpAssignment.__pulumiType, name, resourceInputs, opts);

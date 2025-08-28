@@ -77,47 +77,47 @@ export class DnsRecord extends pulumi.CustomResource {
     /**
      * The domain to add the record to.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
      */
-    public readonly flags!: pulumi.Output<number | undefined>;
+    declare public readonly flags: pulumi.Output<number | undefined>;
     /**
      * The FQDN of the record
      */
-    public /*out*/ readonly fqdn!: pulumi.Output<string>;
+    declare public /*out*/ readonly fqdn: pulumi.Output<string>;
     /**
      * The hostname of the record. Use `@` for records on domain's name itself.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The port of the record. Only valid when type is `SRV`.  Must be between 1 and 65535.
      */
-    public readonly port!: pulumi.Output<number | undefined>;
+    declare public readonly port: pulumi.Output<number | undefined>;
     /**
      * The priority of the record. Only valid when type is `MX` or `SRV`. Must be between 0 and 65535.
      */
-    public readonly priority!: pulumi.Output<number | undefined>;
+    declare public readonly priority: pulumi.Output<number | undefined>;
     /**
      * The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
      */
-    public readonly tag!: pulumi.Output<string | undefined>;
+    declare public readonly tag: pulumi.Output<string | undefined>;
     /**
      * The time to live for the record, in seconds. Must be at least 0. Defaults to 1800.
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of the record.
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The weight of the record. Only valid when type is `SRV`.  Must be between 0 and 65535.
      */
-    public readonly weight!: pulumi.Output<number | undefined>;
+    declare public readonly weight: pulumi.Output<number | undefined>;
 
     /**
      * Create a DnsRecord resource with the given unique name, arguments, and options.
@@ -132,38 +132,38 @@ export class DnsRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DnsRecordState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["flags"] = state ? state.flags : undefined;
-            resourceInputs["fqdn"] = state ? state.fqdn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["tag"] = state ? state.tag : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["weight"] = state ? state.weight : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["flags"] = state?.flags;
+            resourceInputs["fqdn"] = state?.fqdn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["tag"] = state?.tag;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["weight"] = state?.weight;
         } else {
             const args = argsOrState as DnsRecordArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["flags"] = args ? args.flags : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["port"] = args ? args.port : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["tag"] = args ? args.tag : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["weight"] = args ? args.weight : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["flags"] = args?.flags;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["port"] = args?.port;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["tag"] = args?.tag;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["weight"] = args?.weight;
             resourceInputs["fqdn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

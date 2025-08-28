@@ -101,43 +101,43 @@ export class Project extends pulumi.CustomResource {
     /**
      * the date and time when the project was created, (ISO8601)
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * the description of the project
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
-    public readonly environment!: pulumi.Output<string | undefined>;
+    declare public readonly environment: pulumi.Output<string | undefined>;
     /**
      * a boolean indicating whether or not the project is the default project. (Default: "false")
      */
-    public readonly isDefault!: pulumi.Output<boolean | undefined>;
+    declare public readonly isDefault: pulumi.Output<boolean | undefined>;
     /**
      * The name of the Project
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * the id of the project owner.
      */
-    public /*out*/ readonly ownerId!: pulumi.Output<number>;
+    declare public /*out*/ readonly ownerId: pulumi.Output<number>;
     /**
      * the unique universal identifier of the project owner.
      */
-    public /*out*/ readonly ownerUuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly ownerUuid: pulumi.Output<string>;
     /**
      * the purpose of the project, (Default: "Web Application")
      */
-    public readonly purpose!: pulumi.Output<string | undefined>;
+    declare public readonly purpose: pulumi.Output<string | undefined>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    public readonly resources!: pulumi.Output<string[]>;
+    declare public readonly resources: pulumi.Output<string[]>;
     /**
      * the date and time when the project was last updated, (ISO8601)
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -152,24 +152,24 @@ export class Project extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ProjectState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["environment"] = state ? state.environment : undefined;
-            resourceInputs["isDefault"] = state ? state.isDefault : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["ownerId"] = state ? state.ownerId : undefined;
-            resourceInputs["ownerUuid"] = state ? state.ownerUuid : undefined;
-            resourceInputs["purpose"] = state ? state.purpose : undefined;
-            resourceInputs["resources"] = state ? state.resources : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["environment"] = state?.environment;
+            resourceInputs["isDefault"] = state?.isDefault;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["ownerId"] = state?.ownerId;
+            resourceInputs["ownerUuid"] = state?.ownerUuid;
+            resourceInputs["purpose"] = state?.purpose;
+            resourceInputs["resources"] = state?.resources;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["environment"] = args ? args.environment : undefined;
-            resourceInputs["isDefault"] = args ? args.isDefault : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["purpose"] = args ? args.purpose : undefined;
-            resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["environment"] = args?.environment;
+            resourceInputs["isDefault"] = args?.isDefault;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["purpose"] = args?.purpose;
+            resourceInputs["resources"] = args?.resources;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["ownerId"] = undefined /*out*/;
             resourceInputs["ownerUuid"] = undefined /*out*/;

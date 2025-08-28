@@ -92,34 +92,34 @@ export class DropletAutoscale extends pulumi.CustomResource {
      * The configuration parameters for Droplet Autoscale pool, the supported arguments are 
      * documented below.
      */
-    public readonly config!: pulumi.Output<outputs.DropletAutoscaleConfig>;
+    declare public readonly config: pulumi.Output<outputs.DropletAutoscaleConfig>;
     /**
      * Created at timestamp for the Droplet Autoscale pool.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The current average resource utilization of the Droplet Autoscale pool, this attribute further
      * embeds `memory` and `cpu` attributes to respectively report utilization data.
      */
-    public /*out*/ readonly currentUtilizations!: pulumi.Output<outputs.DropletAutoscaleCurrentUtilization[]>;
+    declare public /*out*/ readonly currentUtilizations: pulumi.Output<outputs.DropletAutoscaleCurrentUtilization[]>;
     /**
      * The droplet template parameters for Droplet Autoscale pool, the supported arguments 
      * are documented below.
      */
-    public readonly dropletTemplate!: pulumi.Output<outputs.DropletAutoscaleDropletTemplate>;
+    declare public readonly dropletTemplate: pulumi.Output<outputs.DropletAutoscaleDropletTemplate>;
     /**
      * The name of the Droplet Autoscale pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
      * traffic, or in an error state and needs user intervention.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Updated at timestamp for the Droplet Autoscale pool.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a DropletAutoscale resource with the given unique name, arguments, and options.
@@ -134,24 +134,24 @@ export class DropletAutoscale extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DropletAutoscaleState | undefined;
-            resourceInputs["config"] = state ? state.config : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["currentUtilizations"] = state ? state.currentUtilizations : undefined;
-            resourceInputs["dropletTemplate"] = state ? state.dropletTemplate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["config"] = state?.config;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["currentUtilizations"] = state?.currentUtilizations;
+            resourceInputs["dropletTemplate"] = state?.dropletTemplate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DropletAutoscaleArgs | undefined;
-            if ((!args || args.config === undefined) && !opts.urn) {
+            if (args?.config === undefined && !opts.urn) {
                 throw new Error("Missing required property 'config'");
             }
-            if ((!args || args.dropletTemplate === undefined) && !opts.urn) {
+            if (args?.dropletTemplate === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dropletTemplate'");
             }
-            resourceInputs["config"] = args ? args.config : undefined;
-            resourceInputs["dropletTemplate"] = args ? args.dropletTemplate : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["config"] = args?.config;
+            resourceInputs["dropletTemplate"] = args?.dropletTemplate;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["currentUtilizations"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

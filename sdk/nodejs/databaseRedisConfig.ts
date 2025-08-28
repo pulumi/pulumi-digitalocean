@@ -73,53 +73,53 @@ export class DatabaseRedisConfig extends pulumi.CustomResource {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    public readonly aclChannelsDefault!: pulumi.Output<string>;
+    declare public readonly aclChannelsDefault: pulumi.Output<string>;
     /**
      * The ID of the target Redis cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The Redis IO thread count.
      */
-    public readonly ioThreads!: pulumi.Output<number>;
+    declare public readonly ioThreads: pulumi.Output<number>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    public readonly lfuDecayTime!: pulumi.Output<number>;
+    declare public readonly lfuDecayTime: pulumi.Output<number>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    public readonly lfuLogFactor!: pulumi.Output<number>;
+    declare public readonly lfuLogFactor: pulumi.Output<number>;
     /**
      * A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
      */
-    public readonly maxmemoryPolicy!: pulumi.Output<string>;
+    declare public readonly maxmemoryPolicy: pulumi.Output<string>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    public readonly notifyKeyspaceEvents!: pulumi.Output<string>;
+    declare public readonly notifyKeyspaceEvents: pulumi.Output<string>;
     /**
      * The number of Redis databases. Changing this will cause a restart of Redis service.
      */
-    public readonly numberOfDatabases!: pulumi.Output<number>;
+    declare public readonly numberOfDatabases: pulumi.Output<number>;
     /**
      * When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    public readonly persistence!: pulumi.Output<string>;
+    declare public readonly persistence: pulumi.Output<string>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    public readonly pubsubClientOutputBufferLimit!: pulumi.Output<number>;
+    declare public readonly pubsubClientOutputBufferLimit: pulumi.Output<number>;
     /**
      * A boolean indicating whether to require SSL to access Redis.
      * - When enabled, Redis accepts only SSL connections on port `25061`.
      * - When disabled, port `25060` is opened for non-SSL connections, while port `25061` remains available for SSL connections.
      */
-    public readonly ssl!: pulumi.Output<boolean>;
+    declare public readonly ssl: pulumi.Output<boolean>;
     /**
      * The Redis idle connection timeout in seconds.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
 
     /**
      * Create a DatabaseRedisConfig resource with the given unique name, arguments, and options.
@@ -134,35 +134,35 @@ export class DatabaseRedisConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseRedisConfigState | undefined;
-            resourceInputs["aclChannelsDefault"] = state ? state.aclChannelsDefault : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["ioThreads"] = state ? state.ioThreads : undefined;
-            resourceInputs["lfuDecayTime"] = state ? state.lfuDecayTime : undefined;
-            resourceInputs["lfuLogFactor"] = state ? state.lfuLogFactor : undefined;
-            resourceInputs["maxmemoryPolicy"] = state ? state.maxmemoryPolicy : undefined;
-            resourceInputs["notifyKeyspaceEvents"] = state ? state.notifyKeyspaceEvents : undefined;
-            resourceInputs["numberOfDatabases"] = state ? state.numberOfDatabases : undefined;
-            resourceInputs["persistence"] = state ? state.persistence : undefined;
-            resourceInputs["pubsubClientOutputBufferLimit"] = state ? state.pubsubClientOutputBufferLimit : undefined;
-            resourceInputs["ssl"] = state ? state.ssl : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
+            resourceInputs["aclChannelsDefault"] = state?.aclChannelsDefault;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["ioThreads"] = state?.ioThreads;
+            resourceInputs["lfuDecayTime"] = state?.lfuDecayTime;
+            resourceInputs["lfuLogFactor"] = state?.lfuLogFactor;
+            resourceInputs["maxmemoryPolicy"] = state?.maxmemoryPolicy;
+            resourceInputs["notifyKeyspaceEvents"] = state?.notifyKeyspaceEvents;
+            resourceInputs["numberOfDatabases"] = state?.numberOfDatabases;
+            resourceInputs["persistence"] = state?.persistence;
+            resourceInputs["pubsubClientOutputBufferLimit"] = state?.pubsubClientOutputBufferLimit;
+            resourceInputs["ssl"] = state?.ssl;
+            resourceInputs["timeout"] = state?.timeout;
         } else {
             const args = argsOrState as DatabaseRedisConfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["aclChannelsDefault"] = args ? args.aclChannelsDefault : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["ioThreads"] = args ? args.ioThreads : undefined;
-            resourceInputs["lfuDecayTime"] = args ? args.lfuDecayTime : undefined;
-            resourceInputs["lfuLogFactor"] = args ? args.lfuLogFactor : undefined;
-            resourceInputs["maxmemoryPolicy"] = args ? args.maxmemoryPolicy : undefined;
-            resourceInputs["notifyKeyspaceEvents"] = args ? args.notifyKeyspaceEvents : undefined;
-            resourceInputs["numberOfDatabases"] = args ? args.numberOfDatabases : undefined;
-            resourceInputs["persistence"] = args ? args.persistence : undefined;
-            resourceInputs["pubsubClientOutputBufferLimit"] = args ? args.pubsubClientOutputBufferLimit : undefined;
-            resourceInputs["ssl"] = args ? args.ssl : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["aclChannelsDefault"] = args?.aclChannelsDefault;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["ioThreads"] = args?.ioThreads;
+            resourceInputs["lfuDecayTime"] = args?.lfuDecayTime;
+            resourceInputs["lfuLogFactor"] = args?.lfuLogFactor;
+            resourceInputs["maxmemoryPolicy"] = args?.maxmemoryPolicy;
+            resourceInputs["notifyKeyspaceEvents"] = args?.notifyKeyspaceEvents;
+            resourceInputs["numberOfDatabases"] = args?.numberOfDatabases;
+            resourceInputs["persistence"] = args?.persistence;
+            resourceInputs["pubsubClientOutputBufferLimit"] = args?.pubsubClientOutputBufferLimit;
+            resourceInputs["ssl"] = args?.ssl;
+            resourceInputs["timeout"] = args?.timeout;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseRedisConfig.__pulumiType, name, resourceInputs, opts);

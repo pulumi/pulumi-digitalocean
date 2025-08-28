@@ -122,45 +122,45 @@ export class Certificate extends pulumi.CustomResource {
      * between the certificate authority's certificate and your domain's TLS
      * certificate. Only valid when type is `custom`.
      */
-    public readonly certificateChain!: pulumi.Output<string | undefined>;
+    declare public readonly certificateChain: pulumi.Output<string | undefined>;
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
      * DigitalOcean's DNS. Only valid when type is `letsEncrypt`.
      */
-    public readonly domains!: pulumi.Output<string[] | undefined>;
+    declare public readonly domains: pulumi.Output<string[] | undefined>;
     /**
      * The contents of a PEM-formatted public
      * TLS certificate. Only valid when type is `custom`.
      */
-    public readonly leafCertificate!: pulumi.Output<string | undefined>;
+    declare public readonly leafCertificate: pulumi.Output<string | undefined>;
     /**
      * The name of the certificate for identification.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The expiration date of the certificate
      */
-    public /*out*/ readonly notAfter!: pulumi.Output<string>;
+    declare public /*out*/ readonly notAfter: pulumi.Output<string>;
     /**
      * The contents of a PEM-formatted private-key
      * corresponding to the SSL certificate. Only valid when type is `custom`.
      */
-    public readonly privateKey!: pulumi.Output<string | undefined>;
+    declare public readonly privateKey: pulumi.Output<string | undefined>;
     /**
      * The SHA-1 fingerprint of the certificate
      */
-    public /*out*/ readonly sha1Fingerprint!: pulumi.Output<string>;
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly sha1Fingerprint: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The type of certificate to provision. Can be either
      * `custom` or `letsEncrypt`. Defaults to `custom`.
      */
-    public readonly type!: pulumi.Output<string | undefined>;
+    declare public readonly type: pulumi.Output<string | undefined>;
     /**
      * The UUID of the certificate
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -175,24 +175,24 @@ export class Certificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CertificateState | undefined;
-            resourceInputs["certificateChain"] = state ? state.certificateChain : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["leafCertificate"] = state ? state.leafCertificate : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notAfter"] = state ? state.notAfter : undefined;
-            resourceInputs["privateKey"] = state ? state.privateKey : undefined;
-            resourceInputs["sha1Fingerprint"] = state ? state.sha1Fingerprint : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["certificateChain"] = state?.certificateChain;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["leafCertificate"] = state?.leafCertificate;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notAfter"] = state?.notAfter;
+            resourceInputs["privateKey"] = state?.privateKey;
+            resourceInputs["sha1Fingerprint"] = state?.sha1Fingerprint;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as CertificateArgs | undefined;
-            resourceInputs["certificateChain"] = args ? args.certificateChain : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
-            resourceInputs["leafCertificate"] = args ? args.leafCertificate : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["certificateChain"] = args?.certificateChain;
+            resourceInputs["domains"] = args?.domains;
+            resourceInputs["leafCertificate"] = args?.leafCertificate;
+            resourceInputs["name"] = args?.name;
             resourceInputs["privateKey"] = args?.privateKey ? pulumi.secret(args.privateKey) : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["type"] = args?.type;
             resourceInputs["notAfter"] = undefined /*out*/;
             resourceInputs["sha1Fingerprint"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

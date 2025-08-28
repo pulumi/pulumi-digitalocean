@@ -106,159 +106,159 @@ export class DatabaseOpensearchConfig extends pulumi.CustomResource {
     /**
      * Specifices whether to allow automatic creation of indices. Default: `true`
      */
-    public readonly actionAutoCreateIndexEnabled!: pulumi.Output<boolean>;
+    declare public readonly actionAutoCreateIndexEnabled: pulumi.Output<boolean>;
     /**
      * Specifies whether to require explicit index names when deleting indices.
      */
-    public readonly actionDestructiveRequiresName!: pulumi.Output<boolean>;
+    declare public readonly actionDestructiveRequiresName: pulumi.Output<boolean>;
     /**
      * The ID of the target Opensearch cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Maximum number of shards allowed per data node.
      */
-    public readonly clusterMaxShardsPerNode!: pulumi.Output<number>;
+    declare public readonly clusterMaxShardsPerNode: pulumi.Output<number>;
     /**
      * Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
      */
-    public readonly clusterRoutingAllocationNodeConcurrentRecoveries!: pulumi.Output<number>;
+    declare public readonly clusterRoutingAllocationNodeConcurrentRecoveries: pulumi.Output<number>;
     /**
      * Specifies whether to allow security audit logging. Default: `false`
      */
-    public readonly enableSecurityAudit!: pulumi.Output<boolean>;
+    declare public readonly enableSecurityAudit: pulumi.Output<boolean>;
     /**
      * Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`
      */
-    public readonly httpMaxContentLengthBytes!: pulumi.Output<number>;
+    declare public readonly httpMaxContentLengthBytes: pulumi.Output<number>;
     /**
      * Maximum size of allowed headers, in bytes. Default: `8192`
      */
-    public readonly httpMaxHeaderSizeBytes!: pulumi.Output<number>;
+    declare public readonly httpMaxHeaderSizeBytes: pulumi.Output<number>;
     /**
      * Maximum length of an HTTP URL, in bytes. Default: `4096`
      */
-    public readonly httpMaxInitialLineLengthBytes!: pulumi.Output<number>;
+    declare public readonly httpMaxInitialLineLengthBytes: pulumi.Output<number>;
     /**
      * Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.
      */
-    public readonly indicesFielddataCacheSizePercentage!: pulumi.Output<number>;
+    declare public readonly indicesFielddataCacheSizePercentage: pulumi.Output<number>;
     /**
      * Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`
      */
-    public readonly indicesMemoryIndexBufferSizePercentage!: pulumi.Output<number>;
+    declare public readonly indicesMemoryIndexBufferSizePercentage: pulumi.Output<number>;
     /**
      * Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.
      */
-    public readonly indicesMemoryMaxIndexBufferSizeMb!: pulumi.Output<number>;
+    declare public readonly indicesMemoryMaxIndexBufferSizeMb: pulumi.Output<number>;
     /**
      * Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`
      */
-    public readonly indicesMemoryMinIndexBufferSizeMb!: pulumi.Output<number>;
+    declare public readonly indicesMemoryMinIndexBufferSizeMb: pulumi.Output<number>;
     /**
      * Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`
      */
-    public readonly indicesQueriesCacheSizePercentage!: pulumi.Output<number>;
+    declare public readonly indicesQueriesCacheSizePercentage: pulumi.Output<number>;
     /**
      * Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`
      */
-    public readonly indicesQueryBoolMaxClauseCount!: pulumi.Output<number>;
+    declare public readonly indicesQueryBoolMaxClauseCount: pulumi.Output<number>;
     /**
      * Maximum number of file chunks sent in parallel for each recovery. Default: `2`
      */
-    public readonly indicesRecoveryMaxConcurrentFileChunks!: pulumi.Output<number>;
+    declare public readonly indicesRecoveryMaxConcurrentFileChunks: pulumi.Output<number>;
     /**
      * Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`
      */
-    public readonly indicesRecoveryMaxMbPerSec!: pulumi.Output<number>;
+    declare public readonly indicesRecoveryMaxMbPerSec: pulumi.Output<number>;
     /**
      * Specifies whether ISM is enabled or not. Default: `true`
      */
-    public readonly ismEnabled!: pulumi.Output<boolean>;
+    declare public readonly ismEnabled: pulumi.Output<boolean>;
     /**
      * Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
      */
-    public readonly ismHistoryEnabled!: pulumi.Output<boolean>;
+    declare public readonly ismHistoryEnabled: pulumi.Output<boolean>;
     /**
      * Maximum age before rolling over the audit history index, in hours. Default: `24`
      */
-    public readonly ismHistoryMaxAgeHours!: pulumi.Output<number>;
+    declare public readonly ismHistoryMaxAgeHours: pulumi.Output<number>;
     /**
      * Maximum number of documents before rolling over the audit history index. Default: `2500000`
      */
-    public readonly ismHistoryMaxDocs!: pulumi.Output<number>;
+    declare public readonly ismHistoryMaxDocs: pulumi.Output<number>;
     /**
      * The time between rollover checks for the audit history index, in hours. Default: `8`
      */
-    public readonly ismHistoryRolloverCheckPeriodHours!: pulumi.Output<number>;
+    declare public readonly ismHistoryRolloverCheckPeriodHours: pulumi.Output<number>;
     /**
      * Length of time long audit history indices are kept, in days. Default: `30`
      */
-    public readonly ismHistoryRolloverRetentionPeriodDays!: pulumi.Output<number>;
+    declare public readonly ismHistoryRolloverRetentionPeriodDays: pulumi.Output<number>;
     /**
      * Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
      */
-    public readonly overrideMainResponseVersion!: pulumi.Output<boolean>;
+    declare public readonly overrideMainResponseVersion: pulumi.Output<boolean>;
     /**
      * Enable or disable filtering of alerting by backend roles. Default: `false`
      */
-    public readonly pluginsAlertingFilterByBackendRolesEnabled!: pulumi.Output<boolean>;
+    declare public readonly pluginsAlertingFilterByBackendRolesEnabled: pulumi.Output<boolean>;
     /**
      * Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
      */
-    public readonly reindexRemoteWhitelists!: pulumi.Output<string[] | undefined>;
+    declare public readonly reindexRemoteWhitelists: pulumi.Output<string[] | undefined>;
     /**
      * Limits the number of inline script compilations within a period of time. Default is `use-context`
      */
-    public readonly scriptMaxCompilationsRate!: pulumi.Output<string>;
+    declare public readonly scriptMaxCompilationsRate: pulumi.Output<string>;
     /**
      * Maximum number of aggregation buckets allowed in a single response. Default: `10000`
      */
-    public readonly searchMaxBuckets!: pulumi.Output<number>;
+    declare public readonly searchMaxBuckets: pulumi.Output<number>;
     /**
      * Size of queue for operations in the analyze thread pool.
      */
-    public readonly threadPoolAnalyzeQueueSize!: pulumi.Output<number>;
+    declare public readonly threadPoolAnalyzeQueueSize: pulumi.Output<number>;
     /**
      * Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolAnalyzeSize!: pulumi.Output<number>;
+    declare public readonly threadPoolAnalyzeSize: pulumi.Output<number>;
     /**
      * Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolForceMergeSize!: pulumi.Output<number>;
+    declare public readonly threadPoolForceMergeSize: pulumi.Output<number>;
     /**
      * Size of queue for operations in the get thread pool.
      */
-    public readonly threadPoolGetQueueSize!: pulumi.Output<number>;
+    declare public readonly threadPoolGetQueueSize: pulumi.Output<number>;
     /**
      * Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolGetSize!: pulumi.Output<number>;
+    declare public readonly threadPoolGetSize: pulumi.Output<number>;
     /**
      * Size of queue for operations in the search thread pool.
      */
-    public readonly threadPoolSearchQueueSize!: pulumi.Output<number>;
+    declare public readonly threadPoolSearchQueueSize: pulumi.Output<number>;
     /**
      * Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolSearchSize!: pulumi.Output<number>;
+    declare public readonly threadPoolSearchSize: pulumi.Output<number>;
     /**
      * Size of queue for operations in the search throttled thread pool.
      */
-    public readonly threadPoolSearchThrottledQueueSize!: pulumi.Output<number>;
+    declare public readonly threadPoolSearchThrottledQueueSize: pulumi.Output<number>;
     /**
      * Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolSearchThrottledSize!: pulumi.Output<number>;
+    declare public readonly threadPoolSearchThrottledSize: pulumi.Output<number>;
     /**
      * Size of queue for operations in the write thread pool.
      */
-    public readonly threadPoolWriteQueueSize!: pulumi.Output<number>;
+    declare public readonly threadPoolWriteQueueSize: pulumi.Output<number>;
     /**
      * Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
      */
-    public readonly threadPoolWriteSize!: pulumi.Output<number>;
+    declare public readonly threadPoolWriteSize: pulumi.Output<number>;
 
     /**
      * Create a DatabaseOpensearchConfig resource with the given unique name, arguments, and options.
@@ -273,89 +273,89 @@ export class DatabaseOpensearchConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseOpensearchConfigState | undefined;
-            resourceInputs["actionAutoCreateIndexEnabled"] = state ? state.actionAutoCreateIndexEnabled : undefined;
-            resourceInputs["actionDestructiveRequiresName"] = state ? state.actionDestructiveRequiresName : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["clusterMaxShardsPerNode"] = state ? state.clusterMaxShardsPerNode : undefined;
-            resourceInputs["clusterRoutingAllocationNodeConcurrentRecoveries"] = state ? state.clusterRoutingAllocationNodeConcurrentRecoveries : undefined;
-            resourceInputs["enableSecurityAudit"] = state ? state.enableSecurityAudit : undefined;
-            resourceInputs["httpMaxContentLengthBytes"] = state ? state.httpMaxContentLengthBytes : undefined;
-            resourceInputs["httpMaxHeaderSizeBytes"] = state ? state.httpMaxHeaderSizeBytes : undefined;
-            resourceInputs["httpMaxInitialLineLengthBytes"] = state ? state.httpMaxInitialLineLengthBytes : undefined;
-            resourceInputs["indicesFielddataCacheSizePercentage"] = state ? state.indicesFielddataCacheSizePercentage : undefined;
-            resourceInputs["indicesMemoryIndexBufferSizePercentage"] = state ? state.indicesMemoryIndexBufferSizePercentage : undefined;
-            resourceInputs["indicesMemoryMaxIndexBufferSizeMb"] = state ? state.indicesMemoryMaxIndexBufferSizeMb : undefined;
-            resourceInputs["indicesMemoryMinIndexBufferSizeMb"] = state ? state.indicesMemoryMinIndexBufferSizeMb : undefined;
-            resourceInputs["indicesQueriesCacheSizePercentage"] = state ? state.indicesQueriesCacheSizePercentage : undefined;
-            resourceInputs["indicesQueryBoolMaxClauseCount"] = state ? state.indicesQueryBoolMaxClauseCount : undefined;
-            resourceInputs["indicesRecoveryMaxConcurrentFileChunks"] = state ? state.indicesRecoveryMaxConcurrentFileChunks : undefined;
-            resourceInputs["indicesRecoveryMaxMbPerSec"] = state ? state.indicesRecoveryMaxMbPerSec : undefined;
-            resourceInputs["ismEnabled"] = state ? state.ismEnabled : undefined;
-            resourceInputs["ismHistoryEnabled"] = state ? state.ismHistoryEnabled : undefined;
-            resourceInputs["ismHistoryMaxAgeHours"] = state ? state.ismHistoryMaxAgeHours : undefined;
-            resourceInputs["ismHistoryMaxDocs"] = state ? state.ismHistoryMaxDocs : undefined;
-            resourceInputs["ismHistoryRolloverCheckPeriodHours"] = state ? state.ismHistoryRolloverCheckPeriodHours : undefined;
-            resourceInputs["ismHistoryRolloverRetentionPeriodDays"] = state ? state.ismHistoryRolloverRetentionPeriodDays : undefined;
-            resourceInputs["overrideMainResponseVersion"] = state ? state.overrideMainResponseVersion : undefined;
-            resourceInputs["pluginsAlertingFilterByBackendRolesEnabled"] = state ? state.pluginsAlertingFilterByBackendRolesEnabled : undefined;
-            resourceInputs["reindexRemoteWhitelists"] = state ? state.reindexRemoteWhitelists : undefined;
-            resourceInputs["scriptMaxCompilationsRate"] = state ? state.scriptMaxCompilationsRate : undefined;
-            resourceInputs["searchMaxBuckets"] = state ? state.searchMaxBuckets : undefined;
-            resourceInputs["threadPoolAnalyzeQueueSize"] = state ? state.threadPoolAnalyzeQueueSize : undefined;
-            resourceInputs["threadPoolAnalyzeSize"] = state ? state.threadPoolAnalyzeSize : undefined;
-            resourceInputs["threadPoolForceMergeSize"] = state ? state.threadPoolForceMergeSize : undefined;
-            resourceInputs["threadPoolGetQueueSize"] = state ? state.threadPoolGetQueueSize : undefined;
-            resourceInputs["threadPoolGetSize"] = state ? state.threadPoolGetSize : undefined;
-            resourceInputs["threadPoolSearchQueueSize"] = state ? state.threadPoolSearchQueueSize : undefined;
-            resourceInputs["threadPoolSearchSize"] = state ? state.threadPoolSearchSize : undefined;
-            resourceInputs["threadPoolSearchThrottledQueueSize"] = state ? state.threadPoolSearchThrottledQueueSize : undefined;
-            resourceInputs["threadPoolSearchThrottledSize"] = state ? state.threadPoolSearchThrottledSize : undefined;
-            resourceInputs["threadPoolWriteQueueSize"] = state ? state.threadPoolWriteQueueSize : undefined;
-            resourceInputs["threadPoolWriteSize"] = state ? state.threadPoolWriteSize : undefined;
+            resourceInputs["actionAutoCreateIndexEnabled"] = state?.actionAutoCreateIndexEnabled;
+            resourceInputs["actionDestructiveRequiresName"] = state?.actionDestructiveRequiresName;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["clusterMaxShardsPerNode"] = state?.clusterMaxShardsPerNode;
+            resourceInputs["clusterRoutingAllocationNodeConcurrentRecoveries"] = state?.clusterRoutingAllocationNodeConcurrentRecoveries;
+            resourceInputs["enableSecurityAudit"] = state?.enableSecurityAudit;
+            resourceInputs["httpMaxContentLengthBytes"] = state?.httpMaxContentLengthBytes;
+            resourceInputs["httpMaxHeaderSizeBytes"] = state?.httpMaxHeaderSizeBytes;
+            resourceInputs["httpMaxInitialLineLengthBytes"] = state?.httpMaxInitialLineLengthBytes;
+            resourceInputs["indicesFielddataCacheSizePercentage"] = state?.indicesFielddataCacheSizePercentage;
+            resourceInputs["indicesMemoryIndexBufferSizePercentage"] = state?.indicesMemoryIndexBufferSizePercentage;
+            resourceInputs["indicesMemoryMaxIndexBufferSizeMb"] = state?.indicesMemoryMaxIndexBufferSizeMb;
+            resourceInputs["indicesMemoryMinIndexBufferSizeMb"] = state?.indicesMemoryMinIndexBufferSizeMb;
+            resourceInputs["indicesQueriesCacheSizePercentage"] = state?.indicesQueriesCacheSizePercentage;
+            resourceInputs["indicesQueryBoolMaxClauseCount"] = state?.indicesQueryBoolMaxClauseCount;
+            resourceInputs["indicesRecoveryMaxConcurrentFileChunks"] = state?.indicesRecoveryMaxConcurrentFileChunks;
+            resourceInputs["indicesRecoveryMaxMbPerSec"] = state?.indicesRecoveryMaxMbPerSec;
+            resourceInputs["ismEnabled"] = state?.ismEnabled;
+            resourceInputs["ismHistoryEnabled"] = state?.ismHistoryEnabled;
+            resourceInputs["ismHistoryMaxAgeHours"] = state?.ismHistoryMaxAgeHours;
+            resourceInputs["ismHistoryMaxDocs"] = state?.ismHistoryMaxDocs;
+            resourceInputs["ismHistoryRolloverCheckPeriodHours"] = state?.ismHistoryRolloverCheckPeriodHours;
+            resourceInputs["ismHistoryRolloverRetentionPeriodDays"] = state?.ismHistoryRolloverRetentionPeriodDays;
+            resourceInputs["overrideMainResponseVersion"] = state?.overrideMainResponseVersion;
+            resourceInputs["pluginsAlertingFilterByBackendRolesEnabled"] = state?.pluginsAlertingFilterByBackendRolesEnabled;
+            resourceInputs["reindexRemoteWhitelists"] = state?.reindexRemoteWhitelists;
+            resourceInputs["scriptMaxCompilationsRate"] = state?.scriptMaxCompilationsRate;
+            resourceInputs["searchMaxBuckets"] = state?.searchMaxBuckets;
+            resourceInputs["threadPoolAnalyzeQueueSize"] = state?.threadPoolAnalyzeQueueSize;
+            resourceInputs["threadPoolAnalyzeSize"] = state?.threadPoolAnalyzeSize;
+            resourceInputs["threadPoolForceMergeSize"] = state?.threadPoolForceMergeSize;
+            resourceInputs["threadPoolGetQueueSize"] = state?.threadPoolGetQueueSize;
+            resourceInputs["threadPoolGetSize"] = state?.threadPoolGetSize;
+            resourceInputs["threadPoolSearchQueueSize"] = state?.threadPoolSearchQueueSize;
+            resourceInputs["threadPoolSearchSize"] = state?.threadPoolSearchSize;
+            resourceInputs["threadPoolSearchThrottledQueueSize"] = state?.threadPoolSearchThrottledQueueSize;
+            resourceInputs["threadPoolSearchThrottledSize"] = state?.threadPoolSearchThrottledSize;
+            resourceInputs["threadPoolWriteQueueSize"] = state?.threadPoolWriteQueueSize;
+            resourceInputs["threadPoolWriteSize"] = state?.threadPoolWriteSize;
         } else {
             const args = argsOrState as DatabaseOpensearchConfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["actionAutoCreateIndexEnabled"] = args ? args.actionAutoCreateIndexEnabled : undefined;
-            resourceInputs["actionDestructiveRequiresName"] = args ? args.actionDestructiveRequiresName : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["clusterMaxShardsPerNode"] = args ? args.clusterMaxShardsPerNode : undefined;
-            resourceInputs["clusterRoutingAllocationNodeConcurrentRecoveries"] = args ? args.clusterRoutingAllocationNodeConcurrentRecoveries : undefined;
-            resourceInputs["enableSecurityAudit"] = args ? args.enableSecurityAudit : undefined;
-            resourceInputs["httpMaxContentLengthBytes"] = args ? args.httpMaxContentLengthBytes : undefined;
-            resourceInputs["httpMaxHeaderSizeBytes"] = args ? args.httpMaxHeaderSizeBytes : undefined;
-            resourceInputs["httpMaxInitialLineLengthBytes"] = args ? args.httpMaxInitialLineLengthBytes : undefined;
-            resourceInputs["indicesFielddataCacheSizePercentage"] = args ? args.indicesFielddataCacheSizePercentage : undefined;
-            resourceInputs["indicesMemoryIndexBufferSizePercentage"] = args ? args.indicesMemoryIndexBufferSizePercentage : undefined;
-            resourceInputs["indicesMemoryMaxIndexBufferSizeMb"] = args ? args.indicesMemoryMaxIndexBufferSizeMb : undefined;
-            resourceInputs["indicesMemoryMinIndexBufferSizeMb"] = args ? args.indicesMemoryMinIndexBufferSizeMb : undefined;
-            resourceInputs["indicesQueriesCacheSizePercentage"] = args ? args.indicesQueriesCacheSizePercentage : undefined;
-            resourceInputs["indicesQueryBoolMaxClauseCount"] = args ? args.indicesQueryBoolMaxClauseCount : undefined;
-            resourceInputs["indicesRecoveryMaxConcurrentFileChunks"] = args ? args.indicesRecoveryMaxConcurrentFileChunks : undefined;
-            resourceInputs["indicesRecoveryMaxMbPerSec"] = args ? args.indicesRecoveryMaxMbPerSec : undefined;
-            resourceInputs["ismEnabled"] = args ? args.ismEnabled : undefined;
-            resourceInputs["ismHistoryEnabled"] = args ? args.ismHistoryEnabled : undefined;
-            resourceInputs["ismHistoryMaxAgeHours"] = args ? args.ismHistoryMaxAgeHours : undefined;
-            resourceInputs["ismHistoryMaxDocs"] = args ? args.ismHistoryMaxDocs : undefined;
-            resourceInputs["ismHistoryRolloverCheckPeriodHours"] = args ? args.ismHistoryRolloverCheckPeriodHours : undefined;
-            resourceInputs["ismHistoryRolloverRetentionPeriodDays"] = args ? args.ismHistoryRolloverRetentionPeriodDays : undefined;
-            resourceInputs["overrideMainResponseVersion"] = args ? args.overrideMainResponseVersion : undefined;
-            resourceInputs["pluginsAlertingFilterByBackendRolesEnabled"] = args ? args.pluginsAlertingFilterByBackendRolesEnabled : undefined;
-            resourceInputs["reindexRemoteWhitelists"] = args ? args.reindexRemoteWhitelists : undefined;
-            resourceInputs["scriptMaxCompilationsRate"] = args ? args.scriptMaxCompilationsRate : undefined;
-            resourceInputs["searchMaxBuckets"] = args ? args.searchMaxBuckets : undefined;
-            resourceInputs["threadPoolAnalyzeQueueSize"] = args ? args.threadPoolAnalyzeQueueSize : undefined;
-            resourceInputs["threadPoolAnalyzeSize"] = args ? args.threadPoolAnalyzeSize : undefined;
-            resourceInputs["threadPoolForceMergeSize"] = args ? args.threadPoolForceMergeSize : undefined;
-            resourceInputs["threadPoolGetQueueSize"] = args ? args.threadPoolGetQueueSize : undefined;
-            resourceInputs["threadPoolGetSize"] = args ? args.threadPoolGetSize : undefined;
-            resourceInputs["threadPoolSearchQueueSize"] = args ? args.threadPoolSearchQueueSize : undefined;
-            resourceInputs["threadPoolSearchSize"] = args ? args.threadPoolSearchSize : undefined;
-            resourceInputs["threadPoolSearchThrottledQueueSize"] = args ? args.threadPoolSearchThrottledQueueSize : undefined;
-            resourceInputs["threadPoolSearchThrottledSize"] = args ? args.threadPoolSearchThrottledSize : undefined;
-            resourceInputs["threadPoolWriteQueueSize"] = args ? args.threadPoolWriteQueueSize : undefined;
-            resourceInputs["threadPoolWriteSize"] = args ? args.threadPoolWriteSize : undefined;
+            resourceInputs["actionAutoCreateIndexEnabled"] = args?.actionAutoCreateIndexEnabled;
+            resourceInputs["actionDestructiveRequiresName"] = args?.actionDestructiveRequiresName;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["clusterMaxShardsPerNode"] = args?.clusterMaxShardsPerNode;
+            resourceInputs["clusterRoutingAllocationNodeConcurrentRecoveries"] = args?.clusterRoutingAllocationNodeConcurrentRecoveries;
+            resourceInputs["enableSecurityAudit"] = args?.enableSecurityAudit;
+            resourceInputs["httpMaxContentLengthBytes"] = args?.httpMaxContentLengthBytes;
+            resourceInputs["httpMaxHeaderSizeBytes"] = args?.httpMaxHeaderSizeBytes;
+            resourceInputs["httpMaxInitialLineLengthBytes"] = args?.httpMaxInitialLineLengthBytes;
+            resourceInputs["indicesFielddataCacheSizePercentage"] = args?.indicesFielddataCacheSizePercentage;
+            resourceInputs["indicesMemoryIndexBufferSizePercentage"] = args?.indicesMemoryIndexBufferSizePercentage;
+            resourceInputs["indicesMemoryMaxIndexBufferSizeMb"] = args?.indicesMemoryMaxIndexBufferSizeMb;
+            resourceInputs["indicesMemoryMinIndexBufferSizeMb"] = args?.indicesMemoryMinIndexBufferSizeMb;
+            resourceInputs["indicesQueriesCacheSizePercentage"] = args?.indicesQueriesCacheSizePercentage;
+            resourceInputs["indicesQueryBoolMaxClauseCount"] = args?.indicesQueryBoolMaxClauseCount;
+            resourceInputs["indicesRecoveryMaxConcurrentFileChunks"] = args?.indicesRecoveryMaxConcurrentFileChunks;
+            resourceInputs["indicesRecoveryMaxMbPerSec"] = args?.indicesRecoveryMaxMbPerSec;
+            resourceInputs["ismEnabled"] = args?.ismEnabled;
+            resourceInputs["ismHistoryEnabled"] = args?.ismHistoryEnabled;
+            resourceInputs["ismHistoryMaxAgeHours"] = args?.ismHistoryMaxAgeHours;
+            resourceInputs["ismHistoryMaxDocs"] = args?.ismHistoryMaxDocs;
+            resourceInputs["ismHistoryRolloverCheckPeriodHours"] = args?.ismHistoryRolloverCheckPeriodHours;
+            resourceInputs["ismHistoryRolloverRetentionPeriodDays"] = args?.ismHistoryRolloverRetentionPeriodDays;
+            resourceInputs["overrideMainResponseVersion"] = args?.overrideMainResponseVersion;
+            resourceInputs["pluginsAlertingFilterByBackendRolesEnabled"] = args?.pluginsAlertingFilterByBackendRolesEnabled;
+            resourceInputs["reindexRemoteWhitelists"] = args?.reindexRemoteWhitelists;
+            resourceInputs["scriptMaxCompilationsRate"] = args?.scriptMaxCompilationsRate;
+            resourceInputs["searchMaxBuckets"] = args?.searchMaxBuckets;
+            resourceInputs["threadPoolAnalyzeQueueSize"] = args?.threadPoolAnalyzeQueueSize;
+            resourceInputs["threadPoolAnalyzeSize"] = args?.threadPoolAnalyzeSize;
+            resourceInputs["threadPoolForceMergeSize"] = args?.threadPoolForceMergeSize;
+            resourceInputs["threadPoolGetQueueSize"] = args?.threadPoolGetQueueSize;
+            resourceInputs["threadPoolGetSize"] = args?.threadPoolGetSize;
+            resourceInputs["threadPoolSearchQueueSize"] = args?.threadPoolSearchQueueSize;
+            resourceInputs["threadPoolSearchSize"] = args?.threadPoolSearchSize;
+            resourceInputs["threadPoolSearchThrottledQueueSize"] = args?.threadPoolSearchThrottledQueueSize;
+            resourceInputs["threadPoolSearchThrottledSize"] = args?.threadPoolSearchThrottledSize;
+            resourceInputs["threadPoolWriteQueueSize"] = args?.threadPoolWriteQueueSize;
+            resourceInputs["threadPoolWriteSize"] = args?.threadPoolWriteSize;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseOpensearchConfig.__pulumiType, name, resourceInputs, opts);

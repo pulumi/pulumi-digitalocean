@@ -100,27 +100,27 @@ export class DatabaseOnlineMigration extends pulumi.CustomResource {
     /**
      * The ID of the target MySQL cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The date and time when the online migration was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * When set to true, enables SSL encryption when connecting to the source database.
      */
-    public readonly disableSsl!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableSsl: pulumi.Output<boolean | undefined>;
     /**
      * A list of databases that should be ignored during migration.
      */
-    public readonly ignoreDbs!: pulumi.Output<string[] | undefined>;
+    declare public readonly ignoreDbs: pulumi.Output<string[] | undefined>;
     /**
      * Configuration for migration
      */
-    public readonly source!: pulumi.Output<outputs.DatabaseOnlineMigrationSource>;
+    declare public readonly source: pulumi.Output<outputs.DatabaseOnlineMigrationSource>;
     /**
      * The status of the online migration
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
 
     /**
      * Create a DatabaseOnlineMigration resource with the given unique name, arguments, and options.
@@ -135,24 +135,24 @@ export class DatabaseOnlineMigration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseOnlineMigrationState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["disableSsl"] = state ? state.disableSsl : undefined;
-            resourceInputs["ignoreDbs"] = state ? state.ignoreDbs : undefined;
-            resourceInputs["source"] = state ? state.source : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["disableSsl"] = state?.disableSsl;
+            resourceInputs["ignoreDbs"] = state?.ignoreDbs;
+            resourceInputs["source"] = state?.source;
+            resourceInputs["status"] = state?.status;
         } else {
             const args = argsOrState as DatabaseOnlineMigrationArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.source === undefined) && !opts.urn) {
+            if (args?.source === undefined && !opts.urn) {
                 throw new Error("Missing required property 'source'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["disableSsl"] = args ? args.disableSsl : undefined;
-            resourceInputs["ignoreDbs"] = args ? args.ignoreDbs : undefined;
-            resourceInputs["source"] = args ? args.source : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["disableSsl"] = args?.disableSsl;
+            resourceInputs["ignoreDbs"] = args?.ignoreDbs;
+            resourceInputs["source"] = args?.source;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
