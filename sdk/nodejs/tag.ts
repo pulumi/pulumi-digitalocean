@@ -67,31 +67,31 @@ export class Tag extends pulumi.CustomResource {
     /**
      * A count of the database clusters that the tag is applied to.
      */
-    public /*out*/ readonly databasesCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly databasesCount: pulumi.Output<number>;
     /**
      * A count of the Droplets the tag is applied to.
      */
-    public /*out*/ readonly dropletsCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly dropletsCount: pulumi.Output<number>;
     /**
      * A count of the images that the tag is applied to.
      */
-    public /*out*/ readonly imagesCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly imagesCount: pulumi.Output<number>;
     /**
      * The name of the tag
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A count of the total number of resources that the tag is applied to.
      */
-    public /*out*/ readonly totalResourceCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly totalResourceCount: pulumi.Output<number>;
     /**
      * A count of the volume snapshots that the tag is applied to.
      */
-    public /*out*/ readonly volumeSnapshotsCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly volumeSnapshotsCount: pulumi.Output<number>;
     /**
      * A count of the volumes that the tag is applied to.
      */
-    public /*out*/ readonly volumesCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly volumesCount: pulumi.Output<number>;
 
     /**
      * Create a Tag resource with the given unique name, arguments, and options.
@@ -106,16 +106,16 @@ export class Tag extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as TagState | undefined;
-            resourceInputs["databasesCount"] = state ? state.databasesCount : undefined;
-            resourceInputs["dropletsCount"] = state ? state.dropletsCount : undefined;
-            resourceInputs["imagesCount"] = state ? state.imagesCount : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["totalResourceCount"] = state ? state.totalResourceCount : undefined;
-            resourceInputs["volumeSnapshotsCount"] = state ? state.volumeSnapshotsCount : undefined;
-            resourceInputs["volumesCount"] = state ? state.volumesCount : undefined;
+            resourceInputs["databasesCount"] = state?.databasesCount;
+            resourceInputs["dropletsCount"] = state?.dropletsCount;
+            resourceInputs["imagesCount"] = state?.imagesCount;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["totalResourceCount"] = state?.totalResourceCount;
+            resourceInputs["volumeSnapshotsCount"] = state?.volumeSnapshotsCount;
+            resourceInputs["volumesCount"] = state?.volumesCount;
         } else {
             const args = argsOrState as TagArgs | undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["databasesCount"] = undefined /*out*/;
             resourceInputs["dropletsCount"] = undefined /*out*/;
             resourceInputs["imagesCount"] = undefined /*out*/;

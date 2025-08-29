@@ -75,15 +75,15 @@ export class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
     /**
      * The name of the bucket to which to apply the CORS configuration.
      */
-    public readonly bucket!: pulumi.Output<string>;
+    declare public readonly bucket: pulumi.Output<string>;
     /**
      * Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
      */
-    public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsConfigurationCorsRule[]>;
+    declare public readonly corsRules: pulumi.Output<outputs.SpacesBucketCorsConfigurationCorsRule[]>;
     /**
      * The region where the bucket resides.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a SpacesBucketCorsConfiguration resource with the given unique name, arguments, and options.
@@ -98,23 +98,23 @@ export class SpacesBucketCorsConfiguration extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpacesBucketCorsConfigurationState | undefined;
-            resourceInputs["bucket"] = state ? state.bucket : undefined;
-            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["bucket"] = state?.bucket;
+            resourceInputs["corsRules"] = state?.corsRules;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as SpacesBucketCorsConfigurationArgs | undefined;
-            if ((!args || args.bucket === undefined) && !opts.urn) {
+            if (args?.bucket === undefined && !opts.urn) {
                 throw new Error("Missing required property 'bucket'");
             }
-            if ((!args || args.corsRules === undefined) && !opts.urn) {
+            if (args?.corsRules === undefined && !opts.urn) {
                 throw new Error("Missing required property 'corsRules'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["bucket"] = args ? args.bucket : undefined;
-            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["bucket"] = args?.bucket;
+            resourceInputs["corsRules"] = args?.corsRules;
+            resourceInputs["region"] = args?.region;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(SpacesBucketCorsConfiguration.__pulumiType, name, resourceInputs, opts);

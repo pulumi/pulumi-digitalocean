@@ -69,9 +69,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        /// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        /// valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         /// </summary>
         [Output("frequentSnapshots")]
         public Output<bool> FrequentSnapshots { get; private set; } = null!;
@@ -131,9 +129,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Timeout { get; private set; } = null!;
 
         /// <summary>
-        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        /// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        /// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         /// </summary>
         [Output("valkeyActiveExpireEffort")]
         public Output<int> ValkeyActiveExpireEffort { get; private set; } = null!;
@@ -197,9 +193,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        /// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        /// valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         /// </summary>
         [Input("frequentSnapshots")]
         public Input<bool>? FrequentSnapshots { get; set; }
@@ -259,9 +253,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        /// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        /// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         /// </summary>
         [Input("valkeyActiveExpireEffort")]
         public Input<int>? ValkeyActiveExpireEffort { get; set; }
@@ -287,9 +279,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        /// take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        /// valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         /// </summary>
         [Input("frequentSnapshots")]
         public Input<bool>? FrequentSnapshots { get; set; }
@@ -349,9 +339,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Timeout { get; set; }
 
         /// <summary>
-        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        /// scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        /// reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        /// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         /// </summary>
         [Input("valkeyActiveExpireEffort")]
         public Input<int>? ValkeyActiveExpireEffort { get; set; }

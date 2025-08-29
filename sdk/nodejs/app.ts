@@ -175,31 +175,31 @@ export class App extends pulumi.CustomResource {
     /**
      * The ID the app's currently active deployment.
      */
-    public /*out*/ readonly activeDeploymentId!: pulumi.Output<string>;
+    declare public /*out*/ readonly activeDeploymentId: pulumi.Output<string>;
     /**
      * The uniform resource identifier for the app.
      */
-    public /*out*/ readonly appUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly appUrn: pulumi.Output<string>;
     /**
      * The date and time of when the app was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The dedicated egress IP addresses associated with the app.
      */
-    public readonly dedicatedIps!: pulumi.Output<outputs.AppDedicatedIp[]>;
+    declare public readonly dedicatedIps: pulumi.Output<outputs.AppDedicatedIp[]>;
     /**
      * The default URL to access the app.
      */
-    public /*out*/ readonly defaultIngress!: pulumi.Output<string>;
+    declare public /*out*/ readonly defaultIngress: pulumi.Output<string>;
     /**
      * The live domain of the app.
      */
-    public /*out*/ readonly liveDomain!: pulumi.Output<string>;
+    declare public /*out*/ readonly liveDomain: pulumi.Output<string>;
     /**
      * The live URL of the app.
      */
-    public /*out*/ readonly liveUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly liveUrl: pulumi.Output<string>;
     /**
      * The ID of the project that the app is assigned to.
      *
@@ -207,15 +207,15 @@ export class App extends pulumi.CustomResource {
      *
      * A `service` can contain:
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * A DigitalOcean App spec describing the app.
      */
-    public readonly spec!: pulumi.Output<outputs.AppSpec | undefined>;
+    declare public readonly spec: pulumi.Output<outputs.AppSpec | undefined>;
     /**
      * The date and time of when the app was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a App resource with the given unique name, arguments, and options.
@@ -230,21 +230,21 @@ export class App extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as AppState | undefined;
-            resourceInputs["activeDeploymentId"] = state ? state.activeDeploymentId : undefined;
-            resourceInputs["appUrn"] = state ? state.appUrn : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dedicatedIps"] = state ? state.dedicatedIps : undefined;
-            resourceInputs["defaultIngress"] = state ? state.defaultIngress : undefined;
-            resourceInputs["liveDomain"] = state ? state.liveDomain : undefined;
-            resourceInputs["liveUrl"] = state ? state.liveUrl : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["spec"] = state ? state.spec : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["activeDeploymentId"] = state?.activeDeploymentId;
+            resourceInputs["appUrn"] = state?.appUrn;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dedicatedIps"] = state?.dedicatedIps;
+            resourceInputs["defaultIngress"] = state?.defaultIngress;
+            resourceInputs["liveDomain"] = state?.liveDomain;
+            resourceInputs["liveUrl"] = state?.liveUrl;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["spec"] = state?.spec;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as AppArgs | undefined;
-            resourceInputs["dedicatedIps"] = args ? args.dedicatedIps : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["dedicatedIps"] = args?.dedicatedIps;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["spec"] = args?.spec;
             resourceInputs["activeDeploymentId"] = undefined /*out*/;
             resourceInputs["appUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;

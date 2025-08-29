@@ -85,75 +85,75 @@ export class DatabaseKafkaConfig extends pulumi.CustomResource {
     /**
      * Enable auto creation of topics.
      */
-    public readonly autoCreateTopicsEnable!: pulumi.Output<boolean>;
+    declare public readonly autoCreateTopicsEnable: pulumi.Output<boolean>;
     /**
      * The ID of the target Kafka cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
      */
-    public readonly groupInitialRebalanceDelayMs!: pulumi.Output<number>;
+    declare public readonly groupInitialRebalanceDelayMs: pulumi.Output<number>;
     /**
      * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    public readonly groupMaxSessionTimeoutMs!: pulumi.Output<number>;
+    declare public readonly groupMaxSessionTimeoutMs: pulumi.Output<number>;
     /**
      * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    public readonly groupMinSessionTimeoutMs!: pulumi.Output<number>;
+    declare public readonly groupMinSessionTimeoutMs: pulumi.Output<number>;
     /**
      * How long are delete records retained?
      */
-    public readonly logCleanerDeleteRetentionMs!: pulumi.Output<number>;
+    declare public readonly logCleanerDeleteRetentionMs: pulumi.Output<number>;
     /**
      * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
-    public readonly logCleanerMinCompactionLagMs!: pulumi.Output<string>;
+    declare public readonly logCleanerMinCompactionLagMs: pulumi.Output<string>;
     /**
      * The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
      */
-    public readonly logFlushIntervalMs!: pulumi.Output<string>;
+    declare public readonly logFlushIntervalMs: pulumi.Output<string>;
     /**
      * The interval with which Kafka adds an entry to the offset index.
      */
-    public readonly logIndexIntervalBytes!: pulumi.Output<number>;
+    declare public readonly logIndexIntervalBytes: pulumi.Output<number>;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      */
-    public readonly logMessageDownconversionEnable!: pulumi.Output<boolean>;
+    declare public readonly logMessageDownconversionEnable: pulumi.Output<boolean>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
      */
-    public readonly logMessageTimestampDifferenceMaxMs!: pulumi.Output<string>;
+    declare public readonly logMessageTimestampDifferenceMaxMs: pulumi.Output<string>;
     /**
      * Controls whether to preallocate a file when creating a new segment.
      */
-    public readonly logPreallocate!: pulumi.Output<boolean>;
+    declare public readonly logPreallocate: pulumi.Output<boolean>;
     /**
      * The maximum size of the log before deleting messages.
      */
-    public readonly logRetentionBytes!: pulumi.Output<string>;
+    declare public readonly logRetentionBytes: pulumi.Output<string>;
     /**
      * The number of hours to keep a log file before deleting it.
      */
-    public readonly logRetentionHours!: pulumi.Output<number>;
+    declare public readonly logRetentionHours: pulumi.Output<number>;
     /**
      * The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
      */
-    public readonly logRetentionMs!: pulumi.Output<string>;
+    declare public readonly logRetentionMs: pulumi.Output<string>;
     /**
      * The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
      */
-    public readonly logRollJitterMs!: pulumi.Output<string>;
+    declare public readonly logRollJitterMs: pulumi.Output<string>;
     /**
      * The amount of time to wait before deleting a file from the filesystem.
      */
-    public readonly logSegmentDeleteDelayMs!: pulumi.Output<number>;
+    declare public readonly logSegmentDeleteDelayMs: pulumi.Output<number>;
     /**
      * The maximum size of message that the server can receive.
      */
-    public readonly messageMaxBytes!: pulumi.Output<number>;
+    declare public readonly messageMaxBytes: pulumi.Output<number>;
 
     /**
      * Create a DatabaseKafkaConfig resource with the given unique name, arguments, and options.
@@ -168,47 +168,47 @@ export class DatabaseKafkaConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseKafkaConfigState | undefined;
-            resourceInputs["autoCreateTopicsEnable"] = state ? state.autoCreateTopicsEnable : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["groupInitialRebalanceDelayMs"] = state ? state.groupInitialRebalanceDelayMs : undefined;
-            resourceInputs["groupMaxSessionTimeoutMs"] = state ? state.groupMaxSessionTimeoutMs : undefined;
-            resourceInputs["groupMinSessionTimeoutMs"] = state ? state.groupMinSessionTimeoutMs : undefined;
-            resourceInputs["logCleanerDeleteRetentionMs"] = state ? state.logCleanerDeleteRetentionMs : undefined;
-            resourceInputs["logCleanerMinCompactionLagMs"] = state ? state.logCleanerMinCompactionLagMs : undefined;
-            resourceInputs["logFlushIntervalMs"] = state ? state.logFlushIntervalMs : undefined;
-            resourceInputs["logIndexIntervalBytes"] = state ? state.logIndexIntervalBytes : undefined;
-            resourceInputs["logMessageDownconversionEnable"] = state ? state.logMessageDownconversionEnable : undefined;
-            resourceInputs["logMessageTimestampDifferenceMaxMs"] = state ? state.logMessageTimestampDifferenceMaxMs : undefined;
-            resourceInputs["logPreallocate"] = state ? state.logPreallocate : undefined;
-            resourceInputs["logRetentionBytes"] = state ? state.logRetentionBytes : undefined;
-            resourceInputs["logRetentionHours"] = state ? state.logRetentionHours : undefined;
-            resourceInputs["logRetentionMs"] = state ? state.logRetentionMs : undefined;
-            resourceInputs["logRollJitterMs"] = state ? state.logRollJitterMs : undefined;
-            resourceInputs["logSegmentDeleteDelayMs"] = state ? state.logSegmentDeleteDelayMs : undefined;
-            resourceInputs["messageMaxBytes"] = state ? state.messageMaxBytes : undefined;
+            resourceInputs["autoCreateTopicsEnable"] = state?.autoCreateTopicsEnable;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["groupInitialRebalanceDelayMs"] = state?.groupInitialRebalanceDelayMs;
+            resourceInputs["groupMaxSessionTimeoutMs"] = state?.groupMaxSessionTimeoutMs;
+            resourceInputs["groupMinSessionTimeoutMs"] = state?.groupMinSessionTimeoutMs;
+            resourceInputs["logCleanerDeleteRetentionMs"] = state?.logCleanerDeleteRetentionMs;
+            resourceInputs["logCleanerMinCompactionLagMs"] = state?.logCleanerMinCompactionLagMs;
+            resourceInputs["logFlushIntervalMs"] = state?.logFlushIntervalMs;
+            resourceInputs["logIndexIntervalBytes"] = state?.logIndexIntervalBytes;
+            resourceInputs["logMessageDownconversionEnable"] = state?.logMessageDownconversionEnable;
+            resourceInputs["logMessageTimestampDifferenceMaxMs"] = state?.logMessageTimestampDifferenceMaxMs;
+            resourceInputs["logPreallocate"] = state?.logPreallocate;
+            resourceInputs["logRetentionBytes"] = state?.logRetentionBytes;
+            resourceInputs["logRetentionHours"] = state?.logRetentionHours;
+            resourceInputs["logRetentionMs"] = state?.logRetentionMs;
+            resourceInputs["logRollJitterMs"] = state?.logRollJitterMs;
+            resourceInputs["logSegmentDeleteDelayMs"] = state?.logSegmentDeleteDelayMs;
+            resourceInputs["messageMaxBytes"] = state?.messageMaxBytes;
         } else {
             const args = argsOrState as DatabaseKafkaConfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["autoCreateTopicsEnable"] = args ? args.autoCreateTopicsEnable : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["groupInitialRebalanceDelayMs"] = args ? args.groupInitialRebalanceDelayMs : undefined;
-            resourceInputs["groupMaxSessionTimeoutMs"] = args ? args.groupMaxSessionTimeoutMs : undefined;
-            resourceInputs["groupMinSessionTimeoutMs"] = args ? args.groupMinSessionTimeoutMs : undefined;
-            resourceInputs["logCleanerDeleteRetentionMs"] = args ? args.logCleanerDeleteRetentionMs : undefined;
-            resourceInputs["logCleanerMinCompactionLagMs"] = args ? args.logCleanerMinCompactionLagMs : undefined;
-            resourceInputs["logFlushIntervalMs"] = args ? args.logFlushIntervalMs : undefined;
-            resourceInputs["logIndexIntervalBytes"] = args ? args.logIndexIntervalBytes : undefined;
-            resourceInputs["logMessageDownconversionEnable"] = args ? args.logMessageDownconversionEnable : undefined;
-            resourceInputs["logMessageTimestampDifferenceMaxMs"] = args ? args.logMessageTimestampDifferenceMaxMs : undefined;
-            resourceInputs["logPreallocate"] = args ? args.logPreallocate : undefined;
-            resourceInputs["logRetentionBytes"] = args ? args.logRetentionBytes : undefined;
-            resourceInputs["logRetentionHours"] = args ? args.logRetentionHours : undefined;
-            resourceInputs["logRetentionMs"] = args ? args.logRetentionMs : undefined;
-            resourceInputs["logRollJitterMs"] = args ? args.logRollJitterMs : undefined;
-            resourceInputs["logSegmentDeleteDelayMs"] = args ? args.logSegmentDeleteDelayMs : undefined;
-            resourceInputs["messageMaxBytes"] = args ? args.messageMaxBytes : undefined;
+            resourceInputs["autoCreateTopicsEnable"] = args?.autoCreateTopicsEnable;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["groupInitialRebalanceDelayMs"] = args?.groupInitialRebalanceDelayMs;
+            resourceInputs["groupMaxSessionTimeoutMs"] = args?.groupMaxSessionTimeoutMs;
+            resourceInputs["groupMinSessionTimeoutMs"] = args?.groupMinSessionTimeoutMs;
+            resourceInputs["logCleanerDeleteRetentionMs"] = args?.logCleanerDeleteRetentionMs;
+            resourceInputs["logCleanerMinCompactionLagMs"] = args?.logCleanerMinCompactionLagMs;
+            resourceInputs["logFlushIntervalMs"] = args?.logFlushIntervalMs;
+            resourceInputs["logIndexIntervalBytes"] = args?.logIndexIntervalBytes;
+            resourceInputs["logMessageDownconversionEnable"] = args?.logMessageDownconversionEnable;
+            resourceInputs["logMessageTimestampDifferenceMaxMs"] = args?.logMessageTimestampDifferenceMaxMs;
+            resourceInputs["logPreallocate"] = args?.logPreallocate;
+            resourceInputs["logRetentionBytes"] = args?.logRetentionBytes;
+            resourceInputs["logRetentionHours"] = args?.logRetentionHours;
+            resourceInputs["logRetentionMs"] = args?.logRetentionMs;
+            resourceInputs["logRollJitterMs"] = args?.logRollJitterMs;
+            resourceInputs["logSegmentDeleteDelayMs"] = args?.logSegmentDeleteDelayMs;
+            resourceInputs["messageMaxBytes"] = args?.messageMaxBytes;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseKafkaConfig.__pulumiType, name, resourceInputs, opts);

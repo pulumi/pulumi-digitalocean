@@ -38,45 +38,45 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
     /**
      * The time when the knowledge base was added to the agent.
      */
-    public readonly addedToAgentAt!: pulumi.Output<string | undefined>;
+    declare public readonly addedToAgentAt: pulumi.Output<string | undefined>;
     /**
      * The time when the knowledge base was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
      */
-    public readonly databaseId!: pulumi.Output<string | undefined>;
+    declare public readonly databaseId: pulumi.Output<string | undefined>;
     /**
      * Data sources for the knowledge base
      */
-    public readonly datasources!: pulumi.Output<outputs.GenaiKnowledgeBaseDataSource[]>;
+    declare public readonly datasources: pulumi.Output<outputs.GenaiKnowledgeBaseDataSource[]>;
     /**
      * The unique identifier of the embedding model
      */
-    public readonly embeddingModelUuid!: pulumi.Output<string>;
+    declare public readonly embeddingModelUuid: pulumi.Output<string>;
     /**
      * Indicates whether the knowledge base is public or private.
      */
-    public readonly isPublic!: pulumi.Output<boolean | undefined>;
+    declare public readonly isPublic: pulumi.Output<boolean | undefined>;
     /**
      * The last indexing job for the knowledge base.
      */
-    public readonly lastIndexingJobs!: pulumi.Output<outputs.GenaiKnowledgeBaseLastIndexingJob[] | undefined>;
+    declare public readonly lastIndexingJobs: pulumi.Output<outputs.GenaiKnowledgeBaseLastIndexingJob[] | undefined>;
     /**
      * The name of the knowledge base.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The unique identifier of the project to which the knowledge base belongs.
      */
-    public readonly projectId!: pulumi.Output<string>;
-    public readonly region!: pulumi.Output<string>;
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly projectId: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The unique identifier of the VPC to which the knowledge base belongs.
      */
-    public readonly vpcUuid!: pulumi.Output<string | undefined>;
+    declare public readonly vpcUuid: pulumi.Output<string | undefined>;
 
     /**
      * Create a GenaiKnowledgeBase resource with the given unique name, arguments, and options.
@@ -91,43 +91,43 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiKnowledgeBaseState | undefined;
-            resourceInputs["addedToAgentAt"] = state ? state.addedToAgentAt : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["databaseId"] = state ? state.databaseId : undefined;
-            resourceInputs["datasources"] = state ? state.datasources : undefined;
-            resourceInputs["embeddingModelUuid"] = state ? state.embeddingModelUuid : undefined;
-            resourceInputs["isPublic"] = state ? state.isPublic : undefined;
-            resourceInputs["lastIndexingJobs"] = state ? state.lastIndexingJobs : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["addedToAgentAt"] = state?.addedToAgentAt;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["databaseId"] = state?.databaseId;
+            resourceInputs["datasources"] = state?.datasources;
+            resourceInputs["embeddingModelUuid"] = state?.embeddingModelUuid;
+            resourceInputs["isPublic"] = state?.isPublic;
+            resourceInputs["lastIndexingJobs"] = state?.lastIndexingJobs;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["vpcUuid"] = state?.vpcUuid;
         } else {
             const args = argsOrState as GenaiKnowledgeBaseArgs | undefined;
-            if ((!args || args.datasources === undefined) && !opts.urn) {
+            if (args?.datasources === undefined && !opts.urn) {
                 throw new Error("Missing required property 'datasources'");
             }
-            if ((!args || args.embeddingModelUuid === undefined) && !opts.urn) {
+            if (args?.embeddingModelUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'embeddingModelUuid'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["addedToAgentAt"] = args ? args.addedToAgentAt : undefined;
-            resourceInputs["databaseId"] = args ? args.databaseId : undefined;
-            resourceInputs["datasources"] = args ? args.datasources : undefined;
-            resourceInputs["embeddingModelUuid"] = args ? args.embeddingModelUuid : undefined;
-            resourceInputs["isPublic"] = args ? args.isPublic : undefined;
-            resourceInputs["lastIndexingJobs"] = args ? args.lastIndexingJobs : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["addedToAgentAt"] = args?.addedToAgentAt;
+            resourceInputs["databaseId"] = args?.databaseId;
+            resourceInputs["datasources"] = args?.datasources;
+            resourceInputs["embeddingModelUuid"] = args?.embeddingModelUuid;
+            resourceInputs["isPublic"] = args?.isPublic;
+            resourceInputs["lastIndexingJobs"] = args?.lastIndexingJobs;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["vpcUuid"] = args?.vpcUuid;
             resourceInputs["createdAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

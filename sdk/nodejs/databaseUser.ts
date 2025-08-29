@@ -138,36 +138,36 @@ export class DatabaseUser extends pulumi.CustomResource {
     /**
      * Access certificate for TLS client authentication. (Kafka only)
      */
-    public /*out*/ readonly accessCert!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessCert: pulumi.Output<string>;
     /**
      * Access key for TLS client authentication. (Kafka only)
      */
-    public /*out*/ readonly accessKey!: pulumi.Output<string>;
+    declare public /*out*/ readonly accessKey: pulumi.Output<string>;
     /**
      * The ID of the original source database cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      */
-    public readonly mysqlAuthPlugin!: pulumi.Output<string | undefined>;
+    declare public readonly mysqlAuthPlugin: pulumi.Output<string | undefined>;
     /**
      * The name for the database user.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Password for the database user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * Role for the database user. The value will be either "primary" or "normal".
      */
-    public /*out*/ readonly role!: pulumi.Output<string>;
+    declare public /*out*/ readonly role: pulumi.Output<string>;
     /**
      * Contains optional settings for the user.
      * The `settings` block is documented below.
      */
-    public readonly settings!: pulumi.Output<outputs.DatabaseUserSetting[] | undefined>;
+    declare public readonly settings: pulumi.Output<outputs.DatabaseUserSetting[] | undefined>;
 
     /**
      * Create a DatabaseUser resource with the given unique name, arguments, and options.
@@ -182,23 +182,23 @@ export class DatabaseUser extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseUserState | undefined;
-            resourceInputs["accessCert"] = state ? state.accessCert : undefined;
-            resourceInputs["accessKey"] = state ? state.accessKey : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["mysqlAuthPlugin"] = state ? state.mysqlAuthPlugin : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["role"] = state ? state.role : undefined;
-            resourceInputs["settings"] = state ? state.settings : undefined;
+            resourceInputs["accessCert"] = state?.accessCert;
+            resourceInputs["accessKey"] = state?.accessKey;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["mysqlAuthPlugin"] = state?.mysqlAuthPlugin;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["role"] = state?.role;
+            resourceInputs["settings"] = state?.settings;
         } else {
             const args = argsOrState as DatabaseUserArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["mysqlAuthPlugin"] = args ? args.mysqlAuthPlugin : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["settings"] = args ? args.settings : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["mysqlAuthPlugin"] = args?.mysqlAuthPlugin;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["settings"] = args?.settings;
             resourceInputs["accessCert"] = undefined /*out*/;
             resourceInputs["accessKey"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;

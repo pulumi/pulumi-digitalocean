@@ -65,111 +65,111 @@ export class KubernetesCluster extends pulumi.CustomResource {
     /**
      * Block containing options for the AMD GPU device metrics exporter component.
      */
-    public readonly amdGpuDeviceMetricsExporterPlugin!: pulumi.Output<outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>;
+    declare public readonly amdGpuDeviceMetricsExporterPlugin: pulumi.Output<outputs.KubernetesClusterAmdGpuDeviceMetricsExporterPlugin>;
     /**
      * Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
      */
-    public readonly amdGpuDevicePlugin!: pulumi.Output<outputs.KubernetesClusterAmdGpuDevicePlugin>;
+    declare public readonly amdGpuDevicePlugin: pulumi.Output<outputs.KubernetesClusterAmdGpuDevicePlugin>;
     /**
      * A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
      */
-    public readonly autoUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * Block containing options for cluster auto-scaling.
      */
-    public readonly clusterAutoscalerConfigurations!: pulumi.Output<outputs.KubernetesClusterClusterAutoscalerConfiguration[] | undefined>;
+    declare public readonly clusterAutoscalerConfigurations: pulumi.Output<outputs.KubernetesClusterClusterAutoscalerConfiguration[] | undefined>;
     /**
      * The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
-    public readonly clusterSubnet!: pulumi.Output<string>;
+    declare public readonly clusterSubnet: pulumi.Output<string>;
     /**
      * The uniform resource name (URN) for the Kubernetes cluster.
      */
-    public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterUrn: pulumi.Output<string>;
     /**
      * A block representing the cluster's control plane firewall
      */
-    public readonly controlPlaneFirewall!: pulumi.Output<outputs.KubernetesClusterControlPlaneFirewall>;
+    declare public readonly controlPlaneFirewall: pulumi.Output<outputs.KubernetesClusterControlPlaneFirewall>;
     /**
      * The date and time when the node was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
      */
-    public readonly destroyAllAssociatedResources!: pulumi.Output<boolean | undefined>;
+    declare public readonly destroyAllAssociatedResources: pulumi.Output<boolean | undefined>;
     /**
      * The base URL of the API server on the Kubernetes master node.
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
      */
-    public readonly ha!: pulumi.Output<boolean | undefined>;
+    declare public readonly ha: pulumi.Output<boolean | undefined>;
     /**
      * The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
      */
-    public /*out*/ readonly ipv4Address!: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv4Address: pulumi.Output<string>;
     /**
      * A representation of the Kubernetes cluster's kubeconfig with the following attributes:
      */
-    public /*out*/ readonly kubeConfigs!: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
+    declare public /*out*/ readonly kubeConfigs: pulumi.Output<outputs.KubernetesClusterKubeConfig[]>;
     /**
      * The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
      */
-    public readonly kubeconfigExpireSeconds!: pulumi.Output<number | undefined>;
+    declare public readonly kubeconfigExpireSeconds: pulumi.Output<number | undefined>;
     /**
      * A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      */
-    public readonly maintenancePolicy!: pulumi.Output<outputs.KubernetesClusterMaintenancePolicy>;
+    declare public readonly maintenancePolicy: pulumi.Output<outputs.KubernetesClusterMaintenancePolicy>;
     /**
      * A name for the Kubernetes cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
-    public readonly nodePool!: pulumi.Output<outputs.KubernetesClusterNodePool>;
+    declare public readonly nodePool: pulumi.Output<outputs.KubernetesClusterNodePool>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
      */
-    public readonly registryIntegration!: pulumi.Output<boolean | undefined>;
+    declare public readonly registryIntegration: pulumi.Output<boolean | undefined>;
     /**
      * Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
      */
-    public readonly routingAgent!: pulumi.Output<outputs.KubernetesClusterRoutingAgent>;
+    declare public readonly routingAgent: pulumi.Output<outputs.KubernetesClusterRoutingAgent>;
     /**
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
-    public readonly serviceSubnet!: pulumi.Output<string>;
+    declare public readonly serviceSubnet: pulumi.Output<string>;
     /**
      * A string indicating the current status of the individual node.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: true
      */
-    public readonly surgeUpgrade!: pulumi.Output<boolean | undefined>;
+    declare public readonly surgeUpgrade: pulumi.Output<boolean | undefined>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The date and time when the node was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
      */
-    public readonly version!: pulumi.Output<string>;
+    declare public readonly version: pulumi.Output<string>;
     /**
      * The ID of the VPC where the Kubernetes cluster will be located.
      */
-    public readonly vpcUuid!: pulumi.Output<string>;
+    declare public readonly vpcUuid: pulumi.Output<string>;
 
     /**
      * Create a KubernetesCluster resource with the given unique name, arguments, and options.
@@ -184,64 +184,64 @@ export class KubernetesCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesClusterState | undefined;
-            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = state ? state.amdGpuDeviceMetricsExporterPlugin : undefined;
-            resourceInputs["amdGpuDevicePlugin"] = state ? state.amdGpuDevicePlugin : undefined;
-            resourceInputs["autoUpgrade"] = state ? state.autoUpgrade : undefined;
-            resourceInputs["clusterAutoscalerConfigurations"] = state ? state.clusterAutoscalerConfigurations : undefined;
-            resourceInputs["clusterSubnet"] = state ? state.clusterSubnet : undefined;
-            resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
-            resourceInputs["controlPlaneFirewall"] = state ? state.controlPlaneFirewall : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["destroyAllAssociatedResources"] = state ? state.destroyAllAssociatedResources : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["ha"] = state ? state.ha : undefined;
-            resourceInputs["ipv4Address"] = state ? state.ipv4Address : undefined;
-            resourceInputs["kubeConfigs"] = state ? state.kubeConfigs : undefined;
-            resourceInputs["kubeconfigExpireSeconds"] = state ? state.kubeconfigExpireSeconds : undefined;
-            resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodePool"] = state ? state.nodePool : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["registryIntegration"] = state ? state.registryIntegration : undefined;
-            resourceInputs["routingAgent"] = state ? state.routingAgent : undefined;
-            resourceInputs["serviceSubnet"] = state ? state.serviceSubnet : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["surgeUpgrade"] = state ? state.surgeUpgrade : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
-            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = state?.amdGpuDeviceMetricsExporterPlugin;
+            resourceInputs["amdGpuDevicePlugin"] = state?.amdGpuDevicePlugin;
+            resourceInputs["autoUpgrade"] = state?.autoUpgrade;
+            resourceInputs["clusterAutoscalerConfigurations"] = state?.clusterAutoscalerConfigurations;
+            resourceInputs["clusterSubnet"] = state?.clusterSubnet;
+            resourceInputs["clusterUrn"] = state?.clusterUrn;
+            resourceInputs["controlPlaneFirewall"] = state?.controlPlaneFirewall;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["destroyAllAssociatedResources"] = state?.destroyAllAssociatedResources;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["ha"] = state?.ha;
+            resourceInputs["ipv4Address"] = state?.ipv4Address;
+            resourceInputs["kubeConfigs"] = state?.kubeConfigs;
+            resourceInputs["kubeconfigExpireSeconds"] = state?.kubeconfigExpireSeconds;
+            resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodePool"] = state?.nodePool;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["registryIntegration"] = state?.registryIntegration;
+            resourceInputs["routingAgent"] = state?.routingAgent;
+            resourceInputs["serviceSubnet"] = state?.serviceSubnet;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["surgeUpgrade"] = state?.surgeUpgrade;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["version"] = state?.version;
+            resourceInputs["vpcUuid"] = state?.vpcUuid;
         } else {
             const args = argsOrState as KubernetesClusterArgs | undefined;
-            if ((!args || args.nodePool === undefined) && !opts.urn) {
+            if (args?.nodePool === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodePool'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.version === undefined) && !opts.urn) {
+            if (args?.version === undefined && !opts.urn) {
                 throw new Error("Missing required property 'version'");
             }
-            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = args ? args.amdGpuDeviceMetricsExporterPlugin : undefined;
-            resourceInputs["amdGpuDevicePlugin"] = args ? args.amdGpuDevicePlugin : undefined;
-            resourceInputs["autoUpgrade"] = args ? args.autoUpgrade : undefined;
-            resourceInputs["clusterAutoscalerConfigurations"] = args ? args.clusterAutoscalerConfigurations : undefined;
-            resourceInputs["clusterSubnet"] = args ? args.clusterSubnet : undefined;
-            resourceInputs["controlPlaneFirewall"] = args ? args.controlPlaneFirewall : undefined;
-            resourceInputs["destroyAllAssociatedResources"] = args ? args.destroyAllAssociatedResources : undefined;
-            resourceInputs["ha"] = args ? args.ha : undefined;
-            resourceInputs["kubeconfigExpireSeconds"] = args ? args.kubeconfigExpireSeconds : undefined;
-            resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodePool"] = args ? args.nodePool : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["registryIntegration"] = args ? args.registryIntegration : undefined;
-            resourceInputs["routingAgent"] = args ? args.routingAgent : undefined;
-            resourceInputs["serviceSubnet"] = args ? args.serviceSubnet : undefined;
-            resourceInputs["surgeUpgrade"] = args ? args.surgeUpgrade : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
-            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["amdGpuDeviceMetricsExporterPlugin"] = args?.amdGpuDeviceMetricsExporterPlugin;
+            resourceInputs["amdGpuDevicePlugin"] = args?.amdGpuDevicePlugin;
+            resourceInputs["autoUpgrade"] = args?.autoUpgrade;
+            resourceInputs["clusterAutoscalerConfigurations"] = args?.clusterAutoscalerConfigurations;
+            resourceInputs["clusterSubnet"] = args?.clusterSubnet;
+            resourceInputs["controlPlaneFirewall"] = args?.controlPlaneFirewall;
+            resourceInputs["destroyAllAssociatedResources"] = args?.destroyAllAssociatedResources;
+            resourceInputs["ha"] = args?.ha;
+            resourceInputs["kubeconfigExpireSeconds"] = args?.kubeconfigExpireSeconds;
+            resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodePool"] = args?.nodePool;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["registryIntegration"] = args?.registryIntegration;
+            resourceInputs["routingAgent"] = args?.routingAgent;
+            resourceInputs["serviceSubnet"] = args?.serviceSubnet;
+            resourceInputs["surgeUpgrade"] = args?.surgeUpgrade;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
+            resourceInputs["vpcUuid"] = args?.vpcUuid;
             resourceInputs["clusterUrn"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;

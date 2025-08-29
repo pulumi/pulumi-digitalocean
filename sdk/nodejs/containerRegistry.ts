@@ -60,31 +60,31 @@ export class ContainerRegistry extends pulumi.CustomResource {
     /**
      * The date and time when the registry was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * The name of the container_registry
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The domain of the container registry. Ex: `registry.digitalocean.com`
      */
-    public /*out*/ readonly serverUrl!: pulumi.Output<string>;
+    declare public /*out*/ readonly serverUrl: pulumi.Output<string>;
     /**
      * The amount of storage used in the registry in bytes.
      */
-    public /*out*/ readonly storageUsageBytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly storageUsageBytes: pulumi.Output<number>;
     /**
      * The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
      */
-    public readonly subscriptionTierSlug!: pulumi.Output<string>;
+    declare public readonly subscriptionTierSlug: pulumi.Output<string>;
 
     /**
      * Create a ContainerRegistry resource with the given unique name, arguments, and options.
@@ -99,21 +99,21 @@ export class ContainerRegistry extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerRegistryState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["serverUrl"] = state ? state.serverUrl : undefined;
-            resourceInputs["storageUsageBytes"] = state ? state.storageUsageBytes : undefined;
-            resourceInputs["subscriptionTierSlug"] = state ? state.subscriptionTierSlug : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["serverUrl"] = state?.serverUrl;
+            resourceInputs["storageUsageBytes"] = state?.storageUsageBytes;
+            resourceInputs["subscriptionTierSlug"] = state?.subscriptionTierSlug;
         } else {
             const args = argsOrState as ContainerRegistryArgs | undefined;
-            if ((!args || args.subscriptionTierSlug === undefined) && !opts.urn) {
+            if (args?.subscriptionTierSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'subscriptionTierSlug'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["subscriptionTierSlug"] = args ? args.subscriptionTierSlug : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["subscriptionTierSlug"] = args?.subscriptionTierSlug;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["serverUrl"] = undefined /*out*/;

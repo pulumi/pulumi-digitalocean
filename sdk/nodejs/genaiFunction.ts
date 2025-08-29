@@ -35,35 +35,35 @@ export class GenaiFunction extends pulumi.CustomResource {
     /**
      * The name of the GenAI resource.
      */
-    public readonly agentId!: pulumi.Output<string>;
+    declare public readonly agentId: pulumi.Output<string>;
     /**
      * The region where the GenAI resource will be created.
      */
-    public readonly description!: pulumi.Output<string>;
+    declare public readonly description: pulumi.Output<string>;
     /**
      * The model to use for the GenAI resource.
      */
-    public readonly faasName!: pulumi.Output<string | undefined>;
+    declare public readonly faasName: pulumi.Output<string | undefined>;
     /**
      * The current status of the GenAI resource.
      */
-    public readonly faasNamespace!: pulumi.Output<string>;
+    declare public readonly faasNamespace: pulumi.Output<string>;
     /**
      * The creation timestamp of the GenAI resource.
      */
-    public readonly functionName!: pulumi.Output<string>;
+    declare public readonly functionName: pulumi.Output<string>;
     /**
      * The unique identifier of the GenAI function.
      */
-    public /*out*/ readonly functionUuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly functionUuid: pulumi.Output<string>;
     /**
      * The input schema of the GenAI resource.
      */
-    public readonly inputSchema!: pulumi.Output<string>;
+    declare public readonly inputSchema: pulumi.Output<string>;
     /**
      * The output schema of the GenAI resource.
      */
-    public readonly outputSchema!: pulumi.Output<string | undefined>;
+    declare public readonly outputSchema: pulumi.Output<string | undefined>;
 
     /**
      * Create a GenaiFunction resource with the given unique name, arguments, and options.
@@ -78,38 +78,38 @@ export class GenaiFunction extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiFunctionState | undefined;
-            resourceInputs["agentId"] = state ? state.agentId : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["faasName"] = state ? state.faasName : undefined;
-            resourceInputs["faasNamespace"] = state ? state.faasNamespace : undefined;
-            resourceInputs["functionName"] = state ? state.functionName : undefined;
-            resourceInputs["functionUuid"] = state ? state.functionUuid : undefined;
-            resourceInputs["inputSchema"] = state ? state.inputSchema : undefined;
-            resourceInputs["outputSchema"] = state ? state.outputSchema : undefined;
+            resourceInputs["agentId"] = state?.agentId;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["faasName"] = state?.faasName;
+            resourceInputs["faasNamespace"] = state?.faasNamespace;
+            resourceInputs["functionName"] = state?.functionName;
+            resourceInputs["functionUuid"] = state?.functionUuid;
+            resourceInputs["inputSchema"] = state?.inputSchema;
+            resourceInputs["outputSchema"] = state?.outputSchema;
         } else {
             const args = argsOrState as GenaiFunctionArgs | undefined;
-            if ((!args || args.agentId === undefined) && !opts.urn) {
+            if (args?.agentId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentId'");
             }
-            if ((!args || args.description === undefined) && !opts.urn) {
+            if (args?.description === undefined && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.faasNamespace === undefined) && !opts.urn) {
+            if (args?.faasNamespace === undefined && !opts.urn) {
                 throw new Error("Missing required property 'faasNamespace'");
             }
-            if ((!args || args.functionName === undefined) && !opts.urn) {
+            if (args?.functionName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'functionName'");
             }
-            if ((!args || args.inputSchema === undefined) && !opts.urn) {
+            if (args?.inputSchema === undefined && !opts.urn) {
                 throw new Error("Missing required property 'inputSchema'");
             }
-            resourceInputs["agentId"] = args ? args.agentId : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["faasName"] = args ? args.faasName : undefined;
-            resourceInputs["faasNamespace"] = args ? args.faasNamespace : undefined;
-            resourceInputs["functionName"] = args ? args.functionName : undefined;
-            resourceInputs["inputSchema"] = args ? args.inputSchema : undefined;
-            resourceInputs["outputSchema"] = args ? args.outputSchema : undefined;
+            resourceInputs["agentId"] = args?.agentId;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["faasName"] = args?.faasName;
+            resourceInputs["faasNamespace"] = args?.faasNamespace;
+            resourceInputs["functionName"] = args?.functionName;
+            resourceInputs["inputSchema"] = args?.inputSchema;
+            resourceInputs["outputSchema"] = args?.outputSchema;
             resourceInputs["functionUuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

@@ -36,9 +36,7 @@ class DatabaseValkeyConfigArgs:
         The set of arguments for constructing a DatabaseValkeyConfig resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
-        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-               take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-               valkey_persistence is set to off.
+        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         :param pulumi.Input[_builtins.int] io_threads: The Valkey IO thread count.
         :param pulumi.Input[_builtins.int] lfu_decay_time: The LFU maxmemory policy counter decay time in minutes.
         :param pulumi.Input[_builtins.int] lfu_log_factor: The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
@@ -48,9 +46,7 @@ class DatabaseValkeyConfigArgs:
         :param pulumi.Input[_builtins.int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
-        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-               scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-               reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if acl_channels_default is not None:
@@ -106,9 +102,7 @@ class DatabaseValkeyConfigArgs:
     @pulumi.getter(name="frequentSnapshots")
     def frequent_snapshots(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        valkey_persistence is set to off.
+        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         """
         return pulumi.get(self, "frequent_snapshots")
 
@@ -228,9 +222,7 @@ class DatabaseValkeyConfigArgs:
     @pulumi.getter(name="valkeyActiveExpireEffort")
     def valkey_active_expire_effort(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         return pulumi.get(self, "valkey_active_expire_effort")
 
@@ -259,9 +251,7 @@ class _DatabaseValkeyConfigState:
         Input properties used for looking up and filtering DatabaseValkeyConfig resources.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
-        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-               take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-               valkey_persistence is set to off.
+        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         :param pulumi.Input[_builtins.int] io_threads: The Valkey IO thread count.
         :param pulumi.Input[_builtins.int] lfu_decay_time: The LFU maxmemory policy counter decay time in minutes.
         :param pulumi.Input[_builtins.int] lfu_log_factor: The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
@@ -271,9 +261,7 @@ class _DatabaseValkeyConfigState:
         :param pulumi.Input[_builtins.int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
-        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-               scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-               reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         if acl_channels_default is not None:
             pulumi.set(__self__, "acl_channels_default", acl_channels_default)
@@ -330,9 +318,7 @@ class _DatabaseValkeyConfigState:
     @pulumi.getter(name="frequentSnapshots")
     def frequent_snapshots(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        valkey_persistence is set to off.
+        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         """
         return pulumi.get(self, "frequent_snapshots")
 
@@ -452,9 +438,7 @@ class _DatabaseValkeyConfigState:
     @pulumi.getter(name="valkeyActiveExpireEffort")
     def valkey_active_expire_effort(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         return pulumi.get(self, "valkey_active_expire_effort")
 
@@ -520,9 +504,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
-        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-               take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-               valkey_persistence is set to off.
+        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         :param pulumi.Input[_builtins.int] io_threads: The Valkey IO thread count.
         :param pulumi.Input[_builtins.int] lfu_decay_time: The LFU maxmemory policy counter decay time in minutes.
         :param pulumi.Input[_builtins.int] lfu_log_factor: The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
@@ -532,9 +514,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
-        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-               scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-               reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         ...
     @overload
@@ -659,9 +639,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
-        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-               take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-               valkey_persistence is set to off.
+        :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         :param pulumi.Input[_builtins.int] io_threads: The Valkey IO thread count.
         :param pulumi.Input[_builtins.int] lfu_decay_time: The LFU maxmemory policy counter decay time in minutes.
         :param pulumi.Input[_builtins.int] lfu_log_factor: The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
@@ -671,9 +649,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] pubsub_client_output_buffer_limit: The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
-        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-               scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-               reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -714,9 +690,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
     @pulumi.getter(name="frequentSnapshots")
     def frequent_snapshots(self) -> pulumi.Output[_builtins.bool]:
         """
-        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-        take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-        valkey_persistence is set to off.
+        Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
         """
         return pulumi.get(self, "frequent_snapshots")
 
@@ -796,9 +770,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
     @pulumi.getter(name="valkeyActiveExpireEffort")
     def valkey_active_expire_effort(self) -> pulumi.Output[_builtins.int]:
         """
-        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-        scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-        reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         return pulumi.get(self, "valkey_active_expire_effort")
 

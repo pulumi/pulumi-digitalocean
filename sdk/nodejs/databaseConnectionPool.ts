@@ -73,51 +73,51 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
     /**
      * The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The database for use with the connection pool.
      */
-    public readonly dbName!: pulumi.Output<string>;
+    declare public readonly dbName: pulumi.Output<string>;
     /**
      * The hostname used to connect to the database connection pool.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
      */
-    public readonly mode!: pulumi.Output<string>;
+    declare public readonly mode: pulumi.Output<string>;
     /**
      * The name for the database connection pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Password for the connection pool's user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * Network port that the database connection pool is listening on.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateHost: pulumi.Output<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateUri: pulumi.Output<string>;
     /**
      * The desired size of the PGBouncer connection pool.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The full URI for connecting to the database connection pool.
      */
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * The name of the database user for use with the connection pool. When excluded, all sessions connect to the database as the inbound user.
      */
-    public readonly user!: pulumi.Output<string | undefined>;
+    declare public readonly user: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseConnectionPool resource with the given unique name, arguments, and options.
@@ -132,38 +132,38 @@ export class DatabaseConnectionPool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseConnectionPoolState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["dbName"] = state ? state.dbName : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["mode"] = state ? state.mode : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
-            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["dbName"] = state?.dbName;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["mode"] = state?.mode;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateHost"] = state?.privateHost;
+            resourceInputs["privateUri"] = state?.privateUri;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["user"] = state?.user;
         } else {
             const args = argsOrState as DatabaseConnectionPoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.dbName === undefined) && !opts.urn) {
+            if (args?.dbName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dbName'");
             }
-            if ((!args || args.mode === undefined) && !opts.urn) {
+            if (args?.mode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'mode'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["dbName"] = args ? args.dbName : undefined;
-            resourceInputs["mode"] = args ? args.mode : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["user"] = args ? args.user : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["dbName"] = args?.dbName;
+            resourceInputs["mode"] = args?.mode;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["user"] = args?.user;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;
             resourceInputs["port"] = undefined /*out*/;

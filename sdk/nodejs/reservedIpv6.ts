@@ -57,16 +57,16 @@ export class ReservedIpv6 extends pulumi.CustomResource {
         return obj['__pulumiType'] === ReservedIpv6.__pulumiType;
     }
 
-    public readonly dropletId!: pulumi.Output<number>;
-    public readonly ip!: pulumi.Output<string>;
+    declare public readonly dropletId: pulumi.Output<number>;
+    declare public readonly ip: pulumi.Output<string>;
     /**
      * The region that the reserved IPv6 needs to be reserved to.
      */
-    public readonly regionSlug!: pulumi.Output<string>;
+    declare public readonly regionSlug: pulumi.Output<string>;
     /**
      * the uniform resource name for the reserved ipv6
      */
-    public /*out*/ readonly reservedIpv6Urn!: pulumi.Output<string>;
+    declare public /*out*/ readonly reservedIpv6Urn: pulumi.Output<string>;
 
     /**
      * Create a ReservedIpv6 resource with the given unique name, arguments, and options.
@@ -81,18 +81,18 @@ export class ReservedIpv6 extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservedIpv6State | undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["regionSlug"] = state ? state.regionSlug : undefined;
-            resourceInputs["reservedIpv6Urn"] = state ? state.reservedIpv6Urn : undefined;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["regionSlug"] = state?.regionSlug;
+            resourceInputs["reservedIpv6Urn"] = state?.reservedIpv6Urn;
         } else {
             const args = argsOrState as ReservedIpv6Args | undefined;
-            if ((!args || args.regionSlug === undefined) && !opts.urn) {
+            if (args?.regionSlug === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regionSlug'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
-            resourceInputs["regionSlug"] = args ? args.regionSlug : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["ip"] = args?.ip;
+            resourceInputs["regionSlug"] = args?.regionSlug;
             resourceInputs["reservedIpv6Urn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

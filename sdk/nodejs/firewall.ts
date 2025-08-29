@@ -127,43 +127,43 @@ export class Firewall extends pulumi.CustomResource {
      * A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The list of the IDs of the Droplets assigned
      * to the Firewall (max. 10). If you want to assign more droplets to the
      * Firewall, add Tags to them and use the `tags` argument below.
      */
-    public readonly dropletIds!: pulumi.Output<number[] | undefined>;
+    declare public readonly dropletIds: pulumi.Output<number[] | undefined>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inboundRule` block is documented below.
      */
-    public readonly inboundRules!: pulumi.Output<outputs.FirewallInboundRule[] | undefined>;
+    declare public readonly inboundRules: pulumi.Output<outputs.FirewallInboundRule[] | undefined>;
     /**
      * The Firewall name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outboundRule` block is documented below.
      */
-    public readonly outboundRules!: pulumi.Output<outputs.FirewallOutboundRule[] | undefined>;
+    declare public readonly outboundRules: pulumi.Output<outputs.FirewallOutboundRule[] | undefined>;
     /**
      * An list of object containing the fields, "dropletId",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
      */
-    public /*out*/ readonly pendingChanges!: pulumi.Output<outputs.FirewallPendingChange[]>;
+    declare public /*out*/ readonly pendingChanges: pulumi.Output<outputs.FirewallPendingChange[]>;
     /**
      * A status string indicating the current state of the Firewall.
      * This can be "waiting", "succeeded", or "failed".
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * The names of the Tags assigned to the Firewall (max. 5).
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
 
     /**
      * Create a Firewall resource with the given unique name, arguments, and options.
@@ -178,21 +178,21 @@ export class Firewall extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FirewallState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
-            resourceInputs["inboundRules"] = state ? state.inboundRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["outboundRules"] = state ? state.outboundRules : undefined;
-            resourceInputs["pendingChanges"] = state ? state.pendingChanges : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dropletIds"] = state?.dropletIds;
+            resourceInputs["inboundRules"] = state?.inboundRules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["outboundRules"] = state?.outboundRules;
+            resourceInputs["pendingChanges"] = state?.pendingChanges;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
         } else {
             const args = argsOrState as FirewallArgs | undefined;
-            resourceInputs["dropletIds"] = args ? args.dropletIds : undefined;
-            resourceInputs["inboundRules"] = args ? args.inboundRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["outboundRules"] = args ? args.outboundRules : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["dropletIds"] = args?.dropletIds;
+            resourceInputs["inboundRules"] = args?.inboundRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["outboundRules"] = args?.outboundRules;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["pendingChanges"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;

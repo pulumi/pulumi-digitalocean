@@ -38,9 +38,9 @@ export class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     /**
      * UUID of the Knowledge Base
      */
-    public readonly knowledgeBaseUuid!: pulumi.Output<string>;
-    public readonly spacesDataSource!: pulumi.Output<outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
-    public readonly webCrawlerDataSource!: pulumi.Output<outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
+    declare public readonly knowledgeBaseUuid: pulumi.Output<string>;
+    declare public readonly spacesDataSource: pulumi.Output<outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
+    declare public readonly webCrawlerDataSource: pulumi.Output<outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
 
     /**
      * Create a GenaiKnowledgeBaseDataSource resource with the given unique name, arguments, and options.
@@ -55,17 +55,17 @@ export class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiKnowledgeBaseDataSourceState | undefined;
-            resourceInputs["knowledgeBaseUuid"] = state ? state.knowledgeBaseUuid : undefined;
-            resourceInputs["spacesDataSource"] = state ? state.spacesDataSource : undefined;
-            resourceInputs["webCrawlerDataSource"] = state ? state.webCrawlerDataSource : undefined;
+            resourceInputs["knowledgeBaseUuid"] = state?.knowledgeBaseUuid;
+            resourceInputs["spacesDataSource"] = state?.spacesDataSource;
+            resourceInputs["webCrawlerDataSource"] = state?.webCrawlerDataSource;
         } else {
             const args = argsOrState as GenaiKnowledgeBaseDataSourceArgs | undefined;
-            if ((!args || args.knowledgeBaseUuid === undefined) && !opts.urn) {
+            if (args?.knowledgeBaseUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'knowledgeBaseUuid'");
             }
-            resourceInputs["knowledgeBaseUuid"] = args ? args.knowledgeBaseUuid : undefined;
-            resourceInputs["spacesDataSource"] = args ? args.spacesDataSource : undefined;
-            resourceInputs["webCrawlerDataSource"] = args ? args.webCrawlerDataSource : undefined;
+            resourceInputs["knowledgeBaseUuid"] = args?.knowledgeBaseUuid;
+            resourceInputs["spacesDataSource"] = args?.spacesDataSource;
+            resourceInputs["webCrawlerDataSource"] = args?.webCrawlerDataSource;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GenaiKnowledgeBaseDataSource.__pulumiType, name, resourceInputs, opts);

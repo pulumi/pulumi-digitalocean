@@ -70,27 +70,27 @@ export class DropletSnapshot extends pulumi.CustomResource {
     /**
      * The date and time the Droplet snapshot was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The ID of the Droplet from which the snapshot will be taken.
      */
-    public readonly dropletId!: pulumi.Output<string>;
+    declare public readonly dropletId: pulumi.Output<string>;
     /**
      * The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
      */
-    public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly minDiskSize: pulumi.Output<number>;
     /**
      * A name for the Droplet snapshot.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the droplet snapshot is available.
      */
-    public /*out*/ readonly regions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly regions: pulumi.Output<string[]>;
     /**
      * The billable size of the Droplet snapshot in gigabytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
 
     /**
      * Create a DropletSnapshot resource with the given unique name, arguments, and options.
@@ -105,19 +105,19 @@ export class DropletSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DropletSnapshotState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["minDiskSize"] = state?.minDiskSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["size"] = state?.size;
         } else {
             const args = argsOrState as DropletSnapshotArgs | undefined;
-            if ((!args || args.dropletId === undefined) && !opts.urn) {
+            if (args?.dropletId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["minDiskSize"] = undefined /*out*/;
             resourceInputs["regions"] = undefined /*out*/;

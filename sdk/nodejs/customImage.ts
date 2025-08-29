@@ -68,59 +68,59 @@ export class CustomImage extends pulumi.CustomResource {
     /**
      * A time value given in ISO8601 combined date and time format that represents when the image was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * An optional description for the image.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
      */
-    public readonly distribution!: pulumi.Output<string | undefined>;
+    declare public readonly distribution: pulumi.Output<string | undefined>;
     /**
      * A unique number that can be used to identify and reference a specific image.
      */
-    public /*out*/ readonly imageId!: pulumi.Output<number>;
+    declare public /*out*/ readonly imageId: pulumi.Output<number>;
     /**
      * The minimum disk size in GB required for a Droplet to use this image.
      */
-    public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly minDiskSize: pulumi.Output<number>;
     /**
      * A name for the Custom Image.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Indicates whether the image in question is public or not.
      */
-    public /*out*/ readonly public!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly public: pulumi.Output<boolean>;
     /**
      * A list of regions. (Currently only one is supported).
      */
-    public readonly regions!: pulumi.Output<string[]>;
+    declare public readonly regions: pulumi.Output<string[]>;
     /**
      * The size of the image in gigabytes.
      */
-    public /*out*/ readonly sizeGigabytes!: pulumi.Output<number>;
+    declare public /*out*/ readonly sizeGigabytes: pulumi.Output<number>;
     /**
      * A uniquely identifying string for each image.
      */
-    public /*out*/ readonly slug!: pulumi.Output<string>;
+    declare public /*out*/ readonly slug: pulumi.Output<string>;
     /**
      * A status string indicating the state of a custom image.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A list of optional tags for the image.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Describes the kind of image.
      */
-    public /*out*/ readonly type!: pulumi.Output<string>;
+    declare public /*out*/ readonly type: pulumi.Output<string>;
     /**
      * A URL from which the custom Linux virtual machine image may be retrieved.
      */
-    public readonly url!: pulumi.Output<string>;
+    declare public readonly url: pulumi.Output<string>;
 
     /**
      * Create a CustomImage resource with the given unique name, arguments, and options.
@@ -135,34 +135,34 @@ export class CustomImage extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as CustomImageState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["distribution"] = state ? state.distribution : undefined;
-            resourceInputs["imageId"] = state ? state.imageId : undefined;
-            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["public"] = state ? state.public : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["sizeGigabytes"] = state ? state.sizeGigabytes : undefined;
-            resourceInputs["slug"] = state ? state.slug : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["distribution"] = state?.distribution;
+            resourceInputs["imageId"] = state?.imageId;
+            resourceInputs["minDiskSize"] = state?.minDiskSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["public"] = state?.public;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["sizeGigabytes"] = state?.sizeGigabytes;
+            resourceInputs["slug"] = state?.slug;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["url"] = state?.url;
         } else {
             const args = argsOrState as CustomImageArgs | undefined;
-            if ((!args || args.regions === undefined) && !opts.urn) {
+            if (args?.regions === undefined && !opts.urn) {
                 throw new Error("Missing required property 'regions'");
             }
-            if ((!args || args.url === undefined) && !opts.urn) {
+            if (args?.url === undefined && !opts.urn) {
                 throw new Error("Missing required property 'url'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["distribution"] = args ? args.distribution : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["distribution"] = args?.distribution;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["url"] = args?.url;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["imageId"] = undefined /*out*/;
             resourceInputs["minDiskSize"] = undefined /*out*/;

@@ -83,64 +83,64 @@ export class DatabaseReplica extends pulumi.CustomResource {
     /**
      * The ID of the original source database cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * Name of the replica's default database.
      */
-    public /*out*/ readonly database!: pulumi.Output<string>;
+    declare public /*out*/ readonly database: pulumi.Output<string>;
     /**
      * Database replica's hostname.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * The name for the database replica.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Password for the replica's default user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * Network port that the database replica is listening on.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateHost: pulumi.Output<string>;
     /**
      * The ID of the VPC where the database replica will be located.
      */
-    public readonly privateNetworkUuid!: pulumi.Output<string>;
+    declare public readonly privateNetworkUuid: pulumi.Output<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateUri: pulumi.Output<string>;
     /**
      * DigitalOcean region where the replica will reside.
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
-    public readonly size!: pulumi.Output<string | undefined>;
-    public readonly storageSizeMib!: pulumi.Output<string>;
+    declare public readonly size: pulumi.Output<string | undefined>;
+    declare public readonly storageSizeMib: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The full URI for connecting to the database replica.
      */
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * Username for the replica's default user.
      */
-    public /*out*/ readonly user!: pulumi.Output<string>;
+    declare public /*out*/ readonly user: pulumi.Output<string>;
     /**
      * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a DatabaseReplica resource with the given unique name, arguments, and options.
@@ -155,34 +155,34 @@ export class DatabaseReplica extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseReplicaState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
-            resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
-            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateHost"] = state?.privateHost;
+            resourceInputs["privateNetworkUuid"] = state?.privateNetworkUuid;
+            resourceInputs["privateUri"] = state?.privateUri;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["storageSizeMib"] = state?.storageSizeMib;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as DatabaseReplicaArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["storageSizeMib"] = args ? args.storageSizeMib : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["privateNetworkUuid"] = args?.privateNetworkUuid;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["storageSizeMib"] = args?.storageSizeMib;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["database"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["password"] = undefined /*out*/;

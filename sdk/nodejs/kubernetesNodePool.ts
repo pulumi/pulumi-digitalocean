@@ -114,53 +114,53 @@ export class KubernetesNodePool extends pulumi.CustomResource {
     /**
      * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      */
-    public /*out*/ readonly actualNodeCount!: pulumi.Output<number>;
+    declare public /*out*/ readonly actualNodeCount: pulumi.Output<number>;
     /**
      * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      */
-    public readonly autoScale!: pulumi.Output<boolean | undefined>;
+    declare public readonly autoScale: pulumi.Output<boolean | undefined>;
     /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
-    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly labels: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
-    public readonly maxNodes!: pulumi.Output<number | undefined>;
+    declare public readonly maxNodes: pulumi.Output<number | undefined>;
     /**
      * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      */
-    public readonly minNodes!: pulumi.Output<number | undefined>;
+    declare public readonly minNodes: pulumi.Output<number | undefined>;
     /**
      * A name for the node pool.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    public readonly nodeCount!: pulumi.Output<number | undefined>;
+    declare public readonly nodeCount: pulumi.Output<number | undefined>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
      */
-    public /*out*/ readonly nodes!: pulumi.Output<outputs.KubernetesNodePoolNode[]>;
+    declare public /*out*/ readonly nodes: pulumi.Output<outputs.KubernetesNodePoolNode[]>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    public readonly size!: pulumi.Output<string>;
+    declare public readonly size: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    public readonly taints!: pulumi.Output<outputs.KubernetesNodePoolTaint[] | undefined>;
+    declare public readonly taints: pulumi.Output<outputs.KubernetesNodePoolTaint[] | undefined>;
 
     /**
      * Create a KubernetesNodePool resource with the given unique name, arguments, and options.
@@ -175,36 +175,36 @@ export class KubernetesNodePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as KubernetesNodePoolState | undefined;
-            resourceInputs["actualNodeCount"] = state ? state.actualNodeCount : undefined;
-            resourceInputs["autoScale"] = state ? state.autoScale : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["labels"] = state ? state.labels : undefined;
-            resourceInputs["maxNodes"] = state ? state.maxNodes : undefined;
-            resourceInputs["minNodes"] = state ? state.minNodes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["nodes"] = state ? state.nodes : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["taints"] = state ? state.taints : undefined;
+            resourceInputs["actualNodeCount"] = state?.actualNodeCount;
+            resourceInputs["autoScale"] = state?.autoScale;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["labels"] = state?.labels;
+            resourceInputs["maxNodes"] = state?.maxNodes;
+            resourceInputs["minNodes"] = state?.minNodes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["nodes"] = state?.nodes;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["taints"] = state?.taints;
         } else {
             const args = argsOrState as KubernetesNodePoolArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["autoScale"] = args ? args.autoScale : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["labels"] = args ? args.labels : undefined;
-            resourceInputs["maxNodes"] = args ? args.maxNodes : undefined;
-            resourceInputs["minNodes"] = args ? args.minNodes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["taints"] = args ? args.taints : undefined;
+            resourceInputs["autoScale"] = args?.autoScale;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["labels"] = args?.labels;
+            resourceInputs["maxNodes"] = args?.maxNodes;
+            resourceInputs["minNodes"] = args?.minNodes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["taints"] = args?.taints;
             resourceInputs["actualNodeCount"] = undefined /*out*/;
             resourceInputs["nodes"] = undefined /*out*/;
         }

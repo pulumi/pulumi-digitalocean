@@ -69,11 +69,11 @@ export class DatabaseDb extends pulumi.CustomResource {
     /**
      * The ID of the original source database cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The name for the database.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
 
     /**
      * Create a DatabaseDb resource with the given unique name, arguments, and options.
@@ -88,15 +88,15 @@ export class DatabaseDb extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseDbState | undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["name"] = state?.name;
         } else {
             const args = argsOrState as DatabaseDbArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["name"] = args?.name;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseDb.__pulumiType, name, resourceInputs, opts);
