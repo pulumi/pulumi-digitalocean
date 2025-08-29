@@ -70,19 +70,19 @@ export class FloatingIp extends pulumi.CustomResource {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    public readonly dropletId!: pulumi.Output<number | undefined>;
+    declare public readonly dropletId: pulumi.Output<number | undefined>;
     /**
      * The uniform resource name of the floating ip
      */
-    public /*out*/ readonly floatingIpUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly floatingIpUrn: pulumi.Output<string>;
     /**
      * The IP Address of the resource
      */
-    public readonly ipAddress!: pulumi.Output<string>;
+    declare public readonly ipAddress: pulumi.Output<string>;
     /**
      * The region that the Floating IP is reserved to.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
 
     /**
      * Create a FloatingIp resource with the given unique name, arguments, and options.
@@ -97,18 +97,18 @@ export class FloatingIp extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as FloatingIpState | undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["floatingIpUrn"] = state ? state.floatingIpUrn : undefined;
-            resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["floatingIpUrn"] = state?.floatingIpUrn;
+            resourceInputs["ipAddress"] = state?.ipAddress;
+            resourceInputs["region"] = state?.region;
         } else {
             const args = argsOrState as FloatingIpArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["ipAddress"] = args?.ipAddress;
+            resourceInputs["region"] = args?.region;
             resourceInputs["floatingIpUrn"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

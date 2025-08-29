@@ -91,53 +91,53 @@ export class Volume extends pulumi.CustomResource {
     /**
      * A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * A list of associated droplet ids.
      */
-    public /*out*/ readonly dropletIds!: pulumi.Output<number[]>;
+    declare public /*out*/ readonly dropletIds: pulumi.Output<number[]>;
     /**
      * Filesystem label for the block storage volume.
      */
-    public /*out*/ readonly filesystemLabel!: pulumi.Output<string>;
+    declare public /*out*/ readonly filesystemLabel: pulumi.Output<string>;
     /**
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      *
      * @deprecated This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      */
-    public readonly filesystemType!: pulumi.Output<string>;
+    declare public readonly filesystemType: pulumi.Output<string>;
     /**
      * Initial filesystem label for the block storage volume.
      */
-    public readonly initialFilesystemLabel!: pulumi.Output<string | undefined>;
+    declare public readonly initialFilesystemLabel: pulumi.Output<string | undefined>;
     /**
      * Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
      */
-    public readonly initialFilesystemType!: pulumi.Output<string | undefined>;
+    declare public readonly initialFilesystemType: pulumi.Output<string | undefined>;
     /**
      * A name for the block storage volume. Must be lowercase and be composed only of numbers, letters and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region that the block storage volume will be created in.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The size of the block storage volume in GiB. If updated, can only be expanded.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * The ID of an existing volume snapshot from which the new volume will be created. If supplied, the region and size will be limited on creation to that of the referenced snapshot
      */
-    public readonly snapshotId!: pulumi.Output<string | undefined>;
+    declare public readonly snapshotId: pulumi.Output<string | undefined>;
     /**
      * A list of the tags to be applied to this Volume.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The uniform resource name for the volume.
      */
-    public /*out*/ readonly volumeUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly volumeUrn: pulumi.Output<string>;
 
     /**
      * Create a Volume resource with the given unique name, arguments, and options.
@@ -152,35 +152,35 @@ export class Volume extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeState | undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
-            resourceInputs["filesystemLabel"] = state ? state.filesystemLabel : undefined;
-            resourceInputs["filesystemType"] = state ? state.filesystemType : undefined;
-            resourceInputs["initialFilesystemLabel"] = state ? state.initialFilesystemLabel : undefined;
-            resourceInputs["initialFilesystemType"] = state ? state.initialFilesystemType : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["snapshotId"] = state ? state.snapshotId : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["volumeUrn"] = state ? state.volumeUrn : undefined;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["dropletIds"] = state?.dropletIds;
+            resourceInputs["filesystemLabel"] = state?.filesystemLabel;
+            resourceInputs["filesystemType"] = state?.filesystemType;
+            resourceInputs["initialFilesystemLabel"] = state?.initialFilesystemLabel;
+            resourceInputs["initialFilesystemType"] = state?.initialFilesystemType;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["snapshotId"] = state?.snapshotId;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["volumeUrn"] = state?.volumeUrn;
         } else {
             const args = argsOrState as VolumeArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["filesystemType"] = args ? args.filesystemType : undefined;
-            resourceInputs["initialFilesystemLabel"] = args ? args.initialFilesystemLabel : undefined;
-            resourceInputs["initialFilesystemType"] = args ? args.initialFilesystemType : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["snapshotId"] = args ? args.snapshotId : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["filesystemType"] = args?.filesystemType;
+            resourceInputs["initialFilesystemLabel"] = args?.initialFilesystemLabel;
+            resourceInputs["initialFilesystemType"] = args?.initialFilesystemType;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["snapshotId"] = args?.snapshotId;
+            resourceInputs["tags"] = args?.tags;
             resourceInputs["dropletIds"] = undefined /*out*/;
             resourceInputs["filesystemLabel"] = undefined /*out*/;
             resourceInputs["volumeUrn"] = undefined /*out*/;

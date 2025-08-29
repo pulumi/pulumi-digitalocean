@@ -52,31 +52,31 @@ export class UptimeAlert extends pulumi.CustomResource {
     /**
      * A unique identifier for a check
      */
-    public readonly checkId!: pulumi.Output<string>;
+    declare public readonly checkId: pulumi.Output<string>;
     /**
      * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
-    public readonly comparison!: pulumi.Output<string | undefined>;
+    declare public readonly comparison: pulumi.Output<string | undefined>;
     /**
      * A human-friendly display name.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The notification settings for a trigger alert.
      */
-    public readonly notifications!: pulumi.Output<outputs.UptimeAlertNotification[]>;
+    declare public readonly notifications: pulumi.Output<outputs.UptimeAlertNotification[]>;
     /**
      * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
-    public readonly period!: pulumi.Output<string | undefined>;
+    declare public readonly period: pulumi.Output<string | undefined>;
     /**
      * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
-    public readonly threshold!: pulumi.Output<number | undefined>;
+    declare public readonly threshold: pulumi.Output<number | undefined>;
     /**
      * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
 
     /**
      * Create a UptimeAlert resource with the given unique name, arguments, and options.
@@ -91,31 +91,31 @@ export class UptimeAlert extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as UptimeAlertState | undefined;
-            resourceInputs["checkId"] = state ? state.checkId : undefined;
-            resourceInputs["comparison"] = state ? state.comparison : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["notifications"] = state ? state.notifications : undefined;
-            resourceInputs["period"] = state ? state.period : undefined;
-            resourceInputs["threshold"] = state ? state.threshold : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
+            resourceInputs["checkId"] = state?.checkId;
+            resourceInputs["comparison"] = state?.comparison;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["notifications"] = state?.notifications;
+            resourceInputs["period"] = state?.period;
+            resourceInputs["threshold"] = state?.threshold;
+            resourceInputs["type"] = state?.type;
         } else {
             const args = argsOrState as UptimeAlertArgs | undefined;
-            if ((!args || args.checkId === undefined) && !opts.urn) {
+            if (args?.checkId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'checkId'");
             }
-            if ((!args || args.notifications === undefined) && !opts.urn) {
+            if (args?.notifications === undefined && !opts.urn) {
                 throw new Error("Missing required property 'notifications'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            resourceInputs["checkId"] = args ? args.checkId : undefined;
-            resourceInputs["comparison"] = args ? args.comparison : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["notifications"] = args ? args.notifications : undefined;
-            resourceInputs["period"] = args ? args.period : undefined;
-            resourceInputs["threshold"] = args ? args.threshold : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["checkId"] = args?.checkId;
+            resourceInputs["comparison"] = args?.comparison;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["notifications"] = args?.notifications;
+            resourceInputs["period"] = args?.period;
+            resourceInputs["threshold"] = args?.threshold;
+            resourceInputs["type"] = args?.type;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(UptimeAlert.__pulumiType, name, resourceInputs, opts);

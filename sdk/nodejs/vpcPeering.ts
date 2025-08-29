@@ -104,19 +104,19 @@ export class VpcPeering extends pulumi.CustomResource {
     /**
      * The date and time of when the VPC Peering was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The status of the VPC Peering.
      */
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A set of two VPC IDs to be peered.
      */
-    public readonly vpcIds!: pulumi.Output<string[]>;
+    declare public readonly vpcIds: pulumi.Output<string[]>;
 
     /**
      * Create a VpcPeering resource with the given unique name, arguments, and options.
@@ -131,17 +131,17 @@ export class VpcPeering extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcPeeringState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["vpcIds"] = state ? state.vpcIds : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["vpcIds"] = state?.vpcIds;
         } else {
             const args = argsOrState as VpcPeeringArgs | undefined;
-            if ((!args || args.vpcIds === undefined) && !opts.urn) {
+            if (args?.vpcIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcIds'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["vpcIds"] = args?.vpcIds;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }

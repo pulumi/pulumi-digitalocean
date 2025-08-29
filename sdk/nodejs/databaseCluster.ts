@@ -169,124 +169,124 @@ export class DatabaseCluster extends pulumi.CustomResource {
         return obj['__pulumiType'] === DatabaseCluster.__pulumiType;
     }
 
-    public readonly backupRestore!: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
+    declare public readonly backupRestore: pulumi.Output<outputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * The uniform resource name of the database cluster.
      */
-    public /*out*/ readonly clusterUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly clusterUrn: pulumi.Output<string>;
     /**
      * Name of the cluster's default database.
      */
-    public /*out*/ readonly database!: pulumi.Output<string>;
+    declare public /*out*/ readonly database: pulumi.Output<string>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
-    public readonly engine!: pulumi.Output<string>;
+    declare public readonly engine: pulumi.Output<string>;
     /**
      * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
-    public readonly evictionPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly evictionPolicy: pulumi.Output<string | undefined>;
     /**
      * Database cluster's hostname.
      */
-    public /*out*/ readonly host!: pulumi.Output<string>;
+    declare public /*out*/ readonly host: pulumi.Output<string>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    public readonly maintenanceWindows!: pulumi.Output<outputs.DatabaseClusterMaintenanceWindow[] | undefined>;
+    declare public readonly maintenanceWindows: pulumi.Output<outputs.DatabaseClusterMaintenanceWindow[] | undefined>;
     /**
      * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
      */
-    public /*out*/ readonly metricsEndpoints!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly metricsEndpoints: pulumi.Output<string[]>;
     /**
      * The name of the database cluster.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
-    public readonly nodeCount!: pulumi.Output<number>;
+    declare public readonly nodeCount: pulumi.Output<number>;
     /**
      * Password for the cluster's default user.
      */
-    public /*out*/ readonly password!: pulumi.Output<string>;
+    declare public /*out*/ readonly password: pulumi.Output<string>;
     /**
      * Network port that the database cluster is listening on.
      */
-    public /*out*/ readonly port!: pulumi.Output<number>;
+    declare public /*out*/ readonly port: pulumi.Output<number>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateHost: pulumi.Output<string>;
     /**
      * The ID of the VPC where the database cluster will be located.
      */
-    public readonly privateNetworkUuid!: pulumi.Output<string>;
+    declare public readonly privateNetworkUuid: pulumi.Output<string>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    public /*out*/ readonly privateUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly privateUri: pulumi.Output<string>;
     /**
      * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      */
-    public readonly size!: pulumi.Output<string>;
+    declare public readonly size: pulumi.Output<string>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
-    public readonly sqlMode!: pulumi.Output<string | undefined>;
+    declare public readonly sqlMode: pulumi.Output<string | undefined>;
     /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
-    public readonly storageSizeMib!: pulumi.Output<string>;
+    declare public readonly storageSizeMib: pulumi.Output<string>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Name of the OpenSearch dashboard db.
      */
-    public /*out*/ readonly uiDatabase!: pulumi.Output<string>;
+    declare public /*out*/ readonly uiDatabase: pulumi.Output<string>;
     /**
      * Hostname for the OpenSearch dashboard.
      */
-    public /*out*/ readonly uiHost!: pulumi.Output<string>;
+    declare public /*out*/ readonly uiHost: pulumi.Output<string>;
     /**
      * Password for the OpenSearch dashboard's default user.
      */
-    public /*out*/ readonly uiPassword!: pulumi.Output<string>;
+    declare public /*out*/ readonly uiPassword: pulumi.Output<string>;
     /**
      * Network port that the OpenSearch dashboard is listening on.
      */
-    public /*out*/ readonly uiPort!: pulumi.Output<number>;
+    declare public /*out*/ readonly uiPort: pulumi.Output<number>;
     /**
      * The full URI for connecting to the OpenSearch dashboard.
      */
-    public /*out*/ readonly uiUri!: pulumi.Output<string>;
+    declare public /*out*/ readonly uiUri: pulumi.Output<string>;
     /**
      * Username for OpenSearch dashboard's default user.
      */
-    public /*out*/ readonly uiUser!: pulumi.Output<string>;
+    declare public /*out*/ readonly uiUser: pulumi.Output<string>;
     /**
      * The full URI for connecting to the database cluster.
      */
-    public /*out*/ readonly uri!: pulumi.Output<string>;
+    declare public /*out*/ readonly uri: pulumi.Output<string>;
     /**
      * Username for the cluster's default user.
      */
-    public /*out*/ readonly user!: pulumi.Output<string>;
+    declare public /*out*/ readonly user: pulumi.Output<string>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
      * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
-    public readonly version!: pulumi.Output<string | undefined>;
+    declare public readonly version: pulumi.Output<string | undefined>;
 
     /**
      * Create a DatabaseCluster resource with the given unique name, arguments, and options.
@@ -301,64 +301,64 @@ export class DatabaseCluster extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseClusterState | undefined;
-            resourceInputs["backupRestore"] = state ? state.backupRestore : undefined;
-            resourceInputs["clusterUrn"] = state ? state.clusterUrn : undefined;
-            resourceInputs["database"] = state ? state.database : undefined;
-            resourceInputs["engine"] = state ? state.engine : undefined;
-            resourceInputs["evictionPolicy"] = state ? state.evictionPolicy : undefined;
-            resourceInputs["host"] = state ? state.host : undefined;
-            resourceInputs["maintenanceWindows"] = state ? state.maintenanceWindows : undefined;
-            resourceInputs["metricsEndpoints"] = state ? state.metricsEndpoints : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nodeCount"] = state ? state.nodeCount : undefined;
-            resourceInputs["password"] = state ? state.password : undefined;
-            resourceInputs["port"] = state ? state.port : undefined;
-            resourceInputs["privateHost"] = state ? state.privateHost : undefined;
-            resourceInputs["privateNetworkUuid"] = state ? state.privateNetworkUuid : undefined;
-            resourceInputs["privateUri"] = state ? state.privateUri : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["sqlMode"] = state ? state.sqlMode : undefined;
-            resourceInputs["storageSizeMib"] = state ? state.storageSizeMib : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["uiDatabase"] = state ? state.uiDatabase : undefined;
-            resourceInputs["uiHost"] = state ? state.uiHost : undefined;
-            resourceInputs["uiPassword"] = state ? state.uiPassword : undefined;
-            resourceInputs["uiPort"] = state ? state.uiPort : undefined;
-            resourceInputs["uiUri"] = state ? state.uiUri : undefined;
-            resourceInputs["uiUser"] = state ? state.uiUser : undefined;
-            resourceInputs["uri"] = state ? state.uri : undefined;
-            resourceInputs["user"] = state ? state.user : undefined;
-            resourceInputs["version"] = state ? state.version : undefined;
+            resourceInputs["backupRestore"] = state?.backupRestore;
+            resourceInputs["clusterUrn"] = state?.clusterUrn;
+            resourceInputs["database"] = state?.database;
+            resourceInputs["engine"] = state?.engine;
+            resourceInputs["evictionPolicy"] = state?.evictionPolicy;
+            resourceInputs["host"] = state?.host;
+            resourceInputs["maintenanceWindows"] = state?.maintenanceWindows;
+            resourceInputs["metricsEndpoints"] = state?.metricsEndpoints;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nodeCount"] = state?.nodeCount;
+            resourceInputs["password"] = state?.password;
+            resourceInputs["port"] = state?.port;
+            resourceInputs["privateHost"] = state?.privateHost;
+            resourceInputs["privateNetworkUuid"] = state?.privateNetworkUuid;
+            resourceInputs["privateUri"] = state?.privateUri;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["sqlMode"] = state?.sqlMode;
+            resourceInputs["storageSizeMib"] = state?.storageSizeMib;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["uiDatabase"] = state?.uiDatabase;
+            resourceInputs["uiHost"] = state?.uiHost;
+            resourceInputs["uiPassword"] = state?.uiPassword;
+            resourceInputs["uiPort"] = state?.uiPort;
+            resourceInputs["uiUri"] = state?.uiUri;
+            resourceInputs["uiUser"] = state?.uiUser;
+            resourceInputs["uri"] = state?.uri;
+            resourceInputs["user"] = state?.user;
+            resourceInputs["version"] = state?.version;
         } else {
             const args = argsOrState as DatabaseClusterArgs | undefined;
-            if ((!args || args.engine === undefined) && !opts.urn) {
+            if (args?.engine === undefined && !opts.urn) {
                 throw new Error("Missing required property 'engine'");
             }
-            if ((!args || args.nodeCount === undefined) && !opts.urn) {
+            if (args?.nodeCount === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nodeCount'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            resourceInputs["backupRestore"] = args ? args.backupRestore : undefined;
-            resourceInputs["engine"] = args ? args.engine : undefined;
-            resourceInputs["evictionPolicy"] = args ? args.evictionPolicy : undefined;
-            resourceInputs["maintenanceWindows"] = args ? args.maintenanceWindows : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["nodeCount"] = args ? args.nodeCount : undefined;
-            resourceInputs["privateNetworkUuid"] = args ? args.privateNetworkUuid : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["sqlMode"] = args ? args.sqlMode : undefined;
-            resourceInputs["storageSizeMib"] = args ? args.storageSizeMib : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["version"] = args ? args.version : undefined;
+            resourceInputs["backupRestore"] = args?.backupRestore;
+            resourceInputs["engine"] = args?.engine;
+            resourceInputs["evictionPolicy"] = args?.evictionPolicy;
+            resourceInputs["maintenanceWindows"] = args?.maintenanceWindows;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["nodeCount"] = args?.nodeCount;
+            resourceInputs["privateNetworkUuid"] = args?.privateNetworkUuid;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["sqlMode"] = args?.sqlMode;
+            resourceInputs["storageSizeMib"] = args?.storageSizeMib;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["version"] = args?.version;
             resourceInputs["clusterUrn"] = undefined /*out*/;
             resourceInputs["database"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;

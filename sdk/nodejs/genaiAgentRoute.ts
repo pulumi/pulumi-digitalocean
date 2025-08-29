@@ -35,24 +35,24 @@ export class GenaiAgentRoute extends pulumi.CustomResource {
     /**
      * The UUID of the child agent.
      */
-    public readonly childAgentUuid!: pulumi.Output<string>;
+    declare public readonly childAgentUuid: pulumi.Output<string>;
     /**
      * if-case condition for the route.
      */
-    public readonly ifCase!: pulumi.Output<string | undefined>;
+    declare public readonly ifCase: pulumi.Output<string | undefined>;
     /**
      * The UUID of the parent agent.
      */
-    public readonly parentAgentUuid!: pulumi.Output<string>;
-    public readonly rollback!: pulumi.Output<boolean | undefined>;
+    declare public readonly parentAgentUuid: pulumi.Output<string>;
+    declare public readonly rollback: pulumi.Output<boolean | undefined>;
     /**
      * A name for the route.
      */
-    public readonly routeName!: pulumi.Output<string | undefined>;
+    declare public readonly routeName: pulumi.Output<string | undefined>;
     /**
      * The UUID of the linkage
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a GenaiAgentRoute resource with the given unique name, arguments, and options.
@@ -67,25 +67,25 @@ export class GenaiAgentRoute extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiAgentRouteState | undefined;
-            resourceInputs["childAgentUuid"] = state ? state.childAgentUuid : undefined;
-            resourceInputs["ifCase"] = state ? state.ifCase : undefined;
-            resourceInputs["parentAgentUuid"] = state ? state.parentAgentUuid : undefined;
-            resourceInputs["rollback"] = state ? state.rollback : undefined;
-            resourceInputs["routeName"] = state ? state.routeName : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["childAgentUuid"] = state?.childAgentUuid;
+            resourceInputs["ifCase"] = state?.ifCase;
+            resourceInputs["parentAgentUuid"] = state?.parentAgentUuid;
+            resourceInputs["rollback"] = state?.rollback;
+            resourceInputs["routeName"] = state?.routeName;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as GenaiAgentRouteArgs | undefined;
-            if ((!args || args.childAgentUuid === undefined) && !opts.urn) {
+            if (args?.childAgentUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'childAgentUuid'");
             }
-            if ((!args || args.parentAgentUuid === undefined) && !opts.urn) {
+            if (args?.parentAgentUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'parentAgentUuid'");
             }
-            resourceInputs["childAgentUuid"] = args ? args.childAgentUuid : undefined;
-            resourceInputs["ifCase"] = args ? args.ifCase : undefined;
-            resourceInputs["parentAgentUuid"] = args ? args.parentAgentUuid : undefined;
-            resourceInputs["rollback"] = args ? args.rollback : undefined;
-            resourceInputs["routeName"] = args ? args.routeName : undefined;
+            resourceInputs["childAgentUuid"] = args?.childAgentUuid;
+            resourceInputs["ifCase"] = args?.ifCase;
+            resourceInputs["parentAgentUuid"] = args?.parentAgentUuid;
+            resourceInputs["rollback"] = args?.rollback;
+            resourceInputs["routeName"] = args?.routeName;
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

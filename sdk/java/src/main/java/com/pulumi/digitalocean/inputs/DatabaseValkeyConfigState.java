@@ -48,18 +48,14 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-     * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-     * valkey_persistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
      * 
      */
     @Import(name="frequentSnapshots")
     private @Nullable Output<Boolean> frequentSnapshots;
 
     /**
-     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-     * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-     * valkey_persistence is set to off.
+     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
      * 
      */
     public Optional<Output<Boolean>> frequentSnapshots() {
@@ -202,18 +198,14 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-     * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-     * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      * 
      */
     @Import(name="valkeyActiveExpireEffort")
     private @Nullable Output<Integer> valkeyActiveExpireEffort;
 
     /**
-     * @return Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-     * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-     * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+     * @return Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      * 
      */
     public Optional<Output<Integer>> valkeyActiveExpireEffort() {
@@ -299,9 +291,7 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-         * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-         * valkey_persistence is set to off.
+         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
          * 
          * @return builder
          * 
@@ -312,9 +302,7 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-         * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-         * valkey_persistence is set to off.
+         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
          * 
          * @return builder
          * 
@@ -513,9 +501,7 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param valkeyActiveExpireEffort Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-         * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-         * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+         * @param valkeyActiveExpireEffort Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
          * 
          * @return builder
          * 
@@ -526,9 +512,7 @@ public final class DatabaseValkeyConfigState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param valkeyActiveExpireEffort Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-         * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-         * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+         * @param valkeyActiveExpireEffort Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
          * 
          * @return builder
          * 

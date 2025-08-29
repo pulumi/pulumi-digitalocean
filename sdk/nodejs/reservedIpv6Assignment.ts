@@ -49,11 +49,11 @@ export class ReservedIpv6Assignment extends pulumi.CustomResource {
     /**
      * The ID of Droplet that the reserved IPv6 will be assigned to.
      */
-    public readonly dropletId!: pulumi.Output<number>;
+    declare public readonly dropletId: pulumi.Output<number>;
     /**
      * The reserved IPv6 to assign to the Droplet.
      */
-    public readonly ip!: pulumi.Output<string>;
+    declare public readonly ip: pulumi.Output<string>;
 
     /**
      * Create a ReservedIpv6Assignment resource with the given unique name, arguments, and options.
@@ -68,18 +68,18 @@ export class ReservedIpv6Assignment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ReservedIpv6AssignmentState | undefined;
-            resourceInputs["dropletId"] = state ? state.dropletId : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
+            resourceInputs["dropletId"] = state?.dropletId;
+            resourceInputs["ip"] = state?.ip;
         } else {
             const args = argsOrState as ReservedIpv6AssignmentArgs | undefined;
-            if ((!args || args.dropletId === undefined) && !opts.urn) {
+            if (args?.dropletId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'dropletId'");
             }
-            if ((!args || args.ip === undefined) && !opts.urn) {
+            if (args?.ip === undefined && !opts.urn) {
                 throw new Error("Missing required property 'ip'");
             }
-            resourceInputs["dropletId"] = args ? args.dropletId : undefined;
-            resourceInputs["ip"] = args ? args.ip : undefined;
+            resourceInputs["dropletId"] = args?.dropletId;
+            resourceInputs["ip"] = args?.ip;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ReservedIpv6Assignment.__pulumiType, name, resourceInputs, opts);

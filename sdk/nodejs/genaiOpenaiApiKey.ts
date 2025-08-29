@@ -38,35 +38,35 @@ export class GenaiOpenaiApiKey extends pulumi.CustomResource {
     /**
      * The OpenAI API key.
      */
-    public readonly apiKey!: pulumi.Output<string>;
+    declare public readonly apiKey: pulumi.Output<string>;
     /**
      * When the API key was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Who created the API key.
      */
-    public /*out*/ readonly createdBy!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdBy: pulumi.Output<string>;
     /**
      * When the API key was deleted.
      */
-    public /*out*/ readonly deletedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly deletedAt: pulumi.Output<string>;
     /**
      * Models associated with the OpenAI API key
      */
-    public readonly models!: pulumi.Output<outputs.GenaiOpenaiApiKeyModel[]>;
+    declare public readonly models: pulumi.Output<outputs.GenaiOpenaiApiKeyModel[]>;
     /**
      * A name for the API key.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * When the API key was last updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The UUID of the API key.
      */
-    public /*out*/ readonly uuid!: pulumi.Output<string>;
+    declare public /*out*/ readonly uuid: pulumi.Output<string>;
 
     /**
      * Create a GenaiOpenaiApiKey resource with the given unique name, arguments, and options.
@@ -81,22 +81,22 @@ export class GenaiOpenaiApiKey extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiOpenaiApiKeyState | undefined;
-            resourceInputs["apiKey"] = state ? state.apiKey : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["createdBy"] = state ? state.createdBy : undefined;
-            resourceInputs["deletedAt"] = state ? state.deletedAt : undefined;
-            resourceInputs["models"] = state ? state.models : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["uuid"] = state ? state.uuid : undefined;
+            resourceInputs["apiKey"] = state?.apiKey;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["createdBy"] = state?.createdBy;
+            resourceInputs["deletedAt"] = state?.deletedAt;
+            resourceInputs["models"] = state?.models;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["uuid"] = state?.uuid;
         } else {
             const args = argsOrState as GenaiOpenaiApiKeyArgs | undefined;
-            if ((!args || args.apiKey === undefined) && !opts.urn) {
+            if (args?.apiKey === undefined && !opts.urn) {
                 throw new Error("Missing required property 'apiKey'");
             }
-            resourceInputs["apiKey"] = args ? args.apiKey : undefined;
-            resourceInputs["models"] = args ? args.models : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["apiKey"] = args?.apiKey;
+            resourceInputs["models"] = args?.models;
+            resourceInputs["name"] = args?.name;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["createdBy"] = undefined /*out*/;
             resourceInputs["deletedAt"] = undefined /*out*/;

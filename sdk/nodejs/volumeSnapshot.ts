@@ -64,31 +64,31 @@ export class VolumeSnapshot extends pulumi.CustomResource {
     /**
      * The date and time the volume snapshot was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
      */
-    public /*out*/ readonly minDiskSize!: pulumi.Output<number>;
+    declare public /*out*/ readonly minDiskSize: pulumi.Output<number>;
     /**
      * A name for the volume snapshot.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * A list of DigitalOcean region "slugs" indicating where the volume snapshot is available.
      */
-    public /*out*/ readonly regions!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly regions: pulumi.Output<string[]>;
     /**
      * The billable size of the volume snapshot in gigabytes.
      */
-    public /*out*/ readonly size!: pulumi.Output<number>;
+    declare public /*out*/ readonly size: pulumi.Output<number>;
     /**
      * A list of the tags to be applied to this volume snapshot.
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * The ID of the volume from which the volume snapshot originated.
      */
-    public readonly volumeId!: pulumi.Output<string>;
+    declare public readonly volumeId: pulumi.Output<string>;
 
     /**
      * Create a VolumeSnapshot resource with the given unique name, arguments, and options.
@@ -103,21 +103,21 @@ export class VolumeSnapshot extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VolumeSnapshotState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["minDiskSize"] = state ? state.minDiskSize : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["volumeId"] = state ? state.volumeId : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["minDiskSize"] = state?.minDiskSize;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["volumeId"] = state?.volumeId;
         } else {
             const args = argsOrState as VolumeSnapshotArgs | undefined;
-            if ((!args || args.volumeId === undefined) && !opts.urn) {
+            if (args?.volumeId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'volumeId'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["volumeId"] = args ? args.volumeId : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["volumeId"] = args?.volumeId;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["minDiskSize"] = undefined /*out*/;
             resourceInputs["regions"] = undefined /*out*/;

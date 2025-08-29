@@ -28,23 +28,23 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The URL to use for the DigitalOcean API.
      */
-    public readonly apiEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly apiEndpoint: pulumi.Output<string | undefined>;
     /**
      * The access key ID for Spaces API operations.
      */
-    public readonly spacesAccessId!: pulumi.Output<string | undefined>;
+    declare public readonly spacesAccessId: pulumi.Output<string | undefined>;
     /**
      * The URL to use for the DigitalOcean Spaces API.
      */
-    public readonly spacesEndpoint!: pulumi.Output<string | undefined>;
+    declare public readonly spacesEndpoint: pulumi.Output<string | undefined>;
     /**
      * The secret access key for Spaces API operations.
      */
-    public readonly spacesSecretKey!: pulumi.Output<string | undefined>;
+    declare public readonly spacesSecretKey: pulumi.Output<string | undefined>;
     /**
      * The token key for API operations.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -57,15 +57,15 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["apiEndpoint"] = (args ? args.apiEndpoint : undefined) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
-            resourceInputs["httpRetryMax"] = pulumi.output(args ? args.httpRetryMax : undefined).apply(JSON.stringify);
-            resourceInputs["httpRetryWaitMax"] = pulumi.output(args ? args.httpRetryWaitMax : undefined).apply(JSON.stringify);
-            resourceInputs["httpRetryWaitMin"] = pulumi.output(args ? args.httpRetryWaitMin : undefined).apply(JSON.stringify);
-            resourceInputs["requestsPerSecond"] = pulumi.output(args ? args.requestsPerSecond : undefined).apply(JSON.stringify);
-            resourceInputs["spacesAccessId"] = args ? args.spacesAccessId : undefined;
-            resourceInputs["spacesEndpoint"] = (args ? args.spacesEndpoint : undefined) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
-            resourceInputs["spacesSecretKey"] = args ? args.spacesSecretKey : undefined;
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["apiEndpoint"] = (args?.apiEndpoint) ?? (utilities.getEnv("DIGITALOCEAN_API_URL") || "https://api.digitalocean.com");
+            resourceInputs["httpRetryMax"] = pulumi.output(args?.httpRetryMax).apply(JSON.stringify);
+            resourceInputs["httpRetryWaitMax"] = pulumi.output(args?.httpRetryWaitMax).apply(JSON.stringify);
+            resourceInputs["httpRetryWaitMin"] = pulumi.output(args?.httpRetryWaitMin).apply(JSON.stringify);
+            resourceInputs["requestsPerSecond"] = pulumi.output(args?.requestsPerSecond).apply(JSON.stringify);
+            resourceInputs["spacesAccessId"] = args?.spacesAccessId;
+            resourceInputs["spacesEndpoint"] = (args?.spacesEndpoint) ?? utilities.getEnv("SPACES_ENDPOINT_URL");
+            resourceInputs["spacesSecretKey"] = args?.spacesSecretKey;
+            resourceInputs["token"] = args?.token;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Provider.__pulumiType, name, resourceInputs, opts);

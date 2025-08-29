@@ -70,59 +70,55 @@ export class DatabaseValkeyConfig extends pulumi.CustomResource {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    public readonly aclChannelsDefault!: pulumi.Output<string>;
+    declare public readonly aclChannelsDefault: pulumi.Output<string>;
     /**
      * The ID of the target Valkey cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-     * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-     * valkeyPersistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      */
-    public readonly frequentSnapshots!: pulumi.Output<boolean>;
+    declare public readonly frequentSnapshots: pulumi.Output<boolean>;
     /**
      * The Valkey IO thread count.
      */
-    public readonly ioThreads!: pulumi.Output<number>;
+    declare public readonly ioThreads: pulumi.Output<number>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    public readonly lfuDecayTime!: pulumi.Output<number>;
+    declare public readonly lfuDecayTime: pulumi.Output<number>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    public readonly lfuLogFactor!: pulumi.Output<number>;
+    declare public readonly lfuLogFactor: pulumi.Output<number>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    public readonly notifyKeyspaceEvents!: pulumi.Output<string>;
+    declare public readonly notifyKeyspaceEvents: pulumi.Output<string>;
     /**
      * The number of Valkey databases. Changing this will cause a restart of Valkey service.
      */
-    public readonly numberOfDatabases!: pulumi.Output<number>;
+    declare public readonly numberOfDatabases: pulumi.Output<number>;
     /**
      * When persistence is 'rdb', Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    public readonly persistence!: pulumi.Output<string>;
+    declare public readonly persistence: pulumi.Output<string>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    public readonly pubsubClientOutputBufferLimit!: pulumi.Output<number>;
+    declare public readonly pubsubClientOutputBufferLimit: pulumi.Output<number>;
     /**
      * A boolean indicating whether to require SSL to access Valkey.
      */
-    public readonly ssl!: pulumi.Output<boolean>;
+    declare public readonly ssl: pulumi.Output<boolean>;
     /**
      * The Valkey idle connection timeout in seconds.
      */
-    public readonly timeout!: pulumi.Output<number>;
+    declare public readonly timeout: pulumi.Output<number>;
     /**
-     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-     * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-     * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
-    public readonly valkeyActiveExpireEffort!: pulumi.Output<number>;
+    declare public readonly valkeyActiveExpireEffort: pulumi.Output<number>;
 
     /**
      * Create a DatabaseValkeyConfig resource with the given unique name, arguments, and options.
@@ -137,37 +133,37 @@ export class DatabaseValkeyConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabaseValkeyConfigState | undefined;
-            resourceInputs["aclChannelsDefault"] = state ? state.aclChannelsDefault : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["frequentSnapshots"] = state ? state.frequentSnapshots : undefined;
-            resourceInputs["ioThreads"] = state ? state.ioThreads : undefined;
-            resourceInputs["lfuDecayTime"] = state ? state.lfuDecayTime : undefined;
-            resourceInputs["lfuLogFactor"] = state ? state.lfuLogFactor : undefined;
-            resourceInputs["notifyKeyspaceEvents"] = state ? state.notifyKeyspaceEvents : undefined;
-            resourceInputs["numberOfDatabases"] = state ? state.numberOfDatabases : undefined;
-            resourceInputs["persistence"] = state ? state.persistence : undefined;
-            resourceInputs["pubsubClientOutputBufferLimit"] = state ? state.pubsubClientOutputBufferLimit : undefined;
-            resourceInputs["ssl"] = state ? state.ssl : undefined;
-            resourceInputs["timeout"] = state ? state.timeout : undefined;
-            resourceInputs["valkeyActiveExpireEffort"] = state ? state.valkeyActiveExpireEffort : undefined;
+            resourceInputs["aclChannelsDefault"] = state?.aclChannelsDefault;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["frequentSnapshots"] = state?.frequentSnapshots;
+            resourceInputs["ioThreads"] = state?.ioThreads;
+            resourceInputs["lfuDecayTime"] = state?.lfuDecayTime;
+            resourceInputs["lfuLogFactor"] = state?.lfuLogFactor;
+            resourceInputs["notifyKeyspaceEvents"] = state?.notifyKeyspaceEvents;
+            resourceInputs["numberOfDatabases"] = state?.numberOfDatabases;
+            resourceInputs["persistence"] = state?.persistence;
+            resourceInputs["pubsubClientOutputBufferLimit"] = state?.pubsubClientOutputBufferLimit;
+            resourceInputs["ssl"] = state?.ssl;
+            resourceInputs["timeout"] = state?.timeout;
+            resourceInputs["valkeyActiveExpireEffort"] = state?.valkeyActiveExpireEffort;
         } else {
             const args = argsOrState as DatabaseValkeyConfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["aclChannelsDefault"] = args ? args.aclChannelsDefault : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["frequentSnapshots"] = args ? args.frequentSnapshots : undefined;
-            resourceInputs["ioThreads"] = args ? args.ioThreads : undefined;
-            resourceInputs["lfuDecayTime"] = args ? args.lfuDecayTime : undefined;
-            resourceInputs["lfuLogFactor"] = args ? args.lfuLogFactor : undefined;
-            resourceInputs["notifyKeyspaceEvents"] = args ? args.notifyKeyspaceEvents : undefined;
-            resourceInputs["numberOfDatabases"] = args ? args.numberOfDatabases : undefined;
-            resourceInputs["persistence"] = args ? args.persistence : undefined;
-            resourceInputs["pubsubClientOutputBufferLimit"] = args ? args.pubsubClientOutputBufferLimit : undefined;
-            resourceInputs["ssl"] = args ? args.ssl : undefined;
-            resourceInputs["timeout"] = args ? args.timeout : undefined;
-            resourceInputs["valkeyActiveExpireEffort"] = args ? args.valkeyActiveExpireEffort : undefined;
+            resourceInputs["aclChannelsDefault"] = args?.aclChannelsDefault;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["frequentSnapshots"] = args?.frequentSnapshots;
+            resourceInputs["ioThreads"] = args?.ioThreads;
+            resourceInputs["lfuDecayTime"] = args?.lfuDecayTime;
+            resourceInputs["lfuLogFactor"] = args?.lfuLogFactor;
+            resourceInputs["notifyKeyspaceEvents"] = args?.notifyKeyspaceEvents;
+            resourceInputs["numberOfDatabases"] = args?.numberOfDatabases;
+            resourceInputs["persistence"] = args?.persistence;
+            resourceInputs["pubsubClientOutputBufferLimit"] = args?.pubsubClientOutputBufferLimit;
+            resourceInputs["ssl"] = args?.ssl;
+            resourceInputs["timeout"] = args?.timeout;
+            resourceInputs["valkeyActiveExpireEffort"] = args?.valkeyActiveExpireEffort;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseValkeyConfig.__pulumiType, name, resourceInputs, opts);
@@ -187,9 +183,7 @@ export interface DatabaseValkeyConfigState {
      */
     clusterId?: pulumi.Input<string>;
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-     * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-     * valkeyPersistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      */
     frequentSnapshots?: pulumi.Input<boolean>;
     /**
@@ -229,9 +223,7 @@ export interface DatabaseValkeyConfigState {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-     * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-     * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
     valkeyActiveExpireEffort?: pulumi.Input<number>;
 }
@@ -249,9 +241,7 @@ export interface DatabaseValkeyConfigArgs {
      */
     clusterId: pulumi.Input<string>;
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only
-     * take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when
-     * valkeyPersistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      */
     frequentSnapshots?: pulumi.Input<boolean>;
     /**
@@ -291,9 +281,7 @@ export interface DatabaseValkeyConfigArgs {
      */
     timeout?: pulumi.Input<number>;
     /**
-     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process
-     * scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to
-     * reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+     * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
     valkeyActiveExpireEffort?: pulumi.Input<number>;
 }

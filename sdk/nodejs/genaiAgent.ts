@@ -38,159 +38,159 @@ export class GenaiAgent extends pulumi.CustomResource {
     /**
      * AgentGuardrail represents a Guardrail attached to Gen AI Agent
      */
-    public readonly agentGuardrails!: pulumi.Output<outputs.GenaiAgentAgentGuardrail[] | undefined>;
+    declare public readonly agentGuardrails: pulumi.Output<outputs.GenaiAgentAgentGuardrail[] | undefined>;
     /**
      * Anthropic API Key information
      */
-    public readonly anthropicApiKeys!: pulumi.Output<outputs.GenaiAgentAnthropicApiKey[] | undefined>;
+    declare public readonly anthropicApiKeys: pulumi.Output<outputs.GenaiAgentAnthropicApiKey[] | undefined>;
     /**
      * Optional Anthropic API key ID to use with Anthropic models
      */
-    public readonly anthropicKeyUuid!: pulumi.Output<string | undefined>;
+    declare public readonly anthropicKeyUuid: pulumi.Output<string | undefined>;
     /**
      * List of API Key Infos
      */
-    public readonly apiKeyInfos!: pulumi.Output<outputs.GenaiAgentApiKeyInfo[] | undefined>;
+    declare public readonly apiKeyInfos: pulumi.Output<outputs.GenaiAgentApiKeyInfo[] | undefined>;
     /**
      * List of API Keys
      */
-    public readonly apiKeys!: pulumi.Output<outputs.GenaiAgentApiKey[] | undefined>;
+    declare public readonly apiKeys: pulumi.Output<outputs.GenaiAgentApiKey[] | undefined>;
     /**
      * List of Chatbot Identifiers
      */
-    public readonly chatbotIdentifiers!: pulumi.Output<outputs.GenaiAgentChatbotIdentifier[] | undefined>;
+    declare public readonly chatbotIdentifiers: pulumi.Output<outputs.GenaiAgentChatbotIdentifier[] | undefined>;
     /**
      * ChatBot configuration
      */
-    public readonly chatbots!: pulumi.Output<outputs.GenaiAgentChatbot[] | undefined>;
+    declare public readonly chatbots: pulumi.Output<outputs.GenaiAgentChatbot[] | undefined>;
     /**
      * List of child agents
      */
-    public readonly childAgents!: pulumi.Output<outputs.GenaiAgentChildAgent[]>;
+    declare public readonly childAgents: pulumi.Output<outputs.GenaiAgentChildAgent[]>;
     /**
      * Timestamp when the Agent was created
      */
-    public readonly createdAt!: pulumi.Output<string | undefined>;
+    declare public readonly createdAt: pulumi.Output<string | undefined>;
     /**
      * List of API Key Infos
      */
-    public readonly deployments!: pulumi.Output<outputs.GenaiAgentDeployment[] | undefined>;
+    declare public readonly deployments: pulumi.Output<outputs.GenaiAgentDeployment[] | undefined>;
     /**
      * Description for the Agent
      */
-    public readonly description!: pulumi.Output<string | undefined>;
+    declare public readonly description: pulumi.Output<string | undefined>;
     /**
      * List of Functions
      */
-    public readonly functions!: pulumi.Output<outputs.GenaiAgentFunction[] | undefined>;
+    declare public readonly functions: pulumi.Output<outputs.GenaiAgentFunction[] | undefined>;
     /**
      * If case condition
      */
-    public readonly ifCase!: pulumi.Output<string | undefined>;
+    declare public readonly ifCase: pulumi.Output<string | undefined>;
     /**
      * Instruction for the Agent
      */
-    public readonly instruction!: pulumi.Output<string>;
+    declare public readonly instruction: pulumi.Output<string>;
     /**
      * K value
      */
-    public readonly k!: pulumi.Output<number | undefined>;
+    declare public readonly k: pulumi.Output<number | undefined>;
     /**
      * Ids of the knowledge base(s) to attach to the agent
      */
-    public readonly knowledgeBaseUuids!: pulumi.Output<string[] | undefined>;
+    declare public readonly knowledgeBaseUuids: pulumi.Output<string[] | undefined>;
     /**
      * List of Knowledge Bases
      */
-    public readonly knowledgeBases!: pulumi.Output<outputs.GenaiAgentKnowledgeBase[]>;
+    declare public readonly knowledgeBases: pulumi.Output<outputs.GenaiAgentKnowledgeBase[]>;
     /**
      * Maximum tokens allowed
      */
-    public readonly maxTokens!: pulumi.Output<number | undefined>;
+    declare public readonly maxTokens: pulumi.Output<number | undefined>;
     /**
      * Model UUID of the Agent
      */
-    public readonly modelUuid!: pulumi.Output<string>;
+    declare public readonly modelUuid: pulumi.Output<string>;
     /**
      * Model of the Agent
      */
-    public readonly models!: pulumi.Output<outputs.GenaiAgentModel[]>;
+    declare public readonly models: pulumi.Output<outputs.GenaiAgentModel[]>;
     /**
      * Name of the Agent
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * OpenAI API Key information
      */
-    public readonly openAiApiKeys!: pulumi.Output<outputs.GenaiAgentOpenAiApiKey[] | undefined>;
+    declare public readonly openAiApiKeys: pulumi.Output<outputs.GenaiAgentOpenAiApiKey[] | undefined>;
     /**
      * Optional OpenAI API key ID to use with OpenAI models
      */
-    public readonly openAiKeyUuid!: pulumi.Output<string | undefined>;
+    declare public readonly openAiKeyUuid: pulumi.Output<string | undefined>;
     /**
      * List of child agents
      */
-    public readonly parentAgents!: pulumi.Output<outputs.GenaiAgentParentAgent[]>;
+    declare public readonly parentAgents: pulumi.Output<outputs.GenaiAgentParentAgent[]>;
     /**
      * Project ID of the Agent
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * Indicates if the agent should provide citations in responses
      */
-    public readonly provideCitations!: pulumi.Output<boolean | undefined>;
+    declare public readonly provideCitations: pulumi.Output<boolean | undefined>;
     /**
      * Region where the Agent is deployed
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * Retrieval method used
      */
-    public readonly retrievalMethod!: pulumi.Output<string | undefined>;
+    declare public readonly retrievalMethod: pulumi.Output<string | undefined>;
     /**
      * Timestamp when the route was created
      */
-    public /*out*/ readonly routeCreatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly routeCreatedAt: pulumi.Output<string>;
     /**
      * User who created the route
      */
-    public readonly routeCreatedBy!: pulumi.Output<string | undefined>;
+    declare public readonly routeCreatedBy: pulumi.Output<string | undefined>;
     /**
      * Route name
      */
-    public readonly routeName!: pulumi.Output<string | undefined>;
+    declare public readonly routeName: pulumi.Output<string | undefined>;
     /**
      * Route UUID
      */
-    public readonly routeUuid!: pulumi.Output<string | undefined>;
+    declare public readonly routeUuid: pulumi.Output<string | undefined>;
     /**
      * List of Tags
      */
-    public readonly tags!: pulumi.Output<string[] | undefined>;
+    declare public readonly tags: pulumi.Output<string[] | undefined>;
     /**
      * Agent temperature setting
      */
-    public readonly temperature!: pulumi.Output<number | undefined>;
+    declare public readonly temperature: pulumi.Output<number | undefined>;
     /**
      * Agent Template
      */
-    public readonly templates!: pulumi.Output<outputs.GenaiAgentTemplate[] | undefined>;
+    declare public readonly templates: pulumi.Output<outputs.GenaiAgentTemplate[] | undefined>;
     /**
      * Top P sampling parameter
      */
-    public readonly topP!: pulumi.Output<number | undefined>;
+    declare public readonly topP: pulumi.Output<number | undefined>;
     /**
      * Timestamp when the Agent was updated
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * URL for the Agent
      */
-    public readonly url!: pulumi.Output<string | undefined>;
+    declare public readonly url: pulumi.Output<string | undefined>;
     /**
      * User ID linked with the Agent
      */
-    public readonly userId!: pulumi.Output<string | undefined>;
+    declare public readonly userId: pulumi.Output<string | undefined>;
 
     /**
      * Create a GenaiAgent resource with the given unique name, arguments, and options.
@@ -205,96 +205,96 @@ export class GenaiAgent extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiAgentState | undefined;
-            resourceInputs["agentGuardrails"] = state ? state.agentGuardrails : undefined;
-            resourceInputs["anthropicApiKeys"] = state ? state.anthropicApiKeys : undefined;
-            resourceInputs["anthropicKeyUuid"] = state ? state.anthropicKeyUuid : undefined;
-            resourceInputs["apiKeyInfos"] = state ? state.apiKeyInfos : undefined;
-            resourceInputs["apiKeys"] = state ? state.apiKeys : undefined;
-            resourceInputs["chatbotIdentifiers"] = state ? state.chatbotIdentifiers : undefined;
-            resourceInputs["chatbots"] = state ? state.chatbots : undefined;
-            resourceInputs["childAgents"] = state ? state.childAgents : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["deployments"] = state ? state.deployments : undefined;
-            resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["functions"] = state ? state.functions : undefined;
-            resourceInputs["ifCase"] = state ? state.ifCase : undefined;
-            resourceInputs["instruction"] = state ? state.instruction : undefined;
-            resourceInputs["k"] = state ? state.k : undefined;
-            resourceInputs["knowledgeBaseUuids"] = state ? state.knowledgeBaseUuids : undefined;
-            resourceInputs["knowledgeBases"] = state ? state.knowledgeBases : undefined;
-            resourceInputs["maxTokens"] = state ? state.maxTokens : undefined;
-            resourceInputs["modelUuid"] = state ? state.modelUuid : undefined;
-            resourceInputs["models"] = state ? state.models : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["openAiApiKeys"] = state ? state.openAiApiKeys : undefined;
-            resourceInputs["openAiKeyUuid"] = state ? state.openAiKeyUuid : undefined;
-            resourceInputs["parentAgents"] = state ? state.parentAgents : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["provideCitations"] = state ? state.provideCitations : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["retrievalMethod"] = state ? state.retrievalMethod : undefined;
-            resourceInputs["routeCreatedAt"] = state ? state.routeCreatedAt : undefined;
-            resourceInputs["routeCreatedBy"] = state ? state.routeCreatedBy : undefined;
-            resourceInputs["routeName"] = state ? state.routeName : undefined;
-            resourceInputs["routeUuid"] = state ? state.routeUuid : undefined;
-            resourceInputs["tags"] = state ? state.tags : undefined;
-            resourceInputs["temperature"] = state ? state.temperature : undefined;
-            resourceInputs["templates"] = state ? state.templates : undefined;
-            resourceInputs["topP"] = state ? state.topP : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["url"] = state ? state.url : undefined;
-            resourceInputs["userId"] = state ? state.userId : undefined;
+            resourceInputs["agentGuardrails"] = state?.agentGuardrails;
+            resourceInputs["anthropicApiKeys"] = state?.anthropicApiKeys;
+            resourceInputs["anthropicKeyUuid"] = state?.anthropicKeyUuid;
+            resourceInputs["apiKeyInfos"] = state?.apiKeyInfos;
+            resourceInputs["apiKeys"] = state?.apiKeys;
+            resourceInputs["chatbotIdentifiers"] = state?.chatbotIdentifiers;
+            resourceInputs["chatbots"] = state?.chatbots;
+            resourceInputs["childAgents"] = state?.childAgents;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["deployments"] = state?.deployments;
+            resourceInputs["description"] = state?.description;
+            resourceInputs["functions"] = state?.functions;
+            resourceInputs["ifCase"] = state?.ifCase;
+            resourceInputs["instruction"] = state?.instruction;
+            resourceInputs["k"] = state?.k;
+            resourceInputs["knowledgeBaseUuids"] = state?.knowledgeBaseUuids;
+            resourceInputs["knowledgeBases"] = state?.knowledgeBases;
+            resourceInputs["maxTokens"] = state?.maxTokens;
+            resourceInputs["modelUuid"] = state?.modelUuid;
+            resourceInputs["models"] = state?.models;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["openAiApiKeys"] = state?.openAiApiKeys;
+            resourceInputs["openAiKeyUuid"] = state?.openAiKeyUuid;
+            resourceInputs["parentAgents"] = state?.parentAgents;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["provideCitations"] = state?.provideCitations;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["retrievalMethod"] = state?.retrievalMethod;
+            resourceInputs["routeCreatedAt"] = state?.routeCreatedAt;
+            resourceInputs["routeCreatedBy"] = state?.routeCreatedBy;
+            resourceInputs["routeName"] = state?.routeName;
+            resourceInputs["routeUuid"] = state?.routeUuid;
+            resourceInputs["tags"] = state?.tags;
+            resourceInputs["temperature"] = state?.temperature;
+            resourceInputs["templates"] = state?.templates;
+            resourceInputs["topP"] = state?.topP;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["url"] = state?.url;
+            resourceInputs["userId"] = state?.userId;
         } else {
             const args = argsOrState as GenaiAgentArgs | undefined;
-            if ((!args || args.instruction === undefined) && !opts.urn) {
+            if (args?.instruction === undefined && !opts.urn) {
                 throw new Error("Missing required property 'instruction'");
             }
-            if ((!args || args.modelUuid === undefined) && !opts.urn) {
+            if (args?.modelUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'modelUuid'");
             }
-            if ((!args || args.projectId === undefined) && !opts.urn) {
+            if (args?.projectId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'projectId'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            resourceInputs["agentGuardrails"] = args ? args.agentGuardrails : undefined;
-            resourceInputs["anthropicApiKeys"] = args ? args.anthropicApiKeys : undefined;
-            resourceInputs["anthropicKeyUuid"] = args ? args.anthropicKeyUuid : undefined;
-            resourceInputs["apiKeyInfos"] = args ? args.apiKeyInfos : undefined;
-            resourceInputs["apiKeys"] = args ? args.apiKeys : undefined;
-            resourceInputs["chatbotIdentifiers"] = args ? args.chatbotIdentifiers : undefined;
-            resourceInputs["chatbots"] = args ? args.chatbots : undefined;
-            resourceInputs["childAgents"] = args ? args.childAgents : undefined;
-            resourceInputs["createdAt"] = args ? args.createdAt : undefined;
-            resourceInputs["deployments"] = args ? args.deployments : undefined;
-            resourceInputs["description"] = args ? args.description : undefined;
-            resourceInputs["functions"] = args ? args.functions : undefined;
-            resourceInputs["ifCase"] = args ? args.ifCase : undefined;
-            resourceInputs["instruction"] = args ? args.instruction : undefined;
-            resourceInputs["k"] = args ? args.k : undefined;
-            resourceInputs["knowledgeBaseUuids"] = args ? args.knowledgeBaseUuids : undefined;
-            resourceInputs["knowledgeBases"] = args ? args.knowledgeBases : undefined;
-            resourceInputs["maxTokens"] = args ? args.maxTokens : undefined;
-            resourceInputs["modelUuid"] = args ? args.modelUuid : undefined;
-            resourceInputs["models"] = args ? args.models : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["openAiApiKeys"] = args ? args.openAiApiKeys : undefined;
-            resourceInputs["openAiKeyUuid"] = args ? args.openAiKeyUuid : undefined;
-            resourceInputs["parentAgents"] = args ? args.parentAgents : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["provideCitations"] = args ? args.provideCitations : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["retrievalMethod"] = args ? args.retrievalMethod : undefined;
-            resourceInputs["routeCreatedBy"] = args ? args.routeCreatedBy : undefined;
-            resourceInputs["routeName"] = args ? args.routeName : undefined;
-            resourceInputs["routeUuid"] = args ? args.routeUuid : undefined;
-            resourceInputs["tags"] = args ? args.tags : undefined;
-            resourceInputs["temperature"] = args ? args.temperature : undefined;
-            resourceInputs["templates"] = args ? args.templates : undefined;
-            resourceInputs["topP"] = args ? args.topP : undefined;
-            resourceInputs["url"] = args ? args.url : undefined;
-            resourceInputs["userId"] = args ? args.userId : undefined;
+            resourceInputs["agentGuardrails"] = args?.agentGuardrails;
+            resourceInputs["anthropicApiKeys"] = args?.anthropicApiKeys;
+            resourceInputs["anthropicKeyUuid"] = args?.anthropicKeyUuid;
+            resourceInputs["apiKeyInfos"] = args?.apiKeyInfos;
+            resourceInputs["apiKeys"] = args?.apiKeys;
+            resourceInputs["chatbotIdentifiers"] = args?.chatbotIdentifiers;
+            resourceInputs["chatbots"] = args?.chatbots;
+            resourceInputs["childAgents"] = args?.childAgents;
+            resourceInputs["createdAt"] = args?.createdAt;
+            resourceInputs["deployments"] = args?.deployments;
+            resourceInputs["description"] = args?.description;
+            resourceInputs["functions"] = args?.functions;
+            resourceInputs["ifCase"] = args?.ifCase;
+            resourceInputs["instruction"] = args?.instruction;
+            resourceInputs["k"] = args?.k;
+            resourceInputs["knowledgeBaseUuids"] = args?.knowledgeBaseUuids;
+            resourceInputs["knowledgeBases"] = args?.knowledgeBases;
+            resourceInputs["maxTokens"] = args?.maxTokens;
+            resourceInputs["modelUuid"] = args?.modelUuid;
+            resourceInputs["models"] = args?.models;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["openAiApiKeys"] = args?.openAiApiKeys;
+            resourceInputs["openAiKeyUuid"] = args?.openAiKeyUuid;
+            resourceInputs["parentAgents"] = args?.parentAgents;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["provideCitations"] = args?.provideCitations;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["retrievalMethod"] = args?.retrievalMethod;
+            resourceInputs["routeCreatedBy"] = args?.routeCreatedBy;
+            resourceInputs["routeName"] = args?.routeName;
+            resourceInputs["routeUuid"] = args?.routeUuid;
+            resourceInputs["tags"] = args?.tags;
+            resourceInputs["temperature"] = args?.temperature;
+            resourceInputs["templates"] = args?.templates;
+            resourceInputs["topP"] = args?.topP;
+            resourceInputs["url"] = args?.url;
+            resourceInputs["userId"] = args?.userId;
             resourceInputs["routeCreatedAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

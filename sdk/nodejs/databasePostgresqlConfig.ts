@@ -75,211 +75,211 @@ export class DatabasePostgresqlConfig extends pulumi.CustomResource {
     /**
      * Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
      */
-    public readonly autovacuumAnalyzeScaleFactor!: pulumi.Output<number>;
+    declare public readonly autovacuumAnalyzeScaleFactor: pulumi.Output<number>;
     /**
      * Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
      */
-    public readonly autovacuumAnalyzeThreshold!: pulumi.Output<number>;
+    declare public readonly autovacuumAnalyzeThreshold: pulumi.Output<number>;
     /**
      * Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
      */
-    public readonly autovacuumFreezeMaxAge!: pulumi.Output<number>;
+    declare public readonly autovacuumFreezeMaxAge: pulumi.Output<number>;
     /**
      * Specifies the maximum number of autovacuum processes (other than the autovacuum launcher) that may be running at any one time. The default is three. This parameter can only be set at server start.
      */
-    public readonly autovacuumMaxWorkers!: pulumi.Output<number>;
+    declare public readonly autovacuumMaxWorkers: pulumi.Output<number>;
     /**
      * Specifies the minimum delay, in seconds, between autovacuum runs on any given database. The default is one minute.
      */
-    public readonly autovacuumNaptime!: pulumi.Output<number>;
+    declare public readonly autovacuumNaptime: pulumi.Output<number>;
     /**
      * Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
      */
-    public readonly autovacuumVacuumCostDelay!: pulumi.Output<number>;
+    declare public readonly autovacuumVacuumCostDelay: pulumi.Output<number>;
     /**
      * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      */
-    public readonly autovacuumVacuumCostLimit!: pulumi.Output<number>;
+    declare public readonly autovacuumVacuumCostLimit: pulumi.Output<number>;
     /**
      * Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
      */
-    public readonly autovacuumVacuumScaleFactor!: pulumi.Output<number>;
+    declare public readonly autovacuumVacuumScaleFactor: pulumi.Output<number>;
     /**
      * Specifies the minimum number of updated or deleted tuples needed to trigger a VACUUM in any one table. The default is 50 tuples.
      */
-    public readonly autovacuumVacuumThreshold!: pulumi.Output<number>;
+    declare public readonly autovacuumVacuumThreshold: pulumi.Output<number>;
     /**
      * The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
      */
-    public readonly backupHour!: pulumi.Output<number>;
+    declare public readonly backupHour: pulumi.Output<number>;
     /**
      * The minute of the backup hour when backup for the service starts. New backup is only started if previous backup has already completed.
      */
-    public readonly backupMinute!: pulumi.Output<number>;
+    declare public readonly backupMinute: pulumi.Output<number>;
     /**
      * Specifies the delay, in milliseconds, between activity rounds for the background writer. Default is 200 ms.
      */
-    public readonly bgwriterDelay!: pulumi.Output<number>;
+    declare public readonly bgwriterDelay: pulumi.Output<number>;
     /**
      * The amount of kilobytes that need to be written by the background writer before attempting to force the OS to issue these writes to underlying storage. Specified in kilobytes, default is 512. Setting of 0 disables forced writeback.
      */
-    public readonly bgwriterFlushAfter!: pulumi.Output<number>;
+    declare public readonly bgwriterFlushAfter: pulumi.Output<number>;
     /**
      * The maximum number of buffers that the background writer can write. Setting this to zero disables background writing. Default is 100.
      */
-    public readonly bgwriterLruMaxpages!: pulumi.Output<number>;
+    declare public readonly bgwriterLruMaxpages: pulumi.Output<number>;
     /**
      * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      */
-    public readonly bgwriterLruMultiplier!: pulumi.Output<number>;
+    declare public readonly bgwriterLruMultiplier: pulumi.Output<number>;
     /**
      * The ID of the target PostgreSQL cluster.
      */
-    public readonly clusterId!: pulumi.Output<string>;
+    declare public readonly clusterId: pulumi.Output<string>;
     /**
      * The amount of time, in milliseconds, to wait on a lock before checking to see if there is a deadlock condition.
      */
-    public readonly deadlockTimeout!: pulumi.Output<number>;
+    declare public readonly deadlockTimeout: pulumi.Output<number>;
     /**
      * Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
      */
-    public readonly defaultToastCompression!: pulumi.Output<string>;
+    declare public readonly defaultToastCompression: pulumi.Output<string>;
     /**
      * Time out sessions with open transactions after this number of milliseconds
      */
-    public readonly idleInTransactionSessionTimeout!: pulumi.Output<number>;
+    declare public readonly idleInTransactionSessionTimeout: pulumi.Output<number>;
     /**
      * Activates, in a boolean, the system-wide use of Just-in-Time Compilation (JIT).
      */
-    public readonly jit!: pulumi.Output<boolean>;
+    declare public readonly jit: pulumi.Output<boolean>;
     /**
      * Causes each action executed by autovacuum to be logged if it ran for at least the specified number of milliseconds. Setting this to zero logs all autovacuum actions. Minus-one (the default) disables logging autovacuum actions.
      */
-    public readonly logAutovacuumMinDuration!: pulumi.Output<number>;
+    declare public readonly logAutovacuumMinDuration: pulumi.Output<number>;
     /**
      * Controls the amount of detail written in the server log for each message that is logged. Supported values are: `TERSE`, `DEFAULT`, `VERBOSE`.
      */
-    public readonly logErrorVerbosity!: pulumi.Output<string>;
+    declare public readonly logErrorVerbosity: pulumi.Output<string>;
     /**
      * Selects one of the available log-formats. These can support popular log analyzers like pgbadger, pganalyze, etc. Supported values are: `pid=%p,user=%u,db=%d,app=%a,client=%h`, `%m [%p] %q[user=%u,db=%d,app=%a]`, `%t [%p]: [%l-1] user=%u,db=%d,app=%a,client=%h`.
      */
-    public readonly logLinePrefix!: pulumi.Output<string>;
+    declare public readonly logLinePrefix: pulumi.Output<string>;
     /**
      * Log statements that take more than this number of milliseconds to run. If -1, disables.
      */
-    public readonly logMinDurationStatement!: pulumi.Output<number>;
+    declare public readonly logMinDurationStatement: pulumi.Output<number>;
     /**
      * PostgreSQL maximum number of files that can be open per process.
      */
-    public readonly maxFilesPerProcess!: pulumi.Output<number>;
+    declare public readonly maxFilesPerProcess: pulumi.Output<number>;
     /**
      * PostgreSQL maximum locks per transaction. Once increased, this parameter cannot be lowered from its set value.
      */
-    public readonly maxLocksPerTransaction!: pulumi.Output<number>;
+    declare public readonly maxLocksPerTransaction: pulumi.Output<number>;
     /**
      * PostgreSQL maximum logical replication workers (taken from the pool of max_parallel_workers).
      */
-    public readonly maxLogicalReplicationWorkers!: pulumi.Output<number>;
+    declare public readonly maxLogicalReplicationWorkers: pulumi.Output<number>;
     /**
      * Sets the maximum number of workers that the system can support for parallel queries.
      */
-    public readonly maxParallelWorkers!: pulumi.Output<number>;
+    declare public readonly maxParallelWorkers: pulumi.Output<number>;
     /**
      * Sets the maximum number of workers that can be started by a single Gather or Gather Merge node.
      */
-    public readonly maxParallelWorkersPerGather!: pulumi.Output<number>;
+    declare public readonly maxParallelWorkersPerGather: pulumi.Output<number>;
     /**
      * PostgreSQL maximum predicate locks per transaction.
      */
-    public readonly maxPredLocksPerTransaction!: pulumi.Output<number>;
+    declare public readonly maxPredLocksPerTransaction: pulumi.Output<number>;
     /**
      * PostgreSQL maximum prepared transactions. Once increased, this parameter cannot be lowered from its set value.
      */
-    public readonly maxPreparedTransactions!: pulumi.Output<number>;
+    declare public readonly maxPreparedTransactions: pulumi.Output<number>;
     /**
      * PostgreSQL maximum replication slots.
      */
-    public readonly maxReplicationSlots!: pulumi.Output<number>;
+    declare public readonly maxReplicationSlots: pulumi.Output<number>;
     /**
      * Maximum depth of the stack in bytes.
      */
-    public readonly maxStackDepth!: pulumi.Output<number>;
+    declare public readonly maxStackDepth: pulumi.Output<number>;
     /**
      * Max standby archive delay in milliseconds.
      */
-    public readonly maxStandbyArchiveDelay!: pulumi.Output<number>;
+    declare public readonly maxStandbyArchiveDelay: pulumi.Output<number>;
     /**
      * Max standby streaming delay in milliseconds.
      */
-    public readonly maxStandbyStreamingDelay!: pulumi.Output<number>;
+    declare public readonly maxStandbyStreamingDelay: pulumi.Output<number>;
     /**
      * PostgreSQL maximum WAL senders. Once increased, this parameter cannot be lowered from its set value.
      */
-    public readonly maxWalSenders!: pulumi.Output<number>;
+    declare public readonly maxWalSenders: pulumi.Output<number>;
     /**
      * Sets the maximum number of background processes that the system can support. Once increased, this parameter cannot be lowered from its set value.
      */
-    public readonly maxWorkerProcesses!: pulumi.Output<number>;
+    declare public readonly maxWorkerProcesses: pulumi.Output<number>;
     /**
      * Sets the time interval to run pg_partman's scheduled tasks.
      */
-    public readonly pgPartmanBgwInterval!: pulumi.Output<number>;
+    declare public readonly pgPartmanBgwInterval: pulumi.Output<number>;
     /**
      * Controls which role to use for pg_partman's scheduled background tasks. Must consist of alpha-numeric characters, dots, underscores, or dashes. May not start with dash or dot. Maximum of 64 characters.
      */
-    public readonly pgPartmanBgwRole!: pulumi.Output<string>;
+    declare public readonly pgPartmanBgwRole: pulumi.Output<string>;
     /**
      * Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
      */
-    public readonly pgStatStatementsTrack!: pulumi.Output<string>;
+    declare public readonly pgStatStatementsTrack: pulumi.Output<string>;
     /**
      * PGBouncer connection pooling settings
      */
-    public readonly pgbouncers!: pulumi.Output<outputs.DatabasePostgresqlConfigPgbouncer[]>;
+    declare public readonly pgbouncers: pulumi.Output<outputs.DatabasePostgresqlConfigPgbouncer[]>;
     /**
      * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      */
-    public readonly sharedBuffersPercentage!: pulumi.Output<number>;
+    declare public readonly sharedBuffersPercentage: pulumi.Output<number>;
     /**
      * PostgreSQL temporary file limit in KiB. If -1, sets to unlimited.
      */
-    public readonly tempFileLimit!: pulumi.Output<number>;
+    declare public readonly tempFileLimit: pulumi.Output<number>;
     /**
      * TimescaleDB extension configuration values
      */
-    public readonly timescaledbs!: pulumi.Output<outputs.DatabasePostgresqlConfigTimescaledb[]>;
+    declare public readonly timescaledbs: pulumi.Output<outputs.DatabasePostgresqlConfigTimescaledb[]>;
     /**
      * PostgreSQL service timezone
      */
-    public readonly timezone!: pulumi.Output<string>;
+    declare public readonly timezone: pulumi.Output<string>;
     /**
      * Specifies the number of bytes reserved to track the currently executing command for each active session.
      */
-    public readonly trackActivityQuerySize!: pulumi.Output<number>;
+    declare public readonly trackActivityQuerySize: pulumi.Output<number>;
     /**
      * Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
      */
-    public readonly trackCommitTimestamp!: pulumi.Output<string>;
+    declare public readonly trackCommitTimestamp: pulumi.Output<string>;
     /**
      * Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
      */
-    public readonly trackFunctions!: pulumi.Output<string>;
+    declare public readonly trackFunctions: pulumi.Output<string>;
     /**
      * Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
      */
-    public readonly trackIoTiming!: pulumi.Output<string>;
+    declare public readonly trackIoTiming: pulumi.Output<string>;
     /**
      * Terminate replication connections that are inactive for longer than this amount of time, in milliseconds. Setting this value to zero disables the timeout. Must be either 0 or between 5000 and 10800000.
      */
-    public readonly walSenderTimeout!: pulumi.Output<number>;
+    declare public readonly walSenderTimeout: pulumi.Output<number>;
     /**
      * WAL flush interval in milliseconds. Note that setting this value to lower than the default 200ms may negatively impact performance
      */
-    public readonly walWriterDelay!: pulumi.Output<number>;
+    declare public readonly walWriterDelay: pulumi.Output<number>;
     /**
      * The maximum amount of memory, in MB, used by a query operation (such as a sort or hash table) before writing to temporary disk files. Default is 1MB + 0.075% of total RAM (up to 32MB).
      */
-    public readonly workMem!: pulumi.Output<number>;
+    declare public readonly workMem: pulumi.Output<number>;
 
     /**
      * Create a DatabasePostgresqlConfig resource with the given unique name, arguments, and options.
@@ -294,115 +294,115 @@ export class DatabasePostgresqlConfig extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DatabasePostgresqlConfigState | undefined;
-            resourceInputs["autovacuumAnalyzeScaleFactor"] = state ? state.autovacuumAnalyzeScaleFactor : undefined;
-            resourceInputs["autovacuumAnalyzeThreshold"] = state ? state.autovacuumAnalyzeThreshold : undefined;
-            resourceInputs["autovacuumFreezeMaxAge"] = state ? state.autovacuumFreezeMaxAge : undefined;
-            resourceInputs["autovacuumMaxWorkers"] = state ? state.autovacuumMaxWorkers : undefined;
-            resourceInputs["autovacuumNaptime"] = state ? state.autovacuumNaptime : undefined;
-            resourceInputs["autovacuumVacuumCostDelay"] = state ? state.autovacuumVacuumCostDelay : undefined;
-            resourceInputs["autovacuumVacuumCostLimit"] = state ? state.autovacuumVacuumCostLimit : undefined;
-            resourceInputs["autovacuumVacuumScaleFactor"] = state ? state.autovacuumVacuumScaleFactor : undefined;
-            resourceInputs["autovacuumVacuumThreshold"] = state ? state.autovacuumVacuumThreshold : undefined;
-            resourceInputs["backupHour"] = state ? state.backupHour : undefined;
-            resourceInputs["backupMinute"] = state ? state.backupMinute : undefined;
-            resourceInputs["bgwriterDelay"] = state ? state.bgwriterDelay : undefined;
-            resourceInputs["bgwriterFlushAfter"] = state ? state.bgwriterFlushAfter : undefined;
-            resourceInputs["bgwriterLruMaxpages"] = state ? state.bgwriterLruMaxpages : undefined;
-            resourceInputs["bgwriterLruMultiplier"] = state ? state.bgwriterLruMultiplier : undefined;
-            resourceInputs["clusterId"] = state ? state.clusterId : undefined;
-            resourceInputs["deadlockTimeout"] = state ? state.deadlockTimeout : undefined;
-            resourceInputs["defaultToastCompression"] = state ? state.defaultToastCompression : undefined;
-            resourceInputs["idleInTransactionSessionTimeout"] = state ? state.idleInTransactionSessionTimeout : undefined;
-            resourceInputs["jit"] = state ? state.jit : undefined;
-            resourceInputs["logAutovacuumMinDuration"] = state ? state.logAutovacuumMinDuration : undefined;
-            resourceInputs["logErrorVerbosity"] = state ? state.logErrorVerbosity : undefined;
-            resourceInputs["logLinePrefix"] = state ? state.logLinePrefix : undefined;
-            resourceInputs["logMinDurationStatement"] = state ? state.logMinDurationStatement : undefined;
-            resourceInputs["maxFilesPerProcess"] = state ? state.maxFilesPerProcess : undefined;
-            resourceInputs["maxLocksPerTransaction"] = state ? state.maxLocksPerTransaction : undefined;
-            resourceInputs["maxLogicalReplicationWorkers"] = state ? state.maxLogicalReplicationWorkers : undefined;
-            resourceInputs["maxParallelWorkers"] = state ? state.maxParallelWorkers : undefined;
-            resourceInputs["maxParallelWorkersPerGather"] = state ? state.maxParallelWorkersPerGather : undefined;
-            resourceInputs["maxPredLocksPerTransaction"] = state ? state.maxPredLocksPerTransaction : undefined;
-            resourceInputs["maxPreparedTransactions"] = state ? state.maxPreparedTransactions : undefined;
-            resourceInputs["maxReplicationSlots"] = state ? state.maxReplicationSlots : undefined;
-            resourceInputs["maxStackDepth"] = state ? state.maxStackDepth : undefined;
-            resourceInputs["maxStandbyArchiveDelay"] = state ? state.maxStandbyArchiveDelay : undefined;
-            resourceInputs["maxStandbyStreamingDelay"] = state ? state.maxStandbyStreamingDelay : undefined;
-            resourceInputs["maxWalSenders"] = state ? state.maxWalSenders : undefined;
-            resourceInputs["maxWorkerProcesses"] = state ? state.maxWorkerProcesses : undefined;
-            resourceInputs["pgPartmanBgwInterval"] = state ? state.pgPartmanBgwInterval : undefined;
-            resourceInputs["pgPartmanBgwRole"] = state ? state.pgPartmanBgwRole : undefined;
-            resourceInputs["pgStatStatementsTrack"] = state ? state.pgStatStatementsTrack : undefined;
-            resourceInputs["pgbouncers"] = state ? state.pgbouncers : undefined;
-            resourceInputs["sharedBuffersPercentage"] = state ? state.sharedBuffersPercentage : undefined;
-            resourceInputs["tempFileLimit"] = state ? state.tempFileLimit : undefined;
-            resourceInputs["timescaledbs"] = state ? state.timescaledbs : undefined;
-            resourceInputs["timezone"] = state ? state.timezone : undefined;
-            resourceInputs["trackActivityQuerySize"] = state ? state.trackActivityQuerySize : undefined;
-            resourceInputs["trackCommitTimestamp"] = state ? state.trackCommitTimestamp : undefined;
-            resourceInputs["trackFunctions"] = state ? state.trackFunctions : undefined;
-            resourceInputs["trackIoTiming"] = state ? state.trackIoTiming : undefined;
-            resourceInputs["walSenderTimeout"] = state ? state.walSenderTimeout : undefined;
-            resourceInputs["walWriterDelay"] = state ? state.walWriterDelay : undefined;
-            resourceInputs["workMem"] = state ? state.workMem : undefined;
+            resourceInputs["autovacuumAnalyzeScaleFactor"] = state?.autovacuumAnalyzeScaleFactor;
+            resourceInputs["autovacuumAnalyzeThreshold"] = state?.autovacuumAnalyzeThreshold;
+            resourceInputs["autovacuumFreezeMaxAge"] = state?.autovacuumFreezeMaxAge;
+            resourceInputs["autovacuumMaxWorkers"] = state?.autovacuumMaxWorkers;
+            resourceInputs["autovacuumNaptime"] = state?.autovacuumNaptime;
+            resourceInputs["autovacuumVacuumCostDelay"] = state?.autovacuumVacuumCostDelay;
+            resourceInputs["autovacuumVacuumCostLimit"] = state?.autovacuumVacuumCostLimit;
+            resourceInputs["autovacuumVacuumScaleFactor"] = state?.autovacuumVacuumScaleFactor;
+            resourceInputs["autovacuumVacuumThreshold"] = state?.autovacuumVacuumThreshold;
+            resourceInputs["backupHour"] = state?.backupHour;
+            resourceInputs["backupMinute"] = state?.backupMinute;
+            resourceInputs["bgwriterDelay"] = state?.bgwriterDelay;
+            resourceInputs["bgwriterFlushAfter"] = state?.bgwriterFlushAfter;
+            resourceInputs["bgwriterLruMaxpages"] = state?.bgwriterLruMaxpages;
+            resourceInputs["bgwriterLruMultiplier"] = state?.bgwriterLruMultiplier;
+            resourceInputs["clusterId"] = state?.clusterId;
+            resourceInputs["deadlockTimeout"] = state?.deadlockTimeout;
+            resourceInputs["defaultToastCompression"] = state?.defaultToastCompression;
+            resourceInputs["idleInTransactionSessionTimeout"] = state?.idleInTransactionSessionTimeout;
+            resourceInputs["jit"] = state?.jit;
+            resourceInputs["logAutovacuumMinDuration"] = state?.logAutovacuumMinDuration;
+            resourceInputs["logErrorVerbosity"] = state?.logErrorVerbosity;
+            resourceInputs["logLinePrefix"] = state?.logLinePrefix;
+            resourceInputs["logMinDurationStatement"] = state?.logMinDurationStatement;
+            resourceInputs["maxFilesPerProcess"] = state?.maxFilesPerProcess;
+            resourceInputs["maxLocksPerTransaction"] = state?.maxLocksPerTransaction;
+            resourceInputs["maxLogicalReplicationWorkers"] = state?.maxLogicalReplicationWorkers;
+            resourceInputs["maxParallelWorkers"] = state?.maxParallelWorkers;
+            resourceInputs["maxParallelWorkersPerGather"] = state?.maxParallelWorkersPerGather;
+            resourceInputs["maxPredLocksPerTransaction"] = state?.maxPredLocksPerTransaction;
+            resourceInputs["maxPreparedTransactions"] = state?.maxPreparedTransactions;
+            resourceInputs["maxReplicationSlots"] = state?.maxReplicationSlots;
+            resourceInputs["maxStackDepth"] = state?.maxStackDepth;
+            resourceInputs["maxStandbyArchiveDelay"] = state?.maxStandbyArchiveDelay;
+            resourceInputs["maxStandbyStreamingDelay"] = state?.maxStandbyStreamingDelay;
+            resourceInputs["maxWalSenders"] = state?.maxWalSenders;
+            resourceInputs["maxWorkerProcesses"] = state?.maxWorkerProcesses;
+            resourceInputs["pgPartmanBgwInterval"] = state?.pgPartmanBgwInterval;
+            resourceInputs["pgPartmanBgwRole"] = state?.pgPartmanBgwRole;
+            resourceInputs["pgStatStatementsTrack"] = state?.pgStatStatementsTrack;
+            resourceInputs["pgbouncers"] = state?.pgbouncers;
+            resourceInputs["sharedBuffersPercentage"] = state?.sharedBuffersPercentage;
+            resourceInputs["tempFileLimit"] = state?.tempFileLimit;
+            resourceInputs["timescaledbs"] = state?.timescaledbs;
+            resourceInputs["timezone"] = state?.timezone;
+            resourceInputs["trackActivityQuerySize"] = state?.trackActivityQuerySize;
+            resourceInputs["trackCommitTimestamp"] = state?.trackCommitTimestamp;
+            resourceInputs["trackFunctions"] = state?.trackFunctions;
+            resourceInputs["trackIoTiming"] = state?.trackIoTiming;
+            resourceInputs["walSenderTimeout"] = state?.walSenderTimeout;
+            resourceInputs["walWriterDelay"] = state?.walWriterDelay;
+            resourceInputs["workMem"] = state?.workMem;
         } else {
             const args = argsOrState as DatabasePostgresqlConfigArgs | undefined;
-            if ((!args || args.clusterId === undefined) && !opts.urn) {
+            if (args?.clusterId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'clusterId'");
             }
-            resourceInputs["autovacuumAnalyzeScaleFactor"] = args ? args.autovacuumAnalyzeScaleFactor : undefined;
-            resourceInputs["autovacuumAnalyzeThreshold"] = args ? args.autovacuumAnalyzeThreshold : undefined;
-            resourceInputs["autovacuumFreezeMaxAge"] = args ? args.autovacuumFreezeMaxAge : undefined;
-            resourceInputs["autovacuumMaxWorkers"] = args ? args.autovacuumMaxWorkers : undefined;
-            resourceInputs["autovacuumNaptime"] = args ? args.autovacuumNaptime : undefined;
-            resourceInputs["autovacuumVacuumCostDelay"] = args ? args.autovacuumVacuumCostDelay : undefined;
-            resourceInputs["autovacuumVacuumCostLimit"] = args ? args.autovacuumVacuumCostLimit : undefined;
-            resourceInputs["autovacuumVacuumScaleFactor"] = args ? args.autovacuumVacuumScaleFactor : undefined;
-            resourceInputs["autovacuumVacuumThreshold"] = args ? args.autovacuumVacuumThreshold : undefined;
-            resourceInputs["backupHour"] = args ? args.backupHour : undefined;
-            resourceInputs["backupMinute"] = args ? args.backupMinute : undefined;
-            resourceInputs["bgwriterDelay"] = args ? args.bgwriterDelay : undefined;
-            resourceInputs["bgwriterFlushAfter"] = args ? args.bgwriterFlushAfter : undefined;
-            resourceInputs["bgwriterLruMaxpages"] = args ? args.bgwriterLruMaxpages : undefined;
-            resourceInputs["bgwriterLruMultiplier"] = args ? args.bgwriterLruMultiplier : undefined;
-            resourceInputs["clusterId"] = args ? args.clusterId : undefined;
-            resourceInputs["deadlockTimeout"] = args ? args.deadlockTimeout : undefined;
-            resourceInputs["defaultToastCompression"] = args ? args.defaultToastCompression : undefined;
-            resourceInputs["idleInTransactionSessionTimeout"] = args ? args.idleInTransactionSessionTimeout : undefined;
-            resourceInputs["jit"] = args ? args.jit : undefined;
-            resourceInputs["logAutovacuumMinDuration"] = args ? args.logAutovacuumMinDuration : undefined;
-            resourceInputs["logErrorVerbosity"] = args ? args.logErrorVerbosity : undefined;
-            resourceInputs["logLinePrefix"] = args ? args.logLinePrefix : undefined;
-            resourceInputs["logMinDurationStatement"] = args ? args.logMinDurationStatement : undefined;
-            resourceInputs["maxFilesPerProcess"] = args ? args.maxFilesPerProcess : undefined;
-            resourceInputs["maxLocksPerTransaction"] = args ? args.maxLocksPerTransaction : undefined;
-            resourceInputs["maxLogicalReplicationWorkers"] = args ? args.maxLogicalReplicationWorkers : undefined;
-            resourceInputs["maxParallelWorkers"] = args ? args.maxParallelWorkers : undefined;
-            resourceInputs["maxParallelWorkersPerGather"] = args ? args.maxParallelWorkersPerGather : undefined;
-            resourceInputs["maxPredLocksPerTransaction"] = args ? args.maxPredLocksPerTransaction : undefined;
-            resourceInputs["maxPreparedTransactions"] = args ? args.maxPreparedTransactions : undefined;
-            resourceInputs["maxReplicationSlots"] = args ? args.maxReplicationSlots : undefined;
-            resourceInputs["maxStackDepth"] = args ? args.maxStackDepth : undefined;
-            resourceInputs["maxStandbyArchiveDelay"] = args ? args.maxStandbyArchiveDelay : undefined;
-            resourceInputs["maxStandbyStreamingDelay"] = args ? args.maxStandbyStreamingDelay : undefined;
-            resourceInputs["maxWalSenders"] = args ? args.maxWalSenders : undefined;
-            resourceInputs["maxWorkerProcesses"] = args ? args.maxWorkerProcesses : undefined;
-            resourceInputs["pgPartmanBgwInterval"] = args ? args.pgPartmanBgwInterval : undefined;
-            resourceInputs["pgPartmanBgwRole"] = args ? args.pgPartmanBgwRole : undefined;
-            resourceInputs["pgStatStatementsTrack"] = args ? args.pgStatStatementsTrack : undefined;
-            resourceInputs["pgbouncers"] = args ? args.pgbouncers : undefined;
-            resourceInputs["sharedBuffersPercentage"] = args ? args.sharedBuffersPercentage : undefined;
-            resourceInputs["tempFileLimit"] = args ? args.tempFileLimit : undefined;
-            resourceInputs["timescaledbs"] = args ? args.timescaledbs : undefined;
-            resourceInputs["timezone"] = args ? args.timezone : undefined;
-            resourceInputs["trackActivityQuerySize"] = args ? args.trackActivityQuerySize : undefined;
-            resourceInputs["trackCommitTimestamp"] = args ? args.trackCommitTimestamp : undefined;
-            resourceInputs["trackFunctions"] = args ? args.trackFunctions : undefined;
-            resourceInputs["trackIoTiming"] = args ? args.trackIoTiming : undefined;
-            resourceInputs["walSenderTimeout"] = args ? args.walSenderTimeout : undefined;
-            resourceInputs["walWriterDelay"] = args ? args.walWriterDelay : undefined;
-            resourceInputs["workMem"] = args ? args.workMem : undefined;
+            resourceInputs["autovacuumAnalyzeScaleFactor"] = args?.autovacuumAnalyzeScaleFactor;
+            resourceInputs["autovacuumAnalyzeThreshold"] = args?.autovacuumAnalyzeThreshold;
+            resourceInputs["autovacuumFreezeMaxAge"] = args?.autovacuumFreezeMaxAge;
+            resourceInputs["autovacuumMaxWorkers"] = args?.autovacuumMaxWorkers;
+            resourceInputs["autovacuumNaptime"] = args?.autovacuumNaptime;
+            resourceInputs["autovacuumVacuumCostDelay"] = args?.autovacuumVacuumCostDelay;
+            resourceInputs["autovacuumVacuumCostLimit"] = args?.autovacuumVacuumCostLimit;
+            resourceInputs["autovacuumVacuumScaleFactor"] = args?.autovacuumVacuumScaleFactor;
+            resourceInputs["autovacuumVacuumThreshold"] = args?.autovacuumVacuumThreshold;
+            resourceInputs["backupHour"] = args?.backupHour;
+            resourceInputs["backupMinute"] = args?.backupMinute;
+            resourceInputs["bgwriterDelay"] = args?.bgwriterDelay;
+            resourceInputs["bgwriterFlushAfter"] = args?.bgwriterFlushAfter;
+            resourceInputs["bgwriterLruMaxpages"] = args?.bgwriterLruMaxpages;
+            resourceInputs["bgwriterLruMultiplier"] = args?.bgwriterLruMultiplier;
+            resourceInputs["clusterId"] = args?.clusterId;
+            resourceInputs["deadlockTimeout"] = args?.deadlockTimeout;
+            resourceInputs["defaultToastCompression"] = args?.defaultToastCompression;
+            resourceInputs["idleInTransactionSessionTimeout"] = args?.idleInTransactionSessionTimeout;
+            resourceInputs["jit"] = args?.jit;
+            resourceInputs["logAutovacuumMinDuration"] = args?.logAutovacuumMinDuration;
+            resourceInputs["logErrorVerbosity"] = args?.logErrorVerbosity;
+            resourceInputs["logLinePrefix"] = args?.logLinePrefix;
+            resourceInputs["logMinDurationStatement"] = args?.logMinDurationStatement;
+            resourceInputs["maxFilesPerProcess"] = args?.maxFilesPerProcess;
+            resourceInputs["maxLocksPerTransaction"] = args?.maxLocksPerTransaction;
+            resourceInputs["maxLogicalReplicationWorkers"] = args?.maxLogicalReplicationWorkers;
+            resourceInputs["maxParallelWorkers"] = args?.maxParallelWorkers;
+            resourceInputs["maxParallelWorkersPerGather"] = args?.maxParallelWorkersPerGather;
+            resourceInputs["maxPredLocksPerTransaction"] = args?.maxPredLocksPerTransaction;
+            resourceInputs["maxPreparedTransactions"] = args?.maxPreparedTransactions;
+            resourceInputs["maxReplicationSlots"] = args?.maxReplicationSlots;
+            resourceInputs["maxStackDepth"] = args?.maxStackDepth;
+            resourceInputs["maxStandbyArchiveDelay"] = args?.maxStandbyArchiveDelay;
+            resourceInputs["maxStandbyStreamingDelay"] = args?.maxStandbyStreamingDelay;
+            resourceInputs["maxWalSenders"] = args?.maxWalSenders;
+            resourceInputs["maxWorkerProcesses"] = args?.maxWorkerProcesses;
+            resourceInputs["pgPartmanBgwInterval"] = args?.pgPartmanBgwInterval;
+            resourceInputs["pgPartmanBgwRole"] = args?.pgPartmanBgwRole;
+            resourceInputs["pgStatStatementsTrack"] = args?.pgStatStatementsTrack;
+            resourceInputs["pgbouncers"] = args?.pgbouncers;
+            resourceInputs["sharedBuffersPercentage"] = args?.sharedBuffersPercentage;
+            resourceInputs["tempFileLimit"] = args?.tempFileLimit;
+            resourceInputs["timescaledbs"] = args?.timescaledbs;
+            resourceInputs["timezone"] = args?.timezone;
+            resourceInputs["trackActivityQuerySize"] = args?.trackActivityQuerySize;
+            resourceInputs["trackCommitTimestamp"] = args?.trackCommitTimestamp;
+            resourceInputs["trackFunctions"] = args?.trackFunctions;
+            resourceInputs["trackIoTiming"] = args?.trackIoTiming;
+            resourceInputs["walSenderTimeout"] = args?.walSenderTimeout;
+            resourceInputs["walWriterDelay"] = args?.walWriterDelay;
+            resourceInputs["workMem"] = args?.workMem;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabasePostgresqlConfig.__pulumiType, name, resourceInputs, opts);

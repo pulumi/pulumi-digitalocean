@@ -35,11 +35,11 @@ export class GenaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
     /**
      * A unique identifier for an agent.
      */
-    public readonly agentUuid!: pulumi.Output<string>;
+    declare public readonly agentUuid: pulumi.Output<string>;
     /**
      * A unique identifier for a knowledge base.
      */
-    public readonly knowledgeBaseUuid!: pulumi.Output<string>;
+    declare public readonly knowledgeBaseUuid: pulumi.Output<string>;
 
     /**
      * Create a GenaiAgentKnowledgeBaseAttachment resource with the given unique name, arguments, and options.
@@ -54,18 +54,18 @@ export class GenaiAgentKnowledgeBaseAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as GenaiAgentKnowledgeBaseAttachmentState | undefined;
-            resourceInputs["agentUuid"] = state ? state.agentUuid : undefined;
-            resourceInputs["knowledgeBaseUuid"] = state ? state.knowledgeBaseUuid : undefined;
+            resourceInputs["agentUuid"] = state?.agentUuid;
+            resourceInputs["knowledgeBaseUuid"] = state?.knowledgeBaseUuid;
         } else {
             const args = argsOrState as GenaiAgentKnowledgeBaseAttachmentArgs | undefined;
-            if ((!args || args.agentUuid === undefined) && !opts.urn) {
+            if (args?.agentUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'agentUuid'");
             }
-            if ((!args || args.knowledgeBaseUuid === undefined) && !opts.urn) {
+            if (args?.knowledgeBaseUuid === undefined && !opts.urn) {
                 throw new Error("Missing required property 'knowledgeBaseUuid'");
             }
-            resourceInputs["agentUuid"] = args ? args.agentUuid : undefined;
-            resourceInputs["knowledgeBaseUuid"] = args ? args.knowledgeBaseUuid : undefined;
+            resourceInputs["agentUuid"] = args?.agentUuid;
+            resourceInputs["knowledgeBaseUuid"] = args?.knowledgeBaseUuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(GenaiAgentKnowledgeBaseAttachment.__pulumiType, name, resourceInputs, opts);

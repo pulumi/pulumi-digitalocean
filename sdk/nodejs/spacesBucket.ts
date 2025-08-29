@@ -114,45 +114,45 @@ export class SpacesBucket extends pulumi.CustomResource {
     /**
      * Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
      */
-    public readonly acl!: pulumi.Output<string | undefined>;
+    declare public readonly acl: pulumi.Output<string | undefined>;
     /**
      * The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
      */
-    public /*out*/ readonly bucketDomainName!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketDomainName: pulumi.Output<string>;
     /**
      * The uniform resource name for the bucket
      */
-    public /*out*/ readonly bucketUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly bucketUrn: pulumi.Output<string>;
     /**
      * A rule of Cross-Origin Resource Sharing (documented below).
      *
      * @deprecated Terraform will only perform drift detection if a configuration value is provided. Use the resource `digitalocean.SpacesBucketCorsConfiguration` instead.
      */
-    public readonly corsRules!: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
+    declare public readonly corsRules: pulumi.Output<outputs.SpacesBucketCorsRule[] | undefined>;
     /**
      * The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
      */
-    public /*out*/ readonly endpoint!: pulumi.Output<string>;
+    declare public /*out*/ readonly endpoint: pulumi.Output<string>;
     /**
      * Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
      */
-    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * A configuration of object lifecycle management (documented below).
      */
-    public readonly lifecycleRules!: pulumi.Output<outputs.SpacesBucketLifecycleRule[] | undefined>;
+    declare public readonly lifecycleRules: pulumi.Output<outputs.SpacesBucketLifecycleRule[] | undefined>;
     /**
      * The name of the bucket
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region where the bucket resides (Defaults to `nyc3`)
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * A state of versioning (documented below)
      */
-    public readonly versioning!: pulumi.Output<outputs.SpacesBucketVersioning | undefined>;
+    declare public readonly versioning: pulumi.Output<outputs.SpacesBucketVersioning | undefined>;
 
     /**
      * Create a SpacesBucket resource with the given unique name, arguments, and options.
@@ -167,25 +167,25 @@ export class SpacesBucket extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as SpacesBucketState | undefined;
-            resourceInputs["acl"] = state ? state.acl : undefined;
-            resourceInputs["bucketDomainName"] = state ? state.bucketDomainName : undefined;
-            resourceInputs["bucketUrn"] = state ? state.bucketUrn : undefined;
-            resourceInputs["corsRules"] = state ? state.corsRules : undefined;
-            resourceInputs["endpoint"] = state ? state.endpoint : undefined;
-            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
-            resourceInputs["lifecycleRules"] = state ? state.lifecycleRules : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["versioning"] = state ? state.versioning : undefined;
+            resourceInputs["acl"] = state?.acl;
+            resourceInputs["bucketDomainName"] = state?.bucketDomainName;
+            resourceInputs["bucketUrn"] = state?.bucketUrn;
+            resourceInputs["corsRules"] = state?.corsRules;
+            resourceInputs["endpoint"] = state?.endpoint;
+            resourceInputs["forceDestroy"] = state?.forceDestroy;
+            resourceInputs["lifecycleRules"] = state?.lifecycleRules;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["versioning"] = state?.versioning;
         } else {
             const args = argsOrState as SpacesBucketArgs | undefined;
-            resourceInputs["acl"] = args ? args.acl : undefined;
-            resourceInputs["corsRules"] = args ? args.corsRules : undefined;
-            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
-            resourceInputs["lifecycleRules"] = args ? args.lifecycleRules : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["versioning"] = args ? args.versioning : undefined;
+            resourceInputs["acl"] = args?.acl;
+            resourceInputs["corsRules"] = args?.corsRules;
+            resourceInputs["forceDestroy"] = args?.forceDestroy;
+            resourceInputs["lifecycleRules"] = args?.lifecycleRules;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["versioning"] = args?.versioning;
             resourceInputs["bucketDomainName"] = undefined /*out*/;
             resourceInputs["bucketUrn"] = undefined /*out*/;
             resourceInputs["endpoint"] = undefined /*out*/;

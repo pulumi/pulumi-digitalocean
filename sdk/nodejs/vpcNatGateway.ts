@@ -76,53 +76,53 @@ export class VpcNatGateway extends pulumi.CustomResource {
     /**
      * Created at timestamp for the VPC NAT Gateway.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
      * `publicGateways` embedding the reserved `ipv4` addresses.
      */
-    public /*out*/ readonly egresses!: pulumi.Output<outputs.VpcNatGatewayEgress[]>;
+    declare public /*out*/ readonly egresses: pulumi.Output<outputs.VpcNatGatewayEgress[]>;
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
      */
-    public readonly icmpTimeoutSeconds!: pulumi.Output<number>;
+    declare public readonly icmpTimeoutSeconds: pulumi.Output<number>;
     /**
      * The name of the VPC NAT Gateway.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The region for the VPC NAT Gateway.
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The size of the VPC NAT Gateway.
      */
-    public readonly size!: pulumi.Output<number>;
+    declare public readonly size: pulumi.Output<number>;
     /**
      * State of the VPC NAT Gateway
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The egress timeout value for TCP connections of the VPC NAT Gateway.
      */
-    public readonly tcpTimeoutSeconds!: pulumi.Output<number>;
+    declare public readonly tcpTimeoutSeconds: pulumi.Output<number>;
     /**
      * The type of the VPC NAT Gateway.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The egress timeout value for UDP connections of the VPC NAT Gateway.
      */
-    public readonly udpTimeoutSeconds!: pulumi.Output<number>;
+    declare public readonly udpTimeoutSeconds: pulumi.Output<number>;
     /**
      * Updated at timestamp for the VPC NAT Gateway.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
      * documented below.
      */
-    public readonly vpcs!: pulumi.Output<outputs.VpcNatGatewayVpc[]>;
+    declare public readonly vpcs: pulumi.Output<outputs.VpcNatGatewayVpc[]>;
 
     /**
      * Create a VpcNatGateway resource with the given unique name, arguments, and options.
@@ -137,40 +137,40 @@ export class VpcNatGateway extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as VpcNatGatewayState | undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["egresses"] = state ? state.egresses : undefined;
-            resourceInputs["icmpTimeoutSeconds"] = state ? state.icmpTimeoutSeconds : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["tcpTimeoutSeconds"] = state ? state.tcpTimeoutSeconds : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["udpTimeoutSeconds"] = state ? state.udpTimeoutSeconds : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["vpcs"] = state ? state.vpcs : undefined;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["egresses"] = state?.egresses;
+            resourceInputs["icmpTimeoutSeconds"] = state?.icmpTimeoutSeconds;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["tcpTimeoutSeconds"] = state?.tcpTimeoutSeconds;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["udpTimeoutSeconds"] = state?.udpTimeoutSeconds;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["vpcs"] = state?.vpcs;
         } else {
             const args = argsOrState as VpcNatGatewayArgs | undefined;
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.size === undefined) && !opts.urn) {
+            if (args?.size === undefined && !opts.urn) {
                 throw new Error("Missing required property 'size'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.vpcs === undefined) && !opts.urn) {
+            if (args?.vpcs === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcs'");
             }
-            resourceInputs["icmpTimeoutSeconds"] = args ? args.icmpTimeoutSeconds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["tcpTimeoutSeconds"] = args ? args.tcpTimeoutSeconds : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["udpTimeoutSeconds"] = args ? args.udpTimeoutSeconds : undefined;
-            resourceInputs["vpcs"] = args ? args.vpcs : undefined;
+            resourceInputs["icmpTimeoutSeconds"] = args?.icmpTimeoutSeconds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["tcpTimeoutSeconds"] = args?.tcpTimeoutSeconds;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["udpTimeoutSeconds"] = args?.udpTimeoutSeconds;
+            resourceInputs["vpcs"] = args?.vpcs;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["egresses"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

@@ -92,23 +92,23 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
     /**
      * The date and time the registry access token will expire.
      */
-    public /*out*/ readonly credentialExpirationTime!: pulumi.Output<string>;
+    declare public /*out*/ readonly credentialExpirationTime: pulumi.Output<string>;
     /**
      * Credentials for the container registry.
      */
-    public /*out*/ readonly dockerCredentials!: pulumi.Output<string>;
+    declare public /*out*/ readonly dockerCredentials: pulumi.Output<string>;
     /**
      * The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
      */
-    public readonly expirySeconds!: pulumi.Output<number | undefined>;
+    declare public readonly expirySeconds: pulumi.Output<number | undefined>;
     /**
      * The name of the container registry.
      */
-    public readonly registryName!: pulumi.Output<string>;
+    declare public readonly registryName: pulumi.Output<string>;
     /**
      * Allow for write access to the container registry. Defaults to false.
      */
-    public readonly write!: pulumi.Output<boolean | undefined>;
+    declare public readonly write: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ContainerRegistryDockerCredentials resource with the given unique name, arguments, and options.
@@ -123,19 +123,19 @@ export class ContainerRegistryDockerCredentials extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContainerRegistryDockerCredentialsState | undefined;
-            resourceInputs["credentialExpirationTime"] = state ? state.credentialExpirationTime : undefined;
-            resourceInputs["dockerCredentials"] = state ? state.dockerCredentials : undefined;
-            resourceInputs["expirySeconds"] = state ? state.expirySeconds : undefined;
-            resourceInputs["registryName"] = state ? state.registryName : undefined;
-            resourceInputs["write"] = state ? state.write : undefined;
+            resourceInputs["credentialExpirationTime"] = state?.credentialExpirationTime;
+            resourceInputs["dockerCredentials"] = state?.dockerCredentials;
+            resourceInputs["expirySeconds"] = state?.expirySeconds;
+            resourceInputs["registryName"] = state?.registryName;
+            resourceInputs["write"] = state?.write;
         } else {
             const args = argsOrState as ContainerRegistryDockerCredentialsArgs | undefined;
-            if ((!args || args.registryName === undefined) && !opts.urn) {
+            if (args?.registryName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'registryName'");
             }
-            resourceInputs["expirySeconds"] = args ? args.expirySeconds : undefined;
-            resourceInputs["registryName"] = args ? args.registryName : undefined;
-            resourceInputs["write"] = args ? args.write : undefined;
+            resourceInputs["expirySeconds"] = args?.expirySeconds;
+            resourceInputs["registryName"] = args?.registryName;
+            resourceInputs["write"] = args?.write;
             resourceInputs["credentialExpirationTime"] = undefined /*out*/;
             resourceInputs["dockerCredentials"] = undefined /*out*/;
         }

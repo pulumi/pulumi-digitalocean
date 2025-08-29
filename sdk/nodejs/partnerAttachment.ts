@@ -35,47 +35,47 @@ export class PartnerAttachment extends pulumi.CustomResource {
         return obj['__pulumiType'] === PartnerAttachment.__pulumiType;
     }
 
-    public readonly bgp!: pulumi.Output<outputs.PartnerAttachmentBgp>;
+    declare public readonly bgp: pulumi.Output<outputs.PartnerAttachmentBgp>;
     /**
      * The children uuids of Partner Attachment
      */
-    public /*out*/ readonly childrens!: pulumi.Output<string[]>;
+    declare public /*out*/ readonly childrens: pulumi.Output<string[]>;
     /**
      * The connection bandwidth in Mbps
      */
-    public readonly connectionBandwidthInMbps!: pulumi.Output<number>;
+    declare public readonly connectionBandwidthInMbps: pulumi.Output<number>;
     /**
      * The date and time when the Partner Attachment was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The NaaS provider
      */
-    public readonly naasProvider!: pulumi.Output<string>;
+    declare public readonly naasProvider: pulumi.Output<string>;
     /**
      * The name of the Partner Attachment
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The UUID of the Parent Partner Attachment
      */
-    public readonly parentUuid!: pulumi.Output<string | undefined>;
+    declare public readonly parentUuid: pulumi.Output<string | undefined>;
     /**
      * The redundancy zone for the NaaS
      */
-    public readonly redundancyZone!: pulumi.Output<string>;
+    declare public readonly redundancyZone: pulumi.Output<string>;
     /**
      * The region where the Partner Attachment will be created
      */
-    public readonly region!: pulumi.Output<string>;
+    declare public readonly region: pulumi.Output<string>;
     /**
      * The state of the Partner Attachment
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The list of VPC IDs to attach the Partner Attachment to
      */
-    public readonly vpcIds!: pulumi.Output<string[]>;
+    declare public readonly vpcIds: pulumi.Output<string[]>;
 
     /**
      * Create a PartnerAttachment resource with the given unique name, arguments, and options.
@@ -90,39 +90,39 @@ export class PartnerAttachment extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PartnerAttachmentState | undefined;
-            resourceInputs["bgp"] = state ? state.bgp : undefined;
-            resourceInputs["childrens"] = state ? state.childrens : undefined;
-            resourceInputs["connectionBandwidthInMbps"] = state ? state.connectionBandwidthInMbps : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["naasProvider"] = state ? state.naasProvider : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["parentUuid"] = state ? state.parentUuid : undefined;
-            resourceInputs["redundancyZone"] = state ? state.redundancyZone : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["vpcIds"] = state ? state.vpcIds : undefined;
+            resourceInputs["bgp"] = state?.bgp;
+            resourceInputs["childrens"] = state?.childrens;
+            resourceInputs["connectionBandwidthInMbps"] = state?.connectionBandwidthInMbps;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["naasProvider"] = state?.naasProvider;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["parentUuid"] = state?.parentUuid;
+            resourceInputs["redundancyZone"] = state?.redundancyZone;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["vpcIds"] = state?.vpcIds;
         } else {
             const args = argsOrState as PartnerAttachmentArgs | undefined;
-            if ((!args || args.connectionBandwidthInMbps === undefined) && !opts.urn) {
+            if (args?.connectionBandwidthInMbps === undefined && !opts.urn) {
                 throw new Error("Missing required property 'connectionBandwidthInMbps'");
             }
-            if ((!args || args.naasProvider === undefined) && !opts.urn) {
+            if (args?.naasProvider === undefined && !opts.urn) {
                 throw new Error("Missing required property 'naasProvider'");
             }
-            if ((!args || args.region === undefined) && !opts.urn) {
+            if (args?.region === undefined && !opts.urn) {
                 throw new Error("Missing required property 'region'");
             }
-            if ((!args || args.vpcIds === undefined) && !opts.urn) {
+            if (args?.vpcIds === undefined && !opts.urn) {
                 throw new Error("Missing required property 'vpcIds'");
             }
-            resourceInputs["bgp"] = args ? args.bgp : undefined;
-            resourceInputs["connectionBandwidthInMbps"] = args ? args.connectionBandwidthInMbps : undefined;
-            resourceInputs["naasProvider"] = args ? args.naasProvider : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["parentUuid"] = args ? args.parentUuid : undefined;
-            resourceInputs["redundancyZone"] = args ? args.redundancyZone : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["vpcIds"] = args ? args.vpcIds : undefined;
+            resourceInputs["bgp"] = args?.bgp;
+            resourceInputs["connectionBandwidthInMbps"] = args?.connectionBandwidthInMbps;
+            resourceInputs["naasProvider"] = args?.naasProvider;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["parentUuid"] = args?.parentUuid;
+            resourceInputs["redundancyZone"] = args?.redundancyZone;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["vpcIds"] = args?.vpcIds;
             resourceInputs["childrens"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;

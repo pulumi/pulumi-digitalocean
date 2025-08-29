@@ -53,7 +53,7 @@
         "variables": {
             "apiEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean API.\n",
+                "description": "The URL to use for the DigitalOcean API.",
                 "default": "https://api.digitalocean.com",
                 "defaultInfo": {
                     "environment": [
@@ -63,27 +63,27 @@
             },
             "httpRetryMax": {
                 "type": "integer",
-                "description": "The maximum number of retries on a failed API request.\n"
+                "description": "The maximum number of retries on a failed API request."
             },
             "httpRetryWaitMax": {
                 "type": "number",
-                "description": "The maximum wait time (in seconds) between failed API requests.\n"
+                "description": "The maximum wait time (in seconds) between failed API requests."
             },
             "httpRetryWaitMin": {
                 "type": "number",
-                "description": "The minimum wait time (in seconds) between failed API requests.\n"
+                "description": "The minimum wait time (in seconds) between failed API requests."
             },
             "requestsPerSecond": {
                 "type": "number",
-                "description": "The rate of requests per second to limit the HTTP client.\n"
+                "description": "The rate of requests per second to limit the HTTP client."
             },
             "spacesAccessId": {
                 "type": "string",
-                "description": "The access key ID for Spaces API operations.\n"
+                "description": "The access key ID for Spaces API operations."
             },
             "spacesEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean Spaces API.\n",
+                "description": "The URL to use for the DigitalOcean Spaces API.",
                 "defaultInfo": {
                     "environment": [
                         "SPACES_ENDPOINT_URL"
@@ -92,11 +92,11 @@
             },
             "spacesSecretKey": {
                 "type": "string",
-                "description": "The secret access key for Spaces API operations.\n"
+                "description": "The secret access key for Spaces API operations."
             },
             "token": {
                 "type": "string",
-                "description": "The token key for API operations.\n"
+                "description": "The token key for API operations."
             }
         },
         "defaults": [
@@ -17540,45 +17540,45 @@
         "properties": {
             "apiEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean API.\n"
+                "description": "The URL to use for the DigitalOcean API."
             },
             "httpRetryMax": {
                 "type": "integer",
-                "description": "The maximum number of retries on a failed API request.\n"
+                "description": "The maximum number of retries on a failed API request."
             },
             "httpRetryWaitMax": {
                 "type": "number",
-                "description": "The maximum wait time (in seconds) between failed API requests.\n"
+                "description": "The maximum wait time (in seconds) between failed API requests."
             },
             "httpRetryWaitMin": {
                 "type": "number",
-                "description": "The minimum wait time (in seconds) between failed API requests.\n"
+                "description": "The minimum wait time (in seconds) between failed API requests."
             },
             "requestsPerSecond": {
                 "type": "number",
-                "description": "The rate of requests per second to limit the HTTP client.\n"
+                "description": "The rate of requests per second to limit the HTTP client."
             },
             "spacesAccessId": {
                 "type": "string",
-                "description": "The access key ID for Spaces API operations.\n"
+                "description": "The access key ID for Spaces API operations."
             },
             "spacesEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean Spaces API.\n"
+                "description": "The URL to use for the DigitalOcean Spaces API."
             },
             "spacesSecretKey": {
                 "type": "string",
-                "description": "The secret access key for Spaces API operations.\n"
+                "description": "The secret access key for Spaces API operations."
             },
             "token": {
                 "type": "string",
-                "description": "The token key for API operations.\n"
+                "description": "The token key for API operations."
             }
         },
         "inputProperties": {
             "apiEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean API.\n",
+                "description": "The URL to use for the DigitalOcean API.",
                 "default": "https://api.digitalocean.com",
                 "defaultInfo": {
                     "environment": [
@@ -17588,27 +17588,27 @@
             },
             "httpRetryMax": {
                 "type": "integer",
-                "description": "The maximum number of retries on a failed API request.\n"
+                "description": "The maximum number of retries on a failed API request."
             },
             "httpRetryWaitMax": {
                 "type": "number",
-                "description": "The maximum wait time (in seconds) between failed API requests.\n"
+                "description": "The maximum wait time (in seconds) between failed API requests."
             },
             "httpRetryWaitMin": {
                 "type": "number",
-                "description": "The minimum wait time (in seconds) between failed API requests.\n"
+                "description": "The minimum wait time (in seconds) between failed API requests."
             },
             "requestsPerSecond": {
                 "type": "number",
-                "description": "The rate of requests per second to limit the HTTP client.\n"
+                "description": "The rate of requests per second to limit the HTTP client."
             },
             "spacesAccessId": {
                 "type": "string",
-                "description": "The access key ID for Spaces API operations.\n"
+                "description": "The access key ID for Spaces API operations."
             },
             "spacesEndpoint": {
                 "type": "string",
-                "description": "The URL to use for the DigitalOcean Spaces API.\n",
+                "description": "The URL to use for the DigitalOcean Spaces API.",
                 "defaultInfo": {
                     "environment": [
                         "SPACES_ENDPOINT_URL"
@@ -17617,11 +17617,11 @@
             },
             "spacesSecretKey": {
                 "type": "string",
-                "description": "The secret access key for Spaces API operations.\n"
+                "description": "The secret access key for Spaces API operations."
             },
             "token": {
                 "type": "string",
-                "description": "The token key for API operations.\n"
+                "description": "The token key for API operations."
             }
         },
         "methods": {
@@ -17649,7 +17649,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
                     },
-                    "description": "The dedicated egress IP addresses associated with the app.\n"
+                    "description": "The dedicated egress IP addresses associated with the app."
                 },
                 "defaultIngress": {
                     "type": "string",
@@ -17693,7 +17693,7 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
                     },
-                    "description": "The dedicated egress IP addresses associated with the app.\n"
+                    "description": "The dedicated egress IP addresses associated with the app."
                 },
                 "projectId": {
                     "type": "string",
@@ -17725,7 +17725,7 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/AppDedicatedIp:AppDedicatedIp"
                         },
-                        "description": "The dedicated egress IP addresses associated with the app.\n"
+                        "description": "The dedicated egress IP addresses associated with the app."
                     },
                     "defaultIngress": {
                         "type": "string",
@@ -19923,7 +19923,7 @@
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "The date and time when the online migration was created\n"
+                    "description": "The date and time when the online migration was created"
                 },
                 "disableSsl": {
                     "type": "boolean",
@@ -19942,7 +19942,7 @@
                 },
                 "status": {
                     "type": "string",
-                    "description": "The status of the online migration\n"
+                    "description": "The status of the online migration"
                 }
             },
             "required": [
@@ -19987,7 +19987,7 @@
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "The date and time when the online migration was created\n"
+                        "description": "The date and time when the online migration was created"
                     },
                     "disableSsl": {
                         "type": "boolean",
@@ -20006,7 +20006,7 @@
                     },
                     "status": {
                         "type": "string",
-                        "description": "The status of the online migration\n"
+                        "description": "The status of the online migration"
                     }
                 },
                 "type": "object"
@@ -21819,7 +21819,7 @@
                 },
                 "frequentSnapshots": {
                     "type": "boolean",
-                    "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only\ntake RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when\nvalkey_persistence is set to off.\n"
+                    "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off."
                 },
                 "ioThreads": {
                     "type": "integer",
@@ -21859,7 +21859,7 @@
                 },
                 "valkeyActiveExpireEffort": {
                     "type": "integer",
-                    "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process\nscans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to\nreclaim expired keys faster, reducing memory usage but potentially increasing latency.\n"
+                    "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
                 }
             },
             "required": [
@@ -21889,7 +21889,7 @@
                 },
                 "frequentSnapshots": {
                     "type": "boolean",
-                    "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only\ntake RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when\nvalkey_persistence is set to off.\n"
+                    "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off."
                 },
                 "ioThreads": {
                     "type": "integer",
@@ -21929,7 +21929,7 @@
                 },
                 "valkeyActiveExpireEffort": {
                     "type": "integer",
-                    "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process\nscans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to\nreclaim expired keys faster, reducing memory usage but potentially increasing latency.\n"
+                    "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
                 }
             },
             "requiredInputs": [
@@ -21949,7 +21949,7 @@
                     },
                     "frequentSnapshots": {
                         "type": "boolean",
-                        "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only\ntake RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when\nvalkey_persistence is set to off.\n"
+                        "description": "Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off."
                     },
                     "ioThreads": {
                         "type": "integer",
@@ -21989,7 +21989,7 @@
                     },
                     "valkeyActiveExpireEffort": {
                         "type": "integer",
-                        "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process\nscans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to\nreclaim expired keys faster, reducing memory usage but potentially increasing latency.\n"
+                        "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
                     }
                 },
                 "type": "object"
@@ -23112,204 +23112,204 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentAgentGuardrail:GenaiAgentAgentGuardrail"
                     },
-                    "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent\n"
+                    "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent"
                 },
                 "anthropicApiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentAnthropicApiKey:GenaiAgentAnthropicApiKey"
                     },
-                    "description": "Anthropic API Key information\n"
+                    "description": "Anthropic API Key information"
                 },
                 "anthropicKeyUuid": {
                     "type": "string",
-                    "description": "Optional Anthropic API key ID to use with Anthropic models\n"
+                    "description": "Optional Anthropic API key ID to use with Anthropic models"
                 },
                 "apiKeyInfos": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentApiKeyInfo:GenaiAgentApiKeyInfo"
                     },
-                    "description": "List of API Key Infos\n"
+                    "description": "List of API Key Infos"
                 },
                 "apiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentApiKey:GenaiAgentApiKey"
                     },
-                    "description": "List of API Keys\n"
+                    "description": "List of API Keys"
                 },
                 "chatbotIdentifiers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChatbotIdentifier:GenaiAgentChatbotIdentifier"
                     },
-                    "description": "List of Chatbot Identifiers\n"
+                    "description": "List of Chatbot Identifiers"
                 },
                 "chatbots": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChatbot:GenaiAgentChatbot"
                     },
-                    "description": "ChatBot configuration\n"
+                    "description": "ChatBot configuration"
                 },
                 "childAgents": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChildAgent:GenaiAgentChildAgent"
                     },
-                    "description": "List of child agents\n"
+                    "description": "List of child agents"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "Timestamp when the Agent was created\n"
+                    "description": "Timestamp when the Agent was created"
                 },
                 "deployments": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentDeployment:GenaiAgentDeployment"
                     },
-                    "description": "List of API Key Infos\n"
+                    "description": "List of API Key Infos"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Agent\n"
+                    "description": "Description for the Agent"
                 },
                 "functions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentFunction:GenaiAgentFunction"
                     },
-                    "description": "List of Functions\n"
+                    "description": "List of Functions"
                 },
                 "ifCase": {
                     "type": "string",
-                    "description": "If case condition\n"
+                    "description": "If case condition"
                 },
                 "instruction": {
                     "type": "string",
-                    "description": "Instruction for the Agent\n"
+                    "description": "Instruction for the Agent"
                 },
                 "k": {
                     "type": "integer",
-                    "description": "K value\n"
+                    "description": "K value"
                 },
                 "knowledgeBaseUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Ids of the knowledge base(s) to attach to the agent\n"
+                    "description": "Ids of the knowledge base(s) to attach to the agent"
                 },
                 "knowledgeBases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentKnowledgeBase:GenaiAgentKnowledgeBase"
                     },
-                    "description": "List of Knowledge Bases\n"
+                    "description": "List of Knowledge Bases"
                 },
                 "maxTokens": {
                     "type": "integer",
-                    "description": "Maximum tokens allowed\n"
+                    "description": "Maximum tokens allowed"
                 },
                 "modelUuid": {
                     "type": "string",
-                    "description": "Model UUID of the Agent\n"
+                    "description": "Model UUID of the Agent"
                 },
                 "models": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentModel:GenaiAgentModel"
                     },
-                    "description": "Model of the Agent\n"
+                    "description": "Model of the Agent"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Agent\n"
+                    "description": "Name of the Agent"
                 },
                 "openAiApiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentOpenAiApiKey:GenaiAgentOpenAiApiKey"
                     },
-                    "description": "OpenAI API Key information\n"
+                    "description": "OpenAI API Key information"
                 },
                 "openAiKeyUuid": {
                     "type": "string",
-                    "description": "Optional OpenAI API key ID to use with OpenAI models\n"
+                    "description": "Optional OpenAI API key ID to use with OpenAI models"
                 },
                 "parentAgents": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentParentAgent:GenaiAgentParentAgent"
                     },
-                    "description": "List of child agents\n"
+                    "description": "List of child agents"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project ID of the Agent\n"
+                    "description": "Project ID of the Agent"
                 },
                 "provideCitations": {
                     "type": "boolean",
-                    "description": "Indicates if the agent should provide citations in responses\n"
+                    "description": "Indicates if the agent should provide citations in responses"
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region where the Agent is deployed\n"
+                    "description": "Region where the Agent is deployed"
                 },
                 "retrievalMethod": {
                     "type": "string",
-                    "description": "Retrieval method used\n"
+                    "description": "Retrieval method used"
                 },
                 "routeCreatedAt": {
                     "type": "string",
-                    "description": "Timestamp when the route was created\n"
+                    "description": "Timestamp when the route was created"
                 },
                 "routeCreatedBy": {
                     "type": "string",
-                    "description": "User who created the route\n"
+                    "description": "User who created the route"
                 },
                 "routeName": {
                     "type": "string",
-                    "description": "Route name\n"
+                    "description": "Route name"
                 },
                 "routeUuid": {
                     "type": "string",
-                    "description": "Route UUID\n"
+                    "description": "Route UUID"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Tags\n"
+                    "description": "List of Tags"
                 },
                 "temperature": {
                     "type": "number",
-                    "description": "Agent temperature setting\n"
+                    "description": "Agent temperature setting"
                 },
                 "templates": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentTemplate:GenaiAgentTemplate"
                     },
-                    "description": "Agent Template\n"
+                    "description": "Agent Template"
                 },
                 "topP": {
                     "type": "number",
-                    "description": "Top P sampling parameter\n"
+                    "description": "Top P sampling parameter"
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "Timestamp when the Agent was updated\n"
+                    "description": "Timestamp when the Agent was updated"
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL for the Agent\n"
+                    "description": "URL for the Agent"
                 },
                 "userId": {
                     "type": "string",
-                    "description": "User ID linked with the Agent\n"
+                    "description": "User ID linked with the Agent"
                 }
             },
             "required": [
@@ -23331,196 +23331,196 @@
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentAgentGuardrail:GenaiAgentAgentGuardrail"
                     },
-                    "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent\n"
+                    "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent"
                 },
                 "anthropicApiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentAnthropicApiKey:GenaiAgentAnthropicApiKey"
                     },
-                    "description": "Anthropic API Key information\n"
+                    "description": "Anthropic API Key information"
                 },
                 "anthropicKeyUuid": {
                     "type": "string",
-                    "description": "Optional Anthropic API key ID to use with Anthropic models\n"
+                    "description": "Optional Anthropic API key ID to use with Anthropic models"
                 },
                 "apiKeyInfos": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentApiKeyInfo:GenaiAgentApiKeyInfo"
                     },
-                    "description": "List of API Key Infos\n"
+                    "description": "List of API Key Infos"
                 },
                 "apiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentApiKey:GenaiAgentApiKey"
                     },
-                    "description": "List of API Keys\n"
+                    "description": "List of API Keys"
                 },
                 "chatbotIdentifiers": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChatbotIdentifier:GenaiAgentChatbotIdentifier"
                     },
-                    "description": "List of Chatbot Identifiers\n"
+                    "description": "List of Chatbot Identifiers"
                 },
                 "chatbots": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChatbot:GenaiAgentChatbot"
                     },
-                    "description": "ChatBot configuration\n"
+                    "description": "ChatBot configuration"
                 },
                 "childAgents": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentChildAgent:GenaiAgentChildAgent"
                     },
-                    "description": "List of child agents\n"
+                    "description": "List of child agents"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "Timestamp when the Agent was created\n"
+                    "description": "Timestamp when the Agent was created"
                 },
                 "deployments": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentDeployment:GenaiAgentDeployment"
                     },
-                    "description": "List of API Key Infos\n"
+                    "description": "List of API Key Infos"
                 },
                 "description": {
                     "type": "string",
-                    "description": "Description for the Agent\n"
+                    "description": "Description for the Agent"
                 },
                 "functions": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentFunction:GenaiAgentFunction"
                     },
-                    "description": "List of Functions\n"
+                    "description": "List of Functions"
                 },
                 "ifCase": {
                     "type": "string",
-                    "description": "If case condition\n"
+                    "description": "If case condition"
                 },
                 "instruction": {
                     "type": "string",
-                    "description": "Instruction for the Agent\n"
+                    "description": "Instruction for the Agent"
                 },
                 "k": {
                     "type": "integer",
-                    "description": "K value\n"
+                    "description": "K value"
                 },
                 "knowledgeBaseUuids": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "Ids of the knowledge base(s) to attach to the agent\n"
+                    "description": "Ids of the knowledge base(s) to attach to the agent"
                 },
                 "knowledgeBases": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentKnowledgeBase:GenaiAgentKnowledgeBase"
                     },
-                    "description": "List of Knowledge Bases\n"
+                    "description": "List of Knowledge Bases"
                 },
                 "maxTokens": {
                     "type": "integer",
-                    "description": "Maximum tokens allowed\n"
+                    "description": "Maximum tokens allowed"
                 },
                 "modelUuid": {
                     "type": "string",
-                    "description": "Model UUID of the Agent\n"
+                    "description": "Model UUID of the Agent"
                 },
                 "models": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentModel:GenaiAgentModel"
                     },
-                    "description": "Model of the Agent\n"
+                    "description": "Model of the Agent"
                 },
                 "name": {
                     "type": "string",
-                    "description": "Name of the Agent\n"
+                    "description": "Name of the Agent"
                 },
                 "openAiApiKeys": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentOpenAiApiKey:GenaiAgentOpenAiApiKey"
                     },
-                    "description": "OpenAI API Key information\n"
+                    "description": "OpenAI API Key information"
                 },
                 "openAiKeyUuid": {
                     "type": "string",
-                    "description": "Optional OpenAI API key ID to use with OpenAI models\n"
+                    "description": "Optional OpenAI API key ID to use with OpenAI models"
                 },
                 "parentAgents": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentParentAgent:GenaiAgentParentAgent"
                     },
-                    "description": "List of child agents\n"
+                    "description": "List of child agents"
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "Project ID of the Agent\n"
+                    "description": "Project ID of the Agent"
                 },
                 "provideCitations": {
                     "type": "boolean",
-                    "description": "Indicates if the agent should provide citations in responses\n"
+                    "description": "Indicates if the agent should provide citations in responses"
                 },
                 "region": {
                     "type": "string",
-                    "description": "Region where the Agent is deployed\n"
+                    "description": "Region where the Agent is deployed"
                 },
                 "retrievalMethod": {
                     "type": "string",
-                    "description": "Retrieval method used\n"
+                    "description": "Retrieval method used"
                 },
                 "routeCreatedBy": {
                     "type": "string",
-                    "description": "User who created the route\n"
+                    "description": "User who created the route"
                 },
                 "routeName": {
                     "type": "string",
-                    "description": "Route name\n"
+                    "description": "Route name"
                 },
                 "routeUuid": {
                     "type": "string",
-                    "description": "Route UUID\n"
+                    "description": "Route UUID"
                 },
                 "tags": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "List of Tags\n"
+                    "description": "List of Tags"
                 },
                 "temperature": {
                     "type": "number",
-                    "description": "Agent temperature setting\n"
+                    "description": "Agent temperature setting"
                 },
                 "templates": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiAgentTemplate:GenaiAgentTemplate"
                     },
-                    "description": "Agent Template\n"
+                    "description": "Agent Template"
                 },
                 "topP": {
                     "type": "number",
-                    "description": "Top P sampling parameter\n"
+                    "description": "Top P sampling parameter"
                 },
                 "url": {
                     "type": "string",
-                    "description": "URL for the Agent\n"
+                    "description": "URL for the Agent"
                 },
                 "userId": {
                     "type": "string",
-                    "description": "User ID linked with the Agent\n"
+                    "description": "User ID linked with the Agent"
                 }
             },
             "requiredInputs": [
@@ -23537,204 +23537,204 @@
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentAgentGuardrail:GenaiAgentAgentGuardrail"
                         },
-                        "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent\n"
+                        "description": "AgentGuardrail represents a Guardrail attached to Gen AI Agent"
                     },
                     "anthropicApiKeys": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentAnthropicApiKey:GenaiAgentAnthropicApiKey"
                         },
-                        "description": "Anthropic API Key information\n"
+                        "description": "Anthropic API Key information"
                     },
                     "anthropicKeyUuid": {
                         "type": "string",
-                        "description": "Optional Anthropic API key ID to use with Anthropic models\n"
+                        "description": "Optional Anthropic API key ID to use with Anthropic models"
                     },
                     "apiKeyInfos": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentApiKeyInfo:GenaiAgentApiKeyInfo"
                         },
-                        "description": "List of API Key Infos\n"
+                        "description": "List of API Key Infos"
                     },
                     "apiKeys": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentApiKey:GenaiAgentApiKey"
                         },
-                        "description": "List of API Keys\n"
+                        "description": "List of API Keys"
                     },
                     "chatbotIdentifiers": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentChatbotIdentifier:GenaiAgentChatbotIdentifier"
                         },
-                        "description": "List of Chatbot Identifiers\n"
+                        "description": "List of Chatbot Identifiers"
                     },
                     "chatbots": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentChatbot:GenaiAgentChatbot"
                         },
-                        "description": "ChatBot configuration\n"
+                        "description": "ChatBot configuration"
                     },
                     "childAgents": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentChildAgent:GenaiAgentChildAgent"
                         },
-                        "description": "List of child agents\n"
+                        "description": "List of child agents"
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "Timestamp when the Agent was created\n"
+                        "description": "Timestamp when the Agent was created"
                     },
                     "deployments": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentDeployment:GenaiAgentDeployment"
                         },
-                        "description": "List of API Key Infos\n"
+                        "description": "List of API Key Infos"
                     },
                     "description": {
                         "type": "string",
-                        "description": "Description for the Agent\n"
+                        "description": "Description for the Agent"
                     },
                     "functions": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentFunction:GenaiAgentFunction"
                         },
-                        "description": "List of Functions\n"
+                        "description": "List of Functions"
                     },
                     "ifCase": {
                         "type": "string",
-                        "description": "If case condition\n"
+                        "description": "If case condition"
                     },
                     "instruction": {
                         "type": "string",
-                        "description": "Instruction for the Agent\n"
+                        "description": "Instruction for the Agent"
                     },
                     "k": {
                         "type": "integer",
-                        "description": "K value\n"
+                        "description": "K value"
                     },
                     "knowledgeBaseUuids": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "Ids of the knowledge base(s) to attach to the agent\n"
+                        "description": "Ids of the knowledge base(s) to attach to the agent"
                     },
                     "knowledgeBases": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentKnowledgeBase:GenaiAgentKnowledgeBase"
                         },
-                        "description": "List of Knowledge Bases\n"
+                        "description": "List of Knowledge Bases"
                     },
                     "maxTokens": {
                         "type": "integer",
-                        "description": "Maximum tokens allowed\n"
+                        "description": "Maximum tokens allowed"
                     },
                     "modelUuid": {
                         "type": "string",
-                        "description": "Model UUID of the Agent\n"
+                        "description": "Model UUID of the Agent"
                     },
                     "models": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentModel:GenaiAgentModel"
                         },
-                        "description": "Model of the Agent\n"
+                        "description": "Model of the Agent"
                     },
                     "name": {
                         "type": "string",
-                        "description": "Name of the Agent\n"
+                        "description": "Name of the Agent"
                     },
                     "openAiApiKeys": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentOpenAiApiKey:GenaiAgentOpenAiApiKey"
                         },
-                        "description": "OpenAI API Key information\n"
+                        "description": "OpenAI API Key information"
                     },
                     "openAiKeyUuid": {
                         "type": "string",
-                        "description": "Optional OpenAI API key ID to use with OpenAI models\n"
+                        "description": "Optional OpenAI API key ID to use with OpenAI models"
                     },
                     "parentAgents": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentParentAgent:GenaiAgentParentAgent"
                         },
-                        "description": "List of child agents\n"
+                        "description": "List of child agents"
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "Project ID of the Agent\n"
+                        "description": "Project ID of the Agent"
                     },
                     "provideCitations": {
                         "type": "boolean",
-                        "description": "Indicates if the agent should provide citations in responses\n"
+                        "description": "Indicates if the agent should provide citations in responses"
                     },
                     "region": {
                         "type": "string",
-                        "description": "Region where the Agent is deployed\n"
+                        "description": "Region where the Agent is deployed"
                     },
                     "retrievalMethod": {
                         "type": "string",
-                        "description": "Retrieval method used\n"
+                        "description": "Retrieval method used"
                     },
                     "routeCreatedAt": {
                         "type": "string",
-                        "description": "Timestamp when the route was created\n"
+                        "description": "Timestamp when the route was created"
                     },
                     "routeCreatedBy": {
                         "type": "string",
-                        "description": "User who created the route\n"
+                        "description": "User who created the route"
                     },
                     "routeName": {
                         "type": "string",
-                        "description": "Route name\n"
+                        "description": "Route name"
                     },
                     "routeUuid": {
                         "type": "string",
-                        "description": "Route UUID\n"
+                        "description": "Route UUID"
                     },
                     "tags": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "List of Tags\n"
+                        "description": "List of Tags"
                     },
                     "temperature": {
                         "type": "number",
-                        "description": "Agent temperature setting\n"
+                        "description": "Agent temperature setting"
                     },
                     "templates": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiAgentTemplate:GenaiAgentTemplate"
                         },
-                        "description": "Agent Template\n"
+                        "description": "Agent Template"
                     },
                     "topP": {
                         "type": "number",
-                        "description": "Top P sampling parameter\n"
+                        "description": "Top P sampling parameter"
                     },
                     "updatedAt": {
                         "type": "string",
-                        "description": "Timestamp when the Agent was updated\n"
+                        "description": "Timestamp when the Agent was updated"
                     },
                     "url": {
                         "type": "string",
-                        "description": "URL for the Agent\n"
+                        "description": "URL for the Agent"
                     },
                     "userId": {
                         "type": "string",
-                        "description": "User ID linked with the Agent\n"
+                        "description": "User ID linked with the Agent"
                     }
                 },
                 "type": "object"
@@ -23744,11 +23744,11 @@
             "properties": {
                 "agentUuid": {
                     "type": "string",
-                    "description": "A unique identifier for an agent.\n"
+                    "description": "A unique identifier for an agent."
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "A unique identifier for a knowledge base.\n"
+                    "description": "A unique identifier for a knowledge base."
                 }
             },
             "required": [
@@ -23758,12 +23758,12 @@
             "inputProperties": {
                 "agentUuid": {
                     "type": "string",
-                    "description": "A unique identifier for an agent.\n",
+                    "description": "A unique identifier for an agent.",
                     "willReplaceOnChanges": true
                 },
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "A unique identifier for a knowledge base.\n",
+                    "description": "A unique identifier for a knowledge base.",
                     "willReplaceOnChanges": true
                 }
             },
@@ -23776,12 +23776,12 @@
                 "properties": {
                     "agentUuid": {
                         "type": "string",
-                        "description": "A unique identifier for an agent.\n",
+                        "description": "A unique identifier for an agent.",
                         "willReplaceOnChanges": true
                     },
                     "knowledgeBaseUuid": {
                         "type": "string",
-                        "description": "A unique identifier for a knowledge base.\n",
+                        "description": "A unique identifier for a knowledge base.",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -23792,26 +23792,26 @@
             "properties": {
                 "childAgentUuid": {
                     "type": "string",
-                    "description": "The UUID of the child agent.\n"
+                    "description": "The UUID of the child agent."
                 },
                 "ifCase": {
                     "type": "string",
-                    "description": "if-case condition for the route.\n"
+                    "description": "if-case condition for the route."
                 },
                 "parentAgentUuid": {
                     "type": "string",
-                    "description": "The UUID of the parent agent.\n"
+                    "description": "The UUID of the parent agent."
                 },
                 "rollback": {
                     "type": "boolean"
                 },
                 "routeName": {
                     "type": "string",
-                    "description": "A name for the route.\n"
+                    "description": "A name for the route."
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "The UUID of the linkage\n"
+                    "description": "The UUID of the linkage"
                 }
             },
             "required": [
@@ -23822,22 +23822,22 @@
             "inputProperties": {
                 "childAgentUuid": {
                     "type": "string",
-                    "description": "The UUID of the child agent.\n"
+                    "description": "The UUID of the child agent."
                 },
                 "ifCase": {
                     "type": "string",
-                    "description": "if-case condition for the route.\n"
+                    "description": "if-case condition for the route."
                 },
                 "parentAgentUuid": {
                     "type": "string",
-                    "description": "The UUID of the parent agent.\n"
+                    "description": "The UUID of the parent agent."
                 },
                 "rollback": {
                     "type": "boolean"
                 },
                 "routeName": {
                     "type": "string",
-                    "description": "A name for the route.\n"
+                    "description": "A name for the route."
                 }
             },
             "requiredInputs": [
@@ -23849,26 +23849,26 @@
                 "properties": {
                     "childAgentUuid": {
                         "type": "string",
-                        "description": "The UUID of the child agent.\n"
+                        "description": "The UUID of the child agent."
                     },
                     "ifCase": {
                         "type": "string",
-                        "description": "if-case condition for the route.\n"
+                        "description": "if-case condition for the route."
                     },
                     "parentAgentUuid": {
                         "type": "string",
-                        "description": "The UUID of the parent agent.\n"
+                        "description": "The UUID of the parent agent."
                     },
                     "rollback": {
                         "type": "boolean"
                     },
                     "routeName": {
                         "type": "string",
-                        "description": "A name for the route.\n"
+                        "description": "A name for the route."
                     },
                     "uuid": {
                         "type": "string",
-                        "description": "The UUID of the linkage\n"
+                        "description": "The UUID of the linkage"
                     }
                 },
                 "type": "object"
@@ -23878,35 +23878,35 @@
             "properties": {
                 "agentId": {
                     "type": "string",
-                    "description": "The name of the GenAI resource.\n"
+                    "description": "The name of the GenAI resource."
                 },
                 "description": {
                     "type": "string",
-                    "description": "The region where the GenAI resource will be created.\n"
+                    "description": "The region where the GenAI resource will be created."
                 },
                 "faasName": {
                     "type": "string",
-                    "description": "The model to use for the GenAI resource.\n"
+                    "description": "The model to use for the GenAI resource."
                 },
                 "faasNamespace": {
                     "type": "string",
-                    "description": "The current status of the GenAI resource.\n"
+                    "description": "The current status of the GenAI resource."
                 },
                 "functionName": {
                     "type": "string",
-                    "description": "The creation timestamp of the GenAI resource.\n"
+                    "description": "The creation timestamp of the GenAI resource."
                 },
                 "functionUuid": {
                     "type": "string",
-                    "description": "The unique identifier of the GenAI function.\n"
+                    "description": "The unique identifier of the GenAI function."
                 },
                 "inputSchema": {
                     "type": "string",
-                    "description": "The input schema of the GenAI resource.\n"
+                    "description": "The input schema of the GenAI resource."
                 },
                 "outputSchema": {
                     "type": "string",
-                    "description": "The output schema of the GenAI resource.\n"
+                    "description": "The output schema of the GenAI resource."
                 }
             },
             "required": [
@@ -23920,31 +23920,31 @@
             "inputProperties": {
                 "agentId": {
                     "type": "string",
-                    "description": "The name of the GenAI resource.\n"
+                    "description": "The name of the GenAI resource."
                 },
                 "description": {
                     "type": "string",
-                    "description": "The region where the GenAI resource will be created.\n"
+                    "description": "The region where the GenAI resource will be created."
                 },
                 "faasName": {
                     "type": "string",
-                    "description": "The model to use for the GenAI resource.\n"
+                    "description": "The model to use for the GenAI resource."
                 },
                 "faasNamespace": {
                     "type": "string",
-                    "description": "The current status of the GenAI resource.\n"
+                    "description": "The current status of the GenAI resource."
                 },
                 "functionName": {
                     "type": "string",
-                    "description": "The creation timestamp of the GenAI resource.\n"
+                    "description": "The creation timestamp of the GenAI resource."
                 },
                 "inputSchema": {
                     "type": "string",
-                    "description": "The input schema of the GenAI resource.\n"
+                    "description": "The input schema of the GenAI resource."
                 },
                 "outputSchema": {
                     "type": "string",
-                    "description": "The output schema of the GenAI resource.\n"
+                    "description": "The output schema of the GenAI resource."
                 }
             },
             "requiredInputs": [
@@ -23959,35 +23959,35 @@
                 "properties": {
                     "agentId": {
                         "type": "string",
-                        "description": "The name of the GenAI resource.\n"
+                        "description": "The name of the GenAI resource."
                     },
                     "description": {
                         "type": "string",
-                        "description": "The region where the GenAI resource will be created.\n"
+                        "description": "The region where the GenAI resource will be created."
                     },
                     "faasName": {
                         "type": "string",
-                        "description": "The model to use for the GenAI resource.\n"
+                        "description": "The model to use for the GenAI resource."
                     },
                     "faasNamespace": {
                         "type": "string",
-                        "description": "The current status of the GenAI resource.\n"
+                        "description": "The current status of the GenAI resource."
                     },
                     "functionName": {
                         "type": "string",
-                        "description": "The creation timestamp of the GenAI resource.\n"
+                        "description": "The creation timestamp of the GenAI resource."
                     },
                     "functionUuid": {
                         "type": "string",
-                        "description": "The unique identifier of the GenAI function.\n"
+                        "description": "The unique identifier of the GenAI function."
                     },
                     "inputSchema": {
                         "type": "string",
-                        "description": "The input schema of the GenAI resource.\n"
+                        "description": "The input schema of the GenAI resource."
                     },
                     "outputSchema": {
                         "type": "string",
-                        "description": "The output schema of the GenAI resource.\n"
+                        "description": "The output schema of the GenAI resource."
                     }
                 },
                 "type": "object"
@@ -23997,45 +23997,45 @@
             "properties": {
                 "addedToAgentAt": {
                     "type": "string",
-                    "description": "The time when the knowledge base was added to the agent.\n"
+                    "description": "The time when the knowledge base was added to the agent."
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "The time when the knowledge base was created.\n"
+                    "description": "The time when the knowledge base was created."
                 },
                 "databaseId": {
                     "type": "string",
-                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use"
                 },
                 "datasources": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                     },
-                    "description": "Data sources for the knowledge base\n"
+                    "description": "Data sources for the knowledge base"
                 },
                 "embeddingModelUuid": {
                     "type": "string",
-                    "description": "The unique identifier of the embedding model\n"
+                    "description": "The unique identifier of the embedding model"
                 },
                 "isPublic": {
                     "type": "boolean",
-                    "description": "Indicates whether the knowledge base is public or private.\n"
+                    "description": "Indicates whether the knowledge base is public or private."
                 },
                 "lastIndexingJobs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
                     },
-                    "description": "The last indexing job for the knowledge base.\n"
+                    "description": "The last indexing job for the knowledge base."
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the knowledge base.\n"
+                    "description": "The name of the knowledge base."
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                    "description": "The unique identifier of the project to which the knowledge base belongs."
                 },
                 "region": {
                     "type": "string"
@@ -24048,7 +24048,7 @@
                 },
                 "vpcUuid": {
                     "type": "string",
-                    "description": "The unique identifier of the VPC to which the knowledge base belongs.\n"
+                    "description": "The unique identifier of the VPC to which the knowledge base belongs."
                 }
             },
             "required": [
@@ -24062,43 +24062,43 @@
             "inputProperties": {
                 "addedToAgentAt": {
                     "type": "string",
-                    "description": "The time when the knowledge base was added to the agent.\n"
+                    "description": "The time when the knowledge base was added to the agent."
                 },
                 "databaseId": {
                     "type": "string",
-                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                    "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use"
                 },
                 "datasources": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                     },
-                    "description": "Data sources for the knowledge base\n",
+                    "description": "Data sources for the knowledge base",
                     "willReplaceOnChanges": true
                 },
                 "embeddingModelUuid": {
                     "type": "string",
-                    "description": "The unique identifier of the embedding model\n",
+                    "description": "The unique identifier of the embedding model",
                     "willReplaceOnChanges": true
                 },
                 "isPublic": {
                     "type": "boolean",
-                    "description": "Indicates whether the knowledge base is public or private.\n"
+                    "description": "Indicates whether the knowledge base is public or private."
                 },
                 "lastIndexingJobs": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
                     },
-                    "description": "The last indexing job for the knowledge base.\n"
+                    "description": "The last indexing job for the knowledge base."
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the knowledge base.\n"
+                    "description": "The name of the knowledge base."
                 },
                 "projectId": {
                     "type": "string",
-                    "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                    "description": "The unique identifier of the project to which the knowledge base belongs."
                 },
                 "region": {
                     "type": "string"
@@ -24111,7 +24111,7 @@
                 },
                 "vpcUuid": {
                     "type": "string",
-                    "description": "The unique identifier of the VPC to which the knowledge base belongs.\n",
+                    "description": "The unique identifier of the VPC to which the knowledge base belongs.",
                     "willReplaceOnChanges": true
                 }
             },
@@ -24126,47 +24126,47 @@
                 "properties": {
                     "addedToAgentAt": {
                         "type": "string",
-                        "description": "The time when the knowledge base was added to the agent.\n"
+                        "description": "The time when the knowledge base was added to the agent."
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "The time when the knowledge base was created.\n"
+                        "description": "The time when the knowledge base was created."
                     },
                     "databaseId": {
                         "type": "string",
-                        "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use\n"
+                        "description": "The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use"
                     },
                     "datasources": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource"
                         },
-                        "description": "Data sources for the knowledge base\n",
+                        "description": "Data sources for the knowledge base",
                         "willReplaceOnChanges": true
                     },
                     "embeddingModelUuid": {
                         "type": "string",
-                        "description": "The unique identifier of the embedding model\n",
+                        "description": "The unique identifier of the embedding model",
                         "willReplaceOnChanges": true
                     },
                     "isPublic": {
                         "type": "boolean",
-                        "description": "Indicates whether the knowledge base is public or private.\n"
+                        "description": "Indicates whether the knowledge base is public or private."
                     },
                     "lastIndexingJobs": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseLastIndexingJob:GenaiKnowledgeBaseLastIndexingJob"
                         },
-                        "description": "The last indexing job for the knowledge base.\n"
+                        "description": "The last indexing job for the knowledge base."
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the knowledge base.\n"
+                        "description": "The name of the knowledge base."
                     },
                     "projectId": {
                         "type": "string",
-                        "description": "The unique identifier of the project to which the knowledge base belongs.\n"
+                        "description": "The unique identifier of the project to which the knowledge base belongs."
                     },
                     "region": {
                         "type": "string"
@@ -24179,7 +24179,7 @@
                     },
                     "vpcUuid": {
                         "type": "string",
-                        "description": "The unique identifier of the VPC to which the knowledge base belongs.\n",
+                        "description": "The unique identifier of the VPC to which the knowledge base belongs.",
                         "willReplaceOnChanges": true
                     }
                 },
@@ -24190,7 +24190,7 @@
             "properties": {
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID of the Knowledge Base\n"
+                    "description": "UUID of the Knowledge Base"
                 },
                 "spacesDataSource": {
                     "$ref": "#/types/digitalocean:index/GenaiKnowledgeBaseDataSourceSpacesDataSource:GenaiKnowledgeBaseDataSourceSpacesDataSource"
@@ -24205,7 +24205,7 @@
             "inputProperties": {
                 "knowledgeBaseUuid": {
                     "type": "string",
-                    "description": "UUID of the Knowledge Base\n",
+                    "description": "UUID of the Knowledge Base",
                     "willReplaceOnChanges": true
                 },
                 "spacesDataSource": {
@@ -24225,7 +24225,7 @@
                 "properties": {
                     "knowledgeBaseUuid": {
                         "type": "string",
-                        "description": "UUID of the Knowledge Base\n",
+                        "description": "UUID of the Knowledge Base",
                         "willReplaceOnChanges": true
                     },
                     "spacesDataSource": {
@@ -24244,38 +24244,38 @@
             "properties": {
                 "apiKey": {
                     "type": "string",
-                    "description": "The OpenAI API key.\n"
+                    "description": "The OpenAI API key."
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "When the API key was created.\n"
+                    "description": "When the API key was created."
                 },
                 "createdBy": {
                     "type": "string",
-                    "description": "Who created the API key.\n"
+                    "description": "Who created the API key."
                 },
                 "deletedAt": {
                     "type": "string",
-                    "description": "When the API key was deleted.\n"
+                    "description": "When the API key was deleted."
                 },
                 "models": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiOpenaiApiKeyModel:GenaiOpenaiApiKeyModel"
                     },
-                    "description": "Models associated with the OpenAI API key\n"
+                    "description": "Models associated with the OpenAI API key"
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name for the API key.\n"
+                    "description": "A name for the API key."
                 },
                 "updatedAt": {
                     "type": "string",
-                    "description": "When the API key was last updated.\n"
+                    "description": "When the API key was last updated."
                 },
                 "uuid": {
                     "type": "string",
-                    "description": "The UUID of the API key.\n"
+                    "description": "The UUID of the API key."
                 }
             },
             "required": [
@@ -24291,18 +24291,18 @@
             "inputProperties": {
                 "apiKey": {
                     "type": "string",
-                    "description": "The OpenAI API key.\n"
+                    "description": "The OpenAI API key."
                 },
                 "models": {
                     "type": "array",
                     "items": {
                         "$ref": "#/types/digitalocean:index/GenaiOpenaiApiKeyModel:GenaiOpenaiApiKeyModel"
                     },
-                    "description": "Models associated with the OpenAI API key\n"
+                    "description": "Models associated with the OpenAI API key"
                 },
                 "name": {
                     "type": "string",
-                    "description": "A name for the API key.\n"
+                    "description": "A name for the API key."
                 }
             },
             "requiredInputs": [
@@ -24313,38 +24313,38 @@
                 "properties": {
                     "apiKey": {
                         "type": "string",
-                        "description": "The OpenAI API key.\n"
+                        "description": "The OpenAI API key."
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "When the API key was created.\n"
+                        "description": "When the API key was created."
                     },
                     "createdBy": {
                         "type": "string",
-                        "description": "Who created the API key.\n"
+                        "description": "Who created the API key."
                     },
                     "deletedAt": {
                         "type": "string",
-                        "description": "When the API key was deleted.\n"
+                        "description": "When the API key was deleted."
                     },
                     "models": {
                         "type": "array",
                         "items": {
                             "$ref": "#/types/digitalocean:index/GenaiOpenaiApiKeyModel:GenaiOpenaiApiKeyModel"
                         },
-                        "description": "Models associated with the OpenAI API key\n"
+                        "description": "Models associated with the OpenAI API key"
                     },
                     "name": {
                         "type": "string",
-                        "description": "A name for the API key.\n"
+                        "description": "A name for the API key."
                     },
                     "updatedAt": {
                         "type": "string",
-                        "description": "When the API key was last updated.\n"
+                        "description": "When the API key was last updated."
                     },
                     "uuid": {
                         "type": "string",
-                        "description": "The UUID of the API key.\n"
+                        "description": "The UUID of the API key."
                     }
                 },
                 "type": "object"
@@ -25571,46 +25571,46 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The children uuids of Partner Attachment\n"
+                    "description": "The children uuids of Partner Attachment"
                 },
                 "connectionBandwidthInMbps": {
                     "type": "integer",
-                    "description": "The connection bandwidth in Mbps\n"
+                    "description": "The connection bandwidth in Mbps"
                 },
                 "createdAt": {
                     "type": "string",
-                    "description": "The date and time when the Partner Attachment was created\n"
+                    "description": "The date and time when the Partner Attachment was created"
                 },
                 "naasProvider": {
                     "type": "string",
-                    "description": "The NaaS provider\n"
+                    "description": "The NaaS provider"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Partner Attachment\n"
+                    "description": "The name of the Partner Attachment"
                 },
                 "parentUuid": {
                     "type": "string",
-                    "description": "The UUID of the Parent Partner Attachment\n"
+                    "description": "The UUID of the Parent Partner Attachment"
                 },
                 "redundancyZone": {
                     "type": "string",
-                    "description": "The redundancy zone for the NaaS\n"
+                    "description": "The redundancy zone for the NaaS"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where the Partner Attachment will be created\n"
+                    "description": "The region where the Partner Attachment will be created"
                 },
                 "state": {
                     "type": "string",
-                    "description": "The state of the Partner Attachment\n"
+                    "description": "The state of the Partner Attachment"
                 },
                 "vpcIds": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                    "description": "The list of VPC IDs to attach the Partner Attachment to"
                 }
             },
             "required": [
@@ -25631,29 +25631,29 @@
                 },
                 "connectionBandwidthInMbps": {
                     "type": "integer",
-                    "description": "The connection bandwidth in Mbps\n",
+                    "description": "The connection bandwidth in Mbps",
                     "willReplaceOnChanges": true
                 },
                 "naasProvider": {
                     "type": "string",
-                    "description": "The NaaS provider\n",
+                    "description": "The NaaS provider",
                     "willReplaceOnChanges": true
                 },
                 "name": {
                     "type": "string",
-                    "description": "The name of the Partner Attachment\n"
+                    "description": "The name of the Partner Attachment"
                 },
                 "parentUuid": {
                     "type": "string",
-                    "description": "The UUID of the Parent Partner Attachment\n"
+                    "description": "The UUID of the Parent Partner Attachment"
                 },
                 "redundancyZone": {
                     "type": "string",
-                    "description": "The redundancy zone for the NaaS\n"
+                    "description": "The redundancy zone for the NaaS"
                 },
                 "region": {
                     "type": "string",
-                    "description": "The region where the Partner Attachment will be created\n",
+                    "description": "The region where the Partner Attachment will be created",
                     "willReplaceOnChanges": true
                 },
                 "vpcIds": {
@@ -25661,7 +25661,7 @@
                     "items": {
                         "type": "string"
                     },
-                    "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                    "description": "The list of VPC IDs to attach the Partner Attachment to"
                 }
             },
             "requiredInputs": [
@@ -25681,49 +25681,49 @@
                         "items": {
                             "type": "string"
                         },
-                        "description": "The children uuids of Partner Attachment\n"
+                        "description": "The children uuids of Partner Attachment"
                     },
                     "connectionBandwidthInMbps": {
                         "type": "integer",
-                        "description": "The connection bandwidth in Mbps\n",
+                        "description": "The connection bandwidth in Mbps",
                         "willReplaceOnChanges": true
                     },
                     "createdAt": {
                         "type": "string",
-                        "description": "The date and time when the Partner Attachment was created\n"
+                        "description": "The date and time when the Partner Attachment was created"
                     },
                     "naasProvider": {
                         "type": "string",
-                        "description": "The NaaS provider\n",
+                        "description": "The NaaS provider",
                         "willReplaceOnChanges": true
                     },
                     "name": {
                         "type": "string",
-                        "description": "The name of the Partner Attachment\n"
+                        "description": "The name of the Partner Attachment"
                     },
                     "parentUuid": {
                         "type": "string",
-                        "description": "The UUID of the Parent Partner Attachment\n"
+                        "description": "The UUID of the Parent Partner Attachment"
                     },
                     "redundancyZone": {
                         "type": "string",
-                        "description": "The redundancy zone for the NaaS\n"
+                        "description": "The redundancy zone for the NaaS"
                     },
                     "region": {
                         "type": "string",
-                        "description": "The region where the Partner Attachment will be created\n",
+                        "description": "The region where the Partner Attachment will be created",
                         "willReplaceOnChanges": true
                     },
                     "state": {
                         "type": "string",
-                        "description": "The state of the Partner Attachment\n"
+                        "description": "The state of the Partner Attachment"
                     },
                     "vpcIds": {
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "description": "The list of VPC IDs to attach the Partner Attachment to\n"
+                        "description": "The list of VPC IDs to attach the Partner Attachment to"
                     }
                 },
                 "type": "object"
@@ -26050,7 +26050,7 @@
                 },
                 "reservedIpv6Urn": {
                     "type": "string",
-                    "description": "the uniform resource name for the reserved ipv6\n"
+                    "description": "the uniform resource name for the reserved ipv6"
                 }
             },
             "required": [
@@ -26091,7 +26091,7 @@
                     },
                     "reservedIpv6Urn": {
                         "type": "string",
-                        "description": "the uniform resource name for the reserved ipv6\n"
+                        "description": "the uniform resource name for the reserved ipv6"
                     }
                 },
                 "type": "object"
@@ -27704,7 +27704,7 @@
                 },
                 "state": {
                     "type": "string",
-                    "description": "State of the VPC NAT Gateway\n"
+                    "description": "State of the VPC NAT Gateway"
                 },
                 "tcpTimeoutSeconds": {
                     "type": "integer",
@@ -27819,7 +27819,7 @@
                     },
                     "state": {
                         "type": "string",
-                        "description": "State of the VPC NAT Gateway\n"
+                        "description": "State of the VPC NAT Gateway"
                     },
                     "tcpTimeoutSeconds": {
                         "type": "integer",
@@ -27945,7 +27945,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "status": {
@@ -28022,7 +28022,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "liveDomain": {
@@ -28096,7 +28096,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -28163,7 +28163,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -28226,7 +28226,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     }
                 },
@@ -28276,7 +28276,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "maintenanceWindows": {
@@ -28456,7 +28456,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "mode": {
@@ -28522,7 +28522,7 @@
                 "description": "A collection of values returned by getDatabaseMetricsCredentials.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "password": {
@@ -28585,7 +28585,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -28696,7 +28696,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "mysqlAuthPlugin": {
@@ -28759,7 +28759,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -28823,7 +28823,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -29108,7 +29108,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "minDiskSize": {
@@ -29196,7 +29196,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -29272,7 +29272,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "inboundRules": {
@@ -29352,7 +29352,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipAddress": {
@@ -29567,7 +29567,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ifCase": {
@@ -29723,7 +29723,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -29779,7 +29779,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "onlyDeployed": {
@@ -29822,7 +29822,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "uuid": {
@@ -29899,7 +29899,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "isPublic": {
@@ -29967,7 +29967,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "knowledgeBaseUuid": {
@@ -30011,7 +30011,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "knowledgeBases": {
@@ -30060,7 +30060,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "models": {
@@ -30121,7 +30121,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "openaiApiKeys": {
@@ -30292,7 +30292,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "images": {
@@ -30397,7 +30397,7 @@
                         "type": "boolean"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipv4Address": {
@@ -30519,7 +30519,7 @@
                 "description": "A collection of values returned by getKubernetesVersions.\n",
                 "properties": {
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "latestVersion": {
@@ -30808,7 +30808,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "state": {
@@ -30940,7 +30940,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "projects": {
@@ -30999,7 +30999,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -31089,7 +31089,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "records": {
@@ -31143,7 +31143,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -31205,7 +31205,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "regions": {
@@ -31252,7 +31252,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ipAddress": {
@@ -31300,7 +31300,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "ip": {
@@ -31357,7 +31357,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sizes": {
@@ -31412,7 +31412,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -31518,7 +31518,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "key": {
@@ -31629,7 +31629,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "keys": {
@@ -31706,7 +31706,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -31757,7 +31757,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -31850,7 +31850,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -31901,7 +31901,7 @@
                         "type": "integer"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "imagesCount": {
@@ -31969,7 +31969,7 @@
                         "type": "array"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "sorts": {
@@ -32038,7 +32038,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "name": {
@@ -32108,7 +32108,7 @@
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
+                        "description": "The provider-assigned unique ID for this managed resource.",
                         "type": "string"
                     },
                     "minDiskSize": {

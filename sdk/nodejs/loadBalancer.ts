@@ -88,120 +88,120 @@ export class LoadBalancer extends pulumi.CustomResource {
      *
      * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
-    public readonly algorithm!: pulumi.Output<string | undefined>;
+    declare public readonly algorithm: pulumi.Output<string | undefined>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
-    public readonly disableLetsEncryptDnsRecords!: pulumi.Output<boolean | undefined>;
+    declare public readonly disableLetsEncryptDnsRecords: pulumi.Output<boolean | undefined>;
     /**
      * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
-    public readonly domains!: pulumi.Output<outputs.LoadBalancerDomain[]>;
+    declare public readonly domains: pulumi.Output<outputs.LoadBalancerDomain[]>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    public readonly dropletIds!: pulumi.Output<number[]>;
+    declare public readonly dropletIds: pulumi.Output<number[]>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    public readonly dropletTag!: pulumi.Output<string | undefined>;
+    declare public readonly dropletTag: pulumi.Output<string | undefined>;
     /**
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      */
-    public readonly enableBackendKeepalive!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableBackendKeepalive: pulumi.Output<boolean | undefined>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    public readonly enableProxyProtocol!: pulumi.Output<boolean | undefined>;
+    declare public readonly enableProxyProtocol: pulumi.Output<boolean | undefined>;
     /**
      * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
      */
-    public readonly firewall!: pulumi.Output<outputs.LoadBalancerFirewall>;
+    declare public readonly firewall: pulumi.Output<outputs.LoadBalancerFirewall>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    public readonly forwardingRules!: pulumi.Output<outputs.LoadBalancerForwardingRule[] | undefined>;
+    declare public readonly forwardingRules: pulumi.Output<outputs.LoadBalancerForwardingRule[] | undefined>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      */
-    public readonly glbSettings!: pulumi.Output<outputs.LoadBalancerGlbSettings>;
+    declare public readonly glbSettings: pulumi.Output<outputs.LoadBalancerGlbSettings>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    public readonly healthcheck!: pulumi.Output<outputs.LoadBalancerHealthcheck>;
+    declare public readonly healthcheck: pulumi.Output<outputs.LoadBalancerHealthcheck>;
     /**
      * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
      */
-    public readonly httpIdleTimeoutSeconds!: pulumi.Output<number>;
+    declare public readonly httpIdleTimeoutSeconds: pulumi.Output<number>;
     /**
      * The ip of the Load Balancer
      */
-    public /*out*/ readonly ip!: pulumi.Output<string>;
-    public /*out*/ readonly ipv6!: pulumi.Output<string>;
+    declare public /*out*/ readonly ip: pulumi.Output<string>;
+    declare public /*out*/ readonly ipv6: pulumi.Output<string>;
     /**
      * The uniform resource name for the Load Balancer
      */
-    public /*out*/ readonly loadBalancerUrn!: pulumi.Output<string>;
+    declare public /*out*/ readonly loadBalancerUrn: pulumi.Output<string>;
     /**
      * The Load Balancer name
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
      */
-    public readonly network!: pulumi.Output<string | undefined>;
+    declare public readonly network: pulumi.Output<string | undefined>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
      */
-    public readonly networkStack!: pulumi.Output<string | undefined>;
+    declare public readonly networkStack: pulumi.Output<string | undefined>;
     /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
-    public readonly projectId!: pulumi.Output<string>;
+    declare public readonly projectId: pulumi.Output<string>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    public readonly redirectHttpToHttps!: pulumi.Output<boolean | undefined>;
+    declare public readonly redirectHttpToHttps: pulumi.Output<boolean | undefined>;
     /**
      * The region to start in
      */
-    public readonly region!: pulumi.Output<string | undefined>;
+    declare public readonly region: pulumi.Output<string | undefined>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
-    public readonly size!: pulumi.Output<string | undefined>;
+    declare public readonly size: pulumi.Output<string | undefined>;
     /**
      * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
-    public readonly sizeUnit!: pulumi.Output<number>;
-    public /*out*/ readonly status!: pulumi.Output<string>;
+    declare public readonly sizeUnit: pulumi.Output<number>;
+    declare public /*out*/ readonly status: pulumi.Output<string>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    public readonly stickySessions!: pulumi.Output<outputs.LoadBalancerStickySessions>;
+    declare public readonly stickySessions: pulumi.Output<outputs.LoadBalancerStickySessions>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */
-    public readonly targetLoadBalancerIds!: pulumi.Output<string[]>;
+    declare public readonly targetLoadBalancerIds: pulumi.Output<string[]>;
     /**
      * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
      */
-    public readonly tlsCipherPolicy!: pulumi.Output<string | undefined>;
+    declare public readonly tlsCipherPolicy: pulumi.Output<string | undefined>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
-    public readonly vpcUuid!: pulumi.Output<string>;
+    declare public readonly vpcUuid: pulumi.Output<string>;
 
     /**
      * Create a LoadBalancer resource with the given unique name, arguments, and options.
@@ -216,62 +216,62 @@ export class LoadBalancer extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LoadBalancerState | undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["disableLetsEncryptDnsRecords"] = state ? state.disableLetsEncryptDnsRecords : undefined;
-            resourceInputs["domains"] = state ? state.domains : undefined;
-            resourceInputs["dropletIds"] = state ? state.dropletIds : undefined;
-            resourceInputs["dropletTag"] = state ? state.dropletTag : undefined;
-            resourceInputs["enableBackendKeepalive"] = state ? state.enableBackendKeepalive : undefined;
-            resourceInputs["enableProxyProtocol"] = state ? state.enableProxyProtocol : undefined;
-            resourceInputs["firewall"] = state ? state.firewall : undefined;
-            resourceInputs["forwardingRules"] = state ? state.forwardingRules : undefined;
-            resourceInputs["glbSettings"] = state ? state.glbSettings : undefined;
-            resourceInputs["healthcheck"] = state ? state.healthcheck : undefined;
-            resourceInputs["httpIdleTimeoutSeconds"] = state ? state.httpIdleTimeoutSeconds : undefined;
-            resourceInputs["ip"] = state ? state.ip : undefined;
-            resourceInputs["ipv6"] = state ? state.ipv6 : undefined;
-            resourceInputs["loadBalancerUrn"] = state ? state.loadBalancerUrn : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["network"] = state ? state.network : undefined;
-            resourceInputs["networkStack"] = state ? state.networkStack : undefined;
-            resourceInputs["projectId"] = state ? state.projectId : undefined;
-            resourceInputs["redirectHttpToHttps"] = state ? state.redirectHttpToHttps : undefined;
-            resourceInputs["region"] = state ? state.region : undefined;
-            resourceInputs["size"] = state ? state.size : undefined;
-            resourceInputs["sizeUnit"] = state ? state.sizeUnit : undefined;
-            resourceInputs["status"] = state ? state.status : undefined;
-            resourceInputs["stickySessions"] = state ? state.stickySessions : undefined;
-            resourceInputs["targetLoadBalancerIds"] = state ? state.targetLoadBalancerIds : undefined;
-            resourceInputs["tlsCipherPolicy"] = state ? state.tlsCipherPolicy : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["vpcUuid"] = state ? state.vpcUuid : undefined;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["disableLetsEncryptDnsRecords"] = state?.disableLetsEncryptDnsRecords;
+            resourceInputs["domains"] = state?.domains;
+            resourceInputs["dropletIds"] = state?.dropletIds;
+            resourceInputs["dropletTag"] = state?.dropletTag;
+            resourceInputs["enableBackendKeepalive"] = state?.enableBackendKeepalive;
+            resourceInputs["enableProxyProtocol"] = state?.enableProxyProtocol;
+            resourceInputs["firewall"] = state?.firewall;
+            resourceInputs["forwardingRules"] = state?.forwardingRules;
+            resourceInputs["glbSettings"] = state?.glbSettings;
+            resourceInputs["healthcheck"] = state?.healthcheck;
+            resourceInputs["httpIdleTimeoutSeconds"] = state?.httpIdleTimeoutSeconds;
+            resourceInputs["ip"] = state?.ip;
+            resourceInputs["ipv6"] = state?.ipv6;
+            resourceInputs["loadBalancerUrn"] = state?.loadBalancerUrn;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["network"] = state?.network;
+            resourceInputs["networkStack"] = state?.networkStack;
+            resourceInputs["projectId"] = state?.projectId;
+            resourceInputs["redirectHttpToHttps"] = state?.redirectHttpToHttps;
+            resourceInputs["region"] = state?.region;
+            resourceInputs["size"] = state?.size;
+            resourceInputs["sizeUnit"] = state?.sizeUnit;
+            resourceInputs["status"] = state?.status;
+            resourceInputs["stickySessions"] = state?.stickySessions;
+            resourceInputs["targetLoadBalancerIds"] = state?.targetLoadBalancerIds;
+            resourceInputs["tlsCipherPolicy"] = state?.tlsCipherPolicy;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["vpcUuid"] = state?.vpcUuid;
         } else {
             const args = argsOrState as LoadBalancerArgs | undefined;
-            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
-            resourceInputs["disableLetsEncryptDnsRecords"] = args ? args.disableLetsEncryptDnsRecords : undefined;
-            resourceInputs["domains"] = args ? args.domains : undefined;
-            resourceInputs["dropletIds"] = args ? args.dropletIds : undefined;
-            resourceInputs["dropletTag"] = args ? args.dropletTag : undefined;
-            resourceInputs["enableBackendKeepalive"] = args ? args.enableBackendKeepalive : undefined;
-            resourceInputs["enableProxyProtocol"] = args ? args.enableProxyProtocol : undefined;
-            resourceInputs["firewall"] = args ? args.firewall : undefined;
-            resourceInputs["forwardingRules"] = args ? args.forwardingRules : undefined;
-            resourceInputs["glbSettings"] = args ? args.glbSettings : undefined;
-            resourceInputs["healthcheck"] = args ? args.healthcheck : undefined;
-            resourceInputs["httpIdleTimeoutSeconds"] = args ? args.httpIdleTimeoutSeconds : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["network"] = args ? args.network : undefined;
-            resourceInputs["networkStack"] = args ? args.networkStack : undefined;
-            resourceInputs["projectId"] = args ? args.projectId : undefined;
-            resourceInputs["redirectHttpToHttps"] = args ? args.redirectHttpToHttps : undefined;
-            resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["size"] = args ? args.size : undefined;
-            resourceInputs["sizeUnit"] = args ? args.sizeUnit : undefined;
-            resourceInputs["stickySessions"] = args ? args.stickySessions : undefined;
-            resourceInputs["targetLoadBalancerIds"] = args ? args.targetLoadBalancerIds : undefined;
-            resourceInputs["tlsCipherPolicy"] = args ? args.tlsCipherPolicy : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["vpcUuid"] = args ? args.vpcUuid : undefined;
+            resourceInputs["algorithm"] = args?.algorithm;
+            resourceInputs["disableLetsEncryptDnsRecords"] = args?.disableLetsEncryptDnsRecords;
+            resourceInputs["domains"] = args?.domains;
+            resourceInputs["dropletIds"] = args?.dropletIds;
+            resourceInputs["dropletTag"] = args?.dropletTag;
+            resourceInputs["enableBackendKeepalive"] = args?.enableBackendKeepalive;
+            resourceInputs["enableProxyProtocol"] = args?.enableProxyProtocol;
+            resourceInputs["firewall"] = args?.firewall;
+            resourceInputs["forwardingRules"] = args?.forwardingRules;
+            resourceInputs["glbSettings"] = args?.glbSettings;
+            resourceInputs["healthcheck"] = args?.healthcheck;
+            resourceInputs["httpIdleTimeoutSeconds"] = args?.httpIdleTimeoutSeconds;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["network"] = args?.network;
+            resourceInputs["networkStack"] = args?.networkStack;
+            resourceInputs["projectId"] = args?.projectId;
+            resourceInputs["redirectHttpToHttps"] = args?.redirectHttpToHttps;
+            resourceInputs["region"] = args?.region;
+            resourceInputs["size"] = args?.size;
+            resourceInputs["sizeUnit"] = args?.sizeUnit;
+            resourceInputs["stickySessions"] = args?.stickySessions;
+            resourceInputs["targetLoadBalancerIds"] = args?.targetLoadBalancerIds;
+            resourceInputs["tlsCipherPolicy"] = args?.tlsCipherPolicy;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["vpcUuid"] = args?.vpcUuid;
             resourceInputs["ip"] = undefined /*out*/;
             resourceInputs["ipv6"] = undefined /*out*/;
             resourceInputs["loadBalancerUrn"] = undefined /*out*/;
