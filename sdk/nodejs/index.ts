@@ -60,6 +60,11 @@ export type DatabaseKafkaConfig = import("./databaseKafkaConfig").DatabaseKafkaC
 export const DatabaseKafkaConfig: typeof import("./databaseKafkaConfig").DatabaseKafkaConfig = null as any;
 utilities.lazyLoad(exports, ["DatabaseKafkaConfig"], () => require("./databaseKafkaConfig"));
 
+export { DatabaseKafkaSchemaRegistryArgs, DatabaseKafkaSchemaRegistryState } from "./databaseKafkaSchemaRegistry";
+export type DatabaseKafkaSchemaRegistry = import("./databaseKafkaSchemaRegistry").DatabaseKafkaSchemaRegistry;
+export const DatabaseKafkaSchemaRegistry: typeof import("./databaseKafkaSchemaRegistry").DatabaseKafkaSchemaRegistry = null as any;
+utilities.lazyLoad(exports, ["DatabaseKafkaSchemaRegistry"], () => require("./databaseKafkaSchemaRegistry"));
+
 export { DatabaseKafkaTopicArgs, DatabaseKafkaTopicState } from "./databaseKafkaTopic";
 export type DatabaseKafkaTopic = import("./databaseKafkaTopic").DatabaseKafkaTopic;
 export const DatabaseKafkaTopic: typeof import("./databaseKafkaTopic").DatabaseKafkaTopic = null as any;
@@ -647,6 +652,8 @@ const _module = {
                 return new DatabaseFirewall(name, <any>undefined, { urn })
             case "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig":
                 return new DatabaseKafkaConfig(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry":
+                return new DatabaseKafkaSchemaRegistry(name, <any>undefined, { urn })
             case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
                 return new DatabaseKafkaTopic(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig":
@@ -767,6 +774,7 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseConnectionP
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseDb", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseFirewall", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaConfig", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaSchemaRegistry", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMongodbConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)

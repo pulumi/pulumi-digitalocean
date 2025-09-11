@@ -18,6 +18,7 @@ from .database_connection_pool import *
 from .database_db import *
 from .database_firewall import *
 from .database_kafka_config import *
+from .database_kafka_schema_registry import *
 from .database_kafka_topic import *
 from .database_mongodb_config import *
 from .database_mysql_config import *
@@ -227,6 +228,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig": "DatabaseKafkaConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseKafkaSchemaRegistry",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry": "DatabaseKafkaSchemaRegistry"
   }
  },
  {

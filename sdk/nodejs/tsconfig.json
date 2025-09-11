@@ -26,6 +26,7 @@
         "databaseDb.ts",
         "databaseFirewall.ts",
         "databaseKafkaConfig.ts",
+        "databaseKafkaSchemaRegistry.ts",
         "databaseKafkaTopic.ts",
         "databaseMongodbConfig.ts",
         "databaseMysqlConfig.ts",
