@@ -624,6 +624,10 @@
                 "current": "digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig",
                 "majorVersion": 4
             },
+            "digitalocean_database_kafka_schema_registry": {
+                "current": "digitalocean:index/databaseKafkaSchemaRegistry:DatabaseKafkaSchemaRegistry",
+                "majorVersion": 4
+            },
             "digitalocean_database_kafka_topic": {
                 "current": "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic",
                 "majorVersion": 4,
