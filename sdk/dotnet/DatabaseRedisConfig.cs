@@ -60,7 +60,7 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseRedisConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Output("aclChannelsDefault")]
         public Output<string> AclChannelsDefault { get; private set; } = null!;
@@ -90,7 +90,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> LfuLogFactor { get; private set; } = null!;
 
         /// <summary>
-        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
+        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `Noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
         /// </summary>
         [Output("maxmemoryPolicy")]
         public Output<string> MaxmemoryPolicy { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> NumberOfDatabases { get; private set; } = null!;
 
         /// <summary>
-        /// When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// When persistence is `Rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `Off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         /// </summary>
         [Output("persistence")]
         public Output<string> Persistence { get; private set; } = null!;
@@ -180,7 +180,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseRedisConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Input("aclChannelsDefault")]
         public Input<string>? AclChannelsDefault { get; set; }
@@ -210,7 +210,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? LfuLogFactor { get; set; }
 
         /// <summary>
-        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
+        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `Noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
         /// </summary>
         [Input("maxmemoryPolicy")]
         public Input<string>? MaxmemoryPolicy { get; set; }
@@ -228,7 +228,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? NumberOfDatabases { get; set; }
 
         /// <summary>
-        /// When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// When persistence is `Rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `Off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         /// </summary>
         [Input("persistence")]
         public Input<string>? Persistence { get; set; }
@@ -262,7 +262,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseRedisConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Input("aclChannelsDefault")]
         public Input<string>? AclChannelsDefault { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? LfuLogFactor { get; set; }
 
         /// <summary>
-        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
+        /// A string specifying the desired eviction policy for the Redis cluster.Supported values are: `Noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
         /// </summary>
         [Input("maxmemoryPolicy")]
         public Input<string>? MaxmemoryPolicy { get; set; }
@@ -310,7 +310,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? NumberOfDatabases { get; set; }
 
         /// <summary>
-        /// When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
+        /// When persistence is `Rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `Off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         /// </summary>
         [Input("persistence")]
         public Input<string>? Persistence { get; set; }

@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseValkeyConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Output("aclChannelsDefault")]
         public Output<string> AclChannelsDefault { get; private set; } = null!;
@@ -69,7 +69,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when ValkeyPersistence is set to off.
         /// </summary>
         [Output("frequentSnapshots")]
         public Output<bool> FrequentSnapshots { get; private set; } = null!;
@@ -181,7 +181,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseValkeyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Input("aclChannelsDefault")]
         public Input<string>? AclChannelsDefault { get; set; }
@@ -193,7 +193,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when ValkeyPersistence is set to off.
         /// </summary>
         [Input("frequentSnapshots")]
         public Input<bool>? FrequentSnapshots { get; set; }
@@ -267,7 +267,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseValkeyConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
+        /// Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `Allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `Allchannels` and `Resetchannels`
         /// </summary>
         [Input("aclChannelsDefault")]
         public Input<string>? AclChannelsDefault { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+        /// Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when ValkeyPersistence is set to off.
         /// </summary>
         [Input("frequentSnapshots")]
         public Input<bool>? FrequentSnapshots { get; set; }

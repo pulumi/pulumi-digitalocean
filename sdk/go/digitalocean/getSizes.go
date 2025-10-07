@@ -14,6 +14,47 @@ import (
 // Retrieves information about the Droplet sizes that DigitalOcean supports, with
 // the ability to filter and sort the results. If no filters are specified, all sizes
 // will be returned.
+//
+// ## Example Usage
+//
+// Most common usage will probably be to supply a size to Droplet:
+//
+// The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+//
+// The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.GetSizes(ctx, &digitalocean.GetSizesArgs{
+//				Sorts: []digitalocean.GetSizesSort{
+//					{
+//						Key:       "memory",
+//						Direction: pulumi.StringRef("asc"),
+//					},
+//					{
+//						Key:       "disk",
+//						Direction: pulumi.StringRef("desc"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetSizes(ctx *pulumi.Context, args *GetSizesArgs, opts ...pulumi.InvokeOption) (*GetSizesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSizesResult

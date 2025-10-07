@@ -2794,7 +2794,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2848,7 +2848,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2902,7 +2902,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2956,7 +2956,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3010,7 +3010,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3064,7 +3064,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3118,7 +3118,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -12596,6 +12596,150 @@ public final class DigitaloceanFunctions {
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSizesResult> getSizes() {
         return getSizes(GetSizesArgs.Empty, InvokeOptions.Empty);
@@ -12604,6 +12748,150 @@ public final class DigitaloceanFunctions {
      * Retrieves information about the Droplet sizes that DigitalOcean supports, with
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSizesResult> getSizesPlain() {
@@ -12614,6 +12902,150 @@ public final class DigitaloceanFunctions {
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSizesResult> getSizes(GetSizesArgs args) {
         return getSizes(args, InvokeOptions.Empty);
@@ -12622,6 +13054,150 @@ public final class DigitaloceanFunctions {
      * Retrieves information about the Droplet sizes that DigitalOcean supports, with
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSizesResult> getSizesPlain(GetSizesPlainArgs args) {
@@ -12632,6 +13208,150 @@ public final class DigitaloceanFunctions {
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSizesResult> getSizes(GetSizesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSizes:getSizes", TypeShape.of(GetSizesResult.class), args, Utilities.withVersion(options));
@@ -12641,6 +13361,150 @@ public final class DigitaloceanFunctions {
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
      * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
      */
     public static Output<GetSizesResult> getSizes(GetSizesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSizes:getSizes", TypeShape.of(GetSizesResult.class), args, Utilities.withVersion(options));
@@ -12649,6 +13513,150 @@ public final class DigitaloceanFunctions {
      * Retrieves information about the Droplet sizes that DigitalOcean supports, with
      * the ability to filter and sort the results. If no filters are specified, all sizes
      * will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * Most common usage will probably be to supply a size to Droplet:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(GetSizesFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("s-1vcpu-1gb")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available &#34;sgp1&#34; region, then pick the cheapest one:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import com.pulumi.digitalocean.Droplet;
+     * import com.pulumi.digitalocean.DropletArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .filters(            
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("vcpus")
+     *                     .values(                    
+     *                         "1",
+     *                         "2")
+     *                     .build(),
+     *                 GetSizesFilterArgs.builder()
+     *                     .key("regions")
+     *                     .values("sgp1")
+     *                     .build())
+     *             .sorts(GetSizesSortArgs.builder()
+     *                 .key("price_monthly")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *         var web = new Droplet("web", DropletArgs.builder()
+     *             .image("ubuntu-18-04-x64")
+     *             .name("web-1")
+     *             .region("sgp1")
+     *             .size(main.sizes()[0].slug())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetSizesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var main = DigitaloceanFunctions.getSizes(GetSizesArgs.builder()
+     *             .sorts(            
+     *                 GetSizesSortArgs.builder()
+     *                     .key("memory")
+     *                     .direction("asc")
+     *                     .build(),
+     *                 GetSizesSortArgs.builder()
+     *                     .key("disk")
+     *                     .direction("desc")
+     *                     .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
      * 
      */
     public static CompletableFuture<GetSizesResult> getSizesPlain(GetSizesPlainArgs args, InvokeOptions options) {
@@ -12890,7 +13898,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -12950,7 +13958,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13010,7 +14018,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13070,7 +14078,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13130,7 +14138,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13180,7 +14188,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", TypeShape.of(GetSpacesBucketObjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13189,7 +14197,7 @@ public final class DigitaloceanFunctions {
         return getSpacesBucketObjects(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13198,7 +14206,7 @@ public final class DigitaloceanFunctions {
         return getSpacesBucketObjectsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13207,7 +14215,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13216,7 +14224,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 

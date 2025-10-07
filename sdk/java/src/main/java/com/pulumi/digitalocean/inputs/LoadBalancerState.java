@@ -29,7 +29,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-     * or `least_connections`. The default value is `round_robin`.
+     * or `leastConnections`. The default value is `roundRobin`.
      * 
      * @deprecated
      * This field has been deprecated. You can no longer specify an algorithm for load balancers.
@@ -41,7 +41,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-     * or `least_connections`. The default value is `round_robin`.
+     * or `leastConnections`. The default value is `roundRobin`.
      * 
      * @deprecated
      * This field has been deprecated. You can no longer specify an algorithm for load balancers.
@@ -162,16 +162,16 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      * 
      */
     @Import(name="forwardingRules")
     private @Nullable Output<List<LoadBalancerForwardingRuleArgs>> forwardingRules;
 
     /**
-     * @return A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * @return A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      * 
      */
     public Optional<Output<List<LoadBalancerForwardingRuleArgs>>> forwardingRules() {
@@ -179,14 +179,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      * 
      */
     @Import(name="glbSettings")
     private @Nullable Output<LoadBalancerGlbSettingsArgs> glbSettings;
 
     /**
-     * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * @return A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      * 
      */
     public Optional<Output<LoadBalancerGlbSettingsArgs>> glbSettings() {
@@ -357,14 +357,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     public Optional<Output<String>> size() {
@@ -372,14 +372,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     @Import(name="sizeUnit")
     private @Nullable Output<Integer> sizeUnit;
 
     /**
-     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     public Optional<Output<Integer>> sizeUnit() {
@@ -394,16 +394,16 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      * 
      */
     @Import(name="stickySessions")
     private @Nullable Output<LoadBalancerStickySessionsArgs> stickySessions;
 
     /**
-     * @return A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * @return A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      * 
      */
     public Optional<Output<LoadBalancerStickySessionsArgs>> stickySessions() {
@@ -524,7 +524,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-         * or `least_connections`. The default value is `round_robin`.
+         * or `leastConnections`. The default value is `roundRobin`.
          * 
          * @return builder
          * 
@@ -540,7 +540,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-         * or `least_connections`. The default value is `round_robin`.
+         * or `leastConnections`. The default value is `roundRobin`.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-         * or `least_connections`. The default value is `round_robin`.
+         * or `leastConnections`. The default value is `roundRobin`.
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param algorithm **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-         * or `least_connections`. The default value is `round_robin`.
+         * or `leastConnections`. The default value is `roundRobin`.
          * 
          * @return builder
          * 
@@ -755,8 +755,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardingRules A list of `forwarding_rule` to be assigned to the
-         * Load Balancer. The `forwarding_rule` block is documented below.
+         * @param forwardingRules A list of `forwardingRule` to be assigned to the
+         * Load Balancer. The `forwardingRule` block is documented below.
          * 
          * @return builder
          * 
@@ -767,8 +767,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardingRules A list of `forwarding_rule` to be assigned to the
-         * Load Balancer. The `forwarding_rule` block is documented below.
+         * @param forwardingRules A list of `forwardingRule` to be assigned to the
+         * Load Balancer. The `forwardingRule` block is documented below.
          * 
          * @return builder
          * 
@@ -778,8 +778,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param forwardingRules A list of `forwarding_rule` to be assigned to the
-         * Load Balancer. The `forwarding_rule` block is documented below.
+         * @param forwardingRules A list of `forwardingRule` to be assigned to the
+         * Load Balancer. The `forwardingRule` block is documented below.
          * 
          * @return builder
          * 
@@ -789,7 +789,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+         * @param glbSettings A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
          * 
          * @return builder
          * 
@@ -800,7 +800,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param glbSettings A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+         * @param glbSettings A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
          * 
          * @return builder
          * 
@@ -1055,7 +1055,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+         * @param size The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
          * 
          * @return builder
          * 
@@ -1066,7 +1066,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+         * @param size The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
          * 
          * @return builder
          * 
@@ -1076,7 +1076,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
          * 
          * @return builder
          * 
@@ -1087,7 +1087,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+         * @param sizeUnit The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
          * 
          * @return builder
          * 
@@ -1106,8 +1106,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessions A `sticky_sessions` block to be assigned to the
-         * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+         * @param stickySessions A `stickySessions` block to be assigned to the
+         * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
          * 
          * @return builder
          * 
@@ -1118,8 +1118,8 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stickySessions A `sticky_sessions` block to be assigned to the
-         * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+         * @param stickySessions A `stickySessions` block to be assigned to the
+         * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
          * 
          * @return builder
          * 

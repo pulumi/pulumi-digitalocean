@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// The image digest. Cannot be specified if `tag` is provided.
+        /// The image digest. Cannot be specified if `Tag` is provided.
         /// </summary>
         [Input("digest")]
         public Input<string>? Digest { get; set; }
@@ -65,7 +65,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string> Repository { get; set; } = null!;
 
         /// <summary>
-        /// The repository tag. Defaults to `latest` if not provided.
+        /// The repository tag. Defaults to `Latest` if not provided.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

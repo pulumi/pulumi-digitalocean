@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int? Hour;
         /// <summary>
-        /// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        /// The backup plan used for the Droplet. The plan can be either `Daily` or `Weekly`.
         /// </summary>
         public readonly string? Plan;
         /// <summary>

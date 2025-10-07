@@ -32,14 +32,14 @@ public final class GetSshKeysSortArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     public Output<String> key() {
@@ -93,7 +93,7 @@ public final class GetSshKeysSortArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param key Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+         * @param key Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetSshKeysSortArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param key Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+         * @param key Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
          * 
          * @return builder
          * 

@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Specifies when non-current object versions expire (documented below).
         /// 
-        /// At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+        /// At least one of `Expiration` or `NoncurrentVersionExpiration` must be specified.
         /// </summary>
         public readonly Outputs.SpacesBucketLifecycleRuleNoncurrentVersionExpiration? NoncurrentVersionExpiration;
         /// <summary>

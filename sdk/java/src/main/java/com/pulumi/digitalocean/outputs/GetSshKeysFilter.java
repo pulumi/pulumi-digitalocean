@@ -16,7 +16,7 @@ import javax.annotation.Nullable;
 public final class GetSshKeysFilter {
     private @Nullable Boolean all;
     /**
-     * @return Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     private String key;
@@ -32,7 +32,7 @@ public final class GetSshKeysFilter {
         return Optional.ofNullable(this.all);
     }
     /**
-     * @return Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     public String key() {

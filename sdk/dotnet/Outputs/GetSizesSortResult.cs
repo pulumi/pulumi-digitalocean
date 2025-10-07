@@ -14,12 +14,12 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetSizesSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+        /// Sort the sizes by this key. This may be one of `Slug`,
+        /// `Memory`, `Vcpus`, `Disk`, `Transfer`, `PriceMonthly`, or `PriceHourly`.
         /// </summary>
         public readonly string Key;
 

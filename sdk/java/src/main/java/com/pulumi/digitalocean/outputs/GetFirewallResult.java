@@ -41,7 +41,7 @@ public final class GetFirewallResult {
     private String name;
     private List<GetFirewallOutboundRule> outboundRules;
     /**
-     * @return A set of object containing the fields, `droplet_id`,
+     * @return A set of object containing the fields, `dropletId`,
      * `removing`, and `status`.  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
@@ -101,7 +101,7 @@ public final class GetFirewallResult {
         return this.outboundRules;
     }
     /**
-     * @return A set of object containing the fields, `droplet_id`,
+     * @return A set of object containing the fields, `dropletId`,
      * `removing`, and `status`.  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.

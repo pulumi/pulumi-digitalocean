@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class DatabaseClusterMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
+        /// The day of the week on which to apply maintenance updates. May be one of `Monday` through `Sunday`.
         /// </summary>
         [Input("day", required: true)]
         public Input<string> Day { get; set; } = null!;

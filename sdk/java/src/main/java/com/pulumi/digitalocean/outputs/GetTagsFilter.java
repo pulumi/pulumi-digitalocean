@@ -22,7 +22,7 @@ public final class GetTagsFilter {
      */
     private @Nullable Boolean all;
     /**
-     * @return Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+     * @return Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      * 
      */
     private String key;
@@ -51,7 +51,7 @@ public final class GetTagsFilter {
         return Optional.ofNullable(this.all);
     }
     /**
-     * @return Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+     * @return Filter the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      * 
      */
     public String key() {

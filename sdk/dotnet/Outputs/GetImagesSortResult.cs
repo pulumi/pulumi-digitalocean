@@ -14,12 +14,12 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetImagesSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+        /// Sort the images by this key. This may be one of `Distribution`, `ErrorMessage`, `Id`,
+        /// `Image`, `MinDiskSize`, `Name`, `Private`, `SizeGigabytes`, `Slug`, `Status`, or `Type`.
         /// </summary>
         public readonly string Key;
 

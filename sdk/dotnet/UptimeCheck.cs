@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+        /// An array containing the selected regions to perform healthchecks from: "UsEast", "UsWest", "EuWest", "SeAsia"
         /// </summary>
         [Output("regions")]
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _regions;
 
         /// <summary>
-        /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+        /// An array containing the selected regions to perform healthchecks from: "UsEast", "UsWest", "EuWest", "SeAsia"
         /// </summary>
         public InputList<string> Regions
         {
@@ -160,7 +160,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _regions;
 
         /// <summary>
-        /// An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
+        /// An array containing the selected regions to perform healthchecks from: "UsEast", "UsWest", "EuWest", "SeAsia"
         /// </summary>
         public InputList<string> Regions
         {
