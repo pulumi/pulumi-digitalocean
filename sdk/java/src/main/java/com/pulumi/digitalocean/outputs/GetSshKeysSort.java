@@ -18,7 +18,7 @@ public final class GetSshKeysSort {
      */
     private @Nullable String direction;
     /**
-     * @return Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     private String key;
@@ -32,7 +32,7 @@ public final class GetSshKeysSort {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Sort the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     public String key() {

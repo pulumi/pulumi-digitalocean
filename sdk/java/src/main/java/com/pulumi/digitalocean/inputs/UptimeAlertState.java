@@ -34,14 +34,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+     * The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
      * 
      */
     @Import(name="comparison")
     private @Nullable Output<String> comparison;
 
     /**
-     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
      * 
      */
     public Optional<Output<String>> comparison() {
@@ -109,14 +109,14 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+     * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+     * @return The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -175,7 +175,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+         * @param comparison The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+         * @param type The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class UptimeAlertState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+         * @param type The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
          * 
          * @return builder
          * 

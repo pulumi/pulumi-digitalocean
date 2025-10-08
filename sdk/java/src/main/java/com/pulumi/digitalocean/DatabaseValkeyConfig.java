@@ -107,14 +107,14 @@ public class DatabaseValkeyConfig extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      * 
      */
     @Export(name="frequentSnapshots", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> frequentSnapshots;
 
     /**
-     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      * 
      */
     public Output<Boolean> frequentSnapshots() {

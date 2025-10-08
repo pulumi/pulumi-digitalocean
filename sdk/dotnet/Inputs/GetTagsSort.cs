@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetTagsSortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+        /// Sort the tags by this key. This may be one of `Name`, `TotalResourceCount`,  `DropletsCount`, `ImagesCount`, `VolumesCount`, `VolumeSnapshotsCount`, or `DatabasesCount`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;

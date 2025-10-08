@@ -18,7 +18,7 @@ public final class GetSpacesBucketsSort {
      */
     private @Nullable String direction;
     /**
-     * @return Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     private String key;
@@ -32,7 +32,7 @@ public final class GetSpacesBucketsSort {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     public String key() {

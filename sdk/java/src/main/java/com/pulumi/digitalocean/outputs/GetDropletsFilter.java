@@ -22,10 +22,10 @@ public final class GetDropletsFilter {
      */
     private @Nullable Boolean all;
     /**
-     * @return Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+     * @return Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
      * 
      */
     private String key;
@@ -54,10 +54,10 @@ public final class GetDropletsFilter {
         return Optional.ofNullable(this.all);
     }
     /**
-     * @return Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+     * @return Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
      * 
      */
     public String key() {

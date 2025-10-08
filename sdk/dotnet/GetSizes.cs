@@ -15,6 +15,127 @@ namespace Pulumi.DigitalOcean
         /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Most common usage will probably be to supply a size to Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "slug",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "vcpus",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "1",
+        ///                     "2",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "regions",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "sgp1",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "price_monthly",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "memory",
+        ///                 Direction = "asc",
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "disk",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Task<GetSizesResult> InvokeAsync(GetSizesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesArgs(), options.WithDefaults());
@@ -23,6 +144,127 @@ namespace Pulumi.DigitalOcean
         /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Most common usage will probably be to supply a size to Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "slug",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "vcpus",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "1",
+        ///                     "2",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "regions",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "sgp1",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "price_monthly",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "memory",
+        ///                 Direction = "asc",
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "disk",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
@@ -31,6 +273,127 @@ namespace Pulumi.DigitalOcean
         /// Retrieves information about the Droplet sizes that DigitalOcean supports, with
         /// the ability to filter and sort the results. If no filters are specified, all sizes
         /// will be returned.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Most common usage will probably be to supply a size to Droplet:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "slug",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "s-1vcpu-1gb",
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Filters = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "vcpus",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "1",
+        ///                     "2",
+        ///                 },
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesFilterInputArgs
+        ///             {
+        ///                 Key = "regions",
+        ///                 Values = new[]
+        ///                 {
+        ///                     "sgp1",
+        ///                 },
+        ///             },
+        ///         },
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "price_monthly",
+        ///                 Direction = "asc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     {
+        ///         Image = "ubuntu-18-04-x64",
+        ///         Name = "web-1",
+        ///         Region = DigitalOcean.Region.SGP1,
+        ///         Size = System.Enum.Parse&lt;DigitalOcean.DropletSlug&gt;(main.Apply(getSizesResult =&gt; getSizesResult.Sizes)[0].Slug),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DigitalOcean = Pulumi.DigitalOcean;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     {
+        ///         Sorts = new[]
+        ///         {
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "memory",
+        ///                 Direction = "asc",
+        ///             },
+        ///             new DigitalOcean.Inputs.GetSizesSortInputArgs
+        ///             {
+        ///                 Key = "disk",
+        ///                 Direction = "desc",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// </summary>
         public static Output<GetSizesResult> Invoke(GetSizesInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetSizesResult>("digitalocean:index/getSizes:getSizes", args ?? new GetSizesInvokeArgs(), options.WithDefaults());
@@ -44,7 +407,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetSizesFilterArgs> Filters
         {
@@ -57,7 +420,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetSizesSortArgs> Sorts
         {
@@ -78,7 +441,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSizesFilterInputArgs> Filters
         {
@@ -91,7 +454,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSizesSortInputArgs> Sorts
         {

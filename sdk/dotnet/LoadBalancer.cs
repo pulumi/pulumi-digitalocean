@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
-    /// When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+    /// When managing certificates attached to the load balancer, make sure to add the `CreateBeforeDestroy`
     /// lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
     /// operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
     /// `Delete old certificate`. When doing so, you must also change the name of the certificate,
@@ -78,19 +78,19 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-        /// or `least_connections`. The default value is `round_robin`.
+        /// or `LeastConnections`. The default value is `RoundRobin`.
         /// </summary>
         [Output("algorithm")]
         public Output<string?> Algorithm { get; private set; } = null!;
 
         /// <summary>
-        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `False`.
         /// </summary>
         [Output("disableLetsEncryptDnsRecords")]
         public Output<bool?> DisableLetsEncryptDnsRecords { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+        /// A list of `Domains` required to ingress traffic to a Global Load Balancer. The `Domains` block is documented below.
         /// </summary>
         [Output("domains")]
         public Output<ImmutableArray<Outputs.LoadBalancerDomain>> Domains { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> DropletTag { get; private set; } = null!;
 
         /// <summary>
-        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `False`.
         /// </summary>
         [Output("enableBackendKeepalive")]
         public Output<bool?> EnableBackendKeepalive { get; private set; } = null!;
@@ -116,33 +116,33 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether PROXY
         /// Protocol should be used to pass information from connecting client requests to
-        /// the backend service. Default value is `false`.
+        /// the backend service. Default value is `False`.
         /// </summary>
         [Output("enableProxyProtocol")]
         public Output<bool?> EnableProxyProtocol { get; private set; } = null!;
 
         /// <summary>
-        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `Firewall` block is documented below. Only 1 firewall is allowed.
         /// </summary>
         [Output("firewall")]
         public Output<Outputs.LoadBalancerFirewall> Firewall { get; private set; } = null!;
 
         /// <summary>
-        /// A list of `forwarding_rule` to be assigned to the
-        /// Load Balancer. The `forwarding_rule` block is documented below.
+        /// A list of `ForwardingRule` to be assigned to the
+        /// Load Balancer. The `ForwardingRule` block is documented below.
         /// </summary>
         [Output("forwardingRules")]
         public Output<ImmutableArray<Outputs.LoadBalancerForwardingRule>> ForwardingRules { get; private set; } = null!;
 
         /// <summary>
-        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// A block containing `GlbSettings` required to define target rules for a Global Load Balancer. The `GlbSettings` block is documented below.
         /// </summary>
         [Output("glbSettings")]
         public Output<Outputs.LoadBalancerGlbSettings> GlbSettings { get; private set; } = null!;
 
         /// <summary>
-        /// A `healthcheck` block to be assigned to the
-        /// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        /// A `Healthcheck` block to be assigned to the
+        /// Load Balancer. The `Healthcheck` block is documented below. Only 1 healthcheck is allowed.
         /// </summary>
         [Output("healthcheck")]
         public Output<Outputs.LoadBalancerHealthcheck> Healthcheck { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether
         /// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
-        /// Default value is `false`.
+        /// Default value is `False`.
         /// </summary>
         [Output("redirectHttpToHttps")]
         public Output<bool?> RedirectHttpToHttps { get; private set; } = null!;
@@ -207,13 +207,13 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Region { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Output("size")]
         public Output<string?> Size { get; private set; } = null!;
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Output("sizeUnit")]
         public Output<int> SizeUnit { get; private set; } = null!;
@@ -222,8 +222,8 @@ namespace Pulumi.DigitalOcean
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// A `sticky_sessions` block to be assigned to the
-        /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        /// A `StickySessions` block to be assigned to the
+        /// Load Balancer. The `StickySessions` block is documented below. Only 1 StickySessions block is allowed.
         /// </summary>
         [Output("stickySessions")]
         public Output<Outputs.LoadBalancerStickySessions> StickySessions { get; private set; } = null!;
@@ -300,13 +300,13 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-        /// or `least_connections`. The default value is `round_robin`.
+        /// or `LeastConnections`. The default value is `RoundRobin`.
         /// </summary>
         [Input("algorithm")]
         public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
 
         /// <summary>
-        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `False`.
         /// </summary>
         [Input("disableLetsEncryptDnsRecords")]
         public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
@@ -315,7 +315,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+        /// A list of `Domains` required to ingress traffic to a Global Load Balancer. The `Domains` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainArgs> Domains
         {
@@ -342,7 +342,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DropletTag { get; set; }
 
         /// <summary>
-        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `False`.
         /// </summary>
         [Input("enableBackendKeepalive")]
         public Input<bool>? EnableBackendKeepalive { get; set; }
@@ -350,13 +350,13 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether PROXY
         /// Protocol should be used to pass information from connecting client requests to
-        /// the backend service. Default value is `false`.
+        /// the backend service. Default value is `False`.
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         /// <summary>
-        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `Firewall` block is documented below. Only 1 firewall is allowed.
         /// </summary>
         [Input("firewall")]
         public Input<Inputs.LoadBalancerFirewallArgs>? Firewall { get; set; }
@@ -365,8 +365,8 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerForwardingRuleArgs>? _forwardingRules;
 
         /// <summary>
-        /// A list of `forwarding_rule` to be assigned to the
-        /// Load Balancer. The `forwarding_rule` block is documented below.
+        /// A list of `ForwardingRule` to be assigned to the
+        /// Load Balancer. The `ForwardingRule` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerForwardingRuleArgs> ForwardingRules
         {
@@ -375,14 +375,14 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// A block containing `GlbSettings` required to define target rules for a Global Load Balancer. The `GlbSettings` block is documented below.
         /// </summary>
         [Input("glbSettings")]
         public Input<Inputs.LoadBalancerGlbSettingsArgs>? GlbSettings { get; set; }
 
         /// <summary>
-        /// A `healthcheck` block to be assigned to the
-        /// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        /// A `Healthcheck` block to be assigned to the
+        /// Load Balancer. The `Healthcheck` block is documented below. Only 1 healthcheck is allowed.
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.LoadBalancerHealthcheckArgs>? Healthcheck { get; set; }
@@ -420,7 +420,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether
         /// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
-        /// Default value is `false`.
+        /// Default value is `False`.
         /// </summary>
         [Input("redirectHttpToHttps")]
         public Input<bool>? RedirectHttpToHttps { get; set; }
@@ -432,20 +432,20 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Input("sizeUnit")]
         public Input<int>? SizeUnit { get; set; }
 
         /// <summary>
-        /// A `sticky_sessions` block to be assigned to the
-        /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        /// A `StickySessions` block to be assigned to the
+        /// Load Balancer. The `StickySessions` block is documented below. Only 1 StickySessions block is allowed.
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsArgs>? StickySessions { get; set; }
@@ -490,13 +490,13 @@ namespace Pulumi.DigitalOcean
     {
         /// <summary>
         /// **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-        /// or `least_connections`. The default value is `round_robin`.
+        /// or `LeastConnections`. The default value is `RoundRobin`.
         /// </summary>
         [Input("algorithm")]
         public InputUnion<string, Pulumi.DigitalOcean.Algorithm>? Algorithm { get; set; }
 
         /// <summary>
-        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
+        /// A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `False`.
         /// </summary>
         [Input("disableLetsEncryptDnsRecords")]
         public Input<bool>? DisableLetsEncryptDnsRecords { get; set; }
@@ -505,7 +505,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerDomainGetArgs>? _domains;
 
         /// <summary>
-        /// A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
+        /// A list of `Domains` required to ingress traffic to a Global Load Balancer. The `Domains` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerDomainGetArgs> Domains
         {
@@ -532,7 +532,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DropletTag { get; set; }
 
         /// <summary>
-        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
+        /// A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `False`.
         /// </summary>
         [Input("enableBackendKeepalive")]
         public Input<bool>? EnableBackendKeepalive { get; set; }
@@ -540,13 +540,13 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether PROXY
         /// Protocol should be used to pass information from connecting client requests to
-        /// the backend service. Default value is `false`.
+        /// the backend service. Default value is `False`.
         /// </summary>
         [Input("enableProxyProtocol")]
         public Input<bool>? EnableProxyProtocol { get; set; }
 
         /// <summary>
-        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
+        /// A block containing rules for allowing/denying traffic to the Load Balancer. The `Firewall` block is documented below. Only 1 firewall is allowed.
         /// </summary>
         [Input("firewall")]
         public Input<Inputs.LoadBalancerFirewallGetArgs>? Firewall { get; set; }
@@ -555,8 +555,8 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.LoadBalancerForwardingRuleGetArgs>? _forwardingRules;
 
         /// <summary>
-        /// A list of `forwarding_rule` to be assigned to the
-        /// Load Balancer. The `forwarding_rule` block is documented below.
+        /// A list of `ForwardingRule` to be assigned to the
+        /// Load Balancer. The `ForwardingRule` block is documented below.
         /// </summary>
         public InputList<Inputs.LoadBalancerForwardingRuleGetArgs> ForwardingRules
         {
@@ -565,14 +565,14 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+        /// A block containing `GlbSettings` required to define target rules for a Global Load Balancer. The `GlbSettings` block is documented below.
         /// </summary>
         [Input("glbSettings")]
         public Input<Inputs.LoadBalancerGlbSettingsGetArgs>? GlbSettings { get; set; }
 
         /// <summary>
-        /// A `healthcheck` block to be assigned to the
-        /// Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
+        /// A `Healthcheck` block to be assigned to the
+        /// Load Balancer. The `Healthcheck` block is documented below. Only 1 healthcheck is allowed.
         /// </summary>
         [Input("healthcheck")]
         public Input<Inputs.LoadBalancerHealthcheckGetArgs>? Healthcheck { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean value indicating whether
         /// HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
-        /// Default value is `false`.
+        /// Default value is `False`.
         /// </summary>
         [Input("redirectHttpToHttps")]
         public Input<bool>? RedirectHttpToHttps { get; set; }
@@ -637,13 +637,13 @@ namespace Pulumi.DigitalOcean
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Input("size")]
         public Input<string>? Size { get; set; }
 
         /// <summary>
-        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+        /// The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `Size` or `SizeUnit` may be provided.
         /// </summary>
         [Input("sizeUnit")]
         public Input<int>? SizeUnit { get; set; }
@@ -652,8 +652,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// A `sticky_sessions` block to be assigned to the
-        /// Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+        /// A `StickySessions` block to be assigned to the
+        /// Load Balancer. The `StickySessions` block is documented below. Only 1 StickySessions block is allowed.
         /// </summary>
         [Input("stickySessions")]
         public Input<Inputs.LoadBalancerStickySessionsGetArgs>? StickySessions { get; set; }

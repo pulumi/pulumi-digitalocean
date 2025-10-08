@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetTagsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+        /// Sort the tags by this key. This may be one of `Name`, `TotalResourceCount`,  `DropletsCount`, `ImagesCount`, `VolumesCount`, `VolumeSnapshotsCount`, or `DatabasesCount`.
         /// </summary>
         public readonly string Key;
 

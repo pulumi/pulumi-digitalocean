@@ -97,6 +97,8 @@ import (
 //
 // ```
 //
+// ### Multiple Components Example
+//
 // ### Log Destination Example with Opensearch
 //
 // ```go

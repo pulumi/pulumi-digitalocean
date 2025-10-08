@@ -18,7 +18,7 @@ public final class DatabaseFirewallRule {
      */
     private @Nullable String createdAt;
     /**
-     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      * 
      */
     private String type;
@@ -42,7 +42,7 @@ public final class DatabaseFirewallRule {
         return Optional.ofNullable(this.createdAt);
     }
     /**
-     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      * 
      */
     public String type() {

@@ -75,14 +75,14 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      * 
      */
     @Import(name="evictionPolicy")
     private @Nullable Output<String> evictionPolicy;
 
     /**
-     * @return A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+     * @return A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      * 
      */
     public Optional<Output<String>> evictionPolicy() {
@@ -592,7 +592,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
          * 
          * @return builder
          * 
@@ -603,7 +603,7 @@ public final class DatabaseClusterState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+         * @param evictionPolicy A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
          * 
          * @return builder
          * 

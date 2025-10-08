@@ -12,7 +12,7 @@ import java.util.Objects;
 public final class KubernetesClusterAmdGpuDevicePlugin {
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     private Boolean enabled;
@@ -20,7 +20,7 @@ public final class KubernetesClusterAmdGpuDevicePlugin {
     private KubernetesClusterAmdGpuDevicePlugin() {}
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     public Boolean enabled() {

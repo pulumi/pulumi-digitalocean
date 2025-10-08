@@ -19,12 +19,12 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the domains' data.
         /// 
         /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
-        /// about a single domain if you already know the `name`.
+        /// about a single domain if you already know the `Name`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example
+        /// also uses the regular expression `MatchBy` mode in order to match domains by suffix.)
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -64,12 +64,12 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the domains' data.
         /// 
         /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
-        /// about a single domain if you already know the `name`.
+        /// about a single domain if you already know the `Name`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example
+        /// also uses the regular expression `MatchBy` mode in order to match domains by suffix.)
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -109,12 +109,12 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the domains' data.
         /// 
         /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
-        /// about a single domain if you already know the `name`.
+        /// about a single domain if you already know the `Name`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-        /// also uses the regular expression `match_by` mode in order to match domains by suffix.)
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example
+        /// also uses the regular expression `MatchBy` mode in order to match domains by suffix.)
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -155,7 +155,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetDomainsFilterArgs> Filters
         {
@@ -168,7 +168,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetDomainsSortArgs> Sorts
         {
@@ -189,7 +189,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetDomainsFilterInputArgs> Filters
         {
@@ -202,7 +202,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetDomainsSortInputArgs> Sorts
         {
@@ -221,7 +221,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDomainsResult
     {
         /// <summary>
-        /// A list of domains satisfying any `filter` and `sort` criteria. Each domain has the following attributes:
+        /// A list of domains satisfying any `Filter` and `Sort` criteria. Each domain has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDomainsDomainResult> Domains;
         public readonly ImmutableArray<Outputs.GetDomainsFilterResult> Filters;

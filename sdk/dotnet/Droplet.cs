@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
     public partial class Droplet : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// An object specifying the backup policy for the Droplet. If omitted and `Backups` is `True`, the backup plan will default to daily.
         /// </summary>
         [Output("backupPolicy")]
         public Output<Outputs.DropletBackupPolicy?> BackupPolicy { get; private set; } = null!;
@@ -80,8 +80,8 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean agent used for providing access to the Droplet web console in
         /// the control panel. By default, the agent is installed on new Droplets but
         /// installation errors (i.e. OS not supported) are ignored. To prevent it from
-        /// being installed, set to `false`. To make installation errors fatal, explicitly
-        /// set it to `true`.
+        /// being installed, set to `False`. To make installation errors fatal, explicitly
+        /// set it to `True`.
         /// </summary>
         [Output("dropletAgent")]
         public Output<bool?> DropletAgent { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
         /// 
-        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Output("gracefulShutdown")]
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// Defaults to false. If set to `True`, you can configure monitor alert policies
         /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Output("monitoring")]
@@ -171,7 +171,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// **Deprecated** Boolean controlling if private networking
-        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        /// is enabled. This parameter has been deprecated. Use `VpcUuid` instead to specify a VPC network for the Droplet. If no `VpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Output("privateNetworking")]
         public Output<bool> PrivateNetworking { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
-        /// size when resizing a Droplet. It defaults to `true`. When set to `false`,
+        /// size when resizing a Droplet. It defaults to `True`. When set to `False`,
         /// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
         /// size is a permanent change**. Increasing only RAM and CPU is reversible.
         /// </summary>
@@ -291,7 +291,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DropletArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// An object specifying the backup policy for the Droplet. If omitted and `Backups` is `True`, the backup plan will default to daily.
         /// </summary>
         [Input("backupPolicy")]
         public Input<Inputs.DropletBackupPolicyArgs>? BackupPolicy { get; set; }
@@ -308,8 +308,8 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean agent used for providing access to the Droplet web console in
         /// the control panel. By default, the agent is installed on new Droplets but
         /// installation errors (i.e. OS not supported) are ignored. To prevent it from
-        /// being installed, set to `false`. To make installation errors fatal, explicitly
-        /// set it to `true`.
+        /// being installed, set to `False`. To make installation errors fatal, explicitly
+        /// set it to `True`.
         /// </summary>
         [Input("dropletAgent")]
         public Input<bool>? DropletAgent { get; set; }
@@ -318,7 +318,7 @@ namespace Pulumi.DigitalOcean
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
         /// 
-        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
@@ -346,7 +346,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// Defaults to false. If set to `True`, you can configure monitor alert policies
         /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Input("monitoring")]
@@ -360,7 +360,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// **Deprecated** Boolean controlling if private networking
-        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        /// is enabled. This parameter has been deprecated. Use `VpcUuid` instead to specify a VPC network for the Droplet. If no `VpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
-        /// size when resizing a Droplet. It defaults to `true`. When set to `false`,
+        /// size when resizing a Droplet. It defaults to `True`. When set to `False`,
         /// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
         /// size is a permanent change**. Increasing only RAM and CPU is reversible.
         /// </summary>
@@ -448,7 +448,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DropletState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
+        /// An object specifying the backup policy for the Droplet. If omitted and `Backups` is `True`, the backup plan will default to daily.
         /// </summary>
         [Input("backupPolicy")]
         public Input<Inputs.DropletBackupPolicyGetArgs>? BackupPolicy { get; set; }
@@ -474,8 +474,8 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean agent used for providing access to the Droplet web console in
         /// the control panel. By default, the agent is installed on new Droplets but
         /// installation errors (i.e. OS not supported) are ignored. To prevent it from
-        /// being installed, set to `false`. To make installation errors fatal, explicitly
-        /// set it to `true`.
+        /// being installed, set to `False`. To make installation errors fatal, explicitly
+        /// set it to `True`.
         /// </summary>
         [Input("dropletAgent")]
         public Input<bool>? DropletAgent { get; set; }
@@ -490,7 +490,7 @@ namespace Pulumi.DigitalOcean
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
         /// 
-        /// &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
@@ -539,7 +539,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether monitoring agent is installed.
-        /// Defaults to false. If set to `true`, you can configure monitor alert policies
+        /// Defaults to false. If set to `True`, you can configure monitor alert policies
         /// [monitor alert resource](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/monitor_alert)
         /// </summary>
         [Input("monitoring")]
@@ -565,7 +565,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// **Deprecated** Boolean controlling if private networking
-        /// is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        /// is enabled. This parameter has been deprecated. Use `VpcUuid` instead to specify a VPC network for the Droplet. If no `VpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
@@ -578,7 +578,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Boolean controlling whether to increase the disk
-        /// size when resizing a Droplet. It defaults to `true`. When set to `false`,
+        /// size when resizing a Droplet. It defaults to `True`. When set to `False`,
         /// only the Droplet's RAM and CPU will be resized. **Increasing a Droplet's disk
         /// size is a permanent change**. Increasing only RAM and CPU is reversible.
         /// </summary>

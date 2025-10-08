@@ -112,7 +112,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Output("privateHost")]
         public Output<string> PrivateHost { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> PrivateNetworkUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Output("privateUri")]
         public Output<string> PrivateUri { get; private set; } = null!;
@@ -320,7 +320,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Input("privateHost")]
         public Input<string>? PrivateHost { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.DigitalOcean
         private Input<string>? _privateUri;
 
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public Input<string>? PrivateUri
         {

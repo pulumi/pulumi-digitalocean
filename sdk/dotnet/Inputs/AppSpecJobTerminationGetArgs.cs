@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean.Inputs
         /// <summary>
         /// The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
         /// 
-        /// A `function` component can contain:
+        /// A `Function` component can contain:
         /// </summary>
         [Input("gracePeriodSeconds")]
         public Input<int>? GracePeriodSeconds { get; set; }
