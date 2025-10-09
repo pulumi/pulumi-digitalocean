@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean
     public partial class DatabasePostgresqlConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         /// </summary>
         [Output("autovacuumAnalyzeScaleFactor")]
         public Output<double> AutovacuumAnalyzeScaleFactor { get; private set; } = null!;
@@ -89,19 +89,19 @@ namespace Pulumi.DigitalOcean
         public Output<int> AutovacuumNaptime { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular VacuumCostDelay value, which is 20 milliseconds.
         /// </summary>
         [Output("autovacuumVacuumCostDelay")]
         public Output<int> AutovacuumVacuumCostDelay { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Output("autovacuumVacuumCostLimit")]
         public Output<int> AutovacuumVacuumCostLimit { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         /// </summary>
         [Output("autovacuumVacuumScaleFactor")]
         public Output<double> AutovacuumVacuumScaleFactor { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> BgwriterLruMaxpages { get; private set; } = null!;
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Output("bgwriterLruMultiplier")]
         public Output<double> BgwriterLruMultiplier { get; private set; } = null!;
@@ -161,7 +161,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> DeadlockTimeout { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `Lz4`, `Pglz`.
         /// </summary>
         [Output("defaultToastCompression")]
         public Output<string> DefaultToastCompression { get; private set; } = null!;
@@ -293,7 +293,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> PgPartmanBgwRole { get; private set; } = null!;
 
         /// <summary>
-        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
+        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `All`, `Top`, `None`.
         /// </summary>
         [Output("pgStatStatementsTrack")]
         public Output<string> PgStatStatementsTrack { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableArray<Outputs.DatabasePostgresqlConfigPgbouncer>> Pgbouncers { get; private set; } = null!;
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Output("sharedBuffersPercentage")]
         public Output<double> SharedBuffersPercentage { get; private set; } = null!;
@@ -335,19 +335,19 @@ namespace Pulumi.DigitalOcean
         public Output<int> TrackActivityQuerySize { get; private set; } = null!;
 
         /// <summary>
-        /// Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
+        /// Record commit time of transactions. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Output("trackCommitTimestamp")]
         public Output<string> TrackCommitTimestamp { get; private set; } = null!;
 
         /// <summary>
-        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
+        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `All`, `Pl`, `None`.
         /// </summary>
         [Output("trackFunctions")]
         public Output<string> TrackFunctions { get; private set; } = null!;
 
         /// <summary>
-        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Output("trackIoTiming")]
         public Output<string> TrackIoTiming { get; private set; } = null!;
@@ -417,7 +417,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabasePostgresqlConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
@@ -447,19 +447,19 @@ namespace Pulumi.DigitalOcean
         public Input<int>? AutovacuumNaptime { get; set; }
 
         /// <summary>
-        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular VacuumCostDelay value, which is 20 milliseconds.
         /// </summary>
         [Input("autovacuumVacuumCostDelay")]
         public Input<int>? AutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Input("autovacuumVacuumCostLimit")]
         public Input<int>? AutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
         public Input<double>? AutovacuumVacuumScaleFactor { get; set; }
@@ -501,7 +501,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? BgwriterLruMaxpages { get; set; }
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Input("bgwriterLruMultiplier")]
         public Input<double>? BgwriterLruMultiplier { get; set; }
@@ -519,7 +519,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? DeadlockTimeout { get; set; }
 
         /// <summary>
-        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `Lz4`, `Pglz`.
         /// </summary>
         [Input("defaultToastCompression")]
         public Input<string>? DefaultToastCompression { get; set; }
@@ -651,7 +651,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? PgPartmanBgwRole { get; set; }
 
         /// <summary>
-        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
+        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `All`, `Top`, `None`.
         /// </summary>
         [Input("pgStatStatementsTrack")]
         public Input<string>? PgStatStatementsTrack { get; set; }
@@ -669,7 +669,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<double>? SharedBuffersPercentage { get; set; }
@@ -705,19 +705,19 @@ namespace Pulumi.DigitalOcean
         public Input<int>? TrackActivityQuerySize { get; set; }
 
         /// <summary>
-        /// Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
+        /// Record commit time of transactions. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Input("trackCommitTimestamp")]
         public Input<string>? TrackCommitTimestamp { get; set; }
 
         /// <summary>
-        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
+        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `All`, `Pl`, `None`.
         /// </summary>
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
-        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Input("trackIoTiming")]
         public Input<string>? TrackIoTiming { get; set; }
@@ -749,7 +749,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabasePostgresqlConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         /// </summary>
         [Input("autovacuumAnalyzeScaleFactor")]
         public Input<double>? AutovacuumAnalyzeScaleFactor { get; set; }
@@ -779,19 +779,19 @@ namespace Pulumi.DigitalOcean
         public Input<int>? AutovacuumNaptime { get; set; }
 
         /// <summary>
-        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+        /// Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular VacuumCostDelay value, which is 20 milliseconds.
         /// </summary>
         [Input("autovacuumVacuumCostDelay")]
         public Input<int>? AutovacuumVacuumCostDelay { get; set; }
 
         /// <summary>
-        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+        /// Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular VacuumCostLimit value will be used.
         /// </summary>
         [Input("autovacuumVacuumCostLimit")]
         public Input<int>? AutovacuumVacuumCostLimit { get; set; }
 
         /// <summary>
-        /// Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+        /// Specifies a fraction, in a decimal value, of the table size to add to AutovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
         /// </summary>
         [Input("autovacuumVacuumScaleFactor")]
         public Input<double>? AutovacuumVacuumScaleFactor { get; set; }
@@ -833,7 +833,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? BgwriterLruMaxpages { get; set; }
 
         /// <summary>
-        /// The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+        /// The average recent need for new buffers is multiplied by BgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
         /// </summary>
         [Input("bgwriterLruMultiplier")]
         public Input<double>? BgwriterLruMultiplier { get; set; }
@@ -851,7 +851,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? DeadlockTimeout { get; set; }
 
         /// <summary>
-        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `lz4`, `pglz`.
+        /// Specifies the default TOAST compression method for values of compressible columns (the default is lz4). Supported values are: `Lz4`, `Pglz`.
         /// </summary>
         [Input("defaultToastCompression")]
         public Input<string>? DefaultToastCompression { get; set; }
@@ -983,7 +983,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? PgPartmanBgwRole { get; set; }
 
         /// <summary>
-        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `all`, `top`, `none`.
+        /// Controls which statements are counted. Specify 'top' to track top-level statements (those issued directly by clients), 'all' to also track nested statements (such as statements invoked within functions), or 'none' to disable statement statistics collection. The default value is top. Supported values are: `All`, `Top`, `None`.
         /// </summary>
         [Input("pgStatStatementsTrack")]
         public Input<string>? PgStatStatementsTrack { get; set; }
@@ -1001,7 +1001,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+        /// Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the SharedBuffers configuration value.
         /// </summary>
         [Input("sharedBuffersPercentage")]
         public Input<double>? SharedBuffersPercentage { get; set; }
@@ -1037,19 +1037,19 @@ namespace Pulumi.DigitalOcean
         public Input<int>? TrackActivityQuerySize { get; set; }
 
         /// <summary>
-        /// Record commit time of transactions. The default value is top. Supported values are: `off`, `on`.
+        /// Record commit time of transactions. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Input("trackCommitTimestamp")]
         public Input<string>? TrackCommitTimestamp { get; set; }
 
         /// <summary>
-        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `all`, `pl`, `none`.
+        /// Enables tracking of function call counts and time used. The default value is top. Supported values are: `All`, `Pl`, `None`.
         /// </summary>
         [Input("trackFunctions")]
         public Input<string>? TrackFunctions { get; set; }
 
         /// <summary>
-        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `off`, `on`.
+        /// Enables timing of database I/O calls. This parameter is off by default, because it will repeatedly query the operating system for the current time, which may cause significant overhead on some platforms. The default value is top. Supported values are: `Off`, `On`.
         /// </summary>
         [Input("trackIoTiming")]
         public Input<string>? TrackIoTiming { get; set; }

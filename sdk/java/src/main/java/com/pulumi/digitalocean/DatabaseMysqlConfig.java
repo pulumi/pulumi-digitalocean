@@ -318,14 +318,14 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
         return this.internalTmpMemStorageEngine;
     }
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      * 
      */
     @Export(name="longQueryTime", refs={Double.class}, tree="[0]")
     private Output<Double> longQueryTime;
 
     /**
-     * @return The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+     * @return The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      * 
      */
     public Output<Double> longQueryTime() {
@@ -346,14 +346,14 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
         return this.maxAllowedPacket;
     }
     /**
-     * The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+     * The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      * 
      */
     @Export(name="maxHeapTableSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxHeapTableSize;
 
     /**
-     * @return The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+     * @return The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      * 
      */
     public Output<Integer> maxHeapTableSize() {
@@ -444,14 +444,14 @@ public class DatabaseMysqlConfig extends com.pulumi.resources.CustomResource {
         return this.sqlRequirePrimaryKey;
     }
     /**
-     * The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+     * The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      * 
      */
     @Export(name="tmpTableSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> tmpTableSize;
 
     /**
-     * @return The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+     * @return The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      * 
      */
     public Output<Integer> tmpTableSize() {

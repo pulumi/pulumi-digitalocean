@@ -13,14 +13,14 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetProjectsSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
+        /// Sort the projects by this key. This may be one of `Name`,
+        /// `Purpose`, `Description`, or `Environment`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

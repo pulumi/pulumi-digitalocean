@@ -13,14 +13,14 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetImagesSortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        /// `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+        /// Sort the images by this key. This may be one of `Distribution`, `ErrorMessage`, `Id`,
+        /// `Image`, `MinDiskSize`, `Name`, `Private`, `SizeGigabytes`, `Slug`, `Status`, or `Type`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;

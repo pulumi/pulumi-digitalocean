@@ -18,7 +18,7 @@ public final class AppSpecServiceTerminationArgs extends com.pulumi.resources.Re
     /**
      * The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
      * 
-     * A `static_site` can contain:
+     * A `staticSite` can contain:
      * 
      */
     @Import(name="drainSeconds")
@@ -27,7 +27,7 @@ public final class AppSpecServiceTerminationArgs extends com.pulumi.resources.Re
     /**
      * @return The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
      * 
-     * A `static_site` can contain:
+     * A `staticSite` can contain:
      * 
      */
     public Optional<Output<Integer>> drainSeconds() {
@@ -81,7 +81,7 @@ public final class AppSpecServiceTerminationArgs extends com.pulumi.resources.Re
         /**
          * @param drainSeconds The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
          * 
-         * A `static_site` can contain:
+         * A `staticSite` can contain:
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class AppSpecServiceTerminationArgs extends com.pulumi.resources.Re
         /**
          * @param drainSeconds The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
          * 
-         * A `static_site` can contain:
+         * A `staticSite` can contain:
          * 
          * @return builder
          * 

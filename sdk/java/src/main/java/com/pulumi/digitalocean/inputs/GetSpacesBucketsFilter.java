@@ -37,14 +37,14 @@ public final class GetSpacesBucketsFilter extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     @Import(name="key", required=true)
     private String key;
 
     /**
-     * @return Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     public String key() {
@@ -128,7 +128,7 @@ public final class GetSpacesBucketsFilter extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+         * @param key Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
          * 
          * @return builder
          * 

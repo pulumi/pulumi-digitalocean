@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.MonitorAlertAlerts> Alerts { get; private set; } = null!;
 
         /// <summary>
-        /// The comparison for `value`.
+        /// The comparison for `Value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Output("compare")]
@@ -158,7 +158,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.MonitorAlertAlertsArgs> Alerts { get; set; } = null!;
 
         /// <summary>
-        /// The comparison for `value`.
+        /// The comparison for `Value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("compare", required: true)]
@@ -249,7 +249,7 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.MonitorAlertAlertsGetArgs>? Alerts { get; set; }
 
         /// <summary>
-        /// The comparison for `value`.
+        /// The comparison for `Value`.
         /// This may be either `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("compare")]

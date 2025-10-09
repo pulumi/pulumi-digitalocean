@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// The authentication requirement can be met by either setting the
     /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-    /// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+    /// the provider's `SpacesAccessId` and `SpacesSecretKey` arguments to the
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
@@ -91,7 +91,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Bucket { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Output("cacheControl")]
         public Output<string?> CacheControl { get; private set; } = null!;
@@ -103,13 +103,13 @@ namespace Pulumi.DigitalOcean
         public Output<string?> Content { get; private set; } = null!;
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Output("contentBase64")]
         public Output<string?> ContentBase64 { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Output("contentDisposition")]
         public Output<string?> ContentDisposition { get; private set; } = null!;
@@ -140,11 +140,11 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
-        /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// Default is `False`. This value should be set to `True` only if the bucket has S3 object lock enabled.
         /// 
-        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// If no content is provided through `Source`, `Content` or `ContentBase64`, then the object will be empty.
         /// 
-        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `Key` and treats multiple `/`s in the rest of the object's `Key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.DigitalOcean
         public Output<ImmutableDictionary<string, string>?> Metadata { get; private set; } = null!;
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -244,7 +244,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
@@ -256,13 +256,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Input("contentDisposition")]
         public Input<string>? ContentDisposition { get; set; }
@@ -293,11 +293,11 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
-        /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// Default is `False`. This value should be set to `True` only if the bucket has S3 object lock enabled.
         /// 
-        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// If no content is provided through `Source`, `Content` or `ContentBase64`, then the object will be empty.
         /// 
-        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `Key` and treats multiple `/`s in the rest of the object's `Key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;
@@ -359,7 +359,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Bucket { get; set; }
 
         /// <summary>
-        /// Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+        /// Specifies caching behavior along the request/reply chain Read [w3c CacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
         /// </summary>
         [Input("cacheControl")]
         public Input<string>? CacheControl { get; set; }
@@ -371,13 +371,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `gzipbase64` function with small text strings. For larger objects, use `source` to stream the content from a disk file.
+        /// Base64-encoded data that will be decoded and uploaded as raw bytes for the object content. This allows safely uploading non-UTF8 binary data, but is recommended only for small content such as the result of the `Gzipbase64` function with small text strings. For larger objects, use `Source` to stream the content from a disk file.
         /// </summary>
         [Input("contentBase64")]
         public Input<string>? ContentBase64 { get; set; }
 
         /// <summary>
-        /// Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+        /// Specifies presentational information for the object. Read [w3c ContentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
         /// </summary>
         [Input("contentDisposition")]
         public Input<string>? ContentDisposition { get; set; }
@@ -408,11 +408,11 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Allow the object to be deleted by removing any legal hold on any object version.
-        /// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+        /// Default is `False`. This value should be set to `True` only if the bucket has S3 object lock enabled.
         /// 
-        /// If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+        /// If no content is provided through `Source`, `Content` or `ContentBase64`, then the object will be empty.
         /// 
-        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        /// &gt; **Note:** The provider ignores all leading `/`s in the object's `Key` and treats multiple `/`s in the rest of the object's `Key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -436,7 +436,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

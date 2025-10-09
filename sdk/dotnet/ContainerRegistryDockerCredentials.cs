@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Docker Provider Example
     /// 
-    /// Use the `endpoint` and `docker_credentials` with the Docker provider:
+    /// Use the `Endpoint` and `DockerCredentials` with the Docker provider:
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -63,7 +63,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ### Kubernetes Example
     /// 
-    /// Combined with the Kubernetes Provider's `kubernetes_secret` resource, you can
+    /// Combined with the Kubernetes Provider's `KubernetesSecret` resource, you can
     /// access the registry from inside your cluster:
     /// 
     /// ```csharp

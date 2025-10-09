@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class DatabaseClusterMaintenanceWindow
     {
         /// <summary>
-        /// The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
+        /// The day of the week on which to apply maintenance updates. May be one of `Monday` through `Sunday`.
         /// </summary>
         public readonly string Day;
         /// <summary>

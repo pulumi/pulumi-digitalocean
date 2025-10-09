@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecIngressRuleCorsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+        /// Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `Include`. This configures the `Access-Control-Allow-Credentials` header.
         /// </summary>
         [Input("allowCredentials")]
         public Input<bool>? AllowCredentials { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecStaticSite
     {
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecStaticSiteBitbucket? Bitbucket;
         /// <summary>
@@ -46,15 +46,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? ErrorDocument;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `Git`, `Github` or `Gitlab` may be set.
         /// </summary>
         public readonly Outputs.AppSpecStaticSiteGit? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecStaticSiteGithub? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecStaticSiteGitlab? Gitlab;
         /// <summary>
@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+        /// An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `Dist`, `Public`.
         /// </summary>
         public readonly string? OutputDir;
         /// <summary>

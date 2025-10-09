@@ -170,7 +170,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
-     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     @Export(name="gracefulShutdown", refs={Boolean.class}, tree="[0]")
@@ -180,7 +180,7 @@ public class Droplet extends com.pulumi.resources.CustomResource {
      * @return A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
-     * &gt; **NOTE:** If you use `volume_ids` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Output<Optional<Boolean>> gracefulShutdown() {
@@ -344,19 +344,19 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     }
     /**
      * **Deprecated** Boolean controlling if private networking
-     * is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      * @deprecated
-     * This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      */
-    @Deprecated /* This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
+    @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
     @Export(name="privateNetworking", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateNetworking;
 
     /**
      * @return **Deprecated** Boolean controlling if private networking
-     * is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
+     * is enabled. This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account&#39;s default VPC for the region.
      * 
      */
     public Output<Boolean> privateNetworking() {

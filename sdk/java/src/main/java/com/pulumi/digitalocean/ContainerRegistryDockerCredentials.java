@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  * 
  * ### Docker Provider Example
  * 
- * Use the `endpoint` and `docker_credentials` with the Docker provider:
+ * Use the `endpoint` and `dockerCredentials` with the Docker provider:
  * 
  * <pre>
  * {@code
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  * 
  * ### Kubernetes Example
  * 
- * Combined with the Kubernetes Provider&#39;s `kubernetes_secret` resource, you can
+ * Combined with the Kubernetes Provider&#39;s `kubernetesSecret` resource, you can
  * access the registry from inside your cluster:
  * 
  * <pre>

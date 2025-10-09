@@ -79,7 +79,7 @@ namespace Pulumi.DigitalOcean.Inputs
         /// The ports on which traffic will be allowed
         /// specified as a string containing a single port, a range (e.g. "8000-9000"),
         /// or "1-65535" to open all ports for a protocol. Required for when protocol is
-        /// `tcp` or `udp`.
+        /// `Tcp` or `Udp`.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

@@ -32,7 +32,7 @@ public final class GetSizesSort extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     @Import(name="key", required=true)
@@ -40,7 +40,7 @@ public final class GetSizesSort extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     public String key() {
@@ -85,7 +85,7 @@ public final class GetSizesSort extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param key Sort the sizes by this key. This may be one of `slug`,
-         * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+         * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
          * 
          * @return builder
          * 
