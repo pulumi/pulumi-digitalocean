@@ -13,24 +13,24 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetImagesFilterInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to `true` to require that a field match all of the `values` instead of just one or more of
+        /// Set to `True` to require that a field match all of the `Values` instead of just one or more of
         /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        /// that all of the `values` are present in the list or set.
+        /// that all of the `Values` are present in the list or set.
         /// </summary>
         [Input("all")]
         public Input<bool>? All { get; set; }
 
         /// <summary>
-        /// Filter the images by this key. This may be one of `distribution`, `error_message`,
-        /// `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
-        /// `tags`, or `type`.
+        /// Filter the images by this key. This may be one of `Distribution`, `ErrorMessage`,
+        /// `Id`, `Image`, `MinDiskSize`, `Name`, `Private`, `Regions`, `SizeGigabytes`, `Slug`, `Status`,
+        /// `Tags`, or `Type`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        /// One of `Exact` (default), `Re`, or `Substring`. For string-typed fields, specify `Re` to
+        /// match by using the `Values` as regular expressions, or specify `Substring` to match by treating the `Values` as
         /// substrings to find within the string field.
         /// </summary>
         [Input("matchBy")]
@@ -40,8 +40,8 @@ namespace Pulumi.DigitalOcean.Inputs
         private InputList<string>? _values;
 
         /// <summary>
-        /// A list of values to match against the `key` field. Only retrieves images
-        /// where the `key` field takes on one or more of the values provided here.
+        /// A list of values to match against the `Key` field. Only retrieves images
+        /// where the `Key` field takes on one or more of the values provided here.
         /// </summary>
         public InputList<string> Values
         {

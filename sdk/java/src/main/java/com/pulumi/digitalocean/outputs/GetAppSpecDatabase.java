@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetAppSpecDatabase {
     /**
-     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     private @Nullable String clusterName;
@@ -50,7 +50,7 @@ public final class GetAppSpecDatabase {
 
     private GetAppSpecDatabase() {}
     /**
-     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     public Optional<String> clusterName() {

@@ -40,7 +40,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The inbound access rule block for the Firewall.
-     * The `inbound_rule` block is documented below.
+     * The `inboundRule` block is documented below.
      * 
      */
     @Import(name="inboundRules")
@@ -48,7 +48,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The inbound access rule block for the Firewall.
-     * The `inbound_rule` block is documented below.
+     * The `inboundRule` block is documented below.
      * 
      */
     public Optional<Output<List<FirewallInboundRuleArgs>>> inboundRules() {
@@ -72,7 +72,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The outbound access rule block for the Firewall.
-     * The `outbound_rule` block is documented below.
+     * The `outboundRule` block is documented below.
      * 
      */
     @Import(name="outboundRules")
@@ -80,7 +80,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The outbound access rule block for the Firewall.
-     * The `outbound_rule` block is documented below.
+     * The `outboundRule` block is documented below.
      * 
      */
     public Optional<Output<List<FirewallOutboundRuleArgs>>> outboundRules() {
@@ -169,7 +169,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inboundRules The inbound access rule block for the Firewall.
-         * The `inbound_rule` block is documented below.
+         * The `inboundRule` block is documented below.
          * 
          * @return builder
          * 
@@ -181,7 +181,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inboundRules The inbound access rule block for the Firewall.
-         * The `inbound_rule` block is documented below.
+         * The `inboundRule` block is documented below.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param inboundRules The inbound access rule block for the Firewall.
-         * The `inbound_rule` block is documented below.
+         * The `inboundRule` block is documented below.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param outboundRules The outbound access rule block for the Firewall.
-         * The `outbound_rule` block is documented below.
+         * The `outboundRule` block is documented below.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param outboundRules The outbound access rule block for the Firewall.
-         * The `outbound_rule` block is documented below.
+         * The `outboundRule` block is documented below.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param outboundRules The outbound access rule block for the Firewall.
-         * The `outbound_rule` block is documented below.
+         * The `outboundRule` block is documented below.
          * 
          * @return builder
          * 

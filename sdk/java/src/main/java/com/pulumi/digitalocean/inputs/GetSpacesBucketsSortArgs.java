@@ -32,14 +32,14 @@ public final class GetSpacesBucketsSortArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     public Output<String> key() {
@@ -93,7 +93,7 @@ public final class GetSpacesBucketsSortArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param key Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+         * @param key Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GetSpacesBucketsSortArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param key Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+         * @param key Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
          * 
          * @return builder
          * 

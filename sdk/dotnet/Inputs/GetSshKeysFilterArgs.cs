@@ -16,7 +16,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<bool>? All { get; set; }
 
         /// <summary>
-        /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        /// Filter the SSH Keys by this key. This may be one of `Name`, `PublicKey`, or `Fingerprint`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

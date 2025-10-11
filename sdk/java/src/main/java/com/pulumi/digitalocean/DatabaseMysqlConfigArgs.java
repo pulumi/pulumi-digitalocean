@@ -275,14 +275,14 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+     * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      * 
      */
     @Import(name="longQueryTime")
     private @Nullable Output<Double> longQueryTime;
 
     /**
-     * @return The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+     * @return The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      * 
      */
     public Optional<Output<Double>> longQueryTime() {
@@ -305,14 +305,14 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+     * The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      * 
      */
     @Import(name="maxHeapTableSize")
     private @Nullable Output<Integer> maxHeapTableSize;
 
     /**
-     * @return The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+     * @return The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      * 
      */
     public Optional<Output<Integer>> maxHeapTableSize() {
@@ -410,14 +410,14 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+     * The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      * 
      */
     @Import(name="tmpTableSize")
     private @Nullable Output<Integer> tmpTableSize;
 
     /**
-     * @return The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+     * @return The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      * 
      */
     public Optional<Output<Integer>> tmpTableSize() {
@@ -848,7 +848,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param longQueryTime The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+         * @param longQueryTime The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
          * 
          * @return builder
          * 
@@ -859,7 +859,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param longQueryTime The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+         * @param longQueryTime The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
          * 
          * @return builder
          * 
@@ -890,7 +890,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxHeapTableSize The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+         * @param maxHeapTableSize The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
          * 
          * @return builder
          * 
@@ -901,7 +901,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param maxHeapTableSize The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+         * @param maxHeapTableSize The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
          * 
          * @return builder
          * 
@@ -1037,7 +1037,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tmpTableSize The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+         * @param tmpTableSize The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
          * 
          * @return builder
          * 
@@ -1048,7 +1048,7 @@ public final class DatabaseMysqlConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param tmpTableSize The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+         * @param tmpTableSize The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
          * 
          * @return builder
          * 

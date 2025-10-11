@@ -22,14 +22,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     public static final DatabasePostgresqlConfigState Empty = new DatabasePostgresqlConfigState();
 
     /**
-     * Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
      * 
      */
     @Import(name="autovacuumAnalyzeScaleFactor")
     private @Nullable Output<Double> autovacuumAnalyzeScaleFactor;
 
     /**
-     * @return Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
      * 
      */
     public Optional<Output<Double>> autovacuumAnalyzeScaleFactor() {
@@ -97,14 +97,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+     * Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
      * 
      */
     @Import(name="autovacuumVacuumCostDelay")
     private @Nullable Output<Integer> autovacuumVacuumCostDelay;
 
     /**
-     * @return Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+     * @return Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostDelay() {
@@ -112,14 +112,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     @Import(name="autovacuumVacuumCostLimit")
     private @Nullable Output<Integer> autovacuumVacuumCostLimit;
 
     /**
-     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+     * @return Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
      * 
      */
     public Optional<Output<Integer>> autovacuumVacuumCostLimit() {
@@ -127,14 +127,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     }
 
     /**
-     * Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
      * 
      */
     @Import(name="autovacuumVacuumScaleFactor")
     private @Nullable Output<Double> autovacuumVacuumScaleFactor;
 
     /**
-     * @return Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+     * @return Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
      * 
      */
     public Optional<Output<Double>> autovacuumVacuumScaleFactor() {
@@ -232,14 +232,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     }
 
     /**
-     * The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     @Import(name="bgwriterLruMultiplier")
     private @Nullable Output<Double> bgwriterLruMultiplier;
 
     /**
-     * @return The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+     * @return The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
      * 
      */
     public Optional<Output<Double>> bgwriterLruMultiplier() {
@@ -637,14 +637,14 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
     }
 
     /**
-     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     @Import(name="sharedBuffersPercentage")
     private @Nullable Output<Double> sharedBuffersPercentage;
 
     /**
-     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+     * @return Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
      * 
      */
     public Optional<Output<Double>> sharedBuffersPercentage() {
@@ -877,7 +877,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
          * 
          * @return builder
          * 
@@ -888,7 +888,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumAnalyzeScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
+         * @param autovacuumAnalyzeScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuumAnalyzeThreshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
          * 
          * @return builder
          * 
@@ -982,7 +982,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
          * 
          * @return builder
          * 
@@ -993,7 +993,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumCostDelay Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuum_cost_delay value, which is 20 milliseconds.
+         * @param autovacuumVacuumCostDelay Specifies the cost delay value, in milliseconds, that will be used in automatic VACUUM operations. If -1, uses the regular vacuumCostDelay value, which is 20 milliseconds.
          * 
          * @return builder
          * 
@@ -1003,7 +1003,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
          * 
          * @return builder
          * 
@@ -1014,7 +1014,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuum_cost_limit value will be used.
+         * @param autovacuumVacuumCostLimit Specifies the cost limit value that will be used in automatic VACUUM operations. If -1 is specified (which is the default), the regular vacuumCostLimit value will be used.
          * 
          * @return builder
          * 
@@ -1024,7 +1024,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
          * 
          * @return builder
          * 
@@ -1035,7 +1035,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param autovacuumVacuumScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuum_vacuum_threshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
+         * @param autovacuumVacuumScaleFactor Specifies a fraction, in a decimal value, of the table size to add to autovacuumVacuumThreshold when deciding whether to trigger a VACUUM. The default is 0.2 (20% of table size).
          * 
          * @return builder
          * 
@@ -1171,7 +1171,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
          * 
          * @return builder
          * 
@@ -1182,7 +1182,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriter_lru_multiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
+         * @param bgwriterLruMultiplier The average recent need for new buffers is multiplied by bgwriterLruMultiplier to arrive at an estimate of the number that will be needed during the next round, (up to bgwriter_lru_maxpages). 1.0 represents a “just in time” policy of writing exactly the number of buffers predicted to be needed. Larger values provide some cushion against spikes in demand, while smaller values intentionally leave writes to be done by server processes. The default is 2.0.
          * 
          * @return builder
          * 
@@ -1748,7 +1748,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
          * 
          * @return builder
          * 
@@ -1759,7 +1759,7 @@ public final class DatabasePostgresqlConfigState extends com.pulumi.resources.Re
         }
 
         /**
-         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the shared_buffers configuration value.
+         * @param sharedBuffersPercentage Percentage of total RAM that the database server uses for shared memory buffers. Valid range is 20-60 (float), which corresponds to 20% - 60%. This setting adjusts the sharedBuffers configuration value.
          * 
          * @return builder
          * 

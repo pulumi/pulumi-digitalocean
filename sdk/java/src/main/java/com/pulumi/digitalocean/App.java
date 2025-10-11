@@ -116,6 +116,8 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Multiple Components Example
+ * 
  * ### Log Destination Example with Opensearch
  * 
  * <pre>

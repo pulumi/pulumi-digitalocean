@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         /// <summary>
         /// Boolean flag whether the component should be enabled or not.
-        /// `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+        /// `AmdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
         /// </summary>
         public readonly bool Enabled;
 

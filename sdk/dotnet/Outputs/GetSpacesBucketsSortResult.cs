@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetSpacesBucketsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+        /// Sort the images by this key. This may be one of `BucketDomainName`, `Name`, `Region`, or `Urn`.
         /// </summary>
         public readonly string Key;
 

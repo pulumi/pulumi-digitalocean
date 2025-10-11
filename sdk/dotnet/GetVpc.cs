@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the VPC in question is not managed by
         /// the provider or you need to utilize any of the VPC's data.
         /// 
-        /// VPCs may be looked up by `id` or `name`. Specifying a `region` will
+        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
         /// return that that region's default VPC.
         /// 
         /// ## Example Usage
@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the VPC in question is not managed by
         /// the provider or you need to utilize any of the VPC's data.
         /// 
-        /// VPCs may be looked up by `id` or `name`. Specifying a `region` will
+        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
         /// return that that region's default VPC.
         /// 
         /// ## Example Usage
@@ -138,7 +138,7 @@ namespace Pulumi.DigitalOcean
         /// DigitalOcean account. This is useful if the VPC in question is not managed by
         /// the provider or you need to utilize any of the VPC's data.
         /// 
-        /// VPCs may be looked up by `id` or `name`. Specifying a `region` will
+        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
         /// return that that region's default VPC.
         /// 
         /// ## Example Usage

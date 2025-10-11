@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? CreatedAt;
         /// <summary>
-        /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+        /// The type of resource that the firewall rule allows to access the database cluster. The possible values are: `Droplet`, `K8s`, `IpAddr`, `Tag`, or `App`.
         /// </summary>
         public readonly string Type;
         /// <summary>

@@ -12,7 +12,7 @@ namespace Pulumi.DigitalOcean
     public static class GetSpacesBucketObjects
     {
         /// <summary>
-        /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+        /// &gt; **NOTE on `MaxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
         /// 
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
         /// </summary>
@@ -20,7 +20,7 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+        /// &gt; **NOTE on `MaxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
         /// 
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
         /// </summary>
@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketObjectsResult>("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", args ?? new GetSpacesBucketObjectsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
+        /// &gt; **NOTE on `MaxKeys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
         /// 
         /// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Pulumi.DigitalOcean
     {
         public readonly string Bucket;
         /// <summary>
-        /// List of any keys between `prefix` and the next occurrence of `delimiter` (i.e., similar to subdirectories of the `prefix` "directory"); the list is only returned when you specify `delimiter`
+        /// List of any keys between `Prefix` and the next occurrence of `Delimiter` (i.e., similar to subdirectories of the `Prefix` "directory"); the list is only returned when you specify `Delimiter`
         /// </summary>
         public readonly ImmutableArray<string> CommonPrefixes;
         public readonly string? Delimiter;

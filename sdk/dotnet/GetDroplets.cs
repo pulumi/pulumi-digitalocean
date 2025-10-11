@@ -19,14 +19,14 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the Droplets' data.
         /// 
         /// By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-        /// the `gpus` attribute to `true`.
+        /// the `Gpus` attribute to `True`.
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-        /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// about a single Droplet if you already know the `Id`, unique `Name`, or unique `Tag` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
@@ -111,14 +111,14 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the Droplets' data.
         /// 
         /// By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-        /// the `gpus` attribute to `true`.
+        /// the `Gpus` attribute to `True`.
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-        /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// about a single Droplet if you already know the `Id`, unique `Name`, or unique `Tag` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
@@ -203,14 +203,14 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the Droplets' data.
         /// 
         /// By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-        /// the `gpus` attribute to `true`.
+        /// the `Gpus` attribute to `True`.
         /// 
         /// Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-        /// about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+        /// about a single Droplet if you already know the `Id`, unique `Name`, or unique `Tag` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Droplets with size `s-1vcpu-1gb`:
         /// 
@@ -296,7 +296,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetDropletsFilterArgs> Filters
         {
@@ -315,7 +315,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetDropletsSortArgs> Sorts
         {
@@ -336,7 +336,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetDropletsFilterInputArgs> Filters
         {
@@ -355,7 +355,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetDropletsSortInputArgs> Sorts
         {
@@ -374,7 +374,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetDropletsResult
     {
         /// <summary>
-        /// A list of Droplets satisfying any `filter` and `sort` criteria. Each Droplet has the following attributes:
+        /// A list of Droplets satisfying any `Filter` and `Sort` criteria. Each Droplet has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDropletsDropletResult> Droplets;
         public readonly ImmutableArray<Outputs.GetDropletsFilterResult> Filters;

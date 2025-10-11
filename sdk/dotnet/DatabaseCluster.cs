@@ -224,13 +224,13 @@ namespace Pulumi.DigitalOcean
         public Output<string> Database { get; private set; } = null!;
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `Pg` for PostgreSQL, `Mysql` for MySQL, `Valkey` for Valkey, `Mongodb` for MongoDB, or `Kafka` for Kafka).
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
 
         /// <summary>
-        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `Noeviction`, `AllkeysLru`, `AllkeysRandom`, `VolatileLru`, `VolatileRandom`, or `VolatileTtl`.
         /// </summary>
         [Output("evictionPolicy")]
         public Output<string?> EvictionPolicy { get; private set; } = null!;
@@ -260,7 +260,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
+        /// Number of nodes that will be included in the cluster. For `Kafka` clusters, this must be 3.
         /// </summary>
         [Output("nodeCount")]
         public Output<int> NodeCount { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Port { get; private set; } = null!;
 
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Output("privateHost")]
         public Output<string> PrivateHost { get; private set; } = null!;
@@ -290,7 +290,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> PrivateNetworkUuid { get; private set; } = null!;
 
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Output("privateUri")]
         public Output<string> PrivateUri { get; private set; } = null!;
@@ -444,13 +444,13 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.DatabaseClusterBackupRestoreArgs>? BackupRestore { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `Pg` for PostgreSQL, `Mysql` for MySQL, `Valkey` for Valkey, `Mongodb` for MongoDB, or `Kafka` for Kafka).
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
 
         /// <summary>
-        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `Noeviction`, `AllkeysLru`, `AllkeysRandom`, `VolatileLru`, `VolatileRandom`, or `VolatileTtl`.
         /// </summary>
         [Input("evictionPolicy")]
         public Input<string>? EvictionPolicy { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
+        /// Number of nodes that will be included in the cluster. For `Kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount", required: true)]
         public Input<int> NodeCount { get; set; } = null!;
@@ -558,13 +558,13 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Database { get; set; }
 
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
+        /// Database engine used by the cluster (ex. `Pg` for PostgreSQL, `Mysql` for MySQL, `Valkey` for Valkey, `Mongodb` for MongoDB, or `Kafka` for Kafka).
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
 
         /// <summary>
-        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeys_lru`, `allkeys_random`, `volatile_lru`, `volatile_random`, or `volatile_ttl`.
+        /// A string specifying the eviction policy for a Valkey cluster. Valid values are: `Noeviction`, `AllkeysLru`, `AllkeysRandom`, `VolatileLru`, `VolatileRandom`, or `VolatileTtl`.
         /// </summary>
         [Input("evictionPolicy")]
         public Input<string>? EvictionPolicy { get; set; }
@@ -606,7 +606,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
+        /// Number of nodes that will be included in the cluster. For `Kafka` clusters, this must be 3.
         /// </summary>
         [Input("nodeCount")]
         public Input<int>? NodeCount { get; set; }
@@ -634,7 +634,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Port { get; set; }
 
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         [Input("privateHost")]
         public Input<string>? PrivateHost { get; set; }
@@ -649,7 +649,7 @@ namespace Pulumi.DigitalOcean
         private Input<string>? _privateUri;
 
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public Input<string>? PrivateUri
         {

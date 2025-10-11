@@ -40,7 +40,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
      * 
      */
     @Import(name="domains")
@@ -49,7 +49,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
      * 
      */
     public Optional<Output<List<String>>> domains() {
@@ -107,7 +107,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      * 
      */
     @Import(name="type")
@@ -115,7 +115,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      * 
      */
     public Optional<Output<Either<String,CertificateType>>> type() {
@@ -179,7 +179,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param domains List of fully qualified domain names (FQDNs) for
          * which the certificate will be issued. The domains must be managed using
-         * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+         * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param domains List of fully qualified domain names (FQDNs) for
          * which the certificate will be issued. The domains must be managed using
-         * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+         * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param domains List of fully qualified domain names (FQDNs) for
          * which the certificate will be issued. The domains must be managed using
-         * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+         * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
          * 
          * @return builder
          * 
@@ -282,7 +282,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of certificate to provision. Can be either
-         * `custom` or `lets_encrypt`. Defaults to `custom`.
+         * `custom` or `letsEncrypt`. Defaults to `custom`.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of certificate to provision. Can be either
-         * `custom` or `lets_encrypt`. Defaults to `custom`.
+         * `custom` or `letsEncrypt`. Defaults to `custom`.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of certificate to provision. Can be either
-         * `custom` or `lets_encrypt`. Defaults to `custom`.
+         * `custom` or `letsEncrypt`. Defaults to `custom`.
          * 
          * @return builder
          * 
@@ -316,7 +316,7 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param type The type of certificate to provision. Can be either
-         * `custom` or `lets_encrypt`. Defaults to `custom`.
+         * `custom` or `letsEncrypt`. Defaults to `custom`.
          * 
          * @return builder
          * 

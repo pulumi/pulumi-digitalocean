@@ -255,7 +255,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The slug of the official image.
         /// 
-        /// If `name` is specified, you may also specify:
+        /// If `Name` is specified, you may also specify:
         /// </summary>
         [Input("slug")]
         public string? Slug { get; set; }
@@ -289,7 +289,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The slug of the official image.
         /// 
-        /// If `name` is specified, you may also specify:
+        /// If `Name` is specified, you may also specify:
         /// </summary>
         [Input("slug")]
         public Input<string>? Slug { get; set; }

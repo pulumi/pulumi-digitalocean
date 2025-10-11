@@ -83,7 +83,7 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
- * When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
+ * When managing certificates attached to the load balancer, make sure to add the `createBeforeDestroy`
  * lifecycle property in order to ensure the certificate is correctly updated when changed. The order of
  * operations will then be: `Create new certificate` &gt; `Update loadbalancer with new certificate` -&gt;
  * `Delete old certificate`. When doing so, you must also change the name of the certificate,
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
 public class LoadBalancer extends com.pulumi.resources.CustomResource {
     /**
      * **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-     * or `least_connections`. The default value is `round_robin`.
+     * or `leastConnections`. The default value is `roundRobin`.
      * 
      * @deprecated
      * This field has been deprecated. You can no longer specify an algorithm for load balancers.
@@ -114,7 +114,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
-     * or `least_connections`. The default value is `round_robin`.
+     * or `leastConnections`. The default value is `roundRobin`.
      * 
      */
     public Output<Optional<String>> algorithm() {
@@ -223,30 +223,30 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.firewall;
     }
     /**
-     * A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      * 
      */
     @Export(name="forwardingRules", refs={List.class,LoadBalancerForwardingRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<LoadBalancerForwardingRule>> forwardingRules;
 
     /**
-     * @return A list of `forwarding_rule` to be assigned to the
-     * Load Balancer. The `forwarding_rule` block is documented below.
+     * @return A list of `forwardingRule` to be assigned to the
+     * Load Balancer. The `forwardingRule` block is documented below.
      * 
      */
     public Output<Optional<List<LoadBalancerForwardingRule>>> forwardingRules() {
         return Codegen.optional(this.forwardingRules);
     }
     /**
-     * A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      * 
      */
     @Export(name="glbSettings", refs={LoadBalancerGlbSettings.class}, tree="[0]")
     private Output<LoadBalancerGlbSettings> glbSettings;
 
     /**
-     * @return A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
+     * @return A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      * 
      */
     public Output<LoadBalancerGlbSettings> glbSettings() {
@@ -405,28 +405,28 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.region);
     }
     /**
-     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     @Export(name="size", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> size;
 
     /**
-     * @return The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     public Output<Optional<String>> size() {
         return Codegen.optional(this.size);
     }
     /**
-     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     @Export(name="sizeUnit", refs={Integer.class}, tree="[0]")
     private Output<Integer> sizeUnit;
 
     /**
-     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
+     * @return The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      * 
      */
     public Output<Integer> sizeUnit() {
@@ -439,16 +439,16 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      * 
      */
     @Export(name="stickySessions", refs={LoadBalancerStickySessions.class}, tree="[0]")
     private Output<LoadBalancerStickySessions> stickySessions;
 
     /**
-     * @return A `sticky_sessions` block to be assigned to the
-     * Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
+     * @return A `stickySessions` block to be assigned to the
+     * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      * 
      */
     public Output<LoadBalancerStickySessions> stickySessions() {

@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class SpacesKeyGrant
     {
         /// <summary>
-        /// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        /// Name of the bucket associated with this grant. In case of a `Fullaccess` permission, this value should be an empty string.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        /// Permission associated with this grant. Values can be `Read`, `Readwrite`, `Fullaccess`.
         /// </summary>
         public readonly string Permission;
 

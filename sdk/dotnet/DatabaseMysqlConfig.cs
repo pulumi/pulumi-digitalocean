@@ -159,7 +159,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> InternalTmpMemStorageEngine { get; private set; } = null!;
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
         /// </summary>
         [Output("longQueryTime")]
         public Output<double> LongQueryTime { get; private set; } = null!;
@@ -171,7 +171,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> MaxAllowedPacket { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `TmpTableSize`. Default is `16777216` (16M)
         /// </summary>
         [Output("maxHeapTableSize")]
         public Output<int> MaxHeapTableSize { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.DigitalOcean
         public Output<bool> SqlRequirePrimaryKey { get; private set; } = null!;
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `MaxHeapTableSize`. Default is `16777216` (16M).
         /// </summary>
         [Output("tmpTableSize")]
         public Output<int> TmpTableSize { get; private set; } = null!;
@@ -373,7 +373,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
@@ -385,7 +385,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? MaxAllowedPacket { get; set; }
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `TmpTableSize`. Default is `16777216` (16M)
         /// </summary>
         [Input("maxHeapTableSize")]
         public Input<int>? MaxHeapTableSize { get; set; }
@@ -427,7 +427,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? SqlRequirePrimaryKey { get; set; }
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `MaxHeapTableSize`. Default is `16777216` (16M).
         /// </summary>
         [Input("tmpTableSize")]
         public Input<int>? TmpTableSize { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InternalTmpMemStorageEngine { get; set; }
 
         /// <summary>
-        /// The time, in seconds, for a query to take to execute before being captured by `slow_query_logs`. Default is `10` seconds.
+        /// The time, in seconds, for a query to take to execute before being captured by `SlowQueryLogs`. Default is `10` seconds.
         /// </summary>
         [Input("longQueryTime")]
         public Input<double>? LongQueryTime { get; set; }
@@ -561,7 +561,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? MaxAllowedPacket { get; set; }
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `tmp_table_size`. Default is `16777216` (16M)
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `TmpTableSize`. Default is `16777216` (16M)
         /// </summary>
         [Input("maxHeapTableSize")]
         public Input<int>? MaxHeapTableSize { get; set; }
@@ -603,7 +603,7 @@ namespace Pulumi.DigitalOcean
         public Input<bool>? SqlRequirePrimaryKey { get; set; }
 
         /// <summary>
-        /// The maximum size, in bytes, of internal in-memory tables. Also set `max_heap_table_size`. Default is `16777216` (16M).
+        /// The maximum size, in bytes, of internal in-memory tables. Also set `MaxHeapTableSize`. Default is `16777216` (16M).
         /// </summary>
         [Input("tmpTableSize")]
         public Input<int>? TmpTableSize { get; set; }

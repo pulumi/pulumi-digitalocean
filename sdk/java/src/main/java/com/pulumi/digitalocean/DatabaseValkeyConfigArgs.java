@@ -49,14 +49,14 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+     * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      * 
      */
     @Import(name="frequentSnapshots")
     private @Nullable Output<Boolean> frequentSnapshots;
 
     /**
-     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+     * @return Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      * 
      */
     public Optional<Output<Boolean>> frequentSnapshots() {
@@ -292,7 +292,7 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
          * 
          * @return builder
          * 
@@ -303,7 +303,7 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
+         * @param frequentSnapshots Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
          * 
          * @return builder
          * 

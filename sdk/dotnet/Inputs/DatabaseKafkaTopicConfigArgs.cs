@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Inputs
     {
         /// <summary>
         /// The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-        /// This may be one of "delete", "compact", or "compact_delete".
+        /// This may be one of "delete", "compact", or "CompactDelete".
         /// </summary>
         [Input("cleanupPolicy")]
         public Input<string>? CleanupPolicy { get; set; }
@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? IndexIntervalBytes { get; set; }
 
         /// <summary>
-        /// The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+        /// The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `CompressionType` is set to "uncompressed" or it is set to `Producer` and the producer is not using compression.
         /// </summary>
         [Input("maxCompactionLagMs")]
         public Input<string>? MaxCompactionLagMs { get; set; }
@@ -87,13 +87,13 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? MessageTimestampDifferenceMaxMs { get; set; }
 
         /// <summary>
-        /// Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+        /// Specifies which timestamp to use for the message. This may be one of "CreateTime" or "LogAppendTime".
         /// </summary>
         [Input("messageTimestampType")]
         public Input<string>? MessageTimestampType { get; set; }
 
         /// <summary>
-        /// A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+        /// A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `MaxCompactionLagMs` to control the compactor frequency.
         /// </summary>
         [Input("minCleanableDirtyRatio")]
         public Input<double>? MinCleanableDirtyRatio { get; set; }

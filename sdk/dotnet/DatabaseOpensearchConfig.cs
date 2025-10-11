@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
     public partial class DatabaseOpensearchConfig : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Specifices whether to allow automatic creation of indices. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `True`
         /// </summary>
         [Output("actionAutoCreateIndexEnabled")]
         public Output<bool> ActionAutoCreateIndexEnabled { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> ClusterRoutingAllocationNodeConcurrentRecoveries { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to allow security audit logging. Default: `false`
+        /// Specifies whether to allow security audit logging. Default: `False`
         /// </summary>
         [Output("enableSecurityAudit")]
         public Output<bool> EnableSecurityAudit { get; private set; } = null!;
@@ -198,13 +198,13 @@ namespace Pulumi.DigitalOcean
         public Output<int> IndicesRecoveryMaxMbPerSec { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifies whether ISM is enabled or not. Default: `True`
         /// </summary>
         [Output("ismEnabled")]
         public Output<bool> IsmEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `True`
         /// </summary>
         [Output("ismHistoryEnabled")]
         public Output<bool> IsmHistoryEnabled { get; private set; } = null!;
@@ -234,13 +234,13 @@ namespace Pulumi.DigitalOcean
         public Output<int> IsmHistoryRolloverRetentionPeriodDays { get; private set; } = null!;
 
         /// <summary>
-        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
+        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `False`
         /// </summary>
         [Output("overrideMainResponseVersion")]
         public Output<bool> OverrideMainResponseVersion { get; private set; } = null!;
 
         /// <summary>
-        /// Enable or disable filtering of alerting by backend roles. Default: `false`
+        /// Enable or disable filtering of alerting by backend roles. Default: `False`
         /// </summary>
         [Output("pluginsAlertingFilterByBackendRolesEnabled")]
         public Output<bool> PluginsAlertingFilterByBackendRolesEnabled { get; private set; } = null!;
@@ -376,7 +376,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseOpensearchConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifices whether to allow automatic creation of indices. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `True`
         /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
         public Input<bool>? ActionAutoCreateIndexEnabled { get; set; }
@@ -406,7 +406,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
 
         /// <summary>
-        /// Specifies whether to allow security audit logging. Default: `false`
+        /// Specifies whether to allow security audit logging. Default: `False`
         /// </summary>
         [Input("enableSecurityAudit")]
         public Input<bool>? EnableSecurityAudit { get; set; }
@@ -478,13 +478,13 @@ namespace Pulumi.DigitalOcean
         public Input<int>? IndicesRecoveryMaxMbPerSec { get; set; }
 
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifies whether ISM is enabled or not. Default: `True`
         /// </summary>
         [Input("ismEnabled")]
         public Input<bool>? IsmEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `True`
         /// </summary>
         [Input("ismHistoryEnabled")]
         public Input<bool>? IsmHistoryEnabled { get; set; }
@@ -514,13 +514,13 @@ namespace Pulumi.DigitalOcean
         public Input<int>? IsmHistoryRolloverRetentionPeriodDays { get; set; }
 
         /// <summary>
-        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
+        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `False`
         /// </summary>
         [Input("overrideMainResponseVersion")]
         public Input<bool>? OverrideMainResponseVersion { get; set; }
 
         /// <summary>
-        /// Enable or disable filtering of alerting by backend roles. Default: `false`
+        /// Enable or disable filtering of alerting by backend roles. Default: `False`
         /// </summary>
         [Input("pluginsAlertingFilterByBackendRolesEnabled")]
         public Input<bool>? PluginsAlertingFilterByBackendRolesEnabled { get; set; }
@@ -624,7 +624,7 @@ namespace Pulumi.DigitalOcean
     public sealed class DatabaseOpensearchConfigState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifices whether to allow automatic creation of indices. Default: `true`
+        /// Specifices whether to allow automatic creation of indices. Default: `True`
         /// </summary>
         [Input("actionAutoCreateIndexEnabled")]
         public Input<bool>? ActionAutoCreateIndexEnabled { get; set; }
@@ -654,7 +654,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? ClusterRoutingAllocationNodeConcurrentRecoveries { get; set; }
 
         /// <summary>
-        /// Specifies whether to allow security audit logging. Default: `false`
+        /// Specifies whether to allow security audit logging. Default: `False`
         /// </summary>
         [Input("enableSecurityAudit")]
         public Input<bool>? EnableSecurityAudit { get; set; }
@@ -726,13 +726,13 @@ namespace Pulumi.DigitalOcean
         public Input<int>? IndicesRecoveryMaxMbPerSec { get; set; }
 
         /// <summary>
-        /// Specifies whether ISM is enabled or not. Default: `true`
+        /// Specifies whether ISM is enabled or not. Default: `True`
         /// </summary>
         [Input("ismEnabled")]
         public Input<bool>? IsmEnabled { get; set; }
 
         /// <summary>
-        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
+        /// Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `True`
         /// </summary>
         [Input("ismHistoryEnabled")]
         public Input<bool>? IsmHistoryEnabled { get; set; }
@@ -762,13 +762,13 @@ namespace Pulumi.DigitalOcean
         public Input<int>? IsmHistoryRolloverRetentionPeriodDays { get; set; }
 
         /// <summary>
-        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
+        /// Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `False`
         /// </summary>
         [Input("overrideMainResponseVersion")]
         public Input<bool>? OverrideMainResponseVersion { get; set; }
 
         /// <summary>
-        /// Enable or disable filtering of alerting by backend roles. Default: `false`
+        /// Enable or disable filtering of alerting by backend roles. Default: `False`
         /// </summary>
         [Input("pluginsAlertingFilterByBackendRolesEnabled")]
         public Input<bool>? PluginsAlertingFilterByBackendRolesEnabled { get; set; }

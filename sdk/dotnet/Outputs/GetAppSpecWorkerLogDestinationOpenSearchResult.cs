@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult BasicAuth;
         /// <summary>
-        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `ClusterName` is not set, a new cluster will be provisioned.
         /// </summary>
         public readonly string? ClusterName;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Endpoint;
         /// <summary>
-        /// The index name to use for the logs. If not set, the default index name is `logs`.
+        /// The index name to use for the logs. If not set, the default index name is `Logs`.
         /// </summary>
         public readonly string? IndexName;
 

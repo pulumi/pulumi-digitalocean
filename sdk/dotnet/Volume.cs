@@ -104,7 +104,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> FilesystemLabel { get; private set; } = null!;
 
         /// <summary>
-        /// Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Output("filesystemType")]
         public Output<string> FilesystemType { get; private set; } = null!;
@@ -116,7 +116,7 @@ namespace Pulumi.DigitalOcean
         public Output<string?> InitialFilesystemLabel { get; private set; } = null!;
 
         /// <summary>
-        /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Initial filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Output("initialFilesystemType")]
         public Output<string?> InitialFilesystemType { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Input("filesystemType")]
         public Input<string>? FilesystemType { get; set; }
@@ -222,7 +222,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InitialFilesystemLabel { get; set; }
 
         /// <summary>
-        /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Initial filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Input("initialFilesystemType")]
         public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }
@@ -296,7 +296,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? FilesystemLabel { get; set; }
 
         /// <summary>
-        /// Filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Input("filesystemType")]
         public Input<string>? FilesystemType { get; set; }
@@ -308,7 +308,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? InitialFilesystemLabel { get; set; }
 
         /// <summary>
-        /// Initial filesystem type (`xfs` or `ext4`) for the block storage volume.
+        /// Initial filesystem type (`Xfs` or `Ext4`) for the block storage volume.
         /// </summary>
         [Input("initialFilesystemType")]
         public InputUnion<string, Pulumi.DigitalOcean.FileSystemType>? InitialFilesystemType { get; set; }

@@ -49,14 +49,14 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
         return this.checkId;
     }
     /**
-     * The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+     * The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
      * 
      */
     @Export(name="comparison", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comparison;
 
     /**
-     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greater_than` or `less_than`.
+     * @return The comparison operator used against the alert&#39;s threshold. Must be one of `greaterThan` or `lessThan`.
      * 
      */
     public Output<Optional<String>> comparison() {
@@ -119,14 +119,14 @@ public class UptimeAlert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.threshold);
     }
     /**
-     * The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+     * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+     * @return The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      * 
      */
     public Output<String> type() {

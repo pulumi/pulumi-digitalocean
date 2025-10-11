@@ -48,7 +48,7 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly string? UserData;
         /// <summary>
         /// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
-        /// from the specified `region` (default VPC).
+        /// from the specified `Region` (default VPC).
         /// </summary>
         public readonly string? VpcUuid;
         /// <summary>

@@ -102,7 +102,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The current average resource utilization of the Droplet Autoscale pool, this attribute further
-        /// embeds `memory` and `cpu` attributes to respectively report utilization data.
+        /// embeds `Memory` and `Cpu` attributes to respectively report utilization data.
         /// </summary>
         [Output("currentUtilizations")]
         public Output<ImmutableArray<Outputs.DropletAutoscaleCurrentUtilization>> CurrentUtilizations { get; private set; } = null!;
@@ -225,7 +225,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The current average resource utilization of the Droplet Autoscale pool, this attribute further
-        /// embeds `memory` and `cpu` attributes to respectively report utilization data.
+        /// embeds `Memory` and `Cpu` attributes to respectively report utilization data.
         /// </summary>
         public InputList<Inputs.DropletAutoscaleCurrentUtilizationGetArgs> CurrentUtilizations
         {

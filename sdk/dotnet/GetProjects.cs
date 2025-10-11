@@ -17,12 +17,12 @@ namespace Pulumi.DigitalOcean
         /// will be returned.
         /// 
         /// Note: You can use the `digitalocean.Project` data source to
-        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
-        /// `name` of the project.
+        /// obtain metadata about a single project if you already know the `Id` to retrieve or the unique
+        /// `Name` of the project.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter projects.
         /// 
         /// For example to find all staging environment projects:
         /// 
@@ -105,12 +105,12 @@ namespace Pulumi.DigitalOcean
         /// will be returned.
         /// 
         /// Note: You can use the `digitalocean.Project` data source to
-        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
-        /// `name` of the project.
+        /// obtain metadata about a single project if you already know the `Id` to retrieve or the unique
+        /// `Name` of the project.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter projects.
         /// 
         /// For example to find all staging environment projects:
         /// 
@@ -193,12 +193,12 @@ namespace Pulumi.DigitalOcean
         /// will be returned.
         /// 
         /// Note: You can use the `digitalocean.Project` data source to
-        /// obtain metadata about a single project if you already know the `id` to retrieve or the unique
-        /// `name` of the project.
+        /// obtain metadata about a single project if you already know the `Id` to retrieve or the unique
+        /// `Name` of the project.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter projects.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter projects.
         /// 
         /// For example to find all staging environment projects:
         /// 
@@ -284,7 +284,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetProjectsFilterArgs> Filters
         {
@@ -297,7 +297,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetProjectsSortArgs> Sorts
         {
@@ -318,7 +318,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetProjectsFilterInputArgs> Filters
         {
@@ -331,7 +331,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetProjectsSortInputArgs> Sorts
         {
@@ -355,7 +355,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A set of projects satisfying any `filter` and `sort` criteria. Each project has
+        /// A set of projects satisfying any `Filter` and `Sort` criteria. Each project has
         /// the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetProjectsProjectResult> Projects;

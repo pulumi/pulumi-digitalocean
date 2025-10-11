@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<bool>? PreservePathPrefix { get; set; }
 
         /// <summary>
-        /// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+        /// An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `PreservePathPrefix`.
         /// </summary>
         [Input("rewrite")]
         public Input<string>? Rewrite { get; set; }

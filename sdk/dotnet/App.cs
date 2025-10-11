@@ -88,6 +88,8 @@ namespace Pulumi.DigitalOcean
     /// });
     /// ```
     /// 
+    /// ### Multiple Components Example
+    /// 
     /// ### Log Destination Example with Opensearch
     /// 
     /// ```csharp
@@ -278,7 +280,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// A spec can contain multiple components.
         /// 
-        /// A `service` can contain:
+        /// A `Service` can contain:
         /// </summary>
         [Output("projectId")]
         public Output<string> ProjectId { get; private set; } = null!;
@@ -358,7 +360,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// A spec can contain multiple components.
         /// 
-        /// A `service` can contain:
+        /// A `Service` can contain:
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }
@@ -430,7 +432,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// A spec can contain multiple components.
         /// 
-        /// A `service` can contain:
+        /// A `Service` can contain:
         /// </summary>
         [Input("projectId")]
         public Input<string>? ProjectId { get; set; }

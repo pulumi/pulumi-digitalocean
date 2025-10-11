@@ -14,12 +14,12 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetRecordsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-        /// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        /// Sort the DNS records by this key. This may be one of `Domain`, `Flags`, `Name`, `Port`,
+        /// `Priority`, `Tag`, `Ttl`, `Type`, `Value`, or `Weight`.
         /// </summary>
         public readonly string Key;
 

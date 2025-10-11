@@ -34,14 +34,14 @@ public final class DatabaseUserArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+     * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      * 
      */
     @Import(name="mysqlAuthPlugin")
     private @Nullable Output<String> mysqlAuthPlugin;
 
     /**
-     * @return The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+     * @return The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      * 
      */
     public Optional<Output<String>> mysqlAuthPlugin() {
@@ -129,7 +129,7 @@ public final class DatabaseUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysqlAuthPlugin The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+         * @param mysqlAuthPlugin The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class DatabaseUserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param mysqlAuthPlugin The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+         * @param mysqlAuthPlugin The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
          * 
          * @return builder
          * 

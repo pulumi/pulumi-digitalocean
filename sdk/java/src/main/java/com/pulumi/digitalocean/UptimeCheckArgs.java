@@ -49,14 +49,14 @@ public final class UptimeCheckArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+     * An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
      * 
      */
     @Import(name="regions")
     private @Nullable Output<List<String>> regions;
 
     /**
-     * @return An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+     * @return An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
      * 
      */
     public Optional<Output<List<String>>> regions() {
@@ -164,7 +164,7 @@ public final class UptimeCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+         * @param regions An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class UptimeCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+         * @param regions An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class UptimeCheckArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param regions An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+         * @param regions An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
          * 
          * @return builder
          * 

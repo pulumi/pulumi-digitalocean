@@ -38,8 +38,8 @@ public final class GetImagesFilterArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */
@@ -47,8 +47,8 @@ public final class GetImagesFilterArgs extends com.pulumi.resources.ResourceArgs
     private Output<String> key;
 
     /**
-     * @return Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * @return Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */
@@ -145,8 +145,8 @@ public final class GetImagesFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `distribution`, `error_message`,
-         * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+         * @param key Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+         * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
          * `tags`, or `type`.
          * 
          * @return builder
@@ -158,8 +158,8 @@ public final class GetImagesFilterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `distribution`, `error_message`,
-         * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+         * @param key Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+         * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
          * `tags`, or `type`.
          * 
          * @return builder

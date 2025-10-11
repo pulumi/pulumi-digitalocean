@@ -241,8 +241,8 @@ namespace Pulumi.DigitalOcean
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetFirewallOutboundRuleResult> OutboundRules;
         /// <summary>
-        /// A set of object containing the fields, `droplet_id`,
-        /// `removing`, and `status`.  It is provided to detail exactly which Droplets
+        /// A set of object containing the fields, `DropletId`,
+        /// `Removing`, and `Status`.  It is provided to detail exactly which Droplets
         /// are having their security policies updated.  When empty, all changes
         /// have been successfully applied.
         /// </summary>

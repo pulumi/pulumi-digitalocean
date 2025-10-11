@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Bucket;
         /// <summary>
-        /// The permission to grant the key. Valid values are `read`, `readwrite`, or `fullaccess`.
+        /// The permission to grant the key. Valid values are `Read`, `Readwrite`, or `Fullaccess`.
         /// </summary>
         public readonly string Permission;
 

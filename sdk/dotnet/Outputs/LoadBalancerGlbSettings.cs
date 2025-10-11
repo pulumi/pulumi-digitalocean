@@ -26,11 +26,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, int>? RegionPriorities;
         /// <summary>
-        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `Http` and `443` for `Https`.
         /// </summary>
         public readonly int TargetPort;
         /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `Http` and `Https`.
         /// </summary>
         public readonly string TargetProtocol;
 

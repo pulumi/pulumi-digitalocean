@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int>? RedirectCode { get; set; }
 
         /// <summary>
-        /// The scheme to redirect to. Supported values are `http` or `https`
+        /// The scheme to redirect to. Supported values are `Http` or `Https`
         /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }

@@ -14,11 +14,11 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetDomainsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+        /// Sort the domains by this key. This may be one of `Name`, `Urn`, and `Ttl`.
         /// </summary>
         public readonly string Key;
 

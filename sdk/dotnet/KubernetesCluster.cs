@@ -124,7 +124,7 @@ namespace Pulumi.DigitalOcean
         public Output<int?> KubeconfigExpireSeconds { get; private set; } = null!;
 
         /// <summary>
-        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `AutoUpgrade` must be set to `True` for this to have an effect.
         /// </summary>
         [Output("maintenancePolicy")]
         public Output<Outputs.KubernetesClusterMaintenancePolicy> MaintenancePolicy { get; private set; } = null!;
@@ -312,7 +312,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? KubeconfigExpireSeconds { get; set; }
 
         /// <summary>
-        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `AutoUpgrade` must be set to `True` for this to have an effect.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.KubernetesClusterMaintenancePolicyArgs>? MaintenancePolicy { get; set; }
@@ -492,7 +492,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? KubeconfigExpireSeconds { get; set; }
 
         /// <summary>
-        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+        /// A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `AutoUpgrade` must be set to `True` for this to have an effect.
         /// </summary>
         [Input("maintenancePolicy")]
         public Input<Inputs.KubernetesClusterMaintenancePolicyGetArgs>? MaintenancePolicy { get; set; }

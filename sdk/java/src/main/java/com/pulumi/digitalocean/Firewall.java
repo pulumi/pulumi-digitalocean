@@ -164,7 +164,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * The inbound access rule block for the Firewall.
-     * The `inbound_rule` block is documented below.
+     * The `inboundRule` block is documented below.
      * 
      */
     @Export(name="inboundRules", refs={List.class,FirewallInboundRule.class}, tree="[0,1]")
@@ -172,7 +172,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The inbound access rule block for the Firewall.
-     * The `inbound_rule` block is documented below.
+     * The `inboundRule` block is documented below.
      * 
      */
     public Output<Optional<List<FirewallInboundRule>>> inboundRules() {
@@ -194,7 +194,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     }
     /**
      * The outbound access rule block for the Firewall.
-     * The `outbound_rule` block is documented below.
+     * The `outboundRule` block is documented below.
      * 
      */
     @Export(name="outboundRules", refs={List.class,FirewallOutboundRule.class}, tree="[0,1]")
@@ -202,14 +202,14 @@ public class Firewall extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The outbound access rule block for the Firewall.
-     * The `outbound_rule` block is documented below.
+     * The `outboundRule` block is documented below.
      * 
      */
     public Output<Optional<List<FirewallOutboundRule>>> outboundRules() {
         return Codegen.optional(this.outboundRules);
     }
     /**
-     * An list of object containing the fields, &#34;droplet_id&#34;,
+     * An list of object containing the fields, &#34;dropletId&#34;,
      * &#34;removing&#34;, and &#34;status&#34;.  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
@@ -219,7 +219,7 @@ public class Firewall extends com.pulumi.resources.CustomResource {
     private Output<List<FirewallPendingChange>> pendingChanges;
 
     /**
-     * @return An list of object containing the fields, &#34;droplet_id&#34;,
+     * @return An list of object containing the fields, &#34;dropletId&#34;,
      * &#34;removing&#34;, and &#34;status&#34;.  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.

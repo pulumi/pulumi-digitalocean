@@ -13,14 +13,14 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetRecordsSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-        /// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+        /// Sort the DNS records by this key. This may be one of `Domain`, `Flags`, `Name`, `Port`,
+        /// `Priority`, `Tag`, `Ttl`, `Type`, `Value`, or `Weight`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

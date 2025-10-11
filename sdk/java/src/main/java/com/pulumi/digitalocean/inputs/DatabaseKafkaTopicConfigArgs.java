@@ -20,7 +20,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
 
     /**
      * The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-     * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
+     * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compactDelete&#34;.
      * 
      */
     @Import(name="cleanupPolicy")
@@ -28,7 +28,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
 
     /**
      * @return The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-     * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
+     * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compactDelete&#34;.
      * 
      */
     public Optional<Output<String>> cleanupPolicy() {
@@ -128,14 +128,14 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
+     * The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
      * 
      */
     @Import(name="maxCompactionLagMs")
     private @Nullable Output<String> maxCompactionLagMs;
 
     /**
-     * @return The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
+     * @return The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
      * 
      */
     public Optional<Output<String>> maxCompactionLagMs() {
@@ -203,14 +203,14 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Specifies which timestamp to use for the message. This may be one of &#34;create_time&#34; or &#34;log_append_time&#34;.
+     * Specifies which timestamp to use for the message. This may be one of &#34;createTime&#34; or &#34;logAppendTime&#34;.
      * 
      */
     @Import(name="messageTimestampType")
     private @Nullable Output<String> messageTimestampType;
 
     /**
-     * @return Specifies which timestamp to use for the message. This may be one of &#34;create_time&#34; or &#34;log_append_time&#34;.
+     * @return Specifies which timestamp to use for the message. This may be one of &#34;createTime&#34; or &#34;logAppendTime&#34;.
      * 
      */
     public Optional<Output<String>> messageTimestampType() {
@@ -218,14 +218,14 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+     * A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
      * 
      */
     @Import(name="minCleanableDirtyRatio")
     private @Nullable Output<Double> minCleanableDirtyRatio;
 
     /**
-     * @return A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+     * @return A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
      * 
      */
     public Optional<Output<Double>> minCleanableDirtyRatio() {
@@ -407,7 +407,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
 
         /**
          * @param cleanupPolicy The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-         * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
+         * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compactDelete&#34;.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
 
         /**
          * @param cleanupPolicy The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-         * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compact_delete&#34;.
+         * This may be one of &#34;delete&#34;, &#34;compact&#34;, or &#34;compactDelete&#34;.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxCompactionLagMs The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
+         * @param maxCompactionLagMs The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param maxCompactionLagMs The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
+         * @param maxCompactionLagMs The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compressionType` is set to &#34;uncompressed&#34; or it is set to `producer` and the producer is not using compression.
          * 
          * @return builder
          * 
@@ -662,7 +662,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param messageTimestampType Specifies which timestamp to use for the message. This may be one of &#34;create_time&#34; or &#34;log_append_time&#34;.
+         * @param messageTimestampType Specifies which timestamp to use for the message. This may be one of &#34;createTime&#34; or &#34;logAppendTime&#34;.
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param messageTimestampType Specifies which timestamp to use for the message. This may be one of &#34;create_time&#34; or &#34;log_append_time&#34;.
+         * @param messageTimestampType Specifies which timestamp to use for the message. This may be one of &#34;createTime&#34; or &#34;logAppendTime&#34;.
          * 
          * @return builder
          * 
@@ -683,7 +683,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minCleanableDirtyRatio A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+         * @param minCleanableDirtyRatio A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
          * 
          * @return builder
          * 
@@ -694,7 +694,7 @@ public final class DatabaseKafkaTopicConfigArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param minCleanableDirtyRatio A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+         * @param minCleanableDirtyRatio A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `maxCompactionLagMs` to control the compactor frequency.
          * 
          * @return builder
          * 

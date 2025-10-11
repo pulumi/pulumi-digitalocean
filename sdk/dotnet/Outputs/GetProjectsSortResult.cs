@@ -14,12 +14,12 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetProjectsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the projects by this key. This may be one of `name`,
-        /// `purpose`, `description`, or `environment`.
+        /// Sort the projects by this key. This may be one of `Name`,
+        /// `Purpose`, `Description`, or `Environment`.
         /// </summary>
         public readonly string Key;
 

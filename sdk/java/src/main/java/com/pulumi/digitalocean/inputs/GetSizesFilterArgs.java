@@ -39,8 +39,8 @@ public final class GetSizesFilterArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     @Import(name="key", required=true)
@@ -48,8 +48,8 @@ public final class GetSizesFilterArgs extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     public Output<String> key() {
@@ -146,8 +146,8 @@ public final class GetSizesFilterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param key Filter the sizes by this key. This may be one of `slug`,
-         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-         * `price_hourly`, or `available`.
+         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+         * `priceHourly`, or `available`.
          * 
          * @return builder
          * 
@@ -159,8 +159,8 @@ public final class GetSizesFilterArgs extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param key Filter the sizes by this key. This may be one of `slug`,
-         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-         * `price_hourly`, or `available`.
+         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+         * `priceHourly`, or `available`.
          * 
          * @return builder
          * 

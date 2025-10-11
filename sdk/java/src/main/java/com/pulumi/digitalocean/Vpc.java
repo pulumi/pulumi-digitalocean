@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * ### Resource Assignment
  * 
  * `digitalocean.Droplet`, `digitalocean.KubernetesCluster`,
- * `digitalocean_load_balancer`, and `digitalocean.DatabaseCluster` resources
+ * `digitaloceanLoadBalancer`, and `digitalocean.DatabaseCluster` resources
  * may be assigned to a VPC by referencing its `id`. For example:
  * 
  * <pre>

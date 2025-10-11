@@ -32,16 +32,16 @@ public final class GetImagesSortArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-     * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+     * Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-     * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+     * @return Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
      * 
      */
     public Output<String> key() {
@@ -95,8 +95,8 @@ public final class GetImagesSortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-         * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+         * @param key Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+         * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
          * 
          * @return builder
          * 
@@ -107,8 +107,8 @@ public final class GetImagesSortArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-         * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+         * @param key Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+         * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
          * 
          * @return builder
          * 

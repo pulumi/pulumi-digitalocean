@@ -33,14 +33,14 @@ public final class AppSpecWorkerLogDestinationOpenSearchArgs extends com.pulumi.
     }
 
     /**
-     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     @Import(name="clusterName")
     private @Nullable Output<String> clusterName;
 
     /**
-     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     public Optional<Output<String>> clusterName() {
@@ -126,7 +126,7 @@ public final class AppSpecWorkerLogDestinationOpenSearchArgs extends com.pulumi.
         }
 
         /**
-         * @param clusterName The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+         * @param clusterName The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
          * 
          * @return builder
          * 
@@ -137,7 +137,7 @@ public final class AppSpecWorkerLogDestinationOpenSearchArgs extends com.pulumi.
         }
 
         /**
-         * @param clusterName The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+         * @param clusterName The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
          * 
          * @return builder
          * 

@@ -39,7 +39,7 @@ public final class GetProjectsFilterArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * Filter the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, `environment`, or `is_default`.
+     * `purpose`, `description`, `environment`, or `isDefault`.
      * 
      */
     @Import(name="key", required=true)
@@ -47,7 +47,7 @@ public final class GetProjectsFilterArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Filter the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, `environment`, or `is_default`.
+     * `purpose`, `description`, `environment`, or `isDefault`.
      * 
      */
     public Output<String> key() {
@@ -144,7 +144,7 @@ public final class GetProjectsFilterArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param key Filter the projects by this key. This may be one of `name`,
-         * `purpose`, `description`, `environment`, or `is_default`.
+         * `purpose`, `description`, `environment`, or `isDefault`.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetProjectsFilterArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param key Filter the projects by this key. This may be one of `name`,
-         * `purpose`, `description`, `environment`, or `is_default`.
+         * `purpose`, `description`, `environment`, or `isDefault`.
          * 
          * @return builder
          * 

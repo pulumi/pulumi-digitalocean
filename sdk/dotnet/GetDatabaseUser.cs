@@ -173,7 +173,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The authentication method of the MySQL user. The value will be `mysql_native_password` or `caching_sha2_password`.
+        /// The authentication method of the MySQL user. The value will be `MysqlNativePassword` or `CachingSha2Password`.
         /// </summary>
         public readonly string MysqlAuthPlugin;
         public readonly string Name;
@@ -182,7 +182,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Password;
         /// <summary>
-        /// The role of the database user. The value will be either `primary` or `normal`.
+        /// The role of the database user. The value will be either `Primary` or `Normal`.
         /// </summary>
         public readonly string Role;
         public readonly ImmutableArray<Outputs.GetDatabaseUserSettingResult> Settings;

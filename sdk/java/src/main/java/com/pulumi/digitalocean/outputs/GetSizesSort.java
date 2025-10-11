@@ -19,7 +19,7 @@ public final class GetSizesSort {
     private @Nullable String direction;
     /**
      * @return Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     private String key;
@@ -34,7 +34,7 @@ public final class GetSizesSort {
     }
     /**
      * @return Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     public String key() {

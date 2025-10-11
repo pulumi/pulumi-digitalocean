@@ -13,14 +13,14 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetSizesSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Sort the sizes by this key. This may be one of `slug`,
-        /// `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+        /// Sort the sizes by this key. This may be one of `Slug`,
+        /// `Memory`, `Vcpus`, `Disk`, `Transfer`, `PriceMonthly`, or `PriceHourly`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

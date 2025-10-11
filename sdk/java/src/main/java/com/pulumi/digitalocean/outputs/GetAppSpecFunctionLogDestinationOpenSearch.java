@@ -19,7 +19,7 @@ public final class GetAppSpecFunctionLogDestinationOpenSearch {
      */
     private GetAppSpecFunctionLogDestinationOpenSearchBasicAuth basicAuth;
     /**
-     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     private @Nullable String clusterName;
@@ -43,7 +43,7 @@ public final class GetAppSpecFunctionLogDestinationOpenSearch {
         return this.basicAuth;
     }
     /**
-     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+     * @return The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `clusterName` is not set, a new cluster will be provisioned.
      * 
      */
     public Optional<String> clusterName() {

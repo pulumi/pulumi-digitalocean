@@ -38,20 +38,20 @@ public final class GetDropletsFilterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+     * Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+     * @return Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
      * 
      */
     public Output<String> key() {
@@ -147,10 +147,10 @@ public final class GetDropletsFilterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param key Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-         * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-         * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-         * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+         * @param key Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+         * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+         * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+         * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
          * 
          * @return builder
          * 
@@ -161,10 +161,10 @@ public final class GetDropletsFilterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param key Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-         * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-         * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-         * `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+         * @param key Filter the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+         * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+         * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+         * `status`, `tags`, `urn`, `vcpus`, `volumeIds`, or `vpcUuid`.
          * 
          * @return builder
          * 

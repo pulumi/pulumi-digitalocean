@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         public readonly Outputs.GetAppSpecJobAlertDestinationsResult? Destinations;
         /// <summary>
-        /// Determines whether or not the alert is disabled (default: `false`).
+        /// Determines whether or not the alert is disabled (default: `False`).
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

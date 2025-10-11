@@ -14,14 +14,14 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetDropletsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-        /// `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        /// `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        /// `status`, `urn`, `vcpus`, or `vpc_uuid`.
+        /// Sort the Droplets by this key. This may be one of `Backups`, `CreatedAt`, `Disk`, `Id`,
+        /// `Image`, `Ipv4Address`, `Ipv4AddressPrivate`, `Ipv6`, `Ipv6Address`, `Ipv6AddressPrivate`, `Locked`,
+        /// `Memory`, `Monitoring`, `Name`, `PriceHourly`, `PriceMonthly`, `PrivateNetworking`, `Region`, `Size`,
+        /// `Status`, `Urn`, `Vcpus`, or `VpcUuid`.
         /// </summary>
         public readonly string Key;
 

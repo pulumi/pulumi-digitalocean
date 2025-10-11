@@ -16,11 +16,11 @@ namespace Pulumi.DigitalOcean
         /// filter and sort the results. If no filters are specified, all regions will be returned.
         /// 
         /// Note: You can use the `digitalocean.getRegion` data source
-        /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// to obtain metadata about a single region if you already know the `Slug` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter regions.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter regions.
         /// 
         /// For example to find all available regions:
         /// 
@@ -102,11 +102,11 @@ namespace Pulumi.DigitalOcean
         /// filter and sort the results. If no filters are specified, all regions will be returned.
         /// 
         /// Note: You can use the `digitalocean.getRegion` data source
-        /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// to obtain metadata about a single region if you already know the `Slug` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter regions.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter regions.
         /// 
         /// For example to find all available regions:
         /// 
@@ -188,11 +188,11 @@ namespace Pulumi.DigitalOcean
         /// filter and sort the results. If no filters are specified, all regions will be returned.
         /// 
         /// Note: You can use the `digitalocean.getRegion` data source
-        /// to obtain metadata about a single region if you already know the `slug` to retrieve.
+        /// to obtain metadata about a single region if you already know the `Slug` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter regions.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter regions.
         /// 
         /// For example to find all available regions:
         /// 
@@ -278,7 +278,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetRegionsFilterArgs> Filters
         {
@@ -291,7 +291,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetRegionsSortArgs> Sorts
         {
@@ -312,7 +312,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetRegionsFilterInputArgs> Filters
         {
@@ -325,7 +325,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetRegionsSortInputArgs> Sorts
         {
@@ -349,7 +349,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A set of regions satisfying any `filter` and `sort` criteria. Each region has the following attributes:
+        /// A set of regions satisfying any `Filter` and `Sort` criteria. Each region has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRegionsRegionResult> Regions;
         public readonly ImmutableArray<Outputs.GetRegionsSortResult> Sorts;

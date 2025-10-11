@@ -317,6 +317,8 @@ class App(pulumi.CustomResource):
         })
         ```
 
+        ### Multiple Components Example
+
         ### Log Destination Example with Opensearch
 
         ```python
@@ -469,6 +471,8 @@ class App(pulumi.CustomResource):
             }],
         })
         ```
+
+        ### Multiple Components Example
 
         ### Log Destination Example with Opensearch
 

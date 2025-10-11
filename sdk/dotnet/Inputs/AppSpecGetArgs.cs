@@ -33,13 +33,13 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        /// A boolean indicating whether to disable the edge cache for this app. Default: `False`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         [Input("disableEdgeCache")]
         public Input<bool>? DisableEdgeCache { get; set; }
 
         /// <summary>
-        /// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// A boolean indicating whether to disable email obfuscation for this app. Default: `False`. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         [Input("disableEmailObfuscation")]
         public Input<bool>? DisableEmailObfuscation { get; set; }
@@ -58,7 +58,7 @@ namespace Pulumi.DigitalOcean.Inputs
 
         [Input("domains")]
         private InputList<string>? _domains;
-        [Obsolete(@"This attribute has been replaced by `domain` which supports additional functionality.")]
+        [Obsolete(@"This attribute has been replaced by `Domain` which supports additional functionality.")]
         public InputList<string> Domains
         {
             get => _domains ?? (_domains = new InputList<string>());
@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// A boolean, when set to `True`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `False`. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         [Input("enhancedThreatControlEnabled")]
         public Input<bool>? EnhancedThreatControlEnabled { get; set; }

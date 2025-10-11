@@ -104,7 +104,7 @@ namespace Pulumi.DigitalOcean
         public Output<int?> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        /// The tag of the record. Only valid when type is `CAA`. Must be one of `Issue`, `Issuewild`, or `Iodef`.
         /// </summary>
         [Output("tag")]
         public Output<string?> Tag { get; private set; } = null!;
@@ -210,7 +210,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        /// The tag of the record. Only valid when type is `CAA`. Must be one of `Issue`, `Issuewild`, or `Iodef`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }
@@ -284,7 +284,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The tag of the record. Only valid when type is `CAA`. Must be one of `issue`, `issuewild`, or `iodef`.
+        /// The tag of the record. Only valid when type is `CAA`. Must be one of `Issue`, `Issuewild`, or `Iodef`.
         /// </summary>
         [Input("tag")]
         public Input<string>? Tag { get; set; }

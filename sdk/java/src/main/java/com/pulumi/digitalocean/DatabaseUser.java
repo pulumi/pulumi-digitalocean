@@ -243,14 +243,14 @@ public class DatabaseUser extends com.pulumi.resources.CustomResource {
         return this.clusterId;
     }
     /**
-     * The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+     * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      * 
      */
     @Export(name="mysqlAuthPlugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mysqlAuthPlugin;
 
     /**
-     * @return The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+     * @return The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      * 
      */
     public Output<Optional<String>> mysqlAuthPlugin() {

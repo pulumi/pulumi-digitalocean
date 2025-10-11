@@ -23,7 +23,7 @@ public final class AppSpecIngressRuleComponent {
      */
     private @Nullable Boolean preservePathPrefix;
     /**
-     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      * 
      */
     private @Nullable String rewrite;
@@ -44,7 +44,7 @@ public final class AppSpecIngressRuleComponent {
         return Optional.ofNullable(this.preservePathPrefix);
     }
     /**
-     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      * 
      */
     public Optional<String> rewrite() {

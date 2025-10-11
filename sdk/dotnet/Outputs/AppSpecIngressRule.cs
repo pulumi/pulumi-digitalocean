@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class AppSpecIngressRule
     {
         /// <summary>
-        /// The component to route to. Only one of `component` or `redirect` may be set.
+        /// The component to route to. Only one of `Component` or `Redirect` may be set.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleComponent? Component;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleMatch? Match;
         /// <summary>
-        /// The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+        /// The redirect configuration for the rule. Only one of `Component` or `Redirect` may be set.
         /// </summary>
         public readonly Outputs.AppSpecIngressRuleRedirect? Redirect;
 

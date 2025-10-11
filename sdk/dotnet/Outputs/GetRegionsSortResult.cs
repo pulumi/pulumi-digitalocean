@@ -14,12 +14,12 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetRegionsSortResult
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         public readonly string? Direction;
         /// <summary>
-        /// Sort the regions by this key. This may be one of `slug`,
-        /// `name`, or `available`.
+        /// Sort the regions by this key. This may be one of `Slug`,
+        /// `Name`, or `Available`.
         /// </summary>
         public readonly string Key;
 

@@ -12,7 +12,7 @@ namespace Pulumi.DigitalOcean
     /// <summary>
     /// Provides a DigitalOcean reserved IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
     /// 
-    /// &gt; **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `droplet_id` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
+    /// &gt; **NOTE:** Reserved IPs can be assigned to a Droplet either directly on the `digitalocean.ReservedIp` resource by setting a `DropletId` or using the `digitalocean.ReservedIpAssignment` resource, but the two cannot be used together.
     /// 
     /// ## Example Usage
     /// 

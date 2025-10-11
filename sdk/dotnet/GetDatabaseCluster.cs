@@ -150,7 +150,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Database;
         /// <summary>
-        /// Database engine used by the cluster (ex. `pg` for PostgreSQL).
+        /// Database engine used by the cluster (ex. `Pg` for PostgreSQL).
         /// </summary>
         public readonly string Engine;
         /// <summary>
@@ -183,7 +183,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public readonly string PrivateHost;
         /// <summary>
@@ -191,7 +191,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string PrivateNetworkUuid;
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public readonly string PrivateUri;
         /// <summary>

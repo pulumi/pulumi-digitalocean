@@ -31,20 +31,20 @@ public final class GetDropletsSort extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `urn`, `vcpus`, or `vpc_uuid`.
+     * Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `urn`, `vcpus`, or `vpcUuid`.
      * 
      */
     @Import(name="key", required=true)
     private String key;
 
     /**
-     * @return Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-     * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-     * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-     * `status`, `urn`, `vcpus`, or `vpc_uuid`.
+     * @return Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+     * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+     * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+     * `status`, `urn`, `vcpus`, or `vpcUuid`.
      * 
      */
     public String key() {
@@ -88,10 +88,10 @@ public final class GetDropletsSort extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param key Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-         * `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-         * `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-         * `status`, `urn`, `vcpus`, or `vpc_uuid`.
+         * @param key Sort the Droplets by this key. This may be one of `backups`, `createdAt`, `disk`, `id`,
+         * `image`, `ipv4Address`, `ipv4AddressPrivate`, `ipv6`, `ipv6Address`, `ipv6AddressPrivate`, `locked`,
+         * `memory`, `monitoring`, `name`, `priceHourly`, `priceMonthly`, `privateNetworking`, `region`, `size`,
+         * `status`, `urn`, `vcpus`, or `vpcUuid`.
          * 
          * @return builder
          * 

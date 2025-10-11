@@ -29,7 +29,7 @@ public final class GetDatabaseUserResult {
      */
     private String id;
     /**
-     * @return The authentication method of the MySQL user. The value will be `mysql_native_password` or `caching_sha2_password`.
+     * @return The authentication method of the MySQL user. The value will be `mysqlNativePassword` or `cachingSha2Password`.
      * 
      */
     private String mysqlAuthPlugin;
@@ -72,7 +72,7 @@ public final class GetDatabaseUserResult {
         return this.id;
     }
     /**
-     * @return The authentication method of the MySQL user. The value will be `mysql_native_password` or `caching_sha2_password`.
+     * @return The authentication method of the MySQL user. The value will be `mysqlNativePassword` or `cachingSha2Password`.
      * 
      */
     public String mysqlAuthPlugin() {

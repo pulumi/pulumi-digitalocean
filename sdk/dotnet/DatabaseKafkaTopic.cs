@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
-        /// The `config` block is documented below.
+        /// The `Config` block is documented below.
         /// </summary>
         [Output("configs")]
         public Output<ImmutableArray<Outputs.DatabaseKafkaTopicConfig>> Configs { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
-        /// The `config` block is documented below.
+        /// The `Config` block is documented below.
         /// </summary>
         public InputList<Inputs.DatabaseKafkaTopicConfigArgs> Configs
         {
@@ -227,7 +227,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
-        /// The `config` block is documented below.
+        /// The `Config` block is documented below.
         /// </summary>
         public InputList<Inputs.DatabaseKafkaTopicConfigGetArgs> Configs
         {

@@ -32,14 +32,14 @@ public final class DatabaseFirewallRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+     * The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+     * @return The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
      * 
      */
     public Output<String> type() {
@@ -125,7 +125,7 @@ public final class DatabaseFirewallRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+         * @param type The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
          * 
          * @return builder
          * 
@@ -136,7 +136,7 @@ public final class DatabaseFirewallRuleArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param type The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+         * @param type The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ipAddr`, `tag`, or `app`.
          * 
          * @return builder
          * 

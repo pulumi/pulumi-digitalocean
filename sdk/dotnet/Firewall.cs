@@ -138,14 +138,14 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The list of the IDs of the Droplets assigned
         /// to the Firewall (max. 10). If you want to assign more droplets to the
-        /// Firewall, add Tags to them and use the `tags` argument below.
+        /// Firewall, add Tags to them and use the `Tags` argument below.
         /// </summary>
         [Output("dropletIds")]
         public Output<ImmutableArray<int>> DropletIds { get; private set; } = null!;
 
         /// <summary>
         /// The inbound access rule block for the Firewall.
-        /// The `inbound_rule` block is documented below.
+        /// The `InboundRule` block is documented below.
         /// </summary>
         [Output("inboundRules")]
         public Output<ImmutableArray<Outputs.FirewallInboundRule>> InboundRules { get; private set; } = null!;
@@ -158,13 +158,13 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The outbound access rule block for the Firewall.
-        /// The `outbound_rule` block is documented below.
+        /// The `OutboundRule` block is documented below.
         /// </summary>
         [Output("outboundRules")]
         public Output<ImmutableArray<Outputs.FirewallOutboundRule>> OutboundRules { get; private set; } = null!;
 
         /// <summary>
-        /// An list of object containing the fields, "droplet_id",
+        /// An list of object containing the fields, "DropletId",
         /// "removing", and "status".  It is provided to detail exactly which Droplets
         /// are having their security policies updated.  When empty, all changes
         /// have been successfully applied.
@@ -237,7 +237,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The list of the IDs of the Droplets assigned
         /// to the Firewall (max. 10). If you want to assign more droplets to the
-        /// Firewall, add Tags to them and use the `tags` argument below.
+        /// Firewall, add Tags to them and use the `Tags` argument below.
         /// </summary>
         public InputList<int> DropletIds
         {
@@ -250,7 +250,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The inbound access rule block for the Firewall.
-        /// The `inbound_rule` block is documented below.
+        /// The `InboundRule` block is documented below.
         /// </summary>
         public InputList<Inputs.FirewallInboundRuleArgs> InboundRules
         {
@@ -269,7 +269,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The outbound access rule block for the Firewall.
-        /// The `outbound_rule` block is documented below.
+        /// The `OutboundRule` block is documented below.
         /// </summary>
         public InputList<Inputs.FirewallOutboundRuleArgs> OutboundRules
         {
@@ -310,7 +310,7 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// The list of the IDs of the Droplets assigned
         /// to the Firewall (max. 10). If you want to assign more droplets to the
-        /// Firewall, add Tags to them and use the `tags` argument below.
+        /// Firewall, add Tags to them and use the `Tags` argument below.
         /// </summary>
         public InputList<int> DropletIds
         {
@@ -323,7 +323,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The inbound access rule block for the Firewall.
-        /// The `inbound_rule` block is documented below.
+        /// The `InboundRule` block is documented below.
         /// </summary>
         public InputList<Inputs.FirewallInboundRuleGetArgs> InboundRules
         {
@@ -342,7 +342,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// The outbound access rule block for the Firewall.
-        /// The `outbound_rule` block is documented below.
+        /// The `OutboundRule` block is documented below.
         /// </summary>
         public InputList<Inputs.FirewallOutboundRuleGetArgs> OutboundRules
         {
@@ -354,7 +354,7 @@ namespace Pulumi.DigitalOcean
         private InputList<Inputs.FirewallPendingChangeGetArgs>? _pendingChanges;
 
         /// <summary>
-        /// An list of object containing the fields, "droplet_id",
+        /// An list of object containing the fields, "DropletId",
         /// "removing", and "status".  It is provided to detail exactly which Droplets
         /// are having their security policies updated.  When empty, all changes
         /// have been successfully applied.

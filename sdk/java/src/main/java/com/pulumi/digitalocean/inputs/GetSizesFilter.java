@@ -38,8 +38,8 @@ public final class GetSizesFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     @Import(name="key", required=true)
@@ -47,8 +47,8 @@ public final class GetSizesFilter extends com.pulumi.resources.InvokeArgs {
 
     /**
      * @return Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     public String key() {
@@ -133,8 +133,8 @@ public final class GetSizesFilter extends com.pulumi.resources.InvokeArgs {
 
         /**
          * @param key Filter the sizes by this key. This may be one of `slug`,
-         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-         * `price_hourly`, or `available`.
+         * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+         * `priceHourly`, or `available`.
          * 
          * @return builder
          * 

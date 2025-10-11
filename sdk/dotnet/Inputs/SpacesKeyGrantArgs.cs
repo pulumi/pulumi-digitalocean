@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class SpacesKeyGrantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+        /// Name of the bucket associated with this grant. In case of a `Fullaccess` permission, this value should be an empty string.
         /// </summary>
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
 
         /// <summary>
-        /// Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+        /// Permission associated with this grant. Values can be `Read`, `Readwrite`, `Fullaccess`.
         /// </summary>
         [Input("permission", required: true)]
         public Input<string> Permission { get; set; } = null!;

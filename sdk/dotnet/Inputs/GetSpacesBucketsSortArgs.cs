@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetSpacesBucketsSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+        /// Sort the images by this key. This may be one of `BucketDomainName`, `Name`, `Region`, or `Urn`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

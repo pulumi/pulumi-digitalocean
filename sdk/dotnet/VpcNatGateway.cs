@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-        /// `public_gateways` embedding the reserved `ipv4` addresses.
+        /// `PublicGateways` embedding the reserved `Ipv4` addresses.
         /// </summary>
         [Output("egresses")]
         public Output<ImmutableArray<Outputs.VpcNatGatewayEgress>> Egresses { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-        /// `public_gateways` embedding the reserved `ipv4` addresses.
+        /// `PublicGateways` embedding the reserved `Ipv4` addresses.
         /// </summary>
         public InputList<Inputs.VpcNatGatewayEgressGetArgs> Egresses
         {

@@ -20,7 +20,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// The authentication requirement can be met by either setting the
     /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
-    /// the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+    /// the provider's `SpacesAccessId` and `SpacesSecretKey` arguments to the
     /// access ID and secret you generate via the DigitalOcean control panel. For
     /// example:
     /// 
@@ -128,7 +128,7 @@ namespace Pulumi.DigitalOcean
     public partial class SpacesBucket : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
+        /// Canned ACL applied on bucket creation: `Private` or `public-read` (Defaults to `Private`)
         /// </summary>
         [Output("acl")]
         public Output<string?> Acl { get; private set; } = null!;
@@ -158,7 +158,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
-        /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+        /// Unless `True`, the bucket will only be destroyed if empty (Defaults to `False`)
         /// </summary>
         [Output("forceDestroy")]
         public Output<bool?> ForceDestroy { get; private set; } = null!;
@@ -176,7 +176,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Output("region")]
         public Output<string?> Region { get; private set; } = null!;
@@ -234,7 +234,7 @@ namespace Pulumi.DigitalOcean
     public sealed class SpacesBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
+        /// Canned ACL applied on bucket creation: `Private` or `public-read` (Defaults to `Private`)
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -253,7 +253,7 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
-        /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+        /// Unless `True`, the bucket will only be destroyed if empty (Defaults to `False`)
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -277,7 +277,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Input("region")]
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }
@@ -297,7 +297,7 @@ namespace Pulumi.DigitalOcean
     public sealed class SpacesBucketState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
+        /// Canned ACL applied on bucket creation: `Private` or `public-read` (Defaults to `Private`)
         /// </summary>
         [Input("acl")]
         public Input<string>? Acl { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
+        /// Unless `True`, the bucket will only be destroyed if empty (Defaults to `False`)
         /// </summary>
         [Input("forceDestroy")]
         public Input<bool>? ForceDestroy { get; set; }
@@ -358,7 +358,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The region where the bucket resides (Defaults to `nyc3`)
+        /// The region where the bucket resides (Defaults to `Nyc3`)
         /// </summary>
         [Input("region")]
         public InputUnion<string, Pulumi.DigitalOcean.Region>? Region { get; set; }

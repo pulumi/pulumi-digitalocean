@@ -38,14 +38,14 @@ public final class GetSpacesBucketsFilterArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     public Output<String> key() {
@@ -141,7 +141,7 @@ public final class GetSpacesBucketsFilterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+         * @param key Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class GetSpacesBucketsFilterArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+         * @param key Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
          * 
          * @return builder
          * 

@@ -20,7 +20,7 @@ public final class GetVolumeSnapshotPlainArgs extends com.pulumi.resources.Invok
      * 
      * &gt; **NOTE:** If more or less than a single match is returned by the search,
      * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      * 
      */
     @Import(name="mostRecent")
@@ -31,7 +31,7 @@ public final class GetVolumeSnapshotPlainArgs extends com.pulumi.resources.Invok
      * 
      * &gt; **NOTE:** If more or less than a single match is returned by the search,
      * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      * 
      */
     public Optional<Boolean> mostRecent() {
@@ -115,7 +115,7 @@ public final class GetVolumeSnapshotPlainArgs extends com.pulumi.resources.Invok
          * 
          * &gt; **NOTE:** If more or less than a single match is returned by the search,
          * the provider will fail. Ensure that your search is specific enough to return
-         * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+         * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
          * 
          * @return builder
          * 

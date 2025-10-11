@@ -25,14 +25,14 @@ public final class GetSshKeysFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     @Import(name="key", required=true)
     private String key;
 
     /**
-     * @return Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+     * @return Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
      * 
      */
     public String key() {
@@ -94,7 +94,7 @@ public final class GetSshKeysFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param key Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+         * @param key Filter the SSH Keys by this key. This may be one of `name`, `publicKey`, or `fingerprint`.
          * 
          * @return builder
          * 

@@ -13,14 +13,14 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetRegionsSortInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public Input<string>? Direction { get; set; }
 
         /// <summary>
-        /// Sort the regions by this key. This may be one of `slug`,
-        /// `name`, or `available`.
+        /// Sort the regions by this key. This may be one of `Slug`,
+        /// `Name`, or `Available`.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;

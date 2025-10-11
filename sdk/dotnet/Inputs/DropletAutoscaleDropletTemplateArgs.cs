@@ -75,7 +75,7 @@ namespace Pulumi.DigitalOcean.Inputs
 
         /// <summary>
         /// VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
-        /// from the specified `region` (default VPC).
+        /// from the specified `Region` (default VPC).
         /// </summary>
         [Input("vpcUuid")]
         public Input<string>? VpcUuid { get; set; }

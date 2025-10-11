@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int>? Hour { get; set; }
 
         /// <summary>
-        /// The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+        /// The backup plan used for the Droplet. The plan can be either `Daily` or `Weekly`.
         /// </summary>
         [Input("plan")]
         public Input<string>? Plan { get; set; }

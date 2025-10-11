@@ -14,15 +14,15 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerStickySessions
     {
         /// <summary>
-        /// The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+        /// The name to be used for the cookie sent to the client. This attribute is required when using `Cookies` for the sticky sessions type.
         /// </summary>
         public readonly string? CookieName;
         /// <summary>
-        /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+        /// The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `Cookies` for the sticky sessions type.
         /// </summary>
         public readonly int? CookieTtlSeconds;
         /// <summary>
-        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+        /// An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `Cookies` or `None`. If not specified, the default value is `None`.
         /// </summary>
         public readonly string? Type;
 

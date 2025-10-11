@@ -252,14 +252,14 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kubeconfigExpireSeconds);
     }
     /**
-     * A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+     * A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      * 
      */
     @Export(name="maintenancePolicy", refs={KubernetesClusterMaintenancePolicy.class}, tree="[0]")
     private Output<KubernetesClusterMaintenancePolicy> maintenancePolicy;
 
     /**
-     * @return A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
+     * @return A block representing the cluster&#39;s maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `autoUpgrade` must be set to `true` for this to have an effect.
      * 
      */
     public Output<KubernetesClusterMaintenancePolicy> maintenancePolicy() {

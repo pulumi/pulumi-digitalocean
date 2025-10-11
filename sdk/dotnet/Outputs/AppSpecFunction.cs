@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecFunctionAlert> Alerts;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecFunctionBitbucket? Bitbucket;
         /// <summary>
@@ -30,15 +30,15 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecFunctionEnv> Envs;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `Git`, `Github` or `Gitlab` may be set.
         /// </summary>
         public readonly Outputs.AppSpecFunctionGit? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecFunctionGithub? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.AppSpecFunctionGitlab? Gitlab;
         /// <summary>

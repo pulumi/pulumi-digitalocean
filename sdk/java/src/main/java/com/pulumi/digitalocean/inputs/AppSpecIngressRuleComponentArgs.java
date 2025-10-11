@@ -47,14 +47,14 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
     }
 
     /**
-     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      * 
      */
     @Import(name="rewrite")
     private @Nullable Output<String> rewrite;
 
     /**
-     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+     * @return An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
      * 
      */
     public Optional<Output<String>> rewrite() {
@@ -130,7 +130,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class AppSpecIngressRuleComponentArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+         * @param rewrite An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preservePathPrefix`.
          * 
          * @return builder
          * 

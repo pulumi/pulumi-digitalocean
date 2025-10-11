@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// Provides a DigitalOcean Floating IP to represent a publicly-accessible static IP addresses that can be mapped to one of your Droplets.
     /// 
-    /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `droplet_id` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
+    /// &gt; **NOTE:** Floating IPs can be assigned to a Droplet either directly on the `digitalocean.FloatingIp` resource by setting a `DropletId` or using the `digitalocean.FloatingIpAssignment` resource, but the two cannot be used together.
     /// 
     /// ## Example Usage
     /// 

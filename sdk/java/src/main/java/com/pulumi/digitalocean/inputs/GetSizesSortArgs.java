@@ -33,7 +33,7 @@ public final class GetSizesSortArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     @Import(name="key", required=true)
@@ -41,7 +41,7 @@ public final class GetSizesSortArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Sort the sizes by this key. This may be one of `slug`,
-     * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+     * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
      * 
      */
     public Output<String> key() {
@@ -96,7 +96,7 @@ public final class GetSizesSortArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param key Sort the sizes by this key. This may be one of `slug`,
-         * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+         * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class GetSizesSortArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param key Sort the sizes by this key. This may be one of `slug`,
-         * `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+         * `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
          * 
          * @return builder
          * 

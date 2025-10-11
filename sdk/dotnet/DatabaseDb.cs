@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
+    /// Provides a DigitalOcean database resource. When creating a new database cluster, a default database with name `Defaultdb` will be created. Then, this resource can be used to provide additional database inside the cluster.
     /// 
     /// ## Example Usage
     /// 

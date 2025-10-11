@@ -17,7 +17,7 @@ namespace Pulumi.DigitalOcean
         /// is useful if the Droplet in question is not managed by this provider or you need to
         /// utilize any of the Droplet's data.
         /// 
-        /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
         /// error is triggered if more than one Droplet is found.
         /// 
         /// ## Example Usage
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
         /// is useful if the Droplet in question is not managed by this provider or you need to
         /// utilize any of the Droplet's data.
         /// 
-        /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
         /// error is triggered if more than one Droplet is found.
         /// 
         /// ## Example Usage
@@ -161,7 +161,7 @@ namespace Pulumi.DigitalOcean
         /// is useful if the Droplet in question is not managed by this provider or you need to
         /// utilize any of the Droplet's data.
         /// 
-        /// **Note:** This data source returns a single Droplet. When specifying a `tag`, an
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
         /// error is triggered if more than one Droplet is found.
         /// 
         /// ## Example Usage
