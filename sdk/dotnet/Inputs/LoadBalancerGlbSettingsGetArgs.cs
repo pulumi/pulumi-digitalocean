@@ -37,13 +37,13 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+        /// An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `Http` and `443` for `Https`.
         /// </summary>
         [Input("targetPort", required: true)]
         public Input<int> TargetPort { get; set; } = null!;
 
         /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `Http` and `Https`.
         /// </summary>
         [Input("targetProtocol", required: true)]
         public Input<string> TargetProtocol { get; set; } = null!;

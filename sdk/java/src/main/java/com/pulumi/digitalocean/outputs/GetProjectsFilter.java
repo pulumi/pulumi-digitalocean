@@ -23,7 +23,7 @@ public final class GetProjectsFilter {
     private @Nullable Boolean all;
     /**
      * @return Filter the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, `environment`, or `is_default`.
+     * `purpose`, `description`, `environment`, or `isDefault`.
      * 
      */
     private String key;
@@ -53,7 +53,7 @@ public final class GetProjectsFilter {
     }
     /**
      * @return Filter the projects by this key. This may be one of `name`,
-     * `purpose`, `description`, `environment`, or `is_default`.
+     * `purpose`, `description`, `environment`, or `isDefault`.
      * 
      */
     public String key() {

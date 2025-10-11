@@ -2794,7 +2794,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2848,7 +2848,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2902,7 +2902,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -2956,7 +2956,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3010,7 +3010,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3064,7 +3064,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -3118,7 +3118,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
-     * also uses the regular expression `match_by` mode in order to match domains by suffix.)
+     * also uses the regular expression `matchBy` mode in order to match domains by suffix.)
      * 
      * <pre>
      * {@code
@@ -12890,7 +12890,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -12950,7 +12950,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13010,7 +13010,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13070,7 +13070,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13130,7 +13130,7 @@ public final class DigitaloceanFunctions {
      * ## Example Usage
      * 
      * The following example retrieves a text object (which must have a `Content-Type`
-     * value starting with `text/`) and uses it as the `user_data` for a Droplet:
+     * value starting with `text/`) and uses it as the `userData` for a Droplet:
      * 
      * <pre>
      * {@code
@@ -13180,7 +13180,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", TypeShape.of(GetSpacesBucketObjectResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13189,7 +13189,7 @@ public final class DigitaloceanFunctions {
         return getSpacesBucketObjects(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13198,7 +13198,7 @@ public final class DigitaloceanFunctions {
         return getSpacesBucketObjectsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13207,7 +13207,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 
@@ -13216,7 +13216,7 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
+     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
      * 
      * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
      * 

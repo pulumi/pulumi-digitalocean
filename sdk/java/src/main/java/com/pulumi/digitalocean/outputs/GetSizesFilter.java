@@ -23,8 +23,8 @@ public final class GetSizesFilter {
     private @Nullable Boolean all;
     /**
      * @return Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     private String key;
@@ -54,8 +54,8 @@ public final class GetSizesFilter {
     }
     /**
      * @return Filter the sizes by this key. This may be one of `slug`,
-     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-     * `price_hourly`, or `available`.
+     * `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+     * `priceHourly`, or `available`.
      * 
      */
     public String key() {

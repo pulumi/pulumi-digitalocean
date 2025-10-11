@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         [Input("bitbucket")]
         public Input<Inputs.AppSpecJobBitbucketArgs>? Bitbucket { get; set; }
@@ -61,25 +61,25 @@ namespace Pulumi.DigitalOcean.Inputs
         }
 
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `Git`, `Github` or `Gitlab` may be set.
         /// </summary>
         [Input("git")]
         public Input<Inputs.AppSpecJobGitArgs>? Git { get; set; }
 
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         [Input("github")]
         public Input<Inputs.AppSpecJobGithubArgs>? Github { get; set; }
 
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         [Input("gitlab")]
         public Input<Inputs.AppSpecJobGitlabArgs>? Gitlab { get; set; }
 
         /// <summary>
-        /// An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+        /// An image to use as the component's source. Only one of `Git`, `Github`, `Gitlab`, or `Image` may be set.
         /// </summary>
         [Input("image")]
         public Input<Inputs.AppSpecJobImageArgs>? Image { get; set; }

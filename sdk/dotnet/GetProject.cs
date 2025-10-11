@@ -12,7 +12,7 @@ namespace Pulumi.DigitalOcean
     public static class GetProject
     {
         /// <summary>
-        /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+        /// Get information on a single DigitalOcean project. If neither the `Id` nor `Name` attributes are provided,
         /// then this data source returns the default project.
         /// 
         /// ## Example Usage
@@ -39,7 +39,7 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+        /// Get information on a single DigitalOcean project. If neither the `Id` nor `Name` attributes are provided,
         /// then this data source returns the default project.
         /// 
         /// ## Example Usage
@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("digitalocean:index/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a single DigitalOcean project. If neither the `id` nor `name` attributes are provided,
+        /// Get information on a single DigitalOcean project. If neither the `Id` nor `Name` attributes are provided,
         /// then this data source returns the default project.
         /// 
         /// ## Example Usage

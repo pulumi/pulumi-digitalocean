@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean.Outputs
     {
         public readonly bool? All;
         /// <summary>
-        /// Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        /// Filter the SSH Keys by this key. This may be one of `Name`, `PublicKey`, or `Fingerprint`.
         /// </summary>
         public readonly string Key;
         public readonly string? MatchBy;

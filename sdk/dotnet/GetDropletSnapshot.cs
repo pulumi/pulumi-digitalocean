@@ -194,7 +194,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; **NOTE:** If more or less than a single match is returned by the search,
         /// the update will fail. Ensure that your search is specific enough to return
-        /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+        /// a single Droplet snapshot ID only, or use `MostRecent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.DigitalOcean
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+        /// A "slug" representing a DigitalOcean region (e.g. `Nyc1`). If set, only Droplet snapshots available in the region will be returned.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// &gt; **NOTE:** If more or less than a single match is returned by the search,
         /// the update will fail. Ensure that your search is specific enough to return
-        /// a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
+        /// a single Droplet snapshot ID only, or use `MostRecent` to choose the most recent one.
         /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
@@ -248,7 +248,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
+        /// A "slug" representing a DigitalOcean region (e.g. `Nyc1`). If set, only Droplet snapshots available in the region will be returned.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

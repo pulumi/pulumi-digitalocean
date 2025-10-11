@@ -10,9 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
+    /// Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `Doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
     /// 
-    /// &gt; **NOTE:** Any new users created will always have `normal` role, only the default user that comes with database cluster creation has `primary` role. Additional permissions must be managed manually.
+    /// &gt; **NOTE:** Any new users created will always have `Normal` role, only the default user that comes with database cluster creation has `Primary` role. Additional permissions must be managed manually.
     /// 
     /// ## Example Usage
     /// 
@@ -170,7 +170,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> ClusterId { get; private set; } = null!;
 
         /// <summary>
-        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `MysqlNativePassword` or `CachingSha2Password` (this is the default).
         /// </summary>
         [Output("mysqlAuthPlugin")]
         public Output<string?> MysqlAuthPlugin { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Contains optional settings for the user.
-        /// The `settings` block is documented below.
+        /// The `Settings` block is documented below.
         /// </summary>
         [Output("settings")]
         public Output<ImmutableArray<Outputs.DatabaseUserSetting>> Settings { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> ClusterId { get; set; } = null!;
 
         /// <summary>
-        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `MysqlNativePassword` or `CachingSha2Password` (this is the default).
         /// </summary>
         [Input("mysqlAuthPlugin")]
         public Input<string>? MysqlAuthPlugin { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Contains optional settings for the user.
-        /// The `settings` block is documented below.
+        /// The `Settings` block is documented below.
         /// </summary>
         public InputList<Inputs.DatabaseUserSettingArgs> Settings
         {
@@ -330,7 +330,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? ClusterId { get; set; }
 
         /// <summary>
-        /// The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
+        /// The authentication method to use for connections to the MySQL user account. The valid values are `MysqlNativePassword` or `CachingSha2Password` (this is the default).
         /// </summary>
         [Input("mysqlAuthPlugin")]
         public Input<string>? MysqlAuthPlugin { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Contains optional settings for the user.
-        /// The `settings` block is documented below.
+        /// The `Settings` block is documented below.
         /// </summary>
         public InputList<Inputs.DatabaseUserSettingGetArgs> Settings
         {

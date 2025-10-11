@@ -60,14 +60,14 @@ public class UptimeCheck extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+     * An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
      * 
      */
     @Export(name="regions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> regions;
 
     /**
-     * @return An array containing the selected regions to perform healthchecks from: &#34;us_east&#34;, &#34;us_west&#34;, &#34;eu_west&#34;, &#34;se_asia&#34;
+     * @return An array containing the selected regions to perform healthchecks from: &#34;usEast&#34;, &#34;usWest&#34;, &#34;euWest&#34;, &#34;seAsia&#34;
      * 
      */
     public Output<Optional<List<String>>> regions() {

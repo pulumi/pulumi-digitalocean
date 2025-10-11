@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecAlertDestinations? Destinations;
         /// <summary>
-        /// Determines whether or not the alert is disabled (default: `false`).
+        /// Determines whether or not the alert is disabled (default: `False`).
         /// </summary>
         public readonly bool? Disabled;
         /// <summary>

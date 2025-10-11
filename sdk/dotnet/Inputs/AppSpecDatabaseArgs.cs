@@ -13,7 +13,7 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class AppSpecDatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `ClusterName` is not set, a new cluster will be provisioned.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }

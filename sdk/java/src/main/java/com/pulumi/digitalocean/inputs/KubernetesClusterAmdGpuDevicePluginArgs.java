@@ -16,7 +16,7 @@ public final class KubernetesClusterAmdGpuDevicePluginArgs extends com.pulumi.re
 
     /**
      * Boolean flag whether the component should be enabled or not.
-     * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     @Import(name="enabled", required=true)
@@ -24,7 +24,7 @@ public final class KubernetesClusterAmdGpuDevicePluginArgs extends com.pulumi.re
 
     /**
      * @return Boolean flag whether the component should be enabled or not.
-     * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+     * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
      * 
      */
     public Output<Boolean> enabled() {
@@ -57,7 +57,7 @@ public final class KubernetesClusterAmdGpuDevicePluginArgs extends com.pulumi.re
 
         /**
          * @param enabled Boolean flag whether the component should be enabled or not.
-         * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+         * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
          * 
          * @return builder
          * 
@@ -69,7 +69,7 @@ public final class KubernetesClusterAmdGpuDevicePluginArgs extends com.pulumi.re
 
         /**
          * @param enabled Boolean flag whether the component should be enabled or not.
-         * `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+         * `amdGpuDeviceMetricsExporterPlugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
          * 
          * @return builder
          * 

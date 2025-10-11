@@ -21,7 +21,7 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
      * 
      * &gt; **NOTE:** If more or less than a single match is returned by the search,
      * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      * 
      */
     @Import(name="mostRecent")
@@ -32,7 +32,7 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
      * 
      * &gt; **NOTE:** If more or less than a single match is returned by the search,
      * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
      * 
      */
     public Optional<Output<Boolean>> mostRecent() {
@@ -116,7 +116,7 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
          * 
          * &gt; **NOTE:** If more or less than a single match is returned by the search,
          * the provider will fail. Ensure that your search is specific enough to return
-         * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+         * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
          * 
          * &gt; **NOTE:** If more or less than a single match is returned by the search,
          * the provider will fail. Ensure that your search is specific enough to return
-         * a single volume snapshot ID only, or use `most_recent` to choose the most recent one.
+         * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
          * 
          * @return builder
          * 

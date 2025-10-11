@@ -29,7 +29,7 @@ import javax.annotation.Nullable;
  * 
  * The authentication requirement can be met by either setting the
  * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
- * the provider&#39;s `spaces_access_id` and `spaces_secret_key` arguments to the
+ * the provider&#39;s `spacesAccessId` and `spacesSecretKey` arguments to the
  * access ID and secret you generate via the DigitalOcean control panel. For
  * example:
  * 
@@ -145,14 +145,14 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
         return this.bucket;
     }
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     @Export(name="cacheControl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheControl;
 
     /**
-     * @return Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * @return Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     public Output<Optional<String>> cacheControl() {
@@ -187,14 +187,14 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.contentBase64);
     }
     /**
-     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     @Export(name="contentDisposition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentDisposition;
 
     /**
-     * @return Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * @return Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     public Output<Optional<String>> contentDisposition() {
@@ -260,7 +260,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      * 
-     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
      * 
      * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      * 
@@ -272,7 +272,7 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
      * @return Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      * 
-     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
      * 
      * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      * 
