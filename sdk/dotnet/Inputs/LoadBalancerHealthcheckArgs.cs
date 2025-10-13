@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<int> Port { get; set; } = null!;
 
         /// <summary>
-        /// The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
+        /// The protocol used for health checks sent to the backend Droplets. The possible values are `Http`, `Https` or `Tcp`.
         /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;

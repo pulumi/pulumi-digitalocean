@@ -192,7 +192,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
      * 
      */
     @Export(name="domains", refs={List.class,String.class}, tree="[0,1]")
@@ -201,7 +201,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     /**
      * @return List of fully qualified domain names (FQDNs) for
      * which the certificate will be issued. The domains must be managed using
-     * DigitalOcean&#39;s DNS. Only valid when type is `lets_encrypt`.
+     * DigitalOcean&#39;s DNS. Only valid when type is `letsEncrypt`.
      * 
      */
     public Output<Optional<List<String>>> domains() {
@@ -289,7 +289,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -297,7 +297,7 @@ public class Certificate extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of certificate to provision. Can be either
-     * `custom` or `lets_encrypt`. Defaults to `custom`.
+     * `custom` or `letsEncrypt`. Defaults to `custom`.
      * 
      */
     public Output<Optional<String>> type() {

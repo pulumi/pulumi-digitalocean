@@ -17,7 +17,7 @@ public final class GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
      */
     private @Nullable String password;
     /**
-     * @return Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+     * @return Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
      * 
      */
     private @Nullable String user;
@@ -31,7 +31,7 @@ public final class GetAppSpecServiceLogDestinationOpenSearchBasicAuth {
         return Optional.ofNullable(this.password);
     }
     /**
-     * @return Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+     * @return Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when clusterName is set.
      * 
      */
     public Optional<String> user() {

@@ -36,7 +36,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-     * `public_gateways` embedding the reserved `ipv4` addresses.
+     * `publicGateways` embedding the reserved `ipv4` addresses.
      * 
      */
     @Import(name="egresses")
@@ -44,7 +44,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-     * `public_gateways` embedding the reserved `ipv4` addresses.
+     * `publicGateways` embedding the reserved `ipv4` addresses.
      * 
      */
     public Optional<Output<List<VpcNatGatewayEgressArgs>>> egresses() {
@@ -261,7 +261,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-         * `public_gateways` embedding the reserved `ipv4` addresses.
+         * `publicGateways` embedding the reserved `ipv4` addresses.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-         * `public_gateways` embedding the reserved `ipv4` addresses.
+         * `publicGateways` embedding the reserved `ipv4` addresses.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param egresses Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-         * `public_gateways` embedding the reserved `ipv4` addresses.
+         * `publicGateways` embedding the reserved `ipv4` addresses.
          * 
          * @return builder
          * 

@@ -16,11 +16,11 @@ namespace Pulumi.DigitalOcean
         /// If no filters are specified, all Spaces buckets will be returned.
         /// 
         /// Note: You can use the `digitalocean.SpacesBucket` data source to
-        /// obtain metadata about a single bucket if you already know its `name` and `region`.
+        /// obtain metadata about a single bucket if you already know its `Name` and `Region`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter buckets.
         /// 
         /// Get all buckets in a region:
         /// 
@@ -93,11 +93,11 @@ namespace Pulumi.DigitalOcean
         /// If no filters are specified, all Spaces buckets will be returned.
         /// 
         /// Note: You can use the `digitalocean.SpacesBucket` data source to
-        /// obtain metadata about a single bucket if you already know its `name` and `region`.
+        /// obtain metadata about a single bucket if you already know its `Name` and `Region`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter buckets.
         /// 
         /// Get all buckets in a region:
         /// 
@@ -170,11 +170,11 @@ namespace Pulumi.DigitalOcean
         /// If no filters are specified, all Spaces buckets will be returned.
         /// 
         /// Note: You can use the `digitalocean.SpacesBucket` data source to
-        /// obtain metadata about a single bucket if you already know its `name` and `region`.
+        /// obtain metadata about a single bucket if you already know its `Name` and `Region`.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter buckets.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter buckets.
         /// 
         /// Get all buckets in a region:
         /// 
@@ -251,7 +251,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetSpacesBucketsFilterArgs> Filters
         {
@@ -264,7 +264,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetSpacesBucketsSortArgs> Sorts
         {
@@ -285,7 +285,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSpacesBucketsFilterInputArgs> Filters
         {
@@ -298,7 +298,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSpacesBucketsSortInputArgs> Sorts
         {
@@ -317,7 +317,7 @@ namespace Pulumi.DigitalOcean
     public sealed class GetSpacesBucketsResult
     {
         /// <summary>
-        /// A list of Spaces buckets satisfying any `filter` and `sort` criteria. Each bucket has the following attributes:
+        /// A list of Spaces buckets satisfying any `Filter` and `Sort` criteria. Each bucket has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSpacesBucketsBucketResult> Buckets;
         public readonly ImmutableArray<Outputs.GetSpacesBucketsFilterResult> Filters;

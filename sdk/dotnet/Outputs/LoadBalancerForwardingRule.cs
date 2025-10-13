@@ -14,7 +14,7 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class LoadBalancerForwardingRule
     {
         /// <summary>
-        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
+        /// **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `CertificateName` instead.
         /// </summary>
         public readonly string? CertificateId;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int EntryPort;
         /// <summary>
-        /// The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
+        /// The protocol used for traffic to the Load Balancer. The possible values are: `Http`, `Https`, `Http2`, `Http3`, `Tcp`, or `Udp`.
         /// </summary>
         public readonly string EntryProtocol;
         /// <summary>
@@ -34,11 +34,11 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int TargetPort;
         /// <summary>
-        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
+        /// The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `Http`, `Https`, `Http2`, `Tcp`, or `Udp`.
         /// </summary>
         public readonly string TargetProtocol;
         /// <summary>
-        /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
+        /// A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `False`.
         /// </summary>
         public readonly bool? TlsPassthrough;
 

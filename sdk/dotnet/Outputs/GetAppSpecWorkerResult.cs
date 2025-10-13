@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerAutoscalingResult? Autoscaling;
         /// <summary>
-        /// A Bitbucket repo to use as component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
+        /// A Bitbucket repo to use as component's source. Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set. To read your repo, App Platform must be authorized to access your Bitbucket account. Go to this URL to link App Platform to your Bitbucket account: `https://cloud.digitalocean.com/apps/bitbucket/install`.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerBitbucketResult? Bitbucket;
         /// <summary>
@@ -42,19 +42,19 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecWorkerEnvResult> Envs;
         /// <summary>
-        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `git`, `github` or `gitlab`  may be set.
+        /// A Git repo to use as the component's source. The repository must be able to be cloned without authentication.  Only one of `Git`, `Github` or `Gitlab`  may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerGitResult? Git;
         /// <summary>
-        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerGithubResult? Github;
         /// <summary>
-        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerGitlabResult? Gitlab;
         /// <summary>
-        /// An image to use as the component's source. Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+        /// An image to use as the component's source. Only one of `Git`, `Github`, `Bitbucket`, `Gitlab`, or `Image` may be set.
         /// </summary>
         public readonly Outputs.GetAppSpecWorkerImageResult? Image;
         /// <summary>

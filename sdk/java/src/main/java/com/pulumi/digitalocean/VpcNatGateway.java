@@ -100,7 +100,7 @@ public class VpcNatGateway extends com.pulumi.resources.CustomResource {
     }
     /**
      * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-     * `public_gateways` embedding the reserved `ipv4` addresses.
+     * `publicGateways` embedding the reserved `ipv4` addresses.
      * 
      */
     @Export(name="egresses", refs={List.class,VpcNatGatewayEgress.class}, tree="[0,1]")
@@ -108,7 +108,7 @@ public class VpcNatGateway extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
-     * `public_gateways` embedding the reserved `ipv4` addresses.
+     * `publicGateways` embedding the reserved `ipv4` addresses.
      * 
      */
     public Output<List<VpcNatGatewayEgress>> egresses() {

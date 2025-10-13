@@ -48,14 +48,14 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     @Import(name="cacheControl")
     private @Nullable Output<String> cacheControl;
 
     /**
-     * @return Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+     * @return Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
      * 
      */
     public Optional<Output<String>> cacheControl() {
@@ -93,14 +93,14 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     @Import(name="contentDisposition")
     private @Nullable Output<String> contentDisposition;
 
     /**
-     * @return Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+     * @return Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
      * 
      */
     public Optional<Output<String>> contentDisposition() {
@@ -171,7 +171,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
      * Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      * 
-     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
      * 
      * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      * 
@@ -183,7 +183,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
      * @return Allow the object to be deleted by removing any legal hold on any object version.
      * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
      * 
-     * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
      * 
      * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
      * 
@@ -365,7 +365,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
+         * @param cacheControl Specifies caching behavior along the request/reply chain Read [w3c cacheControl](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param contentDisposition Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+         * @param contentDisposition Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param contentDisposition Specifies presentational information for the object. Read [w3c content_disposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
+         * @param contentDisposition Specifies presentational information for the object. Read [w3c contentDisposition](http://www.w3.org/Protocols/rfc2616/rfc2616-sec19.html#sec19.5.1) for further information.
          * 
          * @return builder
          * 
@@ -536,7 +536,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
          * @param forceDestroy Allow the object to be deleted by removing any legal hold on any object version.
          * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
          * 
-         * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+         * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
          * 
          * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
          * 
@@ -552,7 +552,7 @@ public final class SpacesBucketObjectState extends com.pulumi.resources.Resource
          * @param forceDestroy Allow the object to be deleted by removing any legal hold on any object version.
          * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
          * 
-         * If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+         * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
          * 
          * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
          * 

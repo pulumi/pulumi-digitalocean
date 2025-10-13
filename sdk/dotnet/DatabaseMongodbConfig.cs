@@ -72,7 +72,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> DefaultReadConcern { get; private set; } = null!;
 
         /// <summary>
-        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
+        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `Majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
         /// </summary>
         [Output("defaultWriteConcern")]
         public Output<string> DefaultWriteConcern { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DefaultReadConcern { get; set; }
 
         /// <summary>
-        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
+        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `Majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
         /// </summary>
         [Input("defaultWriteConcern")]
         public Input<string>? DefaultWriteConcern { get; set; }
@@ -198,7 +198,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DefaultReadConcern { get; set; }
 
         /// <summary>
-        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
+        /// Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `Majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
         /// </summary>
         [Input("defaultWriteConcern")]
         public Input<string>? DefaultWriteConcern { get; set; }

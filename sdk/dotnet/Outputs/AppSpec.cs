@@ -19,11 +19,11 @@ namespace Pulumi.DigitalOcean.Outputs
         public readonly ImmutableArray<Outputs.AppSpecAlert> Alerts;
         public readonly ImmutableArray<Outputs.AppSpecDatabase> Databases;
         /// <summary>
-        /// A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+        /// A boolean indicating whether to disable the edge cache for this app. Default: `False`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         public readonly bool? DisableEdgeCache;
         /// <summary>
-        /// A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// A boolean indicating whether to disable email obfuscation for this app. Default: `False`. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         public readonly bool? DisableEmailObfuscation;
         /// <summary>
@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecEgress> Egresses;
         /// <summary>
-        /// A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+        /// A boolean, when set to `True`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `False`. Requires custom domains and applies to all the domains of the app.
         /// </summary>
         public readonly bool? EnhancedThreatControlEnabled;
         /// <summary>

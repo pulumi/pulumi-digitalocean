@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly Outputs.AppSpecWorkerLogDestinationOpenSearchBasicAuth BasicAuth;
         /// <summary>
-        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+        /// The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `ClusterName` is not set, a new cluster will be provisioned.
         /// </summary>
         public readonly string? ClusterName;
         /// <summary>

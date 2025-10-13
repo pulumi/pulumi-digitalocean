@@ -56,6 +56,8 @@ import * as utilities from "./utilities";
  * }});
  * ```
  *
+ * ### Multiple Components Example
+ *
  * ### Log Destination Example with Opensearch
  *
  * ```typescript

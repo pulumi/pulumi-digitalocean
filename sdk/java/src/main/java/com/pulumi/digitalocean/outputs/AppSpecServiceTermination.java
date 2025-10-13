@@ -14,7 +14,7 @@ public final class AppSpecServiceTermination {
     /**
      * @return The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
      * 
-     * A `static_site` can contain:
+     * A `staticSite` can contain:
      * 
      */
     private @Nullable Integer drainSeconds;
@@ -30,7 +30,7 @@ public final class AppSpecServiceTermination {
     /**
      * @return The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
      * 
-     * A `static_site` can contain:
+     * A `staticSite` can contain:
      * 
      */
     public Optional<Integer> drainSeconds() {

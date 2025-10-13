@@ -81,7 +81,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> StorageUsageBytes { get; private set; } = null!;
 
         /// <summary>
-        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// The slug identifier for the subscription tier to use (`Starter`, `Basic`, or `Professional`)
         /// </summary>
         [Output("subscriptionTierSlug")]
         public Output<string> SubscriptionTierSlug { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// The slug identifier for the subscription tier to use (`Starter`, `Basic`, or `Professional`)
         /// </summary>
         [Input("subscriptionTierSlug", required: true)]
         public Input<string> SubscriptionTierSlug { get; set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? StorageUsageBytes { get; set; }
 
         /// <summary>
-        /// The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
+        /// The slug identifier for the subscription tier to use (`Starter`, `Basic`, or `Professional`)
         /// </summary>
         [Input("subscriptionTierSlug")]
         public Input<string>? SubscriptionTierSlug { get; set; }

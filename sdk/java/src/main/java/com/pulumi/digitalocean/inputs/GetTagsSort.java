@@ -31,14 +31,14 @@ public final class GetTagsSort extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+     * Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      * 
      */
     @Import(name="key", required=true)
     private String key;
 
     /**
-     * @return Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+     * @return Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
      * 
      */
     public String key() {
@@ -82,7 +82,7 @@ public final class GetTagsSort extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param key Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+         * @param key Sort the tags by this key. This may be one of `name`, `totalResourceCount`,  `dropletsCount`, `imagesCount`, `volumesCount`, `volumeSnapshotsCount`, or `databasesCount`.
          * 
          * @return builder
          * 

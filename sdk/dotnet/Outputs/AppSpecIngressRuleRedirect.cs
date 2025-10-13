@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly int? RedirectCode;
         /// <summary>
-        /// The scheme to redirect to. Supported values are `http` or `https`
+        /// The scheme to redirect to. Supported values are `Http` or `Https`
         /// </summary>
         public readonly string? Scheme;
         /// <summary>

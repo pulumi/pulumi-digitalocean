@@ -206,12 +206,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly int Port;
         /// <summary>
-        /// Same as `host`, but only accessible from resources within the account and in the same region.
+        /// Same as `Host`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public readonly string PrivateHost;
         public readonly string PrivateNetworkUuid;
         /// <summary>
-        /// Same as `uri`, but only accessible from resources within the account and in the same region.
+        /// Same as `Uri`, but only accessible from resources within the account and in the same region.
         /// </summary>
         public readonly string PrivateUri;
         public readonly string Region;

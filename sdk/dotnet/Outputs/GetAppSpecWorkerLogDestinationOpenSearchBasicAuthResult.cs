@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? Password;
         /// <summary>
-        /// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when cluster_name is set.
+        /// Username to authenticate with. Only required when endpoint is set. Defaults to doadmin when ClusterName is set.
         /// </summary>
         public readonly string? User;
 
