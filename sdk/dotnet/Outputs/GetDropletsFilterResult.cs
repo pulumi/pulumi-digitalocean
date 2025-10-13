@@ -14,27 +14,27 @@ namespace Pulumi.DigitalOcean.Outputs
     public sealed class GetDropletsFilterResult
     {
         /// <summary>
-        /// Set to `true` to require that a field match all of the `values` instead of just one or more of
+        /// Set to `True` to require that a field match all of the `Values` instead of just one or more of
         /// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        /// that all of the `values` are present in the list or set.
+        /// that all of the `Values` are present in the list or set.
         /// </summary>
         public readonly bool? All;
         /// <summary>
-        /// Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-        /// `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        /// `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        /// `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+        /// Filter the Droplets by this key. This may be one of `Backups`, `CreatedAt`, `Disk`, `Id`,
+        /// `Image`, `Ipv4Address`, `Ipv4AddressPrivate`, `Ipv6`, `Ipv6Address`, `Ipv6AddressPrivate`, `Locked`,
+        /// `Memory`, `Monitoring`, `Name`, `PriceHourly`, `PriceMonthly`, `PrivateNetworking`, `Region`, `Size`,
+        /// `Status`, `Tags`, `Urn`, `Vcpus`, `VolumeIds`, or `VpcUuid`.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        /// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+        /// One of `Exact` (default), `Re`, or `Substring`. For string-typed fields, specify `Re` to
+        /// match by using the `Values` as regular expressions, or specify `Substring` to match by treating the `Values` as
         /// substrings to find within the string field.
         /// </summary>
         public readonly string? MatchBy;
         /// <summary>
-        /// A list of values to match against the `key` field. Only retrieves Droplets
-        /// where the `key` field takes on one or more of the values provided here.
+        /// A list of values to match against the `Key` field. Only retrieves Droplets
+        /// where the `Key` field takes on one or more of the values provided here.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

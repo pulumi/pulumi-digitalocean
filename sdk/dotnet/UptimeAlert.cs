@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
         public Output<string> CheckId { get; private set; } = null!;
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+        /// The comparison operator used against the alert's threshold. Must be one of `GreaterThan` or `LessThan`.
         /// </summary>
         [Output("comparison")]
         public Output<string?> Comparison { get; private set; } = null!;
@@ -63,7 +63,7 @@ namespace Pulumi.DigitalOcean
         public Output<int?> Threshold { get; private set; } = null!;
 
         /// <summary>
-        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+        /// The type of health check to perform. Must be one of `Latency`, `Down`, `DownGlobal` or `SslExpiry`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.DigitalOcean
         public Input<string> CheckId { get; set; } = null!;
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+        /// The comparison operator used against the alert's threshold. Must be one of `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
@@ -157,7 +157,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+        /// The type of health check to perform. Must be one of `Latency`, `Down`, `DownGlobal` or `SslExpiry`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.DigitalOcean
         public Input<string>? CheckId { get; set; }
 
         /// <summary>
-        /// The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
+        /// The comparison operator used against the alert's threshold. Must be one of `GreaterThan` or `LessThan`.
         /// </summary>
         [Input("comparison")]
         public Input<string>? Comparison { get; set; }
@@ -213,7 +213,7 @@ namespace Pulumi.DigitalOcean
         public Input<int>? Threshold { get; set; }
 
         /// <summary>
-        /// The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
+        /// The type of health check to perform. Must be one of `Latency`, `Down`, `DownGlobal` or `SslExpiry`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

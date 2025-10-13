@@ -37,8 +37,8 @@ public final class GetImagesFilter extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */
@@ -46,8 +46,8 @@ public final class GetImagesFilter extends com.pulumi.resources.InvokeArgs {
     private String key;
 
     /**
-     * @return Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * @return Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */
@@ -132,8 +132,8 @@ public final class GetImagesFilter extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param key Filter the images by this key. This may be one of `distribution`, `error_message`,
-         * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+         * @param key Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+         * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
          * `tags`, or `type`.
          * 
          * @return builder

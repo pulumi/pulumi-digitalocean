@@ -22,8 +22,8 @@ public final class GetImagesFilter {
      */
     private @Nullable Boolean all;
     /**
-     * @return Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * @return Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */
@@ -53,8 +53,8 @@ public final class GetImagesFilter {
         return Optional.ofNullable(this.all);
     }
     /**
-     * @return Filter the images by this key. This may be one of `distribution`, `error_message`,
-     * `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+     * @return Filter the images by this key. This may be one of `distribution`, `errorMessage`,
+     * `id`, `image`, `minDiskSize`, `name`, `private`, `regions`, `sizeGigabytes`, `slug`, `status`,
      * `tags`, or `type`.
      * 
      */

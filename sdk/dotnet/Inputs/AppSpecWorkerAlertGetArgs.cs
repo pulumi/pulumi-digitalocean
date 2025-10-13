@@ -19,7 +19,7 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<Inputs.AppSpecWorkerAlertDestinationsGetArgs>? Destinations { get; set; }
 
         /// <summary>
-        /// Determines whether or not the alert is disabled (default: `false`).
+        /// Determines whether or not the alert is disabled (default: `False`).
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }

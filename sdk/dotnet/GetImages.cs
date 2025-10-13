@@ -20,11 +20,11 @@ namespace Pulumi.DigitalOcean
         /// of the image's data.
         /// 
         /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
-        /// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Ubuntu images:
         /// 
@@ -110,11 +110,11 @@ namespace Pulumi.DigitalOcean
         /// of the image's data.
         /// 
         /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
-        /// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Ubuntu images:
         /// 
@@ -200,11 +200,11 @@ namespace Pulumi.DigitalOcean
         /// of the image's data.
         /// 
         /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
-        /// about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
         /// 
         /// ## Example Usage
         /// 
-        /// Use the `filter` block with a `key` string and `values` list to filter images.
+        /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
         /// 
         /// For example to find all Ubuntu images:
         /// 
@@ -290,7 +290,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetImagesFilterArgs> Filters
         {
@@ -303,7 +303,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetImagesSortArgs> Sorts
         {
@@ -324,7 +324,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetImagesFilterInputArgs> Filters
         {
@@ -337,7 +337,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetImagesSortInputArgs> Sorts
         {
@@ -361,7 +361,7 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// A set of images satisfying any `filter` and `sort` criteria. Each image has the following attributes:
+        /// A set of images satisfying any `Filter` and `Sort` criteria. Each image has the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetImagesImageResult> Images;
         public readonly ImmutableArray<Outputs.GetImagesSortResult> Sorts;

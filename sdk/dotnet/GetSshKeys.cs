@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the SSH Keys' data.
         /// 
         /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-        /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
         /// 
         /// ## Example Usage
         /// 
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the SSH Keys' data.
         /// 
         /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-        /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
         /// 
         /// ## Example Usage
         /// 
@@ -154,7 +154,7 @@ namespace Pulumi.DigitalOcean
         /// utilize any of the SSH Keys' data.
         /// 
         /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-        /// about a single SSH Key if you already know the unique `name` to retrieve.
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
         /// 
         /// ## Example Usage
         /// 
@@ -224,7 +224,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public List<Inputs.GetSshKeysFilterArgs> Filters
         {
@@ -237,7 +237,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public List<Inputs.GetSshKeysSortArgs> Sorts
         {
@@ -258,7 +258,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Filter the results.
-        /// The `filter` block is documented below.
+        /// The `Filter` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSshKeysFilterInputArgs> Filters
         {
@@ -271,7 +271,7 @@ namespace Pulumi.DigitalOcean
 
         /// <summary>
         /// Sort the results.
-        /// The `sort` block is documented below.
+        /// The `Sort` block is documented below.
         /// </summary>
         public InputList<Inputs.GetSshKeysSortInputArgs> Sorts
         {

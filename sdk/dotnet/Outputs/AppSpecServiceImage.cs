@@ -18,7 +18,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecServiceImageDeployOnPush> DeployOnPushes;
         /// <summary>
-        /// The image digest. Cannot be specified if `tag` is provided.
+        /// The image digest. Cannot be specified if `Tag` is provided.
         /// </summary>
         public readonly string? Digest;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string Repository;
         /// <summary>
-        /// The repository tag. Defaults to `latest` if not provided.
+        /// The repository tag. Defaults to `Latest` if not provided.
         /// </summary>
         public readonly string? Tag;
 

@@ -171,10 +171,10 @@ public class Volume extends com.pulumi.resources.CustomResource {
      * Filesystem type (`xfs` or `ext4`) for the block storage volume.
      * 
      * @deprecated
-     * This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type.
+     * This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type.
      * 
      */
-    @Deprecated /* This fields functionality has been replaced by `initial_filesystem_type`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
+    @Deprecated /* This fields functionality has been replaced by `initialFilesystemType`. The property will still remain as a computed attribute representing the current volumes filesystem type. */
     @Export(name="filesystemType", refs={String.class}, tree="[0]")
     private Output<String> filesystemType;
 

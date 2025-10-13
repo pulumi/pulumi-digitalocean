@@ -18,8 +18,8 @@ public final class GetImagesSort {
      */
     private @Nullable String direction;
     /**
-     * @return Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-     * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+     * @return Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
      * 
      */
     private String key;
@@ -33,8 +33,8 @@ public final class GetImagesSort {
         return Optional.ofNullable(this.direction);
     }
     /**
-     * @return Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-     * `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+     * @return Sort the images by this key. This may be one of `distribution`, `errorMessage`, `id`,
+     * `image`, `minDiskSize`, `name`, `private`, `sizeGigabytes`, `slug`, `status`, or `type`.
      * 
      */
     public String key() {

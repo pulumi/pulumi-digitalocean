@@ -22,7 +22,7 @@ public final class GetSpacesBucketsFilter {
      */
     private @Nullable Boolean all;
     /**
-     * @return Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     private String key;
@@ -51,7 +51,7 @@ public final class GetSpacesBucketsFilter {
         return Optional.ofNullable(this.all);
     }
     /**
-     * @return Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+     * @return Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
      * 
      */
     public String key() {

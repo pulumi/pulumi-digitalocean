@@ -13,13 +13,13 @@ namespace Pulumi.DigitalOcean.Inputs
     public sealed class GetSshKeysSortArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The sort direction. This may be either `asc` or `desc`.
+        /// The sort direction. This may be either `Asc` or `Desc`.
         /// </summary>
         [Input("direction")]
         public string? Direction { get; set; }
 
         /// <summary>
-        /// Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+        /// Sort the SSH Keys by this key. This may be one of `Name`, `PublicKey`, or `Fingerprint`.
         /// </summary>
         [Input("key", required: true)]
         public string Key { get; set; } = null!;
