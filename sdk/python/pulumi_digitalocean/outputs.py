@@ -472,6 +472,11 @@ __all__ = [
     'GetGenaiKnowledgeBasesKnowledgeBaseResult',
     'GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobResult',
     'GetGenaiKnowledgeBasesSortResult',
+    'GetGenaiModelsFilterResult',
+    'GetGenaiModelsModelResult',
+    'GetGenaiModelsModelAgreementResult',
+    'GetGenaiModelsModelVersionResult',
+    'GetGenaiModelsSortResult',
     'GetGenaiOpenaiApiKeyModelResult',
     'GetGenaiOpenaiApiKeyModelAgreementResult',
     'GetGenaiOpenaiApiKeyModelVersionResult',
@@ -481,6 +486,9 @@ __all__ = [
     'GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreementResult',
     'GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionResult',
     'GetGenaiOpenaiApiKeysSortResult',
+    'GetGenaiRegionsFilterResult',
+    'GetGenaiRegionsRegionResult',
+    'GetGenaiRegionsSortResult',
     'GetImagesFilterResult',
     'GetImagesImageResult',
     'GetImagesSortResult',
@@ -33314,6 +33322,284 @@ class GetGenaiKnowledgeBasesSortResult(dict):
 
 
 @pulumi.output_type
+class GetGenaiModelsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetGenaiModelsModelResult(dict):
+    def __init__(__self__, *,
+                 agreements: Sequence['outputs.GetGenaiModelsModelAgreementResult'],
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 is_foundational: _builtins.bool,
+                 name: _builtins.str,
+                 parent_uuid: _builtins.str,
+                 updated_at: _builtins.str,
+                 upload_complete: _builtins.bool,
+                 url: _builtins.str,
+                 uuid: _builtins.str,
+                 versions: Sequence['outputs.GetGenaiModelsModelVersionResult']):
+        """
+        :param Sequence['GetGenaiModelsModelAgreementArgs'] agreements: Agreement information for the model
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str id: ID of the Knowledge Base
+        :param _builtins.bool is_foundational: Indicates if the Model Base is foundational
+        :param _builtins.str name: Name of the Knowledge Base
+        :param _builtins.str parent_uuid: Parent UUID of the Model
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param _builtins.bool upload_complete: Indicates if the Model upload is complete
+        :param _builtins.str url: URL of the Model
+        :param _builtins.str uuid: UUID of the Model
+        :param Sequence['GetGenaiModelsModelVersionArgs'] versions: List of Versions for the Model
+        """
+        pulumi.set(__self__, "agreements", agreements)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "is_foundational", is_foundational)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "parent_uuid", parent_uuid)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "upload_complete", upload_complete)
+        pulumi.set(__self__, "url", url)
+        pulumi.set(__self__, "uuid", uuid)
+        pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Sequence['outputs.GetGenaiModelsModelAgreementResult']:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        ID of the Knowledge Base
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> _builtins.bool:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> _builtins.str:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> _builtins.bool:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> _builtins.str:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the Model
+        """
+        return pulumi.get(self, "uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Sequence['outputs.GetGenaiModelsModelVersionResult']:
+        """
+        List of Versions for the Model
+        """
+        return pulumi.get(self, "versions")
+
+
+@pulumi.output_type
+class GetGenaiModelsModelAgreementResult(dict):
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the agreement
+        :param _builtins.str name: Name of the agreement
+        :param _builtins.str url: URL of the agreement
+        :param _builtins.str uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetGenaiModelsModelVersionResult(dict):
+    def __init__(__self__, *,
+                 major: _builtins.int,
+                 minor: _builtins.int,
+                 patch: _builtins.int):
+        """
+        :param _builtins.int major: Major version of the model
+        :param _builtins.int minor: Minor version of the model
+        :param _builtins.int patch: Patch version of the model
+        """
+        pulumi.set(__self__, "major", major)
+        pulumi.set(__self__, "minor", minor)
+        pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> _builtins.int:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> _builtins.int:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> _builtins.int:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+
+@pulumi.output_type
+class GetGenaiModelsSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
 class GetGenaiOpenaiApiKeyModelResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
@@ -33952,6 +34238,123 @@ class GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionResult(dict):
 
 @pulumi.output_type
 class GetGenaiOpenaiApiKeysSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetGenaiRegionsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetGenaiRegionsRegionResult(dict):
+    def __init__(__self__, *,
+                 inference_url: _builtins.str,
+                 region: _builtins.str,
+                 serves_batch: _builtins.bool,
+                 serves_inference: _builtins.bool,
+                 stream_inference_url: _builtins.str):
+        """
+        :param _builtins.str inference_url: Inference URL for the model
+        :param _builtins.str region: Region where the model is deployed
+        :param _builtins.bool serves_batch: Indicates if the model serves batch requests
+        :param _builtins.bool serves_inference: Indicates if the model serves inference requests
+        :param _builtins.str stream_inference_url: Streaming inference URL for the model
+        """
+        pulumi.set(__self__, "inference_url", inference_url)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "serves_batch", serves_batch)
+        pulumi.set(__self__, "serves_inference", serves_inference)
+        pulumi.set(__self__, "stream_inference_url", stream_inference_url)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceUrl")
+    def inference_url(self) -> _builtins.str:
+        """
+        Inference URL for the model
+        """
+        return pulumi.get(self, "inference_url")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        Region where the model is deployed
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter(name="servesBatch")
+    def serves_batch(self) -> _builtins.bool:
+        """
+        Indicates if the model serves batch requests
+        """
+        return pulumi.get(self, "serves_batch")
+
+    @_builtins.property
+    @pulumi.getter(name="servesInference")
+    def serves_inference(self) -> _builtins.bool:
+        """
+        Indicates if the model serves inference requests
+        """
+        return pulumi.get(self, "serves_inference")
+
+    @_builtins.property
+    @pulumi.getter(name="streamInferenceUrl")
+    def stream_inference_url(self) -> _builtins.str:
+        """
+        Streaming inference URL for the model
+        """
+        return pulumi.get(self, "stream_inference_url")
+
+
+@pulumi.output_type
+class GetGenaiRegionsSortResult(dict):
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):

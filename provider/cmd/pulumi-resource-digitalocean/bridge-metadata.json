@@ -2938,6 +2938,38 @@
                     }
                 }
             },
+            "digitalocean_genai_models": {
+                "current": "digitalocean:index/getGenaiModels:getGenaiModels",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "models": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "agreement": {
+                                    "maxItemsOne": false
+                                },
+                                "version": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_genai_openai_api_key": {
                 "current": "digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey",
                 "majorVersion": 4,
@@ -2996,6 +3028,28 @@
                                 }
                             }
                         }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_genai_regions": {
+                "current": "digitalocean:index/getGenaiRegions:getGenaiRegions",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "regions": {
+                        "maxItemsOne": false
                     },
                     "sort": {
                         "maxItemsOne": false

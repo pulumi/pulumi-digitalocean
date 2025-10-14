@@ -13,6 +13,1049 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRegionsRegion struct {
+	// A boolean value that represents whether new Droplets can be created in this region.
+	Available bool `pulumi:"available"`
+	// A set of features available in this region.
+	Features []string `pulumi:"features"`
+	// The display name of the region.
+	Name string `pulumi:"name"`
+	// A set of identifying slugs for the Droplet sizes available in this region.
+	Sizes []string `pulumi:"sizes"`
+	// A human-readable string that is used as a unique identifier for each region.
+	Slug string `pulumi:"slug"`
+}
+
+// GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
+// You can construct a concrete instance of `GetRegionsRegionInput` via:
+//
+//	GetRegionsRegionArgs{...}
+type GetRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionOutput() GetRegionsRegionOutput
+	ToGetRegionsRegionOutputWithContext(context.Context) GetRegionsRegionOutput
+}
+
+type GetRegionsRegionArgs struct {
+	// A boolean value that represents whether new Droplets can be created in this region.
+	Available pulumi.BoolInput `pulumi:"available"`
+	// A set of features available in this region.
+	Features pulumi.StringArrayInput `pulumi:"features"`
+	// The display name of the region.
+	Name pulumi.StringInput `pulumi:"name"`
+	// A set of identifying slugs for the Droplet sizes available in this region.
+	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
+	// A human-readable string that is used as a unique identifier for each region.
+	Slug pulumi.StringInput `pulumi:"slug"`
+}
+
+func (GetRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return i.ToGetRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
+}
+
+// GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
+//
+//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
+type GetRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput
+	ToGetRegionsRegionArrayOutputWithContext(context.Context) GetRegionsRegionArrayOutput
+}
+
+type GetRegionsRegionArray []GetRegionsRegionInput
+
+func (GetRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return i.ToGetRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
+}
+
+type GetRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
+	return o
+}
+
+func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
+	return o
+}
+
+// A boolean value that represents whether new Droplets can be created in this region.
+func (o GetRegionsRegionOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// A set of features available in this region.
+func (o GetRegionsRegionOutput) Features() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
+}
+
+// The display name of the region.
+func (o GetRegionsRegionOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// A set of identifying slugs for the Droplet sizes available in this region.
+func (o GetRegionsRegionOutput) Sizes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
+}
+
+// A human-readable string that is used as a unique identifier for each region.
+func (o GetRegionsRegionOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
+		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
+	}).(GetRegionsRegionOutput)
+}
+
+type GetRegionsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key string `pulumi:"key"`
+}
+
+// GetRegionsSortInput is an input type that accepts GetRegionsSortArgs and GetRegionsSortOutput values.
+// You can construct a concrete instance of `GetRegionsSortInput` via:
+//
+//	GetRegionsSortArgs{...}
+type GetRegionsSortInput interface {
+	pulumi.Input
+
+	ToGetRegionsSortOutput() GetRegionsSortOutput
+	ToGetRegionsSortOutputWithContext(context.Context) GetRegionsSortOutput
+}
+
+type GetRegionsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the regions by this key. This may be one of `slug`,
+	// `name`, or `available`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetRegionsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
+}
+
+func (i GetRegionsSortArgs) ToGetRegionsSortOutput() GetRegionsSortOutput {
+	return i.ToGetRegionsSortOutputWithContext(context.Background())
+}
+
+func (i GetRegionsSortArgs) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortOutput)
+}
+
+// GetRegionsSortArrayInput is an input type that accepts GetRegionsSortArray and GetRegionsSortArrayOutput values.
+// You can construct a concrete instance of `GetRegionsSortArrayInput` via:
+//
+//	GetRegionsSortArray{ GetRegionsSortArgs{...} }
+type GetRegionsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput
+	ToGetRegionsSortArrayOutputWithContext(context.Context) GetRegionsSortArrayOutput
+}
+
+type GetRegionsSortArray []GetRegionsSortInput
+
+func (GetRegionsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
+}
+
+func (i GetRegionsSortArray) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
+	return i.ToGetRegionsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsSortArray) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortArrayOutput)
+}
+
+type GetRegionsSortOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
+}
+
+func (o GetRegionsSortOutput) ToGetRegionsSortOutput() GetRegionsSortOutput {
+	return o
+}
+
+func (o GetRegionsSortOutput) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetRegionsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the regions by this key. This may be one of `slug`,
+// `name`, or `available`.
+func (o GetRegionsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetRegionsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
+}
+
+func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetRegionsSortArrayOutput) Index(i pulumi.IntInput) GetRegionsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsSort {
+		return vs[0].([]GetRegionsSort)[vs[1].(int)]
+	}).(GetRegionsSortOutput)
+}
+
+type GetSizesFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the sizes by this key. This may be one of `slug`,
+	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+	// `priceHourly`, or `available`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// Only retrieves sizes which keys has value that matches
+	// one of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetSizesFilterInput is an input type that accepts GetSizesFilterArgs and GetSizesFilterOutput values.
+// You can construct a concrete instance of `GetSizesFilterInput` via:
+//
+//	GetSizesFilterArgs{...}
+type GetSizesFilterInput interface {
+	pulumi.Input
+
+	ToGetSizesFilterOutput() GetSizesFilterOutput
+	ToGetSizesFilterOutputWithContext(context.Context) GetSizesFilterOutput
+}
+
+type GetSizesFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the sizes by this key. This may be one of `slug`,
+	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+	// `priceHourly`, or `available`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// Only retrieves sizes which keys has value that matches
+	// one of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSizesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesFilter)(nil)).Elem()
+}
+
+func (i GetSizesFilterArgs) ToGetSizesFilterOutput() GetSizesFilterOutput {
+	return i.ToGetSizesFilterOutputWithContext(context.Background())
+}
+
+func (i GetSizesFilterArgs) ToGetSizesFilterOutputWithContext(ctx context.Context) GetSizesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesFilterOutput)
+}
+
+// GetSizesFilterArrayInput is an input type that accepts GetSizesFilterArray and GetSizesFilterArrayOutput values.
+// You can construct a concrete instance of `GetSizesFilterArrayInput` via:
+//
+//	GetSizesFilterArray{ GetSizesFilterArgs{...} }
+type GetSizesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput
+	ToGetSizesFilterArrayOutputWithContext(context.Context) GetSizesFilterArrayOutput
+}
+
+type GetSizesFilterArray []GetSizesFilterInput
+
+func (GetSizesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesFilter)(nil)).Elem()
+}
+
+func (i GetSizesFilterArray) ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput {
+	return i.ToGetSizesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSizesFilterArray) ToGetSizesFilterArrayOutputWithContext(ctx context.Context) GetSizesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesFilterArrayOutput)
+}
+
+type GetSizesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSizesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesFilter)(nil)).Elem()
+}
+
+func (o GetSizesFilterOutput) ToGetSizesFilterOutput() GetSizesFilterOutput {
+	return o
+}
+
+func (o GetSizesFilterOutput) ToGetSizesFilterOutputWithContext(ctx context.Context) GetSizesFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetSizesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSizesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the sizes by this key. This may be one of `slug`,
+// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
+// `priceHourly`, or `available`.
+func (o GetSizesFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetSizesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSizesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// Only retrieves sizes which keys has value that matches
+// one of the values provided here.
+func (o GetSizesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSizesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSizesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSizesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesFilter)(nil)).Elem()
+}
+
+func (o GetSizesFilterArrayOutput) ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput {
+	return o
+}
+
+func (o GetSizesFilterArrayOutput) ToGetSizesFilterArrayOutputWithContext(ctx context.Context) GetSizesFilterArrayOutput {
+	return o
+}
+
+func (o GetSizesFilterArrayOutput) Index(i pulumi.IntInput) GetSizesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesFilter {
+		return vs[0].([]GetSizesFilter)[vs[1].(int)]
+	}).(GetSizesFilterOutput)
+}
+
+type GetSizesSize struct {
+	// This represents whether new Droplets can be created with this size.
+	Available bool `pulumi:"available"`
+	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
+	Disk int `pulumi:"disk"`
+	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
+	Memory int `pulumi:"memory"`
+	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
+	PriceHourly float64 `pulumi:"priceHourly"`
+	// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
+	PriceMonthly float64 `pulumi:"priceMonthly"`
+	// List of region slugs where Droplets can be created in this size.
+	Regions []string `pulumi:"regions"`
+	// A human-readable string that is used to uniquely identify each size.
+	Slug string `pulumi:"slug"`
+	// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
+	Transfer float64 `pulumi:"transfer"`
+	// The number of CPUs allocated to Droplets of this size.
+	Vcpus int `pulumi:"vcpus"`
+}
+
+// GetSizesSizeInput is an input type that accepts GetSizesSizeArgs and GetSizesSizeOutput values.
+// You can construct a concrete instance of `GetSizesSizeInput` via:
+//
+//	GetSizesSizeArgs{...}
+type GetSizesSizeInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeOutput() GetSizesSizeOutput
+	ToGetSizesSizeOutputWithContext(context.Context) GetSizesSizeOutput
+}
+
+type GetSizesSizeArgs struct {
+	// This represents whether new Droplets can be created with this size.
+	Available pulumi.BoolInput `pulumi:"available"`
+	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
+	Disk pulumi.IntInput `pulumi:"disk"`
+	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
+	Memory pulumi.IntInput `pulumi:"memory"`
+	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
+	PriceHourly pulumi.Float64Input `pulumi:"priceHourly"`
+	// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
+	PriceMonthly pulumi.Float64Input `pulumi:"priceMonthly"`
+	// List of region slugs where Droplets can be created in this size.
+	Regions pulumi.StringArrayInput `pulumi:"regions"`
+	// A human-readable string that is used to uniquely identify each size.
+	Slug pulumi.StringInput `pulumi:"slug"`
+	// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
+	Transfer pulumi.Float64Input `pulumi:"transfer"`
+	// The number of CPUs allocated to Droplets of this size.
+	Vcpus pulumi.IntInput `pulumi:"vcpus"`
+}
+
+func (GetSizesSizeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSize)(nil)).Elem()
+}
+
+func (i GetSizesSizeArgs) ToGetSizesSizeOutput() GetSizesSizeOutput {
+	return i.ToGetSizesSizeOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeArgs) ToGetSizesSizeOutputWithContext(ctx context.Context) GetSizesSizeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeOutput)
+}
+
+// GetSizesSizeArrayInput is an input type that accepts GetSizesSizeArray and GetSizesSizeArrayOutput values.
+// You can construct a concrete instance of `GetSizesSizeArrayInput` via:
+//
+//	GetSizesSizeArray{ GetSizesSizeArgs{...} }
+type GetSizesSizeArrayInput interface {
+	pulumi.Input
+
+	ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput
+	ToGetSizesSizeArrayOutputWithContext(context.Context) GetSizesSizeArrayOutput
+}
+
+type GetSizesSizeArray []GetSizesSizeInput
+
+func (GetSizesSizeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSize)(nil)).Elem()
+}
+
+func (i GetSizesSizeArray) ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput {
+	return i.ToGetSizesSizeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSizesSizeArray) ToGetSizesSizeArrayOutputWithContext(ctx context.Context) GetSizesSizeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeArrayOutput)
+}
+
+type GetSizesSizeOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSize)(nil)).Elem()
+}
+
+func (o GetSizesSizeOutput) ToGetSizesSizeOutput() GetSizesSizeOutput {
+	return o
+}
+
+func (o GetSizesSizeOutput) ToGetSizesSizeOutputWithContext(ctx context.Context) GetSizesSizeOutput {
+	return o
+}
+
+// This represents whether new Droplets can be created with this size.
+func (o GetSizesSizeOutput) Available() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSizesSize) bool { return v.Available }).(pulumi.BoolOutput)
+}
+
+// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
+func (o GetSizesSizeOutput) Disk() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSizesSize) int { return v.Disk }).(pulumi.IntOutput)
+}
+
+// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
+func (o GetSizesSizeOutput) Memory() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSizesSize) int { return v.Memory }).(pulumi.IntOutput)
+}
+
+// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
+func (o GetSizesSizeOutput) PriceHourly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceHourly }).(pulumi.Float64Output)
+}
+
+// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
+func (o GetSizesSizeOutput) PriceMonthly() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
+}
+
+// List of region slugs where Droplets can be created in this size.
+func (o GetSizesSizeOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSizesSize) []string { return v.Regions }).(pulumi.StringArrayOutput)
+}
+
+// A human-readable string that is used to uniquely identify each size.
+func (o GetSizesSizeOutput) Slug() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesSize) string { return v.Slug }).(pulumi.StringOutput)
+}
+
+// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
+func (o GetSizesSizeOutput) Transfer() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSizesSize) float64 { return v.Transfer }).(pulumi.Float64Output)
+}
+
+// The number of CPUs allocated to Droplets of this size.
+func (o GetSizesSizeOutput) Vcpus() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSizesSize) int { return v.Vcpus }).(pulumi.IntOutput)
+}
+
+type GetSizesSizeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSizeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSize)(nil)).Elem()
+}
+
+func (o GetSizesSizeArrayOutput) ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeArrayOutput) ToGetSizesSizeArrayOutputWithContext(ctx context.Context) GetSizesSizeArrayOutput {
+	return o
+}
+
+func (o GetSizesSizeArrayOutput) Index(i pulumi.IntInput) GetSizesSizeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSize {
+		return vs[0].([]GetSizesSize)[vs[1].(int)]
+	}).(GetSizesSizeOutput)
+}
+
+type GetSizesSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the sizes by this key. This may be one of `slug`,
+	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+	Key string `pulumi:"key"`
+}
+
+// GetSizesSortInput is an input type that accepts GetSizesSortArgs and GetSizesSortOutput values.
+// You can construct a concrete instance of `GetSizesSortInput` via:
+//
+//	GetSizesSortArgs{...}
+type GetSizesSortInput interface {
+	pulumi.Input
+
+	ToGetSizesSortOutput() GetSizesSortOutput
+	ToGetSizesSortOutputWithContext(context.Context) GetSizesSortOutput
+}
+
+type GetSizesSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the sizes by this key. This may be one of `slug`,
+	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetSizesSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSort)(nil)).Elem()
+}
+
+func (i GetSizesSortArgs) ToGetSizesSortOutput() GetSizesSortOutput {
+	return i.ToGetSizesSortOutputWithContext(context.Background())
+}
+
+func (i GetSizesSortArgs) ToGetSizesSortOutputWithContext(ctx context.Context) GetSizesSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSortOutput)
+}
+
+// GetSizesSortArrayInput is an input type that accepts GetSizesSortArray and GetSizesSortArrayOutput values.
+// You can construct a concrete instance of `GetSizesSortArrayInput` via:
+//
+//	GetSizesSortArray{ GetSizesSortArgs{...} }
+type GetSizesSortArrayInput interface {
+	pulumi.Input
+
+	ToGetSizesSortArrayOutput() GetSizesSortArrayOutput
+	ToGetSizesSortArrayOutputWithContext(context.Context) GetSizesSortArrayOutput
+}
+
+type GetSizesSortArray []GetSizesSortInput
+
+func (GetSizesSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSort)(nil)).Elem()
+}
+
+func (i GetSizesSortArray) ToGetSizesSortArrayOutput() GetSizesSortArrayOutput {
+	return i.ToGetSizesSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSizesSortArray) ToGetSizesSortArrayOutputWithContext(ctx context.Context) GetSizesSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSortArrayOutput)
+}
+
+type GetSizesSortOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSizesSort)(nil)).Elem()
+}
+
+func (o GetSizesSortOutput) ToGetSizesSortOutput() GetSizesSortOutput {
+	return o
+}
+
+func (o GetSizesSortOutput) ToGetSizesSortOutputWithContext(ctx context.Context) GetSizesSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetSizesSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSizesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the sizes by this key. This may be one of `slug`,
+// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
+func (o GetSizesSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSizesSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetSizesSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSizesSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSizesSort)(nil)).Elem()
+}
+
+func (o GetSizesSortArrayOutput) ToGetSizesSortArrayOutput() GetSizesSortArrayOutput {
+	return o
+}
+
+func (o GetSizesSortArrayOutput) ToGetSizesSortArrayOutputWithContext(ctx context.Context) GetSizesSortArrayOutput {
+	return o
+}
+
+func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSort {
+		return vs[0].([]GetSizesSort)[vs[1].(int)]
+	}).(GetSizesSortOutput)
+}
+
+type GetSpacesBucketsBucket struct {
+	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+	BucketDomainName string `pulumi:"bucketDomainName"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint string `pulumi:"endpoint"`
+	// The name of the Spaces bucket
+	Name string `pulumi:"name"`
+	// The slug of the region where the bucket is stored.
+	Region string `pulumi:"region"`
+	// The uniform resource name of the bucket
+	Urn string `pulumi:"urn"`
+}
+
+// GetSpacesBucketsBucketInput is an input type that accepts GetSpacesBucketsBucketArgs and GetSpacesBucketsBucketOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsBucketInput` via:
+//
+//	GetSpacesBucketsBucketArgs{...}
+type GetSpacesBucketsBucketInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput
+	ToGetSpacesBucketsBucketOutputWithContext(context.Context) GetSpacesBucketsBucketOutput
+}
+
+type GetSpacesBucketsBucketArgs struct {
+	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+	BucketDomainName pulumi.StringInput `pulumi:"bucketDomainName"`
+	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+	// The name of the Spaces bucket
+	Name pulumi.StringInput `pulumi:"name"`
+	// The slug of the region where the bucket is stored.
+	Region pulumi.StringInput `pulumi:"region"`
+	// The uniform resource name of the bucket
+	Urn pulumi.StringInput `pulumi:"urn"`
+}
+
+func (GetSpacesBucketsBucketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
+	return i.ToGetSpacesBucketsBucketOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketOutput)
+}
+
+// GetSpacesBucketsBucketArrayInput is an input type that accepts GetSpacesBucketsBucketArray and GetSpacesBucketsBucketArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsBucketArrayInput` via:
+//
+//	GetSpacesBucketsBucketArray{ GetSpacesBucketsBucketArgs{...} }
+type GetSpacesBucketsBucketArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput
+	ToGetSpacesBucketsBucketArrayOutputWithContext(context.Context) GetSpacesBucketsBucketArrayOutput
+}
+
+type GetSpacesBucketsBucketArray []GetSpacesBucketsBucketInput
+
+func (GetSpacesBucketsBucketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
+	return i.ToGetSpacesBucketsBucketArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketArrayOutput)
+}
+
+type GetSpacesBucketsBucketOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsBucketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
+	return o
+}
+
+// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
+func (o GetSpacesBucketsBucketOutput) BucketDomainName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.BucketDomainName }).(pulumi.StringOutput)
+}
+
+// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
+func (o GetSpacesBucketsBucketOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+// The name of the Spaces bucket
+func (o GetSpacesBucketsBucketOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The slug of the region where the bucket is stored.
+func (o GetSpacesBucketsBucketOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// The uniform resource name of the bucket
+func (o GetSpacesBucketsBucketOutput) Urn() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Urn }).(pulumi.StringOutput)
+}
+
+type GetSpacesBucketsBucketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsBucketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsBucketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsBucket {
+		return vs[0].([]GetSpacesBucketsBucket)[vs[1].(int)]
+	}).(GetSpacesBucketsBucketOutput)
+}
+
+type GetSpacesBucketsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves Spaces buckets
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetSpacesBucketsFilterInput is an input type that accepts GetSpacesBucketsFilterArgs and GetSpacesBucketsFilterOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsFilterInput` via:
+//
+//	GetSpacesBucketsFilterArgs{...}
+type GetSpacesBucketsFilterInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput
+	ToGetSpacesBucketsFilterOutputWithContext(context.Context) GetSpacesBucketsFilterOutput
+}
+
+type GetSpacesBucketsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves Spaces buckets
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetSpacesBucketsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
+	return i.ToGetSpacesBucketsFilterOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterOutput)
+}
+
+// GetSpacesBucketsFilterArrayInput is an input type that accepts GetSpacesBucketsFilterArray and GetSpacesBucketsFilterArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsFilterArrayInput` via:
+//
+//	GetSpacesBucketsFilterArray{ GetSpacesBucketsFilterArgs{...} }
+type GetSpacesBucketsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput
+	ToGetSpacesBucketsFilterArrayOutputWithContext(context.Context) GetSpacesBucketsFilterArrayOutput
+}
+
+type GetSpacesBucketsFilterArray []GetSpacesBucketsFilterInput
+
+func (GetSpacesBucketsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
+	return i.ToGetSpacesBucketsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterArrayOutput)
+}
+
+type GetSpacesBucketsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetSpacesBucketsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+func (o GetSpacesBucketsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetSpacesBucketsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves Spaces buckets
+// where the `key` field takes on one or more of the values provided here.
+func (o GetSpacesBucketsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetSpacesBucketsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetSpacesBucketsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsFilterArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsFilter {
+		return vs[0].([]GetSpacesBucketsFilter)[vs[1].(int)]
+	}).(GetSpacesBucketsFilterOutput)
+}
+
+type GetSpacesBucketsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key string `pulumi:"key"`
+}
+
+// GetSpacesBucketsSortInput is an input type that accepts GetSpacesBucketsSortArgs and GetSpacesBucketsSortOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsSortInput` via:
+//
+//	GetSpacesBucketsSortArgs{...}
+type GetSpacesBucketsSortInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput
+	ToGetSpacesBucketsSortOutputWithContext(context.Context) GetSpacesBucketsSortOutput
+}
+
+type GetSpacesBucketsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetSpacesBucketsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
+	return i.ToGetSpacesBucketsSortOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortOutput)
+}
+
+// GetSpacesBucketsSortArrayInput is an input type that accepts GetSpacesBucketsSortArray and GetSpacesBucketsSortArrayOutput values.
+// You can construct a concrete instance of `GetSpacesBucketsSortArrayInput` via:
+//
+//	GetSpacesBucketsSortArray{ GetSpacesBucketsSortArgs{...} }
+type GetSpacesBucketsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput
+	ToGetSpacesBucketsSortArrayOutputWithContext(context.Context) GetSpacesBucketsSortArrayOutput
+}
+
+type GetSpacesBucketsSortArray []GetSpacesBucketsSortInput
+
+func (GetSpacesBucketsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
+	return i.ToGetSpacesBucketsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortArrayOutput)
+}
+
+type GetSpacesBucketsSortOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetSpacesBucketsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetSpacesBucketsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
+func (o GetSpacesBucketsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSpacesBucketsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetSpacesBucketsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSpacesBucketsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
+}
+
+func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
+	return o
+}
+
+func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsSort {
+		return vs[0].([]GetSpacesBucketsSort)[vs[1].(int)]
+	}).(GetSpacesBucketsSortOutput)
+}
+
 type GetSpacesKeyGrant struct {
 	// The name of the bucket to grant the key access to.
 	Bucket string `pulumi:"bucket"`
@@ -1173,6 +2216,22 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortInput)(nil)).Elem(), GetRegionsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortArrayInput)(nil)).Elem(), GetRegionsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterInput)(nil)).Elem(), GetSizesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterArrayInput)(nil)).Elem(), GetSizesFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeInput)(nil)).Elem(), GetSizesSizeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeArrayInput)(nil)).Elem(), GetSizesSizeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortInput)(nil)).Elem(), GetSizesSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortArrayInput)(nil)).Elem(), GetSizesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketInput)(nil)).Elem(), GetSpacesBucketsBucketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketArrayInput)(nil)).Elem(), GetSpacesBucketsBucketArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterInput)(nil)).Elem(), GetSpacesBucketsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterArrayInput)(nil)).Elem(), GetSpacesBucketsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortInput)(nil)).Elem(), GetSpacesBucketsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortArrayInput)(nil)).Elem(), GetSpacesBucketsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantInput)(nil)).Elem(), GetSpacesKeyGrantArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesKeyGrantArrayInput)(nil)).Elem(), GetSpacesKeyGrantArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSshKeysFilterInput)(nil)).Elem(), GetSshKeysFilterArgs{})
@@ -1193,6 +2252,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsSortOutput{})
+	pulumi.RegisterOutputType(GetRegionsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSizesFilterOutput{})
+	pulumi.RegisterOutputType(GetSizesFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeOutput{})
+	pulumi.RegisterOutputType(GetSizesSizeArrayOutput{})
+	pulumi.RegisterOutputType(GetSizesSortOutput{})
+	pulumi.RegisterOutputType(GetSizesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsBucketOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsBucketArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsFilterOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
+	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetSpacesKeyGrantOutput{})
 	pulumi.RegisterOutputType(GetSpacesKeyGrantArrayOutput{})
 	pulumi.RegisterOutputType(GetSshKeysFilterOutput{})

@@ -69,8 +69,10 @@ from .get_genai_agents_by_openai_api_key import *
 from .get_genai_knowledge_base import *
 from .get_genai_knowledge_base_data_sources import *
 from .get_genai_knowledge_bases import *
+from .get_genai_models import *
 from .get_genai_openai_api_key import *
 from .get_genai_openai_api_keys import *
+from .get_genai_regions import *
 from .get_image import *
 from .get_images import *
 from .get_kubernetes_cluster import *
