@@ -14883,6 +14883,165 @@
                 "key"
             ]
         },
+        "digitalocean:index/getGenaiModelsFilter:getGenaiModelsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "matchBy": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getGenaiModelsModel:getGenaiModelsModel": {
+            "properties": {
+                "agreements": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiModelsModelAgreement:getGenaiModelsModelAgreement"
+                    },
+                    "description": "Agreement information for the model\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Created At timestamp for the Knowledge Base\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "ID of the Knowledge Base\n"
+                },
+                "isFoundational": {
+                    "type": "boolean",
+                    "description": "Indicates if the Model Base is foundational\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the Knowledge Base\n"
+                },
+                "parentUuid": {
+                    "type": "string",
+                    "description": "Parent UUID of the Model\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Timestamp when the Knowledge Base was updated\n"
+                },
+                "uploadComplete": {
+                    "type": "boolean",
+                    "description": "Indicates if the Model upload is complete\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the Model\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the Model\n"
+                },
+                "versions": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getGenaiModelsModelVersion:getGenaiModelsModelVersion"
+                    },
+                    "description": "List of Versions for the Model\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "agreements",
+                "createdAt",
+                "id",
+                "isFoundational",
+                "name",
+                "parentUuid",
+                "updatedAt",
+                "uploadComplete",
+                "url",
+                "uuid",
+                "versions"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiModelsModelAgreement:getGenaiModelsModelAgreement": {
+            "properties": {
+                "description": {
+                    "type": "string",
+                    "description": "Description of the agreement\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Name of the agreement\n"
+                },
+                "url": {
+                    "type": "string",
+                    "description": "URL of the agreement\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "UUID of the agreement\n"
+                }
+            },
+            "type": "object"
+        },
+        "digitalocean:index/getGenaiModelsModelVersion:getGenaiModelsModelVersion": {
+            "properties": {
+                "major": {
+                    "type": "integer",
+                    "description": "Major version of the model\n"
+                },
+                "minor": {
+                    "type": "integer",
+                    "description": "Minor version of the model\n"
+                },
+                "patch": {
+                    "type": "integer",
+                    "description": "Patch version of the model\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "major",
+                "minor",
+                "patch"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiModelsSort:getGenaiModelsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
         "digitalocean:index/getGenaiOpenaiApiKeyModel:getGenaiOpenaiApiKeyModel": {
             "properties": {
                 "agreements": {
@@ -15184,6 +15343,81 @@
             "type": "object"
         },
         "digitalocean:index/getGenaiOpenaiApiKeysSort:getGenaiOpenaiApiKeysSort": {
+            "properties": {
+                "direction": {
+                    "type": "string"
+                },
+                "key": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getGenaiRegionsFilter:getGenaiRegionsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean"
+                },
+                "key": {
+                    "type": "string"
+                },
+                "matchBy": {
+                    "type": "string"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getGenaiRegionsRegion:getGenaiRegionsRegion": {
+            "properties": {
+                "inferenceUrl": {
+                    "type": "string",
+                    "description": "Inference URL for the model\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "Region where the model is deployed\n"
+                },
+                "servesBatch": {
+                    "type": "boolean",
+                    "description": "Indicates if the model serves batch requests\n"
+                },
+                "servesInference": {
+                    "type": "boolean",
+                    "description": "Indicates if the model serves inference requests\n"
+                },
+                "streamInferenceUrl": {
+                    "type": "string",
+                    "description": "Streaming inference URL for the model\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "inferenceUrl",
+                "region",
+                "servesBatch",
+                "servesInference",
+                "streamInferenceUrl"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiRegionsSort:getGenaiRegionsSort": {
             "properties": {
                 "direction": {
                     "type": "string"
@@ -30115,6 +30349,58 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getGenaiModels:getGenaiModels": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiModels.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiModelsFilter:getGenaiModelsFilter"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiModelsSort:getGenaiModelsSort"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiModels.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiModelsFilter:getGenaiModelsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "models": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiModelsModel:getGenaiModelsModel"
+                        },
+                        "type": "array"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiModelsSort:getGenaiModelsSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "models",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey": {
             "inputs": {
                 "description": "A collection of arguments for invoking getGenaiOpenaiApiKey.\n",
@@ -30220,6 +30506,58 @@
                 },
                 "required": [
                     "openaiApiKeys",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiRegions:getGenaiRegions": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiRegions.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiRegionsFilter:getGenaiRegionsFilter"
+                        }
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiRegionsSort:getGenaiRegionsSort"
+                        }
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiRegions.\n",
+                "properties": {
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiRegionsFilter:getGenaiRegionsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "regions": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiRegionsRegion:getGenaiRegionsRegion"
+                        },
+                        "type": "array"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiRegionsSort:getGenaiRegionsSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "regions",
                     "id"
                 ],
                 "type": "object"
