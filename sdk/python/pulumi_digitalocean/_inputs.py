@@ -494,10 +494,18 @@ __all__ = [
     'GetGenaiKnowledgeBasesFilterArgsDict',
     'GetGenaiKnowledgeBasesSortArgs',
     'GetGenaiKnowledgeBasesSortArgsDict',
+    'GetGenaiModelsFilterArgs',
+    'GetGenaiModelsFilterArgsDict',
+    'GetGenaiModelsSortArgs',
+    'GetGenaiModelsSortArgsDict',
     'GetGenaiOpenaiApiKeysFilterArgs',
     'GetGenaiOpenaiApiKeysFilterArgsDict',
     'GetGenaiOpenaiApiKeysSortArgs',
     'GetGenaiOpenaiApiKeysSortArgsDict',
+    'GetGenaiRegionsFilterArgs',
+    'GetGenaiRegionsFilterArgsDict',
+    'GetGenaiRegionsSortArgs',
+    'GetGenaiRegionsSortArgsDict',
     'GetImagesFilterArgs',
     'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
@@ -25705,6 +25713,101 @@ class GetGenaiKnowledgeBasesSortArgs:
 
 
 if not MYPY:
+    class GetGenaiModelsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiModelsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiModelsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiModelsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
     class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
@@ -25773,6 +25876,101 @@ elif False:
 
 @pulumi.input_type
 class GetGenaiOpenaiApiKeysSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiRegionsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiRegionsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiRegionsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiRegionsSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):

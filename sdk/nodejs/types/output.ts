@@ -9848,6 +9848,99 @@ export interface GetGenaiKnowledgeBasesSort {
     key: string;
 }
 
+export interface GetGenaiModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiModelsModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements: outputs.GetGenaiModelsModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * ID of the Knowledge Base
+     */
+    id: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete: boolean;
+    /**
+     * URL of the Model
+     */
+    url: string;
+    /**
+     * UUID of the Model
+     */
+    uuid: string;
+    /**
+     * List of Versions for the Model
+     */
+    versions: outputs.GetGenaiModelsModelVersion[];
+}
+
+export interface GetGenaiModelsModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiModelsModelVersion {
+    /**
+     * Major version of the model
+     */
+    major: number;
+    /**
+     * Minor version of the model
+     */
+    minor: number;
+    /**
+     * Patch version of the model
+     */
+    patch: number;
+}
+
+export interface GetGenaiModelsSort {
+    direction?: string;
+    key: string;
+}
+
 export interface GetGenaiOpenaiApiKeyModel {
     /**
      * Agreement information for the model
@@ -10065,6 +10158,41 @@ export interface GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion {
 }
 
 export interface GetGenaiOpenaiApiKeysSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiRegionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiRegionsRegion {
+    /**
+     * Inference URL for the model
+     */
+    inferenceUrl: string;
+    /**
+     * Region where the model is deployed
+     */
+    region: string;
+    /**
+     * Indicates if the model serves batch requests
+     */
+    servesBatch: boolean;
+    /**
+     * Indicates if the model serves inference requests
+     */
+    servesInference: boolean;
+    /**
+     * Streaming inference URL for the model
+     */
+    streamInferenceUrl: string;
+}
+
+export interface GetGenaiRegionsSort {
     direction?: string;
     key: string;
 }

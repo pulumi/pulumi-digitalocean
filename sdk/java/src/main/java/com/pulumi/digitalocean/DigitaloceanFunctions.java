@@ -55,10 +55,14 @@ import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasePlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiModelsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiModelsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiRegionsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiRegionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -144,8 +148,10 @@ import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseDataSourcesResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBasesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiModelsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeyResult;
 import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeysResult;
+import com.pulumi.digitalocean.outputs.GetGenaiRegionsResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
@@ -6417,6 +6423,27 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGenaiModelsResult> getGenaiModels() {
+        return getGenaiModels(GetGenaiModelsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain() {
+        return getGenaiModelsPlain(GetGenaiModelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args) {
+        return getGenaiModels(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args) {
+        return getGenaiModelsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args) {
         return getGenaiOpenaiApiKey(args, InvokeOptions.Empty);
     }
@@ -6452,6 +6479,27 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiRegionsResult> getGenaiRegions() {
+        return getGenaiRegions(GetGenaiRegionsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain() {
+        return getGenaiRegionsPlain(GetGenaiRegionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args) {
+        return getGenaiRegions(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args) {
+        return getGenaiRegionsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on an image for use in other resources (e.g. creating a Droplet

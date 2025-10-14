@@ -70975,6 +70975,644 @@ func (o GetGenaiKnowledgeBasesSortArrayOutput) Index(i pulumi.IntInput) GetGenai
 	}).(GetGenaiKnowledgeBasesSortOutput)
 }
 
+type GetGenaiModelsFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiModelsFilterInput is an input type that accepts GetGenaiModelsFilterArgs and GetGenaiModelsFilterOutput values.
+// You can construct a concrete instance of `GetGenaiModelsFilterInput` via:
+//
+//	GetGenaiModelsFilterArgs{...}
+type GetGenaiModelsFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsFilterOutput() GetGenaiModelsFilterOutput
+	ToGetGenaiModelsFilterOutputWithContext(context.Context) GetGenaiModelsFilterOutput
+}
+
+type GetGenaiModelsFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiModelsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiModelsFilterArgs) ToGetGenaiModelsFilterOutput() GetGenaiModelsFilterOutput {
+	return i.ToGetGenaiModelsFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsFilterArgs) ToGetGenaiModelsFilterOutputWithContext(ctx context.Context) GetGenaiModelsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsFilterOutput)
+}
+
+// GetGenaiModelsFilterArrayInput is an input type that accepts GetGenaiModelsFilterArray and GetGenaiModelsFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiModelsFilterArrayInput` via:
+//
+//	GetGenaiModelsFilterArray{ GetGenaiModelsFilterArgs{...} }
+type GetGenaiModelsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsFilterArrayOutput() GetGenaiModelsFilterArrayOutput
+	ToGetGenaiModelsFilterArrayOutputWithContext(context.Context) GetGenaiModelsFilterArrayOutput
+}
+
+type GetGenaiModelsFilterArray []GetGenaiModelsFilterInput
+
+func (GetGenaiModelsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiModelsFilterArray) ToGetGenaiModelsFilterArrayOutput() GetGenaiModelsFilterArrayOutput {
+	return i.ToGetGenaiModelsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsFilterArray) ToGetGenaiModelsFilterArrayOutputWithContext(ctx context.Context) GetGenaiModelsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsFilterArrayOutput)
+}
+
+type GetGenaiModelsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiModelsFilterOutput) ToGetGenaiModelsFilterOutput() GetGenaiModelsFilterOutput {
+	return o
+}
+
+func (o GetGenaiModelsFilterOutput) ToGetGenaiModelsFilterOutputWithContext(ctx context.Context) GetGenaiModelsFilterOutput {
+	return o
+}
+
+func (o GetGenaiModelsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiModelsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiModelsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiModelsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiModelsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiModelsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiModelsFilterArrayOutput) ToGetGenaiModelsFilterArrayOutput() GetGenaiModelsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsFilterArrayOutput) ToGetGenaiModelsFilterArrayOutputWithContext(ctx context.Context) GetGenaiModelsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiModelsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiModelsFilter {
+		return vs[0].([]GetGenaiModelsFilter)[vs[1].(int)]
+	}).(GetGenaiModelsFilterOutput)
+}
+
+type GetGenaiModelsModel struct {
+	// Agreement information for the model
+	Agreements []GetGenaiModelsModelAgreement `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// ID of the Knowledge Base
+	Id string `pulumi:"id"`
+	// Indicates if the Model Base is foundational
+	IsFoundational bool `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name string `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid string `pulumi:"parentUuid"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete bool `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url string `pulumi:"url"`
+	// UUID of the Model
+	Uuid string `pulumi:"uuid"`
+	// List of Versions for the Model
+	Versions []GetGenaiModelsModelVersion `pulumi:"versions"`
+}
+
+// GetGenaiModelsModelInput is an input type that accepts GetGenaiModelsModelArgs and GetGenaiModelsModelOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelInput` via:
+//
+//	GetGenaiModelsModelArgs{...}
+type GetGenaiModelsModelInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelOutput() GetGenaiModelsModelOutput
+	ToGetGenaiModelsModelOutputWithContext(context.Context) GetGenaiModelsModelOutput
+}
+
+type GetGenaiModelsModelArgs struct {
+	// Agreement information for the model
+	Agreements GetGenaiModelsModelAgreementArrayInput `pulumi:"agreements"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// ID of the Knowledge Base
+	Id pulumi.StringInput `pulumi:"id"`
+	// Indicates if the Model Base is foundational
+	IsFoundational pulumi.BoolInput `pulumi:"isFoundational"`
+	// Name of the Knowledge Base
+	Name pulumi.StringInput `pulumi:"name"`
+	// Parent UUID of the Model
+	ParentUuid pulumi.StringInput `pulumi:"parentUuid"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Indicates if the Model upload is complete
+	UploadComplete pulumi.BoolInput `pulumi:"uploadComplete"`
+	// URL of the Model
+	Url pulumi.StringInput `pulumi:"url"`
+	// UUID of the Model
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+	// List of Versions for the Model
+	Versions GetGenaiModelsModelVersionArrayInput `pulumi:"versions"`
+}
+
+func (GetGenaiModelsModelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModel)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelArgs) ToGetGenaiModelsModelOutput() GetGenaiModelsModelOutput {
+	return i.ToGetGenaiModelsModelOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelArgs) ToGetGenaiModelsModelOutputWithContext(ctx context.Context) GetGenaiModelsModelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelOutput)
+}
+
+// GetGenaiModelsModelArrayInput is an input type that accepts GetGenaiModelsModelArray and GetGenaiModelsModelArrayOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelArrayInput` via:
+//
+//	GetGenaiModelsModelArray{ GetGenaiModelsModelArgs{...} }
+type GetGenaiModelsModelArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelArrayOutput() GetGenaiModelsModelArrayOutput
+	ToGetGenaiModelsModelArrayOutputWithContext(context.Context) GetGenaiModelsModelArrayOutput
+}
+
+type GetGenaiModelsModelArray []GetGenaiModelsModelInput
+
+func (GetGenaiModelsModelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModel)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelArray) ToGetGenaiModelsModelArrayOutput() GetGenaiModelsModelArrayOutput {
+	return i.ToGetGenaiModelsModelArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelArray) ToGetGenaiModelsModelArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelArrayOutput)
+}
+
+type GetGenaiModelsModelOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModel)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelOutput) ToGetGenaiModelsModelOutput() GetGenaiModelsModelOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelOutput) ToGetGenaiModelsModelOutputWithContext(ctx context.Context) GetGenaiModelsModelOutput {
+	return o
+}
+
+// Agreement information for the model
+func (o GetGenaiModelsModelOutput) Agreements() GetGenaiModelsModelAgreementArrayOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) []GetGenaiModelsModelAgreement { return v.Agreements }).(GetGenaiModelsModelAgreementArrayOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiModelsModelOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// ID of the Knowledge Base
+func (o GetGenaiModelsModelOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model Base is foundational
+func (o GetGenaiModelsModelOutput) IsFoundational() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) bool { return v.IsFoundational }).(pulumi.BoolOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiModelsModelOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Parent UUID of the Model
+func (o GetGenaiModelsModelOutput) ParentUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.ParentUuid }).(pulumi.StringOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiModelsModelOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Indicates if the Model upload is complete
+func (o GetGenaiModelsModelOutput) UploadComplete() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) bool { return v.UploadComplete }).(pulumi.BoolOutput)
+}
+
+// URL of the Model
+func (o GetGenaiModelsModelOutput) Url() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.Url }).(pulumi.StringOutput)
+}
+
+// UUID of the Model
+func (o GetGenaiModelsModelOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+// List of Versions for the Model
+func (o GetGenaiModelsModelOutput) Versions() GetGenaiModelsModelVersionArrayOutput {
+	return o.ApplyT(func(v GetGenaiModelsModel) []GetGenaiModelsModelVersion { return v.Versions }).(GetGenaiModelsModelVersionArrayOutput)
+}
+
+type GetGenaiModelsModelArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModel)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelArrayOutput) ToGetGenaiModelsModelArrayOutput() GetGenaiModelsModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelArrayOutput) ToGetGenaiModelsModelArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelArrayOutput) Index(i pulumi.IntInput) GetGenaiModelsModelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiModelsModel {
+		return vs[0].([]GetGenaiModelsModel)[vs[1].(int)]
+	}).(GetGenaiModelsModelOutput)
+}
+
+type GetGenaiModelsModelAgreement struct {
+	// Description of the agreement
+	Description *string `pulumi:"description"`
+	// Name of the agreement
+	Name *string `pulumi:"name"`
+	// URL of the agreement
+	Url *string `pulumi:"url"`
+	// UUID of the agreement
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiModelsModelAgreementInput is an input type that accepts GetGenaiModelsModelAgreementArgs and GetGenaiModelsModelAgreementOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelAgreementInput` via:
+//
+//	GetGenaiModelsModelAgreementArgs{...}
+type GetGenaiModelsModelAgreementInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelAgreementOutput() GetGenaiModelsModelAgreementOutput
+	ToGetGenaiModelsModelAgreementOutputWithContext(context.Context) GetGenaiModelsModelAgreementOutput
+}
+
+type GetGenaiModelsModelAgreementArgs struct {
+	// Description of the agreement
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Name of the agreement
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// URL of the agreement
+	Url pulumi.StringPtrInput `pulumi:"url"`
+	// UUID of the agreement
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiModelsModelAgreementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelAgreementArgs) ToGetGenaiModelsModelAgreementOutput() GetGenaiModelsModelAgreementOutput {
+	return i.ToGetGenaiModelsModelAgreementOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelAgreementArgs) ToGetGenaiModelsModelAgreementOutputWithContext(ctx context.Context) GetGenaiModelsModelAgreementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelAgreementOutput)
+}
+
+// GetGenaiModelsModelAgreementArrayInput is an input type that accepts GetGenaiModelsModelAgreementArray and GetGenaiModelsModelAgreementArrayOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelAgreementArrayInput` via:
+//
+//	GetGenaiModelsModelAgreementArray{ GetGenaiModelsModelAgreementArgs{...} }
+type GetGenaiModelsModelAgreementArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelAgreementArrayOutput() GetGenaiModelsModelAgreementArrayOutput
+	ToGetGenaiModelsModelAgreementArrayOutputWithContext(context.Context) GetGenaiModelsModelAgreementArrayOutput
+}
+
+type GetGenaiModelsModelAgreementArray []GetGenaiModelsModelAgreementInput
+
+func (GetGenaiModelsModelAgreementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModelAgreement)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelAgreementArray) ToGetGenaiModelsModelAgreementArrayOutput() GetGenaiModelsModelAgreementArrayOutput {
+	return i.ToGetGenaiModelsModelAgreementArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelAgreementArray) ToGetGenaiModelsModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelAgreementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelAgreementArrayOutput)
+}
+
+type GetGenaiModelsModelAgreementOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelAgreementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelAgreementOutput) ToGetGenaiModelsModelAgreementOutput() GetGenaiModelsModelAgreementOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelAgreementOutput) ToGetGenaiModelsModelAgreementOutputWithContext(ctx context.Context) GetGenaiModelsModelAgreementOutput {
+	return o
+}
+
+// Description of the agreement
+func (o GetGenaiModelsModelAgreementOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelAgreement) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Name of the agreement
+func (o GetGenaiModelsModelAgreementOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelAgreement) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// URL of the agreement
+func (o GetGenaiModelsModelAgreementOutput) Url() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelAgreement) *string { return v.Url }).(pulumi.StringPtrOutput)
+}
+
+// UUID of the agreement
+func (o GetGenaiModelsModelAgreementOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelAgreement) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiModelsModelAgreementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelAgreementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModelAgreement)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelAgreementArrayOutput) ToGetGenaiModelsModelAgreementArrayOutput() GetGenaiModelsModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelAgreementArrayOutput) ToGetGenaiModelsModelAgreementArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelAgreementArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelAgreementArrayOutput) Index(i pulumi.IntInput) GetGenaiModelsModelAgreementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiModelsModelAgreement {
+		return vs[0].([]GetGenaiModelsModelAgreement)[vs[1].(int)]
+	}).(GetGenaiModelsModelAgreementOutput)
+}
+
+type GetGenaiModelsModelVersion struct {
+	// Major version of the model
+	Major int `pulumi:"major"`
+	// Minor version of the model
+	Minor int `pulumi:"minor"`
+	// Patch version of the model
+	Patch int `pulumi:"patch"`
+}
+
+// GetGenaiModelsModelVersionInput is an input type that accepts GetGenaiModelsModelVersionArgs and GetGenaiModelsModelVersionOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelVersionInput` via:
+//
+//	GetGenaiModelsModelVersionArgs{...}
+type GetGenaiModelsModelVersionInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelVersionOutput() GetGenaiModelsModelVersionOutput
+	ToGetGenaiModelsModelVersionOutputWithContext(context.Context) GetGenaiModelsModelVersionOutput
+}
+
+type GetGenaiModelsModelVersionArgs struct {
+	// Major version of the model
+	Major pulumi.IntInput `pulumi:"major"`
+	// Minor version of the model
+	Minor pulumi.IntInput `pulumi:"minor"`
+	// Patch version of the model
+	Patch pulumi.IntInput `pulumi:"patch"`
+}
+
+func (GetGenaiModelsModelVersionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelVersionArgs) ToGetGenaiModelsModelVersionOutput() GetGenaiModelsModelVersionOutput {
+	return i.ToGetGenaiModelsModelVersionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelVersionArgs) ToGetGenaiModelsModelVersionOutputWithContext(ctx context.Context) GetGenaiModelsModelVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelVersionOutput)
+}
+
+// GetGenaiModelsModelVersionArrayInput is an input type that accepts GetGenaiModelsModelVersionArray and GetGenaiModelsModelVersionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiModelsModelVersionArrayInput` via:
+//
+//	GetGenaiModelsModelVersionArray{ GetGenaiModelsModelVersionArgs{...} }
+type GetGenaiModelsModelVersionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsModelVersionArrayOutput() GetGenaiModelsModelVersionArrayOutput
+	ToGetGenaiModelsModelVersionArrayOutputWithContext(context.Context) GetGenaiModelsModelVersionArrayOutput
+}
+
+type GetGenaiModelsModelVersionArray []GetGenaiModelsModelVersionInput
+
+func (GetGenaiModelsModelVersionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModelVersion)(nil)).Elem()
+}
+
+func (i GetGenaiModelsModelVersionArray) ToGetGenaiModelsModelVersionArrayOutput() GetGenaiModelsModelVersionArrayOutput {
+	return i.ToGetGenaiModelsModelVersionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsModelVersionArray) ToGetGenaiModelsModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelVersionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsModelVersionArrayOutput)
+}
+
+type GetGenaiModelsModelVersionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelVersionOutput) ToGetGenaiModelsModelVersionOutput() GetGenaiModelsModelVersionOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelVersionOutput) ToGetGenaiModelsModelVersionOutputWithContext(ctx context.Context) GetGenaiModelsModelVersionOutput {
+	return o
+}
+
+// Major version of the model
+func (o GetGenaiModelsModelVersionOutput) Major() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelVersion) int { return v.Major }).(pulumi.IntOutput)
+}
+
+// Minor version of the model
+func (o GetGenaiModelsModelVersionOutput) Minor() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelVersion) int { return v.Minor }).(pulumi.IntOutput)
+}
+
+// Patch version of the model
+func (o GetGenaiModelsModelVersionOutput) Patch() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiModelsModelVersion) int { return v.Patch }).(pulumi.IntOutput)
+}
+
+type GetGenaiModelsModelVersionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsModelVersionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsModelVersion)(nil)).Elem()
+}
+
+func (o GetGenaiModelsModelVersionArrayOutput) ToGetGenaiModelsModelVersionArrayOutput() GetGenaiModelsModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelVersionArrayOutput) ToGetGenaiModelsModelVersionArrayOutputWithContext(ctx context.Context) GetGenaiModelsModelVersionArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsModelVersionArrayOutput) Index(i pulumi.IntInput) GetGenaiModelsModelVersionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiModelsModelVersion {
+		return vs[0].([]GetGenaiModelsModelVersion)[vs[1].(int)]
+	}).(GetGenaiModelsModelVersionOutput)
+}
+
+type GetGenaiModelsSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGenaiModelsSortInput is an input type that accepts GetGenaiModelsSortArgs and GetGenaiModelsSortOutput values.
+// You can construct a concrete instance of `GetGenaiModelsSortInput` via:
+//
+//	GetGenaiModelsSortArgs{...}
+type GetGenaiModelsSortInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsSortOutput() GetGenaiModelsSortOutput
+	ToGetGenaiModelsSortOutputWithContext(context.Context) GetGenaiModelsSortOutput
+}
+
+type GetGenaiModelsSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGenaiModelsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsSort)(nil)).Elem()
+}
+
+func (i GetGenaiModelsSortArgs) ToGetGenaiModelsSortOutput() GetGenaiModelsSortOutput {
+	return i.ToGetGenaiModelsSortOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsSortArgs) ToGetGenaiModelsSortOutputWithContext(ctx context.Context) GetGenaiModelsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsSortOutput)
+}
+
+// GetGenaiModelsSortArrayInput is an input type that accepts GetGenaiModelsSortArray and GetGenaiModelsSortArrayOutput values.
+// You can construct a concrete instance of `GetGenaiModelsSortArrayInput` via:
+//
+//	GetGenaiModelsSortArray{ GetGenaiModelsSortArgs{...} }
+type GetGenaiModelsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiModelsSortArrayOutput() GetGenaiModelsSortArrayOutput
+	ToGetGenaiModelsSortArrayOutputWithContext(context.Context) GetGenaiModelsSortArrayOutput
+}
+
+type GetGenaiModelsSortArray []GetGenaiModelsSortInput
+
+func (GetGenaiModelsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsSort)(nil)).Elem()
+}
+
+func (i GetGenaiModelsSortArray) ToGetGenaiModelsSortArrayOutput() GetGenaiModelsSortArrayOutput {
+	return i.ToGetGenaiModelsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiModelsSortArray) ToGetGenaiModelsSortArrayOutputWithContext(ctx context.Context) GetGenaiModelsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiModelsSortArrayOutput)
+}
+
+type GetGenaiModelsSortOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiModelsSort)(nil)).Elem()
+}
+
+func (o GetGenaiModelsSortOutput) ToGetGenaiModelsSortOutput() GetGenaiModelsSortOutput {
+	return o
+}
+
+func (o GetGenaiModelsSortOutput) ToGetGenaiModelsSortOutputWithContext(ctx context.Context) GetGenaiModelsSortOutput {
+	return o
+}
+
+func (o GetGenaiModelsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiModelsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiModelsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiModelsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGenaiModelsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiModelsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiModelsSort)(nil)).Elem()
+}
+
+func (o GetGenaiModelsSortArrayOutput) ToGetGenaiModelsSortArrayOutput() GetGenaiModelsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsSortArrayOutput) ToGetGenaiModelsSortArrayOutputWithContext(ctx context.Context) GetGenaiModelsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiModelsSortArrayOutput) Index(i pulumi.IntInput) GetGenaiModelsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiModelsSort {
+		return vs[0].([]GetGenaiModelsSort)[vs[1].(int)]
+	}).(GetGenaiModelsSortOutput)
+}
+
 type GetGenaiOpenaiApiKeyModel struct {
 	// Agreement information for the model
 	Agreements []GetGenaiOpenaiApiKeyModelAgreement `pulumi:"agreements"`
@@ -72228,6 +72866,351 @@ func (o GetGenaiOpenaiApiKeysSortArrayOutput) Index(i pulumi.IntInput) GetGenaiO
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiOpenaiApiKeysSort {
 		return vs[0].([]GetGenaiOpenaiApiKeysSort)[vs[1].(int)]
 	}).(GetGenaiOpenaiApiKeysSortOutput)
+}
+
+type GetGenaiRegionsFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiRegionsFilterInput is an input type that accepts GetGenaiRegionsFilterArgs and GetGenaiRegionsFilterOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsFilterInput` via:
+//
+//	GetGenaiRegionsFilterArgs{...}
+type GetGenaiRegionsFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsFilterOutput() GetGenaiRegionsFilterOutput
+	ToGetGenaiRegionsFilterOutputWithContext(context.Context) GetGenaiRegionsFilterOutput
+}
+
+type GetGenaiRegionsFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiRegionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsFilterArgs) ToGetGenaiRegionsFilterOutput() GetGenaiRegionsFilterOutput {
+	return i.ToGetGenaiRegionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsFilterArgs) ToGetGenaiRegionsFilterOutputWithContext(ctx context.Context) GetGenaiRegionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsFilterOutput)
+}
+
+// GetGenaiRegionsFilterArrayInput is an input type that accepts GetGenaiRegionsFilterArray and GetGenaiRegionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsFilterArrayInput` via:
+//
+//	GetGenaiRegionsFilterArray{ GetGenaiRegionsFilterArgs{...} }
+type GetGenaiRegionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsFilterArrayOutput() GetGenaiRegionsFilterArrayOutput
+	ToGetGenaiRegionsFilterArrayOutputWithContext(context.Context) GetGenaiRegionsFilterArrayOutput
+}
+
+type GetGenaiRegionsFilterArray []GetGenaiRegionsFilterInput
+
+func (GetGenaiRegionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsFilter)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsFilterArray) ToGetGenaiRegionsFilterArrayOutput() GetGenaiRegionsFilterArrayOutput {
+	return i.ToGetGenaiRegionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsFilterArray) ToGetGenaiRegionsFilterArrayOutputWithContext(ctx context.Context) GetGenaiRegionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsFilterArrayOutput)
+}
+
+type GetGenaiRegionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsFilterOutput) ToGetGenaiRegionsFilterOutput() GetGenaiRegionsFilterOutput {
+	return o
+}
+
+func (o GetGenaiRegionsFilterOutput) ToGetGenaiRegionsFilterOutputWithContext(ctx context.Context) GetGenaiRegionsFilterOutput {
+	return o
+}
+
+func (o GetGenaiRegionsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiRegionsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiRegionsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiRegionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiRegionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiRegionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiRegionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsFilter)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsFilterArrayOutput) ToGetGenaiRegionsFilterArrayOutput() GetGenaiRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsFilterArrayOutput) ToGetGenaiRegionsFilterArrayOutputWithContext(ctx context.Context) GetGenaiRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiRegionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiRegionsFilter {
+		return vs[0].([]GetGenaiRegionsFilter)[vs[1].(int)]
+	}).(GetGenaiRegionsFilterOutput)
+}
+
+type GetGenaiRegionsRegion struct {
+	// Inference URL for the model
+	InferenceUrl string `pulumi:"inferenceUrl"`
+	// Region where the model is deployed
+	Region string `pulumi:"region"`
+	// Indicates if the model serves batch requests
+	ServesBatch bool `pulumi:"servesBatch"`
+	// Indicates if the model serves inference requests
+	ServesInference bool `pulumi:"servesInference"`
+	// Streaming inference URL for the model
+	StreamInferenceUrl string `pulumi:"streamInferenceUrl"`
+}
+
+// GetGenaiRegionsRegionInput is an input type that accepts GetGenaiRegionsRegionArgs and GetGenaiRegionsRegionOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsRegionInput` via:
+//
+//	GetGenaiRegionsRegionArgs{...}
+type GetGenaiRegionsRegionInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsRegionOutput() GetGenaiRegionsRegionOutput
+	ToGetGenaiRegionsRegionOutputWithContext(context.Context) GetGenaiRegionsRegionOutput
+}
+
+type GetGenaiRegionsRegionArgs struct {
+	// Inference URL for the model
+	InferenceUrl pulumi.StringInput `pulumi:"inferenceUrl"`
+	// Region where the model is deployed
+	Region pulumi.StringInput `pulumi:"region"`
+	// Indicates if the model serves batch requests
+	ServesBatch pulumi.BoolInput `pulumi:"servesBatch"`
+	// Indicates if the model serves inference requests
+	ServesInference pulumi.BoolInput `pulumi:"servesInference"`
+	// Streaming inference URL for the model
+	StreamInferenceUrl pulumi.StringInput `pulumi:"streamInferenceUrl"`
+}
+
+func (GetGenaiRegionsRegionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsRegion)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsRegionArgs) ToGetGenaiRegionsRegionOutput() GetGenaiRegionsRegionOutput {
+	return i.ToGetGenaiRegionsRegionOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsRegionArgs) ToGetGenaiRegionsRegionOutputWithContext(ctx context.Context) GetGenaiRegionsRegionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsRegionOutput)
+}
+
+// GetGenaiRegionsRegionArrayInput is an input type that accepts GetGenaiRegionsRegionArray and GetGenaiRegionsRegionArrayOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsRegionArrayInput` via:
+//
+//	GetGenaiRegionsRegionArray{ GetGenaiRegionsRegionArgs{...} }
+type GetGenaiRegionsRegionArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsRegionArrayOutput() GetGenaiRegionsRegionArrayOutput
+	ToGetGenaiRegionsRegionArrayOutputWithContext(context.Context) GetGenaiRegionsRegionArrayOutput
+}
+
+type GetGenaiRegionsRegionArray []GetGenaiRegionsRegionInput
+
+func (GetGenaiRegionsRegionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsRegion)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsRegionArray) ToGetGenaiRegionsRegionArrayOutput() GetGenaiRegionsRegionArrayOutput {
+	return i.ToGetGenaiRegionsRegionArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsRegionArray) ToGetGenaiRegionsRegionArrayOutputWithContext(ctx context.Context) GetGenaiRegionsRegionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsRegionArrayOutput)
+}
+
+type GetGenaiRegionsRegionOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsRegionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsRegion)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsRegionOutput) ToGetGenaiRegionsRegionOutput() GetGenaiRegionsRegionOutput {
+	return o
+}
+
+func (o GetGenaiRegionsRegionOutput) ToGetGenaiRegionsRegionOutputWithContext(ctx context.Context) GetGenaiRegionsRegionOutput {
+	return o
+}
+
+// Inference URL for the model
+func (o GetGenaiRegionsRegionOutput) InferenceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiRegionsRegion) string { return v.InferenceUrl }).(pulumi.StringOutput)
+}
+
+// Region where the model is deployed
+func (o GetGenaiRegionsRegionOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiRegionsRegion) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// Indicates if the model serves batch requests
+func (o GetGenaiRegionsRegionOutput) ServesBatch() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiRegionsRegion) bool { return v.ServesBatch }).(pulumi.BoolOutput)
+}
+
+// Indicates if the model serves inference requests
+func (o GetGenaiRegionsRegionOutput) ServesInference() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiRegionsRegion) bool { return v.ServesInference }).(pulumi.BoolOutput)
+}
+
+// Streaming inference URL for the model
+func (o GetGenaiRegionsRegionOutput) StreamInferenceUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiRegionsRegion) string { return v.StreamInferenceUrl }).(pulumi.StringOutput)
+}
+
+type GetGenaiRegionsRegionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsRegionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsRegion)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsRegionArrayOutput) ToGetGenaiRegionsRegionArrayOutput() GetGenaiRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsRegionArrayOutput) ToGetGenaiRegionsRegionArrayOutputWithContext(ctx context.Context) GetGenaiRegionsRegionArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetGenaiRegionsRegionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiRegionsRegion {
+		return vs[0].([]GetGenaiRegionsRegion)[vs[1].(int)]
+	}).(GetGenaiRegionsRegionOutput)
+}
+
+type GetGenaiRegionsSort struct {
+	Direction *string `pulumi:"direction"`
+	Key       string  `pulumi:"key"`
+}
+
+// GetGenaiRegionsSortInput is an input type that accepts GetGenaiRegionsSortArgs and GetGenaiRegionsSortOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsSortInput` via:
+//
+//	GetGenaiRegionsSortArgs{...}
+type GetGenaiRegionsSortInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsSortOutput() GetGenaiRegionsSortOutput
+	ToGetGenaiRegionsSortOutputWithContext(context.Context) GetGenaiRegionsSortOutput
+}
+
+type GetGenaiRegionsSortArgs struct {
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	Key       pulumi.StringInput    `pulumi:"key"`
+}
+
+func (GetGenaiRegionsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsSort)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsSortArgs) ToGetGenaiRegionsSortOutput() GetGenaiRegionsSortOutput {
+	return i.ToGetGenaiRegionsSortOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsSortArgs) ToGetGenaiRegionsSortOutputWithContext(ctx context.Context) GetGenaiRegionsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsSortOutput)
+}
+
+// GetGenaiRegionsSortArrayInput is an input type that accepts GetGenaiRegionsSortArray and GetGenaiRegionsSortArrayOutput values.
+// You can construct a concrete instance of `GetGenaiRegionsSortArrayInput` via:
+//
+//	GetGenaiRegionsSortArray{ GetGenaiRegionsSortArgs{...} }
+type GetGenaiRegionsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiRegionsSortArrayOutput() GetGenaiRegionsSortArrayOutput
+	ToGetGenaiRegionsSortArrayOutputWithContext(context.Context) GetGenaiRegionsSortArrayOutput
+}
+
+type GetGenaiRegionsSortArray []GetGenaiRegionsSortInput
+
+func (GetGenaiRegionsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsSort)(nil)).Elem()
+}
+
+func (i GetGenaiRegionsSortArray) ToGetGenaiRegionsSortArrayOutput() GetGenaiRegionsSortArrayOutput {
+	return i.ToGetGenaiRegionsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiRegionsSortArray) ToGetGenaiRegionsSortArrayOutputWithContext(ctx context.Context) GetGenaiRegionsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiRegionsSortArrayOutput)
+}
+
+type GetGenaiRegionsSortOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiRegionsSort)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsSortOutput) ToGetGenaiRegionsSortOutput() GetGenaiRegionsSortOutput {
+	return o
+}
+
+func (o GetGenaiRegionsSortOutput) ToGetGenaiRegionsSortOutputWithContext(ctx context.Context) GetGenaiRegionsSortOutput {
+	return o
+}
+
+func (o GetGenaiRegionsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiRegionsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiRegionsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetGenaiRegionsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiRegionsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiRegionsSort)(nil)).Elem()
+}
+
+func (o GetGenaiRegionsSortArrayOutput) ToGetGenaiRegionsSortArrayOutput() GetGenaiRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsSortArrayOutput) ToGetGenaiRegionsSortArrayOutputWithContext(ctx context.Context) GetGenaiRegionsSortArrayOutput {
+	return o
+}
+
+func (o GetGenaiRegionsSortArrayOutput) Index(i pulumi.IntInput) GetGenaiRegionsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiRegionsSort {
+		return vs[0].([]GetGenaiRegionsSort)[vs[1].(int)]
+	}).(GetGenaiRegionsSortOutput)
 }
 
 type GetImagesFilter struct {
@@ -76109,1049 +77092,6 @@ func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOu
 	}).(GetRegionsFilterOutput)
 }
 
-type GetRegionsRegion struct {
-	// A boolean value that represents whether new Droplets can be created in this region.
-	Available bool `pulumi:"available"`
-	// A set of features available in this region.
-	Features []string `pulumi:"features"`
-	// The display name of the region.
-	Name string `pulumi:"name"`
-	// A set of identifying slugs for the Droplet sizes available in this region.
-	Sizes []string `pulumi:"sizes"`
-	// A human-readable string that is used as a unique identifier for each region.
-	Slug string `pulumi:"slug"`
-}
-
-// GetRegionsRegionInput is an input type that accepts GetRegionsRegionArgs and GetRegionsRegionOutput values.
-// You can construct a concrete instance of `GetRegionsRegionInput` via:
-//
-//	GetRegionsRegionArgs{...}
-type GetRegionsRegionInput interface {
-	pulumi.Input
-
-	ToGetRegionsRegionOutput() GetRegionsRegionOutput
-	ToGetRegionsRegionOutputWithContext(context.Context) GetRegionsRegionOutput
-}
-
-type GetRegionsRegionArgs struct {
-	// A boolean value that represents whether new Droplets can be created in this region.
-	Available pulumi.BoolInput `pulumi:"available"`
-	// A set of features available in this region.
-	Features pulumi.StringArrayInput `pulumi:"features"`
-	// The display name of the region.
-	Name pulumi.StringInput `pulumi:"name"`
-	// A set of identifying slugs for the Droplet sizes available in this region.
-	Sizes pulumi.StringArrayInput `pulumi:"sizes"`
-	// A human-readable string that is used as a unique identifier for each region.
-	Slug pulumi.StringInput `pulumi:"slug"`
-}
-
-func (GetRegionsRegionArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
-}
-
-func (i GetRegionsRegionArgs) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
-	return i.ToGetRegionsRegionOutputWithContext(context.Background())
-}
-
-func (i GetRegionsRegionArgs) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionOutput)
-}
-
-// GetRegionsRegionArrayInput is an input type that accepts GetRegionsRegionArray and GetRegionsRegionArrayOutput values.
-// You can construct a concrete instance of `GetRegionsRegionArrayInput` via:
-//
-//	GetRegionsRegionArray{ GetRegionsRegionArgs{...} }
-type GetRegionsRegionArrayInput interface {
-	pulumi.Input
-
-	ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput
-	ToGetRegionsRegionArrayOutputWithContext(context.Context) GetRegionsRegionArrayOutput
-}
-
-type GetRegionsRegionArray []GetRegionsRegionInput
-
-func (GetRegionsRegionArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
-}
-
-func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
-	return i.ToGetRegionsRegionArrayOutputWithContext(context.Background())
-}
-
-func (i GetRegionsRegionArray) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsRegionArrayOutput)
-}
-
-type GetRegionsRegionOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsRegionOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsRegion)(nil)).Elem()
-}
-
-func (o GetRegionsRegionOutput) ToGetRegionsRegionOutput() GetRegionsRegionOutput {
-	return o
-}
-
-func (o GetRegionsRegionOutput) ToGetRegionsRegionOutputWithContext(ctx context.Context) GetRegionsRegionOutput {
-	return o
-}
-
-// A boolean value that represents whether new Droplets can be created in this region.
-func (o GetRegionsRegionOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetRegionsRegion) bool { return v.Available }).(pulumi.BoolOutput)
-}
-
-// A set of features available in this region.
-func (o GetRegionsRegionOutput) Features() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Features }).(pulumi.StringArrayOutput)
-}
-
-// The display name of the region.
-func (o GetRegionsRegionOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionsRegion) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// A set of identifying slugs for the Droplet sizes available in this region.
-func (o GetRegionsRegionOutput) Sizes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRegionsRegion) []string { return v.Sizes }).(pulumi.StringArrayOutput)
-}
-
-// A human-readable string that is used as a unique identifier for each region.
-func (o GetRegionsRegionOutput) Slug() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionsRegion) string { return v.Slug }).(pulumi.StringOutput)
-}
-
-type GetRegionsRegionArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsRegionArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsRegion)(nil)).Elem()
-}
-
-func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutput() GetRegionsRegionArrayOutput {
-	return o
-}
-
-func (o GetRegionsRegionArrayOutput) ToGetRegionsRegionArrayOutputWithContext(ctx context.Context) GetRegionsRegionArrayOutput {
-	return o
-}
-
-func (o GetRegionsRegionArrayOutput) Index(i pulumi.IntInput) GetRegionsRegionOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsRegion {
-		return vs[0].([]GetRegionsRegion)[vs[1].(int)]
-	}).(GetRegionsRegionOutput)
-}
-
-type GetRegionsSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the regions by this key. This may be one of `slug`,
-	// `name`, or `available`.
-	Key string `pulumi:"key"`
-}
-
-// GetRegionsSortInput is an input type that accepts GetRegionsSortArgs and GetRegionsSortOutput values.
-// You can construct a concrete instance of `GetRegionsSortInput` via:
-//
-//	GetRegionsSortArgs{...}
-type GetRegionsSortInput interface {
-	pulumi.Input
-
-	ToGetRegionsSortOutput() GetRegionsSortOutput
-	ToGetRegionsSortOutputWithContext(context.Context) GetRegionsSortOutput
-}
-
-type GetRegionsSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the regions by this key. This may be one of `slug`,
-	// `name`, or `available`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetRegionsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
-}
-
-func (i GetRegionsSortArgs) ToGetRegionsSortOutput() GetRegionsSortOutput {
-	return i.ToGetRegionsSortOutputWithContext(context.Background())
-}
-
-func (i GetRegionsSortArgs) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortOutput)
-}
-
-// GetRegionsSortArrayInput is an input type that accepts GetRegionsSortArray and GetRegionsSortArrayOutput values.
-// You can construct a concrete instance of `GetRegionsSortArrayInput` via:
-//
-//	GetRegionsSortArray{ GetRegionsSortArgs{...} }
-type GetRegionsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput
-	ToGetRegionsSortArrayOutputWithContext(context.Context) GetRegionsSortArrayOutput
-}
-
-type GetRegionsSortArray []GetRegionsSortInput
-
-func (GetRegionsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
-}
-
-func (i GetRegionsSortArray) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
-	return i.ToGetRegionsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetRegionsSortArray) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsSortArrayOutput)
-}
-
-type GetRegionsSortOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsSort)(nil)).Elem()
-}
-
-func (o GetRegionsSortOutput) ToGetRegionsSortOutput() GetRegionsSortOutput {
-	return o
-}
-
-func (o GetRegionsSortOutput) ToGetRegionsSortOutputWithContext(ctx context.Context) GetRegionsSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetRegionsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRegionsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the regions by this key. This may be one of `slug`,
-// `name`, or `available`.
-func (o GetRegionsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionsSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetRegionsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsSort)(nil)).Elem()
-}
-
-func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutput() GetRegionsSortArrayOutput {
-	return o
-}
-
-func (o GetRegionsSortArrayOutput) ToGetRegionsSortArrayOutputWithContext(ctx context.Context) GetRegionsSortArrayOutput {
-	return o
-}
-
-func (o GetRegionsSortArrayOutput) Index(i pulumi.IntInput) GetRegionsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsSort {
-		return vs[0].([]GetRegionsSort)[vs[1].(int)]
-	}).(GetRegionsSortOutput)
-}
-
-type GetSizesFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the sizes by this key. This may be one of `slug`,
-	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
-	// `priceHourly`, or `available`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// Only retrieves sizes which keys has value that matches
-	// one of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetSizesFilterInput is an input type that accepts GetSizesFilterArgs and GetSizesFilterOutput values.
-// You can construct a concrete instance of `GetSizesFilterInput` via:
-//
-//	GetSizesFilterArgs{...}
-type GetSizesFilterInput interface {
-	pulumi.Input
-
-	ToGetSizesFilterOutput() GetSizesFilterOutput
-	ToGetSizesFilterOutputWithContext(context.Context) GetSizesFilterOutput
-}
-
-type GetSizesFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the sizes by this key. This may be one of `slug`,
-	// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
-	// `priceHourly`, or `available`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// Only retrieves sizes which keys has value that matches
-	// one of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetSizesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesFilter)(nil)).Elem()
-}
-
-func (i GetSizesFilterArgs) ToGetSizesFilterOutput() GetSizesFilterOutput {
-	return i.ToGetSizesFilterOutputWithContext(context.Background())
-}
-
-func (i GetSizesFilterArgs) ToGetSizesFilterOutputWithContext(ctx context.Context) GetSizesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesFilterOutput)
-}
-
-// GetSizesFilterArrayInput is an input type that accepts GetSizesFilterArray and GetSizesFilterArrayOutput values.
-// You can construct a concrete instance of `GetSizesFilterArrayInput` via:
-//
-//	GetSizesFilterArray{ GetSizesFilterArgs{...} }
-type GetSizesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput
-	ToGetSizesFilterArrayOutputWithContext(context.Context) GetSizesFilterArrayOutput
-}
-
-type GetSizesFilterArray []GetSizesFilterInput
-
-func (GetSizesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesFilter)(nil)).Elem()
-}
-
-func (i GetSizesFilterArray) ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput {
-	return i.ToGetSizesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetSizesFilterArray) ToGetSizesFilterArrayOutputWithContext(ctx context.Context) GetSizesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesFilterArrayOutput)
-}
-
-type GetSizesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetSizesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesFilter)(nil)).Elem()
-}
-
-func (o GetSizesFilterOutput) ToGetSizesFilterOutput() GetSizesFilterOutput {
-	return o
-}
-
-func (o GetSizesFilterOutput) ToGetSizesFilterOutputWithContext(ctx context.Context) GetSizesFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetSizesFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSizesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the sizes by this key. This may be one of `slug`,
-// `regions`, `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`,
-// `priceHourly`, or `available`.
-func (o GetSizesFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSizesFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetSizesFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSizesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// Only retrieves sizes which keys has value that matches
-// one of the values provided here.
-func (o GetSizesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSizesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetSizesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSizesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesFilter)(nil)).Elem()
-}
-
-func (o GetSizesFilterArrayOutput) ToGetSizesFilterArrayOutput() GetSizesFilterArrayOutput {
-	return o
-}
-
-func (o GetSizesFilterArrayOutput) ToGetSizesFilterArrayOutputWithContext(ctx context.Context) GetSizesFilterArrayOutput {
-	return o
-}
-
-func (o GetSizesFilterArrayOutput) Index(i pulumi.IntInput) GetSizesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesFilter {
-		return vs[0].([]GetSizesFilter)[vs[1].(int)]
-	}).(GetSizesFilterOutput)
-}
-
-type GetSizesSize struct {
-	// This represents whether new Droplets can be created with this size.
-	Available bool `pulumi:"available"`
-	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
-	Disk int `pulumi:"disk"`
-	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
-	Memory int `pulumi:"memory"`
-	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
-	PriceHourly float64 `pulumi:"priceHourly"`
-	// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
-	PriceMonthly float64 `pulumi:"priceMonthly"`
-	// List of region slugs where Droplets can be created in this size.
-	Regions []string `pulumi:"regions"`
-	// A human-readable string that is used to uniquely identify each size.
-	Slug string `pulumi:"slug"`
-	// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
-	Transfer float64 `pulumi:"transfer"`
-	// The number of CPUs allocated to Droplets of this size.
-	Vcpus int `pulumi:"vcpus"`
-}
-
-// GetSizesSizeInput is an input type that accepts GetSizesSizeArgs and GetSizesSizeOutput values.
-// You can construct a concrete instance of `GetSizesSizeInput` via:
-//
-//	GetSizesSizeArgs{...}
-type GetSizesSizeInput interface {
-	pulumi.Input
-
-	ToGetSizesSizeOutput() GetSizesSizeOutput
-	ToGetSizesSizeOutputWithContext(context.Context) GetSizesSizeOutput
-}
-
-type GetSizesSizeArgs struct {
-	// This represents whether new Droplets can be created with this size.
-	Available pulumi.BoolInput `pulumi:"available"`
-	// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
-	Disk pulumi.IntInput `pulumi:"disk"`
-	// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
-	Memory pulumi.IntInput `pulumi:"memory"`
-	// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
-	PriceHourly pulumi.Float64Input `pulumi:"priceHourly"`
-	// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
-	PriceMonthly pulumi.Float64Input `pulumi:"priceMonthly"`
-	// List of region slugs where Droplets can be created in this size.
-	Regions pulumi.StringArrayInput `pulumi:"regions"`
-	// A human-readable string that is used to uniquely identify each size.
-	Slug pulumi.StringInput `pulumi:"slug"`
-	// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
-	Transfer pulumi.Float64Input `pulumi:"transfer"`
-	// The number of CPUs allocated to Droplets of this size.
-	Vcpus pulumi.IntInput `pulumi:"vcpus"`
-}
-
-func (GetSizesSizeArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesSize)(nil)).Elem()
-}
-
-func (i GetSizesSizeArgs) ToGetSizesSizeOutput() GetSizesSizeOutput {
-	return i.ToGetSizesSizeOutputWithContext(context.Background())
-}
-
-func (i GetSizesSizeArgs) ToGetSizesSizeOutputWithContext(ctx context.Context) GetSizesSizeOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeOutput)
-}
-
-// GetSizesSizeArrayInput is an input type that accepts GetSizesSizeArray and GetSizesSizeArrayOutput values.
-// You can construct a concrete instance of `GetSizesSizeArrayInput` via:
-//
-//	GetSizesSizeArray{ GetSizesSizeArgs{...} }
-type GetSizesSizeArrayInput interface {
-	pulumi.Input
-
-	ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput
-	ToGetSizesSizeArrayOutputWithContext(context.Context) GetSizesSizeArrayOutput
-}
-
-type GetSizesSizeArray []GetSizesSizeInput
-
-func (GetSizesSizeArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesSize)(nil)).Elem()
-}
-
-func (i GetSizesSizeArray) ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput {
-	return i.ToGetSizesSizeArrayOutputWithContext(context.Background())
-}
-
-func (i GetSizesSizeArray) ToGetSizesSizeArrayOutputWithContext(ctx context.Context) GetSizesSizeArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSizeArrayOutput)
-}
-
-type GetSizesSizeOutput struct{ *pulumi.OutputState }
-
-func (GetSizesSizeOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesSize)(nil)).Elem()
-}
-
-func (o GetSizesSizeOutput) ToGetSizesSizeOutput() GetSizesSizeOutput {
-	return o
-}
-
-func (o GetSizesSizeOutput) ToGetSizesSizeOutputWithContext(ctx context.Context) GetSizesSizeOutput {
-	return o
-}
-
-// This represents whether new Droplets can be created with this size.
-func (o GetSizesSizeOutput) Available() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetSizesSize) bool { return v.Available }).(pulumi.BoolOutput)
-}
-
-// The amount of disk space set aside for Droplets of this size. The value is measured in gigabytes.
-func (o GetSizesSizeOutput) Disk() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSizesSize) int { return v.Disk }).(pulumi.IntOutput)
-}
-
-// The amount of RAM allocated to Droplets created of this size. The value is measured in megabytes.
-func (o GetSizesSizeOutput) Memory() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSizesSize) int { return v.Memory }).(pulumi.IntOutput)
-}
-
-// The hourly cost of Droplets created in this size as measured hourly. The value is measured in US dollars.
-func (o GetSizesSizeOutput) PriceHourly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceHourly }).(pulumi.Float64Output)
-}
-
-// The monthly cost of Droplets created in this size if they are kept for an entire month. The value is measured in US dollars.
-func (o GetSizesSizeOutput) PriceMonthly() pulumi.Float64Output {
-	return o.ApplyT(func(v GetSizesSize) float64 { return v.PriceMonthly }).(pulumi.Float64Output)
-}
-
-// List of region slugs where Droplets can be created in this size.
-func (o GetSizesSizeOutput) Regions() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSizesSize) []string { return v.Regions }).(pulumi.StringArrayOutput)
-}
-
-// A human-readable string that is used to uniquely identify each size.
-func (o GetSizesSizeOutput) Slug() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSizesSize) string { return v.Slug }).(pulumi.StringOutput)
-}
-
-// The amount of transfer bandwidth that is available for Droplets created in this size. This only counts traffic on the public interface. The value is given in terabytes.
-func (o GetSizesSizeOutput) Transfer() pulumi.Float64Output {
-	return o.ApplyT(func(v GetSizesSize) float64 { return v.Transfer }).(pulumi.Float64Output)
-}
-
-// The number of CPUs allocated to Droplets of this size.
-func (o GetSizesSizeOutput) Vcpus() pulumi.IntOutput {
-	return o.ApplyT(func(v GetSizesSize) int { return v.Vcpus }).(pulumi.IntOutput)
-}
-
-type GetSizesSizeArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSizesSizeArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesSize)(nil)).Elem()
-}
-
-func (o GetSizesSizeArrayOutput) ToGetSizesSizeArrayOutput() GetSizesSizeArrayOutput {
-	return o
-}
-
-func (o GetSizesSizeArrayOutput) ToGetSizesSizeArrayOutputWithContext(ctx context.Context) GetSizesSizeArrayOutput {
-	return o
-}
-
-func (o GetSizesSizeArrayOutput) Index(i pulumi.IntInput) GetSizesSizeOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSize {
-		return vs[0].([]GetSizesSize)[vs[1].(int)]
-	}).(GetSizesSizeOutput)
-}
-
-type GetSizesSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the sizes by this key. This may be one of `slug`,
-	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-	Key string `pulumi:"key"`
-}
-
-// GetSizesSortInput is an input type that accepts GetSizesSortArgs and GetSizesSortOutput values.
-// You can construct a concrete instance of `GetSizesSortInput` via:
-//
-//	GetSizesSortArgs{...}
-type GetSizesSortInput interface {
-	pulumi.Input
-
-	ToGetSizesSortOutput() GetSizesSortOutput
-	ToGetSizesSortOutputWithContext(context.Context) GetSizesSortOutput
-}
-
-type GetSizesSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the sizes by this key. This may be one of `slug`,
-	// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetSizesSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesSort)(nil)).Elem()
-}
-
-func (i GetSizesSortArgs) ToGetSizesSortOutput() GetSizesSortOutput {
-	return i.ToGetSizesSortOutputWithContext(context.Background())
-}
-
-func (i GetSizesSortArgs) ToGetSizesSortOutputWithContext(ctx context.Context) GetSizesSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSortOutput)
-}
-
-// GetSizesSortArrayInput is an input type that accepts GetSizesSortArray and GetSizesSortArrayOutput values.
-// You can construct a concrete instance of `GetSizesSortArrayInput` via:
-//
-//	GetSizesSortArray{ GetSizesSortArgs{...} }
-type GetSizesSortArrayInput interface {
-	pulumi.Input
-
-	ToGetSizesSortArrayOutput() GetSizesSortArrayOutput
-	ToGetSizesSortArrayOutputWithContext(context.Context) GetSizesSortArrayOutput
-}
-
-type GetSizesSortArray []GetSizesSortInput
-
-func (GetSizesSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesSort)(nil)).Elem()
-}
-
-func (i GetSizesSortArray) ToGetSizesSortArrayOutput() GetSizesSortArrayOutput {
-	return i.ToGetSizesSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetSizesSortArray) ToGetSizesSortArrayOutputWithContext(ctx context.Context) GetSizesSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSizesSortArrayOutput)
-}
-
-type GetSizesSortOutput struct{ *pulumi.OutputState }
-
-func (GetSizesSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSizesSort)(nil)).Elem()
-}
-
-func (o GetSizesSortOutput) ToGetSizesSortOutput() GetSizesSortOutput {
-	return o
-}
-
-func (o GetSizesSortOutput) ToGetSizesSortOutputWithContext(ctx context.Context) GetSizesSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetSizesSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSizesSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the sizes by this key. This may be one of `slug`,
-// `memory`, `vcpus`, `disk`, `transfer`, `priceMonthly`, or `priceHourly`.
-func (o GetSizesSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSizesSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetSizesSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSizesSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSizesSort)(nil)).Elem()
-}
-
-func (o GetSizesSortArrayOutput) ToGetSizesSortArrayOutput() GetSizesSortArrayOutput {
-	return o
-}
-
-func (o GetSizesSortArrayOutput) ToGetSizesSortArrayOutputWithContext(ctx context.Context) GetSizesSortArrayOutput {
-	return o
-}
-
-func (o GetSizesSortArrayOutput) Index(i pulumi.IntInput) GetSizesSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSizesSort {
-		return vs[0].([]GetSizesSort)[vs[1].(int)]
-	}).(GetSizesSortOutput)
-}
-
-type GetSpacesBucketsBucket struct {
-	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-	BucketDomainName string `pulumi:"bucketDomainName"`
-	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
-	Endpoint string `pulumi:"endpoint"`
-	// The name of the Spaces bucket
-	Name string `pulumi:"name"`
-	// The slug of the region where the bucket is stored.
-	Region string `pulumi:"region"`
-	// The uniform resource name of the bucket
-	Urn string `pulumi:"urn"`
-}
-
-// GetSpacesBucketsBucketInput is an input type that accepts GetSpacesBucketsBucketArgs and GetSpacesBucketsBucketOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsBucketInput` via:
-//
-//	GetSpacesBucketsBucketArgs{...}
-type GetSpacesBucketsBucketInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput
-	ToGetSpacesBucketsBucketOutputWithContext(context.Context) GetSpacesBucketsBucketOutput
-}
-
-type GetSpacesBucketsBucketArgs struct {
-	// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-	BucketDomainName pulumi.StringInput `pulumi:"bucketDomainName"`
-	// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
-	Endpoint pulumi.StringInput `pulumi:"endpoint"`
-	// The name of the Spaces bucket
-	Name pulumi.StringInput `pulumi:"name"`
-	// The slug of the region where the bucket is stored.
-	Region pulumi.StringInput `pulumi:"region"`
-	// The uniform resource name of the bucket
-	Urn pulumi.StringInput `pulumi:"urn"`
-}
-
-func (GetSpacesBucketsBucketArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
-	return i.ToGetSpacesBucketsBucketOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsBucketArgs) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketOutput)
-}
-
-// GetSpacesBucketsBucketArrayInput is an input type that accepts GetSpacesBucketsBucketArray and GetSpacesBucketsBucketArrayOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsBucketArrayInput` via:
-//
-//	GetSpacesBucketsBucketArray{ GetSpacesBucketsBucketArgs{...} }
-type GetSpacesBucketsBucketArrayInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput
-	ToGetSpacesBucketsBucketArrayOutputWithContext(context.Context) GetSpacesBucketsBucketArrayOutput
-}
-
-type GetSpacesBucketsBucketArray []GetSpacesBucketsBucketInput
-
-func (GetSpacesBucketsBucketArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
-	return i.ToGetSpacesBucketsBucketArrayOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsBucketArray) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsBucketArrayOutput)
-}
-
-type GetSpacesBucketsBucketOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsBucketOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsBucket)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutput() GetSpacesBucketsBucketOutput {
-	return o
-}
-
-func (o GetSpacesBucketsBucketOutput) ToGetSpacesBucketsBucketOutputWithContext(ctx context.Context) GetSpacesBucketsBucketOutput {
-	return o
-}
-
-// The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
-func (o GetSpacesBucketsBucketOutput) BucketDomainName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.BucketDomainName }).(pulumi.StringOutput)
-}
-
-// The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
-func (o GetSpacesBucketsBucketOutput) Endpoint() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Endpoint }).(pulumi.StringOutput)
-}
-
-// The name of the Spaces bucket
-func (o GetSpacesBucketsBucketOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The slug of the region where the bucket is stored.
-func (o GetSpacesBucketsBucketOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// The uniform resource name of the bucket
-func (o GetSpacesBucketsBucketOutput) Urn() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsBucket) string { return v.Urn }).(pulumi.StringOutput)
-}
-
-type GetSpacesBucketsBucketArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsBucketArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsBucket)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutput() GetSpacesBucketsBucketArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsBucketArrayOutput) ToGetSpacesBucketsBucketArrayOutputWithContext(ctx context.Context) GetSpacesBucketsBucketArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsBucketArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsBucketOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsBucket {
-		return vs[0].([]GetSpacesBucketsBucket)[vs[1].(int)]
-	}).(GetSpacesBucketsBucketOutput)
-}
-
-type GetSpacesBucketsFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves Spaces buckets
-	// where the `key` field takes on one or more of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetSpacesBucketsFilterInput is an input type that accepts GetSpacesBucketsFilterArgs and GetSpacesBucketsFilterOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsFilterInput` via:
-//
-//	GetSpacesBucketsFilterArgs{...}
-type GetSpacesBucketsFilterInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput
-	ToGetSpacesBucketsFilterOutputWithContext(context.Context) GetSpacesBucketsFilterOutput
-}
-
-type GetSpacesBucketsFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves Spaces buckets
-	// where the `key` field takes on one or more of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetSpacesBucketsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
-	return i.ToGetSpacesBucketsFilterOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsFilterArgs) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterOutput)
-}
-
-// GetSpacesBucketsFilterArrayInput is an input type that accepts GetSpacesBucketsFilterArray and GetSpacesBucketsFilterArrayOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsFilterArrayInput` via:
-//
-//	GetSpacesBucketsFilterArray{ GetSpacesBucketsFilterArgs{...} }
-type GetSpacesBucketsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput
-	ToGetSpacesBucketsFilterArrayOutputWithContext(context.Context) GetSpacesBucketsFilterArrayOutput
-}
-
-type GetSpacesBucketsFilterArray []GetSpacesBucketsFilterInput
-
-func (GetSpacesBucketsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
-	return i.ToGetSpacesBucketsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsFilterArray) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsFilterArrayOutput)
-}
-
-type GetSpacesBucketsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsFilter)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutput() GetSpacesBucketsFilterOutput {
-	return o
-}
-
-func (o GetSpacesBucketsFilterOutput) ToGetSpacesBucketsFilterOutputWithContext(ctx context.Context) GetSpacesBucketsFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetSpacesBucketsFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetSpacesBucketsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-func (o GetSpacesBucketsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetSpacesBucketsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSpacesBucketsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// A list of values to match against the `key` field. Only retrieves Spaces buckets
-// where the `key` field takes on one or more of the values provided here.
-func (o GetSpacesBucketsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetSpacesBucketsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetSpacesBucketsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsFilter)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutput() GetSpacesBucketsFilterArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsFilterArrayOutput) ToGetSpacesBucketsFilterArrayOutputWithContext(ctx context.Context) GetSpacesBucketsFilterArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsFilterArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsFilter {
-		return vs[0].([]GetSpacesBucketsFilter)[vs[1].(int)]
-	}).(GetSpacesBucketsFilterOutput)
-}
-
-type GetSpacesBucketsSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-	Key string `pulumi:"key"`
-}
-
-// GetSpacesBucketsSortInput is an input type that accepts GetSpacesBucketsSortArgs and GetSpacesBucketsSortOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsSortInput` via:
-//
-//	GetSpacesBucketsSortArgs{...}
-type GetSpacesBucketsSortInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput
-	ToGetSpacesBucketsSortOutputWithContext(context.Context) GetSpacesBucketsSortOutput
-}
-
-type GetSpacesBucketsSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetSpacesBucketsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
-	return i.ToGetSpacesBucketsSortOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsSortArgs) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortOutput)
-}
-
-// GetSpacesBucketsSortArrayInput is an input type that accepts GetSpacesBucketsSortArray and GetSpacesBucketsSortArrayOutput values.
-// You can construct a concrete instance of `GetSpacesBucketsSortArrayInput` via:
-//
-//	GetSpacesBucketsSortArray{ GetSpacesBucketsSortArgs{...} }
-type GetSpacesBucketsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput
-	ToGetSpacesBucketsSortArrayOutputWithContext(context.Context) GetSpacesBucketsSortArrayOutput
-}
-
-type GetSpacesBucketsSortArray []GetSpacesBucketsSortInput
-
-func (GetSpacesBucketsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
-}
-
-func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
-	return i.ToGetSpacesBucketsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetSpacesBucketsSortArray) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetSpacesBucketsSortArrayOutput)
-}
-
-type GetSpacesBucketsSortOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetSpacesBucketsSort)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutput() GetSpacesBucketsSortOutput {
-	return o
-}
-
-func (o GetSpacesBucketsSortOutput) ToGetSpacesBucketsSortOutputWithContext(ctx context.Context) GetSpacesBucketsSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetSpacesBucketsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetSpacesBucketsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the images by this key. This may be one of `bucketDomainName`, `name`, `region`, or `urn`.
-func (o GetSpacesBucketsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetSpacesBucketsSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetSpacesBucketsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetSpacesBucketsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetSpacesBucketsSort)(nil)).Elem()
-}
-
-func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutput() GetSpacesBucketsSortArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsSortArrayOutput) ToGetSpacesBucketsSortArrayOutputWithContext(ctx context.Context) GetSpacesBucketsSortArrayOutput {
-	return o
-}
-
-func (o GetSpacesBucketsSortArrayOutput) Index(i pulumi.IntInput) GetSpacesBucketsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSpacesBucketsSort {
-		return vs[0].([]GetSpacesBucketsSort)[vs[1].(int)]
-	}).(GetSpacesBucketsSortOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -78059,6 +77999,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsFilterInput)(nil)).Elem(), GetGenaiModelsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsFilterArrayInput)(nil)).Elem(), GetGenaiModelsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelInput)(nil)).Elem(), GetGenaiModelsModelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelArrayInput)(nil)).Elem(), GetGenaiModelsModelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelAgreementInput)(nil)).Elem(), GetGenaiModelsModelAgreementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelAgreementArrayInput)(nil)).Elem(), GetGenaiModelsModelAgreementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelVersionInput)(nil)).Elem(), GetGenaiModelsModelVersionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsModelVersionArrayInput)(nil)).Elem(), GetGenaiModelsModelVersionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsSortInput)(nil)).Elem(), GetGenaiModelsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsSortArrayInput)(nil)).Elem(), GetGenaiModelsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeyModelAgreementInput)(nil)).Elem(), GetGenaiOpenaiApiKeyModelAgreementArgs{})
@@ -78077,6 +78027,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysSortInput)(nil)).Elem(), GetGenaiOpenaiApiKeysSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiOpenaiApiKeysSortArrayInput)(nil)).Elem(), GetGenaiOpenaiApiKeysSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsFilterInput)(nil)).Elem(), GetGenaiRegionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsFilterArrayInput)(nil)).Elem(), GetGenaiRegionsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsRegionInput)(nil)).Elem(), GetGenaiRegionsRegionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsRegionArrayInput)(nil)).Elem(), GetGenaiRegionsRegionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsSortInput)(nil)).Elem(), GetGenaiRegionsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiRegionsSortArrayInput)(nil)).Elem(), GetGenaiRegionsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterInput)(nil)).Elem(), GetImagesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesFilterArrayInput)(nil)).Elem(), GetImagesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetImagesImageInput)(nil)).Elem(), GetImagesImageArgs{})
@@ -78133,22 +78089,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortArrayInput)(nil)).Elem(), GetRecordsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortInput)(nil)).Elem(), GetRegionsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortArrayInput)(nil)).Elem(), GetRegionsSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterInput)(nil)).Elem(), GetSizesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesFilterArrayInput)(nil)).Elem(), GetSizesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeInput)(nil)).Elem(), GetSizesSizeArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSizeArrayInput)(nil)).Elem(), GetSizesSizeArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortInput)(nil)).Elem(), GetSizesSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSizesSortArrayInput)(nil)).Elem(), GetSizesSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketInput)(nil)).Elem(), GetSpacesBucketsBucketArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsBucketArrayInput)(nil)).Elem(), GetSpacesBucketsBucketArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterInput)(nil)).Elem(), GetSpacesBucketsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsFilterArrayInput)(nil)).Elem(), GetSpacesBucketsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortInput)(nil)).Elem(), GetSpacesBucketsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetSpacesBucketsSortArrayInput)(nil)).Elem(), GetSpacesBucketsSortArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -79055,6 +78995,16 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelAgreementOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelAgreementArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelVersionOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsModelVersionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsSortOutput{})
+	pulumi.RegisterOutputType(GetGenaiModelsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelOutput{})
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeyModelAgreementOutput{})
@@ -79073,6 +79023,12 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersionArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysSortOutput{})
 	pulumi.RegisterOutputType(GetGenaiOpenaiApiKeysSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsRegionOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsRegionArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsSortOutput{})
+	pulumi.RegisterOutputType(GetGenaiRegionsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterOutput{})
 	pulumi.RegisterOutputType(GetImagesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetImagesImageOutput{})
@@ -79129,20 +79085,4 @@ func init() {
 	pulumi.RegisterOutputType(GetRecordsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
 	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
-	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
-	pulumi.RegisterOutputType(GetRegionsSortOutput{})
-	pulumi.RegisterOutputType(GetRegionsSortArrayOutput{})
-	pulumi.RegisterOutputType(GetSizesFilterOutput{})
-	pulumi.RegisterOutputType(GetSizesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetSizesSizeOutput{})
-	pulumi.RegisterOutputType(GetSizesSizeArrayOutput{})
-	pulumi.RegisterOutputType(GetSizesSortOutput{})
-	pulumi.RegisterOutputType(GetSizesSortArrayOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsBucketOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsBucketArrayOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsFilterOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsSortOutput{})
-	pulumi.RegisterOutputType(GetSpacesBucketsSortArrayOutput{})
 }

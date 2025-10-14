@@ -5539,6 +5539,30 @@ export interface GetGenaiKnowledgeBasesSortArgs {
     key: pulumi.Input<string>;
 }
 
+export interface GetGenaiModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiModelsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiModelsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiModelsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
 export interface GetGenaiOpenaiApiKeysFilter {
     all?: boolean;
     key: string;
@@ -5559,6 +5583,30 @@ export interface GetGenaiOpenaiApiKeysSort {
 }
 
 export interface GetGenaiOpenaiApiKeysSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiRegionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiRegionsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiRegionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiRegionsSortArgs {
     direction?: pulumi.Input<string>;
     key: pulumi.Input<string>;
 }

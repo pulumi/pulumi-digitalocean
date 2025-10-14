@@ -315,6 +315,11 @@ export const getGenaiKnowledgeBases: typeof import("./getGenaiKnowledgeBases").g
 export const getGenaiKnowledgeBasesOutput: typeof import("./getGenaiKnowledgeBases").getGenaiKnowledgeBasesOutput = null as any;
 utilities.lazyLoad(exports, ["getGenaiKnowledgeBases","getGenaiKnowledgeBasesOutput"], () => require("./getGenaiKnowledgeBases"));
 
+export { GetGenaiModelsArgs, GetGenaiModelsResult, GetGenaiModelsOutputArgs } from "./getGenaiModels";
+export const getGenaiModels: typeof import("./getGenaiModels").getGenaiModels = null as any;
+export const getGenaiModelsOutput: typeof import("./getGenaiModels").getGenaiModelsOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiModels","getGenaiModelsOutput"], () => require("./getGenaiModels"));
+
 export { GetGenaiOpenaiApiKeyArgs, GetGenaiOpenaiApiKeyResult, GetGenaiOpenaiApiKeyOutputArgs } from "./getGenaiOpenaiApiKey";
 export const getGenaiOpenaiApiKey: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKey = null as any;
 export const getGenaiOpenaiApiKeyOutput: typeof import("./getGenaiOpenaiApiKey").getGenaiOpenaiApiKeyOutput = null as any;
@@ -324,6 +329,11 @@ export { GetGenaiOpenaiApiKeysArgs, GetGenaiOpenaiApiKeysResult, GetGenaiOpenaiA
 export const getGenaiOpenaiApiKeys: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeys = null as any;
 export const getGenaiOpenaiApiKeysOutput: typeof import("./getGenaiOpenaiApiKeys").getGenaiOpenaiApiKeysOutput = null as any;
 utilities.lazyLoad(exports, ["getGenaiOpenaiApiKeys","getGenaiOpenaiApiKeysOutput"], () => require("./getGenaiOpenaiApiKeys"));
+
+export { GetGenaiRegionsArgs, GetGenaiRegionsResult, GetGenaiRegionsOutputArgs } from "./getGenaiRegions";
+export const getGenaiRegions: typeof import("./getGenaiRegions").getGenaiRegions = null as any;
+export const getGenaiRegionsOutput: typeof import("./getGenaiRegions").getGenaiRegionsOutput = null as any;
+utilities.lazyLoad(exports, ["getGenaiRegions","getGenaiRegionsOutput"], () => require("./getGenaiRegions"));
 
 export { GetImageArgs, GetImageResult, GetImageOutputArgs } from "./getImage";
 export const getImage: typeof import("./getImage").getImage = null as any;
