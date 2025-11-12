@@ -50,10 +50,10 @@ import * as utilities from "./utilities";
  * const example = digitalocean.getKubernetesCluster({
  *     name: "prod-cluster-01",
  * });
- * const exampleSecret = new kubernetes.core.v1.Secret("example", {
- *     metadata: {
+ * const exampleSecret = new kubernetes.index.Secret("example", {
+ *     metadata: [{
  *         name: "docker-cfg",
- *     },
+ *     }],
  *     data: {
  *         ".dockerconfigjson": exampleContainerRegistryDockerCredentials.dockerCredentials,
  *     },

@@ -190,13 +190,13 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
             subject_name="test-schema",
             schema_type="avro",
             schema=\"\"\"{
-          "type": "record",
-          "namespace": "example",
-          "name": "TestRecord",
-          "fields": [
-            {"name": "id", "type": "string"},
-            {"name": "name", "type": "string"},
-            {"name": "value", "type": "int"}
+          \\"type\\": \\"record\\",
+          \\"namespace\\": \\"example\\",
+          \\"name\\": \\"TestRecord\\",
+          \\"fields\\": [
+            {\\"name\\": \\"id\\", \\"type\\": \\"string\\"},
+            {\\"name\\": \\"name\\", \\"type\\": \\"string\\"},
+            {\\"name\\": \\"value\\", \\"type\\": \\"int\\"}
           ]
         }
         \"\"\")
@@ -238,13 +238,13 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
             subject_name="test-schema",
             schema_type="avro",
             schema=\"\"\"{
-          "type": "record",
-          "namespace": "example",
-          "name": "TestRecord",
-          "fields": [
-            {"name": "id", "type": "string"},
-            {"name": "name", "type": "string"},
-            {"name": "value", "type": "int"}
+          \\"type\\": \\"record\\",
+          \\"namespace\\": \\"example\\",
+          \\"name\\": \\"TestRecord\\",
+          \\"fields\\": [
+            {\\"name\\": \\"id\\", \\"type\\": \\"string\\"},
+            {\\"name\\": \\"name\\", \\"type\\": \\"string\\"},
+            {\\"name\\": \\"value\\", \\"type\\": \\"int\\"}
           ]
         }
         \"\"\")

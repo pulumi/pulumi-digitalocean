@@ -91,8 +91,7 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
-//	corev1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/core/v1"
-//	metav1 "github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes/meta/v1"
+//	"github.com/pulumi/pulumi-kubernetes/sdk/v4/go/kubernetes"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -111,14 +110,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = corev1.NewSecret(ctx, "example", &corev1.SecretArgs{
-//				Metadata: &metav1.ObjectMetaArgs{
-//					Name: pulumi.String("docker-cfg"),
+//			_, err = kubernetes.NewSecret(ctx, "example", &kubernetes.SecretArgs{
+//				Metadata: []map[string]interface{}{
+//					map[string]interface{}{
+//						"name": "docker-cfg",
+//					},
 //				},
-//				Data: pulumi.StringMap{
+//				Data: map[string]interface{}{
 //					".dockerconfigjson": exampleContainerRegistryDockerCredentials.DockerCredentials,
 //				},
-//				Type: pulumi.String("kubernetes.io/dockerconfigjson"),
+//				Type: "kubernetes.io/dockerconfigjson",
 //			})
 //			if err != nil {
 //				return err
