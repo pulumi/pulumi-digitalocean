@@ -86,6 +86,73 @@ def get_sizes(filters: Optional[Sequence[Union['GetSizesFilterArgs', 'GetSizesFi
     the ability to filter and sort the results. If no filters are specified, all sizes
     will be returned.
 
+    ## Example Usage
+
+    Most common usage will probably be to supply a size to Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(filters=[{
+        "key": "slug",
+        "values": ["s-1vcpu-1gb"],
+    }])
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        name="web-1",
+        region=digitalocean.Region.SGP1,
+        size=digitalocean.DropletSlug(main.sizes[0]["slug"]))
+    ```
+
+    The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(filters=[
+            {
+                "key": "vcpus",
+                "values": [
+                    "1",
+                    "2",
+                ],
+            },
+            {
+                "key": "regions",
+                "values": ["sgp1"],
+            },
+        ],
+        sorts=[{
+            "key": "price_monthly",
+            "direction": "asc",
+        }])
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        name="web-1",
+        region=digitalocean.Region.SGP1,
+        size=digitalocean.DropletSlug(main.sizes[0]["slug"]))
+    ```
+
+    The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(sorts=[
+        {
+            "key": "memory",
+            "direction": "asc",
+        },
+        {
+            "key": "disk",
+            "direction": "desc",
+        },
+    ])
+    ```
+
 
     :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']] filters: Filter the results.
            The `filter` block is documented below.
@@ -110,6 +177,73 @@ def get_sizes_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Get
     Retrieves information about the Droplet sizes that DigitalOcean supports, with
     the ability to filter and sort the results. If no filters are specified, all sizes
     will be returned.
+
+    ## Example Usage
+
+    Most common usage will probably be to supply a size to Droplet:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(filters=[{
+        "key": "slug",
+        "values": ["s-1vcpu-1gb"],
+    }])
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        name="web-1",
+        region=digitalocean.Region.SGP1,
+        size=digitalocean.DropletSlug(main.sizes[0]["slug"]))
+    ```
+
+    The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(filters=[
+            {
+                "key": "vcpus",
+                "values": [
+                    "1",
+                    "2",
+                ],
+            },
+            {
+                "key": "regions",
+                "values": ["sgp1"],
+            },
+        ],
+        sorts=[{
+            "key": "price_monthly",
+            "direction": "asc",
+        }])
+    web = digitalocean.Droplet("web",
+        image="ubuntu-18-04-x64",
+        name="web-1",
+        region=digitalocean.Region.SGP1,
+        size=digitalocean.DropletSlug(main.sizes[0]["slug"]))
+    ```
+
+    The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
+
+    ```python
+    import pulumi
+    import pulumi_digitalocean as digitalocean
+
+    main = digitalocean.get_sizes(sorts=[
+        {
+            "key": "memory",
+            "direction": "asc",
+        },
+        {
+            "key": "disk",
+            "direction": "desc",
+        },
+    ])
+    ```
 
 
     :param Sequence[Union['GetSizesFilterArgs', 'GetSizesFilterArgsDict']] filters: Filter the results.

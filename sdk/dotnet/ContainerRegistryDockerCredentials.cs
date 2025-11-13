@@ -85,11 +85,14 @@ namespace Pulumi.DigitalOcean
     ///         Name = "prod-cluster-01",
     ///     });
     /// 
-    ///     var exampleSecret = new Kubernetes.Core.V1.Secret("example", new()
+    ///     var exampleSecret = new Kubernetes.Index.Secret("example", new()
     ///     {
-    ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+    ///         Metadata = new[]
     ///         {
-    ///             Name = "docker-cfg",
+    ///             
+    ///             {
+    ///                 { "name", "docker-cfg" },
+    ///             },
     ///         },
     ///         Data = 
     ///         {

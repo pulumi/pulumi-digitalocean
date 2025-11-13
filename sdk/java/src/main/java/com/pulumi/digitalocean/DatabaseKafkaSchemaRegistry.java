@@ -59,13 +59,13 @@ import javax.annotation.Nullable;
  *             .schemaType("avro")
  *             .schema("""
  * {
- *   "type": "record",
- *   "namespace": "example",
- *   "name": "TestRecord",
- *   "fields": [
- *     {"name": "id", "type": "string"},
- *     {"name": "name", "type": "string"},
- *     {"name": "value", "type": "int"}
+ *   \"type\": \"record\",
+ *   \"namespace\": \"example\",
+ *   \"name\": \"TestRecord\",
+ *   \"fields\": [
+ *     {\"name\": \"id\", \"type\": \"string\"},
+ *     {\"name\": \"name\", \"type\": \"string\"},
+ *     {\"name\": \"value\", \"type\": \"int\"}
  *   ]
  * }
  *             """)
