@@ -48,13 +48,13 @@ import (
 //				SubjectName: pulumi.String("test-schema"),
 //				SchemaType:  pulumi.String("avro"),
 //				Schema: pulumi.String(`{
-//	  "type": "record",
-//	  "namespace": "example",
-//	  "name": "TestRecord",
-//	  "fields": [
-//	    {"name": "id", "type": "string"},
-//	    {"name": "name", "type": "string"},
-//	    {"name": "value", "type": "int"}
+//	  \"type\": \"record\",
+//	  \"namespace\": \"example\",
+//	  \"name\": \"TestRecord\",
+//	  \"fields\": [
+//	    {\"name\": \"id\", \"type\": \"string\"},
+//	    {\"name\": \"name\", \"type\": \"string\"},
+//	    {\"name\": \"value\", \"type\": \"int\"}
 //	  ]
 //	}
 //
