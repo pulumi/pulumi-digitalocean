@@ -69470,6 +69470,220 @@ func (o GetGenaiAgentsSortArrayOutput) Index(i pulumi.IntInput) GetGenaiAgentsSo
 	}).(GetGenaiAgentsSortOutput)
 }
 
+type GetGenaiIndexingJobDataSourcesIndexedDataSource struct {
+	// Timestamp when data source completed indexing
+	CompletedAt string `pulumi:"completedAt"`
+	// UUID of the indexed data source
+	DataSourceUuid string `pulumi:"dataSourceUuid"`
+	// Detailed error description
+	ErrorDetails string `pulumi:"errorDetails"`
+	// Error message if indexing failed
+	ErrorMsg string `pulumi:"errorMsg"`
+	// Total count of items that have failed
+	FailedItemCount string `pulumi:"failedItemCount"`
+	// Total count of files that have been indexed
+	IndexedFileCount string `pulumi:"indexedFileCount"`
+	// Total count of items that have been indexed
+	IndexedItemCount string `pulumi:"indexedItemCount"`
+	// Total count of items that have been removed
+	RemovedItemCount string `pulumi:"removedItemCount"`
+	// Total count of items that have been skipped
+	SkippedItemCount string `pulumi:"skippedItemCount"`
+	// Timestamp when data source started indexing
+	StartedAt string `pulumi:"startedAt"`
+	// Status of the indexed data source
+	Status string `pulumi:"status"`
+	// Total size of files in data source in bytes
+	TotalBytes string `pulumi:"totalBytes"`
+	// Total size of indexed files in bytes
+	TotalBytesIndexed string `pulumi:"totalBytesIndexed"`
+	// Total file count in the data source
+	TotalFileCount string `pulumi:"totalFileCount"`
+}
+
+// GetGenaiIndexingJobDataSourcesIndexedDataSourceInput is an input type that accepts GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs and GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput values.
+// You can construct a concrete instance of `GetGenaiIndexingJobDataSourcesIndexedDataSourceInput` via:
+//
+//	GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs{...}
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceInput interface {
+	pulumi.Input
+
+	ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput
+	ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutputWithContext(context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput
+}
+
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs struct {
+	// Timestamp when data source completed indexing
+	CompletedAt pulumi.StringInput `pulumi:"completedAt"`
+	// UUID of the indexed data source
+	DataSourceUuid pulumi.StringInput `pulumi:"dataSourceUuid"`
+	// Detailed error description
+	ErrorDetails pulumi.StringInput `pulumi:"errorDetails"`
+	// Error message if indexing failed
+	ErrorMsg pulumi.StringInput `pulumi:"errorMsg"`
+	// Total count of items that have failed
+	FailedItemCount pulumi.StringInput `pulumi:"failedItemCount"`
+	// Total count of files that have been indexed
+	IndexedFileCount pulumi.StringInput `pulumi:"indexedFileCount"`
+	// Total count of items that have been indexed
+	IndexedItemCount pulumi.StringInput `pulumi:"indexedItemCount"`
+	// Total count of items that have been removed
+	RemovedItemCount pulumi.StringInput `pulumi:"removedItemCount"`
+	// Total count of items that have been skipped
+	SkippedItemCount pulumi.StringInput `pulumi:"skippedItemCount"`
+	// Timestamp when data source started indexing
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Status of the indexed data source
+	Status pulumi.StringInput `pulumi:"status"`
+	// Total size of files in data source in bytes
+	TotalBytes pulumi.StringInput `pulumi:"totalBytes"`
+	// Total size of indexed files in bytes
+	TotalBytesIndexed pulumi.StringInput `pulumi:"totalBytesIndexed"`
+	// Total file count in the data source
+	TotalFileCount pulumi.StringInput `pulumi:"totalFileCount"`
+}
+
+func (GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiIndexingJobDataSourcesIndexedDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput {
+	return i.ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutputWithContext(context.Background())
+}
+
+func (i GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutputWithContext(ctx context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput)
+}
+
+// GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayInput is an input type that accepts GetGenaiIndexingJobDataSourcesIndexedDataSourceArray and GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput values.
+// You can construct a concrete instance of `GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayInput` via:
+//
+//	GetGenaiIndexingJobDataSourcesIndexedDataSourceArray{ GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs{...} }
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput
+	ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutputWithContext(context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput
+}
+
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceArray []GetGenaiIndexingJobDataSourcesIndexedDataSourceInput
+
+func (GetGenaiIndexingJobDataSourcesIndexedDataSourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiIndexingJobDataSourcesIndexedDataSource)(nil)).Elem()
+}
+
+func (i GetGenaiIndexingJobDataSourcesIndexedDataSourceArray) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput {
+	return i.ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiIndexingJobDataSourcesIndexedDataSourceArray) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput)
+}
+
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiIndexingJobDataSourcesIndexedDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput {
+	return o
+}
+
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceOutputWithContext(ctx context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput {
+	return o
+}
+
+// Timestamp when data source completed indexing
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) CompletedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.CompletedAt }).(pulumi.StringOutput)
+}
+
+// UUID of the indexed data source
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) DataSourceUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.DataSourceUuid }).(pulumi.StringOutput)
+}
+
+// Detailed error description
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) ErrorDetails() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.ErrorDetails }).(pulumi.StringOutput)
+}
+
+// Error message if indexing failed
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) ErrorMsg() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.ErrorMsg }).(pulumi.StringOutput)
+}
+
+// Total count of items that have failed
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) FailedItemCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.FailedItemCount }).(pulumi.StringOutput)
+}
+
+// Total count of files that have been indexed
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) IndexedFileCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.IndexedFileCount }).(pulumi.StringOutput)
+}
+
+// Total count of items that have been indexed
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) IndexedItemCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.IndexedItemCount }).(pulumi.StringOutput)
+}
+
+// Total count of items that have been removed
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) RemovedItemCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.RemovedItemCount }).(pulumi.StringOutput)
+}
+
+// Total count of items that have been skipped
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) SkippedItemCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.SkippedItemCount }).(pulumi.StringOutput)
+}
+
+// Timestamp when data source started indexing
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Status of the indexed data source
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Total size of files in data source in bytes
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) TotalBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.TotalBytes }).(pulumi.StringOutput)
+}
+
+// Total size of indexed files in bytes
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) TotalBytesIndexed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.TotalBytesIndexed }).(pulumi.StringOutput)
+}
+
+// Total file count in the data source
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput) TotalFileCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiIndexingJobDataSourcesIndexedDataSource) string { return v.TotalFileCount }).(pulumi.StringOutput)
+}
+
+type GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiIndexingJobDataSourcesIndexedDataSource)(nil)).Elem()
+}
+
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput() GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput) ToGetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutputWithContext(ctx context.Context) GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput {
+	return o
+}
+
+func (o GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput) Index(i pulumi.IntInput) GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiIndexingJobDataSourcesIndexedDataSource {
+		return vs[0].([]GetGenaiIndexingJobDataSourcesIndexedDataSource)[vs[1].(int)]
+	}).(GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput)
+}
+
 type GetGenaiKnowledgeBaseDataSourcesDatasource struct {
 	// Created At timestamp for the Knowledge Base
 	CreatedAt string `pulumi:"createdAt"`
@@ -70180,6 +70394,344 @@ func (o GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
 		return vs[0].([]GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource)[vs[1].(int)]
 	}).(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsJob struct {
+	// Number of datasources indexed completed
+	CompletedDatasources int `pulumi:"completedDatasources"`
+	// Creation timestamp
+	CreatedAt string `pulumi:"createdAt"`
+	// List of data source UUIDs
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Finish timestamp
+	FinishedAt string `pulumi:"finishedAt"`
+	// Knowledge base UUID
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Current phase of the batch job
+	Phase string `pulumi:"phase"`
+	// Start timestamp
+	StartedAt string `pulumi:"startedAt"`
+	// Status of the indexing job
+	Status string `pulumi:"status"`
+	// Number of tokens
+	Tokens int `pulumi:"tokens"`
+	// Total number of datasources being indexed
+	TotalDatasources int `pulumi:"totalDatasources"`
+	// Total items failed
+	TotalItemsFailed string `pulumi:"totalItemsFailed"`
+	// Total items indexed
+	TotalItemsIndexed string `pulumi:"totalItemsIndexed"`
+	// Total items skipped
+	TotalItemsSkipped string `pulumi:"totalItemsSkipped"`
+	// Last update timestamp
+	UpdatedAt string `pulumi:"updatedAt"`
+	// Unique identifier of the indexing job
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBaseIndexingJobsJobInput is an input type that accepts GetGenaiKnowledgeBaseIndexingJobsJobArgs and GetGenaiKnowledgeBaseIndexingJobsJobOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseIndexingJobsJobInput` via:
+//
+//	GetGenaiKnowledgeBaseIndexingJobsJobArgs{...}
+type GetGenaiKnowledgeBaseIndexingJobsJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseIndexingJobsJobOutput() GetGenaiKnowledgeBaseIndexingJobsJobOutput
+	ToGetGenaiKnowledgeBaseIndexingJobsJobOutputWithContext(context.Context) GetGenaiKnowledgeBaseIndexingJobsJobOutput
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsJobArgs struct {
+	// Number of datasources indexed completed
+	CompletedDatasources pulumi.IntInput `pulumi:"completedDatasources"`
+	// Creation timestamp
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// List of data source UUIDs
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Finish timestamp
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// Knowledge base UUID
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Current phase of the batch job
+	Phase pulumi.StringInput `pulumi:"phase"`
+	// Start timestamp
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Status of the indexing job
+	Status pulumi.StringInput `pulumi:"status"`
+	// Number of tokens
+	Tokens pulumi.IntInput `pulumi:"tokens"`
+	// Total number of datasources being indexed
+	TotalDatasources pulumi.IntInput `pulumi:"totalDatasources"`
+	// Total items failed
+	TotalItemsFailed pulumi.StringInput `pulumi:"totalItemsFailed"`
+	// Total items indexed
+	TotalItemsIndexed pulumi.StringInput `pulumi:"totalItemsIndexed"`
+	// Total items skipped
+	TotalItemsSkipped pulumi.StringInput `pulumi:"totalItemsSkipped"`
+	// Last update timestamp
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// Unique identifier of the indexing job
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBaseIndexingJobsJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsJobArgs) ToGetGenaiKnowledgeBaseIndexingJobsJobOutput() GetGenaiKnowledgeBaseIndexingJobsJobOutput {
+	return i.ToGetGenaiKnowledgeBaseIndexingJobsJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsJobArgs) ToGetGenaiKnowledgeBaseIndexingJobsJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseIndexingJobsJobOutput)
+}
+
+// GetGenaiKnowledgeBaseIndexingJobsJobArrayInput is an input type that accepts GetGenaiKnowledgeBaseIndexingJobsJobArray and GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseIndexingJobsJobArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseIndexingJobsJobArray{ GetGenaiKnowledgeBaseIndexingJobsJobArgs{...} }
+type GetGenaiKnowledgeBaseIndexingJobsJobArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutput() GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput
+	ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsJobArray []GetGenaiKnowledgeBaseIndexingJobsJobInput
+
+func (GetGenaiKnowledgeBaseIndexingJobsJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseIndexingJobsJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsJobArray) ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutput() GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsJobArray) ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseIndexingJobsJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) ToGetGenaiKnowledgeBaseIndexingJobsJobOutput() GetGenaiKnowledgeBaseIndexingJobsJobOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) ToGetGenaiKnowledgeBaseIndexingJobsJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsJobOutput {
+	return o
+}
+
+// Number of datasources indexed completed
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) CompletedDatasources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) int { return v.CompletedDatasources }).(pulumi.IntOutput)
+}
+
+// Creation timestamp
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// List of data source UUIDs
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Finish timestamp
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// Knowledge base UUID
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
+}
+
+// Current phase of the batch job
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) Phase() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.Phase }).(pulumi.StringOutput)
+}
+
+// Start timestamp
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Status of the indexing job
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Number of tokens
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) Tokens() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) int { return v.Tokens }).(pulumi.IntOutput)
+}
+
+// Total number of datasources being indexed
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) TotalDatasources() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) int { return v.TotalDatasources }).(pulumi.IntOutput)
+}
+
+// Total items failed
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) TotalItemsFailed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.TotalItemsFailed }).(pulumi.StringOutput)
+}
+
+// Total items indexed
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) TotalItemsIndexed() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.TotalItemsIndexed }).(pulumi.StringOutput)
+}
+
+// Total items skipped
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) TotalItemsSkipped() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.TotalItemsSkipped }).(pulumi.StringOutput)
+}
+
+// Last update timestamp
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// Unique identifier of the indexing job
+func (o GetGenaiKnowledgeBaseIndexingJobsJobOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsJob) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseIndexingJobsJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput) ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutput() GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput) ToGetGenaiKnowledgeBaseIndexingJobsJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseIndexingJobsJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseIndexingJobsJob {
+		return vs[0].([]GetGenaiKnowledgeBaseIndexingJobsJob)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseIndexingJobsJobOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsMeta struct {
+	// Current page number
+	Page int `pulumi:"page"`
+	// Total number of pages
+	Pages int `pulumi:"pages"`
+	// Total number of items
+	Total int `pulumi:"total"`
+}
+
+// GetGenaiKnowledgeBaseIndexingJobsMetaInput is an input type that accepts GetGenaiKnowledgeBaseIndexingJobsMetaArgs and GetGenaiKnowledgeBaseIndexingJobsMetaOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseIndexingJobsMetaInput` via:
+//
+//	GetGenaiKnowledgeBaseIndexingJobsMetaArgs{...}
+type GetGenaiKnowledgeBaseIndexingJobsMetaInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseIndexingJobsMetaOutput() GetGenaiKnowledgeBaseIndexingJobsMetaOutput
+	ToGetGenaiKnowledgeBaseIndexingJobsMetaOutputWithContext(context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaOutput
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsMetaArgs struct {
+	// Current page number
+	Page pulumi.IntInput `pulumi:"page"`
+	// Total number of pages
+	Pages pulumi.IntInput `pulumi:"pages"`
+	// Total number of items
+	Total pulumi.IntInput `pulumi:"total"`
+}
+
+func (GetGenaiKnowledgeBaseIndexingJobsMetaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsMeta)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsMetaArgs) ToGetGenaiKnowledgeBaseIndexingJobsMetaOutput() GetGenaiKnowledgeBaseIndexingJobsMetaOutput {
+	return i.ToGetGenaiKnowledgeBaseIndexingJobsMetaOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsMetaArgs) ToGetGenaiKnowledgeBaseIndexingJobsMetaOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseIndexingJobsMetaOutput)
+}
+
+// GetGenaiKnowledgeBaseIndexingJobsMetaArrayInput is an input type that accepts GetGenaiKnowledgeBaseIndexingJobsMetaArray and GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBaseIndexingJobsMetaArrayInput` via:
+//
+//	GetGenaiKnowledgeBaseIndexingJobsMetaArray{ GetGenaiKnowledgeBaseIndexingJobsMetaArgs{...} }
+type GetGenaiKnowledgeBaseIndexingJobsMetaArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput() GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput
+	ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutputWithContext(context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsMetaArray []GetGenaiKnowledgeBaseIndexingJobsMetaInput
+
+func (GetGenaiKnowledgeBaseIndexingJobsMetaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseIndexingJobsMeta)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsMetaArray) ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput() GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput {
+	return i.ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBaseIndexingJobsMetaArray) ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsMetaOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseIndexingJobsMetaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsMeta)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaOutput) ToGetGenaiKnowledgeBaseIndexingJobsMetaOutput() GetGenaiKnowledgeBaseIndexingJobsMetaOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaOutput) ToGetGenaiKnowledgeBaseIndexingJobsMetaOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaOutput {
+	return o
+}
+
+// Current page number
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaOutput) Page() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsMeta) int { return v.Page }).(pulumi.IntOutput)
+}
+
+// Total number of pages
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaOutput) Pages() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsMeta) int { return v.Pages }).(pulumi.IntOutput)
+}
+
+// Total number of items
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaOutput) Total() pulumi.IntOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBaseIndexingJobsMeta) int { return v.Total }).(pulumi.IntOutput)
+}
+
+type GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBaseIndexingJobsMeta)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput) ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput() GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput) ToGetGenaiKnowledgeBaseIndexingJobsMetaArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBaseIndexingJobsMetaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBaseIndexingJobsMeta {
+		return vs[0].([]GetGenaiKnowledgeBaseIndexingJobsMeta)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBaseIndexingJobsMetaOutput)
 }
 
 type GetGenaiKnowledgeBaseLastIndexingJob struct {
@@ -76654,444 +77206,6 @@ func (o GetRecordsFilterArrayOutput) Index(i pulumi.IntInput) GetRecordsFilterOu
 	}).(GetRecordsFilterOutput)
 }
 
-type GetRecordsRecord struct {
-	// The domain name to search for DNS records
-	Domain string `pulumi:"domain"`
-	// An unsigned integer between 0-255 used for CAA records.
-	Flags int `pulumi:"flags"`
-	// The ID of the record.
-	Id int `pulumi:"id"`
-	// The name of the DNS record.
-	Name string `pulumi:"name"`
-	// The port for SRV records.
-	Port int `pulumi:"port"`
-	// The priority for SRV and MX records.
-	Priority int `pulumi:"priority"`
-	// The parameter tag for CAA records.
-	Tag string `pulumi:"tag"`
-	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
-	Ttl int `pulumi:"ttl"`
-	// The type of the DNS record.
-	Type string `pulumi:"type"`
-	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
-	Value string `pulumi:"value"`
-	// The weight for SRV records.
-	Weight int `pulumi:"weight"`
-}
-
-// GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
-// You can construct a concrete instance of `GetRecordsRecordInput` via:
-//
-//	GetRecordsRecordArgs{...}
-type GetRecordsRecordInput interface {
-	pulumi.Input
-
-	ToGetRecordsRecordOutput() GetRecordsRecordOutput
-	ToGetRecordsRecordOutputWithContext(context.Context) GetRecordsRecordOutput
-}
-
-type GetRecordsRecordArgs struct {
-	// The domain name to search for DNS records
-	Domain pulumi.StringInput `pulumi:"domain"`
-	// An unsigned integer between 0-255 used for CAA records.
-	Flags pulumi.IntInput `pulumi:"flags"`
-	// The ID of the record.
-	Id pulumi.IntInput `pulumi:"id"`
-	// The name of the DNS record.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The port for SRV records.
-	Port pulumi.IntInput `pulumi:"port"`
-	// The priority for SRV and MX records.
-	Priority pulumi.IntInput `pulumi:"priority"`
-	// The parameter tag for CAA records.
-	Tag pulumi.StringInput `pulumi:"tag"`
-	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
-	Ttl pulumi.IntInput `pulumi:"ttl"`
-	// The type of the DNS record.
-	Type pulumi.StringInput `pulumi:"type"`
-	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
-	Value pulumi.StringInput `pulumi:"value"`
-	// The weight for SRV records.
-	Weight pulumi.IntInput `pulumi:"weight"`
-}
-
-func (GetRecordsRecordArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
-}
-
-func (i GetRecordsRecordArgs) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
-	return i.ToGetRecordsRecordOutputWithContext(context.Background())
-}
-
-func (i GetRecordsRecordArgs) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordOutput)
-}
-
-// GetRecordsRecordArrayInput is an input type that accepts GetRecordsRecordArray and GetRecordsRecordArrayOutput values.
-// You can construct a concrete instance of `GetRecordsRecordArrayInput` via:
-//
-//	GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
-type GetRecordsRecordArrayInput interface {
-	pulumi.Input
-
-	ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput
-	ToGetRecordsRecordArrayOutputWithContext(context.Context) GetRecordsRecordArrayOutput
-}
-
-type GetRecordsRecordArray []GetRecordsRecordInput
-
-func (GetRecordsRecordArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
-}
-
-func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
-	return i.ToGetRecordsRecordArrayOutputWithContext(context.Background())
-}
-
-func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordArrayOutput)
-}
-
-type GetRecordsRecordOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsRecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
-}
-
-func (o GetRecordsRecordOutput) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
-	return o
-}
-
-func (o GetRecordsRecordOutput) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
-	return o
-}
-
-// The domain name to search for DNS records
-func (o GetRecordsRecordOutput) Domain() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsRecord) string { return v.Domain }).(pulumi.StringOutput)
-}
-
-// An unsigned integer between 0-255 used for CAA records.
-func (o GetRecordsRecordOutput) Flags() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Flags }).(pulumi.IntOutput)
-}
-
-// The ID of the record.
-func (o GetRecordsRecordOutput) Id() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
-}
-
-// The name of the DNS record.
-func (o GetRecordsRecordOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsRecord) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The port for SRV records.
-func (o GetRecordsRecordOutput) Port() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Port }).(pulumi.IntOutput)
-}
-
-// The priority for SRV and MX records.
-func (o GetRecordsRecordOutput) Priority() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
-}
-
-// The parameter tag for CAA records.
-func (o GetRecordsRecordOutput) Tag() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsRecord) string { return v.Tag }).(pulumi.StringOutput)
-}
-
-// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
-func (o GetRecordsRecordOutput) Ttl() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
-}
-
-// The type of the DNS record.
-func (o GetRecordsRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
-}
-
-// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
-func (o GetRecordsRecordOutput) Value() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
-}
-
-// The weight for SRV records.
-func (o GetRecordsRecordOutput) Weight() pulumi.IntOutput {
-	return o.ApplyT(func(v GetRecordsRecord) int { return v.Weight }).(pulumi.IntOutput)
-}
-
-type GetRecordsRecordArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsRecordArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
-}
-
-func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
-	return o
-}
-
-func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
-	return o
-}
-
-func (o GetRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetRecordsRecordOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsRecord {
-		return vs[0].([]GetRecordsRecord)[vs[1].(int)]
-	}).(GetRecordsRecordOutput)
-}
-
-type GetRecordsSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-	Key string `pulumi:"key"`
-}
-
-// GetRecordsSortInput is an input type that accepts GetRecordsSortArgs and GetRecordsSortOutput values.
-// You can construct a concrete instance of `GetRecordsSortInput` via:
-//
-//	GetRecordsSortArgs{...}
-type GetRecordsSortInput interface {
-	pulumi.Input
-
-	ToGetRecordsSortOutput() GetRecordsSortOutput
-	ToGetRecordsSortOutputWithContext(context.Context) GetRecordsSortOutput
-}
-
-type GetRecordsSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetRecordsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
-}
-
-func (i GetRecordsSortArgs) ToGetRecordsSortOutput() GetRecordsSortOutput {
-	return i.ToGetRecordsSortOutputWithContext(context.Background())
-}
-
-func (i GetRecordsSortArgs) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortOutput)
-}
-
-// GetRecordsSortArrayInput is an input type that accepts GetRecordsSortArray and GetRecordsSortArrayOutput values.
-// You can construct a concrete instance of `GetRecordsSortArrayInput` via:
-//
-//	GetRecordsSortArray{ GetRecordsSortArgs{...} }
-type GetRecordsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput
-	ToGetRecordsSortArrayOutputWithContext(context.Context) GetRecordsSortArrayOutput
-}
-
-type GetRecordsSortArray []GetRecordsSortInput
-
-func (GetRecordsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
-}
-
-func (i GetRecordsSortArray) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
-	return i.ToGetRecordsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetRecordsSortArray) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortArrayOutput)
-}
-
-type GetRecordsSortOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
-}
-
-func (o GetRecordsSortOutput) ToGetRecordsSortOutput() GetRecordsSortOutput {
-	return o
-}
-
-func (o GetRecordsSortOutput) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetRecordsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRecordsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-func (o GetRecordsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetRecordsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
-}
-
-func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
-	return o
-}
-
-func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
-	return o
-}
-
-func (o GetRecordsSortArrayOutput) Index(i pulumi.IntInput) GetRecordsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsSort {
-		return vs[0].([]GetRecordsSort)[vs[1].(int)]
-	}).(GetRecordsSortOutput)
-}
-
-type GetRegionsFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the regions by this key. This may be one of `slug`,
-	// `name`, `available`, `features`, or `sizes`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves regions
-	// where the `key` field takes on one or more of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetRegionsFilterInput is an input type that accepts GetRegionsFilterArgs and GetRegionsFilterOutput values.
-// You can construct a concrete instance of `GetRegionsFilterInput` via:
-//
-//	GetRegionsFilterArgs{...}
-type GetRegionsFilterInput interface {
-	pulumi.Input
-
-	ToGetRegionsFilterOutput() GetRegionsFilterOutput
-	ToGetRegionsFilterOutputWithContext(context.Context) GetRegionsFilterOutput
-}
-
-type GetRegionsFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the regions by this key. This may be one of `slug`,
-	// `name`, `available`, `features`, or `sizes`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves regions
-	// where the `key` field takes on one or more of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetRegionsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
-}
-
-func (i GetRegionsFilterArgs) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
-	return i.ToGetRegionsFilterOutputWithContext(context.Background())
-}
-
-func (i GetRegionsFilterArgs) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterOutput)
-}
-
-// GetRegionsFilterArrayInput is an input type that accepts GetRegionsFilterArray and GetRegionsFilterArrayOutput values.
-// You can construct a concrete instance of `GetRegionsFilterArrayInput` via:
-//
-//	GetRegionsFilterArray{ GetRegionsFilterArgs{...} }
-type GetRegionsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput
-	ToGetRegionsFilterArrayOutputWithContext(context.Context) GetRegionsFilterArrayOutput
-}
-
-type GetRegionsFilterArray []GetRegionsFilterInput
-
-func (GetRegionsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
-}
-
-func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
-	return i.ToGetRegionsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterArrayOutput)
-}
-
-type GetRegionsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
-}
-
-func (o GetRegionsFilterOutput) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
-	return o
-}
-
-func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetRegionsFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRegionsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the regions by this key. This may be one of `slug`,
-// `name`, `available`, `features`, or `sizes`.
-func (o GetRegionsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetRegionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRegionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// A list of values to match against the `key` field. Only retrieves regions
-// where the `key` field takes on one or more of the values provided here.
-func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetRegionsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRegionsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
-}
-
-func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
-	return o
-}
-
-func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
-	return o
-}
-
-func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsFilter {
-		return vs[0].([]GetRegionsFilter)[vs[1].(int)]
-	}).(GetRegionsFilterOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -77979,6 +78093,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsFilterArrayInput)(nil)).Elem(), GetGenaiAgentsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsSortInput)(nil)).Elem(), GetGenaiAgentsSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiAgentsSortArrayInput)(nil)).Elem(), GetGenaiAgentsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiIndexingJobDataSourcesIndexedDataSourceInput)(nil)).Elem(), GetGenaiIndexingJobDataSourcesIndexedDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayInput)(nil)).Elem(), GetGenaiIndexingJobDataSourcesIndexedDataSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceArgs{})
@@ -77989,6 +78105,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsJobInput)(nil)).Elem(), GetGenaiKnowledgeBaseIndexingJobsJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseIndexingJobsJobArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsMetaInput)(nil)).Elem(), GetGenaiKnowledgeBaseIndexingJobsMetaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsMetaArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseIndexingJobsMetaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArgs{})
@@ -78083,12 +78203,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortArrayInput)(nil)).Elem(), GetProjectsSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterInput)(nil)).Elem(), GetRecordsFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterArrayInput)(nil)).Elem(), GetRecordsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordInput)(nil)).Elem(), GetRecordsRecordArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortInput)(nil)).Elem(), GetRecordsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortArrayInput)(nil)).Elem(), GetRecordsSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -78975,6 +79089,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiAgentsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsSortOutput{})
 	pulumi.RegisterOutputType(GetGenaiAgentsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiIndexingJobDataSourcesIndexedDataSourceOutput{})
+	pulumi.RegisterOutputType(GetGenaiIndexingJobDataSourcesIndexedDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceOutput{})
@@ -78985,6 +79101,10 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseIndexingJobsJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseIndexingJobsJobArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseIndexingJobsMetaOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterOutput{})
@@ -79079,10 +79199,4 @@ func init() {
 	pulumi.RegisterOutputType(GetProjectsSortArrayOutput{})
 	pulumi.RegisterOutputType(GetRecordsFilterOutput{})
 	pulumi.RegisterOutputType(GetRecordsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetRecordsRecordOutput{})
-	pulumi.RegisterOutputType(GetRecordsRecordArrayOutput{})
-	pulumi.RegisterOutputType(GetRecordsSortOutput{})
-	pulumi.RegisterOutputType(GetRecordsSortArrayOutput{})
-	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
-	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
 }

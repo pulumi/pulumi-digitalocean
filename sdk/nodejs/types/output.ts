@@ -9559,6 +9559,65 @@ export interface GetGenaiAgentsSort {
     key: string;
 }
 
+export interface GetGenaiIndexingJobDataSourcesIndexedDataSource {
+    /**
+     * Timestamp when data source completed indexing
+     */
+    completedAt: string;
+    /**
+     * UUID of the indexed data source
+     */
+    dataSourceUuid: string;
+    /**
+     * Detailed error description
+     */
+    errorDetails: string;
+    /**
+     * Error message if indexing failed
+     */
+    errorMsg: string;
+    /**
+     * Total count of items that have failed
+     */
+    failedItemCount: string;
+    /**
+     * Total count of files that have been indexed
+     */
+    indexedFileCount: string;
+    /**
+     * Total count of items that have been indexed
+     */
+    indexedItemCount: string;
+    /**
+     * Total count of items that have been removed
+     */
+    removedItemCount: string;
+    /**
+     * Total count of items that have been skipped
+     */
+    skippedItemCount: string;
+    /**
+     * Timestamp when data source started indexing
+     */
+    startedAt: string;
+    /**
+     * Status of the indexed data source
+     */
+    status: string;
+    /**
+     * Total size of files in data source in bytes
+     */
+    totalBytes: string;
+    /**
+     * Total size of indexed files in bytes
+     */
+    totalBytesIndexed: string;
+    /**
+     * Total file count in the data source
+     */
+    totalFileCount: string;
+}
+
 export interface GetGenaiKnowledgeBaseDataSourcesDatasource {
     /**
      * Created At timestamp for the Knowledge Base
@@ -9685,6 +9744,84 @@ export interface GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource 
      * Whether to embed media content
      */
     embedMedia?: boolean;
+}
+
+export interface GetGenaiKnowledgeBaseIndexingJobsJob {
+    /**
+     * Number of datasources indexed completed
+     */
+    completedDatasources: number;
+    /**
+     * Creation timestamp
+     */
+    createdAt: string;
+    /**
+     * List of data source UUIDs
+     */
+    dataSourceUuids: string[];
+    /**
+     * Finish timestamp
+     */
+    finishedAt: string;
+    /**
+     * Knowledge base UUID
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Current phase of the batch job
+     */
+    phase: string;
+    /**
+     * Start timestamp
+     */
+    startedAt: string;
+    /**
+     * Status of the indexing job
+     */
+    status: string;
+    /**
+     * Number of tokens
+     */
+    tokens: number;
+    /**
+     * Total number of datasources being indexed
+     */
+    totalDatasources: number;
+    /**
+     * Total items failed
+     */
+    totalItemsFailed: string;
+    /**
+     * Total items indexed
+     */
+    totalItemsIndexed: string;
+    /**
+     * Total items skipped
+     */
+    totalItemsSkipped: string;
+    /**
+     * Last update timestamp
+     */
+    updatedAt: string;
+    /**
+     * Unique identifier of the indexing job
+     */
+    uuid: string;
+}
+
+export interface GetGenaiKnowledgeBaseIndexingJobsMeta {
+    /**
+     * Current page number
+     */
+    page: number;
+    /**
+     * Total number of pages
+     */
+    pages: number;
+    /**
+     * Total number of items
+     */
+    total: number;
 }
 
 export interface GetGenaiKnowledgeBaseLastIndexingJob {

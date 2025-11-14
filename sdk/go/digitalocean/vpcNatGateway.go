@@ -80,6 +80,8 @@ type VpcNatGateway struct {
 	IcmpTimeoutSeconds pulumi.IntOutput `pulumi:"icmpTimeoutSeconds"`
 	// The name of the VPC NAT Gateway.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// ID of the project to which the VPC NAT Gateway will be assigned.
+	ProjectId pulumi.StringOutput `pulumi:"projectId"`
 	// The region for the VPC NAT Gateway.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The size of the VPC NAT Gateway.
@@ -150,6 +152,8 @@ type vpcNatGatewayState struct {
 	IcmpTimeoutSeconds *int `pulumi:"icmpTimeoutSeconds"`
 	// The name of the VPC NAT Gateway.
 	Name *string `pulumi:"name"`
+	// ID of the project to which the VPC NAT Gateway will be assigned.
+	ProjectId *string `pulumi:"projectId"`
 	// The region for the VPC NAT Gateway.
 	Region *string `pulumi:"region"`
 	// The size of the VPC NAT Gateway.
@@ -179,6 +183,8 @@ type VpcNatGatewayState struct {
 	IcmpTimeoutSeconds pulumi.IntPtrInput
 	// The name of the VPC NAT Gateway.
 	Name pulumi.StringPtrInput
+	// ID of the project to which the VPC NAT Gateway will be assigned.
+	ProjectId pulumi.StringPtrInput
 	// The region for the VPC NAT Gateway.
 	Region pulumi.StringPtrInput
 	// The size of the VPC NAT Gateway.
@@ -207,6 +213,8 @@ type vpcNatGatewayArgs struct {
 	IcmpTimeoutSeconds *int `pulumi:"icmpTimeoutSeconds"`
 	// The name of the VPC NAT Gateway.
 	Name *string `pulumi:"name"`
+	// ID of the project to which the VPC NAT Gateway will be assigned.
+	ProjectId *string `pulumi:"projectId"`
 	// The region for the VPC NAT Gateway.
 	Region string `pulumi:"region"`
 	// The size of the VPC NAT Gateway.
@@ -228,6 +236,8 @@ type VpcNatGatewayArgs struct {
 	IcmpTimeoutSeconds pulumi.IntPtrInput
 	// The name of the VPC NAT Gateway.
 	Name pulumi.StringPtrInput
+	// ID of the project to which the VPC NAT Gateway will be assigned.
+	ProjectId pulumi.StringPtrInput
 	// The region for the VPC NAT Gateway.
 	Region pulumi.StringInput
 	// The size of the VPC NAT Gateway.
@@ -349,6 +359,11 @@ func (o VpcNatGatewayOutput) IcmpTimeoutSeconds() pulumi.IntOutput {
 // The name of the VPC NAT Gateway.
 func (o VpcNatGatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcNatGateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// ID of the project to which the VPC NAT Gateway will be assigned.
+func (o VpcNatGatewayOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcNatGateway) pulumi.StringOutput { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 // The region for the VPC NAT Gateway.

@@ -89,6 +89,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// ID of the project to which the VPC NAT Gateway will be assigned.
+        /// </summary>
+        [Output("projectId")]
+        public Output<string> ProjectId { get; private set; } = null!;
+
+        /// <summary>
         /// The region for the VPC NAT Gateway.
         /// </summary>
         [Output("region")]
@@ -196,6 +202,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// ID of the project to which the VPC NAT Gateway will be assigned.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
+
+        /// <summary>
         /// The region for the VPC NAT Gateway.
         /// </summary>
         [Input("region", required: true)]
@@ -276,6 +288,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// ID of the project to which the VPC NAT Gateway will be assigned.
+        /// </summary>
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// The region for the VPC NAT Gateway.

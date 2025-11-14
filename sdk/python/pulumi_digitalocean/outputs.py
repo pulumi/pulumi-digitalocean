@@ -462,11 +462,14 @@ __all__ = [
     'GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersionResult',
     'GetGenaiAgentsFilterResult',
     'GetGenaiAgentsSortResult',
+    'GetGenaiIndexingJobDataSourcesIndexedDataSourceResult',
     'GetGenaiKnowledgeBaseDataSourcesDatasourceResult',
     'GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSourceResult',
     'GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJobResult',
     'GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSourceResult',
     'GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult',
+    'GetGenaiKnowledgeBaseIndexingJobsJobResult',
+    'GetGenaiKnowledgeBaseIndexingJobsMetaResult',
     'GetGenaiKnowledgeBaseLastIndexingJobResult',
     'GetGenaiKnowledgeBasesFilterResult',
     'GetGenaiKnowledgeBasesKnowledgeBaseResult',
@@ -32487,6 +32490,167 @@ class GetGenaiAgentsSortResult(dict):
 
 
 @pulumi.output_type
+class GetGenaiIndexingJobDataSourcesIndexedDataSourceResult(dict):
+    def __init__(__self__, *,
+                 completed_at: _builtins.str,
+                 data_source_uuid: _builtins.str,
+                 error_details: _builtins.str,
+                 error_msg: _builtins.str,
+                 failed_item_count: _builtins.str,
+                 indexed_file_count: _builtins.str,
+                 indexed_item_count: _builtins.str,
+                 removed_item_count: _builtins.str,
+                 skipped_item_count: _builtins.str,
+                 started_at: _builtins.str,
+                 status: _builtins.str,
+                 total_bytes: _builtins.str,
+                 total_bytes_indexed: _builtins.str,
+                 total_file_count: _builtins.str):
+        """
+        :param _builtins.str completed_at: Timestamp when data source completed indexing
+        :param _builtins.str data_source_uuid: UUID of the indexed data source
+        :param _builtins.str error_details: Detailed error description
+        :param _builtins.str error_msg: Error message if indexing failed
+        :param _builtins.str failed_item_count: Total count of items that have failed
+        :param _builtins.str indexed_file_count: Total count of files that have been indexed
+        :param _builtins.str indexed_item_count: Total count of items that have been indexed
+        :param _builtins.str removed_item_count: Total count of items that have been removed
+        :param _builtins.str skipped_item_count: Total count of items that have been skipped
+        :param _builtins.str started_at: Timestamp when data source started indexing
+        :param _builtins.str status: Status of the indexed data source
+        :param _builtins.str total_bytes: Total size of files in data source in bytes
+        :param _builtins.str total_bytes_indexed: Total size of indexed files in bytes
+        :param _builtins.str total_file_count: Total file count in the data source
+        """
+        pulumi.set(__self__, "completed_at", completed_at)
+        pulumi.set(__self__, "data_source_uuid", data_source_uuid)
+        pulumi.set(__self__, "error_details", error_details)
+        pulumi.set(__self__, "error_msg", error_msg)
+        pulumi.set(__self__, "failed_item_count", failed_item_count)
+        pulumi.set(__self__, "indexed_file_count", indexed_file_count)
+        pulumi.set(__self__, "indexed_item_count", indexed_item_count)
+        pulumi.set(__self__, "removed_item_count", removed_item_count)
+        pulumi.set(__self__, "skipped_item_count", skipped_item_count)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "total_bytes", total_bytes)
+        pulumi.set(__self__, "total_bytes_indexed", total_bytes_indexed)
+        pulumi.set(__self__, "total_file_count", total_file_count)
+
+    @_builtins.property
+    @pulumi.getter(name="completedAt")
+    def completed_at(self) -> _builtins.str:
+        """
+        Timestamp when data source completed indexing
+        """
+        return pulumi.get(self, "completed_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuid")
+    def data_source_uuid(self) -> _builtins.str:
+        """
+        UUID of the indexed data source
+        """
+        return pulumi.get(self, "data_source_uuid")
+
+    @_builtins.property
+    @pulumi.getter(name="errorDetails")
+    def error_details(self) -> _builtins.str:
+        """
+        Detailed error description
+        """
+        return pulumi.get(self, "error_details")
+
+    @_builtins.property
+    @pulumi.getter(name="errorMsg")
+    def error_msg(self) -> _builtins.str:
+        """
+        Error message if indexing failed
+        """
+        return pulumi.get(self, "error_msg")
+
+    @_builtins.property
+    @pulumi.getter(name="failedItemCount")
+    def failed_item_count(self) -> _builtins.str:
+        """
+        Total count of items that have failed
+        """
+        return pulumi.get(self, "failed_item_count")
+
+    @_builtins.property
+    @pulumi.getter(name="indexedFileCount")
+    def indexed_file_count(self) -> _builtins.str:
+        """
+        Total count of files that have been indexed
+        """
+        return pulumi.get(self, "indexed_file_count")
+
+    @_builtins.property
+    @pulumi.getter(name="indexedItemCount")
+    def indexed_item_count(self) -> _builtins.str:
+        """
+        Total count of items that have been indexed
+        """
+        return pulumi.get(self, "indexed_item_count")
+
+    @_builtins.property
+    @pulumi.getter(name="removedItemCount")
+    def removed_item_count(self) -> _builtins.str:
+        """
+        Total count of items that have been removed
+        """
+        return pulumi.get(self, "removed_item_count")
+
+    @_builtins.property
+    @pulumi.getter(name="skippedItemCount")
+    def skipped_item_count(self) -> _builtins.str:
+        """
+        Total count of items that have been skipped
+        """
+        return pulumi.get(self, "skipped_item_count")
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Timestamp when data source started indexing
+        """
+        return pulumi.get(self, "started_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the indexed data source
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="totalBytes")
+    def total_bytes(self) -> _builtins.str:
+        """
+        Total size of files in data source in bytes
+        """
+        return pulumi.get(self, "total_bytes")
+
+    @_builtins.property
+    @pulumi.getter(name="totalBytesIndexed")
+    def total_bytes_indexed(self) -> _builtins.str:
+        """
+        Total size of indexed files in bytes
+        """
+        return pulumi.get(self, "total_bytes_indexed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalFileCount")
+    def total_file_count(self) -> _builtins.str:
+        """
+        Total file count in the data source
+        """
+        return pulumi.get(self, "total_file_count")
+
+
+@pulumi.output_type
 class GetGenaiKnowledgeBaseDataSourcesDatasourceResult(dict):
     def __init__(__self__, *,
                  created_at: _builtins.str,
@@ -32846,6 +33010,218 @@ class GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSourceResult(dict)
         Whether to embed media content
         """
         return pulumi.get(self, "embed_media")
+
+
+@pulumi.output_type
+class GetGenaiKnowledgeBaseIndexingJobsJobResult(dict):
+    def __init__(__self__, *,
+                 completed_datasources: _builtins.int,
+                 created_at: _builtins.str,
+                 data_source_uuids: Sequence[_builtins.str],
+                 finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
+                 phase: _builtins.str,
+                 started_at: _builtins.str,
+                 status: _builtins.str,
+                 tokens: _builtins.int,
+                 total_datasources: _builtins.int,
+                 total_items_failed: _builtins.str,
+                 total_items_indexed: _builtins.str,
+                 total_items_skipped: _builtins.str,
+                 updated_at: _builtins.str,
+                 uuid: _builtins.str):
+        """
+        :param _builtins.int completed_datasources: Number of datasources indexed completed
+        :param _builtins.str created_at: Creation timestamp
+        :param Sequence[_builtins.str] data_source_uuids: List of data source UUIDs
+        :param _builtins.str finished_at: Finish timestamp
+        :param _builtins.str knowledge_base_uuid: Knowledge base UUID
+        :param _builtins.str phase: Current phase of the batch job
+        :param _builtins.str started_at: Start timestamp
+        :param _builtins.str status: Status of the indexing job
+        :param _builtins.int tokens: Number of tokens
+        :param _builtins.int total_datasources: Total number of datasources being indexed
+        :param _builtins.str total_items_failed: Total items failed
+        :param _builtins.str total_items_indexed: Total items indexed
+        :param _builtins.str total_items_skipped: Total items skipped
+        :param _builtins.str updated_at: Last update timestamp
+        :param _builtins.str uuid: Unique identifier of the indexing job
+        """
+        pulumi.set(__self__, "completed_datasources", completed_datasources)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        pulumi.set(__self__, "phase", phase)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "tokens", tokens)
+        pulumi.set(__self__, "total_datasources", total_datasources)
+        pulumi.set(__self__, "total_items_failed", total_items_failed)
+        pulumi.set(__self__, "total_items_indexed", total_items_indexed)
+        pulumi.set(__self__, "total_items_skipped", total_items_skipped)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> _builtins.int:
+        """
+        Number of datasources indexed completed
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Creation timestamp
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Sequence[_builtins.str]:
+        """
+        List of data source UUIDs
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> _builtins.str:
+        """
+        Finish timestamp
+        """
+        return pulumi.get(self, "finished_at")
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        Knowledge base UUID
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> _builtins.str:
+        """
+        Current phase of the batch job
+        """
+        return pulumi.get(self, "phase")
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Start timestamp
+        """
+        return pulumi.get(self, "started_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        Status of the indexing job
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> _builtins.int:
+        """
+        Number of tokens
+        """
+        return pulumi.get(self, "tokens")
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> _builtins.int:
+        """
+        Total number of datasources being indexed
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @_builtins.property
+    @pulumi.getter(name="totalItemsFailed")
+    def total_items_failed(self) -> _builtins.str:
+        """
+        Total items failed
+        """
+        return pulumi.get(self, "total_items_failed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalItemsIndexed")
+    def total_items_indexed(self) -> _builtins.str:
+        """
+        Total items indexed
+        """
+        return pulumi.get(self, "total_items_indexed")
+
+    @_builtins.property
+    @pulumi.getter(name="totalItemsSkipped")
+    def total_items_skipped(self) -> _builtins.str:
+        """
+        Total items skipped
+        """
+        return pulumi.get(self, "total_items_skipped")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Last update timestamp
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        Unique identifier of the indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+
+@pulumi.output_type
+class GetGenaiKnowledgeBaseIndexingJobsMetaResult(dict):
+    def __init__(__self__, *,
+                 page: _builtins.int,
+                 pages: _builtins.int,
+                 total: _builtins.int):
+        """
+        :param _builtins.int page: Current page number
+        :param _builtins.int pages: Total number of pages
+        :param _builtins.int total: Total number of items
+        """
+        pulumi.set(__self__, "page", page)
+        pulumi.set(__self__, "pages", pages)
+        pulumi.set(__self__, "total", total)
+
+    @_builtins.property
+    @pulumi.getter
+    def page(self) -> _builtins.int:
+        """
+        Current page number
+        """
+        return pulumi.get(self, "page")
+
+    @_builtins.property
+    @pulumi.getter
+    def pages(self) -> _builtins.int:
+        """
+        Total number of pages
+        """
+        return pulumi.get(self, "pages")
+
+    @_builtins.property
+    @pulumi.getter
+    def total(self) -> _builtins.int:
+        """
+        Total number of items
+        """
+        return pulumi.get(self, "total")
 
 
 @pulumi.output_type

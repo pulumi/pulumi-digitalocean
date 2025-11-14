@@ -89,6 +89,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GenaiAgentRoute{}
 	case "digitalocean:index/genaiFunction:GenaiFunction":
 		r = &GenaiFunction{}
+	case "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel":
+		r = &GenaiIndexingJobCancel{}
 	case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
 		r = &GenaiKnowledgeBase{}
 	case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
@@ -348,6 +350,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/genaiFunction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/genaiIndexingJobCancel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

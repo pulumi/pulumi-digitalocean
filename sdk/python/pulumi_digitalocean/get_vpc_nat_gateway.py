@@ -27,7 +27,7 @@ class GetVpcNatGatewayResult:
     """
     A collection of values returned by getVpcNatGateway.
     """
-    def __init__(__self__, created_at=None, egresses=None, icmp_timeout_seconds=None, id=None, name=None, region=None, size=None, state=None, tcp_timeout_seconds=None, type=None, udp_timeout_seconds=None, updated_at=None, vpcs=None):
+    def __init__(__self__, created_at=None, egresses=None, icmp_timeout_seconds=None, id=None, name=None, project_id=None, region=None, size=None, state=None, tcp_timeout_seconds=None, type=None, udp_timeout_seconds=None, updated_at=None, vpcs=None):
         if created_at and not isinstance(created_at, str):
             raise TypeError("Expected argument 'created_at' to be a str")
         pulumi.set(__self__, "created_at", created_at)
@@ -43,6 +43,9 @@ class GetVpcNatGatewayResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if project_id and not isinstance(project_id, str):
+            raise TypeError("Expected argument 'project_id' to be a str")
+        pulumi.set(__self__, "project_id", project_id)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -92,6 +95,11 @@ class GetVpcNatGatewayResult:
     @pulumi.getter
     def name(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> _builtins.str:
+        return pulumi.get(self, "project_id")
 
     @_builtins.property
     @pulumi.getter
@@ -145,6 +153,7 @@ class AwaitableGetVpcNatGatewayResult(GetVpcNatGatewayResult):
             icmp_timeout_seconds=self.icmp_timeout_seconds,
             id=self.id,
             name=self.name,
+            project_id=self.project_id,
             region=self.region,
             size=self.size,
             state=self.state,
@@ -195,6 +204,7 @@ def get_vpc_nat_gateway(id: Optional[_builtins.str] = None,
         icmp_timeout_seconds=pulumi.get(__ret__, 'icmp_timeout_seconds'),
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
+        project_id=pulumi.get(__ret__, 'project_id'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'),
         state=pulumi.get(__ret__, 'state'),
@@ -242,6 +252,7 @@ def get_vpc_nat_gateway_output(id: Optional[pulumi.Input[Optional[_builtins.str]
         icmp_timeout_seconds=pulumi.get(__response__, 'icmp_timeout_seconds'),
         id=pulumi.get(__response__, 'id'),
         name=pulumi.get(__response__, 'name'),
+        project_id=pulumi.get(__response__, 'project_id'),
         region=pulumi.get(__response__, 'region'),
         size=pulumi.get(__response__, 'size'),
         state=pulumi.get(__response__, 'state'),

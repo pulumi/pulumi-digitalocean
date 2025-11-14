@@ -82,6 +82,21 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * ID of the project to which the VPC NAT Gateway will be assigned.
+     * 
+     */
+    @Import(name="projectId")
+    private @Nullable Output<String> projectId;
+
+    /**
+     * @return ID of the project to which the VPC NAT Gateway will be assigned.
+     * 
+     */
+    public Optional<Output<String>> projectId() {
+        return Optional.ofNullable(this.projectId);
+    }
+
+    /**
      * The region for the VPC NAT Gateway.
      * 
      */
@@ -210,6 +225,7 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
         this.egresses = $.egresses;
         this.icmpTimeoutSeconds = $.icmpTimeoutSeconds;
         this.name = $.name;
+        this.projectId = $.projectId;
         this.region = $.region;
         this.size = $.size;
         this.state = $.state;
@@ -333,6 +349,27 @@ public final class VpcNatGatewayState extends com.pulumi.resources.ResourceArgs 
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param projectId ID of the project to which the VPC NAT Gateway will be assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(@Nullable Output<String> projectId) {
+            $.projectId = projectId;
+            return this;
+        }
+
+        /**
+         * @param projectId ID of the project to which the VPC NAT Gateway will be assigned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectId(String projectId) {
+            return projectId(Output.of(projectId));
         }
 
         /**

@@ -49,9 +49,15 @@ import com.pulumi.digitalocean.inputs.GetGenaiAgentsArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseIndexingJobsArgs;
+import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseIndexingJobsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasePlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesPlainArgs;
@@ -145,7 +151,10 @@ import com.pulumi.digitalocean.outputs.GetGenaiAgentResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentVersionsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentsByOpenaiApiKeyResult;
 import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGenaiIndexingJobDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiIndexingJobResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseIndexingJobsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseResult;
 import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBasesResult;
 import com.pulumi.digitalocean.outputs.GetGenaiModelsResult;
@@ -6366,6 +6375,36 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args) {
+        return getGenaiIndexingJob(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args) {
+        return getGenaiIndexingJobPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args) {
+        return getGenaiIndexingJobDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args) {
+        return getGenaiIndexingJobDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
     public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase() {
         return getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
     }
@@ -6401,6 +6440,21 @@ public final class DigitaloceanFunctions {
     }
     public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args) {
+        return getGenaiKnowledgeBaseIndexingJobs(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args) {
+        return getGenaiKnowledgeBaseIndexingJobsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases() {
         return getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);

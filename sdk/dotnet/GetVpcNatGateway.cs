@@ -188,6 +188,7 @@ namespace Pulumi.DigitalOcean
         public readonly int IcmpTimeoutSeconds;
         public readonly string? Id;
         public readonly string? Name;
+        public readonly string ProjectId;
         public readonly string Region;
         public readonly int Size;
         public readonly string State;
@@ -208,6 +209,8 @@ namespace Pulumi.DigitalOcean
             string? id,
 
             string? name,
+
+            string projectId,
 
             string region,
 
@@ -230,6 +233,7 @@ namespace Pulumi.DigitalOcean
             IcmpTimeoutSeconds = icmpTimeoutSeconds;
             Id = id;
             Name = name;
+            ProjectId = projectId;
             Region = region;
             Size = size;
             State = state;

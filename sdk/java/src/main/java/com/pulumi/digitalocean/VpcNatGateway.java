@@ -143,6 +143,20 @@ public class VpcNatGateway extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * ID of the project to which the VPC NAT Gateway will be assigned.
+     * 
+     */
+    @Export(name="projectId", refs={String.class}, tree="[0]")
+    private Output<String> projectId;
+
+    /**
+     * @return ID of the project to which the VPC NAT Gateway will be assigned.
+     * 
+     */
+    public Output<String> projectId() {
+        return this.projectId;
+    }
+    /**
      * The region for the VPC NAT Gateway.
      * 
      */
