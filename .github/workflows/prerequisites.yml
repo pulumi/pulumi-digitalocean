@@ -68,7 +68,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         cache_key: "mise-{{platform}}-{{file_hash}}"
         # only saving the cache in the prerequisites job
-        cache_save: true
+        cache: false
     - name: Setup Go Cache
       uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6
       with:
