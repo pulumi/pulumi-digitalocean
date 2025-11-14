@@ -13,6 +13,444 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetRecordsRecord struct {
+	// The domain name to search for DNS records
+	Domain string `pulumi:"domain"`
+	// An unsigned integer between 0-255 used for CAA records.
+	Flags int `pulumi:"flags"`
+	// The ID of the record.
+	Id int `pulumi:"id"`
+	// The name of the DNS record.
+	Name string `pulumi:"name"`
+	// The port for SRV records.
+	Port int `pulumi:"port"`
+	// The priority for SRV and MX records.
+	Priority int `pulumi:"priority"`
+	// The parameter tag for CAA records.
+	Tag string `pulumi:"tag"`
+	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+	Ttl int `pulumi:"ttl"`
+	// The type of the DNS record.
+	Type string `pulumi:"type"`
+	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+	Value string `pulumi:"value"`
+	// The weight for SRV records.
+	Weight int `pulumi:"weight"`
+}
+
+// GetRecordsRecordInput is an input type that accepts GetRecordsRecordArgs and GetRecordsRecordOutput values.
+// You can construct a concrete instance of `GetRecordsRecordInput` via:
+//
+//	GetRecordsRecordArgs{...}
+type GetRecordsRecordInput interface {
+	pulumi.Input
+
+	ToGetRecordsRecordOutput() GetRecordsRecordOutput
+	ToGetRecordsRecordOutputWithContext(context.Context) GetRecordsRecordOutput
+}
+
+type GetRecordsRecordArgs struct {
+	// The domain name to search for DNS records
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// An unsigned integer between 0-255 used for CAA records.
+	Flags pulumi.IntInput `pulumi:"flags"`
+	// The ID of the record.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The name of the DNS record.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The port for SRV records.
+	Port pulumi.IntInput `pulumi:"port"`
+	// The priority for SRV and MX records.
+	Priority pulumi.IntInput `pulumi:"priority"`
+	// The parameter tag for CAA records.
+	Tag pulumi.StringInput `pulumi:"tag"`
+	// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+	Ttl pulumi.IntInput `pulumi:"ttl"`
+	// The type of the DNS record.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+	Value pulumi.StringInput `pulumi:"value"`
+	// The weight for SRV records.
+	Weight pulumi.IntInput `pulumi:"weight"`
+}
+
+func (GetRecordsRecordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
+}
+
+func (i GetRecordsRecordArgs) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
+	return i.ToGetRecordsRecordOutputWithContext(context.Background())
+}
+
+func (i GetRecordsRecordArgs) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordOutput)
+}
+
+// GetRecordsRecordArrayInput is an input type that accepts GetRecordsRecordArray and GetRecordsRecordArrayOutput values.
+// You can construct a concrete instance of `GetRecordsRecordArrayInput` via:
+//
+//	GetRecordsRecordArray{ GetRecordsRecordArgs{...} }
+type GetRecordsRecordArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput
+	ToGetRecordsRecordArrayOutputWithContext(context.Context) GetRecordsRecordArrayOutput
+}
+
+type GetRecordsRecordArray []GetRecordsRecordInput
+
+func (GetRecordsRecordArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
+}
+
+func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
+	return i.ToGetRecordsRecordArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsRecordArray) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsRecordArrayOutput)
+}
+
+type GetRecordsRecordOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsRecordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsRecord)(nil)).Elem()
+}
+
+func (o GetRecordsRecordOutput) ToGetRecordsRecordOutput() GetRecordsRecordOutput {
+	return o
+}
+
+func (o GetRecordsRecordOutput) ToGetRecordsRecordOutputWithContext(ctx context.Context) GetRecordsRecordOutput {
+	return o
+}
+
+// The domain name to search for DNS records
+func (o GetRecordsRecordOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Domain }).(pulumi.StringOutput)
+}
+
+// An unsigned integer between 0-255 used for CAA records.
+func (o GetRecordsRecordOutput) Flags() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Flags }).(pulumi.IntOutput)
+}
+
+// The ID of the record.
+func (o GetRecordsRecordOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The name of the DNS record.
+func (o GetRecordsRecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The port for SRV records.
+func (o GetRecordsRecordOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// The priority for SRV and MX records.
+func (o GetRecordsRecordOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Priority }).(pulumi.IntOutput)
+}
+
+// The parameter tag for CAA records.
+func (o GetRecordsRecordOutput) Tag() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Tag }).(pulumi.StringOutput)
+}
+
+// This value is the time to live for the record, in seconds. This defines the time frame that clients can cache queried information before a refresh should be requested.
+func (o GetRecordsRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Ttl }).(pulumi.IntOutput)
+}
+
+// The type of the DNS record.
+func (o GetRecordsRecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Type }).(pulumi.StringOutput)
+}
+
+// Variable data depending on record type. For example, the "data" value for an A record would be the IPv4 address to which the domain will be mapped. For a CAA record, it would contain the domain name of the CA being granted permission to issue certificates.
+func (o GetRecordsRecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsRecord) string { return v.Value }).(pulumi.StringOutput)
+}
+
+// The weight for SRV records.
+func (o GetRecordsRecordOutput) Weight() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRecordsRecord) int { return v.Weight }).(pulumi.IntOutput)
+}
+
+type GetRecordsRecordArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsRecordArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsRecord)(nil)).Elem()
+}
+
+func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutput() GetRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetRecordsRecordArrayOutput) ToGetRecordsRecordArrayOutputWithContext(ctx context.Context) GetRecordsRecordArrayOutput {
+	return o
+}
+
+func (o GetRecordsRecordArrayOutput) Index(i pulumi.IntInput) GetRecordsRecordOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsRecord {
+		return vs[0].([]GetRecordsRecord)[vs[1].(int)]
+	}).(GetRecordsRecordOutput)
+}
+
+type GetRecordsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key string `pulumi:"key"`
+}
+
+// GetRecordsSortInput is an input type that accepts GetRecordsSortArgs and GetRecordsSortOutput values.
+// You can construct a concrete instance of `GetRecordsSortInput` via:
+//
+//	GetRecordsSortArgs{...}
+type GetRecordsSortInput interface {
+	pulumi.Input
+
+	ToGetRecordsSortOutput() GetRecordsSortOutput
+	ToGetRecordsSortOutputWithContext(context.Context) GetRecordsSortOutput
+}
+
+type GetRecordsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetRecordsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
+}
+
+func (i GetRecordsSortArgs) ToGetRecordsSortOutput() GetRecordsSortOutput {
+	return i.ToGetRecordsSortOutputWithContext(context.Background())
+}
+
+func (i GetRecordsSortArgs) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortOutput)
+}
+
+// GetRecordsSortArrayInput is an input type that accepts GetRecordsSortArray and GetRecordsSortArrayOutput values.
+// You can construct a concrete instance of `GetRecordsSortArrayInput` via:
+//
+//	GetRecordsSortArray{ GetRecordsSortArgs{...} }
+type GetRecordsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput
+	ToGetRecordsSortArrayOutputWithContext(context.Context) GetRecordsSortArrayOutput
+}
+
+type GetRecordsSortArray []GetRecordsSortInput
+
+func (GetRecordsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
+}
+
+func (i GetRecordsSortArray) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
+	return i.ToGetRecordsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsSortArray) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsSortArrayOutput)
+}
+
+type GetRecordsSortOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsSort)(nil)).Elem()
+}
+
+func (o GetRecordsSortOutput) ToGetRecordsSortOutput() GetRecordsSortOutput {
+	return o
+}
+
+func (o GetRecordsSortOutput) ToGetRecordsSortOutputWithContext(ctx context.Context) GetRecordsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetRecordsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+func (o GetRecordsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetRecordsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsSort)(nil)).Elem()
+}
+
+func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutput() GetRecordsSortArrayOutput {
+	return o
+}
+
+func (o GetRecordsSortArrayOutput) ToGetRecordsSortArrayOutputWithContext(ctx context.Context) GetRecordsSortArrayOutput {
+	return o
+}
+
+func (o GetRecordsSortArrayOutput) Index(i pulumi.IntInput) GetRecordsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsSort {
+		return vs[0].([]GetRecordsSort)[vs[1].(int)]
+	}).(GetRecordsSortOutput)
+}
+
+type GetRegionsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the regions by this key. This may be one of `slug`,
+	// `name`, `available`, `features`, or `sizes`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves regions
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetRegionsFilterInput is an input type that accepts GetRegionsFilterArgs and GetRegionsFilterOutput values.
+// You can construct a concrete instance of `GetRegionsFilterInput` via:
+//
+//	GetRegionsFilterArgs{...}
+type GetRegionsFilterInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterOutput() GetRegionsFilterOutput
+	ToGetRegionsFilterOutputWithContext(context.Context) GetRegionsFilterOutput
+}
+
+type GetRegionsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the regions by this key. This may be one of `slug`,
+	// `name`, `available`, `features`, or `sizes`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves regions
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRegionsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return i.ToGetRegionsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArgs) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterOutput)
+}
+
+// GetRegionsFilterArrayInput is an input type that accepts GetRegionsFilterArray and GetRegionsFilterArrayOutput values.
+// You can construct a concrete instance of `GetRegionsFilterArrayInput` via:
+//
+//	GetRegionsFilterArray{ GetRegionsFilterArgs{...} }
+type GetRegionsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput
+	ToGetRegionsFilterArrayOutputWithContext(context.Context) GetRegionsFilterArrayOutput
+}
+
+type GetRegionsFilterArray []GetRegionsFilterInput
+
+func (GetRegionsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return i.ToGetRegionsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionsFilterArray) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionsFilterArrayOutput)
+}
+
+type GetRegionsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutput() GetRegionsFilterOutput {
+	return o
+}
+
+func (o GetRegionsFilterOutput) ToGetRegionsFilterOutputWithContext(ctx context.Context) GetRegionsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetRegionsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRegionsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the regions by this key. This may be one of `slug`,
+// `name`, `available`, `features`, or `sizes`.
+func (o GetRegionsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetRegionsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRegionsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves regions
+// where the `key` field takes on one or more of the values provided here.
+func (o GetRegionsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRegionsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRegionsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionsFilter)(nil)).Elem()
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutput() GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) ToGetRegionsFilterArrayOutputWithContext(ctx context.Context) GetRegionsFilterArrayOutput {
+	return o
+}
+
+func (o GetRegionsFilterArrayOutput) Index(i pulumi.IntInput) GetRegionsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionsFilter {
+		return vs[0].([]GetRegionsFilter)[vs[1].(int)]
+	}).(GetRegionsFilterOutput)
+}
+
 type GetRegionsRegion struct {
 	// A boolean value that represents whether new Droplets can be created in this region.
 	Available bool `pulumi:"available"`
@@ -2216,6 +2654,12 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordInput)(nil)).Elem(), GetRecordsRecordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortInput)(nil)).Elem(), GetRecordsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortArrayInput)(nil)).Elem(), GetRecordsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterInput)(nil)).Elem(), GetRegionsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsFilterArrayInput)(nil)).Elem(), GetRegionsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionInput)(nil)).Elem(), GetRegionsRegionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsRegionArrayInput)(nil)).Elem(), GetRegionsRegionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionsSortInput)(nil)).Elem(), GetRegionsSortArgs{})
@@ -2252,6 +2696,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetRecordsRecordOutput{})
+	pulumi.RegisterOutputType(GetRecordsRecordArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordsSortOutput{})
+	pulumi.RegisterOutputType(GetRecordsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterOutput{})
+	pulumi.RegisterOutputType(GetRegionsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionOutput{})
 	pulumi.RegisterOutputType(GetRegionsRegionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionsSortOutput{})

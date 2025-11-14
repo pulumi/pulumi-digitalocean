@@ -41,6 +41,7 @@ from .genai_agent import *
 from .genai_agent_knowledge_base_attachment import *
 from .genai_agent_route import *
 from .genai_function import *
+from .genai_indexing_job_cancel import *
 from .genai_knowledge_base import *
 from .genai_knowledge_base_data_source import *
 from .genai_openai_api_key import *
@@ -66,8 +67,11 @@ from .get_genai_agent import *
 from .get_genai_agent_versions import *
 from .get_genai_agents import *
 from .get_genai_agents_by_openai_api_key import *
+from .get_genai_indexing_job import *
+from .get_genai_indexing_job_data_sources import *
 from .get_genai_knowledge_base import *
 from .get_genai_knowledge_base_data_sources import *
+from .get_genai_knowledge_base_indexing_jobs import *
 from .get_genai_knowledge_bases import *
 from .get_genai_models import *
 from .get_genai_openai_api_key import *
@@ -414,6 +418,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/genaiFunction:GenaiFunction": "GenaiFunction"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/genaiIndexingJobCancel",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel": "GenaiIndexingJobCancel"
   }
  },
  {

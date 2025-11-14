@@ -91,6 +91,10 @@ export class VpcNatGateway extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * ID of the project to which the VPC NAT Gateway will be assigned.
+     */
+    declare public readonly projectId: pulumi.Output<string>;
+    /**
      * The region for the VPC NAT Gateway.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -141,6 +145,7 @@ export class VpcNatGateway extends pulumi.CustomResource {
             resourceInputs["egresses"] = state?.egresses;
             resourceInputs["icmpTimeoutSeconds"] = state?.icmpTimeoutSeconds;
             resourceInputs["name"] = state?.name;
+            resourceInputs["projectId"] = state?.projectId;
             resourceInputs["region"] = state?.region;
             resourceInputs["size"] = state?.size;
             resourceInputs["state"] = state?.state;
@@ -165,6 +170,7 @@ export class VpcNatGateway extends pulumi.CustomResource {
             }
             resourceInputs["icmpTimeoutSeconds"] = args?.icmpTimeoutSeconds;
             resourceInputs["name"] = args?.name;
+            resourceInputs["projectId"] = args?.projectId;
             resourceInputs["region"] = args?.region;
             resourceInputs["size"] = args?.size;
             resourceInputs["tcpTimeoutSeconds"] = args?.tcpTimeoutSeconds;
@@ -202,6 +208,10 @@ export interface VpcNatGatewayState {
      * The name of the VPC NAT Gateway.
      */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the project to which the VPC NAT Gateway will be assigned.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * The region for the VPC NAT Gateway.
      */
@@ -249,6 +259,10 @@ export interface VpcNatGatewayArgs {
      * The name of the VPC NAT Gateway.
      */
     name?: pulumi.Input<string>;
+    /**
+     * ID of the project to which the VPC NAT Gateway will be assigned.
+     */
+    projectId?: pulumi.Input<string>;
     /**
      * The region for the VPC NAT Gateway.
      */

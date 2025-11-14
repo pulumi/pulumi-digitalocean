@@ -89,6 +89,7 @@ type LookupVpcNatGatewayResult struct {
 	IcmpTimeoutSeconds int                      `pulumi:"icmpTimeoutSeconds"`
 	Id                 *string                  `pulumi:"id"`
 	Name               *string                  `pulumi:"name"`
+	ProjectId          string                   `pulumi:"projectId"`
 	Region             string                   `pulumi:"region"`
 	Size               int                      `pulumi:"size"`
 	State              string                   `pulumi:"state"`
@@ -153,6 +154,10 @@ func (o LookupVpcNatGatewayResultOutput) Id() pulumi.StringPtrOutput {
 
 func (o LookupVpcNatGatewayResultOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupVpcNatGatewayResult) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupVpcNatGatewayResultOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupVpcNatGatewayResult) string { return v.ProjectId }).(pulumi.StringOutput)
 }
 
 func (o LookupVpcNatGatewayResultOutput) Region() pulumi.StringOutput {

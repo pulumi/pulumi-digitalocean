@@ -64,6 +64,7 @@ export interface GetVpcNatGatewayResult {
     readonly icmpTimeoutSeconds: number;
     readonly id?: string;
     readonly name?: string;
+    readonly projectId: string;
     readonly region: string;
     readonly size: number;
     readonly state: string;

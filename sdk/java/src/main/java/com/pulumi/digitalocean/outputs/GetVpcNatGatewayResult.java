@@ -21,6 +21,7 @@ public final class GetVpcNatGatewayResult {
     private Integer icmpTimeoutSeconds;
     private @Nullable String id;
     private @Nullable String name;
+    private String projectId;
     private String region;
     private Integer size;
     private String state;
@@ -45,6 +46,9 @@ public final class GetVpcNatGatewayResult {
     }
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
+    }
+    public String projectId() {
+        return this.projectId;
     }
     public String region() {
         return this.region;
@@ -85,6 +89,7 @@ public final class GetVpcNatGatewayResult {
         private Integer icmpTimeoutSeconds;
         private @Nullable String id;
         private @Nullable String name;
+        private String projectId;
         private String region;
         private Integer size;
         private String state;
@@ -101,6 +106,7 @@ public final class GetVpcNatGatewayResult {
     	      this.icmpTimeoutSeconds = defaults.icmpTimeoutSeconds;
     	      this.id = defaults.id;
     	      this.name = defaults.name;
+    	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.state = defaults.state;
@@ -148,6 +154,14 @@ public final class GetVpcNatGatewayResult {
         public Builder name(@Nullable String name) {
 
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder projectId(String projectId) {
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetVpcNatGatewayResult", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
@@ -224,6 +238,7 @@ public final class GetVpcNatGatewayResult {
             _resultValue.icmpTimeoutSeconds = icmpTimeoutSeconds;
             _resultValue.id = id;
             _resultValue.name = name;
+            _resultValue.projectId = projectId;
             _resultValue.region = region;
             _resultValue.size = size;
             _resultValue.state = state;
