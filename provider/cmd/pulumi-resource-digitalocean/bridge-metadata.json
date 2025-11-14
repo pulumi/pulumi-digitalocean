@@ -1024,6 +1024,15 @@
                 "current": "digitalocean:index/genaiFunction:GenaiFunction",
                 "majorVersion": 4
             },
+            "digitalocean_genai_indexing_job_cancel": {
+                "current": "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel",
+                "majorVersion": 4,
+                "fields": {
+                    "data_source_uuids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_genai_knowledge_base": {
                 "current": "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase",
                 "majorVersion": 4,
@@ -2848,6 +2857,24 @@
                     }
                 }
             },
+            "digitalocean_genai_indexing_job": {
+                "current": "digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob",
+                "majorVersion": 4,
+                "fields": {
+                    "data_source_uuids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_genai_indexing_job_data_sources": {
+                "current": "digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources",
+                "majorVersion": 4,
+                "fields": {
+                    "indexed_data_sources": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_genai_knowledge_base": {
                 "current": "digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase",
                 "majorVersion": 4,
@@ -2896,6 +2923,25 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "digitalocean_genai_knowledge_base_indexing_jobs": {
+                "current": "digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs",
+                "majorVersion": 4,
+                "fields": {
+                    "jobs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "data_source_uuids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "meta": {
+                        "maxItemsOne": false
                     }
                 }
             },

@@ -14465,6 +14465,88 @@
                 "key"
             ]
         },
+        "digitalocean:index/getGenaiIndexingJobDataSourcesIndexedDataSource:getGenaiIndexingJobDataSourcesIndexedDataSource": {
+            "properties": {
+                "completedAt": {
+                    "type": "string",
+                    "description": "Timestamp when data source completed indexing\n"
+                },
+                "dataSourceUuid": {
+                    "type": "string",
+                    "description": "UUID of the indexed data source\n"
+                },
+                "errorDetails": {
+                    "type": "string",
+                    "description": "Detailed error description\n"
+                },
+                "errorMsg": {
+                    "type": "string",
+                    "description": "Error message if indexing failed\n"
+                },
+                "failedItemCount": {
+                    "type": "string",
+                    "description": "Total count of items that have failed\n"
+                },
+                "indexedFileCount": {
+                    "type": "string",
+                    "description": "Total count of files that have been indexed\n"
+                },
+                "indexedItemCount": {
+                    "type": "string",
+                    "description": "Total count of items that have been indexed\n"
+                },
+                "removedItemCount": {
+                    "type": "string",
+                    "description": "Total count of items that have been removed\n"
+                },
+                "skippedItemCount": {
+                    "type": "string",
+                    "description": "Total count of items that have been skipped\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Timestamp when data source started indexing\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the indexed data source\n"
+                },
+                "totalBytes": {
+                    "type": "string",
+                    "description": "Total size of files in data source in bytes\n"
+                },
+                "totalBytesIndexed": {
+                    "type": "string",
+                    "description": "Total size of indexed files in bytes\n"
+                },
+                "totalFileCount": {
+                    "type": "string",
+                    "description": "Total file count in the data source\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "completedAt",
+                "dataSourceUuid",
+                "errorDetails",
+                "errorMsg",
+                "failedItemCount",
+                "indexedFileCount",
+                "indexedItemCount",
+                "removedItemCount",
+                "skippedItemCount",
+                "startedAt",
+                "status",
+                "totalBytes",
+                "totalBytesIndexed",
+                "totalFileCount"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getGenaiKnowledgeBaseDataSourcesDatasource:getGenaiKnowledgeBaseDataSourcesDatasource": {
             "properties": {
                 "createdAt": {
@@ -14633,6 +14715,123 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseIndexingJobsJob:getGenaiKnowledgeBaseIndexingJobsJob": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of datasources indexed completed\n"
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "Creation timestamp\n"
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of data source UUIDs\n"
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "Finish timestamp\n"
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "Knowledge base UUID\n"
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Current phase of the batch job\n"
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "Start timestamp\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "Status of the indexing job\n"
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens\n"
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of datasources being indexed\n"
+                },
+                "totalItemsFailed": {
+                    "type": "string",
+                    "description": "Total items failed\n"
+                },
+                "totalItemsIndexed": {
+                    "type": "string",
+                    "description": "Total items indexed\n"
+                },
+                "totalItemsSkipped": {
+                    "type": "string",
+                    "description": "Total items skipped\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "Last update timestamp\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "Unique identifier of the indexing job\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "completedDatasources",
+                "createdAt",
+                "dataSourceUuids",
+                "finishedAt",
+                "knowledgeBaseUuid",
+                "phase",
+                "startedAt",
+                "status",
+                "tokens",
+                "totalDatasources",
+                "totalItemsFailed",
+                "totalItemsIndexed",
+                "totalItemsSkipped",
+                "updatedAt",
+                "uuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseIndexingJobsMeta:getGenaiKnowledgeBaseIndexingJobsMeta": {
+            "properties": {
+                "page": {
+                    "type": "integer",
+                    "description": "Current page number\n"
+                },
+                "pages": {
+                    "type": "integer",
+                    "description": "Total number of pages\n"
+                },
+                "total": {
+                    "type": "integer",
+                    "description": "Total number of items\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "page",
+                "pages",
+                "total"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getGenaiKnowledgeBaseLastIndexingJob:getGenaiKnowledgeBaseLastIndexingJob": {
             "properties": {
@@ -24308,6 +24507,170 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel": {
+            "properties": {
+                "completedDatasources": {
+                    "type": "integer",
+                    "description": "Number of data sources that were completed before cancellation."
+                },
+                "createdAt": {
+                    "type": "string",
+                    "description": "When the indexing job was created."
+                },
+                "dataSourceUuids": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "List of data source UUIDs associated with this indexing job."
+                },
+                "finishedAt": {
+                    "type": "string",
+                    "description": "When the indexing job was finished."
+                },
+                "knowledgeBaseUuid": {
+                    "type": "string",
+                    "description": "The UUID of the knowledge base associated with this indexing job."
+                },
+                "phase": {
+                    "type": "string",
+                    "description": "Current phase of the indexing job."
+                },
+                "startedAt": {
+                    "type": "string",
+                    "description": "When the indexing job was started."
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The status of the indexing job after cancellation."
+                },
+                "tokens": {
+                    "type": "integer",
+                    "description": "Number of tokens processed before cancellation."
+                },
+                "totalDatasources": {
+                    "type": "integer",
+                    "description": "Total number of data sources in the indexing job."
+                },
+                "totalItemsFailed": {
+                    "type": "integer",
+                    "description": "Total number of items that failed during indexing."
+                },
+                "totalItemsIndexed": {
+                    "type": "integer",
+                    "description": "Total number of items that were successfully indexed."
+                },
+                "totalItemsSkipped": {
+                    "type": "integer",
+                    "description": "Total number of items that were skipped during indexing."
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "When the indexing job was last updated."
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the indexing job to cancel."
+                }
+            },
+            "required": [
+                "completedDatasources",
+                "createdAt",
+                "dataSourceUuids",
+                "finishedAt",
+                "knowledgeBaseUuid",
+                "phase",
+                "startedAt",
+                "status",
+                "tokens",
+                "totalDatasources",
+                "totalItemsFailed",
+                "totalItemsIndexed",
+                "totalItemsSkipped",
+                "updatedAt",
+                "uuid"
+            ],
+            "inputProperties": {
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the indexing job to cancel.",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "uuid"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering GenaiIndexingJobCancel resources.\n",
+                "properties": {
+                    "completedDatasources": {
+                        "type": "integer",
+                        "description": "Number of data sources that were completed before cancellation."
+                    },
+                    "createdAt": {
+                        "type": "string",
+                        "description": "When the indexing job was created."
+                    },
+                    "dataSourceUuids": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "description": "List of data source UUIDs associated with this indexing job."
+                    },
+                    "finishedAt": {
+                        "type": "string",
+                        "description": "When the indexing job was finished."
+                    },
+                    "knowledgeBaseUuid": {
+                        "type": "string",
+                        "description": "The UUID of the knowledge base associated with this indexing job."
+                    },
+                    "phase": {
+                        "type": "string",
+                        "description": "Current phase of the indexing job."
+                    },
+                    "startedAt": {
+                        "type": "string",
+                        "description": "When the indexing job was started."
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The status of the indexing job after cancellation."
+                    },
+                    "tokens": {
+                        "type": "integer",
+                        "description": "Number of tokens processed before cancellation."
+                    },
+                    "totalDatasources": {
+                        "type": "integer",
+                        "description": "Total number of data sources in the indexing job."
+                    },
+                    "totalItemsFailed": {
+                        "type": "integer",
+                        "description": "Total number of items that failed during indexing."
+                    },
+                    "totalItemsIndexed": {
+                        "type": "integer",
+                        "description": "Total number of items that were successfully indexed."
+                    },
+                    "totalItemsSkipped": {
+                        "type": "integer",
+                        "description": "Total number of items that were skipped during indexing."
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "When the indexing job was last updated."
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the indexing job to cancel.",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase": {
             "properties": {
                 "addedToAgentAt": {
@@ -28009,6 +28372,10 @@
                     "type": "string",
                     "description": "The name of the VPC NAT Gateway.\n"
                 },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to which the VPC NAT Gateway will be assigned."
+                },
                 "region": {
                     "type": "string",
                     "description": "The region for the VPC NAT Gateway.\n"
@@ -28050,6 +28417,7 @@
                 "egresses",
                 "icmpTimeoutSeconds",
                 "name",
+                "projectId",
                 "region",
                 "size",
                 "state",
@@ -28067,6 +28435,10 @@
                 "name": {
                     "type": "string",
                     "description": "The name of the VPC NAT Gateway.\n"
+                },
+                "projectId": {
+                    "type": "string",
+                    "description": "ID of the project to which the VPC NAT Gateway will be assigned."
                 },
                 "region": {
                     "type": "string",
@@ -28123,6 +28495,10 @@
                     "name": {
                         "type": "string",
                         "description": "The name of the VPC NAT Gateway.\n"
+                    },
+                    "projectId": {
+                        "type": "string",
+                        "description": "ID of the project to which the VPC NAT Gateway will be assigned."
                     },
                     "region": {
                         "type": "string",
@@ -30152,6 +30528,134 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiIndexingJob.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiIndexingJob.\n",
+                "properties": {
+                    "completedDatasources": {
+                        "type": "integer"
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "dataSourceUuids": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "finishedAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "knowledgeBaseUuid": {
+                        "type": "string"
+                    },
+                    "phase": {
+                        "type": "string"
+                    },
+                    "startedAt": {
+                        "type": "string"
+                    },
+                    "status": {
+                        "type": "string"
+                    },
+                    "tokens": {
+                        "type": "integer"
+                    },
+                    "totalDatasources": {
+                        "type": "integer"
+                    },
+                    "totalItemsFailed": {
+                        "type": "string"
+                    },
+                    "totalItemsIndexed": {
+                        "type": "string"
+                    },
+                    "totalItemsSkipped": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "completedDatasources",
+                    "createdAt",
+                    "dataSourceUuids",
+                    "finishedAt",
+                    "knowledgeBaseUuid",
+                    "phase",
+                    "startedAt",
+                    "status",
+                    "tokens",
+                    "totalDatasources",
+                    "totalItemsFailed",
+                    "totalItemsIndexed",
+                    "totalItemsSkipped",
+                    "updatedAt",
+                    "uuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiIndexingJobDataSources.\n",
+                "properties": {
+                    "indexingJobUuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "indexingJobUuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiIndexingJobDataSources.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "indexedDataSources": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiIndexingJobDataSourcesIndexedDataSource:getGenaiIndexingJobDataSourcesIndexedDataSource"
+                        },
+                        "type": "array"
+                    },
+                    "indexingJobUuid": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "indexedDataSources",
+                    "indexingJobUuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase": {
             "inputs": {
                 "description": "A collection of arguments for invoking getGenaiKnowledgeBase.\n",
@@ -30292,6 +30796,51 @@
                 "required": [
                     "datasources",
                     "knowledgeBaseUuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getGenaiKnowledgeBaseIndexingJobs.\n",
+                "properties": {
+                    "knowledgeBaseUuid": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "knowledgeBaseUuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getGenaiKnowledgeBaseIndexingJobs.\n",
+                "properties": {
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "jobs": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseIndexingJobsJob:getGenaiKnowledgeBaseIndexingJobsJob"
+                        },
+                        "type": "array"
+                    },
+                    "knowledgeBaseUuid": {
+                        "type": "string"
+                    },
+                    "metas": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getGenaiKnowledgeBaseIndexingJobsMeta:getGenaiKnowledgeBaseIndexingJobsMeta"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "jobs",
+                    "knowledgeBaseUuid",
+                    "metas",
                     "id"
                 ],
                 "type": "object"
@@ -32687,6 +33236,9 @@
                     "name": {
                         "type": "string"
                     },
+                    "projectId": {
+                        "type": "string"
+                    },
                     "region": {
                         "type": "string"
                     },
@@ -32719,6 +33271,7 @@
                     "createdAt",
                     "egresses",
                     "icmpTimeoutSeconds",
+                    "projectId",
                     "region",
                     "size",
                     "state",
