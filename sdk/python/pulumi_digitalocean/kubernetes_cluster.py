@@ -36,6 +36,8 @@ class KubernetesClusterArgs:
                  kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 nvidia_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 rdma_shared_device_plugin: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
                  service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
@@ -58,6 +60,7 @@ class KubernetesClusterArgs:
         :param pulumi.Input[_builtins.int] kubeconfig_expire_seconds: The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         :param pulumi.Input[_builtins.str] service_subnet: The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
@@ -90,6 +93,10 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "maintenance_policy", maintenance_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if nvidia_gpu_device_plugin is not None:
+            pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
+        if rdma_shared_device_plugin is not None:
+            pulumi.set(__self__, "rdma_shared_device_plugin", rdma_shared_device_plugin)
         if registry_integration is not None:
             pulumi.set(__self__, "registry_integration", registry_integration)
         if routing_agent is not None:
@@ -272,6 +279,27 @@ class KubernetesClusterArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDevicePlugin")
+    def nvidia_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
+        """
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        """
+        return pulumi.get(self, "nvidia_gpu_device_plugin")
+
+    @nvidia_gpu_device_plugin.setter
+    def nvidia_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
+        pulumi.set(self, "nvidia_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rdmaSharedDevicePlugin")
+    def rdma_shared_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+        return pulumi.get(self, "rdma_shared_device_plugin")
+
+    @rdma_shared_device_plugin.setter
+    def rdma_shared_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]):
+        pulumi.set(self, "rdma_shared_device_plugin", value)
+
+    @_builtins.property
     @pulumi.getter(name="registryIntegration")
     def registry_integration(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -364,6 +392,8 @@ class _KubernetesClusterState:
                  maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
+                 nvidia_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 rdma_shared_device_plugin: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
@@ -393,6 +423,7 @@ class _KubernetesClusterState:
         :param pulumi.Input['KubernetesClusterMaintenancePolicyArgs'] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs'] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input['KubernetesClusterRoutingAgentArgs'] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -438,6 +469,10 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "name", name)
         if node_pool is not None:
             pulumi.set(__self__, "node_pool", node_pool)
+        if nvidia_gpu_device_plugin is not None:
+            pulumi.set(__self__, "nvidia_gpu_device_plugin", nvidia_gpu_device_plugin)
+        if rdma_shared_device_plugin is not None:
+            pulumi.set(__self__, "rdma_shared_device_plugin", rdma_shared_device_plugin)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if registry_integration is not None:
@@ -664,6 +699,27 @@ class _KubernetesClusterState:
         pulumi.set(self, "node_pool", value)
 
     @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDevicePlugin")
+    def nvidia_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
+        """
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        """
+        return pulumi.get(self, "nvidia_gpu_device_plugin")
+
+    @nvidia_gpu_device_plugin.setter
+    def nvidia_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
+        pulumi.set(self, "nvidia_gpu_device_plugin", value)
+
+    @_builtins.property
+    @pulumi.getter(name="rdmaSharedDevicePlugin")
+    def rdma_shared_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+        return pulumi.get(self, "rdma_shared_device_plugin")
+
+    @rdma_shared_device_plugin.setter
+    def rdma_shared_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]):
+        pulumi.set(self, "rdma_shared_device_plugin", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
         """
@@ -802,6 +858,8 @@ class KubernetesCluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+                 nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
@@ -852,6 +910,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -921,6 +980,8 @@ class KubernetesCluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+                 nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
@@ -952,6 +1013,8 @@ class KubernetesCluster(pulumi.CustomResource):
             if node_pool is None and not opts.urn:
                 raise TypeError("Missing required property 'node_pool'")
             __props__.__dict__["node_pool"] = node_pool
+            __props__.__dict__["nvidia_gpu_device_plugin"] = nvidia_gpu_device_plugin
+            __props__.__dict__["rdma_shared_device_plugin"] = rdma_shared_device_plugin
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -1000,6 +1063,8 @@ class KubernetesCluster(pulumi.CustomResource):
             maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
             node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+            nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+            rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
             region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
             registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
             routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
@@ -1034,6 +1099,7 @@ class KubernetesCluster(pulumi.CustomResource):
         :param pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']] maintenance_policy: A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         :param pulumi.Input[_builtins.str] name: A name for the Kubernetes cluster.
         :param pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
+        :param pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']] nvidia_gpu_device_plugin: Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.bool] registry_integration: Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         :param pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']] routing_agent: Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
@@ -1066,6 +1132,8 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["maintenance_policy"] = maintenance_policy
         __props__.__dict__["name"] = name
         __props__.__dict__["node_pool"] = node_pool
+        __props__.__dict__["nvidia_gpu_device_plugin"] = nvidia_gpu_device_plugin
+        __props__.__dict__["rdma_shared_device_plugin"] = rdma_shared_device_plugin
         __props__.__dict__["region"] = region
         __props__.__dict__["registry_integration"] = registry_integration
         __props__.__dict__["routing_agent"] = routing_agent
@@ -1213,6 +1281,19 @@ class KubernetesCluster(pulumi.CustomResource):
         A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         """
         return pulumi.get(self, "node_pool")
+
+    @_builtins.property
+    @pulumi.getter(name="nvidiaGpuDevicePlugin")
+    def nvidia_gpu_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterNvidiaGpuDevicePlugin']:
+        """
+        Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        """
+        return pulumi.get(self, "nvidia_gpu_device_plugin")
+
+    @_builtins.property
+    @pulumi.getter(name="rdmaSharedDevicePlugin")
+    def rdma_shared_device_plugin(self) -> pulumi.Output['outputs.KubernetesClusterRdmaSharedDevicePlugin']:
+        return pulumi.get(self, "rdma_shared_device_plugin")
 
     @_builtins.property
     @pulumi.getter

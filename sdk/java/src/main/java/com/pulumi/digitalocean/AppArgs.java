@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppDedicatedIpArgs;
 import com.pulumi.digitalocean.inputs.AppSpecArgs;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -31,6 +32,21 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<List<AppDedicatedIpArgs>>> dedicatedIps() {
         return Optional.ofNullable(this.dedicatedIps);
+    }
+
+    /**
+     * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     * 
+     */
+    @Import(name="deploymentPerPage")
+    private @Nullable Output<Integer> deploymentPerPage;
+
+    /**
+     * @return (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     * 
+     */
+    public Optional<Output<Integer>> deploymentPerPage() {
+        return Optional.ofNullable(this.deploymentPerPage);
     }
 
     /**
@@ -75,6 +91,7 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
 
     private AppArgs(AppArgs $) {
         this.dedicatedIps = $.dedicatedIps;
+        this.deploymentPerPage = $.deploymentPerPage;
         this.projectId = $.projectId;
         this.spec = $.spec;
     }
@@ -126,6 +143,27 @@ public final class AppArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dedicatedIps(AppDedicatedIpArgs... dedicatedIps) {
             return dedicatedIps(List.of(dedicatedIps));
+        }
+
+        /**
+         * @param deploymentPerPage (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentPerPage(@Nullable Output<Integer> deploymentPerPage) {
+            $.deploymentPerPage = deploymentPerPage;
+            return this;
+        }
+
+        /**
+         * @param deploymentPerPage (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentPerPage(Integer deploymentPerPage) {
+            return deploymentPerPage(Output.of(deploymentPerPage));
         }
 
         /**

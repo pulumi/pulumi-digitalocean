@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgentArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -65,6 +67,20 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         return this.name;
     }
 
+    @Import(name="nvidiaGpuDevicePlugin")
+    private @Nullable Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin;
+
+    public Optional<Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs>> nvidiaGpuDevicePlugin() {
+        return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    @Import(name="rdmaSharedDevicePlugin")
+    private @Nullable Output<GetKubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin;
+
+    public Optional<Output<GetKubernetesClusterRdmaSharedDevicePluginArgs>> rdmaSharedDevicePlugin() {
+        return Optional.ofNullable(this.rdmaSharedDevicePlugin);
+    }
+
     @Import(name="routingAgent")
     private @Nullable Output<GetKubernetesClusterRoutingAgentArgs> routingAgent;
 
@@ -95,6 +111,8 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
+        this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
         this.tags = $.tags;
     }
@@ -176,6 +194,24 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder nvidiaGpuDevicePlugin(@Nullable Output<GetKubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin) {
+            $.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+
+        public Builder nvidiaGpuDevicePlugin(GetKubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
+            return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        public Builder rdmaSharedDevicePlugin(@Nullable Output<GetKubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin) {
+            $.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
+            return this;
+        }
+
+        public Builder rdmaSharedDevicePlugin(GetKubernetesClusterRdmaSharedDevicePluginArgs rdmaSharedDevicePlugin) {
+            return rdmaSharedDevicePlugin(Output.of(rdmaSharedDevicePlugin));
         }
 
         public Builder routingAgent(@Nullable Output<GetKubernetesClusterRoutingAgentArgs> routingAgent) {

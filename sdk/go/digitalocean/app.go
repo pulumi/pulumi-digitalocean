@@ -258,6 +258,8 @@ type App struct {
 	DedicatedIps AppDedicatedIpArrayOutput `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringOutput `pulumi:"defaultIngress"`
+	// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+	DeploymentPerPage pulumi.IntPtrOutput `pulumi:"deploymentPerPage"`
 	// The live domain of the app.
 	LiveDomain pulumi.StringOutput `pulumi:"liveDomain"`
 	// The live URL of the app.
@@ -314,6 +316,8 @@ type appState struct {
 	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
 	// The default URL to access the app.
 	DefaultIngress *string `pulumi:"defaultIngress"`
+	// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+	DeploymentPerPage *int `pulumi:"deploymentPerPage"`
 	// The live domain of the app.
 	LiveDomain *string `pulumi:"liveDomain"`
 	// The live URL of the app.
@@ -341,6 +345,8 @@ type AppState struct {
 	DedicatedIps AppDedicatedIpArrayInput
 	// The default URL to access the app.
 	DefaultIngress pulumi.StringPtrInput
+	// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+	DeploymentPerPage pulumi.IntPtrInput
 	// The live domain of the app.
 	LiveDomain pulumi.StringPtrInput
 	// The live URL of the app.
@@ -364,6 +370,8 @@ func (AppState) ElementType() reflect.Type {
 type appArgs struct {
 	// The dedicated egress IP addresses associated with the app.
 	DedicatedIps []AppDedicatedIp `pulumi:"dedicatedIps"`
+	// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+	DeploymentPerPage *int `pulumi:"deploymentPerPage"`
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -378,6 +386,8 @@ type appArgs struct {
 type AppArgs struct {
 	// The dedicated egress IP addresses associated with the app.
 	DedicatedIps AppDedicatedIpArrayInput
+	// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+	DeploymentPerPage pulumi.IntPtrInput
 	// The ID of the project that the app is assigned to.
 	//
 	// A spec can contain multiple components.
@@ -498,6 +508,11 @@ func (o AppOutput) DedicatedIps() AppDedicatedIpArrayOutput {
 // The default URL to access the app.
 func (o AppOutput) DefaultIngress() pulumi.StringOutput {
 	return o.ApplyT(func(v *App) pulumi.StringOutput { return v.DefaultIngress }).(pulumi.StringOutput)
+}
+
+// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+func (o AppOutput) DeploymentPerPage() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *App) pulumi.IntPtrOutput { return v.DeploymentPerPage }).(pulumi.IntPtrOutput)
 }
 
 // The live domain of the app.

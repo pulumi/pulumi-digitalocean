@@ -10,6 +10,11 @@ export type App = import("./app").App;
 export const App: typeof import("./app").App = null as any;
 utilities.lazyLoad(exports, ["App"], () => require("./app"));
 
+export { ByoipPrefixArgs, ByoipPrefixState } from "./byoipPrefix";
+export type ByoipPrefix = import("./byoipPrefix").ByoipPrefix;
+export const ByoipPrefix: typeof import("./byoipPrefix").ByoipPrefix = null as any;
+utilities.lazyLoad(exports, ["ByoipPrefix"], () => require("./byoipPrefix"));
+
 export { CdnArgs, CdnState } from "./cdn";
 export type Cdn = import("./cdn").Cdn;
 export const Cdn: typeof import("./cdn").Cdn = null as any;
@@ -19,6 +24,11 @@ export { CertificateArgs, CertificateState } from "./certificate";
 export type Certificate = import("./certificate").Certificate;
 export const Certificate: typeof import("./certificate").Certificate = null as any;
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+
+export { ContainerRegistriesArgs, ContainerRegistriesState } from "./containerRegistries";
+export type ContainerRegistries = import("./containerRegistries").ContainerRegistries;
+export const ContainerRegistries: typeof import("./containerRegistries").ContainerRegistries = null as any;
+utilities.lazyLoad(exports, ["ContainerRegistries"], () => require("./containerRegistries"));
 
 export { ContainerRegistryArgs, ContainerRegistryState } from "./containerRegistry";
 export type ContainerRegistry = import("./containerRegistry").ContainerRegistry;
@@ -69,6 +79,16 @@ export { DatabaseKafkaTopicArgs, DatabaseKafkaTopicState } from "./databaseKafka
 export type DatabaseKafkaTopic = import("./databaseKafkaTopic").DatabaseKafkaTopic;
 export const DatabaseKafkaTopic: typeof import("./databaseKafkaTopic").DatabaseKafkaTopic = null as any;
 utilities.lazyLoad(exports, ["DatabaseKafkaTopic"], () => require("./databaseKafkaTopic"));
+
+export { DatabaseLogsinkOpensearchArgs, DatabaseLogsinkOpensearchState } from "./databaseLogsinkOpensearch";
+export type DatabaseLogsinkOpensearch = import("./databaseLogsinkOpensearch").DatabaseLogsinkOpensearch;
+export const DatabaseLogsinkOpensearch: typeof import("./databaseLogsinkOpensearch").DatabaseLogsinkOpensearch = null as any;
+utilities.lazyLoad(exports, ["DatabaseLogsinkOpensearch"], () => require("./databaseLogsinkOpensearch"));
+
+export { DatabaseLogsinkRsyslogArgs, DatabaseLogsinkRsyslogState } from "./databaseLogsinkRsyslog";
+export type DatabaseLogsinkRsyslog = import("./databaseLogsinkRsyslog").DatabaseLogsinkRsyslog;
+export const DatabaseLogsinkRsyslog: typeof import("./databaseLogsinkRsyslog").DatabaseLogsinkRsyslog = null as any;
+utilities.lazyLoad(exports, ["DatabaseLogsinkRsyslog"], () => require("./databaseLogsinkRsyslog"));
 
 export { DatabaseMongodbConfigArgs, DatabaseMongodbConfigState } from "./databaseMongodbConfig";
 export type DatabaseMongodbConfig = import("./databaseMongodbConfig").DatabaseMongodbConfig;
@@ -205,10 +225,25 @@ export const getApp: typeof import("./getApp").getApp = null as any;
 export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
 utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
 
+export { GetByoipPrefixArgs, GetByoipPrefixResult, GetByoipPrefixOutputArgs } from "./getByoipPrefix";
+export const getByoipPrefix: typeof import("./getByoipPrefix").getByoipPrefix = null as any;
+export const getByoipPrefixOutput: typeof import("./getByoipPrefix").getByoipPrefixOutput = null as any;
+utilities.lazyLoad(exports, ["getByoipPrefix","getByoipPrefixOutput"], () => require("./getByoipPrefix"));
+
+export { GetByoipPrefixResourcesArgs, GetByoipPrefixResourcesResult, GetByoipPrefixResourcesOutputArgs } from "./getByoipPrefixResources";
+export const getByoipPrefixResources: typeof import("./getByoipPrefixResources").getByoipPrefixResources = null as any;
+export const getByoipPrefixResourcesOutput: typeof import("./getByoipPrefixResources").getByoipPrefixResourcesOutput = null as any;
+utilities.lazyLoad(exports, ["getByoipPrefixResources","getByoipPrefixResourcesOutput"], () => require("./getByoipPrefixResources"));
+
 export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
 export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
 export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+
+export { GetContainerRegistriesArgs, GetContainerRegistriesResult, GetContainerRegistriesOutputArgs } from "./getContainerRegistries";
+export const getContainerRegistries: typeof import("./getContainerRegistries").getContainerRegistries = null as any;
+export const getContainerRegistriesOutput: typeof import("./getContainerRegistries").getContainerRegistriesOutput = null as any;
+utilities.lazyLoad(exports, ["getContainerRegistries","getContainerRegistriesOutput"], () => require("./getContainerRegistries"));
 
 export { GetContainerRegistryArgs, GetContainerRegistryResult, GetContainerRegistryOutputArgs } from "./getContainerRegistry";
 export const getContainerRegistry: typeof import("./getContainerRegistry").getContainerRegistry = null as any;
@@ -380,6 +415,16 @@ export const getLoadBalancer: typeof import("./getLoadBalancer").getLoadBalancer
 export const getLoadBalancerOutput: typeof import("./getLoadBalancer").getLoadBalancerOutput = null as any;
 utilities.lazyLoad(exports, ["getLoadBalancer","getLoadBalancerOutput"], () => require("./getLoadBalancer"));
 
+export { GetNfsArgs, GetNfsResult, GetNfsOutputArgs } from "./getNfs";
+export const getNfs: typeof import("./getNfs").getNfs = null as any;
+export const getNfsOutput: typeof import("./getNfs").getNfsOutput = null as any;
+utilities.lazyLoad(exports, ["getNfs","getNfsOutput"], () => require("./getNfs"));
+
+export { GetNfsSnapshotArgs, GetNfsSnapshotResult, GetNfsSnapshotOutputArgs } from "./getNfsSnapshot";
+export const getNfsSnapshot: typeof import("./getNfsSnapshot").getNfsSnapshot = null as any;
+export const getNfsSnapshotOutput: typeof import("./getNfsSnapshot").getNfsSnapshotOutput = null as any;
+utilities.lazyLoad(exports, ["getNfsSnapshot","getNfsSnapshotOutput"], () => require("./getNfsSnapshot"));
+
 export { GetPartnerAttachmentArgs, GetPartnerAttachmentResult, GetPartnerAttachmentOutputArgs } from "./getPartnerAttachment";
 export const getPartnerAttachment: typeof import("./getPartnerAttachment").getPartnerAttachment = null as any;
 export const getPartnerAttachmentOutput: typeof import("./getPartnerAttachment").getPartnerAttachmentOutput = null as any;
@@ -525,6 +570,21 @@ export type MonitorAlert = import("./monitorAlert").MonitorAlert;
 export const MonitorAlert: typeof import("./monitorAlert").MonitorAlert = null as any;
 utilities.lazyLoad(exports, ["MonitorAlert"], () => require("./monitorAlert"));
 
+export { NfsArgs, NfsState } from "./nfs";
+export type Nfs = import("./nfs").Nfs;
+export const Nfs: typeof import("./nfs").Nfs = null as any;
+utilities.lazyLoad(exports, ["Nfs"], () => require("./nfs"));
+
+export { NfsAttachmentArgs, NfsAttachmentState } from "./nfsAttachment";
+export type NfsAttachment = import("./nfsAttachment").NfsAttachment;
+export const NfsAttachment: typeof import("./nfsAttachment").NfsAttachment = null as any;
+utilities.lazyLoad(exports, ["NfsAttachment"], () => require("./nfsAttachment"));
+
+export { NfsSnapshotArgs, NfsSnapshotState } from "./nfsSnapshot";
+export type NfsSnapshot = import("./nfsSnapshot").NfsSnapshot;
+export const NfsSnapshot: typeof import("./nfsSnapshot").NfsSnapshot = null as any;
+utilities.lazyLoad(exports, ["NfsSnapshot"], () => require("./nfsSnapshot"));
+
 export { PartnerAttachmentArgs, PartnerAttachmentState } from "./partnerAttachment";
 export type PartnerAttachment = import("./partnerAttachment").PartnerAttachment;
 export const PartnerAttachment: typeof import("./partnerAttachment").PartnerAttachment = null as any;
@@ -662,10 +722,14 @@ const _module = {
         switch (type) {
             case "digitalocean:index/app:App":
                 return new App(name, <any>undefined, { urn })
+            case "digitalocean:index/byoipPrefix:ByoipPrefix":
+                return new ByoipPrefix(name, <any>undefined, { urn })
             case "digitalocean:index/cdn:Cdn":
                 return new Cdn(name, <any>undefined, { urn })
             case "digitalocean:index/certificate:Certificate":
                 return new Certificate(name, <any>undefined, { urn })
+            case "digitalocean:index/containerRegistries:ContainerRegistries":
+                return new ContainerRegistries(name, <any>undefined, { urn })
             case "digitalocean:index/containerRegistry:ContainerRegistry":
                 return new ContainerRegistry(name, <any>undefined, { urn })
             case "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials":
@@ -686,6 +750,10 @@ const _module = {
                 return new DatabaseKafkaSchemaRegistry(name, <any>undefined, { urn })
             case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
                 return new DatabaseKafkaTopic(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch":
+                return new DatabaseLogsinkOpensearch(name, <any>undefined, { urn })
+            case "digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog":
+                return new DatabaseLogsinkRsyslog(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig":
                 return new DatabaseMongodbConfig(name, <any>undefined, { urn })
             case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
@@ -744,6 +812,12 @@ const _module = {
                 return new LoadBalancer(name, <any>undefined, { urn })
             case "digitalocean:index/monitorAlert:MonitorAlert":
                 return new MonitorAlert(name, <any>undefined, { urn })
+            case "digitalocean:index/nfs:Nfs":
+                return new Nfs(name, <any>undefined, { urn })
+            case "digitalocean:index/nfsAttachment:NfsAttachment":
+                return new NfsAttachment(name, <any>undefined, { urn })
+            case "digitalocean:index/nfsSnapshot:NfsSnapshot":
+                return new NfsSnapshot(name, <any>undefined, { urn })
             case "digitalocean:index/partnerAttachment:PartnerAttachment":
                 return new PartnerAttachment(name, <any>undefined, { urn })
             case "digitalocean:index/project:Project":
@@ -796,8 +870,10 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("digitalocean", "index/app", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/byoipPrefix", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/cdn", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/certificate", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistries", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistry", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/containerRegistryDockerCredentials", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/customImage", _module)
@@ -808,6 +884,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseFirewall", 
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaSchemaRegistry", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseKafkaTopic", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseLogsinkOpensearch", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/databaseLogsinkRsyslog", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMongodbConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseMysqlConfig", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseOnlineMigration", _module)
@@ -837,6 +915,9 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesCluster",
 pulumi.runtime.registerResourceModule("digitalocean", "index/kubernetesNodePool", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/loadBalancer", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/monitorAlert", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/nfs", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/nfsAttachment", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/nfsSnapshot", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/partnerAttachment", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/project", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/projectResources", _module)

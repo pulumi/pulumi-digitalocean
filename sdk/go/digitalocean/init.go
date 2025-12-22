@@ -23,10 +23,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "digitalocean:index/app:App":
 		r = &App{}
+	case "digitalocean:index/byoipPrefix:ByoipPrefix":
+		r = &ByoipPrefix{}
 	case "digitalocean:index/cdn:Cdn":
 		r = &Cdn{}
 	case "digitalocean:index/certificate:Certificate":
 		r = &Certificate{}
+	case "digitalocean:index/containerRegistries:ContainerRegistries":
+		r = &ContainerRegistries{}
 	case "digitalocean:index/containerRegistry:ContainerRegistry":
 		r = &ContainerRegistry{}
 	case "digitalocean:index/containerRegistryDockerCredentials:ContainerRegistryDockerCredentials":
@@ -47,6 +51,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseKafkaSchemaRegistry{}
 	case "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic":
 		r = &DatabaseKafkaTopic{}
+	case "digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch":
+		r = &DatabaseLogsinkOpensearch{}
+	case "digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog":
+		r = &DatabaseLogsinkRsyslog{}
 	case "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig":
 		r = &DatabaseMongodbConfig{}
 	case "digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig":
@@ -105,6 +113,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &LoadBalancer{}
 	case "digitalocean:index/monitorAlert:MonitorAlert":
 		r = &MonitorAlert{}
+	case "digitalocean:index/nfs:Nfs":
+		r = &Nfs{}
+	case "digitalocean:index/nfsAttachment:NfsAttachment":
+		r = &NfsAttachment{}
+	case "digitalocean:index/nfsSnapshot:NfsSnapshot":
+		r = &NfsSnapshot{}
 	case "digitalocean:index/partnerAttachment:PartnerAttachment":
 		r = &PartnerAttachment{}
 	case "digitalocean:index/project:Project":
@@ -189,12 +203,22 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
+		"index/byoipPrefix",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
 		"index/cdn",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/certificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/containerRegistries",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -245,6 +269,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseKafkaTopic",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseLogsinkOpensearch",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/databaseLogsinkRsyslog",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -390,6 +424,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/monitorAlert",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/nfs",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/nfsAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/nfsSnapshot",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -5625,6 +5625,25 @@ export interface GetAppSpecWorkerTermination {
     gracePeriodSeconds?: number;
 }
 
+export interface GetByoipPrefixResourcesAddress {
+    /**
+     * The timestamp when the IP was assigned.
+     */
+    assignedAt: string;
+    /**
+     * The unique identifier of the IP address allocation.
+     */
+    id: number;
+    /**
+     * The IP address.
+     */
+    ipAddress: string;
+    /**
+     * The region where the IP is allocated.
+     */
+    region: string;
+}
+
 export interface GetDatabaseClusterMaintenanceWindow {
     /**
      * The day of the week on which to apply maintenance updates.
@@ -10592,6 +10611,14 @@ export interface GetKubernetesClusterNodePoolTaint {
     value: string;
 }
 
+export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
+    enabled: boolean;
+}
+
+export interface GetKubernetesClusterRdmaSharedDevicePlugin {
+    enabled: boolean;
+}
+
 export interface GetKubernetesClusterRoutingAgent {
     enabled: boolean;
 }
@@ -11433,6 +11460,21 @@ export interface KubernetesClusterNodePoolTaint {
      * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
      */
     value: string;
+}
+
+export interface KubernetesClusterNvidiaGpuDevicePlugin {
+    /**
+     * Boolean flag whether the component should be enabled or not.
+     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     */
+    enabled: boolean;
+}
+
+export interface KubernetesClusterRdmaSharedDevicePlugin {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled: boolean;
 }
 
 export interface KubernetesClusterRoutingAgent {

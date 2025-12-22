@@ -552,6 +552,10 @@
                     }
                 }
             },
+            "digitalocean_byoip_prefix": {
+                "current": "digitalocean:index/byoipPrefix:ByoipPrefix",
+                "majorVersion": 4
+            },
             "digitalocean_cdn": {
                 "current": "digitalocean:index/cdn:Cdn",
                 "majorVersion": 4
@@ -564,6 +568,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_container_registries": {
+                "current": "digitalocean:index/containerRegistries:ContainerRegistries",
+                "majorVersion": 4
             },
             "digitalocean_container_registry": {
                 "current": "digitalocean:index/containerRegistry:ContainerRegistry",
@@ -636,6 +644,14 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_database_logsink_opensearch": {
+                "current": "digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch",
+                "majorVersion": 4
+            },
+            "digitalocean_database_logsink_rsyslog": {
+                "current": "digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog",
+                "majorVersion": 4
             },
             "digitalocean_database_mongodb_config": {
                 "current": "digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig",
@@ -1164,6 +1180,12 @@
                             }
                         }
                     },
+                    "nvidia_gpu_device_plugin": {
+                        "maxItemsOne": true
+                    },
+                    "rdma_shared_device_plugin": {
+                        "maxItemsOne": true
+                    },
                     "routing_agent": {
                         "maxItemsOne": true
                     },
@@ -1268,6 +1290,26 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_nfs": {
+                "current": "digitalocean:index/nfs:Nfs",
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "vpc_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_nfs_attachment": {
+                "current": "digitalocean:index/nfsAttachment:NfsAttachment",
+                "majorVersion": 4
+            },
+            "digitalocean_nfs_snapshot": {
+                "current": "digitalocean:index/nfsSnapshot:NfsSnapshot",
+                "majorVersion": 4
             },
             "digitalocean_partner_attachment": {
                 "current": "digitalocean:index/partnerAttachment:PartnerAttachment",
@@ -2059,6 +2101,19 @@
                     }
                 }
             },
+            "digitalocean_byoip_prefix": {
+                "current": "digitalocean:index/getByoipPrefix:getByoipPrefix",
+                "majorVersion": 4
+            },
+            "digitalocean_byoip_prefix_resources": {
+                "current": "digitalocean:index/getByoipPrefixResources:getByoipPrefixResources",
+                "majorVersion": 4,
+                "fields": {
+                    "addresses": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "digitalocean_certificate": {
                 "current": "digitalocean:index/getCertificate:getCertificate",
                 "majorVersion": 4,
@@ -2067,6 +2122,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "digitalocean_container_registries": {
+                "current": "digitalocean:index/getContainerRegistries:getContainerRegistries",
+                "majorVersion": 4
             },
             "digitalocean_container_registry": {
                 "current": "digitalocean:index/getContainerRegistry:getContainerRegistry",
@@ -3198,6 +3257,12 @@
                             }
                         }
                     },
+                    "nvidia_gpu_device_plugin": {
+                        "maxItemsOne": true
+                    },
+                    "rdma_shared_device_plugin": {
+                        "maxItemsOne": true
+                    },
                     "routing_agent": {
                         "maxItemsOne": true
                     },
@@ -3268,6 +3333,24 @@
                         "maxItemsOne": false
                     },
                     "target_load_balancer_ids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_nfs": {
+                "current": "digitalocean:index/getNfs:getNfs",
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_nfs_snapshot": {
+                "current": "digitalocean:index/getNfsSnapshot:getNfsSnapshot",
+                "majorVersion": 4,
+                "fields": {
+                    "tags": {
                         "maxItemsOne": false
                     }
                 }

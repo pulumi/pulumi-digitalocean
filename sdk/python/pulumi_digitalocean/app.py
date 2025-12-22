@@ -22,11 +22,13 @@ __all__ = ['AppArgs', 'App']
 class AppArgs:
     def __init__(__self__, *,
                  dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
+                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None):
         """
         The set of arguments for constructing a App resource.
         :param pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
                
                A spec can contain multiple components.
@@ -36,6 +38,8 @@ class AppArgs:
         """
         if dedicated_ips is not None:
             pulumi.set(__self__, "dedicated_ips", dedicated_ips)
+        if deployment_per_page is not None:
+            pulumi.set(__self__, "deployment_per_page", deployment_per_page)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
         if spec is not None:
@@ -52,6 +56,18 @@ class AppArgs:
     @dedicated_ips.setter
     def dedicated_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]]):
         pulumi.set(self, "dedicated_ips", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentPerPage")
+    def deployment_per_page(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        """
+        return pulumi.get(self, "deployment_per_page")
+
+    @deployment_per_page.setter
+    def deployment_per_page(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "deployment_per_page", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
@@ -90,6 +106,7 @@ class _AppState:
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]]] = None,
                  default_ingress: Optional[pulumi.Input[_builtins.str]] = None,
+                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
                  live_domain: Optional[pulumi.Input[_builtins.str]] = None,
                  live_url: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -102,6 +119,7 @@ class _AppState:
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the app was created.
         :param pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[_builtins.str] default_ingress: The default URL to access the app.
+        :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] live_domain: The live domain of the app.
         :param pulumi.Input[_builtins.str] live_url: The live URL of the app.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
@@ -122,6 +140,8 @@ class _AppState:
             pulumi.set(__self__, "dedicated_ips", dedicated_ips)
         if default_ingress is not None:
             pulumi.set(__self__, "default_ingress", default_ingress)
+        if deployment_per_page is not None:
+            pulumi.set(__self__, "deployment_per_page", deployment_per_page)
         if live_domain is not None:
             pulumi.set(__self__, "live_domain", live_domain)
         if live_url is not None:
@@ -192,6 +212,18 @@ class _AppState:
     @default_ingress.setter
     def default_ingress(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "default_ingress", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentPerPage")
+    def deployment_per_page(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        """
+        return pulumi.get(self, "deployment_per_page")
+
+    @deployment_per_page.setter
+    def deployment_per_page(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "deployment_per_page", value)
 
     @_builtins.property
     @pulumi.getter(name="liveDomain")
@@ -265,6 +297,7 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
@@ -410,6 +443,7 @@ class App(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
+        :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
                
                A spec can contain multiple components.
@@ -578,6 +612,7 @@ class App(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
+                 deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  spec: Optional[pulumi.Input[Union['AppSpecArgs', 'AppSpecArgsDict']]] = None,
                  __props__=None):
@@ -590,6 +625,7 @@ class App(pulumi.CustomResource):
             __props__ = AppArgs.__new__(AppArgs)
 
             __props__.__dict__["dedicated_ips"] = dedicated_ips
+            __props__.__dict__["deployment_per_page"] = deployment_per_page
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["spec"] = spec
             __props__.__dict__["active_deployment_id"] = None
@@ -614,6 +650,7 @@ class App(pulumi.CustomResource):
             created_at: Optional[pulumi.Input[_builtins.str]] = None,
             dedicated_ips: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]]] = None,
             default_ingress: Optional[pulumi.Input[_builtins.str]] = None,
+            deployment_per_page: Optional[pulumi.Input[_builtins.int]] = None,
             live_domain: Optional[pulumi.Input[_builtins.str]] = None,
             live_url: Optional[pulumi.Input[_builtins.str]] = None,
             project_id: Optional[pulumi.Input[_builtins.str]] = None,
@@ -631,6 +668,7 @@ class App(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the app was created.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[_builtins.str] default_ingress: The default URL to access the app.
+        :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] live_domain: The live domain of the app.
         :param pulumi.Input[_builtins.str] live_url: The live URL of the app.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
@@ -650,6 +688,7 @@ class App(pulumi.CustomResource):
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["dedicated_ips"] = dedicated_ips
         __props__.__dict__["default_ingress"] = default_ingress
+        __props__.__dict__["deployment_per_page"] = deployment_per_page
         __props__.__dict__["live_domain"] = live_domain
         __props__.__dict__["live_url"] = live_url
         __props__.__dict__["project_id"] = project_id
@@ -696,6 +735,14 @@ class App(pulumi.CustomResource):
         The default URL to access the app.
         """
         return pulumi.get(self, "default_ingress")
+
+    @_builtins.property
+    @pulumi.getter(name="deploymentPerPage")
+    def deployment_per_page(self) -> pulumi.Output[Optional[_builtins.int]]:
+        """
+        (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        """
+        return pulumi.get(self, "deployment_per_page")
 
     @_builtins.property
     @pulumi.getter(name="liveDomain")

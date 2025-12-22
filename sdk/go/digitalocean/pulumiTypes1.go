@@ -13,6 +13,746 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetPartnerAttachmentBgp struct {
+	LocalRouterIp *string `pulumi:"localRouterIp"`
+	PeerRouterAsn *int    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  *string `pulumi:"peerRouterIp"`
+}
+
+// GetPartnerAttachmentBgpInput is an input type that accepts GetPartnerAttachmentBgpArgs and GetPartnerAttachmentBgpOutput values.
+// You can construct a concrete instance of `GetPartnerAttachmentBgpInput` via:
+//
+//	GetPartnerAttachmentBgpArgs{...}
+type GetPartnerAttachmentBgpInput interface {
+	pulumi.Input
+
+	ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput
+	ToGetPartnerAttachmentBgpOutputWithContext(context.Context) GetPartnerAttachmentBgpOutput
+}
+
+type GetPartnerAttachmentBgpArgs struct {
+	LocalRouterIp pulumi.StringPtrInput `pulumi:"localRouterIp"`
+	PeerRouterAsn pulumi.IntPtrInput    `pulumi:"peerRouterAsn"`
+	PeerRouterIp  pulumi.StringPtrInput `pulumi:"peerRouterIp"`
+}
+
+func (GetPartnerAttachmentBgpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
+	return i.ToGetPartnerAttachmentBgpOutputWithContext(context.Background())
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput)
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput).ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx)
+}
+
+// GetPartnerAttachmentBgpPtrInput is an input type that accepts GetPartnerAttachmentBgpArgs, GetPartnerAttachmentBgpPtr and GetPartnerAttachmentBgpPtrOutput values.
+// You can construct a concrete instance of `GetPartnerAttachmentBgpPtrInput` via:
+//
+//	        GetPartnerAttachmentBgpArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetPartnerAttachmentBgpPtrInput interface {
+	pulumi.Input
+
+	ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput
+	ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Context) GetPartnerAttachmentBgpPtrOutput
+}
+
+type getPartnerAttachmentBgpPtrType GetPartnerAttachmentBgpArgs
+
+func GetPartnerAttachmentBgpPtr(v *GetPartnerAttachmentBgpArgs) GetPartnerAttachmentBgpPtrInput {
+	return (*getPartnerAttachmentBgpPtrType)(v)
+}
+
+func (*getPartnerAttachmentBgpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpPtrOutput)
+}
+
+type GetPartnerAttachmentBgpOutput struct{ *pulumi.OutputState }
+
+func (GetPartnerAttachmentBgpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return o.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
+}
+
+func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPartnerAttachmentBgp) *GetPartnerAttachmentBgp {
+		return &v
+	}).(GetPartnerAttachmentBgpPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.LocalRouterIp }).(pulumi.StringPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *int { return v.PeerRouterAsn }).(pulumi.IntPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.PeerRouterIp }).(pulumi.StringPtrOutput)
+}
+
+type GetPartnerAttachmentBgpPtrOutput struct{ *pulumi.OutputState }
+
+func (GetPartnerAttachmentBgpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
+	return o
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) Elem() GetPartnerAttachmentBgpOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) GetPartnerAttachmentBgp {
+		if v != nil {
+			return *v
+		}
+		var ret GetPartnerAttachmentBgp
+		return ret
+	}).(GetPartnerAttachmentBgpOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) LocalRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterAsn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterAsn
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PeerRouterIp
+	}).(pulumi.StringPtrOutput)
+}
+
+type GetProjectsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, `environment`, or `isDefault`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves projects
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetProjectsFilterInput is an input type that accepts GetProjectsFilterArgs and GetProjectsFilterOutput values.
+// You can construct a concrete instance of `GetProjectsFilterInput` via:
+//
+//	GetProjectsFilterArgs{...}
+type GetProjectsFilterInput interface {
+	pulumi.Input
+
+	ToGetProjectsFilterOutput() GetProjectsFilterOutput
+	ToGetProjectsFilterOutputWithContext(context.Context) GetProjectsFilterOutput
+}
+
+type GetProjectsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, `environment`, or `isDefault`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves projects
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetProjectsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
+}
+
+func (i GetProjectsFilterArgs) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
+	return i.ToGetProjectsFilterOutputWithContext(context.Background())
+}
+
+func (i GetProjectsFilterArgs) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterOutput)
+}
+
+// GetProjectsFilterArrayInput is an input type that accepts GetProjectsFilterArray and GetProjectsFilterArrayOutput values.
+// You can construct a concrete instance of `GetProjectsFilterArrayInput` via:
+//
+//	GetProjectsFilterArray{ GetProjectsFilterArgs{...} }
+type GetProjectsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput
+	ToGetProjectsFilterArrayOutputWithContext(context.Context) GetProjectsFilterArrayOutput
+}
+
+type GetProjectsFilterArray []GetProjectsFilterInput
+
+func (GetProjectsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
+}
+
+func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
+	return i.ToGetProjectsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterArrayOutput)
+}
+
+type GetProjectsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
+}
+
+func (o GetProjectsFilterOutput) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
+	return o
+}
+
+func (o GetProjectsFilterOutput) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetProjectsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetProjectsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the projects by this key. This may be one of `name`,
+// `purpose`, `description`, `environment`, or `isDefault`.
+func (o GetProjectsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetProjectsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves projects
+// where the `key` field takes on one or more of the values provided here.
+func (o GetProjectsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetProjectsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
+}
+
+func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
+	return o
+}
+
+func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
+	return o
+}
+
+func (o GetProjectsFilterArrayOutput) Index(i pulumi.IntInput) GetProjectsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsFilter {
+		return vs[0].([]GetProjectsFilter)[vs[1].(int)]
+	}).(GetProjectsFilterOutput)
+}
+
+type GetProjectsProject struct {
+	// The date and time when the project was created, (ISO8601)
+	CreatedAt string `pulumi:"createdAt"`
+	// The description of the project
+	Description string `pulumi:"description"`
+	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+	Environment string `pulumi:"environment"`
+	// The ID of the project
+	Id        string `pulumi:"id"`
+	IsDefault bool   `pulumi:"isDefault"`
+	// The name of the project
+	Name string `pulumi:"name"`
+	// The ID of the project owner
+	OwnerId int `pulumi:"ownerId"`
+	// The unique universal identifier of the project owner
+	OwnerUuid string `pulumi:"ownerUuid"`
+	// The purpose of the project (Default: "Web Application")
+	Purpose string `pulumi:"purpose"`
+	// A set of uniform resource names (URNs) for the resources associated with the project
+	Resources []string `pulumi:"resources"`
+	// The date and time when the project was last updated, (ISO8601)
+	UpdatedAt string `pulumi:"updatedAt"`
+}
+
+// GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
+// You can construct a concrete instance of `GetProjectsProjectInput` via:
+//
+//	GetProjectsProjectArgs{...}
+type GetProjectsProjectInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectOutput() GetProjectsProjectOutput
+	ToGetProjectsProjectOutputWithContext(context.Context) GetProjectsProjectOutput
+}
+
+type GetProjectsProjectArgs struct {
+	// The date and time when the project was created, (ISO8601)
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// The description of the project
+	Description pulumi.StringInput `pulumi:"description"`
+	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+	Environment pulumi.StringInput `pulumi:"environment"`
+	// The ID of the project
+	Id        pulumi.StringInput `pulumi:"id"`
+	IsDefault pulumi.BoolInput   `pulumi:"isDefault"`
+	// The name of the project
+	Name pulumi.StringInput `pulumi:"name"`
+	// The ID of the project owner
+	OwnerId pulumi.IntInput `pulumi:"ownerId"`
+	// The unique universal identifier of the project owner
+	OwnerUuid pulumi.StringInput `pulumi:"ownerUuid"`
+	// The purpose of the project (Default: "Web Application")
+	Purpose pulumi.StringInput `pulumi:"purpose"`
+	// A set of uniform resource names (URNs) for the resources associated with the project
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+	// The date and time when the project was last updated, (ISO8601)
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+}
+
+func (GetProjectsProjectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return i.ToGetProjectsProjectOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
+}
+
+// GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
+// You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
+//
+//	GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
+type GetProjectsProjectArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput
+	ToGetProjectsProjectArrayOutputWithContext(context.Context) GetProjectsProjectArrayOutput
+}
+
+type GetProjectsProjectArray []GetProjectsProjectInput
+
+func (GetProjectsProjectArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return i.ToGetProjectsProjectArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
+}
+
+type GetProjectsProjectOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
+	return o
+}
+
+func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
+	return o
+}
+
+// The date and time when the project was created, (ISO8601)
+func (o GetProjectsProjectOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// The description of the project
+func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
+func (o GetProjectsProjectOutput) Environment() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
+}
+
+// The ID of the project
+func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetProjectsProjectOutput) IsDefault() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
+}
+
+// The name of the project
+func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The ID of the project owner
+func (o GetProjectsProjectOutput) OwnerId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
+}
+
+// The unique universal identifier of the project owner
+func (o GetProjectsProjectOutput) OwnerUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
+}
+
+// The purpose of the project (Default: "Web Application")
+func (o GetProjectsProjectOutput) Purpose() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
+}
+
+// A set of uniform resource names (URNs) for the resources associated with the project
+func (o GetProjectsProjectOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+// The date and time when the project was last updated, (ISO8601)
+func (o GetProjectsProjectOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+type GetProjectsProjectArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
+	return o
+}
+
+func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
+		return vs[0].([]GetProjectsProject)[vs[1].(int)]
+	}).(GetProjectsProjectOutput)
+}
+
+type GetProjectsSort struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction *string `pulumi:"direction"`
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key string `pulumi:"key"`
+}
+
+// GetProjectsSortInput is an input type that accepts GetProjectsSortArgs and GetProjectsSortOutput values.
+// You can construct a concrete instance of `GetProjectsSortInput` via:
+//
+//	GetProjectsSortArgs{...}
+type GetProjectsSortInput interface {
+	pulumi.Input
+
+	ToGetProjectsSortOutput() GetProjectsSortOutput
+	ToGetProjectsSortOutputWithContext(context.Context) GetProjectsSortOutput
+}
+
+type GetProjectsSortArgs struct {
+	// The sort direction. This may be either `asc` or `desc`.
+	Direction pulumi.StringPtrInput `pulumi:"direction"`
+	// Sort the projects by this key. This may be one of `name`,
+	// `purpose`, `description`, or `environment`.
+	Key pulumi.StringInput `pulumi:"key"`
+}
+
+func (GetProjectsSortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
+}
+
+func (i GetProjectsSortArgs) ToGetProjectsSortOutput() GetProjectsSortOutput {
+	return i.ToGetProjectsSortOutputWithContext(context.Background())
+}
+
+func (i GetProjectsSortArgs) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortOutput)
+}
+
+// GetProjectsSortArrayInput is an input type that accepts GetProjectsSortArray and GetProjectsSortArrayOutput values.
+// You can construct a concrete instance of `GetProjectsSortArrayInput` via:
+//
+//	GetProjectsSortArray{ GetProjectsSortArgs{...} }
+type GetProjectsSortArrayInput interface {
+	pulumi.Input
+
+	ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput
+	ToGetProjectsSortArrayOutputWithContext(context.Context) GetProjectsSortArrayOutput
+}
+
+type GetProjectsSortArray []GetProjectsSortInput
+
+func (GetProjectsSortArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
+}
+
+func (i GetProjectsSortArray) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
+	return i.ToGetProjectsSortArrayOutputWithContext(context.Background())
+}
+
+func (i GetProjectsSortArray) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortArrayOutput)
+}
+
+type GetProjectsSortOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsSortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
+}
+
+func (o GetProjectsSortOutput) ToGetProjectsSortOutput() GetProjectsSortOutput {
+	return o
+}
+
+func (o GetProjectsSortOutput) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
+	return o
+}
+
+// The sort direction. This may be either `asc` or `desc`.
+func (o GetProjectsSortOutput) Direction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetProjectsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
+}
+
+// Sort the projects by this key. This may be one of `name`,
+// `purpose`, `description`, or `environment`.
+func (o GetProjectsSortOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetProjectsSort) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type GetProjectsSortArrayOutput struct{ *pulumi.OutputState }
+
+func (GetProjectsSortArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
+}
+
+func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
+	return o
+}
+
+func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
+	return o
+}
+
+func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsSort {
+		return vs[0].([]GetProjectsSort)[vs[1].(int)]
+	}).(GetProjectsSortOutput)
+}
+
+type GetRecordsFilter struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All *bool `pulumi:"all"`
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key string `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy *string `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves DNS records
+	// where the `key` field takes on one or more of the values provided here.
+	Values []string `pulumi:"values"`
+}
+
+// GetRecordsFilterInput is an input type that accepts GetRecordsFilterArgs and GetRecordsFilterOutput values.
+// You can construct a concrete instance of `GetRecordsFilterInput` via:
+//
+//	GetRecordsFilterArgs{...}
+type GetRecordsFilterInput interface {
+	pulumi.Input
+
+	ToGetRecordsFilterOutput() GetRecordsFilterOutput
+	ToGetRecordsFilterOutputWithContext(context.Context) GetRecordsFilterOutput
+}
+
+type GetRecordsFilterArgs struct {
+	// Set to `true` to require that a field match all of the `values` instead of just one or more of
+	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+	// that all of the `values` are present in the list or set.
+	All pulumi.BoolPtrInput `pulumi:"all"`
+	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+	Key pulumi.StringInput `pulumi:"key"`
+	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+	// substrings to find within the string field.
+	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
+	// A list of values to match against the `key` field. Only retrieves DNS records
+	// where the `key` field takes on one or more of the values provided here.
+	Values pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetRecordsFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
+}
+
+func (i GetRecordsFilterArgs) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
+	return i.ToGetRecordsFilterOutputWithContext(context.Background())
+}
+
+func (i GetRecordsFilterArgs) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterOutput)
+}
+
+// GetRecordsFilterArrayInput is an input type that accepts GetRecordsFilterArray and GetRecordsFilterArrayOutput values.
+// You can construct a concrete instance of `GetRecordsFilterArrayInput` via:
+//
+//	GetRecordsFilterArray{ GetRecordsFilterArgs{...} }
+type GetRecordsFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput
+	ToGetRecordsFilterArrayOutputWithContext(context.Context) GetRecordsFilterArrayOutput
+}
+
+type GetRecordsFilterArray []GetRecordsFilterInput
+
+func (GetRecordsFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
+}
+
+func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
+	return i.ToGetRecordsFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterArrayOutput)
+}
+
+type GetRecordsFilterOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
+}
+
+func (o GetRecordsFilterOutput) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
+	return o
+}
+
+func (o GetRecordsFilterOutput) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
+	return o
+}
+
+// Set to `true` to require that a field match all of the `values` instead of just one or more of
+// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+// that all of the `values` are present in the list or set.
+func (o GetRecordsFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetRecordsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+func (o GetRecordsFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRecordsFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+// substrings to find within the string field.
+func (o GetRecordsFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetRecordsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+// A list of values to match against the `key` field. Only retrieves DNS records
+// where the `key` field takes on one or more of the values provided here.
+func (o GetRecordsFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetRecordsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetRecordsFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRecordsFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
+}
+
+func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
+	return o
+}
+
+func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
+	return o
+}
+
+func (o GetRecordsFilterArrayOutput) Index(i pulumi.IntInput) GetRecordsFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsFilter {
+		return vs[0].([]GetRecordsFilter)[vs[1].(int)]
+	}).(GetRecordsFilterOutput)
+}
+
 type GetRecordsRecord struct {
 	// The domain name to search for DNS records
 	Domain string `pulumi:"domain"`
@@ -2654,6 +3394,16 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpPtrInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterInput)(nil)).Elem(), GetProjectsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterArrayInput)(nil)).Elem(), GetProjectsFilterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortInput)(nil)).Elem(), GetProjectsSortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortArrayInput)(nil)).Elem(), GetProjectsSortArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterInput)(nil)).Elem(), GetRecordsFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterArrayInput)(nil)).Elem(), GetRecordsFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordInput)(nil)).Elem(), GetRecordsRecordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsRecordArrayInput)(nil)).Elem(), GetRecordsRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsSortInput)(nil)).Elem(), GetRecordsSortArgs{})
@@ -2696,6 +3446,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetPartnerAttachmentBgpOutput{})
+	pulumi.RegisterOutputType(GetPartnerAttachmentBgpPtrOutput{})
+	pulumi.RegisterOutputType(GetProjectsFilterOutput{})
+	pulumi.RegisterOutputType(GetProjectsFilterArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
+	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
+	pulumi.RegisterOutputType(GetProjectsSortOutput{})
+	pulumi.RegisterOutputType(GetProjectsSortArrayOutput{})
+	pulumi.RegisterOutputType(GetRecordsFilterOutput{})
+	pulumi.RegisterOutputType(GetRecordsFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetRecordsRecordOutput{})
 	pulumi.RegisterOutputType(GetRecordsRecordArrayOutput{})
 	pulumi.RegisterOutputType(GetRecordsSortOutput{})

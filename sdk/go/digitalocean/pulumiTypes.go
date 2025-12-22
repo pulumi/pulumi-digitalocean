@@ -28967,6 +28967,284 @@ func (o KubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) Kube
 	}).(KubernetesClusterNodePoolTaintOutput)
 }
 
+type KubernetesClusterNvidiaGpuDevicePlugin struct {
+	// Boolean flag whether the component should be enabled or not.
+	// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterNvidiaGpuDevicePluginInput is an input type that accepts KubernetesClusterNvidiaGpuDevicePluginArgs and KubernetesClusterNvidiaGpuDevicePluginOutput values.
+// You can construct a concrete instance of `KubernetesClusterNvidiaGpuDevicePluginInput` via:
+//
+//	KubernetesClusterNvidiaGpuDevicePluginArgs{...}
+type KubernetesClusterNvidiaGpuDevicePluginInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNvidiaGpuDevicePluginOutput() KubernetesClusterNvidiaGpuDevicePluginOutput
+	ToKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(context.Context) KubernetesClusterNvidiaGpuDevicePluginOutput
+}
+
+type KubernetesClusterNvidiaGpuDevicePluginArgs struct {
+	// Boolean flag whether the component should be enabled or not.
+	// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterNvidiaGpuDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i KubernetesClusterNvidiaGpuDevicePluginArgs) ToKubernetesClusterNvidiaGpuDevicePluginOutput() KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return i.ToKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNvidiaGpuDevicePluginArgs) ToKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (i KubernetesClusterNvidiaGpuDevicePluginArgs) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutput() KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return i.ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterNvidiaGpuDevicePluginArgs) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDevicePluginOutput).ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterNvidiaGpuDevicePluginPtrInput is an input type that accepts KubernetesClusterNvidiaGpuDevicePluginArgs, KubernetesClusterNvidiaGpuDevicePluginPtr and KubernetesClusterNvidiaGpuDevicePluginPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterNvidiaGpuDevicePluginPtrInput` via:
+//
+//	        KubernetesClusterNvidiaGpuDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterNvidiaGpuDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterNvidiaGpuDevicePluginPtrOutput() KubernetesClusterNvidiaGpuDevicePluginPtrOutput
+	ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Context) KubernetesClusterNvidiaGpuDevicePluginPtrOutput
+}
+
+type kubernetesClusterNvidiaGpuDevicePluginPtrType KubernetesClusterNvidiaGpuDevicePluginArgs
+
+func KubernetesClusterNvidiaGpuDevicePluginPtr(v *KubernetesClusterNvidiaGpuDevicePluginArgs) KubernetesClusterNvidiaGpuDevicePluginPtrInput {
+	return (*kubernetesClusterNvidiaGpuDevicePluginPtrType)(v)
+}
+
+func (*kubernetesClusterNvidiaGpuDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i *kubernetesClusterNvidiaGpuDevicePluginPtrType) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutput() KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return i.ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterNvidiaGpuDevicePluginPtrType) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterNvidiaGpuDevicePluginPtrOutput)
+}
+
+type KubernetesClusterNvidiaGpuDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNvidiaGpuDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginOutput) ToKubernetesClusterNvidiaGpuDevicePluginOutput() KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginOutput) ToKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginOutput) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutput() KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o.ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginOutput) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterNvidiaGpuDevicePlugin) *KubernetesClusterNvidiaGpuDevicePlugin {
+		return &v
+	}).(KubernetesClusterNvidiaGpuDevicePluginPtrOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+func (o KubernetesClusterNvidiaGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterNvidiaGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterNvidiaGpuDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterNvidiaGpuDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutput() KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) ToKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) Elem() KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesClusterNvidiaGpuDevicePlugin) KubernetesClusterNvidiaGpuDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterNvidiaGpuDevicePlugin
+		return ret
+	}).(KubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+// Boolean flag whether the component should be enabled or not.
+// `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+func (o KubernetesClusterNvidiaGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterNvidiaGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterRdmaSharedDevicePlugin struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// KubernetesClusterRdmaSharedDevicePluginInput is an input type that accepts KubernetesClusterRdmaSharedDevicePluginArgs and KubernetesClusterRdmaSharedDevicePluginOutput values.
+// You can construct a concrete instance of `KubernetesClusterRdmaSharedDevicePluginInput` via:
+//
+//	KubernetesClusterRdmaSharedDevicePluginArgs{...}
+type KubernetesClusterRdmaSharedDevicePluginInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterRdmaSharedDevicePluginOutput() KubernetesClusterRdmaSharedDevicePluginOutput
+	ToKubernetesClusterRdmaSharedDevicePluginOutputWithContext(context.Context) KubernetesClusterRdmaSharedDevicePluginOutput
+}
+
+type KubernetesClusterRdmaSharedDevicePluginArgs struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (KubernetesClusterRdmaSharedDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (i KubernetesClusterRdmaSharedDevicePluginArgs) ToKubernetesClusterRdmaSharedDevicePluginOutput() KubernetesClusterRdmaSharedDevicePluginOutput {
+	return i.ToKubernetesClusterRdmaSharedDevicePluginOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterRdmaSharedDevicePluginArgs) ToKubernetesClusterRdmaSharedDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRdmaSharedDevicePluginOutput)
+}
+
+func (i KubernetesClusterRdmaSharedDevicePluginArgs) ToKubernetesClusterRdmaSharedDevicePluginPtrOutput() KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return i.ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterRdmaSharedDevicePluginArgs) ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRdmaSharedDevicePluginOutput).ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx)
+}
+
+// KubernetesClusterRdmaSharedDevicePluginPtrInput is an input type that accepts KubernetesClusterRdmaSharedDevicePluginArgs, KubernetesClusterRdmaSharedDevicePluginPtr and KubernetesClusterRdmaSharedDevicePluginPtrOutput values.
+// You can construct a concrete instance of `KubernetesClusterRdmaSharedDevicePluginPtrInput` via:
+//
+//	        KubernetesClusterRdmaSharedDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type KubernetesClusterRdmaSharedDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterRdmaSharedDevicePluginPtrOutput() KubernetesClusterRdmaSharedDevicePluginPtrOutput
+	ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Context) KubernetesClusterRdmaSharedDevicePluginPtrOutput
+}
+
+type kubernetesClusterRdmaSharedDevicePluginPtrType KubernetesClusterRdmaSharedDevicePluginArgs
+
+func KubernetesClusterRdmaSharedDevicePluginPtr(v *KubernetesClusterRdmaSharedDevicePluginArgs) KubernetesClusterRdmaSharedDevicePluginPtrInput {
+	return (*kubernetesClusterRdmaSharedDevicePluginPtrType)(v)
+}
+
+func (*kubernetesClusterRdmaSharedDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (i *kubernetesClusterRdmaSharedDevicePluginPtrType) ToKubernetesClusterRdmaSharedDevicePluginPtrOutput() KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return i.ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *kubernetesClusterRdmaSharedDevicePluginPtrType) ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterRdmaSharedDevicePluginPtrOutput)
+}
+
+type KubernetesClusterRdmaSharedDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterRdmaSharedDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginOutput) ToKubernetesClusterRdmaSharedDevicePluginOutput() KubernetesClusterRdmaSharedDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginOutput) ToKubernetesClusterRdmaSharedDevicePluginOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginOutput {
+	return o
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginOutput) ToKubernetesClusterRdmaSharedDevicePluginPtrOutput() KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o.ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginOutput) ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v KubernetesClusterRdmaSharedDevicePlugin) *KubernetesClusterRdmaSharedDevicePlugin {
+		return &v
+	}).(KubernetesClusterRdmaSharedDevicePluginPtrOutput)
+}
+
+// Boolean flag whether the component is enabled or not.
+func (o KubernetesClusterRdmaSharedDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v KubernetesClusterRdmaSharedDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type KubernetesClusterRdmaSharedDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterRdmaSharedDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**KubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) ToKubernetesClusterRdmaSharedDevicePluginPtrOutput() KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) ToKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) KubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o
+}
+
+func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) Elem() KubernetesClusterRdmaSharedDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesClusterRdmaSharedDevicePlugin) KubernetesClusterRdmaSharedDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret KubernetesClusterRdmaSharedDevicePlugin
+		return ret
+	}).(KubernetesClusterRdmaSharedDevicePluginOutput)
+}
+
+// Boolean flag whether the component is enabled or not.
+func (o KubernetesClusterRdmaSharedDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *KubernetesClusterRdmaSharedDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type KubernetesClusterRoutingAgent struct {
 	// Boolean flag whether the routing-agent should be enabled or not.
 	Enabled bool `pulumi:"enabled"`
@@ -49593,6 +49871,130 @@ func (o GetAppSpecWorkerTerminationPtrOutput) GracePeriodSeconds() pulumi.IntPtr
 		}
 		return v.GracePeriodSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+type GetByoipPrefixResourcesAddress struct {
+	// The timestamp when the IP was assigned.
+	AssignedAt string `pulumi:"assignedAt"`
+	// The unique identifier of the IP address allocation.
+	Id int `pulumi:"id"`
+	// The IP address.
+	IpAddress string `pulumi:"ipAddress"`
+	// The region where the IP is allocated.
+	Region string `pulumi:"region"`
+}
+
+// GetByoipPrefixResourcesAddressInput is an input type that accepts GetByoipPrefixResourcesAddressArgs and GetByoipPrefixResourcesAddressOutput values.
+// You can construct a concrete instance of `GetByoipPrefixResourcesAddressInput` via:
+//
+//	GetByoipPrefixResourcesAddressArgs{...}
+type GetByoipPrefixResourcesAddressInput interface {
+	pulumi.Input
+
+	ToGetByoipPrefixResourcesAddressOutput() GetByoipPrefixResourcesAddressOutput
+	ToGetByoipPrefixResourcesAddressOutputWithContext(context.Context) GetByoipPrefixResourcesAddressOutput
+}
+
+type GetByoipPrefixResourcesAddressArgs struct {
+	// The timestamp when the IP was assigned.
+	AssignedAt pulumi.StringInput `pulumi:"assignedAt"`
+	// The unique identifier of the IP address allocation.
+	Id pulumi.IntInput `pulumi:"id"`
+	// The IP address.
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
+	// The region where the IP is allocated.
+	Region pulumi.StringInput `pulumi:"region"`
+}
+
+func (GetByoipPrefixResourcesAddressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetByoipPrefixResourcesAddress)(nil)).Elem()
+}
+
+func (i GetByoipPrefixResourcesAddressArgs) ToGetByoipPrefixResourcesAddressOutput() GetByoipPrefixResourcesAddressOutput {
+	return i.ToGetByoipPrefixResourcesAddressOutputWithContext(context.Background())
+}
+
+func (i GetByoipPrefixResourcesAddressArgs) ToGetByoipPrefixResourcesAddressOutputWithContext(ctx context.Context) GetByoipPrefixResourcesAddressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetByoipPrefixResourcesAddressOutput)
+}
+
+// GetByoipPrefixResourcesAddressArrayInput is an input type that accepts GetByoipPrefixResourcesAddressArray and GetByoipPrefixResourcesAddressArrayOutput values.
+// You can construct a concrete instance of `GetByoipPrefixResourcesAddressArrayInput` via:
+//
+//	GetByoipPrefixResourcesAddressArray{ GetByoipPrefixResourcesAddressArgs{...} }
+type GetByoipPrefixResourcesAddressArrayInput interface {
+	pulumi.Input
+
+	ToGetByoipPrefixResourcesAddressArrayOutput() GetByoipPrefixResourcesAddressArrayOutput
+	ToGetByoipPrefixResourcesAddressArrayOutputWithContext(context.Context) GetByoipPrefixResourcesAddressArrayOutput
+}
+
+type GetByoipPrefixResourcesAddressArray []GetByoipPrefixResourcesAddressInput
+
+func (GetByoipPrefixResourcesAddressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetByoipPrefixResourcesAddress)(nil)).Elem()
+}
+
+func (i GetByoipPrefixResourcesAddressArray) ToGetByoipPrefixResourcesAddressArrayOutput() GetByoipPrefixResourcesAddressArrayOutput {
+	return i.ToGetByoipPrefixResourcesAddressArrayOutputWithContext(context.Background())
+}
+
+func (i GetByoipPrefixResourcesAddressArray) ToGetByoipPrefixResourcesAddressArrayOutputWithContext(ctx context.Context) GetByoipPrefixResourcesAddressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetByoipPrefixResourcesAddressArrayOutput)
+}
+
+type GetByoipPrefixResourcesAddressOutput struct{ *pulumi.OutputState }
+
+func (GetByoipPrefixResourcesAddressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetByoipPrefixResourcesAddress)(nil)).Elem()
+}
+
+func (o GetByoipPrefixResourcesAddressOutput) ToGetByoipPrefixResourcesAddressOutput() GetByoipPrefixResourcesAddressOutput {
+	return o
+}
+
+func (o GetByoipPrefixResourcesAddressOutput) ToGetByoipPrefixResourcesAddressOutputWithContext(ctx context.Context) GetByoipPrefixResourcesAddressOutput {
+	return o
+}
+
+// The timestamp when the IP was assigned.
+func (o GetByoipPrefixResourcesAddressOutput) AssignedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoipPrefixResourcesAddress) string { return v.AssignedAt }).(pulumi.StringOutput)
+}
+
+// The unique identifier of the IP address allocation.
+func (o GetByoipPrefixResourcesAddressOutput) Id() pulumi.IntOutput {
+	return o.ApplyT(func(v GetByoipPrefixResourcesAddress) int { return v.Id }).(pulumi.IntOutput)
+}
+
+// The IP address.
+func (o GetByoipPrefixResourcesAddressOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoipPrefixResourcesAddress) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// The region where the IP is allocated.
+func (o GetByoipPrefixResourcesAddressOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetByoipPrefixResourcesAddress) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type GetByoipPrefixResourcesAddressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetByoipPrefixResourcesAddressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetByoipPrefixResourcesAddress)(nil)).Elem()
+}
+
+func (o GetByoipPrefixResourcesAddressArrayOutput) ToGetByoipPrefixResourcesAddressArrayOutput() GetByoipPrefixResourcesAddressArrayOutput {
+	return o
+}
+
+func (o GetByoipPrefixResourcesAddressArrayOutput) ToGetByoipPrefixResourcesAddressArrayOutputWithContext(ctx context.Context) GetByoipPrefixResourcesAddressArrayOutput {
+	return o
+}
+
+func (o GetByoipPrefixResourcesAddressArrayOutput) Index(i pulumi.IntInput) GetByoipPrefixResourcesAddressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetByoipPrefixResourcesAddress {
+		return vs[0].([]GetByoipPrefixResourcesAddress)[vs[1].(int)]
+	}).(GetByoipPrefixResourcesAddressOutput)
 }
 
 type GetDatabaseClusterMaintenanceWindow struct {
@@ -75438,6 +75840,272 @@ func (o GetKubernetesClusterNodePoolTaintArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetKubernetesClusterNodePoolTaintOutput)
 }
 
+type GetKubernetesClusterNvidiaGpuDevicePlugin struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterNvidiaGpuDevicePluginInput is an input type that accepts GetKubernetesClusterNvidiaGpuDevicePluginArgs and GetKubernetesClusterNvidiaGpuDevicePluginOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNvidiaGpuDevicePluginInput` via:
+//
+//	GetKubernetesClusterNvidiaGpuDevicePluginArgs{...}
+type GetKubernetesClusterNvidiaGpuDevicePluginInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNvidiaGpuDevicePluginOutput() GetKubernetesClusterNvidiaGpuDevicePluginOutput
+	ToGetKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(context.Context) GetKubernetesClusterNvidiaGpuDevicePluginOutput
+}
+
+type GetKubernetesClusterNvidiaGpuDevicePluginArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterNvidiaGpuDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterNvidiaGpuDevicePluginArgs) ToGetKubernetesClusterNvidiaGpuDevicePluginOutput() GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return i.ToGetKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNvidiaGpuDevicePluginArgs) ToGetKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (i GetKubernetesClusterNvidiaGpuDevicePluginArgs) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutput() GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterNvidiaGpuDevicePluginArgs) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNvidiaGpuDevicePluginOutput).ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterNvidiaGpuDevicePluginPtrInput is an input type that accepts GetKubernetesClusterNvidiaGpuDevicePluginArgs, GetKubernetesClusterNvidiaGpuDevicePluginPtr and GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterNvidiaGpuDevicePluginPtrInput` via:
+//
+//	        GetKubernetesClusterNvidiaGpuDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterNvidiaGpuDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutput() GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput
+	ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Context) GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput
+}
+
+type getKubernetesClusterNvidiaGpuDevicePluginPtrType GetKubernetesClusterNvidiaGpuDevicePluginArgs
+
+func GetKubernetesClusterNvidiaGpuDevicePluginPtr(v *GetKubernetesClusterNvidiaGpuDevicePluginArgs) GetKubernetesClusterNvidiaGpuDevicePluginPtrInput {
+	return (*getKubernetesClusterNvidiaGpuDevicePluginPtrType)(v)
+}
+
+func (*getKubernetesClusterNvidiaGpuDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterNvidiaGpuDevicePluginPtrType) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutput() GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterNvidiaGpuDevicePluginPtrType) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput)
+}
+
+type GetKubernetesClusterNvidiaGpuDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNvidiaGpuDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginOutput() GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutput() GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o.ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterNvidiaGpuDevicePlugin) *GetKubernetesClusterNvidiaGpuDevicePlugin {
+		return &v
+	}).(GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput)
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterNvidiaGpuDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterNvidiaGpuDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutput() GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput) ToGetKubernetesClusterNvidiaGpuDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput) Elem() GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterNvidiaGpuDevicePlugin) GetKubernetesClusterNvidiaGpuDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterNvidiaGpuDevicePlugin
+		return ret
+	}).(GetKubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (o GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterNvidiaGpuDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type GetKubernetesClusterRdmaSharedDevicePlugin struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetKubernetesClusterRdmaSharedDevicePluginInput is an input type that accepts GetKubernetesClusterRdmaSharedDevicePluginArgs and GetKubernetesClusterRdmaSharedDevicePluginOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterRdmaSharedDevicePluginInput` via:
+//
+//	GetKubernetesClusterRdmaSharedDevicePluginArgs{...}
+type GetKubernetesClusterRdmaSharedDevicePluginInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterRdmaSharedDevicePluginOutput() GetKubernetesClusterRdmaSharedDevicePluginOutput
+	ToGetKubernetesClusterRdmaSharedDevicePluginOutputWithContext(context.Context) GetKubernetesClusterRdmaSharedDevicePluginOutput
+}
+
+type GetKubernetesClusterRdmaSharedDevicePluginArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetKubernetesClusterRdmaSharedDevicePluginArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterRdmaSharedDevicePluginArgs) ToGetKubernetesClusterRdmaSharedDevicePluginOutput() GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return i.ToGetKubernetesClusterRdmaSharedDevicePluginOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterRdmaSharedDevicePluginArgs) ToGetKubernetesClusterRdmaSharedDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRdmaSharedDevicePluginOutput)
+}
+
+func (i GetKubernetesClusterRdmaSharedDevicePluginArgs) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutput() GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterRdmaSharedDevicePluginArgs) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRdmaSharedDevicePluginOutput).ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx)
+}
+
+// GetKubernetesClusterRdmaSharedDevicePluginPtrInput is an input type that accepts GetKubernetesClusterRdmaSharedDevicePluginArgs, GetKubernetesClusterRdmaSharedDevicePluginPtr and GetKubernetesClusterRdmaSharedDevicePluginPtrOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterRdmaSharedDevicePluginPtrInput` via:
+//
+//	        GetKubernetesClusterRdmaSharedDevicePluginArgs{...}
+//
+//	or:
+//
+//	        nil
+type GetKubernetesClusterRdmaSharedDevicePluginPtrInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutput() GetKubernetesClusterRdmaSharedDevicePluginPtrOutput
+	ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Context) GetKubernetesClusterRdmaSharedDevicePluginPtrOutput
+}
+
+type getKubernetesClusterRdmaSharedDevicePluginPtrType GetKubernetesClusterRdmaSharedDevicePluginArgs
+
+func GetKubernetesClusterRdmaSharedDevicePluginPtr(v *GetKubernetesClusterRdmaSharedDevicePluginArgs) GetKubernetesClusterRdmaSharedDevicePluginPtrInput {
+	return (*getKubernetesClusterRdmaSharedDevicePluginPtrType)(v)
+}
+
+func (*getKubernetesClusterRdmaSharedDevicePluginPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (i *getKubernetesClusterRdmaSharedDevicePluginPtrType) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutput() GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return i.ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (i *getKubernetesClusterRdmaSharedDevicePluginPtrType) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterRdmaSharedDevicePluginPtrOutput)
+}
+
+type GetKubernetesClusterRdmaSharedDevicePluginOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterRdmaSharedDevicePluginOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginOutput) ToGetKubernetesClusterRdmaSharedDevicePluginOutput() GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginOutput) ToGetKubernetesClusterRdmaSharedDevicePluginOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginOutput) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutput() GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o.ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(context.Background())
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginOutput) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetKubernetesClusterRdmaSharedDevicePlugin) *GetKubernetesClusterRdmaSharedDevicePlugin {
+		return &v
+	}).(GetKubernetesClusterRdmaSharedDevicePluginPtrOutput)
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterRdmaSharedDevicePlugin) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterRdmaSharedDevicePluginPtrOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterRdmaSharedDevicePluginPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GetKubernetesClusterRdmaSharedDevicePlugin)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginPtrOutput) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutput() GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginPtrOutput) ToGetKubernetesClusterRdmaSharedDevicePluginPtrOutputWithContext(ctx context.Context) GetKubernetesClusterRdmaSharedDevicePluginPtrOutput {
+	return o
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginPtrOutput) Elem() GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterRdmaSharedDevicePlugin) GetKubernetesClusterRdmaSharedDevicePlugin {
+		if v != nil {
+			return *v
+		}
+		var ret GetKubernetesClusterRdmaSharedDevicePlugin
+		return ret
+	}).(GetKubernetesClusterRdmaSharedDevicePluginOutput)
+}
+
+func (o GetKubernetesClusterRdmaSharedDevicePluginPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GetKubernetesClusterRdmaSharedDevicePlugin) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type GetKubernetesClusterRoutingAgent struct {
 	Enabled bool `pulumi:"enabled"`
 }
@@ -76466,746 +77134,6 @@ func (o GetLoadBalancerStickySessionArrayOutput) Index(i pulumi.IntInput) GetLoa
 	}).(GetLoadBalancerStickySessionOutput)
 }
 
-type GetPartnerAttachmentBgp struct {
-	LocalRouterIp *string `pulumi:"localRouterIp"`
-	PeerRouterAsn *int    `pulumi:"peerRouterAsn"`
-	PeerRouterIp  *string `pulumi:"peerRouterIp"`
-}
-
-// GetPartnerAttachmentBgpInput is an input type that accepts GetPartnerAttachmentBgpArgs and GetPartnerAttachmentBgpOutput values.
-// You can construct a concrete instance of `GetPartnerAttachmentBgpInput` via:
-//
-//	GetPartnerAttachmentBgpArgs{...}
-type GetPartnerAttachmentBgpInput interface {
-	pulumi.Input
-
-	ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput
-	ToGetPartnerAttachmentBgpOutputWithContext(context.Context) GetPartnerAttachmentBgpOutput
-}
-
-type GetPartnerAttachmentBgpArgs struct {
-	LocalRouterIp pulumi.StringPtrInput `pulumi:"localRouterIp"`
-	PeerRouterAsn pulumi.IntPtrInput    `pulumi:"peerRouterAsn"`
-	PeerRouterIp  pulumi.StringPtrInput `pulumi:"peerRouterIp"`
-}
-
-func (GetPartnerAttachmentBgpArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
-}
-
-func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
-	return i.ToGetPartnerAttachmentBgpOutputWithContext(context.Background())
-}
-
-func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput)
-}
-
-func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
-	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
-}
-
-func (i GetPartnerAttachmentBgpArgs) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpOutput).ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx)
-}
-
-// GetPartnerAttachmentBgpPtrInput is an input type that accepts GetPartnerAttachmentBgpArgs, GetPartnerAttachmentBgpPtr and GetPartnerAttachmentBgpPtrOutput values.
-// You can construct a concrete instance of `GetPartnerAttachmentBgpPtrInput` via:
-//
-//	        GetPartnerAttachmentBgpArgs{...}
-//
-//	or:
-//
-//	        nil
-type GetPartnerAttachmentBgpPtrInput interface {
-	pulumi.Input
-
-	ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput
-	ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Context) GetPartnerAttachmentBgpPtrOutput
-}
-
-type getPartnerAttachmentBgpPtrType GetPartnerAttachmentBgpArgs
-
-func GetPartnerAttachmentBgpPtr(v *GetPartnerAttachmentBgpArgs) GetPartnerAttachmentBgpPtrInput {
-	return (*getPartnerAttachmentBgpPtrType)(v)
-}
-
-func (*getPartnerAttachmentBgpPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
-}
-
-func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
-	return i.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
-}
-
-func (i *getPartnerAttachmentBgpPtrType) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetPartnerAttachmentBgpPtrOutput)
-}
-
-type GetPartnerAttachmentBgpOutput struct{ *pulumi.OutputState }
-
-func (GetPartnerAttachmentBgpOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetPartnerAttachmentBgp)(nil)).Elem()
-}
-
-func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutput() GetPartnerAttachmentBgpOutput {
-	return o
-}
-
-func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpOutput {
-	return o
-}
-
-func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
-	return o.ToGetPartnerAttachmentBgpPtrOutputWithContext(context.Background())
-}
-
-func (o GetPartnerAttachmentBgpOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GetPartnerAttachmentBgp) *GetPartnerAttachmentBgp {
-		return &v
-	}).(GetPartnerAttachmentBgpPtrOutput)
-}
-
-func (o GetPartnerAttachmentBgpOutput) LocalRouterIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.LocalRouterIp }).(pulumi.StringPtrOutput)
-}
-
-func (o GetPartnerAttachmentBgpOutput) PeerRouterAsn() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetPartnerAttachmentBgp) *int { return v.PeerRouterAsn }).(pulumi.IntPtrOutput)
-}
-
-func (o GetPartnerAttachmentBgpOutput) PeerRouterIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetPartnerAttachmentBgp) *string { return v.PeerRouterIp }).(pulumi.StringPtrOutput)
-}
-
-type GetPartnerAttachmentBgpPtrOutput struct{ *pulumi.OutputState }
-
-func (GetPartnerAttachmentBgpPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GetPartnerAttachmentBgp)(nil)).Elem()
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutput() GetPartnerAttachmentBgpPtrOutput {
-	return o
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) ToGetPartnerAttachmentBgpPtrOutputWithContext(ctx context.Context) GetPartnerAttachmentBgpPtrOutput {
-	return o
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) Elem() GetPartnerAttachmentBgpOutput {
-	return o.ApplyT(func(v *GetPartnerAttachmentBgp) GetPartnerAttachmentBgp {
-		if v != nil {
-			return *v
-		}
-		var ret GetPartnerAttachmentBgp
-		return ret
-	}).(GetPartnerAttachmentBgpOutput)
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) LocalRouterIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.LocalRouterIp
-	}).(pulumi.StringPtrOutput)
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterAsn() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *int {
-		if v == nil {
-			return nil
-		}
-		return v.PeerRouterAsn
-	}).(pulumi.IntPtrOutput)
-}
-
-func (o GetPartnerAttachmentBgpPtrOutput) PeerRouterIp() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GetPartnerAttachmentBgp) *string {
-		if v == nil {
-			return nil
-		}
-		return v.PeerRouterIp
-	}).(pulumi.StringPtrOutput)
-}
-
-type GetProjectsFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, `environment`, or `isDefault`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves projects
-	// where the `key` field takes on one or more of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetProjectsFilterInput is an input type that accepts GetProjectsFilterArgs and GetProjectsFilterOutput values.
-// You can construct a concrete instance of `GetProjectsFilterInput` via:
-//
-//	GetProjectsFilterArgs{...}
-type GetProjectsFilterInput interface {
-	pulumi.Input
-
-	ToGetProjectsFilterOutput() GetProjectsFilterOutput
-	ToGetProjectsFilterOutputWithContext(context.Context) GetProjectsFilterOutput
-}
-
-type GetProjectsFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, `environment`, or `isDefault`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves projects
-	// where the `key` field takes on one or more of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetProjectsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
-}
-
-func (i GetProjectsFilterArgs) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
-	return i.ToGetProjectsFilterOutputWithContext(context.Background())
-}
-
-func (i GetProjectsFilterArgs) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterOutput)
-}
-
-// GetProjectsFilterArrayInput is an input type that accepts GetProjectsFilterArray and GetProjectsFilterArrayOutput values.
-// You can construct a concrete instance of `GetProjectsFilterArrayInput` via:
-//
-//	GetProjectsFilterArray{ GetProjectsFilterArgs{...} }
-type GetProjectsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput
-	ToGetProjectsFilterArrayOutputWithContext(context.Context) GetProjectsFilterArrayOutput
-}
-
-type GetProjectsFilterArray []GetProjectsFilterInput
-
-func (GetProjectsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
-}
-
-func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
-	return i.ToGetProjectsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectsFilterArray) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsFilterArrayOutput)
-}
-
-type GetProjectsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsFilter)(nil)).Elem()
-}
-
-func (o GetProjectsFilterOutput) ToGetProjectsFilterOutput() GetProjectsFilterOutput {
-	return o
-}
-
-func (o GetProjectsFilterOutput) ToGetProjectsFilterOutputWithContext(ctx context.Context) GetProjectsFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetProjectsFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetProjectsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the projects by this key. This may be one of `name`,
-// `purpose`, `description`, `environment`, or `isDefault`.
-func (o GetProjectsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetProjectsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetProjectsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// A list of values to match against the `key` field. Only retrieves projects
-// where the `key` field takes on one or more of the values provided here.
-func (o GetProjectsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetProjectsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetProjectsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsFilter)(nil)).Elem()
-}
-
-func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutput() GetProjectsFilterArrayOutput {
-	return o
-}
-
-func (o GetProjectsFilterArrayOutput) ToGetProjectsFilterArrayOutputWithContext(ctx context.Context) GetProjectsFilterArrayOutput {
-	return o
-}
-
-func (o GetProjectsFilterArrayOutput) Index(i pulumi.IntInput) GetProjectsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsFilter {
-		return vs[0].([]GetProjectsFilter)[vs[1].(int)]
-	}).(GetProjectsFilterOutput)
-}
-
-type GetProjectsProject struct {
-	// The date and time when the project was created, (ISO8601)
-	CreatedAt string `pulumi:"createdAt"`
-	// The description of the project
-	Description string `pulumi:"description"`
-	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
-	Environment string `pulumi:"environment"`
-	// The ID of the project
-	Id        string `pulumi:"id"`
-	IsDefault bool   `pulumi:"isDefault"`
-	// The name of the project
-	Name string `pulumi:"name"`
-	// The ID of the project owner
-	OwnerId int `pulumi:"ownerId"`
-	// The unique universal identifier of the project owner
-	OwnerUuid string `pulumi:"ownerUuid"`
-	// The purpose of the project (Default: "Web Application")
-	Purpose string `pulumi:"purpose"`
-	// A set of uniform resource names (URNs) for the resources associated with the project
-	Resources []string `pulumi:"resources"`
-	// The date and time when the project was last updated, (ISO8601)
-	UpdatedAt string `pulumi:"updatedAt"`
-}
-
-// GetProjectsProjectInput is an input type that accepts GetProjectsProjectArgs and GetProjectsProjectOutput values.
-// You can construct a concrete instance of `GetProjectsProjectInput` via:
-//
-//	GetProjectsProjectArgs{...}
-type GetProjectsProjectInput interface {
-	pulumi.Input
-
-	ToGetProjectsProjectOutput() GetProjectsProjectOutput
-	ToGetProjectsProjectOutputWithContext(context.Context) GetProjectsProjectOutput
-}
-
-type GetProjectsProjectArgs struct {
-	// The date and time when the project was created, (ISO8601)
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// The description of the project
-	Description pulumi.StringInput `pulumi:"description"`
-	// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
-	Environment pulumi.StringInput `pulumi:"environment"`
-	// The ID of the project
-	Id        pulumi.StringInput `pulumi:"id"`
-	IsDefault pulumi.BoolInput   `pulumi:"isDefault"`
-	// The name of the project
-	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the project owner
-	OwnerId pulumi.IntInput `pulumi:"ownerId"`
-	// The unique universal identifier of the project owner
-	OwnerUuid pulumi.StringInput `pulumi:"ownerUuid"`
-	// The purpose of the project (Default: "Web Application")
-	Purpose pulumi.StringInput `pulumi:"purpose"`
-	// A set of uniform resource names (URNs) for the resources associated with the project
-	Resources pulumi.StringArrayInput `pulumi:"resources"`
-	// The date and time when the project was last updated, (ISO8601)
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-}
-
-func (GetProjectsProjectArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
-}
-
-func (i GetProjectsProjectArgs) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
-	return i.ToGetProjectsProjectOutputWithContext(context.Background())
-}
-
-func (i GetProjectsProjectArgs) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectOutput)
-}
-
-// GetProjectsProjectArrayInput is an input type that accepts GetProjectsProjectArray and GetProjectsProjectArrayOutput values.
-// You can construct a concrete instance of `GetProjectsProjectArrayInput` via:
-//
-//	GetProjectsProjectArray{ GetProjectsProjectArgs{...} }
-type GetProjectsProjectArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput
-	ToGetProjectsProjectArrayOutputWithContext(context.Context) GetProjectsProjectArrayOutput
-}
-
-type GetProjectsProjectArray []GetProjectsProjectInput
-
-func (GetProjectsProjectArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
-}
-
-func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
-	return i.ToGetProjectsProjectArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectsProjectArray) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsProjectArrayOutput)
-}
-
-type GetProjectsProjectOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsProjectOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsProject)(nil)).Elem()
-}
-
-func (o GetProjectsProjectOutput) ToGetProjectsProjectOutput() GetProjectsProjectOutput {
-	return o
-}
-
-func (o GetProjectsProjectOutput) ToGetProjectsProjectOutputWithContext(ctx context.Context) GetProjectsProjectOutput {
-	return o
-}
-
-// The date and time when the project was created, (ISO8601)
-func (o GetProjectsProjectOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// The description of the project
-func (o GetProjectsProjectOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Description }).(pulumi.StringOutput)
-}
-
-// The environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`.
-func (o GetProjectsProjectOutput) Environment() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Environment }).(pulumi.StringOutput)
-}
-
-// The ID of the project
-func (o GetProjectsProjectOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Id }).(pulumi.StringOutput)
-}
-
-func (o GetProjectsProjectOutput) IsDefault() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetProjectsProject) bool { return v.IsDefault }).(pulumi.BoolOutput)
-}
-
-// The name of the project
-func (o GetProjectsProjectOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// The ID of the project owner
-func (o GetProjectsProjectOutput) OwnerId() pulumi.IntOutput {
-	return o.ApplyT(func(v GetProjectsProject) int { return v.OwnerId }).(pulumi.IntOutput)
-}
-
-// The unique universal identifier of the project owner
-func (o GetProjectsProjectOutput) OwnerUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.OwnerUuid }).(pulumi.StringOutput)
-}
-
-// The purpose of the project (Default: "Web Application")
-func (o GetProjectsProjectOutput) Purpose() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.Purpose }).(pulumi.StringOutput)
-}
-
-// A set of uniform resource names (URNs) for the resources associated with the project
-func (o GetProjectsProjectOutput) Resources() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetProjectsProject) []string { return v.Resources }).(pulumi.StringArrayOutput)
-}
-
-// The date and time when the project was last updated, (ISO8601)
-func (o GetProjectsProjectOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsProject) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-type GetProjectsProjectArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsProjectArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsProject)(nil)).Elem()
-}
-
-func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutput() GetProjectsProjectArrayOutput {
-	return o
-}
-
-func (o GetProjectsProjectArrayOutput) ToGetProjectsProjectArrayOutputWithContext(ctx context.Context) GetProjectsProjectArrayOutput {
-	return o
-}
-
-func (o GetProjectsProjectArrayOutput) Index(i pulumi.IntInput) GetProjectsProjectOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsProject {
-		return vs[0].([]GetProjectsProject)[vs[1].(int)]
-	}).(GetProjectsProjectOutput)
-}
-
-type GetProjectsSort struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction *string `pulumi:"direction"`
-	// Sort the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, or `environment`.
-	Key string `pulumi:"key"`
-}
-
-// GetProjectsSortInput is an input type that accepts GetProjectsSortArgs and GetProjectsSortOutput values.
-// You can construct a concrete instance of `GetProjectsSortInput` via:
-//
-//	GetProjectsSortArgs{...}
-type GetProjectsSortInput interface {
-	pulumi.Input
-
-	ToGetProjectsSortOutput() GetProjectsSortOutput
-	ToGetProjectsSortOutputWithContext(context.Context) GetProjectsSortOutput
-}
-
-type GetProjectsSortArgs struct {
-	// The sort direction. This may be either `asc` or `desc`.
-	Direction pulumi.StringPtrInput `pulumi:"direction"`
-	// Sort the projects by this key. This may be one of `name`,
-	// `purpose`, `description`, or `environment`.
-	Key pulumi.StringInput `pulumi:"key"`
-}
-
-func (GetProjectsSortArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
-}
-
-func (i GetProjectsSortArgs) ToGetProjectsSortOutput() GetProjectsSortOutput {
-	return i.ToGetProjectsSortOutputWithContext(context.Background())
-}
-
-func (i GetProjectsSortArgs) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortOutput)
-}
-
-// GetProjectsSortArrayInput is an input type that accepts GetProjectsSortArray and GetProjectsSortArrayOutput values.
-// You can construct a concrete instance of `GetProjectsSortArrayInput` via:
-//
-//	GetProjectsSortArray{ GetProjectsSortArgs{...} }
-type GetProjectsSortArrayInput interface {
-	pulumi.Input
-
-	ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput
-	ToGetProjectsSortArrayOutputWithContext(context.Context) GetProjectsSortArrayOutput
-}
-
-type GetProjectsSortArray []GetProjectsSortInput
-
-func (GetProjectsSortArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
-}
-
-func (i GetProjectsSortArray) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
-	return i.ToGetProjectsSortArrayOutputWithContext(context.Background())
-}
-
-func (i GetProjectsSortArray) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetProjectsSortArrayOutput)
-}
-
-type GetProjectsSortOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsSortOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetProjectsSort)(nil)).Elem()
-}
-
-func (o GetProjectsSortOutput) ToGetProjectsSortOutput() GetProjectsSortOutput {
-	return o
-}
-
-func (o GetProjectsSortOutput) ToGetProjectsSortOutputWithContext(ctx context.Context) GetProjectsSortOutput {
-	return o
-}
-
-// The sort direction. This may be either `asc` or `desc`.
-func (o GetProjectsSortOutput) Direction() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetProjectsSort) *string { return v.Direction }).(pulumi.StringPtrOutput)
-}
-
-// Sort the projects by this key. This may be one of `name`,
-// `purpose`, `description`, or `environment`.
-func (o GetProjectsSortOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetProjectsSort) string { return v.Key }).(pulumi.StringOutput)
-}
-
-type GetProjectsSortArrayOutput struct{ *pulumi.OutputState }
-
-func (GetProjectsSortArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetProjectsSort)(nil)).Elem()
-}
-
-func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutput() GetProjectsSortArrayOutput {
-	return o
-}
-
-func (o GetProjectsSortArrayOutput) ToGetProjectsSortArrayOutputWithContext(ctx context.Context) GetProjectsSortArrayOutput {
-	return o
-}
-
-func (o GetProjectsSortArrayOutput) Index(i pulumi.IntInput) GetProjectsSortOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetProjectsSort {
-		return vs[0].([]GetProjectsSort)[vs[1].(int)]
-	}).(GetProjectsSortOutput)
-}
-
-type GetRecordsFilter struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All *bool `pulumi:"all"`
-	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-	Key string `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy *string `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves DNS records
-	// where the `key` field takes on one or more of the values provided here.
-	Values []string `pulumi:"values"`
-}
-
-// GetRecordsFilterInput is an input type that accepts GetRecordsFilterArgs and GetRecordsFilterOutput values.
-// You can construct a concrete instance of `GetRecordsFilterInput` via:
-//
-//	GetRecordsFilterArgs{...}
-type GetRecordsFilterInput interface {
-	pulumi.Input
-
-	ToGetRecordsFilterOutput() GetRecordsFilterOutput
-	ToGetRecordsFilterOutputWithContext(context.Context) GetRecordsFilterOutput
-}
-
-type GetRecordsFilterArgs struct {
-	// Set to `true` to require that a field match all of the `values` instead of just one or more of
-	// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-	// that all of the `values` are present in the list or set.
-	All pulumi.BoolPtrInput `pulumi:"all"`
-	// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-	// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-	Key pulumi.StringInput `pulumi:"key"`
-	// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-	// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-	// substrings to find within the string field.
-	MatchBy pulumi.StringPtrInput `pulumi:"matchBy"`
-	// A list of values to match against the `key` field. Only retrieves DNS records
-	// where the `key` field takes on one or more of the values provided here.
-	Values pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetRecordsFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
-}
-
-func (i GetRecordsFilterArgs) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
-	return i.ToGetRecordsFilterOutputWithContext(context.Background())
-}
-
-func (i GetRecordsFilterArgs) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterOutput)
-}
-
-// GetRecordsFilterArrayInput is an input type that accepts GetRecordsFilterArray and GetRecordsFilterArrayOutput values.
-// You can construct a concrete instance of `GetRecordsFilterArrayInput` via:
-//
-//	GetRecordsFilterArray{ GetRecordsFilterArgs{...} }
-type GetRecordsFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput
-	ToGetRecordsFilterArrayOutputWithContext(context.Context) GetRecordsFilterArrayOutput
-}
-
-type GetRecordsFilterArray []GetRecordsFilterInput
-
-func (GetRecordsFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
-}
-
-func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
-	return i.ToGetRecordsFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetRecordsFilterArray) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetRecordsFilterArrayOutput)
-}
-
-type GetRecordsFilterOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetRecordsFilter)(nil)).Elem()
-}
-
-func (o GetRecordsFilterOutput) ToGetRecordsFilterOutput() GetRecordsFilterOutput {
-	return o
-}
-
-func (o GetRecordsFilterOutput) ToGetRecordsFilterOutputWithContext(ctx context.Context) GetRecordsFilterOutput {
-	return o
-}
-
-// Set to `true` to require that a field match all of the `values` instead of just one or more of
-// them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-// that all of the `values` are present in the list or set.
-func (o GetRecordsFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetRecordsFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-// Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-// `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-func (o GetRecordsFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetRecordsFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-// One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-// match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-// substrings to find within the string field.
-func (o GetRecordsFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetRecordsFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-// A list of values to match against the `key` field. Only retrieves DNS records
-// where the `key` field takes on one or more of the values provided here.
-func (o GetRecordsFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetRecordsFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetRecordsFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetRecordsFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetRecordsFilter)(nil)).Elem()
-}
-
-func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutput() GetRecordsFilterArrayOutput {
-	return o
-}
-
-func (o GetRecordsFilterArrayOutput) ToGetRecordsFilterArrayOutputWithContext(ctx context.Context) GetRecordsFilterArrayOutput {
-	return o
-}
-
-func (o GetRecordsFilterArrayOutput) Index(i pulumi.IntInput) GetRecordsFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRecordsFilter {
-		return vs[0].([]GetRecordsFilter)[vs[1].(int)]
-	}).(GetRecordsFilterOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -77569,6 +77497,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), KubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), KubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterNvidiaGpuDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeInput)(nil)).Elem(), KubernetesNodePoolNodeArgs{})
@@ -77835,6 +77767,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerLogDestinationPapertrailPtrInput)(nil)).Elem(), GetAppSpecWorkerLogDestinationPapertrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerTerminationInput)(nil)).Elem(), GetAppSpecWorkerTerminationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecWorkerTerminationPtrInput)(nil)).Elem(), GetAppSpecWorkerTerminationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetByoipPrefixResourcesAddressInput)(nil)).Elem(), GetByoipPrefixResourcesAddressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetByoipPrefixResourcesAddressArrayInput)(nil)).Elem(), GetByoipPrefixResourcesAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseClusterMaintenanceWindowArrayInput)(nil)).Elem(), GetDatabaseClusterMaintenanceWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseUserSettingInput)(nil)).Elem(), GetDatabaseUserSettingArgs{})
@@ -78177,6 +78111,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolNodeArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNodePoolTaintArrayInput)(nil)).Elem(), GetKubernetesClusterNodePoolTaintArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNvidiaGpuDevicePluginInput)(nil)).Elem(), GetKubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterNvidiaGpuDevicePluginPtrInput)(nil)).Elem(), GetKubernetesClusterNvidiaGpuDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRdmaSharedDevicePluginInput)(nil)).Elem(), GetKubernetesClusterRdmaSharedDevicePluginArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRdmaSharedDevicePluginPtrInput)(nil)).Elem(), GetKubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainInput)(nil)).Elem(), GetLoadBalancerDomainArgs{})
@@ -78193,16 +78131,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerHealthcheckArrayInput)(nil)).Elem(), GetLoadBalancerHealthcheckArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionInput)(nil)).Elem(), GetLoadBalancerStickySessionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerStickySessionArrayInput)(nil)).Elem(), GetLoadBalancerStickySessionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetPartnerAttachmentBgpPtrInput)(nil)).Elem(), GetPartnerAttachmentBgpArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterInput)(nil)).Elem(), GetProjectsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsFilterArrayInput)(nil)).Elem(), GetProjectsFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectInput)(nil)).Elem(), GetProjectsProjectArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsProjectArrayInput)(nil)).Elem(), GetProjectsProjectArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortInput)(nil)).Elem(), GetProjectsSortArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetProjectsSortArrayInput)(nil)).Elem(), GetProjectsSortArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterInput)(nil)).Elem(), GetRecordsFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetRecordsFilterArrayInput)(nil)).Elem(), GetRecordsFilterArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -78565,6 +78493,10 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterNvidiaGpuDevicePluginPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeOutput{})
@@ -78831,6 +78763,8 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecWorkerLogDestinationPapertrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerTerminationOutput{})
 	pulumi.RegisterOutputType(GetAppSpecWorkerTerminationPtrOutput{})
+	pulumi.RegisterOutputType(GetByoipPrefixResourcesAddressOutput{})
+	pulumi.RegisterOutputType(GetByoipPrefixResourcesAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowOutput{})
 	pulumi.RegisterOutputType(GetDatabaseClusterMaintenanceWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseUserSettingOutput{})
@@ -79173,6 +79107,10 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterNodePoolTaintArrayOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNvidiaGpuDevicePluginOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterNvidiaGpuDevicePluginPtrOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterRdmaSharedDevicePluginOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterRdmaSharedDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentPtrOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerDomainOutput{})
@@ -79189,14 +79127,4 @@ func init() {
 	pulumi.RegisterOutputType(GetLoadBalancerHealthcheckArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerStickySessionArrayOutput{})
-	pulumi.RegisterOutputType(GetPartnerAttachmentBgpOutput{})
-	pulumi.RegisterOutputType(GetPartnerAttachmentBgpPtrOutput{})
-	pulumi.RegisterOutputType(GetProjectsFilterOutput{})
-	pulumi.RegisterOutputType(GetProjectsFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetProjectsProjectOutput{})
-	pulumi.RegisterOutputType(GetProjectsProjectArrayOutput{})
-	pulumi.RegisterOutputType(GetProjectsSortOutput{})
-	pulumi.RegisterOutputType(GetProjectsSortArrayOutput{})
-	pulumi.RegisterOutputType(GetRecordsFilterOutput{})
-	pulumi.RegisterOutputType(GetRecordsFilterArrayOutput{})
 }

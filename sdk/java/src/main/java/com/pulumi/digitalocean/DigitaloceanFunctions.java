@@ -11,8 +11,14 @@ import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GetAppArgs;
 import com.pulumi.digitalocean.inputs.GetAppPlainArgs;
+import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+import com.pulumi.digitalocean.inputs.GetByoipPrefixPlainArgs;
+import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetCertificateArgs;
 import com.pulumi.digitalocean.inputs.GetCertificatePlainArgs;
+import com.pulumi.digitalocean.inputs.GetContainerRegistriesArgs;
+import com.pulumi.digitalocean.inputs.GetContainerRegistriesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
 import com.pulumi.digitalocean.inputs.GetContainerRegistryPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
@@ -79,6 +85,10 @@ import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesVersionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
 import com.pulumi.digitalocean.inputs.GetLoadBalancerPlainArgs;
+import com.pulumi.digitalocean.inputs.GetNfsArgs;
+import com.pulumi.digitalocean.inputs.GetNfsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetNfsSnapshotArgs;
+import com.pulumi.digitalocean.inputs.GetNfsSnapshotPlainArgs;
 import com.pulumi.digitalocean.inputs.GetPartnerAttachmentArgs;
 import com.pulumi.digitalocean.inputs.GetPartnerAttachmentPlainArgs;
 import com.pulumi.digitalocean.inputs.GetPartnerAttachmentServiceKeyArgs;
@@ -131,7 +141,10 @@ import com.pulumi.digitalocean.inputs.GetVpcPeeringPlainArgs;
 import com.pulumi.digitalocean.inputs.GetVpcPlainArgs;
 import com.pulumi.digitalocean.outputs.GetAccountResult;
 import com.pulumi.digitalocean.outputs.GetAppResult;
+import com.pulumi.digitalocean.outputs.GetByoipPrefixResourcesResult;
+import com.pulumi.digitalocean.outputs.GetByoipPrefixResult;
 import com.pulumi.digitalocean.outputs.GetCertificateResult;
+import com.pulumi.digitalocean.outputs.GetContainerRegistriesResult;
 import com.pulumi.digitalocean.outputs.GetContainerRegistryResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseCaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseClusterResult;
@@ -166,6 +179,8 @@ import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesVersionsResult;
 import com.pulumi.digitalocean.outputs.GetLoadBalancerResult;
+import com.pulumi.digitalocean.outputs.GetNfsResult;
+import com.pulumi.digitalocean.outputs.GetNfsSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetPartnerAttachmentResult;
 import com.pulumi.digitalocean.outputs.GetPartnerAttachmentServiceKeyResult;
 import com.pulumi.digitalocean.outputs.GetProjectResult;
@@ -684,6 +699,506 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getApp:getApp", TypeShape.of(GetAppResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * ## Example Usage
+     * 
+     * Get the BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * List assigned IP addresses from a BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()
+     *             .byoipPrefixUuid(example.uuid())
+     *             .build());
+     * 
+     *         ctx.export("byoipInfo", Map.ofEntries(
+     *             Map.entry("prefix", example.prefix()),
+     *             Map.entry("region", example.region()),
+     *             Map.entry("status", example.status()),
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetByoipPrefixResult> getByoipPrefix(GetByoipPrefixArgs args) {
+        return getByoipPrefix(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * List assigned IP addresses from a BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()
+     *             .byoipPrefixUuid(example.uuid())
+     *             .build());
+     * 
+     *         ctx.export("byoipInfo", Map.ofEntries(
+     *             Map.entry("prefix", example.prefix()),
+     *             Map.entry("region", example.region()),
+     *             Map.entry("status", example.status()),
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetByoipPrefixResult> getByoipPrefixPlain(GetByoipPrefixPlainArgs args) {
+        return getByoipPrefixPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * List assigned IP addresses from a BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()
+     *             .byoipPrefixUuid(example.uuid())
+     *             .build());
+     * 
+     *         ctx.export("byoipInfo", Map.ofEntries(
+     *             Map.entry("prefix", example.prefix()),
+     *             Map.entry("region", example.region()),
+     *             Map.entry("status", example.status()),
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetByoipPrefixResult> getByoipPrefix(GetByoipPrefixArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getByoipPrefix:getByoipPrefix", TypeShape.of(GetByoipPrefixResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * List assigned IP addresses from a BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()
+     *             .byoipPrefixUuid(example.uuid())
+     *             .build());
+     * 
+     *         ctx.export("byoipInfo", Map.ofEntries(
+     *             Map.entry("prefix", example.prefix()),
+     *             Map.entry("region", example.region()),
+     *             Map.entry("status", example.status()),
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetByoipPrefixResult> getByoipPrefix(GetByoipPrefixArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getByoipPrefix:getByoipPrefix", TypeShape.of(GetByoipPrefixResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * Get the BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * List assigned IP addresses from a BYOIP prefix:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
+     * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()
+     *             .uuid("506f78a4-e098-11e5-ad9f-000f53306ae1")
+     *             .build());
+     * 
+     *         final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()
+     *             .byoipPrefixUuid(example.uuid())
+     *             .build());
+     * 
+     *         ctx.export("byoipInfo", Map.ofEntries(
+     *             Map.entry("prefix", example.prefix()),
+     *             Map.entry("region", example.region()),
+     *             Map.entry("status", example.status()),
+     *             Map.entry("assignedCount", exampleGetByoipPrefixResources.addresses().length())
+     *         ));
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetByoipPrefixResult> getByoipPrefixPlain(GetByoipPrefixPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getByoipPrefix:getByoipPrefix", TypeShape.of(GetByoipPrefixResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about IP addresses that have been **already assigned** from a
+     * BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
+     * that are currently assigned to resources from a specific BYOIP prefix.
+     * 
+     * **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
+     * To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
+     * 
+     * ## Example Usage
+     * 
+     * List all assigned IP addresses from a BYOIP prefix:
+     * 
+     */
+    public static Output<GetByoipPrefixResourcesResult> getByoipPrefixResources(GetByoipPrefixResourcesArgs args) {
+        return getByoipPrefixResources(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about IP addresses that have been **already assigned** from a
+     * BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
+     * that are currently assigned to resources from a specific BYOIP prefix.
+     * 
+     * **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
+     * To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
+     * 
+     * ## Example Usage
+     * 
+     * List all assigned IP addresses from a BYOIP prefix:
+     * 
+     */
+    public static CompletableFuture<GetByoipPrefixResourcesResult> getByoipPrefixResourcesPlain(GetByoipPrefixResourcesPlainArgs args) {
+        return getByoipPrefixResourcesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about IP addresses that have been **already assigned** from a
+     * BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
+     * that are currently assigned to resources from a specific BYOIP prefix.
+     * 
+     * **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
+     * To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
+     * 
+     * ## Example Usage
+     * 
+     * List all assigned IP addresses from a BYOIP prefix:
+     * 
+     */
+    public static Output<GetByoipPrefixResourcesResult> getByoipPrefixResources(GetByoipPrefixResourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", TypeShape.of(GetByoipPrefixResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about IP addresses that have been **already assigned** from a
+     * BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
+     * that are currently assigned to resources from a specific BYOIP prefix.
+     * 
+     * **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
+     * To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
+     * 
+     * ## Example Usage
+     * 
+     * List all assigned IP addresses from a BYOIP prefix:
+     * 
+     */
+    public static Output<GetByoipPrefixResourcesResult> getByoipPrefixResources(GetByoipPrefixResourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", TypeShape.of(GetByoipPrefixResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about IP addresses that have been **already assigned** from a
+     * BYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses
+     * that are currently assigned to resources from a specific BYOIP prefix.
+     * 
+     * **Note:** This data source only lists IPs that are already assigned to resources (like Droplets).
+     * To allocate new IPs from the BYOIP prefix, you need to use `digitalocean.ReservedIpAssignment` resource.
+     * 
+     * ## Example Usage
+     * 
+     * List all assigned IP addresses from a BYOIP prefix:
+     * 
+     */
+    public static CompletableFuture<GetByoipPrefixResourcesResult> getByoipPrefixResourcesPlain(GetByoipPrefixResourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", TypeShape.of(GetByoipPrefixResourcesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information on a certificate. This data source provides the name, type, state,
      * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
      * This is useful if the certificate in question is not managed by this provider or you need to utilize
@@ -917,6 +1432,21 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetContainerRegistriesResult> getContainerRegistries(GetContainerRegistriesArgs args) {
+        return getContainerRegistries(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetContainerRegistriesResult> getContainerRegistriesPlain(GetContainerRegistriesPlainArgs args) {
+        return getContainerRegistriesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetContainerRegistriesResult> getContainerRegistries(GetContainerRegistriesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetContainerRegistriesResult> getContainerRegistries(GetContainerRegistriesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetContainerRegistriesResult> getContainerRegistriesPlain(GetContainerRegistriesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a container registry. This data source provides the name as
@@ -9820,6 +10350,276 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetLoadBalancerResult> getLoadBalancerPlain(GetLoadBalancerPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS share.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS share by name and region:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()
+     *             .name("example-nfs")
+     *             .region("nyc1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsResult> getNfs(GetNfsArgs args) {
+        return getNfs(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS share.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS share by name and region:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()
+     *             .name("example-nfs")
+     *             .region("nyc1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNfsResult> getNfsPlain(GetNfsPlainArgs args) {
+        return getNfsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS share.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS share by name and region:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()
+     *             .name("example-nfs")
+     *             .region("nyc1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsResult> getNfs(GetNfsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfs:getNfs", TypeShape.of(GetNfsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS share.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS share by name and region:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()
+     *             .name("example-nfs")
+     *             .region("nyc1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetNfsResult> getNfs(GetNfsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfs:getNfs", TypeShape.of(GetNfsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS share.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS share by name and region:
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetNfsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()
+     *             .name("example-nfs")
+     *             .region("nyc1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetNfsResult> getNfsPlain(GetNfsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getNfs:getNfs", TypeShape.of(GetNfsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS snapshot by ID:
+     * 
+     */
+    public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args) {
+        return getNfsSnapshot(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS snapshot by ID:
+     * 
+     */
+    public static CompletableFuture<GetNfsSnapshotResult> getNfsSnapshotPlain(GetNfsSnapshotPlainArgs args) {
+        return getNfsSnapshotPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a DigitalOcean NFS snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS snapshot by ID:
+     * 
+     */
+    public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfsSnapshot:getNfsSnapshot", TypeShape.of(GetNfsSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS snapshot by ID:
+     * 
+     */
+    public static Output<GetNfsSnapshotResult> getNfsSnapshot(GetNfsSnapshotArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getNfsSnapshot:getNfsSnapshot", TypeShape.of(GetNfsSnapshotResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a DigitalOcean NFS snapshot.
+     * 
+     * ## Example Usage
+     * 
+     * Get the NFS snapshot by ID:
+     * 
+     */
+    public static CompletableFuture<GetNfsSnapshotResult> getNfsSnapshotPlain(GetNfsSnapshotPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getNfsSnapshot:getNfsSnapshot", TypeShape.of(GetNfsSnapshotResult.class), args, Utilities.withVersion(options));
     }
     public static Output<GetPartnerAttachmentResult> getPartnerAttachment() {
         return getPartnerAttachment(GetPartnerAttachmentArgs.Empty, InvokeOptions.Empty);

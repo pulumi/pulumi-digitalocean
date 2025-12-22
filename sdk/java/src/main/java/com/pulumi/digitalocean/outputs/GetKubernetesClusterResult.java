@@ -11,6 +11,8 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterControlPlaneFirewall;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterKubeConfig;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterMaintenancePolicy;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
@@ -79,6 +81,8 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private List<GetKubernetesClusterNodePool> nodePools;
+    private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+    private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
     /**
      * @return The slug identifier for the region where the Kubernetes cluster is located.
      * 
@@ -211,6 +215,12 @@ public final class GetKubernetesClusterResult {
     public List<GetKubernetesClusterNodePool> nodePools() {
         return this.nodePools;
     }
+    public GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin() {
+        return this.nvidiaGpuDevicePlugin;
+    }
+    public GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin() {
+        return this.rdmaSharedDevicePlugin;
+    }
     /**
      * @return The slug identifier for the region where the Kubernetes cluster is located.
      * 
@@ -299,6 +309,8 @@ public final class GetKubernetesClusterResult {
         private List<GetKubernetesClusterMaintenancePolicy> maintenancePolicies;
         private String name;
         private List<GetKubernetesClusterNodePool> nodePools;
+        private GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+        private GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
         private String region;
         private GetKubernetesClusterRoutingAgent routingAgent;
         private String serviceSubnet;
@@ -328,6 +340,8 @@ public final class GetKubernetesClusterResult {
     	      this.maintenancePolicies = defaults.maintenancePolicies;
     	      this.name = defaults.name;
     	      this.nodePools = defaults.nodePools;
+    	      this.nvidiaGpuDevicePlugin = defaults.nvidiaGpuDevicePlugin;
+    	      this.rdmaSharedDevicePlugin = defaults.rdmaSharedDevicePlugin;
     	      this.region = defaults.region;
     	      this.routingAgent = defaults.routingAgent;
     	      this.serviceSubnet = defaults.serviceSubnet;
@@ -480,6 +494,22 @@ public final class GetKubernetesClusterResult {
             return nodePools(List.of(nodePools));
         }
         @CustomType.Setter
+        public Builder nvidiaGpuDevicePlugin(GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin) {
+            if (nvidiaGpuDevicePlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "nvidiaGpuDevicePlugin");
+            }
+            this.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder rdmaSharedDevicePlugin(GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin) {
+            if (rdmaSharedDevicePlugin == null) {
+              throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "rdmaSharedDevicePlugin");
+            }
+            this.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
+            return this;
+        }
+        @CustomType.Setter
         public Builder region(String region) {
             if (region == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "region");
@@ -578,6 +608,8 @@ public final class GetKubernetesClusterResult {
             _resultValue.maintenancePolicies = maintenancePolicies;
             _resultValue.name = name;
             _resultValue.nodePools = nodePools;
+            _resultValue.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            _resultValue.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             _resultValue.region = region;
             _resultValue.routingAgent = routingAgent;
             _resultValue.serviceSubnet = serviceSubnet;

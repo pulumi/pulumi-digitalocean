@@ -29,6 +29,8 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
         "tags": args.tags,
     }, opts);
@@ -46,6 +48,8 @@ export interface GetKubernetesClusterArgs {
      * The name of Kubernetes cluster.
      */
     name: string;
+    nvidiaGpuDevicePlugin?: inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    rdmaSharedDevicePlugin?: inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     routingAgent?: inputs.GetKubernetesClusterRoutingAgent;
     /**
      * A list of tag names applied to the node pool.
@@ -103,6 +107,8 @@ export interface GetKubernetesClusterResult {
      * A list of node pools associated with the cluster. Each node pool exports the following attributes:
      */
     readonly nodePools: outputs.GetKubernetesClusterNodePool[];
+    readonly nvidiaGpuDevicePlugin: outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+    readonly rdmaSharedDevicePlugin: outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     /**
      * The slug identifier for the region where the Kubernetes cluster is located.
      */
@@ -160,6 +166,8 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "clusterAutoscalerConfigurations": args.clusterAutoscalerConfigurations,
         "kubeconfigExpireSeconds": args.kubeconfigExpireSeconds,
         "name": args.name,
+        "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
+        "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
         "tags": args.tags,
     }, opts);
@@ -177,6 +185,8 @@ export interface GetKubernetesClusterOutputArgs {
      * The name of Kubernetes cluster.
      */
     name: pulumi.Input<string>;
+    nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs>;
+    rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs>;
     routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs>;
     /**
      * A list of tag names applied to the node pool.

@@ -110,6 +110,12 @@ namespace Pulumi.DigitalOcean
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
+        [Input("nvidiaGpuDevicePlugin")]
+        public Inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("rdmaSharedDevicePlugin")]
+        public Inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs? RdmaSharedDevicePlugin { get; set; }
+
         [Input("routingAgent")]
         public Inputs.GetKubernetesClusterRoutingAgentArgs? RoutingAgent { get; set; }
 
@@ -155,6 +161,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        [Input("nvidiaGpuDevicePlugin")]
+        public Input<Inputs.GetKubernetesClusterNvidiaGpuDevicePluginInputArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("rdmaSharedDevicePlugin")]
+        public Input<Inputs.GetKubernetesClusterRdmaSharedDevicePluginInputArgs>? RdmaSharedDevicePlugin { get; set; }
 
         [Input("routingAgent")]
         public Input<Inputs.GetKubernetesClusterRoutingAgentInputArgs>? RoutingAgent { get; set; }
@@ -227,6 +239,8 @@ namespace Pulumi.DigitalOcean
         /// A list of node pools associated with the cluster. Each node pool exports the following attributes:
         /// </summary>
         public readonly ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> NodePools;
+        public readonly Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult NvidiaGpuDevicePlugin;
+        public readonly Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult RdmaSharedDevicePlugin;
         /// <summary>
         /// The slug identifier for the region where the Kubernetes cluster is located.
         /// </summary>
@@ -296,6 +310,10 @@ namespace Pulumi.DigitalOcean
 
             ImmutableArray<Outputs.GetKubernetesClusterNodePoolResult> nodePools,
 
+            Outputs.GetKubernetesClusterNvidiaGpuDevicePluginResult nvidiaGpuDevicePlugin,
+
+            Outputs.GetKubernetesClusterRdmaSharedDevicePluginResult rdmaSharedDevicePlugin,
+
             string region,
 
             Outputs.GetKubernetesClusterRoutingAgentResult routingAgent,
@@ -332,6 +350,8 @@ namespace Pulumi.DigitalOcean
             MaintenancePolicies = maintenancePolicies;
             Name = name;
             NodePools = nodePools;
+            NvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            RdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             Region = region;
             RoutingAgent = routingAgent;
             ServiceSubnet = serviceSubnet;

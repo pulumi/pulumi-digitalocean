@@ -5447,6 +5447,30 @@
                 "value"
             ]
         },
+        "digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the component should be enabled or not.\n\u003cspan pulumi-lang-nodejs=\"`rdmaSharedDevicePlugin`\" pulumi-lang-dotnet=\"`RdmaSharedDevicePlugin`\" pulumi-lang-go=\"`rdmaSharedDevicePlugin`\" pulumi-lang-python=\"`rdma_shared_device_plugin`\" pulumi-lang-yaml=\"`rdmaSharedDevicePlugin`\" pulumi-lang-java=\"`rdmaSharedDevicePlugin`\"\u003e`rdma_shared_device_plugin`\u003c/span\u003e - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
+        "digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the component is enabled or not.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ]
+        },
         "digitalocean:index/KubernetesClusterRoutingAgent:KubernetesClusterRoutingAgent": {
             "properties": {
                 "enabled": {
@@ -8929,6 +8953,38 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/getByoipPrefixResourcesAddress:getByoipPrefixResourcesAddress": {
+            "properties": {
+                "assignedAt": {
+                    "type": "string",
+                    "description": "The timestamp when the IP was assigned.\n"
+                },
+                "id": {
+                    "type": "integer",
+                    "description": "The unique identifier of the IP address allocation.\n"
+                },
+                "ipAddress": {
+                    "type": "string",
+                    "description": "The IP address.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the IP is allocated.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "assignedAt",
+                "id",
+                "ipAddress",
+                "region"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getDatabaseClusterMaintenanceWindow:getDatabaseClusterMaintenanceWindow": {
             "properties": {
@@ -16065,6 +16121,38 @@
                 }
             }
         },
+        "digitalocean:index/getKubernetesClusterNvidiaGpuDevicePlugin:getKubernetesClusterNvidiaGpuDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent": {
             "properties": {
                 "enabled": {
@@ -18088,6 +18176,10 @@
                     "type": "string",
                     "description": "The default URL to access the app.\n"
                 },
+                "deploymentPerPage": {
+                    "type": "integer",
+                    "description": "(Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\"\u003e`20`\u003c/span\u003e. Reduce this value (for example \u003cspan pulumi-lang-nodejs=\"`5`\" pulumi-lang-dotnet=\"`5`\" pulumi-lang-go=\"`5`\" pulumi-lang-python=\"`5`\" pulumi-lang-yaml=\"`5`\" pulumi-lang-java=\"`5`\"\u003e`5`\u003c/span\u003e) if you experience API timeouts when listing deployments.\n"
+                },
                 "liveDomain": {
                     "type": "string",
                     "description": "The live domain of the app.\n"
@@ -18128,6 +18220,10 @@
                     },
                     "description": "The dedicated egress IP addresses associated with the app."
                 },
+                "deploymentPerPage": {
+                    "type": "integer",
+                    "description": "(Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\"\u003e`20`\u003c/span\u003e. Reduce this value (for example \u003cspan pulumi-lang-nodejs=\"`5`\" pulumi-lang-dotnet=\"`5`\" pulumi-lang-go=\"`5`\" pulumi-lang-python=\"`5`\" pulumi-lang-yaml=\"`5`\" pulumi-lang-java=\"`5`\"\u003e`5`\u003c/span\u003e) if you experience API timeouts when listing deployments.\n"
+                },
                 "projectId": {
                     "type": "string",
                     "description": "The ID of the project that the app is assigned to.\n\nA spec can contain multiple components.\n\nA \u003cspan pulumi-lang-nodejs=\"`service`\" pulumi-lang-dotnet=\"`Service`\" pulumi-lang-go=\"`service`\" pulumi-lang-python=\"`service`\" pulumi-lang-yaml=\"`service`\" pulumi-lang-java=\"`service`\"\u003e`service`\u003c/span\u003e can contain:\n",
@@ -18164,6 +18260,10 @@
                         "type": "string",
                         "description": "The default URL to access the app.\n"
                     },
+                    "deploymentPerPage": {
+                        "type": "integer",
+                        "description": "(Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to \u003cspan pulumi-lang-nodejs=\"`20`\" pulumi-lang-dotnet=\"`20`\" pulumi-lang-go=\"`20`\" pulumi-lang-python=\"`20`\" pulumi-lang-yaml=\"`20`\" pulumi-lang-java=\"`20`\"\u003e`20`\u003c/span\u003e. Reduce this value (for example \u003cspan pulumi-lang-nodejs=\"`5`\" pulumi-lang-dotnet=\"`5`\" pulumi-lang-go=\"`5`\" pulumi-lang-python=\"`5`\" pulumi-lang-yaml=\"`5`\" pulumi-lang-java=\"`5`\"\u003e`5`\u003c/span\u003e) if you experience API timeouts when listing deployments.\n"
+                    },
                     "liveDomain": {
                         "type": "string",
                         "description": "The live domain of the app.\n"
@@ -18184,6 +18284,102 @@
                     "updatedAt": {
                         "type": "string",
                         "description": "The date and time of when the app was last updated.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/byoipPrefix:ByoipPrefix": {
+            "description": "Provides a DigitalOcean BYOIP (Bring Your Own IP) prefix resource. This can be used to\ncreate, modify, and delete BYOIP prefixes.\n\nBYOIP prefixes allow you to bring your own IP address space to DigitalOcean. You can\nuse this feature to maintain your IP reputation or meet specific compliance requirements.\n\nBYOIP prefix provisioning documentation: https://docs.digitalocean.com/products/networking/reserved-ips/how-to/provision-byoip/ \n\nNote: By default, newly provisioned BYOIP prefixes are not advertised to the internet. After the initial `pulumi up`, BYOIP provisioning request is initiated and DigitalOcean provisions the prefix, the prefix status changes to Active. At this point, you can initiate advertising prefix to the internet by setting field `advertised = true` and apply the configuration to make your prefix fully usable and accessible from the internet. \n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\n// Create a new BYOIP prefix\nconst example = new digitalocean.ByoipPrefix(\"example\", {\n    prefix: \"192.0.2.0/24\",\n    signature: prefixSignature,\n    region: \"nyc3\",\n    advertised: false,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\n# Create a new BYOIP prefix\nexample = digitalocean.ByoipPrefix(\"example\",\n    prefix=\"192.0.2.0/24\",\n    signature=prefix_signature,\n    region=\"nyc3\",\n    advertised=False)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a new BYOIP prefix\n    var example = new DigitalOcean.ByoipPrefix(\"example\", new()\n    {\n        Prefix = \"192.0.2.0/24\",\n        Signature = prefixSignature,\n        Region = \"nyc3\",\n        Advertised = false,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a new BYOIP prefix\n\t\t_, err := digitalocean.NewByoipPrefix(ctx, \"example\", \u0026digitalocean.ByoipPrefixArgs{\n\t\t\tPrefix:     pulumi.String(\"192.0.2.0/24\"),\n\t\t\tSignature:  pulumi.Any(prefixSignature),\n\t\t\tRegion:     pulumi.String(\"nyc3\"),\n\t\t\tAdvertised: pulumi.Bool(false),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.ByoipPrefix;\nimport com.pulumi.digitalocean.ByoipPrefixArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a new BYOIP prefix\n        var example = new ByoipPrefix(\"example\", ByoipPrefixArgs.builder()\n            .prefix(\"192.0.2.0/24\")\n            .signature(prefixSignature)\n            .region(\"nyc3\")\n            .advertised(false)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a new BYOIP prefix\n  example:\n    type: digitalocean:ByoipPrefix\n    properties:\n      prefix: 192.0.2.0/24\n      signature: ${prefixSignature}\n      region: nyc3\n      advertised: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nBYOIP prefixes can be imported using the prefix `uuid`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/byoipPrefix:ByoipPrefix example 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "advertised": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the prefix should be advertised.\nDefaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "failureReason": {
+                    "type": "string",
+                    "description": "The reason for failure if the status is \"failed\".\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The CIDR notation of the prefix (e.g., \"192.0.2.0/24\").\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The DigitalOcean region where the prefix will be deployed.\n"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "The cryptographic signature proving ownership of the prefix.\nThis is required during creation but can be omitted in subsequent updates.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the BYOIP prefix (e.g., \"verified\", \"pending\", \"failed\").\n"
+                },
+                "uuid": {
+                    "type": "string",
+                    "description": "The UUID of the BYOIP prefix.\n"
+                }
+            },
+            "required": [
+                "failureReason",
+                "prefix",
+                "region",
+                "status",
+                "uuid"
+            ],
+            "inputProperties": {
+                "advertised": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether the prefix should be advertised.\nDefaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                },
+                "prefix": {
+                    "type": "string",
+                    "description": "The CIDR notation of the prefix (e.g., \"192.0.2.0/24\").\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The DigitalOcean region where the prefix will be deployed.\n"
+                },
+                "signature": {
+                    "type": "string",
+                    "description": "The cryptographic signature proving ownership of the prefix.\nThis is required during creation but can be omitted in subsequent updates.\n"
+                }
+            },
+            "requiredInputs": [
+                "prefix",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ByoipPrefix resources.\n",
+                "properties": {
+                    "advertised": {
+                        "type": "boolean",
+                        "description": "A boolean indicating whether the prefix should be advertised.\nDefaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e.\n"
+                    },
+                    "failureReason": {
+                        "type": "string",
+                        "description": "The reason for failure if the status is \"failed\".\n"
+                    },
+                    "prefix": {
+                        "type": "string",
+                        "description": "The CIDR notation of the prefix (e.g., \"192.0.2.0/24\").\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The DigitalOcean region where the prefix will be deployed.\n"
+                    },
+                    "signature": {
+                        "type": "string",
+                        "description": "The cryptographic signature proving ownership of the prefix.\nThis is required during creation but can be omitted in subsequent updates.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the BYOIP prefix (e.g., \"verified\", \"pending\", \"failed\").\n"
+                    },
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the BYOIP prefix.\n"
                     }
                 },
                 "type": "object"
@@ -18453,6 +18649,85 @@
                     "uuid": {
                         "type": "string",
                         "description": "The UUID of the certificate\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/containerRegistries:ContainerRegistries": {
+            "properties": {
+                "createdAt": {
+                    "type": "string"
+                },
+                "endpoint": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "region": {
+                    "type": "string"
+                },
+                "serverUrl": {
+                    "type": "string"
+                },
+                "storageUsageBytes": {
+                    "type": "integer"
+                },
+                "subscriptionTierSlug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "createdAt",
+                "endpoint",
+                "name",
+                "region",
+                "serverUrl",
+                "storageUsageBytes",
+                "subscriptionTierSlug"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "subscriptionTierSlug": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "subscriptionTierSlug"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ContainerRegistries resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "endpoint": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "serverUrl": {
+                        "type": "string"
+                    },
+                    "storageUsageBytes": {
+                        "type": "integer"
+                    },
+                    "subscriptionTierSlug": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -19941,6 +20216,305 @@
                     "state": {
                         "type": "string",
                         "description": "The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch": {
+            "description": "Provides a DigitalOcean database logsink resource allowing you to forward logs from a managed database cluster to an external OpenSearch cluster or Elasticsearch endpoint.\n\nThis resource is compatible with both OpenSearch and Elasticsearch endpoints due to API compatibility. You can use this resource to connect to either service.\n\nThis resource supports the following DigitalOcean managed database engines:\n\n* PostgreSQL\n* MySQL\n* Kafka\n* Valkey\n\n**Note**: MongoDB databases use a different log forwarding mechanism and require Datadog logsinks (not currently available in this provider).\n\n## Example Usage\n\n### Basic OpenSearch configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    name: \"example-postgres-cluster\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\nconst example = new digitalocean.DatabaseLogsinkOpensearch(\"example\", {\n    clusterId: postgres_example.id,\n    name: \"opensearch-logs\",\n    endpoint: \"https://opensearch.example.com:9200\",\n    indexPrefix: \"db-logs\",\n    indexDaysMax: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    name=\"example-postgres-cluster\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\nexample = digitalocean.DatabaseLogsinkOpensearch(\"example\",\n    cluster_id=postgres_example.id,\n    name=\"opensearch-logs\",\n    endpoint=\"https://opensearch.example.com:9200\",\n    index_prefix=\"db-logs\",\n    index_days_max=7)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Name = \"example-postgres-cluster\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n    var example = new DigitalOcean.DatabaseLogsinkOpensearch(\"example\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"opensearch-logs\",\n        Endpoint = \"https://opensearch.example.com:9200\",\n        IndexPrefix = \"db-logs\",\n        IndexDaysMax = 7,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpostgres_example, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-postgres-cluster\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkOpensearch(ctx, \"example\", \u0026digitalocean.DatabaseLogsinkOpensearchArgs{\n\t\t\tClusterId:    postgres_example.ID(),\n\t\t\tName:         pulumi.String(\"opensearch-logs\"),\n\t\t\tEndpoint:     pulumi.String(\"https://opensearch.example.com:9200\"),\n\t\t\tIndexPrefix:  pulumi.String(\"db-logs\"),\n\t\t\tIndexDaysMax: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearch;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()\n            .name(\"example-postgres-cluster\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var example = new DatabaseLogsinkOpensearch(\"example\", DatabaseLogsinkOpensearchArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"opensearch-logs\")\n            .endpoint(\"https://opensearch.example.com:9200\")\n            .indexPrefix(\"db-logs\")\n            .indexDaysMax(7)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DatabaseLogsinkOpensearch\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: opensearch-logs\n      endpoint: https://opensearch.example.com:9200\n      indexPrefix: db-logs\n      indexDaysMax: 7\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-postgres-cluster\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### OpenSearch with authentication and CA certificate\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst example_secure = new digitalocean.DatabaseLogsinkOpensearch(\"example-secure\", {\n    clusterId: postgres_example.id,\n    name: \"opensearch-secure\",\n    endpoint: \"https://user:password@opensearch.example.com:9200\",\n    indexPrefix: \"secure-logs\",\n    indexDaysMax: 14,\n    caCert: std.file({\n        input: \"/path/to/ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n    timeoutSeconds: 30,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nexample_secure = digitalocean.DatabaseLogsinkOpensearch(\"example-secure\",\n    cluster_id=postgres_example[\"id\"],\n    name=\"opensearch-secure\",\n    endpoint=\"https://user:password@opensearch.example.com:9200\",\n    index_prefix=\"secure-logs\",\n    index_days_max=14,\n    ca_cert=std.file(input=\"/path/to/ca.pem\").result,\n    timeout_seconds=30)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_secure = new DigitalOcean.DatabaseLogsinkOpensearch(\"example-secure\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"opensearch-secure\",\n        Endpoint = \"https://user:password@opensearch.example.com:9200\",\n        IndexPrefix = \"secure-logs\",\n        IndexDaysMax = 14,\n        CaCert = Std.File.Invoke(new()\n        {\n            Input = \"/path/to/ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n        TimeoutSeconds = 30,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/path/to/ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkOpensearch(ctx, \"example-secure\", \u0026digitalocean.DatabaseLogsinkOpensearchArgs{\n\t\t\tClusterId:      pulumi.Any(postgres_example.Id),\n\t\t\tName:           pulumi.String(\"opensearch-secure\"),\n\t\t\tEndpoint:       pulumi.String(\"https://user:password@opensearch.example.com:9200\"),\n\t\t\tIndexPrefix:    pulumi.String(\"secure-logs\"),\n\t\t\tIndexDaysMax:   pulumi.Int(14),\n\t\t\tCaCert:         pulumi.String(invokeFile.Result),\n\t\t\tTimeoutSeconds: pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearch;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearchArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example_secure = new DatabaseLogsinkOpensearch(\"example-secure\", DatabaseLogsinkOpensearchArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"opensearch-secure\")\n            .endpoint(\"https://user:password@opensearch.example.com:9200\")\n            .indexPrefix(\"secure-logs\")\n            .indexDaysMax(14)\n            .caCert(StdFunctions.file(FileArgs.builder()\n                .input(\"/path/to/ca.pem\")\n                .build()).result())\n            .timeoutSeconds(30)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example-secure:\n    type: digitalocean:DatabaseLogsinkOpensearch\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: opensearch-secure\n      endpoint: https://user:password@opensearch.example.com:9200\n      indexPrefix: secure-logs\n      indexDaysMax: 14\n      caCert:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /path/to/ca.pem\n          return: result\n      timeoutSeconds: 30\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Elasticsearch endpoint configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst elasticsearch = new digitalocean.DatabaseLogsinkOpensearch(\"elasticsearch\", {\n    clusterId: postgres_example.id,\n    name: \"elasticsearch-logs\",\n    endpoint: \"https://elasticsearch.example.com:9243\",\n    indexPrefix: \"es-logs\",\n    indexDaysMax: 30,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nelasticsearch = digitalocean.DatabaseLogsinkOpensearch(\"elasticsearch\",\n    cluster_id=postgres_example[\"id\"],\n    name=\"elasticsearch-logs\",\n    endpoint=\"https://elasticsearch.example.com:9243\",\n    index_prefix=\"es-logs\",\n    index_days_max=30)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var elasticsearch = new DigitalOcean.DatabaseLogsinkOpensearch(\"elasticsearch\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"elasticsearch-logs\",\n        Endpoint = \"https://elasticsearch.example.com:9243\",\n        IndexPrefix = \"es-logs\",\n        IndexDaysMax = 30,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseLogsinkOpensearch(ctx, \"elasticsearch\", \u0026digitalocean.DatabaseLogsinkOpensearchArgs{\n\t\t\tClusterId:    pulumi.Any(postgres_example.Id),\n\t\t\tName:         pulumi.String(\"elasticsearch-logs\"),\n\t\t\tEndpoint:     pulumi.String(\"https://elasticsearch.example.com:9243\"),\n\t\t\tIndexPrefix:  pulumi.String(\"es-logs\"),\n\t\t\tIndexDaysMax: pulumi.Int(30),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearch;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var elasticsearch = new DatabaseLogsinkOpensearch(\"elasticsearch\", DatabaseLogsinkOpensearchArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"elasticsearch-logs\")\n            .endpoint(\"https://elasticsearch.example.com:9243\")\n            .indexPrefix(\"es-logs\")\n            .indexDaysMax(30)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  elasticsearch:\n    type: digitalocean:DatabaseLogsinkOpensearch\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: elasticsearch-logs\n      endpoint: https://elasticsearch.example.com:9243\n      indexPrefix: es-logs\n      indexDaysMax: 30\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### MySQL to OpenSearch configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst mysql_example = new digitalocean.DatabaseCluster(\"mysql-example\", {\n    name: \"example-mysql-cluster\",\n    engine: \"mysql\",\n    version: \"8\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\nconst mysql = new digitalocean.DatabaseLogsinkOpensearch(\"mysql\", {\n    clusterId: mysql_example.id,\n    name: \"mysql-logs\",\n    endpoint: \"https://opensearch.example.com:9200\",\n    indexPrefix: \"mysql-logs\",\n    indexDaysMax: 7,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nmysql_example = digitalocean.DatabaseCluster(\"mysql-example\",\n    name=\"example-mysql-cluster\",\n    engine=\"mysql\",\n    version=\"8\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\nmysql = digitalocean.DatabaseLogsinkOpensearch(\"mysql\",\n    cluster_id=mysql_example.id,\n    name=\"mysql-logs\",\n    endpoint=\"https://opensearch.example.com:9200\",\n    index_prefix=\"mysql-logs\",\n    index_days_max=7)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var mysql_example = new DigitalOcean.DatabaseCluster(\"mysql-example\", new()\n    {\n        Name = \"example-mysql-cluster\",\n        Engine = \"mysql\",\n        Version = \"8\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n    var mysql = new DigitalOcean.DatabaseLogsinkOpensearch(\"mysql\", new()\n    {\n        ClusterId = mysql_example.Id,\n        Name = \"mysql-logs\",\n        Endpoint = \"https://opensearch.example.com:9200\",\n        IndexPrefix = \"mysql-logs\",\n        IndexDaysMax = 7,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tmysql_example, err := digitalocean.NewDatabaseCluster(ctx, \"mysql-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-mysql-cluster\"),\n\t\t\tEngine:    pulumi.String(\"mysql\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkOpensearch(ctx, \"mysql\", \u0026digitalocean.DatabaseLogsinkOpensearchArgs{\n\t\t\tClusterId:    mysql_example.ID(),\n\t\t\tName:         pulumi.String(\"mysql-logs\"),\n\t\t\tEndpoint:     pulumi.String(\"https://opensearch.example.com:9200\"),\n\t\t\tIndexPrefix:  pulumi.String(\"mysql-logs\"),\n\t\t\tIndexDaysMax: pulumi.Int(7),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearch;\nimport com.pulumi.digitalocean.DatabaseLogsinkOpensearchArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var mysql_example = new DatabaseCluster(\"mysql-example\", DatabaseClusterArgs.builder()\n            .name(\"example-mysql-cluster\")\n            .engine(\"mysql\")\n            .version(\"8\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var mysql = new DatabaseLogsinkOpensearch(\"mysql\", DatabaseLogsinkOpensearchArgs.builder()\n            .clusterId(mysql_example.id())\n            .name(\"mysql-logs\")\n            .endpoint(\"https://opensearch.example.com:9200\")\n            .indexPrefix(\"mysql-logs\")\n            .indexDaysMax(7)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  mysql:\n    type: digitalocean:DatabaseLogsinkOpensearch\n    properties:\n      clusterId: ${[\"mysql-example\"].id}\n      name: mysql-logs\n      endpoint: https://opensearch.example.com:9200\n      indexPrefix: mysql-logs\n      indexDaysMax: 7\n  mysql-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-mysql-cluster\n      engine: mysql\n      version: '8'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Important Notes\n\n### Elasticsearch Compatibility\nThis resource works with both OpenSearch and Elasticsearch endpoints due to their API compatibility. Use the same resource type regardless of whether you're connecting to OpenSearch or Elasticsearch.\n\n### Managed OpenSearch with Trusted Sources\nWhen forwarding logs to a DigitalOcean Managed OpenSearch cluster with trusted sources enabled, you must manually allow-list the IP addresses of your database cluster nodes.\n\n### Authentication\nInclude authentication credentials directly in the endpoint URL using the format `https://username:password@host:port`. Alternatively, configure authentication on your OpenSearch/Elasticsearch cluster to accept connections from your database cluster's IP addresses.\n\n## Import\n\nDatabase logsink OpenSearch resources can be imported using the composite ID format `cluster_id,logsink_id`. For example:\n\n```sh\n$ pulumi import digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,f38db7c8-1f31-4ce6-a2bc-475a116cca97\n```\n\n**Note**: The cluster ID and logsink ID must be separated by a comma.\n\n",
+            "properties": {
+                "caCert": {
+                    "type": "string",
+                    "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.\n",
+                    "secret": true
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "UUID of the source database cluster that will forward logs.\n"
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.\n"
+                },
+                "indexDaysMax": {
+                    "type": "integer",
+                    "description": "Maximum number of days to retain indices. Must be 1 or greater.\n"
+                },
+                "indexPrefix": {
+                    "type": "string",
+                    "description": "Prefix for the indices where logs will be stored.\n"
+                },
+                "logsinkId": {
+                    "type": "string",
+                    "description": "The unique identifier for the logsink as returned by the DigitalOcean API.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n"
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "Request timeout for log deliveries in seconds. Must be 1 or greater.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "endpoint",
+                "indexPrefix",
+                "logsinkId",
+                "name"
+            ],
+            "inputProperties": {
+                "caCert": {
+                    "type": "string",
+                    "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.\n",
+                    "secret": true
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "UUID of the source database cluster that will forward logs.\n",
+                    "willReplaceOnChanges": true
+                },
+                "endpoint": {
+                    "type": "string",
+                    "description": "HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.\n"
+                },
+                "indexDaysMax": {
+                    "type": "integer",
+                    "description": "Maximum number of days to retain indices. Must be 1 or greater.\n"
+                },
+                "indexPrefix": {
+                    "type": "string",
+                    "description": "Prefix for the indices where logs will be stored.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "timeoutSeconds": {
+                    "type": "integer",
+                    "description": "Request timeout for log deliveries in seconds. Must be 1 or greater.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "endpoint",
+                "indexPrefix"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseLogsinkOpensearch resources.\n",
+                "properties": {
+                    "caCert": {
+                        "type": "string",
+                        "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.\n",
+                        "secret": true
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "UUID of the source database cluster that will forward logs.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "endpoint": {
+                        "type": "string",
+                        "description": "HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.\n"
+                    },
+                    "indexDaysMax": {
+                        "type": "integer",
+                        "description": "Maximum number of days to retain indices. Must be 1 or greater.\n"
+                    },
+                    "indexPrefix": {
+                        "type": "string",
+                        "description": "Prefix for the indices where logs will be stored.\n"
+                    },
+                    "logsinkId": {
+                        "type": "string",
+                        "description": "The unique identifier for the logsink as returned by the DigitalOcean API.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "timeoutSeconds": {
+                        "type": "integer",
+                        "description": "Request timeout for log deliveries in seconds. Must be 1 or greater.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog": {
+            "description": "Provides a DigitalOcean database logsink resource allowing you to forward logs from a managed database cluster to an external rsyslog server.\n\nThis resource supports the following DigitalOcean managed database engines:\n\n* PostgreSQL\n* MySQL\n* Kafka\n* Valkey\n\n**Note**: MongoDB databases use a different log forwarding mechanism and require Datadog logsinks (not currently available in this provider).\n\n## Example Usage\n\n### Basic rsyslog configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst postgres_example = new digitalocean.DatabaseCluster(\"postgres-example\", {\n    name: \"example-postgres-cluster\",\n    engine: \"pg\",\n    version: \"15\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\nconst example = new digitalocean.DatabaseLogsinkRsyslog(\"example\", {\n    clusterId: postgres_example.id,\n    name: \"rsyslog-prod\",\n    server: \"192.0.2.10\",\n    port: 514,\n    format: \"rfc5424\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npostgres_example = digitalocean.DatabaseCluster(\"postgres-example\",\n    name=\"example-postgres-cluster\",\n    engine=\"pg\",\n    version=\"15\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\nexample = digitalocean.DatabaseLogsinkRsyslog(\"example\",\n    cluster_id=postgres_example.id,\n    name=\"rsyslog-prod\",\n    server=\"192.0.2.10\",\n    port=514,\n    format=\"rfc5424\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var postgres_example = new DigitalOcean.DatabaseCluster(\"postgres-example\", new()\n    {\n        Name = \"example-postgres-cluster\",\n        Engine = \"pg\",\n        Version = \"15\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n    var example = new DigitalOcean.DatabaseLogsinkRsyslog(\"example\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"rsyslog-prod\",\n        Server = \"192.0.2.10\",\n        Port = 514,\n        Format = \"rfc5424\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tpostgres_example, err := digitalocean.NewDatabaseCluster(ctx, \"postgres-example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-postgres-cluster\"),\n\t\t\tEngine:    pulumi.String(\"pg\"),\n\t\t\tVersion:   pulumi.String(\"15\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkRsyslog(ctx, \"example\", \u0026digitalocean.DatabaseLogsinkRsyslogArgs{\n\t\t\tClusterId: postgres_example.ID(),\n\t\t\tName:      pulumi.String(\"rsyslog-prod\"),\n\t\t\tServer:    pulumi.String(\"192.0.2.10\"),\n\t\t\tPort:      pulumi.Int(514),\n\t\t\tFormat:    pulumi.String(\"rfc5424\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslog;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var postgres_example = new DatabaseCluster(\"postgres-example\", DatabaseClusterArgs.builder()\n            .name(\"example-postgres-cluster\")\n            .engine(\"pg\")\n            .version(\"15\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var example = new DatabaseLogsinkRsyslog(\"example\", DatabaseLogsinkRsyslogArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"rsyslog-prod\")\n            .server(\"192.0.2.10\")\n            .port(514)\n            .format(\"rfc5424\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DatabaseLogsinkRsyslog\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: rsyslog-prod\n      server: 192.0.2.10\n      port: 514\n      format: rfc5424\n  postgres-example:\n    type: digitalocean:DatabaseCluster\n    properties:\n      name: example-postgres-cluster\n      engine: pg\n      version: '15'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### TLS-enabled rsyslog configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst example_tls = new digitalocean.DatabaseLogsinkRsyslog(\"example-tls\", {\n    clusterId: postgres_example.id,\n    name: \"rsyslog-secure\",\n    server: \"logs.example.com\",\n    port: 6514,\n    tls: true,\n    format: \"rfc5424\",\n    caCert: std.file({\n        input: \"/path/to/ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nexample_tls = digitalocean.DatabaseLogsinkRsyslog(\"example-tls\",\n    cluster_id=postgres_example[\"id\"],\n    name=\"rsyslog-secure\",\n    server=\"logs.example.com\",\n    port=6514,\n    tls=True,\n    format=\"rfc5424\",\n    ca_cert=std.file(input=\"/path/to/ca.pem\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_tls = new DigitalOcean.DatabaseLogsinkRsyslog(\"example-tls\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"rsyslog-secure\",\n        Server = \"logs.example.com\",\n        Port = 6514,\n        Tls = true,\n        Format = \"rfc5424\",\n        CaCert = Std.File.Invoke(new()\n        {\n            Input = \"/path/to/ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/path/to/ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkRsyslog(ctx, \"example-tls\", \u0026digitalocean.DatabaseLogsinkRsyslogArgs{\n\t\t\tClusterId: pulumi.Any(postgres_example.Id),\n\t\t\tName:      pulumi.String(\"rsyslog-secure\"),\n\t\t\tServer:    pulumi.String(\"logs.example.com\"),\n\t\t\tPort:      pulumi.Int(6514),\n\t\t\tTls:       pulumi.Bool(true),\n\t\t\tFormat:    pulumi.String(\"rfc5424\"),\n\t\t\tCaCert:    pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslog;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example_tls = new DatabaseLogsinkRsyslog(\"example-tls\", DatabaseLogsinkRsyslogArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"rsyslog-secure\")\n            .server(\"logs.example.com\")\n            .port(6514)\n            .tls(true)\n            .format(\"rfc5424\")\n            .caCert(StdFunctions.file(FileArgs.builder()\n                .input(\"/path/to/ca.pem\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example-tls:\n    type: digitalocean:DatabaseLogsinkRsyslog\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: rsyslog-secure\n      server: logs.example.com\n      port: 6514\n      tls: true\n      format: rfc5424\n      caCert:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /path/to/ca.pem\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### mTLS (mutual TLS) configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst example_mtls = new digitalocean.DatabaseLogsinkRsyslog(\"example-mtls\", {\n    clusterId: postgres_example.id,\n    name: \"rsyslog-mtls\",\n    server: \"secure-logs.example.com\",\n    port: 6514,\n    tls: true,\n    format: \"rfc5424\",\n    caCert: std.file({\n        input: \"/path/to/ca.pem\",\n    }).then(invoke =\u003e invoke.result),\n    clientCert: std.file({\n        input: \"/path/to/client.crt\",\n    }).then(invoke =\u003e invoke.result),\n    clientKey: std.file({\n        input: \"/path/to/client.key\",\n    }).then(invoke =\u003e invoke.result),\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nexample_mtls = digitalocean.DatabaseLogsinkRsyslog(\"example-mtls\",\n    cluster_id=postgres_example[\"id\"],\n    name=\"rsyslog-mtls\",\n    server=\"secure-logs.example.com\",\n    port=6514,\n    tls=True,\n    format=\"rfc5424\",\n    ca_cert=std.file(input=\"/path/to/ca.pem\").result,\n    client_cert=std.file(input=\"/path/to/client.crt\").result,\n    client_key=std.file(input=\"/path/to/client.key\").result)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_mtls = new DigitalOcean.DatabaseLogsinkRsyslog(\"example-mtls\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"rsyslog-mtls\",\n        Server = \"secure-logs.example.com\",\n        Port = 6514,\n        Tls = true,\n        Format = \"rfc5424\",\n        CaCert = Std.File.Invoke(new()\n        {\n            Input = \"/path/to/ca.pem\",\n        }).Apply(invoke =\u003e invoke.Result),\n        ClientCert = Std.File.Invoke(new()\n        {\n            Input = \"/path/to/client.crt\",\n        }).Apply(invoke =\u003e invoke.Result),\n        ClientKey = Std.File.Invoke(new()\n        {\n            Input = \"/path/to/client.key\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/path/to/ca.pem\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile1, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/path/to/client.crt\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tinvokeFile2, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/path/to/client.key\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseLogsinkRsyslog(ctx, \"example-mtls\", \u0026digitalocean.DatabaseLogsinkRsyslogArgs{\n\t\t\tClusterId:  pulumi.Any(postgres_example.Id),\n\t\t\tName:       pulumi.String(\"rsyslog-mtls\"),\n\t\t\tServer:     pulumi.String(\"secure-logs.example.com\"),\n\t\t\tPort:       pulumi.Int(6514),\n\t\t\tTls:        pulumi.Bool(true),\n\t\t\tFormat:     pulumi.String(\"rfc5424\"),\n\t\t\tCaCert:     pulumi.String(invokeFile.Result),\n\t\t\tClientCert: pulumi.String(invokeFile1.Result),\n\t\t\tClientKey:  pulumi.String(invokeFile2.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslog;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example_mtls = new DatabaseLogsinkRsyslog(\"example-mtls\", DatabaseLogsinkRsyslogArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"rsyslog-mtls\")\n            .server(\"secure-logs.example.com\")\n            .port(6514)\n            .tls(true)\n            .format(\"rfc5424\")\n            .caCert(StdFunctions.file(FileArgs.builder()\n                .input(\"/path/to/ca.pem\")\n                .build()).result())\n            .clientCert(StdFunctions.file(FileArgs.builder()\n                .input(\"/path/to/client.crt\")\n                .build()).result())\n            .clientKey(StdFunctions.file(FileArgs.builder()\n                .input(\"/path/to/client.key\")\n                .build()).result())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example-mtls:\n    type: digitalocean:DatabaseLogsinkRsyslog\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: rsyslog-mtls\n      server: secure-logs.example.com\n      port: 6514\n      tls: true\n      format: rfc5424\n      caCert:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /path/to/ca.pem\n          return: result\n      clientCert:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /path/to/client.crt\n          return: result\n      clientKey:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /path/to/client.key\n          return: result\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Custom format configuration\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example_custom = new digitalocean.DatabaseLogsinkRsyslog(\"example-custom\", {\n    clusterId: postgres_example.id,\n    name: \"rsyslog-custom\",\n    server: \"192.0.2.10\",\n    port: 514,\n    format: \"custom\",\n    logline: \"\u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\",\n    structuredData: \"[example@41058 iut=\\\"3\\\"]\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_custom = digitalocean.DatabaseLogsinkRsyslog(\"example-custom\",\n    cluster_id=postgres_example[\"id\"],\n    name=\"rsyslog-custom\",\n    server=\"192.0.2.10\",\n    port=514,\n    format=\"custom\",\n    logline=\"\u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\",\n    structured_data=\"[example@41058 iut=\\\"3\\\"]\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example_custom = new DigitalOcean.DatabaseLogsinkRsyslog(\"example-custom\", new()\n    {\n        ClusterId = postgres_example.Id,\n        Name = \"rsyslog-custom\",\n        Server = \"192.0.2.10\",\n        Port = 514,\n        Format = \"custom\",\n        Logline = \"\u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\",\n        StructuredData = \"[example@41058 iut=\\\"3\\\"]\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDatabaseLogsinkRsyslog(ctx, \"example-custom\", \u0026digitalocean.DatabaseLogsinkRsyslogArgs{\n\t\t\tClusterId:      pulumi.Any(postgres_example.Id),\n\t\t\tName:           pulumi.String(\"rsyslog-custom\"),\n\t\t\tServer:         pulumi.String(\"192.0.2.10\"),\n\t\t\tPort:           pulumi.Int(514),\n\t\t\tFormat:         pulumi.String(\"custom\"),\n\t\t\tLogline:        pulumi.String(\"\u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\"),\n\t\t\tStructuredData: pulumi.String(\"[example@41058 iut=\\\"3\\\"]\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslog;\nimport com.pulumi.digitalocean.DatabaseLogsinkRsyslogArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example_custom = new DatabaseLogsinkRsyslog(\"example-custom\", DatabaseLogsinkRsyslogArgs.builder()\n            .clusterId(postgres_example.id())\n            .name(\"rsyslog-custom\")\n            .server(\"192.0.2.10\")\n            .port(514)\n            .format(\"custom\")\n            .logline(\"\u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\")\n            .structuredData(\"[example@41058 iut=\\\"3\\\"]\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example-custom:\n    type: digitalocean:DatabaseLogsinkRsyslog\n    properties:\n      clusterId: ${[\"postgres-example\"].id}\n      name: rsyslog-custom\n      server: 192.0.2.10\n      port: 514\n      format: custom\n      logline: \u003c%pri%\u003e%timestamp:::date-rfc3339% %HOSTNAME% %app-name% %msg%\n      structuredData: '[example@41058 iut=\"3\"]'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDatabase logsink rsyslog resources can be imported using the composite ID format `cluster_id,logsink_id`. For example:\n\n```sh\n$ pulumi import digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,f38db7c8-1f31-4ce6-a2bc-475a116cca97\n```\n\n**Note**: The cluster ID and logsink ID must be separated by a comma.\n\n",
+            "properties": {
+                "caCert": {
+                    "type": "string",
+                    "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function.\n",
+                    "secret": true
+                },
+                "clientCert": {
+                    "type": "string",
+                    "description": "Client certificate for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
+                "clientKey": {
+                    "type": "string",
+                    "description": "Client private key for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. This field is marked as sensitive.\n",
+                    "secret": true
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "UUID of the source database cluster that will forward logs.\n"
+                },
+                "format": {
+                    "type": "string",
+                    "description": "Log format to use. Must be one of \u003cspan pulumi-lang-nodejs=\"`rfc5424`\" pulumi-lang-dotnet=\"`Rfc5424`\" pulumi-lang-go=\"`rfc5424`\" pulumi-lang-python=\"`rfc5424`\" pulumi-lang-yaml=\"`rfc5424`\" pulumi-lang-java=\"`rfc5424`\"\u003e`rfc5424`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`rfc3164`\" pulumi-lang-dotnet=\"`Rfc3164`\" pulumi-lang-go=\"`rfc3164`\" pulumi-lang-python=\"`rfc3164`\" pulumi-lang-yaml=\"`rfc3164`\" pulumi-lang-java=\"`rfc3164`\"\u003e`rfc3164`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e.\n"
+                },
+                "logline": {
+                    "type": "string",
+                    "description": "Custom logline template. **Required** when \u003cspan pulumi-lang-nodejs=\"`format`\" pulumi-lang-dotnet=\"`Format`\" pulumi-lang-go=\"`format`\" pulumi-lang-python=\"`format`\" pulumi-lang-yaml=\"`format`\" pulumi-lang-java=\"`format`\"\u003e`format`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.\n"
+                },
+                "logsinkId": {
+                    "type": "string",
+                    "description": "The unique identifier for the logsink as returned by the DigitalOcean API.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n"
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number for the rsyslog server. Must be between 1 and 65535.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Hostname or IP address of the rsyslog server.\n"
+                },
+                "structuredData": {
+                    "type": "string",
+                    "description": "Content of the structured data block for RFC5424 messages.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "Enable TLS encryption for the rsyslog connection. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.\n"
+                }
+            },
+            "required": [
+                "clusterId",
+                "logsinkId",
+                "name",
+                "port",
+                "server"
+            ],
+            "inputProperties": {
+                "caCert": {
+                    "type": "string",
+                    "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function.\n",
+                    "secret": true
+                },
+                "clientCert": {
+                    "type": "string",
+                    "description": "Client certificate for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                },
+                "clientKey": {
+                    "type": "string",
+                    "description": "Client private key for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. This field is marked as sensitive.\n",
+                    "secret": true
+                },
+                "clusterId": {
+                    "type": "string",
+                    "description": "UUID of the source database cluster that will forward logs.\n",
+                    "willReplaceOnChanges": true
+                },
+                "format": {
+                    "type": "string",
+                    "description": "Log format to use. Must be one of \u003cspan pulumi-lang-nodejs=\"`rfc5424`\" pulumi-lang-dotnet=\"`Rfc5424`\" pulumi-lang-go=\"`rfc5424`\" pulumi-lang-python=\"`rfc5424`\" pulumi-lang-yaml=\"`rfc5424`\" pulumi-lang-java=\"`rfc5424`\"\u003e`rfc5424`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`rfc3164`\" pulumi-lang-dotnet=\"`Rfc3164`\" pulumi-lang-go=\"`rfc3164`\" pulumi-lang-python=\"`rfc3164`\" pulumi-lang-yaml=\"`rfc3164`\" pulumi-lang-java=\"`rfc3164`\"\u003e`rfc3164`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e.\n"
+                },
+                "logline": {
+                    "type": "string",
+                    "description": "Custom logline template. **Required** when \u003cspan pulumi-lang-nodejs=\"`format`\" pulumi-lang-dotnet=\"`Format`\" pulumi-lang-go=\"`format`\" pulumi-lang-python=\"`format`\" pulumi-lang-yaml=\"`format`\" pulumi-lang-java=\"`format`\"\u003e`format`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "port": {
+                    "type": "integer",
+                    "description": "Port number for the rsyslog server. Must be between 1 and 65535.\n"
+                },
+                "server": {
+                    "type": "string",
+                    "description": "Hostname or IP address of the rsyslog server.\n"
+                },
+                "structuredData": {
+                    "type": "string",
+                    "description": "Content of the structured data block for RFC5424 messages.\n"
+                },
+                "tls": {
+                    "type": "boolean",
+                    "description": "Enable TLS encryption for the rsyslog connection. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.\n"
+                }
+            },
+            "requiredInputs": [
+                "clusterId",
+                "port",
+                "server"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DatabaseLogsinkRsyslog resources.\n",
+                "properties": {
+                    "caCert": {
+                        "type": "string",
+                        "description": "CA certificate for TLS verification in PEM format. Can be specified using `file()` function.\n",
+                        "secret": true
+                    },
+                    "clientCert": {
+                        "type": "string",
+                        "description": "Client certificate for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e.\n"
+                    },
+                    "clientKey": {
+                        "type": "string",
+                        "description": "Client private key for mutual TLS authentication in PEM format. **Note**: Requires \u003cspan pulumi-lang-nodejs=\"`tls`\" pulumi-lang-dotnet=\"`Tls`\" pulumi-lang-go=\"`tls`\" pulumi-lang-python=\"`tls`\" pulumi-lang-yaml=\"`tls`\" pulumi-lang-java=\"`tls`\"\u003e`tls`\u003c/span\u003e to be \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e. This field is marked as sensitive.\n",
+                        "secret": true
+                    },
+                    "clusterId": {
+                        "type": "string",
+                        "description": "UUID of the source database cluster that will forward logs.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "format": {
+                        "type": "string",
+                        "description": "Log format to use. Must be one of \u003cspan pulumi-lang-nodejs=\"`rfc5424`\" pulumi-lang-dotnet=\"`Rfc5424`\" pulumi-lang-go=\"`rfc5424`\" pulumi-lang-python=\"`rfc5424`\" pulumi-lang-yaml=\"`rfc5424`\" pulumi-lang-java=\"`rfc5424`\"\u003e`rfc5424`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`rfc3164`\" pulumi-lang-dotnet=\"`Rfc3164`\" pulumi-lang-go=\"`rfc3164`\" pulumi-lang-python=\"`rfc3164`\" pulumi-lang-yaml=\"`rfc3164`\" pulumi-lang-java=\"`rfc3164`\"\u003e`rfc3164`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e.\n"
+                    },
+                    "logline": {
+                        "type": "string",
+                        "description": "Custom logline template. **Required** when \u003cspan pulumi-lang-nodejs=\"`format`\" pulumi-lang-dotnet=\"`Format`\" pulumi-lang-go=\"`format`\" pulumi-lang-python=\"`format`\" pulumi-lang-yaml=\"`format`\" pulumi-lang-java=\"`format`\"\u003e`format`\u003c/span\u003e is set to \u003cspan pulumi-lang-nodejs=\"`custom`\" pulumi-lang-dotnet=\"`Custom`\" pulumi-lang-go=\"`custom`\" pulumi-lang-python=\"`custom`\" pulumi-lang-yaml=\"`custom`\" pulumi-lang-java=\"`custom`\"\u003e`custom`\u003c/span\u003e. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.\n"
+                    },
+                    "logsinkId": {
+                        "type": "string",
+                        "description": "The unique identifier for the logsink as returned by the DigitalOcean API.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "port": {
+                        "type": "integer",
+                        "description": "Port number for the rsyslog server. Must be between 1 and 65535.\n"
+                    },
+                    "server": {
+                        "type": "string",
+                        "description": "Hostname or IP address of the rsyslog server.\n"
+                    },
+                    "structuredData": {
+                        "type": "string",
+                        "description": "Content of the structured data block for RFC5424 messages.\n"
+                    },
+                    "tls": {
+                        "type": "boolean",
+                        "description": "Enable TLS encryption for the rsyslog connection. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.\n"
                     }
                 },
                 "type": "object"
@@ -25106,6 +25680,13 @@
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                     "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the \u003cspan pulumi-lang-nodejs=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-dotnet=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-go=\"`KubernetesNodePool`\" pulumi-lang-python=\"`KubernetesNodePool`\" pulumi-lang-yaml=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-java=\"`digitalocean.KubernetesNodePool`\"\u003e`digitalocean.KubernetesNodePool`\u003c/span\u003e resource. The following arguments may be specified:\n"
                 },
+                "nvidiaGpuDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
+                    "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
+                },
+                "rdmaSharedDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
+                },
                 "region": {
                     "type": "string",
                     "description": "The slug identifier for the region where the Kubernetes cluster will be created.\n"
@@ -25162,6 +25743,8 @@
                 "maintenancePolicy",
                 "name",
                 "nodePool",
+                "nvidiaGpuDevicePlugin",
+                "rdmaSharedDevicePlugin",
                 "region",
                 "routingAgent",
                 "serviceSubnet",
@@ -25223,6 +25806,13 @@
                 "nodePool": {
                     "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                     "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the \u003cspan pulumi-lang-nodejs=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-dotnet=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-go=\"`KubernetesNodePool`\" pulumi-lang-python=\"`KubernetesNodePool`\" pulumi-lang-yaml=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-java=\"`digitalocean.KubernetesNodePool`\"\u003e`digitalocean.KubernetesNodePool`\u003c/span\u003e resource. The following arguments may be specified:\n"
+                },
+                "nvidiaGpuDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
+                    "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
+                },
+                "rdmaSharedDevicePlugin": {
+                    "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
                 },
                 "region": {
                     "type": "string",
@@ -25355,6 +25945,13 @@
                     "nodePool": {
                         "$ref": "#/types/digitalocean:index/KubernetesClusterNodePool:KubernetesClusterNodePool",
                         "description": "A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the \u003cspan pulumi-lang-nodejs=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-dotnet=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-go=\"`KubernetesNodePool`\" pulumi-lang-python=\"`KubernetesNodePool`\" pulumi-lang-yaml=\"`digitalocean.KubernetesNodePool`\" pulumi-lang-java=\"`digitalocean.KubernetesNodePool`\"\u003e`digitalocean.KubernetesNodePool`\u003c/span\u003e resource. The following arguments may be specified:\n"
+                    },
+                    "nvidiaGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterNvidiaGpuDevicePlugin:KubernetesClusterNvidiaGpuDevicePlugin",
+                        "description": "Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.\n"
+                    },
+                    "rdmaSharedDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterRdmaSharedDevicePlugin:KubernetesClusterRdmaSharedDevicePlugin"
                     },
                     "region": {
                         "type": "string",
@@ -26234,6 +26831,293 @@
                     "window": {
                         "type": "string",
                         "description": "The time frame of the alert. Either \u003cspan pulumi-lang-nodejs=\"`5m`\" pulumi-lang-dotnet=\"`5m`\" pulumi-lang-go=\"`5m`\" pulumi-lang-python=\"`5m`\" pulumi-lang-yaml=\"`5m`\" pulumi-lang-java=\"`5m`\"\u003e`5m`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`10m`\" pulumi-lang-dotnet=\"`10m`\" pulumi-lang-go=\"`10m`\" pulumi-lang-python=\"`10m`\" pulumi-lang-yaml=\"`10m`\" pulumi-lang-java=\"`10m`\"\u003e`10m`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`30m`\" pulumi-lang-dotnet=\"`30m`\" pulumi-lang-go=\"`30m`\" pulumi-lang-python=\"`30m`\" pulumi-lang-yaml=\"`30m`\" pulumi-lang-java=\"`30m`\"\u003e`30m`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`1h`\" pulumi-lang-dotnet=\"`1h`\" pulumi-lang-go=\"`1h`\" pulumi-lang-python=\"`1h`\" pulumi-lang-yaml=\"`1h`\" pulumi-lang-java=\"`1h`\"\u003e`1h`\u003c/span\u003e.\n"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/nfs:Nfs": {
+            "description": "Provides a DigitalOcean NFS share which can be mounted to Droplets to provide shared storage.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst exampleNfs = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: example.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nexample_nfs = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=example.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Vpc(\"example\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var exampleNfs = new DigitalOcean.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = example.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t\tName:   pulumi.String(\"example-nfs\"),\n\t\t\tSize:   pulumi.Int(50),\n\t\t\tVpcId:  example.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var exampleNfs = new Nfs(\"exampleNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(example.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  exampleNfs:\n    type: digitalocean:Nfs\n    name: example\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${example.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS shares can be imported using the `share id` and the `region` , e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1\n```\n\n",
+            "properties": {
+                "host": {
+                    "type": "string",
+                    "description": "The host IP of the NFS server accessible from the associated VPC.\n"
+                },
+                "mountPath": {
+                    "type": "string",
+                    "description": "The mount path for accessing the NFS share.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS share. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters. The name must begin with a letter.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the NFS share will be created.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The size of the NFS share in GiB. Minimum size is 50 GiB.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the NFS share.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the VPC where the NFS share will be created.\n"
+                },
+                "vpcIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                }
+            },
+            "required": [
+                "host",
+                "mountPath",
+                "name",
+                "region",
+                "size",
+                "status",
+                "vpcId",
+                "vpcIds"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS share. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters. The name must begin with a letter.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the NFS share will be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The size of the NFS share in GiB. Minimum size is 50 GiB.\n"
+                },
+                "tags": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the VPC where the NFS share will be created.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "size",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Nfs resources.\n",
+                "properties": {
+                    "host": {
+                        "type": "string",
+                        "description": "The host IP of the NFS server accessible from the associated VPC.\n"
+                    },
+                    "mountPath": {
+                        "type": "string",
+                        "description": "The mount path for accessing the NFS share.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the NFS share. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters. The name must begin with a letter.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the NFS share will be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The size of the NFS share in GiB. Minimum size is 50 GiB.\n"
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the NFS share.\n"
+                    },
+                    "tags": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The ID of the VPC where the NFS share will be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "vpcIds": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/nfsAttachment:NfsAttachment": {
+            "description": "Manages attaching a NFS share to a vpc.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Vpc(\"foobar\", {\n    name: \"example-vpc\",\n    region: \"atl1\",\n});\nconst foobarNfs = new digitalocean.Nfs(\"foobar\", {\n    region: \"atl1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: foobar.id,\n});\nconst foobarNfsAttachment = new digitalocean.NfsAttachment(\"foobar\", {\n    shareId: foobarNfs.id,\n    vpcId: foobar.id,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Vpc(\"foobar\",\n    name=\"example-vpc\",\n    region=\"atl1\")\nfoobar_nfs = digitalocean.Nfs(\"foobar\",\n    region=\"atl1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=foobar.id)\nfoobar_nfs_attachment = digitalocean.NfsAttachment(\"foobar\",\n    share_id=foobar_nfs.id,\n    vpc_id=foobar.id)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Vpc(\"foobar\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"atl1\",\n    });\n\n    var foobarNfs = new DigitalOcean.Nfs(\"foobar\", new()\n    {\n        Region = \"atl1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = foobar.Id,\n    });\n\n    var foobarNfsAttachment = new DigitalOcean.NfsAttachment(\"foobar\", new()\n    {\n        ShareId = foobarNfs.Id,\n        VpcId = foobar.Id,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewVpc(ctx, \"foobar\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobarNfs, err := digitalocean.NewNfs(ctx, \"foobar\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion: pulumi.String(\"atl1\"),\n\t\t\tName:   pulumi.String(\"example-nfs\"),\n\t\t\tSize:   pulumi.Int(50),\n\t\t\tVpcId:  foobar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"foobar\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: foobarNfs.ID(),\n\t\t\tVpcId:   foobar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Vpc(\"foobar\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"atl1\")\n            .build());\n\n        var foobarNfs = new Nfs(\"foobarNfs\", NfsArgs.builder()\n            .region(\"atl1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(foobar.id())\n            .build());\n\n        var foobarNfsAttachment = new NfsAttachment(\"foobarNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(foobarNfs.id())\n            .vpcId(foobar.id())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: atl1\n  foobarNfs:\n    type: digitalocean:Nfs\n    name: foobar\n    properties:\n      region: atl1\n      name: example-nfs\n      size: 50\n      vpcId: ${foobar.id}\n  foobarNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: foobar\n    properties:\n      shareId: ${foobarNfs.id}\n      vpcId: ${foobar.id}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS attachments can be imported using the `share_id` and `vpc_id` separated by a comma, e.g.  \n\n```sh\n$ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "region": {
+                    "type": "string"
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share to attach.\n"
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the vpc to attach the NFS share to.\n"
+                }
+            },
+            "required": [
+                "region",
+                "shareId",
+                "vpcId"
+            ],
+            "inputProperties": {
+                "region": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share to attach.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vpcId": {
+                    "type": "string",
+                    "description": "The ID of the vpc to attach the NFS share to.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "shareId",
+                "vpcId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NfsAttachment resources.\n",
+                "properties": {
+                    "region": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "The ID of the NFS share to attach.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "vpcId": {
+                        "type": "string",
+                        "description": "The ID of the vpc to attach the NFS share to.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/nfsSnapshot:NfsSnapshot": {
+            "description": "Provides a DigitalOcean NFS snapshot which can be used to create new NFS shares.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst foobar = new digitalocean.Vpc(\"foobar\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst foobarNfs = new digitalocean.Nfs(\"foobar\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: foobar.id,\n});\nconst foobarNfsSnapshot = new digitalocean.NfsSnapshot(\"foobar\", {\n    name: \"example-snapshot\",\n    shareId: foobarNfs.id,\n    region: \"nyc1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfoobar = digitalocean.Vpc(\"foobar\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nfoobar_nfs = digitalocean.Nfs(\"foobar\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=foobar.id)\nfoobar_nfs_snapshot = digitalocean.NfsSnapshot(\"foobar\",\n    name=\"example-snapshot\",\n    share_id=foobar_nfs.id,\n    region=\"nyc1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = new DigitalOcean.Vpc(\"foobar\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var foobarNfs = new DigitalOcean.Nfs(\"foobar\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = foobar.Id,\n    });\n\n    var foobarNfsSnapshot = new DigitalOcean.NfsSnapshot(\"foobar\", new()\n    {\n        Name = \"example-snapshot\",\n        ShareId = foobarNfs.Id,\n        Region = \"nyc1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tfoobar, err := digitalocean.NewVpc(ctx, \"foobar\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tfoobarNfs, err := digitalocean.NewNfs(ctx, \"foobar\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t\tName:   pulumi.String(\"example-nfs\"),\n\t\t\tSize:   pulumi.Int(50),\n\t\t\tVpcId:  foobar.ID(),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfsSnapshot(ctx, \"foobar\", \u0026digitalocean.NfsSnapshotArgs{\n\t\t\tName:    pulumi.String(\"example-snapshot\"),\n\t\t\tShareId: foobarNfs.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsSnapshot;\nimport com.pulumi.digitalocean.NfsSnapshotArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var foobar = new Vpc(\"foobar\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var foobarNfs = new Nfs(\"foobarNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(foobar.id())\n            .build());\n\n        var foobarNfsSnapshot = new NfsSnapshot(\"foobarNfsSnapshot\", NfsSnapshotArgs.builder()\n            .name(\"example-snapshot\")\n            .shareId(foobarNfs.id())\n            .region(\"nyc1\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  foobar:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  foobarNfs:\n    type: digitalocean:Nfs\n    name: foobar\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${foobar.id}\n  foobarNfsSnapshot:\n    type: digitalocean:NfsSnapshot\n    name: foobar\n    properties:\n      name: example-snapshot\n      shareId: ${foobarNfs.id}\n      region: nyc1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS snapshots can be imported using the snapshot ID, e.g.  \n\n```sh\n$ pulumi import digitalocean:index/nfsSnapshot:NfsSnapshot foobar 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the snapshot was created.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the NFS snapshot will be created.\n"
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share to snapshot.\n"
+                },
+                "size": {
+                    "type": "integer",
+                    "description": "The size of the snapshot in GiB.\n"
+                },
+                "status": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "createdAt",
+                "name",
+                "region",
+                "shareId",
+                "size",
+                "status"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "description": "A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters.\n",
+                    "willReplaceOnChanges": true
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the NFS snapshot will be created.\n",
+                    "willReplaceOnChanges": true
+                },
+                "shareId": {
+                    "type": "string",
+                    "description": "The ID of the NFS share to snapshot.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "region",
+                "shareId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering NfsSnapshot resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the snapshot was created.\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and \"-\", up to a limit of 64 characters.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the NFS snapshot will be created.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "shareId": {
+                        "type": "string",
+                        "description": "The ID of the NFS share to snapshot.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "size": {
+                        "type": "integer",
+                        "description": "The size of the snapshot in GiB.\n"
+                    },
+                    "status": {
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -28761,6 +29645,106 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/getByoipPrefix:getByoipPrefix": {
+            "description": "## Example Usage\n\nGet the BYOIP prefix:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getByoipPrefix({\n    uuid: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_byoip_prefix(uuid=\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetByoipPrefix.Invoke(new()\n    {\n        Uuid = \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupByoipPrefix(ctx, \u0026digitalocean.LookupByoipPrefixArgs{\n\t\t\tUuid: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()\n            .uuid(\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getByoipPrefix\n      arguments:\n        uuid: 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nList assigned IP addresses from a BYOIP prefix:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getByoipPrefix({\n    uuid: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n});\nconst exampleGetByoipPrefixResources = example.then(example =\u003e digitalocean.getByoipPrefixResources({\n    byoipPrefixUuid: example.uuid,\n}));\nexport const byoipInfo = {\n    prefix: example.then(example =\u003e example.prefix),\n    region: example.then(example =\u003e example.region),\n    status: example.then(example =\u003e example.status),\n    assignedCount: exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources =\u003e exampleGetByoipPrefixResources.addresses).length,\n};\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_byoip_prefix(uuid=\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\nexample_get_byoip_prefix_resources = digitalocean.get_byoip_prefix_resources(byoip_prefix_uuid=example.uuid)\npulumi.export(\"byoipInfo\", {\n    \"prefix\": example.prefix,\n    \"region\": example.region,\n    \"status\": example.status,\n    \"assignedCount\": len(example_get_byoip_prefix_resources.addresses),\n})\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetByoipPrefix.Invoke(new()\n    {\n        Uuid = \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n    });\n\n    var exampleGetByoipPrefixResources = DigitalOcean.GetByoipPrefixResources.Invoke(new()\n    {\n        ByoipPrefixUuid = example.Apply(getByoipPrefixResult =\u003e getByoipPrefixResult.Uuid),\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"byoipInfo\"] = \n        {\n            { \"prefix\", example.Apply(getByoipPrefixResult =\u003e getByoipPrefixResult.Prefix) },\n            { \"region\", example.Apply(getByoipPrefixResult =\u003e getByoipPrefixResult.Region) },\n            { \"status\", example.Apply(getByoipPrefixResult =\u003e getByoipPrefixResult.Status) },\n            { \"assignedCount\", exampleGetByoipPrefixResources.Apply(getByoipPrefixResourcesResult =\u003e getByoipPrefixResourcesResult.Addresses).Length },\n        },\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.LookupByoipPrefix(ctx, \u0026digitalocean.LookupByoipPrefixArgs{\n\t\t\tUuid: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texampleGetByoipPrefixResources, err := digitalocean.GetByoipPrefixResources(ctx, \u0026digitalocean.GetByoipPrefixResourcesArgs{\n\t\t\tByoipPrefixUuid: example.Uuid,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"byoipInfo\", pulumi.Map{\n\t\t\t\"prefix\":        example.Prefix,\n\t\t\t\"region\":        example.Region,\n\t\t\t\"status\":        example.Status,\n\t\t\t\"assignedCount\": len(exampleGetByoipPrefixResources.Addresses),\n\t\t})\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;\nimport com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getByoipPrefix(GetByoipPrefixArgs.builder()\n            .uuid(\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\n            .build());\n\n        final var exampleGetByoipPrefixResources = DigitaloceanFunctions.getByoipPrefixResources(GetByoipPrefixResourcesArgs.builder()\n            .byoipPrefixUuid(example.uuid())\n            .build());\n\n        ctx.export(\"byoipInfo\", Map.ofEntries(\n            Map.entry(\"prefix\", example.prefix()),\n            Map.entry(\"region\", example.region()),\n            Map.entry(\"status\", example.status()),\n            Map.entry(\"assignedCount\", exampleGetByoipPrefixResources.addresses().length())\n        ));\n    }\n}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getByoipPrefix.\n",
+                "properties": {
+                    "uuid": {
+                        "type": "string",
+                        "description": "The UUID of the BYOIP prefix.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "uuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getByoipPrefix.\n",
+                "properties": {
+                    "advertised": {
+                        "description": "A boolean indicating whether the prefix is currently being advertised.\n",
+                        "type": "boolean"
+                    },
+                    "failureReason": {
+                        "description": "The reason for failure if the status is \"failed\".\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "prefix": {
+                        "description": "The CIDR notation of the prefix (e.g., \"192.0.2.0/24\").\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "The DigitalOcean region where the prefix is deployed.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The current status of the BYOIP prefix (e.g., \"verified\", \"pending\", \"failed\").\n",
+                        "type": "string"
+                    },
+                    "uuid": {
+                        "description": "The UUID of the BYOIP prefix.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "advertised",
+                    "failureReason",
+                    "prefix",
+                    "region",
+                    "status",
+                    "uuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getByoipPrefixResources:getByoipPrefixResources": {
+            "description": "Get information about IP addresses that have been **already assigned** from a \nBYOIP (Bring Your Own IP) prefix. This data source provides a list of all IP addresses \nthat are currently assigned to resources from a specific BYOIP prefix.\n\n**Note:** This data source only lists IPs that are already assigned to resources (like Droplets). \nTo allocate new IPs from the BYOIP prefix, you need to use \u003cspan pulumi-lang-nodejs=\"`digitalocean.ReservedIpAssignment`\" pulumi-lang-dotnet=\"`digitalocean.ReservedIpAssignment`\" pulumi-lang-go=\"`ReservedIpAssignment`\" pulumi-lang-python=\"`ReservedIpAssignment`\" pulumi-lang-yaml=\"`digitalocean.ReservedIpAssignment`\" pulumi-lang-java=\"`digitalocean.ReservedIpAssignment`\"\u003e`digitalocean.ReservedIpAssignment`\u003c/span\u003e resource.\n\n## Example Usage\n\nList all assigned IP addresses from a BYOIP prefix:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getByoipPrefix({\n    uuid: \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n});\nconst exampleGetByoipPrefixResources = example.then(example =\u003e digitalocean.getByoipPrefixResources({\n    byoipPrefixUuid: example.uuid,\n}));\nexport const assignedByoipIps = exampleGetByoipPrefixResources.then(exampleGetByoipPrefixResources =\u003e .map(addr =\u003e ({\n    ip: addr.ipAddress,\n    region: addr.region,\n    assigned: addr.assignedAt,\n})));\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_byoip_prefix(uuid=\"506f78a4-e098-11e5-ad9f-000f53306ae1\")\nexample_get_byoip_prefix_resources = digitalocean.get_byoip_prefix_resources(byoip_prefix_uuid=example.uuid)\npulumi.export(\"assignedByoipIps\", [{\n    \"ip\": addr.ip_address,\n    \"region\": addr.region,\n    \"assigned\": addr.assigned_at,\n} for addr in example_get_byoip_prefix_resources.addresses])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetByoipPrefix.Invoke(new()\n    {\n        Uuid = \"506f78a4-e098-11e5-ad9f-000f53306ae1\",\n    });\n\n    var exampleGetByoipPrefixResources = DigitalOcean.GetByoipPrefixResources.Invoke(new()\n    {\n        ByoipPrefixUuid = example.Apply(getByoipPrefixResult =\u003e getByoipPrefixResult.Uuid),\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"assignedByoipIps\"] = .Select(addr =\u003e \n        {\n            return \n            {\n                { \"ip\", addr.IpAddress },\n                { \"region\", addr.Region },\n                { \"assigned\", addr.AssignedAt },\n            };\n        }).ToList(),\n    };\n});\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getByoipPrefixResources.\n",
+                "properties": {
+                    "byoipPrefixUuid": {
+                        "type": "string",
+                        "description": "The UUID of the BYOIP prefix to list addresses from.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "byoipPrefixUuid"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getByoipPrefixResources.\n",
+                "properties": {
+                    "addresses": {
+                        "description": "A list of IP addresses allocated from the BYOIP prefix. Each address has the following attributes:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getByoipPrefixResourcesAddress:getByoipPrefixResourcesAddress"
+                        },
+                        "type": "array"
+                    },
+                    "byoipPrefixUuid": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "addresses",
+                    "byoipPrefixUuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
         "digitalocean:index/getCertificate:getCertificate": {
             "description": "Get information on a certificate. This data source provides the name, type, state,\ndomains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.\nThis is useful if the certificate in question is not managed by this provider or you need to utilize\nany of the certificates data.\n\nAn error is triggered if the provided certificate name does not exist.\n\n## Example Usage\n\nGet the certificate:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getCertificate({\n    name: \"example\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_certificate(name=\"example\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetCertificate.Invoke(new()\n    {\n        Name = \"example\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupCertificate(ctx, \u0026digitalocean.LookupCertificateArgs{\n\t\t\tName: \"example\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetCertificateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getCertificate(GetCertificateArgs.builder()\n            .name(\"example\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getCertificate\n      arguments:\n        name: example\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
             "inputs": {
@@ -28822,6 +29806,61 @@
                     "state",
                     "type",
                     "uuid",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getContainerRegistries:getContainerRegistries": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getContainerRegistries.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getContainerRegistries.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "endpoint": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "serverUrl": {
+                        "type": "string"
+                    },
+                    "storageUsageBytes": {
+                        "type": "integer"
+                    },
+                    "subscriptionTierSlug": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "endpoint",
+                    "name",
+                    "region",
+                    "serverUrl",
+                    "storageUsageBytes",
+                    "subscriptionTierSlug",
                     "id"
                 ],
                 "type": "object"
@@ -31308,6 +32347,12 @@
                         "type": "string",
                         "description": "The name of Kubernetes cluster.\n"
                     },
+                    "nvidiaGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterNvidiaGpuDevicePlugin:getKubernetesClusterNvidiaGpuDevicePlugin"
+                    },
+                    "rdmaSharedDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin"
+                    },
                     "routingAgent": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent"
                     },
@@ -31401,6 +32446,12 @@
                         },
                         "type": "array"
                     },
+                    "nvidiaGpuDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterNvidiaGpuDevicePlugin:getKubernetesClusterNvidiaGpuDevicePlugin"
+                    },
+                    "rdmaSharedDevicePlugin": {
+                        "$ref": "#/types/digitalocean:index/getKubernetesClusterRdmaSharedDevicePlugin:getKubernetesClusterRdmaSharedDevicePlugin"
+                    },
                     "region": {
                         "description": "The slug identifier for the region where the Kubernetes cluster is located.\n",
                         "type": "string"
@@ -31457,6 +32508,8 @@
                     "maintenancePolicies",
                     "name",
                     "nodePools",
+                    "nvidiaGpuDevicePlugin",
+                    "rdmaSharedDevicePlugin",
                     "region",
                     "routingAgent",
                     "serviceSubnet",
@@ -31669,6 +32722,145 @@
                     "type",
                     "loadBalancerUrn",
                     "vpcUuid"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getNfs:getNfs": {
+            "description": "Get information about a DigitalOcean NFS share.\n\n## Example Usage\n\nGet the NFS share by name and region:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getNfs({\n    name: \"example-nfs\",\n    region: \"nyc1\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_nfs(name=\"example-nfs\",\n    region=\"nyc1\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.GetNfs.Invoke(new()\n    {\n        Name = \"example-nfs\",\n        Region = \"nyc1\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.LookupNfs(ctx, \u0026digitalocean.LookupNfsArgs{\n\t\t\tName:   \"example-nfs\",\n\t\t\tRegion: pulumi.StringRef(\"nyc1\"),\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetNfsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getNfs(GetNfsArgs.builder()\n            .name(\"example-nfs\")\n            .region(\"nyc1\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getNfs\n      arguments:\n        name: example-nfs\n        region: nyc1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNfs.\n",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "description": "The name of the NFS share.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the NFS share is located.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNfs.\n",
+                "properties": {
+                    "host": {
+                        "description": "The host IP of the NFS server accessible from the associated VPC.\n",
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "mountPath": {
+                        "description": "The mount path for accessing the NFS share.\n",
+                        "type": "string"
+                    },
+                    "name": {
+                        "description": "Name of the NFS share.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "The region where the NFS share is located.\n",
+                        "type": "string"
+                    },
+                    "size": {
+                        "description": "The size of the NFS share in GiB.\n",
+                        "type": "integer"
+                    },
+                    "status": {
+                        "description": "The current status of the NFS share.\n",
+                        "type": "string"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "host",
+                    "mountPath",
+                    "name",
+                    "size",
+                    "status",
+                    "tags",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getNfsSnapshot:getNfsSnapshot": {
+            "description": "Get information about a DigitalOcean NFS snapshot.\n\n## Example Usage\n\nGet the NFS snapshot by ID:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getNfsSnapshot\n      arguments:\n        id: 506f78a4-e098-11e5-ad9f-000f53306ae1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getNfsSnapshot.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region where the NFS snapshot is located.\n"
+                    },
+                    "shareId": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "shareId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getNfsSnapshot.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "nameRegex": {
+                        "type": "string"
+                    },
+                    "region": {
+                        "type": "string"
+                    },
+                    "shareId": {
+                        "type": "string"
+                    },
+                    "size": {
+                        "type": "integer"
+                    },
+                    "status": {
+                        "type": "integer"
+                    },
+                    "tags": {
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "shareId",
+                    "size",
+                    "status",
+                    "tags",
+                    "id"
                 ],
                 "type": "object"
             }
