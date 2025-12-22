@@ -8,8 +8,10 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .app import *
+from .byoip_prefix import *
 from .cdn import *
 from .certificate import *
+from .container_registries import *
 from .container_registry import *
 from .container_registry_docker_credentials import *
 from .custom_image import *
@@ -20,6 +22,8 @@ from .database_firewall import *
 from .database_kafka_config import *
 from .database_kafka_schema_registry import *
 from .database_kafka_topic import *
+from .database_logsink_opensearch import *
+from .database_logsink_rsyslog import *
 from .database_mongodb_config import *
 from .database_mysql_config import *
 from .database_online_migration import *
@@ -47,7 +51,10 @@ from .genai_knowledge_base_data_source import *
 from .genai_openai_api_key import *
 from .get_account import *
 from .get_app import *
+from .get_byoip_prefix import *
+from .get_byoip_prefix_resources import *
 from .get_certificate import *
+from .get_container_registries import *
 from .get_container_registry import *
 from .get_database_ca import *
 from .get_database_cluster import *
@@ -82,6 +89,8 @@ from .get_images import *
 from .get_kubernetes_cluster import *
 from .get_kubernetes_versions import *
 from .get_load_balancer import *
+from .get_nfs import *
+from .get_nfs_snapshot import *
 from .get_partner_attachment import *
 from .get_partner_attachment_service_key import *
 from .get_project import *
@@ -111,6 +120,9 @@ from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
 from .monitor_alert import *
+from .nfs import *
+from .nfs_attachment import *
+from .nfs_snapshot import *
 from .partner_attachment import *
 from .project import *
 from .project_resources import *
@@ -158,6 +170,14 @@ _utilities.register(
  },
  {
   "pkg": "digitalocean",
+  "mod": "index/byoipPrefix",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/byoipPrefix:ByoipPrefix": "ByoipPrefix"
+  }
+ },
+ {
+  "pkg": "digitalocean",
   "mod": "index/cdn",
   "fqn": "pulumi_digitalocean",
   "classes": {
@@ -170,6 +190,14 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/certificate:Certificate": "Certificate"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/containerRegistries",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/containerRegistries:ContainerRegistries": "ContainerRegistries"
   }
  },
  {
@@ -250,6 +278,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic": "DatabaseKafkaTopic"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseLogsinkOpensearch",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseLogsinkOpensearch:DatabaseLogsinkOpensearch": "DatabaseLogsinkOpensearch"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/databaseLogsinkRsyslog",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/databaseLogsinkRsyslog:DatabaseLogsinkRsyslog": "DatabaseLogsinkRsyslog"
   }
  },
  {
@@ -482,6 +526,30 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/monitorAlert:MonitorAlert": "MonitorAlert"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/nfs",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/nfs:Nfs": "Nfs"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/nfsAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/nfsAttachment:NfsAttachment": "NfsAttachment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/nfsSnapshot",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/nfsSnapshot:NfsSnapshot": "NfsSnapshot"
   }
  },
  {

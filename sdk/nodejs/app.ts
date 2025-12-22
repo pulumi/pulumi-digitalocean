@@ -195,6 +195,10 @@ export class App extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly defaultIngress: pulumi.Output<string>;
     /**
+     * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     */
+    declare public readonly deploymentPerPage: pulumi.Output<number | undefined>;
+    /**
      * The live domain of the app.
      */
     declare public /*out*/ readonly liveDomain: pulumi.Output<string>;
@@ -237,6 +241,7 @@ export class App extends pulumi.CustomResource {
             resourceInputs["createdAt"] = state?.createdAt;
             resourceInputs["dedicatedIps"] = state?.dedicatedIps;
             resourceInputs["defaultIngress"] = state?.defaultIngress;
+            resourceInputs["deploymentPerPage"] = state?.deploymentPerPage;
             resourceInputs["liveDomain"] = state?.liveDomain;
             resourceInputs["liveUrl"] = state?.liveUrl;
             resourceInputs["projectId"] = state?.projectId;
@@ -245,6 +250,7 @@ export class App extends pulumi.CustomResource {
         } else {
             const args = argsOrState as AppArgs | undefined;
             resourceInputs["dedicatedIps"] = args?.dedicatedIps;
+            resourceInputs["deploymentPerPage"] = args?.deploymentPerPage;
             resourceInputs["projectId"] = args?.projectId;
             resourceInputs["spec"] = args?.spec;
             resourceInputs["activeDeploymentId"] = undefined /*out*/;
@@ -285,6 +291,10 @@ export interface AppState {
      */
     defaultIngress?: pulumi.Input<string>;
     /**
+     * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     */
+    deploymentPerPage?: pulumi.Input<number>;
+    /**
      * The live domain of the app.
      */
     liveDomain?: pulumi.Input<string>;
@@ -318,6 +328,10 @@ export interface AppArgs {
      * The dedicated egress IP addresses associated with the app.
      */
     dedicatedIps?: pulumi.Input<pulumi.Input<inputs.AppDedicatedIp>[]>;
+    /**
+     * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     */
+    deploymentPerPage?: pulumi.Input<number>;
     /**
      * The ID of the project that the app is assigned to.
      *

@@ -376,6 +376,10 @@ __all__ = [
     'KubernetesClusterNodePoolNodeArgsDict',
     'KubernetesClusterNodePoolTaintArgs',
     'KubernetesClusterNodePoolTaintArgsDict',
+    'KubernetesClusterNvidiaGpuDevicePluginArgs',
+    'KubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'KubernetesClusterRdmaSharedDevicePluginArgs',
+    'KubernetesClusterRdmaSharedDevicePluginArgsDict',
     'KubernetesClusterRoutingAgentArgs',
     'KubernetesClusterRoutingAgentArgsDict',
     'KubernetesNodePoolNodeArgs',
@@ -516,6 +520,10 @@ __all__ = [
     'GetKubernetesClusterAmdGpuDevicePluginArgsDict',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgs',
     'GetKubernetesClusterClusterAutoscalerConfigurationArgsDict',
+    'GetKubernetesClusterNvidiaGpuDevicePluginArgs',
+    'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict',
+    'GetKubernetesClusterRdmaSharedDevicePluginArgs',
+    'GetKubernetesClusterRdmaSharedDevicePluginArgsDict',
     'GetKubernetesClusterRoutingAgentArgs',
     'GetKubernetesClusterRoutingAgentArgsDict',
     'GetPartnerAttachmentBgpArgs',
@@ -19374,6 +19382,71 @@ class KubernetesClusterNodePoolTaintArgs:
 
 
 if not MYPY:
+    class KubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Boolean flag whether the component should be enabled or not.
+        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+elif False:
+    KubernetesClusterNvidiaGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterNvidiaGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component should be enabled or not.
+               `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component should be enabled or not.
+        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
+        enabled: pulumi.Input[_builtins.bool]
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+elif False:
+    KubernetesClusterRdmaSharedDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class KubernetesClusterRdmaSharedDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[_builtins.bool]):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[_builtins.bool]:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[_builtins.bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
     class KubernetesClusterRoutingAgentArgsDict(TypedDict):
         enabled: pulumi.Input[_builtins.bool]
         """
@@ -26253,6 +26326,50 @@ class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
     @scale_down_utilization_threshold.setter
     def scale_down_utilization_threshold(self, value: Optional[_builtins.float]):
         pulumi.set(self, "scale_down_utilization_threshold", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
+        enabled: _builtins.bool
+elif False:
+    GetKubernetesClusterNvidiaGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterNvidiaGpuDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class GetKubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
+        enabled: _builtins.bool
+elif False:
+    GetKubernetesClusterRdmaSharedDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetKubernetesClusterRdmaSharedDevicePluginArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

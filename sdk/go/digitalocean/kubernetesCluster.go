@@ -74,6 +74,9 @@ type KubernetesCluster struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolOutput `pulumi:"nodePool"`
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginOutput  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginOutput `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -173,6 +176,9 @@ type kubernetesClusterState struct {
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool *KubernetesClusterNodePool `pulumi:"nodePool"`
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	NvidiaGpuDevicePlugin  *KubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region *string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -230,6 +236,9 @@ type KubernetesClusterState struct {
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolPtrInput
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringPtrInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -281,6 +290,9 @@ type kubernetesClusterArgs struct {
 	Name *string `pulumi:"name"`
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePool `pulumi:"nodePool"`
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	NvidiaGpuDevicePlugin  *KubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin *KubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region string `pulumi:"region"`
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -325,6 +337,9 @@ type KubernetesClusterArgs struct {
 	Name pulumi.StringPtrInput
 	// A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 	NodePool KubernetesClusterNodePoolInput
+	// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+	NvidiaGpuDevicePlugin  KubernetesClusterNvidiaGpuDevicePluginPtrInput
+	RdmaSharedDevicePlugin KubernetesClusterRdmaSharedDevicePluginPtrInput
 	// The slug identifier for the region where the Kubernetes cluster will be created.
 	Region pulumi.StringInput
 	// Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
@@ -517,6 +532,19 @@ func (o KubernetesClusterOutput) Name() pulumi.StringOutput {
 // A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
 func (o KubernetesClusterOutput) NodePool() KubernetesClusterNodePoolOutput {
 	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNodePoolOutput { return v.NodePool }).(KubernetesClusterNodePoolOutput)
+}
+
+// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+func (o KubernetesClusterOutput) NvidiaGpuDevicePlugin() KubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterNvidiaGpuDevicePluginOutput {
+		return v.NvidiaGpuDevicePlugin
+	}).(KubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (o KubernetesClusterOutput) RdmaSharedDevicePlugin() KubernetesClusterRdmaSharedDevicePluginOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterRdmaSharedDevicePluginOutput {
+		return v.RdmaSharedDevicePlugin
+	}).(KubernetesClusterRdmaSharedDevicePluginOutput)
 }
 
 // The slug identifier for the region where the Kubernetes cluster will be created.

@@ -264,6 +264,12 @@ namespace Pulumi.DigitalOcean
         public Output<string> DefaultIngress { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        /// </summary>
+        [Output("deploymentPerPage")]
+        public Output<int?> DeploymentPerPage { get; private set; } = null!;
+
+        /// <summary>
         /// The live domain of the app.
         /// </summary>
         [Output("liveDomain")]
@@ -356,6 +362,12 @@ namespace Pulumi.DigitalOcean
         }
 
         /// <summary>
+        /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        /// </summary>
+        [Input("deploymentPerPage")]
+        public Input<int>? DeploymentPerPage { get; set; }
+
+        /// <summary>
         /// The ID of the project that the app is assigned to.
         /// 
         /// A spec can contain multiple components.
@@ -414,6 +426,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("defaultIngress")]
         public Input<string>? DefaultIngress { get; set; }
+
+        /// <summary>
+        /// (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+        /// </summary>
+        [Input("deploymentPerPage")]
+        public Input<int>? DeploymentPerPage { get; set; }
 
         /// <summary>
         /// The live domain of the app.

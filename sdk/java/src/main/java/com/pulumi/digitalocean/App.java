@@ -12,6 +12,7 @@ import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.AppState;
 import com.pulumi.digitalocean.outputs.AppDedicatedIp;
 import com.pulumi.digitalocean.outputs.AppSpec;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -354,6 +355,20 @@ public class App extends com.pulumi.resources.CustomResource {
      */
     public Output<String> defaultIngress() {
         return this.defaultIngress;
+    }
+    /**
+     * (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     * 
+     */
+    @Export(name="deploymentPerPage", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> deploymentPerPage;
+
+    /**
+     * @return (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
+     * 
+     */
+    public Output<Optional<Integer>> deploymentPerPage() {
+        return Codegen.optional(this.deploymentPerPage);
     }
     /**
      * The live domain of the app.

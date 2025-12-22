@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterAmdGpuDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfiguration;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgent;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
@@ -64,6 +66,20 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         return this.name;
     }
 
+    @Import(name="nvidiaGpuDevicePlugin")
+    private @Nullable GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin;
+
+    public Optional<GetKubernetesClusterNvidiaGpuDevicePlugin> nvidiaGpuDevicePlugin() {
+        return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    @Import(name="rdmaSharedDevicePlugin")
+    private @Nullable GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin;
+
+    public Optional<GetKubernetesClusterRdmaSharedDevicePlugin> rdmaSharedDevicePlugin() {
+        return Optional.ofNullable(this.rdmaSharedDevicePlugin);
+    }
+
     @Import(name="routingAgent")
     private @Nullable GetKubernetesClusterRoutingAgent routingAgent;
 
@@ -94,6 +110,8 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
         this.clusterAutoscalerConfigurations = $.clusterAutoscalerConfigurations;
         this.kubeconfigExpireSeconds = $.kubeconfigExpireSeconds;
         this.name = $.name;
+        this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
         this.tags = $.tags;
     }
@@ -148,6 +166,16 @@ public final class GetKubernetesClusterPlainArgs extends com.pulumi.resources.In
          */
         public Builder name(String name) {
             $.name = name;
+            return this;
+        }
+
+        public Builder nvidiaGpuDevicePlugin(@Nullable GetKubernetesClusterNvidiaGpuDevicePlugin nvidiaGpuDevicePlugin) {
+            $.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+
+        public Builder rdmaSharedDevicePlugin(@Nullable GetKubernetesClusterRdmaSharedDevicePlugin rdmaSharedDevicePlugin) {
+            $.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
             return this;
         }
 

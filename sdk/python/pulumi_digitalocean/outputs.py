@@ -197,6 +197,8 @@ __all__ = [
     'KubernetesClusterNodePool',
     'KubernetesClusterNodePoolNode',
     'KubernetesClusterNodePoolTaint',
+    'KubernetesClusterNvidiaGpuDevicePlugin',
+    'KubernetesClusterRdmaSharedDevicePlugin',
     'KubernetesClusterRoutingAgent',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
@@ -333,6 +335,7 @@ __all__ = [
     'GetAppSpecWorkerLogDestinationOpenSearchBasicAuthResult',
     'GetAppSpecWorkerLogDestinationPapertrailResult',
     'GetAppSpecWorkerTerminationResult',
+    'GetByoipPrefixResourcesAddressResult',
     'GetDatabaseClusterMaintenanceWindowResult',
     'GetDatabaseUserSettingResult',
     'GetDatabaseUserSettingAclResult',
@@ -504,6 +507,8 @@ __all__ = [
     'GetKubernetesClusterNodePoolResult',
     'GetKubernetesClusterNodePoolNodeResult',
     'GetKubernetesClusterNodePoolTaintResult',
+    'GetKubernetesClusterNvidiaGpuDevicePluginResult',
+    'GetKubernetesClusterRdmaSharedDevicePluginResult',
     'GetKubernetesClusterRoutingAgentResult',
     'GetLoadBalancerDomainResult',
     'GetLoadBalancerFirewallResult',
@@ -14298,6 +14303,44 @@ class KubernetesClusterNodePoolTaint(dict):
 
 
 @pulumi.output_type
+class KubernetesClusterNvidiaGpuDevicePlugin(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component should be enabled or not.
+               `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component should be enabled or not.
+        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterRdmaSharedDevicePlugin(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
 class KubernetesClusterRoutingAgent(dict):
     def __init__(__self__, *,
                  enabled: _builtins.bool):
@@ -21213,6 +21256,57 @@ class GetAppSpecWorkerTerminationResult(dict):
         The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
         """
         return pulumi.get(self, "grace_period_seconds")
+
+
+@pulumi.output_type
+class GetByoipPrefixResourcesAddressResult(dict):
+    def __init__(__self__, *,
+                 assigned_at: _builtins.str,
+                 id: _builtins.int,
+                 ip_address: _builtins.str,
+                 region: _builtins.str):
+        """
+        :param _builtins.str assigned_at: The timestamp when the IP was assigned.
+        :param _builtins.int id: The unique identifier of the IP address allocation.
+        :param _builtins.str ip_address: The IP address.
+        :param _builtins.str region: The region where the IP is allocated.
+        """
+        pulumi.set(__self__, "assigned_at", assigned_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="assignedAt")
+    def assigned_at(self) -> _builtins.str:
+        """
+        The timestamp when the IP was assigned.
+        """
+        return pulumi.get(self, "assigned_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.int:
+        """
+        The unique identifier of the IP address allocation.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> _builtins.str:
+        """
+        The IP address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the IP is allocated.
+        """
+        return pulumi.get(self, "region")
 
 
 @pulumi.output_type
@@ -35466,6 +35560,30 @@ class GetKubernetesClusterNodePoolTaintResult(dict):
         An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetKubernetesClusterNvidiaGpuDevicePluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetKubernetesClusterRdmaSharedDevicePluginResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

@@ -131,6 +131,11 @@ export class KubernetesCluster extends pulumi.CustomResource {
      */
     declare public readonly nodePool: pulumi.Output<outputs.KubernetesClusterNodePool>;
     /**
+     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     */
+    declare public readonly nvidiaGpuDevicePlugin: pulumi.Output<outputs.KubernetesClusterNvidiaGpuDevicePlugin>;
+    declare public readonly rdmaSharedDevicePlugin: pulumi.Output<outputs.KubernetesClusterRdmaSharedDevicePlugin>;
+    /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -201,6 +206,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = state?.maintenancePolicy;
             resourceInputs["name"] = state?.name;
             resourceInputs["nodePool"] = state?.nodePool;
+            resourceInputs["nvidiaGpuDevicePlugin"] = state?.nvidiaGpuDevicePlugin;
+            resourceInputs["rdmaSharedDevicePlugin"] = state?.rdmaSharedDevicePlugin;
             resourceInputs["region"] = state?.region;
             resourceInputs["registryIntegration"] = state?.registryIntegration;
             resourceInputs["routingAgent"] = state?.routingAgent;
@@ -234,6 +241,8 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = args?.maintenancePolicy;
             resourceInputs["name"] = args?.name;
             resourceInputs["nodePool"] = args?.nodePool;
+            resourceInputs["nvidiaGpuDevicePlugin"] = args?.nvidiaGpuDevicePlugin;
+            resourceInputs["rdmaSharedDevicePlugin"] = args?.rdmaSharedDevicePlugin;
             resourceInputs["region"] = args?.region;
             resourceInputs["registryIntegration"] = args?.registryIntegration;
             resourceInputs["routingAgent"] = args?.routingAgent;
@@ -330,6 +339,11 @@ export interface KubernetesClusterState {
      */
     nodePool?: pulumi.Input<inputs.KubernetesClusterNodePool>;
     /**
+     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     */
+    nvidiaGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterNvidiaGpuDevicePlugin>;
+    rdmaSharedDevicePlugin?: pulumi.Input<inputs.KubernetesClusterRdmaSharedDevicePlugin>;
+    /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */
     region?: pulumi.Input<string | enums.Region>;
@@ -423,6 +437,11 @@ export interface KubernetesClusterArgs {
      * A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `digitalocean.KubernetesNodePool` resource. The following arguments may be specified:
      */
     nodePool: pulumi.Input<inputs.KubernetesClusterNodePool>;
+    /**
+     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     */
+    nvidiaGpuDevicePlugin?: pulumi.Input<inputs.KubernetesClusterNvidiaGpuDevicePlugin>;
+    rdmaSharedDevicePlugin?: pulumi.Input<inputs.KubernetesClusterRdmaSharedDevicePlugin>;
     /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      */

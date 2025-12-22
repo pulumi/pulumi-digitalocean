@@ -5715,6 +5715,22 @@ export interface GetKubernetesClusterClusterAutoscalerConfigurationArgs {
     scaleDownUtilizationThreshold?: pulumi.Input<number>;
 }
 
+export interface GetKubernetesClusterNvidiaGpuDevicePlugin {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterNvidiaGpuDevicePluginArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
+export interface GetKubernetesClusterRdmaSharedDevicePlugin {
+    enabled?: boolean;
+}
+
+export interface GetKubernetesClusterRdmaSharedDevicePluginArgs {
+    enabled?: pulumi.Input<boolean>;
+}
+
 export interface GetKubernetesClusterRoutingAgent {
     enabled?: boolean;
 }
@@ -6398,6 +6414,21 @@ export interface KubernetesClusterNodePoolTaint {
      * An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
      */
     value: pulumi.Input<string>;
+}
+
+export interface KubernetesClusterNvidiaGpuDevicePlugin {
+    /**
+     * Boolean flag whether the component should be enabled or not.
+     * `rdmaSharedDevicePlugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+     */
+    enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterRdmaSharedDevicePlugin {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled: pulumi.Input<boolean>;
 }
 
 export interface KubernetesClusterRoutingAgent {

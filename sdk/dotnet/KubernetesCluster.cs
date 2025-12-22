@@ -142,6 +142,15 @@ namespace Pulumi.DigitalOcean
         public Output<Outputs.KubernetesClusterNodePool> NodePool { get; private set; } = null!;
 
         /// <summary>
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// </summary>
+        [Output("nvidiaGpuDevicePlugin")]
+        public Output<Outputs.KubernetesClusterNvidiaGpuDevicePlugin> NvidiaGpuDevicePlugin { get; private set; } = null!;
+
+        [Output("rdmaSharedDevicePlugin")]
+        public Output<Outputs.KubernetesClusterRdmaSharedDevicePlugin> RdmaSharedDevicePlugin { get; private set; } = null!;
+
+        /// <summary>
         /// The slug identifier for the region where the Kubernetes cluster will be created.
         /// </summary>
         [Output("region")]
@@ -330,6 +339,15 @@ namespace Pulumi.DigitalOcean
         public Input<Inputs.KubernetesClusterNodePoolArgs> NodePool { get; set; } = null!;
 
         /// <summary>
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// </summary>
+        [Input("nvidiaGpuDevicePlugin")]
+        public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("rdmaSharedDevicePlugin")]
+        public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginArgs>? RdmaSharedDevicePlugin { get; set; }
+
+        /// <summary>
         /// The slug identifier for the region where the Kubernetes cluster will be created.
         /// </summary>
         [Input("region", required: true)]
@@ -508,6 +526,15 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("nodePool")]
         public Input<Inputs.KubernetesClusterNodePoolGetArgs>? NodePool { get; set; }
+
+        /// <summary>
+        /// Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+        /// </summary>
+        [Input("nvidiaGpuDevicePlugin")]
+        public Input<Inputs.KubernetesClusterNvidiaGpuDevicePluginGetArgs>? NvidiaGpuDevicePlugin { get; set; }
+
+        [Input("rdmaSharedDevicePlugin")]
+        public Input<Inputs.KubernetesClusterRdmaSharedDevicePluginGetArgs>? RdmaSharedDevicePlugin { get; set; }
 
         /// <summary>
         /// The slug identifier for the region where the Kubernetes cluster will be created.

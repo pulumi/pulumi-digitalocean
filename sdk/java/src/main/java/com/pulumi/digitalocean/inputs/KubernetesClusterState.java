@@ -14,6 +14,8 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterControlPlaneFirewallArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterKubeConfigArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRoutingAgentArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -284,6 +286,28 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     * 
+     */
+    @Import(name="nvidiaGpuDevicePlugin")
+    private @Nullable Output<KubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin;
+
+    /**
+     * @return Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+     * 
+     */
+    public Optional<Output<KubernetesClusterNvidiaGpuDevicePluginArgs>> nvidiaGpuDevicePlugin() {
+        return Optional.ofNullable(this.nvidiaGpuDevicePlugin);
+    }
+
+    @Import(name="rdmaSharedDevicePlugin")
+    private @Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin;
+
+    public Optional<Output<KubernetesClusterRdmaSharedDevicePluginArgs>> rdmaSharedDevicePlugin() {
+        return Optional.ofNullable(this.rdmaSharedDevicePlugin);
+    }
+
+    /**
      * The slug identifier for the region where the Kubernetes cluster will be created.
      * 
      */
@@ -453,6 +477,8 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.nodePool = $.nodePool;
+        this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
+        this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.region = $.region;
         this.registryIntegration = $.registryIntegration;
         this.routingAgent = $.routingAgent;
@@ -858,6 +884,36 @@ public final class KubernetesClusterState extends com.pulumi.resources.ResourceA
          */
         public Builder nodePool(KubernetesClusterNodePoolArgs nodePool) {
             return nodePool(Output.of(nodePool));
+        }
+
+        /**
+         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvidiaGpuDevicePlugin(@Nullable Output<KubernetesClusterNvidiaGpuDevicePluginArgs> nvidiaGpuDevicePlugin) {
+            $.nvidiaGpuDevicePlugin = nvidiaGpuDevicePlugin;
+            return this;
+        }
+
+        /**
+         * @param nvidiaGpuDevicePlugin Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nvidiaGpuDevicePlugin(KubernetesClusterNvidiaGpuDevicePluginArgs nvidiaGpuDevicePlugin) {
+            return nvidiaGpuDevicePlugin(Output.of(nvidiaGpuDevicePlugin));
+        }
+
+        public Builder rdmaSharedDevicePlugin(@Nullable Output<KubernetesClusterRdmaSharedDevicePluginArgs> rdmaSharedDevicePlugin) {
+            $.rdmaSharedDevicePlugin = rdmaSharedDevicePlugin;
+            return this;
+        }
+
+        public Builder rdmaSharedDevicePlugin(KubernetesClusterRdmaSharedDevicePluginArgs rdmaSharedDevicePlugin) {
+            return rdmaSharedDevicePlugin(Output.of(rdmaSharedDevicePlugin));
         }
 
         /**

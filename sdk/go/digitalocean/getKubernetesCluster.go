@@ -55,8 +55,10 @@ type LookupKubernetesClusterArgs struct {
 	ClusterAutoscalerConfigurations   []GetKubernetesClusterClusterAutoscalerConfiguration   `pulumi:"clusterAutoscalerConfigurations"`
 	KubeconfigExpireSeconds           *int                                                   `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
-	Name         string                            `pulumi:"name"`
-	RoutingAgent *GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
+	Name                   string                                      `pulumi:"name"`
+	NvidiaGpuDevicePlugin  *GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin *GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
+	RoutingAgent           *GetKubernetesClusterRoutingAgent           `pulumi:"routingAgent"`
 	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 }
@@ -88,7 +90,9 @@ type LookupKubernetesClusterResult struct {
 	// The auto-generated name for the node.
 	Name string `pulumi:"name"`
 	// A list of node pools associated with the cluster. Each node pool exports the following attributes:
-	NodePools []GetKubernetesClusterNodePool `pulumi:"nodePools"`
+	NodePools              []GetKubernetesClusterNodePool             `pulumi:"nodePools"`
+	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	// The slug identifier for the region where the Kubernetes cluster is located.
 	Region       string                           `pulumi:"region"`
 	RoutingAgent GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
@@ -125,8 +129,10 @@ type LookupKubernetesClusterOutputArgs struct {
 	ClusterAutoscalerConfigurations   GetKubernetesClusterClusterAutoscalerConfigurationArrayInput  `pulumi:"clusterAutoscalerConfigurations"`
 	KubeconfigExpireSeconds           pulumi.IntPtrInput                                            `pulumi:"kubeconfigExpireSeconds"`
 	// The name of Kubernetes cluster.
-	Name         pulumi.StringInput                       `pulumi:"name"`
-	RoutingAgent GetKubernetesClusterRoutingAgentPtrInput `pulumi:"routingAgent"`
+	Name                   pulumi.StringInput                                 `pulumi:"name"`
+	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePluginPtrInput  `pulumi:"nvidiaGpuDevicePlugin"`
+	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePluginPtrInput `pulumi:"rdmaSharedDevicePlugin"`
+	RoutingAgent           GetKubernetesClusterRoutingAgentPtrInput           `pulumi:"routingAgent"`
 	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -232,6 +238,18 @@ func (o LookupKubernetesClusterResultOutput) Name() pulumi.StringOutput {
 // A list of node pools associated with the cluster. Each node pool exports the following attributes:
 func (o LookupKubernetesClusterResultOutput) NodePools() GetKubernetesClusterNodePoolArrayOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterNodePool { return v.NodePools }).(GetKubernetesClusterNodePoolArrayOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) NvidiaGpuDevicePlugin() GetKubernetesClusterNvidiaGpuDevicePluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterNvidiaGpuDevicePlugin {
+		return v.NvidiaGpuDevicePlugin
+	}).(GetKubernetesClusterNvidiaGpuDevicePluginOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) RdmaSharedDevicePlugin() GetKubernetesClusterRdmaSharedDevicePluginOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) GetKubernetesClusterRdmaSharedDevicePlugin {
+		return v.RdmaSharedDevicePlugin
+	}).(GetKubernetesClusterRdmaSharedDevicePluginOutput)
 }
 
 // The slug identifier for the region where the Kubernetes cluster is located.
