@@ -17,7 +17,9 @@ python = '3.11.8'
 java = 'corretto-11'
 
 # Executable tools
-"github:pulumi/pulumi" = "{{ get_env(name='PULUMI_VERSION_MISE', default='latest') }}"
+
+"github:pulumi/pulumi" = "{{ exec(command='go list -m -f={{.Version}} github.com/pulumi/pulumi/sdk/v3') | trim | replace(from='v', to='') }}"
+# "github:pulumi/pulumi" = "{{ get_env(name='PULUMI_VERSION_MISE', default='latest') }}"
 "github:pulumi/pulumictl" = '0.0.50'
 "github:pulumi/schema-tools" = "0.6.0"
 "aqua:gradle/gradle-distributions" = '7.6.6'
