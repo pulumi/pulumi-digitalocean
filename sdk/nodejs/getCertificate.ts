@@ -5,13 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a certificate. This data source provides the name, type, state,
- * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
- * This is useful if the certificate in question is not managed by this provider or you need to utilize
- * any of the certificates data.
- *
- * An error is triggered if the provided certificate name does not exist.
- *
  * ## Example Usage
  *
  * Get the certificate:
@@ -77,13 +70,6 @@ export interface GetCertificateResult {
     readonly uuid: string;
 }
 /**
- * Get information on a certificate. This data source provides the name, type, state,
- * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
- * This is useful if the certificate in question is not managed by this provider or you need to utilize
- * any of the certificates data.
- *
- * An error is triggered if the provided certificate name does not exist.
- *
  * ## Example Usage
  *
  * Get the certificate:

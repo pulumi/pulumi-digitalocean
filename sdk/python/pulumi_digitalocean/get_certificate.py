@@ -133,13 +133,6 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 def get_certificate(name: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Get information on a certificate. This data source provides the name, type, state,
-    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-    This is useful if the certificate in question is not managed by this provider or you need to utilize
-    any of the certificates data.
-
-    An error is triggered if the provided certificate name does not exist.
-
     ## Example Usage
 
     Get the certificate:
@@ -171,13 +164,6 @@ def get_certificate(name: Optional[_builtins.str] = None,
 def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
-    Get information on a certificate. This data source provides the name, type, state,
-    domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-    This is useful if the certificate in question is not managed by this provider or you need to utilize
-    any of the certificates data.
-
-    An error is triggered if the provided certificate name does not exist.
-
     ## Example Usage
 
     Get the certificate:

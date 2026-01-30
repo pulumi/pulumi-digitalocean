@@ -47,34 +47,34 @@ import com.pulumi.digitalocean.inputs.GetFirewallArgs;
 import com.pulumi.digitalocean.inputs.GetFirewallPlainArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
 import com.pulumi.digitalocean.inputs.GetFloatingIpPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentVersionsPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentsArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentsByOpenaiApiKeyPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiAgentsPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobDataSourcesArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobDataSourcesPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiIndexingJobPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseDataSourcesPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseIndexingJobsArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBaseIndexingJobsPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasePlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiKnowledgeBasesPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiModelsArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiModelsPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeyPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysPlainArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiRegionsArgs;
-import com.pulumi.digitalocean.inputs.GetGenaiRegionsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentVersionsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentVersionsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseIndexingJobsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseIndexingJobsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasePlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiModelsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiModelsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeyPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeysArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeysPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiRegionsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiRegionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -160,20 +160,20 @@ import com.pulumi.digitalocean.outputs.GetDropletSnapshotResult;
 import com.pulumi.digitalocean.outputs.GetDropletsResult;
 import com.pulumi.digitalocean.outputs.GetFirewallResult;
 import com.pulumi.digitalocean.outputs.GetFloatingIpResult;
-import com.pulumi.digitalocean.outputs.GetGenaiAgentResult;
-import com.pulumi.digitalocean.outputs.GetGenaiAgentVersionsResult;
-import com.pulumi.digitalocean.outputs.GetGenaiAgentsByOpenaiApiKeyResult;
-import com.pulumi.digitalocean.outputs.GetGenaiAgentsResult;
-import com.pulumi.digitalocean.outputs.GetGenaiIndexingJobDataSourcesResult;
-import com.pulumi.digitalocean.outputs.GetGenaiIndexingJobResult;
-import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseDataSourcesResult;
-import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseIndexingJobsResult;
-import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBaseResult;
-import com.pulumi.digitalocean.outputs.GetGenaiKnowledgeBasesResult;
-import com.pulumi.digitalocean.outputs.GetGenaiModelsResult;
-import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeyResult;
-import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeysResult;
-import com.pulumi.digitalocean.outputs.GetGenaiRegionsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentVersionsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentsByOpenaiApiKeyResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseIndexingJobsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBasesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiModelsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiOpenaiApiKeyResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiOpenaiApiKeysResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiRegionsResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
@@ -1199,13 +1199,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getByoipPrefixResources:getByoipPrefixResources", TypeShape.of(GetByoipPrefixResourcesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a certificate. This data source provides the name, type, state,
-     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-     * This is useful if the certificate in question is not managed by this provider or you need to utilize
-     * any of the certificates data.
-     * 
-     * An error is triggered if the provided certificate name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the certificate:
@@ -1246,13 +1239,6 @@ public final class DigitaloceanFunctions {
         return getCertificate(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a certificate. This data source provides the name, type, state,
-     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-     * This is useful if the certificate in question is not managed by this provider or you need to utilize
-     * any of the certificates data.
-     * 
-     * An error is triggered if the provided certificate name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the certificate:
@@ -1293,13 +1279,6 @@ public final class DigitaloceanFunctions {
         return getCertificatePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a certificate. This data source provides the name, type, state,
-     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-     * This is useful if the certificate in question is not managed by this provider or you need to utilize
-     * any of the certificates data.
-     * 
-     * An error is triggered if the provided certificate name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the certificate:
@@ -1340,13 +1319,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a certificate. This data source provides the name, type, state,
-     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-     * This is useful if the certificate in question is not managed by this provider or you need to utilize
-     * any of the certificates data.
-     * 
-     * An error is triggered if the provided certificate name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the certificate:
@@ -1387,13 +1359,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a certificate. This data source provides the name, type, state,
-     * domains, expiry date, and the sha1 fingerprint as configured on your DigitalOcean account.
-     * This is useful if the certificate in question is not managed by this provider or you need to utilize
-     * any of the certificates data.
-     * 
-     * An error is triggered if the provided certificate name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the certificate:
@@ -1449,13 +1414,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getContainerRegistries:getContainerRegistries", TypeShape.of(GetContainerRegistriesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a container registry. This data source provides the name as
-     * configured on your DigitalOcean account. This is useful if the container
-     * registry name in question is not managed by this provider or you need validate if
-     * the container registry exists in the account.
-     * 
-     * An error is triggered if the provided container registry name does not exist.
-     * 
      * ## Example Usage
      * 
      * ### Basic Example
@@ -1498,13 +1456,6 @@ public final class DigitaloceanFunctions {
         return getContainerRegistry(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a container registry. This data source provides the name as
-     * configured on your DigitalOcean account. This is useful if the container
-     * registry name in question is not managed by this provider or you need validate if
-     * the container registry exists in the account.
-     * 
-     * An error is triggered if the provided container registry name does not exist.
-     * 
      * ## Example Usage
      * 
      * ### Basic Example
@@ -1547,13 +1498,6 @@ public final class DigitaloceanFunctions {
         return getContainerRegistryPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a container registry. This data source provides the name as
-     * configured on your DigitalOcean account. This is useful if the container
-     * registry name in question is not managed by this provider or you need validate if
-     * the container registry exists in the account.
-     * 
-     * An error is triggered if the provided container registry name does not exist.
-     * 
      * ## Example Usage
      * 
      * ### Basic Example
@@ -1596,13 +1540,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a container registry. This data source provides the name as
-     * configured on your DigitalOcean account. This is useful if the container
-     * registry name in question is not managed by this provider or you need validate if
-     * the container registry exists in the account.
-     * 
-     * An error is triggered if the provided container registry name does not exist.
-     * 
      * ## Example Usage
      * 
      * ### Basic Example
@@ -1645,13 +1582,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getContainerRegistry:getContainerRegistry", TypeShape.of(GetContainerRegistryResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a container registry. This data source provides the name as
-     * configured on your DigitalOcean account. This is useful if the container
-     * registry name in question is not managed by this provider or you need validate if
-     * the container registry exists in the account.
-     * 
-     * An error is triggered if the provided container registry name does not exist.
-     * 
      * ## Example Usage
      * 
      * ### Basic Example
@@ -3082,14 +3012,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a domain. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the domain
-     * name in question is not managed by this provider or you need to utilize TTL or zone
-     * file data.
-     * 
-     * An error is triggered if the provided domain name is not managed with your
-     * DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get the zone file for a domain:
@@ -3131,14 +3053,6 @@ public final class DigitaloceanFunctions {
         return getDomain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a domain. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the domain
-     * name in question is not managed by this provider or you need to utilize TTL or zone
-     * file data.
-     * 
-     * An error is triggered if the provided domain name is not managed with your
-     * DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get the zone file for a domain:
@@ -3180,14 +3094,6 @@ public final class DigitaloceanFunctions {
         return getDomainPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a domain. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the domain
-     * name in question is not managed by this provider or you need to utilize TTL or zone
-     * file data.
-     * 
-     * An error is triggered if the provided domain name is not managed with your
-     * DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get the zone file for a domain:
@@ -3229,14 +3135,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a domain. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the domain
-     * name in question is not managed by this provider or you need to utilize TTL or zone
-     * file data.
-     * 
-     * An error is triggered if the provided domain name is not managed with your
-     * DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get the zone file for a domain:
@@ -3278,14 +3176,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a domain. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the domain
-     * name in question is not managed by this provider or you need to utilize TTL or zone
-     * file data.
-     * 
-     * An error is triggered if the provided domain name is not managed with your
-     * DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get the zone file for a domain:
@@ -3327,15 +3217,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDomain:getDomain", TypeShape.of(GetDomainResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3381,15 +3262,6 @@ public final class DigitaloceanFunctions {
         return getDomains(GetDomainsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3435,15 +3307,6 @@ public final class DigitaloceanFunctions {
         return getDomainsPlain(GetDomainsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3489,15 +3352,6 @@ public final class DigitaloceanFunctions {
         return getDomains(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3543,15 +3397,6 @@ public final class DigitaloceanFunctions {
         return getDomainsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3597,15 +3442,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3651,15 +3487,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on domains for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all domains will be returned.
-     * 
-     * This data source is useful if the domains in question are not managed by this provider or you need to
-     * utilize any of the domains&#39; data.
-     * 
-     * Note: You can use the `digitalocean.Domain` data source to obtain metadata
-     * about a single domain if you already know the `name`.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -3705,14 +3532,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDomains:getDomains", TypeShape.of(GetDomainsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -3820,14 +3639,6 @@ public final class DigitaloceanFunctions {
         return getDroplet(GetDropletArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -3935,14 +3746,6 @@ public final class DigitaloceanFunctions {
         return getDropletPlain(GetDropletPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -4050,14 +3853,6 @@ public final class DigitaloceanFunctions {
         return getDroplet(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -4165,14 +3960,6 @@ public final class DigitaloceanFunctions {
         return getDropletPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -4280,14 +4067,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDroplet:getDroplet", TypeShape.of(GetDropletResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -4395,14 +4174,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDroplet:getDroplet", TypeShape.of(GetDropletResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Droplet for use in other resources. This data source provides
-     * all of the Droplet&#39;s properties as configured on your DigitalOcean account. This
-     * is useful if the Droplet in question is not managed by this provider or you need to
-     * utilize any of the Droplet&#39;s data.
-     * 
-     * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
-     * error is triggered if more than one Droplet is found.
-     * 
      * ## Example Usage
      * 
      * Get the Droplet by name:
@@ -5651,18 +5422,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDropletSnapshot:getDropletSnapshot", TypeShape.of(GetDropletSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -5753,18 +5512,6 @@ public final class DigitaloceanFunctions {
         return getDroplets(GetDropletsArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -5855,18 +5602,6 @@ public final class DigitaloceanFunctions {
         return getDropletsPlain(GetDropletsPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -5957,18 +5692,6 @@ public final class DigitaloceanFunctions {
         return getDroplets(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -6059,18 +5782,6 @@ public final class DigitaloceanFunctions {
         return getDropletsPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -6161,18 +5872,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDroplets:getDroplets", TypeShape.of(GetDropletsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -6263,18 +5962,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getDroplets:getDroplets", TypeShape.of(GetDropletsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on Droplets for use in other resources, with the ability to filter and sort the results.
-     * If no filters are specified, all Droplets will be returned.
-     * 
-     * This data source is useful if the Droplets in question are not managed by the provider or you need to
-     * utilize any of the Droplets&#39; data.
-     * 
-     * By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
-     * the `gpus` attribute to `true`.
-     * 
-     * Note: You can use the `digitalocean.Droplet` data source to obtain metadata
-     * about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -6580,15 +6267,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getFirewall:getFirewall", TypeShape.of(GetFirewallResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-     * 
-     * Get information on a floating ip. This data source provides the region and Droplet id
-     * as configured on your DigitalOcean account. This is useful if the floating IP
-     * in question is not managed by the provider or you need to find the Droplet the IP is
-     * attached to.
-     * 
-     * An error is triggered if the provided floating IP does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the floating IP:
@@ -6632,15 +6310,6 @@ public final class DigitaloceanFunctions {
         return getFloatingIp(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-     * 
-     * Get information on a floating ip. This data source provides the region and Droplet id
-     * as configured on your DigitalOcean account. This is useful if the floating IP
-     * in question is not managed by the provider or you need to find the Droplet the IP is
-     * attached to.
-     * 
-     * An error is triggered if the provided floating IP does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the floating IP:
@@ -6684,15 +6353,6 @@ public final class DigitaloceanFunctions {
         return getFloatingIpPlain(args, InvokeOptions.Empty);
     }
     /**
-     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-     * 
-     * Get information on a floating ip. This data source provides the region and Droplet id
-     * as configured on your DigitalOcean account. This is useful if the floating IP
-     * in question is not managed by the provider or you need to find the Droplet the IP is
-     * attached to.
-     * 
-     * An error is triggered if the provided floating IP does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the floating IP:
@@ -6736,15 +6396,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-     * 
-     * Get information on a floating ip. This data source provides the region and Droplet id
-     * as configured on your DigitalOcean account. This is useful if the floating IP
-     * in question is not managed by the provider or you need to find the Droplet the IP is
-     * attached to.
-     * 
-     * An error is triggered if the provided floating IP does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the floating IP:
@@ -6788,15 +6439,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
-     * 
-     * Get information on a floating ip. This data source provides the region and Droplet id
-     * as configured on your DigitalOcean account. This is useful if the floating IP
-     * in question is not managed by the provider or you need to find the Droplet the IP is
-     * attached to.
-     * 
-     * An error is triggered if the provided floating IP does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the floating IP:
@@ -6839,260 +6481,253 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args) {
-        return getGenaiAgent(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args) {
+        return getGradientaiAgent(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args) {
-        return getGenaiAgentPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiAgentResult> getGradientaiAgentPlain(GetGradientaiAgentPlainArgs args) {
+        return getGradientaiAgentPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiAgentResult> getGradientaiAgentPlain(GetGradientaiAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args) {
-        return getGenaiAgentVersions(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args) {
+        return getGradientaiAgentVersions(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args) {
-        return getGenaiAgentVersionsPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiAgentVersionsResult> getGradientaiAgentVersionsPlain(GetGradientaiAgentVersionsPlainArgs args) {
+        return getGradientaiAgentVersionsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiAgentVersionsResult> getGradientaiAgentVersionsPlain(GetGradientaiAgentVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentsResult> getGenaiAgents() {
-        return getGenaiAgents(GetGenaiAgentsArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents() {
+        return getGradientaiAgents(GetGradientaiAgentsArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain() {
-        return getGenaiAgentsPlain(GetGenaiAgentsPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain() {
+        return getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args) {
-        return getGenaiAgents(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args) {
+        return getGradientaiAgents(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args) {
-        return getGenaiAgentsPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs args) {
+        return getGradientaiAgentsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args) {
-        return getGenaiAgentsByOpenaiApiKey(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args) {
+        return getGradientaiAgentsByOpenaiApiKey(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args) {
-        return getGenaiAgentsByOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyPlain(GetGradientaiAgentsByOpenaiApiKeyPlainArgs args) {
+        return getGradientaiAgentsByOpenaiApiKeyPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyPlain(GetGradientaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args) {
-        return getGenaiIndexingJob(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args) {
+        return getGradientaiIndexingJob(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args) {
-        return getGenaiIndexingJobPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiIndexingJobResult> getGradientaiIndexingJobPlain(GetGradientaiIndexingJobPlainArgs args) {
+        return getGradientaiIndexingJobPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiIndexingJobResult> getGradientaiIndexingJobPlain(GetGradientaiIndexingJobPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args) {
-        return getGenaiIndexingJobDataSources(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args) {
+        return getGradientaiIndexingJobDataSources(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args) {
-        return getGenaiIndexingJobDataSourcesPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSourcesPlain(GetGradientaiIndexingJobDataSourcesPlainArgs args) {
+        return getGradientaiIndexingJobDataSourcesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSourcesPlain(GetGradientaiIndexingJobDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase() {
-        return getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase() {
+        return getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain() {
-        return getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain() {
+        return getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args) {
-        return getGenaiKnowledgeBase(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args) {
+        return getGradientaiKnowledgeBase(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args) {
-        return getGenaiKnowledgeBasePlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs args) {
+        return getGradientaiKnowledgeBasePlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args) {
-        return getGenaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args) {
+        return getGradientaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args) {
-        return getGenaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSourcesPlain(GetGradientaiKnowledgeBaseDataSourcesPlainArgs args) {
+        return getGradientaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSourcesPlain(GetGradientaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args) {
-        return getGenaiKnowledgeBaseIndexingJobs(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args) {
+        return getGradientaiKnowledgeBaseIndexingJobs(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args) {
-        return getGenaiKnowledgeBaseIndexingJobsPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobsPlain(GetGradientaiKnowledgeBaseIndexingJobsPlainArgs args) {
+        return getGradientaiKnowledgeBaseIndexingJobsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobsPlain(GetGradientaiKnowledgeBaseIndexingJobsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases() {
-        return getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases() {
+        return getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain() {
-        return getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain() {
+        return getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args) {
-        return getGenaiKnowledgeBases(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args) {
+        return getGradientaiKnowledgeBases(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args) {
-        return getGenaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs args) {
+        return getGradientaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiModelsResult> getGenaiModels() {
-        return getGenaiModels(GetGenaiModelsArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiModelsResult> getGradientaiModels() {
+        return getGradientaiModels(GetGradientaiModelsArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain() {
-        return getGenaiModelsPlain(GetGenaiModelsPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain() {
+        return getGradientaiModelsPlain(GetGradientaiModelsPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args) {
-        return getGenaiModels(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args) {
+        return getGradientaiModels(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args) {
-        return getGenaiModelsPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain(GetGradientaiModelsPlainArgs args) {
+        return getGradientaiModelsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain(GetGradientaiModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args) {
-        return getGenaiOpenaiApiKey(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args) {
+        return getGradientaiOpenaiApiKey(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args) {
-        return getGenaiOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKeyPlain(GetGradientaiOpenaiApiKeyPlainArgs args) {
+        return getGradientaiOpenaiApiKeyPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKeyPlain(GetGradientaiOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys() {
-        return getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys() {
+        return getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain() {
-        return getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain() {
+        return getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args) {
-        return getGenaiOpenaiApiKeys(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args) {
+        return getGradientaiOpenaiApiKeys(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args) {
-        return getGenaiOpenaiApiKeysPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs args) {
+        return getGradientaiOpenaiApiKeysPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiRegionsResult> getGenaiRegions() {
-        return getGenaiRegions(GetGenaiRegionsArgs.Empty, InvokeOptions.Empty);
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions() {
+        return getGradientaiRegions(GetGradientaiRegionsArgs.Empty, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain() {
-        return getGenaiRegionsPlain(GetGenaiRegionsPlainArgs.Empty, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain() {
+        return getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs.Empty, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args) {
-        return getGenaiRegions(args, InvokeOptions.Empty);
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args) {
+        return getGradientaiRegions(args, InvokeOptions.Empty);
     }
-    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args) {
-        return getGenaiRegionsPlain(args, InvokeOptions.Empty);
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs args) {
+        return getGradientaiRegionsPlain(args, InvokeOptions.Empty);
     }
-    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
     }
-    public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOutputOptions options) {
-        return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
     }
-    public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args, InvokeOptions options) {
-        return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7208,13 +6843,6 @@ public final class DigitaloceanFunctions {
         return getImage(GetImageArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7330,13 +6958,6 @@ public final class DigitaloceanFunctions {
         return getImagePlain(GetImagePlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7452,13 +7073,6 @@ public final class DigitaloceanFunctions {
         return getImage(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7574,13 +7188,6 @@ public final class DigitaloceanFunctions {
         return getImagePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7696,13 +7303,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7818,13 +7418,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on an image for use in other resources (e.g. creating a Droplet
-     * based on snapshot). This data source provides all of the image properties as
-     * configured on your DigitalOcean account. This is useful if the image in question
-     * is not managed by the provider or you need to utilize any of the image&#39;s data.
-     * 
-     * An error is triggered if zero or more than one result is returned by the query.
-     * 
      * ## Example Usage
      * 
      * Get the data about a snapshot:
@@ -7940,16 +7533,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getImage:getImage", TypeShape.of(GetImageResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8040,16 +7623,6 @@ public final class DigitaloceanFunctions {
         return getImages(GetImagesArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8140,16 +7713,6 @@ public final class DigitaloceanFunctions {
         return getImagesPlain(GetImagesPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8240,16 +7803,6 @@ public final class DigitaloceanFunctions {
         return getImages(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8340,16 +7893,6 @@ public final class DigitaloceanFunctions {
         return getImagesPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8440,16 +7983,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8540,16 +8073,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on images for use in other resources (e.g. creating a Droplet
-     * based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
-     * all images will be returned.
-     * 
-     * This data source is useful if the image in question is not managed by the provider or you need to utilize any
-     * of the image&#39;s data.
-     * 
-     * Note: You can use the `digitalocean.getImage` data source to obtain metadata
-     * about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
-     * 
      * ## Example Usage
      * 
      * Use the `filter` block with a `key` string and `values` list to filter images.
@@ -8640,8 +8163,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getImages:getImages", TypeShape.of(GetImagesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8680,8 +8201,6 @@ public final class DigitaloceanFunctions {
         return getKubernetesCluster(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8720,8 +8239,6 @@ public final class DigitaloceanFunctions {
         return getKubernetesClusterPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8760,8 +8277,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", TypeShape.of(GetKubernetesClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -8800,8 +8315,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getKubernetesCluster:getKubernetesCluster", TypeShape.of(GetKubernetesClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster&#39;s properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by the provider.
-     * 
      * ## Example Usage
      * 
      * <pre>
@@ -9785,13 +9298,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getKubernetesVersions:getKubernetesVersions", TypeShape.of(GetKubernetesVersionsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -9866,13 +9372,6 @@ public final class DigitaloceanFunctions {
         return getLoadBalancer(GetLoadBalancerArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -9947,13 +9446,6 @@ public final class DigitaloceanFunctions {
         return getLoadBalancerPlain(GetLoadBalancerPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -10028,13 +9520,6 @@ public final class DigitaloceanFunctions {
         return getLoadBalancer(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -10109,13 +9594,6 @@ public final class DigitaloceanFunctions {
         return getLoadBalancerPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -10190,13 +9668,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -10271,13 +9742,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getLoadBalancer:getLoadBalancer", TypeShape.of(GetLoadBalancerResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a load balancer for use in other resources. This data source
-     * provides all of the load balancers properties as configured on your DigitalOcean
-     * account. This is useful if the load balancer in question is not managed by
-     * the provider or you need to utilize any of the load balancers data.
-     * 
-     * An error is triggered if the provided load balancer name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the load balancer by name:
@@ -11652,13 +11116,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getProjects:getProjects", TypeShape.of(GetProjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a DNS record. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the record
-     * in question is not managed by the provider.
-     * 
-     * An error is triggered if the provided domain name or record are not managed with
-     * your DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get data from a DNS record:
@@ -11702,13 +11159,6 @@ public final class DigitaloceanFunctions {
         return getRecord(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a DNS record. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the record
-     * in question is not managed by the provider.
-     * 
-     * An error is triggered if the provided domain name or record are not managed with
-     * your DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get data from a DNS record:
@@ -11752,13 +11202,6 @@ public final class DigitaloceanFunctions {
         return getRecordPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a DNS record. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the record
-     * in question is not managed by the provider.
-     * 
-     * An error is triggered if the provided domain name or record are not managed with
-     * your DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get data from a DNS record:
@@ -11802,13 +11245,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a DNS record. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the record
-     * in question is not managed by the provider.
-     * 
-     * An error is triggered if the provided domain name or record are not managed with
-     * your DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get data from a DNS record:
@@ -11852,13 +11288,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getRecord:getRecord", TypeShape.of(GetRecordResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a DNS record. This data source provides the name, TTL, and zone
-     * file as configured on your DigitalOcean account. This is useful if the record
-     * in question is not managed by the provider.
-     * 
-     * An error is triggered if the provided domain name or record are not managed with
-     * your DigitalOcean account.
-     * 
      * ## Example Usage
      * 
      * Get data from a DNS record:
@@ -14565,9 +13994,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSizes:getSizes", TypeShape.of(GetSizesResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
-     * 
      * ## Example Usage
      * 
      * Get the bucket by name:
@@ -14610,9 +14036,6 @@ public final class DigitaloceanFunctions {
         return getSpacesBucket(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
-     * 
      * ## Example Usage
      * 
      * Get the bucket by name:
@@ -14655,9 +14078,6 @@ public final class DigitaloceanFunctions {
         return getSpacesBucketPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
-     * 
      * ## Example Usage
      * 
      * Get the bucket by name:
@@ -14700,9 +14120,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", TypeShape.of(GetSpacesBucketResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
-     * 
      * ## Example Usage
      * 
      * Get the bucket by name:
@@ -14745,9 +14162,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucket:getSpacesBucket", TypeShape.of(GetSpacesBucketResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-     * is not managed by the provider or you need to utilize any of the bucket&#39;s data.
-     * 
      * ## Example Usage
      * 
      * Get the bucket by name:
@@ -15089,48 +14503,18 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetSpacesBucketObjectResult> getSpacesBucketObjectPlain(GetSpacesBucketObjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBucketObject:getSpacesBucketObject", TypeShape.of(GetSpacesBucketObjectResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
-     * 
-     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-     * 
-     */
     public static Output<GetSpacesBucketObjectsResult> getSpacesBucketObjects(GetSpacesBucketObjectsArgs args) {
         return getSpacesBucketObjects(args, InvokeOptions.Empty);
     }
-    /**
-     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
-     * 
-     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-     * 
-     */
     public static CompletableFuture<GetSpacesBucketObjectsResult> getSpacesBucketObjectsPlain(GetSpacesBucketObjectsPlainArgs args) {
         return getSpacesBucketObjectsPlain(args, InvokeOptions.Empty);
     }
-    /**
-     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
-     * 
-     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-     * 
-     */
     public static Output<GetSpacesBucketObjectsResult> getSpacesBucketObjects(GetSpacesBucketObjectsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
-     * 
-     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-     * 
-     */
     public static Output<GetSpacesBucketObjectsResult> getSpacesBucketObjects(GetSpacesBucketObjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
-    /**
-     * &gt; **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect the provider&#39;s performance.
-     * 
-     * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-     * 
-     */
     public static CompletableFuture<GetSpacesBucketObjectsResult> getSpacesBucketObjectsPlain(GetSpacesBucketObjectsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", TypeShape.of(GetSpacesBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
@@ -15970,13 +15354,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSpacesKey:getSpacesKey", TypeShape.of(GetSpacesKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a ssh key. This data source provides the name, public key,
-     * and fingerprint as configured on your DigitalOcean account. This is useful if
-     * the ssh key in question is not managed by the provider or you need to utilize any
-     * of the keys data.
-     * 
-     * An error is triggered if the provided ssh key name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the ssh key:
@@ -16027,13 +15404,6 @@ public final class DigitaloceanFunctions {
         return getSshKey(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a ssh key. This data source provides the name, public key,
-     * and fingerprint as configured on your DigitalOcean account. This is useful if
-     * the ssh key in question is not managed by the provider or you need to utilize any
-     * of the keys data.
-     * 
-     * An error is triggered if the provided ssh key name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the ssh key:
@@ -16084,13 +15454,6 @@ public final class DigitaloceanFunctions {
         return getSshKeyPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a ssh key. This data source provides the name, public key,
-     * and fingerprint as configured on your DigitalOcean account. This is useful if
-     * the ssh key in question is not managed by the provider or you need to utilize any
-     * of the keys data.
-     * 
-     * An error is triggered if the provided ssh key name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the ssh key:
@@ -16141,13 +15504,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a ssh key. This data source provides the name, public key,
-     * and fingerprint as configured on your DigitalOcean account. This is useful if
-     * the ssh key in question is not managed by the provider or you need to utilize any
-     * of the keys data.
-     * 
-     * An error is triggered if the provided ssh key name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the ssh key:
@@ -16198,13 +15554,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a ssh key. This data source provides the name, public key,
-     * and fingerprint as configured on your DigitalOcean account. This is useful if
-     * the ssh key in question is not managed by the provider or you need to utilize any
-     * of the keys data.
-     * 
-     * An error is triggered if the provided ssh key name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the ssh key:
@@ -16255,14 +15604,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSshKey:getSshKey", TypeShape.of(GetSshKeyResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16344,14 +15685,6 @@ public final class DigitaloceanFunctions {
         return getSshKeys(GetSshKeysArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16433,14 +15766,6 @@ public final class DigitaloceanFunctions {
         return getSshKeysPlain(GetSshKeysPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16522,14 +15847,6 @@ public final class DigitaloceanFunctions {
         return getSshKeys(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16611,14 +15928,6 @@ public final class DigitaloceanFunctions {
         return getSshKeysPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16700,14 +16009,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16789,14 +16090,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on SSH Keys for use in other resources.
-     * 
-     * This data source is useful if the SSH Keys in question are not managed by the provider or you need to
-     * utilize any of the SSH Keys&#39; data.
-     * 
-     * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
-     * about a single SSH Key if you already know the unique `name` to retrieve.
-     * 
      * ## Example Usage
      * 
      * For example, to find all SSH keys:
@@ -16878,12 +16171,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getSshKeys:getSshKeys", TypeShape.of(GetSshKeysResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a tag. This data source provides the name as configured on
-     * your DigitalOcean account. This is useful if the tag name in question is not
-     * managed by the provider or you need validate if the tag exists in the account.
-     * 
-     * An error is triggered if the provided tag name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the tag:
@@ -16934,12 +16221,6 @@ public final class DigitaloceanFunctions {
         return getTag(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a tag. This data source provides the name as configured on
-     * your DigitalOcean account. This is useful if the tag name in question is not
-     * managed by the provider or you need validate if the tag exists in the account.
-     * 
-     * An error is triggered if the provided tag name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the tag:
@@ -16990,12 +16271,6 @@ public final class DigitaloceanFunctions {
         return getTagPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a tag. This data source provides the name as configured on
-     * your DigitalOcean account. This is useful if the tag name in question is not
-     * managed by the provider or you need validate if the tag exists in the account.
-     * 
-     * An error is triggered if the provided tag name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the tag:
@@ -17046,12 +16321,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a tag. This data source provides the name as configured on
-     * your DigitalOcean account. This is useful if the tag name in question is not
-     * managed by the provider or you need validate if the tag exists in the account.
-     * 
-     * An error is triggered if the provided tag name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the tag:
@@ -17102,12 +16371,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getTag:getTag", TypeShape.of(GetTagResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a tag. This data source provides the name as configured on
-     * your DigitalOcean account. This is useful if the tag name in question is not
-     * managed by the provider or you need validate if the tag exists in the account.
-     * 
-     * An error is triggered if the provided tag name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the tag:
@@ -17480,13 +16743,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getTags:getTags", TypeShape.of(GetTagsResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a volume for use in other resources. This data source provides
-     * all of the volumes properties as configured on your DigitalOcean account. This is
-     * useful if the volume in question is not managed by the provider or you need to utilize
-     * any of the volumes data.
-     * 
-     * An error is triggered if the provided volume name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the volume:
@@ -17578,13 +16834,6 @@ public final class DigitaloceanFunctions {
         return getVolume(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a volume for use in other resources. This data source provides
-     * all of the volumes properties as configured on your DigitalOcean account. This is
-     * useful if the volume in question is not managed by the provider or you need to utilize
-     * any of the volumes data.
-     * 
-     * An error is triggered if the provided volume name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the volume:
@@ -17676,13 +16925,6 @@ public final class DigitaloceanFunctions {
         return getVolumePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Get information on a volume for use in other resources. This data source provides
-     * all of the volumes properties as configured on your DigitalOcean account. This is
-     * useful if the volume in question is not managed by the provider or you need to utilize
-     * any of the volumes data.
-     * 
-     * An error is triggered if the provided volume name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the volume:
@@ -17774,13 +17016,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a volume for use in other resources. This data source provides
-     * all of the volumes properties as configured on your DigitalOcean account. This is
-     * useful if the volume in question is not managed by the provider or you need to utilize
-     * any of the volumes data.
-     * 
-     * An error is triggered if the provided volume name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the volume:
@@ -17872,13 +17107,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getVolume:getVolume", TypeShape.of(GetVolumeResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Get information on a volume for use in other resources. This data source provides
-     * all of the volumes properties as configured on your DigitalOcean account. This is
-     * useful if the volume in question is not managed by the provider or you need to utilize
-     * any of the volumes data.
-     * 
-     * An error is triggered if the provided volume name does not exist.
-     * 
      * ## Example Usage
      * 
      * Get the volume:
@@ -18600,15 +17828,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getVolumeSnapshot:getVolumeSnapshot", TypeShape.of(GetVolumeSnapshotResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -18692,15 +17911,6 @@ public final class DigitaloceanFunctions {
         return getVpc(GetVpcArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -18784,15 +17994,6 @@ public final class DigitaloceanFunctions {
         return getVpcPlain(GetVpcPlainArgs.Empty, InvokeOptions.Empty);
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -18876,15 +18077,6 @@ public final class DigitaloceanFunctions {
         return getVpc(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -18968,15 +18160,6 @@ public final class DigitaloceanFunctions {
         return getVpcPlain(args, InvokeOptions.Empty);
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -19060,15 +18243,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name
@@ -19152,15 +18326,6 @@ public final class DigitaloceanFunctions {
         return Deployment.getInstance().invoke("digitalocean:index/getVpc:getVpc", TypeShape.of(GetVpcResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Retrieve information about a VPC for use in other resources.
-     * 
-     * This data source provides all of the VPC&#39;s properties as configured on your
-     * DigitalOcean account. This is useful if the VPC in question is not managed by
-     * the provider or you need to utilize any of the VPC&#39;s data.
-     * 
-     * VPCs may be looked up by `id` or `name`. Specifying a `region` will
-     * return that that region&#39;s default VPC.
-     * 
      * ## Example Usage
      * 
      * ### VPC By Name

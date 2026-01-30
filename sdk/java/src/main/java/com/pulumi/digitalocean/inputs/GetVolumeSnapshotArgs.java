@@ -16,25 +16,9 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
 
     public static final GetVolumeSnapshotArgs Empty = new GetVolumeSnapshotArgs();
 
-    /**
-     * If more than one result is returned, use the most recent volume snapshot.
-     * 
-     * &gt; **NOTE:** If more or less than a single match is returned by the search,
-     * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-     * 
-     */
     @Import(name="mostRecent")
     private @Nullable Output<Boolean> mostRecent;
 
-    /**
-     * @return If more than one result is returned, use the most recent volume snapshot.
-     * 
-     * &gt; **NOTE:** If more or less than a single match is returned by the search,
-     * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-     * 
-     */
     public Optional<Output<Boolean>> mostRecent() {
         return Optional.ofNullable(this.mostRecent);
     }
@@ -111,31 +95,11 @@ public final class GetVolumeSnapshotArgs extends com.pulumi.resources.InvokeArgs
             $ = new GetVolumeSnapshotArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param mostRecent If more than one result is returned, use the most recent volume snapshot.
-         * 
-         * &gt; **NOTE:** If more or less than a single match is returned by the search,
-         * the provider will fail. Ensure that your search is specific enough to return
-         * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mostRecent(@Nullable Output<Boolean> mostRecent) {
             $.mostRecent = mostRecent;
             return this;
         }
 
-        /**
-         * @param mostRecent If more than one result is returned, use the most recent volume snapshot.
-         * 
-         * &gt; **NOTE:** If more or less than a single match is returned by the search,
-         * the provider will fail. Ensure that your search is specific enough to return
-         * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mostRecent(Boolean mostRecent) {
             return mostRecent(Output.of(mostRecent));
         }

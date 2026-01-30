@@ -33,14 +33,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			invokeFile, err := std.File(ctx, &std.FileArgs{
-//				Input: "/Users/myuser/.ssh/id_rsa.pub",
+//				Input: "/Users/terraform/.ssh/id_rsa.pub",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			// Create a new SSH key
 //			_default, err := digitalocean.NewSshKey(ctx, "default", &digitalocean.SshKeyArgs{
-//				Name:      pulumi.String("Example"),
+//				Name:      pulumi.String("Terraform Example"),
 //				PublicKey: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
