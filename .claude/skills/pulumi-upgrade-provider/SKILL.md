@@ -7,12 +7,18 @@ description: Automate Pulumi provider repo upgrades with the `upgrade-provider` 
 
 ## Prerequisites
 
-The `upgrade-provider` tool is pre-installed. It should already be in your PATH.
+First, install the `upgrade-provider` tool:
+
+```bash
+go install github.com/pulumi/upgrade-provider@latest
+```
+
+After installation, the tool will be in your PATH and you can run it directly as `upgrade-provider`.
 
 **IMPORTANT:**
-- Do NOT try to install `upgrade-provider` yourself via `go install` or any other method
-- Do NOT try to find the tool's location or modify PATH
-- Just run `upgrade-provider` directly - if it's not found (exit code 127), report this as an environment configuration issue and stop
+- Do NOT try to modify PATH or use absolute paths to run the tool
+- Do NOT try to find where the tool was installed
+- Just run `upgrade-provider` directly after installing - if it's not found (exit code 127), report this as an environment configuration issue and stop
 
 ## CRITICAL: Session Completion Requirements
 
