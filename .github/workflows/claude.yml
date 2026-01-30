@@ -10,13 +10,6 @@ on:
     types: [opened]
   pull_request_review:
     types: [submitted]
-  # Manual trigger for testing from a branch
-  workflow_dispatch:
-    inputs:
-      prompt:
-        description: 'Prompt to send to Claude'
-        required: true
-        type: string
 
 jobs:
   claude:
@@ -24,7 +17,6 @@ jobs:
     # Note: the claude-code-action can only be triggered by users with write access to the repository so this is extra
     # see https://github.com/anthropics/claude-code-action/blob/main/docs/security.md
     if: |
-      github.event_name == 'workflow_dispatch' ||
       (github.event_name == 'issue_comment' &&
         contains(github.event.comment.body, '@claude') &&
         contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.comment.author_association)) ||
@@ -94,16 +86,14 @@ jobs:
           claude_args: |
             --allowedTools "Bash(gh issue view *),Bash(gh search *),Bash(gh issue list *),Bash(gh pr comment *),Bash(gh pr diff *),Bash(gh pr view *),Bash(gh pr list *),mcp__github_inline_comment__create_inline_comment"
       - name: Run Claude Code
-        # Comment must contain '@claude', but not '@claude review', or be a workflow_dispatch
+        # Comment must contain '@claude', but not '@claude review'
         if: |
-          github.event_name == 'workflow_dispatch' ||
-          (!contains(github.event.comment.body, '@claude review') &&
-           !contains(github.event.review.body, '@claude review'))
+          !contains(github.event.comment.body, '@claude review') &&
+          !contains(github.event.review.body, '@claude review')
         id: claude-action
         uses: anthropics/claude-code-action@8341a564b0c1693e9fa29c681852ee3714980098 # v1
         with:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
-          prompt: ${{ github.event.inputs.prompt }}
           additional_permissions: |
             actions: read
           claude_args: |
