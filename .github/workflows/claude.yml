@@ -96,13 +96,15 @@ jobs:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
           additional_permissions: |
             actions: read
+          # Sandbox settings: --allowedTools controls which tools Claude can invoke,
+          # but the sandbox also enforces OS-level filesystem restrictions. Edit()
+          # rules in permissions.allow control all bash filesystem writes (mkdir,
+          # output redirection, etc.), not just the Edit tool. Without these, commands
+          # like `mkdir .pulumi` or `cmd > file.txt` would be blocked by the sandbox.
           settings: |
             {
               "permissions": {
                 "allow": ["Edit(./**)", "Edit(/tmp/**)"]
-              },
-              "sandbox": {
-                "enabled": true
               }
             }
           claude_args: |
