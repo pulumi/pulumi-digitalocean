@@ -860,8 +860,8 @@
                 "current": "digitalocean:index/floatingIpAssignment:FloatingIpAssignment",
                 "majorVersion": 4
             },
-            "digitalocean_genai_agent": {
-                "current": "digitalocean:index/genaiAgent:GenaiAgent",
+            "digitalocean_gradientai_agent": {
+                "current": "digitalocean:index/gradientaiAgent:GradientaiAgent",
                 "majorVersion": 4,
                 "fields": {
                     "agent_guardrail": {
@@ -921,7 +921,7 @@
                         "elem": {
                             "fields": {
                                 "last_indexing_job": {
-                                    "maxItemsOne": false,
+                                    "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "data_source_uuids": {
@@ -992,7 +992,7 @@
                                     "elem": {
                                         "fields": {
                                             "last_indexing_job": {
-                                                "maxItemsOne": false,
+                                                "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
                                                         "data_source_uuids": {
@@ -1028,20 +1028,20 @@
                     }
                 }
             },
-            "digitalocean_genai_agent_knowledge_base_attachment": {
-                "current": "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment",
+            "digitalocean_gradientai_agent_knowledge_base_attachment": {
+                "current": "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment",
                 "majorVersion": 4
             },
-            "digitalocean_genai_agent_route": {
-                "current": "digitalocean:index/genaiAgentRoute:GenaiAgentRoute",
+            "digitalocean_gradientai_agent_route": {
+                "current": "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute",
                 "majorVersion": 4
             },
-            "digitalocean_genai_function": {
-                "current": "digitalocean:index/genaiFunction:GenaiFunction",
+            "digitalocean_gradientai_function": {
+                "current": "digitalocean:index/gradientaiFunction:GradientaiFunction",
                 "majorVersion": 4
             },
-            "digitalocean_genai_indexing_job_cancel": {
-                "current": "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel",
+            "digitalocean_gradientai_indexing_job_cancel": {
+                "current": "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel",
                 "majorVersion": 4,
                 "fields": {
                     "data_source_uuids": {
@@ -1049,8 +1049,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_base": {
-                "current": "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase",
+            "digitalocean_gradientai_knowledge_base": {
+                "current": "digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase",
                 "majorVersion": 4,
                 "fields": {
                     "datasources": {
@@ -1094,8 +1094,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_base_data_source": {
-                "current": "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource",
+            "digitalocean_gradientai_knowledge_base_data_source": {
+                "current": "digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource",
                 "majorVersion": 4,
                 "fields": {
                     "spaces_data_source": {
@@ -1106,8 +1106,8 @@
                     }
                 }
             },
-            "digitalocean_genai_openai_api_key": {
-                "current": "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey",
+            "digitalocean_gradientai_openai_api_key": {
+                "current": "digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey",
                 "majorVersion": 4,
                 "fields": {
                     "model": {
@@ -2353,8 +2353,8 @@
                 "current": "digitalocean:index/getFloatingIp:getFloatingIp",
                 "majorVersion": 4
             },
-            "digitalocean_genai_agent": {
-                "current": "digitalocean:index/getGenaiAgent:getGenaiAgent",
+            "digitalocean_gradientai_agent": {
+                "current": "digitalocean:index/getGradientaiAgent:getGradientaiAgent",
                 "majorVersion": 4,
                 "fields": {
                     "agent_guardrail": {
@@ -2411,7 +2411,7 @@
                         "elem": {
                             "fields": {
                                 "last_indexing_job": {
-                                    "maxItemsOne": false,
+                                    "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
                                             "data_source_uuids": {
@@ -2482,7 +2482,7 @@
                                     "elem": {
                                         "fields": {
                                             "last_indexing_job": {
-                                                "maxItemsOne": false,
+                                                "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
                                                         "data_source_uuids": {
@@ -2518,8 +2518,8 @@
                     }
                 }
             },
-            "digitalocean_genai_agent_versions": {
-                "current": "digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions",
+            "digitalocean_gradientai_agent_versions": {
+                "current": "digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions",
                 "majorVersion": 4,
                 "fields": {
                     "agent_versions": {
@@ -2559,8 +2559,8 @@
                     }
                 }
             },
-            "digitalocean_genai_agents": {
-                "current": "digitalocean:index/getGenaiAgents:getGenaiAgents",
+            "digitalocean_gradientai_agents": {
+                "current": "digitalocean:index/getGradientaiAgents:getGradientaiAgents",
                 "majorVersion": 4,
                 "fields": {
                     "agents": {
@@ -2621,7 +2621,7 @@
                                     "elem": {
                                         "fields": {
                                             "last_indexing_job": {
-                                                "maxItemsOne": false,
+                                                "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
                                                         "data_source_uuids": {
@@ -2692,7 +2692,7 @@
                                                 "elem": {
                                                     "fields": {
                                                         "last_indexing_job": {
-                                                            "maxItemsOne": false,
+                                                            "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
                                                                     "data_source_uuids": {
@@ -2744,8 +2744,8 @@
                     }
                 }
             },
-            "digitalocean_genai_agents_by_openai_api_key": {
-                "current": "digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey",
+            "digitalocean_gradientai_agents_by_openai_api_key": {
+                "current": "digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey",
                 "majorVersion": 4,
                 "fields": {
                     "agents": {
@@ -2916,8 +2916,8 @@
                     }
                 }
             },
-            "digitalocean_genai_indexing_job": {
-                "current": "digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob",
+            "digitalocean_gradientai_indexing_job": {
+                "current": "digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob",
                 "majorVersion": 4,
                 "fields": {
                     "data_source_uuids": {
@@ -2925,8 +2925,8 @@
                     }
                 }
             },
-            "digitalocean_genai_indexing_job_data_sources": {
-                "current": "digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources",
+            "digitalocean_gradientai_indexing_job_data_sources": {
+                "current": "digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources",
                 "majorVersion": 4,
                 "fields": {
                     "indexed_data_sources": {
@@ -2934,8 +2934,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_base": {
-                "current": "digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase",
+            "digitalocean_gradientai_knowledge_base": {
+                "current": "digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase",
                 "majorVersion": 4,
                 "fields": {
                     "last_indexing_job": {
@@ -2953,8 +2953,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_base_data_sources": {
-                "current": "digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources",
+            "digitalocean_gradientai_knowledge_base_data_sources": {
+                "current": "digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources",
                 "majorVersion": 4,
                 "fields": {
                     "datasources": {
@@ -2985,8 +2985,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_base_indexing_jobs": {
-                "current": "digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs",
+            "digitalocean_gradientai_knowledge_base_indexing_jobs": {
+                "current": "digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs",
                 "majorVersion": 4,
                 "fields": {
                     "jobs": {
@@ -3004,8 +3004,8 @@
                     }
                 }
             },
-            "digitalocean_genai_knowledge_bases": {
-                "current": "digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases",
+            "digitalocean_gradientai_knowledge_bases": {
+                "current": "digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases",
                 "majorVersion": 4,
                 "fields": {
                     "filter": {
@@ -3043,8 +3043,8 @@
                     }
                 }
             },
-            "digitalocean_genai_models": {
-                "current": "digitalocean:index/getGenaiModels:getGenaiModels",
+            "digitalocean_gradientai_models": {
+                "current": "digitalocean:index/getGradientaiModels:getGradientaiModels",
                 "majorVersion": 4,
                 "fields": {
                     "filter": {
@@ -3075,8 +3075,8 @@
                     }
                 }
             },
-            "digitalocean_genai_openai_api_key": {
-                "current": "digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey",
+            "digitalocean_gradientai_openai_api_key": {
+                "current": "digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey",
                 "majorVersion": 4,
                 "fields": {
                     "models": {
@@ -3097,8 +3097,8 @@
                     }
                 }
             },
-            "digitalocean_genai_openai_api_keys": {
-                "current": "digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys",
+            "digitalocean_gradientai_openai_api_keys": {
+                "current": "digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys",
                 "majorVersion": 4,
                 "fields": {
                     "filter": {
@@ -3139,8 +3139,8 @@
                     }
                 }
             },
-            "digitalocean_genai_regions": {
-                "current": "digitalocean:index/getGenaiRegions:getGenaiRegions",
+            "digitalocean_gradientai_regions": {
+                "current": "digitalocean:index/getGradientaiRegions:getGradientaiRegions",
                 "majorVersion": 4,
                 "fields": {
                     "filter": {
@@ -3688,26 +3688,6 @@
             "digitalocean_database_postgresql_config": {
                 "maxItemsOneOverrides": {
                     "timescaledb": false
-                }
-            },
-            "digitalocean_genai_agent": {
-                "maxItemsOneOverrides": {
-                    "knowledge_bases.$.last_indexing_job": false,
-                    "template.$.knowledge_bases.$.last_indexing_job": false
-                }
-            }
-        },
-        "datasources": {
-            "digitalocean_genai_agent": {
-                "maxItemsOneOverrides": {
-                    "knowledge_bases.$.last_indexing_job": false,
-                    "template.$.knowledge_bases.$.last_indexing_job": false
-                }
-            },
-            "digitalocean_genai_agents": {
-                "maxItemsOneOverrides": {
-                    "agents.$.knowledge_bases.$.last_indexing_job": false,
-                    "agents.$.template.$.knowledge_bases.$.last_indexing_job": false
                 }
             }
         }
