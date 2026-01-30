@@ -6,6 +6,21 @@ disable-model-invocation: true
 
 # Pulumi Upgrade Provider
 
+## CRITICAL: Session Completion Requirements
+
+**DO NOT end this session until one of these conditions is met:**
+
+1. **Success**: The `upgrade-provider` command completes successfully AND you have retrieved the PR URL
+2. **Explicit failure**: You have hit a stopping condition listed in "When to Stop and Report Failure" below
+
+**You MUST NOT end the session if:**
+- A command is still running or you haven't checked its output
+- You encountered an error but haven't attempted to fix it
+- You haven't yet run `upgrade-provider` at least once
+- The upgrade-provider command failed but you haven't exhausted the error-fixing loop
+
+**Long-running commands**: The `upgrade-provider` command can take up to 10 minutes. You MUST wait for it to complete. Use `timeout: 600000` when running it via Bash.
+
 ## Overview
 
 Drive Pulumi provider upgrades by running the `upgrade-provider` tool and iterating on failures until the tool succeeds. Keep all git operations read-only in the repo; the tool owns branches, commits, and PRs.
@@ -19,13 +34,15 @@ Track errors across iterations to avoid infinite loops:
 
 ## Run Loop
 
-1. Run the upgrade tool from the repo root:
+1. Run the upgrade tool from the repo root with a 10-minute timeout:
 
 ```console
-upgrade-provider $ORG/$REPO --repo-path . > .pulumi/upgrade-provider-stdout.txt 2> /dev/null
+upgrade-provider $ORG/$REPO --repo-path . --upstream-provider-org $UPSTREAM_ORG --upstream-provider-name $UPSTREAM_NAME > .pulumi/upgrade-provider-stdout.txt 2>&1
 ```
 
-2. Wait for completion (can take up to 10 minutes).
+Use `timeout: 600000` (10 minutes) when invoking via Bash. Create the `.pulumi` directory first if it doesn't exist.
+
+2. **Wait for the command to fully complete** (can take up to 10 minutes). Do not proceed or end the session until you see the final output.
 3. Scan `.pulumi/upgrade-provider-stdout.txt` for lines starting with `error: `.
 4. If failed:
    - Compare the error to previous attempts
@@ -95,12 +112,73 @@ Use REST (`gh api`) instead of `gh pr edit` to avoid GraphQL project-card errors
 - `git rebase --continue --no-edit` is not supported in older git versions. Use `git rebase --continue` and accept the existing commit message when prompted.
 - To avoid the editor prompt during `git rebase --continue`, run it with `GIT_EDITOR=true` (or `GIT_EDITOR=:`).
 
+## Working Directory
+
+**IMPORTANT: Always run commands from the repository root.** Do NOT use `cd` to change directories - it causes state confusion and is not allowed.
+
+### Working with the `upstream` submodule
+
+The `upstream/` directory is a git submodule containing the Terraform provider source. Use these patterns:
+
+**Git commands** - use `-C upstream`:
+```bash
+# Check status
+git -C upstream status
+
+# View log
+git -C upstream log --oneline -10
+
+# Check current branch
+git -C upstream branch --show-current
+
+# Continue a rebase (with auto-accept message)
+GIT_EDITOR=: git -C upstream rebase --continue
+
+# Stage files after resolving conflicts
+git -C upstream add <file>
+```
+
+**Reading files** - use the Read tool with path from repo root:
+```
+Read upstream/docs/resources/droplet.md
+Read upstream/go.mod
+```
+
+**Editing files** - use the Edit tool with path from repo root:
+```
+Edit upstream/docs/resources/droplet.md
+```
+
+**Listing files** - use full paths:
+```bash
+ls -la upstream/
+ls -la upstream/vendor/github.com/digitalocean/godo/
+```
+
+**Scripts** - run from repo root:
+```bash
+./scripts/upstream.sh checkout
+./scripts/upstream.sh rebase -o refs/tags/v2.75.0
+./scripts/upstream.sh check_in
+```
+
 ## Guardrails
 
 - Never commit, push, or create branches manually; only run read-only git commands.
 - `./scripts/upstream.sh checkout|rebase|check_in` are allowed because the tool manages git state.
 - Do not stash changes; the tool manages git state.
+- **Do not use `cd`** - always work from the repository root.
 
 ## References
 
 - Use this skill's `references/upgrade-provider-errors.md` for patch conflict and new module mapping fixes.
+
+## Final Reminder
+
+Before ending this session, verify:
+- [ ] You ran `upgrade-provider` and waited for it to complete
+- [ ] If it failed, you attempted fixes per the error reference guide
+- [ ] If it succeeded, you retrieved and reported the PR URL
+- [ ] If stopping due to failure, you documented the error, attempted fixes, and why human intervention is needed
+
+**Do not end the session without completing one of the outcomes above.**

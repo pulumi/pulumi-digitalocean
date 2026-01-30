@@ -96,5 +96,15 @@ jobs:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
           additional_permissions: |
             actions: read
+          settings: |
+            {
+              "permissions": {
+                "allow": ["Edit(./**)", "Edit(/tmp/**)"]
+              },
+              "sandbox": {
+                "enabled": true
+              }
+            }
           claude_args: |
-            --allowedTools "Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=*),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(cd *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *)"
+            --max-turns 30
+            --allowedTools "Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *)"
