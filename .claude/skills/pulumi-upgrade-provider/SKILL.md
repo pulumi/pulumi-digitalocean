@@ -5,6 +5,15 @@ description: Automate Pulumi provider repo upgrades with the `upgrade-provider` 
 
 # Pulumi Upgrade Provider
 
+## Prerequisites
+
+The `upgrade-provider` tool is pre-installed. It should already be in your PATH.
+
+**IMPORTANT:**
+- Do NOT try to install `upgrade-provider` yourself via `go install` or any other method
+- Do NOT try to find the tool's location or modify PATH
+- Just run `upgrade-provider` directly - if it's not found (exit code 127), report this as an environment configuration issue and stop
+
 ## CRITICAL: Session Completion Requirements
 
 **DO NOT end this session until one of these conditions is met:**
@@ -33,41 +42,57 @@ Track errors across iterations to avoid infinite loops:
 
 ## Run Loop
 
-1. Run the upgrade tool from the repo root with a 10-minute timeout:
+1. Create the output directory first:
 
-```console
-upgrade-provider $ORG/$REPO --repo-path . > .pulumi/upgrade-provider-stdout.txt 2> /dev/null
+```bash
+mkdir -p .pulumi
 ```
 
-Use `timeout: 600000` (10 minutes) when invoking via Bash. Create the `.pulumi` directory first if it doesn't exist.
+2. Run the upgrade tool from the repo root with a 10-minute timeout:
 
-2. **Wait for the command to fully complete** (can take up to 10 minutes). Do not proceed or end the session until you see the final output.
-3. Scan `.pulumi/upgrade-provider-stdout.txt` for lines starting with `error: `.
-4. If failed:
+```bash
+upgrade-provider pulumi/pulumi-digitalocean --repo-path . > .pulumi/upgrade-provider-stdout.txt 2> /dev/null
+```
+
+Use `timeout: 600000` (10 minutes) when invoking via Bash.
+
+**If exit code is 127 (command not found):** This is an environment configuration issue. Report failure immediately - do NOT try to install the tool or find it manually.
+
+3. **Wait for the command to fully complete** (can take up to 10 minutes). Do not proceed or end the session until you see the final output.
+
+4. Read the output file to check for errors:
+
+```bash
+cat .pulumi/upgrade-provider-stdout.txt
+```
+
+5. Scan the output for lines starting with `error: `.
+6. If failed:
    - Compare the error to previous attempts
    - If you've seen the **same error 3 times**, stop and report failure (see "When to Stop")
    - If this is a new/different error, fix it using `references/upgrade-provider-errors.md`
-   - Rerun the command
-5. If a conflict was fixed, report exactly what changed (file paths + concrete edits or kept intent).
-6. If the upgrade required changes to patches, run `./scripts/upstream.sh checkout` and review the applied commits:
+   - Rerun the command (go back to step 2)
+7. If a conflict was fixed, report exactly what changed (file paths + concrete edits or kept intent).
+8. If the upgrade required changes to patches, run `./scripts/upstream.sh checkout` and review the applied commits:
    - List commit SHAs/titles from `upstream`.
    - Summarize the intent of each commit in plain language.
    - Call out any behavioral changes or risks.
-7. When the tool completes successfully, proceed to Post-run Tasks.
+9. When the tool completes successfully, proceed to Post-run Tasks.
 
 ## When to Stop and Report Failure
 
 Stop iterating and exit with failure if any of these conditions are met:
 
-1. **Same error 3 times**: You've attempted to fix the same error 3 times without success
-2. **Unknown error pattern**: The error is not covered in `references/upgrade-provider-errors.md` and you cannot determine a safe fix
-3. **Requires human judgment**: The fix requires decisions that need human input, such as:
+1. **Command not found (exit code 127)**: The `upgrade-provider` tool is not in PATH. This is an environment configuration issue - do NOT try to install the tool yourself
+2. **Same error 3 times**: You've attempted to fix the same error 3 times without success
+3. **Unknown error pattern**: The error is not covered in `references/upgrade-provider-errors.md` and you cannot determine a safe fix
+4. **Requires human judgment**: The fix requires decisions that need human input, such as:
    - Choosing between multiple valid approaches
    - Breaking changes that affect public API
    - Deprecation strategies
    - Architectural decisions about module organization
-4. **Circular issues**: Fix A causes error B, fix B causes error A
-5. **Complexity escalation**: Each fix attempt reveals more issues, suggesting deeper problems
+5. **Circular issues**: Fix A causes error B, fix B causes error A
+6. **Complexity escalation**: Each fix attempt reveals more issues, suggesting deeper problems
 
 When stopping, you MUST report:
 1. The error(s) encountered
