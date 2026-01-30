@@ -108,5 +108,19 @@ jobs:
               }
             }
           claude_args: |
-            --max-turns 30
+            --max-turns 50
             --allowedTools "Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *)"
+      - name: Upload Claude review output on failure
+        if: failure() && steps.claude-review.outputs.execution_file
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-review-execution-log
+          path: ${{ steps.claude-review.outputs.execution_file }}
+          retention-days: 7
+      - name: Upload Claude output on failure
+        if: failure() && steps.claude-action.outputs.execution_file
+        uses: actions/upload-artifact@v4
+        with:
+          name: claude-execution-log
+          path: ${{ steps.claude-action.outputs.execution_file }}
+          retention-days: 7
