@@ -37,7 +37,7 @@ Track errors across iterations to avoid infinite loops:
 1. Run the upgrade tool from the repo root with a 10-minute timeout:
 
 ```console
-upgrade-provider $ORG/$REPO --repo-path . --upstream-provider-org $UPSTREAM_ORG --upstream-provider-name $UPSTREAM_NAME > .pulumi/upgrade-provider-stdout.txt 2>&1
+upgrade-provider $ORG/$REPO --repo-path . > .pulumi/upgrade-provider-stdout.txt 2> /dev/null
 ```
 
 Use `timeout: 600000` (10 minutes) when invoking via Bash. Create the `.pulumi` directory first if it doesn't exist.
