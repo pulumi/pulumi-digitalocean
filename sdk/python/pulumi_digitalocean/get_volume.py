@@ -156,13 +156,6 @@ def get_volume(description: Optional[_builtins.str] = None,
                region: Optional[_builtins.str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVolumeResult:
     """
-    Get information on a volume for use in other resources. This data source provides
-    all of the volumes properties as configured on your DigitalOcean account. This is
-    useful if the volume in question is not managed by the provider or you need to utilize
-    any of the volumes data.
-
-    An error is triggered if the provided volume name does not exist.
-
     ## Example Usage
 
     Get the volume:
@@ -221,13 +214,6 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[_builtins.str]
                       region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
-    Get information on a volume for use in other resources. This data source provides
-    all of the volumes properties as configured on your DigitalOcean account. This is
-    useful if the volume in question is not managed by the provider or you need to utilize
-    any of the volumes data.
-
-    An error is triggered if the provided volume name does not exist.
-
     ## Example Usage
 
     Get the volume:

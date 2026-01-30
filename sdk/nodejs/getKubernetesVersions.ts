@@ -75,9 +75,6 @@ export function getKubernetesVersions(args?: GetKubernetesVersionsArgs, opts?: p
  * A collection of arguments for invoking getKubernetesVersions.
  */
 export interface GetKubernetesVersionsArgs {
-    /**
-     * If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-     */
     versionPrefix?: string;
 }
 
@@ -170,8 +167,5 @@ export function getKubernetesVersionsOutput(args?: GetKubernetesVersionsOutputAr
  * A collection of arguments for invoking getKubernetesVersions.
  */
 export interface GetKubernetesVersionsOutputArgs {
-    /**
-     * If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-     */
     versionPrefix?: pulumi.Input<string>;
 }

@@ -185,11 +185,6 @@ def get_droplet_snapshot(most_recent: Optional[_builtins.bool] = None,
     ```
 
 
-    :param _builtins.bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
-           
-           > **NOTE:** If more or less than a single match is returned by the search,
-           the update will fail. Ensure that your search is specific enough to return
-           a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
     :param _builtins.str name: The name of the Droplet snapshot.
     :param _builtins.str name_regex: A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param _builtins.str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.
@@ -253,11 +248,6 @@ def get_droplet_snapshot_output(most_recent: Optional[pulumi.Input[Optional[_bui
     ```
 
 
-    :param _builtins.bool most_recent: If more than one result is returned, use the most recent Droplet snapshot.
-           
-           > **NOTE:** If more or less than a single match is returned by the search,
-           the update will fail. Ensure that your search is specific enough to return
-           a single Droplet snapshot ID only, or use `most_recent` to choose the most recent one.
     :param _builtins.str name: The name of the Droplet snapshot.
     :param _builtins.str name_regex: A regex string to apply to the Droplet snapshot list returned by DigitalOcean. This allows more advanced filtering not supported from the DigitalOcean API. This filtering is done locally on what DigitalOcean returns.
     :param _builtins.str region: A "slug" representing a DigitalOcean region (e.g. `nyc1`). If set, only Droplet snapshots available in the region will be returned.

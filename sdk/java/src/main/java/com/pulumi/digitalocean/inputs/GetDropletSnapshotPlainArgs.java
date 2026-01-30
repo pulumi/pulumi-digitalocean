@@ -15,25 +15,9 @@ public final class GetDropletSnapshotPlainArgs extends com.pulumi.resources.Invo
 
     public static final GetDropletSnapshotPlainArgs Empty = new GetDropletSnapshotPlainArgs();
 
-    /**
-     * If more than one result is returned, use the most recent Droplet snapshot.
-     * 
-     * &gt; **NOTE:** If more or less than a single match is returned by the search,
-     * the update will fail. Ensure that your search is specific enough to return
-     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
-     * 
-     */
     @Import(name="mostRecent")
     private @Nullable Boolean mostRecent;
 
-    /**
-     * @return If more than one result is returned, use the most recent Droplet snapshot.
-     * 
-     * &gt; **NOTE:** If more or less than a single match is returned by the search,
-     * the update will fail. Ensure that your search is specific enough to return
-     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
-     * 
-     */
     public Optional<Boolean> mostRecent() {
         return Optional.ofNullable(this.mostRecent);
     }
@@ -110,16 +94,6 @@ public final class GetDropletSnapshotPlainArgs extends com.pulumi.resources.Invo
             $ = new GetDropletSnapshotPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param mostRecent If more than one result is returned, use the most recent Droplet snapshot.
-         * 
-         * &gt; **NOTE:** If more or less than a single match is returned by the search,
-         * the update will fail. Ensure that your search is specific enough to return
-         * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mostRecent(@Nullable Boolean mostRecent) {
             $.mostRecent = mostRecent;
             return this;

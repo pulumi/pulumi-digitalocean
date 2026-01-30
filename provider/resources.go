@@ -181,7 +181,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
-			"digitalocean_genai_knowledge_base": {
+			"digitalocean_gradientai_knowledge_base": {
 				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBase"),
 				Fields: map[string]*info.Schema{
 					"datasources": {
@@ -191,7 +191,7 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_genai_knowledge_base_data_source": {
+			"digitalocean_gradientai_knowledge_base_data_source": {
 				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBaseDataSource"),
 			},
 

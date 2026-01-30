@@ -52,16 +52,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()
- *             .name("custom-example")
+ *             .name("custom-terraform-example")
  *             .type("custom")
  *             .privateKey(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/myuser/certs/privkey.pem")
+ *                 .input("/Users/terraform/certs/privkey.pem")
  *                 .build()).result())
  *             .leafCertificate(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/myuser/certs/cert.pem")
+ *                 .input("/Users/terraform/certs/cert.pem")
  *                 .build()).result())
  *             .certificateChain(StdFunctions.file(FileArgs.builder()
- *                 .input("/Users/myuser/certs/fullchain.pem")
+ *                 .input("/Users/terraform/certs/fullchain.pem")
  *                 .build()).result())
  *             .build());
  * 
@@ -95,7 +95,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()
- *             .name("le-example")
+ *             .name("le-terraform-example")
  *             .type("lets_encrypt")
  *             .domains("example.com")
  *             .build());
@@ -136,7 +136,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var cert = new Certificate("cert", CertificateArgs.builder()
- *             .name("le-example")
+ *             .name("le-terraform-example")
  *             .type("lets_encrypt")
  *             .domains("example.com")
  *             .build());

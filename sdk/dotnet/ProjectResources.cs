@@ -10,58 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
-    /// Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
-    /// managed via this provider to a DigitalOcean Project managed outside of the provider.
-    /// 
-    /// The following resource types can be associated with a project:
-    /// 
-    /// * App Platform Apps
-    /// * Database Clusters
-    /// * Domains
-    /// * Droplets
-    /// * Floating IPs
-    /// * Kubernetes Clusters
-    /// * Load Balancers
-    /// * Spaces Buckets
-    /// * Volumes
-    /// 
-    /// ## Example Usage
-    /// 
-    /// The following example assigns a droplet to a Project managed outside of the provider:
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DigitalOcean = Pulumi.DigitalOcean;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var playground = DigitalOcean.GetProject.Invoke(new()
-    ///     {
-    ///         Name = "playground",
-    ///     });
-    /// 
-    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
-    ///     {
-    ///         Name = "example",
-    ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
-    ///         Image = "ubuntu-22-04-x64",
-    ///         Region = DigitalOcean.Region.NYC3,
-    ///     });
-    /// 
-    ///     var barfoo = new DigitalOcean.ProjectResources("barfoo", new()
-    ///     {
-    ///         Project = playground.Apply(getProjectResult =&gt; getProjectResult.Id),
-    ///         Resources = new[]
-    ///         {
-    ///             foobar.DropletUrn,
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// Importing this resource is not supported.

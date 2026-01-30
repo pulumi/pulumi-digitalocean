@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a Droplet for use in other resources. This data source provides
- * all of the Droplet's properties as configured on your DigitalOcean account. This
- * is useful if the Droplet in question is not managed by this provider or you need to
- * utilize any of the Droplet's data.
- *
- * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
- * error is triggered if more than one Droplet is found.
- *
  * ## Example Usage
  *
  * Get the Droplet by name:
@@ -186,14 +178,6 @@ export interface GetDropletResult {
     readonly vpcUuid: string;
 }
 /**
- * Get information on a Droplet for use in other resources. This data source provides
- * all of the Droplet's properties as configured on your DigitalOcean account. This
- * is useful if the Droplet in question is not managed by this provider or you need to
- * utilize any of the Droplet's data.
- *
- * **Note:** This data source returns a single Droplet. When specifying a `tag`, an
- * error is triggered if more than one Droplet is found.
- *
  * ## Example Usage
  *
  * Get the Droplet by name:
