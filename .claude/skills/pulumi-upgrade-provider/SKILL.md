@@ -1,7 +1,6 @@
 ---
 name: pulumi-upgrade-provider
 description: Automate Pulumi provider repo upgrades with the `upgrade-provider` tool. Use when upgrading a pulumi provider repository to a new upstream version, running `upgrade-provider`, and addressing its common failure modes like patch conflicts or missing module mappings.
-disable-model-invocation: true
 ---
 
 # Pulumi Upgrade Provider
