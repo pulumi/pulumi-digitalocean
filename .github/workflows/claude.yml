@@ -31,11 +31,10 @@ jobs:
         contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association))
     runs-on: ubuntu-latest
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
       issues: write
       id-token: write
-      actions: read
     steps:
       - env:
           ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
@@ -84,7 +83,7 @@ jobs:
             Only post GitHub comments - don't submit review text as messages.
           # Taken from https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md
           claude_args: |
-            --allowedTools "Skill,Bash(gh issue view *),Bash(gh search *),Bash(gh issue list *),Bash(gh pr comment *),Bash(gh pr diff *),Bash(gh pr view *),Bash(gh pr list *),mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "Bash(gh issue view:*),Bash(gh search:*),Bash(gh issue list:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),mcp__github_inline_comment__create_inline_comment"
       - name: Run Claude Code
         # Comment must contain '@claude', but not '@claude review'
         if: |
@@ -94,33 +93,6 @@ jobs:
         uses: anthropics/claude-code-action@8341a564b0c1693e9fa29c681852ee3714980098 # v1
         with:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
-          additional_permissions: |
-            actions: read
-          # Sandbox settings: --allowedTools controls which tools Claude can invoke,
-          # but the sandbox also enforces OS-level filesystem restrictions. Edit()
-          # rules in permissions.allow control all bash filesystem writes (mkdir,
-          # output redirection, etc.), not just the Edit tool. Without these, commands
-          # like `mkdir .pulumi` or `cmd > file.txt` would be blocked by the sandbox.
-          settings: |
-            {
-              "permissions": {
-                "allow": ["Edit(./**)", "Edit(/tmp/**)"]
-              }
-            }
           claude_args: |
-            --max-turns 50
-            --allowedTools "Skill,Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *)"
-      - name: Upload Claude review output on failure
-        if: failure() && steps.claude-review.outputs.execution_file
-        uses: actions/upload-artifact@v4
-        with:
-          name: claude-review-execution-log
-          path: ${{ steps.claude-review.outputs.execution_file }}
-          retention-days: 7
-      - name: Upload Claude output on failure
-        if: failure() && steps.claude-action.outputs.execution_file
-        uses: actions/upload-artifact@v4
-        with:
-          name: claude-execution-log
-          path: ${{ steps.claude-action.outputs.execution_file }}
-          retention-days: 7
+            # --max-turns 10 # this is the default
+            --allowedTools "Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider:*),Bash(./scripts/upstream.sh:*),Bash(git:*),Bash(GIT_EDITOR=*),Bash(make:*),Bash(gh:*),Bash(mkdir:*),Bash(cd:*),Bash(go install:*)"
