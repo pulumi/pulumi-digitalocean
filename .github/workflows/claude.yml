@@ -99,6 +99,19 @@ jobs:
         uses: anthropics/claude-code-action@8341a564b0c1693e9fa29c681852ee3714980098 # v1
         with:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
+          additional_permissions: |
+            actions: read
+          # Sandbox settings: --allowedTools controls which tools Claude can invoke,
+          # but the sandbox also enforces OS-level filesystem restrictions. Edit()
+          # rules in permissions.allow control all bash filesystem writes (mkdir,
+          # output redirection, etc.), not just the Edit tool. Without these, commands
+          # like `mkdir .pulumi` or `cmd > file.txt` would be blocked by the sandbox.
+          settings: |
+            {
+              "permissions": {
+                "allow": ["Edit(./**)", "Edit(/tmp/**)"]
+              }
+            }
           claude_args: |
             --max-turns 50
             --allowedTools "Skill,Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *),Bash(rg *),Bash(grep *),Bash(sed *),Bash(awk *),Bash(find *)"
