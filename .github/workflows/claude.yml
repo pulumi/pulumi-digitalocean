@@ -48,7 +48,13 @@ jobs:
         uses: pulumi/esc-action@9eb774255b1a4afb7855678ae8d4a77359da0d9b
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
         with:
-          fetch-depth: 1
+          fetch-depth: 0
+      - name: Checkout PR head (if applicable)
+        if: ${{ github.event.pull_request.number || (github.event.issue.pull_request && github.event.issue.number) }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_NUMBER: ${{ github.event.pull_request.number || github.event.issue.number }}
+        run: gh pr checkout "$PR_NUMBER"
       - name: Setup mise
         uses: blampe/mise-action@blampe/plugins
         env:
@@ -109,7 +115,7 @@ jobs:
             }
           claude_args: |
             --max-turns 50
-            --allowedTools "Skill,Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *)"
+            --allowedTools "Skill,Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *),Bash(rg *),Bash(grep *),Bash(sed *),Bash(awk *),Bash(find *)"
       - name: Upload Claude review output on failure
         if: failure() && steps.claude-review.outputs.execution_file
         uses: actions/upload-artifact@v4
