@@ -56,3 +56,8 @@ Makefile              -- Build orchestration
 - **Never cancel running builds** - Builds may take several minutes
 - **Do not run tests in `examples/`** - They require cloud credentials and run in CI
 - **Set timeouts to 300+ seconds** for build operations
+
+## CI Notes
+
+- The GitHub Action checks out the PR head automatically when the event is tied to a PR.
+- Use `rg` for search. Avoid `cd ... &&` in bash; prefer `git -C`, `make -C`, etc.

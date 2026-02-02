@@ -6,6 +6,36 @@ disable-model-invocation: true
 
 # Pulumi Upgrade Provider
 
+## Prerequisites
+
+First, install the `upgrade-provider` tool:
+
+```bash
+go install github.com/pulumi/upgrade-provider@latest
+```
+
+After installation, the tool will be in your PATH and you can run it directly as `upgrade-provider`.
+
+**IMPORTANT:**
+- Do NOT try to modify PATH or use absolute paths to run the tool
+- Do NOT try to find where the tool was installed
+- Just run `upgrade-provider` directly after installing - if it's not found (exit code 127), report this as an environment configuration issue and stop
+
+## CRITICAL: Session Completion Requirements
+
+**DO NOT end this session until one of these conditions is met:**
+
+1. **Success**: The `upgrade-provider` command completes successfully AND you have retrieved the PR URL
+2. **Explicit failure**: You have hit a stopping condition listed in "When to Stop and Report Failure" below
+
+**You MUST NOT end the session if:**
+- A command is still running or you haven't checked its output
+- You encountered an error but haven't attempted to fix it
+- You haven't yet run `upgrade-provider` at least once
+- The upgrade-provider command failed but you haven't exhausted the error-fixing loop
+
+**Long-running commands**: The `upgrade-provider` command can take up to 10 minutes. You MUST wait for it to complete. Use `timeout: 600000` when running it via Bash.
+
 ## Overview
 
 Drive Pulumi provider upgrades by running the `upgrade-provider` tool and iterating on failures until the tool succeeds. Keep all git operations read-only in the repo; the tool owns branches, commits, and PRs.
