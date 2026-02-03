@@ -60,4 +60,13 @@ Makefile              -- Build orchestration
 ## CI Notes
 
 - The GitHub Action checks out the PR head automatically when the event is tied to a PR.
-- Use `rg` for search. Avoid `cd ... &&` in bash; prefer `git -C`, `make -C`, etc.
+- Use `rg` for search. Avoid `cd ... &&` in bash; prefer `git -C`, `make -C`, or direct paths.
+- Avoid Python scripts in CI; use `rg`, `grep`, `sed`, and `awk` instead.
+- Good (CI-safe):
+  - `rg "pattern" upstream/`
+  - `git -C upstream log -1`
+  - `make -C provider build`
+- Bad (will often be blocked in CI):
+  - `cd upstream && rg "pattern"`
+  - `cd provider && go test ./...`
+  - `python3 - <<'EOF' ... EOF`

@@ -31,10 +31,11 @@ jobs:
         contains(fromJSON('["OWNER", "MEMBER", "COLLABORATOR"]'), github.event.issue.author_association))
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write
       pull-requests: write
       issues: write
       id-token: write
+      actions: read
     steps:
       - env:
           ESC_ACTION_ENVIRONMENT: github-secrets/${{ github.repository_owner }}-${{ github.event.repository.name }}
@@ -89,7 +90,7 @@ jobs:
             Only post GitHub comments - don't submit review text as messages.
           # Taken from https://github.com/anthropics/claude-code/blob/main/plugins/code-review/commands/code-review.md
           claude_args: |
-            --allowedTools "Bash(gh issue view:*),Bash(gh search:*),Bash(gh issue list:*),Bash(gh pr comment:*),Bash(gh pr diff:*),Bash(gh pr view:*),Bash(gh pr list:*),mcp__github_inline_comment__create_inline_comment"
+            --allowedTools "Skill,Bash(gh issue view *),Bash(gh search *),Bash(gh issue list *),Bash(gh pr comment *),Bash(gh pr diff *),Bash(gh pr view *),Bash(gh pr list *),mcp__github_inline_comment__create_inline_comment"
       - name: Run Claude Code
         # Comment must contain '@claude', but not '@claude review'
         if: |
@@ -99,6 +100,7 @@ jobs:
         uses: anthropics/claude-code-action@8341a564b0c1693e9fa29c681852ee3714980098 # v1
         with:
           anthropic_api_key: ${{ steps.esc-secrets.outputs.ANTHROPIC_API_KEY }}
+          # This allows claude to read github action logs
           additional_permissions: |
             actions: read
           # Sandbox settings: --allowedTools controls which tools Claude can invoke,
@@ -115,6 +117,8 @@ jobs:
           claude_args: |
             --max-turns 50
             --allowedTools "Skill,Edit,MultiEdit,Write,Read,Glob,Grep,LS,Bash(upgrade-provider *),Bash(./scripts/upstream.sh *),Bash(git *),Bash(GIT_EDITOR=* git *),Bash(make *),Bash(gh *),Bash(mkdir *),Bash(go install *),Bash(ls *),Bash(test *),Bash(cat *),Bash(pwd),Bash(head *),Bash(tail *),Bash(tee *),Bash(rg *),Bash(grep *),Bash(sed *),Bash(awk *),Bash(find *)"
+        # If the claude action fails you don't get any logs on what claude was doing
+        # Uploading the artifact allows you to download the artifact from the UI
       - name: Upload Claude review output on failure
         if: failure() && steps.claude-review.outputs.execution_file
         uses: actions/upload-artifact@v4
