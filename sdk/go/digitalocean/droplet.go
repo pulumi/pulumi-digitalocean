@@ -13,7 +13,8 @@ import (
 )
 
 // Provides a DigitalOcean Droplet resource. This can be used to create,
-// modify, and delete Droplets.
+// modify, and delete Droplets. Droplets also support
+// provisioning.
 //
 // ## Example Usage
 //
@@ -77,11 +78,7 @@ type Droplet struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrOutput `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
-	// A boolean indicating whether the droplet
-	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	DropletUrn       pulumi.StringOutput  `pulumi:"dropletUrn"`
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringOutput `pulumi:"image"`
@@ -138,7 +135,7 @@ type Droplet struct {
 	UserData pulumi.StringPtrOutput `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntOutput `pulumi:"vcpus"`
-	// A list of the IDs of each block storage volume to be attached to the Droplet.
+	// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayOutput `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringOutput `pulumi:"vpcUuid"`
@@ -196,12 +193,8 @@ type dropletState struct {
 	// set it to `true`.
 	DropletAgent *bool `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	DropletUrn *string `pulumi:"dropletUrn"`
-	// A boolean indicating whether the droplet
-	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
-	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
+	DropletUrn       *string `pulumi:"dropletUrn"`
+	GracefulShutdown *bool   `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image *string `pulumi:"image"`
 	// The IPv4 address
@@ -257,7 +250,7 @@ type dropletState struct {
 	UserData *string `pulumi:"userData"`
 	// The number of the instance's virtual CPUs
 	Vcpus *int `pulumi:"vcpus"`
-	// A list of the IDs of each block storage volume to be attached to the Droplet.
+	// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -280,11 +273,7 @@ type DropletState struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrInput
 	// The uniform resource name of the Droplet
-	DropletUrn pulumi.StringPtrInput
-	// A boolean indicating whether the droplet
-	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	DropletUrn       pulumi.StringPtrInput
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringPtrInput
@@ -341,7 +330,7 @@ type DropletState struct {
 	UserData pulumi.StringPtrInput
 	// The number of the instance's virtual CPUs
 	Vcpus pulumi.IntPtrInput
-	// A list of the IDs of each block storage volume to be attached to the Droplet.
+	// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -363,11 +352,7 @@ type dropletArgs struct {
 	// installation errors (i.e. OS not supported) are ignored. To prevent it from
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
-	DropletAgent *bool `pulumi:"dropletAgent"`
-	// A boolean indicating whether the droplet
-	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	DropletAgent     *bool `pulumi:"dropletAgent"`
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image string `pulumi:"image"`
@@ -409,7 +394,7 @@ type dropletArgs struct {
 	Tags []string `pulumi:"tags"`
 	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData *string `pulumi:"userData"`
-	// A list of the IDs of each block storage volume to be attached to the Droplet.
+	// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 	VolumeIds []string `pulumi:"volumeIds"`
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid *string `pulumi:"vpcUuid"`
@@ -428,11 +413,7 @@ type DropletArgs struct {
 	// installation errors (i.e. OS not supported) are ignored. To prevent it from
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
-	DropletAgent pulumi.BoolPtrInput
-	// A boolean indicating whether the droplet
-	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	DropletAgent     pulumi.BoolPtrInput
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringInput
@@ -474,7 +455,7 @@ type DropletArgs struct {
 	Tags pulumi.StringArrayInput
 	// A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
 	UserData pulumi.StringPtrInput
-	// A list of the IDs of each block storage volume to be attached to the Droplet.
+	// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 	VolumeIds pulumi.StringArrayInput
 	// The ID of the VPC where the Droplet will be located.
 	VpcUuid pulumi.StringPtrInput
@@ -602,10 +583,6 @@ func (o DropletOutput) DropletUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.DropletUrn }).(pulumi.StringOutput)
 }
 
-// A boolean indicating whether the droplet
-// should be gracefully shut down before it is deleted.
-//
-// > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
@@ -725,7 +702,7 @@ func (o DropletOutput) Vcpus() pulumi.IntOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.IntOutput { return v.Vcpus }).(pulumi.IntOutput)
 }
 
-// A list of the IDs of each block storage volume to be attached to the Droplet.
+// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
 func (o DropletOutput) VolumeIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringArrayOutput { return v.VolumeIds }).(pulumi.StringArrayOutput)
 }

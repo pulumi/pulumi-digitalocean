@@ -189,13 +189,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetDropletSnapshotArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// If more than one result is returned, use the most recent Droplet snapshot.
-        /// 
-        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
-        /// the update will fail. Ensure that your search is specific enough to return
-        /// a single Droplet snapshot ID only, or use `MostRecent` to choose the most recent one.
-        /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
@@ -225,13 +218,6 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetDropletSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// If more than one result is returned, use the most recent Droplet snapshot.
-        /// 
-        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
-        /// the update will fail. Ensure that your search is specific enough to return
-        /// a single Droplet snapshot ID only, or use `MostRecent` to choose the most recent one.
-        /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
 

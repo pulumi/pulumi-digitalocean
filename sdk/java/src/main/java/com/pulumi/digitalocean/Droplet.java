@@ -21,7 +21,8 @@ import javax.annotation.Nullable;
 
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
- * modify, and delete Droplets.
+ * modify, and delete Droplets. Droplets also support
+ * provisioning.
  * 
  * ## Example Usage
  * 
@@ -166,23 +167,9 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     public Output<String> dropletUrn() {
         return this.dropletUrn;
     }
-    /**
-     * A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
-     */
     @Export(name="gracefulShutdown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> gracefulShutdown;
 
-    /**
-     * @return A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
-     */
     public Output<Optional<Boolean>> gracefulShutdown() {
         return Codegen.optional(this.gracefulShutdown);
     }
@@ -491,14 +478,14 @@ public class Droplet extends com.pulumi.resources.CustomResource {
         return this.vcpus;
     }
     /**
-     * A list of the IDs of each block storage volume to be attached to the Droplet.
+     * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      * 
      */
     @Export(name="volumeIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> volumeIds;
 
     /**
-     * @return A list of the IDs of each block storage volume to be attached to the Droplet.
+     * @return A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      * 
      */
     public Output<List<String>> volumeIds() {

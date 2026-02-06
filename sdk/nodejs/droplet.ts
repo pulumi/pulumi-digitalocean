@@ -9,7 +9,8 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DigitalOcean Droplet resource. This can be used to create,
- * modify, and delete Droplets.
+ * modify, and delete Droplets. Droplets also support
+ * provisioning.
  *
  * ## Example Usage
  *
@@ -95,12 +96,6 @@ export class Droplet extends pulumi.CustomResource {
      * The uniform resource name of the Droplet
      */
     declare public /*out*/ readonly dropletUrn: pulumi.Output<string>;
-    /**
-     * A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     */
     declare public readonly gracefulShutdown: pulumi.Output<boolean | undefined>;
     /**
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -196,7 +191,7 @@ export class Droplet extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly vcpus: pulumi.Output<number>;
     /**
-     * A list of the IDs of each block storage volume to be attached to the Droplet.
+     * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      */
     declare public readonly volumeIds: pulumi.Output<string[]>;
     /**
@@ -320,12 +315,6 @@ export interface DropletState {
      * The uniform resource name of the Droplet
      */
     dropletUrn?: pulumi.Input<string>;
-    /**
-     * A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -421,7 +410,7 @@ export interface DropletState {
      */
     vcpus?: pulumi.Input<number>;
     /**
-     * A list of the IDs of each block storage volume to be attached to the Droplet.
+     * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      */
     volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -452,12 +441,6 @@ export interface DropletArgs {
      * set it to `true`.
      */
     dropletAgent?: pulumi.Input<boolean>;
-    /**
-     * A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
      * The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
@@ -524,7 +507,7 @@ export interface DropletArgs {
      */
     userData?: pulumi.Input<string>;
     /**
-     * A list of the IDs of each block storage volume to be attached to the Droplet.
+     * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      */
     volumeIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
