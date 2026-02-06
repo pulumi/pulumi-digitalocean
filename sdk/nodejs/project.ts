@@ -5,26 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Provides a DigitalOcean Project resource.
- *
- * Projects allow you to organize your resources into groups that fit the way you work.
- * You can group resources (like Droplets, Spaces, Load Balancers, domains, and Floating IPs)
- * in ways that align with the applications you host on DigitalOcean.
- *
- * The following resource types can be associated with a project:
- *
- * * App Platform Apps
- * * Database Clusters
- * * Domains
- * * Droplets
- * * Floating IPs
- * * Kubernetes Clusters
- * * Load Balancers
- * * Spaces Buckets
- * * Volumes
- *
- * **Note:** A provider managed project cannot be set as a default project.
- *
  * ## Example Usage
  *
  * The following example demonstrates the creation of an empty project:

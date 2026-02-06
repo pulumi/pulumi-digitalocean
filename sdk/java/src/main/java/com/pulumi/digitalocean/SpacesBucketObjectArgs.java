@@ -153,42 +153,16 @@ public final class SpacesBucketObjectArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.contentType);
     }
 
-    /**
-     * Used to trigger updates.
-     * 
-     */
     @Import(name="etag")
     private @Nullable Output<String> etag;
 
-    /**
-     * @return Used to trigger updates.
-     * 
-     */
     public Optional<Output<String>> etag() {
         return Optional.ofNullable(this.etag);
     }
 
-    /**
-     * Allow the object to be deleted by removing any legal hold on any object version.
-     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-     * 
-     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-     * 
-     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-     * 
-     */
     @Import(name="forceDestroy")
     private @Nullable Output<Boolean> forceDestroy;
 
-    /**
-     * @return Allow the object to be deleted by removing any legal hold on any object version.
-     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-     * 
-     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-     * 
-     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-     * 
-     */
     public Optional<Output<Boolean>> forceDestroy() {
         return Optional.ofNullable(this.forceDestroy);
     }
@@ -496,54 +470,20 @@ public final class SpacesBucketObjectArgs extends com.pulumi.resources.ResourceA
             return contentType(Output.of(contentType));
         }
 
-        /**
-         * @param etag Used to trigger updates.
-         * 
-         * @return builder
-         * 
-         */
         public Builder etag(@Nullable Output<String> etag) {
             $.etag = etag;
             return this;
         }
 
-        /**
-         * @param etag Used to trigger updates.
-         * 
-         * @return builder
-         * 
-         */
         public Builder etag(String etag) {
             return etag(Output.of(etag));
         }
 
-        /**
-         * @param forceDestroy Allow the object to be deleted by removing any legal hold on any object version.
-         * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-         * 
-         * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-         * 
-         * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
             $.forceDestroy = forceDestroy;
             return this;
         }
 
-        /**
-         * @param forceDestroy Allow the object to be deleted by removing any legal hold on any object version.
-         * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-         * 
-         * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-         * 
-         * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forceDestroy(Boolean forceDestroy) {
             return forceDestroy(Output.of(forceDestroy));
         }

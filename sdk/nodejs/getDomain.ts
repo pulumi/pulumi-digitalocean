@@ -5,14 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a domain. This data source provides the name, TTL, and zone
- * file as configured on your DigitalOcean account. This is useful if the domain
- * name in question is not managed by this provider or you need to utilize TTL or zone
- * file data.
- *
- * An error is triggered if the provided domain name is not managed with your
- * DigitalOcean account.
- *
  * ## Example Usage
  *
  * Get the zone file for a domain:
@@ -67,14 +59,6 @@ export interface GetDomainResult {
     readonly zoneFile: string;
 }
 /**
- * Get information on a domain. This data source provides the name, TTL, and zone
- * file as configured on your DigitalOcean account. This is useful if the domain
- * name in question is not managed by this provider or you need to utilize TTL or zone
- * file data.
- *
- * An error is triggered if the provided domain name is not managed with your
- * DigitalOcean account.
- *
  * ## Example Usage
  *
  * Get the zone file for a domain:

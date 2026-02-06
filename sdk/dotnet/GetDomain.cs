@@ -12,14 +12,6 @@ namespace Pulumi.DigitalOcean
     public static class GetDomain
     {
         /// <summary>
-        /// Get information on a domain. This data source provides the name, TTL, and zone
-        /// file as configured on your DigitalOcean account. This is useful if the domain
-        /// name in question is not managed by this provider or you need to utilize TTL or zone
-        /// file data.
-        /// 
-        /// An error is triggered if the provided domain name is not managed with your
-        /// DigitalOcean account.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the zone file for a domain:
@@ -45,6 +37,7 @@ namespace Pulumi.DigitalOcean
         /// ```
         /// 
         /// ```
+        ///   $ pulumi up
         /// 
         /// data.digitalocean_domain.example: Refreshing state...
         /// 
@@ -67,14 +60,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a domain. This data source provides the name, TTL, and zone
-        /// file as configured on your DigitalOcean account. This is useful if the domain
-        /// name in question is not managed by this provider or you need to utilize TTL or zone
-        /// file data.
-        /// 
-        /// An error is triggered if the provided domain name is not managed with your
-        /// DigitalOcean account.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the zone file for a domain:
@@ -100,6 +85,7 @@ namespace Pulumi.DigitalOcean
         /// ```
         /// 
         /// ```
+        ///   $ pulumi up
         /// 
         /// data.digitalocean_domain.example: Refreshing state...
         /// 
@@ -122,14 +108,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainResult>("digitalocean:index/getDomain:getDomain", args ?? new GetDomainInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a domain. This data source provides the name, TTL, and zone
-        /// file as configured on your DigitalOcean account. This is useful if the domain
-        /// name in question is not managed by this provider or you need to utilize TTL or zone
-        /// file data.
-        /// 
-        /// An error is triggered if the provided domain name is not managed with your
-        /// DigitalOcean account.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the zone file for a domain:
@@ -155,6 +133,7 @@ namespace Pulumi.DigitalOcean
         /// ```
         /// 
         /// ```
+        ///   $ pulumi up
         /// 
         /// data.digitalocean_domain.example: Refreshing state...
         /// 

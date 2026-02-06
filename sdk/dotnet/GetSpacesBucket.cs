@@ -12,9 +12,6 @@ namespace Pulumi.DigitalOcean
     public static class GetSpacesBucket
     {
         /// <summary>
-        /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-        /// is not managed by the provider or you need to utilize any of the bucket's data.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the bucket by name:
@@ -44,9 +41,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-        /// is not managed by the provider or you need to utilize any of the bucket's data.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the bucket by name:
@@ -76,9 +70,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetSpacesBucketResult>("digitalocean:index/getSpacesBucket:getSpacesBucket", args ?? new GetSpacesBucketInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-        /// is not managed by the provider or you need to utilize any of the bucket's data.
-        /// 
         /// ## Example Usage
         /// 
         /// Get the bucket by name:

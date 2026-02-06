@@ -5,44 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
- * managed via this provider to a DigitalOcean Project managed outside of the provider.
- *
- * The following resource types can be associated with a project:
- *
- * * App Platform Apps
- * * Database Clusters
- * * Domains
- * * Droplets
- * * Floating IPs
- * * Kubernetes Clusters
- * * Load Balancers
- * * Spaces Buckets
- * * Volumes
- *
- * ## Example Usage
- *
- * The following example assigns a droplet to a Project managed outside of the provider:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as digitalocean from "@pulumi/digitalocean";
- *
- * const playground = digitalocean.getProject({
- *     name: "playground",
- * });
- * const foobar = new digitalocean.Droplet("foobar", {
- *     name: "example",
- *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     image: "ubuntu-22-04-x64",
- *     region: digitalocean.Region.NYC3,
- * });
- * const barfoo = new digitalocean.ProjectResources("barfoo", {
- *     project: playground.then(playground => playground.id),
- *     resources: [foobar.dropletUrn],
- * });
- * ```
- *
  * ## Import
  *
  * Importing this resource is not supported.
