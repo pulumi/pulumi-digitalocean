@@ -5,13 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Get information on an image for use in other resources (e.g. creating a Droplet
- * based on snapshot). This data source provides all of the image properties as
- * configured on your DigitalOcean account. This is useful if the image in question
- * is not managed by the provider or you need to utilize any of the image's data.
- *
- * An error is triggered if zero or more than one result is returned by the query.
- *
  * ## Example Usage
  *
  * Get the data about a snapshot:
@@ -154,13 +147,6 @@ export interface GetImageResult {
     readonly type: string;
 }
 /**
- * Get information on an image for use in other resources (e.g. creating a Droplet
- * based on snapshot). This data source provides all of the image properties as
- * configured on your DigitalOcean account. This is useful if the image in question
- * is not managed by the provider or you need to utilize any of the image's data.
- *
- * An error is triggered if zero or more than one result is returned by the query.
- *
  * ## Example Usage
  *
  * Get the data about a snapshot:

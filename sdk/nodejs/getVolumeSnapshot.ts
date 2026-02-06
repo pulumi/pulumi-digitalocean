@@ -58,13 +58,6 @@ export function getVolumeSnapshot(args?: GetVolumeSnapshotArgs, opts?: pulumi.In
  * A collection of arguments for invoking getVolumeSnapshot.
  */
 export interface GetVolumeSnapshotArgs {
-    /**
-     * If more than one result is returned, use the most recent volume snapshot.
-     *
-     * > **NOTE:** If more or less than a single match is returned by the search,
-     * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-     */
     mostRecent?: boolean;
     /**
      * The name of the volume snapshot.
@@ -171,13 +164,6 @@ export function getVolumeSnapshotOutput(args?: GetVolumeSnapshotOutputArgs, opts
  * A collection of arguments for invoking getVolumeSnapshot.
  */
 export interface GetVolumeSnapshotOutputArgs {
-    /**
-     * If more than one result is returned, use the most recent volume snapshot.
-     *
-     * > **NOTE:** If more or less than a single match is returned by the search,
-     * the provider will fail. Ensure that your search is specific enough to return
-     * a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
-     */
     mostRecent?: pulumi.Input<boolean>;
     /**
      * The name of the volume snapshot.

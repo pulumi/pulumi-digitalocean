@@ -97,15 +97,6 @@ class AwaitableGetFloatingIpResult(GetFloatingIpResult):
 def get_floating_ip(ip_address: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFloatingIpResult:
     """
-    > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `ReservedIp` instead.
-
-    Get information on a floating ip. This data source provides the region and Droplet id
-    as configured on your DigitalOcean account. This is useful if the floating IP
-    in question is not managed by the provider or you need to find the Droplet the IP is
-    attached to.
-
-    An error is triggered if the provided floating IP does not exist.
-
     ## Example Usage
 
     Get the floating IP:
@@ -137,15 +128,6 @@ def get_floating_ip(ip_address: Optional[_builtins.str] = None,
 def get_floating_ip_output(ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
-    > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `ReservedIp` instead.
-
-    Get information on a floating ip. This data source provides the region and Droplet id
-    as configured on your DigitalOcean account. This is useful if the floating IP
-    in question is not managed by the provider or you need to find the Droplet the IP is
-    attached to.
-
-    An error is triggered if the provided floating IP does not exist.
-
     ## Example Usage
 
     Get the floating IP:

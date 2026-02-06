@@ -133,12 +133,6 @@ class AwaitableGetTagResult(GetTagResult):
 def get_tag(name: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagResult:
     """
-    Get information on a tag. This data source provides the name as configured on
-    your DigitalOcean account. This is useful if the tag name in question is not
-    managed by the provider or you need validate if the tag exists in the account.
-
-    An error is triggered if the provided tag name does not exist.
-
     ## Example Usage
 
     Get the tag:
@@ -176,12 +170,6 @@ def get_tag(name: Optional[_builtins.str] = None,
 def get_tag_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
-    Get information on a tag. This data source provides the name as configured on
-    your DigitalOcean account. This is useful if the tag name in question is not
-    managed by the provider or you need validate if the tag exists in the account.
-
-    An error is triggered if the provided tag name does not exist.
-
     ## Example Usage
 
     Get the tag:

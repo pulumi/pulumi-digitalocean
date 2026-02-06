@@ -19,9 +19,9 @@ import * as utilities from "./utilities";
  *
  * // Create a new SSH key
  * const _default = new digitalocean.SshKey("default", {
- *     name: "Example",
+ *     name: "Terraform Example",
  *     publicKey: std.file({
- *         input: "/Users/myuser/.ssh/id_rsa.pub",
+ *         input: "/Users/terraform/.ssh/id_rsa.pub",
  *     }).then(invoke => invoke.result),
  * });
  * // Create a new Droplet using the SSH key

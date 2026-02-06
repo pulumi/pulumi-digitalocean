@@ -14,17 +14,9 @@ public final class GetKubernetesVersionsPlainArgs extends com.pulumi.resources.I
 
     public static final GetKubernetesVersionsPlainArgs Empty = new GetKubernetesVersionsPlainArgs();
 
-    /**
-     * If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-     * 
-     */
     @Import(name="versionPrefix")
     private @Nullable String versionPrefix;
 
-    /**
-     * @return If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-     * 
-     */
     public Optional<String> versionPrefix() {
         return Optional.ofNullable(this.versionPrefix);
     }
@@ -53,12 +45,6 @@ public final class GetKubernetesVersionsPlainArgs extends com.pulumi.resources.I
             $ = new GetKubernetesVersionsPlainArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param versionPrefix If provided, the provider will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
-         * 
-         * @return builder
-         * 
-         */
         public Builder versionPrefix(@Nullable String versionPrefix) {
             $.versionPrefix = versionPrefix;
             return this;

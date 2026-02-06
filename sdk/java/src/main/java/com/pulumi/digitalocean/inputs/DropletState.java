@@ -117,23 +117,9 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dropletUrn);
     }
 
-    /**
-     * A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
-     */
     @Import(name="gracefulShutdown")
     private @Nullable Output<Boolean> gracefulShutdown;
 
-    /**
-     * @return A boolean indicating whether the droplet
-     * should be gracefully shut down before it is deleted.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
-     */
     public Optional<Output<Boolean>> gracefulShutdown() {
         return Optional.ofNullable(this.gracefulShutdown);
     }
@@ -467,14 +453,14 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A list of the IDs of each block storage volume to be attached to the Droplet.
+     * A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      * 
      */
     @Import(name="volumeIds")
     private @Nullable Output<List<String>> volumeIds;
 
     /**
-     * @return A list of the IDs of each block storage volume to be attached to the Droplet.
+     * @return A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
      * 
      */
     public Optional<Output<List<String>>> volumeIds() {
@@ -674,29 +660,11 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
             return dropletUrn(Output.of(dropletUrn));
         }
 
-        /**
-         * @param gracefulShutdown A boolean indicating whether the droplet
-         * should be gracefully shut down before it is deleted.
-         * 
-         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracefulShutdown(@Nullable Output<Boolean> gracefulShutdown) {
             $.gracefulShutdown = gracefulShutdown;
             return this;
         }
 
-        /**
-         * @param gracefulShutdown A boolean indicating whether the droplet
-         * should be gracefully shut down before it is deleted.
-         * 
-         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gracefulShutdown(Boolean gracefulShutdown) {
             return gracefulShutdown(Output.of(gracefulShutdown));
         }
@@ -1211,7 +1179,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeIds A list of the IDs of each block storage volume to be attached to the Droplet.
+         * @param volumeIds A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
          * 
          * @return builder
          * 
@@ -1222,7 +1190,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeIds A list of the IDs of each block storage volume to be attached to the Droplet.
+         * @param volumeIds A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
          * 
          * @return builder
          * 
@@ -1232,7 +1200,7 @@ public final class DropletState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param volumeIds A list of the IDs of each block storage volume to be attached to the Droplet.
+         * @param volumeIds A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
          * 
          * @return builder
          * 

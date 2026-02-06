@@ -25,16 +25,16 @@ import * as utilities from "./utilities";
  * import * as std from "@pulumi/std";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     name: "custom-example",
+ *     name: "custom-terraform-example",
  *     type: digitalocean.CertificateType.Custom,
  *     privateKey: std.file({
- *         input: "/Users/myuser/certs/privkey.pem",
+ *         input: "/Users/terraform/certs/privkey.pem",
  *     }).then(invoke => invoke.result),
  *     leafCertificate: std.file({
- *         input: "/Users/myuser/certs/cert.pem",
+ *         input: "/Users/terraform/certs/cert.pem",
  *     }).then(invoke => invoke.result),
  *     certificateChain: std.file({
- *         input: "/Users/myuser/certs/fullchain.pem",
+ *         input: "/Users/terraform/certs/fullchain.pem",
  *     }).then(invoke => invoke.result),
  * });
  * ```
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     name: "le-example",
+ *     name: "le-terraform-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["example.com"],
  * });
@@ -62,7 +62,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const cert = new digitalocean.Certificate("cert", {
- *     name: "le-example",
+ *     name: "le-terraform-example",
  *     type: digitalocean.CertificateType.LetsEncrypt,
  *     domains: ["example.com"],
  * });
