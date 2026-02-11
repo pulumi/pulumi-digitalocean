@@ -706,12 +706,20 @@ func Provider() tfbridge.ProviderInfo {
 	// referencing the old Genai* tokens continue to work without replacement.
 	for _, r := range []struct{ tf, legacy, current string }{
 		{"digitalocean_gradientai_agent", "GenaiAgent", "GradientaiAgent"},
-		{"digitalocean_gradientai_agent_knowledge_base_attachment", "GenaiAgentKnowledgeBaseAttachment", "GradientaiAgentKnowledgeBaseAttachment"},
+		{
+			"digitalocean_gradientai_agent_knowledge_base_attachment",
+			"GenaiAgentKnowledgeBaseAttachment",
+			"GradientaiAgentKnowledgeBaseAttachment",
+		},
 		{"digitalocean_gradientai_agent_route", "GenaiAgentRoute", "GradientaiAgentRoute"},
 		{"digitalocean_gradientai_function", "GenaiFunction", "GradientaiFunction"},
 		{"digitalocean_gradientai_indexing_job_cancel", "GenaiIndexingJobCancel", "GradientaiIndexingJobCancel"},
 		{"digitalocean_gradientai_knowledge_base", "GenaiKnowledgeBase", "GradientaiKnowledgeBase"},
-		{"digitalocean_gradientai_knowledge_base_data_source", "GenaiKnowledgeBaseDataSource", "GradientaiKnowledgeBaseDataSource"},
+		{
+			"digitalocean_gradientai_knowledge_base_data_source",
+			"GenaiKnowledgeBaseDataSource",
+			"GradientaiKnowledgeBaseDataSource",
+		},
 		{"digitalocean_gradientai_openai_api_key", "GenaiOpenaiApiKey", "GradientaiOpenaiApiKey"},
 	} {
 		prov.RenameResourceWithAlias(r.tf,
@@ -724,12 +732,28 @@ func Provider() tfbridge.ProviderInfo {
 		{"digitalocean_gradientai_agent", "getGenaiAgent", "getGradientaiAgent"},
 		{"digitalocean_gradientai_agent_versions", "getGenaiAgentVersions", "getGradientaiAgentVersions"},
 		{"digitalocean_gradientai_agents", "getGenaiAgents", "getGradientaiAgents"},
-		{"digitalocean_gradientai_agents_by_openai_api_key", "getGenaiAgentsByOpenaiApiKey", "getGradientaiAgentsByOpenaiApiKey"},
+		{
+			"digitalocean_gradientai_agents_by_openai_api_key",
+			"getGenaiAgentsByOpenaiApiKey",
+			"getGradientaiAgentsByOpenaiApiKey",
+		},
 		{"digitalocean_gradientai_indexing_job", "getGenaiIndexingJob", "getGradientaiIndexingJob"},
-		{"digitalocean_gradientai_indexing_job_data_sources", "getGenaiIndexingJobDataSources", "getGradientaiIndexingJobDataSources"},
+		{
+			"digitalocean_gradientai_indexing_job_data_sources",
+			"getGenaiIndexingJobDataSources",
+			"getGradientaiIndexingJobDataSources",
+		},
 		{"digitalocean_gradientai_knowledge_base", "getGenaiKnowledgeBase", "getGradientaiKnowledgeBase"},
-		{"digitalocean_gradientai_knowledge_base_data_sources", "getGenaiKnowledgeBaseDataSources", "getGradientaiKnowledgeBaseDataSources"},
-		{"digitalocean_gradientai_knowledge_base_indexing_jobs", "getGenaiKnowledgeBaseIndexingJobs", "getGradientaiKnowledgeBaseIndexingJobs"},
+		{
+			"digitalocean_gradientai_knowledge_base_data_sources",
+			"getGenaiKnowledgeBaseDataSources",
+			"getGradientaiKnowledgeBaseDataSources",
+		},
+		{
+			"digitalocean_gradientai_knowledge_base_indexing_jobs",
+			"getGenaiKnowledgeBaseIndexingJobs",
+			"getGradientaiKnowledgeBaseIndexingJobs",
+		},
 		{"digitalocean_gradientai_knowledge_bases", "getGenaiKnowledgeBases", "getGradientaiKnowledgeBases"},
 		{"digitalocean_gradientai_models", "getGenaiModels", "getGradientaiModels"},
 		{"digitalocean_gradientai_openai_api_key", "getGenaiOpenaiApiKey", "getGradientaiOpenaiApiKey"},
