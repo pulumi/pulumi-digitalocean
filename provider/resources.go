@@ -70,6 +70,8 @@ func makeResource(mod string, res string) tokens.Type {
 	return makeType(mod+"/"+fn, res)
 }
 
+func ref[T any](value T) *T { return &value }
+
 // Provider returns additional overlaid schema and metadata associated with the DigitalOcean package.
 func Provider() tfbridge.ProviderInfo {
 	p := shimv2.NewProvider(digitalocean.Provider())
@@ -181,18 +183,24 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"digitalocean_floating_ip_assignment": {Tok: makeResource(digitalOceanMod, "FloatingIpAssignment")},
-			"digitalocean_genai_knowledge_base": {
-				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBase"),
+			"digitalocean_gradientai_knowledge_base": {
+				Tok: makeResource(digitalOceanMod, "GradientaiKnowledgeBase"),
+				Aliases: []tfbridge.AliasInfo{
+					{Type: ref(string(makeResource(digitalOceanMod, "GenaiKnowledgeBase")))},
+				},
 				Fields: map[string]*info.Schema{
 					"datasources": {
 						Elem: &info.Schema{
-							TypeName: tfbridge.Ref("GenaiKnowledgeBaseDataSource"),
+							TypeName: tfbridge.Ref("GradientaiKnowledgeBaseDataSource"),
 						},
 					},
 				},
 			},
-			"digitalocean_genai_knowledge_base_data_source": {
-				Tok: makeResource(digitalOceanMod, "GenaiKnowledgeBaseDataSource"),
+			"digitalocean_gradientai_knowledge_base_data_source": {
+				Tok: makeResource(digitalOceanMod, "GradientaiKnowledgeBaseDataSource"),
+				Aliases: []tfbridge.AliasInfo{
+					{Type: ref(string(makeResource(digitalOceanMod, "GenaiKnowledgeBaseDataSource")))},
+				},
 			},
 
 			"digitalocean_kubernetes_cluster": {
