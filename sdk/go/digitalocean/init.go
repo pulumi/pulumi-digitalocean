@@ -89,22 +89,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FloatingIp{}
 	case "digitalocean:index/floatingIpAssignment:FloatingIpAssignment":
 		r = &FloatingIpAssignment{}
-	case "digitalocean:index/genaiAgent:GenaiAgent":
-		r = &GenaiAgent{}
-	case "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment":
-		r = &GenaiAgentKnowledgeBaseAttachment{}
-	case "digitalocean:index/genaiAgentRoute:GenaiAgentRoute":
-		r = &GenaiAgentRoute{}
-	case "digitalocean:index/genaiFunction:GenaiFunction":
-		r = &GenaiFunction{}
-	case "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel":
-		r = &GenaiIndexingJobCancel{}
-	case "digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase":
-		r = &GenaiKnowledgeBase{}
-	case "digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource":
-		r = &GenaiKnowledgeBaseDataSource{}
-	case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
-		r = &GenaiOpenaiApiKey{}
+	case "digitalocean:index/gradientaiAgent:GradientaiAgent":
+		r = &GradientaiAgent{}
+	case "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment":
+		r = &GradientaiAgentKnowledgeBaseAttachment{}
+	case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
+		r = &GradientaiAgentRoute{}
+	case "digitalocean:index/gradientaiFunction:GradientaiFunction":
+		r = &GradientaiFunction{}
+	case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
+		r = &GradientaiIndexingJobCancel{}
+	case "digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase":
+		r = &GradientaiKnowledgeBase{}
+	case "digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource":
+		r = &GradientaiKnowledgeBaseDataSource{}
+	case "digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey":
+		r = &GradientaiOpenaiApiKey{}
 	case "digitalocean:index/kubernetesCluster:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -368,42 +368,42 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiAgent",
+		"index/gradientaiAgent",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiAgentKnowledgeBaseAttachment",
+		"index/gradientaiAgentKnowledgeBaseAttachment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiAgentRoute",
+		"index/gradientaiAgentRoute",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiFunction",
+		"index/gradientaiFunction",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiIndexingJobCancel",
+		"index/gradientaiIndexingJobCancel",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiKnowledgeBase",
+		"index/gradientaiKnowledgeBase",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiKnowledgeBaseDataSource",
+		"index/gradientaiKnowledgeBaseDataSource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"digitalocean",
-		"index/genaiOpenaiApiKey",
+		"index/gradientaiOpenaiApiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -272,92 +272,92 @@ __all__ = [
     'FirewallOutboundRuleArgsDict',
     'FirewallPendingChangeArgs',
     'FirewallPendingChangeArgsDict',
-    'GenaiAgentAgentGuardrailArgs',
-    'GenaiAgentAgentGuardrailArgsDict',
-    'GenaiAgentAnthropicApiKeyArgs',
-    'GenaiAgentAnthropicApiKeyArgsDict',
-    'GenaiAgentApiKeyArgs',
-    'GenaiAgentApiKeyArgsDict',
-    'GenaiAgentApiKeyInfoArgs',
-    'GenaiAgentApiKeyInfoArgsDict',
-    'GenaiAgentChatbotArgs',
-    'GenaiAgentChatbotArgsDict',
-    'GenaiAgentChatbotIdentifierArgs',
-    'GenaiAgentChatbotIdentifierArgsDict',
-    'GenaiAgentChildAgentArgs',
-    'GenaiAgentChildAgentArgsDict',
-    'GenaiAgentChildAgentAnthropicApiKeyArgs',
-    'GenaiAgentChildAgentAnthropicApiKeyArgsDict',
-    'GenaiAgentChildAgentApiKeyArgs',
-    'GenaiAgentChildAgentApiKeyArgsDict',
-    'GenaiAgentChildAgentApiKeyInfoArgs',
-    'GenaiAgentChildAgentApiKeyInfoArgsDict',
-    'GenaiAgentChildAgentChatbotArgs',
-    'GenaiAgentChildAgentChatbotArgsDict',
-    'GenaiAgentChildAgentChatbotIdentifierArgs',
-    'GenaiAgentChildAgentChatbotIdentifierArgsDict',
-    'GenaiAgentChildAgentDeploymentArgs',
-    'GenaiAgentChildAgentDeploymentArgsDict',
-    'GenaiAgentDeploymentArgs',
-    'GenaiAgentDeploymentArgsDict',
-    'GenaiAgentFunctionArgs',
-    'GenaiAgentFunctionArgsDict',
-    'GenaiAgentKnowledgeBaseArgs',
-    'GenaiAgentKnowledgeBaseArgsDict',
-    'GenaiAgentKnowledgeBaseLastIndexingJobArgs',
-    'GenaiAgentKnowledgeBaseLastIndexingJobArgsDict',
-    'GenaiAgentModelArgs',
-    'GenaiAgentModelArgsDict',
-    'GenaiAgentModelAgreementArgs',
-    'GenaiAgentModelAgreementArgsDict',
-    'GenaiAgentModelVersionArgs',
-    'GenaiAgentModelVersionArgsDict',
-    'GenaiAgentOpenAiApiKeyArgs',
-    'GenaiAgentOpenAiApiKeyArgsDict',
-    'GenaiAgentParentAgentArgs',
-    'GenaiAgentParentAgentArgsDict',
-    'GenaiAgentParentAgentAnthropicApiKeyArgs',
-    'GenaiAgentParentAgentAnthropicApiKeyArgsDict',
-    'GenaiAgentParentAgentApiKeyArgs',
-    'GenaiAgentParentAgentApiKeyArgsDict',
-    'GenaiAgentParentAgentApiKeyInfoArgs',
-    'GenaiAgentParentAgentApiKeyInfoArgsDict',
-    'GenaiAgentParentAgentChatbotArgs',
-    'GenaiAgentParentAgentChatbotArgsDict',
-    'GenaiAgentParentAgentChatbotIdentifierArgs',
-    'GenaiAgentParentAgentChatbotIdentifierArgsDict',
-    'GenaiAgentParentAgentDeploymentArgs',
-    'GenaiAgentParentAgentDeploymentArgsDict',
-    'GenaiAgentTemplateArgs',
-    'GenaiAgentTemplateArgsDict',
-    'GenaiAgentTemplateKnowledgeBaseArgs',
-    'GenaiAgentTemplateKnowledgeBaseArgsDict',
-    'GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
-    'GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
-    'GenaiAgentTemplateModelArgs',
-    'GenaiAgentTemplateModelArgsDict',
-    'GenaiAgentTemplateModelAgreementArgs',
-    'GenaiAgentTemplateModelAgreementArgsDict',
-    'GenaiAgentTemplateModelVersionArgs',
-    'GenaiAgentTemplateModelVersionArgsDict',
-    'GenaiKnowledgeBaseDataSourceArgs',
-    'GenaiKnowledgeBaseDataSourceArgsDict',
-    'GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs',
-    'GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict',
-    'GenaiKnowledgeBaseDataSourceLastIndexingJobArgs',
-    'GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict',
-    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs',
-    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict',
-    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs',
-    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict',
-    'GenaiKnowledgeBaseLastIndexingJobArgs',
-    'GenaiKnowledgeBaseLastIndexingJobArgsDict',
-    'GenaiOpenaiApiKeyModelArgs',
-    'GenaiOpenaiApiKeyModelArgsDict',
-    'GenaiOpenaiApiKeyModelAgreementArgs',
-    'GenaiOpenaiApiKeyModelAgreementArgsDict',
-    'GenaiOpenaiApiKeyModelVersionArgs',
-    'GenaiOpenaiApiKeyModelVersionArgsDict',
+    'GradientaiAgentAgentGuardrailArgs',
+    'GradientaiAgentAgentGuardrailArgsDict',
+    'GradientaiAgentAnthropicApiKeyArgs',
+    'GradientaiAgentAnthropicApiKeyArgsDict',
+    'GradientaiAgentApiKeyArgs',
+    'GradientaiAgentApiKeyArgsDict',
+    'GradientaiAgentApiKeyInfoArgs',
+    'GradientaiAgentApiKeyInfoArgsDict',
+    'GradientaiAgentChatbotArgs',
+    'GradientaiAgentChatbotArgsDict',
+    'GradientaiAgentChatbotIdentifierArgs',
+    'GradientaiAgentChatbotIdentifierArgsDict',
+    'GradientaiAgentChildAgentArgs',
+    'GradientaiAgentChildAgentArgsDict',
+    'GradientaiAgentChildAgentAnthropicApiKeyArgs',
+    'GradientaiAgentChildAgentAnthropicApiKeyArgsDict',
+    'GradientaiAgentChildAgentApiKeyArgs',
+    'GradientaiAgentChildAgentApiKeyArgsDict',
+    'GradientaiAgentChildAgentApiKeyInfoArgs',
+    'GradientaiAgentChildAgentApiKeyInfoArgsDict',
+    'GradientaiAgentChildAgentChatbotArgs',
+    'GradientaiAgentChildAgentChatbotArgsDict',
+    'GradientaiAgentChildAgentChatbotIdentifierArgs',
+    'GradientaiAgentChildAgentChatbotIdentifierArgsDict',
+    'GradientaiAgentChildAgentDeploymentArgs',
+    'GradientaiAgentChildAgentDeploymentArgsDict',
+    'GradientaiAgentDeploymentArgs',
+    'GradientaiAgentDeploymentArgsDict',
+    'GradientaiAgentFunctionArgs',
+    'GradientaiAgentFunctionArgsDict',
+    'GradientaiAgentKnowledgeBaseArgs',
+    'GradientaiAgentKnowledgeBaseArgsDict',
+    'GradientaiAgentKnowledgeBaseLastIndexingJobArgs',
+    'GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict',
+    'GradientaiAgentModelArgs',
+    'GradientaiAgentModelArgsDict',
+    'GradientaiAgentModelAgreementArgs',
+    'GradientaiAgentModelAgreementArgsDict',
+    'GradientaiAgentModelVersionArgs',
+    'GradientaiAgentModelVersionArgsDict',
+    'GradientaiAgentOpenAiApiKeyArgs',
+    'GradientaiAgentOpenAiApiKeyArgsDict',
+    'GradientaiAgentParentAgentArgs',
+    'GradientaiAgentParentAgentArgsDict',
+    'GradientaiAgentParentAgentAnthropicApiKeyArgs',
+    'GradientaiAgentParentAgentAnthropicApiKeyArgsDict',
+    'GradientaiAgentParentAgentApiKeyArgs',
+    'GradientaiAgentParentAgentApiKeyArgsDict',
+    'GradientaiAgentParentAgentApiKeyInfoArgs',
+    'GradientaiAgentParentAgentApiKeyInfoArgsDict',
+    'GradientaiAgentParentAgentChatbotArgs',
+    'GradientaiAgentParentAgentChatbotArgsDict',
+    'GradientaiAgentParentAgentChatbotIdentifierArgs',
+    'GradientaiAgentParentAgentChatbotIdentifierArgsDict',
+    'GradientaiAgentParentAgentDeploymentArgs',
+    'GradientaiAgentParentAgentDeploymentArgsDict',
+    'GradientaiAgentTemplateArgs',
+    'GradientaiAgentTemplateArgsDict',
+    'GradientaiAgentTemplateKnowledgeBaseArgs',
+    'GradientaiAgentTemplateKnowledgeBaseArgsDict',
+    'GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
+    'GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
+    'GradientaiAgentTemplateModelArgs',
+    'GradientaiAgentTemplateModelArgsDict',
+    'GradientaiAgentTemplateModelAgreementArgs',
+    'GradientaiAgentTemplateModelAgreementArgsDict',
+    'GradientaiAgentTemplateModelVersionArgs',
+    'GradientaiAgentTemplateModelVersionArgsDict',
+    'GradientaiKnowledgeBaseDataSourceArgs',
+    'GradientaiKnowledgeBaseDataSourceArgsDict',
+    'GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs',
+    'GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict',
+    'GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs',
+    'GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict',
+    'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs',
+    'GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict',
+    'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs',
+    'GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict',
+    'GradientaiKnowledgeBaseLastIndexingJobArgs',
+    'GradientaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GradientaiOpenaiApiKeyModelArgs',
+    'GradientaiOpenaiApiKeyModelArgsDict',
+    'GradientaiOpenaiApiKeyModelAgreementArgs',
+    'GradientaiOpenaiApiKeyModelAgreementArgsDict',
+    'GradientaiOpenaiApiKeyModelVersionArgs',
+    'GradientaiOpenaiApiKeyModelVersionArgsDict',
     'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs',
     'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict',
     'KubernetesClusterAmdGpuDevicePluginArgs',
@@ -444,72 +444,72 @@ __all__ = [
     'GetFirewallInboundRuleArgsDict',
     'GetFirewallOutboundRuleArgs',
     'GetFirewallOutboundRuleArgsDict',
-    'GetGenaiAgentAgentGuardrailArgs',
-    'GetGenaiAgentAgentGuardrailArgsDict',
-    'GetGenaiAgentAnthropicApiKeyArgs',
-    'GetGenaiAgentAnthropicApiKeyArgsDict',
-    'GetGenaiAgentApiKeyArgs',
-    'GetGenaiAgentApiKeyArgsDict',
-    'GetGenaiAgentApiKeyInfoArgs',
-    'GetGenaiAgentApiKeyInfoArgsDict',
-    'GetGenaiAgentChatbotArgs',
-    'GetGenaiAgentChatbotArgsDict',
-    'GetGenaiAgentChatbotIdentifierArgs',
-    'GetGenaiAgentChatbotIdentifierArgsDict',
-    'GetGenaiAgentDeploymentArgs',
-    'GetGenaiAgentDeploymentArgsDict',
-    'GetGenaiAgentFunctionArgs',
-    'GetGenaiAgentFunctionArgsDict',
-    'GetGenaiAgentKnowledgeBaseArgs',
-    'GetGenaiAgentKnowledgeBaseArgsDict',
-    'GetGenaiAgentKnowledgeBaseLastIndexingJobArgs',
-    'GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict',
-    'GetGenaiAgentModelArgs',
-    'GetGenaiAgentModelArgsDict',
-    'GetGenaiAgentModelAgreementArgs',
-    'GetGenaiAgentModelAgreementArgsDict',
-    'GetGenaiAgentModelVersionArgs',
-    'GetGenaiAgentModelVersionArgsDict',
-    'GetGenaiAgentOpenAiApiKeyArgs',
-    'GetGenaiAgentOpenAiApiKeyArgsDict',
-    'GetGenaiAgentTemplateArgs',
-    'GetGenaiAgentTemplateArgsDict',
-    'GetGenaiAgentTemplateKnowledgeBaseArgs',
-    'GetGenaiAgentTemplateKnowledgeBaseArgsDict',
-    'GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
-    'GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
-    'GetGenaiAgentTemplateModelArgs',
-    'GetGenaiAgentTemplateModelArgsDict',
-    'GetGenaiAgentTemplateModelAgreementArgs',
-    'GetGenaiAgentTemplateModelAgreementArgsDict',
-    'GetGenaiAgentTemplateModelVersionArgs',
-    'GetGenaiAgentTemplateModelVersionArgsDict',
-    'GetGenaiAgentVersionsFilterArgs',
-    'GetGenaiAgentVersionsFilterArgsDict',
-    'GetGenaiAgentVersionsSortArgs',
-    'GetGenaiAgentVersionsSortArgsDict',
-    'GetGenaiAgentsFilterArgs',
-    'GetGenaiAgentsFilterArgsDict',
-    'GetGenaiAgentsSortArgs',
-    'GetGenaiAgentsSortArgsDict',
-    'GetGenaiKnowledgeBaseLastIndexingJobArgs',
-    'GetGenaiKnowledgeBaseLastIndexingJobArgsDict',
-    'GetGenaiKnowledgeBasesFilterArgs',
-    'GetGenaiKnowledgeBasesFilterArgsDict',
-    'GetGenaiKnowledgeBasesSortArgs',
-    'GetGenaiKnowledgeBasesSortArgsDict',
-    'GetGenaiModelsFilterArgs',
-    'GetGenaiModelsFilterArgsDict',
-    'GetGenaiModelsSortArgs',
-    'GetGenaiModelsSortArgsDict',
-    'GetGenaiOpenaiApiKeysFilterArgs',
-    'GetGenaiOpenaiApiKeysFilterArgsDict',
-    'GetGenaiOpenaiApiKeysSortArgs',
-    'GetGenaiOpenaiApiKeysSortArgsDict',
-    'GetGenaiRegionsFilterArgs',
-    'GetGenaiRegionsFilterArgsDict',
-    'GetGenaiRegionsSortArgs',
-    'GetGenaiRegionsSortArgsDict',
+    'GetGradientaiAgentAgentGuardrailArgs',
+    'GetGradientaiAgentAgentGuardrailArgsDict',
+    'GetGradientaiAgentAnthropicApiKeyArgs',
+    'GetGradientaiAgentAnthropicApiKeyArgsDict',
+    'GetGradientaiAgentApiKeyArgs',
+    'GetGradientaiAgentApiKeyArgsDict',
+    'GetGradientaiAgentApiKeyInfoArgs',
+    'GetGradientaiAgentApiKeyInfoArgsDict',
+    'GetGradientaiAgentChatbotArgs',
+    'GetGradientaiAgentChatbotArgsDict',
+    'GetGradientaiAgentChatbotIdentifierArgs',
+    'GetGradientaiAgentChatbotIdentifierArgsDict',
+    'GetGradientaiAgentDeploymentArgs',
+    'GetGradientaiAgentDeploymentArgsDict',
+    'GetGradientaiAgentFunctionArgs',
+    'GetGradientaiAgentFunctionArgsDict',
+    'GetGradientaiAgentKnowledgeBaseArgs',
+    'GetGradientaiAgentKnowledgeBaseArgsDict',
+    'GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs',
+    'GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGradientaiAgentModelArgs',
+    'GetGradientaiAgentModelArgsDict',
+    'GetGradientaiAgentModelAgreementArgs',
+    'GetGradientaiAgentModelAgreementArgsDict',
+    'GetGradientaiAgentModelVersionArgs',
+    'GetGradientaiAgentModelVersionArgsDict',
+    'GetGradientaiAgentOpenAiApiKeyArgs',
+    'GetGradientaiAgentOpenAiApiKeyArgsDict',
+    'GetGradientaiAgentTemplateArgs',
+    'GetGradientaiAgentTemplateArgsDict',
+    'GetGradientaiAgentTemplateKnowledgeBaseArgs',
+    'GetGradientaiAgentTemplateKnowledgeBaseArgsDict',
+    'GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
+    'GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGradientaiAgentTemplateModelArgs',
+    'GetGradientaiAgentTemplateModelArgsDict',
+    'GetGradientaiAgentTemplateModelAgreementArgs',
+    'GetGradientaiAgentTemplateModelAgreementArgsDict',
+    'GetGradientaiAgentTemplateModelVersionArgs',
+    'GetGradientaiAgentTemplateModelVersionArgsDict',
+    'GetGradientaiAgentVersionsFilterArgs',
+    'GetGradientaiAgentVersionsFilterArgsDict',
+    'GetGradientaiAgentVersionsSortArgs',
+    'GetGradientaiAgentVersionsSortArgsDict',
+    'GetGradientaiAgentsFilterArgs',
+    'GetGradientaiAgentsFilterArgsDict',
+    'GetGradientaiAgentsSortArgs',
+    'GetGradientaiAgentsSortArgsDict',
+    'GetGradientaiKnowledgeBaseLastIndexingJobArgs',
+    'GetGradientaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGradientaiKnowledgeBasesFilterArgs',
+    'GetGradientaiKnowledgeBasesFilterArgsDict',
+    'GetGradientaiKnowledgeBasesSortArgs',
+    'GetGradientaiKnowledgeBasesSortArgsDict',
+    'GetGradientaiModelsFilterArgs',
+    'GetGradientaiModelsFilterArgsDict',
+    'GetGradientaiModelsSortArgs',
+    'GetGradientaiModelsSortArgsDict',
+    'GetGradientaiOpenaiApiKeysFilterArgs',
+    'GetGradientaiOpenaiApiKeysFilterArgsDict',
+    'GetGradientaiOpenaiApiKeysSortArgs',
+    'GetGradientaiOpenaiApiKeysSortArgsDict',
+    'GetGradientaiRegionsFilterArgs',
+    'GetGradientaiRegionsFilterArgsDict',
+    'GetGradientaiRegionsSortArgs',
+    'GetGradientaiRegionsSortArgsDict',
     'GetImagesFilterArgs',
     'GetImagesFilterArgsDict',
     'GetImagesSortArgs',
@@ -12167,7 +12167,7 @@ class FirewallPendingChangeArgs:
 
 
 if not MYPY:
-    class GenaiAgentAgentGuardrailArgsDict(TypedDict):
+    class GradientaiAgentAgentGuardrailArgsDict(TypedDict):
         agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
         Agent UUID for the Guardrail
@@ -12217,10 +12217,10 @@ if not MYPY:
         Guardrail UUID
         """
 elif False:
-    GenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentAgentGuardrailArgs:
+class GradientaiAgentAgentGuardrailArgs:
     def __init__(__self__, *,
                  agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -12419,7 +12419,7 @@ class GenaiAgentAgentGuardrailArgs:
 
 
 if not MYPY:
-    class GenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    class GradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the API Key was created
@@ -12445,10 +12445,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentAnthropicApiKeyArgs:
+class GradientaiAgentAnthropicApiKeyArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -12551,16 +12551,16 @@ class GenaiAgentAnthropicApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentApiKeyArgsDict(TypedDict):
+    class GradientaiAgentApiKeyArgsDict(TypedDict):
         api_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
         """
 elif False:
-    GenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentApiKeyArgs:
+class GradientaiAgentApiKeyArgs:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -12583,7 +12583,7 @@ class GenaiAgentApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentApiKeyInfoArgsDict(TypedDict):
+    class GradientaiAgentApiKeyInfoArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -12609,10 +12609,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentApiKeyInfoArgs:
+class GradientaiAgentApiKeyInfoArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -12715,7 +12715,7 @@ class GenaiAgentApiKeyInfoArgs:
 
 
 if not MYPY:
-    class GenaiAgentChatbotArgsDict(TypedDict):
+    class GradientaiAgentChatbotArgsDict(TypedDict):
         button_background_color: NotRequired[pulumi.Input[_builtins.str]]
         """
         Background color for the chatbot button
@@ -12741,10 +12741,10 @@ if not MYPY:
         Starting message for the chatbot
         """
 elif False:
-    GenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChatbotArgs:
+class GradientaiAgentChatbotArgs:
     def __init__(__self__, *,
                  button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
                  logo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -12847,13 +12847,13 @@ class GenaiAgentChatbotArgs:
 
 
 if not MYPY:
-    class GenaiAgentChatbotIdentifierArgsDict(TypedDict):
+    class GradientaiAgentChatbotIdentifierArgsDict(TypedDict):
         chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
-    GenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChatbotIdentifierArgs:
+class GradientaiAgentChatbotIdentifierArgs:
     def __init__(__self__, *,
                  chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
         if chatbot_id is not None:
@@ -12870,7 +12870,7 @@ class GenaiAgentChatbotIdentifierArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentArgsDict(TypedDict):
+    class GradientaiAgentChildAgentArgsDict(TypedDict):
         instruction: pulumi.Input[_builtins.str]
         """
         Instruction for the Agent
@@ -12895,27 +12895,27 @@ if not MYPY:
         """
         ID of the child agent
         """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
+        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
         """
         Anthropic API Key information
         """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgsDict']]]]
+        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgsDict']]]]
         """
         List of API Key Infos
         """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgsDict']]]]
+        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgsDict']]]]
         """
         List of API Keys
         """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgsDict']]]]
+        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgsDict']]]]
         """
         List of Chatbot Identifiers
         """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgsDict']]]]
+        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgsDict']]]]
         """
         ChatBot configuration
         """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgsDict']]]]
+        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgsDict']]]]
         """
         List of API Key Infos
         """
@@ -12924,10 +12924,10 @@ if not MYPY:
         Description for the Agent
         """
 elif False:
-    GenaiAgentChildAgentArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentArgs:
+class GradientaiAgentChildAgentArgs:
     def __init__(__self__, *,
                  instruction: pulumi.Input[_builtins.str],
                  model_uuid: pulumi.Input[_builtins.str],
@@ -12935,12 +12935,12 @@ class GenaiAgentChildAgentArgs:
                  project_id: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]] = None,
+                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgs']]]] = None,
+                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgs']]]] = None,
+                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
@@ -12949,12 +12949,12 @@ class GenaiAgentChildAgentArgs:
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
         :param pulumi.Input[_builtins.str] agent_id: ID of the child agent
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgs']]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgs']]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgs']]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
         """
         pulumi.set(__self__, "instruction", instruction)
@@ -13053,74 +13053,74 @@ class GenaiAgentChildAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="anthropicApiKeys")
-    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]]:
+    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgs']]]]:
         """
         Anthropic API Key information
         """
         return pulumi.get(self, "anthropic_api_keys")
 
     @anthropic_api_keys.setter
-    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]]):
+    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgs']]]]):
         pulumi.set(self, "anthropic_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyInfos")
-    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]]:
+    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "api_key_infos")
 
     @api_key_infos.setter
-    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]]):
+    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgs']]]]):
         pulumi.set(self, "api_key_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeys")
-    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]]:
+    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgs']]]]:
         """
         List of API Keys
         """
         return pulumi.get(self, "api_keys")
 
     @api_keys.setter
-    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]]):
+    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgs']]]]):
         pulumi.set(self, "api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="chatbotIdentifiers")
-    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]]:
+    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgs']]]]:
         """
         List of Chatbot Identifiers
         """
         return pulumi.get(self, "chatbot_identifiers")
 
     @chatbot_identifiers.setter
-    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]]):
+    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgs']]]]):
         pulumi.set(self, "chatbot_identifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]]:
+    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgs']]]]:
         """
         ChatBot configuration
         """
         return pulumi.get(self, "chatbots")
 
     @chatbots.setter
-    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]]):
+    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgs']]]]):
         pulumi.set(self, "chatbots", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]]:
+    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]]):
+    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
@@ -13137,7 +13137,7 @@ class GenaiAgentChildAgentArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
+    class GradientaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the API Key was created
@@ -13163,10 +13163,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentChildAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentAnthropicApiKeyArgs:
+class GradientaiAgentChildAgentAnthropicApiKeyArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13269,16 +13269,16 @@ class GenaiAgentChildAgentAnthropicApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentApiKeyArgsDict(TypedDict):
+    class GradientaiAgentChildAgentApiKeyArgsDict(TypedDict):
         api_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
         """
 elif False:
-    GenaiAgentChildAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentApiKeyArgs:
+class GradientaiAgentChildAgentApiKeyArgs:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -13301,7 +13301,7 @@ class GenaiAgentChildAgentApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
+    class GradientaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -13327,10 +13327,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentChildAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentApiKeyInfoArgs:
+class GradientaiAgentChildAgentApiKeyInfoArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13433,7 +13433,7 @@ class GenaiAgentChildAgentApiKeyInfoArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentChatbotArgsDict(TypedDict):
+    class GradientaiAgentChildAgentChatbotArgsDict(TypedDict):
         button_background_color: NotRequired[pulumi.Input[_builtins.str]]
         """
         Background color for the chatbot button
@@ -13459,10 +13459,10 @@ if not MYPY:
         Starting message for the chatbot
         """
 elif False:
-    GenaiAgentChildAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentChatbotArgs:
+class GradientaiAgentChildAgentChatbotArgs:
     def __init__(__self__, *,
                  button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
                  logo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13565,13 +13565,13 @@ class GenaiAgentChildAgentChatbotArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
+    class GradientaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
         chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
-    GenaiAgentChildAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentChatbotIdentifierArgs:
+class GradientaiAgentChildAgentChatbotIdentifierArgs:
     def __init__(__self__, *,
                  chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
         if chatbot_id is not None:
@@ -13588,7 +13588,7 @@ class GenaiAgentChildAgentChatbotIdentifierArgs:
 
 
 if not MYPY:
-    class GenaiAgentChildAgentDeploymentArgsDict(TypedDict):
+    class GradientaiAgentChildAgentDeploymentArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -13618,10 +13618,10 @@ if not MYPY:
         Visibility of the Deployment
         """
 elif False:
-    GenaiAgentChildAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentChildAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentChildAgentDeploymentArgs:
+class GradientaiAgentChildAgentDeploymentArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13740,7 +13740,7 @@ class GenaiAgentChildAgentDeploymentArgs:
 
 
 if not MYPY:
-    class GenaiAgentDeploymentArgsDict(TypedDict):
+    class GradientaiAgentDeploymentArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -13770,10 +13770,10 @@ if not MYPY:
         Visibility of the Deployment
         """
 elif False:
-    GenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentDeploymentArgs:
+class GradientaiAgentDeploymentArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -13892,7 +13892,7 @@ class GenaiAgentDeploymentArgs:
 
 
 if not MYPY:
-    class GenaiAgentFunctionArgsDict(TypedDict):
+    class GradientaiAgentFunctionArgsDict(TypedDict):
         api_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -13934,10 +13934,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentFunctionArgs:
+class GradientaiAgentFunctionArgs:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -14104,7 +14104,7 @@ class GenaiAgentFunctionArgs:
 
 
 if not MYPY:
-    class GenaiAgentKnowledgeBaseArgsDict(TypedDict):
+    class GradientaiAgentKnowledgeBaseArgsDict(TypedDict):
         added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the Knowledge Base was added to the Agent
@@ -14125,7 +14125,7 @@ if not MYPY:
         """
         Indicates if the Knowledge Base is public
         """
-        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]]]
+        last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
         """
         Last indexing job for the Knowledge Base
         """
@@ -14158,17 +14158,17 @@ if not MYPY:
         UUID of the Knowledge Base
         """
 elif False:
-    GenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentKnowledgeBaseArgs:
+class GradientaiAgentKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  database_id: Optional[pulumi.Input[_builtins.str]] = None,
                  embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]]] = None,
+                 last_indexing_job: Optional[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -14182,7 +14182,7 @@ class GenaiAgentKnowledgeBaseArgs:
         :param pulumi.Input[_builtins.str] database_id: Database ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param pulumi.Input[_builtins.bool] is_public: Indicates if the Knowledge Base is public
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the Knowledge Base
+        :param pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgs'] last_indexing_job: Last indexing job for the Knowledge Base
         :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
@@ -14201,8 +14201,8 @@ class GenaiAgentKnowledgeBaseArgs:
             pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
-        if last_indexing_jobs is not None:
-            pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -14279,16 +14279,16 @@ class GenaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
-    @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]]]:
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgs']]:
         """
         Last indexing job for the Knowledge Base
         """
-        return pulumi.get(self, "last_indexing_jobs")
+        return pulumi.get(self, "last_indexing_job")
 
-    @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]]]):
-        pulumi.set(self, "last_indexing_jobs", value)
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgs']]):
+        pulumi.set(self, "last_indexing_job", value)
 
     @_builtins.property
     @pulumi.getter
@@ -14376,7 +14376,7 @@ class GenaiAgentKnowledgeBaseArgs:
 
 
 if not MYPY:
-    class GenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of completed datasources in the last indexing job
@@ -14422,10 +14422,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
+class GradientaiAgentKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -14608,8 +14608,8 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GenaiAgentModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgsDict']]]]
+    class GradientaiAgentModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgsDict']]]]
         """
         Agreement information for the model
         """
@@ -14657,17 +14657,17 @@ if not MYPY:
         """
         List of Usecases for the Model
         """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgsDict']]]]
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgsDict']]]]
         """
         URL of the Model
         """
 elif False:
-    GenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentModelArgs:
+class GradientaiAgentModelArgs:
     def __init__(__self__, *,
-                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]] = None,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgs']]]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_name: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -14679,9 +14679,9 @@ class GenaiAgentModelArgs:
                  upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgs']]] agreements: Agreement information for the model
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
         :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
         :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
@@ -14693,7 +14693,7 @@ class GenaiAgentModelArgs:
         :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
         :param pulumi.Input[_builtins.str] url: URL of the Model
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]] versions: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgs']]] versions: URL of the Model
         """
         if agreements is not None:
             pulumi.set(__self__, "agreements", agreements)
@@ -14724,14 +14724,14 @@ class GenaiAgentModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]]:
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgs']]]]:
         """
         Agreement information for the model
         """
         return pulumi.get(self, "agreements")
 
     @agreements.setter
-    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]]):
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgs']]]]):
         pulumi.set(self, "agreements", value)
 
     @_builtins.property
@@ -14868,19 +14868,19 @@ class GenaiAgentModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgs']]]]:
         """
         URL of the Model
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
 if not MYPY:
-    class GenaiAgentModelAgreementArgsDict(TypedDict):
+    class GradientaiAgentModelAgreementArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
         Description of the agreement
@@ -14898,10 +14898,10 @@ if not MYPY:
         UUID of the agreement
         """
 elif False:
-    GenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentModelAgreementArgs:
+class GradientaiAgentModelAgreementArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -14972,7 +14972,7 @@ class GenaiAgentModelAgreementArgs:
 
 
 if not MYPY:
-    class GenaiAgentModelVersionArgsDict(TypedDict):
+    class GradientaiAgentModelVersionArgsDict(TypedDict):
         major: NotRequired[pulumi.Input[_builtins.int]]
         """
         Major version of the model
@@ -14986,10 +14986,10 @@ if not MYPY:
         Patch version of the model
         """
 elif False:
-    GenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentModelVersionArgs:
+class GradientaiAgentModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[pulumi.Input[_builtins.int]] = None,
                  minor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -15044,7 +15044,7 @@ class GenaiAgentModelVersionArgs:
 
 
 if not MYPY:
-    class GenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    class GradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the API Key was created
@@ -15070,10 +15070,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentOpenAiApiKeyArgs:
+class GradientaiAgentOpenAiApiKeyArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15176,7 +15176,7 @@ class GenaiAgentOpenAiApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentArgsDict(TypedDict):
+    class GradientaiAgentParentAgentArgsDict(TypedDict):
         instruction: pulumi.Input[_builtins.str]
         """
         Instruction for the Agent
@@ -15201,27 +15201,27 @@ if not MYPY:
         """
         ID of the child agent
         """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
+        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
         """
         Anthropic API Key information
         """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgsDict']]]]
+        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgsDict']]]]
         """
         List of API Key Infos
         """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgsDict']]]]
+        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgsDict']]]]
         """
         List of API Keys
         """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgsDict']]]]
+        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgsDict']]]]
         """
         List of Chatbot Identifiers
         """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgsDict']]]]
+        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgsDict']]]]
         """
         ChatBot configuration
         """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgsDict']]]]
+        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgsDict']]]]
         """
         List of API Key Infos
         """
@@ -15230,10 +15230,10 @@ if not MYPY:
         Description for the Agent
         """
 elif False:
-    GenaiAgentParentAgentArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentArgs:
+class GradientaiAgentParentAgentArgs:
     def __init__(__self__, *,
                  instruction: pulumi.Input[_builtins.str],
                  model_uuid: pulumi.Input[_builtins.str],
@@ -15241,12 +15241,12 @@ class GenaiAgentParentAgentArgs:
                  project_id: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
                  agent_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]] = None,
+                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgs']]]] = None,
+                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgs']]]] = None,
+                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgs']]]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
@@ -15255,12 +15255,12 @@ class GenaiAgentParentAgentArgs:
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
         :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
         :param pulumi.Input[_builtins.str] agent_id: ID of the child agent
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]] api_keys: List of API Keys
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]] chatbots: ChatBot configuration
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]] deployments: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgs']]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgs']]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgs']]] deployments: List of API Key Infos
         :param pulumi.Input[_builtins.str] description: Description for the Agent
         """
         pulumi.set(__self__, "instruction", instruction)
@@ -15359,74 +15359,74 @@ class GenaiAgentParentAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="anthropicApiKeys")
-    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]]:
+    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgs']]]]:
         """
         Anthropic API Key information
         """
         return pulumi.get(self, "anthropic_api_keys")
 
     @anthropic_api_keys.setter
-    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]]):
+    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgs']]]]):
         pulumi.set(self, "anthropic_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyInfos")
-    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]]:
+    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "api_key_infos")
 
     @api_key_infos.setter
-    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]]):
+    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgs']]]]):
         pulumi.set(self, "api_key_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeys")
-    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]]:
+    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgs']]]]:
         """
         List of API Keys
         """
         return pulumi.get(self, "api_keys")
 
     @api_keys.setter
-    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]]):
+    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgs']]]]):
         pulumi.set(self, "api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="chatbotIdentifiers")
-    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]]:
+    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgs']]]]:
         """
         List of Chatbot Identifiers
         """
         return pulumi.get(self, "chatbot_identifiers")
 
     @chatbot_identifiers.setter
-    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]]):
+    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgs']]]]):
         pulumi.set(self, "chatbot_identifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]]:
+    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgs']]]]:
         """
         ChatBot configuration
         """
         return pulumi.get(self, "chatbots")
 
     @chatbots.setter
-    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]]):
+    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgs']]]]):
         pulumi.set(self, "chatbots", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]]:
+    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]]):
+    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
@@ -15443,7 +15443,7 @@ class GenaiAgentParentAgentArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
+    class GradientaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the API Key was created
@@ -15469,10 +15469,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentParentAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentAnthropicApiKeyArgs:
+class GradientaiAgentParentAgentAnthropicApiKeyArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15575,16 +15575,16 @@ class GenaiAgentParentAgentAnthropicApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentApiKeyArgsDict(TypedDict):
+    class GradientaiAgentParentAgentApiKeyArgsDict(TypedDict):
         api_key: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
         """
 elif False:
-    GenaiAgentParentAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentApiKeyArgs:
+class GradientaiAgentParentAgentApiKeyArgs:
     def __init__(__self__, *,
                  api_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -15607,7 +15607,7 @@ class GenaiAgentParentAgentApiKeyArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
+    class GradientaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -15633,10 +15633,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GenaiAgentParentAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentApiKeyInfoArgs:
+class GradientaiAgentParentAgentApiKeyInfoArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_by: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15739,7 +15739,7 @@ class GenaiAgentParentAgentApiKeyInfoArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentChatbotArgsDict(TypedDict):
+    class GradientaiAgentParentAgentChatbotArgsDict(TypedDict):
         button_background_color: NotRequired[pulumi.Input[_builtins.str]]
         """
         Background color for the chatbot button
@@ -15765,10 +15765,10 @@ if not MYPY:
         Starting message for the chatbot
         """
 elif False:
-    GenaiAgentParentAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentChatbotArgs:
+class GradientaiAgentParentAgentChatbotArgs:
     def __init__(__self__, *,
                  button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
                  logo: Optional[pulumi.Input[_builtins.str]] = None,
@@ -15871,13 +15871,13 @@ class GenaiAgentParentAgentChatbotArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
+    class GradientaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
         chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 elif False:
-    GenaiAgentParentAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentChatbotIdentifierArgs:
+class GradientaiAgentParentAgentChatbotIdentifierArgs:
     def __init__(__self__, *,
                  chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
         if chatbot_id is not None:
@@ -15894,7 +15894,7 @@ class GenaiAgentParentAgentChatbotIdentifierArgs:
 
 
 if not MYPY:
-    class GenaiAgentParentAgentDeploymentArgsDict(TypedDict):
+    class GradientaiAgentParentAgentDeploymentArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         API Key value
@@ -15924,10 +15924,10 @@ if not MYPY:
         Visibility of the Deployment
         """
 elif False:
-    GenaiAgentParentAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentParentAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentParentAgentDeploymentArgs:
+class GradientaiAgentParentAgentDeploymentArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -16046,7 +16046,7 @@ class GenaiAgentParentAgentDeploymentArgs:
 
 
 if not MYPY:
-    class GenaiAgentTemplateArgsDict(TypedDict):
+    class GradientaiAgentTemplateArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Created At timestamp for the Knowledge Base
@@ -16063,7 +16063,7 @@ if not MYPY:
         """
         K value for the Agent Template
         """
-        knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgsDict']]]]
+        knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgsDict']]]]
         """
         List of Knowledge Bases
         """
@@ -16071,7 +16071,7 @@ if not MYPY:
         """
         Maximum tokens allowed
         """
-        models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgsDict']]]]
+        models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgsDict']]]]
         """
         Model of the Agent Template
         """
@@ -16096,18 +16096,18 @@ if not MYPY:
         uuid of the Agent Template
         """
 elif False:
-    GenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateArgs:
+class GradientaiAgentTemplateArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  instruction: Optional[pulumi.Input[_builtins.str]] = None,
                  k: Optional[pulumi.Input[_builtins.int]] = None,
-                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]] = None,
+                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgs']]]] = None,
                  max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgs']]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  temperature: Optional[pulumi.Input[_builtins.float]] = None,
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
@@ -16118,9 +16118,9 @@ class GenaiAgentTemplateArgs:
         :param pulumi.Input[_builtins.str] description: Description of the Agent Template
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.int] k: K value for the Agent Template
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgs']]] knowledge_bases: List of Knowledge Bases
         :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]] models: Model of the Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgs']]] models: Model of the Agent Template
         :param pulumi.Input[_builtins.str] name: Name of the Agent Template
         :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
@@ -16202,14 +16202,14 @@ class GenaiAgentTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBases")
-    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]]:
+    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgs']]]]:
         """
         List of Knowledge Bases
         """
         return pulumi.get(self, "knowledge_bases")
 
     @knowledge_bases.setter
-    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]]):
+    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgs']]]]):
         pulumi.set(self, "knowledge_bases", value)
 
     @_builtins.property
@@ -16226,14 +16226,14 @@ class GenaiAgentTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]]:
+    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgs']]]]:
         """
         Model of the Agent Template
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]]):
+    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
@@ -16298,7 +16298,7 @@ class GenaiAgentTemplateArgs:
 
 
 if not MYPY:
-    class GenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    class GradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
         added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Timestamp when the Knowledge Base was added to the Agent
@@ -16319,7 +16319,7 @@ if not MYPY:
         """
         Indicates if the Knowledge Base is public
         """
-        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]]]
+        last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
         """
         Last indexing job for the Knowledge Base
         """
@@ -16352,17 +16352,17 @@ if not MYPY:
         UUID of the Knowledge Base
         """
 elif False:
-    GenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateKnowledgeBaseArgs:
+class GradientaiAgentTemplateKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  database_id: Optional[pulumi.Input[_builtins.str]] = None,
                  embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  is_public: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]]] = None,
+                 last_indexing_job: Optional[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  project_id: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
@@ -16376,7 +16376,7 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
         :param pulumi.Input[_builtins.str] database_id: Database ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param pulumi.Input[_builtins.bool] is_public: Indicates if the Knowledge Base is public
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the Knowledge Base
+        :param pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] last_indexing_job: Last indexing job for the Knowledge Base
         :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
         :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
@@ -16395,8 +16395,8 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
             pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
-        if last_indexing_jobs is not None:
-            pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -16473,16 +16473,16 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
-    @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]]]:
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]:
         """
         Last indexing job for the Knowledge Base
         """
-        return pulumi.get(self, "last_indexing_jobs")
+        return pulumi.get(self, "last_indexing_job")
 
-    @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]]]):
-        pulumi.set(self, "last_indexing_jobs", value)
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]):
+        pulumi.set(self, "last_indexing_job", value)
 
     @_builtins.property
     @pulumi.getter
@@ -16570,7 +16570,7 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
 
 
 if not MYPY:
-    class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of completed datasources in the last indexing job
@@ -16616,10 +16616,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
+class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -16802,8 +16802,8 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GenaiAgentTemplateModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgsDict']]]]
+    class GradientaiAgentTemplateModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgsDict']]]]
         """
         Agreement information for the model
         """
@@ -16851,17 +16851,17 @@ if not MYPY:
         """
         List of Usecases for the Model
         """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgsDict']]]]
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgsDict']]]]
         """
         URL of the Model
         """
 elif False:
-    GenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateModelArgs:
+class GradientaiAgentTemplateModelArgs:
     def __init__(__self__, *,
-                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]] = None,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgs']]]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_name: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -16873,9 +16873,9 @@ class GenaiAgentTemplateModelArgs:
                  upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgs']]] agreements: Agreement information for the model
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
         :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
         :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
@@ -16887,7 +16887,7 @@ class GenaiAgentTemplateModelArgs:
         :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
         :param pulumi.Input[_builtins.str] url: URL of the Model
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]] versions: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgs']]] versions: URL of the Model
         """
         if agreements is not None:
             pulumi.set(__self__, "agreements", agreements)
@@ -16918,14 +16918,14 @@ class GenaiAgentTemplateModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]]:
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgs']]]]:
         """
         Agreement information for the model
         """
         return pulumi.get(self, "agreements")
 
     @agreements.setter
-    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]]):
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgs']]]]):
         pulumi.set(self, "agreements", value)
 
     @_builtins.property
@@ -17062,19 +17062,19 @@ class GenaiAgentTemplateModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgs']]]]:
         """
         URL of the Model
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
 if not MYPY:
-    class GenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    class GradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
         Description of the agreement
@@ -17092,10 +17092,10 @@ if not MYPY:
         UUID of the agreement
         """
 elif False:
-    GenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateModelAgreementArgs:
+class GradientaiAgentTemplateModelAgreementArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17166,7 +17166,7 @@ class GenaiAgentTemplateModelAgreementArgs:
 
 
 if not MYPY:
-    class GenaiAgentTemplateModelVersionArgsDict(TypedDict):
+    class GradientaiAgentTemplateModelVersionArgsDict(TypedDict):
         major: NotRequired[pulumi.Input[_builtins.int]]
         """
         Major version of the model
@@ -17180,10 +17180,10 @@ if not MYPY:
         Patch version of the model
         """
 elif False:
-    GenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiAgentTemplateModelVersionArgs:
+class GradientaiAgentTemplateModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[pulumi.Input[_builtins.int]] = None,
                  minor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -17238,20 +17238,20 @@ class GenaiAgentTemplateModelVersionArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
         created_at: NotRequired[pulumi.Input[_builtins.str]]
         """
         Created At timestamp for the Knowledge Base
         """
-        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]
+        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]
         """
         File upload data source configuration
         """
-        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]
+        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]
         """
         Last indexing job for the data source
         """
-        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]
+        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]
         """
         Spaces data source configuration
         """
@@ -17263,31 +17263,31 @@ if not MYPY:
         """
         UUID of the Knowledge Base
         """
-        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]
+        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]
         """
         Web crawler data source configuration
         """
 elif False:
-    GenaiKnowledgeBaseDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDataSourceArgs:
+class GradientaiKnowledgeBaseDataSourceArgs:
     def __init__(__self__, *,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 file_upload_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]] = None,
-                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]] = None,
-                 spaces_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]] = None,
+                 file_upload_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]] = None,
+                 last_indexing_jobs: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]] = None,
+                 spaces_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 web_crawler_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]] = None):
+                 web_crawler_data_sources: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]] = None):
         """
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]] file_upload_data_sources: File upload data source configuration
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the data source
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]] spaces_data_sources: Spaces data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]] file_upload_data_sources: File upload data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs']]] last_indexing_jobs: Last indexing job for the data source
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]] spaces_data_sources: Spaces data source configuration
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
         :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]] web_crawler_data_sources: Web crawler data source configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]] web_crawler_data_sources: Web crawler data source configuration
         """
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
@@ -17318,38 +17318,38 @@ class GenaiKnowledgeBaseDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="fileUploadDataSources")
-    def file_upload_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]:
+    def file_upload_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]:
         """
         File upload data source configuration
         """
         return pulumi.get(self, "file_upload_data_sources")
 
     @file_upload_data_sources.setter
-    def file_upload_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]):
+    def file_upload_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs']]]]):
         pulumi.set(self, "file_upload_data_sources", value)
 
     @_builtins.property
     @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]:
+    def last_indexing_jobs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]:
         """
         Last indexing job for the data source
         """
         return pulumi.get(self, "last_indexing_jobs")
 
     @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]):
+    def last_indexing_jobs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs']]]]):
         pulumi.set(self, "last_indexing_jobs", value)
 
     @_builtins.property
     @pulumi.getter(name="spacesDataSources")
-    def spaces_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]:
+    def spaces_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]:
         """
         Spaces data source configuration
         """
         return pulumi.get(self, "spaces_data_sources")
 
     @spaces_data_sources.setter
-    def spaces_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]):
+    def spaces_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs']]]]):
         pulumi.set(self, "spaces_data_sources", value)
 
     @_builtins.property
@@ -17378,19 +17378,19 @@ class GenaiKnowledgeBaseDataSourceArgs:
 
     @_builtins.property
     @pulumi.getter(name="webCrawlerDataSources")
-    def web_crawler_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]:
+    def web_crawler_data_sources(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]:
         """
         Web crawler data source configuration
         """
         return pulumi.get(self, "web_crawler_data_sources")
 
     @web_crawler_data_sources.setter
-    def web_crawler_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]):
+    def web_crawler_data_sources(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']]]]):
         pulumi.set(self, "web_crawler_data_sources", value)
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict(TypedDict):
         original_file_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The original name of the uploaded file
@@ -17404,10 +17404,10 @@ if not MYPY:
         The stored object key for the file
         """
 elif False:
-    GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
+class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
     def __init__(__self__, *,
                  original_file_name: Optional[pulumi.Input[_builtins.str]] = None,
                  size_in_bytes: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17462,7 +17462,7 @@ class GenaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict(TypedDict):
         completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of completed datasources in the last indexing job
@@ -17508,10 +17508,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GenaiKnowledgeBaseDataSourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDataSourceLastIndexingJobArgs:
+class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17694,7 +17694,7 @@ class GenaiKnowledgeBaseDataSourceLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
         bucket_name: NotRequired[pulumi.Input[_builtins.str]]
         """
         The name of the Spaces bucket
@@ -17708,10 +17708,10 @@ if not MYPY:
         The region of the Spaces bucket
         """
 elif False:
-    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
+class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
     def __init__(__self__, *,
                  bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
                  item_path: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17766,7 +17766,7 @@ class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
         base_url: NotRequired[pulumi.Input[_builtins.str]]
         """
         The base URL to crawl
@@ -17785,10 +17785,10 @@ if not MYPY:
         Whether to embed media content
         """
 elif False:
-    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
+class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
     def __init__(__self__, *,
                  base_url: Optional[pulumi.Input[_builtins.str]] = None,
                  crawling_option: Optional[pulumi.Input[_builtins.str]] = None,
@@ -17853,7 +17853,7 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
 
 
 if not MYPY:
-    class GenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
         """
         Number of completed datasources in the last indexing job
@@ -17899,10 +17899,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiKnowledgeBaseLastIndexingJobArgs:
+class GradientaiKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
@@ -18085,8 +18085,8 @@ class GenaiKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]
+    class GradientaiOpenaiApiKeyModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgsDict']]]]
         """
         Agreement information for the model
         """
@@ -18134,17 +18134,17 @@ if not MYPY:
         """
         List of Usecases for the Model
         """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgsDict']]]]
         """
         URL of the Model
         """
 elif False:
-    GenaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiOpenaiApiKeyModelArgs:
+class GradientaiOpenaiApiKeyModelArgs:
     def __init__(__self__, *,
-                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]] = None,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgs']]]] = None,
                  created_at: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_name: Optional[pulumi.Input[_builtins.str]] = None,
                  inference_version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -18156,9 +18156,9 @@ class GenaiOpenaiApiKeyModelArgs:
                  upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]] = None):
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgs']]] agreements: Agreement information for the model
         :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
         :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
         :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
@@ -18170,7 +18170,7 @@ class GenaiOpenaiApiKeyModelArgs:
         :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
         :param pulumi.Input[_builtins.str] url: URL of the Model
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
-        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]] versions: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgs']]] versions: URL of the Model
         """
         if agreements is not None:
             pulumi.set(__self__, "agreements", agreements)
@@ -18201,14 +18201,14 @@ class GenaiOpenaiApiKeyModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]:
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgs']]]]:
         """
         Agreement information for the model
         """
         return pulumi.get(self, "agreements")
 
     @agreements.setter
-    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]):
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgs']]]]):
         pulumi.set(self, "agreements", value)
 
     @_builtins.property
@@ -18345,19 +18345,19 @@ class GenaiOpenaiApiKeyModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]:
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgs']]]]:
         """
         URL of the Model
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]):
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgs']]]]):
         pulumi.set(self, "versions", value)
 
 
 if not MYPY:
-    class GenaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
+    class GradientaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[_builtins.str]]
         """
         Description of the agreement
@@ -18375,10 +18375,10 @@ if not MYPY:
         UUID of the agreement
         """
 elif False:
-    GenaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiOpenaiApiKeyModelAgreementArgs:
+class GradientaiOpenaiApiKeyModelAgreementArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
@@ -18449,7 +18449,7 @@ class GenaiOpenaiApiKeyModelAgreementArgs:
 
 
 if not MYPY:
-    class GenaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
+    class GradientaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
         major: NotRequired[pulumi.Input[_builtins.int]]
         """
         Major version of the model
@@ -18463,10 +18463,10 @@ if not MYPY:
         Patch version of the model
         """
 elif False:
-    GenaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+    GradientaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GenaiOpenaiApiKeyModelVersionArgs:
+class GradientaiOpenaiApiKeyModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[pulumi.Input[_builtins.int]] = None,
                  minor: Optional[pulumi.Input[_builtins.int]] = None,
@@ -22070,7 +22070,7 @@ class GetFirewallOutboundRuleArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentAgentGuardrailArgsDict(TypedDict):
+    class GetGradientaiAgentAgentGuardrailArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the Guardrail
@@ -22120,10 +22120,10 @@ if not MYPY:
         Guardrail UUID
         """
 elif False:
-    GetGenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentAgentGuardrailArgs:
+class GetGradientaiAgentAgentGuardrailArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  is_attached: _builtins.bool,
@@ -22319,7 +22319,7 @@ class GetGenaiAgentAgentGuardrailArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    class GetGradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Timestamp when the API Key was created
@@ -22345,10 +22345,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GetGenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentAnthropicApiKeyArgs:
+class GetGradientaiAgentAnthropicApiKeyArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  deleted_at: _builtins.str,
@@ -22448,16 +22448,16 @@ class GetGenaiAgentAnthropicApiKeyArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentApiKeyArgsDict(TypedDict):
+    class GetGradientaiAgentApiKeyArgsDict(TypedDict):
         api_key: NotRequired[_builtins.str]
         """
         API Key value
         """
 elif False:
-    GetGenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentApiKeyArgs:
+class GetGradientaiAgentApiKeyArgs:
     def __init__(__self__, *,
                  api_key: Optional[_builtins.str] = None):
         """
@@ -22480,7 +22480,7 @@ class GetGenaiAgentApiKeyArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentApiKeyInfoArgsDict(TypedDict):
+    class GetGradientaiAgentApiKeyInfoArgsDict(TypedDict):
         created_at: _builtins.str
         """
         API Key value
@@ -22506,10 +22506,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GetGenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentApiKeyInfoArgs:
+class GetGradientaiAgentApiKeyInfoArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  deleted_at: _builtins.str,
@@ -22610,7 +22610,7 @@ class GetGenaiAgentApiKeyInfoArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentChatbotArgsDict(TypedDict):
+    class GetGradientaiAgentChatbotArgsDict(TypedDict):
         button_background_color: NotRequired[_builtins.str]
         """
         Background color for the chatbot button
@@ -22636,10 +22636,10 @@ if not MYPY:
         Starting message for the chatbot
         """
 elif False:
-    GetGenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentChatbotArgs:
+class GetGradientaiAgentChatbotArgs:
     def __init__(__self__, *,
                  button_background_color: Optional[_builtins.str] = None,
                  logo: Optional[_builtins.str] = None,
@@ -22742,16 +22742,16 @@ class GetGenaiAgentChatbotArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentChatbotIdentifierArgsDict(TypedDict):
+    class GetGradientaiAgentChatbotIdentifierArgsDict(TypedDict):
         chatbot_id: NotRequired[_builtins.str]
         """
         Chatbot ID
         """
 elif False:
-    GetGenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentChatbotIdentifierArgs:
+class GetGradientaiAgentChatbotIdentifierArgs:
     def __init__(__self__, *,
                  chatbot_id: Optional[_builtins.str] = None):
         """
@@ -22774,7 +22774,7 @@ class GetGenaiAgentChatbotIdentifierArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentDeploymentArgsDict(TypedDict):
+    class GetGradientaiAgentDeploymentArgsDict(TypedDict):
         created_at: _builtins.str
         """
         API Key value
@@ -22804,10 +22804,10 @@ if not MYPY:
         Visibility of the Deployment
         """
 elif False:
-    GetGenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentDeploymentArgs:
+class GetGradientaiAgentDeploymentArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  updated_at: _builtins.str,
@@ -22924,7 +22924,7 @@ class GetGenaiAgentDeploymentArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentFunctionArgsDict(TypedDict):
+    class GetGradientaiAgentFunctionArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the Function
@@ -22966,10 +22966,10 @@ if not MYPY:
         API Key value
         """
 elif False:
-    GetGenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentFunctionArgs:
+class GetGradientaiAgentFunctionArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  updated_at: _builtins.str,
@@ -23134,7 +23134,7 @@ class GetGenaiAgentFunctionArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentKnowledgeBaseArgsDict(TypedDict):
+    class GetGradientaiAgentKnowledgeBaseArgsDict(TypedDict):
         added_to_agent_at: _builtins.str
         """
         Timestamp when the Knowledge Base was added to the Agent
@@ -23163,7 +23163,7 @@ if not MYPY:
         """
         Indicates if the Knowledge Base is public
         """
-        last_indexing_jobs: NotRequired[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
+        last_indexing_job: NotRequired['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']
         """
         Last indexing job for the Knowledge Base
         """
@@ -23188,10 +23188,10 @@ if not MYPY:
         User ID of the Knowledge Base
         """
 elif False:
-    GetGenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentKnowledgeBaseArgs:
+class GetGradientaiAgentKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: _builtins.str,
                  created_at: _builtins.str,
@@ -23200,7 +23200,7 @@ class GetGenaiAgentKnowledgeBaseArgs:
                  database_id: Optional[_builtins.str] = None,
                  embedding_model_uuid: Optional[_builtins.str] = None,
                  is_public: Optional[_builtins.bool] = None,
-                 last_indexing_jobs: Optional[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']] = None,
+                 last_indexing_job: Optional['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs'] = None,
                  name: Optional[_builtins.str] = None,
                  project_id: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
@@ -23214,7 +23214,7 @@ class GetGenaiAgentKnowledgeBaseArgs:
         :param _builtins.str database_id: Database ID of the Knowledge Base
         :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param _builtins.bool is_public: Indicates if the Knowledge Base is public
-        :param Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
+        :param 'GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs' last_indexing_job: Last indexing job for the Knowledge Base
         :param _builtins.str name: Name of the Knowledge Base
         :param _builtins.str project_id: Project ID of the Knowledge Base
         :param _builtins.str region: Region of the Knowledge Base
@@ -23231,8 +23231,8 @@ class GetGenaiAgentKnowledgeBaseArgs:
             pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
-        if last_indexing_jobs is not None:
-            pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -23329,16 +23329,16 @@ class GetGenaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
-    @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']]:
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs']:
         """
         Last indexing job for the Knowledge Base
         """
-        return pulumi.get(self, "last_indexing_jobs")
+        return pulumi.get(self, "last_indexing_job")
 
-    @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[Sequence['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']]):
-        pulumi.set(self, "last_indexing_jobs", value)
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs']):
+        pulumi.set(self, "last_indexing_job", value)
 
     @_builtins.property
     @pulumi.getter
@@ -23402,7 +23402,7 @@ class GetGenaiAgentKnowledgeBaseArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the last indexing job
@@ -23448,10 +23448,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
+class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  finished_at: _builtins.str,
@@ -23629,7 +23629,7 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentModelArgsDict(TypedDict):
+    class GetGradientaiAgentModelArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the Knowledge Base
@@ -23638,7 +23638,7 @@ if not MYPY:
         """
         Timestamp when the Knowledge Base was updated
         """
-        agreements: NotRequired[Sequence['GetGenaiAgentModelAgreementArgsDict']]
+        agreements: NotRequired[Sequence['GetGradientaiAgentModelAgreementArgsDict']]
         """
         Agreement information for the model
         """
@@ -23678,19 +23678,19 @@ if not MYPY:
         """
         List of Usecases for the Model
         """
-        versions: NotRequired[Sequence['GetGenaiAgentModelVersionArgsDict']]
+        versions: NotRequired[Sequence['GetGradientaiAgentModelVersionArgsDict']]
         """
         URL of the Model
         """
 elif False:
-    GetGenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentModelArgs:
+class GetGradientaiAgentModelArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  updated_at: _builtins.str,
-                 agreements: Optional[Sequence['GetGenaiAgentModelAgreementArgs']] = None,
+                 agreements: Optional[Sequence['GetGradientaiAgentModelAgreementArgs']] = None,
                  inference_name: Optional[_builtins.str] = None,
                  inference_version: Optional[_builtins.str] = None,
                  is_foundational: Optional[_builtins.bool] = None,
@@ -23700,11 +23700,11 @@ class GetGenaiAgentModelArgs:
                  upload_complete: Optional[_builtins.bool] = None,
                  url: Optional[_builtins.str] = None,
                  usecases: Optional[Sequence[_builtins.str]] = None,
-                 versions: Optional[Sequence['GetGenaiAgentModelVersionArgs']] = None):
+                 versions: Optional[Sequence['GetGradientaiAgentModelVersionArgs']] = None):
         """
         :param _builtins.str created_at: Created At timestamp for the Knowledge Base
         :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
-        :param Sequence['GetGenaiAgentModelAgreementArgs'] agreements: Agreement information for the model
+        :param Sequence['GetGradientaiAgentModelAgreementArgs'] agreements: Agreement information for the model
         :param _builtins.str inference_name: Inference name of the model
         :param _builtins.str inference_version: Infernce version of the model
         :param _builtins.bool is_foundational: Indicates if the Model Base is foundational
@@ -23714,7 +23714,7 @@ class GetGenaiAgentModelArgs:
         :param _builtins.bool upload_complete: Indicates if the Model upload is complete
         :param _builtins.str url: URL of the Model
         :param Sequence[_builtins.str] usecases: List of Usecases for the Model
-        :param Sequence['GetGenaiAgentModelVersionArgs'] versions: URL of the Model
+        :param Sequence['GetGradientaiAgentModelVersionArgs'] versions: URL of the Model
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "updated_at", updated_at)
@@ -23767,14 +23767,14 @@ class GetGenaiAgentModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agreements(self) -> Optional[Sequence['GetGenaiAgentModelAgreementArgs']]:
+    def agreements(self) -> Optional[Sequence['GetGradientaiAgentModelAgreementArgs']]:
         """
         Agreement information for the model
         """
         return pulumi.get(self, "agreements")
 
     @agreements.setter
-    def agreements(self, value: Optional[Sequence['GetGenaiAgentModelAgreementArgs']]):
+    def agreements(self, value: Optional[Sequence['GetGradientaiAgentModelAgreementArgs']]):
         pulumi.set(self, "agreements", value)
 
     @_builtins.property
@@ -23887,19 +23887,19 @@ class GetGenaiAgentModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[Sequence['GetGenaiAgentModelVersionArgs']]:
+    def versions(self) -> Optional[Sequence['GetGradientaiAgentModelVersionArgs']]:
         """
         URL of the Model
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[Sequence['GetGenaiAgentModelVersionArgs']]):
+    def versions(self, value: Optional[Sequence['GetGradientaiAgentModelVersionArgs']]):
         pulumi.set(self, "versions", value)
 
 
 if not MYPY:
-    class GetGenaiAgentModelAgreementArgsDict(TypedDict):
+    class GetGradientaiAgentModelAgreementArgsDict(TypedDict):
         description: NotRequired[_builtins.str]
         """
         Description of the agreement
@@ -23917,10 +23917,10 @@ if not MYPY:
         UUID of the agreement
         """
 elif False:
-    GetGenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentModelAgreementArgs:
+class GetGradientaiAgentModelAgreementArgs:
     def __init__(__self__, *,
                  description: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
@@ -23991,7 +23991,7 @@ class GetGenaiAgentModelAgreementArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentModelVersionArgsDict(TypedDict):
+    class GetGradientaiAgentModelVersionArgsDict(TypedDict):
         major: NotRequired[_builtins.int]
         """
         Major version of the model
@@ -24005,10 +24005,10 @@ if not MYPY:
         Patch version of the model
         """
 elif False:
-    GetGenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentModelVersionArgs:
+class GetGradientaiAgentModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[_builtins.int] = None,
                  minor: Optional[_builtins.int] = None,
@@ -24063,16 +24063,16 @@ class GetGenaiAgentModelVersionArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    class GetGradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
         api_key: NotRequired[_builtins.str]
         """
         OpenAI API Key
         """
 elif False:
-    GetGenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentOpenAiApiKeyArgs:
+class GetGradientaiAgentOpenAiApiKeyArgs:
     def __init__(__self__, *,
                  api_key: Optional[_builtins.str] = None):
         """
@@ -24095,7 +24095,7 @@ class GetGenaiAgentOpenAiApiKeyArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the Knowledge Base
@@ -24116,7 +24116,7 @@ if not MYPY:
         """
         K value for the Agent Template
         """
-        knowledge_bases: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgsDict']]
+        knowledge_bases: NotRequired[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgsDict']]
         """
         List of Knowledge Bases
         """
@@ -24124,7 +24124,7 @@ if not MYPY:
         """
         Maximum tokens allowed
         """
-        models: NotRequired[Sequence['GetGenaiAgentTemplateModelArgsDict']]
+        models: NotRequired[Sequence['GetGradientaiAgentTemplateModelArgsDict']]
         """
         Model of the Agent Template
         """
@@ -24145,19 +24145,19 @@ if not MYPY:
         uuid of the Agent Template
         """
 elif False:
-    GetGenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateArgs:
+class GetGradientaiAgentTemplateArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  updated_at: _builtins.str,
                  description: Optional[_builtins.str] = None,
                  instruction: Optional[_builtins.str] = None,
                  k: Optional[_builtins.int] = None,
-                 knowledge_bases: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']] = None,
+                 knowledge_bases: Optional[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgs']] = None,
                  max_tokens: Optional[_builtins.int] = None,
-                 models: Optional[Sequence['GetGenaiAgentTemplateModelArgs']] = None,
+                 models: Optional[Sequence['GetGradientaiAgentTemplateModelArgs']] = None,
                  name: Optional[_builtins.str] = None,
                  temperature: Optional[_builtins.float] = None,
                  top_p: Optional[_builtins.float] = None,
@@ -24168,9 +24168,9 @@ class GetGenaiAgentTemplateArgs:
         :param _builtins.str description: Description of the Agent Template
         :param _builtins.str instruction: Instruction for the Agent
         :param _builtins.int k: K value for the Agent Template
-        :param Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs'] knowledge_bases: List of Knowledge Bases
+        :param Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgs'] knowledge_bases: List of Knowledge Bases
         :param _builtins.int max_tokens: Maximum tokens allowed
-        :param Sequence['GetGenaiAgentTemplateModelArgs'] models: Model of the Agent Template
+        :param Sequence['GetGradientaiAgentTemplateModelArgs'] models: Model of the Agent Template
         :param _builtins.str name: Name of the Agent Template
         :param _builtins.float temperature: Agent temperature setting
         :param _builtins.float top_p: Top P sampling parameter
@@ -24261,14 +24261,14 @@ class GetGenaiAgentTemplateArgs:
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBases")
-    def knowledge_bases(self) -> Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']]:
+    def knowledge_bases(self) -> Optional[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgs']]:
         """
         List of Knowledge Bases
         """
         return pulumi.get(self, "knowledge_bases")
 
     @knowledge_bases.setter
-    def knowledge_bases(self, value: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']]):
+    def knowledge_bases(self, value: Optional[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgs']]):
         pulumi.set(self, "knowledge_bases", value)
 
     @_builtins.property
@@ -24285,14 +24285,14 @@ class GetGenaiAgentTemplateArgs:
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[Sequence['GetGenaiAgentTemplateModelArgs']]:
+    def models(self) -> Optional[Sequence['GetGradientaiAgentTemplateModelArgs']]:
         """
         Model of the Agent Template
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[Sequence['GetGenaiAgentTemplateModelArgs']]):
+    def models(self, value: Optional[Sequence['GetGradientaiAgentTemplateModelArgs']]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
@@ -24345,7 +24345,7 @@ class GetGenaiAgentTemplateArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
         added_to_agent_at: _builtins.str
         """
         Timestamp when the Knowledge Base was added to the Agent
@@ -24374,7 +24374,7 @@ if not MYPY:
         """
         Indicates if the Knowledge Base is public
         """
-        last_indexing_jobs: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
+        last_indexing_job: NotRequired['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
         """
         Last indexing job for the Knowledge Base
         """
@@ -24399,10 +24399,10 @@ if not MYPY:
         User ID of the Knowledge Base
         """
 elif False:
-    GetGenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateKnowledgeBaseArgs:
+class GetGradientaiAgentTemplateKnowledgeBaseArgs:
     def __init__(__self__, *,
                  added_to_agent_at: _builtins.str,
                  created_at: _builtins.str,
@@ -24411,7 +24411,7 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
                  database_id: Optional[_builtins.str] = None,
                  embedding_model_uuid: Optional[_builtins.str] = None,
                  is_public: Optional[_builtins.bool] = None,
-                 last_indexing_jobs: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']] = None,
+                 last_indexing_job: Optional['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] = None,
                  name: Optional[_builtins.str] = None,
                  project_id: Optional[_builtins.str] = None,
                  region: Optional[_builtins.str] = None,
@@ -24425,7 +24425,7 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
         :param _builtins.str database_id: Database ID of the Knowledge Base
         :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
         :param _builtins.bool is_public: Indicates if the Knowledge Base is public
-        :param Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] last_indexing_jobs: Last indexing job for the Knowledge Base
+        :param 'GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs' last_indexing_job: Last indexing job for the Knowledge Base
         :param _builtins.str name: Name of the Knowledge Base
         :param _builtins.str project_id: Project ID of the Knowledge Base
         :param _builtins.str region: Region of the Knowledge Base
@@ -24442,8 +24442,8 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
             pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
         if is_public is not None:
             pulumi.set(__self__, "is_public", is_public)
-        if last_indexing_jobs is not None:
-            pulumi.set(__self__, "last_indexing_jobs", last_indexing_jobs)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project_id is not None:
@@ -24540,16 +24540,16 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "is_public", value)
 
     @_builtins.property
-    @pulumi.getter(name="lastIndexingJobs")
-    def last_indexing_jobs(self) -> Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]:
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']:
         """
         Last indexing job for the Knowledge Base
         """
-        return pulumi.get(self, "last_indexing_jobs")
+        return pulumi.get(self, "last_indexing_job")
 
-    @last_indexing_jobs.setter
-    def last_indexing_jobs(self, value: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]):
-        pulumi.set(self, "last_indexing_jobs", value)
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']):
+        pulumi.set(self, "last_indexing_job", value)
 
     @_builtins.property
     @pulumi.getter
@@ -24613,7 +24613,7 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the last indexing job
@@ -24659,10 +24659,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
+class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  finished_at: _builtins.str,
@@ -24840,7 +24840,7 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateModelArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateModelArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the Knowledge Base
@@ -24849,7 +24849,7 @@ if not MYPY:
         """
         Timestamp when the Knowledge Base was updated
         """
-        agreements: NotRequired[Sequence['GetGenaiAgentTemplateModelAgreementArgsDict']]
+        agreements: NotRequired[Sequence['GetGradientaiAgentTemplateModelAgreementArgsDict']]
         """
         Agreement information for the model
         """
@@ -24889,19 +24889,19 @@ if not MYPY:
         """
         List of Usecases for the Model
         """
-        versions: NotRequired[Sequence['GetGenaiAgentTemplateModelVersionArgsDict']]
+        versions: NotRequired[Sequence['GetGradientaiAgentTemplateModelVersionArgsDict']]
         """
         URL of the Model
         """
 elif False:
-    GetGenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateModelArgs:
+class GetGradientaiAgentTemplateModelArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  updated_at: _builtins.str,
-                 agreements: Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']] = None,
+                 agreements: Optional[Sequence['GetGradientaiAgentTemplateModelAgreementArgs']] = None,
                  inference_name: Optional[_builtins.str] = None,
                  inference_version: Optional[_builtins.str] = None,
                  is_foundational: Optional[_builtins.bool] = None,
@@ -24911,11 +24911,11 @@ class GetGenaiAgentTemplateModelArgs:
                  upload_complete: Optional[_builtins.bool] = None,
                  url: Optional[_builtins.str] = None,
                  usecases: Optional[Sequence[_builtins.str]] = None,
-                 versions: Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']] = None):
+                 versions: Optional[Sequence['GetGradientaiAgentTemplateModelVersionArgs']] = None):
         """
         :param _builtins.str created_at: Created At timestamp for the Knowledge Base
         :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
-        :param Sequence['GetGenaiAgentTemplateModelAgreementArgs'] agreements: Agreement information for the model
+        :param Sequence['GetGradientaiAgentTemplateModelAgreementArgs'] agreements: Agreement information for the model
         :param _builtins.str inference_name: Inference name of the model
         :param _builtins.str inference_version: Infernce version of the model
         :param _builtins.bool is_foundational: Indicates if the Model Base is foundational
@@ -24925,7 +24925,7 @@ class GetGenaiAgentTemplateModelArgs:
         :param _builtins.bool upload_complete: Indicates if the Model upload is complete
         :param _builtins.str url: URL of the Model
         :param Sequence[_builtins.str] usecases: List of Usecases for the Model
-        :param Sequence['GetGenaiAgentTemplateModelVersionArgs'] versions: URL of the Model
+        :param Sequence['GetGradientaiAgentTemplateModelVersionArgs'] versions: URL of the Model
         """
         pulumi.set(__self__, "created_at", created_at)
         pulumi.set(__self__, "updated_at", updated_at)
@@ -24978,14 +24978,14 @@ class GetGenaiAgentTemplateModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def agreements(self) -> Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']]:
+    def agreements(self) -> Optional[Sequence['GetGradientaiAgentTemplateModelAgreementArgs']]:
         """
         Agreement information for the model
         """
         return pulumi.get(self, "agreements")
 
     @agreements.setter
-    def agreements(self, value: Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']]):
+    def agreements(self, value: Optional[Sequence['GetGradientaiAgentTemplateModelAgreementArgs']]):
         pulumi.set(self, "agreements", value)
 
     @_builtins.property
@@ -25098,19 +25098,19 @@ class GetGenaiAgentTemplateModelArgs:
 
     @_builtins.property
     @pulumi.getter
-    def versions(self) -> Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']]:
+    def versions(self) -> Optional[Sequence['GetGradientaiAgentTemplateModelVersionArgs']]:
         """
         URL of the Model
         """
         return pulumi.get(self, "versions")
 
     @versions.setter
-    def versions(self, value: Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']]):
+    def versions(self, value: Optional[Sequence['GetGradientaiAgentTemplateModelVersionArgs']]):
         pulumi.set(self, "versions", value)
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
         description: NotRequired[_builtins.str]
         """
         Description of the agreement
@@ -25128,10 +25128,10 @@ if not MYPY:
         UUID of the agreement
         """
 elif False:
-    GetGenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateModelAgreementArgs:
+class GetGradientaiAgentTemplateModelAgreementArgs:
     def __init__(__self__, *,
                  description: Optional[_builtins.str] = None,
                  name: Optional[_builtins.str] = None,
@@ -25202,7 +25202,7 @@ class GetGenaiAgentTemplateModelAgreementArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentTemplateModelVersionArgsDict(TypedDict):
+    class GetGradientaiAgentTemplateModelVersionArgsDict(TypedDict):
         major: NotRequired[_builtins.int]
         """
         Major version of the model
@@ -25216,10 +25216,10 @@ if not MYPY:
         Patch version of the model
         """
 elif False:
-    GetGenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentTemplateModelVersionArgs:
+class GetGradientaiAgentTemplateModelVersionArgs:
     def __init__(__self__, *,
                  major: Optional[_builtins.int] = None,
                  minor: Optional[_builtins.int] = None,
@@ -25274,16 +25274,16 @@ class GetGenaiAgentTemplateModelVersionArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentVersionsFilterArgsDict(TypedDict):
+    class GetGradientaiAgentVersionsFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentVersionsFilterArgs:
+class GetGradientaiAgentVersionsFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -25334,14 +25334,14 @@ class GetGenaiAgentVersionsFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentVersionsSortArgsDict(TypedDict):
+    class GetGradientaiAgentVersionsSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentVersionsSortArgs:
+class GetGradientaiAgentVersionsSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
@@ -25369,16 +25369,16 @@ class GetGenaiAgentVersionsSortArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentsFilterArgsDict(TypedDict):
+    class GetGradientaiAgentsFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiAgentsFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentsFilterArgs:
+class GetGradientaiAgentsFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -25429,14 +25429,14 @@ class GetGenaiAgentsFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiAgentsSortArgsDict(TypedDict):
+    class GetGradientaiAgentsSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiAgentsSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiAgentsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiAgentsSortArgs:
+class GetGradientaiAgentsSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
@@ -25464,7 +25464,7 @@ class GetGenaiAgentsSortArgs:
 
 
 if not MYPY:
-    class GetGenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    class GetGradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
         created_at: _builtins.str
         """
         Created At timestamp for the last indexing job
@@ -25510,10 +25510,10 @@ if not MYPY:
         UUID  of the last indexing job
         """
 elif False:
-    GetGenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiKnowledgeBaseLastIndexingJobArgs:
+class GetGradientaiKnowledgeBaseLastIndexingJobArgs:
     def __init__(__self__, *,
                  created_at: _builtins.str,
                  finished_at: _builtins.str,
@@ -25691,16 +25691,16 @@ class GetGenaiKnowledgeBaseLastIndexingJobArgs:
 
 
 if not MYPY:
-    class GetGenaiKnowledgeBasesFilterArgsDict(TypedDict):
+    class GetGradientaiKnowledgeBasesFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiKnowledgeBasesFilterArgs:
+class GetGradientaiKnowledgeBasesFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -25751,14 +25751,14 @@ class GetGenaiKnowledgeBasesFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiKnowledgeBasesSortArgsDict(TypedDict):
+    class GetGradientaiKnowledgeBasesSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiKnowledgeBasesSortArgs:
+class GetGradientaiKnowledgeBasesSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
@@ -25786,16 +25786,16 @@ class GetGenaiKnowledgeBasesSortArgs:
 
 
 if not MYPY:
-    class GetGenaiModelsFilterArgsDict(TypedDict):
+    class GetGradientaiModelsFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiModelsFilterArgs:
+class GetGradientaiModelsFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -25846,14 +25846,14 @@ class GetGenaiModelsFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiModelsSortArgsDict(TypedDict):
+    class GetGradientaiModelsSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiModelsSortArgs:
+class GetGradientaiModelsSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
@@ -25881,16 +25881,16 @@ class GetGenaiModelsSortArgs:
 
 
 if not MYPY:
-    class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
+    class GetGradientaiOpenaiApiKeysFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiOpenaiApiKeysFilterArgs:
+class GetGradientaiOpenaiApiKeysFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -25941,14 +25941,14 @@ class GetGenaiOpenaiApiKeysFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiOpenaiApiKeysSortArgsDict(TypedDict):
+    class GetGradientaiOpenaiApiKeysSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiOpenaiApiKeysSortArgs:
+class GetGradientaiOpenaiApiKeysSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
@@ -25976,16 +25976,16 @@ class GetGenaiOpenaiApiKeysSortArgs:
 
 
 if not MYPY:
-    class GetGenaiRegionsFilterArgsDict(TypedDict):
+    class GetGradientaiRegionsFilterArgsDict(TypedDict):
         key: _builtins.str
         values: Sequence[_builtins.str]
         all: NotRequired[_builtins.bool]
         match_by: NotRequired[_builtins.str]
 elif False:
-    GetGenaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiRegionsFilterArgs:
+class GetGradientaiRegionsFilterArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  values: Sequence[_builtins.str],
@@ -26036,14 +26036,14 @@ class GetGenaiRegionsFilterArgs:
 
 
 if not MYPY:
-    class GetGenaiRegionsSortArgsDict(TypedDict):
+    class GetGradientaiRegionsSortArgsDict(TypedDict):
         key: _builtins.str
         direction: NotRequired[_builtins.str]
 elif False:
-    GetGenaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+    GetGradientaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
-class GetGenaiRegionsSortArgs:
+class GetGradientaiRegionsSortArgs:
     def __init__(__self__, *,
                  key: _builtins.str,
                  direction: Optional[_builtins.str] = None):
