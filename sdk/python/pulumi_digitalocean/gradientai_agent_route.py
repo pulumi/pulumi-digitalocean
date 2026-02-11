@@ -266,6 +266,8 @@ class GradientaiAgentRoute(pulumi.CustomResource):
             __props__.__dict__["rollback"] = rollback
             __props__.__dict__["route_name"] = route_name
             __props__.__dict__["uuid"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgentRoute:GenaiAgentRoute")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiAgentRoute, __self__).__init__(
             'digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute',
             resource_name,

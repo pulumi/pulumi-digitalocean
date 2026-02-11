@@ -150,6 +150,8 @@ class GradientaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
             if knowledge_base_uuid is None and not opts.urn:
                 raise TypeError("Missing required property 'knowledge_base_uuid'")
             __props__.__dict__["knowledge_base_uuid"] = knowledge_base_uuid
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiAgentKnowledgeBaseAttachment, __self__).__init__(
             'digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment',
             resource_name,

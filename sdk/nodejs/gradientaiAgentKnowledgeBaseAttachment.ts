@@ -68,6 +68,8 @@ export class GradientaiAgentKnowledgeBaseAttachment extends pulumi.CustomResourc
             resourceInputs["knowledgeBaseUuid"] = args?.knowledgeBaseUuid;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiAgentKnowledgeBaseAttachment.__pulumiType, name, resourceInputs, opts);
     }
 }

@@ -104,6 +104,8 @@ export class GradientaiOpenaiApiKey extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiOpenaiApiKey.__pulumiType, name, resourceInputs, opts);
     }
 }

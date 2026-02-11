@@ -43,6 +43,12 @@ func NewGradientaiOpenaiApiKey(ctx *pulumi.Context,
 	if args.ApiKey == nil {
 		return nil, errors.New("invalid value for required argument 'ApiKey'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiOpenaiApiKey
 	err := ctx.RegisterResource("digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey", name, args, &resource, opts...)

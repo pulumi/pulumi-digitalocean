@@ -2422,6 +2422,1210 @@ export interface FirewallPendingChange {
     status?: string;
 }
 
+export interface GenaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GenaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GenaiAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GenaiAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GenaiAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GenaiAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GenaiAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GenaiAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GenaiAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GenaiAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GenaiAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GenaiAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GenaiAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GenaiAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GenaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GenaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GenaiAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GenaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GenaiAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GenaiAgentModelVersion[];
+}
+
+export interface GenaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GenaiAgentOpenAiApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GenaiAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GenaiAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GenaiAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GenaiAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GenaiAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GenaiAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GenaiAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GenaiAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GenaiAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GenaiAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GenaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GenaiAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GenaiAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GenaiAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GenaiAgentTemplateModelVersion[];
+}
+
+export interface GenaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GenaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GenaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GenaiOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GenaiOpenaiApiKeyModelVersion[];
+}
+
+export interface GenaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GenaiOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
 export interface GetAppDedicatedIp {
     /**
      * The ID of the dedicated egress IP.
@@ -4733,6 +5937,4327 @@ export interface GetFirewallPendingChange {
      * This can be "waiting", "succeeded", or "failed".
      */
     status?: string;
+}
+
+export interface GetGenaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGenaiAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentModelVersion[];
+}
+
+export interface GetGenaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGenaiAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGenaiAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentTemplateModelVersion[];
+}
+
+export interface GetGenaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentVersionsAgentVersion {
+    /**
+     * ID of the Agent to retrieve versions for
+     */
+    agentUuid: string;
+    /**
+     * List of child agents attached to this version
+     */
+    attachedChildAgents: outputs.GetGenaiAgentVersionsAgentVersionAttachedChildAgent[];
+    /**
+     * List of functions attached to this version
+     */
+    attachedFunctions: outputs.GetGenaiAgentVersionsAgentVersionAttachedFunction[];
+    /**
+     * List of guardrails attached to this version
+     */
+    attachedGuardrails: outputs.GetGenaiAgentVersionsAgentVersionAttachedGuardrail[];
+    /**
+     * List of Knowledge Bases agent versions
+     */
+    attachedKnowledgeBases: outputs.GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase[];
+    /**
+     * Indicates if the version can be rolled back
+     */
+    canRollback: boolean;
+    /**
+     * Timestamp when the Agent Version was created
+     */
+    createdAt: string;
+    /**
+     * Email of the user who created this version
+     */
+    createdByEmail: string;
+    /**
+     * Indicates if this version is currently applied configuration
+     */
+    currentlyApplied: boolean;
+    /**
+     * Description of the Agent Version
+     */
+    description: string;
+    /**
+     * Id of the Agent Version
+     */
+    id: string;
+    /**
+     * Instruction for the Agent Version
+     */
+    instruction: string;
+    /**
+     * K value for the Agent Version
+     */
+    k: number;
+    /**
+     * Maximum tokens allowed for the Agent
+     */
+    maxTokens: number;
+    /**
+     * Name of model associated to the agent version
+     */
+    modelName: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Indicates if the should provide in-response citations
+     */
+    provideCitations: boolean;
+    /**
+     * Retrieval method used. 
+     * - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+     * - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+     * - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+     * - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+     * - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+     */
+    retrievalMethod: string;
+    /**
+     * List of Tags
+     */
+    tags: string[];
+    /**
+     * Temperature setting for the Agent Version
+     */
+    temperature: number;
+    /**
+     * Top P sampling parameter for the Agent Version
+     */
+    topP: number;
+    /**
+     * Trigger action for the Agent Version
+     */
+    triggerAction: string;
+    /**
+     * Hash of the Agent Version
+     */
+    versionHash: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedChildAgent {
+    /**
+     * Name of the child agent
+     */
+    agentName: string;
+    /**
+     * Child agent unique identifier
+     */
+    childAgentUuid: string;
+    /**
+     * If case
+     */
+    ifCase: string;
+    /**
+     * Child agent is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Route name
+     */
+    routeName: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedFunction {
+    /**
+     * Description of the function
+     */
+    description: string;
+    /**
+     * FaaS name of the function
+     */
+    faasName: string;
+    /**
+     * FaaS namespace of the function
+     */
+    faasNamespace: string;
+    /**
+     * Function is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the function
+     */
+    name: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedGuardrail {
+    /**
+     * Whether the guardrail is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the guardrail
+     */
+    name: string;
+    /**
+     * Guardrail priority
+     */
+    priority: number;
+    /**
+     * Guardrail UUID
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentVersionsAgentVersionAttachedKnowledgeBase {
+    /**
+     * Whether the knowledge base is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the knowledge base
+     */
+    name: string;
+    /**
+     * Knowledge base UUID
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiAgentsAgent {
+    /**
+     * AgentGuardrail represents a Guardrail attached to Gen AI Agent
+     */
+    agentGuardrails: outputs.GetGenaiAgentsAgentAgentGuardrail[];
+    /**
+     * ID of the Agent to retrieve
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys: outputs.GetGenaiAgentsAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos: outputs.GetGenaiAgentsAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys: outputs.GetGenaiAgentsAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers: outputs.GetGenaiAgentsAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots: outputs.GetGenaiAgentsAgentChatbot[];
+    /**
+     * List of child agents
+     */
+    childAgents: outputs.GetGenaiAgentsAgentChildAgent[];
+    /**
+     * Timestamp when the Agent was created
+     */
+    createdAt: string;
+    /**
+     * List of API Key Infos
+     */
+    deployments: outputs.GetGenaiAgentsAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description: string;
+    /**
+     * List of API Key Infos
+     */
+    functions: outputs.GetGenaiAgentsAgentFunction[];
+    /**
+     * If case condition
+     */
+    ifCase: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * K value
+     */
+    k: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases: outputs.GetGenaiAgentsAgentKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens: number;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Model of the Agent
+     */
+    models: outputs.GetGenaiAgentsAgentModel[];
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * OpenAI API Key information
+     */
+    openAiApiKeys: outputs.GetGenaiAgentsAgentOpenAiApiKey[];
+    /**
+     * List of parent agents
+     */
+    parentAgents: outputs.GetGenaiAgentsAgentParentAgent[];
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+    /**
+     * Retrieval method used
+     */
+    retrievalMethod: string;
+    /**
+     * Timestamp when the route was created
+     */
+    routeCreatedAt: string;
+    /**
+     * User who created the route
+     */
+    routeCreatedBy: string;
+    /**
+     * Route name
+     */
+    routeName: string;
+    /**
+     * Route UUID
+     */
+    routeUuid: string;
+    /**
+     * List of Tags
+     */
+    tags: string[];
+    /**
+     * Agent temperature setting
+     */
+    temperature: number;
+    /**
+     * Agent Template
+     */
+    templates: outputs.GetGenaiAgentsAgentTemplate[];
+    /**
+     * Top P sampling parameter
+     */
+    topP: number;
+    /**
+     * Timestamp when the Agent was updated
+     */
+    updatedAt: string;
+    /**
+     * URL for the Agent
+     */
+    url: string;
+    /**
+     * User ID linked with the Agent
+     */
+    userId: string;
+}
+
+export interface GetGenaiAgentsAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentsAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentsAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentsAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentsAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentsAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentsAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentsAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentsAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentsAgentModelVersion[];
+}
+
+export interface GetGenaiAgentsAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentsAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentsAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentsAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentsAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentsAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentsAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentsAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentsAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGenaiAgentsAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGenaiAgentsAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentsAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentsAgentTemplateModelVersion[];
+}
+
+export interface GetGenaiAgentsAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgent {
+    /**
+     * AgentGuardrail represents a Guardrail attached to Gen AI Agent
+     */
+    agentGuardrails?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail[];
+    /**
+     * ID of the Agent to retrieve
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChatbot[];
+    /**
+     * List of child agents
+     */
+    childAgents: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgent[];
+    /**
+     * Timestamp when the Agent was created
+     */
+    createdAt: string;
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * List of API Key Infos
+     */
+    functions?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentFunction[];
+    /**
+     * If case condition
+     */
+    ifCase?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * K value
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Model of the Agent
+     */
+    models: outputs.GetGenaiAgentsByOpenaiApiKeyAgentModel[];
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * OpenAI API Key information
+     */
+    openAiApiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey[];
+    /**
+     * List of parent agents
+     */
+    parentAgents: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgent[];
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+    /**
+     * Retrieval method used
+     */
+    retrievalMethod?: string;
+    /**
+     * Timestamp when the route was created
+     */
+    routeCreatedAt: string;
+    /**
+     * User who created the route
+     */
+    routeCreatedBy?: string;
+    /**
+     * Route name
+     */
+    routeName?: string;
+    /**
+     * Route UUID
+     */
+    routeUuid?: string;
+    /**
+     * List of Tags
+     */
+    tags?: string[];
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Agent Template
+     */
+    templates?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplate[];
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Timestamp when the Agent was updated
+     */
+    updatedAt: string;
+    /**
+     * URL for the Agent
+     */
+    url?: string;
+    /**
+     * User ID linked with the Agent
+     */
+    userId?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentModelVersion[];
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion[];
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiIndexingJobDataSourcesIndexedDataSource {
+    /**
+     * Timestamp when data source completed indexing
+     */
+    completedAt: string;
+    /**
+     * UUID of the indexed data source
+     */
+    dataSourceUuid: string;
+    /**
+     * Detailed error description
+     */
+    errorDetails: string;
+    /**
+     * Error message if indexing failed
+     */
+    errorMsg: string;
+    /**
+     * Total count of items that have failed
+     */
+    failedItemCount: string;
+    /**
+     * Total count of files that have been indexed
+     */
+    indexedFileCount: string;
+    /**
+     * Total count of items that have been indexed
+     */
+    indexedItemCount: string;
+    /**
+     * Total count of items that have been removed
+     */
+    removedItemCount: string;
+    /**
+     * Total count of items that have been skipped
+     */
+    skippedItemCount: string;
+    /**
+     * Timestamp when data source started indexing
+     */
+    startedAt: string;
+    /**
+     * Status of the indexed data source
+     */
+    status: string;
+    /**
+     * Total size of files in data source in bytes
+     */
+    totalBytes: string;
+    /**
+     * Total size of indexed files in bytes
+     */
+    totalBytesIndexed: string;
+    /**
+     * Total file count in the data source
+     */
+    totalFileCount: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource[];
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob[];
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: outputs.GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource[];
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: string;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: string;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GetGenaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GetGenaiKnowledgeBaseIndexingJobsJob {
+    /**
+     * Number of datasources indexed completed
+     */
+    completedDatasources: number;
+    /**
+     * Creation timestamp
+     */
+    createdAt: string;
+    /**
+     * List of data source UUIDs
+     */
+    dataSourceUuids: string[];
+    /**
+     * Finish timestamp
+     */
+    finishedAt: string;
+    /**
+     * Knowledge base UUID
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Current phase of the batch job
+     */
+    phase: string;
+    /**
+     * Start timestamp
+     */
+    startedAt: string;
+    /**
+     * Status of the indexing job
+     */
+    status: string;
+    /**
+     * Number of tokens
+     */
+    tokens: number;
+    /**
+     * Total number of datasources being indexed
+     */
+    totalDatasources: number;
+    /**
+     * Total items failed
+     */
+    totalItemsFailed: string;
+    /**
+     * Total items indexed
+     */
+    totalItemsIndexed: string;
+    /**
+     * Total items skipped
+     */
+    totalItemsSkipped: string;
+    /**
+     * Last update timestamp
+     */
+    updatedAt: string;
+    /**
+     * Unique identifier of the indexing job
+     */
+    uuid: string;
+}
+
+export interface GetGenaiKnowledgeBaseIndexingJobsMeta {
+    /**
+     * Current page number
+     */
+    page: number;
+    /**
+     * Total number of pages
+     */
+    pages: number;
+    /**
+     * Total number of items
+     */
+    total: number;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiKnowledgeBasesKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJobs: outputs.GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob[];
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region: string;
+    /**
+     * List of tags
+     */
+    tags: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBasesSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiModelsModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements: outputs.GetGenaiModelsModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * ID of the Knowledge Base
+     */
+    id: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete: boolean;
+    /**
+     * URL of the Model
+     */
+    url: string;
+    /**
+     * UUID of the Model
+     */
+    uuid: string;
+    /**
+     * List of Versions for the Model
+     */
+    versions: outputs.GetGenaiModelsModelVersion[];
+}
+
+export interface GetGenaiModelsModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiModelsModelVersion {
+    /**
+     * Major version of the model
+     */
+    major: number;
+    /**
+     * Minor version of the model
+     */
+    minor: number;
+    /**
+     * Patch version of the model
+     */
+    patch: number;
+}
+
+export interface GetGenaiModelsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiOpenaiApiKeyModelVersion[];
+}
+
+export interface GetGenaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiOpenaiApiKeysFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiOpenaiApiKeysOpenaiApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * List of models associated with the API Key
+     */
+    models: outputs.GetGenaiOpenaiApiKeysOpenaiApiKeyModel[];
+    /**
+     * Name of the API Key
+     */
+    name: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * OpenAI API Key Uuid
+     */
+    uuid: string;
+}
+
+export interface GetGenaiOpenaiApiKeysOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion[];
+}
+
+export interface GetGenaiOpenaiApiKeysOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiOpenaiApiKeysOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiOpenaiApiKeysSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiRegionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiRegionsRegion {
+    /**
+     * Inference URL for the model
+     */
+    inferenceUrl: string;
+    /**
+     * Region where the model is deployed
+     */
+    region: string;
+    /**
+     * Indicates if the model serves batch requests
+     */
+    servesBatch: boolean;
+    /**
+     * Indicates if the model serves inference requests
+     */
+    servesInference: boolean;
+    /**
+     * Streaming inference URL for the model
+     */
+    streamInferenceUrl: string;
+}
+
+export interface GetGenaiRegionsSort {
+    direction?: string;
+    key: string;
 }
 
 export interface GetGradientaiAgentAgentGuardrail {

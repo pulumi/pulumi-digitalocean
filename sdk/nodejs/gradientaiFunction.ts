@@ -113,6 +113,8 @@ export class GradientaiFunction extends pulumi.CustomResource {
             resourceInputs["functionUuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiFunction:GenaiFunction" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiFunction.__pulumiType, name, resourceInputs, opts);
     }
 }

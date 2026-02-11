@@ -57,6 +57,12 @@ func NewGradientaiIndexingJobCancel(ctx *pulumi.Context,
 	if args.Uuid == nil {
 		return nil, errors.New("invalid value for required argument 'Uuid'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiIndexingJobCancel
 	err := ctx.RegisterResource("digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel", name, args, &resource, opts...)

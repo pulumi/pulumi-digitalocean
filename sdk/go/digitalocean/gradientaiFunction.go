@@ -55,6 +55,12 @@ func NewGradientaiFunction(ctx *pulumi.Context,
 	if args.InputSchema == nil {
 		return nil, errors.New("invalid value for required argument 'InputSchema'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiFunction:GenaiFunction"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiFunction
 	err := ctx.RegisterResource("digitalocean:index/gradientaiFunction:GradientaiFunction", name, args, &resource, opts...)

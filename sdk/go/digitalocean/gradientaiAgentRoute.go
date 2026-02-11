@@ -41,6 +41,12 @@ func NewGradientaiAgentRoute(ctx *pulumi.Context,
 	if args.ParentAgentUuid == nil {
 		return nil, errors.New("invalid value for required argument 'ParentAgentUuid'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiAgentRoute:GenaiAgentRoute"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiAgentRoute
 	err := ctx.RegisterResource("digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute", name, args, &resource, opts...)

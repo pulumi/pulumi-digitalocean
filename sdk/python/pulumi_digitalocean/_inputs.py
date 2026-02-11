@@ -272,6 +272,86 @@ __all__ = [
     'FirewallOutboundRuleArgsDict',
     'FirewallPendingChangeArgs',
     'FirewallPendingChangeArgsDict',
+    'GenaiAgentAgentGuardrailArgs',
+    'GenaiAgentAgentGuardrailArgsDict',
+    'GenaiAgentAnthropicApiKeyArgs',
+    'GenaiAgentAnthropicApiKeyArgsDict',
+    'GenaiAgentApiKeyArgs',
+    'GenaiAgentApiKeyArgsDict',
+    'GenaiAgentApiKeyInfoArgs',
+    'GenaiAgentApiKeyInfoArgsDict',
+    'GenaiAgentChatbotArgs',
+    'GenaiAgentChatbotArgsDict',
+    'GenaiAgentChatbotIdentifierArgs',
+    'GenaiAgentChatbotIdentifierArgsDict',
+    'GenaiAgentChildAgentArgs',
+    'GenaiAgentChildAgentArgsDict',
+    'GenaiAgentChildAgentAnthropicApiKeyArgs',
+    'GenaiAgentChildAgentAnthropicApiKeyArgsDict',
+    'GenaiAgentChildAgentApiKeyArgs',
+    'GenaiAgentChildAgentApiKeyArgsDict',
+    'GenaiAgentChildAgentApiKeyInfoArgs',
+    'GenaiAgentChildAgentApiKeyInfoArgsDict',
+    'GenaiAgentChildAgentChatbotArgs',
+    'GenaiAgentChildAgentChatbotArgsDict',
+    'GenaiAgentChildAgentChatbotIdentifierArgs',
+    'GenaiAgentChildAgentChatbotIdentifierArgsDict',
+    'GenaiAgentChildAgentDeploymentArgs',
+    'GenaiAgentChildAgentDeploymentArgsDict',
+    'GenaiAgentDeploymentArgs',
+    'GenaiAgentDeploymentArgsDict',
+    'GenaiAgentFunctionArgs',
+    'GenaiAgentFunctionArgsDict',
+    'GenaiAgentKnowledgeBaseArgs',
+    'GenaiAgentKnowledgeBaseArgsDict',
+    'GenaiAgentKnowledgeBaseLastIndexingJobArgs',
+    'GenaiAgentKnowledgeBaseLastIndexingJobArgsDict',
+    'GenaiAgentModelArgs',
+    'GenaiAgentModelArgsDict',
+    'GenaiAgentModelAgreementArgs',
+    'GenaiAgentModelAgreementArgsDict',
+    'GenaiAgentModelVersionArgs',
+    'GenaiAgentModelVersionArgsDict',
+    'GenaiAgentOpenAiApiKeyArgs',
+    'GenaiAgentOpenAiApiKeyArgsDict',
+    'GenaiAgentParentAgentArgs',
+    'GenaiAgentParentAgentArgsDict',
+    'GenaiAgentParentAgentAnthropicApiKeyArgs',
+    'GenaiAgentParentAgentAnthropicApiKeyArgsDict',
+    'GenaiAgentParentAgentApiKeyArgs',
+    'GenaiAgentParentAgentApiKeyArgsDict',
+    'GenaiAgentParentAgentApiKeyInfoArgs',
+    'GenaiAgentParentAgentApiKeyInfoArgsDict',
+    'GenaiAgentParentAgentChatbotArgs',
+    'GenaiAgentParentAgentChatbotArgsDict',
+    'GenaiAgentParentAgentChatbotIdentifierArgs',
+    'GenaiAgentParentAgentChatbotIdentifierArgsDict',
+    'GenaiAgentParentAgentDeploymentArgs',
+    'GenaiAgentParentAgentDeploymentArgsDict',
+    'GenaiAgentTemplateArgs',
+    'GenaiAgentTemplateArgsDict',
+    'GenaiAgentTemplateKnowledgeBaseArgs',
+    'GenaiAgentTemplateKnowledgeBaseArgsDict',
+    'GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
+    'GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
+    'GenaiAgentTemplateModelArgs',
+    'GenaiAgentTemplateModelArgsDict',
+    'GenaiAgentTemplateModelAgreementArgs',
+    'GenaiAgentTemplateModelAgreementArgsDict',
+    'GenaiAgentTemplateModelVersionArgs',
+    'GenaiAgentTemplateModelVersionArgsDict',
+    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict',
+    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs',
+    'GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict',
+    'GenaiKnowledgeBaseLastIndexingJobArgs',
+    'GenaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GenaiOpenaiApiKeyModelArgs',
+    'GenaiOpenaiApiKeyModelArgsDict',
+    'GenaiOpenaiApiKeyModelAgreementArgs',
+    'GenaiOpenaiApiKeyModelAgreementArgsDict',
+    'GenaiOpenaiApiKeyModelVersionArgs',
+    'GenaiOpenaiApiKeyModelVersionArgsDict',
     'GradientaiAgentAgentGuardrailArgs',
     'GradientaiAgentAgentGuardrailArgsDict',
     'GradientaiAgentAnthropicApiKeyArgs',
@@ -444,6 +524,72 @@ __all__ = [
     'GetFirewallInboundRuleArgsDict',
     'GetFirewallOutboundRuleArgs',
     'GetFirewallOutboundRuleArgsDict',
+    'GetGenaiAgentAgentGuardrailArgs',
+    'GetGenaiAgentAgentGuardrailArgsDict',
+    'GetGenaiAgentAnthropicApiKeyArgs',
+    'GetGenaiAgentAnthropicApiKeyArgsDict',
+    'GetGenaiAgentApiKeyArgs',
+    'GetGenaiAgentApiKeyArgsDict',
+    'GetGenaiAgentApiKeyInfoArgs',
+    'GetGenaiAgentApiKeyInfoArgsDict',
+    'GetGenaiAgentChatbotArgs',
+    'GetGenaiAgentChatbotArgsDict',
+    'GetGenaiAgentChatbotIdentifierArgs',
+    'GetGenaiAgentChatbotIdentifierArgsDict',
+    'GetGenaiAgentDeploymentArgs',
+    'GetGenaiAgentDeploymentArgsDict',
+    'GetGenaiAgentFunctionArgs',
+    'GetGenaiAgentFunctionArgsDict',
+    'GetGenaiAgentKnowledgeBaseArgs',
+    'GetGenaiAgentKnowledgeBaseArgsDict',
+    'GetGenaiAgentKnowledgeBaseLastIndexingJobArgs',
+    'GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGenaiAgentModelArgs',
+    'GetGenaiAgentModelArgsDict',
+    'GetGenaiAgentModelAgreementArgs',
+    'GetGenaiAgentModelAgreementArgsDict',
+    'GetGenaiAgentModelVersionArgs',
+    'GetGenaiAgentModelVersionArgsDict',
+    'GetGenaiAgentOpenAiApiKeyArgs',
+    'GetGenaiAgentOpenAiApiKeyArgsDict',
+    'GetGenaiAgentTemplateArgs',
+    'GetGenaiAgentTemplateArgsDict',
+    'GetGenaiAgentTemplateKnowledgeBaseArgs',
+    'GetGenaiAgentTemplateKnowledgeBaseArgsDict',
+    'GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs',
+    'GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGenaiAgentTemplateModelArgs',
+    'GetGenaiAgentTemplateModelArgsDict',
+    'GetGenaiAgentTemplateModelAgreementArgs',
+    'GetGenaiAgentTemplateModelAgreementArgsDict',
+    'GetGenaiAgentTemplateModelVersionArgs',
+    'GetGenaiAgentTemplateModelVersionArgsDict',
+    'GetGenaiAgentVersionsFilterArgs',
+    'GetGenaiAgentVersionsFilterArgsDict',
+    'GetGenaiAgentVersionsSortArgs',
+    'GetGenaiAgentVersionsSortArgsDict',
+    'GetGenaiAgentsFilterArgs',
+    'GetGenaiAgentsFilterArgsDict',
+    'GetGenaiAgentsSortArgs',
+    'GetGenaiAgentsSortArgsDict',
+    'GetGenaiKnowledgeBaseLastIndexingJobArgs',
+    'GetGenaiKnowledgeBaseLastIndexingJobArgsDict',
+    'GetGenaiKnowledgeBasesFilterArgs',
+    'GetGenaiKnowledgeBasesFilterArgsDict',
+    'GetGenaiKnowledgeBasesSortArgs',
+    'GetGenaiKnowledgeBasesSortArgsDict',
+    'GetGenaiModelsFilterArgs',
+    'GetGenaiModelsFilterArgsDict',
+    'GetGenaiModelsSortArgs',
+    'GetGenaiModelsSortArgsDict',
+    'GetGenaiOpenaiApiKeysFilterArgs',
+    'GetGenaiOpenaiApiKeysFilterArgsDict',
+    'GetGenaiOpenaiApiKeysSortArgs',
+    'GetGenaiOpenaiApiKeysSortArgsDict',
+    'GetGenaiRegionsFilterArgs',
+    'GetGenaiRegionsFilterArgsDict',
+    'GetGenaiRegionsSortArgs',
+    'GetGenaiRegionsSortArgsDict',
     'GetGradientaiAgentAgentGuardrailArgs',
     'GetGradientaiAgentAgentGuardrailArgsDict',
     'GetGradientaiAgentAnthropicApiKeyArgs',
@@ -12167,6 +12313,5904 @@ class FirewallPendingChangeArgs:
 
 
 if not MYPY:
+    class GenaiAgentAgentGuardrailArgsDict(TypedDict):
+        agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Agent UUID for the Guardrail
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Guardrail
+        """
+        default_response: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Default response for the Guardrail
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the Guardrail
+        """
+        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Guardrail UUID
+        """
+        is_attached: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Guardrail is attached
+        """
+        is_default: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Guardrail is default
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of Guardrail
+        """
+        priority: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Priority of the Guardrail
+        """
+        type: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Type of the Guardrail
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Guardrail
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Guardrail UUID
+        """
+elif False:
+    GenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentAgentGuardrailArgs:
+    def __init__(__self__, *,
+                 agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 default_response: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 guardrail_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_attached: Optional[pulumi.Input[_builtins.bool]] = None,
+                 is_default: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 priority: Optional[pulumi.Input[_builtins.int]] = None,
+                 type: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] agent_uuid: Agent UUID for the Guardrail
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Guardrail
+        :param pulumi.Input[_builtins.str] default_response: Default response for the Guardrail
+        :param pulumi.Input[_builtins.str] description: Description of the Guardrail
+        :param pulumi.Input[_builtins.str] guardrail_uuid: Guardrail UUID
+        :param pulumi.Input[_builtins.bool] is_attached: Indicates if the Guardrail is attached
+        :param pulumi.Input[_builtins.bool] is_default: Indicates if the Guardrail is default
+        :param pulumi.Input[_builtins.str] name: Name of Guardrail
+        :param pulumi.Input[_builtins.int] priority: Priority of the Guardrail
+        :param pulumi.Input[_builtins.str] type: Type of the Guardrail
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Guardrail
+        :param pulumi.Input[_builtins.str] uuid: Guardrail UUID
+        """
+        if agent_uuid is not None:
+            pulumi.set(__self__, "agent_uuid", agent_uuid)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if default_response is not None:
+            pulumi.set(__self__, "default_response", default_response)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if guardrail_uuid is not None:
+            pulumi.set(__self__, "guardrail_uuid", guardrail_uuid)
+        if is_attached is not None:
+            pulumi.set(__self__, "is_attached", is_attached)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="agentUuid")
+    def agent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Agent UUID for the Guardrail
+        """
+        return pulumi.get(self, "agent_uuid")
+
+    @agent_uuid.setter
+    def agent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Guardrail
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultResponse")
+    def default_response(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Default response for the Guardrail
+        """
+        return pulumi.get(self, "default_response")
+
+    @default_response.setter
+    def default_response(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "default_response", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the Guardrail
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guardrailUuid")
+    def guardrail_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Guardrail UUID
+        """
+        return pulumi.get(self, "guardrail_uuid")
+
+    @guardrail_uuid.setter
+    def guardrail_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "guardrail_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAttached")
+    def is_attached(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Guardrail is attached
+        """
+        return pulumi.get(self, "is_attached")
+
+    @is_attached.setter
+    def is_attached(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_attached", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Guardrail is default
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of Guardrail
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Priority of the Guardrail
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Type of the Guardrail
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Guardrail
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Guardrail UUID
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the API Key was created
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentAnthropicApiKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Timestamp when the API Key was created
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the API Key was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentApiKeyArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentApiKeyArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: API Key value
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+
+if not MYPY:
+    class GenaiAgentApiKeyInfoArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        secret_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentApiKeyInfoArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] secret_key: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentChatbotArgsDict(TypedDict):
+        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Background color for the chatbot button
+        """
+        logo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Logo for the chatbot
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the chatbot
+        """
+        primary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Primary color for the chatbot
+        """
+        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secondary color for the chatbot
+        """
+        starting_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Starting message for the chatbot
+        """
+elif False:
+    GenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChatbotArgs:
+    def __init__(__self__, *,
+                 button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 logo: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 starting_message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] button_background_color: Background color for the chatbot button
+        :param pulumi.Input[_builtins.str] logo: Logo for the chatbot
+        :param pulumi.Input[_builtins.str] name: Name of the chatbot
+        :param pulumi.Input[_builtins.str] primary_color: Primary color for the chatbot
+        :param pulumi.Input[_builtins.str] secondary_color: Secondary color for the chatbot
+        :param pulumi.Input[_builtins.str] starting_message: Starting message for the chatbot
+        """
+        if button_background_color is not None:
+            pulumi.set(__self__, "button_background_color", button_background_color)
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_color is not None:
+            pulumi.set(__self__, "primary_color", primary_color)
+        if secondary_color is not None:
+            pulumi.set(__self__, "secondary_color", secondary_color)
+        if starting_message is not None:
+            pulumi.set(__self__, "starting_message", starting_message)
+
+    @_builtins.property
+    @pulumi.getter(name="buttonBackgroundColor")
+    def button_background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Background color for the chatbot button
+        """
+        return pulumi.get(self, "button_background_color")
+
+    @button_background_color.setter
+    def button_background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "button_background_color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Logo for the chatbot
+        """
+        return pulumi.get(self, "logo")
+
+    @logo.setter
+    def logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the chatbot
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryColor")
+    def primary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Primary color for the chatbot
+        """
+        return pulumi.get(self, "primary_color")
+
+    @primary_color.setter
+    def primary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryColor")
+    def secondary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secondary color for the chatbot
+        """
+        return pulumi.get(self, "secondary_color")
+
+    @secondary_color.setter
+    def secondary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secondary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startingMessage")
+    def starting_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Starting message for the chatbot
+        """
+        return pulumi.get(self, "starting_message")
+
+    @starting_message.setter
+    def starting_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "starting_message", value)
+
+
+if not MYPY:
+    class GenaiAgentChatbotIdentifierArgsDict(TypedDict):
+        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    GenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChatbotIdentifierArgs:
+    def __init__(__self__, *,
+                 chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
+        if chatbot_id is not None:
+            pulumi.set(__self__, "chatbot_id", chatbot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotId")
+    def chatbot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "chatbot_id")
+
+    @chatbot_id.setter
+    def chatbot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "chatbot_id", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentArgsDict(TypedDict):
+        instruction: pulumi.Input[_builtins.str]
+        """
+        Instruction for the Agent
+        """
+        model_uuid: pulumi.Input[_builtins.str]
+        """
+        Model UUID of the Agent
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the Agent
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        Project ID of the Agent
+        """
+        region: pulumi.Input[_builtins.str]
+        """
+        Region where the Agent is deployed
+        """
+        agent_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the child agent
+        """
+        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
+        """
+        Anthropic API Key information
+        """
+        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgsDict']]]]
+        """
+        List of API Key Infos
+        """
+        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgsDict']]]]
+        """
+        List of API Keys
+        """
+        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgsDict']]]]
+        """
+        List of Chatbot Identifiers
+        """
+        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgsDict']]]]
+        """
+        ChatBot configuration
+        """
+        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgsDict']]]]
+        """
+        List of API Key Infos
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description for the Agent
+        """
+elif False:
+    GenaiAgentChildAgentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentArgs:
+    def __init__(__self__, *,
+                 instruction: pulumi.Input[_builtins.str],
+                 model_uuid: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[_builtins.str],
+                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]] = None,
+                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]] = None,
+                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
+        :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
+        :param pulumi.Input[_builtins.str] name: Name of the Agent
+        :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
+        :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
+        :param pulumi.Input[_builtins.str] agent_id: ID of the child agent
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]] deployments: List of API Key Infos
+        :param pulumi.Input[_builtins.str] description: Description for the Agent
+        """
+        pulumi.set(__self__, "instruction", instruction)
+        pulumi.set(__self__, "model_uuid", model_uuid)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
+        if anthropic_api_keys is not None:
+            pulumi.set(__self__, "anthropic_api_keys", anthropic_api_keys)
+        if api_key_infos is not None:
+            pulumi.set(__self__, "api_key_infos", api_key_infos)
+        if api_keys is not None:
+            pulumi.set(__self__, "api_keys", api_keys)
+        if chatbot_identifiers is not None:
+            pulumi.set(__self__, "chatbot_identifiers", chatbot_identifiers)
+        if chatbots is not None:
+            pulumi.set(__self__, "chatbots", chatbots)
+        if deployments is not None:
+            pulumi.set(__self__, "deployments", deployments)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> pulumi.Input[_builtins.str]:
+        """
+        Instruction for the Agent
+        """
+        return pulumi.get(self, "instruction")
+
+    @instruction.setter
+    def instruction(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instruction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelUuid")
+    def model_uuid(self) -> pulumi.Input[_builtins.str]:
+        """
+        Model UUID of the Agent
+        """
+        return pulumi.get(self, "model_uuid")
+
+    @model_uuid.setter
+    def model_uuid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the Agent
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Project ID of the Agent
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[_builtins.str]:
+        """
+        Region where the Agent is deployed
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the child agent
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="anthropicApiKeys")
+    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]]:
+        """
+        Anthropic API Key information
+        """
+        return pulumi.get(self, "anthropic_api_keys")
+
+    @anthropic_api_keys.setter
+    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgs']]]]):
+        pulumi.set(self, "anthropic_api_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyInfos")
+    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]]:
+        """
+        List of API Key Infos
+        """
+        return pulumi.get(self, "api_key_infos")
+
+    @api_key_infos.setter
+    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgs']]]]):
+        pulumi.set(self, "api_key_infos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeys")
+    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]]:
+        """
+        List of API Keys
+        """
+        return pulumi.get(self, "api_keys")
+
+    @api_keys.setter
+    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgs']]]]):
+        pulumi.set(self, "api_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotIdentifiers")
+    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]]:
+        """
+        List of Chatbot Identifiers
+        """
+        return pulumi.get(self, "chatbot_identifiers")
+
+    @chatbot_identifiers.setter
+    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgs']]]]):
+        pulumi.set(self, "chatbot_identifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]]:
+        """
+        ChatBot configuration
+        """
+        return pulumi.get(self, "chatbots")
+
+    @chatbots.setter
+    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgs']]]]):
+        pulumi.set(self, "chatbots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]]:
+        """
+        List of API Key Infos
+        """
+        return pulumi.get(self, "deployments")
+
+    @deployments.setter
+    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgs']]]]):
+        pulumi.set(self, "deployments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description for the Agent
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the API Key was created
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentChildAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentAnthropicApiKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Timestamp when the API Key was created
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the API Key was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentApiKeyArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentChildAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentApiKeyArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: API Key value
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        secret_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentChildAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentApiKeyInfoArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] secret_key: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentChatbotArgsDict(TypedDict):
+        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Background color for the chatbot button
+        """
+        logo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Logo for the chatbot
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the chatbot
+        """
+        primary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Primary color for the chatbot
+        """
+        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secondary color for the chatbot
+        """
+        starting_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Starting message for the chatbot
+        """
+elif False:
+    GenaiAgentChildAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentChatbotArgs:
+    def __init__(__self__, *,
+                 button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 logo: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 starting_message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] button_background_color: Background color for the chatbot button
+        :param pulumi.Input[_builtins.str] logo: Logo for the chatbot
+        :param pulumi.Input[_builtins.str] name: Name of the chatbot
+        :param pulumi.Input[_builtins.str] primary_color: Primary color for the chatbot
+        :param pulumi.Input[_builtins.str] secondary_color: Secondary color for the chatbot
+        :param pulumi.Input[_builtins.str] starting_message: Starting message for the chatbot
+        """
+        if button_background_color is not None:
+            pulumi.set(__self__, "button_background_color", button_background_color)
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_color is not None:
+            pulumi.set(__self__, "primary_color", primary_color)
+        if secondary_color is not None:
+            pulumi.set(__self__, "secondary_color", secondary_color)
+        if starting_message is not None:
+            pulumi.set(__self__, "starting_message", starting_message)
+
+    @_builtins.property
+    @pulumi.getter(name="buttonBackgroundColor")
+    def button_background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Background color for the chatbot button
+        """
+        return pulumi.get(self, "button_background_color")
+
+    @button_background_color.setter
+    def button_background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "button_background_color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Logo for the chatbot
+        """
+        return pulumi.get(self, "logo")
+
+    @logo.setter
+    def logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the chatbot
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryColor")
+    def primary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Primary color for the chatbot
+        """
+        return pulumi.get(self, "primary_color")
+
+    @primary_color.setter
+    def primary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryColor")
+    def secondary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secondary color for the chatbot
+        """
+        return pulumi.get(self, "secondary_color")
+
+    @secondary_color.setter
+    def secondary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secondary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startingMessage")
+    def starting_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Starting message for the chatbot
+        """
+        return pulumi.get(self, "starting_message")
+
+    @starting_message.setter
+    def starting_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "starting_message", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
+        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    GenaiAgentChildAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentChatbotIdentifierArgs:
+    def __init__(__self__, *,
+                 chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
+        if chatbot_id is not None:
+            pulumi.set(__self__, "chatbot_id", chatbot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotId")
+    def chatbot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "chatbot_id")
+
+    @chatbot_id.setter
+    def chatbot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "chatbot_id", value)
+
+
+if not MYPY:
+    class GenaiAgentChildAgentDeploymentArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the Deployment
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Agent
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        visibility: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Visibility of the Deployment
+        """
+elif False:
+    GenaiAgentChildAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentChildAgentDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] status: Status of the Deployment
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Agent
+        :param pulumi.Input[_builtins.str] url: Url of the Deployment
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        :param pulumi.Input[_builtins.str] visibility: Visibility of the Deployment
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the Deployment
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Visibility of the Deployment
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "visibility", value)
+
+
+if not MYPY:
+    class GenaiAgentDeploymentArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the Deployment
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Agent
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        visibility: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Visibility of the Deployment
+        """
+elif False:
+    GenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] status: Status of the Deployment
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Agent
+        :param pulumi.Input[_builtins.str] url: Url of the Deployment
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        :param pulumi.Input[_builtins.str] visibility: Visibility of the Deployment
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the Deployment
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Visibility of the Deployment
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "visibility", value)
+
+
+if not MYPY:
+    class GenaiAgentFunctionArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Function
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the Function
+        """
+        faasname: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of function
+        """
+        faasnamespace: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Namespace of function
+        """
+        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Guardrail UUID for the Function
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of function
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Agent
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentFunctionArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 faasname: Optional[pulumi.Input[_builtins.str]] = None,
+                 faasnamespace: Optional[pulumi.Input[_builtins.str]] = None,
+                 guardrail_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: API Key value
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Function
+        :param pulumi.Input[_builtins.str] description: Description of the Function
+        :param pulumi.Input[_builtins.str] faasname: Name of function
+        :param pulumi.Input[_builtins.str] faasnamespace: Namespace of function
+        :param pulumi.Input[_builtins.str] guardrail_uuid: Guardrail UUID for the Function
+        :param pulumi.Input[_builtins.str] name: Name of function
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Agent
+        :param pulumi.Input[_builtins.str] url: Url of the Deployment
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if faasname is not None:
+            pulumi.set(__self__, "faasname", faasname)
+        if faasnamespace is not None:
+            pulumi.set(__self__, "faasnamespace", faasnamespace)
+        if guardrail_uuid is not None:
+            pulumi.set(__self__, "guardrail_uuid", guardrail_uuid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Function
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the Function
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def faasname(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of function
+        """
+        return pulumi.get(self, "faasname")
+
+    @faasname.setter
+    def faasname(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "faasname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def faasnamespace(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Namespace of function
+        """
+        return pulumi.get(self, "faasnamespace")
+
+    @faasnamespace.setter
+    def faasnamespace(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "faasnamespace", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guardrailUuid")
+    def guardrail_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Guardrail UUID for the Function
+        """
+        return pulumi.get(self, "guardrail_uuid")
+
+    @guardrail_uuid.setter
+    def guardrail_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "guardrail_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of function
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentKnowledgeBaseArgsDict(TypedDict):
+        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        database_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Database ID of the Knowledge Base
+        """
+        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        is_public: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Knowledge Base is public
+        """
+        last_indexing_job: NotRequired[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
+        """
+        Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Project ID of the Knowledge Base
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region of the Knowledge Base
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of tags
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        user_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        User ID of the Knowledge Base
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Knowledge Base
+        """
+elif False:
+    GenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentKnowledgeBaseArgs:
+    def __init__(__self__, *,
+                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 last_indexing_job: Optional[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] database_id: Database ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] embedding_model_uuid: Embedding model UUID for the Knowledge Base
+        :param pulumi.Input[_builtins.bool] is_public: Indicates if the Knowledge Base is public
+        :param pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs'] last_indexing_job: Last indexing job for the Knowledge Base
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of tags
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.str] user_id: User ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
+        """
+        if added_to_agent_at is not None:
+            pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="addedToAgentAt")
+    def added_to_agent_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        return pulumi.get(self, "added_to_agent_at")
+
+    @added_to_agent_at.setter
+    def added_to_agent_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "added_to_agent_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]:
+        """
+        Last indexing job for the Knowledge Base
+        """
+        return pulumi.get(self, "last_indexing_job")
+
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgs']]):
+        pulumi.set(self, "last_indexing_job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region of the Knowledge Base
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User ID of the Knowledge Base
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the last indexing job
+        """
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        finished_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Phase of the last indexing job
+        """
+        started_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job started
+        """
+        tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Total number of datasources in the last indexing job
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
+                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
+        :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
+        :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
+        :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
+        """
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if finished_at is not None:
+            pulumi.set(__self__, "finished_at", finished_at)
+        if knowledge_base_uuid is not None:
+            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if started_at is not None:
+            pulumi.set(__self__, "started_at", started_at)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgsDict']]]]
+        """
+        Agreement information for the model
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        inference_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provider of the Model
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgsDict']]]]
+        """
+        URL of the Model
+        """
+elif False:
+    GenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentModelArgs:
+    def __init__(__self__, *,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_foundational: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
+        :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
+        :param pulumi.Input[_builtins.bool] is_foundational: Indicates if the Model Base is foundational
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] parent_uuid: Parent UUID of the Model
+        :param pulumi.Input[_builtins.str] provider: Provider of the Model
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
+        :param pulumi.Input[_builtins.str] url: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]] versions: URL of the Model
+        """
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgs']]]]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GenaiAgentModelAgreementArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the agreement
+        :param pulumi.Input[_builtins.str] name: Name of the agreement
+        :param pulumi.Input[_builtins.str] url: URL of the agreement
+        :param pulumi.Input[_builtins.str] uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentModelVersionArgsDict(TypedDict):
+        major: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Patch version of the model
+        """
+elif False:
+    GenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[pulumi.Input[_builtins.int]] = None,
+                 minor: Optional[pulumi.Input[_builtins.int]] = None,
+                 patch: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] major: Major version of the model
+        :param pulumi.Input[_builtins.int] minor: Minor version of the model
+        :param pulumi.Input[_builtins.int] patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
+    class GenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the API Key was created
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentOpenAiApiKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Timestamp when the API Key was created
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the API Key was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentArgsDict(TypedDict):
+        instruction: pulumi.Input[_builtins.str]
+        """
+        Instruction for the Agent
+        """
+        model_uuid: pulumi.Input[_builtins.str]
+        """
+        Model UUID of the Agent
+        """
+        name: pulumi.Input[_builtins.str]
+        """
+        Name of the Agent
+        """
+        project_id: pulumi.Input[_builtins.str]
+        """
+        Project ID of the Agent
+        """
+        region: pulumi.Input[_builtins.str]
+        """
+        Region where the Agent is deployed
+        """
+        agent_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        ID of the child agent
+        """
+        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
+        """
+        Anthropic API Key information
+        """
+        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgsDict']]]]
+        """
+        List of API Key Infos
+        """
+        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgsDict']]]]
+        """
+        List of API Keys
+        """
+        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgsDict']]]]
+        """
+        List of Chatbot Identifiers
+        """
+        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgsDict']]]]
+        """
+        ChatBot configuration
+        """
+        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgsDict']]]]
+        """
+        List of API Key Infos
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description for the Agent
+        """
+elif False:
+    GenaiAgentParentAgentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentArgs:
+    def __init__(__self__, *,
+                 instruction: pulumi.Input[_builtins.str],
+                 model_uuid: pulumi.Input[_builtins.str],
+                 name: pulumi.Input[_builtins.str],
+                 project_id: pulumi.Input[_builtins.str],
+                 region: pulumi.Input[_builtins.str],
+                 agent_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]] = None,
+                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]] = None,
+                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
+        :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
+        :param pulumi.Input[_builtins.str] name: Name of the Agent
+        :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
+        :param pulumi.Input[_builtins.str] region: Region where the Agent is deployed
+        :param pulumi.Input[_builtins.str] agent_id: ID of the child agent
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]] api_key_infos: List of API Key Infos
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]] api_keys: List of API Keys
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]] chatbot_identifiers: List of Chatbot Identifiers
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]] chatbots: ChatBot configuration
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]] deployments: List of API Key Infos
+        :param pulumi.Input[_builtins.str] description: Description for the Agent
+        """
+        pulumi.set(__self__, "instruction", instruction)
+        pulumi.set(__self__, "model_uuid", model_uuid)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "region", region)
+        if agent_id is not None:
+            pulumi.set(__self__, "agent_id", agent_id)
+        if anthropic_api_keys is not None:
+            pulumi.set(__self__, "anthropic_api_keys", anthropic_api_keys)
+        if api_key_infos is not None:
+            pulumi.set(__self__, "api_key_infos", api_key_infos)
+        if api_keys is not None:
+            pulumi.set(__self__, "api_keys", api_keys)
+        if chatbot_identifiers is not None:
+            pulumi.set(__self__, "chatbot_identifiers", chatbot_identifiers)
+        if chatbots is not None:
+            pulumi.set(__self__, "chatbots", chatbots)
+        if deployments is not None:
+            pulumi.set(__self__, "deployments", deployments)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> pulumi.Input[_builtins.str]:
+        """
+        Instruction for the Agent
+        """
+        return pulumi.get(self, "instruction")
+
+    @instruction.setter
+    def instruction(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "instruction", value)
+
+    @_builtins.property
+    @pulumi.getter(name="modelUuid")
+    def model_uuid(self) -> pulumi.Input[_builtins.str]:
+        """
+        Model UUID of the Agent
+        """
+        return pulumi.get(self, "model_uuid")
+
+    @model_uuid.setter
+    def model_uuid(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[_builtins.str]:
+        """
+        Name of the Agent
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> pulumi.Input[_builtins.str]:
+        """
+        Project ID of the Agent
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[_builtins.str]:
+        """
+        Region where the Agent is deployed
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[_builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentId")
+    def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        ID of the child agent
+        """
+        return pulumi.get(self, "agent_id")
+
+    @agent_id.setter
+    def agent_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "agent_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="anthropicApiKeys")
+    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]]:
+        """
+        Anthropic API Key information
+        """
+        return pulumi.get(self, "anthropic_api_keys")
+
+    @anthropic_api_keys.setter
+    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgs']]]]):
+        pulumi.set(self, "anthropic_api_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeyInfos")
+    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]]:
+        """
+        List of API Key Infos
+        """
+        return pulumi.get(self, "api_key_infos")
+
+    @api_key_infos.setter
+    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgs']]]]):
+        pulumi.set(self, "api_key_infos", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKeys")
+    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]]:
+        """
+        List of API Keys
+        """
+        return pulumi.get(self, "api_keys")
+
+    @api_keys.setter
+    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgs']]]]):
+        pulumi.set(self, "api_keys", value)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotIdentifiers")
+    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]]:
+        """
+        List of Chatbot Identifiers
+        """
+        return pulumi.get(self, "chatbot_identifiers")
+
+    @chatbot_identifiers.setter
+    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgs']]]]):
+        pulumi.set(self, "chatbot_identifiers", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]]:
+        """
+        ChatBot configuration
+        """
+        return pulumi.get(self, "chatbots")
+
+    @chatbots.setter
+    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgs']]]]):
+        pulumi.set(self, "chatbots", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]]:
+        """
+        List of API Key Infos
+        """
+        return pulumi.get(self, "deployments")
+
+    @deployments.setter
+    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgs']]]]):
+        pulumi.set(self, "deployments", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description for the Agent
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the API Key was created
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentParentAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentAnthropicApiKeyArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Timestamp when the API Key was created
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the API Key was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentApiKeyArgsDict(TypedDict):
+        api_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentParentAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentApiKeyArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] api_key: API Key value
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "api_key", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        created_by: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created By user ID for the API Key
+        """
+        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Deleted At timestamp for the API Key
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        secret_key: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+elif False:
+    GenaiAgentParentAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentApiKeyInfoArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_by: Optional[pulumi.Input[_builtins.str]] = None,
+                 deleted_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 secret_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] created_by: Created By user ID for the API Key
+        :param pulumi.Input[_builtins.str] deleted_at: Deleted At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] secret_key: Updated At timestamp for the API Key
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if deleted_at is not None:
+            pulumi.set(__self__, "deleted_at", deleted_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secret_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentChatbotArgsDict(TypedDict):
+        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Background color for the chatbot button
+        """
+        logo: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Logo for the chatbot
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the chatbot
+        """
+        primary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Primary color for the chatbot
+        """
+        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Secondary color for the chatbot
+        """
+        starting_message: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Starting message for the chatbot
+        """
+elif False:
+    GenaiAgentParentAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentChatbotArgs:
+    def __init__(__self__, *,
+                 button_background_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 logo: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 primary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 secondary_color: Optional[pulumi.Input[_builtins.str]] = None,
+                 starting_message: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] button_background_color: Background color for the chatbot button
+        :param pulumi.Input[_builtins.str] logo: Logo for the chatbot
+        :param pulumi.Input[_builtins.str] name: Name of the chatbot
+        :param pulumi.Input[_builtins.str] primary_color: Primary color for the chatbot
+        :param pulumi.Input[_builtins.str] secondary_color: Secondary color for the chatbot
+        :param pulumi.Input[_builtins.str] starting_message: Starting message for the chatbot
+        """
+        if button_background_color is not None:
+            pulumi.set(__self__, "button_background_color", button_background_color)
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_color is not None:
+            pulumi.set(__self__, "primary_color", primary_color)
+        if secondary_color is not None:
+            pulumi.set(__self__, "secondary_color", secondary_color)
+        if starting_message is not None:
+            pulumi.set(__self__, "starting_message", starting_message)
+
+    @_builtins.property
+    @pulumi.getter(name="buttonBackgroundColor")
+    def button_background_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Background color for the chatbot button
+        """
+        return pulumi.get(self, "button_background_color")
+
+    @button_background_color.setter
+    def button_background_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "button_background_color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def logo(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Logo for the chatbot
+        """
+        return pulumi.get(self, "logo")
+
+    @logo.setter
+    def logo(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "logo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the chatbot
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryColor")
+    def primary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Primary color for the chatbot
+        """
+        return pulumi.get(self, "primary_color")
+
+    @primary_color.setter
+    def primary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "primary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryColor")
+    def secondary_color(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Secondary color for the chatbot
+        """
+        return pulumi.get(self, "secondary_color")
+
+    @secondary_color.setter
+    def secondary_color(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "secondary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startingMessage")
+    def starting_message(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Starting message for the chatbot
+        """
+        return pulumi.get(self, "starting_message")
+
+    @starting_message.setter
+    def starting_message(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "starting_message", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
+        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
+elif False:
+    GenaiAgentParentAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentChatbotIdentifierArgs:
+    def __init__(__self__, *,
+                 chatbot_id: Optional[pulumi.Input[_builtins.str]] = None):
+        if chatbot_id is not None:
+            pulumi.set(__self__, "chatbot_id", chatbot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotId")
+    def chatbot_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "chatbot_id")
+
+    @chatbot_id.setter
+    def chatbot_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "chatbot_id", value)
+
+
+if not MYPY:
+    class GenaiAgentParentAgentDeploymentArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the API Key
+        """
+        status: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Status of the Deployment
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Agent
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        API Key value
+        """
+        visibility: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Visibility of the Deployment
+        """
+elif False:
+    GenaiAgentParentAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentParentAgentDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 status: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 visibility: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: API Key value
+        :param pulumi.Input[_builtins.str] name: Name of the API Key
+        :param pulumi.Input[_builtins.str] status: Status of the Deployment
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Agent
+        :param pulumi.Input[_builtins.str] url: Url of the Deployment
+        :param pulumi.Input[_builtins.str] uuid: API Key value
+        :param pulumi.Input[_builtins.str] visibility: Visibility of the Deployment
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Status of the Deployment
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Visibility of the Deployment
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "visibility", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateArgsDict(TypedDict):
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the Agent Template
+        """
+        instruction: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Instruction for the Agent
+        """
+        k: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        K value for the Agent Template
+        """
+        knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgsDict']]]]
+        """
+        List of Knowledge Bases
+        """
+        max_tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Maximum tokens allowed
+        """
+        models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgsDict']]]]
+        """
+        Model of the Agent Template
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Agent Template
+        """
+        temperature: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Agent temperature setting
+        """
+        top_p: NotRequired[pulumi.Input[_builtins.float]]
+        """
+        Top P sampling parameter
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Updated At timestamp for the Agent Template
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        uuid of the Agent Template
+        """
+elif False:
+    GenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateArgs:
+    def __init__(__self__, *,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 instruction: Optional[pulumi.Input[_builtins.str]] = None,
+                 k: Optional[pulumi.Input[_builtins.int]] = None,
+                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]] = None,
+                 max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
+                 top_p: Optional[pulumi.Input[_builtins.float]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] description: Description of the Agent Template
+        :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
+        :param pulumi.Input[_builtins.int] k: K value for the Agent Template
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]] knowledge_bases: List of Knowledge Bases
+        :param pulumi.Input[_builtins.int] max_tokens: Maximum tokens allowed
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]] models: Model of the Agent Template
+        :param pulumi.Input[_builtins.str] name: Name of the Agent Template
+        :param pulumi.Input[_builtins.float] temperature: Agent temperature setting
+        :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
+        :param pulumi.Input[_builtins.str] updated_at: Updated At timestamp for the Agent Template
+        :param pulumi.Input[_builtins.str] uuid: uuid of the Agent Template
+        """
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if k is not None:
+            pulumi.set(__self__, "k", k)
+        if knowledge_bases is not None:
+            pulumi.set(__self__, "knowledge_bases", knowledge_bases)
+        if max_tokens is not None:
+            pulumi.set(__self__, "max_tokens", max_tokens)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if top_p is not None:
+            pulumi.set(__self__, "top_p", top_p)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the Agent Template
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Instruction for the Agent
+        """
+        return pulumi.get(self, "instruction")
+
+    @instruction.setter
+    def instruction(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "instruction", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def k(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        K value for the Agent Template
+        """
+        return pulumi.get(self, "k")
+
+    @k.setter
+    def k(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "k", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBases")
+    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]]:
+        """
+        List of Knowledge Bases
+        """
+        return pulumi.get(self, "knowledge_bases")
+
+    @knowledge_bases.setter
+    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgs']]]]):
+        pulumi.set(self, "knowledge_bases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxTokens")
+    def max_tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Maximum tokens allowed
+        """
+        return pulumi.get(self, "max_tokens")
+
+    @max_tokens.setter
+    def max_tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "max_tokens", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]]:
+        """
+        Model of the Agent Template
+        """
+        return pulumi.get(self, "models")
+
+    @models.setter
+    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgs']]]]):
+        pulumi.set(self, "models", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Agent Template
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Agent temperature setting
+        """
+        return pulumi.get(self, "temperature")
+
+    @temperature.setter
+    def temperature(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topP")
+    def top_p(self) -> Optional[pulumi.Input[_builtins.float]]:
+        """
+        Top P sampling parameter
+        """
+        return pulumi.get(self, "top_p")
+
+    @top_p.setter
+    def top_p(self, value: Optional[pulumi.Input[_builtins.float]]):
+        pulumi.set(self, "top_p", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Updated At timestamp for the Agent Template
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        uuid of the Agent Template
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        database_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Database ID of the Knowledge Base
+        """
+        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        is_public: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Knowledge Base is public
+        """
+        last_indexing_job: NotRequired[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
+        """
+        Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Project ID of the Knowledge Base
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Region of the Knowledge Base
+        """
+        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of tags
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        user_id: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        User ID of the Knowledge Base
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the Knowledge Base
+        """
+elif False:
+    GenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateKnowledgeBaseArgs:
+    def __init__(__self__, *,
+                 added_to_agent_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 database_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 embedding_model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_public: Optional[pulumi.Input[_builtins.bool]] = None,
+                 last_indexing_job: Optional[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] database_id: Database ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] embedding_model_uuid: Embedding model UUID for the Knowledge Base
+        :param pulumi.Input[_builtins.bool] is_public: Indicates if the Knowledge Base is public
+        :param pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] last_indexing_job: Last indexing job for the Knowledge Base
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] project_id: Project ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] region: Region of the Knowledge Base
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: List of tags
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.str] user_id: User ID of the Knowledge Base
+        :param pulumi.Input[_builtins.str] uuid: UUID of the Knowledge Base
+        """
+        if added_to_agent_at is not None:
+            pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="addedToAgentAt")
+    def added_to_agent_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        return pulumi.get(self, "added_to_agent_at")
+
+    @added_to_agent_at.setter
+    def added_to_agent_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "added_to_agent_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]:
+        """
+        Last indexing job for the Knowledge Base
+        """
+        return pulumi.get(self, "last_indexing_job")
+
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']]):
+        pulumi.set(self, "last_indexing_job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Region of the Knowledge Base
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        User ID of the Knowledge Base
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "user_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the last indexing job
+        """
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        finished_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Phase of the last indexing job
+        """
+        started_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job started
+        """
+        tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Total number of datasources in the last indexing job
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
+                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
+        :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
+        :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
+        :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
+        """
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if finished_at is not None:
+            pulumi.set(__self__, "finished_at", finished_at)
+        if knowledge_base_uuid is not None:
+            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if started_at is not None:
+            pulumi.set(__self__, "started_at", started_at)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgsDict']]]]
+        """
+        Agreement information for the model
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        inference_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provider of the Model
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgsDict']]]]
+        """
+        URL of the Model
+        """
+elif False:
+    GenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateModelArgs:
+    def __init__(__self__, *,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_foundational: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
+        :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
+        :param pulumi.Input[_builtins.bool] is_foundational: Indicates if the Model Base is foundational
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] parent_uuid: Parent UUID of the Model
+        :param pulumi.Input[_builtins.str] provider: Provider of the Model
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
+        :param pulumi.Input[_builtins.str] url: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]] versions: URL of the Model
+        """
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgs']]]]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the agreement
+        :param pulumi.Input[_builtins.str] name: Name of the agreement
+        :param pulumi.Input[_builtins.str] url: URL of the agreement
+        :param pulumi.Input[_builtins.str] uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiAgentTemplateModelVersionArgsDict(TypedDict):
+        major: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Patch version of the model
+        """
+elif False:
+    GenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiAgentTemplateModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[pulumi.Input[_builtins.int]] = None,
+                 minor: Optional[pulumi.Input[_builtins.int]] = None,
+                 patch: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] major: Major version of the model
+        :param pulumi.Input[_builtins.int] minor: Minor version of the model
+        :param pulumi.Input[_builtins.int] patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
+        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The name of the Spaces bucket
+        """
+        item_path: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The path to the item in the bucket
+        """
+        region: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The region of the Spaces bucket
+        """
+elif False:
+    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
+    def __init__(__self__, *,
+                 bucket_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 item_path: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] bucket_name: The name of the Spaces bucket
+        :param pulumi.Input[_builtins.str] item_path: The path to the item in the bucket
+        :param pulumi.Input[_builtins.str] region: The region of the Spaces bucket
+        """
+        if bucket_name is not None:
+            pulumi.set(__self__, "bucket_name", bucket_name)
+        if item_path is not None:
+            pulumi.set(__self__, "item_path", item_path)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+
+    @_builtins.property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the Spaces bucket
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @bucket_name.setter
+    def bucket_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "bucket_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="itemPath")
+    def item_path(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The path to the item in the bucket
+        """
+        return pulumi.get(self, "item_path")
+
+    @item_path.setter
+    def item_path(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "item_path", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The region of the Spaces bucket
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "region", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
+        base_url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        The base URL to crawl
+        """
+        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Whether to embed media content
+        """
+elif False:
+    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
+    def __init__(__self__, *,
+                 base_url: Optional[pulumi.Input[_builtins.str]] = None,
+                 crawling_option: Optional[pulumi.Input[_builtins.str]] = None,
+                 embed_media: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.str] base_url: The base URL to crawl
+        :param pulumi.Input[_builtins.str] crawling_option: Options for specifying how URLs found on pages should be handled. 
+               - UNKNOWN: Default unknown value
+               - SCOPED: Only include the base URL.
+               - PATH: Crawl the base URL and linked pages within the URL path.
+               - DOMAIN: Crawl the base URL and linked pages within the same domain.
+               - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        :param pulumi.Input[_builtins.bool] embed_media: Whether to embed media content
+        """
+        if base_url is not None:
+            pulumi.set(__self__, "base_url", base_url)
+        if crawling_option is not None:
+            pulumi.set(__self__, "crawling_option", crawling_option)
+        if embed_media is not None:
+            pulumi.set(__self__, "embed_media", embed_media)
+
+    @_builtins.property
+    @pulumi.getter(name="baseUrl")
+    def base_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The base URL to crawl
+        """
+        return pulumi.get(self, "base_url")
+
+    @base_url.setter
+    def base_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "base_url", value)
+
+    @_builtins.property
+    @pulumi.getter(name="crawlingOption")
+    def crawling_option(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Options for specifying how URLs found on pages should be handled. 
+        - UNKNOWN: Default unknown value
+        - SCOPED: Only include the base URL.
+        - PATH: Crawl the base URL and linked pages within the URL path.
+        - DOMAIN: Crawl the base URL and linked pages within the same domain.
+        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+        """
+        return pulumi.get(self, "crawling_option")
+
+    @crawling_option.setter
+    def crawling_option(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "crawling_option", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embedMedia")
+    def embed_media(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether to embed media content
+        """
+        return pulumi.get(self, "embed_media")
+
+    @embed_media.setter
+    def embed_media(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "embed_media", value)
+
+
+if not MYPY:
+    class GenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the last indexing job
+        """
+        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        finished_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        phase: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Phase of the last indexing job
+        """
+        started_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job started
+        """
+        tokens: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Total number of datasources in the last indexing job
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the last indexing job updated
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 completed_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 data_source_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 finished_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 phase: Optional[pulumi.Input[_builtins.str]] = None,
+                 started_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 tokens: Optional[pulumi.Input[_builtins.int]] = None,
+                 total_datasources: Optional[pulumi.Input[_builtins.int]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.int] completed_datasources: Number of completed datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the last indexing job
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param pulumi.Input[_builtins.str] finished_at: Timestamp when the last indexing job finished
+        :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param pulumi.Input[_builtins.str] phase: Phase of the last indexing job
+        :param pulumi.Input[_builtins.str] started_at: Timestamp when the last indexing job started
+        :param pulumi.Input[_builtins.int] tokens: Number of tokens processed in the last indexing job
+        :param pulumi.Input[_builtins.int] total_datasources: Total number of datasources in the last indexing job
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the last indexing job updated
+        :param pulumi.Input[_builtins.str] uuid: UUID  of the last indexing job
+        """
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if finished_at is not None:
+            pulumi.set(__self__, "finished_at", finished_at)
+        if knowledge_base_uuid is not None:
+            pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if started_at is not None:
+            pulumi.set(__self__, "started_at", started_at)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
+        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]
+        """
+        Agreement information for the model
+        """
+        created_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        inference_name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Provider of the Model
+        """
+        updated_at: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]
+        """
+        URL of the Model
+        """
+elif False:
+    GenaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelArgs:
+    def __init__(__self__, *,
+                 agreements: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]] = None,
+                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 inference_version: Optional[pulumi.Input[_builtins.str]] = None,
+                 is_foundational: Optional[pulumi.Input[_builtins.bool]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 parent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider: Optional[pulumi.Input[_builtins.str]] = None,
+                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
+                 upload_complete: Optional[pulumi.Input[_builtins.bool]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 usecases: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 versions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]] agreements: Agreement information for the model
+        :param pulumi.Input[_builtins.str] created_at: Created At timestamp for the Knowledge Base
+        :param pulumi.Input[_builtins.str] inference_name: Inference name of the model
+        :param pulumi.Input[_builtins.str] inference_version: Infernce version of the model
+        :param pulumi.Input[_builtins.bool] is_foundational: Indicates if the Model Base is foundational
+        :param pulumi.Input[_builtins.str] name: Name of the Knowledge Base
+        :param pulumi.Input[_builtins.str] parent_uuid: Parent UUID of the Model
+        :param pulumi.Input[_builtins.str] provider: Provider of the Model
+        :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Knowledge Base was updated
+        :param pulumi.Input[_builtins.bool] upload_complete: Indicates if the Model upload is complete
+        :param pulumi.Input[_builtins.str] url: URL of the Model
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] usecases: List of Usecases for the Model
+        :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]] versions: URL of the Model
+        """
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if created_at is not None:
+            pulumi.set(__self__, "created_at", created_at)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if updated_at is not None:
+            pulumi.set(__self__, "updated_at", updated_at)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgs']]]]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgs']]]]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[pulumi.Input[_builtins.str]]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GenaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 url: Optional[pulumi.Input[_builtins.str]] = None,
+                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] description: Description of the agreement
+        :param pulumi.Input[_builtins.str] name: Name of the agreement
+        :param pulumi.Input[_builtins.str] url: URL of the agreement
+        :param pulumi.Input[_builtins.str] uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GenaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
+        major: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[pulumi.Input[_builtins.int]]
+        """
+        Patch version of the model
+        """
+elif False:
+    GenaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GenaiOpenaiApiKeyModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[pulumi.Input[_builtins.int]] = None,
+                 minor: Optional[pulumi.Input[_builtins.int]] = None,
+                 patch: Optional[pulumi.Input[_builtins.int]] = None):
+        """
+        :param pulumi.Input[_builtins.int] major: Major version of the model
+        :param pulumi.Input[_builtins.int] minor: Minor version of the model
+        :param pulumi.Input[_builtins.int] patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[pulumi.Input[_builtins.int]]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[pulumi.Input[_builtins.int]]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
     class GradientaiAgentAgentGuardrailArgsDict(TypedDict):
         agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -22067,6 +28111,4007 @@ class GetFirewallOutboundRuleArgs:
     @port_range.setter
     def port_range(self, value: Optional[_builtins.str]):
         pulumi.set(self, "port_range", value)
+
+
+if not MYPY:
+    class GetGenaiAgentAgentGuardrailArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Guardrail
+        """
+        is_attached: _builtins.bool
+        """
+        Indicates if the Guardrail is attached
+        """
+        updated_at: _builtins.str
+        """
+        Updated At timestamp for the Guardrail
+        """
+        agent_uuid: NotRequired[_builtins.str]
+        """
+        Agent UUID for the Guardrail
+        """
+        default_response: NotRequired[_builtins.str]
+        """
+        Default response for the Guardrail
+        """
+        description: NotRequired[_builtins.str]
+        """
+        Description of the Guardrail
+        """
+        guardrail_uuid: NotRequired[_builtins.str]
+        """
+        Guardrail UUID
+        """
+        is_default: NotRequired[_builtins.bool]
+        """
+        Indicates if the Guardrail is default
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of Guardrail
+        """
+        priority: NotRequired[_builtins.int]
+        """
+        Priority of the Guardrail
+        """
+        type: NotRequired[_builtins.str]
+        """
+        Type of the Guardrail
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        Guardrail UUID
+        """
+elif False:
+    GetGenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentAgentGuardrailArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 is_attached: _builtins.bool,
+                 updated_at: _builtins.str,
+                 agent_uuid: Optional[_builtins.str] = None,
+                 default_response: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 guardrail_uuid: Optional[_builtins.str] = None,
+                 is_default: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 priority: Optional[_builtins.int] = None,
+                 type: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the Guardrail
+        :param _builtins.bool is_attached: Indicates if the Guardrail is attached
+        :param _builtins.str updated_at: Updated At timestamp for the Guardrail
+        :param _builtins.str agent_uuid: Agent UUID for the Guardrail
+        :param _builtins.str default_response: Default response for the Guardrail
+        :param _builtins.str description: Description of the Guardrail
+        :param _builtins.str guardrail_uuid: Guardrail UUID
+        :param _builtins.bool is_default: Indicates if the Guardrail is default
+        :param _builtins.str name: Name of Guardrail
+        :param _builtins.int priority: Priority of the Guardrail
+        :param _builtins.str type: Type of the Guardrail
+        :param _builtins.str uuid: Guardrail UUID
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "is_attached", is_attached)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if agent_uuid is not None:
+            pulumi.set(__self__, "agent_uuid", agent_uuid)
+        if default_response is not None:
+            pulumi.set(__self__, "default_response", default_response)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if guardrail_uuid is not None:
+            pulumi.set(__self__, "guardrail_uuid", guardrail_uuid)
+        if is_default is not None:
+            pulumi.set(__self__, "is_default", is_default)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Guardrail
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isAttached")
+    def is_attached(self) -> _builtins.bool:
+        """
+        Indicates if the Guardrail is attached
+        """
+        return pulumi.get(self, "is_attached")
+
+    @is_attached.setter
+    def is_attached(self, value: _builtins.bool):
+        pulumi.set(self, "is_attached", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Updated At timestamp for the Guardrail
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="agentUuid")
+    def agent_uuid(self) -> Optional[_builtins.str]:
+        """
+        Agent UUID for the Guardrail
+        """
+        return pulumi.get(self, "agent_uuid")
+
+    @agent_uuid.setter
+    def agent_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "agent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="defaultResponse")
+    def default_response(self) -> Optional[_builtins.str]:
+        """
+        Default response for the Guardrail
+        """
+        return pulumi.get(self, "default_response")
+
+    @default_response.setter
+    def default_response(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "default_response", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Guardrail
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guardrailUuid")
+    def guardrail_uuid(self) -> Optional[_builtins.str]:
+        """
+        Guardrail UUID
+        """
+        return pulumi.get(self, "guardrail_uuid")
+
+    @guardrail_uuid.setter
+    def guardrail_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "guardrail_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isDefault")
+    def is_default(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Guardrail is default
+        """
+        return pulumi.get(self, "is_default")
+
+    @is_default.setter
+    def is_default(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_default", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of Guardrail
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def priority(self) -> Optional[_builtins.int]:
+        """
+        Priority of the Guardrail
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "priority", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> Optional[_builtins.str]:
+        """
+        Type of the Guardrail
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "type", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        Guardrail UUID
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Timestamp when the API Key was created
+        """
+        deleted_at: _builtins.str
+        """
+        Deleted At timestamp for the API Key
+        """
+        updated_at: _builtins.str
+        """
+        Updated At timestamp for the API Key
+        """
+        created_by: NotRequired[_builtins.str]
+        """
+        Created By user ID for the API Key
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the API Key
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+elif False:
+    GetGenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentAnthropicApiKeyArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 deleted_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 created_by: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Timestamp when the API Key was created
+        :param _builtins.str deleted_at: Deleted At timestamp for the API Key
+        :param _builtins.str updated_at: Updated At timestamp for the API Key
+        :param _builtins.str created_by: Created By user ID for the API Key
+        :param _builtins.str name: Name of the API Key
+        :param _builtins.str uuid: API Key value
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "deleted_at", deleted_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Timestamp when the API Key was created
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> _builtins.str:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: _builtins.str):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[_builtins.str]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentApiKeyArgsDict(TypedDict):
+        api_key: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+elif False:
+    GetGenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentApiKeyArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_key: API Key value
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "api_key", value)
+
+
+if not MYPY:
+    class GetGenaiAgentApiKeyInfoArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        API Key value
+        """
+        deleted_at: _builtins.str
+        """
+        Deleted At timestamp for the API Key
+        """
+        created_by: NotRequired[_builtins.str]
+        """
+        Created By user ID for the API Key
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the API Key
+        """
+        secret_key: NotRequired[_builtins.str]
+        """
+        Updated At timestamp for the API Key
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+elif False:
+    GetGenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentApiKeyInfoArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 deleted_at: _builtins.str,
+                 created_by: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 secret_key: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: API Key value
+        :param _builtins.str deleted_at: Deleted At timestamp for the API Key
+        :param _builtins.str created_by: Created By user ID for the API Key
+        :param _builtins.str name: Name of the API Key
+        :param _builtins.str secret_key: Updated At timestamp for the API Key
+        :param _builtins.str uuid: API Key value
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "deleted_at", deleted_at)
+        if created_by is not None:
+            pulumi.set(__self__, "created_by", created_by)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if secret_key is not None:
+            pulumi.set(__self__, "secret_key", secret_key)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="deletedAt")
+    def deleted_at(self) -> _builtins.str:
+        """
+        Deleted At timestamp for the API Key
+        """
+        return pulumi.get(self, "deleted_at")
+
+    @deleted_at.setter
+    def deleted_at(self, value: _builtins.str):
+        pulumi.set(self, "deleted_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdBy")
+    def created_by(self) -> Optional[_builtins.str]:
+        """
+        Created By user ID for the API Key
+        """
+        return pulumi.get(self, "created_by")
+
+    @created_by.setter
+    def created_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "created_by", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secretKey")
+    def secret_key(self) -> Optional[_builtins.str]:
+        """
+        Updated At timestamp for the API Key
+        """
+        return pulumi.get(self, "secret_key")
+
+    @secret_key.setter
+    def secret_key(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "secret_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentChatbotArgsDict(TypedDict):
+        button_background_color: NotRequired[_builtins.str]
+        """
+        Background color for the chatbot button
+        """
+        logo: NotRequired[_builtins.str]
+        """
+        Logo for the chatbot
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the chatbot
+        """
+        primary_color: NotRequired[_builtins.str]
+        """
+        Primary color for the chatbot
+        """
+        secondary_color: NotRequired[_builtins.str]
+        """
+        Secondary color for the chatbot
+        """
+        starting_message: NotRequired[_builtins.str]
+        """
+        Starting message for the chatbot
+        """
+elif False:
+    GetGenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentChatbotArgs:
+    def __init__(__self__, *,
+                 button_background_color: Optional[_builtins.str] = None,
+                 logo: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 primary_color: Optional[_builtins.str] = None,
+                 secondary_color: Optional[_builtins.str] = None,
+                 starting_message: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str button_background_color: Background color for the chatbot button
+        :param _builtins.str logo: Logo for the chatbot
+        :param _builtins.str name: Name of the chatbot
+        :param _builtins.str primary_color: Primary color for the chatbot
+        :param _builtins.str secondary_color: Secondary color for the chatbot
+        :param _builtins.str starting_message: Starting message for the chatbot
+        """
+        if button_background_color is not None:
+            pulumi.set(__self__, "button_background_color", button_background_color)
+        if logo is not None:
+            pulumi.set(__self__, "logo", logo)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if primary_color is not None:
+            pulumi.set(__self__, "primary_color", primary_color)
+        if secondary_color is not None:
+            pulumi.set(__self__, "secondary_color", secondary_color)
+        if starting_message is not None:
+            pulumi.set(__self__, "starting_message", starting_message)
+
+    @_builtins.property
+    @pulumi.getter(name="buttonBackgroundColor")
+    def button_background_color(self) -> Optional[_builtins.str]:
+        """
+        Background color for the chatbot button
+        """
+        return pulumi.get(self, "button_background_color")
+
+    @button_background_color.setter
+    def button_background_color(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "button_background_color", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def logo(self) -> Optional[_builtins.str]:
+        """
+        Logo for the chatbot
+        """
+        return pulumi.get(self, "logo")
+
+    @logo.setter
+    def logo(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "logo", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the chatbot
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="primaryColor")
+    def primary_color(self) -> Optional[_builtins.str]:
+        """
+        Primary color for the chatbot
+        """
+        return pulumi.get(self, "primary_color")
+
+    @primary_color.setter
+    def primary_color(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "primary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secondaryColor")
+    def secondary_color(self) -> Optional[_builtins.str]:
+        """
+        Secondary color for the chatbot
+        """
+        return pulumi.get(self, "secondary_color")
+
+    @secondary_color.setter
+    def secondary_color(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "secondary_color", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startingMessage")
+    def starting_message(self) -> Optional[_builtins.str]:
+        """
+        Starting message for the chatbot
+        """
+        return pulumi.get(self, "starting_message")
+
+    @starting_message.setter
+    def starting_message(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "starting_message", value)
+
+
+if not MYPY:
+    class GetGenaiAgentChatbotIdentifierArgsDict(TypedDict):
+        chatbot_id: NotRequired[_builtins.str]
+        """
+        Chatbot ID
+        """
+elif False:
+    GetGenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentChatbotIdentifierArgs:
+    def __init__(__self__, *,
+                 chatbot_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str chatbot_id: Chatbot ID
+        """
+        if chatbot_id is not None:
+            pulumi.set(__self__, "chatbot_id", chatbot_id)
+
+    @_builtins.property
+    @pulumi.getter(name="chatbotId")
+    def chatbot_id(self) -> Optional[_builtins.str]:
+        """
+        Chatbot ID
+        """
+        return pulumi.get(self, "chatbot_id")
+
+    @chatbot_id.setter
+    def chatbot_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "chatbot_id", value)
+
+
+if not MYPY:
+    class GetGenaiAgentDeploymentArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        API Key value
+        """
+        updated_at: _builtins.str
+        """
+        Updated At timestamp for the Agent
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the API Key
+        """
+        status: NotRequired[_builtins.str]
+        """
+        Status of the Deployment
+        """
+        url: NotRequired[_builtins.str]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+        visibility: NotRequired[_builtins.str]
+        """
+        Visibility of the Deployment
+        """
+elif False:
+    GetGenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentDeploymentArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 name: Optional[_builtins.str] = None,
+                 status: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None,
+                 visibility: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: API Key value
+        :param _builtins.str updated_at: Updated At timestamp for the Agent
+        :param _builtins.str name: Name of the API Key
+        :param _builtins.str status: Status of the Deployment
+        :param _builtins.str url: Url of the Deployment
+        :param _builtins.str uuid: API Key value
+        :param _builtins.str visibility: Visibility of the Deployment
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if status is not None:
+            pulumi.set(__self__, "status", status)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+        if visibility is not None:
+            pulumi.set(__self__, "visibility", visibility)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the API Key
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> Optional[_builtins.str]:
+        """
+        Status of the Deployment
+        """
+        return pulumi.get(self, "status")
+
+    @status.setter
+    def status(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "status", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def visibility(self) -> Optional[_builtins.str]:
+        """
+        Visibility of the Deployment
+        """
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "visibility", value)
+
+
+if not MYPY:
+    class GetGenaiAgentFunctionArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Function
+        """
+        updated_at: _builtins.str
+        """
+        Updated At timestamp for the Agent
+        """
+        api_key: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+        description: NotRequired[_builtins.str]
+        """
+        Description of the Function
+        """
+        faasname: NotRequired[_builtins.str]
+        """
+        Name of function
+        """
+        faasnamespace: NotRequired[_builtins.str]
+        """
+        Namespace of function
+        """
+        guardrail_uuid: NotRequired[_builtins.str]
+        """
+        Guardrail UUID for the Function
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of function
+        """
+        url: NotRequired[_builtins.str]
+        """
+        Url of the Deployment
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        API Key value
+        """
+elif False:
+    GetGenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentFunctionArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 api_key: Optional[_builtins.str] = None,
+                 description: Optional[_builtins.str] = None,
+                 faasname: Optional[_builtins.str] = None,
+                 faasnamespace: Optional[_builtins.str] = None,
+                 guardrail_uuid: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the Function
+        :param _builtins.str updated_at: Updated At timestamp for the Agent
+        :param _builtins.str api_key: API Key value
+        :param _builtins.str description: Description of the Function
+        :param _builtins.str faasname: Name of function
+        :param _builtins.str faasnamespace: Namespace of function
+        :param _builtins.str guardrail_uuid: Guardrail UUID for the Function
+        :param _builtins.str name: Name of function
+        :param _builtins.str url: Url of the Deployment
+        :param _builtins.str uuid: API Key value
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if faasname is not None:
+            pulumi.set(__self__, "faasname", faasname)
+        if faasnamespace is not None:
+            pulumi.set(__self__, "faasnamespace", faasnamespace)
+        if guardrail_uuid is not None:
+            pulumi.set(__self__, "guardrail_uuid", guardrail_uuid)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Function
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Updated At timestamp for the Agent
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "api_key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Function
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def faasname(self) -> Optional[_builtins.str]:
+        """
+        Name of function
+        """
+        return pulumi.get(self, "faasname")
+
+    @faasname.setter
+    def faasname(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "faasname", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def faasnamespace(self) -> Optional[_builtins.str]:
+        """
+        Namespace of function
+        """
+        return pulumi.get(self, "faasnamespace")
+
+    @faasnamespace.setter
+    def faasnamespace(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "faasnamespace", value)
+
+    @_builtins.property
+    @pulumi.getter(name="guardrailUuid")
+    def guardrail_uuid(self) -> Optional[_builtins.str]:
+        """
+        Guardrail UUID for the Function
+        """
+        return pulumi.get(self, "guardrail_uuid")
+
+    @guardrail_uuid.setter
+    def guardrail_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "guardrail_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of function
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        Url of the Deployment
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        API Key value
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentKnowledgeBaseArgsDict(TypedDict):
+        added_to_agent_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        uuid: _builtins.str
+        """
+        UUID of the Knowledge Base
+        """
+        database_id: NotRequired[_builtins.str]
+        """
+        Database ID of the Knowledge Base
+        """
+        embedding_model_uuid: NotRequired[_builtins.str]
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        is_public: NotRequired[_builtins.bool]
+        """
+        Indicates if the Knowledge Base is public
+        """
+        last_indexing_job: NotRequired['GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict']
+        """
+        Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[_builtins.str]
+        """
+        Project ID of the Knowledge Base
+        """
+        region: NotRequired[_builtins.str]
+        """
+        Region of the Knowledge Base
+        """
+        tags: NotRequired[Sequence[_builtins.str]]
+        """
+        List of tags
+        """
+        user_id: NotRequired[_builtins.str]
+        """
+        User ID of the Knowledge Base
+        """
+elif False:
+    GetGenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentKnowledgeBaseArgs:
+    def __init__(__self__, *,
+                 added_to_agent_at: _builtins.str,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 uuid: _builtins.str,
+                 database_id: Optional[_builtins.str] = None,
+                 embedding_model_uuid: Optional[_builtins.str] = None,
+                 is_public: Optional[_builtins.bool] = None,
+                 last_indexing_job: Optional['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs'] = None,
+                 name: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None,
+                 user_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param _builtins.str uuid: UUID of the Knowledge Base
+        :param _builtins.str database_id: Database ID of the Knowledge Base
+        :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
+        :param _builtins.bool is_public: Indicates if the Knowledge Base is public
+        :param 'GetGenaiAgentKnowledgeBaseLastIndexingJobArgs' last_indexing_job: Last indexing job for the Knowledge Base
+        :param _builtins.str name: Name of the Knowledge Base
+        :param _builtins.str project_id: Project ID of the Knowledge Base
+        :param _builtins.str region: Region of the Knowledge Base
+        :param Sequence[_builtins.str] tags: List of tags
+        :param _builtins.str user_id: User ID of the Knowledge Base
+        """
+        pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="addedToAgentAt")
+    def added_to_agent_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        return pulumi.get(self, "added_to_agent_at")
+
+    @added_to_agent_at.setter
+    def added_to_agent_at(self, value: _builtins.str):
+        pulumi.set(self, "added_to_agent_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: _builtins.str):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[_builtins.str]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[_builtins.str]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']:
+        """
+        Last indexing job for the Knowledge Base
+        """
+        return pulumi.get(self, "last_indexing_job")
+
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional['GetGenaiAgentKnowledgeBaseLastIndexingJobArgs']):
+        pulumi.set(self, "last_indexing_job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the Knowledge Base
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        User ID of the Knowledge Base
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "user_id", value)
+
+
+if not MYPY:
+    class GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the last indexing job
+        """
+        finished_at: _builtins.str
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        started_at: _builtins.str
+        """
+        Timestamp when the last indexing job started
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the last indexing job updated
+        """
+        completed_datasources: NotRequired[_builtins.int]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        phase: NotRequired[_builtins.str]
+        """
+        Phase of the last indexing job
+        """
+        tokens: NotRequired[_builtins.int]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[_builtins.int]
+        """
+        Total number of datasources in the last indexing job
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
+                 started_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 completed_datasources: Optional[_builtins.int] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
+                 phase: Optional[_builtins.str] = None,
+                 tokens: Optional[_builtins.int] = None,
+                 total_datasources: Optional[_builtins.int] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the last indexing job
+        :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param _builtins.str started_at: Timestamp when the last indexing job started
+        :param _builtins.str updated_at: Timestamp when the last indexing job updated
+        :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param _builtins.str phase: Phase of the last indexing job
+        :param _builtins.int tokens: Number of tokens processed in the last indexing job
+        :param _builtins.int total_datasources: Total number of datasources in the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: _builtins.str):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: _builtins.str):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[_builtins.int]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[_builtins.str]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[_builtins.int]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[_builtins.int]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentModelArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        agreements: NotRequired[Sequence['GetGenaiAgentModelAgreementArgsDict']]
+        """
+        Agreement information for the model
+        """
+        inference_name: NotRequired[_builtins.str]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[_builtins.str]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[_builtins.bool]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[_builtins.str]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[_builtins.str]
+        """
+        Provider of the Model
+        """
+        upload_complete: NotRequired[_builtins.bool]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[_builtins.str]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[Sequence[_builtins.str]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[Sequence['GetGenaiAgentModelVersionArgsDict']]
+        """
+        URL of the Model
+        """
+elif False:
+    GetGenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentModelArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 agreements: Optional[Sequence['GetGenaiAgentModelAgreementArgs']] = None,
+                 inference_name: Optional[_builtins.str] = None,
+                 inference_version: Optional[_builtins.str] = None,
+                 is_foundational: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 parent_uuid: Optional[_builtins.str] = None,
+                 provider: Optional[_builtins.str] = None,
+                 upload_complete: Optional[_builtins.bool] = None,
+                 url: Optional[_builtins.str] = None,
+                 usecases: Optional[Sequence[_builtins.str]] = None,
+                 versions: Optional[Sequence['GetGenaiAgentModelVersionArgs']] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param Sequence['GetGenaiAgentModelAgreementArgs'] agreements: Agreement information for the model
+        :param _builtins.str inference_name: Inference name of the model
+        :param _builtins.str inference_version: Infernce version of the model
+        :param _builtins.bool is_foundational: Indicates if the Model Base is foundational
+        :param _builtins.str name: Name of the Knowledge Base
+        :param _builtins.str parent_uuid: Parent UUID of the Model
+        :param _builtins.str provider: Provider of the Model
+        :param _builtins.bool upload_complete: Indicates if the Model upload is complete
+        :param _builtins.str url: URL of the Model
+        :param Sequence[_builtins.str] usecases: List of Usecases for the Model
+        :param Sequence['GetGenaiAgentModelVersionArgs'] versions: URL of the Model
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[Sequence['GetGenaiAgentModelAgreementArgs']]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[Sequence['GetGenaiAgentModelAgreementArgs']]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[_builtins.str]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[_builtins.str]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[_builtins.str]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[_builtins.str]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[Sequence['GetGenaiAgentModelVersionArgs']]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[Sequence['GetGenaiAgentModelVersionArgs']]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GetGenaiAgentModelAgreementArgsDict(TypedDict):
+        description: NotRequired[_builtins.str]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[_builtins.str]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GetGenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the agreement
+        :param _builtins.str name: Name of the agreement
+        :param _builtins.str url: URL of the agreement
+        :param _builtins.str uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentModelVersionArgsDict(TypedDict):
+        major: NotRequired[_builtins.int]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[_builtins.int]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[_builtins.int]
+        """
+        Patch version of the model
+        """
+elif False:
+    GetGenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[_builtins.int] = None,
+                 minor: Optional[_builtins.int] = None,
+                 patch: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int major: Major version of the model
+        :param _builtins.int minor: Minor version of the model
+        :param _builtins.int patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[_builtins.int]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[_builtins.int]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[_builtins.int]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
+    class GetGenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+        api_key: NotRequired[_builtins.str]
+        """
+        OpenAI API Key
+        """
+elif False:
+    GetGenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentOpenAiApiKeyArgs:
+    def __init__(__self__, *,
+                 api_key: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str api_key: OpenAI API Key
+        """
+        if api_key is not None:
+            pulumi.set(__self__, "api_key", api_key)
+
+    @_builtins.property
+    @pulumi.getter(name="apiKey")
+    def api_key(self) -> Optional[_builtins.str]:
+        """
+        OpenAI API Key
+        """
+        return pulumi.get(self, "api_key")
+
+    @api_key.setter
+    def api_key(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "api_key", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        updated_at: _builtins.str
+        """
+        Updated At timestamp for the Agent Template
+        """
+        description: NotRequired[_builtins.str]
+        """
+        Description of the Agent Template
+        """
+        instruction: NotRequired[_builtins.str]
+        """
+        Instruction for the Agent
+        """
+        k: NotRequired[_builtins.int]
+        """
+        K value for the Agent Template
+        """
+        knowledge_bases: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgsDict']]
+        """
+        List of Knowledge Bases
+        """
+        max_tokens: NotRequired[_builtins.int]
+        """
+        Maximum tokens allowed
+        """
+        models: NotRequired[Sequence['GetGenaiAgentTemplateModelArgsDict']]
+        """
+        Model of the Agent Template
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Agent Template
+        """
+        temperature: NotRequired[_builtins.float]
+        """
+        Agent temperature setting
+        """
+        top_p: NotRequired[_builtins.float]
+        """
+        Top P sampling parameter
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        uuid of the Agent Template
+        """
+elif False:
+    GetGenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 description: Optional[_builtins.str] = None,
+                 instruction: Optional[_builtins.str] = None,
+                 k: Optional[_builtins.int] = None,
+                 knowledge_bases: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']] = None,
+                 max_tokens: Optional[_builtins.int] = None,
+                 models: Optional[Sequence['GetGenaiAgentTemplateModelArgs']] = None,
+                 name: Optional[_builtins.str] = None,
+                 temperature: Optional[_builtins.float] = None,
+                 top_p: Optional[_builtins.float] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Updated At timestamp for the Agent Template
+        :param _builtins.str description: Description of the Agent Template
+        :param _builtins.str instruction: Instruction for the Agent
+        :param _builtins.int k: K value for the Agent Template
+        :param Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs'] knowledge_bases: List of Knowledge Bases
+        :param _builtins.int max_tokens: Maximum tokens allowed
+        :param Sequence['GetGenaiAgentTemplateModelArgs'] models: Model of the Agent Template
+        :param _builtins.str name: Name of the Agent Template
+        :param _builtins.float temperature: Agent temperature setting
+        :param _builtins.float top_p: Top P sampling parameter
+        :param _builtins.str uuid: uuid of the Agent Template
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if instruction is not None:
+            pulumi.set(__self__, "instruction", instruction)
+        if k is not None:
+            pulumi.set(__self__, "k", k)
+        if knowledge_bases is not None:
+            pulumi.set(__self__, "knowledge_bases", knowledge_bases)
+        if max_tokens is not None:
+            pulumi.set(__self__, "max_tokens", max_tokens)
+        if models is not None:
+            pulumi.set(__self__, "models", models)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if temperature is not None:
+            pulumi.set(__self__, "temperature", temperature)
+        if top_p is not None:
+            pulumi.set(__self__, "top_p", top_p)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Updated At timestamp for the Agent Template
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the Agent Template
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def instruction(self) -> Optional[_builtins.str]:
+        """
+        Instruction for the Agent
+        """
+        return pulumi.get(self, "instruction")
+
+    @instruction.setter
+    def instruction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "instruction", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def k(self) -> Optional[_builtins.int]:
+        """
+        K value for the Agent Template
+        """
+        return pulumi.get(self, "k")
+
+    @k.setter
+    def k(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "k", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBases")
+    def knowledge_bases(self) -> Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']]:
+        """
+        List of Knowledge Bases
+        """
+        return pulumi.get(self, "knowledge_bases")
+
+    @knowledge_bases.setter
+    def knowledge_bases(self, value: Optional[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgs']]):
+        pulumi.set(self, "knowledge_bases", value)
+
+    @_builtins.property
+    @pulumi.getter(name="maxTokens")
+    def max_tokens(self) -> Optional[_builtins.int]:
+        """
+        Maximum tokens allowed
+        """
+        return pulumi.get(self, "max_tokens")
+
+    @max_tokens.setter
+    def max_tokens(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "max_tokens", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def models(self) -> Optional[Sequence['GetGenaiAgentTemplateModelArgs']]:
+        """
+        Model of the Agent Template
+        """
+        return pulumi.get(self, "models")
+
+    @models.setter
+    def models(self, value: Optional[Sequence['GetGenaiAgentTemplateModelArgs']]):
+        pulumi.set(self, "models", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Agent Template
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def temperature(self) -> Optional[_builtins.float]:
+        """
+        Agent temperature setting
+        """
+        return pulumi.get(self, "temperature")
+
+    @temperature.setter
+    def temperature(self, value: Optional[_builtins.float]):
+        pulumi.set(self, "temperature", value)
+
+    @_builtins.property
+    @pulumi.getter(name="topP")
+    def top_p(self) -> Optional[_builtins.float]:
+        """
+        Top P sampling parameter
+        """
+        return pulumi.get(self, "top_p")
+
+    @top_p.setter
+    def top_p(self, value: Optional[_builtins.float]):
+        pulumi.set(self, "top_p", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        uuid of the Agent Template
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+        added_to_agent_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        uuid: _builtins.str
+        """
+        UUID of the Knowledge Base
+        """
+        database_id: NotRequired[_builtins.str]
+        """
+        Database ID of the Knowledge Base
+        """
+        embedding_model_uuid: NotRequired[_builtins.str]
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        is_public: NotRequired[_builtins.bool]
+        """
+        Indicates if the Knowledge Base is public
+        """
+        last_indexing_job: NotRequired['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
+        """
+        Last indexing job for the Knowledge Base
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        project_id: NotRequired[_builtins.str]
+        """
+        Project ID of the Knowledge Base
+        """
+        region: NotRequired[_builtins.str]
+        """
+        Region of the Knowledge Base
+        """
+        tags: NotRequired[Sequence[_builtins.str]]
+        """
+        List of tags
+        """
+        user_id: NotRequired[_builtins.str]
+        """
+        User ID of the Knowledge Base
+        """
+elif False:
+    GetGenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateKnowledgeBaseArgs:
+    def __init__(__self__, *,
+                 added_to_agent_at: _builtins.str,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 uuid: _builtins.str,
+                 database_id: Optional[_builtins.str] = None,
+                 embedding_model_uuid: Optional[_builtins.str] = None,
+                 is_public: Optional[_builtins.bool] = None,
+                 last_indexing_job: Optional['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs'] = None,
+                 name: Optional[_builtins.str] = None,
+                 project_id: Optional[_builtins.str] = None,
+                 region: Optional[_builtins.str] = None,
+                 tags: Optional[Sequence[_builtins.str]] = None,
+                 user_id: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str added_to_agent_at: Timestamp when the Knowledge Base was added to the Agent
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param _builtins.str uuid: UUID of the Knowledge Base
+        :param _builtins.str database_id: Database ID of the Knowledge Base
+        :param _builtins.str embedding_model_uuid: Embedding model UUID for the Knowledge Base
+        :param _builtins.bool is_public: Indicates if the Knowledge Base is public
+        :param 'GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs' last_indexing_job: Last indexing job for the Knowledge Base
+        :param _builtins.str name: Name of the Knowledge Base
+        :param _builtins.str project_id: Project ID of the Knowledge Base
+        :param _builtins.str region: Region of the Knowledge Base
+        :param Sequence[_builtins.str] tags: List of tags
+        :param _builtins.str user_id: User ID of the Knowledge Base
+        """
+        pulumi.set(__self__, "added_to_agent_at", added_to_agent_at)
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "uuid", uuid)
+        if database_id is not None:
+            pulumi.set(__self__, "database_id", database_id)
+        if embedding_model_uuid is not None:
+            pulumi.set(__self__, "embedding_model_uuid", embedding_model_uuid)
+        if is_public is not None:
+            pulumi.set(__self__, "is_public", is_public)
+        if last_indexing_job is not None:
+            pulumi.set(__self__, "last_indexing_job", last_indexing_job)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if region is not None:
+            pulumi.set(__self__, "region", region)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
+        if user_id is not None:
+            pulumi.set(__self__, "user_id", user_id)
+
+    @_builtins.property
+    @pulumi.getter(name="addedToAgentAt")
+    def added_to_agent_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was added to the Agent
+        """
+        return pulumi.get(self, "added_to_agent_at")
+
+    @added_to_agent_at.setter
+    def added_to_agent_at(self, value: _builtins.str):
+        pulumi.set(self, "added_to_agent_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> _builtins.str:
+        """
+        UUID of the Knowledge Base
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: _builtins.str):
+        pulumi.set(self, "uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="databaseId")
+    def database_id(self) -> Optional[_builtins.str]:
+        """
+        Database ID of the Knowledge Base
+        """
+        return pulumi.get(self, "database_id")
+
+    @database_id.setter
+    def database_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "database_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="embeddingModelUuid")
+    def embedding_model_uuid(self) -> Optional[_builtins.str]:
+        """
+        Embedding model UUID for the Knowledge Base
+        """
+        return pulumi.get(self, "embedding_model_uuid")
+
+    @embedding_model_uuid.setter
+    def embedding_model_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "embedding_model_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isPublic")
+    def is_public(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Knowledge Base is public
+        """
+        return pulumi.get(self, "is_public")
+
+    @is_public.setter
+    def is_public(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_public", value)
+
+    @_builtins.property
+    @pulumi.getter(name="lastIndexingJob")
+    def last_indexing_job(self) -> Optional['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']:
+        """
+        Last indexing job for the Knowledge Base
+        """
+        return pulumi.get(self, "last_indexing_job")
+
+    @last_indexing_job.setter
+    def last_indexing_job(self, value: Optional['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs']):
+        pulumi.set(self, "last_indexing_job", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[_builtins.str]:
+        """
+        Project ID of the Knowledge Base
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "project_id", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> Optional[_builtins.str]:
+        """
+        Region of the Knowledge Base
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "region", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tags(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of tags
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "tags", value)
+
+    @_builtins.property
+    @pulumi.getter(name="userId")
+    def user_id(self) -> Optional[_builtins.str]:
+        """
+        User ID of the Knowledge Base
+        """
+        return pulumi.get(self, "user_id")
+
+    @user_id.setter
+    def user_id(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "user_id", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the last indexing job
+        """
+        finished_at: _builtins.str
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        started_at: _builtins.str
+        """
+        Timestamp when the last indexing job started
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the last indexing job updated
+        """
+        completed_datasources: NotRequired[_builtins.int]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        phase: NotRequired[_builtins.str]
+        """
+        Phase of the last indexing job
+        """
+        tokens: NotRequired[_builtins.int]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[_builtins.int]
+        """
+        Total number of datasources in the last indexing job
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
+                 started_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 completed_datasources: Optional[_builtins.int] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
+                 phase: Optional[_builtins.str] = None,
+                 tokens: Optional[_builtins.int] = None,
+                 total_datasources: Optional[_builtins.int] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the last indexing job
+        :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param _builtins.str started_at: Timestamp when the last indexing job started
+        :param _builtins.str updated_at: Timestamp when the last indexing job updated
+        :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param _builtins.str phase: Phase of the last indexing job
+        :param _builtins.int tokens: Number of tokens processed in the last indexing job
+        :param _builtins.int total_datasources: Total number of datasources in the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: _builtins.str):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: _builtins.str):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[_builtins.int]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[_builtins.str]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[_builtins.int]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[_builtins.int]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateModelArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        agreements: NotRequired[Sequence['GetGenaiAgentTemplateModelAgreementArgsDict']]
+        """
+        Agreement information for the model
+        """
+        inference_name: NotRequired[_builtins.str]
+        """
+        Inference name of the model
+        """
+        inference_version: NotRequired[_builtins.str]
+        """
+        Infernce version of the model
+        """
+        is_foundational: NotRequired[_builtins.bool]
+        """
+        Indicates if the Model Base is foundational
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the Knowledge Base
+        """
+        parent_uuid: NotRequired[_builtins.str]
+        """
+        Parent UUID of the Model
+        """
+        provider: NotRequired[_builtins.str]
+        """
+        Provider of the Model
+        """
+        upload_complete: NotRequired[_builtins.bool]
+        """
+        Indicates if the Model upload is complete
+        """
+        url: NotRequired[_builtins.str]
+        """
+        URL of the Model
+        """
+        usecases: NotRequired[Sequence[_builtins.str]]
+        """
+        List of Usecases for the Model
+        """
+        versions: NotRequired[Sequence['GetGenaiAgentTemplateModelVersionArgsDict']]
+        """
+        URL of the Model
+        """
+elif False:
+    GetGenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateModelArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 agreements: Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']] = None,
+                 inference_name: Optional[_builtins.str] = None,
+                 inference_version: Optional[_builtins.str] = None,
+                 is_foundational: Optional[_builtins.bool] = None,
+                 name: Optional[_builtins.str] = None,
+                 parent_uuid: Optional[_builtins.str] = None,
+                 provider: Optional[_builtins.str] = None,
+                 upload_complete: Optional[_builtins.bool] = None,
+                 url: Optional[_builtins.str] = None,
+                 usecases: Optional[Sequence[_builtins.str]] = None,
+                 versions: Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the Knowledge Base
+        :param _builtins.str updated_at: Timestamp when the Knowledge Base was updated
+        :param Sequence['GetGenaiAgentTemplateModelAgreementArgs'] agreements: Agreement information for the model
+        :param _builtins.str inference_name: Inference name of the model
+        :param _builtins.str inference_version: Infernce version of the model
+        :param _builtins.bool is_foundational: Indicates if the Model Base is foundational
+        :param _builtins.str name: Name of the Knowledge Base
+        :param _builtins.str parent_uuid: Parent UUID of the Model
+        :param _builtins.str provider: Provider of the Model
+        :param _builtins.bool upload_complete: Indicates if the Model upload is complete
+        :param _builtins.str url: URL of the Model
+        :param Sequence[_builtins.str] usecases: List of Usecases for the Model
+        :param Sequence['GetGenaiAgentTemplateModelVersionArgs'] versions: URL of the Model
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if agreements is not None:
+            pulumi.set(__self__, "agreements", agreements)
+        if inference_name is not None:
+            pulumi.set(__self__, "inference_name", inference_name)
+        if inference_version is not None:
+            pulumi.set(__self__, "inference_version", inference_version)
+        if is_foundational is not None:
+            pulumi.set(__self__, "is_foundational", is_foundational)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parent_uuid is not None:
+            pulumi.set(__self__, "parent_uuid", parent_uuid)
+        if provider is not None:
+            pulumi.set(__self__, "provider", provider)
+        if upload_complete is not None:
+            pulumi.set(__self__, "upload_complete", upload_complete)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if usecases is not None:
+            pulumi.set(__self__, "usecases", usecases)
+        if versions is not None:
+            pulumi.set(__self__, "versions", versions)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the Knowledge Base
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the Knowledge Base was updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def agreements(self) -> Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']]:
+        """
+        Agreement information for the model
+        """
+        return pulumi.get(self, "agreements")
+
+    @agreements.setter
+    def agreements(self, value: Optional[Sequence['GetGenaiAgentTemplateModelAgreementArgs']]):
+        pulumi.set(self, "agreements", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceName")
+    def inference_name(self) -> Optional[_builtins.str]:
+        """
+        Inference name of the model
+        """
+        return pulumi.get(self, "inference_name")
+
+    @inference_name.setter
+    def inference_name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "inference_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="inferenceVersion")
+    def inference_version(self) -> Optional[_builtins.str]:
+        """
+        Infernce version of the model
+        """
+        return pulumi.get(self, "inference_version")
+
+    @inference_version.setter
+    def inference_version(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "inference_version", value)
+
+    @_builtins.property
+    @pulumi.getter(name="isFoundational")
+    def is_foundational(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Model Base is foundational
+        """
+        return pulumi.get(self, "is_foundational")
+
+    @is_foundational.setter
+    def is_foundational(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "is_foundational", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the Knowledge Base
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="parentUuid")
+    def parent_uuid(self) -> Optional[_builtins.str]:
+        """
+        Parent UUID of the Model
+        """
+        return pulumi.get(self, "parent_uuid")
+
+    @parent_uuid.setter
+    def parent_uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "parent_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def provider(self) -> Optional[_builtins.str]:
+        """
+        Provider of the Model
+        """
+        return pulumi.get(self, "provider")
+
+    @provider.setter
+    def provider(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "provider", value)
+
+    @_builtins.property
+    @pulumi.getter(name="uploadComplete")
+    def upload_complete(self) -> Optional[_builtins.bool]:
+        """
+        Indicates if the Model upload is complete
+        """
+        return pulumi.get(self, "upload_complete")
+
+    @upload_complete.setter
+    def upload_complete(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "upload_complete", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def usecases(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        List of Usecases for the Model
+        """
+        return pulumi.get(self, "usecases")
+
+    @usecases.setter
+    def usecases(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "usecases", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def versions(self) -> Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']]:
+        """
+        URL of the Model
+        """
+        return pulumi.get(self, "versions")
+
+    @versions.setter
+    def versions(self, value: Optional[Sequence['GetGenaiAgentTemplateModelVersionArgs']]):
+        pulumi.set(self, "versions", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+        description: NotRequired[_builtins.str]
+        """
+        Description of the agreement
+        """
+        name: NotRequired[_builtins.str]
+        """
+        Name of the agreement
+        """
+        url: NotRequired[_builtins.str]
+        """
+        URL of the agreement
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID of the agreement
+        """
+elif False:
+    GetGenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateModelAgreementArgs:
+    def __init__(__self__, *,
+                 description: Optional[_builtins.str] = None,
+                 name: Optional[_builtins.str] = None,
+                 url: Optional[_builtins.str] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str description: Description of the agreement
+        :param _builtins.str name: Name of the agreement
+        :param _builtins.str url: URL of the agreement
+        :param _builtins.str uuid: UUID of the agreement
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if url is not None:
+            pulumi.set(__self__, "url", url)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter
+    def description(self) -> Optional[_builtins.str]:
+        """
+        Description of the agreement
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "description", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> Optional[_builtins.str]:
+        """
+        Name of the agreement
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def url(self) -> Optional[_builtins.str]:
+        """
+        URL of the agreement
+        """
+        return pulumi.get(self, "url")
+
+    @url.setter
+    def url(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "url", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID of the agreement
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiAgentTemplateModelVersionArgsDict(TypedDict):
+        major: NotRequired[_builtins.int]
+        """
+        Major version of the model
+        """
+        minor: NotRequired[_builtins.int]
+        """
+        Minor version of the model
+        """
+        patch: NotRequired[_builtins.int]
+        """
+        Patch version of the model
+        """
+elif False:
+    GetGenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentTemplateModelVersionArgs:
+    def __init__(__self__, *,
+                 major: Optional[_builtins.int] = None,
+                 minor: Optional[_builtins.int] = None,
+                 patch: Optional[_builtins.int] = None):
+        """
+        :param _builtins.int major: Major version of the model
+        :param _builtins.int minor: Minor version of the model
+        :param _builtins.int patch: Patch version of the model
+        """
+        if major is not None:
+            pulumi.set(__self__, "major", major)
+        if minor is not None:
+            pulumi.set(__self__, "minor", minor)
+        if patch is not None:
+            pulumi.set(__self__, "patch", patch)
+
+    @_builtins.property
+    @pulumi.getter
+    def major(self) -> Optional[_builtins.int]:
+        """
+        Major version of the model
+        """
+        return pulumi.get(self, "major")
+
+    @major.setter
+    def major(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "major", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def minor(self) -> Optional[_builtins.int]:
+        """
+        Minor version of the model
+        """
+        return pulumi.get(self, "minor")
+
+    @minor.setter
+    def minor(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "minor", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def patch(self) -> Optional[_builtins.int]:
+        """
+        Patch version of the model
+        """
+        return pulumi.get(self, "patch")
+
+    @patch.setter
+    def patch(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "patch", value)
+
+
+if not MYPY:
+    class GetGenaiAgentVersionsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentVersionsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiAgentVersionsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentVersionsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiAgentsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiAgentsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiAgentsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiAgentsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+        created_at: _builtins.str
+        """
+        Created At timestamp for the last indexing job
+        """
+        finished_at: _builtins.str
+        """
+        Timestamp when the last indexing job finished
+        """
+        knowledge_base_uuid: _builtins.str
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        started_at: _builtins.str
+        """
+        Timestamp when the last indexing job started
+        """
+        updated_at: _builtins.str
+        """
+        Timestamp when the last indexing job updated
+        """
+        completed_datasources: NotRequired[_builtins.int]
+        """
+        Number of completed datasources in the last indexing job
+        """
+        data_source_uuids: NotRequired[Sequence[_builtins.str]]
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        phase: NotRequired[_builtins.str]
+        """
+        Phase of the last indexing job
+        """
+        tokens: NotRequired[_builtins.int]
+        """
+        Number of tokens processed in the last indexing job
+        """
+        total_datasources: NotRequired[_builtins.int]
+        """
+        Total number of datasources in the last indexing job
+        """
+        uuid: NotRequired[_builtins.str]
+        """
+        UUID  of the last indexing job
+        """
+elif False:
+    GetGenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBaseLastIndexingJobArgs:
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 finished_at: _builtins.str,
+                 knowledge_base_uuid: _builtins.str,
+                 started_at: _builtins.str,
+                 updated_at: _builtins.str,
+                 completed_datasources: Optional[_builtins.int] = None,
+                 data_source_uuids: Optional[Sequence[_builtins.str]] = None,
+                 phase: Optional[_builtins.str] = None,
+                 tokens: Optional[_builtins.int] = None,
+                 total_datasources: Optional[_builtins.int] = None,
+                 uuid: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str created_at: Created At timestamp for the last indexing job
+        :param _builtins.str finished_at: Timestamp when the last indexing job finished
+        :param _builtins.str knowledge_base_uuid: UUID  of the Knowledge Base for the last indexing job
+        :param _builtins.str started_at: Timestamp when the last indexing job started
+        :param _builtins.str updated_at: Timestamp when the last indexing job updated
+        :param _builtins.int completed_datasources: Number of completed datasources in the last indexing job
+        :param Sequence[_builtins.str] data_source_uuids: Datasource UUIDs for the last indexing job
+        :param _builtins.str phase: Phase of the last indexing job
+        :param _builtins.int tokens: Number of tokens processed in the last indexing job
+        :param _builtins.int total_datasources: Total number of datasources in the last indexing job
+        :param _builtins.str uuid: UUID  of the last indexing job
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "finished_at", finished_at)
+        pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
+        pulumi.set(__self__, "started_at", started_at)
+        pulumi.set(__self__, "updated_at", updated_at)
+        if completed_datasources is not None:
+            pulumi.set(__self__, "completed_datasources", completed_datasources)
+        if data_source_uuids is not None:
+            pulumi.set(__self__, "data_source_uuids", data_source_uuids)
+        if phase is not None:
+            pulumi.set(__self__, "phase", phase)
+        if tokens is not None:
+            pulumi.set(__self__, "tokens", tokens)
+        if total_datasources is not None:
+            pulumi.set(__self__, "total_datasources", total_datasources)
+        if uuid is not None:
+            pulumi.set(__self__, "uuid", uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        Created At timestamp for the last indexing job
+        """
+        return pulumi.get(self, "created_at")
+
+    @created_at.setter
+    def created_at(self, value: _builtins.str):
+        pulumi.set(self, "created_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="finishedAt")
+    def finished_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job finished
+        """
+        return pulumi.get(self, "finished_at")
+
+    @finished_at.setter
+    def finished_at(self, value: _builtins.str):
+        pulumi.set(self, "finished_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="knowledgeBaseUuid")
+    def knowledge_base_uuid(self) -> _builtins.str:
+        """
+        UUID  of the Knowledge Base for the last indexing job
+        """
+        return pulumi.get(self, "knowledge_base_uuid")
+
+    @knowledge_base_uuid.setter
+    def knowledge_base_uuid(self, value: _builtins.str):
+        pulumi.set(self, "knowledge_base_uuid", value)
+
+    @_builtins.property
+    @pulumi.getter(name="startedAt")
+    def started_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job started
+        """
+        return pulumi.get(self, "started_at")
+
+    @started_at.setter
+    def started_at(self, value: _builtins.str):
+        pulumi.set(self, "started_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        Timestamp when the last indexing job updated
+        """
+        return pulumi.get(self, "updated_at")
+
+    @updated_at.setter
+    def updated_at(self, value: _builtins.str):
+        pulumi.set(self, "updated_at", value)
+
+    @_builtins.property
+    @pulumi.getter(name="completedDatasources")
+    def completed_datasources(self) -> Optional[_builtins.int]:
+        """
+        Number of completed datasources in the last indexing job
+        """
+        return pulumi.get(self, "completed_datasources")
+
+    @completed_datasources.setter
+    def completed_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "completed_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter(name="dataSourceUuids")
+    def data_source_uuids(self) -> Optional[Sequence[_builtins.str]]:
+        """
+        Datasource UUIDs for the last indexing job
+        """
+        return pulumi.get(self, "data_source_uuids")
+
+    @data_source_uuids.setter
+    def data_source_uuids(self, value: Optional[Sequence[_builtins.str]]):
+        pulumi.set(self, "data_source_uuids", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def phase(self) -> Optional[_builtins.str]:
+        """
+        Phase of the last indexing job
+        """
+        return pulumi.get(self, "phase")
+
+    @phase.setter
+    def phase(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "phase", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def tokens(self) -> Optional[_builtins.int]:
+        """
+        Number of tokens processed in the last indexing job
+        """
+        return pulumi.get(self, "tokens")
+
+    @tokens.setter
+    def tokens(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "tokens", value)
+
+    @_builtins.property
+    @pulumi.getter(name="totalDatasources")
+    def total_datasources(self) -> Optional[_builtins.int]:
+        """
+        Total number of datasources in the last indexing job
+        """
+        return pulumi.get(self, "total_datasources")
+
+    @total_datasources.setter
+    def total_datasources(self, value: Optional[_builtins.int]):
+        pulumi.set(self, "total_datasources", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def uuid(self) -> Optional[_builtins.str]:
+        """
+        UUID  of the last indexing job
+        """
+        return pulumi.get(self, "uuid")
+
+    @uuid.setter
+    def uuid(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "uuid", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBasesFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBasesFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiKnowledgeBasesSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiKnowledgeBasesSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiModelsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiModelsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiModelsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiModelsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiOpenaiApiKeysFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiOpenaiApiKeysSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiOpenaiApiKeysSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
+
+
+if not MYPY:
+    class GetGenaiRegionsFilterArgsDict(TypedDict):
+        key: _builtins.str
+        values: Sequence[_builtins.str]
+        all: NotRequired[_builtins.bool]
+        match_by: NotRequired[_builtins.str]
+elif False:
+    GetGenaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiRegionsFilterArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        return pulumi.get(self, "values")
+
+    @values.setter
+    def values(self, value: Sequence[_builtins.str]):
+        pulumi.set(self, "values", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "all")
+
+    @all.setter
+    def all(self, value: Optional[_builtins.bool]):
+        pulumi.set(self, "all", value)
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "match_by")
+
+    @match_by.setter
+    def match_by(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "match_by", value)
+
+
+if not MYPY:
+    class GetGenaiRegionsSortArgsDict(TypedDict):
+        key: _builtins.str
+        direction: NotRequired[_builtins.str]
+elif False:
+    GetGenaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class GetGenaiRegionsSortArgs:
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: _builtins.str):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "direction")
+
+    @direction.setter
+    def direction(self, value: Optional[_builtins.str]):
+        pulumi.set(self, "direction", value)
 
 
 if not MYPY:

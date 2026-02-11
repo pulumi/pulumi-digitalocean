@@ -143,6 +143,8 @@ export class GradientaiIndexingJobCancel extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiIndexingJobCancel.__pulumiType, name, resourceInputs, opts);
     }
 }

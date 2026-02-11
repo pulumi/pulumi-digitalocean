@@ -1448,6 +1448,8 @@ class GradientaiAgent(pulumi.CustomResource):
             __props__.__dict__["user_id"] = user_id
             __props__.__dict__["route_created_at"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgent:GenaiAgent")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiAgent, __self__).__init__(
             'digitalocean:index/gradientaiAgent:GradientaiAgent',
             resource_name,

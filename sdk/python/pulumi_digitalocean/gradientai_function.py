@@ -350,6 +350,8 @@ class GradientaiFunction(pulumi.CustomResource):
             __props__.__dict__["input_schema"] = input_schema
             __props__.__dict__["output_schema"] = output_schema
             __props__.__dict__["function_uuid"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiFunction:GenaiFunction")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiFunction, __self__).__init__(
             'digitalocean:index/gradientaiFunction:GradientaiFunction',
             resource_name,

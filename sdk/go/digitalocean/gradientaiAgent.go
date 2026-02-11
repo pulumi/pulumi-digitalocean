@@ -114,6 +114,12 @@ func NewGradientaiAgent(ctx *pulumi.Context,
 	if args.Region == nil {
 		return nil, errors.New("invalid value for required argument 'Region'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiAgent:GenaiAgent"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiAgent
 	err := ctx.RegisterResource("digitalocean:index/gradientaiAgent:GradientaiAgent", name, args, &resource, opts...)

@@ -351,6 +351,8 @@ class GradientaiIndexingJobCancel(pulumi.CustomResource):
             __props__.__dict__["total_items_indexed"] = None
             __props__.__dict__["total_items_skipped"] = None
             __props__.__dict__["updated_at"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiIndexingJobCancel, __self__).__init__(
             'digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel',
             resource_name,

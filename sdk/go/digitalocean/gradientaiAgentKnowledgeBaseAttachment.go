@@ -34,6 +34,12 @@ func NewGradientaiAgentKnowledgeBaseAttachment(ctx *pulumi.Context,
 	if args.KnowledgeBaseUuid == nil {
 		return nil, errors.New("invalid value for required argument 'KnowledgeBaseUuid'")
 	}
+	aliases := pulumi.Aliases([]pulumi.Alias{
+		{
+			Type: pulumi.String("digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment"),
+		},
+	})
+	opts = append(opts, aliases)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource GradientaiAgentKnowledgeBaseAttachment
 	err := ctx.RegisterResource("digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment", name, args, &resource, opts...)

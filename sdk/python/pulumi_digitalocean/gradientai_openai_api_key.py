@@ -272,6 +272,8 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
             __props__.__dict__["deleted_at"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["uuid"] = None
+        alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey")])
+        opts = pulumi.ResourceOptions.merge(opts, alias_opts)
         super(GradientaiOpenaiApiKey, __self__).__init__(
             'digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey',
             resource_name,

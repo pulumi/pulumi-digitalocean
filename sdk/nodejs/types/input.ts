@@ -2422,6 +2422,1210 @@ export interface FirewallPendingChange {
     status?: pulumi.Input<string>;
 }
 
+export interface GenaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: pulumi.Input<string>;
+    /**
+     * Description of the Guardrail
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * Name of Guardrail
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Type of the Guardrail
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: pulumi.Input<string>;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: pulumi.Input<string>;
+    /**
+     * Name of the chatbot
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: pulumi.Input<string>;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: pulumi.Input<string>;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChatbotIdentifier {
+    chatbotId?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId?: pulumi.Input<string>;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentAnthropicApiKey>[]>;
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKeyInfo>[]>;
+    /**
+     * List of API Keys
+     */
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentApiKey>[]>;
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbotIdentifier>[]>;
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentChatbot>[]>;
+    /**
+     * List of API Key Infos
+     */
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentChildAgentDeployment>[]>;
+    /**
+     * Description for the Agent
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: pulumi.Input<string>;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: pulumi.Input<string>;
+    /**
+     * Name of the Agent
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: pulumi.Input<string>;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: pulumi.Input<string>;
+    /**
+     * Name of the chatbot
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: pulumi.Input<string>;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: pulumi.Input<string>;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentChatbotIdentifier {
+    chatbotId?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Status of the Deployment
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Status of the Deployment
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the Function
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of function
+     */
+    faasname?: pulumi.Input<string>;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: pulumi.Input<string>;
+    /**
+     * Name of function
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentKnowledgeBaseLastIndexingJob>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * List of tags
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelAgreement>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentModelVersion>[]>;
+}
+
+export interface GenaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
+export interface GenaiAgentOpenAiApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId?: pulumi.Input<string>;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentAnthropicApiKey>[]>;
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKeyInfo>[]>;
+    /**
+     * List of API Keys
+     */
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentApiKey>[]>;
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbotIdentifier>[]>;
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentChatbot>[]>;
+    /**
+     * List of API Key Infos
+     */
+    deployments?: pulumi.Input<pulumi.Input<inputs.GenaiAgentParentAgentDeployment>[]>;
+    /**
+     * Description for the Agent
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: pulumi.Input<string>;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: pulumi.Input<string>;
+    /**
+     * Name of the Agent
+     */
+    name: pulumi.Input<string>;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: pulumi.Input<string>;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: pulumi.Input<string>;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: pulumi.Input<string>;
+    /**
+     * Name of the chatbot
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: pulumi.Input<string>;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: pulumi.Input<string>;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentChatbotIdentifier {
+    chatbotId?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Status of the Deployment
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the Agent Template
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: pulumi.Input<string>;
+    /**
+     * K value for the Agent Template
+     */
+    k?: pulumi.Input<number>;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBase>[]>;
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: pulumi.Input<number>;
+    /**
+     * Model of the Agent Template
+     */
+    models?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModel>[]>;
+    /**
+     * Name of the Agent Template
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: pulumi.Input<number>;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: pulumi.Input<number>;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: pulumi.Input<inputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * List of tags
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelAgreement>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiAgentTemplateModelVersion>[]>;
+}
+
+export interface GenaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: pulumi.Input<string>;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: pulumi.Input<string>;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: pulumi.Input<string>;
+}
+
+export interface GenaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: pulumi.Input<string>;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: pulumi.Input<string>;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: pulumi.Input<boolean>;
+}
+
+export interface GenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelAgreement>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GenaiOpenaiApiKeyModelVersion>[]>;
+}
+
+export interface GenaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GenaiOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
 export interface GetAppDedicatedIp {
     /**
      * The ID of the dedicated egress IP.
@@ -2754,6 +3958,1564 @@ export interface GetFirewallOutboundRuleArgs {
      * This may be one of "tcp", "udp", or "icmp".
      */
     protocol: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt?: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached?: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt?: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentAgentGuardrailArgs {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: pulumi.Input<string>;
+    /**
+     * Description of the Guardrail
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached?: pulumi.Input<boolean>;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: pulumi.Input<boolean>;
+    /**
+     * Name of Guardrail
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: pulumi.Input<number>;
+    /**
+     * Type of the Guardrail
+     */
+    type?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentAnthropicApiKeyArgs {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentApiKeyArgs {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt?: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentApiKeyInfoArgs {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: pulumi.Input<string>;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGenaiAgentChatbotArgs {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: pulumi.Input<string>;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: pulumi.Input<string>;
+    /**
+     * Name of the chatbot
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: pulumi.Input<string>;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: pulumi.Input<string>;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGenaiAgentChatbotIdentifierArgs {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt?: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGenaiAgentDeploymentArgs {
+    /**
+     * API Key value
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Name of the API Key
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Status of the Deployment
+     */
+    status?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt?: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentFunctionArgs {
+    /**
+     * API Key value
+     */
+    apiKey?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the Function
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of function
+     */
+    faasname?: pulumi.Input<string>;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: pulumi.Input<string>;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: pulumi.Input<string>;
+    /**
+     * Name of function
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Url of the Deployment
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * API Key value
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: inputs.GetGenaiAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentKnowledgeBaseArgs {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentKnowledgeBaseLastIndexingJobArgs>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * List of tags
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentKnowledgeBaseLastIndexingJobArgs {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: inputs.GetGenaiAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: inputs.GetGenaiAgentModelVersion[];
+}
+
+export interface GetGenaiAgentModelArgs {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelAgreementArgs>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelVersionArgs>[]>;
+}
+
+export interface GetGenaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentModelAgreementArgs {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentModelVersionArgs {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
+export interface GetGenaiAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGenaiAgentOpenAiApiKeyArgs {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: inputs.GetGenaiAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: inputs.GetGenaiAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt?: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateArgs {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Description of the Agent Template
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: pulumi.Input<string>;
+    /**
+     * K value for the Agent Template
+     */
+    k?: pulumi.Input<number>;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseArgs>[]>;
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: pulumi.Input<number>;
+    /**
+     * Model of the Agent Template
+     */
+    models?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelArgs>[]>;
+    /**
+     * Name of the Agent Template
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: pulumi.Input<number>;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: pulumi.Input<number>;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBaseArgs {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt?: pulumi.Input<string>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: pulumi.Input<string>;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: pulumi.Input<string>;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: pulumi.Input<boolean>;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: pulumi.Input<inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: pulumi.Input<string>;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: pulumi.Input<string>;
+    /**
+     * List of tags
+     */
+    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: pulumi.Input<string>;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: inputs.GetGenaiAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: inputs.GetGenaiAgentTemplateModelVersion[];
+}
+
+export interface GetGenaiAgentTemplateModelArgs {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelAgreementArgs>[]>;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: pulumi.Input<string>;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: pulumi.Input<boolean>;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: pulumi.Input<string>;
+    /**
+     * Provider of the Model
+     */
+    provider?: pulumi.Input<string>;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: pulumi.Input<boolean>;
+    /**
+     * URL of the Model
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * URL of the Model
+     */
+    versions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateModelVersionArgs>[]>;
+}
+
+export interface GetGenaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiAgentTemplateModelAgreementArgs {
+    /**
+     * Description of the agreement
+     */
+    description?: pulumi.Input<string>;
+    /**
+     * Name of the agreement
+     */
+    name?: pulumi.Input<string>;
+    /**
+     * URL of the agreement
+     */
+    url?: pulumi.Input<string>;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGenaiAgentTemplateModelVersionArgs {
+    /**
+     * Major version of the model
+     */
+    major?: pulumi.Input<number>;
+    /**
+     * Minor version of the model
+     */
+    minor?: pulumi.Input<number>;
+    /**
+     * Patch version of the model
+     */
+    patch?: pulumi.Input<number>;
+}
+
+export interface GetGenaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentVersionsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiAgentVersionsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiAgentsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiAgentsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiAgentsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiAgentsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGenaiKnowledgeBaseLastIndexingJobArgs {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: pulumi.Input<number>;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt?: pulumi.Input<string>;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid?: pulumi.Input<string>;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: pulumi.Input<string>;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt?: pulumi.Input<string>;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: pulumi.Input<number>;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: pulumi.Input<number>;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt?: pulumi.Input<string>;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: pulumi.Input<string>;
+}
+
+export interface GetGenaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiKnowledgeBasesFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiKnowledgeBasesSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiKnowledgeBasesSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiModelsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiModelsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiModelsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiOpenaiApiKeysFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiOpenaiApiKeysFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiOpenaiApiKeysSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiOpenaiApiKeysSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
+}
+
+export interface GetGenaiRegionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGenaiRegionsFilterArgs {
+    all?: pulumi.Input<boolean>;
+    key: pulumi.Input<string>;
+    matchBy?: pulumi.Input<string>;
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetGenaiRegionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGenaiRegionsSortArgs {
+    direction?: pulumi.Input<string>;
+    key: pulumi.Input<string>;
 }
 
 export interface GetGradientaiAgentAgentGuardrail {

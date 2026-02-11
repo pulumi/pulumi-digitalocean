@@ -89,6 +89,8 @@ export class GradientaiAgentRoute extends pulumi.CustomResource {
             resourceInputs["uuid"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const aliasOpts = { aliases: [{ type: "digitalocean:index/genaiAgentRoute:GenaiAgentRoute" }] };
+        opts = pulumi.mergeOptions(opts, aliasOpts);
         super(GradientaiAgentRoute.__pulumiType, name, resourceInputs, opts);
     }
 }
