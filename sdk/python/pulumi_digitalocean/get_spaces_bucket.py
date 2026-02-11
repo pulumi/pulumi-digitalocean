@@ -113,9 +113,6 @@ def get_spaces_bucket(name: Optional[_builtins.str] = None,
                       region: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketResult:
     """
-    Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-    is not managed by the provider or you need to utilize any of the bucket's data.
-
     ## Example Usage
 
     Get the bucket by name:
@@ -150,9 +147,6 @@ def get_spaces_bucket_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                              region: Optional[pulumi.Input[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketResult]:
     """
-    Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
-    is not managed by the provider or you need to utilize any of the bucket's data.
-
     ## Example Usage
 
     Get the bucket by name:

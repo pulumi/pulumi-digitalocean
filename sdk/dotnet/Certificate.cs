@@ -32,19 +32,19 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Name = "custom-example",
+    ///         Name = "custom-terraform-example",
     ///         Type = DigitalOcean.CertificateType.Custom,
     ///         PrivateKey = Std.File.Invoke(new()
     ///         {
-    ///             Input = "/Users/myuser/certs/privkey.pem",
+    ///             Input = "/Users/terraform/certs/privkey.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         LeafCertificate = Std.File.Invoke(new()
     ///         {
-    ///             Input = "/Users/myuser/certs/cert.pem",
+    ///             Input = "/Users/terraform/certs/cert.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///         CertificateChain = Std.File.Invoke(new()
     ///         {
-    ///             Input = "/Users/myuser/certs/fullchain.pem",
+    ///             Input = "/Users/terraform/certs/fullchain.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
@@ -63,7 +63,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Name = "le-example",
+    ///         Name = "le-terraform-example",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///         Domains = new[]
     ///         {
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
     /// {
     ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
-    ///         Name = "le-example",
+    ///         Name = "le-terraform-example",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
     ///         Domains = new[]
     ///         {

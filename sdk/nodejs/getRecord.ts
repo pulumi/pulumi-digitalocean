@@ -5,13 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
- * Get information on a DNS record. This data source provides the name, TTL, and zone
- * file as configured on your DigitalOcean account. This is useful if the record
- * in question is not managed by the provider.
- *
- * An error is triggered if the provided domain name or record are not managed with
- * your DigitalOcean account.
- *
  * ## Example Usage
  *
  * Get data from a DNS record:
@@ -94,13 +87,6 @@ export interface GetRecordResult {
     readonly weight: number;
 }
 /**
- * Get information on a DNS record. This data source provides the name, TTL, and zone
- * file as configured on your DigitalOcean account. This is useful if the record
- * in question is not managed by the provider.
- *
- * An error is triggered if the provided domain name or record are not managed with
- * your DigitalOcean account.
- *
  * ## Example Usage
  *
  * Get data from a DNS record:

@@ -344,11 +344,11 @@ class Certificate(pulumi.CustomResource):
         import pulumi_std as std
 
         cert = digitalocean.Certificate("cert",
-            name="custom-example",
+            name="custom-terraform-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=std.file(input="/Users/myuser/certs/privkey.pem").result,
-            leaf_certificate=std.file(input="/Users/myuser/certs/cert.pem").result,
-            certificate_chain=std.file(input="/Users/myuser/certs/fullchain.pem").result)
+            private_key=std.file(input="/Users/terraform/certs/privkey.pem").result,
+            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem").result,
+            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem").result)
         ```
 
         ### Let's Encrypt Certificate
@@ -358,7 +358,7 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            name="le-example",
+            name="le-terraform-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         ```
@@ -373,7 +373,7 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            name="le-example",
+            name="le-terraform-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         # Create a new Load Balancer with TLS termination
@@ -438,11 +438,11 @@ class Certificate(pulumi.CustomResource):
         import pulumi_std as std
 
         cert = digitalocean.Certificate("cert",
-            name="custom-example",
+            name="custom-terraform-example",
             type=digitalocean.CertificateType.CUSTOM,
-            private_key=std.file(input="/Users/myuser/certs/privkey.pem").result,
-            leaf_certificate=std.file(input="/Users/myuser/certs/cert.pem").result,
-            certificate_chain=std.file(input="/Users/myuser/certs/fullchain.pem").result)
+            private_key=std.file(input="/Users/terraform/certs/privkey.pem").result,
+            leaf_certificate=std.file(input="/Users/terraform/certs/cert.pem").result,
+            certificate_chain=std.file(input="/Users/terraform/certs/fullchain.pem").result)
         ```
 
         ### Let's Encrypt Certificate
@@ -452,7 +452,7 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            name="le-example",
+            name="le-terraform-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         ```
@@ -467,7 +467,7 @@ class Certificate(pulumi.CustomResource):
         import pulumi_digitalocean as digitalocean
 
         cert = digitalocean.Certificate("cert",
-            name="le-example",
+            name="le-terraform-example",
             type=digitalocean.CertificateType.LETS_ENCRYPT,
             domains=["example.com"])
         # Create a new Load Balancer with TLS termination

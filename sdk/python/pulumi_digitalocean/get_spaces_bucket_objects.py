@@ -147,10 +147,7 @@ def get_spaces_bucket_objects(bucket: Optional[_builtins.str] = None,
                               region: Optional[_builtins.str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSpacesBucketObjectsResult:
     """
-    > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
-
-    The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str bucket: Lists object keys in this Spaces bucket
     :param _builtins.str delimiter: A character used to group keys (Default: none)
@@ -188,10 +185,7 @@ def get_spaces_bucket_objects_output(bucket: Optional[pulumi.Input[_builtins.str
                                      region: Optional[pulumi.Input[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketObjectsResult]:
     """
-    > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect the provider's performance.
-
-    The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
-
+    Use this data source to access information about an existing resource.
 
     :param _builtins.str bucket: Lists object keys in this Spaces bucket
     :param _builtins.str delimiter: A character used to group keys (Default: none)

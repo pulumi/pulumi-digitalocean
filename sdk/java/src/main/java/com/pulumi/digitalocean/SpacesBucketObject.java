@@ -17,52 +17,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a bucket object resource for Spaces, DigitalOcean&#39;s object storage product.
- * The `digitalocean.SpacesBucketObject` resource allows the provider to upload content
- * to Spaces.
- * 
- * The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
- * designed to be interoperable with Amazon&#39;s AWS S3 API. This allows users to
- * interact with the service while using the tools they already know. Spaces
- * mirrors S3&#39;s authentication framework and requests to Spaces require a key pair
- * similar to Amazon&#39;s Access ID and Secret Key.
- * 
- * The authentication requirement can be met by either setting the
- * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
- * the provider&#39;s `spacesAccessId` and `spacesSecretKey` arguments to the
- * access ID and secret you generate via the DigitalOcean control panel. For
- * example:
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.digitalocean.SpacesBucket;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var static_assets = new SpacesBucket("static-assets");
- * 
- *     }
- * }
- * }
- * </pre>
- * 
- * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
- * 
  * ## Example Usage
  * 
  * ### Create a Key in a Spaces Bucket
@@ -242,41 +196,15 @@ public class SpacesBucketObject extends com.pulumi.resources.CustomResource {
     public Output<String> contentType() {
         return this.contentType;
     }
-    /**
-     * Used to trigger updates.
-     * 
-     */
     @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
-    /**
-     * @return Used to trigger updates.
-     * 
-     */
     public Output<String> etag() {
         return this.etag;
     }
-    /**
-     * Allow the object to be deleted by removing any legal hold on any object version.
-     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-     * 
-     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-     * 
-     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-     * 
-     */
     @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceDestroy;
 
-    /**
-     * @return Allow the object to be deleted by removing any legal hold on any object version.
-     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
-     * 
-     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
-     * 
-     * &gt; **Note:** The provider ignores all leading `/`s in the object&#39;s `key` and treats multiple `/`s in the rest of the object&#39;s `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
-     * 
-     */
     public Output<Optional<Boolean>> forceDestroy() {
         return Codegen.optional(this.forceDestroy);
     }

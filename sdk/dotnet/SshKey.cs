@@ -29,10 +29,10 @@ namespace Pulumi.DigitalOcean
     ///     // Create a new SSH key
     ///     var @default = new DigitalOcean.SshKey("default", new()
     ///     {
-    ///         Name = "Example",
+    ///         Name = "Terraform Example",
     ///         PublicKey = Std.File.Invoke(new()
     ///         {
-    ///             Input = "/Users/myuser/.ssh/id_rsa.pub",
+    ///             Input = "/Users/terraform/.ssh/id_rsa.pub",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 

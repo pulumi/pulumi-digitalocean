@@ -11,7 +11,8 @@ namespace Pulumi.DigitalOcean
 {
     /// <summary>
     /// Provides a DigitalOcean Droplet resource. This can be used to create,
-    /// modify, and delete Droplets.
+    /// modify, and delete Droplets. Droplets also support
+    /// provisioning.
     /// 
     /// ## Example Usage
     /// 
@@ -92,12 +93,6 @@ namespace Pulumi.DigitalOcean
         [Output("dropletUrn")]
         public Output<string> DropletUrn { get; private set; } = null!;
 
-        /// <summary>
-        /// A boolean indicating whether the droplet
-        /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-        /// </summary>
         [Output("gracefulShutdown")]
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
 
@@ -233,7 +228,7 @@ namespace Pulumi.DigitalOcean
         public Output<int> Vcpus { get; private set; } = null!;
 
         /// <summary>
-        /// A list of the IDs of each block storage volume to be attached to the Droplet.
+        /// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
         /// </summary>
         [Output("volumeIds")]
         public Output<ImmutableArray<string>> VolumeIds { get; private set; } = null!;
@@ -314,12 +309,6 @@ namespace Pulumi.DigitalOcean
         [Input("dropletAgent")]
         public Input<bool>? DropletAgent { get; set; }
 
-        /// <summary>
-        /// A boolean indicating whether the droplet
-        /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-        /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
 
@@ -425,7 +414,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _volumeIds;
 
         /// <summary>
-        /// A list of the IDs of each block storage volume to be attached to the Droplet.
+        /// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
         /// </summary>
         public InputList<string> VolumeIds
         {
@@ -486,12 +475,6 @@ namespace Pulumi.DigitalOcean
         [Input("dropletUrn")]
         public Input<string>? DropletUrn { get; set; }
 
-        /// <summary>
-        /// A boolean indicating whether the droplet
-        /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, this provider will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-        /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
 
@@ -642,7 +625,7 @@ namespace Pulumi.DigitalOcean
         private InputList<string>? _volumeIds;
 
         /// <summary>
-        /// A list of the IDs of each block storage volume to be attached to the Droplet.
+        /// A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
         /// </summary>
         public InputList<string> VolumeIds
         {

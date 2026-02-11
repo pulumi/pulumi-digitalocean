@@ -12,15 +12,6 @@ namespace Pulumi.DigitalOcean
     public static class GetVpc
     {
         /// <summary>
-        /// Retrieve information about a VPC for use in other resources.
-        /// 
-        /// This data source provides all of the VPC's properties as configured on your
-        /// DigitalOcean account. This is useful if the VPC in question is not managed by
-        /// the provider or you need to utilize any of the VPC's data.
-        /// 
-        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
-        /// return that that region's default VPC.
-        /// 
         /// ## Example Usage
         /// 
         /// ### VPC By Name
@@ -72,15 +63,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieve information about a VPC for use in other resources.
-        /// 
-        /// This data source provides all of the VPC's properties as configured on your
-        /// DigitalOcean account. This is useful if the VPC in question is not managed by
-        /// the provider or you need to utilize any of the VPC's data.
-        /// 
-        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
-        /// return that that region's default VPC.
-        /// 
         /// ## Example Usage
         /// 
         /// ### VPC By Name
@@ -132,15 +114,6 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcResult>("digitalocean:index/getVpc:getVpc", args ?? new GetVpcInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieve information about a VPC for use in other resources.
-        /// 
-        /// This data source provides all of the VPC's properties as configured on your
-        /// DigitalOcean account. This is useful if the VPC in question is not managed by
-        /// the provider or you need to utilize any of the VPC's data.
-        /// 
-        /// VPCs may be looked up by `Id` or `Name`. Specifying a `Region` will
-        /// return that that region's default VPC.
-        /// 
         /// ## Example Usage
         /// 
         /// ### VPC By Name
