@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_knowledge_base_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiKnowledgeBaseResult:
     """
@@ -183,6 +185,7 @@ def get_genai_knowledge_base(added_to_agent_at: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_base is deprecated: digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase""")
     __args__ = dict()
     __args__['addedToAgentAt'] = added_to_agent_at
     __args__['databaseId'] = database_id
@@ -228,6 +231,7 @@ def get_genai_knowledge_base_output(added_to_agent_at: Optional[pulumi.Input[Opt
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_base is deprecated: digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase""")
     __args__ = dict()
     __args__['addedToAgentAt'] = added_to_agent_at
     __args__['databaseId'] = database_id

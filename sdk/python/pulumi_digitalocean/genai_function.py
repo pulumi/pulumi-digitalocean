@@ -28,13 +28,13 @@ class GenaiFunctionArgs:
                  output_schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiFunction resource.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GenAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GenAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GenAI resource.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GenAI resource.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GenAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GenAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
         """
         pulumi.set(__self__, "agent_id", agent_id)
         pulumi.set(__self__, "description", description)
@@ -50,7 +50,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the GenAI resource.
+        The name of the GradientAI resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -62,7 +62,7 @@ class GenaiFunctionArgs:
     @pulumi.getter
     def description(self) -> pulumi.Input[_builtins.str]:
         """
-        The region where the GenAI resource will be created.
+        The region where the GradientAI resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -74,7 +74,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> pulumi.Input[_builtins.str]:
         """
-        The current status of the GenAI resource.
+        The current status of the GradientAI resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -86,7 +86,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The creation timestamp of the GenAI resource.
+        The creation timestamp of the GradientAI resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -98,7 +98,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> pulumi.Input[_builtins.str]:
         """
-        The input schema of the GenAI resource.
+        The input schema of the GradientAI resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -110,7 +110,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="faasName")
     def faas_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The model to use for the GenAI resource.
+        The model to use for the GradientAI resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -122,7 +122,7 @@ class GenaiFunctionArgs:
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The output schema of the GenAI resource.
+        The output schema of the GradientAI resource.
         """
         return pulumi.get(self, "output_schema")
 
@@ -144,14 +144,14 @@ class _GenaiFunctionState:
                  output_schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiFunction resources.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GenAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GenAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GenAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GenAI function.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GenAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GenAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GradientAI function.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
         """
         if agent_id is not None:
             pulumi.set(__self__, "agent_id", agent_id)
@@ -174,7 +174,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="agentId")
     def agent_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the GenAI resource.
+        The name of the GradientAI resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -186,7 +186,7 @@ class _GenaiFunctionState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The region where the GenAI resource will be created.
+        The region where the GradientAI resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -198,7 +198,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="faasName")
     def faas_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The model to use for the GenAI resource.
+        The model to use for the GradientAI resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -210,7 +210,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The current status of the GenAI resource.
+        The current status of the GradientAI resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -222,7 +222,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="functionName")
     def function_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The creation timestamp of the GenAI resource.
+        The creation timestamp of the GradientAI resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -234,7 +234,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="functionUuid")
     def function_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The unique identifier of the GenAI function.
+        The unique identifier of the GradientAI function.
         """
         return pulumi.get(self, "function_uuid")
 
@@ -246,7 +246,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The input schema of the GenAI resource.
+        The input schema of the GradientAI resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -258,7 +258,7 @@ class _GenaiFunctionState:
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The output schema of the GenAI resource.
+        The output schema of the GradientAI resource.
         """
         return pulumi.get(self, "output_schema")
 
@@ -267,8 +267,13 @@ class _GenaiFunctionState:
         pulumi.set(self, "output_schema", value)
 
 
+warnings.warn("""digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiFunction:GenaiFunction")
 class GenaiFunction(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -285,13 +290,13 @@ class GenaiFunction(pulumi.CustomResource):
         Create a GenaiFunction resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GenAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GenAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GenAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GenAI resource.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GenAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GenAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
         """
         ...
     @overload
@@ -324,6 +329,7 @@ class GenaiFunction(pulumi.CustomResource):
                  input_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  output_schema: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiFunction is deprecated: digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
@@ -375,14 +381,14 @@ class GenaiFunction(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] agent_id: The name of the GenAI resource.
-        :param pulumi.Input[_builtins.str] description: The region where the GenAI resource will be created.
-        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GenAI resource.
-        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GenAI resource.
-        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GenAI function.
-        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GenAI resource.
-        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GenAI resource.
+        :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
+        :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
+        :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_name: The creation timestamp of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] function_uuid: The unique identifier of the GradientAI function.
+        :param pulumi.Input[_builtins.str] input_schema: The input schema of the GradientAI resource.
+        :param pulumi.Input[_builtins.str] output_schema: The output schema of the GradientAI resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -402,7 +408,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="agentId")
     def agent_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the GenAI resource.
+        The name of the GradientAI resource.
         """
         return pulumi.get(self, "agent_id")
 
@@ -410,7 +416,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[_builtins.str]:
         """
-        The region where the GenAI resource will be created.
+        The region where the GradientAI resource will be created.
         """
         return pulumi.get(self, "description")
 
@@ -418,7 +424,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="faasName")
     def faas_name(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The model to use for the GenAI resource.
+        The model to use for the GradientAI resource.
         """
         return pulumi.get(self, "faas_name")
 
@@ -426,7 +432,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="faasNamespace")
     def faas_namespace(self) -> pulumi.Output[_builtins.str]:
         """
-        The current status of the GenAI resource.
+        The current status of the GradientAI resource.
         """
         return pulumi.get(self, "faas_namespace")
 
@@ -434,7 +440,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="functionName")
     def function_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The creation timestamp of the GenAI resource.
+        The creation timestamp of the GradientAI resource.
         """
         return pulumi.get(self, "function_name")
 
@@ -442,7 +448,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="functionUuid")
     def function_uuid(self) -> pulumi.Output[_builtins.str]:
         """
-        The unique identifier of the GenAI function.
+        The unique identifier of the GradientAI function.
         """
         return pulumi.get(self, "function_uuid")
 
@@ -450,7 +456,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="inputSchema")
     def input_schema(self) -> pulumi.Output[_builtins.str]:
         """
-        The input schema of the GenAI resource.
+        The input schema of the GradientAI resource.
         """
         return pulumi.get(self, "input_schema")
 
@@ -458,7 +464,7 @@ class GenaiFunction(pulumi.CustomResource):
     @pulumi.getter(name="outputSchema")
     def output_schema(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The output schema of the GenAI resource.
+        The output schema of the GradientAI resource.
         """
         return pulumi.get(self, "output_schema")
 

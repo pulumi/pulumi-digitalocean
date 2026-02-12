@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel")]
     [DigitalOceanResourceType("digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel")]
     public partial class GenaiIndexingJobCancel : global::Pulumi.CustomResource
     {

@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute
+ */
 export class GenaiAgentRoute extends pulumi.CustomResource {
     /**
      * Get an existing GenaiAgentRoute resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GenaiAgentRoute extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiAgentRouteState, opts?: pulumi.CustomResourceOptions): GenaiAgentRoute {
+        pulumi.log.warn("GenaiAgentRoute is deprecated: digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute")
         return new GenaiAgentRoute(name, <any>state, { ...opts, id: id });
     }
 
@@ -61,8 +65,11 @@ export class GenaiAgentRoute extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute */
     constructor(name: string, args: GenaiAgentRouteArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute */
     constructor(name: string, argsOrState?: GenaiAgentRouteArgs | GenaiAgentRouteState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiAgentRoute is deprecated: digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

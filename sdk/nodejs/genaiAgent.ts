@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent
+ */
 export class GenaiAgent extends pulumi.CustomResource {
     /**
      * Get an existing GenaiAgent resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GenaiAgent extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiAgentState, opts?: pulumi.CustomResourceOptions): GenaiAgent {
+        pulumi.log.warn("GenaiAgent is deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent")
         return new GenaiAgent(name, <any>state, { ...opts, id: id });
     }
 
@@ -199,8 +203,11 @@ export class GenaiAgent extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent */
     constructor(name: string, args: GenaiAgentArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent */
     constructor(name: string, argsOrState?: GenaiAgentArgs | GenaiAgentState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiAgent is deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

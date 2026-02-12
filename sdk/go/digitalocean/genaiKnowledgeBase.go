@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase
 type GenaiKnowledgeBase struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +23,7 @@ type GenaiKnowledgeBase struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrOutput `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources GenaiKnowledgeBaseDataSourceTypeArrayOutput `pulumi:"datasources"`
+	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayOutput `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringOutput `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -88,7 +89,7 @@ type genaiKnowledgeBaseState struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId *string `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources []GenaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
+	Datasources []GradientaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid *string `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -113,7 +114,7 @@ type GenaiKnowledgeBaseState struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrInput
 	// Data sources for the knowledge base
-	Datasources GenaiKnowledgeBaseDataSourceTypeArrayInput
+	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayInput
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringPtrInput
 	// Indicates whether the knowledge base is public or private.
@@ -140,7 +141,7 @@ type genaiKnowledgeBaseArgs struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId *string `pulumi:"databaseId"`
 	// Data sources for the knowledge base
-	Datasources []GenaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
+	Datasources []GradientaiKnowledgeBaseDataSourceType `pulumi:"datasources"`
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
 	// Indicates whether the knowledge base is public or private.
@@ -164,7 +165,7 @@ type GenaiKnowledgeBaseArgs struct {
 	// The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
 	DatabaseId pulumi.StringPtrInput
 	// Data sources for the knowledge base
-	Datasources GenaiKnowledgeBaseDataSourceTypeArrayInput
+	Datasources GradientaiKnowledgeBaseDataSourceTypeArrayInput
 	// The unique identifier of the embedding model
 	EmbeddingModelUuid pulumi.StringInput
 	// Indicates whether the knowledge base is public or private.
@@ -284,8 +285,8 @@ func (o GenaiKnowledgeBaseOutput) DatabaseId() pulumi.StringPtrOutput {
 }
 
 // Data sources for the knowledge base
-func (o GenaiKnowledgeBaseOutput) Datasources() GenaiKnowledgeBaseDataSourceTypeArrayOutput {
-	return o.ApplyT(func(v *GenaiKnowledgeBase) GenaiKnowledgeBaseDataSourceTypeArrayOutput { return v.Datasources }).(GenaiKnowledgeBaseDataSourceTypeArrayOutput)
+func (o GenaiKnowledgeBaseOutput) Datasources() GradientaiKnowledgeBaseDataSourceTypeArrayOutput {
+	return o.ApplyT(func(v *GenaiKnowledgeBase) GradientaiKnowledgeBaseDataSourceTypeArrayOutput { return v.Datasources }).(GradientaiKnowledgeBaseDataSourceTypeArrayOutput)
 }
 
 // The unique identifier of the embedding model

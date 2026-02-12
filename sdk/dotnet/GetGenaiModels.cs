@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels")]
     public static class GetGenaiModels
     {
         public static Task<GetGenaiModelsResult> InvokeAsync(GetGenaiModelsArgs? args = null, InvokeOptions? options = null)

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
 func GetGenaiRegions(ctx *pulumi.Context, args *GetGenaiRegionsArgs, opts ...pulumi.InvokeOption) (*GetGenaiRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGenaiRegionsResult

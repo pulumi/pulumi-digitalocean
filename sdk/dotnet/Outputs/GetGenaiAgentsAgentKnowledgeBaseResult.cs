@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean.Outputs
         /// <summary>
         /// Last indexing job for the Knowledge Base
         /// </summary>
-        public readonly ImmutableArray<Outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobResult> LastIndexingJobs;
+        public readonly Outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobResult? LastIndexingJob;
         /// <summary>
         /// Name of the Knowledge Base
         /// </summary>
@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean.Outputs
 
             bool? isPublic,
 
-            ImmutableArray<Outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobResult> lastIndexingJobs,
+            Outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJobResult? lastIndexingJob,
 
             string? name,
 
@@ -99,7 +99,7 @@ namespace Pulumi.DigitalOcean.Outputs
             DatabaseId = databaseId;
             EmbeddingModelUuid = embeddingModelUuid;
             IsPublic = isPublic;
-            LastIndexingJobs = lastIndexingJobs;
+            LastIndexingJob = lastIndexingJob;
             Name = name;
             ProjectId = projectId;
             Region = region;

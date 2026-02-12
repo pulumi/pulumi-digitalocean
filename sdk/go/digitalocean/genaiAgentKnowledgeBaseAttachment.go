@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment
 type GenaiAgentKnowledgeBaseAttachment struct {
 	pulumi.CustomResourceState
 

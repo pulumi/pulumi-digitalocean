@@ -22,6 +22,8 @@ __all__ = [
     'get_genai_agents_by_openai_api_key_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiAgentsByOpenaiApiKeyResult:
     """
@@ -73,6 +75,7 @@ def get_genai_agents_by_openai_api_key(uuid: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agents_by_openai_api_key is deprecated: digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,6 +90,7 @@ def get_genai_agents_by_openai_api_key_output(uuid: Optional[pulumi.Input[_built
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agents_by_openai_api_key is deprecated: digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey""")
     __args__ = dict()
     __args__['uuid'] = uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

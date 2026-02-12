@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
 func GetGenaiIndexingJob(ctx *pulumi.Context, args *GetGenaiIndexingJobArgs, opts ...pulumi.InvokeOption) (*GetGenaiIndexingJobResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGenaiIndexingJobResult

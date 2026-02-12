@@ -84,6 +84,20 @@ from .get_genai_models import *
 from .get_genai_openai_api_key import *
 from .get_genai_openai_api_keys import *
 from .get_genai_regions import *
+from .get_gradientai_agent import *
+from .get_gradientai_agent_versions import *
+from .get_gradientai_agents import *
+from .get_gradientai_agents_by_openai_api_key import *
+from .get_gradientai_indexing_job import *
+from .get_gradientai_indexing_job_data_sources import *
+from .get_gradientai_knowledge_base import *
+from .get_gradientai_knowledge_base_data_sources import *
+from .get_gradientai_knowledge_base_indexing_jobs import *
+from .get_gradientai_knowledge_bases import *
+from .get_gradientai_models import *
+from .get_gradientai_openai_api_key import *
+from .get_gradientai_openai_api_keys import *
+from .get_gradientai_regions import *
 from .get_image import *
 from .get_images import *
 from .get_kubernetes_cluster import *
@@ -116,6 +130,14 @@ from .get_volume_snapshot import *
 from .get_vpc import *
 from .get_vpc_nat_gateway import *
 from .get_vpc_peering import *
+from .gradientai_agent import *
+from .gradientai_agent_knowledge_base_attachment import *
+from .gradientai_agent_route import *
+from .gradientai_function import *
+from .gradientai_indexing_job_cancel import *
+from .gradientai_knowledge_base import *
+from .gradientai_knowledge_base_data_source import *
+from .gradientai_openai_api_key import *
 from .kubernetes_cluster import *
 from .kubernetes_node_pool import *
 from .load_balancer import *
@@ -494,6 +516,70 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey": "GenaiOpenaiApiKey"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiAgent",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiAgent:GradientaiAgent": "GradientaiAgent"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiAgentKnowledgeBaseAttachment",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment": "GradientaiAgentKnowledgeBaseAttachment"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiAgentRoute",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute": "GradientaiAgentRoute"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiFunction",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiFunction:GradientaiFunction": "GradientaiFunction"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiIndexingJobCancel",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel": "GradientaiIndexingJobCancel"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiKnowledgeBase",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase": "GradientaiKnowledgeBase"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiKnowledgeBaseDataSource",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource": "GradientaiKnowledgeBaseDataSource"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/gradientaiOpenaiApiKey",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey": "GradientaiOpenaiApiKey"
   }
  },
  {

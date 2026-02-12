@@ -15,6 +15,12 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel
+ * 
+ */
+@Deprecated /* digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel */
 @ResourceType(type="digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel")
 public class GenaiIndexingJobCancel extends com.pulumi.resources.CustomResource {
     /**

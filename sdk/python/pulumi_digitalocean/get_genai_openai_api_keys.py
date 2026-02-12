@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_openai_api_keys_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiOpenaiApiKeysResult:
     """
@@ -84,6 +86,7 @@ def get_genai_openai_api_keys(filters: Optional[Sequence[Union['GetGenaiOpenaiAp
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_openai_api_keys is deprecated: digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_genai_openai_api_keys_output(filters: Optional[pulumi.Input[Optional[Seq
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_openai_api_keys is deprecated: digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

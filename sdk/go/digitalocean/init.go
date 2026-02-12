@@ -105,6 +105,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GenaiKnowledgeBaseDataSource{}
 	case "digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey":
 		r = &GenaiOpenaiApiKey{}
+	case "digitalocean:index/gradientaiAgent:GradientaiAgent":
+		r = &GradientaiAgent{}
+	case "digitalocean:index/gradientaiAgentKnowledgeBaseAttachment:GradientaiAgentKnowledgeBaseAttachment":
+		r = &GradientaiAgentKnowledgeBaseAttachment{}
+	case "digitalocean:index/gradientaiAgentRoute:GradientaiAgentRoute":
+		r = &GradientaiAgentRoute{}
+	case "digitalocean:index/gradientaiFunction:GradientaiFunction":
+		r = &GradientaiFunction{}
+	case "digitalocean:index/gradientaiIndexingJobCancel:GradientaiIndexingJobCancel":
+		r = &GradientaiIndexingJobCancel{}
+	case "digitalocean:index/gradientaiKnowledgeBase:GradientaiKnowledgeBase":
+		r = &GradientaiKnowledgeBase{}
+	case "digitalocean:index/gradientaiKnowledgeBaseDataSource:GradientaiKnowledgeBaseDataSource":
+		r = &GradientaiKnowledgeBaseDataSource{}
+	case "digitalocean:index/gradientaiOpenaiApiKey:GradientaiOpenaiApiKey":
+		r = &GradientaiOpenaiApiKey{}
 	case "digitalocean:index/kubernetesCluster:KubernetesCluster":
 		r = &KubernetesCluster{}
 	case "digitalocean:index/kubernetesNodePool:KubernetesNodePool":
@@ -404,6 +420,46 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/genaiOpenaiApiKey",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiAgent",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiAgentKnowledgeBaseAttachment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiAgentRoute",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiFunction",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiIndexingJobCancel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiKnowledgeBase",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiKnowledgeBaseDataSource",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/gradientaiOpenaiApiKey",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

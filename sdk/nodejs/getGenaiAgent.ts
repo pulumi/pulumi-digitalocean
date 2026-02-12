@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
 export function getGenaiAgent(args: GetGenaiAgentArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiAgentResult> {
+    pulumi.log.warn("getGenaiAgent is deprecated: digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", {
         "agentGuardrails": args.agentGuardrails,
@@ -116,7 +118,9 @@ export interface GetGenaiAgentResult {
     readonly url?: string;
     readonly userId?: string;
 }
+/** @deprecated digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
 export function getGenaiAgentOutput(args: GetGenaiAgentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiAgentResult> {
+    pulumi.log.warn("getGenaiAgent is deprecated: digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiAgent:getGenaiAgent", {
         "agentGuardrails": args.agentGuardrails,

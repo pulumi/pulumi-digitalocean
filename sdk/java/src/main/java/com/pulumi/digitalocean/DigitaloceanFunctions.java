@@ -75,6 +75,34 @@ import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiOpenaiApiKeysPlainArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiRegionsArgs;
 import com.pulumi.digitalocean.inputs.GetGenaiRegionsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentVersionsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentVersionsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsByOpenaiApiKeyPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiAgentsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiIndexingJobPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseDataSourcesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseDataSourcesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseIndexingJobsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBaseIndexingJobsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasePlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasesArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiKnowledgeBasesPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiModelsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiModelsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeyArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeyPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeysArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiOpenaiApiKeysPlainArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiRegionsArgs;
+import com.pulumi.digitalocean.inputs.GetGradientaiRegionsPlainArgs;
 import com.pulumi.digitalocean.inputs.GetImageArgs;
 import com.pulumi.digitalocean.inputs.GetImagePlainArgs;
 import com.pulumi.digitalocean.inputs.GetImagesArgs;
@@ -174,6 +202,20 @@ import com.pulumi.digitalocean.outputs.GetGenaiModelsResult;
 import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeyResult;
 import com.pulumi.digitalocean.outputs.GetGenaiOpenaiApiKeysResult;
 import com.pulumi.digitalocean.outputs.GetGenaiRegionsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentVersionsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentsByOpenaiApiKeyResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiAgentsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiIndexingJobResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseDataSourcesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseIndexingJobsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBaseResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiKnowledgeBasesResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiModelsResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiOpenaiApiKeyResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiOpenaiApiKeysResult;
+import com.pulumi.digitalocean.outputs.GetGradientaiRegionsResult;
 import com.pulumi.digitalocean.outputs.GetImageResult;
 import com.pulumi.digitalocean.outputs.GetImagesResult;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterResult;
@@ -6481,251 +6523,1071 @@ public final class DigitaloceanFunctions {
     public static CompletableFuture<GetFloatingIpResult> getFloatingIpPlain(GetFloatingIpPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getFloatingIp:getFloatingIp", TypeShape.of(GetFloatingIpResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
     public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args) {
         return getGenaiAgent(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
     public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args) {
         return getGenaiAgentPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
     public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
     public static Output<GetGenaiAgentResult> getGenaiAgent(GetGenaiAgentArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgent has been deprecated in favor of digitalocean.getGradientaiAgent */
     public static CompletableFuture<GetGenaiAgentResult> getGenaiAgentPlain(GetGenaiAgentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgent:getGenaiAgent", TypeShape.of(GetGenaiAgentResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions */
     public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args) {
         return getGenaiAgentVersions(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions */
     public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args) {
         return getGenaiAgentVersionsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions */
     public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions */
     public static Output<GetGenaiAgentVersionsResult> getGenaiAgentVersions(GetGenaiAgentVersionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions */
     public static CompletableFuture<GetGenaiAgentVersionsResult> getGenaiAgentVersionsPlain(GetGenaiAgentVersionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentVersions:getGenaiAgentVersions", TypeShape.of(GetGenaiAgentVersionsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static Output<GetGenaiAgentsResult> getGenaiAgents() {
         return getGenaiAgents(GetGenaiAgentsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain() {
         return getGenaiAgentsPlain(GetGenaiAgentsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args) {
         return getGenaiAgents(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args) {
         return getGenaiAgentsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static Output<GetGenaiAgentsResult> getGenaiAgents(GetGenaiAgentsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents */
     public static CompletableFuture<GetGenaiAgentsResult> getGenaiAgentsPlain(GetGenaiAgentsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgents:getGenaiAgents", TypeShape.of(GetGenaiAgentsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey */
     public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args) {
         return getGenaiAgentsByOpenaiApiKey(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey */
     public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args) {
         return getGenaiAgentsByOpenaiApiKeyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey */
     public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey */
     public static Output<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKey(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey */
     public static CompletableFuture<GetGenaiAgentsByOpenaiApiKeyResult> getGenaiAgentsByOpenaiApiKeyPlain(GetGenaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiAgentsByOpenaiApiKey:getGenaiAgentsByOpenaiApiKey", TypeShape.of(GetGenaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob */
     public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args) {
         return getGenaiIndexingJob(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob */
     public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args) {
         return getGenaiIndexingJobPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob */
     public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob */
     public static Output<GetGenaiIndexingJobResult> getGenaiIndexingJob(GetGenaiIndexingJobArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJob has been deprecated in favor of digitalocean.getGradientaiIndexingJob */
     public static CompletableFuture<GetGenaiIndexingJobResult> getGenaiIndexingJobPlain(GetGenaiIndexingJobPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJob:getGenaiIndexingJob", TypeShape.of(GetGenaiIndexingJobResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
     public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args) {
         return getGenaiIndexingJobDataSources(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
     public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args) {
         return getGenaiIndexingJobDataSourcesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
     public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
     public static Output<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSources(GetGenaiIndexingJobDataSourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
     public static CompletableFuture<GetGenaiIndexingJobDataSourcesResult> getGenaiIndexingJobDataSourcesPlain(GetGenaiIndexingJobDataSourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", TypeShape.of(GetGenaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase() {
         return getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain() {
         return getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args) {
         return getGenaiKnowledgeBase(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args) {
         return getGenaiKnowledgeBasePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static Output<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBase(GetGenaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBase has been deprecated in favor of digitalocean.getGradientaiKnowledgeBase */
     public static CompletableFuture<GetGenaiKnowledgeBaseResult> getGenaiKnowledgeBasePlain(GetGenaiKnowledgeBasePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBase:getGenaiKnowledgeBase", TypeShape.of(GetGenaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources */
     public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args) {
         return getGenaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources */
     public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args) {
         return getGenaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources */
     public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources */
     public static Output<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSources(GetGenaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseDataSources has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseDataSources */
     public static CompletableFuture<GetGenaiKnowledgeBaseDataSourcesResult> getGenaiKnowledgeBaseDataSourcesPlain(GetGenaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseDataSources:getGenaiKnowledgeBaseDataSources", TypeShape.of(GetGenaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
     public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args) {
         return getGenaiKnowledgeBaseIndexingJobs(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
     public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args) {
         return getGenaiKnowledgeBaseIndexingJobsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
     public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
     public static Output<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobs(GetGenaiKnowledgeBaseIndexingJobsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
     public static CompletableFuture<GetGenaiKnowledgeBaseIndexingJobsResult> getGenaiKnowledgeBaseIndexingJobsPlain(GetGenaiKnowledgeBaseIndexingJobsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGenaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases() {
         return getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain() {
         return getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args) {
         return getGenaiKnowledgeBases(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args) {
         return getGenaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static Output<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBases(GetGenaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
     public static CompletableFuture<GetGenaiKnowledgeBasesResult> getGenaiKnowledgeBasesPlain(GetGenaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", TypeShape.of(GetGenaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static Output<GetGenaiModelsResult> getGenaiModels() {
         return getGenaiModels(GetGenaiModelsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain() {
         return getGenaiModelsPlain(GetGenaiModelsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args) {
         return getGenaiModels(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args) {
         return getGenaiModelsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static Output<GetGenaiModelsResult> getGenaiModels(GetGenaiModelsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
     public static CompletableFuture<GetGenaiModelsResult> getGenaiModelsPlain(GetGenaiModelsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiModels:getGenaiModels", TypeShape.of(GetGenaiModelsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey */
     public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args) {
         return getGenaiOpenaiApiKey(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey */
     public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args) {
         return getGenaiOpenaiApiKeyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey */
     public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey */
     public static Output<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKey(GetGenaiOpenaiApiKeyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKey */
     public static CompletableFuture<GetGenaiOpenaiApiKeyResult> getGenaiOpenaiApiKeyPlain(GetGenaiOpenaiApiKeyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKey:getGenaiOpenaiApiKey", TypeShape.of(GetGenaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys() {
         return getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain() {
         return getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args) {
         return getGenaiOpenaiApiKeys(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args) {
         return getGenaiOpenaiApiKeysPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static Output<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeys(GetGenaiOpenaiApiKeysArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
     public static CompletableFuture<GetGenaiOpenaiApiKeysResult> getGenaiOpenaiApiKeysPlain(GetGenaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", TypeShape.of(GetGenaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static Output<GetGenaiRegionsResult> getGenaiRegions() {
         return getGenaiRegions(GetGenaiRegionsArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain() {
         return getGenaiRegionsPlain(GetGenaiRegionsPlainArgs.Empty, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args) {
         return getGenaiRegions(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args) {
         return getGenaiRegionsPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static Output<GetGenaiRegionsResult> getGenaiRegions(GetGenaiRegionsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * 
+     * @deprecated
+     * digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions
+     * 
+     */
+    @Deprecated /* digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
     public static CompletableFuture<GetGenaiRegionsResult> getGenaiRegionsPlain(GetGenaiRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getGenaiRegions:getGenaiRegions", TypeShape.of(GetGenaiRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args) {
+        return getGradientaiAgent(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiAgentResult> getGradientaiAgentPlain(GetGradientaiAgentPlainArgs args) {
+        return getGradientaiAgentPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentResult> getGradientaiAgent(GetGradientaiAgentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiAgentResult> getGradientaiAgentPlain(GetGradientaiAgentPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgent:getGradientaiAgent", TypeShape.of(GetGradientaiAgentResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args) {
+        return getGradientaiAgentVersions(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiAgentVersionsResult> getGradientaiAgentVersionsPlain(GetGradientaiAgentVersionsPlainArgs args) {
+        return getGradientaiAgentVersionsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentVersionsResult> getGradientaiAgentVersions(GetGradientaiAgentVersionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiAgentVersionsResult> getGradientaiAgentVersionsPlain(GetGradientaiAgentVersionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgentVersions:getGradientaiAgentVersions", TypeShape.of(GetGradientaiAgentVersionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents() {
+        return getGradientaiAgents(GetGradientaiAgentsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain() {
+        return getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args) {
+        return getGradientaiAgents(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs args) {
+        return getGradientaiAgentsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentsResult> getGradientaiAgents(GetGradientaiAgentsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiAgentsResult> getGradientaiAgentsPlain(GetGradientaiAgentsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgents:getGradientaiAgents", TypeShape.of(GetGradientaiAgentsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args) {
+        return getGradientaiAgentsByOpenaiApiKey(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyPlain(GetGradientaiAgentsByOpenaiApiKeyPlainArgs args) {
+        return getGradientaiAgentsByOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKey(GetGradientaiAgentsByOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiAgentsByOpenaiApiKeyResult> getGradientaiAgentsByOpenaiApiKeyPlain(GetGradientaiAgentsByOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiAgentsByOpenaiApiKey:getGradientaiAgentsByOpenaiApiKey", TypeShape.of(GetGradientaiAgentsByOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args) {
+        return getGradientaiIndexingJob(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiIndexingJobResult> getGradientaiIndexingJobPlain(GetGradientaiIndexingJobPlainArgs args) {
+        return getGradientaiIndexingJobPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiIndexingJobResult> getGradientaiIndexingJob(GetGradientaiIndexingJobArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiIndexingJobResult> getGradientaiIndexingJobPlain(GetGradientaiIndexingJobPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiIndexingJob:getGradientaiIndexingJob", TypeShape.of(GetGradientaiIndexingJobResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args) {
+        return getGradientaiIndexingJobDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSourcesPlain(GetGradientaiIndexingJobDataSourcesPlainArgs args) {
+        return getGradientaiIndexingJobDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSources(GetGradientaiIndexingJobDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiIndexingJobDataSourcesResult> getGradientaiIndexingJobDataSourcesPlain(GetGradientaiIndexingJobDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiIndexingJobDataSources:getGradientaiIndexingJobDataSources", TypeShape.of(GetGradientaiIndexingJobDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase() {
+        return getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain() {
+        return getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args) {
+        return getGradientaiKnowledgeBase(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs args) {
+        return getGradientaiKnowledgeBasePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBase(GetGradientaiKnowledgeBaseArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseResult> getGradientaiKnowledgeBasePlain(GetGradientaiKnowledgeBasePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBase:getGradientaiKnowledgeBase", TypeShape.of(GetGradientaiKnowledgeBaseResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args) {
+        return getGradientaiKnowledgeBaseDataSources(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSourcesPlain(GetGradientaiKnowledgeBaseDataSourcesPlainArgs args) {
+        return getGradientaiKnowledgeBaseDataSourcesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSources(GetGradientaiKnowledgeBaseDataSourcesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseDataSourcesResult> getGradientaiKnowledgeBaseDataSourcesPlain(GetGradientaiKnowledgeBaseDataSourcesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBaseDataSources:getGradientaiKnowledgeBaseDataSources", TypeShape.of(GetGradientaiKnowledgeBaseDataSourcesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args) {
+        return getGradientaiKnowledgeBaseIndexingJobs(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobsPlain(GetGradientaiKnowledgeBaseIndexingJobsPlainArgs args) {
+        return getGradientaiKnowledgeBaseIndexingJobsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobs(GetGradientaiKnowledgeBaseIndexingJobsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBaseIndexingJobsResult> getGradientaiKnowledgeBaseIndexingJobsPlain(GetGradientaiKnowledgeBaseIndexingJobsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBaseIndexingJobs:getGradientaiKnowledgeBaseIndexingJobs", TypeShape.of(GetGradientaiKnowledgeBaseIndexingJobsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases() {
+        return getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain() {
+        return getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args) {
+        return getGradientaiKnowledgeBases(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs args) {
+        return getGradientaiKnowledgeBasesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBases(GetGradientaiKnowledgeBasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiKnowledgeBasesResult> getGradientaiKnowledgeBasesPlain(GetGradientaiKnowledgeBasesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiKnowledgeBases:getGradientaiKnowledgeBases", TypeShape.of(GetGradientaiKnowledgeBasesResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiModelsResult> getGradientaiModels() {
+        return getGradientaiModels(GetGradientaiModelsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain() {
+        return getGradientaiModelsPlain(GetGradientaiModelsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args) {
+        return getGradientaiModels(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain(GetGradientaiModelsPlainArgs args) {
+        return getGradientaiModelsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiModelsResult> getGradientaiModels(GetGradientaiModelsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiModelsResult> getGradientaiModelsPlain(GetGradientaiModelsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiModels:getGradientaiModels", TypeShape.of(GetGradientaiModelsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args) {
+        return getGradientaiOpenaiApiKey(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKeyPlain(GetGradientaiOpenaiApiKeyPlainArgs args) {
+        return getGradientaiOpenaiApiKeyPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKey(GetGradientaiOpenaiApiKeyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiOpenaiApiKeyResult> getGradientaiOpenaiApiKeyPlain(GetGradientaiOpenaiApiKeyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiOpenaiApiKey:getGradientaiOpenaiApiKey", TypeShape.of(GetGradientaiOpenaiApiKeyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys() {
+        return getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain() {
+        return getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args) {
+        return getGradientaiOpenaiApiKeys(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs args) {
+        return getGradientaiOpenaiApiKeysPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeys(GetGradientaiOpenaiApiKeysArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiOpenaiApiKeysResult> getGradientaiOpenaiApiKeysPlain(GetGradientaiOpenaiApiKeysPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiOpenaiApiKeys:getGradientaiOpenaiApiKeys", TypeShape.of(GetGradientaiOpenaiApiKeysResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions() {
+        return getGradientaiRegions(GetGradientaiRegionsArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain() {
+        return getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args) {
+        return getGradientaiRegions(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs args) {
+        return getGradientaiRegionsPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGradientaiRegionsResult> getGradientaiRegions(GetGradientaiRegionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetGradientaiRegionsResult> getGradientaiRegionsPlain(GetGradientaiRegionsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getGradientaiRegions:getGradientaiRegions", TypeShape.of(GetGradientaiRegionsResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

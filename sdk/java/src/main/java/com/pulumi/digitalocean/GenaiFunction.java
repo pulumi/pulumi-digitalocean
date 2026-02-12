@@ -14,115 +14,121 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction
+ * 
+ */
+@Deprecated /* digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction */
 @ResourceType(type="digitalocean:index/genaiFunction:GenaiFunction")
 public class GenaiFunction extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the GenAI resource.
+     * The name of the GradientAI resource.
      * 
      */
     @Export(name="agentId", refs={String.class}, tree="[0]")
     private Output<String> agentId;
 
     /**
-     * @return The name of the GenAI resource.
+     * @return The name of the GradientAI resource.
      * 
      */
     public Output<String> agentId() {
         return this.agentId;
     }
     /**
-     * The region where the GenAI resource will be created.
+     * The region where the GradientAI resource will be created.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
-     * @return The region where the GenAI resource will be created.
+     * @return The region where the GradientAI resource will be created.
      * 
      */
     public Output<String> description() {
         return this.description;
     }
     /**
-     * The model to use for the GenAI resource.
+     * The model to use for the GradientAI resource.
      * 
      */
     @Export(name="faasName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> faasName;
 
     /**
-     * @return The model to use for the GenAI resource.
+     * @return The model to use for the GradientAI resource.
      * 
      */
     public Output<Optional<String>> faasName() {
         return Codegen.optional(this.faasName);
     }
     /**
-     * The current status of the GenAI resource.
+     * The current status of the GradientAI resource.
      * 
      */
     @Export(name="faasNamespace", refs={String.class}, tree="[0]")
     private Output<String> faasNamespace;
 
     /**
-     * @return The current status of the GenAI resource.
+     * @return The current status of the GradientAI resource.
      * 
      */
     public Output<String> faasNamespace() {
         return this.faasNamespace;
     }
     /**
-     * The creation timestamp of the GenAI resource.
+     * The creation timestamp of the GradientAI resource.
      * 
      */
     @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     /**
-     * @return The creation timestamp of the GenAI resource.
+     * @return The creation timestamp of the GradientAI resource.
      * 
      */
     public Output<String> functionName() {
         return this.functionName;
     }
     /**
-     * The unique identifier of the GenAI function.
+     * The unique identifier of the GradientAI function.
      * 
      */
     @Export(name="functionUuid", refs={String.class}, tree="[0]")
     private Output<String> functionUuid;
 
     /**
-     * @return The unique identifier of the GenAI function.
+     * @return The unique identifier of the GradientAI function.
      * 
      */
     public Output<String> functionUuid() {
         return this.functionUuid;
     }
     /**
-     * The input schema of the GenAI resource.
+     * The input schema of the GradientAI resource.
      * 
      */
     @Export(name="inputSchema", refs={String.class}, tree="[0]")
     private Output<String> inputSchema;
 
     /**
-     * @return The input schema of the GenAI resource.
+     * @return The input schema of the GradientAI resource.
      * 
      */
     public Output<String> inputSchema() {
         return this.inputSchema;
     }
     /**
-     * The output schema of the GenAI resource.
+     * The output schema of the GradientAI resource.
      * 
      */
     @Export(name="outputSchema", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> outputSchema;
 
     /**
-     * @return The output schema of the GenAI resource.
+     * @return The output schema of the GradientAI resource.
      * 
      */
     public Output<Optional<String>> outputSchema() {

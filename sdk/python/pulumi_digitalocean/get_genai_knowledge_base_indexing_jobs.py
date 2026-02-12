@@ -22,6 +22,8 @@ __all__ = [
     'get_genai_knowledge_base_indexing_jobs_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiKnowledgeBaseIndexingJobsResult:
     """
@@ -82,6 +84,7 @@ def get_genai_knowledge_base_indexing_jobs(knowledge_base_uuid: Optional[_builti
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_base_indexing_jobs is deprecated: digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs""")
     __args__ = dict()
     __args__['knowledgeBaseUuid'] = knowledge_base_uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -97,6 +100,7 @@ def get_genai_knowledge_base_indexing_jobs_output(knowledge_base_uuid: Optional[
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_base_indexing_jobs is deprecated: digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs""")
     __args__ = dict()
     __args__['knowledgeBaseUuid'] = knowledge_base_uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

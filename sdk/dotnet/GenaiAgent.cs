@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent")]
     [DigitalOceanResourceType("digitalocean:index/genaiAgent:GenaiAgent")]
     public partial class GenaiAgent : global::Pulumi.CustomResource
     {

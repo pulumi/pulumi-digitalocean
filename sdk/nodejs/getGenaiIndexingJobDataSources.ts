@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
 export function getGenaiIndexingJobDataSources(args: GetGenaiIndexingJobDataSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiIndexingJobDataSourcesResult> {
+    pulumi.log.warn("getGenaiIndexingJobDataSources is deprecated: digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", {
         "indexingJobUuid": args.indexingJobUuid,
@@ -32,7 +34,9 @@ export interface GetGenaiIndexingJobDataSourcesResult {
     readonly indexedDataSources: outputs.GetGenaiIndexingJobDataSourcesIndexedDataSource[];
     readonly indexingJobUuid: string;
 }
+/** @deprecated digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources */
 export function getGenaiIndexingJobDataSourcesOutput(args: GetGenaiIndexingJobDataSourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiIndexingJobDataSourcesResult> {
+    pulumi.log.warn("getGenaiIndexingJobDataSources is deprecated: digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiIndexingJobDataSources:getGenaiIndexingJobDataSources", {
         "indexingJobUuid": args.indexingJobUuid,

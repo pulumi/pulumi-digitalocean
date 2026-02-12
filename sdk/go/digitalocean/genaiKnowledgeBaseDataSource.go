@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource
 type GenaiKnowledgeBaseDataSource struct {
 	pulumi.CustomResourceState
 

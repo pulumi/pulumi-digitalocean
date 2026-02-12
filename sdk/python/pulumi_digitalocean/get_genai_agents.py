@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_agents_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiAgentsResult:
     """
@@ -94,6 +96,7 @@ def get_genai_agents(filters: Optional[Sequence[Union['GetGenaiAgentsFilterArgs'
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agents is deprecated: digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['onlyDeployed'] = only_deployed
@@ -114,6 +117,7 @@ def get_genai_agents_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agents is deprecated: digitalocean.getGenaiAgents has been deprecated in favor of digitalocean.getGradientaiAgents""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['onlyDeployed'] = only_deployed

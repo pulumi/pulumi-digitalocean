@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase
+ */
 export class GenaiKnowledgeBase extends pulumi.CustomResource {
     /**
      * Get an existing GenaiKnowledgeBase resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiKnowledgeBaseState, opts?: pulumi.CustomResourceOptions): GenaiKnowledgeBase {
+        pulumi.log.warn("GenaiKnowledgeBase is deprecated: digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase")
         return new GenaiKnowledgeBase(name, <any>state, { ...opts, id: id });
     }
 
@@ -50,7 +54,7 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
     /**
      * Data sources for the knowledge base
      */
-    declare public readonly datasources: pulumi.Output<outputs.GenaiKnowledgeBaseDataSource[]>;
+    declare public readonly datasources: pulumi.Output<outputs.GradientaiKnowledgeBaseDataSource[]>;
     /**
      * The unique identifier of the embedding model
      */
@@ -85,8 +89,11 @@ export class GenaiKnowledgeBase extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase */
     constructor(name: string, args: GenaiKnowledgeBaseArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase */
     constructor(name: string, argsOrState?: GenaiKnowledgeBaseArgs | GenaiKnowledgeBaseState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiKnowledgeBase is deprecated: digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -154,7 +161,7 @@ export interface GenaiKnowledgeBaseState {
     /**
      * Data sources for the knowledge base
      */
-    datasources?: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSource>[]>;
+    datasources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSource>[]>;
     /**
      * The unique identifier of the embedding model
      */
@@ -198,7 +205,7 @@ export interface GenaiKnowledgeBaseArgs {
     /**
      * Data sources for the knowledge base
      */
-    datasources: pulumi.Input<pulumi.Input<inputs.GenaiKnowledgeBaseDataSource>[]>;
+    datasources: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSource>[]>;
     /**
      * The unique identifier of the embedding model
      */

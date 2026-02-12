@@ -209,8 +209,13 @@ class _GenaiOpenaiApiKeyState:
         pulumi.set(self, "uuid", value)
 
 
+warnings.warn("""digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey")
 class GenaiOpenaiApiKey(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -254,6 +259,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
                  models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiOpenaiApiKeyModelArgs', 'GenaiOpenaiApiKeyModelArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiOpenaiApiKey is deprecated: digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

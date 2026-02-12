@@ -2841,7 +2841,7 @@ export interface GenaiAgentKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GenaiAgentKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GenaiAgentKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -3288,7 +3288,7 @@ export interface GenaiAgentTemplateKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GenaiAgentTemplateKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -3453,99 +3453,6 @@ export interface GenaiAgentTemplateModelVersion {
      * Patch version of the model
      */
     patch?: number;
-}
-
-export interface GenaiKnowledgeBaseDataSource {
-    /**
-     * Created At timestamp for the Knowledge Base
-     */
-    createdAt: string;
-    /**
-     * File upload data source configuration
-     */
-    fileUploadDataSources?: outputs.GenaiKnowledgeBaseDataSourceFileUploadDataSource[];
-    /**
-     * Last indexing job for the data source
-     */
-    lastIndexingJobs?: outputs.GenaiKnowledgeBaseDataSourceLastIndexingJob[];
-    /**
-     * Spaces data source configuration
-     */
-    spacesDataSources?: outputs.GenaiKnowledgeBaseDataSourceSpacesDataSource[];
-    /**
-     * Timestamp when the Knowledge Base was updated
-     */
-    updatedAt: string;
-    /**
-     * UUID of the Knowledge Base
-     */
-    uuid?: string;
-    /**
-     * Web crawler data source configuration
-     */
-    webCrawlerDataSources?: outputs.GenaiKnowledgeBaseDataSourceWebCrawlerDataSource[];
-}
-
-export interface GenaiKnowledgeBaseDataSourceFileUploadDataSource {
-    /**
-     * The original name of the uploaded file
-     */
-    originalFileName?: string;
-    /**
-     * The size of the file in bytes
-     */
-    sizeInBytes?: string;
-    /**
-     * The stored object key for the file
-     */
-    storedObjectKey?: string;
-}
-
-export interface GenaiKnowledgeBaseDataSourceLastIndexingJob {
-    /**
-     * Number of completed datasources in the last indexing job
-     */
-    completedDatasources?: number;
-    /**
-     * Created At timestamp for the last indexing job
-     */
-    createdAt: string;
-    /**
-     * Datasource UUIDs for the last indexing job
-     */
-    dataSourceUuids?: string[];
-    /**
-     * Timestamp when the last indexing job finished
-     */
-    finishedAt: string;
-    /**
-     * UUID  of the Knowledge Base for the last indexing job
-     */
-    knowledgeBaseUuid: string;
-    /**
-     * Phase of the last indexing job
-     */
-    phase?: string;
-    /**
-     * Timestamp when the last indexing job started
-     */
-    startedAt: string;
-    /**
-     * Number of tokens processed in the last indexing job
-     */
-    tokens?: number;
-    /**
-     * Total number of datasources in the last indexing job
-     */
-    totalDatasources?: number;
-    /**
-     * Timestamp when the last indexing job updated
-     */
-    updatedAt: string;
-    /**
-     * UUID  of the last indexing job
-     */
-    uuid?: string;
 }
 
 export interface GenaiKnowledgeBaseDataSourceSpacesDataSource {
@@ -6454,7 +6361,7 @@ export interface GetGenaiAgentKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GetGenaiAgentKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GetGenaiAgentKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -6881,7 +6788,7 @@ export interface GetGenaiAgentTemplateKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -7809,7 +7716,7 @@ export interface GetGenaiAgentsAgentKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -8236,7 +8143,7 @@ export interface GetGenaiAgentsAgentTemplateKnowledgeBase {
     /**
      * Last indexing job for the Knowledge Base
      */
-    lastIndexingJobs?: outputs.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob[];
+    lastIndexingJob?: outputs.GetGenaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob;
     /**
      * Name of the Knowledge Base
      */
@@ -10353,6 +10260,4327 @@ export interface GetGenaiRegionsSort {
     key: string;
 }
 
+export interface GetGradientaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGradientaiAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentModelVersion[];
+}
+
+export interface GetGradientaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGradientaiAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGradientaiAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentTemplateModelVersion[];
+}
+
+export interface GetGradientaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentVersionsAgentVersion {
+    /**
+     * ID of the Agent to retrieve versions for
+     */
+    agentUuid: string;
+    /**
+     * List of child agents attached to this version
+     */
+    attachedChildAgents: outputs.GetGradientaiAgentVersionsAgentVersionAttachedChildAgent[];
+    /**
+     * List of functions attached to this version
+     */
+    attachedFunctions: outputs.GetGradientaiAgentVersionsAgentVersionAttachedFunction[];
+    /**
+     * List of guardrails attached to this version
+     */
+    attachedGuardrails: outputs.GetGradientaiAgentVersionsAgentVersionAttachedGuardrail[];
+    /**
+     * List of Knowledge Bases agent versions
+     */
+    attachedKnowledgeBases: outputs.GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase[];
+    /**
+     * Indicates if the version can be rolled back
+     */
+    canRollback: boolean;
+    /**
+     * Timestamp when the Agent Version was created
+     */
+    createdAt: string;
+    /**
+     * Email of the user who created this version
+     */
+    createdByEmail: string;
+    /**
+     * Indicates if this version is currently applied configuration
+     */
+    currentlyApplied: boolean;
+    /**
+     * Description of the Agent Version
+     */
+    description: string;
+    /**
+     * Id of the Agent Version
+     */
+    id: string;
+    /**
+     * Instruction for the Agent Version
+     */
+    instruction: string;
+    /**
+     * K value for the Agent Version
+     */
+    k: number;
+    /**
+     * Maximum tokens allowed for the Agent
+     */
+    maxTokens: number;
+    /**
+     * Name of model associated to the agent version
+     */
+    modelName: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Indicates if the should provide in-response citations
+     */
+    provideCitations: boolean;
+    /**
+     * Retrieval method used. 
+     * - RETRIEVAL_METHOD_UNKNOWN: The retrieval method is unknown
+     * - RETRIEVAL_METHOD_REWRITE: The retrieval method is rewrite
+     * - RETRIEVAL_METHOD_STEP_BACK: The retrieval method is step back
+     * - RETRIEVAL_METHOD_SUB_QUERIES: The retrieval method is sub queries
+     * - RETRIEVAL_METHOD_NONE: The retrieval method is none.
+     */
+    retrievalMethod: string;
+    /**
+     * List of Tags
+     */
+    tags: string[];
+    /**
+     * Temperature setting for the Agent Version
+     */
+    temperature: number;
+    /**
+     * Top P sampling parameter for the Agent Version
+     */
+    topP: number;
+    /**
+     * Trigger action for the Agent Version
+     */
+    triggerAction: string;
+    /**
+     * Hash of the Agent Version
+     */
+    versionHash: string;
+}
+
+export interface GetGradientaiAgentVersionsAgentVersionAttachedChildAgent {
+    /**
+     * Name of the child agent
+     */
+    agentName: string;
+    /**
+     * Child agent unique identifier
+     */
+    childAgentUuid: string;
+    /**
+     * If case
+     */
+    ifCase: string;
+    /**
+     * Child agent is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Route name
+     */
+    routeName: string;
+}
+
+export interface GetGradientaiAgentVersionsAgentVersionAttachedFunction {
+    /**
+     * Description of the function
+     */
+    description: string;
+    /**
+     * FaaS name of the function
+     */
+    faasName: string;
+    /**
+     * FaaS namespace of the function
+     */
+    faasNamespace: string;
+    /**
+     * Function is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the function
+     */
+    name: string;
+}
+
+export interface GetGradientaiAgentVersionsAgentVersionAttachedGuardrail {
+    /**
+     * Whether the guardrail is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the guardrail
+     */
+    name: string;
+    /**
+     * Guardrail priority
+     */
+    priority: number;
+    /**
+     * Guardrail UUID
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentVersionsAgentVersionAttachedKnowledgeBase {
+    /**
+     * Whether the knowledge base is deleted
+     */
+    isDeleted: boolean;
+    /**
+     * Name of the knowledge base
+     */
+    name: string;
+    /**
+     * Knowledge base UUID
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentVersionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiAgentVersionsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiAgentsAgent {
+    /**
+     * AgentGuardrail represents a Guardrail attached to Gen AI Agent
+     */
+    agentGuardrails: outputs.GetGradientaiAgentsAgentAgentGuardrail[];
+    /**
+     * ID of the Agent to retrieve
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys: outputs.GetGradientaiAgentsAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos: outputs.GetGradientaiAgentsAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys: outputs.GetGradientaiAgentsAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers: outputs.GetGradientaiAgentsAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots: outputs.GetGradientaiAgentsAgentChatbot[];
+    /**
+     * List of child agents
+     */
+    childAgents: outputs.GetGradientaiAgentsAgentChildAgent[];
+    /**
+     * Timestamp when the Agent was created
+     */
+    createdAt: string;
+    /**
+     * List of API Key Infos
+     */
+    deployments: outputs.GetGradientaiAgentsAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description: string;
+    /**
+     * List of API Key Infos
+     */
+    functions: outputs.GetGradientaiAgentsAgentFunction[];
+    /**
+     * If case condition
+     */
+    ifCase: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * K value
+     */
+    k: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases: outputs.GetGradientaiAgentsAgentKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens: number;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Model of the Agent
+     */
+    models: outputs.GetGradientaiAgentsAgentModel[];
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * OpenAI API Key information
+     */
+    openAiApiKeys: outputs.GetGradientaiAgentsAgentOpenAiApiKey[];
+    /**
+     * List of parent agents
+     */
+    parentAgents: outputs.GetGradientaiAgentsAgentParentAgent[];
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+    /**
+     * Retrieval method used
+     */
+    retrievalMethod: string;
+    /**
+     * Timestamp when the route was created
+     */
+    routeCreatedAt: string;
+    /**
+     * User who created the route
+     */
+    routeCreatedBy: string;
+    /**
+     * Route name
+     */
+    routeName: string;
+    /**
+     * Route UUID
+     */
+    routeUuid: string;
+    /**
+     * List of Tags
+     */
+    tags: string[];
+    /**
+     * Agent temperature setting
+     */
+    temperature: number;
+    /**
+     * Agent Template
+     */
+    templates: outputs.GetGradientaiAgentsAgentTemplate[];
+    /**
+     * Top P sampling parameter
+     */
+    topP: number;
+    /**
+     * Timestamp when the Agent was updated
+     */
+    updatedAt: string;
+    /**
+     * URL for the Agent
+     */
+    url: string;
+    /**
+     * User ID linked with the Agent
+     */
+    userId: string;
+}
+
+export interface GetGradientaiAgentsAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentsAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentsAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentsAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentsAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentsAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentsAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentsAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentsAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentsAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentsAgentModelVersion[];
+}
+
+export interface GetGradientaiAgentsAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentsAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentsAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentsAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentsAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentsAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentsAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentsAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentsAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGradientaiAgentsAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGradientaiAgentsAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentsAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentsAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentsAgentTemplateModelVersion[];
+}
+
+export interface GetGradientaiAgentsAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgent {
+    /**
+     * AgentGuardrail represents a Guardrail attached to Gen AI Agent
+     */
+    agentGuardrails?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail[];
+    /**
+     * ID of the Agent to retrieve
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChatbot[];
+    /**
+     * List of child agents
+     */
+    childAgents: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent[];
+    /**
+     * Timestamp when the Agent was created
+     */
+    createdAt: string;
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * List of API Key Infos
+     */
+    functions?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentFunction[];
+    /**
+     * If case condition
+     */
+    ifCase?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * K value
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Model of the Agent
+     */
+    models: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentModel[];
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * OpenAI API Key information
+     */
+    openAiApiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey[];
+    /**
+     * List of parent agents
+     */
+    parentAgents: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent[];
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+    /**
+     * Retrieval method used
+     */
+    retrievalMethod?: string;
+    /**
+     * Timestamp when the route was created
+     */
+    routeCreatedAt: string;
+    /**
+     * User who created the route
+     */
+    routeCreatedBy?: string;
+    /**
+     * Route name
+     */
+    routeName?: string;
+    /**
+     * Route UUID
+     */
+    routeUuid?: string;
+    /**
+     * List of Tags
+     */
+    tags?: string[];
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Agent Template
+     */
+    templates?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplate[];
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Timestamp when the Agent was updated
+     */
+    updatedAt: string;
+    /**
+     * URL for the Agent
+     */
+    url?: string;
+    /**
+     * User ID linked with the Agent
+     */
+    userId?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChatbotIdentifier {
+    /**
+     * Chatbot ID
+     */
+    chatbotId?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion[];
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentOpenAiApiKey {
+    /**
+     * OpenAI API Key
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion[];
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiAgentsByOpenaiApiKeyAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiAgentsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiAgentsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiIndexingJobDataSourcesIndexedDataSource {
+    /**
+     * Timestamp when data source completed indexing
+     */
+    completedAt: string;
+    /**
+     * UUID of the indexed data source
+     */
+    dataSourceUuid: string;
+    /**
+     * Detailed error description
+     */
+    errorDetails: string;
+    /**
+     * Error message if indexing failed
+     */
+    errorMsg: string;
+    /**
+     * Total count of items that have failed
+     */
+    failedItemCount: string;
+    /**
+     * Total count of files that have been indexed
+     */
+    indexedFileCount: string;
+    /**
+     * Total count of items that have been indexed
+     */
+    indexedItemCount: string;
+    /**
+     * Total count of items that have been removed
+     */
+    removedItemCount: string;
+    /**
+     * Total count of items that have been skipped
+     */
+    skippedItemCount: string;
+    /**
+     * Timestamp when data source started indexing
+     */
+    startedAt: string;
+    /**
+     * Status of the indexed data source
+     */
+    status: string;
+    /**
+     * Total size of files in data source in bytes
+     */
+    totalBytes: string;
+    /**
+     * Total size of indexed files in bytes
+     */
+    totalBytesIndexed: string;
+    /**
+     * Total file count in the data source
+     */
+    totalFileCount: string;
+}
+
+export interface GetGradientaiKnowledgeBaseDataSourcesDatasource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: outputs.GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource[];
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: outputs.GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob[];
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: outputs.GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: outputs.GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource[];
+}
+
+export interface GetGradientaiKnowledgeBaseDataSourcesDatasourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: string;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: string;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: string;
+}
+
+export interface GetGradientaiKnowledgeBaseDataSourcesDatasourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiKnowledgeBaseDataSourcesDatasourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GetGradientaiKnowledgeBaseDataSourcesDatasourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GetGradientaiKnowledgeBaseIndexingJobsJob {
+    /**
+     * Number of datasources indexed completed
+     */
+    completedDatasources: number;
+    /**
+     * Creation timestamp
+     */
+    createdAt: string;
+    /**
+     * List of data source UUIDs
+     */
+    dataSourceUuids: string[];
+    /**
+     * Finish timestamp
+     */
+    finishedAt: string;
+    /**
+     * Knowledge base UUID
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Current phase of the batch job
+     */
+    phase: string;
+    /**
+     * Start timestamp
+     */
+    startedAt: string;
+    /**
+     * Status of the indexing job
+     */
+    status: string;
+    /**
+     * Number of tokens
+     */
+    tokens: number;
+    /**
+     * Total number of datasources being indexed
+     */
+    totalDatasources: number;
+    /**
+     * Total items failed
+     */
+    totalItemsFailed: string;
+    /**
+     * Total items indexed
+     */
+    totalItemsIndexed: string;
+    /**
+     * Total items skipped
+     */
+    totalItemsSkipped: string;
+    /**
+     * Last update timestamp
+     */
+    updatedAt: string;
+    /**
+     * Unique identifier of the indexing job
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiKnowledgeBaseIndexingJobsMeta {
+    /**
+     * Current page number
+     */
+    page: number;
+    /**
+     * Total number of pages
+     */
+    pages: number;
+    /**
+     * Total number of items
+     */
+    total: number;
+}
+
+export interface GetGradientaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiKnowledgeBasesFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiKnowledgeBasesKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJobs: outputs.GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob[];
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region: string;
+    /**
+     * List of tags
+     */
+    tags: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiKnowledgeBasesSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiModelsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiModelsModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements: outputs.GetGradientaiModelsModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * ID of the Knowledge Base
+     */
+    id: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete: boolean;
+    /**
+     * URL of the Model
+     */
+    url: string;
+    /**
+     * UUID of the Model
+     */
+    uuid: string;
+    /**
+     * List of Versions for the Model
+     */
+    versions: outputs.GetGradientaiModelsModelVersion[];
+}
+
+export interface GetGradientaiModelsModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiModelsModelVersion {
+    /**
+     * Major version of the model
+     */
+    major: number;
+    /**
+     * Minor version of the model
+     */
+    minor: number;
+    /**
+     * Patch version of the model
+     */
+    patch: number;
+}
+
+export interface GetGradientaiModelsSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiOpenaiApiKeyModelVersion[];
+}
+
+export interface GetGradientaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiOpenaiApiKeysFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiOpenaiApiKeysOpenaiApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * List of models associated with the API Key
+     */
+    models: outputs.GetGradientaiOpenaiApiKeysOpenaiApiKeyModel[];
+    /**
+     * Name of the API Key
+     */
+    name: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * OpenAI API Key Uuid
+     */
+    uuid: string;
+}
+
+export interface GetGradientaiOpenaiApiKeysOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion[];
+}
+
+export interface GetGradientaiOpenaiApiKeysOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GetGradientaiOpenaiApiKeysOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GetGradientaiOpenaiApiKeysSort {
+    direction?: string;
+    key: string;
+}
+
+export interface GetGradientaiRegionsFilter {
+    all?: boolean;
+    key: string;
+    matchBy?: string;
+    values: string[];
+}
+
+export interface GetGradientaiRegionsRegion {
+    /**
+     * Inference URL for the model
+     */
+    inferenceUrl: string;
+    /**
+     * Region where the model is deployed
+     */
+    region: string;
+    /**
+     * Indicates if the model serves batch requests
+     */
+    servesBatch: boolean;
+    /**
+     * Indicates if the model serves inference requests
+     */
+    servesInference: boolean;
+    /**
+     * Streaming inference URL for the model
+     */
+    streamInferenceUrl: string;
+}
+
+export interface GetGradientaiRegionsSort {
+    direction?: string;
+    key: string;
+}
+
 export interface GetImagesFilter {
     /**
      * Set to `true` to require that a field match all of the `values` instead of just one or more of
@@ -11281,6 +15509,1303 @@ export interface GetVpcNatGatewayVpc {
      * ID of the ingress VPC
      */
     vpcUuid: string;
+}
+
+export interface GradientaiAgentAgentGuardrail {
+    /**
+     * Agent UUID for the Guardrail
+     */
+    agentUuid?: string;
+    /**
+     * Created At timestamp for the Guardrail
+     */
+    createdAt: string;
+    /**
+     * Default response for the Guardrail
+     */
+    defaultResponse?: string;
+    /**
+     * Description of the Guardrail
+     */
+    description?: string;
+    /**
+     * Guardrail UUID
+     */
+    guardrailUuid?: string;
+    /**
+     * Indicates if the Guardrail is attached
+     */
+    isAttached: boolean;
+    /**
+     * Indicates if the Guardrail is default
+     */
+    isDefault?: boolean;
+    /**
+     * Name of Guardrail
+     */
+    name?: string;
+    /**
+     * Priority of the Guardrail
+     */
+    priority?: number;
+    /**
+     * Type of the Guardrail
+     */
+    type?: string;
+    /**
+     * Updated At timestamp for the Guardrail
+     */
+    updatedAt: string;
+    /**
+     * Guardrail UUID
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GradientaiAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GradientaiAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GradientaiAgentChildAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GradientaiAgentChildAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GradientaiAgentChildAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GradientaiAgentChildAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GradientaiAgentChildAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GradientaiAgentChildAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GradientaiAgentChildAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GradientaiAgentChildAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentChildAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GradientaiAgentChildAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentChildAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GradientaiAgentChildAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GradientaiAgentChildAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GradientaiAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GradientaiAgentFunction {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+    /**
+     * Created At timestamp for the Function
+     */
+    createdAt: string;
+    /**
+     * Description of the Function
+     */
+    description?: string;
+    /**
+     * Name of function
+     */
+    faasname?: string;
+    /**
+     * Namespace of function
+     */
+    faasnamespace?: string;
+    /**
+     * Guardrail UUID for the Function
+     */
+    guardrailUuid?: string;
+    /**
+     * Name of function
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GradientaiAgentKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GradientaiAgentKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GradientaiAgentModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GradientaiAgentModelVersion[];
+}
+
+export interface GradientaiAgentModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GradientaiAgentOpenAiApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentParentAgent {
+    /**
+     * ID of the child agent
+     */
+    agentId: string;
+    /**
+     * Anthropic API Key information
+     */
+    anthropicApiKeys?: outputs.GradientaiAgentParentAgentAnthropicApiKey[];
+    /**
+     * List of API Key Infos
+     */
+    apiKeyInfos?: outputs.GradientaiAgentParentAgentApiKeyInfo[];
+    /**
+     * List of API Keys
+     */
+    apiKeys?: outputs.GradientaiAgentParentAgentApiKey[];
+    /**
+     * List of Chatbot Identifiers
+     */
+    chatbotIdentifiers?: outputs.GradientaiAgentParentAgentChatbotIdentifier[];
+    /**
+     * ChatBot configuration
+     */
+    chatbots?: outputs.GradientaiAgentParentAgentChatbot[];
+    /**
+     * List of API Key Infos
+     */
+    deployments?: outputs.GradientaiAgentParentAgentDeployment[];
+    /**
+     * Description for the Agent
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction: string;
+    /**
+     * Model UUID of the Agent
+     */
+    modelUuid: string;
+    /**
+     * Name of the Agent
+     */
+    name: string;
+    /**
+     * Project ID of the Agent
+     */
+    projectId: string;
+    /**
+     * Region where the Agent is deployed
+     */
+    region: string;
+}
+
+export interface GradientaiAgentParentAgentAnthropicApiKey {
+    /**
+     * Timestamp when the API Key was created
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    updatedAt: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentParentAgentApiKey {
+    /**
+     * API Key value
+     */
+    apiKey?: string;
+}
+
+export interface GradientaiAgentParentAgentApiKeyInfo {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Created By user ID for the API Key
+     */
+    createdBy?: string;
+    /**
+     * Deleted At timestamp for the API Key
+     */
+    deletedAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Updated At timestamp for the API Key
+     */
+    secretKey?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentParentAgentChatbot {
+    /**
+     * Background color for the chatbot button
+     */
+    buttonBackgroundColor?: string;
+    /**
+     * Logo for the chatbot
+     */
+    logo?: string;
+    /**
+     * Name of the chatbot
+     */
+    name?: string;
+    /**
+     * Primary color for the chatbot
+     */
+    primaryColor?: string;
+    /**
+     * Secondary color for the chatbot
+     */
+    secondaryColor?: string;
+    /**
+     * Starting message for the chatbot
+     */
+    startingMessage?: string;
+}
+
+export interface GradientaiAgentParentAgentChatbotIdentifier {
+    chatbotId: string;
+}
+
+export interface GradientaiAgentParentAgentDeployment {
+    /**
+     * API Key value
+     */
+    createdAt: string;
+    /**
+     * Name of the API Key
+     */
+    name?: string;
+    /**
+     * Status of the Deployment
+     */
+    status?: string;
+    /**
+     * Updated At timestamp for the Agent
+     */
+    updatedAt: string;
+    /**
+     * Url of the Deployment
+     */
+    url?: string;
+    /**
+     * API Key value
+     */
+    uuid?: string;
+    /**
+     * Visibility of the Deployment
+     */
+    visibility?: string;
+}
+
+export interface GradientaiAgentTemplate {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Description of the Agent Template
+     */
+    description?: string;
+    /**
+     * Instruction for the Agent
+     */
+    instruction?: string;
+    /**
+     * K value for the Agent Template
+     */
+    k?: number;
+    /**
+     * List of Knowledge Bases
+     */
+    knowledgeBases?: outputs.GradientaiAgentTemplateKnowledgeBase[];
+    /**
+     * Maximum tokens allowed
+     */
+    maxTokens?: number;
+    /**
+     * Model of the Agent Template
+     */
+    models?: outputs.GradientaiAgentTemplateModel[];
+    /**
+     * Name of the Agent Template
+     */
+    name?: string;
+    /**
+     * Agent temperature setting
+     */
+    temperature?: number;
+    /**
+     * Top P sampling parameter
+     */
+    topP?: number;
+    /**
+     * Updated At timestamp for the Agent Template
+     */
+    updatedAt: string;
+    /**
+     * uuid of the Agent Template
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentTemplateKnowledgeBase {
+    /**
+     * Timestamp when the Knowledge Base was added to the Agent
+     */
+    addedToAgentAt: string;
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Database ID of the Knowledge Base
+     */
+    databaseId?: string;
+    /**
+     * Embedding model UUID for the Knowledge Base
+     */
+    embeddingModelUuid?: string;
+    /**
+     * Indicates if the Knowledge Base is public
+     */
+    isPublic?: boolean;
+    /**
+     * Last indexing job for the Knowledge Base
+     */
+    lastIndexingJob?: outputs.GradientaiAgentTemplateKnowledgeBaseLastIndexingJob;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Project ID of the Knowledge Base
+     */
+    projectId?: string;
+    /**
+     * Region of the Knowledge Base
+     */
+    region?: string;
+    /**
+     * List of tags
+     */
+    tags?: string[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * User ID of the Knowledge Base
+     */
+    userId?: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid: string;
+}
+
+export interface GradientaiAgentTemplateKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentTemplateModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GradientaiAgentTemplateModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GradientaiAgentTemplateModelVersion[];
+}
+
+export interface GradientaiAgentTemplateModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GradientaiAgentTemplateModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
+}
+
+export interface GradientaiKnowledgeBaseDataSource {
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * File upload data source configuration
+     */
+    fileUploadDataSources?: outputs.GradientaiKnowledgeBaseDataSourceFileUploadDataSource[];
+    /**
+     * Last indexing job for the data source
+     */
+    lastIndexingJobs?: outputs.GradientaiKnowledgeBaseDataSourceLastIndexingJob[];
+    /**
+     * Spaces data source configuration
+     */
+    spacesDataSources?: outputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource[];
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * UUID of the Knowledge Base
+     */
+    uuid?: string;
+    /**
+     * Web crawler data source configuration
+     */
+    webCrawlerDataSources?: outputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource[];
+}
+
+export interface GradientaiKnowledgeBaseDataSourceFileUploadDataSource {
+    /**
+     * The original name of the uploaded file
+     */
+    originalFileName?: string;
+    /**
+     * The size of the file in bytes
+     */
+    sizeInBytes?: string;
+    /**
+     * The stored object key for the file
+     */
+    storedObjectKey?: string;
+}
+
+export interface GradientaiKnowledgeBaseDataSourceLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GradientaiKnowledgeBaseDataSourceSpacesDataSource {
+    /**
+     * The name of the Spaces bucket
+     */
+    bucketName?: string;
+    /**
+     * The path to the item in the bucket
+     */
+    itemPath?: string;
+    /**
+     * The region of the Spaces bucket
+     */
+    region?: string;
+}
+
+export interface GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource {
+    /**
+     * The base URL to crawl
+     */
+    baseUrl?: string;
+    /**
+     * Options for specifying how URLs found on pages should be handled. 
+     * - UNKNOWN: Default unknown value
+     * - SCOPED: Only include the base URL.
+     * - PATH: Crawl the base URL and linked pages within the URL path.
+     * - DOMAIN: Crawl the base URL and linked pages within the same domain.
+     * - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+     */
+    crawlingOption?: string;
+    /**
+     * Whether to embed media content
+     */
+    embedMedia?: boolean;
+}
+
+export interface GradientaiKnowledgeBaseLastIndexingJob {
+    /**
+     * Number of completed datasources in the last indexing job
+     */
+    completedDatasources?: number;
+    /**
+     * Created At timestamp for the last indexing job
+     */
+    createdAt: string;
+    /**
+     * Datasource UUIDs for the last indexing job
+     */
+    dataSourceUuids?: string[];
+    /**
+     * Timestamp when the last indexing job finished
+     */
+    finishedAt: string;
+    /**
+     * UUID  of the Knowledge Base for the last indexing job
+     */
+    knowledgeBaseUuid: string;
+    /**
+     * Phase of the last indexing job
+     */
+    phase?: string;
+    /**
+     * Timestamp when the last indexing job started
+     */
+    startedAt: string;
+    /**
+     * Number of tokens processed in the last indexing job
+     */
+    tokens?: number;
+    /**
+     * Total number of datasources in the last indexing job
+     */
+    totalDatasources?: number;
+    /**
+     * Timestamp when the last indexing job updated
+     */
+    updatedAt: string;
+    /**
+     * UUID  of the last indexing job
+     */
+    uuid?: string;
+}
+
+export interface GradientaiOpenaiApiKeyModel {
+    /**
+     * Agreement information for the model
+     */
+    agreements?: outputs.GradientaiOpenaiApiKeyModelAgreement[];
+    /**
+     * Created At timestamp for the Knowledge Base
+     */
+    createdAt: string;
+    /**
+     * Inference name of the model
+     */
+    inferenceName?: string;
+    /**
+     * Infernce version of the model
+     */
+    inferenceVersion?: string;
+    /**
+     * Indicates if the Model Base is foundational
+     */
+    isFoundational?: boolean;
+    /**
+     * Name of the Knowledge Base
+     */
+    name?: string;
+    /**
+     * Parent UUID of the Model
+     */
+    parentUuid?: string;
+    /**
+     * Provider of the Model
+     */
+    provider?: string;
+    /**
+     * Timestamp when the Knowledge Base was updated
+     */
+    updatedAt: string;
+    /**
+     * Indicates if the Model upload is complete
+     */
+    uploadComplete?: boolean;
+    /**
+     * URL of the Model
+     */
+    url?: string;
+    /**
+     * List of Usecases for the Model
+     */
+    usecases?: string[];
+    /**
+     * URL of the Model
+     */
+    versions?: outputs.GradientaiOpenaiApiKeyModelVersion[];
+}
+
+export interface GradientaiOpenaiApiKeyModelAgreement {
+    /**
+     * Description of the agreement
+     */
+    description?: string;
+    /**
+     * Name of the agreement
+     */
+    name?: string;
+    /**
+     * URL of the agreement
+     */
+    url?: string;
+    /**
+     * UUID of the agreement
+     */
+    uuid?: string;
+}
+
+export interface GradientaiOpenaiApiKeyModelVersion {
+    /**
+     * Major version of the model
+     */
+    major?: number;
+    /**
+     * Minor version of the model
+     */
+    minor?: number;
+    /**
+     * Patch version of the model
+     */
+    patch?: number;
 }
 
 export interface KubernetesClusterAmdGpuDeviceMetricsExporterPlugin {

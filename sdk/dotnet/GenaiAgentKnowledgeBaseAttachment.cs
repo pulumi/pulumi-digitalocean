@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment")]
     [DigitalOceanResourceType("digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment")]
     public partial class GenaiAgentKnowledgeBaseAttachment : global::Pulumi.CustomResource
     {

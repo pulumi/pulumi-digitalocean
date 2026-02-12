@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey")]
     public static class GetGenaiAgentsByOpenaiApiKey
     {
         public static Task<GetGenaiAgentsByOpenaiApiKeyResult> InvokeAsync(GetGenaiAgentsByOpenaiApiKeyArgs args, InvokeOptions? options = null)

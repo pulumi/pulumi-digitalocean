@@ -15,6 +15,12 @@ import java.lang.String;
 import java.util.List;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey
+ * 
+ */
+@Deprecated /* digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey */
 @ResourceType(type="digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey")
 public class GenaiOpenaiApiKey extends com.pulumi.resources.CustomResource {
     /**

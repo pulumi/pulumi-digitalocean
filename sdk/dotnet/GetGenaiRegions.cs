@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions")]
     public static class GetGenaiRegions
     {
         public static Task<GetGenaiRegionsResult> InvokeAsync(GetGenaiRegionsArgs? args = null, InvokeOptions? options = null)

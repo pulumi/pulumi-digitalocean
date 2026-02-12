@@ -4,6 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction
+ */
 export class GenaiFunction extends pulumi.CustomResource {
     /**
      * Get an existing GenaiFunction resource's state with the given name, ID, and optional extra
@@ -15,6 +18,7 @@ export class GenaiFunction extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiFunctionState, opts?: pulumi.CustomResourceOptions): GenaiFunction {
+        pulumi.log.warn("GenaiFunction is deprecated: digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction")
         return new GenaiFunction(name, <any>state, { ...opts, id: id });
     }
 
@@ -33,35 +37,35 @@ export class GenaiFunction extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the GenAI resource.
+     * The name of the GradientAI resource.
      */
     declare public readonly agentId: pulumi.Output<string>;
     /**
-     * The region where the GenAI resource will be created.
+     * The region where the GradientAI resource will be created.
      */
     declare public readonly description: pulumi.Output<string>;
     /**
-     * The model to use for the GenAI resource.
+     * The model to use for the GradientAI resource.
      */
     declare public readonly faasName: pulumi.Output<string | undefined>;
     /**
-     * The current status of the GenAI resource.
+     * The current status of the GradientAI resource.
      */
     declare public readonly faasNamespace: pulumi.Output<string>;
     /**
-     * The creation timestamp of the GenAI resource.
+     * The creation timestamp of the GradientAI resource.
      */
     declare public readonly functionName: pulumi.Output<string>;
     /**
-     * The unique identifier of the GenAI function.
+     * The unique identifier of the GradientAI function.
      */
     declare public /*out*/ readonly functionUuid: pulumi.Output<string>;
     /**
-     * The input schema of the GenAI resource.
+     * The input schema of the GradientAI resource.
      */
     declare public readonly inputSchema: pulumi.Output<string>;
     /**
-     * The output schema of the GenAI resource.
+     * The output schema of the GradientAI resource.
      */
     declare public readonly outputSchema: pulumi.Output<string | undefined>;
 
@@ -72,8 +76,11 @@ export class GenaiFunction extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction */
     constructor(name: string, args: GenaiFunctionArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction */
     constructor(name: string, argsOrState?: GenaiFunctionArgs | GenaiFunctionState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiFunction is deprecated: digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
@@ -122,35 +129,35 @@ export class GenaiFunction extends pulumi.CustomResource {
  */
 export interface GenaiFunctionState {
     /**
-     * The name of the GenAI resource.
+     * The name of the GradientAI resource.
      */
     agentId?: pulumi.Input<string>;
     /**
-     * The region where the GenAI resource will be created.
+     * The region where the GradientAI resource will be created.
      */
     description?: pulumi.Input<string>;
     /**
-     * The model to use for the GenAI resource.
+     * The model to use for the GradientAI resource.
      */
     faasName?: pulumi.Input<string>;
     /**
-     * The current status of the GenAI resource.
+     * The current status of the GradientAI resource.
      */
     faasNamespace?: pulumi.Input<string>;
     /**
-     * The creation timestamp of the GenAI resource.
+     * The creation timestamp of the GradientAI resource.
      */
     functionName?: pulumi.Input<string>;
     /**
-     * The unique identifier of the GenAI function.
+     * The unique identifier of the GradientAI function.
      */
     functionUuid?: pulumi.Input<string>;
     /**
-     * The input schema of the GenAI resource.
+     * The input schema of the GradientAI resource.
      */
     inputSchema?: pulumi.Input<string>;
     /**
-     * The output schema of the GenAI resource.
+     * The output schema of the GradientAI resource.
      */
     outputSchema?: pulumi.Input<string>;
 }
@@ -160,31 +167,31 @@ export interface GenaiFunctionState {
  */
 export interface GenaiFunctionArgs {
     /**
-     * The name of the GenAI resource.
+     * The name of the GradientAI resource.
      */
     agentId: pulumi.Input<string>;
     /**
-     * The region where the GenAI resource will be created.
+     * The region where the GradientAI resource will be created.
      */
     description: pulumi.Input<string>;
     /**
-     * The model to use for the GenAI resource.
+     * The model to use for the GradientAI resource.
      */
     faasName?: pulumi.Input<string>;
     /**
-     * The current status of the GenAI resource.
+     * The current status of the GradientAI resource.
      */
     faasNamespace: pulumi.Input<string>;
     /**
-     * The creation timestamp of the GenAI resource.
+     * The creation timestamp of the GradientAI resource.
      */
     functionName: pulumi.Input<string>;
     /**
-     * The input schema of the GenAI resource.
+     * The input schema of the GradientAI resource.
      */
     inputSchema: pulumi.Input<string>;
     /**
-     * The output schema of the GenAI resource.
+     * The output schema of the GradientAI resource.
      */
     outputSchema?: pulumi.Input<string>;
 }

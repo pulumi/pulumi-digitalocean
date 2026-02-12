@@ -97,15 +97,15 @@ public final class GetGenaiAgentKnowledgeBase extends com.pulumi.resources.Invok
      * Last indexing job for the Knowledge Base
      * 
      */
-    @Import(name="lastIndexingJobs")
-    private @Nullable List<GetGenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+    @Import(name="lastIndexingJob")
+    private @Nullable GetGenaiAgentKnowledgeBaseLastIndexingJob lastIndexingJob;
 
     /**
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    public Optional<List<GetGenaiAgentKnowledgeBaseLastIndexingJob>> lastIndexingJobs() {
-        return Optional.ofNullable(this.lastIndexingJobs);
+    public Optional<GetGenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJob() {
+        return Optional.ofNullable(this.lastIndexingJob);
     }
 
     /**
@@ -221,7 +221,7 @@ public final class GetGenaiAgentKnowledgeBase extends com.pulumi.resources.Invok
         this.databaseId = $.databaseId;
         this.embeddingModelUuid = $.embeddingModelUuid;
         this.isPublic = $.isPublic;
-        this.lastIndexingJobs = $.lastIndexingJobs;
+        this.lastIndexingJob = $.lastIndexingJob;
         this.name = $.name;
         this.projectId = $.projectId;
         this.region = $.region;
@@ -305,24 +305,14 @@ public final class GetGenaiAgentKnowledgeBase extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param lastIndexingJobs Last indexing job for the Knowledge Base
+         * @param lastIndexingJob Last indexing job for the Knowledge Base
          * 
          * @return builder
          * 
          */
-        public Builder lastIndexingJobs(@Nullable List<GetGenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs) {
-            $.lastIndexingJobs = lastIndexingJobs;
+        public Builder lastIndexingJob(@Nullable GetGenaiAgentKnowledgeBaseLastIndexingJob lastIndexingJob) {
+            $.lastIndexingJob = lastIndexingJob;
             return this;
-        }
-
-        /**
-         * @param lastIndexingJobs Last indexing job for the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastIndexingJobs(GetGenaiAgentKnowledgeBaseLastIndexingJob... lastIndexingJobs) {
-            return lastIndexingJobs(List.of(lastIndexingJobs));
         }
 
         /**

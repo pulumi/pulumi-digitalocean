@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
 export function getGenaiRegions(args?: GetGenaiRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiRegionsResult> {
+    pulumi.log.warn("getGenaiRegions is deprecated: digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiRegions:getGenaiRegions", {
@@ -36,7 +38,9 @@ export interface GetGenaiRegionsResult {
     readonly regions: outputs.GetGenaiRegionsRegion[];
     readonly sorts?: outputs.GetGenaiRegionsSort[];
 }
+/** @deprecated digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions */
 export function getGenaiRegionsOutput(args?: GetGenaiRegionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiRegionsResult> {
+    pulumi.log.warn("getGenaiRegions is deprecated: digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiRegions:getGenaiRegions", {

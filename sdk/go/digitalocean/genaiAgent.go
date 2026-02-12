@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent
 type GenaiAgent struct {
 	pulumi.CustomResourceState
 

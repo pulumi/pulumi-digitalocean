@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey
 type GenaiOpenaiApiKey struct {
 	pulumi.CustomResourceState
 

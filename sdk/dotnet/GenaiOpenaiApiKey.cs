@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey")]
     [DigitalOceanResourceType("digitalocean:index/genaiOpenaiApiKey:GenaiOpenaiApiKey")]
     public partial class GenaiOpenaiApiKey : global::Pulumi.CustomResource
     {

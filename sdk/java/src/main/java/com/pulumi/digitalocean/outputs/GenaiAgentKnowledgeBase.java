@@ -43,7 +43,7 @@ public final class GenaiAgentKnowledgeBase {
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    private @Nullable List<GenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+    private @Nullable GenaiAgentKnowledgeBaseLastIndexingJob lastIndexingJob;
     /**
      * @return Name of the Knowledge Base
      * 
@@ -120,8 +120,8 @@ public final class GenaiAgentKnowledgeBase {
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    public List<GenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs() {
-        return this.lastIndexingJobs == null ? List.of() : this.lastIndexingJobs;
+    public Optional<GenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJob() {
+        return Optional.ofNullable(this.lastIndexingJob);
     }
     /**
      * @return Name of the Knowledge Base
@@ -187,7 +187,7 @@ public final class GenaiAgentKnowledgeBase {
         private @Nullable String databaseId;
         private @Nullable String embeddingModelUuid;
         private @Nullable Boolean isPublic;
-        private @Nullable List<GenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+        private @Nullable GenaiAgentKnowledgeBaseLastIndexingJob lastIndexingJob;
         private @Nullable String name;
         private @Nullable String projectId;
         private @Nullable String region;
@@ -203,7 +203,7 @@ public final class GenaiAgentKnowledgeBase {
     	      this.databaseId = defaults.databaseId;
     	      this.embeddingModelUuid = defaults.embeddingModelUuid;
     	      this.isPublic = defaults.isPublic;
-    	      this.lastIndexingJobs = defaults.lastIndexingJobs;
+    	      this.lastIndexingJob = defaults.lastIndexingJob;
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
@@ -244,13 +244,10 @@ public final class GenaiAgentKnowledgeBase {
             return this;
         }
         @CustomType.Setter
-        public Builder lastIndexingJobs(@Nullable List<GenaiAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs) {
+        public Builder lastIndexingJob(@Nullable GenaiAgentKnowledgeBaseLastIndexingJob lastIndexingJob) {
 
-            this.lastIndexingJobs = lastIndexingJobs;
+            this.lastIndexingJob = lastIndexingJob;
             return this;
-        }
-        public Builder lastIndexingJobs(GenaiAgentKnowledgeBaseLastIndexingJob... lastIndexingJobs) {
-            return lastIndexingJobs(List.of(lastIndexingJobs));
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -304,7 +301,7 @@ public final class GenaiAgentKnowledgeBase {
             _resultValue.databaseId = databaseId;
             _resultValue.embeddingModelUuid = embeddingModelUuid;
             _resultValue.isPublic = isPublic;
-            _resultValue.lastIndexingJobs = lastIndexingJobs;
+            _resultValue.lastIndexingJob = lastIndexingJob;
             _resultValue.name = name;
             _resultValue.projectId = projectId;
             _resultValue.region = region;

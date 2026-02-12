@@ -12,24 +12,25 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction
 type GenaiFunction struct {
 	pulumi.CustomResourceState
 
-	// The name of the GenAI resource.
+	// The name of the GradientAI resource.
 	AgentId pulumi.StringOutput `pulumi:"agentId"`
-	// The region where the GenAI resource will be created.
+	// The region where the GradientAI resource will be created.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// The model to use for the GenAI resource.
+	// The model to use for the GradientAI resource.
 	FaasName pulumi.StringPtrOutput `pulumi:"faasName"`
-	// The current status of the GenAI resource.
+	// The current status of the GradientAI resource.
 	FaasNamespace pulumi.StringOutput `pulumi:"faasNamespace"`
-	// The creation timestamp of the GenAI resource.
+	// The creation timestamp of the GradientAI resource.
 	FunctionName pulumi.StringOutput `pulumi:"functionName"`
-	// The unique identifier of the GenAI function.
+	// The unique identifier of the GradientAI function.
 	FunctionUuid pulumi.StringOutput `pulumi:"functionUuid"`
-	// The input schema of the GenAI resource.
+	// The input schema of the GradientAI resource.
 	InputSchema pulumi.StringOutput `pulumi:"inputSchema"`
-	// The output schema of the GenAI resource.
+	// The output schema of the GradientAI resource.
 	OutputSchema pulumi.StringPtrOutput `pulumi:"outputSchema"`
 }
 
@@ -78,40 +79,40 @@ func GetGenaiFunction(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GenaiFunction resources.
 type genaiFunctionState struct {
-	// The name of the GenAI resource.
+	// The name of the GradientAI resource.
 	AgentId *string `pulumi:"agentId"`
-	// The region where the GenAI resource will be created.
+	// The region where the GradientAI resource will be created.
 	Description *string `pulumi:"description"`
-	// The model to use for the GenAI resource.
+	// The model to use for the GradientAI resource.
 	FaasName *string `pulumi:"faasName"`
-	// The current status of the GenAI resource.
+	// The current status of the GradientAI resource.
 	FaasNamespace *string `pulumi:"faasNamespace"`
-	// The creation timestamp of the GenAI resource.
+	// The creation timestamp of the GradientAI resource.
 	FunctionName *string `pulumi:"functionName"`
-	// The unique identifier of the GenAI function.
+	// The unique identifier of the GradientAI function.
 	FunctionUuid *string `pulumi:"functionUuid"`
-	// The input schema of the GenAI resource.
+	// The input schema of the GradientAI resource.
 	InputSchema *string `pulumi:"inputSchema"`
-	// The output schema of the GenAI resource.
+	// The output schema of the GradientAI resource.
 	OutputSchema *string `pulumi:"outputSchema"`
 }
 
 type GenaiFunctionState struct {
-	// The name of the GenAI resource.
+	// The name of the GradientAI resource.
 	AgentId pulumi.StringPtrInput
-	// The region where the GenAI resource will be created.
+	// The region where the GradientAI resource will be created.
 	Description pulumi.StringPtrInput
-	// The model to use for the GenAI resource.
+	// The model to use for the GradientAI resource.
 	FaasName pulumi.StringPtrInput
-	// The current status of the GenAI resource.
+	// The current status of the GradientAI resource.
 	FaasNamespace pulumi.StringPtrInput
-	// The creation timestamp of the GenAI resource.
+	// The creation timestamp of the GradientAI resource.
 	FunctionName pulumi.StringPtrInput
-	// The unique identifier of the GenAI function.
+	// The unique identifier of the GradientAI function.
 	FunctionUuid pulumi.StringPtrInput
-	// The input schema of the GenAI resource.
+	// The input schema of the GradientAI resource.
 	InputSchema pulumi.StringPtrInput
-	// The output schema of the GenAI resource.
+	// The output schema of the GradientAI resource.
 	OutputSchema pulumi.StringPtrInput
 }
 
@@ -120,37 +121,37 @@ func (GenaiFunctionState) ElementType() reflect.Type {
 }
 
 type genaiFunctionArgs struct {
-	// The name of the GenAI resource.
+	// The name of the GradientAI resource.
 	AgentId string `pulumi:"agentId"`
-	// The region where the GenAI resource will be created.
+	// The region where the GradientAI resource will be created.
 	Description string `pulumi:"description"`
-	// The model to use for the GenAI resource.
+	// The model to use for the GradientAI resource.
 	FaasName *string `pulumi:"faasName"`
-	// The current status of the GenAI resource.
+	// The current status of the GradientAI resource.
 	FaasNamespace string `pulumi:"faasNamespace"`
-	// The creation timestamp of the GenAI resource.
+	// The creation timestamp of the GradientAI resource.
 	FunctionName string `pulumi:"functionName"`
-	// The input schema of the GenAI resource.
+	// The input schema of the GradientAI resource.
 	InputSchema string `pulumi:"inputSchema"`
-	// The output schema of the GenAI resource.
+	// The output schema of the GradientAI resource.
 	OutputSchema *string `pulumi:"outputSchema"`
 }
 
 // The set of arguments for constructing a GenaiFunction resource.
 type GenaiFunctionArgs struct {
-	// The name of the GenAI resource.
+	// The name of the GradientAI resource.
 	AgentId pulumi.StringInput
-	// The region where the GenAI resource will be created.
+	// The region where the GradientAI resource will be created.
 	Description pulumi.StringInput
-	// The model to use for the GenAI resource.
+	// The model to use for the GradientAI resource.
 	FaasName pulumi.StringPtrInput
-	// The current status of the GenAI resource.
+	// The current status of the GradientAI resource.
 	FaasNamespace pulumi.StringInput
-	// The creation timestamp of the GenAI resource.
+	// The creation timestamp of the GradientAI resource.
 	FunctionName pulumi.StringInput
-	// The input schema of the GenAI resource.
+	// The input schema of the GradientAI resource.
 	InputSchema pulumi.StringInput
-	// The output schema of the GenAI resource.
+	// The output schema of the GradientAI resource.
 	OutputSchema pulumi.StringPtrInput
 }
 
@@ -241,42 +242,42 @@ func (o GenaiFunctionOutput) ToGenaiFunctionOutputWithContext(ctx context.Contex
 	return o
 }
 
-// The name of the GenAI resource.
+// The name of the GradientAI resource.
 func (o GenaiFunctionOutput) AgentId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.AgentId }).(pulumi.StringOutput)
 }
 
-// The region where the GenAI resource will be created.
+// The region where the GradientAI resource will be created.
 func (o GenaiFunctionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// The model to use for the GenAI resource.
+// The model to use for the GradientAI resource.
 func (o GenaiFunctionOutput) FaasName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringPtrOutput { return v.FaasName }).(pulumi.StringPtrOutput)
 }
 
-// The current status of the GenAI resource.
+// The current status of the GradientAI resource.
 func (o GenaiFunctionOutput) FaasNamespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.FaasNamespace }).(pulumi.StringOutput)
 }
 
-// The creation timestamp of the GenAI resource.
+// The creation timestamp of the GradientAI resource.
 func (o GenaiFunctionOutput) FunctionName() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.FunctionName }).(pulumi.StringOutput)
 }
 
-// The unique identifier of the GenAI function.
+// The unique identifier of the GradientAI function.
 func (o GenaiFunctionOutput) FunctionUuid() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.FunctionUuid }).(pulumi.StringOutput)
 }
 
-// The input schema of the GenAI resource.
+// The input schema of the GradientAI resource.
 func (o GenaiFunctionOutput) InputSchema() pulumi.StringOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringOutput { return v.InputSchema }).(pulumi.StringOutput)
 }
 
-// The output schema of the GenAI resource.
+// The output schema of the GradientAI resource.
 func (o GenaiFunctionOutput) OutputSchema() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GenaiFunction) pulumi.StringPtrOutput { return v.OutputSchema }).(pulumi.StringPtrOutput)
 }

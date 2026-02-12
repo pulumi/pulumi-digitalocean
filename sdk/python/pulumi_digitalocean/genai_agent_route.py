@@ -198,8 +198,13 @@ class _GenaiAgentRouteState:
         pulumi.set(self, "uuid", value)
 
 
+warnings.warn("""digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiAgentRoute:GenaiAgentRoute")
 class GenaiAgentRoute(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -248,6 +253,7 @@ class GenaiAgentRoute(pulumi.CustomResource):
                  rollback: Optional[pulumi.Input[_builtins.bool]] = None,
                  route_name: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiAgentRoute is deprecated: digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

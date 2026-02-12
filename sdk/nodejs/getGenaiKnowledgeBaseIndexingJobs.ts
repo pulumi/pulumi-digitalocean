@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
 export function getGenaiKnowledgeBaseIndexingJobs(args: GetGenaiKnowledgeBaseIndexingJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiKnowledgeBaseIndexingJobsResult> {
+    pulumi.log.warn("getGenaiKnowledgeBaseIndexingJobs is deprecated: digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,
@@ -33,7 +35,9 @@ export interface GetGenaiKnowledgeBaseIndexingJobsResult {
     readonly knowledgeBaseUuid: string;
     readonly metas: outputs.GetGenaiKnowledgeBaseIndexingJobsMeta[];
 }
+/** @deprecated digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs */
 export function getGenaiKnowledgeBaseIndexingJobsOutput(args: GetGenaiKnowledgeBaseIndexingJobsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiKnowledgeBaseIndexingJobsResult> {
+    pulumi.log.warn("getGenaiKnowledgeBaseIndexingJobs is deprecated: digitalocean.getGenaiKnowledgeBaseIndexingJobs has been deprecated in favor of digitalocean.getGradientaiKnowledgeBaseIndexingJobs")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiKnowledgeBaseIndexingJobs:getGenaiKnowledgeBaseIndexingJobs", {
         "knowledgeBaseUuid": args.knowledgeBaseUuid,

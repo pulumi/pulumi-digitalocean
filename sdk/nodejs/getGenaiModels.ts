@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
 export function getGenaiModels(args?: GetGenaiModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiModelsResult> {
+    pulumi.log.warn("getGenaiModels is deprecated: digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiModels:getGenaiModels", {
@@ -36,7 +38,9 @@ export interface GetGenaiModelsResult {
     readonly models: outputs.GetGenaiModelsModel[];
     readonly sorts?: outputs.GetGenaiModelsSort[];
 }
+/** @deprecated digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels */
 export function getGenaiModelsOutput(args?: GetGenaiModelsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiModelsResult> {
+    pulumi.log.warn("getGenaiModels is deprecated: digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiModels:getGenaiModels", {

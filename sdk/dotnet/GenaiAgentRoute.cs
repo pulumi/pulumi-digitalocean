@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute")]
     [DigitalOceanResourceType("digitalocean:index/genaiAgentRoute:GenaiAgentRoute")]
     public partial class GenaiAgentRoute : global::Pulumi.CustomResource
     {

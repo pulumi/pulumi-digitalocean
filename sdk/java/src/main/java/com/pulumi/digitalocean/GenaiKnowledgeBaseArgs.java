@@ -5,8 +5,8 @@ package com.pulumi.digitalocean;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseDataSourceArgs;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseLastIndexingJobArgs;
+import com.pulumi.digitalocean.inputs.GradientaiKnowledgeBaseDataSourceArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
@@ -55,13 +55,13 @@ public final class GenaiKnowledgeBaseArgs extends com.pulumi.resources.ResourceA
      * 
      */
     @Import(name="datasources", required=true)
-    private Output<List<GenaiKnowledgeBaseDataSourceArgs>> datasources;
+    private Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Output<List<GenaiKnowledgeBaseDataSourceArgs>> datasources() {
+    public Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources() {
         return this.datasources;
     }
 
@@ -251,7 +251,7 @@ public final class GenaiKnowledgeBaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder datasources(Output<List<GenaiKnowledgeBaseDataSourceArgs>> datasources) {
+        public Builder datasources(Output<List<GradientaiKnowledgeBaseDataSourceArgs>> datasources) {
             $.datasources = datasources;
             return this;
         }
@@ -262,7 +262,7 @@ public final class GenaiKnowledgeBaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder datasources(List<GenaiKnowledgeBaseDataSourceArgs> datasources) {
+        public Builder datasources(List<GradientaiKnowledgeBaseDataSourceArgs> datasources) {
             return datasources(Output.of(datasources));
         }
 
@@ -272,7 +272,7 @@ public final class GenaiKnowledgeBaseArgs extends com.pulumi.resources.ResourceA
          * @return builder
          * 
          */
-        public Builder datasources(GenaiKnowledgeBaseDataSourceArgs... datasources) {
+        public Builder datasources(GradientaiKnowledgeBaseDataSourceArgs... datasources) {
             return datasources(List.of(datasources));
         }
 

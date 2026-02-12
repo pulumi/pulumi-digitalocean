@@ -287,8 +287,13 @@ class _GenaiIndexingJobCancelState:
         pulumi.set(self, "uuid", value)
 
 
+warnings.warn("""digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiIndexingJobCancel:GenaiIndexingJobCancel")
 class GenaiIndexingJobCancel(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -326,6 +331,7 @@ class GenaiIndexingJobCancel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiIndexingJobCancel is deprecated: digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

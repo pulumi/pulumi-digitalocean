@@ -10,14 +10,20 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.digitalocean.GenaiKnowledgeBaseArgs;
 import com.pulumi.digitalocean.Utilities;
 import com.pulumi.digitalocean.inputs.GenaiKnowledgeBaseState;
-import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseDataSource;
 import com.pulumi.digitalocean.outputs.GenaiKnowledgeBaseLastIndexingJob;
+import com.pulumi.digitalocean.outputs.GradientaiKnowledgeBaseDataSource;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase
+ * 
+ */
+@Deprecated /* digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase */
 @ResourceType(type="digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase")
 public class GenaiKnowledgeBase extends com.pulumi.resources.CustomResource {
     /**
@@ -66,14 +72,14 @@ public class GenaiKnowledgeBase extends com.pulumi.resources.CustomResource {
      * Data sources for the knowledge base
      * 
      */
-    @Export(name="datasources", refs={List.class,GenaiKnowledgeBaseDataSource.class}, tree="[0,1]")
-    private Output<List<GenaiKnowledgeBaseDataSource>> datasources;
+    @Export(name="datasources", refs={List.class,GradientaiKnowledgeBaseDataSource.class}, tree="[0,1]")
+    private Output<List<GradientaiKnowledgeBaseDataSource>> datasources;
 
     /**
      * @return Data sources for the knowledge base
      * 
      */
-    public Output<List<GenaiKnowledgeBaseDataSource>> datasources() {
+    public Output<List<GradientaiKnowledgeBaseDataSource>> datasources() {
         return this.datasources;
     }
     /**

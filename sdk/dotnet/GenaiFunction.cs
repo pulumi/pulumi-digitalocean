@@ -9,53 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiFunction has been deprecated in favor of digitalocean.GradientaiFunction")]
     [DigitalOceanResourceType("digitalocean:index/genaiFunction:GenaiFunction")]
     public partial class GenaiFunction : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the GenAI resource.
+        /// The name of the GradientAI resource.
         /// </summary>
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
 
         /// <summary>
-        /// The region where the GenAI resource will be created.
+        /// The region where the GradientAI resource will be created.
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The model to use for the GenAI resource.
+        /// The model to use for the GradientAI resource.
         /// </summary>
         [Output("faasName")]
         public Output<string?> FaasName { get; private set; } = null!;
 
         /// <summary>
-        /// The current status of the GenAI resource.
+        /// The current status of the GradientAI resource.
         /// </summary>
         [Output("faasNamespace")]
         public Output<string> FaasNamespace { get; private set; } = null!;
 
         /// <summary>
-        /// The creation timestamp of the GenAI resource.
+        /// The creation timestamp of the GradientAI resource.
         /// </summary>
         [Output("functionName")]
         public Output<string> FunctionName { get; private set; } = null!;
 
         /// <summary>
-        /// The unique identifier of the GenAI function.
+        /// The unique identifier of the GradientAI function.
         /// </summary>
         [Output("functionUuid")]
         public Output<string> FunctionUuid { get; private set; } = null!;
 
         /// <summary>
-        /// The input schema of the GenAI resource.
+        /// The input schema of the GradientAI resource.
         /// </summary>
         [Output("inputSchema")]
         public Output<string> InputSchema { get; private set; } = null!;
 
         /// <summary>
-        /// The output schema of the GenAI resource.
+        /// The output schema of the GradientAI resource.
         /// </summary>
         [Output("outputSchema")]
         public Output<string?> OutputSchema { get; private set; } = null!;
@@ -107,43 +108,43 @@ namespace Pulumi.DigitalOcean
     public sealed class GenaiFunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the GenAI resource.
+        /// The name of the GradientAI resource.
         /// </summary>
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
 
         /// <summary>
-        /// The region where the GenAI resource will be created.
+        /// The region where the GradientAI resource will be created.
         /// </summary>
         [Input("description", required: true)]
         public Input<string> Description { get; set; } = null!;
 
         /// <summary>
-        /// The model to use for the GenAI resource.
+        /// The model to use for the GradientAI resource.
         /// </summary>
         [Input("faasName")]
         public Input<string>? FaasName { get; set; }
 
         /// <summary>
-        /// The current status of the GenAI resource.
+        /// The current status of the GradientAI resource.
         /// </summary>
         [Input("faasNamespace", required: true)]
         public Input<string> FaasNamespace { get; set; } = null!;
 
         /// <summary>
-        /// The creation timestamp of the GenAI resource.
+        /// The creation timestamp of the GradientAI resource.
         /// </summary>
         [Input("functionName", required: true)]
         public Input<string> FunctionName { get; set; } = null!;
 
         /// <summary>
-        /// The input schema of the GenAI resource.
+        /// The input schema of the GradientAI resource.
         /// </summary>
         [Input("inputSchema", required: true)]
         public Input<string> InputSchema { get; set; } = null!;
 
         /// <summary>
-        /// The output schema of the GenAI resource.
+        /// The output schema of the GradientAI resource.
         /// </summary>
         [Input("outputSchema")]
         public Input<string>? OutputSchema { get; set; }
@@ -157,49 +158,49 @@ namespace Pulumi.DigitalOcean
     public sealed class GenaiFunctionState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the GenAI resource.
+        /// The name of the GradientAI resource.
         /// </summary>
         [Input("agentId")]
         public Input<string>? AgentId { get; set; }
 
         /// <summary>
-        /// The region where the GenAI resource will be created.
+        /// The region where the GradientAI resource will be created.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The model to use for the GenAI resource.
+        /// The model to use for the GradientAI resource.
         /// </summary>
         [Input("faasName")]
         public Input<string>? FaasName { get; set; }
 
         /// <summary>
-        /// The current status of the GenAI resource.
+        /// The current status of the GradientAI resource.
         /// </summary>
         [Input("faasNamespace")]
         public Input<string>? FaasNamespace { get; set; }
 
         /// <summary>
-        /// The creation timestamp of the GenAI resource.
+        /// The creation timestamp of the GradientAI resource.
         /// </summary>
         [Input("functionName")]
         public Input<string>? FunctionName { get; set; }
 
         /// <summary>
-        /// The unique identifier of the GenAI function.
+        /// The unique identifier of the GradientAI function.
         /// </summary>
         [Input("functionUuid")]
         public Input<string>? FunctionUuid { get; set; }
 
         /// <summary>
-        /// The input schema of the GenAI resource.
+        /// The input schema of the GradientAI resource.
         /// </summary>
         [Input("inputSchema")]
         public Input<string>? InputSchema { get; set; }
 
         /// <summary>
-        /// The output schema of the GenAI resource.
+        /// The output schema of the GradientAI resource.
         /// </summary>
         [Input("outputSchema")]
         public Input<string>? OutputSchema { get; set; }

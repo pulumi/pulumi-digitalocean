@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute
 type GenaiAgentRoute struct {
 	pulumi.CustomResourceState
 

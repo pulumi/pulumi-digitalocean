@@ -32,6 +32,12 @@ import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent
+ * 
+ */
+@Deprecated /* digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent */
 @ResourceType(type="digitalocean:index/genaiAgent:GenaiAgent")
 public class GenaiAgent extends com.pulumi.resources.CustomResource {
     /**

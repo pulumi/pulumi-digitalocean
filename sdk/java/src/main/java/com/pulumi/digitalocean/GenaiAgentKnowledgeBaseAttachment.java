@@ -13,6 +13,12 @@ import com.pulumi.digitalocean.inputs.GenaiAgentKnowledgeBaseAttachmentState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment
+ * 
+ */
+@Deprecated /* digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment */
 @ResourceType(type="digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment")
 public class GenaiAgentKnowledgeBaseAttachment extends com.pulumi.resources.CustomResource {
     /**

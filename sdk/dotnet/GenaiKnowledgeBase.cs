@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiKnowledgeBase has been deprecated in favor of digitalocean.GradientaiKnowledgeBase")]
     [DigitalOceanResourceType("digitalocean:index/genaiKnowledgeBase:GenaiKnowledgeBase")]
     public partial class GenaiKnowledgeBase : global::Pulumi.CustomResource
     {
@@ -34,7 +35,7 @@ namespace Pulumi.DigitalOcean
         /// Data sources for the knowledge base
         /// </summary>
         [Output("datasources")]
-        public Output<ImmutableArray<Outputs.GenaiKnowledgeBaseDataSource>> Datasources { get; private set; } = null!;
+        public Output<ImmutableArray<Outputs.GradientaiKnowledgeBaseDataSource>> Datasources { get; private set; } = null!;
 
         /// <summary>
         /// The unique identifier of the embedding model
@@ -137,14 +138,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DatabaseId { get; set; }
 
         [Input("datasources", required: true)]
-        private InputList<Inputs.GenaiKnowledgeBaseDataSourceArgs>? _datasources;
+        private InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs>? _datasources;
 
         /// <summary>
         /// Data sources for the knowledge base
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDataSourceArgs> Datasources
+        public InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs> Datasources
         {
-            get => _datasources ?? (_datasources = new InputList<Inputs.GenaiKnowledgeBaseDataSourceArgs>());
+            get => _datasources ?? (_datasources = new InputList<Inputs.GradientaiKnowledgeBaseDataSourceArgs>());
             set => _datasources = value;
         }
 
@@ -228,14 +229,14 @@ namespace Pulumi.DigitalOcean
         public Input<string>? DatabaseId { get; set; }
 
         [Input("datasources")]
-        private InputList<Inputs.GenaiKnowledgeBaseDataSourceGetArgs>? _datasources;
+        private InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs>? _datasources;
 
         /// <summary>
         /// Data sources for the knowledge base
         /// </summary>
-        public InputList<Inputs.GenaiKnowledgeBaseDataSourceGetArgs> Datasources
+        public InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs> Datasources
         {
-            get => _datasources ?? (_datasources = new InputList<Inputs.GenaiKnowledgeBaseDataSourceGetArgs>());
+            get => _datasources ?? (_datasources = new InputList<Inputs.GradientaiKnowledgeBaseDataSourceGetArgs>());
             set => _datasources = value;
         }
 

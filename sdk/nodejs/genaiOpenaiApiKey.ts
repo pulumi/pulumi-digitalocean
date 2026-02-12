@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey
+ */
 export class GenaiOpenaiApiKey extends pulumi.CustomResource {
     /**
      * Get an existing GenaiOpenaiApiKey resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GenaiOpenaiApiKey extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiOpenaiApiKeyState, opts?: pulumi.CustomResourceOptions): GenaiOpenaiApiKey {
+        pulumi.log.warn("GenaiOpenaiApiKey is deprecated: digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey")
         return new GenaiOpenaiApiKey(name, <any>state, { ...opts, id: id });
     }
 
@@ -75,8 +79,11 @@ export class GenaiOpenaiApiKey extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey */
     constructor(name: string, args: GenaiOpenaiApiKeyArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey */
     constructor(name: string, argsOrState?: GenaiOpenaiApiKeyArgs | GenaiOpenaiApiKeyState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiOpenaiApiKey is deprecated: digitalocean.GenaiOpenaiApiKey has been deprecated in favor of digitalocean.GradientaiOpenaiApiKey")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

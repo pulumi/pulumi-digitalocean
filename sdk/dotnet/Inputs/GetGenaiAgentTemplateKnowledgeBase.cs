@@ -42,17 +42,11 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("isPublic")]
         public bool? IsPublic { get; set; }
 
-        [Input("lastIndexingJobs")]
-        private List<Inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs>? _lastIndexingJobs;
-
         /// <summary>
         /// Last indexing job for the Knowledge Base
         /// </summary>
-        public List<Inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs> LastIndexingJobs
-        {
-            get => _lastIndexingJobs ?? (_lastIndexingJobs = new List<Inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs>());
-            set => _lastIndexingJobs = value;
-        }
+        [Input("lastIndexingJob")]
+        public Inputs.GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs? LastIndexingJob { get; set; }
 
         /// <summary>
         /// Name of the Knowledge Base

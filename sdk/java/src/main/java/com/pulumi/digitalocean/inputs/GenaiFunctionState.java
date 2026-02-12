@@ -16,14 +16,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     public static final GenaiFunctionState Empty = new GenaiFunctionState();
 
     /**
-     * The name of the GenAI resource.
+     * The name of the GradientAI resource.
      * 
      */
     @Import(name="agentId")
     private @Nullable Output<String> agentId;
 
     /**
-     * @return The name of the GenAI resource.
+     * @return The name of the GradientAI resource.
      * 
      */
     public Optional<Output<String>> agentId() {
@@ -31,14 +31,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The region where the GenAI resource will be created.
+     * The region where the GradientAI resource will be created.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The region where the GenAI resource will be created.
+     * @return The region where the GradientAI resource will be created.
      * 
      */
     public Optional<Output<String>> description() {
@@ -46,14 +46,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The model to use for the GenAI resource.
+     * The model to use for the GradientAI resource.
      * 
      */
     @Import(name="faasName")
     private @Nullable Output<String> faasName;
 
     /**
-     * @return The model to use for the GenAI resource.
+     * @return The model to use for the GradientAI resource.
      * 
      */
     public Optional<Output<String>> faasName() {
@@ -61,14 +61,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The current status of the GenAI resource.
+     * The current status of the GradientAI resource.
      * 
      */
     @Import(name="faasNamespace")
     private @Nullable Output<String> faasNamespace;
 
     /**
-     * @return The current status of the GenAI resource.
+     * @return The current status of the GradientAI resource.
      * 
      */
     public Optional<Output<String>> faasNamespace() {
@@ -76,14 +76,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The creation timestamp of the GenAI resource.
+     * The creation timestamp of the GradientAI resource.
      * 
      */
     @Import(name="functionName")
     private @Nullable Output<String> functionName;
 
     /**
-     * @return The creation timestamp of the GenAI resource.
+     * @return The creation timestamp of the GradientAI resource.
      * 
      */
     public Optional<Output<String>> functionName() {
@@ -91,14 +91,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The unique identifier of the GenAI function.
+     * The unique identifier of the GradientAI function.
      * 
      */
     @Import(name="functionUuid")
     private @Nullable Output<String> functionUuid;
 
     /**
-     * @return The unique identifier of the GenAI function.
+     * @return The unique identifier of the GradientAI function.
      * 
      */
     public Optional<Output<String>> functionUuid() {
@@ -106,14 +106,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The input schema of the GenAI resource.
+     * The input schema of the GradientAI resource.
      * 
      */
     @Import(name="inputSchema")
     private @Nullable Output<String> inputSchema;
 
     /**
-     * @return The input schema of the GenAI resource.
+     * @return The input schema of the GradientAI resource.
      * 
      */
     public Optional<Output<String>> inputSchema() {
@@ -121,14 +121,14 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The output schema of the GenAI resource.
+     * The output schema of the GradientAI resource.
      * 
      */
     @Import(name="outputSchema")
     private @Nullable Output<String> outputSchema;
 
     /**
-     * @return The output schema of the GenAI resource.
+     * @return The output schema of the GradientAI resource.
      * 
      */
     public Optional<Output<String>> outputSchema() {
@@ -167,7 +167,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param agentId The name of the GenAI resource.
+         * @param agentId The name of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param agentId The name of the GenAI resource.
+         * @param agentId The name of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The region where the GenAI resource will be created.
+         * @param description The region where the GradientAI resource will be created.
          * 
          * @return builder
          * 
@@ -199,7 +199,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The region where the GenAI resource will be created.
+         * @param description The region where the GradientAI resource will be created.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param faasName The model to use for the GenAI resource.
+         * @param faasName The model to use for the GradientAI resource.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param faasName The model to use for the GenAI resource.
+         * @param faasName The model to use for the GradientAI resource.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param faasNamespace The current status of the GenAI resource.
+         * @param faasNamespace The current status of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param faasNamespace The current status of the GenAI resource.
+         * @param faasNamespace The current status of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -251,7 +251,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param functionName The creation timestamp of the GenAI resource.
+         * @param functionName The creation timestamp of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param functionName The creation timestamp of the GenAI resource.
+         * @param functionName The creation timestamp of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param functionUuid The unique identifier of the GenAI function.
+         * @param functionUuid The unique identifier of the GradientAI function.
          * 
          * @return builder
          * 
@@ -283,7 +283,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param functionUuid The unique identifier of the GenAI function.
+         * @param functionUuid The unique identifier of the GradientAI function.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param inputSchema The input schema of the GenAI resource.
+         * @param inputSchema The input schema of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -304,7 +304,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param inputSchema The input schema of the GenAI resource.
+         * @param inputSchema The input schema of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -314,7 +314,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param outputSchema The output schema of the GenAI resource.
+         * @param outputSchema The output schema of the GradientAI resource.
          * 
          * @return builder
          * 
@@ -325,7 +325,7 @@ public final class GenaiFunctionState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param outputSchema The output schema of the GenAI resource.
+         * @param outputSchema The output schema of the GradientAI resource.
          * 
          * @return builder
          * 

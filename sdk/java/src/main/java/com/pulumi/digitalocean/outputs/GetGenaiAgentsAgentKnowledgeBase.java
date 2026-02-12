@@ -44,7 +44,7 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    private @Nullable List<GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+    private @Nullable GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob lastIndexingJob;
     /**
      * @return Name of the Knowledge Base
      * 
@@ -121,8 +121,8 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    public List<GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs() {
-        return this.lastIndexingJobs == null ? List.of() : this.lastIndexingJobs;
+    public Optional<GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob> lastIndexingJob() {
+        return Optional.ofNullable(this.lastIndexingJob);
     }
     /**
      * @return Name of the Knowledge Base
@@ -188,7 +188,7 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
         private @Nullable String databaseId;
         private @Nullable String embeddingModelUuid;
         private @Nullable Boolean isPublic;
-        private @Nullable List<GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+        private @Nullable GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob lastIndexingJob;
         private @Nullable String name;
         private @Nullable String projectId;
         private @Nullable String region;
@@ -204,7 +204,7 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
     	      this.databaseId = defaults.databaseId;
     	      this.embeddingModelUuid = defaults.embeddingModelUuid;
     	      this.isPublic = defaults.isPublic;
-    	      this.lastIndexingJobs = defaults.lastIndexingJobs;
+    	      this.lastIndexingJob = defaults.lastIndexingJob;
     	      this.name = defaults.name;
     	      this.projectId = defaults.projectId;
     	      this.region = defaults.region;
@@ -249,13 +249,10 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
             return this;
         }
         @CustomType.Setter
-        public Builder lastIndexingJobs(@Nullable List<GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob> lastIndexingJobs) {
+        public Builder lastIndexingJob(@Nullable GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob lastIndexingJob) {
 
-            this.lastIndexingJobs = lastIndexingJobs;
+            this.lastIndexingJob = lastIndexingJob;
             return this;
-        }
-        public Builder lastIndexingJobs(GetGenaiAgentsAgentKnowledgeBaseLastIndexingJob... lastIndexingJobs) {
-            return lastIndexingJobs(List.of(lastIndexingJobs));
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
@@ -313,7 +310,7 @@ public final class GetGenaiAgentsAgentKnowledgeBase {
             _resultValue.databaseId = databaseId;
             _resultValue.embeddingModelUuid = embeddingModelUuid;
             _resultValue.isPublic = isPublic;
-            _resultValue.lastIndexingJobs = lastIndexingJobs;
+            _resultValue.lastIndexingJob = lastIndexingJob;
             _resultValue.name = name;
             _resultValue.projectId = projectId;
             _resultValue.region = region;

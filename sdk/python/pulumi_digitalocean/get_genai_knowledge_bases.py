@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_knowledge_bases_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiKnowledgeBasesResult:
     """
@@ -84,6 +86,7 @@ def get_genai_knowledge_bases(filters: Optional[Sequence[Union['GetGenaiKnowledg
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_bases is deprecated: digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_genai_knowledge_bases_output(filters: Optional[pulumi.Input[Optional[Seq
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_knowledge_bases is deprecated: digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

@@ -7,6 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/**
+ * @deprecated digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource
+ */
 export class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
     /**
      * Get an existing GenaiKnowledgeBaseDataSource resource's state with the given name, ID, and optional extra
@@ -18,6 +21,7 @@ export class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: GenaiKnowledgeBaseDataSourceState, opts?: pulumi.CustomResourceOptions): GenaiKnowledgeBaseDataSource {
+        pulumi.log.warn("GenaiKnowledgeBaseDataSource is deprecated: digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource")
         return new GenaiKnowledgeBaseDataSource(name, <any>state, { ...opts, id: id });
     }
 
@@ -49,8 +53,11 @@ export class GenaiKnowledgeBaseDataSource extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource */
     constructor(name: string, args: GenaiKnowledgeBaseDataSourceArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource */
     constructor(name: string, argsOrState?: GenaiKnowledgeBaseDataSourceArgs | GenaiKnowledgeBaseDataSourceState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("GenaiKnowledgeBaseDataSource is deprecated: digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

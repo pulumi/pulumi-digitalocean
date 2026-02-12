@@ -15,6 +15,12 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute
+ * 
+ */
+@Deprecated /* digitalocean.GenaiAgentRoute has been deprecated in favor of digitalocean.GradientaiAgentRoute */
 @ResourceType(type="digitalocean:index/genaiAgentRoute:GenaiAgentRoute")
 public class GenaiAgentRoute extends com.pulumi.resources.CustomResource {
     /**

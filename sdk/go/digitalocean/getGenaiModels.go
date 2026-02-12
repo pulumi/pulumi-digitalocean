@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels
 func GetGenaiModels(ctx *pulumi.Context, args *GetGenaiModelsArgs, opts ...pulumi.InvokeOption) (*GetGenaiModelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGenaiModelsResult

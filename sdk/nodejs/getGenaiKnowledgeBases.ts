@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
 export function getGenaiKnowledgeBases(args?: GetGenaiKnowledgeBasesArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiKnowledgeBasesResult> {
+    pulumi.log.warn("getGenaiKnowledgeBases is deprecated: digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", {
@@ -36,7 +38,9 @@ export interface GetGenaiKnowledgeBasesResult {
     readonly knowledgeBases: outputs.GetGenaiKnowledgeBasesKnowledgeBase[];
     readonly sorts?: outputs.GetGenaiKnowledgeBasesSort[];
 }
+/** @deprecated digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases */
 export function getGenaiKnowledgeBasesOutput(args?: GetGenaiKnowledgeBasesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiKnowledgeBasesResult> {
+    pulumi.log.warn("getGenaiKnowledgeBases is deprecated: digitalocean.getGenaiKnowledgeBases has been deprecated in favor of digitalocean.getGradientaiKnowledgeBases")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiKnowledgeBases:getGenaiKnowledgeBases", {

@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_agent_versions_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiAgentVersionsResult:
     """
@@ -94,6 +96,7 @@ def get_genai_agent_versions(agent_id: Optional[_builtins.str] = None,
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agent_versions is deprecated: digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions""")
     __args__ = dict()
     __args__['agentId'] = agent_id
     __args__['filters'] = filters
@@ -114,6 +117,7 @@ def get_genai_agent_versions_output(agent_id: Optional[pulumi.Input[_builtins.st
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_agent_versions is deprecated: digitalocean.getGenaiAgentVersions has been deprecated in favor of digitalocean.getGradientaiAgentVersions""")
     __args__ = dict()
     __args__['agentId'] = agent_id
     __args__['filters'] = filters

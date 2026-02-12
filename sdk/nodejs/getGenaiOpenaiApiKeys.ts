@@ -7,7 +7,9 @@ import * as outputs from "./types/output";
 import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
+/** @deprecated digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
 export function getGenaiOpenaiApiKeys(args?: GetGenaiOpenaiApiKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetGenaiOpenaiApiKeysResult> {
+    pulumi.log.warn("getGenaiOpenaiApiKeys is deprecated: digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", {
@@ -36,7 +38,9 @@ export interface GetGenaiOpenaiApiKeysResult {
     readonly openaiApiKeys: outputs.GetGenaiOpenaiApiKeysOpenaiApiKey[];
     readonly sorts?: outputs.GetGenaiOpenaiApiKeysSort[];
 }
+/** @deprecated digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys */
 export function getGenaiOpenaiApiKeysOutput(args?: GetGenaiOpenaiApiKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGenaiOpenaiApiKeysResult> {
+    pulumi.log.warn("getGenaiOpenaiApiKeys is deprecated: digitalocean.getGenaiOpenaiApiKeys has been deprecated in favor of digitalocean.getGradientaiOpenaiApiKeys")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getGenaiOpenaiApiKeys:getGenaiOpenaiApiKeys", {

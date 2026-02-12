@@ -12,6 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.GenaiIndexingJobCancel has been deprecated in favor of digitalocean.GradientaiIndexingJobCancel
 type GenaiIndexingJobCancel struct {
 	pulumi.CustomResourceState
 

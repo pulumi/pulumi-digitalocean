@@ -211,14 +211,14 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
-        example_secret = kubernetes.index.Secret("example",
-            metadata=[{
-                name: docker-cfg,
-            }],
-            data={
-                .dockerconfigjson: example_container_registry_docker_credentials.docker_credentials,
+        example_secret = kubernetes.core.v1.Secret("example",
+            metadata={
+                "name": "docker-cfg",
             },
-            type=kubernetes.io/dockerconfigjson)
+            data={
+                ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
+            },
+            type="kubernetes.io/dockerconfigjson")
         ```
 
         :param str resource_name: The name of the resource.
@@ -275,14 +275,14 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
-        example_secret = kubernetes.index.Secret("example",
-            metadata=[{
-                name: docker-cfg,
-            }],
-            data={
-                .dockerconfigjson: example_container_registry_docker_credentials.docker_credentials,
+        example_secret = kubernetes.core.v1.Secret("example",
+            metadata={
+                "name": "docker-cfg",
             },
-            type=kubernetes.io/dockerconfigjson)
+            data={
+                ".dockerconfigjson": example_container_registry_docker_credentials.docker_credentials,
+            },
+            type="kubernetes.io/dockerconfigjson")
         ```
 
         :param str resource_name: The name of the resource.

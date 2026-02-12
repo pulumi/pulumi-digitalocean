@@ -94,8 +94,13 @@ class _GenaiAgentKnowledgeBaseAttachmentState:
         pulumi.set(self, "knowledge_base_uuid", value)
 
 
+warnings.warn("""digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiAgentKnowledgeBaseAttachment:GenaiAgentKnowledgeBaseAttachment")
 class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -136,6 +141,7 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
                  agent_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiAgentKnowledgeBaseAttachment is deprecated: digitalocean.GenaiAgentKnowledgeBaseAttachment has been deprecated in favor of digitalocean.GradientaiAgentKnowledgeBaseAttachment""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

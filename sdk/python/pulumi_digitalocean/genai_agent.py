@@ -1246,8 +1246,13 @@ class _GenaiAgentState:
         pulumi.set(self, "user_id", value)
 
 
+warnings.warn("""digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""", DeprecationWarning)
+
+
 @pulumi.type_token("digitalocean:index/genaiAgent:GenaiAgent")
 class GenaiAgent(pulumi.CustomResource):
+    warnings.warn("""digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -1393,6 +1398,7 @@ class GenaiAgent(pulumi.CustomResource):
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
+        pulumi.log.warn("""GenaiAgent is deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

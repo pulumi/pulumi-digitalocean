@@ -22,6 +22,8 @@ __all__ = [
     'get_genai_indexing_job_data_sources_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiIndexingJobDataSourcesResult:
     """
@@ -73,6 +75,7 @@ def get_genai_indexing_job_data_sources(indexing_job_uuid: Optional[_builtins.st
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_indexing_job_data_sources is deprecated: digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources""")
     __args__ = dict()
     __args__['indexingJobUuid'] = indexing_job_uuid
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -87,6 +90,7 @@ def get_genai_indexing_job_data_sources_output(indexing_job_uuid: Optional[pulum
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_indexing_job_data_sources is deprecated: digitalocean.getGenaiIndexingJobDataSources has been deprecated in favor of digitalocean.getGradientaiIndexingJobDataSources""")
     __args__ = dict()
     __args__['indexingJobUuid'] = indexing_job_uuid
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)

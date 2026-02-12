@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_regions_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiRegionsResult:
     """
@@ -84,6 +86,7 @@ def get_genai_regions(filters: Optional[Sequence[Union['GetGenaiRegionsFilterArg
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_regions is deprecated: digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_genai_regions_output(filters: Optional[pulumi.Input[Optional[Sequence[Un
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_regions is deprecated: digitalocean.getGenaiRegions has been deprecated in favor of digitalocean.getGradientaiRegions""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts

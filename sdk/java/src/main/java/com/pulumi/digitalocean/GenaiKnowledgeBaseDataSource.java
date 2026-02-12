@@ -16,6 +16,12 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource
+ * 
+ */
+@Deprecated /* digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource */
 @ResourceType(type="digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource")
 public class GenaiKnowledgeBaseDataSource extends com.pulumi.resources.CustomResource {
     /**

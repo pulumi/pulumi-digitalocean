@@ -9,6 +9,7 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DigitalOcean
 {
+    [Obsolete(@"digitalocean.GenaiKnowledgeBaseDataSource has been deprecated in favor of digitalocean.GradientaiKnowledgeBaseDataSource")]
     [DigitalOceanResourceType("digitalocean:index/genaiKnowledgeBaseDataSource:GenaiKnowledgeBaseDataSource")]
     public partial class GenaiKnowledgeBaseDataSource : global::Pulumi.CustomResource
     {

@@ -11,6 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Deprecated: digitalocean.getGenaiAgentsByOpenaiApiKey has been deprecated in favor of digitalocean.getGradientaiAgentsByOpenaiApiKey
 func GetGenaiAgentsByOpenaiApiKey(ctx *pulumi.Context, args *GetGenaiAgentsByOpenaiApiKeyArgs, opts ...pulumi.InvokeOption) (*GetGenaiAgentsByOpenaiApiKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGenaiAgentsByOpenaiApiKeyResult

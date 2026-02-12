@@ -97,15 +97,15 @@ public final class GetGenaiAgentTemplateKnowledgeBase extends com.pulumi.resourc
      * Last indexing job for the Knowledge Base
      * 
      */
-    @Import(name="lastIndexingJobs")
-    private @Nullable List<GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob> lastIndexingJobs;
+    @Import(name="lastIndexingJob")
+    private @Nullable GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob lastIndexingJob;
 
     /**
      * @return Last indexing job for the Knowledge Base
      * 
      */
-    public Optional<List<GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob>> lastIndexingJobs() {
-        return Optional.ofNullable(this.lastIndexingJobs);
+    public Optional<GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob> lastIndexingJob() {
+        return Optional.ofNullable(this.lastIndexingJob);
     }
 
     /**
@@ -221,7 +221,7 @@ public final class GetGenaiAgentTemplateKnowledgeBase extends com.pulumi.resourc
         this.databaseId = $.databaseId;
         this.embeddingModelUuid = $.embeddingModelUuid;
         this.isPublic = $.isPublic;
-        this.lastIndexingJobs = $.lastIndexingJobs;
+        this.lastIndexingJob = $.lastIndexingJob;
         this.name = $.name;
         this.projectId = $.projectId;
         this.region = $.region;
@@ -305,24 +305,14 @@ public final class GetGenaiAgentTemplateKnowledgeBase extends com.pulumi.resourc
         }
 
         /**
-         * @param lastIndexingJobs Last indexing job for the Knowledge Base
+         * @param lastIndexingJob Last indexing job for the Knowledge Base
          * 
          * @return builder
          * 
          */
-        public Builder lastIndexingJobs(@Nullable List<GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob> lastIndexingJobs) {
-            $.lastIndexingJobs = lastIndexingJobs;
+        public Builder lastIndexingJob(@Nullable GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob lastIndexingJob) {
+            $.lastIndexingJob = lastIndexingJob;
             return this;
-        }
-
-        /**
-         * @param lastIndexingJobs Last indexing job for the Knowledge Base
-         * 
-         * @return builder
-         * 
-         */
-        public Builder lastIndexingJobs(GetGenaiAgentTemplateKnowledgeBaseLastIndexingJob... lastIndexingJobs) {
-            return lastIndexingJobs(List.of(lastIndexingJobs));
         }
 
         /**

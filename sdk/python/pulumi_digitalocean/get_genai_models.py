@@ -23,6 +23,8 @@ __all__ = [
     'get_genai_models_output',
 ]
 
+warnings.warn("""digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels""", DeprecationWarning)
+
 @pulumi.output_type
 class GetGenaiModelsResult:
     """
@@ -84,6 +86,7 @@ def get_genai_models(filters: Optional[Sequence[Union['GetGenaiModelsFilterArgs'
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_models is deprecated: digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
@@ -101,6 +104,7 @@ def get_genai_models_output(filters: Optional[pulumi.Input[Optional[Sequence[Uni
     """
     Use this data source to access information about an existing resource.
     """
+    pulumi.log.warn("""get_genai_models is deprecated: digitalocean.getGenaiModels has been deprecated in favor of digitalocean.getGradientaiModels""")
     __args__ = dict()
     __args__['filters'] = filters
     __args__['sorts'] = sorts
