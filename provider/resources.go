@@ -191,9 +191,6 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"digitalocean_gradientai_knowledge_base_data_source": {
-				Tok: makeResource(digitalOceanMod, "GradientaiKnowledgeBaseDataSource"),
-			},
 
 			"digitalocean_kubernetes_cluster": {
 				Tok: makeResource(digitalOceanMod, "KubernetesCluster"),
