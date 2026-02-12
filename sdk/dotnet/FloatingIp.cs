@@ -47,7 +47,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Floating IPs can be imported using the `ip`, e.g.
+    /// Floating IPs can be imported using the `Ip`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1

@@ -15,7 +15,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Uptime checks can be imported using the uptime check's `id`, e.g.
+    /// Uptime checks can be imported using the uptime check's `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4

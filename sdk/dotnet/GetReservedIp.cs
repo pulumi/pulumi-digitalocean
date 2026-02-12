@@ -12,6 +12,13 @@ namespace Pulumi.DigitalOcean
     public static class GetReservedIp
     {
         /// <summary>
+        /// Get information on a reserved IP. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the reserved IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IP:
@@ -42,6 +49,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a reserved IP. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the reserved IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IP:
@@ -72,6 +86,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpResult>("digitalocean:index/getReservedIp:getReservedIp", args ?? new GetReservedIpInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a reserved IP. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the reserved IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IP:

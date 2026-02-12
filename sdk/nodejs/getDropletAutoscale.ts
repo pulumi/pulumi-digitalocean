@@ -8,6 +8,11 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the
+ * Droplet Autoscale pool properties as configured on the DigitalOcean account. This is useful if the Droplet Autoscale
+ * pool in question is not managed by Terraform, or any of the relevant data would need to referenced in other managed
+ * resources.
+ *
  * ## Example Usage
  *
  * Get the Droplet Autoscale pool by name:
@@ -69,6 +74,11 @@ export interface GetDropletAutoscaleResult {
     readonly updatedAt: string;
 }
 /**
+ * Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the
+ * Droplet Autoscale pool properties as configured on the DigitalOcean account. This is useful if the Droplet Autoscale
+ * pool in question is not managed by Terraform, or any of the relevant data would need to referenced in other managed
+ * resources.
+ *
  * ## Example Usage
  *
  * Get the Droplet Autoscale pool by name:

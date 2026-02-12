@@ -104,6 +104,40 @@ class ProjectResources(pulumi.CustomResource):
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
+        managed in Terraform to a DigitalOcean Project managed outside of Terraform.
+
+        The following resource types can be associated with a project:
+
+        * App Platform Apps
+        * Database Clusters
+        * Domains
+        * Droplets
+        * Floating IPs
+        * Kubernetes Clusters
+        * Load Balancers
+        * Spaces Buckets
+        * Volumes
+
+        ## Example Usage
+
+        The following example assigns a droplet to a Project managed outside of Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        playground = digitalocean.get_project(name="playground")
+        foobar = digitalocean.Droplet("foobar",
+            name="example",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
+            image="ubuntu-22-04-x64",
+            region=digitalocean.Region.NYC3)
+        barfoo = digitalocean.ProjectResources("barfoo",
+            project=playground.id,
+            resources=[foobar.droplet_urn])
+        ```
+
         ## Import
 
         Importing this resource is not supported.
@@ -120,6 +154,40 @@ class ProjectResources(pulumi.CustomResource):
                  args: ProjectResourcesArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
+        managed in Terraform to a DigitalOcean Project managed outside of Terraform.
+
+        The following resource types can be associated with a project:
+
+        * App Platform Apps
+        * Database Clusters
+        * Domains
+        * Droplets
+        * Floating IPs
+        * Kubernetes Clusters
+        * Load Balancers
+        * Spaces Buckets
+        * Volumes
+
+        ## Example Usage
+
+        The following example assigns a droplet to a Project managed outside of Terraform:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        playground = digitalocean.get_project(name="playground")
+        foobar = digitalocean.Droplet("foobar",
+            name="example",
+            size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
+            image="ubuntu-22-04-x64",
+            region=digitalocean.Region.NYC3)
+        barfoo = digitalocean.ProjectResources("barfoo",
+            project=playground.id,
+            resources=[foobar.droplet_urn])
+        ```
+
         ## Import
 
         Importing this resource is not supported.

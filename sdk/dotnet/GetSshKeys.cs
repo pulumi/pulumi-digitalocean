@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean
     public static class GetSshKeys
     {
         /// <summary>
+        /// Get information on SSH Keys for use in other resources.
+        /// 
+        /// This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+        /// utilize any of the SSH Keys' data.
+        /// 
+        /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// For example, to find all SSH keys:
@@ -72,6 +80,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on SSH Keys for use in other resources.
+        /// 
+        /// This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+        /// utilize any of the SSH Keys' data.
+        /// 
+        /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// For example, to find all SSH keys:
@@ -132,6 +148,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetSshKeysResult>("digitalocean:index/getSshKeys:getSshKeys", args ?? new GetSshKeysInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on SSH Keys for use in other resources.
+        /// 
+        /// This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+        /// utilize any of the SSH Keys' data.
+        /// 
+        /// Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+        /// about a single SSH Key if you already know the unique `Name` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// For example, to find all SSH keys:

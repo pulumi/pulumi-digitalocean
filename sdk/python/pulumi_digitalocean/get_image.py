@@ -231,6 +231,13 @@ def get_image(id: Optional[_builtins.int] = None,
               source: Optional[_builtins.str] = None,
               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImageResult:
     """
+    Get information on an image for use in other resources (e.g. creating a Droplet
+    based on snapshot). This data source provides all of the image properties as
+    configured on your DigitalOcean account. This is useful if the image in question
+    is not managed by Terraform or you need to utilize any of the image's data.
+
+    An error is triggered if zero or more than one result is returned by the query.
+
     ## Example Usage
 
     Get the data about a snapshot:
@@ -304,6 +311,13 @@ def get_image_output(id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
                      source: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
+    Get information on an image for use in other resources (e.g. creating a Droplet
+    based on snapshot). This data source provides all of the image properties as
+    configured on your DigitalOcean account. This is useful if the image in question
+    is not managed by Terraform or you need to utilize any of the image's data.
+
+    An error is triggered if zero or more than one result is returned by the query.
+
     ## Example Usage
 
     Get the data about a snapshot:

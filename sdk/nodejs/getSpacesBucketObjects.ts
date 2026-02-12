@@ -4,6 +4,11 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
+ *
+ * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+ */
 export function getSpacesBucketObjects(args: GetSpacesBucketObjectsArgs, opts?: pulumi.InvokeOptions): Promise<GetSpacesBucketObjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", {
@@ -73,6 +78,11 @@ export interface GetSpacesBucketObjectsResult {
     readonly prefix?: string;
     readonly region: string;
 }
+/**
+ * > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
+ *
+ * The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
+ */
 export function getSpacesBucketObjectsOutput(args: GetSpacesBucketObjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSpacesBucketObjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("digitalocean:index/getSpacesBucketObjects:getSpacesBucketObjects", {

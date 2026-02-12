@@ -8,6 +8,12 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a VPC NAT Gateway for use with other managed resources  This datasource provides all the VPC
+ * NAT Gateway properties as configured on the DigitalOcean account. This is useful if the VPC NAT Gateway in question
+ * is not managed by Terraform, or any of the relevant data would need to be referenced in other managed resources.
+ *
+ * NOTE: VPC NAT Gateway is currently in Private Preview.
+ *
  * ## Example Usage
  *
  * Get the VPC NAT Gateway by name:
@@ -75,6 +81,12 @@ export interface GetVpcNatGatewayResult {
     readonly vpcs: outputs.GetVpcNatGatewayVpc[];
 }
 /**
+ * Get information on a VPC NAT Gateway for use with other managed resources  This datasource provides all the VPC
+ * NAT Gateway properties as configured on the DigitalOcean account. This is useful if the VPC NAT Gateway in question
+ * is not managed by Terraform, or any of the relevant data would need to be referenced in other managed resources.
+ *
+ * NOTE: VPC NAT Gateway is currently in Private Preview.
+ *
  * ## Example Usage
  *
  * Get the VPC NAT Gateway by name:

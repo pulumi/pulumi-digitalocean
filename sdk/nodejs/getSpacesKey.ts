@@ -8,6 +8,9 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a Spaces key for use in other resources. This is useful if the Spaces key in question
+ * is not managed by Terraform or you need to utilize any of the key's data.
+ *
  * ## Example Usage
  *
  * Get the key by access key ID:
@@ -65,6 +68,9 @@ export interface GetSpacesKeyResult {
     readonly name: string;
 }
 /**
+ * Get information on a Spaces key for use in other resources. This is useful if the Spaces key in question
+ * is not managed by Terraform or you need to utilize any of the key's data.
+ *
  * ## Example Usage
  *
  * Get the key by access key ID:

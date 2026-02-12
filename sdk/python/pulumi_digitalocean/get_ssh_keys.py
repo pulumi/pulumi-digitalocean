@@ -85,6 +85,14 @@ def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSs
                  sorts: Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeysResult:
     """
+    Get information on SSH Keys for use in other resources.
+
+    This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+    utilize any of the SSH Keys' data.
+
+    Note: You can use the `SshKey` data source to obtain metadata
+    about a single SSH Key if you already know the unique `name` to retrieve.
+
     ## Example Usage
 
     For example, to find all SSH keys:
@@ -135,6 +143,14 @@ def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeysResult]:
     """
+    Get information on SSH Keys for use in other resources.
+
+    This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+    utilize any of the SSH Keys' data.
+
+    Note: You can use the `SshKey` data source to obtain metadata
+    about a single SSH Key if you already know the unique `name` to retrieve.
+
     ## Example Usage
 
     For example, to find all SSH keys:

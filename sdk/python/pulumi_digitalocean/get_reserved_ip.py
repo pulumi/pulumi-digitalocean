@@ -97,6 +97,13 @@ class AwaitableGetReservedIpResult(GetReservedIpResult):
 def get_reserved_ip(ip_address: Optional[_builtins.str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetReservedIpResult:
     """
+    Get information on a reserved IP. This data source provides the region and Droplet id
+    as configured on your DigitalOcean account. This is useful if the reserved IP
+    in question is not managed by Terraform or you need to find the Droplet the IP is
+    attached to.
+
+    An error is triggered if the provided reserved IP does not exist.
+
     ## Example Usage
 
     Get the reserved IP:
@@ -128,6 +135,13 @@ def get_reserved_ip(ip_address: Optional[_builtins.str] = None,
 def get_reserved_ip_output(ip_address: Optional[pulumi.Input[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpResult]:
     """
+    Get information on a reserved IP. This data source provides the region and Droplet id
+    as configured on your DigitalOcean account. This is useful if the reserved IP
+    in question is not managed by Terraform or you need to find the Droplet the IP is
+    attached to.
+
+    An error is triggered if the provided reserved IP does not exist.
+
     ## Example Usage
 
     Get the reserved IP:

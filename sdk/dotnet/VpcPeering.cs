@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// A VPC Peering can be imported using its `id`, e.g.
+    /// A VPC Peering can be imported using its `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190

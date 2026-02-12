@@ -124,6 +124,14 @@ class AwaitableGetByoipPrefixResult(GetByoipPrefixResult):
 def get_byoip_prefix(uuid: Optional[_builtins.str] = None,
                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetByoipPrefixResult:
     """
+    Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
+    prefix CIDR, region, advertisement status, and current state as configured on your
+    DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
+    by Terraform or you need to utilize any of the prefix's data.
+
+    **Note:** If you need to manage BYOIP prefixes using Terraform, `ByoipPrefix`
+    resource can be utilised instead. This data source is read-only.
+
     ## Example Usage
 
     Get the BYOIP prefix:
@@ -170,6 +178,14 @@ def get_byoip_prefix(uuid: Optional[_builtins.str] = None,
 def get_byoip_prefix_output(uuid: Optional[pulumi.Input[_builtins.str]] = None,
                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoipPrefixResult]:
     """
+    Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
+    prefix CIDR, region, advertisement status, and current state as configured on your
+    DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
+    by Terraform or you need to utilize any of the prefix's data.
+
+    **Note:** If you need to manage BYOIP prefixes using Terraform, `ByoipPrefix`
+    resource can be utilised instead. This data source is read-only.
+
     ## Example Usage
 
     Get the BYOIP prefix:

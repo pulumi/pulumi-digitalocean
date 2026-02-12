@@ -114,6 +114,11 @@ def get_droplet_autoscale(id: Optional[_builtins.str] = None,
                           name: Optional[_builtins.str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletAutoscaleResult:
     """
+    Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the
+    Droplet Autoscale pool properties as configured on the DigitalOcean account. This is useful if the Droplet Autoscale
+    pool in question is not managed by Terraform, or any of the relevant data would need to referenced in other managed
+    resources.
+
     ## Example Usage
 
     Get the Droplet Autoscale pool by name:
@@ -157,6 +162,11 @@ def get_droplet_autoscale_output(id: Optional[pulumi.Input[Optional[_builtins.st
                                  name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletAutoscaleResult]:
     """
+    Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the
+    Droplet Autoscale pool properties as configured on the DigitalOcean account. This is useful if the Droplet Autoscale
+    pool in question is not managed by Terraform, or any of the relevant data would need to referenced in other managed
+    resources.
+
     ## Example Usage
 
     Get the Droplet Autoscale pool by name:

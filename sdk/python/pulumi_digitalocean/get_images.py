@@ -85,6 +85,16 @@ def get_images(filters: Optional[Sequence[Union['GetImagesFilterArgs', 'GetImage
                sorts: Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetImagesResult:
     """
+    Get information on images for use in other resources (e.g. creating a Droplet
+    based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+    all images will be returned.
+
+    This data source is useful if the image in question is not managed by Terraform or you need to utilize any
+    of the image's data.
+
+    Note: You can use the `get_image` data source to obtain metadata
+    about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter images.
@@ -144,6 +154,16 @@ def get_images_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['Ge
                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetImagesSortArgs', 'GetImagesSortArgsDict']]]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImagesResult]:
     """
+    Get information on images for use in other resources (e.g. creating a Droplet
+    based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+    all images will be returned.
+
+    This data source is useful if the image in question is not managed by Terraform or you need to utilize any
+    of the image's data.
+
+    Note: You can use the `get_image` data source to obtain metadata
+    about a single image if you already know the `slug`, unique `name`, or `id` to retrieve.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter images.

@@ -110,7 +110,6 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
         ## Import
 
         Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
-
         the Droplet joined with a comma. For example:
 
         ```sh
@@ -135,7 +134,6 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
         ## Import
 
         Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
-
         the Droplet joined with a comma. For example:
 
         ```sh

@@ -75,7 +75,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Floating IP assignments can be imported using the Floating IP itself and the `id` of
- * 
  * the Droplet joined with a comma. For example:
  * 
  * ```sh

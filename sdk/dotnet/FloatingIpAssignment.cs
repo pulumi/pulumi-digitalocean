@@ -52,8 +52,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Floating IP assignments can be imported using the Floating IP itself and the `id` of
-    /// 
+    /// Floating IP assignments can be imported using the Floating IP itself and the `Id` of
     /// the Droplet joined with a comma. For example:
     /// 
     /// ```sh

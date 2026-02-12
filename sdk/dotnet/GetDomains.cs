@@ -12,6 +12,15 @@ namespace Pulumi.DigitalOcean
     public static class GetDomains
     {
         /// <summary>
+        /// Get information on domains for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all domains will be returned.
+        /// 
+        /// This data source is useful if the domains in question are not managed by Terraform or you need to
+        /// utilize any of the domains' data.
+        /// 
+        /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
+        /// about a single domain if you already know the `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example
@@ -48,6 +57,15 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on domains for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all domains will be returned.
+        /// 
+        /// This data source is useful if the domains in question are not managed by Terraform or you need to
+        /// utilize any of the domains' data.
+        /// 
+        /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
+        /// about a single domain if you already know the `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example
@@ -84,6 +102,15 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("digitalocean:index/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on domains for use in other resources, with the ability to filter and sort the results.
+        /// If no filters are specified, all domains will be returned.
+        /// 
+        /// This data source is useful if the domains in question are not managed by Terraform or you need to
+        /// utilize any of the domains' data.
+        /// 
+        /// Note: You can use the `digitalocean.Domain` data source to obtain metadata
+        /// about a single domain if you already know the `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter domains. (This example

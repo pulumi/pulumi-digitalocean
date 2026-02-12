@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean
     public static class GetDroplet
     {
         /// <summary>
+        /// Get information on a Droplet for use in other resources. This data source provides
+        /// all of the Droplet's properties as configured on your DigitalOcean account. This
+        /// is useful if the Droplet in question is not managed by Terraform or you need to
+        /// utilize any of the Droplet's data.
+        /// 
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
+        /// error is triggered if more than one Droplet is found.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the Droplet by name:
@@ -76,6 +84,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a Droplet for use in other resources. This data source provides
+        /// all of the Droplet's properties as configured on your DigitalOcean account. This
+        /// is useful if the Droplet in question is not managed by Terraform or you need to
+        /// utilize any of the Droplet's data.
+        /// 
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
+        /// error is triggered if more than one Droplet is found.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the Droplet by name:
@@ -140,6 +156,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetDropletResult>("digitalocean:index/getDroplet:getDroplet", args ?? new GetDropletInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a Droplet for use in other resources. This data source provides
+        /// all of the Droplet's properties as configured on your DigitalOcean account. This
+        /// is useful if the Droplet in question is not managed by Terraform or you need to
+        /// utilize any of the Droplet's data.
+        /// 
+        /// **Note:** This data source returns a single Droplet. When specifying a `Tag`, an
+        /// error is triggered if more than one Droplet is found.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the Droplet by name:

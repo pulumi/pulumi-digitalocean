@@ -12,6 +12,16 @@ namespace Pulumi.DigitalOcean
     public static class GetImages
     {
         /// <summary>
+        /// Get information on images for use in other resources (e.g. creating a Droplet
+        /// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+        /// all images will be returned.
+        /// 
+        /// This data source is useful if the image in question is not managed by Terraform or you need to utilize any
+        /// of the image's data.
+        /// 
+        /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
@@ -92,6 +102,16 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on images for use in other resources (e.g. creating a Droplet
+        /// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+        /// all images will be returned.
+        /// 
+        /// This data source is useful if the image in question is not managed by Terraform or you need to utilize any
+        /// of the image's data.
+        /// 
+        /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter images.
@@ -172,6 +192,16 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("digitalocean:index/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on images for use in other resources (e.g. creating a Droplet
+        /// based on a snapshot), with the ability to filter and sort the results. If no filters are specified,
+        /// all images will be returned.
+        /// 
+        /// This data source is useful if the image in question is not managed by Terraform or you need to utilize any
+        /// of the image's data.
+        /// 
+        /// Note: You can use the `digitalocean.getImage` data source to obtain metadata
+        /// about a single image if you already know the `Slug`, unique `Name`, or `Id` to retrieve.
+        /// 
         /// ## Example Usage
         /// 
         /// Use the `Filter` block with a `Key` string and `Values` list to filter images.

@@ -12,6 +12,45 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a bucket logging resource for Spaces, DigitalOcean's object storage product.
+// The `SpacesBucketLogging` resource allows Terraform to configure access
+// logging for Spaces buckets. For more information, see:
+// [How to Configure Spaces Access Logs](https://docs.digitalocean.com/products/spaces/how-to/access-logs/)
+//
+// The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+// designed to be interoperable with Amazon's AWS S3 API. This allows users to
+// interact with the service while using the tools they already know. Spaces
+// mirrors S3's authentication framework and requests to Spaces require a key pair
+// similar to Amazon's Access ID and Secret Key.
+//
+// The authentication requirement can be met by either setting the
+// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+// access ID and secret you generate via the DigitalOcean control panel. For
+// example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Example Usage
 //
 // ```go

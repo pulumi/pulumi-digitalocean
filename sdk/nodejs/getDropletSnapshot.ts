@@ -58,6 +58,13 @@ export function getDropletSnapshot(args?: GetDropletSnapshotArgs, opts?: pulumi.
  * A collection of arguments for invoking getDropletSnapshot.
  */
 export interface GetDropletSnapshotArgs {
+    /**
+     * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * Terraform will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
+     */
     mostRecent?: boolean;
     /**
      * The name of the Droplet snapshot.
@@ -160,6 +167,13 @@ export function getDropletSnapshotOutput(args?: GetDropletSnapshotOutputArgs, op
  * A collection of arguments for invoking getDropletSnapshot.
  */
 export interface GetDropletSnapshotOutputArgs {
+    /**
+     * If more than one result is returned, use the most recent Droplet snapshot.
+     *
+     * > **NOTE:** If more or less than a single match is returned by the search,
+     * Terraform will fail. Ensure that your search is specific enough to return
+     * a single Droplet snapshot ID only, or use `mostRecent` to choose the most recent one.
+     */
     mostRecent?: pulumi.Input<boolean>;
     /**
      * The name of the Droplet snapshot.

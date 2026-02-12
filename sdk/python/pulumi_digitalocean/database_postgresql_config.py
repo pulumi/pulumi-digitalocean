@@ -1785,12 +1785,6 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
 
         A PostgreSQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
 
-        bash
-
-        ```sh
-        $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
@@ -1880,12 +1874,6 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         ## Import
 
         A PostgreSQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
-
-        bash
-
-        ```sh
-        $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
-        ```
 
         :param str resource_name: The name of the resource.
         :param DatabasePostgresqlConfigArgs args: The arguments to use to populate this resource's properties.

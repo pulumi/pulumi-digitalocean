@@ -5,6 +5,12 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a tag. This data source provides the name as configured on
+ * your DigitalOcean account. This is useful if the tag name in question is not
+ * managed by Terraform or you need validate if the tag exists in the account.
+ *
+ * An error is triggered if the provided tag name does not exist.
+ *
  * ## Example Usage
  *
  * Get the tag:
@@ -77,6 +83,12 @@ export interface GetTagResult {
     readonly volumesCount: number;
 }
 /**
+ * Get information on a tag. This data source provides the name as configured on
+ * your DigitalOcean account. This is useful if the tag name in question is not
+ * managed by Terraform or you need validate if the tag exists in the account.
+ *
+ * An error is triggered if the provided tag name does not exist.
+ *
  * ## Example Usage
  *
  * Get the tag:

@@ -12,6 +12,46 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+// The `SpacesBucketObject` resource allows Terraform to upload content
+// to Spaces.
+//
+// The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+// designed to be interoperable with Amazon's AWS S3 API. This allows users to
+// interact with the service while using the tools they already know. Spaces
+// mirrors S3's authentication framework and requests to Spaces require a key pair
+// similar to Amazon's Access ID and Secret Key.
+//
+// The authentication requirement can be met by either setting the
+// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+// the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+// access ID and secret you generate via the DigitalOcean control panel. For
+// example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewSpacesBucket(ctx, "static-assets", nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+//
 // ## Example Usage
 //
 // ### Create a Key in a Spaces Bucket
@@ -74,8 +114,15 @@ type SpacesBucketObject struct {
 	// The language the content is in e.g. en-US or en-GB.
 	ContentLanguage pulumi.StringPtrOutput `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-	ContentType  pulumi.StringOutput  `pulumi:"contentType"`
-	Etag         pulumi.StringOutput  `pulumi:"etag"`
+	ContentType pulumi.StringOutput `pulumi:"contentType"`
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Allow the object to be deleted by removing any legal hold on any object version.
+	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringOutput `pulumi:"key"`
@@ -147,9 +194,16 @@ type spacesBucketObjectState struct {
 	// The language the content is in e.g. en-US or en-GB.
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-	ContentType  *string `pulumi:"contentType"`
-	Etag         *string `pulumi:"etag"`
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	ContentType *string `pulumi:"contentType"`
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+	Etag *string `pulumi:"etag"`
+	// Allow the object to be deleted by removing any legal hold on any object version.
+	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key *string `pulumi:"key"`
 	// A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
@@ -182,8 +236,15 @@ type SpacesBucketObjectState struct {
 	// The language the content is in e.g. en-US or en-GB.
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-	ContentType  pulumi.StringPtrInput
-	Etag         pulumi.StringPtrInput
+	ContentType pulumi.StringPtrInput
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+	Etag pulumi.StringPtrInput
+	// Allow the object to be deleted by removing any legal hold on any object version.
+	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringPtrInput
@@ -221,9 +282,16 @@ type spacesBucketObjectArgs struct {
 	// The language the content is in e.g. en-US or en-GB.
 	ContentLanguage *string `pulumi:"contentLanguage"`
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-	ContentType  *string `pulumi:"contentType"`
-	Etag         *string `pulumi:"etag"`
-	ForceDestroy *bool   `pulumi:"forceDestroy"`
+	ContentType *string `pulumi:"contentType"`
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+	Etag *string `pulumi:"etag"`
+	// Allow the object to be deleted by removing any legal hold on any object version.
+	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// The name of the object once it is in the bucket.
 	Key string `pulumi:"key"`
 	// A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
@@ -255,8 +323,15 @@ type SpacesBucketObjectArgs struct {
 	// The language the content is in e.g. en-US or en-GB.
 	ContentLanguage pulumi.StringPtrInput
 	// A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
-	ContentType  pulumi.StringPtrInput
-	Etag         pulumi.StringPtrInput
+	ContentType pulumi.StringPtrInput
+	// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+	Etag pulumi.StringPtrInput
+	// Allow the object to be deleted by removing any legal hold on any object version.
+	// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+	//
+	// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+	//
+	// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 	ForceDestroy pulumi.BoolPtrInput
 	// The name of the object once it is in the bucket.
 	Key pulumi.StringInput
@@ -402,10 +477,17 @@ func (o SpacesBucketObjectOutput) ContentType() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.ContentType }).(pulumi.StringOutput)
 }
 
+// Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
 func (o SpacesBucketObjectOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *SpacesBucketObject) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// Allow the object to be deleted by removing any legal hold on any object version.
+// Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+//
+// If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+//
+// > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
 func (o SpacesBucketObjectOutput) ForceDestroy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *SpacesBucketObject) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }

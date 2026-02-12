@@ -68,7 +68,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * If you are importing an existing Kubernetes cluster with a single node pool, just
- *
  * import the cluster. Additional node pools can be imported by using their `id`, e.g.
  *
  * ```sh
@@ -76,12 +75,9 @@ import * as utilities from "./utilities";
  * ```
  *
  * Note: If the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an
- *
  * existing cluster. The provider will refuse to import the node pool in that case because the node pool
- *
- * is managed by the `digitalocean_kubernetes_cluster` resource and not by this
- *
- * `digitalocean_kubernetes_node_pool` resource.
+ * is managed by the `digitalocean.KubernetesCluster` resource and not by this
+ * `digitalocean.KubernetesNodePool` resource.
  */
 export class KubernetesNodePool extends pulumi.CustomResource {
     /**

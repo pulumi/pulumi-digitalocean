@@ -83,7 +83,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Database replicas can be imported using the `id` of the source database cluster
- * 
  * and the `name` of the replica joined with a comma. For example:
  * 
  * ```sh

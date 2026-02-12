@@ -8,6 +8,14 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on SSH Keys for use in other resources.
+ *
+ * This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+ * utilize any of the SSH Keys' data.
+ *
+ * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+ * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
  * ## Example Usage
  *
  * For example, to find all SSH keys:
@@ -82,6 +90,14 @@ export interface GetSshKeysResult {
     readonly sshKeys: outputs.GetSshKeysSshKey[];
 }
 /**
+ * Get information on SSH Keys for use in other resources.
+ *
+ * This data source is useful if the SSH Keys in question are not managed by Terraform or you need to
+ * utilize any of the SSH Keys' data.
+ *
+ * Note: You can use the `digitalocean.SshKey` data source to obtain metadata
+ * about a single SSH Key if you already know the unique `name` to retrieve.
+ *
  * ## Example Usage
  *
  * For example, to find all SSH keys:

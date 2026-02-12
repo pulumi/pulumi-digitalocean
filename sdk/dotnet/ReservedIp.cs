@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Reserved IPs can be imported using the `ip`, e.g.
+    /// Reserved IPs can be imported using the `Ip`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1

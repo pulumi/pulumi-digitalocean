@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// VPC NAT Gateways can be imported using their `id`, e.g.
+    /// VPC NAT Gateways can be imported using their `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/vpcNatGateway:VpcNatGateway my-vpc-nat-gateway-id 38e66834-d741-47ec-88e7-c70cbdcz0445

@@ -157,10 +157,9 @@ class ReservedIpv6(pulumi.CustomResource):
         Reserved IPv6s can be imported using the `ip`, e.g.
 
         ```sh
-        $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip 
-        ```
-
+        terraform import digitalocean_reserved_ipv6.myip 
         2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -192,10 +191,9 @@ class ReservedIpv6(pulumi.CustomResource):
         Reserved IPv6s can be imported using the `ip`, e.g.
 
         ```sh
-        $ pulumi import digitalocean:index/reservedIpv6:ReservedIpv6 myip 
-        ```
-
+        terraform import digitalocean_reserved_ipv6.myip 
         2409:40d0:fa:27dd:9b24:7074:7b85:eee6
+        ```
 
         :param str resource_name: The name of the resource.
         :param ReservedIpv6Args args: The arguments to use to populate this resource's properties.

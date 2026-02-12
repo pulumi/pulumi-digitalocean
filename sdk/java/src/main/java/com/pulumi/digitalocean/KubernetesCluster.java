@@ -28,16 +28,248 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+ * 
+ * ## Example Usage
+ * 
+ * ### Basic Example
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.KubernetesCluster;
+ * import com.pulumi.digitalocean.KubernetesClusterArgs;
+ * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()
+ *             .name("foo")
+ *             .region("nyc1")
+ *             .version("latest")
+ *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+ *                 .name("worker-pool")
+ *                 .size("s-2vcpu-2gb")
+ *                 .nodeCount(3)
+ *                 .taints(KubernetesClusterNodePoolTaintArgs.builder()
+ *                     .key("workloadKind")
+ *                     .value("database")
+ *                     .effect("NoSchedule")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Autoscaling Example
+ * 
+ * Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+ * For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.KubernetesCluster;
+ * import com.pulumi.digitalocean.KubernetesClusterArgs;
+ * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()
+ *             .name("foo")
+ *             .region("nyc1")
+ *             .version("1.22.8-do.1")
+ *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+ *                 .name("autoscale-worker-pool")
+ *                 .size("s-2vcpu-2gb")
+ *                 .autoScale(true)
+ *                 .minNodes(1)
+ *                 .maxNodes(5)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Note that, currently, each node pool must always have at least one node and when using autoscaling the minNodes must be greater than or equal to 1.
+ * &gt; Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+ * 
+ * ### Auto Upgrade Example
+ * 
+ * DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions. You may explicitly specify the maintenance window policy.
+ * For example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DigitaloceanFunctions;
+ * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
+ * import com.pulumi.digitalocean.KubernetesCluster;
+ * import com.pulumi.digitalocean.KubernetesClusterArgs;
+ * import com.pulumi.digitalocean.inputs.KubernetesClusterMaintenancePolicyArgs;
+ * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = DigitaloceanFunctions.getKubernetesVersions(GetKubernetesVersionsArgs.builder()
+ *             .versionPrefix("1.22.")
+ *             .build());
+ * 
+ *         var foo = new KubernetesCluster("foo", KubernetesClusterArgs.builder()
+ *             .name("foo")
+ *             .region("nyc1")
+ *             .autoUpgrade(true)
+ *             .version(example.latestVersion())
+ *             .maintenancePolicy(KubernetesClusterMaintenancePolicyArgs.builder()
+ *                 .startTime("04:00")
+ *                 .day("sunday")
+ *                 .build())
+ *             .nodePool(KubernetesClusterNodePoolArgs.builder()
+ *                 .name("default")
+ *                 .size("s-1vcpu-2gb")
+ *                 .nodeCount(3)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
+ * 
+ * ### Kubernetes Terraform Provider Example
+ * 
+ * The cluster&#39;s kubeconfig is exported as an attribute allowing you to use it with
+ * the Kubernetes Terraform provider.
+ * 
+ * &gt; When using interpolation to pass credentials from a `digitalocean.KubernetesCluster`
+ * resource to the Kubernetes provider, the cluster resource generally should not
+ * be created in the same Terraform module where Kubernetes provider resources are
+ * also used. This can lead to unpredictable errors which are hard to debug and
+ * diagnose. The root issue lies with the order in which Terraform itself evaluates
+ * the provider blocks vs. actual resources.
+ * 
+ * When using the Kubernetes provider with a cluster created in a separate Terraform
+ * module or configuration, use the `digitalocean.KubernetesCluster` data-source
+ * to access the cluster&#39;s credentials. See here for a full example.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DigitaloceanFunctions;
+ * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var example = DigitaloceanFunctions.getKubernetesCluster(GetKubernetesClusterArgs.builder()
+ *             .name("prod-cluster-01")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Exec credential plugin
+ * 
+ * Another method to ensure that the Kubernetes provider is receiving valid credentials
+ * is to use an exec plugin. In order to use use this approach, the DigitalOcean
+ * CLI (`doctl`) must be present. `doctl` will renew the token if needed before
+ * initializing the provider.
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Before importing a Kubernetes cluster, the cluster&#39;s default node pool must be tagged with
- * 
  * the `terraform:default-node-pool` tag. The provider will automatically add this tag if
- * 
  * the cluster only has a single node pool. Clusters with more than one node pool, however, will require
- * 
  * that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be
- * 
  * the default node pool.
  * 
  * Then the Kubernetes cluster and its default node pool can be imported using the cluster&#39;s `id`, e.g.
@@ -46,8 +278,7 @@ import javax.annotation.Nullable;
  * $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
  * ```
  * 
- * Additional node pools must be imported separately as `digitalocean_kubernetes_cluster`
- * 
+ * Additional node pools must be imported separately as `digitalocean.KubernetesCluster`
  * resources, e.g.
  * 
  * ```sh

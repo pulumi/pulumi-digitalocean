@@ -468,7 +468,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         ## Import
 
         If you are importing an existing Kubernetes cluster with a single node pool, just
-
         import the cluster. Additional node pools can be imported by using their `id`, e.g.
 
         ```sh
@@ -476,12 +475,9 @@ class KubernetesNodePool(pulumi.CustomResource):
         ```
 
         Note: If the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an
-
         existing cluster. The provider will refuse to import the node pool in that case because the node pool
-
-        is managed by the `digitalocean_kubernetes_cluster` resource and not by this
-
-        `digitalocean_kubernetes_node_pool` resource.
+        is managed by the `KubernetesCluster` resource and not by this
+        `KubernetesNodePool` resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -562,7 +558,6 @@ class KubernetesNodePool(pulumi.CustomResource):
         ## Import
 
         If you are importing an existing Kubernetes cluster with a single node pool, just
-
         import the cluster. Additional node pools can be imported by using their `id`, e.g.
 
         ```sh
@@ -570,12 +565,9 @@ class KubernetesNodePool(pulumi.CustomResource):
         ```
 
         Note: If the node pool has the `terraform:default-node-pool` tag, then it is a default node pool for an
-
         existing cluster. The provider will refuse to import the node pool in that case because the node pool
-
-        is managed by the `digitalocean_kubernetes_cluster` resource and not by this
-
-        `digitalocean_kubernetes_node_pool` resource.
+        is managed by the `KubernetesCluster` resource and not by this
+        `KubernetesNodePool` resource.
 
         :param str resource_name: The name of the resource.
         :param KubernetesNodePoolArgs args: The arguments to use to populate this resource's properties.

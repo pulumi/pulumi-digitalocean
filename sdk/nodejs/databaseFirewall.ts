@@ -105,7 +105,6 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Database firewalls can be imported using the `id` of the target database cluster
- *
  * For example:
  *
  * ```sh

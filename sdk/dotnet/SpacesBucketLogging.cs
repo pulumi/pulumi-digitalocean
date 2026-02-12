@@ -10,6 +10,36 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
+    /// Provides a bucket logging resource for Spaces, DigitalOcean's object storage product.
+    /// The `digitalocean.SpacesBucketLogging` resource allows Terraform to configure access
+    /// logging for Spaces buckets. For more information, see:
+    /// [How to Configure Spaces Access Logs](https://docs.digitalocean.com/products/spaces/how-to/access-logs/)
+    /// 
+    /// The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+    /// designed to be interoperable with Amazon's AWS S3 API. This allows users to
+    /// interact with the service while using the tools they already know. Spaces
+    /// mirrors S3's authentication framework and requests to Spaces require a key pair
+    /// similar to Amazon's Access ID and Secret Key.
+    /// 
+    /// The authentication requirement can be met by either setting the
+    /// `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+    /// the provider's `SpacesAccessId` and `SpacesSecretKey` arguments to the
+    /// access ID and secret you generate via the DigitalOcean control panel. For
+    /// example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -45,7 +75,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Spaces bucket logging can be imported using the `region` and `bucket` attributes (delimited by a comma):
+    /// Spaces bucket logging can be imported using the `Region` and `Bucket` attributes (delimited by a comma):
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/spacesBucketLogging:SpacesBucketLogging example `region`,`bucket`

@@ -12,6 +12,13 @@ namespace Pulumi.DigitalOcean
     public static class GetRecord
     {
         /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by Terraform.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// 
         /// ## Example Usage
         /// 
         /// Get data from a DNS record:
@@ -55,6 +62,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by Terraform.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// 
         /// ## Example Usage
         /// 
         /// Get data from a DNS record:
@@ -98,6 +112,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordResult>("digitalocean:index/getRecord:getRecord", args ?? new GetRecordInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a DNS record. This data source provides the name, TTL, and zone
+        /// file as configured on your DigitalOcean account. This is useful if the record
+        /// in question is not managed by Terraform.
+        /// 
+        /// An error is triggered if the provided domain name or record are not managed with
+        /// your DigitalOcean account.
+        /// 
         /// ## Example Usage
         /// 
         /// Get data from a DNS record:

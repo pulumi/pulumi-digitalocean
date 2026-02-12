@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Droplets can be imported using the Droplet `id`, e.g.
+    /// Droplets can be imported using the Droplet `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
@@ -93,6 +93,12 @@ namespace Pulumi.DigitalOcean
         [Output("dropletUrn")]
         public Output<string> DropletUrn { get; private set; } = null!;
 
+        /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
         [Output("gracefulShutdown")]
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
 
@@ -309,6 +315,12 @@ namespace Pulumi.DigitalOcean
         [Input("dropletAgent")]
         public Input<bool>? DropletAgent { get; set; }
 
+        /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
 
@@ -475,6 +487,12 @@ namespace Pulumi.DigitalOcean
         [Input("dropletUrn")]
         public Input<string>? DropletUrn { get; set; }
 
+        /// <summary>
+        /// A boolean indicating whether the droplet
+        /// should be gracefully shut down before it is deleted.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
 

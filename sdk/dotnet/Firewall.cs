@@ -119,7 +119,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Firewalls can be imported using the firewall `id`, e.g.
+    /// Firewalls can be imported using the firewall `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3

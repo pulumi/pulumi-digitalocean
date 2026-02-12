@@ -62,7 +62,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// A Kafka database cluster's configuration can be imported using the `id` the parent cluster, e.g.
+    /// A Kafka database cluster's configuration can be imported using the `Id` the parent cluster, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig example 4b62829a-9c42-465b-aaa3-84051048e712

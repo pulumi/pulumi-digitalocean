@@ -24,7 +24,6 @@ import javax.annotation.Nullable;
  * ## Import
  * 
  * Uptime alerts can be imported using both the ID of the alert&#39;s parent check and
- * 
  * its own separated by a comma in the format: `check_id,alert_id`. For example:
  * 
  * ```sh

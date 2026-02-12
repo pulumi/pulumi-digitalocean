@@ -138,6 +138,30 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a CORS configuration resource for Spaces, DigitalOcean's object storage product.
+        The `SpacesBucketCorsConfiguration` resource allows Terraform to to attach CORS configuration to Spaces.
+
+        The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+        designed to be interoperable with Amazon's AWS S3 API. This allows users to
+        interact with the service while using the tools they already know. Spaces
+        mirrors S3's authentication framework and requests to Spaces require a key pair
+        similar to Amazon's Access ID and Secret Key.
+
+        The authentication requirement can be met by either setting the
+        `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+        the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+        access ID and secret you generate via the DigitalOcean control panel. For
+        example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        ```
+
+        For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+
         ## Example Usage
 
         ### Create a Key in a Spaces Bucket
@@ -185,6 +209,30 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
                  args: SpacesBucketCorsConfigurationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a CORS configuration resource for Spaces, DigitalOcean's object storage product.
+        The `SpacesBucketCorsConfiguration` resource allows Terraform to to attach CORS configuration to Spaces.
+
+        The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+        designed to be interoperable with Amazon's AWS S3 API. This allows users to
+        interact with the service while using the tools they already know. Spaces
+        mirrors S3's authentication framework and requests to Spaces require a key pair
+        similar to Amazon's Access ID and Secret Key.
+
+        The authentication requirement can be met by either setting the
+        `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+        the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+        access ID and secret you generate via the DigitalOcean control panel. For
+        example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        ```
+
+        For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+
         ## Example Usage
 
         ### Create a Key in a Spaces Bucket

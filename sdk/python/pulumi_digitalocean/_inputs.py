@@ -704,24 +704,19 @@ __all__ = [
     'GetTagsSortArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class AppDedicatedIpArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ID of the app.
-        """
-        ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The IP address of the dedicated egress IP.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
-        """
-elif False:
-    AppDedicatedIpArgsDict: TypeAlias = Mapping[str, Any]
+class AppDedicatedIpArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ID of the app.
+    """
+    ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The IP address of the dedicated egress IP.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The status of the dedicated egress IP: 'UNKNOWN', 'ASSIGNING', 'ASSIGNED', or 'REMOVED'
+    """
 
 @pulumi.input_type
 class AppDedicatedIpArgs:
@@ -778,69 +773,66 @@ class AppDedicatedIpArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class AppSpecArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgsDict']]]]
-        """
-        Describes an alert policy for the component.
-        """
-        databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgsDict']]]]
-        disable_edge_cache: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
-        """
-        disable_email_obfuscation: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
-        """
-        domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgsDict']]]]
-        """
-        Describes a domain where the application will be made available.
-        """
-        domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgsDict']]]]
-        """
-        Specification for app egress configurations.
-        """
-        enhanced_threat_control_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        features: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
-        """
-        functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgsDict']]]]
-        ingress: NotRequired[pulumi.Input['AppSpecIngressArgsDict']]
-        """
-        Specification for component routing, rewrites, and redirects.
-        """
-        jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgsDict']]]]
-        maintenance: NotRequired[pulumi.Input['AppSpecMaintenanceArgsDict']]
-        """
-        Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The slug for the DigitalOcean data center region hosting the app.
-        """
-        services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgsDict']]]]
-        static_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgsDict']]]]
-        vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgsDict']]]]
-        """
-        Specification for VPC.
-        """
-        workers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgsDict']]]]
-elif False:
-    AppSpecArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertArgsDict']]]]
+    """
+    Describes an alert policy for the component.
+    """
+    databases: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDatabaseArgsDict']]]]
+    disable_edge_cache: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean indicating whether to disable the edge cache for this app. Default: `false`. Available only for non-static sites. Requires custom domains and applies to all the domains of the app.
+    """
+    disable_email_obfuscation: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean indicating whether to disable email obfuscation for this app. Default: `false`. Requires custom domains and applies to all the domains of the app.
+    """
+    domain_names: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecDomainNameArgsDict']]]]
+    """
+    Describes a domain where the application will be made available.
+    """
+    domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    egresses: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEgressArgsDict']]]]
+    """
+    Specification for app egress configurations.
+    """
+    enhanced_threat_control_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean, when set to `true`, enables enhanced analyzing of incoming traffic to prevent layer 7 DDoS attacks. Default: `false`. Requires custom domains and applies to all the domains of the app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    features: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of the features applied to the app. The default buildpack can be overridden here. List of available buildpacks can be found using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/reference/apps/list-buildpacks/)
+    """
+    functions: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionArgsDict']]]]
+    ingress: NotRequired[pulumi.Input['AppSpecIngressArgsDict']]
+    """
+    Specification for component routing, rewrites, and redirects.
+    """
+    jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobArgsDict']]]]
+    maintenance: NotRequired[pulumi.Input['AppSpecMaintenanceArgsDict']]
+    """
+    Specification to configure maintenance settings for the app, such as maintenance mode and archiving the app.
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The slug for the DigitalOcean data center region hosting the app.
+    """
+    services: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceArgsDict']]]]
+    static_sites: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteArgsDict']]]]
+    vpcs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecVpcArgsDict']]]]
+    """
+    Specification for VPC.
+    """
+    workers: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerArgsDict']]]]
 
 @pulumi.input_type
 class AppSpecArgs:
@@ -1144,22 +1136,19 @@ class AppSpecArgs:
         pulumi.set(self, "workers", value)
 
 
-if not MYPY:
-    class AppSpecAlertArgsDict(TypedDict):
-        rule: pulumi.Input[_builtins.str]
-        """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-        """
-        destinations: NotRequired[pulumi.Input['AppSpecAlertDestinationsArgsDict']]
-        """
-        Specification for alert destination.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether or not the alert is disabled (default: `false`).
-        """
-elif False:
-    AppSpecAlertArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecAlertArgsDict(TypedDict):
+    rule: pulumi.Input[_builtins.str]
+    """
+    The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+    """
+    destinations: NotRequired[pulumi.Input['AppSpecAlertDestinationsArgsDict']]
+    """
+    Specification for alert destination.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether or not the alert is disabled (default: `false`).
+    """
 
 @pulumi.input_type
 class AppSpecAlertArgs:
@@ -1215,18 +1204,15 @@ class AppSpecAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AppSpecAlertDestinationsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-        """
-        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgsDict']]]]
-        """
-        Determines which slack channels or users receive alerts.
-        """
-elif False:
-    AppSpecAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecAlertDestinationsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+    """
+    slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecAlertDestinationsSlackWebhookArgsDict']]]]
+    """
+    Determines which slack channels or users receive alerts.
+    """
 
 @pulumi.input_type
 class AppSpecAlertDestinationsArgs:
@@ -1267,18 +1253,15 @@ class AppSpecAlertDestinationsArgs:
         pulumi.set(self, "slack_webhooks", value)
 
 
-if not MYPY:
-    class AppSpecAlertDestinationsSlackWebhookArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send notifications to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The Slack webhook URL.
-        """
-elif False:
-    AppSpecAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecAlertDestinationsSlackWebhookArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send notifications to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The Slack webhook URL.
+    """
 
 @pulumi.input_type
 class AppSpecAlertDestinationsSlackWebhookArgs:
@@ -1317,40 +1300,37 @@ class AppSpecAlertDestinationsSlackWebhookArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppSpecDatabaseArgsDict(TypedDict):
-        cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-        """
-        db_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the MySQL or PostgreSQL database to configure.
-        """
-        db_user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the MySQL or PostgreSQL user to configure.
+class AppSpecDatabaseArgsDict(TypedDict):
+    cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+    """
+    db_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the MySQL or PostgreSQL database to configure.
+    """
+    db_user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the MySQL or PostgreSQL user to configure.
 
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
-        """
-        engine: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the component.
-        """
-        production: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether this is a production or dev database.
-        """
-        version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the database engine.
-        """
-elif False:
-    AppSpecDatabaseArgsDict: TypeAlias = Mapping[str, Any]
+    This resource supports customized create timeouts. The default timeout is 30 minutes.
+    """
+    engine: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The database engine to use (`MYSQL`, `PG`, `REDIS`, `MONGODB`, `KAFKA`, or `OPENSEARCH`).
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the component.
+    """
+    production: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether this is a production or dev database.
+    """
+    version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the database engine.
+    """
 
 @pulumi.input_type
 class AppSpecDatabaseArgs:
@@ -1475,29 +1455,26 @@ class AppSpecDatabaseArgs:
         pulumi.set(self, "version", value)
 
 
-if not MYPY:
-    class AppSpecDomainNameArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The hostname for the domain.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The domain type, which can be one of the following:
-        - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
-        - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
-        - `ALIAS`: A non-primary domain.
-        """
-        wildcard: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
-        """
-        zone: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
-        """
-elif False:
-    AppSpecDomainNameArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecDomainNameArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The hostname for the domain.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The domain type, which can be one of the following:
+    - `DEFAULT`: The default .ondigitalocean.app domain assigned to this app.
+    - `PRIMARY`: The primary domain for this app that is displayed as the default in the control panel, used in bindable environment variables, and any other places that reference an app's live URL. Only one domain may be set as primary.
+    - `ALIAS`: A non-primary domain.
+    """
+    wildcard: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean indicating whether the domain includes all sub-domains, in addition to the given domain.
+    """
+    zone: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    If the domain uses DigitalOcean DNS and you would like App Platform to automatically manage it for you, set this to the name of the domain on your account.
+    """
 
 @pulumi.input_type
 class AppSpecDomainNameArgs:
@@ -1575,14 +1552,11 @@ class AppSpecDomainNameArgs:
         pulumi.set(self, "zone", value)
 
 
-if not MYPY:
-    class AppSpecEgressArgsDict(TypedDict):
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
-        """
-elif False:
-    AppSpecEgressArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecEgressArgsDict(TypedDict):
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The app egress type: `AUTOASSIGN`, `DEDICATED_IP`
+    """
 
 @pulumi.input_type
 class AppSpecEgressArgs:
@@ -1607,26 +1581,23 @@ class AppSpecEgressArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class AppSpecEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecEnvArgs:
@@ -1699,54 +1670,51 @@ class AppSpecEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecFunctionArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgsDict']]]]
-        """
-        Describes an alert policy for the component.
-        """
-        bitbucket: NotRequired[pulumi.Input['AppSpecFunctionBitbucketArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-        """
-        cors: NotRequired[pulumi.Input['AppSpecFunctionCorsArgsDict']]
-        """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        git: NotRequired[pulumi.Input['AppSpecFunctionGitArgsDict']]
-        """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-        """
-        github: NotRequired[pulumi.Input['AppSpecFunctionGithubArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        gitlab: NotRequired[pulumi.Input['AppSpecFunctionGitlabArgsDict']]
-        """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgsDict']]]]
-        """
-        Describes a log forwarding destination.
-        """
-        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgsDict']]]]
-        """
-        An HTTP paths that should be routed to this component.
-        """
-        source_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to the working directory to use for the build.
-        """
-elif False:
-    AppSpecFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertArgsDict']]]]
+    """
+    Describes an alert policy for the component.
+    """
+    bitbucket: NotRequired[pulumi.Input['AppSpecFunctionBitbucketArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+    """
+    cors: NotRequired[pulumi.Input['AppSpecFunctionCorsArgsDict']]
+    """
+    The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    git: NotRequired[pulumi.Input['AppSpecFunctionGitArgsDict']]
+    """
+    A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+    """
+    github: NotRequired[pulumi.Input['AppSpecFunctionGithubArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    gitlab: NotRequired[pulumi.Input['AppSpecFunctionGitlabArgsDict']]
+    """
+    A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionLogDestinationArgsDict']]]]
+    """
+    Describes a log forwarding destination.
+    """
+    routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionRouteArgsDict']]]]
+    """
+    An HTTP paths that should be routed to this component.
+    """
+    source_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to the working directory to use for the build.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionArgs:
@@ -1938,34 +1906,31 @@ class AppSpecFunctionArgs:
         pulumi.set(self, "source_dir", value)
 
 
-if not MYPY:
-    class AppSpecFunctionAlertArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-        """
-        rule: pulumi.Input[_builtins.str]
-        """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-        """
-        value: pulumi.Input[_builtins.float]
-        """
-        The threshold for the type of the warning.
-        """
-        window: pulumi.Input[_builtins.str]
-        """
-        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-        """
-        destinations: NotRequired[pulumi.Input['AppSpecFunctionAlertDestinationsArgsDict']]
-        """
-        Specification for alert destination.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether or not the alert is disabled (default: `false`).
-        """
-elif False:
-    AppSpecFunctionAlertArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionAlertArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+    """
+    rule: pulumi.Input[_builtins.str]
+    """
+    The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The threshold for the type of the warning.
+    """
+    window: pulumi.Input[_builtins.str]
+    """
+    The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+    """
+    destinations: NotRequired[pulumi.Input['AppSpecFunctionAlertDestinationsArgsDict']]
+    """
+    Specification for alert destination.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether or not the alert is disabled (default: `false`).
+    """
 
 @pulumi.input_type
 class AppSpecFunctionAlertArgs:
@@ -2066,18 +2031,15 @@ class AppSpecFunctionAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AppSpecFunctionAlertDestinationsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-        """
-        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgsDict']]]]
-        """
-        Determines which slack channels or users receive alerts.
-        """
-elif False:
-    AppSpecFunctionAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionAlertDestinationsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+    """
+    slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecFunctionAlertDestinationsSlackWebhookArgsDict']]]]
+    """
+    Determines which slack channels or users receive alerts.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionAlertDestinationsArgs:
@@ -2118,18 +2080,15 @@ class AppSpecFunctionAlertDestinationsArgs:
         pulumi.set(self, "slack_webhooks", value)
 
 
-if not MYPY:
-    class AppSpecFunctionAlertDestinationsSlackWebhookArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send notifications to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The Slack webhook URL.
-        """
-elif False:
-    AppSpecFunctionAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionAlertDestinationsSlackWebhookArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send notifications to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The Slack webhook URL.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionAlertDestinationsSlackWebhookArgs:
@@ -2168,22 +2127,19 @@ class AppSpecFunctionAlertDestinationsSlackWebhookArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppSpecFunctionBitbucketArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecFunctionBitbucketArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionBitbucketArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionBitbucketArgs:
@@ -2240,34 +2196,31 @@ class AppSpecFunctionBitbucketArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecFunctionCorsArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
-        """
-        allow_origins: NotRequired[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgsDict']]
-        """
-        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-        """
-elif False:
-    AppSpecFunctionCorsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionCorsArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+    """
+    allow_origins: NotRequired[pulumi.Input['AppSpecFunctionCorsAllowOriginsArgsDict']]
+    """
+    The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionCorsArgs:
@@ -2372,22 +2325,19 @@ class AppSpecFunctionCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class AppSpecFunctionCorsAllowOriginsArgsDict(TypedDict):
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exact string match.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prefix-based match.
-        """
-        regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        RE2 style regex-based match.
-        """
-elif False:
-    AppSpecFunctionCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionCorsAllowOriginsArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact string match.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix-based match.
+    """
+    regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    RE2 style regex-based match.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionCorsAllowOriginsArgs:
@@ -2448,26 +2398,23 @@ class AppSpecFunctionCorsAllowOriginsArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class AppSpecFunctionEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecFunctionEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionEnvArgs:
@@ -2540,18 +2487,15 @@ class AppSpecFunctionEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecFunctionGitArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The clone URL of the repo.
-        """
-elif False:
-    AppSpecFunctionGitArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionGitArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The clone URL of the repo.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionGitArgs:
@@ -2592,22 +2536,19 @@ class AppSpecFunctionGitArgs:
         pulumi.set(self, "repo_clone_url", value)
 
 
-if not MYPY:
-    class AppSpecFunctionGithubArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecFunctionGithubArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionGithubArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionGithubArgs:
@@ -2664,22 +2605,19 @@ class AppSpecFunctionGithubArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecFunctionGitlabArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecFunctionGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionGitlabArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionGitlabArgs:
@@ -2736,30 +2674,27 @@ class AppSpecFunctionGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the log destination. Minimum length: 2. Maximum length: 42.
-        """
-        datadog: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgsDict']]
-        """
-        Datadog configuration.
-        """
-        logtail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgsDict']]
-        """
-        Logtail configuration.
-        """
-        open_search: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgsDict']]
-        """
-        OpenSearch configuration.
-        """
-        papertrail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgsDict']]
-        """
-        Papertrail configuration.
-        """
-elif False:
-    AppSpecFunctionLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the log destination. Minimum length: 2. Maximum length: 42.
+    """
+    datadog: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationDatadogArgsDict']]
+    """
+    Datadog configuration.
+    """
+    logtail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationLogtailArgsDict']]
+    """
+    Logtail configuration.
+    """
+    open_search: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationOpenSearchArgsDict']]
+    """
+    OpenSearch configuration.
+    """
+    papertrail: NotRequired[pulumi.Input['AppSpecFunctionLogDestinationPapertrailArgsDict']]
+    """
+    Papertrail configuration.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationArgs:
@@ -2847,18 +2782,15 @@ class AppSpecFunctionLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationDatadogArgsDict(TypedDict):
-        api_key: pulumi.Input[_builtins.str]
-        """
-        Datadog API key.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Datadog HTTP log intake endpoint.
-        """
-elif False:
-    AppSpecFunctionLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationDatadogArgsDict(TypedDict):
+    api_key: pulumi.Input[_builtins.str]
+    """
+    Datadog API key.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Datadog HTTP log intake endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationDatadogArgs:
@@ -2898,14 +2830,11 @@ class AppSpecFunctionLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationLogtailArgsDict(TypedDict):
-        token: pulumi.Input[_builtins.str]
-        """
-        Logtail token.
-        """
-elif False:
-    AppSpecFunctionLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationLogtailArgsDict(TypedDict):
+    token: pulumi.Input[_builtins.str]
+    """
+    Logtail token.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationLogtailArgs:
@@ -2929,26 +2858,23 @@ class AppSpecFunctionLogDestinationLogtailArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationOpenSearchArgsDict(TypedDict):
-        basic_auth: pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict']
-        """
-        Basic authentication details.
-        """
-        cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch endpoint.
-        """
-        index_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch index name.
-        """
-elif False:
-    AppSpecFunctionLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationOpenSearchArgsDict(TypedDict):
+    basic_auth: pulumi.Input['AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict']
+    """
+    Basic authentication details.
+    """
+    cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch endpoint.
+    """
+    index_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch index name.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationOpenSearchArgs:
@@ -3020,18 +2946,15 @@ class AppSpecFunctionLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for basic authentication.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        user for basic authentication.
-        """
-elif False:
-    AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for basic authentication.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    user for basic authentication.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs:
@@ -3072,14 +2995,11 @@ class AppSpecFunctionLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AppSpecFunctionLogDestinationPapertrailArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        Papertrail syslog endpoint.
-        """
-elif False:
-    AppSpecFunctionLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionLogDestinationPapertrailArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    Papertrail syslog endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionLogDestinationPapertrailArgs:
@@ -3103,18 +3023,15 @@ class AppSpecFunctionLogDestinationPapertrailArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecFunctionRouteArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Paths must start with `/` and must be unique within the app.
-        """
-        preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        An optional flag to preserve the path that is forwarded to the backend service.
-        """
-elif False:
-    AppSpecFunctionRouteArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecFunctionRouteArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Paths must start with `/` and must be unique within the app.
+    """
+    preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    An optional flag to preserve the path that is forwarded to the backend service.
+    """
 
 @pulumi.input_type
 class AppSpecFunctionRouteArgs:
@@ -3155,14 +3072,11 @@ class AppSpecFunctionRouteArgs:
         pulumi.set(self, "preserve_path_prefix", value)
 
 
-if not MYPY:
-    class AppSpecIngressArgsDict(TypedDict):
-        rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgsDict']]]]
-        """
-        Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
-        """
-elif False:
-    AppSpecIngressArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressArgsDict(TypedDict):
+    rules: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgsDict']]]]
+    """
+    Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
+    """
 
 @pulumi.input_type
 class AppSpecIngressArgs:
@@ -3187,26 +3101,23 @@ class AppSpecIngressArgs:
         pulumi.set(self, "rules", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleArgsDict(TypedDict):
-        component: NotRequired[pulumi.Input['AppSpecIngressRuleComponentArgsDict']]
-        """
-        The component to route to. Only one of `component` or `redirect` may be set.
-        """
-        cors: NotRequired[pulumi.Input['AppSpecIngressRuleCorsArgsDict']]
-        """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-        """
-        match: NotRequired[pulumi.Input['AppSpecIngressRuleMatchArgsDict']]
-        """
-        The match configuration for the rule
-        """
-        redirect: NotRequired[pulumi.Input['AppSpecIngressRuleRedirectArgsDict']]
-        """
-        The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
-        """
-elif False:
-    AppSpecIngressRuleArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleArgsDict(TypedDict):
+    component: NotRequired[pulumi.Input['AppSpecIngressRuleComponentArgsDict']]
+    """
+    The component to route to. Only one of `component` or `redirect` may be set.
+    """
+    cors: NotRequired[pulumi.Input['AppSpecIngressRuleCorsArgsDict']]
+    """
+    The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+    """
+    match: NotRequired[pulumi.Input['AppSpecIngressRuleMatchArgsDict']]
+    """
+    The match configuration for the rule
+    """
+    redirect: NotRequired[pulumi.Input['AppSpecIngressRuleRedirectArgsDict']]
+    """
+    The redirect configuration for the rule. Only one of `component` or `redirect` may be set.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleArgs:
@@ -3279,22 +3190,19 @@ class AppSpecIngressRuleArgs:
         pulumi.set(self, "redirect", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleComponentArgsDict(TypedDict):
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the component to route to.
-        """
-        preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
-        """
-        rewrite: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
-        """
-elif False:
-    AppSpecIngressRuleComponentArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleComponentArgsDict(TypedDict):
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the component to route to.
+    """
+    preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    An optional boolean flag to preserve the path that is forwarded to the backend service. By default, the HTTP request path will be trimmed from the left when forwarded to the component.
+    """
+    rewrite: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional field that will rewrite the path of the component to be what is specified here. This is mutually exclusive with `preserve_path_prefix`.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleComponentArgs:
@@ -3351,34 +3259,31 @@ class AppSpecIngressRuleComponentArgs:
         pulumi.set(self, "rewrite", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleCorsArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
-        """
-        allow_origins: NotRequired[pulumi.Input['AppSpecIngressRuleCorsAllowOriginsArgsDict']]
-        """
-        The `Access-Control-Allow-Origin` can be
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-        """
-elif False:
-    AppSpecIngressRuleCorsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleCorsArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether browsers should expose the response to the client-side JavaScript code when the request's credentials mode is `include`. This configures the `Access-Control-Allow-Credentials` header.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP request headers. This configures the `Access-Control-Allow-Headers` header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP methods. This configures the `Access-Control-Allow-Methods` header.
+    """
+    allow_origins: NotRequired[pulumi.Input['AppSpecIngressRuleCorsAllowOriginsArgsDict']]
+    """
+    The `Access-Control-Allow-Origin` can be
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of HTTP response headers that browsers are allowed to access. This configures the `Access-Control-Expose-Headers` header.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleCorsArgs:
@@ -3483,22 +3388,19 @@ class AppSpecIngressRuleCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleCorsAllowOriginsArgsDict(TypedDict):
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
-        """
-        regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
-        """
-elif False:
-    AppSpecIngressRuleCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleCorsAllowOriginsArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The `Access-Control-Allow-Origin` header will be set to the client's origin only if the client's origin exactly matches the value you provide.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The `Access-Control-Allow-Origin` header will be set to the client's origin if the beginning of the client's origin matches the value you provide.
+    """
+    regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The `Access-Control-Allow-Origin` header will be set to the client's origin if the client’s origin matches the regex you provide, in [RE2 style syntax](https://github.com/google/re2/wiki/Syntax).
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleCorsAllowOriginsArgs:
@@ -3559,18 +3461,15 @@ class AppSpecIngressRuleCorsAllowOriginsArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleMatchArgsDict(TypedDict):
-        authority: NotRequired[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgsDict']]
-        """
-        The authority (domain) to match on.
-        """
-        path: NotRequired[pulumi.Input['AppSpecIngressRuleMatchPathArgsDict']]
-        """
-        The path to match on.
-        """
-elif False:
-    AppSpecIngressRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleMatchArgsDict(TypedDict):
+    authority: NotRequired[pulumi.Input['AppSpecIngressRuleMatchAuthorityArgsDict']]
+    """
+    The authority (domain) to match on.
+    """
+    path: NotRequired[pulumi.Input['AppSpecIngressRuleMatchPathArgsDict']]
+    """
+    The path to match on.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleMatchArgs:
@@ -3611,14 +3510,11 @@ class AppSpecIngressRuleMatchArgs:
         pulumi.set(self, "path", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleMatchAuthorityArgsDict(TypedDict):
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exact match.
-        """
-elif False:
-    AppSpecIngressRuleMatchAuthorityArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleMatchAuthorityArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact match.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleMatchAuthorityArgs:
@@ -3643,14 +3539,11 @@ class AppSpecIngressRuleMatchAuthorityArgs:
         pulumi.set(self, "exact", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleMatchPathArgsDict(TypedDict):
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prefix-based match.
-        """
-elif False:
-    AppSpecIngressRuleMatchPathArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleMatchPathArgsDict(TypedDict):
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix-based match.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleMatchPathArgs:
@@ -3675,30 +3568,27 @@ class AppSpecIngressRuleMatchPathArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class AppSpecIngressRuleRedirectArgsDict(TypedDict):
-        authority: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The authority/host to redirect to. This can be a hostname or IP address.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The port to redirect to.
-        """
-        redirect_code: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
-        """
-        scheme: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The scheme to redirect to. Supported values are `http` or `https`
-        """
-        uri: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional URI path to redirect to.
-        """
-elif False:
-    AppSpecIngressRuleRedirectArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecIngressRuleRedirectArgsDict(TypedDict):
+    authority: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The authority/host to redirect to. This can be a hostname or IP address.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The port to redirect to.
+    """
+    redirect_code: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The redirect code to use. Supported values are `300`, `301`, `302`, `303`, `304`, `307`, `308`.
+    """
+    scheme: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The scheme to redirect to. Supported values are `http` or `https`
+    """
+    uri: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional URI path to redirect to.
+    """
 
 @pulumi.input_type
 class AppSpecIngressRuleRedirectArgs:
@@ -3787,86 +3677,83 @@ class AppSpecIngressRuleRedirectArgs:
         pulumi.set(self, "uri", value)
 
 
-if not MYPY:
-    class AppSpecJobArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgsDict']]]]
-        """
-        Describes an alert policy for the component.
-        """
-        bitbucket: NotRequired[pulumi.Input['AppSpecJobBitbucketArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-        """
-        build_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional build command to run while building this component from source.
-        """
-        dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-        """
-        environment_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An environment slug describing the type of this app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        git: NotRequired[pulumi.Input['AppSpecJobGitArgsDict']]
-        """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-        """
-        github: NotRequired[pulumi.Input['AppSpecJobGithubArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        gitlab: NotRequired[pulumi.Input['AppSpecJobGitlabArgsDict']]
-        """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        image: NotRequired[pulumi.Input['AppSpecJobImageArgsDict']]
-        """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        instance_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of instances that this component should be scaled to.
-        """
-        instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
-        """
-        kind: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of job and when it will be run during the deployment process. It may be one of:
-        - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
-        - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
-        - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
-        - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
-        """
-        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgsDict']]]]
-        """
-        Describes a log forwarding destination.
-        """
-        run_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional run command to override the component's default.
-        """
-        source_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to the working directory to use for the build.
-        """
-        termination: NotRequired[pulumi.Input['AppSpecJobTerminationArgsDict']]
-        """
-        Contains a component's termination parameters.
-        """
-elif False:
-    AppSpecJobArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertArgsDict']]]]
+    """
+    Describes an alert policy for the component.
+    """
+    bitbucket: NotRequired[pulumi.Input['AppSpecJobBitbucketArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+    """
+    build_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional build command to run while building this component from source.
+    """
+    dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+    """
+    environment_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An environment slug describing the type of this app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    git: NotRequired[pulumi.Input['AppSpecJobGitArgsDict']]
+    """
+    A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+    """
+    github: NotRequired[pulumi.Input['AppSpecJobGithubArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    gitlab: NotRequired[pulumi.Input['AppSpecJobGitlabArgsDict']]
+    """
+    A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    image: NotRequired[pulumi.Input['AppSpecJobImageArgsDict']]
+    """
+    An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of instances that this component should be scaled to.
+    """
+    instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+    """
+    kind: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of job and when it will be run during the deployment process. It may be one of:
+    - `UNSPECIFIED`: Default job type, will auto-complete to POST_DEPLOY kind.
+    - `PRE_DEPLOY`: Indicates a job that runs before an app deployment.
+    - `POST_DEPLOY`: Indicates a job that runs after an app deployment.
+    - `FAILED_DEPLOY`: Indicates a job that runs after a component fails to deploy.
+    """
+    log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobLogDestinationArgsDict']]]]
+    """
+    Describes a log forwarding destination.
+    """
+    run_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional run command to override the component's default.
+    """
+    source_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to the working directory to use for the build.
+    """
+    termination: NotRequired[pulumi.Input['AppSpecJobTerminationArgsDict']]
+    """
+    Contains a component's termination parameters.
+    """
 
 @pulumi.input_type
 class AppSpecJobArgs:
@@ -4170,34 +4057,31 @@ class AppSpecJobArgs:
         pulumi.set(self, "termination", value)
 
 
-if not MYPY:
-    class AppSpecJobAlertArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-        """
-        rule: pulumi.Input[_builtins.str]
-        """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-        """
-        value: pulumi.Input[_builtins.float]
-        """
-        The threshold for the type of the warning.
-        """
-        window: pulumi.Input[_builtins.str]
-        """
-        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-        """
-        destinations: NotRequired[pulumi.Input['AppSpecJobAlertDestinationsArgsDict']]
-        """
-        Specification for alert destination.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether or not the alert is disabled (default: `false`).
-        """
-elif False:
-    AppSpecJobAlertArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobAlertArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+    """
+    rule: pulumi.Input[_builtins.str]
+    """
+    The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The threshold for the type of the warning.
+    """
+    window: pulumi.Input[_builtins.str]
+    """
+    The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+    """
+    destinations: NotRequired[pulumi.Input['AppSpecJobAlertDestinationsArgsDict']]
+    """
+    Specification for alert destination.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether or not the alert is disabled (default: `false`).
+    """
 
 @pulumi.input_type
 class AppSpecJobAlertArgs:
@@ -4298,18 +4182,15 @@ class AppSpecJobAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AppSpecJobAlertDestinationsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-        """
-        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgsDict']]]]
-        """
-        Determines which slack channels or users receive alerts.
-        """
-elif False:
-    AppSpecJobAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobAlertDestinationsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+    """
+    slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobAlertDestinationsSlackWebhookArgsDict']]]]
+    """
+    Determines which slack channels or users receive alerts.
+    """
 
 @pulumi.input_type
 class AppSpecJobAlertDestinationsArgs:
@@ -4350,18 +4231,15 @@ class AppSpecJobAlertDestinationsArgs:
         pulumi.set(self, "slack_webhooks", value)
 
 
-if not MYPY:
-    class AppSpecJobAlertDestinationsSlackWebhookArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send notifications to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The Slack webhook URL.
-        """
-elif False:
-    AppSpecJobAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobAlertDestinationsSlackWebhookArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send notifications to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The Slack webhook URL.
+    """
 
 @pulumi.input_type
 class AppSpecJobAlertDestinationsSlackWebhookArgs:
@@ -4400,22 +4278,19 @@ class AppSpecJobAlertDestinationsSlackWebhookArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppSpecJobBitbucketArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecJobBitbucketArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobBitbucketArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecJobBitbucketArgs:
@@ -4472,26 +4347,23 @@ class AppSpecJobBitbucketArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecJobEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecJobEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecJobEnvArgs:
@@ -4564,18 +4436,15 @@ class AppSpecJobEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecJobGitArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The clone URL of the repo.
-        """
-elif False:
-    AppSpecJobGitArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobGitArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The clone URL of the repo.
+    """
 
 @pulumi.input_type
 class AppSpecJobGitArgs:
@@ -4616,22 +4485,19 @@ class AppSpecJobGitArgs:
         pulumi.set(self, "repo_clone_url", value)
 
 
-if not MYPY:
-    class AppSpecJobGithubArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecJobGithubArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobGithubArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecJobGithubArgs:
@@ -4688,22 +4554,19 @@ class AppSpecJobGithubArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecJobGitlabArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecJobGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobGitlabArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecJobGitlabArgs:
@@ -4760,38 +4623,35 @@ class AppSpecJobGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecJobImageArgsDict(TypedDict):
-        registry_type: pulumi.Input[_builtins.str]
-        """
-        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
-        """
-        repository: pulumi.Input[_builtins.str]
-        """
-        The repository name.
-        """
-        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgsDict']]]]
-        """
-        Configures automatically deploying images pushed to DOCR.
-        """
-        digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image digest. Cannot be specified if `tag` is provided.
-        """
-        registry: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        """
-        registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The repository tag. Defaults to `latest` if not provided.
-        """
-elif False:
-    AppSpecJobImageArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobImageArgsDict(TypedDict):
+    registry_type: pulumi.Input[_builtins.str]
+    """
+    The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+    """
+    repository: pulumi.Input[_builtins.str]
+    """
+    The repository name.
+    """
+    deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecJobImageDeployOnPushArgsDict']]]]
+    """
+    Configures automatically deploying images pushed to DOCR.
+    """
+    digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image digest. Cannot be specified if `tag` is provided.
+    """
+    registry: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+    """
+    registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The repository tag. Defaults to `latest` if not provided.
+    """
 
 @pulumi.input_type
 class AppSpecJobImageArgs:
@@ -4910,14 +4770,11 @@ class AppSpecJobImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class AppSpecJobImageDeployOnPushArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy images pushed to DOCR.
-        """
-elif False:
-    AppSpecJobImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobImageDeployOnPushArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy images pushed to DOCR.
+    """
 
 @pulumi.input_type
 class AppSpecJobImageDeployOnPushArgs:
@@ -4942,30 +4799,27 @@ class AppSpecJobImageDeployOnPushArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the log destination. Minimum length: 2. Maximum length: 42.
-        """
-        datadog: NotRequired[pulumi.Input['AppSpecJobLogDestinationDatadogArgsDict']]
-        """
-        Datadog configuration.
-        """
-        logtail: NotRequired[pulumi.Input['AppSpecJobLogDestinationLogtailArgsDict']]
-        """
-        Logtail configuration.
-        """
-        open_search: NotRequired[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgsDict']]
-        """
-        OpenSearch configuration.
-        """
-        papertrail: NotRequired[pulumi.Input['AppSpecJobLogDestinationPapertrailArgsDict']]
-        """
-        Papertrail configuration.
-        """
-elif False:
-    AppSpecJobLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the log destination. Minimum length: 2. Maximum length: 42.
+    """
+    datadog: NotRequired[pulumi.Input['AppSpecJobLogDestinationDatadogArgsDict']]
+    """
+    Datadog configuration.
+    """
+    logtail: NotRequired[pulumi.Input['AppSpecJobLogDestinationLogtailArgsDict']]
+    """
+    Logtail configuration.
+    """
+    open_search: NotRequired[pulumi.Input['AppSpecJobLogDestinationOpenSearchArgsDict']]
+    """
+    OpenSearch configuration.
+    """
+    papertrail: NotRequired[pulumi.Input['AppSpecJobLogDestinationPapertrailArgsDict']]
+    """
+    Papertrail configuration.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationArgs:
@@ -5053,18 +4907,15 @@ class AppSpecJobLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationDatadogArgsDict(TypedDict):
-        api_key: pulumi.Input[_builtins.str]
-        """
-        Datadog API key.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Datadog HTTP log intake endpoint.
-        """
-elif False:
-    AppSpecJobLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationDatadogArgsDict(TypedDict):
+    api_key: pulumi.Input[_builtins.str]
+    """
+    Datadog API key.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Datadog HTTP log intake endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationDatadogArgs:
@@ -5104,14 +4955,11 @@ class AppSpecJobLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationLogtailArgsDict(TypedDict):
-        token: pulumi.Input[_builtins.str]
-        """
-        Logtail token.
-        """
-elif False:
-    AppSpecJobLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationLogtailArgsDict(TypedDict):
+    token: pulumi.Input[_builtins.str]
+    """
+    Logtail token.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationLogtailArgs:
@@ -5135,26 +4983,23 @@ class AppSpecJobLogDestinationLogtailArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationOpenSearchArgsDict(TypedDict):
-        basic_auth: pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict']
-        """
-        Basic authentication details.
-        """
-        cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch endpoint.
-        """
-        index_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch index name.
-        """
-elif False:
-    AppSpecJobLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationOpenSearchArgsDict(TypedDict):
+    basic_auth: pulumi.Input['AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict']
+    """
+    Basic authentication details.
+    """
+    cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch endpoint.
+    """
+    index_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch index name.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationOpenSearchArgs:
@@ -5226,18 +5071,15 @@ class AppSpecJobLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for basic authentication.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        user for basic authentication.
-        """
-elif False:
-    AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for basic authentication.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    user for basic authentication.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationOpenSearchBasicAuthArgs:
@@ -5278,14 +5120,11 @@ class AppSpecJobLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AppSpecJobLogDestinationPapertrailArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        Papertrail syslog endpoint.
-        """
-elif False:
-    AppSpecJobLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecJobLogDestinationPapertrailArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    Papertrail syslog endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecJobLogDestinationPapertrailArgs:
@@ -5309,16 +5148,13 @@ class AppSpecJobLogDestinationPapertrailArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecJobTerminationArgsDict(TypedDict):
-        grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+class AppSpecJobTerminationArgsDict(TypedDict):
+    grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
 
-        A `function` component can contain:
-        """
-elif False:
-    AppSpecJobTerminationArgsDict: TypeAlias = Mapping[str, Any]
+    A `function` component can contain:
+    """
 
 @pulumi.input_type
 class AppSpecJobTerminationArgs:
@@ -5347,22 +5183,19 @@ class AppSpecJobTerminationArgs:
         pulumi.set(self, "grace_period_seconds", value)
 
 
-if not MYPY:
-    class AppSpecMaintenanceArgsDict(TypedDict):
-        archive: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
-        """
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates whether maintenance mode should be enabled for the app.
-        """
-        offline_page_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A custom offline page to display when maintenance mode is enabled or the app is archived.
-        """
-elif False:
-    AppSpecMaintenanceArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecMaintenanceArgsDict(TypedDict):
+    archive: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether the app should be archived. Setting this to true implies that enabled is set to true.
+    """
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates whether maintenance mode should be enabled for the app.
+    """
+    offline_page_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A custom offline page to display when maintenance mode is enabled or the app is archived.
+    """
 
 @pulumi.input_type
 class AppSpecMaintenanceArgs:
@@ -5419,102 +5252,99 @@ class AppSpecMaintenanceArgs:
         pulumi.set(self, "offline_page_url", value)
 
 
-if not MYPY:
-    class AppSpecServiceArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgsDict']]]]
-        """
-        Describes an alert policy for the component.
-        """
-        autoscaling: NotRequired[pulumi.Input['AppSpecServiceAutoscalingArgsDict']]
-        """
-        Configuration for automatically scaling this component based on metrics.
-        """
-        bitbucket: NotRequired[pulumi.Input['AppSpecServiceBitbucketArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-        """
-        build_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional build command to run while building this component from source.
-        """
-        cors: NotRequired[pulumi.Input['AppSpecServiceCorsArgsDict']]
-        """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-        """
-        dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-        """
-        environment_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An environment slug describing the type of this app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        git: NotRequired[pulumi.Input['AppSpecServiceGitArgsDict']]
-        """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-        """
-        github: NotRequired[pulumi.Input['AppSpecServiceGithubArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        gitlab: NotRequired[pulumi.Input['AppSpecServiceGitlabArgsDict']]
-        """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        health_check: NotRequired[pulumi.Input['AppSpecServiceHealthCheckArgsDict']]
-        """
-        A health check to determine the availability of this component.
-        """
-        http_port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The internal port on which this service's run command will listen.
-        """
-        image: NotRequired[pulumi.Input['AppSpecServiceImageArgsDict']]
-        """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        instance_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of instances that this component should be scaled to.
-        """
-        instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
-        """
-        internal_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        A list of ports on which this service will listen for internal traffic.
-        """
-        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgsDict']]]]
-        """
-        Describes a log forwarding destination.
-        """
-        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgsDict']]]]
-        """
-        An HTTP paths that should be routed to this component.
-        """
-        run_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional run command to override the component's default.
-        """
-        source_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to the working directory to use for the build.
-        """
-        termination: NotRequired[pulumi.Input['AppSpecServiceTerminationArgsDict']]
-        """
-        Contains a component's termination parameters.
-        """
-elif False:
-    AppSpecServiceArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertArgsDict']]]]
+    """
+    Describes an alert policy for the component.
+    """
+    autoscaling: NotRequired[pulumi.Input['AppSpecServiceAutoscalingArgsDict']]
+    """
+    Configuration for automatically scaling this component based on metrics.
+    """
+    bitbucket: NotRequired[pulumi.Input['AppSpecServiceBitbucketArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+    """
+    build_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional build command to run while building this component from source.
+    """
+    cors: NotRequired[pulumi.Input['AppSpecServiceCorsArgsDict']]
+    """
+    The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+    """
+    dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+    """
+    environment_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An environment slug describing the type of this app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    git: NotRequired[pulumi.Input['AppSpecServiceGitArgsDict']]
+    """
+    A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+    """
+    github: NotRequired[pulumi.Input['AppSpecServiceGithubArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    gitlab: NotRequired[pulumi.Input['AppSpecServiceGitlabArgsDict']]
+    """
+    A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    health_check: NotRequired[pulumi.Input['AppSpecServiceHealthCheckArgsDict']]
+    """
+    A health check to determine the availability of this component.
+    """
+    http_port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The internal port on which this service's run command will listen.
+    """
+    image: NotRequired[pulumi.Input['AppSpecServiceImageArgsDict']]
+    """
+    An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of instances that this component should be scaled to.
+    """
+    instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+    """
+    internal_ports: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    A list of ports on which this service will listen for internal traffic.
+    """
+    log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceLogDestinationArgsDict']]]]
+    """
+    Describes a log forwarding destination.
+    """
+    routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceRouteArgsDict']]]]
+    """
+    An HTTP paths that should be routed to this component.
+    """
+    run_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional run command to override the component's default.
+    """
+    source_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to the working directory to use for the build.
+    """
+    termination: NotRequired[pulumi.Input['AppSpecServiceTerminationArgsDict']]
+    """
+    Contains a component's termination parameters.
+    """
 
 @pulumi.input_type
 class AppSpecServiceArgs:
@@ -5898,34 +5728,31 @@ class AppSpecServiceArgs:
         pulumi.set(self, "termination", value)
 
 
-if not MYPY:
-    class AppSpecServiceAlertArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-        """
-        rule: pulumi.Input[_builtins.str]
-        """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-        """
-        value: pulumi.Input[_builtins.float]
-        """
-        The threshold for the type of the warning.
-        """
-        window: pulumi.Input[_builtins.str]
-        """
-        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-        """
-        destinations: NotRequired[pulumi.Input['AppSpecServiceAlertDestinationsArgsDict']]
-        """
-        Specification for alert destination.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether or not the alert is disabled (default: `false`).
-        """
-elif False:
-    AppSpecServiceAlertArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAlertArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+    """
+    rule: pulumi.Input[_builtins.str]
+    """
+    The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The threshold for the type of the warning.
+    """
+    window: pulumi.Input[_builtins.str]
+    """
+    The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+    """
+    destinations: NotRequired[pulumi.Input['AppSpecServiceAlertDestinationsArgsDict']]
+    """
+    Specification for alert destination.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether or not the alert is disabled (default: `false`).
+    """
 
 @pulumi.input_type
 class AppSpecServiceAlertArgs:
@@ -6026,18 +5853,15 @@ class AppSpecServiceAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AppSpecServiceAlertDestinationsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-        """
-        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgsDict']]]]
-        """
-        Determines which slack channels or users receive alerts.
-        """
-elif False:
-    AppSpecServiceAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAlertDestinationsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+    """
+    slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceAlertDestinationsSlackWebhookArgsDict']]]]
+    """
+    Determines which slack channels or users receive alerts.
+    """
 
 @pulumi.input_type
 class AppSpecServiceAlertDestinationsArgs:
@@ -6078,18 +5902,15 @@ class AppSpecServiceAlertDestinationsArgs:
         pulumi.set(self, "slack_webhooks", value)
 
 
-if not MYPY:
-    class AppSpecServiceAlertDestinationsSlackWebhookArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send notifications to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The Slack webhook URL.
-        """
-elif False:
-    AppSpecServiceAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAlertDestinationsSlackWebhookArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send notifications to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The Slack webhook URL.
+    """
 
 @pulumi.input_type
 class AppSpecServiceAlertDestinationsSlackWebhookArgs:
@@ -6128,22 +5949,19 @@ class AppSpecServiceAlertDestinationsSlackWebhookArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppSpecServiceAutoscalingArgsDict(TypedDict):
-        max_instance_count: pulumi.Input[_builtins.int]
-        """
-        The maximum amount of instances for this component. Must be more than min_instance_count.
-        """
-        metrics: pulumi.Input['AppSpecServiceAutoscalingMetricsArgsDict']
-        """
-        The metrics that the component is scaled on.
-        """
-        min_instance_count: pulumi.Input[_builtins.int]
-        """
-        The minimum amount of instances for this component. Must be less than max_instance_count.
-        """
-elif False:
-    AppSpecServiceAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAutoscalingArgsDict(TypedDict):
+    max_instance_count: pulumi.Input[_builtins.int]
+    """
+    The maximum amount of instances for this component. Must be more than min_instance_count.
+    """
+    metrics: pulumi.Input['AppSpecServiceAutoscalingMetricsArgsDict']
+    """
+    The metrics that the component is scaled on.
+    """
+    min_instance_count: pulumi.Input[_builtins.int]
+    """
+    The minimum amount of instances for this component. Must be less than max_instance_count.
+    """
 
 @pulumi.input_type
 class AppSpecServiceAutoscalingArgs:
@@ -6197,14 +6015,11 @@ class AppSpecServiceAutoscalingArgs:
         pulumi.set(self, "min_instance_count", value)
 
 
-if not MYPY:
-    class AppSpecServiceAutoscalingMetricsArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgsDict']]
-        """
-        Settings for scaling the component based on CPU utilization.
-        """
-elif False:
-    AppSpecServiceAutoscalingMetricsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAutoscalingMetricsArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input['AppSpecServiceAutoscalingMetricsCpuArgsDict']]
+    """
+    Settings for scaling the component based on CPU utilization.
+    """
 
 @pulumi.input_type
 class AppSpecServiceAutoscalingMetricsArgs:
@@ -6229,14 +6044,11 @@ class AppSpecServiceAutoscalingMetricsArgs:
         pulumi.set(self, "cpu", value)
 
 
-if not MYPY:
-    class AppSpecServiceAutoscalingMetricsCpuArgsDict(TypedDict):
-        percent: pulumi.Input[_builtins.int]
-        """
-        The average target CPU utilization for the component.
-        """
-elif False:
-    AppSpecServiceAutoscalingMetricsCpuArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceAutoscalingMetricsCpuArgsDict(TypedDict):
+    percent: pulumi.Input[_builtins.int]
+    """
+    The average target CPU utilization for the component.
+    """
 
 @pulumi.input_type
 class AppSpecServiceAutoscalingMetricsCpuArgs:
@@ -6260,22 +6072,19 @@ class AppSpecServiceAutoscalingMetricsCpuArgs:
         pulumi.set(self, "percent", value)
 
 
-if not MYPY:
-    class AppSpecServiceBitbucketArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecServiceBitbucketArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceBitbucketArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecServiceBitbucketArgs:
@@ -6332,34 +6141,31 @@ class AppSpecServiceBitbucketArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecServiceCorsArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
-        """
-        allow_origins: NotRequired[pulumi.Input['AppSpecServiceCorsAllowOriginsArgsDict']]
-        """
-        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-        """
-elif False:
-    AppSpecServiceCorsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceCorsArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+    """
+    allow_origins: NotRequired[pulumi.Input['AppSpecServiceCorsAllowOriginsArgsDict']]
+    """
+    The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+    """
 
 @pulumi.input_type
 class AppSpecServiceCorsArgs:
@@ -6464,22 +6270,19 @@ class AppSpecServiceCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class AppSpecServiceCorsAllowOriginsArgsDict(TypedDict):
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exact string match.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prefix-based match.
-        """
-        regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        RE2 style regex-based match.
-        """
-elif False:
-    AppSpecServiceCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceCorsAllowOriginsArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact string match.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix-based match.
+    """
+    regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    RE2 style regex-based match.
+    """
 
 @pulumi.input_type
 class AppSpecServiceCorsAllowOriginsArgs:
@@ -6540,26 +6343,23 @@ class AppSpecServiceCorsAllowOriginsArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class AppSpecServiceEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecServiceEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecServiceEnvArgs:
@@ -6632,18 +6432,15 @@ class AppSpecServiceEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecServiceGitArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The clone URL of the repo.
-        """
-elif False:
-    AppSpecServiceGitArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceGitArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The clone URL of the repo.
+    """
 
 @pulumi.input_type
 class AppSpecServiceGitArgs:
@@ -6684,22 +6481,19 @@ class AppSpecServiceGitArgs:
         pulumi.set(self, "repo_clone_url", value)
 
 
-if not MYPY:
-    class AppSpecServiceGithubArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecServiceGithubArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceGithubArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecServiceGithubArgs:
@@ -6756,22 +6550,19 @@ class AppSpecServiceGithubArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecServiceGitlabArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecServiceGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceGitlabArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecServiceGitlabArgs:
@@ -6828,38 +6619,35 @@ class AppSpecServiceGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecServiceHealthCheckArgsDict(TypedDict):
-        failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of failed health checks before considered unhealthy.
-        """
-        http_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The route path used for the HTTP health check ping.
-        """
-        initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait before beginning health checks.
-        """
-        period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait between health checks.
-        """
-        port: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The health check will be performed on this port instead of component's HTTP port.
-        """
-        success_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of successful health checks before considered healthy.
-        """
-        timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds after which the check times out.
-        """
-elif False:
-    AppSpecServiceHealthCheckArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceHealthCheckArgsDict(TypedDict):
+    failure_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of failed health checks before considered unhealthy.
+    """
+    http_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The route path used for the HTTP health check ping.
+    """
+    initial_delay_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait before beginning health checks.
+    """
+    period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait between health checks.
+    """
+    port: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The health check will be performed on this port instead of component's HTTP port.
+    """
+    success_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of successful health checks before considered healthy.
+    """
+    timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds after which the check times out.
+    """
 
 @pulumi.input_type
 class AppSpecServiceHealthCheckArgs:
@@ -6980,38 +6768,35 @@ class AppSpecServiceHealthCheckArgs:
         pulumi.set(self, "timeout_seconds", value)
 
 
-if not MYPY:
-    class AppSpecServiceImageArgsDict(TypedDict):
-        registry_type: pulumi.Input[_builtins.str]
-        """
-        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
-        """
-        repository: pulumi.Input[_builtins.str]
-        """
-        The repository name.
-        """
-        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgsDict']]]]
-        """
-        Configures automatically deploying images pushed to DOCR.
-        """
-        digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image digest. Cannot be specified if `tag` is provided.
-        """
-        registry: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        """
-        registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The repository tag. Defaults to `latest` if not provided.
-        """
-elif False:
-    AppSpecServiceImageArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceImageArgsDict(TypedDict):
+    registry_type: pulumi.Input[_builtins.str]
+    """
+    The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+    """
+    repository: pulumi.Input[_builtins.str]
+    """
+    The repository name.
+    """
+    deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecServiceImageDeployOnPushArgsDict']]]]
+    """
+    Configures automatically deploying images pushed to DOCR.
+    """
+    digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image digest. Cannot be specified if `tag` is provided.
+    """
+    registry: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+    """
+    registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The repository tag. Defaults to `latest` if not provided.
+    """
 
 @pulumi.input_type
 class AppSpecServiceImageArgs:
@@ -7130,14 +6915,11 @@ class AppSpecServiceImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class AppSpecServiceImageDeployOnPushArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy images pushed to DOCR.
-        """
-elif False:
-    AppSpecServiceImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceImageDeployOnPushArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy images pushed to DOCR.
+    """
 
 @pulumi.input_type
 class AppSpecServiceImageDeployOnPushArgs:
@@ -7162,30 +6944,27 @@ class AppSpecServiceImageDeployOnPushArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the log destination. Minimum length: 2. Maximum length: 42.
-        """
-        datadog: NotRequired[pulumi.Input['AppSpecServiceLogDestinationDatadogArgsDict']]
-        """
-        Datadog configuration.
-        """
-        logtail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationLogtailArgsDict']]
-        """
-        Logtail configuration.
-        """
-        open_search: NotRequired[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgsDict']]
-        """
-        OpenSearch configuration.
-        """
-        papertrail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgsDict']]
-        """
-        Papertrail configuration.
-        """
-elif False:
-    AppSpecServiceLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the log destination. Minimum length: 2. Maximum length: 42.
+    """
+    datadog: NotRequired[pulumi.Input['AppSpecServiceLogDestinationDatadogArgsDict']]
+    """
+    Datadog configuration.
+    """
+    logtail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationLogtailArgsDict']]
+    """
+    Logtail configuration.
+    """
+    open_search: NotRequired[pulumi.Input['AppSpecServiceLogDestinationOpenSearchArgsDict']]
+    """
+    OpenSearch configuration.
+    """
+    papertrail: NotRequired[pulumi.Input['AppSpecServiceLogDestinationPapertrailArgsDict']]
+    """
+    Papertrail configuration.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationArgs:
@@ -7273,18 +7052,15 @@ class AppSpecServiceLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationDatadogArgsDict(TypedDict):
-        api_key: pulumi.Input[_builtins.str]
-        """
-        Datadog API key.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Datadog HTTP log intake endpoint.
-        """
-elif False:
-    AppSpecServiceLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationDatadogArgsDict(TypedDict):
+    api_key: pulumi.Input[_builtins.str]
+    """
+    Datadog API key.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Datadog HTTP log intake endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationDatadogArgs:
@@ -7324,14 +7100,11 @@ class AppSpecServiceLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationLogtailArgsDict(TypedDict):
-        token: pulumi.Input[_builtins.str]
-        """
-        Logtail token.
-        """
-elif False:
-    AppSpecServiceLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationLogtailArgsDict(TypedDict):
+    token: pulumi.Input[_builtins.str]
+    """
+    Logtail token.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationLogtailArgs:
@@ -7355,26 +7128,23 @@ class AppSpecServiceLogDestinationLogtailArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationOpenSearchArgsDict(TypedDict):
-        basic_auth: pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict']
-        """
-        Basic authentication details.
-        """
-        cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch endpoint.
-        """
-        index_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch index name.
-        """
-elif False:
-    AppSpecServiceLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationOpenSearchArgsDict(TypedDict):
+    basic_auth: pulumi.Input['AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict']
+    """
+    Basic authentication details.
+    """
+    cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch endpoint.
+    """
+    index_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch index name.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationOpenSearchArgs:
@@ -7446,18 +7216,15 @@ class AppSpecServiceLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for basic authentication.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        user for basic authentication.
-        """
-elif False:
-    AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for basic authentication.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    user for basic authentication.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationOpenSearchBasicAuthArgs:
@@ -7498,14 +7265,11 @@ class AppSpecServiceLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AppSpecServiceLogDestinationPapertrailArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        Papertrail syslog endpoint.
-        """
-elif False:
-    AppSpecServiceLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceLogDestinationPapertrailArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    Papertrail syslog endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecServiceLogDestinationPapertrailArgs:
@@ -7529,18 +7293,15 @@ class AppSpecServiceLogDestinationPapertrailArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecServiceRouteArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Paths must start with `/` and must be unique within the app.
-        """
-        preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        An optional flag to preserve the path that is forwarded to the backend service.
-        """
-elif False:
-    AppSpecServiceRouteArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecServiceRouteArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Paths must start with `/` and must be unique within the app.
+    """
+    preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    An optional flag to preserve the path that is forwarded to the backend service.
+    """
 
 @pulumi.input_type
 class AppSpecServiceRouteArgs:
@@ -7581,22 +7342,19 @@ class AppSpecServiceRouteArgs:
         pulumi.set(self, "preserve_path_prefix", value)
 
 
-if not MYPY:
-    class AppSpecServiceTerminationArgsDict(TypedDict):
-        drain_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
+class AppSpecServiceTerminationArgsDict(TypedDict):
+    drain_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait between selecting a container instance for termination and issuing the TERM signal. Selecting a container instance for termination begins an asynchronous drain of new requests on upstream load-balancers. Default: 15 seconds, Minimum 1, Maximum 110.
 
-        A `static_site` can contain:
-        """
-        grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+    A `static_site` can contain:
+    """
+    grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
 
-        A `function` component can contain:
-        """
-elif False:
-    AppSpecServiceTerminationArgsDict: TypeAlias = Mapping[str, Any]
+    A `function` component can contain:
+    """
 
 @pulumi.input_type
 class AppSpecServiceTerminationArgs:
@@ -7645,74 +7403,71 @@ class AppSpecServiceTerminationArgs:
         pulumi.set(self, "grace_period_seconds", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        bitbucket: NotRequired[pulumi.Input['AppSpecStaticSiteBitbucketArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-        """
-        build_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional build command to run while building this component from source.
-        """
-        catchall_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
-        """
-        cors: NotRequired[pulumi.Input['AppSpecStaticSiteCorsArgsDict']]
-        """
-        The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
-        """
-        dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-        """
-        environment_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An environment slug describing the type of this app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        error_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the error document to use when serving this static site.
-        """
-        git: NotRequired[pulumi.Input['AppSpecStaticSiteGitArgsDict']]
-        """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-        """
-        github: NotRequired[pulumi.Input['AppSpecStaticSiteGithubArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        gitlab: NotRequired[pulumi.Input['AppSpecStaticSiteGitlabArgsDict']]
-        """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        index_document: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the index document to use when serving this static site.
-        """
-        output_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
-        """
-        routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgsDict']]]]
-        """
-        An HTTP paths that should be routed to this component.
-        """
-        source_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to the working directory to use for the build.
-        """
-elif False:
-    AppSpecStaticSiteArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    bitbucket: NotRequired[pulumi.Input['AppSpecStaticSiteBitbucketArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+    """
+    build_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional build command to run while building this component from source.
+    """
+    catchall_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the document to use as the fallback for any requests to documents that are not found when serving this static site.
+    """
+    cors: NotRequired[pulumi.Input['AppSpecStaticSiteCorsArgsDict']]
+    """
+    The [CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) policies of the app.
+    """
+    dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+    """
+    environment_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An environment slug describing the type of this app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    error_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the error document to use when serving this static site.
+    """
+    git: NotRequired[pulumi.Input['AppSpecStaticSiteGitArgsDict']]
+    """
+    A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+    """
+    github: NotRequired[pulumi.Input['AppSpecStaticSiteGithubArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    gitlab: NotRequired[pulumi.Input['AppSpecStaticSiteGitlabArgsDict']]
+    """
+    A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    index_document: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the index document to use when serving this static site.
+    """
+    output_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to where the built assets will be located, relative to the build context. If not set, App Platform will automatically scan for these directory names: `_static`, `dist`, `public`.
+    """
+    routes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecStaticSiteRouteArgsDict']]]]
+    """
+    An HTTP paths that should be routed to this component.
+    """
+    source_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to the working directory to use for the build.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteArgs:
@@ -7984,22 +7739,19 @@ class AppSpecStaticSiteArgs:
         pulumi.set(self, "source_dir", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteBitbucketArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecStaticSiteBitbucketArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteBitbucketArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteBitbucketArgs:
@@ -8056,34 +7808,31 @@ class AppSpecStaticSiteBitbucketArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteCorsArgsDict(TypedDict):
-        allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
-        """
-        allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
-        """
-        allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
-        """
-        allow_origins: NotRequired[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgsDict']]
-        """
-        The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
-        """
-        max_age: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
-        """
-elif False:
-    AppSpecStaticSiteCorsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteCorsArgsDict(TypedDict):
+    allow_credentials: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether browsers should expose the response to the client-side JavaScript code when the request’s credentials mode is `include`. This configures the Access-Control-Allow-Credentials header.
+    """
+    allow_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP request headers. This configures the Access-Control-Allow-Headers header.
+    """
+    allow_methods: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of allowed HTTP methods. This configures the Access-Control-Allow-Methods header.
+    """
+    allow_origins: NotRequired[pulumi.Input['AppSpecStaticSiteCorsAllowOriginsArgsDict']]
+    """
+    The set of allowed CORS origins. This configures the Access-Control-Allow-Origin header.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    The set of HTTP response headers that browsers are allowed to access. This configures the Access-Control-Expose-Headers header.
+    """
+    max_age: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional duration specifying how long browsers can cache the results of a preflight request. This configures the Access-Control-Max-Age header. Example: `5h30m`.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteCorsArgs:
@@ -8188,22 +7937,19 @@ class AppSpecStaticSiteCorsArgs:
         pulumi.set(self, "max_age", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteCorsAllowOriginsArgsDict(TypedDict):
-        exact: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Exact string match.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Prefix-based match.
-        """
-        regex: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        RE2 style regex-based match.
-        """
-elif False:
-    AppSpecStaticSiteCorsAllowOriginsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteCorsAllowOriginsArgsDict(TypedDict):
+    exact: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Exact string match.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Prefix-based match.
+    """
+    regex: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    RE2 style regex-based match.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteCorsAllowOriginsArgs:
@@ -8264,26 +8010,23 @@ class AppSpecStaticSiteCorsAllowOriginsArgs:
         pulumi.set(self, "regex", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecStaticSiteEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteEnvArgs:
@@ -8356,18 +8099,15 @@ class AppSpecStaticSiteEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteGitArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The clone URL of the repo.
-        """
-elif False:
-    AppSpecStaticSiteGitArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteGitArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The clone URL of the repo.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteGitArgs:
@@ -8408,22 +8148,19 @@ class AppSpecStaticSiteGitArgs:
         pulumi.set(self, "repo_clone_url", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteGithubArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecStaticSiteGithubArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteGithubArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteGithubArgs:
@@ -8480,22 +8217,19 @@ class AppSpecStaticSiteGithubArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteGitlabArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecStaticSiteGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteGitlabArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteGitlabArgs:
@@ -8552,18 +8286,15 @@ class AppSpecStaticSiteGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecStaticSiteRouteArgsDict(TypedDict):
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Paths must start with `/` and must be unique within the app.
-        """
-        preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        An optional flag to preserve the path that is forwarded to the backend service.
-        """
-elif False:
-    AppSpecStaticSiteRouteArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecStaticSiteRouteArgsDict(TypedDict):
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Paths must start with `/` and must be unique within the app.
+    """
+    preserve_path_prefix: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    An optional flag to preserve the path that is forwarded to the backend service.
+    """
 
 @pulumi.input_type
 class AppSpecStaticSiteRouteArgs:
@@ -8604,14 +8335,11 @@ class AppSpecStaticSiteRouteArgs:
         pulumi.set(self, "preserve_path_prefix", value)
 
 
-if not MYPY:
-    class AppSpecVpcArgsDict(TypedDict):
-        id: pulumi.Input[_builtins.str]
-        """
-        The ID of the VPC.
-        """
-elif False:
-    AppSpecVpcArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecVpcArgsDict(TypedDict):
+    id: pulumi.Input[_builtins.str]
+    """
+    The ID of the VPC.
+    """
 
 @pulumi.input_type
 class AppSpecVpcArgs:
@@ -8635,82 +8363,79 @@ class AppSpecVpcArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class AppSpecWorkerArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The name of the component.
-        """
-        alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgsDict']]]]
-        """
-        Describes an alert policy for the component.
-        """
-        autoscaling: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingArgsDict']]
-        """
-        Configuration for automatically scaling this component based on metrics.
-        """
-        bitbucket: NotRequired[pulumi.Input['AppSpecWorkerBitbucketArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
-        """
-        build_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional build command to run while building this component from source.
-        """
-        dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
-        """
-        environment_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An environment slug describing the type of this app.
-        """
-        envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgsDict']]]]
-        """
-        Describes an environment variable made available to an app competent.
-        """
-        git: NotRequired[pulumi.Input['AppSpecWorkerGitArgsDict']]
-        """
-        A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
-        """
-        github: NotRequired[pulumi.Input['AppSpecWorkerGithubArgsDict']]
-        """
-        A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        gitlab: NotRequired[pulumi.Input['AppSpecWorkerGitlabArgsDict']]
-        """
-        A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        image: NotRequired[pulumi.Input['AppSpecWorkerImageArgsDict']]
-        """
-        An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
-        """
-        instance_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The amount of instances that this component should be scaled to.
-        """
-        instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
-        """
-        log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgsDict']]]]
-        """
-        Describes a log forwarding destination.
-        """
-        run_command: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional run command to override the component's default.
-        """
-        source_dir: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An optional path to the working directory to use for the build.
-        """
-        termination: NotRequired[pulumi.Input['AppSpecWorkerTerminationArgsDict']]
-        """
-        Contains a component's termination parameters.
-        """
-elif False:
-    AppSpecWorkerArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The name of the component.
+    """
+    alerts: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertArgsDict']]]]
+    """
+    Describes an alert policy for the component.
+    """
+    autoscaling: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingArgsDict']]
+    """
+    Configuration for automatically scaling this component based on metrics.
+    """
+    bitbucket: NotRequired[pulumi.Input['AppSpecWorkerBitbucketArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/bitbucket/install). Only one of `git`, `github`, `bitbucket`, `gitlab`, or `image` may be set.
+    """
+    build_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional build command to run while building this component from source.
+    """
+    dockerfile_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to a Dockerfile relative to the root of the repo. If set, overrides usage of buildpacks.
+    """
+    environment_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An environment slug describing the type of this app.
+    """
+    envs: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerEnvArgsDict']]]]
+    """
+    Describes an environment variable made available to an app competent.
+    """
+    git: NotRequired[pulumi.Input['AppSpecWorkerGitArgsDict']]
+    """
+    A Git repo to use as the component's source. The repository must be able to be cloned without authentication. Only one of `git`, `github` or `gitlab` may be set.
+    """
+    github: NotRequired[pulumi.Input['AppSpecWorkerGithubArgsDict']]
+    """
+    A GitHub repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/github/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    gitlab: NotRequired[pulumi.Input['AppSpecWorkerGitlabArgsDict']]
+    """
+    A Gitlab repo to use as the component's source. DigitalOcean App Platform must have [access to the repository](https://cloud.digitalocean.com/apps/gitlab/install). Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    image: NotRequired[pulumi.Input['AppSpecWorkerImageArgsDict']]
+    """
+    An image to use as the component's source. Only one of `git`, `github`, `gitlab`, or `image` may be set.
+    """
+    instance_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The amount of instances that this component should be scaled to.
+    """
+    instance_size_slug: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The instance size to use for this component. This determines the plan (basic or professional) and the available CPU and memory. The list of available instance sizes can be [found with the API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Apps/operation/apps_list_instanceSizes) or using the [doctl CLI](https://docs.digitalocean.com/reference/doctl/) (`doctl apps tier instance-size list`). Default: `basic-xxs`
+    """
+    log_destinations: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerLogDestinationArgsDict']]]]
+    """
+    Describes a log forwarding destination.
+    """
+    run_command: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional run command to override the component's default.
+    """
+    source_dir: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An optional path to the working directory to use for the build.
+    """
+    termination: NotRequired[pulumi.Input['AppSpecWorkerTerminationArgsDict']]
+    """
+    Contains a component's termination parameters.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerArgs:
@@ -9006,34 +8731,31 @@ class AppSpecWorkerArgs:
         pulumi.set(self, "termination", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAlertArgsDict(TypedDict):
-        operator: pulumi.Input[_builtins.str]
-        """
-        The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
-        """
-        rule: pulumi.Input[_builtins.str]
-        """
-        The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-        """
-        value: pulumi.Input[_builtins.float]
-        """
-        The threshold for the type of the warning.
-        """
-        window: pulumi.Input[_builtins.str]
-        """
-        The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
-        """
-        destinations: NotRequired[pulumi.Input['AppSpecWorkerAlertDestinationsArgsDict']]
-        """
-        Specification for alert destination.
-        """
-        disabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether or not the alert is disabled (default: `false`).
-        """
-elif False:
-    AppSpecWorkerAlertArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAlertArgsDict(TypedDict):
+    operator: pulumi.Input[_builtins.str]
+    """
+    The operator to use. This is either of `GREATER_THAN` or `LESS_THAN`.
+    """
+    rule: pulumi.Input[_builtins.str]
+    """
+    The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
+    """
+    value: pulumi.Input[_builtins.float]
+    """
+    The threshold for the type of the warning.
+    """
+    window: pulumi.Input[_builtins.str]
+    """
+    The time before alerts should be triggered. This is may be one of: `FIVE_MINUTES`, `TEN_MINUTES`, `THIRTY_MINUTES`, `ONE_HOUR`.
+    """
+    destinations: NotRequired[pulumi.Input['AppSpecWorkerAlertDestinationsArgsDict']]
+    """
+    Specification for alert destination.
+    """
+    disabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether or not the alert is disabled (default: `false`).
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAlertArgs:
@@ -9134,18 +8856,15 @@ class AppSpecWorkerAlertArgs:
         pulumi.set(self, "disabled", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAlertDestinationsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
-        """
-        slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgsDict']]]]
-        """
-        Determines which slack channels or users receive alerts.
-        """
-elif False:
-    AppSpecWorkerAlertDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAlertDestinationsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Determines which emails receive alerts. The emails must be team members. If not set, the team's email is used by default.
+    """
+    slack_webhooks: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerAlertDestinationsSlackWebhookArgsDict']]]]
+    """
+    Determines which slack channels or users receive alerts.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAlertDestinationsArgs:
@@ -9186,18 +8905,15 @@ class AppSpecWorkerAlertDestinationsArgs:
         pulumi.set(self, "slack_webhooks", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAlertDestinationsSlackWebhookArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send notifications to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The Slack webhook URL.
-        """
-elif False:
-    AppSpecWorkerAlertDestinationsSlackWebhookArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAlertDestinationsSlackWebhookArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send notifications to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The Slack webhook URL.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAlertDestinationsSlackWebhookArgs:
@@ -9236,22 +8952,19 @@ class AppSpecWorkerAlertDestinationsSlackWebhookArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAutoscalingArgsDict(TypedDict):
-        max_instance_count: pulumi.Input[_builtins.int]
-        """
-        The maximum amount of instances for this component. Must be more than min_instance_count.
-        """
-        metrics: pulumi.Input['AppSpecWorkerAutoscalingMetricsArgsDict']
-        """
-        The metrics that the component is scaled on.
-        """
-        min_instance_count: pulumi.Input[_builtins.int]
-        """
-        The minimum amount of instances for this component. Must be less than max_instance_count.
-        """
-elif False:
-    AppSpecWorkerAutoscalingArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAutoscalingArgsDict(TypedDict):
+    max_instance_count: pulumi.Input[_builtins.int]
+    """
+    The maximum amount of instances for this component. Must be more than min_instance_count.
+    """
+    metrics: pulumi.Input['AppSpecWorkerAutoscalingMetricsArgsDict']
+    """
+    The metrics that the component is scaled on.
+    """
+    min_instance_count: pulumi.Input[_builtins.int]
+    """
+    The minimum amount of instances for this component. Must be less than max_instance_count.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAutoscalingArgs:
@@ -9305,14 +9018,11 @@ class AppSpecWorkerAutoscalingArgs:
         pulumi.set(self, "min_instance_count", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAutoscalingMetricsArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgsDict']]
-        """
-        Settings for scaling the component based on CPU utilization.
-        """
-elif False:
-    AppSpecWorkerAutoscalingMetricsArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAutoscalingMetricsArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input['AppSpecWorkerAutoscalingMetricsCpuArgsDict']]
+    """
+    Settings for scaling the component based on CPU utilization.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAutoscalingMetricsArgs:
@@ -9337,14 +9047,11 @@ class AppSpecWorkerAutoscalingMetricsArgs:
         pulumi.set(self, "cpu", value)
 
 
-if not MYPY:
-    class AppSpecWorkerAutoscalingMetricsCpuArgsDict(TypedDict):
-        percent: pulumi.Input[_builtins.int]
-        """
-        The average target CPU utilization for the component.
-        """
-elif False:
-    AppSpecWorkerAutoscalingMetricsCpuArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerAutoscalingMetricsCpuArgsDict(TypedDict):
+    percent: pulumi.Input[_builtins.int]
+    """
+    The average target CPU utilization for the component.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerAutoscalingMetricsCpuArgs:
@@ -9368,22 +9075,19 @@ class AppSpecWorkerAutoscalingMetricsCpuArgs:
         pulumi.set(self, "percent", value)
 
 
-if not MYPY:
-    class AppSpecWorkerBitbucketArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecWorkerBitbucketArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerBitbucketArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerBitbucketArgs:
@@ -9440,26 +9144,23 @@ class AppSpecWorkerBitbucketArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecWorkerEnvArgsDict(TypedDict):
-        key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the environment variable.
-        """
-        scope: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The type of the environment variable, `GENERAL` or `SECRET`.
-        """
-        value: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The value of the environment variable.
-        """
-elif False:
-    AppSpecWorkerEnvArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerEnvArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    scope: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The visibility scope of the environment variable. One of `RUN_TIME`, `BUILD_TIME`, or `RUN_AND_BUILD_TIME` (default).
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The type of the environment variable, `GENERAL` or `SECRET`.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The value of the environment variable.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerEnvArgs:
@@ -9532,18 +9233,15 @@ class AppSpecWorkerEnvArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class AppSpecWorkerGitArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The clone URL of the repo.
-        """
-elif False:
-    AppSpecWorkerGitArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerGitArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    repo_clone_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The clone URL of the repo.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerGitArgs:
@@ -9584,22 +9282,19 @@ class AppSpecWorkerGitArgs:
         pulumi.set(self, "repo_clone_url", value)
 
 
-if not MYPY:
-    class AppSpecWorkerGithubArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecWorkerGithubArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerGithubArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerGithubArgs:
@@ -9656,22 +9351,19 @@ class AppSpecWorkerGithubArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecWorkerGitlabArgsDict(TypedDict):
-        branch: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the branch to use.
-        """
-        deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy new commits made to the repo.
-        """
-        repo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the repo in the format `owner/repo`.
-        """
-elif False:
-    AppSpecWorkerGitlabArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerGitlabArgsDict(TypedDict):
+    branch: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the branch to use.
+    """
+    deploy_on_push: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy new commits made to the repo.
+    """
+    repo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the repo in the format `owner/repo`.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerGitlabArgs:
@@ -9728,38 +9420,35 @@ class AppSpecWorkerGitlabArgs:
         pulumi.set(self, "repo", value)
 
 
-if not MYPY:
-    class AppSpecWorkerImageArgsDict(TypedDict):
-        registry_type: pulumi.Input[_builtins.str]
-        """
-        The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
-        """
-        repository: pulumi.Input[_builtins.str]
-        """
-        The repository name.
-        """
-        deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgsDict']]]]
-        """
-        Configures automatically deploying images pushed to DOCR.
-        """
-        digest: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The image digest. Cannot be specified if `tag` is provided.
-        """
-        registry: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
-        """
-        registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
-        """
-        tag: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The repository tag. Defaults to `latest` if not provided.
-        """
-elif False:
-    AppSpecWorkerImageArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerImageArgsDict(TypedDict):
+    registry_type: pulumi.Input[_builtins.str]
+    """
+    The registry type. One of `DOCR` (DigitalOcean container registry) or `DOCKER_HUB`.
+    """
+    repository: pulumi.Input[_builtins.str]
+    """
+    The repository name.
+    """
+    deploy_on_pushes: NotRequired[pulumi.Input[Sequence[pulumi.Input['AppSpecWorkerImageDeployOnPushArgsDict']]]]
+    """
+    Configures automatically deploying images pushed to DOCR.
+    """
+    digest: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The image digest. Cannot be specified if `tag` is provided.
+    """
+    registry: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The registry name. Must be left empty for the `DOCR` registry type. Required for the `DOCKER_HUB` registry type.
+    """
+    registry_credentials: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The credentials required to access a private Docker Hub or GitHub registry, in the following syntax `<username>:<token>`.
+    """
+    tag: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The repository tag. Defaults to `latest` if not provided.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerImageArgs:
@@ -9878,14 +9567,11 @@ class AppSpecWorkerImageArgs:
         pulumi.set(self, "tag", value)
 
 
-if not MYPY:
-    class AppSpecWorkerImageDeployOnPushArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to automatically deploy images pushed to DOCR.
-        """
-elif False:
-    AppSpecWorkerImageDeployOnPushArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerImageDeployOnPushArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to automatically deploy images pushed to DOCR.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerImageDeployOnPushArgs:
@@ -9910,30 +9596,27 @@ class AppSpecWorkerImageDeployOnPushArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the log destination. Minimum length: 2. Maximum length: 42.
-        """
-        datadog: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgsDict']]
-        """
-        Datadog configuration.
-        """
-        logtail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgsDict']]
-        """
-        Logtail configuration.
-        """
-        open_search: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgsDict']]
-        """
-        OpenSearch configuration.
-        """
-        papertrail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgsDict']]
-        """
-        Papertrail configuration.
-        """
-elif False:
-    AppSpecWorkerLogDestinationArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the log destination. Minimum length: 2. Maximum length: 42.
+    """
+    datadog: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationDatadogArgsDict']]
+    """
+    Datadog configuration.
+    """
+    logtail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationLogtailArgsDict']]
+    """
+    Logtail configuration.
+    """
+    open_search: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationOpenSearchArgsDict']]
+    """
+    OpenSearch configuration.
+    """
+    papertrail: NotRequired[pulumi.Input['AppSpecWorkerLogDestinationPapertrailArgsDict']]
+    """
+    Papertrail configuration.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationArgs:
@@ -10021,18 +9704,15 @@ class AppSpecWorkerLogDestinationArgs:
         pulumi.set(self, "papertrail", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationDatadogArgsDict(TypedDict):
-        api_key: pulumi.Input[_builtins.str]
-        """
-        Datadog API key.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Datadog HTTP log intake endpoint.
-        """
-elif False:
-    AppSpecWorkerLogDestinationDatadogArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationDatadogArgsDict(TypedDict):
+    api_key: pulumi.Input[_builtins.str]
+    """
+    Datadog API key.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Datadog HTTP log intake endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationDatadogArgs:
@@ -10072,14 +9752,11 @@ class AppSpecWorkerLogDestinationDatadogArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationLogtailArgsDict(TypedDict):
-        token: pulumi.Input[_builtins.str]
-        """
-        Logtail token.
-        """
-elif False:
-    AppSpecWorkerLogDestinationLogtailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationLogtailArgsDict(TypedDict):
+    token: pulumi.Input[_builtins.str]
+    """
+    Logtail token.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationLogtailArgs:
@@ -10103,26 +9780,23 @@ class AppSpecWorkerLogDestinationLogtailArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationOpenSearchArgsDict(TypedDict):
-        basic_auth: pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict']
-        """
-        Basic authentication details.
-        """
-        cluster_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
-        """
-        endpoint: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch endpoint.
-        """
-        index_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        OpenSearch index name.
-        """
-elif False:
-    AppSpecWorkerLogDestinationOpenSearchArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationOpenSearchArgsDict(TypedDict):
+    basic_auth: pulumi.Input['AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict']
+    """
+    Basic authentication details.
+    """
+    cluster_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the underlying DigitalOcean DBaaS cluster. This is required for production databases. For dev databases, if `cluster_name` is not set, a new cluster will be provisioned.
+    """
+    endpoint: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch endpoint.
+    """
+    index_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    OpenSearch index name.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationOpenSearchArgs:
@@ -10194,18 +9868,15 @@ class AppSpecWorkerLogDestinationOpenSearchArgs:
         pulumi.set(self, "index_name", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
-        password: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Password for basic authentication.
-        """
-        user: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        user for basic authentication.
-        """
-elif False:
-    AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgsDict(TypedDict):
+    password: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Password for basic authentication.
+    """
+    user: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    user for basic authentication.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs:
@@ -10246,14 +9917,11 @@ class AppSpecWorkerLogDestinationOpenSearchBasicAuthArgs:
         pulumi.set(self, "user", value)
 
 
-if not MYPY:
-    class AppSpecWorkerLogDestinationPapertrailArgsDict(TypedDict):
-        endpoint: pulumi.Input[_builtins.str]
-        """
-        Papertrail syslog endpoint.
-        """
-elif False:
-    AppSpecWorkerLogDestinationPapertrailArgsDict: TypeAlias = Mapping[str, Any]
+class AppSpecWorkerLogDestinationPapertrailArgsDict(TypedDict):
+    endpoint: pulumi.Input[_builtins.str]
+    """
+    Papertrail syslog endpoint.
+    """
 
 @pulumi.input_type
 class AppSpecWorkerLogDestinationPapertrailArgs:
@@ -10277,16 +9945,13 @@ class AppSpecWorkerLogDestinationPapertrailArgs:
         pulumi.set(self, "endpoint", value)
 
 
-if not MYPY:
-    class AppSpecWorkerTerminationArgsDict(TypedDict):
-        grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
+class AppSpecWorkerTerminationArgsDict(TypedDict):
+    grace_period_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds to wait between sending a TERM signal to a container and issuing a KILL which causes immediate shutdown. Default: 120, Minimum 1, Maximum 600.
 
-        A `function` component can contain:
-        """
-elif False:
-    AppSpecWorkerTerminationArgsDict: TypeAlias = Mapping[str, Any]
+    A `function` component can contain:
+    """
 
 @pulumi.input_type
 class AppSpecWorkerTerminationArgs:
@@ -10315,20 +9980,17 @@ class AppSpecWorkerTerminationArgs:
         pulumi.set(self, "grace_period_seconds", value)
 
 
-if not MYPY:
-    class DatabaseClusterBackupRestoreArgsDict(TypedDict):
-        database_name: pulumi.Input[_builtins.str]
-        """
-        The name of an existing database cluster from which the backup will be restored.
-        """
-        backup_created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
+class DatabaseClusterBackupRestoreArgsDict(TypedDict):
+    database_name: pulumi.Input[_builtins.str]
+    """
+    The name of an existing database cluster from which the backup will be restored.
+    """
+    backup_created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The timestamp of an existing database cluster backup in ISO8601 combined date and time format. The most recent backup will be used if excluded.
 
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
-        """
-elif False:
-    DatabaseClusterBackupRestoreArgsDict: TypeAlias = Mapping[str, Any]
+    This resource supports customized create timeouts. The default timeout is 30 minutes.
+    """
 
 @pulumi.input_type
 class DatabaseClusterBackupRestoreArgs:
@@ -10372,18 +10034,15 @@ class DatabaseClusterBackupRestoreArgs:
         pulumi.set(self, "backup_created_at", value)
 
 
-if not MYPY:
-    class DatabaseClusterMaintenanceWindowArgsDict(TypedDict):
-        day: pulumi.Input[_builtins.str]
-        """
-        The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
-        """
-        hour: pulumi.Input[_builtins.str]
-        """
-        The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
-        """
-elif False:
-    DatabaseClusterMaintenanceWindowArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseClusterMaintenanceWindowArgsDict(TypedDict):
+    day: pulumi.Input[_builtins.str]
+    """
+    The day of the week on which to apply maintenance updates. May be one of `monday` through `sunday`.
+    """
+    hour: pulumi.Input[_builtins.str]
+    """
+    The hour in UTC at which maintenance updates will be applied as a string in 24 hour format, e.g. `13:00`.
+    """
 
 @pulumi.input_type
 class DatabaseClusterMaintenanceWindowArgs:
@@ -10422,26 +10081,23 @@ class DatabaseClusterMaintenanceWindowArgs:
         pulumi.set(self, "hour", value)
 
 
-if not MYPY:
-    class DatabaseFirewallRuleArgsDict(TypedDict):
-        type: pulumi.Input[_builtins.str]
-        """
-        The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the firewall rule was created.
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique identifier for the firewall rule.
-        """
-elif False:
-    DatabaseFirewallRuleArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseFirewallRuleArgsDict(TypedDict):
+    type: pulumi.Input[_builtins.str]
+    """
+    The type of resource that the firewall rule allows to access the database cluster. The possible values are: `droplet`, `k8s`, `ip_addr`, `tag`, or `app`.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    The ID of the specific resource, the name of a tag applied to a group of resources, or the IP address that the firewall rule allows to access the database cluster.
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the firewall rule was created.
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique identifier for the firewall rule.
+    """
 
 @pulumi.input_type
 class DatabaseFirewallRuleArgs:
@@ -10512,101 +10168,98 @@ class DatabaseFirewallRuleArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class DatabaseKafkaTopicConfigArgsDict(TypedDict):
-        cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
-        This may be one of "delete", "compact", or "compact_delete".
-        """
-        compression_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The topic compression codecs used for a given topic.
-        This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
-        """
-        delete_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The amount of time, in ms, that deleted records are retained.
-        """
-        file_delete_delay_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
-        """
-        flush_messages: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The number of messages accumulated on a topic partition before they are flushed to disk.
-        """
-        flush_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
-        """
-        index_interval_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The interval, in bytes, in which entries are added to the offset index.
-        """
-        max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
-        """
-        max_message_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum size, in bytes, of a message.
-        """
-        message_down_conversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether down-conversion of message formats for consumers is enabled.
-        """
-        message_format_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
-        """
-        message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
-        """
-        message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
-        """
-        min_cleanable_dirty_ratio: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
-        """
-        min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
-        min_insync_replicas: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
-        """
-        preallocate: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Determines whether to preallocate a file on disk when creating a new log segment within a topic.
-        """
-        retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
-        """
-        retention_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
-        """
-        segment_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum size, in bytes, of a single topic log file.
-        """
-        segment_index_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum size, in bytes, of the offset index.
-        """
-        segment_jitter_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
-        """
-        segment_ms: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The maximum time, in ms, before the topic log will flush to disk.
-        """
-elif False:
-    DatabaseKafkaTopicConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseKafkaTopicConfigArgsDict(TypedDict):
+    cleanup_policy: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The topic cleanup policy that describes whether messages should be deleted, compacted, or both when retention policies are violated.
+    This may be one of "delete", "compact", or "compact_delete".
+    """
+    compression_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The topic compression codecs used for a given topic.
+    This may be one of "uncompressed", "gzip", "snappy", "lz4", "producer", "zstd". "uncompressed" indicates that there is no compression and "producer" retains the original compression codec set by the producer.
+    """
+    delete_retention_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The amount of time, in ms, that deleted records are retained.
+    """
+    file_delete_delay_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The amount of time, in ms, to wait before deleting a topic log segment from the filesystem.
+    """
+    flush_messages: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The number of messages accumulated on a topic partition before they are flushed to disk.
+    """
+    flush_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time, in ms, that a topic is kept in memory before being flushed to disk.
+    """
+    index_interval_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The interval, in bytes, in which entries are added to the offset index.
+    """
+    max_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time, in ms, that a particular message will remain uncompacted. This will not apply if the `compression_type` is set to "uncompressed" or it is set to `producer` and the producer is not using compression.
+    """
+    max_message_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum size, in bytes, of a message.
+    """
+    message_down_conversion_enable: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether down-conversion of message formats for consumers is enabled.
+    """
+    message_format_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The version of the inter-broker protocol that will be used. This may be one of "0.8.0", "0.8.1", "0.8.2", "0.9.0", "0.10.0", "0.10.0-IV0", "0.10.0-IV1", "0.10.1", "0.10.1-IV0", "0.10.1-IV1", "0.10.1-IV2", "0.10.2", "0.10.2-IV0", "0.11.0", "0.11.0-IV0", "0.11.0-IV1", "0.11.0-IV2", "1.0", "1.0-IV0", "1.1", "1.1-IV0", "2.0", "2.0-IV0", "2.0-IV1", "2.1", "2.1-IV0", "2.1-IV1", "2.1-IV2", "2.2", "2.2-IV0", "2.2-IV1", "2.3", "2.3-IV0", "2.3-IV1", "2.4", "2.4-IV0", "2.4-IV1", "2.5", "2.5-IV0", "2.6", "2.6-IV0", "2.7", "2.7-IV0", "2.7-IV1", "2.7-IV2", "2.8", "2.8-IV0", "2.8-IV1", "3.0", "3.0-IV0", "3.0-IV1", "3.1", "3.1-IV0", "3.2", "3.2-IV0", "3.3", "3.3-IV0", "3.3-IV1", "3.3-IV2", "3.3-IV3", "3.4", "3.4-IV0", "3.5", "3.5-IV0", "3.5-IV1", "3.5-IV2", "3.6", "3.6-IV0", "3.6-IV1", "3.6-IV2".
+    """
+    message_timestamp_difference_max_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum difference, in ms, between the timestamp specific in a message and when the broker receives the message.
+    """
+    message_timestamp_type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies which timestamp to use for the message. This may be one of "create_time" or "log_append_time".
+    """
+    min_cleanable_dirty_ratio: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    A scale between 0.0 and 1.0 which controls the frequency of the compactor. Larger values mean more frequent compactions. This is often paired with `max_compaction_lag_ms` to control the compactor frequency.
+    """
+    min_compaction_lag_ms: NotRequired[pulumi.Input[_builtins.str]]
+    min_insync_replicas: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of replicas that must acknowledge a write before it is considered successful. -1 is a special setting to indicate that all nodes must ack a message before a write is considered successful. Default is 1, indicating at least 1 replica must acknowledge a write to be considered successful.
+    """
+    preallocate: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Determines whether to preallocate a file on disk when creating a new log segment within a topic.
+    """
+    retention_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum size, in bytes, of a topic before messages are deleted. -1 is a special setting indicating that this setting has no limit.
+    """
+    retention_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time, in ms, that a topic log file is retained before deleting it. -1 is a special setting indicating that this setting has no limit.
+    """
+    segment_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum size, in bytes, of a single topic log file.
+    """
+    segment_index_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum size, in bytes, of the offset index.
+    """
+    segment_jitter_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time, in ms, subtracted from the scheduled segment disk flush time to avoid the thundering herd problem for segment flushing.
+    """
+    segment_ms: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The maximum time, in ms, before the topic log will flush to disk.
+    """
 
 @pulumi.input_type
 class DatabaseKafkaTopicConfigArgs:
@@ -10983,30 +10636,27 @@ class DatabaseKafkaTopicConfigArgs:
         pulumi.set(self, "segment_ms", value)
 
 
-if not MYPY:
-    class DatabaseOnlineMigrationSourceArgsDict(TypedDict):
-        db_name: pulumi.Input[_builtins.str]
-        """
-        The name of the default database
-        """
-        host: pulumi.Input[_builtins.str]
-        """
-        The FQDN pointing to the database cluster's current primary node.
-        """
-        password: pulumi.Input[_builtins.str]
-        """
-        A randomly generated password for the default user.
-        """
-        port: pulumi.Input[_builtins.int]
-        """
-        The port on which the database cluster is listening.
-        """
-        username: pulumi.Input[_builtins.str]
-        """
-        The default user for the database.
-        """
-elif False:
-    DatabaseOnlineMigrationSourceArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseOnlineMigrationSourceArgsDict(TypedDict):
+    db_name: pulumi.Input[_builtins.str]
+    """
+    The name of the default database
+    """
+    host: pulumi.Input[_builtins.str]
+    """
+    The FQDN pointing to the database cluster's current primary node.
+    """
+    password: pulumi.Input[_builtins.str]
+    """
+    A randomly generated password for the default user.
+    """
+    port: pulumi.Input[_builtins.int]
+    """
+    The port on which the database cluster is listening.
+    """
+    username: pulumi.Input[_builtins.str]
+    """
+    The default user for the database.
+    """
 
 @pulumi.input_type
 class DatabaseOnlineMigrationSourceArgs:
@@ -11090,19 +10740,16 @@ class DatabaseOnlineMigrationSourceArgs:
         pulumi.set(self, "username", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlConfigPgbouncerArgsDict(TypedDict):
-        autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
-        autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
-        autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
-        server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
-        server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
-        server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
-elif False:
-    DatabasePostgresqlConfigPgbouncerArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlConfigPgbouncerArgsDict(TypedDict):
+    autodb_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    autodb_max_db_connections: NotRequired[pulumi.Input[_builtins.int]]
+    autodb_pool_mode: NotRequired[pulumi.Input[_builtins.str]]
+    autodb_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    ignore_startup_parameters: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    min_pool_size: NotRequired[pulumi.Input[_builtins.int]]
+    server_idle_timeout: NotRequired[pulumi.Input[_builtins.int]]
+    server_lifetime: NotRequired[pulumi.Input[_builtins.int]]
+    server_reset_query_always: NotRequired[pulumi.Input[_builtins.bool]]
 
 @pulumi.input_type
 class DatabasePostgresqlConfigPgbouncerArgs:
@@ -11217,11 +10864,8 @@ class DatabasePostgresqlConfigPgbouncerArgs:
         pulumi.set(self, "server_reset_query_always", value)
 
 
-if not MYPY:
-    class DatabasePostgresqlConfigTimescaledbArgsDict(TypedDict):
-        max_background_workers: NotRequired[pulumi.Input[_builtins.int]]
-elif False:
-    DatabasePostgresqlConfigTimescaledbArgsDict: TypeAlias = Mapping[str, Any]
+class DatabasePostgresqlConfigTimescaledbArgsDict(TypedDict):
+    max_background_workers: NotRequired[pulumi.Input[_builtins.int]]
 
 @pulumi.input_type
 class DatabasePostgresqlConfigTimescaledbArgs:
@@ -11240,17 +10884,14 @@ class DatabasePostgresqlConfigTimescaledbArgs:
         pulumi.set(self, "max_background_workers", value)
 
 
-if not MYPY:
-    class DatabaseUserSettingArgsDict(TypedDict):
-        acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgsDict']]]]
-        """
-        A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
+class DatabaseUserSettingArgsDict(TypedDict):
+    acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingAclArgsDict']]]]
+    """
+    A set of ACLs (Access Control Lists) specifying permission on topics with a Kafka cluster. The properties of an individual ACL are described below:
 
-        An individual ACL includes the following:
-        """
-        opensearch_acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgsDict']]]]
-elif False:
-    DatabaseUserSettingArgsDict: TypeAlias = Mapping[str, Any]
+    An individual ACL includes the following:
+    """
+    opensearch_acls: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingOpensearchAclArgsDict']]]]
 
 @pulumi.input_type
 class DatabaseUserSettingArgs:
@@ -11291,22 +10932,19 @@ class DatabaseUserSettingArgs:
         pulumi.set(self, "opensearch_acls", value)
 
 
-if not MYPY:
-    class DatabaseUserSettingAclArgsDict(TypedDict):
-        permission: pulumi.Input[_builtins.str]
-        """
-        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        """
-        topic: pulumi.Input[_builtins.str]
-        """
-        A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An identifier for the ACL, this will be automatically assigned when you create an ACL entry
-        """
-elif False:
-    DatabaseUserSettingAclArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseUserSettingAclArgsDict(TypedDict):
+    permission: pulumi.Input[_builtins.str]
+    """
+    The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+    """
+    topic: pulumi.Input[_builtins.str]
+    """
+    A regex for matching the topic(s) that this ACL should apply to. The regex can assume one of 3 patterns: "*", "<prefix>*", or "<literal>". "*" is a special value indicating a wildcard that matches on all topics. "<prefix>*" defines a regex that matches all topics with the prefix. "<literal>" performs an exact match on a topic name and only applies to that topic.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An identifier for the ACL, this will be automatically assigned when you create an ACL entry
+    """
 
 @pulumi.input_type
 class DatabaseUserSettingAclArgs:
@@ -11361,15 +10999,12 @@ class DatabaseUserSettingAclArgs:
         pulumi.set(self, "id", value)
 
 
-if not MYPY:
-    class DatabaseUserSettingOpensearchAclArgsDict(TypedDict):
-        index: pulumi.Input[_builtins.str]
-        permission: pulumi.Input[_builtins.str]
-        """
-        The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
-        """
-elif False:
-    DatabaseUserSettingOpensearchAclArgsDict: TypeAlias = Mapping[str, Any]
+class DatabaseUserSettingOpensearchAclArgsDict(TypedDict):
+    index: pulumi.Input[_builtins.str]
+    permission: pulumi.Input[_builtins.str]
+    """
+    The permission level applied to the ACL. This includes "admin", "consume", "produce", and "produceconsume". "admin" allows for producing and consuming as well as add/delete/update permission for topics. "consume" allows only for reading topic messages. "produce" allows only for writing topic messages. "produceconsume" allows for both reading and writing topic messages.
+    """
 
 @pulumi.input_type
 class DatabaseUserSettingOpensearchAclArgs:
@@ -11404,36 +11039,33 @@ class DatabaseUserSettingOpensearchAclArgs:
         pulumi.set(self, "permission", value)
 
 
-if not MYPY:
-    class DropletAutoscaleConfigArgsDict(TypedDict):
-        cooldown_minutes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The cooldown duration between scaling events for the Droplet Autoscale pool.
-        """
-        max_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The maximum number of instances to maintain in the Droplet Autoscale pool.
-        """
-        min_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The minimum number of instances to maintain in the Droplet Autoscale pool.
-        """
-        target_cpu_utilization: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
-        """
-        target_memory_utilization: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
-        pool.
-        """
-        target_number_instances: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The static number of instances to maintain in the pool Droplet Autoscale pool. This
-        argument cannot be used with any other config options.
-        """
-elif False:
-    DropletAutoscaleConfigArgsDict: TypeAlias = Mapping[str, Any]
+class DropletAutoscaleConfigArgsDict(TypedDict):
+    cooldown_minutes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The cooldown duration between scaling events for the Droplet Autoscale pool.
+    """
+    max_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The maximum number of instances to maintain in the Droplet Autoscale pool.
+    """
+    min_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The minimum number of instances to maintain in the Droplet Autoscale pool.
+    """
+    target_cpu_utilization: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The target average CPU load (in range `[0, 1]`) to maintain in the Droplet Autoscale pool.
+    """
+    target_memory_utilization: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    The target average Memory load (in range `[0, 1]`) to maintain in the Droplet Autoscale 
+    pool.
+    """
+    target_number_instances: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The static number of instances to maintain in the pool Droplet Autoscale pool. This
+    argument cannot be used with any other config options.
+    """
 
 @pulumi.input_type
 class DropletAutoscaleConfigArgs:
@@ -11542,18 +11174,15 @@ class DropletAutoscaleConfigArgs:
         pulumi.set(self, "target_number_instances", value)
 
 
-if not MYPY:
-    class DropletAutoscaleCurrentUtilizationArgsDict(TypedDict):
-        cpu: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Average CPU utilization
-        """
-        memory: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Average Memory utilization
-        """
-elif False:
-    DropletAutoscaleCurrentUtilizationArgsDict: TypeAlias = Mapping[str, Any]
+class DropletAutoscaleCurrentUtilizationArgsDict(TypedDict):
+    cpu: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Average CPU utilization
+    """
+    memory: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Average Memory utilization
+    """
 
 @pulumi.input_type
 class DropletAutoscaleCurrentUtilizationArgs:
@@ -11594,53 +11223,50 @@ class DropletAutoscaleCurrentUtilizationArgs:
         pulumi.set(self, "memory", value)
 
 
-if not MYPY:
-    class DropletAutoscaleDropletTemplateArgsDict(TypedDict):
-        image: pulumi.Input[_builtins.str]
-        """
-        Image slug of the Droplet Autoscale pool underlying resource(s).
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region slug of the Droplet Autoscale pool underlying resource(s).
-        """
-        size: pulumi.Input[_builtins.str]
-        """
-        Size slug of the Droplet Autoscale pool underlying resource(s).
-        """
-        ssh_keys: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
-        """
-        ipv6: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project UUID to create the Droplet Autoscale pool underlying resource(s).
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of tags to add to the Droplet Autoscale pool underlying resource(s).
-        """
-        user_data: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
-        cloud init script that user may configure to setup their application workload.
-        """
-        vpc_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
-        from the specified `region` (default VPC).
-        """
-        with_droplet_agent: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
-        metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
-        """
-elif False:
-    DropletAutoscaleDropletTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class DropletAutoscaleDropletTemplateArgsDict(TypedDict):
+    image: pulumi.Input[_builtins.str]
+    """
+    Image slug of the Droplet Autoscale pool underlying resource(s).
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region slug of the Droplet Autoscale pool underlying resource(s).
+    """
+    size: pulumi.Input[_builtins.str]
+    """
+    Size slug of the Droplet Autoscale pool underlying resource(s).
+    """
+    ssh_keys: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
+    """
+    ipv6: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project UUID to create the Droplet Autoscale pool underlying resource(s).
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of tags to add to the Droplet Autoscale pool underlying resource(s).
+    """
+    user_data: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
+    cloud init script that user may configure to setup their application workload.
+    """
+    vpc_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    VPC UUID to create the Droplet Autoscale pool underlying resource(s). If not provided, this is inferred
+    from the specified `region` (default VPC).
+    """
+    with_droplet_agent: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean flag to enable metric agent on the Droplet Autoscale pool underlying resource(s). The
+    metric agent enables collecting resource utilization metrics, which allows making resource based scaling decisions.
+    """
 
 @pulumi.input_type
 class DropletAutoscaleDropletTemplateArgs:
@@ -11811,22 +11437,19 @@ class DropletAutoscaleDropletTemplateArgs:
         pulumi.set(self, "with_droplet_agent", value)
 
 
-if not MYPY:
-    class DropletBackupPolicyArgsDict(TypedDict):
-        hour: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
-        """
-        plan: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
-        """
-        weekday: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
-        """
-elif False:
-    DropletBackupPolicyArgsDict: TypeAlias = Mapping[str, Any]
+class DropletBackupPolicyArgsDict(TypedDict):
+    hour: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The hour of the day that the backup window will start (`0`, `4`, `8`, `12`, `16`, `20`).
+    """
+    plan: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The backup plan used for the Droplet. The plan can be either `daily` or `weekly`.
+    """
+    weekday: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The day of the week on which the backup will occur (`SUN`, `MON`, `TUE`, `WED`, `THU`, `FRI`, `SAT`).
+    """
 
 @pulumi.input_type
 class DropletBackupPolicyArgs:
@@ -11883,49 +11506,46 @@ class DropletBackupPolicyArgs:
         pulumi.set(self, "weekday", value)
 
 
-if not MYPY:
-    class FirewallInboundRuleArgsDict(TypedDict):
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The type of traffic to be allowed.
-        This may be one of "tcp", "udp", or "icmp".
-        """
-        port_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ports on which traffic will be allowed
-        specified as a string containing a single port, a range (e.g. "8000-9000"),
-        or "1-65535" to open all ports for a protocol. Required for when protocol is
-        `tcp` or `udp`.
-        """
-        source_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of strings containing the IPv4
-        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
-        inbound traffic will be accepted.
-        """
-        source_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        An array containing the IDs of
-        the Droplets from which the inbound traffic will be accepted.
-        """
-        source_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the IDs of
-        the Kubernetes clusters from which the inbound traffic will be accepted.
-        """
-        source_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the IDs
-        of the Load Balancers from which the inbound traffic will be accepted.
-        """
-        source_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the names of Tags
-        corresponding to groups of Droplets from which the inbound traffic
-        will be accepted.
-        """
-elif False:
-    FirewallInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallInboundRuleArgsDict(TypedDict):
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The type of traffic to be allowed.
+    This may be one of "tcp", "udp", or "icmp".
+    """
+    port_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ports on which traffic will be allowed
+    specified as a string containing a single port, a range (e.g. "8000-9000"),
+    or "1-65535" to open all ports for a protocol. Required for when protocol is
+    `tcp` or `udp`.
+    """
+    source_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of strings containing the IPv4
+    addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+    inbound traffic will be accepted.
+    """
+    source_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    An array containing the IDs of
+    the Droplets from which the inbound traffic will be accepted.
+    """
+    source_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the IDs of
+    the Kubernetes clusters from which the inbound traffic will be accepted.
+    """
+    source_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the IDs
+    of the Load Balancers from which the inbound traffic will be accepted.
+    """
+    source_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the names of Tags
+    corresponding to groups of Droplets from which the inbound traffic
+    will be accepted.
+    """
 
 @pulumi.input_type
 class FirewallInboundRuleArgs:
@@ -12067,49 +11687,46 @@ class FirewallInboundRuleArgs:
         pulumi.set(self, "source_tags", value)
 
 
-if not MYPY:
-    class FirewallOutboundRuleArgsDict(TypedDict):
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The type of traffic to be allowed.
-        This may be one of "tcp", "udp", or "icmp".
-        """
-        destination_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array of strings containing the IPv4
-        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
-        outbound traffic will be allowed.
-        """
-        destination_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
-        """
-        An array containing the IDs of
-        the Droplets to which the outbound traffic will be allowed.
-        """
-        destination_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the IDs of
-        the Kubernetes clusters to which the outbound traffic will be allowed.
-        """
-        destination_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the IDs
-        of the Load Balancers to which the outbound traffic will be allowed.
-        """
-        destination_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        An array containing the names of Tags
-        corresponding to groups of Droplets to which the outbound traffic will
-        be allowed.
-        """
-        port_range: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The ports on which traffic will be allowed
-        specified as a string containing a single port, a range (e.g. "8000-9000"),
-        or "1-65535" to open all ports for a protocol. Required for when protocol is
-        `tcp` or `udp`.
-        """
-elif False:
-    FirewallOutboundRuleArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallOutboundRuleArgsDict(TypedDict):
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The type of traffic to be allowed.
+    This may be one of "tcp", "udp", or "icmp".
+    """
+    destination_addresses: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array of strings containing the IPv4
+    addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+    outbound traffic will be allowed.
+    """
+    destination_droplet_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]
+    """
+    An array containing the IDs of
+    the Droplets to which the outbound traffic will be allowed.
+    """
+    destination_kubernetes_ids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the IDs of
+    the Kubernetes clusters to which the outbound traffic will be allowed.
+    """
+    destination_load_balancer_uids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the IDs
+    of the Load Balancers to which the outbound traffic will be allowed.
+    """
+    destination_tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    An array containing the names of Tags
+    corresponding to groups of Droplets to which the outbound traffic will
+    be allowed.
+    """
+    port_range: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The ports on which traffic will be allowed
+    specified as a string containing a single port, a range (e.g. "8000-9000"),
+    or "1-65535" to open all ports for a protocol. Required for when protocol is
+    `tcp` or `udp`.
+    """
 
 @pulumi.input_type
 class FirewallOutboundRuleArgs:
@@ -12251,17 +11868,14 @@ class FirewallOutboundRuleArgs:
         pulumi.set(self, "port_range", value)
 
 
-if not MYPY:
-    class FirewallPendingChangeArgsDict(TypedDict):
-        droplet_id: NotRequired[pulumi.Input[_builtins.int]]
-        removing: NotRequired[pulumi.Input[_builtins.bool]]
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A status string indicating the current state of the Firewall.
-        This can be "waiting", "succeeded", or "failed".
-        """
-elif False:
-    FirewallPendingChangeArgsDict: TypeAlias = Mapping[str, Any]
+class FirewallPendingChangeArgsDict(TypedDict):
+    droplet_id: NotRequired[pulumi.Input[_builtins.int]]
+    removing: NotRequired[pulumi.Input[_builtins.bool]]
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A status string indicating the current state of the Firewall.
+    This can be "waiting", "succeeded", or "failed".
+    """
 
 @pulumi.input_type
 class FirewallPendingChangeArgs:
@@ -12312,58 +11926,55 @@ class FirewallPendingChangeArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class GenaiAgentAgentGuardrailArgsDict(TypedDict):
-        agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent UUID for the Guardrail
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Guardrail
-        """
-        default_response: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default response for the Guardrail
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Guardrail
-        """
-        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID
-        """
-        is_attached: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Guardrail is attached
-        """
-        is_default: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Guardrail is default
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of Guardrail
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the Guardrail
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the Guardrail
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Guardrail
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID
-        """
-elif False:
-    GenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentAgentGuardrailArgsDict(TypedDict):
+    agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent UUID for the Guardrail
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Guardrail
+    """
+    default_response: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default response for the Guardrail
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Guardrail
+    """
+    guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID
+    """
+    is_attached: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Guardrail is attached
+    """
+    is_default: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Guardrail is default
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of Guardrail
+    """
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Priority of the Guardrail
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the Guardrail
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Guardrail
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID
+    """
 
 @pulumi.input_type
 class GenaiAgentAgentGuardrailArgs:
@@ -12564,34 +12175,31 @@ class GenaiAgentAgentGuardrailArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentAnthropicApiKeyArgs:
@@ -12696,14 +12304,11 @@ class GenaiAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentApiKeyArgs:
@@ -12728,34 +12333,31 @@ class GenaiAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GenaiAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentApiKeyInfoArgs:
@@ -12860,34 +12462,31 @@ class GenaiAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GenaiAgentChatbotArgs:
@@ -12992,11 +12591,8 @@ class GenaiAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GenaiAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GenaiAgentChatbotIdentifierArgs:
@@ -13015,62 +12611,59 @@ class GenaiAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentArgsDict(TypedDict):
-        instruction: pulumi.Input[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        model_uuid: pulumi.Input[_builtins.str]
-        """
-        Model UUID of the Agent
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the Agent
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        Project ID of the Agent
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region where the Agent is deployed
-        """
-        agent_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the child agent
-        """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
-        """
-        Anthropic API Key information
-        """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgsDict']]]]
-        """
-        List of API Keys
-        """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgsDict']]]]
-        """
-        List of Chatbot Identifiers
-        """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgsDict']]]]
-        """
-        ChatBot configuration
-        """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for the Agent
-        """
-elif False:
-    GenaiAgentChildAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentArgsDict(TypedDict):
+    instruction: pulumi.Input[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    model_uuid: pulumi.Input[_builtins.str]
+    """
+    Model UUID of the Agent
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the Agent
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Project ID of the Agent
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region where the Agent is deployed
+    """
+    agent_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the child agent
+    """
+    anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
+    """
+    Anthropic API Key information
+    """
+    api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyInfoArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentApiKeyArgsDict']]]]
+    """
+    List of API Keys
+    """
+    chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotIdentifierArgsDict']]]]
+    """
+    List of Chatbot Identifiers
+    """
+    chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentChatbotArgsDict']]]]
+    """
+    ChatBot configuration
+    """
+    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentDeploymentArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for the Agent
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentArgs:
@@ -13282,34 +12875,31 @@ class GenaiAgentChildAgentArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentChildAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentAnthropicApiKeyArgs:
@@ -13414,14 +13004,11 @@ class GenaiAgentChildAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentChildAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentApiKeyArgs:
@@ -13446,34 +13033,31 @@ class GenaiAgentChildAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentChildAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentApiKeyInfoArgs:
@@ -13578,34 +13162,31 @@ class GenaiAgentChildAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GenaiAgentChildAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentChatbotArgs:
@@ -13710,11 +13291,8 @@ class GenaiAgentChildAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GenaiAgentChildAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GenaiAgentChildAgentChatbotIdentifierArgs:
@@ -13733,38 +13311,35 @@ class GenaiAgentChildAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GenaiAgentChildAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GenaiAgentChildAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentChildAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GenaiAgentChildAgentDeploymentArgs:
@@ -13885,38 +13460,35 @@ class GenaiAgentChildAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GenaiAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GenaiAgentDeploymentArgs:
@@ -14037,50 +13609,47 @@ class GenaiAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GenaiAgentFunctionArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Function
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Function
-        """
-        faasname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of function
-        """
-        faasnamespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Namespace of function
-        """
-        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID for the Function
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of function
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentFunctionArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Function
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Function
+    """
+    faasname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of function
+    """
+    faasnamespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Namespace of function
+    """
+    guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID for the Function
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of function
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentFunctionArgs:
@@ -14249,62 +13818,59 @@ class GenaiAgentFunctionArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        database_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of tags
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User ID of the Knowledge Base
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the Knowledge Base
-        """
-elif False:
-    GenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    database_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired[pulumi.Input['GenaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of tags
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User ID of the Knowledge Base
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GenaiAgentKnowledgeBaseArgs:
@@ -14521,54 +14087,51 @@ class GenaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
@@ -14753,62 +14316,59 @@ class GenaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GenaiAgentModelArgs:
@@ -15025,26 +14585,23 @@ class GenaiAgentModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GenaiAgentModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GenaiAgentModelAgreementArgs:
@@ -15117,22 +14674,19 @@ class GenaiAgentModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GenaiAgentModelVersionArgs:
@@ -15189,34 +14743,31 @@ class GenaiAgentModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GenaiAgentOpenAiApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentOpenAiApiKeyArgs:
@@ -15321,62 +14872,59 @@ class GenaiAgentOpenAiApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentArgsDict(TypedDict):
-        instruction: pulumi.Input[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        model_uuid: pulumi.Input[_builtins.str]
-        """
-        Model UUID of the Agent
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the Agent
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        Project ID of the Agent
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region where the Agent is deployed
-        """
-        agent_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the child agent
-        """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
-        """
-        Anthropic API Key information
-        """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgsDict']]]]
-        """
-        List of API Keys
-        """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgsDict']]]]
-        """
-        List of Chatbot Identifiers
-        """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgsDict']]]]
-        """
-        ChatBot configuration
-        """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for the Agent
-        """
-elif False:
-    GenaiAgentParentAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentArgsDict(TypedDict):
+    instruction: pulumi.Input[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    model_uuid: pulumi.Input[_builtins.str]
+    """
+    Model UUID of the Agent
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the Agent
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Project ID of the Agent
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region where the Agent is deployed
+    """
+    agent_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the child agent
+    """
+    anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
+    """
+    Anthropic API Key information
+    """
+    api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyInfoArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentApiKeyArgsDict']]]]
+    """
+    List of API Keys
+    """
+    chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotIdentifierArgsDict']]]]
+    """
+    List of Chatbot Identifiers
+    """
+    chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentChatbotArgsDict']]]]
+    """
+    ChatBot configuration
+    """
+    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentDeploymentArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for the Agent
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentArgs:
@@ -15588,34 +15136,31 @@ class GenaiAgentParentAgentArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentParentAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentAnthropicApiKeyArgs:
@@ -15720,14 +15265,11 @@ class GenaiAgentParentAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentParentAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentApiKeyArgs:
@@ -15752,34 +15294,31 @@ class GenaiAgentParentAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GenaiAgentParentAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentApiKeyInfoArgs:
@@ -15884,34 +15423,31 @@ class GenaiAgentParentAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GenaiAgentParentAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentChatbotArgs:
@@ -16016,11 +15552,8 @@ class GenaiAgentParentAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GenaiAgentParentAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GenaiAgentParentAgentChatbotIdentifierArgs:
@@ -16039,38 +15572,35 @@ class GenaiAgentParentAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GenaiAgentParentAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GenaiAgentParentAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentParentAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GenaiAgentParentAgentDeploymentArgs:
@@ -16191,58 +15721,55 @@ class GenaiAgentParentAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Agent Template
-        """
-        instruction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instruction for the Agent
-        """
-        k: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        K value for the Agent Template
-        """
-        knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgsDict']]]]
-        """
-        List of Knowledge Bases
-        """
-        max_tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum tokens allowed
-        """
-        models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgsDict']]]]
-        """
-        Model of the Agent Template
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Agent Template
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Agent temperature setting
-        """
-        top_p: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Top P sampling parameter
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent Template
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        uuid of the Agent Template
-        """
-elif False:
-    GenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Agent Template
+    """
+    instruction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instruction for the Agent
+    """
+    k: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    K value for the Agent Template
+    """
+    knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateKnowledgeBaseArgsDict']]]]
+    """
+    List of Knowledge Bases
+    """
+    max_tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum tokens allowed
+    """
+    models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelArgsDict']]]]
+    """
+    Model of the Agent Template
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Agent Template
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Agent temperature setting
+    """
+    top_p: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Top P sampling parameter
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent Template
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    uuid of the Agent Template
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateArgs:
@@ -16443,62 +15970,59 @@ class GenaiAgentTemplateArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        database_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of tags
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User ID of the Knowledge Base
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the Knowledge Base
-        """
-elif False:
-    GenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    database_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired[pulumi.Input['GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of tags
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User ID of the Knowledge Base
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateKnowledgeBaseArgs:
@@ -16715,54 +16239,51 @@ class GenaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
@@ -16947,62 +16468,59 @@ class GenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateModelArgs:
@@ -17219,26 +16737,23 @@ class GenaiAgentTemplateModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateModelAgreementArgs:
@@ -17311,22 +16826,19 @@ class GenaiAgentTemplateModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiAgentTemplateModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiAgentTemplateModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GenaiAgentTemplateModelVersionArgs:
@@ -17383,22 +16895,19 @@ class GenaiAgentTemplateModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Spaces bucket
-        """
-        item_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the item in the bucket
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the Spaces bucket
-        """
-elif False:
-    GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Spaces bucket
+    """
+    item_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the item in the bucket
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the Spaces bucket
+    """
 
 @pulumi.input_type
 class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
@@ -17455,27 +16964,24 @@ class GenaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
-        base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base URL to crawl
-        """
-        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Options for specifying how URLs found on pages should be handled. 
-        - UNKNOWN: Default unknown value
-        - SCOPED: Only include the base URL.
-        - PATH: Crawl the base URL and linked pages within the URL path.
-        - DOMAIN: Crawl the base URL and linked pages within the same domain.
-        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        """
-        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to embed media content
-        """
-elif False:
-    GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
+    base_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base URL to crawl
+    """
+    crawling_option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Options for specifying how URLs found on pages should be handled. 
+    - UNKNOWN: Default unknown value
+    - SCOPED: Only include the base URL.
+    - PATH: Crawl the base URL and linked pages within the URL path.
+    - DOMAIN: Crawl the base URL and linked pages within the same domain.
+    - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+    """
+    embed_media: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to embed media content
+    """
 
 @pulumi.input_type
 class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
@@ -17542,54 +17048,51 @@ class GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
         pulumi.set(self, "embed_media", value)
 
 
-if not MYPY:
-    class GenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GenaiKnowledgeBaseLastIndexingJobArgs:
@@ -17774,62 +17277,59 @@ class GenaiKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GenaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiOpenaiApiKeyModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GenaiOpenaiApiKeyModelArgs:
@@ -18046,26 +17546,23 @@ class GenaiOpenaiApiKeyModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GenaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GenaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GenaiOpenaiApiKeyModelAgreementArgs:
@@ -18138,22 +17635,19 @@ class GenaiOpenaiApiKeyModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GenaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GenaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GenaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GenaiOpenaiApiKeyModelVersionArgs:
@@ -18210,58 +17704,55 @@ class GenaiOpenaiApiKeyModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GradientaiAgentAgentGuardrailArgsDict(TypedDict):
-        agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Agent UUID for the Guardrail
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Guardrail
-        """
-        default_response: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Default response for the Guardrail
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Guardrail
-        """
-        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID
-        """
-        is_attached: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Guardrail is attached
-        """
-        is_default: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Guardrail is default
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of Guardrail
-        """
-        priority: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Priority of the Guardrail
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Type of the Guardrail
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Guardrail
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID
-        """
-elif False:
-    GradientaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentAgentGuardrailArgsDict(TypedDict):
+    agent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Agent UUID for the Guardrail
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Guardrail
+    """
+    default_response: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Default response for the Guardrail
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Guardrail
+    """
+    guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID
+    """
+    is_attached: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Guardrail is attached
+    """
+    is_default: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Guardrail is default
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of Guardrail
+    """
+    priority: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Priority of the Guardrail
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Type of the Guardrail
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Guardrail
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID
+    """
 
 @pulumi.input_type
 class GradientaiAgentAgentGuardrailArgs:
@@ -18462,34 +17953,31 @@ class GradientaiAgentAgentGuardrailArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentAnthropicApiKeyArgs:
@@ -18594,14 +18082,11 @@ class GradientaiAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentApiKeyArgs:
@@ -18626,34 +18111,31 @@ class GradientaiAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GradientaiAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentApiKeyInfoArgs:
@@ -18758,34 +18240,31 @@ class GradientaiAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GradientaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GradientaiAgentChatbotArgs:
@@ -18890,11 +18369,8 @@ class GradientaiAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GradientaiAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GradientaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GradientaiAgentChatbotIdentifierArgs:
@@ -18913,62 +18389,59 @@ class GradientaiAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentArgsDict(TypedDict):
-        instruction: pulumi.Input[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        model_uuid: pulumi.Input[_builtins.str]
-        """
-        Model UUID of the Agent
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the Agent
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        Project ID of the Agent
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region where the Agent is deployed
-        """
-        agent_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the child agent
-        """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
-        """
-        Anthropic API Key information
-        """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgsDict']]]]
-        """
-        List of API Keys
-        """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgsDict']]]]
-        """
-        List of Chatbot Identifiers
-        """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgsDict']]]]
-        """
-        ChatBot configuration
-        """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for the Agent
-        """
-elif False:
-    GradientaiAgentChildAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentArgsDict(TypedDict):
+    instruction: pulumi.Input[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    model_uuid: pulumi.Input[_builtins.str]
+    """
+    Model UUID of the Agent
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the Agent
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Project ID of the Agent
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region where the Agent is deployed
+    """
+    agent_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the child agent
+    """
+    anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentAnthropicApiKeyArgsDict']]]]
+    """
+    Anthropic API Key information
+    """
+    api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyInfoArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentApiKeyArgsDict']]]]
+    """
+    List of API Keys
+    """
+    chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotIdentifierArgsDict']]]]
+    """
+    List of Chatbot Identifiers
+    """
+    chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentChatbotArgsDict']]]]
+    """
+    ChatBot configuration
+    """
+    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentChildAgentDeploymentArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for the Agent
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentArgs:
@@ -19180,34 +18653,31 @@ class GradientaiAgentChildAgentArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentChildAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentAnthropicApiKeyArgs:
@@ -19312,14 +18782,11 @@ class GradientaiAgentChildAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentChildAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentApiKeyArgs:
@@ -19344,34 +18811,31 @@ class GradientaiAgentChildAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentChildAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentApiKeyInfoArgs:
@@ -19476,34 +18940,31 @@ class GradientaiAgentChildAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GradientaiAgentChildAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentChatbotArgs:
@@ -19608,11 +19069,8 @@ class GradientaiAgentChildAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GradientaiAgentChildAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GradientaiAgentChildAgentChatbotIdentifierArgs:
@@ -19631,38 +19089,35 @@ class GradientaiAgentChildAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GradientaiAgentChildAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GradientaiAgentChildAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentChildAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GradientaiAgentChildAgentDeploymentArgs:
@@ -19783,38 +19238,35 @@ class GradientaiAgentChildAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GradientaiAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GradientaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GradientaiAgentDeploymentArgs:
@@ -19935,50 +19387,47 @@ class GradientaiAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GradientaiAgentFunctionArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Function
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Function
-        """
-        faasname: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of function
-        """
-        faasnamespace: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Namespace of function
-        """
-        guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Guardrail UUID for the Function
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of function
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentFunctionArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Function
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Function
+    """
+    faasname: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of function
+    """
+    faasnamespace: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Namespace of function
+    """
+    guardrail_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Guardrail UUID for the Function
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of function
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentFunctionArgs:
@@ -20147,62 +19596,59 @@ class GradientaiAgentFunctionArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        database_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of tags
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User ID of the Knowledge Base
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the Knowledge Base
-        """
-elif False:
-    GradientaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    database_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']]
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of tags
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User ID of the Knowledge Base
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GradientaiAgentKnowledgeBaseArgs:
@@ -20419,54 +19865,51 @@ class GradientaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GradientaiAgentKnowledgeBaseLastIndexingJobArgs:
@@ -20651,62 +20094,59 @@ class GradientaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GradientaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GradientaiAgentModelArgs:
@@ -20923,26 +20363,23 @@ class GradientaiAgentModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GradientaiAgentModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GradientaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GradientaiAgentModelAgreementArgs:
@@ -21015,22 +20452,19 @@ class GradientaiAgentModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GradientaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GradientaiAgentModelVersionArgs:
@@ -21087,34 +20521,31 @@ class GradientaiAgentModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentOpenAiApiKeyArgs:
@@ -21219,62 +20650,59 @@ class GradientaiAgentOpenAiApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentArgsDict(TypedDict):
-        instruction: pulumi.Input[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        model_uuid: pulumi.Input[_builtins.str]
-        """
-        Model UUID of the Agent
-        """
-        name: pulumi.Input[_builtins.str]
-        """
-        Name of the Agent
-        """
-        project_id: pulumi.Input[_builtins.str]
-        """
-        Project ID of the Agent
-        """
-        region: pulumi.Input[_builtins.str]
-        """
-        Region where the Agent is deployed
-        """
-        agent_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        ID of the child agent
-        """
-        anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
-        """
-        Anthropic API Key information
-        """
-        api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgsDict']]]]
-        """
-        List of API Keys
-        """
-        chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgsDict']]]]
-        """
-        List of Chatbot Identifiers
-        """
-        chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgsDict']]]]
-        """
-        ChatBot configuration
-        """
-        deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgsDict']]]]
-        """
-        List of API Key Infos
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description for the Agent
-        """
-elif False:
-    GradientaiAgentParentAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentArgsDict(TypedDict):
+    instruction: pulumi.Input[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    model_uuid: pulumi.Input[_builtins.str]
+    """
+    Model UUID of the Agent
+    """
+    name: pulumi.Input[_builtins.str]
+    """
+    Name of the Agent
+    """
+    project_id: pulumi.Input[_builtins.str]
+    """
+    Project ID of the Agent
+    """
+    region: pulumi.Input[_builtins.str]
+    """
+    Region where the Agent is deployed
+    """
+    agent_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    ID of the child agent
+    """
+    anthropic_api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentAnthropicApiKeyArgsDict']]]]
+    """
+    Anthropic API Key information
+    """
+    api_key_infos: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyInfoArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    api_keys: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentApiKeyArgsDict']]]]
+    """
+    List of API Keys
+    """
+    chatbot_identifiers: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotIdentifierArgsDict']]]]
+    """
+    List of Chatbot Identifiers
+    """
+    chatbots: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentChatbotArgsDict']]]]
+    """
+    ChatBot configuration
+    """
+    deployments: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentParentAgentDeploymentArgsDict']]]]
+    """
+    List of API Key Infos
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description for the Agent
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentArgs:
@@ -21486,34 +20914,31 @@ class GradientaiAgentParentAgentArgs:
         pulumi.set(self, "description", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the API Key was created
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentParentAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the API Key was created
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentAnthropicApiKeyArgs:
@@ -21618,14 +21043,11 @@ class GradientaiAgentParentAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentParentAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentApiKeyArgs:
@@ -21650,34 +21072,31 @@ class GradientaiAgentParentAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        created_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created By user ID for the API Key
-        """
-        deleted_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Deleted At timestamp for the API Key
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-elif False:
-    GradientaiAgentParentAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    created_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created By user ID for the API Key
+    """
+    deleted_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Deleted At timestamp for the API Key
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentApiKeyInfoArgs:
@@ -21782,34 +21201,31 @@ class GradientaiAgentParentAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GradientaiAgentParentAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentChatbotArgs:
@@ -21914,11 +21330,8 @@ class GradientaiAgentParentAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    GradientaiAgentParentAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class GradientaiAgentParentAgentChatbotIdentifierArgs:
@@ -21937,38 +21350,35 @@ class GradientaiAgentParentAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GradientaiAgentParentAgentDeploymentArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Status of the Deployment
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        API Key value
-        """
-        visibility: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GradientaiAgentParentAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentParentAgentDeploymentArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Status of the Deployment
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    API Key value
+    """
+    visibility: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GradientaiAgentParentAgentDeploymentArgs:
@@ -22089,58 +21499,55 @@ class GradientaiAgentParentAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the Agent Template
-        """
-        instruction: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Instruction for the Agent
-        """
-        k: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        K value for the Agent Template
-        """
-        knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgsDict']]]]
-        """
-        List of Knowledge Bases
-        """
-        max_tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Maximum tokens allowed
-        """
-        models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgsDict']]]]
-        """
-        Model of the Agent Template
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Agent Template
-        """
-        temperature: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Agent temperature setting
-        """
-        top_p: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Top P sampling parameter
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Updated At timestamp for the Agent Template
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        uuid of the Agent Template
-        """
-elif False:
-    GradientaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the Agent Template
+    """
+    instruction: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Instruction for the Agent
+    """
+    k: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    K value for the Agent Template
+    """
+    knowledge_bases: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseArgsDict']]]]
+    """
+    List of Knowledge Bases
+    """
+    max_tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Maximum tokens allowed
+    """
+    models: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelArgsDict']]]]
+    """
+    Model of the Agent Template
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Agent Template
+    """
+    temperature: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Agent temperature setting
+    """
+    top_p: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Top P sampling parameter
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Updated At timestamp for the Agent Template
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    uuid of the Agent Template
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateArgs:
@@ -22341,62 +21748,59 @@ class GradientaiAgentTemplateArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        database_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of tags
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        user_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        User ID of the Knowledge Base
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the Knowledge Base
-        """
-elif False:
-    GradientaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    database_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired[pulumi.Input['GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']]
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of tags
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    user_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    User ID of the Knowledge Base
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateKnowledgeBaseArgs:
@@ -22613,54 +22017,51 @@ class GradientaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
@@ -22845,62 +22246,59 @@ class GradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GradientaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateModelArgs:
@@ -23117,26 +22515,23 @@ class GradientaiAgentTemplateModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GradientaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateModelAgreementArgs:
@@ -23209,22 +22604,19 @@ class GradientaiAgentTemplateModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiAgentTemplateModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GradientaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiAgentTemplateModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GradientaiAgentTemplateModelVersionArgs:
@@ -23281,38 +22673,35 @@ class GradientaiAgentTemplateModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]
-        """
-        File upload data source configuration
-        """
-        last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]
-        """
-        Last indexing job for the data source
-        """
-        spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]
-        """
-        Spaces data source configuration
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the Knowledge Base
-        """
-        web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]
-        """
-        Web crawler data source configuration
-        """
-elif False:
-    GradientaiKnowledgeBaseDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseDataSourceArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    file_upload_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict']]]]
+    """
+    File upload data source configuration
+    """
+    last_indexing_jobs: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict']]]]
+    """
+    Last indexing job for the data source
+    """
+    spaces_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict']]]]
+    """
+    Spaces data source configuration
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the Knowledge Base
+    """
+    web_crawler_data_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict']]]]
+    """
+    Web crawler data source configuration
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseDataSourceArgs:
@@ -23433,22 +22822,19 @@ class GradientaiKnowledgeBaseDataSourceArgs:
         pulumi.set(self, "web_crawler_data_sources", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict(TypedDict):
-        original_file_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The original name of the uploaded file
-        """
-        size_in_bytes: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The size of the file in bytes
-        """
-        stored_object_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The stored object key for the file
-        """
-elif False:
-    GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgsDict(TypedDict):
+    original_file_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The original name of the uploaded file
+    """
+    size_in_bytes: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The size of the file in bytes
+    """
+    stored_object_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The stored object key for the file
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
@@ -23505,54 +22891,51 @@ class GradientaiKnowledgeBaseDataSourceFileUploadDataSourceArgs:
         pulumi.set(self, "stored_object_key", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs:
@@ -23737,22 +23120,19 @@ class GradientaiKnowledgeBaseDataSourceLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
-        bucket_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name of the Spaces bucket
-        """
-        item_path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path to the item in the bucket
-        """
-        region: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The region of the Spaces bucket
-        """
-elif False:
-    GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgsDict(TypedDict):
+    bucket_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the Spaces bucket
+    """
+    item_path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path to the item in the bucket
+    """
+    region: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The region of the Spaces bucket
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
@@ -23809,27 +23189,24 @@ class GradientaiKnowledgeBaseDataSourceSpacesDataSourceArgs:
         pulumi.set(self, "region", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
-        base_url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base URL to crawl
-        """
-        crawling_option: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Options for specifying how URLs found on pages should be handled. 
-        - UNKNOWN: Default unknown value
-        - SCOPED: Only include the base URL.
-        - PATH: Crawl the base URL and linked pages within the URL path.
-        - DOMAIN: Crawl the base URL and linked pages within the same domain.
-        - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
-        """
-        embed_media: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Whether to embed media content
-        """
-elif False:
-    GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgsDict(TypedDict):
+    base_url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base URL to crawl
+    """
+    crawling_option: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Options for specifying how URLs found on pages should be handled. 
+    - UNKNOWN: Default unknown value
+    - SCOPED: Only include the base URL.
+    - PATH: Crawl the base URL and linked pages within the URL path.
+    - DOMAIN: Crawl the base URL and linked pages within the same domain.
+    - SUBDOMAINS: Crawl the base URL and linked pages for any subdomain.
+    """
+    embed_media: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Whether to embed media content
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
@@ -23896,54 +23273,51 @@ class GradientaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs:
         pulumi.set(self, "embed_media", value)
 
 
-if not MYPY:
-    class GradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the last indexing job
-        """
-        data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        finished_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        phase: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Phase of the last indexing job
-        """
-        started_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job started
-        """
-        tokens: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Total number of datasources in the last indexing job
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the last indexing job updated
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GradientaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    completed_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the last indexing job
+    """
+    data_source_uuids: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    finished_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    phase: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Phase of the last indexing job
+    """
+    started_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job started
+    """
+    tokens: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Total number of datasources in the last indexing job
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the last indexing job updated
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GradientaiKnowledgeBaseLastIndexingJobArgs:
@@ -24128,62 +23502,59 @@ class GradientaiKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiOpenaiApiKeyModelArgsDict(TypedDict):
-        agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgsDict']]]]
-        """
-        Agreement information for the model
-        """
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        inference_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Provider of the Model
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgsDict']]]]
-        """
-        URL of the Model
-        """
-elif False:
-    GradientaiOpenaiApiKeyModelArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiOpenaiApiKeyModelArgsDict(TypedDict):
+    agreements: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelAgreementArgsDict']]]]
+    """
+    Agreement information for the model
+    """
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    inference_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Provider of the Model
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    upload_complete: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelVersionArgsDict']]]]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GradientaiOpenaiApiKeyModelArgs:
@@ -24400,26 +23771,23 @@ class GradientaiOpenaiApiKeyModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GradientaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
-        description: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GradientaiOpenaiApiKeyModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiOpenaiApiKeyModelAgreementArgsDict(TypedDict):
+    description: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GradientaiOpenaiApiKeyModelAgreementArgs:
@@ -24492,22 +23860,19 @@ class GradientaiOpenaiApiKeyModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GradientaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
-        major: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Patch version of the model
-        """
-elif False:
-    GradientaiOpenaiApiKeyModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GradientaiOpenaiApiKeyModelVersionArgsDict(TypedDict):
+    major: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GradientaiOpenaiApiKeyModelVersionArgs:
@@ -24564,14 +23929,11 @@ class GradientaiOpenaiApiKeyModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the component is enabled or not.
-        """
-elif False:
-    KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component is enabled or not.
+    """
 
 @pulumi.input_type
 class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
@@ -24595,15 +23957,12 @@ class KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the component should be enabled or not.
-        `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
-        """
-elif False:
-    KubernetesClusterAmdGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component should be enabled or not.
+    `amd_gpu_device_metrics_exporter_plugin` - (Optional) Block containing options for the AMD GPU device metrics exporter component. If not specified, the component will not be installed in the cluster.
+    """
 
 @pulumi.input_type
 class KubernetesClusterAmdGpuDevicePluginArgs:
@@ -24629,21 +23988,18 @@ class KubernetesClusterAmdGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
-        expanders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        scale_down_unneeded_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        String setting how long a node should be unneeded before it's eligible for scale down.
+class KubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+    expanders: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    scale_down_unneeded_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    String setting how long a node should be unneeded before it's eligible for scale down.
 
-        This resource supports customized create timeouts. The default timeout is 30 minutes.
-        """
-        scale_down_utilization_threshold: NotRequired[pulumi.Input[_builtins.float]]
-        """
-        Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
-        """
-elif False:
-    KubernetesClusterClusterAutoscalerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+    This resource supports customized create timeouts. The default timeout is 30 minutes.
+    """
+    scale_down_utilization_threshold: NotRequired[pulumi.Input[_builtins.float]]
+    """
+    Float setting the Node utilization level, defined as sum of requested resources divided by capacity, in which a node can be considered for scale down.
+    """
 
 @pulumi.input_type
 class KubernetesClusterClusterAutoscalerConfigurationArgs:
@@ -24700,18 +24056,15 @@ class KubernetesClusterClusterAutoscalerConfigurationArgs:
         pulumi.set(self, "scale_down_utilization_threshold", value)
 
 
-if not MYPY:
-    class KubernetesClusterControlPlaneFirewallArgsDict(TypedDict):
-        allowed_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of addresses allowed (CIDR notation).
-        """
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the firewall should be enabled or not.
-        """
-elif False:
-    KubernetesClusterControlPlaneFirewallArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterControlPlaneFirewallArgsDict(TypedDict):
+    allowed_addresses: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of addresses allowed (CIDR notation).
+    """
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the firewall should be enabled or not.
+    """
 
 @pulumi.input_type
 class KubernetesClusterControlPlaneFirewallArgs:
@@ -24750,38 +24103,35 @@ class KubernetesClusterControlPlaneFirewallArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesClusterKubeConfigArgsDict(TypedDict):
-        client_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        """
-        client_key: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
-        """
-        cluster_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The base64 encoded public certificate for the cluster's certificate authority.
-        """
-        expires_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the credentials will expire and need to be regenerated.
-        """
-        host: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The URL of the API server on the Kubernetes master node.
-        """
-        raw_config: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The full contents of the Kubernetes cluster's kubeconfig file.
-        """
-        token: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The DigitalOcean API access token used by clients to access the cluster.
-        """
-elif False:
-    KubernetesClusterKubeConfigArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterKubeConfigArgsDict(TypedDict):
+    client_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded public certificate used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+    """
+    client_key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded private key used by clients to access the cluster. Only available if token authentication is not supported on your cluster.
+    """
+    cluster_ca_certificate: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The base64 encoded public certificate for the cluster's certificate authority.
+    """
+    expires_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the credentials will expire and need to be regenerated.
+    """
+    host: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The URL of the API server on the Kubernetes master node.
+    """
+    raw_config: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The full contents of the Kubernetes cluster's kubeconfig file.
+    """
+    token: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The DigitalOcean API access token used by clients to access the cluster.
+    """
 
 @pulumi.input_type
 class KubernetesClusterKubeConfigArgs:
@@ -24902,22 +24252,19 @@ class KubernetesClusterKubeConfigArgs:
         pulumi.set(self, "token", value)
 
 
-if not MYPY:
-    class KubernetesClusterMaintenancePolicyArgsDict(TypedDict):
-        day: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
-        """
-        duration: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string denoting the duration of the service window, e.g., "04:00".
-        """
-        start_time: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
-        """
-elif False:
-    KubernetesClusterMaintenancePolicyArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterMaintenancePolicyArgsDict(TypedDict):
+    day: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The day of the maintenance window policy. May be one of "monday" through "sunday", or "any" to indicate an arbitrary week day.
+    """
+    duration: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string denoting the duration of the service window, e.g., "04:00".
+    """
+    start_time: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The start time in UTC of the maintenance window policy in 24-hour clock format / HH:MM notation (e.g., 15:00).
+    """
 
 @pulumi.input_type
 class KubernetesClusterMaintenancePolicyArgs:
@@ -24974,58 +24321,55 @@ class KubernetesClusterMaintenancePolicyArgs:
         pulumi.set(self, "start_time", value)
 
 
-if not MYPY:
-    class KubernetesClusterNodePoolArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        A name for the node pool.
-        """
-        size: pulumi.Input[_builtins.str]
-        """
-        The slug identifier for the type of Droplet to be used as workers in the node pool.
-        """
-        actual_node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
-        """
-        auto_scale: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique ID that can be used to identify and reference the node.
-        """
-        labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
-        """
-        max_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
-        """
-        min_nodes: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
-        """
-        node_count: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
-        """
-        nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgsDict']]]]
-        """
-        A list of nodes in the pool. Each node exports the following attributes:
-        """
-        tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of tag names applied to the node pool.
-        """
-        taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgsDict']]]]
-        """
-        A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
-        """
-elif False:
-    KubernetesClusterNodePoolArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterNodePoolArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    A name for the node pool.
+    """
+    size: pulumi.Input[_builtins.str]
+    """
+    The slug identifier for the type of Droplet to be used as workers in the node pool.
+    """
+    actual_node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
+    """
+    auto_scale: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique ID that can be used to identify and reference the node.
+    """
+    labels: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
+    """
+    max_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
+    """
+    min_nodes: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
+    """
+    node_count: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
+    """
+    nodes: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolNodeArgsDict']]]]
+    """
+    A list of nodes in the pool. Each node exports the following attributes:
+    """
+    tags: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of tag names applied to the node pool.
+    """
+    taints: NotRequired[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterNodePoolTaintArgsDict']]]]
+    """
+    A block representing a taint applied to all nodes in the pool. Each taint exports the following attributes (taints must be unique by key and effect pair):
+    """
 
 @pulumi.input_type
 class KubernetesClusterNodePoolArgs:
@@ -25224,34 +24568,31 @@ class KubernetesClusterNodePoolArgs:
         pulumi.set(self, "taints", value)
 
 
-if not MYPY:
-    class KubernetesClusterNodePoolNodeArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the node was created.
-        """
-        droplet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the node's droplet
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique ID that can be used to identify and reference the node.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A name for the Kubernetes cluster.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string indicating the current status of the individual node.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the node was last updated.
-        """
-elif False:
-    KubernetesClusterNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterNodePoolNodeArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the node was created.
+    """
+    droplet_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the node's droplet
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique ID that can be used to identify and reference the node.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A name for the Kubernetes cluster.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string indicating the current status of the individual node.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the node was last updated.
+    """
 
 @pulumi.input_type
 class KubernetesClusterNodePoolNodeArgs:
@@ -25356,22 +24697,19 @@ class KubernetesClusterNodePoolNodeArgs:
         pulumi.set(self, "updated_at", value)
 
 
-if not MYPY:
-    class KubernetesClusterNodePoolTaintArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-        """
-elif False:
-    KubernetesClusterNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterNodePoolTaintArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+    """
 
 @pulumi.input_type
 class KubernetesClusterNodePoolTaintArgs:
@@ -25425,15 +24763,12 @@ class KubernetesClusterNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class KubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the component should be enabled or not.
-        `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
-        """
-elif False:
-    KubernetesClusterNvidiaGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component should be enabled or not.
+    `rdma_shared_device_plugin` - (Optional) Block containing options for the RDMA Shared Device Plugin (k8s-rdma-shared-dev-plugin) component. If not specified, the component will be enabled by default for clusters with GPU nodes connected to a dedicated high-speed networking fabric.
+    """
 
 @pulumi.input_type
 class KubernetesClusterNvidiaGpuDevicePluginArgs:
@@ -25459,14 +24794,11 @@ class KubernetesClusterNvidiaGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the component is enabled or not.
-        """
-elif False:
-    KubernetesClusterRdmaSharedDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the component is enabled or not.
+    """
 
 @pulumi.input_type
 class KubernetesClusterRdmaSharedDevicePluginArgs:
@@ -25490,14 +24822,11 @@ class KubernetesClusterRdmaSharedDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesClusterRoutingAgentArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Boolean flag whether the routing-agent should be enabled or not.
-        """
-elif False:
-    KubernetesClusterRoutingAgentArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesClusterRoutingAgentArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Boolean flag whether the routing-agent should be enabled or not.
+    """
 
 @pulumi.input_type
 class KubernetesClusterRoutingAgentArgs:
@@ -25521,34 +24850,31 @@ class KubernetesClusterRoutingAgentArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class KubernetesNodePoolNodeArgsDict(TypedDict):
-        created_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the node was created.
-        """
-        droplet_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The id of the node's droplet
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A unique ID that can be used to identify and reference the node.
-        """
-        name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A name for the node pool.
-        """
-        status: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        A string indicating the current status of the individual node.
-        """
-        updated_at: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The date and time when the node was last updated.
-        """
-elif False:
-    KubernetesNodePoolNodeArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesNodePoolNodeArgsDict(TypedDict):
+    created_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the node was created.
+    """
+    droplet_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The id of the node's droplet
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A unique ID that can be used to identify and reference the node.
+    """
+    name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A name for the node pool.
+    """
+    status: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    A string indicating the current status of the individual node.
+    """
+    updated_at: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The date and time when the node was last updated.
+    """
 
 @pulumi.input_type
 class KubernetesNodePoolNodeArgs:
@@ -25653,22 +24979,19 @@ class KubernetesNodePoolNodeArgs:
         pulumi.set(self, "updated_at", value)
 
 
-if not MYPY:
-    class KubernetesNodePoolTaintArgsDict(TypedDict):
-        effect: pulumi.Input[_builtins.str]
-        """
-        How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
-        """
-        key: pulumi.Input[_builtins.str]
-        """
-        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-        """
-        value: pulumi.Input[_builtins.str]
-        """
-        An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
-        """
-elif False:
-    KubernetesNodePoolTaintArgsDict: TypeAlias = Mapping[str, Any]
+class KubernetesNodePoolTaintArgsDict(TypedDict):
+    effect: pulumi.Input[_builtins.str]
+    """
+    How the node reacts to pods that it won't tolerate. Available effect values are: "NoSchedule", "PreferNoSchedule", "NoExecute".
+    """
+    key: pulumi.Input[_builtins.str]
+    """
+    An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+    """
+    value: pulumi.Input[_builtins.str]
+    """
+    An arbitrary string. The "key" and "value" fields of the "taint" object form a key-value pair.
+    """
 
 @pulumi.input_type
 class KubernetesNodePoolTaintArgs:
@@ -25722,34 +25045,31 @@ class KubernetesNodePoolTaintArgs:
         pulumi.set(self, "value", value)
 
 
-if not MYPY:
-    class LoadBalancerDomainArgsDict(TypedDict):
-        name: pulumi.Input[_builtins.str]
-        """
-        The domain name to be used for ingressing traffic to a Global Load Balancer.
-        """
-        certificate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        **Deprecated** The certificate ID to be used for TLS handshaking.
-        """
-        certificate_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The certificate name to be used for TLS handshaking.
-        """
-        is_managed: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Control flag to specify whether the domain is managed by DigitalOcean.
-        """
-        ssl_validation_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        list of domain SSL validation errors
-        """
-        verification_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        list of domain verification errors
-        """
-elif False:
-    LoadBalancerDomainArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerDomainArgsDict(TypedDict):
+    name: pulumi.Input[_builtins.str]
+    """
+    The domain name to be used for ingressing traffic to a Global Load Balancer.
+    """
+    certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    **Deprecated** The certificate ID to be used for TLS handshaking.
+    """
+    certificate_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The certificate name to be used for TLS handshaking.
+    """
+    is_managed: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Control flag to specify whether the domain is managed by DigitalOcean.
+    """
+    ssl_validation_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    list of domain SSL validation errors
+    """
+    verification_error_reasons: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    list of domain verification errors
+    """
 
 @pulumi.input_type
 class LoadBalancerDomainArgs:
@@ -25853,19 +25173,16 @@ class LoadBalancerDomainArgs:
         pulumi.set(self, "verification_error_reasons", value)
 
 
-if not MYPY:
-    class LoadBalancerFirewallArgsDict(TypedDict):
-        allows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
-        * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
-        """
-        denies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
-        """
-elif False:
-    LoadBalancerFirewallArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerFirewallArgsDict(TypedDict):
+    allows: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of strings describing allow rules. Must be colon delimited strings of the form `{type}:{source}`
+    * Ex. `deny = ["cidr:1.2.0.0/16", "ip:2.3.4.5"]` or `allow = ["ip:1.2.3.4", "cidr:2.3.4.0/24"]`
+    """
+    denies: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of strings describing deny rules. Must be colon delimited strings of the form `{type}:{source}`
+    """
 
 @pulumi.input_type
 class LoadBalancerFirewallArgs:
@@ -25908,38 +25225,35 @@ class LoadBalancerFirewallArgs:
         pulumi.set(self, "denies", value)
 
 
-if not MYPY:
-    class LoadBalancerForwardingRuleArgsDict(TypedDict):
-        entry_port: pulumi.Input[_builtins.int]
-        """
-        An integer representing the port on which the Load Balancer instance will listen.
-        """
-        entry_protocol: pulumi.Input[_builtins.str]
-        """
-        The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
-        """
-        target_port: pulumi.Input[_builtins.int]
-        """
-        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
-        """
-        target_protocol: pulumi.Input[_builtins.str]
-        """
-        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
-        """
-        certificate_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
-        """
-        certificate_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The unique name of the TLS certificate to be used for SSL termination.
-        """
-        tls_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
-        """
-elif False:
-    LoadBalancerForwardingRuleArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerForwardingRuleArgsDict(TypedDict):
+    entry_port: pulumi.Input[_builtins.int]
+    """
+    An integer representing the port on which the Load Balancer instance will listen.
+    """
+    entry_protocol: pulumi.Input[_builtins.str]
+    """
+    The protocol used for traffic to the Load Balancer. The possible values are: `http`, `https`, `http2`, `http3`, `tcp`, or `udp`.
+    """
+    target_port: pulumi.Input[_builtins.int]
+    """
+    An integer representing the port on the backend Droplets to which the Load Balancer will send traffic.
+    """
+    target_protocol: pulumi.Input[_builtins.str]
+    """
+    The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http`, `https`, `http2`, `tcp`, or `udp`.
+    """
+    certificate_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    **Deprecated** The ID of the TLS certificate to be used for SSL termination. Use `certificate_name` instead.
+    """
+    certificate_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The unique name of the TLS certificate to be used for SSL termination.
+    """
+    tls_passthrough: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    A boolean value indicating whether SSL encrypted traffic will be passed through to the backend Droplets. The default value is `false`.
+    """
 
 @pulumi.input_type
 class LoadBalancerForwardingRuleArgs:
@@ -26060,30 +25374,27 @@ class LoadBalancerForwardingRuleArgs:
         pulumi.set(self, "tls_passthrough", value)
 
 
-if not MYPY:
-    class LoadBalancerGlbSettingsArgsDict(TypedDict):
-        target_port: pulumi.Input[_builtins.int]
-        """
-        An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
-        """
-        target_protocol: pulumi.Input[_builtins.str]
-        """
-        The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
-        """
-        cdn: NotRequired[pulumi.Input['LoadBalancerGlbSettingsCdnArgsDict']]
-        """
-        CDN configuration supporting the following:
-        """
-        failover_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        fail-over threshold
-        """
-        region_priorities: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]
-        """
-        region priority map
-        """
-elif False:
-    LoadBalancerGlbSettingsArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerGlbSettingsArgsDict(TypedDict):
+    target_port: pulumi.Input[_builtins.int]
+    """
+    An integer representing the port on the backend Droplets to which the Load Balancer will send traffic. The possible values are: `80` for `http` and `443` for `https`.
+    """
+    target_protocol: pulumi.Input[_builtins.str]
+    """
+    The protocol used for traffic from the Load Balancer to the backend Droplets. The possible values are: `http` and `https`.
+    """
+    cdn: NotRequired[pulumi.Input['LoadBalancerGlbSettingsCdnArgsDict']]
+    """
+    CDN configuration supporting the following:
+    """
+    failover_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    fail-over threshold
+    """
+    region_priorities: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.int]]]]
+    """
+    region priority map
+    """
 
 @pulumi.input_type
 class LoadBalancerGlbSettingsArgs:
@@ -26170,14 +25481,11 @@ class LoadBalancerGlbSettingsArgs:
         pulumi.set(self, "region_priorities", value)
 
 
-if not MYPY:
-    class LoadBalancerGlbSettingsCdnArgsDict(TypedDict):
-        is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Control flag to specify if caching is enabled.
-        """
-elif False:
-    LoadBalancerGlbSettingsCdnArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerGlbSettingsCdnArgsDict(TypedDict):
+    is_enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Control flag to specify if caching is enabled.
+    """
 
 @pulumi.input_type
 class LoadBalancerGlbSettingsCdnArgs:
@@ -26202,38 +25510,35 @@ class LoadBalancerGlbSettingsCdnArgs:
         pulumi.set(self, "is_enabled", value)
 
 
-if not MYPY:
-    class LoadBalancerHealthcheckArgsDict(TypedDict):
-        port: pulumi.Input[_builtins.int]
-        """
-        An integer representing the port on the backend Droplets on which the health check will attempt a connection.
-        """
-        protocol: pulumi.Input[_builtins.str]
-        """
-        The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
-        """
-        check_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
-        """
-        healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
-        """
-        path: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The path on the backend Droplets to which the Load Balancer instance will send a request.
-        """
-        response_timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
-        """
-        unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
-        """
-elif False:
-    LoadBalancerHealthcheckArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerHealthcheckArgsDict(TypedDict):
+    port: pulumi.Input[_builtins.int]
+    """
+    An integer representing the port on the backend Droplets on which the health check will attempt a connection.
+    """
+    protocol: pulumi.Input[_builtins.str]
+    """
+    The protocol used for health checks sent to the backend Droplets. The possible values are `http`, `https` or `tcp`.
+    """
+    check_interval_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds between two consecutive health checks. If not specified, the default value is `10`.
+    """
+    healthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times a health check must pass for a backend Droplet to be marked "healthy" and be re-added to the pool. If not specified, the default value is `5`.
+    """
+    path: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The path on the backend Droplets to which the Load Balancer instance will send a request.
+    """
+    response_timeout_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds the Load Balancer instance will wait for a response until marking a health check as failed. If not specified, the default value is `5`.
+    """
+    unhealthy_threshold: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of times a health check must fail for a backend Droplet to be marked "unhealthy" and be removed from the pool. If not specified, the default value is `3`.
+    """
 
 @pulumi.input_type
 class LoadBalancerHealthcheckArgs:
@@ -26352,22 +25657,19 @@ class LoadBalancerHealthcheckArgs:
         pulumi.set(self, "unhealthy_threshold", value)
 
 
-if not MYPY:
-    class LoadBalancerStickySessionsArgsDict(TypedDict):
-        cookie_name: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
-        """
-        cookie_ttl_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
-        """
-        type: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
-        """
-elif False:
-    LoadBalancerStickySessionsArgsDict: TypeAlias = Mapping[str, Any]
+class LoadBalancerStickySessionsArgsDict(TypedDict):
+    cookie_name: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name to be used for the cookie sent to the client. This attribute is required when using `cookies` for the sticky sessions type.
+    """
+    cookie_ttl_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The number of seconds until the cookie set by the Load Balancer expires. This attribute is required when using `cookies` for the sticky sessions type.
+    """
+    type: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    An attribute indicating how and if requests from a client will be persistently served by the same backend Droplet. The possible values are `cookies` or `none`. If not specified, the default value is `none`.
+    """
 
 @pulumi.input_type
 class LoadBalancerStickySessionsArgs:
@@ -26424,15 +25726,12 @@ class LoadBalancerStickySessionsArgs:
         pulumi.set(self, "type", value)
 
 
-if not MYPY:
-    class MonitorAlertAlertsArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of email addresses to sent notifications to
-        """
-        slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgsDict']]]]
-elif False:
-    MonitorAlertAlertsArgsDict: TypeAlias = Mapping[str, Any]
+class MonitorAlertAlertsArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of email addresses to sent notifications to
+    """
+    slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['MonitorAlertAlertsSlackArgsDict']]]]
 
 @pulumi.input_type
 class MonitorAlertAlertsArgs:
@@ -26469,18 +25768,15 @@ class MonitorAlertAlertsArgs:
         pulumi.set(self, "slacks", value)
 
 
-if not MYPY:
-    class MonitorAlertAlertsSlackArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send alerts to
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The webhook URL for Slack
-        """
-elif False:
-    MonitorAlertAlertsSlackArgsDict: TypeAlias = Mapping[str, Any]
+class MonitorAlertAlertsSlackArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send alerts to
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The webhook URL for Slack
+    """
 
 @pulumi.input_type
 class MonitorAlertAlertsSlackArgs:
@@ -26519,14 +25815,11 @@ class MonitorAlertAlertsSlackArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class PartnerAttachmentBgpArgsDict(TypedDict):
-        auth_key: NotRequired[pulumi.Input[_builtins.str]]
-        local_router_ip: NotRequired[pulumi.Input[_builtins.str]]
-        peer_router_asn: NotRequired[pulumi.Input[_builtins.int]]
-        peer_router_ip: NotRequired[pulumi.Input[_builtins.str]]
-elif False:
-    PartnerAttachmentBgpArgsDict: TypeAlias = Mapping[str, Any]
+class PartnerAttachmentBgpArgsDict(TypedDict):
+    auth_key: NotRequired[pulumi.Input[_builtins.str]]
+    local_router_ip: NotRequired[pulumi.Input[_builtins.str]]
+    peer_router_asn: NotRequired[pulumi.Input[_builtins.int]]
+    peer_router_ip: NotRequired[pulumi.Input[_builtins.str]]
 
 @pulumi.input_type
 class PartnerAttachmentBgpArgs:
@@ -26581,34 +25874,31 @@ class PartnerAttachmentBgpArgs:
         pulumi.set(self, "peer_router_ip", value)
 
 
-if not MYPY:
-    class SpacesBucketCorsConfigurationCorsRuleArgsDict(TypedDict):
-        allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
-        """
-        allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        Set of origins you want customers to be able to access the bucket from.
-        """
-        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Set of Headers that are specified in the Access-Control-Request-Headers header.
-        """
-        expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique identifier for the rule. The value cannot be longer than 255 characters.
-        """
-        max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Time in seconds that your browser is to cache the preflight response for the specified resource.
-        """
-elif False:
-    SpacesBucketCorsConfigurationCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesBucketCorsConfigurationCorsRuleArgsDict(TypedDict):
+    allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Set of HTTP methods that you allow the origin to execute. Valid values are GET, PUT, HEAD, POST, and DELETE.
+    """
+    allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    Set of origins you want customers to be able to access the bucket from.
+    """
+    allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Set of Headers that are specified in the Access-Control-Request-Headers header.
+    """
+    expose_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    Set of headers in the response that you want customers to be able to access from their applications (for example, from a JavaScript XMLHttpRequest object).
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique identifier for the rule. The value cannot be longer than 255 characters.
+    """
+    max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Time in seconds that your browser is to cache the preflight response for the specified resource.
+    """
 
 @pulumi.input_type
 class SpacesBucketCorsConfigurationCorsRuleArgs:
@@ -26711,26 +26001,23 @@ class SpacesBucketCorsConfigurationCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
-if not MYPY:
-    class SpacesBucketCorsRuleArgsDict(TypedDict):
-        allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
-        """
-        allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
-        """
-        A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
-        """
-        allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
-        """
-        max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The time in seconds that browser can cache the response for a preflight request.
-        """
-elif False:
-    SpacesBucketCorsRuleArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesBucketCorsRuleArgsDict(TypedDict):
+    allowed_methods: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of HTTP methods (e.g. `GET`) which are allowed from the specified origin.
+    """
+    allowed_origins: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]
+    """
+    A list of hosts from which requests using the specified methods are allowed. A host may contain one wildcard (e.g. http://*.example.com).
+    """
+    allowed_headers: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    A list of headers that will be included in the CORS preflight request's `Access-Control-Request-Headers`. A header may contain one wildcard (e.g. `x-amz-*`).
+    """
+    max_age_seconds: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The time in seconds that browser can cache the response for a preflight request.
+    """
 
 @pulumi.input_type
 class SpacesBucketCorsRuleArgs:
@@ -26801,37 +26088,34 @@ class SpacesBucketCorsRuleArgs:
         pulumi.set(self, "max_age_seconds", value)
 
 
-if not MYPY:
-    class SpacesBucketLifecycleRuleArgsDict(TypedDict):
-        enabled: pulumi.Input[_builtins.bool]
-        """
-        Specifies lifecycle rule status.
-        """
-        abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days after initiating a multipart
-        upload when the multipart upload must be completed or else Spaces will abort the upload.
-        """
-        expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleExpirationArgsDict']]
-        """
-        Specifies a time period after which applicable objects expire (documented below).
-        """
-        id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Unique identifier for the rule.
-        """
-        noncurrent_version_expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
-        """
-        Specifies when non-current object versions expire (documented below).
+class SpacesBucketLifecycleRuleArgsDict(TypedDict):
+    enabled: pulumi.Input[_builtins.bool]
+    """
+    Specifies lifecycle rule status.
+    """
+    abort_incomplete_multipart_upload_days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days after initiating a multipart
+    upload when the multipart upload must be completed or else Spaces will abort the upload.
+    """
+    expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleExpirationArgsDict']]
+    """
+    Specifies a time period after which applicable objects expire (documented below).
+    """
+    id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Unique identifier for the rule.
+    """
+    noncurrent_version_expiration: NotRequired[pulumi.Input['SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict']]
+    """
+    Specifies when non-current object versions expire (documented below).
 
-        At least one of `expiration` or `noncurrent_version_expiration` must be specified.
-        """
-        prefix: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Object key prefix identifying one or more objects to which the rule applies.
-        """
-elif False:
-    SpacesBucketLifecycleRuleArgsDict: TypeAlias = Mapping[str, Any]
+    At least one of `expiration` or `noncurrent_version_expiration` must be specified.
+    """
+    prefix: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Object key prefix identifying one or more objects to which the rule applies.
+    """
 
 @pulumi.input_type
 class SpacesBucketLifecycleRuleArgs:
@@ -26941,24 +26225,21 @@ class SpacesBucketLifecycleRuleArgs:
         pulumi.set(self, "prefix", value)
 
 
-if not MYPY:
-    class SpacesBucketLifecycleRuleExpirationArgsDict(TypedDict):
-        date: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Specifies the date/time after which you want applicable objects to expire. The argument uses
-        RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
-        """
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days after object creation when the applicable objects will expire.
-        """
-        expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        On a versioned bucket (versioning-enabled or versioning-suspended
-        bucket), setting this to true directs Spaces to delete expired object delete markers.
-        """
-elif False:
-    SpacesBucketLifecycleRuleExpirationArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesBucketLifecycleRuleExpirationArgsDict(TypedDict):
+    date: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Specifies the date/time after which you want applicable objects to expire. The argument uses
+    RFC3339 format, e.g. "2020-03-22T15:03:55Z" or parts thereof e.g. "2019-02-28".
+    """
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days after object creation when the applicable objects will expire.
+    """
+    expired_object_delete_marker: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    On a versioned bucket (versioning-enabled or versioning-suspended
+    bucket), setting this to true directs Spaces to delete expired object delete markers.
+    """
 
 @pulumi.input_type
 class SpacesBucketLifecycleRuleExpirationArgs:
@@ -27019,14 +26300,11 @@ class SpacesBucketLifecycleRuleExpirationArgs:
         pulumi.set(self, "expired_object_delete_marker", value)
 
 
-if not MYPY:
-    class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
-        days: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        Specifies the number of days after which an object's non-current versions expire.
-        """
-elif False:
-    SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgsDict(TypedDict):
+    days: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    Specifies the number of days after which an object's non-current versions expire.
+    """
 
 @pulumi.input_type
 class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs:
@@ -27051,15 +26329,12 @@ class SpacesBucketLifecycleRuleNoncurrentVersionExpirationArgs:
         pulumi.set(self, "days", value)
 
 
-if not MYPY:
-    class SpacesBucketVersioningArgsDict(TypedDict):
-        enabled: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
-        state. You can, however, suspend versioning on that bucket.
-        """
-elif False:
-    SpacesBucketVersioningArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesBucketVersioningArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Enable versioning. Once you version-enable a bucket, it can never return to an unversioned
+    state. You can, however, suspend versioning on that bucket.
+    """
 
 @pulumi.input_type
 class SpacesBucketVersioningArgs:
@@ -27086,18 +26361,15 @@ class SpacesBucketVersioningArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class SpacesKeyGrantArgsDict(TypedDict):
-        bucket: pulumi.Input[_builtins.str]
-        """
-        Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
-        """
-        permission: pulumi.Input[_builtins.str]
-        """
-        Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
-        """
-elif False:
-    SpacesKeyGrantArgsDict: TypeAlias = Mapping[str, Any]
+class SpacesKeyGrantArgsDict(TypedDict):
+    bucket: pulumi.Input[_builtins.str]
+    """
+    Name of the bucket associated with this grant. In case of a `fullaccess` permission, this value should be an empty string.
+    """
+    permission: pulumi.Input[_builtins.str]
+    """
+    Permission associated with this grant. Values can be `read`, `readwrite`, `fullaccess`.
+    """
 
 @pulumi.input_type
 class SpacesKeyGrantArgs:
@@ -27136,15 +26408,12 @@ class SpacesKeyGrantArgs:
         pulumi.set(self, "permission", value)
 
 
-if not MYPY:
-    class UptimeAlertNotificationArgsDict(TypedDict):
-        emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
-        """
-        List of email addresses to sent notifications to.
-        """
-        slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgsDict']]]]
-elif False:
-    UptimeAlertNotificationArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeAlertNotificationArgsDict(TypedDict):
+    emails: NotRequired[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]
+    """
+    List of email addresses to sent notifications to.
+    """
+    slacks: NotRequired[pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationSlackArgsDict']]]]
 
 @pulumi.input_type
 class UptimeAlertNotificationArgs:
@@ -27181,18 +26450,15 @@ class UptimeAlertNotificationArgs:
         pulumi.set(self, "slacks", value)
 
 
-if not MYPY:
-    class UptimeAlertNotificationSlackArgsDict(TypedDict):
-        channel: pulumi.Input[_builtins.str]
-        """
-        The Slack channel to send alerts to.
-        """
-        url: pulumi.Input[_builtins.str]
-        """
-        The webhook URL for Slack.
-        """
-elif False:
-    UptimeAlertNotificationSlackArgsDict: TypeAlias = Mapping[str, Any]
+class UptimeAlertNotificationSlackArgsDict(TypedDict):
+    channel: pulumi.Input[_builtins.str]
+    """
+    The Slack channel to send alerts to.
+    """
+    url: pulumi.Input[_builtins.str]
+    """
+    The webhook URL for Slack.
+    """
 
 @pulumi.input_type
 class UptimeAlertNotificationSlackArgs:
@@ -27231,14 +26497,11 @@ class UptimeAlertNotificationSlackArgs:
         pulumi.set(self, "url", value)
 
 
-if not MYPY:
-    class VpcNatGatewayEgressArgsDict(TypedDict):
-        public_gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgsDict']]]]
-        """
-        List of public gateway IPs
-        """
-elif False:
-    VpcNatGatewayEgressArgsDict: TypeAlias = Mapping[str, Any]
+class VpcNatGatewayEgressArgsDict(TypedDict):
+    public_gateways: NotRequired[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressPublicGatewayArgsDict']]]]
+    """
+    List of public gateway IPs
+    """
 
 @pulumi.input_type
 class VpcNatGatewayEgressArgs:
@@ -27263,14 +26526,11 @@ class VpcNatGatewayEgressArgs:
         pulumi.set(self, "public_gateways", value)
 
 
-if not MYPY:
-    class VpcNatGatewayEgressPublicGatewayArgsDict(TypedDict):
-        ipv4: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        IPv4 address
-        """
-elif False:
-    VpcNatGatewayEgressPublicGatewayArgsDict: TypeAlias = Mapping[str, Any]
+class VpcNatGatewayEgressPublicGatewayArgsDict(TypedDict):
+    ipv4: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    IPv4 address
+    """
 
 @pulumi.input_type
 class VpcNatGatewayEgressPublicGatewayArgs:
@@ -27295,22 +26555,19 @@ class VpcNatGatewayEgressPublicGatewayArgs:
         pulumi.set(self, "ipv4", value)
 
 
-if not MYPY:
-    class VpcNatGatewayVpcArgsDict(TypedDict):
-        vpc_uuid: pulumi.Input[_builtins.str]
-        """
-        The ID of the ingress VPC
-        """
-        default_gateway: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        Boolean flag indicating if this should be the default gateway in this VPC
-        """
-        gateway_ip: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        The private IP of the VPC NAT Gateway
-        """
-elif False:
-    VpcNatGatewayVpcArgsDict: TypeAlias = Mapping[str, Any]
+class VpcNatGatewayVpcArgsDict(TypedDict):
+    vpc_uuid: pulumi.Input[_builtins.str]
+    """
+    The ID of the ingress VPC
+    """
+    default_gateway: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean flag indicating if this should be the default gateway in this VPC
+    """
+    gateway_ip: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The private IP of the VPC NAT Gateway
+    """
 
 @pulumi.input_type
 class VpcNatGatewayVpcArgs:
@@ -27366,22 +26623,19 @@ class VpcNatGatewayVpcArgs:
         pulumi.set(self, "gateway_ip", value)
 
 
-if not MYPY:
-    class GetAppDedicatedIpArgsDict(TypedDict):
-        id: _builtins.str
-        """
-        The ID of the dedicated egress IP.
-        """
-        ip: _builtins.str
-        """
-        The IP address of the dedicated egress IP.
-        """
-        status: _builtins.str
-        """
-        The status of the dedicated egress IP.
-        """
-elif False:
-    GetAppDedicatedIpArgsDict: TypeAlias = Mapping[str, Any]
+class GetAppDedicatedIpArgsDict(TypedDict):
+    id: _builtins.str
+    """
+    The ID of the dedicated egress IP.
+    """
+    ip: _builtins.str
+    """
+    The IP address of the dedicated egress IP.
+    """
+    status: _builtins.str
+    """
+    The status of the dedicated egress IP.
+    """
 
 @pulumi.input_type
 class GetAppDedicatedIpArgs:
@@ -27435,31 +26689,28 @@ class GetAppDedicatedIpArgs:
         pulumi.set(self, "status", value)
 
 
-if not MYPY:
-    class GetDomainsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves domains
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetDomainsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDomainsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves domains
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetDomainsFilterArgs:
@@ -27540,18 +26791,15 @@ class GetDomainsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDomainsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetDomainsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetDomainsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the domains by this key. This may be one of `name`, `urn`, and `ttl`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetDomainsSortArgs:
@@ -27591,34 +26839,31 @@ class GetDomainsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetDropletsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves Droplets
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetDropletsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetDropletsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+    `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
+    `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
+    `status`, `tags`, `urn`, `vcpus`, `volume_ids`, or `vpc_uuid`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves Droplets
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetDropletsFilterArgs:
@@ -27705,21 +26950,18 @@ class GetDropletsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetDropletsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
-        `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
-        `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
-        `status`, `urn`, `vcpus`, or `vpc_uuid`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetDropletsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetDropletsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the Droplets by this key. This may be one of `backups`, `created_at`, `disk`, `id`,
+    `image`, `ipv4_address`, `ipv4_address_private`, `ipv6`, `ipv6_address`, `ipv6_address_private`, `locked`,
+    `memory`, `monitoring`, `name`, `price_hourly`, `price_monthly`, `private_networking`, `region`, `size`,
+    `status`, `urn`, `vcpus`, or `vpc_uuid`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetDropletsSortArgs:
@@ -27765,44 +27007,41 @@ class GetDropletsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetFirewallInboundRuleArgsDict(TypedDict):
-        protocol: _builtins.str
-        """
-        The type of traffic to be allowed.
-        This may be one of "tcp", "udp", or "icmp".
-        """
-        port_range: NotRequired[_builtins.str]
-        """
-        The ports on which traffic will be allowed
-        specified as a string containing a single port, a range (e.g. "8000-9000"),
-        or "1-65535" to open all ports for a protocol. Required for when protocol is
-        `tcp` or `udp`.
-        """
-        source_addresses: NotRequired[Sequence[_builtins.str]]
-        """
-        An array of strings containing the IPv4
-        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
-        inbound traffic will be accepted.
-        """
-        source_droplet_ids: NotRequired[Sequence[_builtins.int]]
-        """
-        An array containing the IDs of
-        the Droplets from which the inbound traffic will be accepted.
-        """
-        source_kubernetes_ids: NotRequired[Sequence[_builtins.str]]
-        source_load_balancer_uids: NotRequired[Sequence[_builtins.str]]
-        """
-        An array containing the IDs
-        of the Load Balancers from which the inbound traffic will be accepted.
-        """
-        source_tags: NotRequired[Sequence[_builtins.str]]
-        """
-        A set of names of Tags corresponding to group of
-        Droplets from which the inbound traffic will be accepted.
-        """
-elif False:
-    GetFirewallInboundRuleArgsDict: TypeAlias = Mapping[str, Any]
+class GetFirewallInboundRuleArgsDict(TypedDict):
+    protocol: _builtins.str
+    """
+    The type of traffic to be allowed.
+    This may be one of "tcp", "udp", or "icmp".
+    """
+    port_range: NotRequired[_builtins.str]
+    """
+    The ports on which traffic will be allowed
+    specified as a string containing a single port, a range (e.g. "8000-9000"),
+    or "1-65535" to open all ports for a protocol. Required for when protocol is
+    `tcp` or `udp`.
+    """
+    source_addresses: NotRequired[Sequence[_builtins.str]]
+    """
+    An array of strings containing the IPv4
+    addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs from which the
+    inbound traffic will be accepted.
+    """
+    source_droplet_ids: NotRequired[Sequence[_builtins.int]]
+    """
+    An array containing the IDs of
+    the Droplets from which the inbound traffic will be accepted.
+    """
+    source_kubernetes_ids: NotRequired[Sequence[_builtins.str]]
+    source_load_balancer_uids: NotRequired[Sequence[_builtins.str]]
+    """
+    An array containing the IDs
+    of the Load Balancers from which the inbound traffic will be accepted.
+    """
+    source_tags: NotRequired[Sequence[_builtins.str]]
+    """
+    A set of names of Tags corresponding to group of
+    Droplets from which the inbound traffic will be accepted.
+    """
 
 @pulumi.input_type
 class GetFirewallInboundRuleArgs:
@@ -27936,46 +27175,43 @@ class GetFirewallInboundRuleArgs:
         pulumi.set(self, "source_tags", value)
 
 
-if not MYPY:
-    class GetFirewallOutboundRuleArgsDict(TypedDict):
-        protocol: _builtins.str
-        """
-        The type of traffic to be allowed.
-        This may be one of "tcp", "udp", or "icmp".
-        """
-        destination_addresses: NotRequired[Sequence[_builtins.str]]
-        """
-        An array of strings containing the IPv4
-        addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
-        outbound traffic will be allowed.
-        """
-        destination_droplet_ids: NotRequired[Sequence[_builtins.int]]
-        """
-        An array containing the IDs of
-        the Droplets to which the outbound traffic will be allowed.
-        """
-        destination_kubernetes_ids: NotRequired[Sequence[_builtins.str]]
-        destination_load_balancer_uids: NotRequired[Sequence[_builtins.str]]
-        """
-        An array containing the IDs
-        of the Load Balancers to which the outbound traffic will be allowed.
-        """
-        destination_tags: NotRequired[Sequence[_builtins.str]]
-        """
-        An array containing the names of Tags
-        corresponding to groups of Droplets to which the outbound traffic will
-        be allowed.
-        traffic.
-        """
-        port_range: NotRequired[_builtins.str]
-        """
-        The ports on which traffic will be allowed
-        specified as a string containing a single port, a range (e.g. "8000-9000"),
-        or "1-65535" to open all ports for a protocol. Required for when protocol is
-        `tcp` or `udp`.
-        """
-elif False:
-    GetFirewallOutboundRuleArgsDict: TypeAlias = Mapping[str, Any]
+class GetFirewallOutboundRuleArgsDict(TypedDict):
+    protocol: _builtins.str
+    """
+    The type of traffic to be allowed.
+    This may be one of "tcp", "udp", or "icmp".
+    """
+    destination_addresses: NotRequired[Sequence[_builtins.str]]
+    """
+    An array of strings containing the IPv4
+    addresses, IPv6 addresses, IPv4 CIDRs, and/or IPv6 CIDRs to which the
+    outbound traffic will be allowed.
+    """
+    destination_droplet_ids: NotRequired[Sequence[_builtins.int]]
+    """
+    An array containing the IDs of
+    the Droplets to which the outbound traffic will be allowed.
+    """
+    destination_kubernetes_ids: NotRequired[Sequence[_builtins.str]]
+    destination_load_balancer_uids: NotRequired[Sequence[_builtins.str]]
+    """
+    An array containing the IDs
+    of the Load Balancers to which the outbound traffic will be allowed.
+    """
+    destination_tags: NotRequired[Sequence[_builtins.str]]
+    """
+    An array containing the names of Tags
+    corresponding to groups of Droplets to which the outbound traffic will
+    be allowed.
+    traffic.
+    """
+    port_range: NotRequired[_builtins.str]
+    """
+    The ports on which traffic will be allowed
+    specified as a string containing a single port, a range (e.g. "8000-9000"),
+    or "1-65535" to open all ports for a protocol. Required for when protocol is
+    `tcp` or `udp`.
+    """
 
 @pulumi.input_type
 class GetFirewallOutboundRuleArgs:
@@ -28113,58 +27349,55 @@ class GetFirewallOutboundRuleArgs:
         pulumi.set(self, "port_range", value)
 
 
-if not MYPY:
-    class GetGenaiAgentAgentGuardrailArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Guardrail
-        """
-        is_attached: _builtins.bool
-        """
-        Indicates if the Guardrail is attached
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Guardrail
-        """
-        agent_uuid: NotRequired[_builtins.str]
-        """
-        Agent UUID for the Guardrail
-        """
-        default_response: NotRequired[_builtins.str]
-        """
-        Default response for the Guardrail
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Guardrail
-        """
-        guardrail_uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID
-        """
-        is_default: NotRequired[_builtins.bool]
-        """
-        Indicates if the Guardrail is default
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of Guardrail
-        """
-        priority: NotRequired[_builtins.int]
-        """
-        Priority of the Guardrail
-        """
-        type: NotRequired[_builtins.str]
-        """
-        Type of the Guardrail
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID
-        """
-elif False:
-    GetGenaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentAgentGuardrailArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Guardrail
+    """
+    is_attached: _builtins.bool
+    """
+    Indicates if the Guardrail is attached
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Guardrail
+    """
+    agent_uuid: NotRequired[_builtins.str]
+    """
+    Agent UUID for the Guardrail
+    """
+    default_response: NotRequired[_builtins.str]
+    """
+    Default response for the Guardrail
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Guardrail
+    """
+    guardrail_uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID
+    """
+    is_default: NotRequired[_builtins.bool]
+    """
+    Indicates if the Guardrail is default
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of Guardrail
+    """
+    priority: NotRequired[_builtins.int]
+    """
+    Priority of the Guardrail
+    """
+    type: NotRequired[_builtins.str]
+    """
+    Type of the Guardrail
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID
+    """
 
 @pulumi.input_type
 class GetGenaiAgentAgentGuardrailArgs:
@@ -28362,34 +27595,31 @@ class GetGenaiAgentAgentGuardrailArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Timestamp when the API Key was created
-        """
-        deleted_at: _builtins.str
-        """
-        Deleted At timestamp for the API Key
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the API Key
-        """
-        created_by: NotRequired[_builtins.str]
-        """
-        Created By user ID for the API Key
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGenaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Timestamp when the API Key was created
+    """
+    deleted_at: _builtins.str
+    """
+    Deleted At timestamp for the API Key
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the API Key
+    """
+    created_by: NotRequired[_builtins.str]
+    """
+    Created By user ID for the API Key
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGenaiAgentAnthropicApiKeyArgs:
@@ -28491,14 +27721,11 @@ class GetGenaiAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGenaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGenaiAgentApiKeyArgs:
@@ -28523,34 +27750,31 @@ class GetGenaiAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GetGenaiAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        API Key value
-        """
-        deleted_at: _builtins.str
-        """
-        Deleted At timestamp for the API Key
-        """
-        created_by: NotRequired[_builtins.str]
-        """
-        Created By user ID for the API Key
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[_builtins.str]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGenaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    API Key value
+    """
+    deleted_at: _builtins.str
+    """
+    Deleted At timestamp for the API Key
+    """
+    created_by: NotRequired[_builtins.str]
+    """
+    Created By user ID for the API Key
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[_builtins.str]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGenaiAgentApiKeyInfoArgs:
@@ -28653,34 +27877,31 @@ class GetGenaiAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[_builtins.str]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[_builtins.str]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[_builtins.str]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[_builtins.str]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[_builtins.str]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GetGenaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[_builtins.str]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[_builtins.str]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[_builtins.str]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[_builtins.str]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[_builtins.str]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GetGenaiAgentChatbotArgs:
@@ -28785,14 +28006,11 @@ class GetGenaiAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GetGenaiAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[_builtins.str]
-        """
-        Chatbot ID
-        """
-elif False:
-    GetGenaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[_builtins.str]
+    """
+    Chatbot ID
+    """
 
 @pulumi.input_type
 class GetGenaiAgentChatbotIdentifierArgs:
@@ -28817,38 +28035,35 @@ class GetGenaiAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GetGenaiAgentDeploymentArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        API Key value
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[_builtins.str]
-        """
-        Status of the Deployment
-        """
-        url: NotRequired[_builtins.str]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-        visibility: NotRequired[_builtins.str]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GetGenaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentDeploymentArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    API Key value
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[_builtins.str]
+    """
+    Status of the Deployment
+    """
+    url: NotRequired[_builtins.str]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
+    visibility: NotRequired[_builtins.str]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GetGenaiAgentDeploymentArgs:
@@ -28967,50 +28182,47 @@ class GetGenaiAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GetGenaiAgentFunctionArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Function
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent
-        """
-        api_key: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Function
-        """
-        faasname: NotRequired[_builtins.str]
-        """
-        Name of function
-        """
-        faasnamespace: NotRequired[_builtins.str]
-        """
-        Namespace of function
-        """
-        guardrail_uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID for the Function
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of function
-        """
-        url: NotRequired[_builtins.str]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGenaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentFunctionArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Function
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent
+    """
+    api_key: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Function
+    """
+    faasname: NotRequired[_builtins.str]
+    """
+    Name of function
+    """
+    faasnamespace: NotRequired[_builtins.str]
+    """
+    Namespace of function
+    """
+    guardrail_uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID for the Function
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of function
+    """
+    url: NotRequired[_builtins.str]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGenaiAgentFunctionArgs:
@@ -29177,62 +28389,59 @@ class GetGenaiAgentFunctionArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        uuid: _builtins.str
-        """
-        UUID of the Knowledge Base
-        """
-        database_id: NotRequired[_builtins.str]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[_builtins.str]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[_builtins.bool]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired['GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict']
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[_builtins.str]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[_builtins.str]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[Sequence[_builtins.str]]
-        """
-        List of tags
-        """
-        user_id: NotRequired[_builtins.str]
-        """
-        User ID of the Knowledge Base
-        """
-elif False:
-    GetGenaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    uuid: _builtins.str
+    """
+    UUID of the Knowledge Base
+    """
+    database_id: NotRequired[_builtins.str]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[_builtins.str]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[_builtins.bool]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired['GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict']
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[_builtins.str]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[_builtins.str]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[Sequence[_builtins.str]]
+    """
+    List of tags
+    """
+    user_id: NotRequired[_builtins.str]
+    """
+    User ID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GetGenaiAgentKnowledgeBaseArgs:
@@ -29445,54 +28654,51 @@ class GetGenaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
@@ -29672,62 +28878,59 @@ class GetGenaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentModelArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        agreements: NotRequired[Sequence['GetGenaiAgentModelAgreementArgsDict']]
-        """
-        Agreement information for the model
-        """
-        inference_name: NotRequired[_builtins.str]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[_builtins.str]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[_builtins.str]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[_builtins.str]
-        """
-        Provider of the Model
-        """
-        upload_complete: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[Sequence[_builtins.str]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[Sequence['GetGenaiAgentModelVersionArgsDict']]
-        """
-        URL of the Model
-        """
-elif False:
-    GetGenaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentModelArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    agreements: NotRequired[Sequence['GetGenaiAgentModelAgreementArgsDict']]
+    """
+    Agreement information for the model
+    """
+    inference_name: NotRequired[_builtins.str]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[_builtins.str]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[_builtins.str]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[_builtins.str]
+    """
+    Provider of the Model
+    """
+    upload_complete: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[Sequence[_builtins.str]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[Sequence['GetGenaiAgentModelVersionArgsDict']]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GetGenaiAgentModelArgs:
@@ -29942,26 +29145,23 @@ class GetGenaiAgentModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GetGenaiAgentModelAgreementArgsDict(TypedDict):
-        description: NotRequired[_builtins.str]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GetGenaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentModelAgreementArgsDict(TypedDict):
+    description: NotRequired[_builtins.str]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GetGenaiAgentModelAgreementArgs:
@@ -30034,22 +29234,19 @@ class GetGenaiAgentModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentModelVersionArgsDict(TypedDict):
-        major: NotRequired[_builtins.int]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[_builtins.int]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[_builtins.int]
-        """
-        Patch version of the model
-        """
-elif False:
-    GetGenaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentModelVersionArgsDict(TypedDict):
+    major: NotRequired[_builtins.int]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[_builtins.int]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[_builtins.int]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GetGenaiAgentModelVersionArgs:
@@ -30106,14 +29303,11 @@ class GetGenaiAgentModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GetGenaiAgentOpenAiApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[_builtins.str]
-        """
-        OpenAI API Key
-        """
-elif False:
-    GetGenaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[_builtins.str]
+    """
+    OpenAI API Key
+    """
 
 @pulumi.input_type
 class GetGenaiAgentOpenAiApiKeyArgs:
@@ -30138,58 +29332,55 @@ class GetGenaiAgentOpenAiApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent Template
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Agent Template
-        """
-        instruction: NotRequired[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        k: NotRequired[_builtins.int]
-        """
-        K value for the Agent Template
-        """
-        knowledge_bases: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgsDict']]
-        """
-        List of Knowledge Bases
-        """
-        max_tokens: NotRequired[_builtins.int]
-        """
-        Maximum tokens allowed
-        """
-        models: NotRequired[Sequence['GetGenaiAgentTemplateModelArgsDict']]
-        """
-        Model of the Agent Template
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Agent Template
-        """
-        temperature: NotRequired[_builtins.float]
-        """
-        Agent temperature setting
-        """
-        top_p: NotRequired[_builtins.float]
-        """
-        Top P sampling parameter
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        uuid of the Agent Template
-        """
-elif False:
-    GetGenaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent Template
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Agent Template
+    """
+    instruction: NotRequired[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    k: NotRequired[_builtins.int]
+    """
+    K value for the Agent Template
+    """
+    knowledge_bases: NotRequired[Sequence['GetGenaiAgentTemplateKnowledgeBaseArgsDict']]
+    """
+    List of Knowledge Bases
+    """
+    max_tokens: NotRequired[_builtins.int]
+    """
+    Maximum tokens allowed
+    """
+    models: NotRequired[Sequence['GetGenaiAgentTemplateModelArgsDict']]
+    """
+    Model of the Agent Template
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Agent Template
+    """
+    temperature: NotRequired[_builtins.float]
+    """
+    Agent temperature setting
+    """
+    top_p: NotRequired[_builtins.float]
+    """
+    Top P sampling parameter
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    uuid of the Agent Template
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateArgs:
@@ -30388,62 +29579,59 @@ class GetGenaiAgentTemplateArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        uuid: _builtins.str
-        """
-        UUID of the Knowledge Base
-        """
-        database_id: NotRequired[_builtins.str]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[_builtins.str]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[_builtins.bool]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[_builtins.str]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[_builtins.str]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[Sequence[_builtins.str]]
-        """
-        List of tags
-        """
-        user_id: NotRequired[_builtins.str]
-        """
-        User ID of the Knowledge Base
-        """
-elif False:
-    GetGenaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    uuid: _builtins.str
+    """
+    UUID of the Knowledge Base
+    """
+    database_id: NotRequired[_builtins.str]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[_builtins.str]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[_builtins.bool]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired['GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[_builtins.str]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[_builtins.str]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[Sequence[_builtins.str]]
+    """
+    List of tags
+    """
+    user_id: NotRequired[_builtins.str]
+    """
+    User ID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateKnowledgeBaseArgs:
@@ -30656,54 +29844,51 @@ class GetGenaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
@@ -30883,62 +30068,59 @@ class GetGenaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateModelArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        agreements: NotRequired[Sequence['GetGenaiAgentTemplateModelAgreementArgsDict']]
-        """
-        Agreement information for the model
-        """
-        inference_name: NotRequired[_builtins.str]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[_builtins.str]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[_builtins.str]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[_builtins.str]
-        """
-        Provider of the Model
-        """
-        upload_complete: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[Sequence[_builtins.str]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[Sequence['GetGenaiAgentTemplateModelVersionArgsDict']]
-        """
-        URL of the Model
-        """
-elif False:
-    GetGenaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateModelArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    agreements: NotRequired[Sequence['GetGenaiAgentTemplateModelAgreementArgsDict']]
+    """
+    Agreement information for the model
+    """
+    inference_name: NotRequired[_builtins.str]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[_builtins.str]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[_builtins.str]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[_builtins.str]
+    """
+    Provider of the Model
+    """
+    upload_complete: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[Sequence[_builtins.str]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[Sequence['GetGenaiAgentTemplateModelVersionArgsDict']]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateModelArgs:
@@ -31153,26 +30335,23 @@ class GetGenaiAgentTemplateModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateModelAgreementArgsDict(TypedDict):
-        description: NotRequired[_builtins.str]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GetGenaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    description: NotRequired[_builtins.str]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateModelAgreementArgs:
@@ -31245,22 +30424,19 @@ class GetGenaiAgentTemplateModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiAgentTemplateModelVersionArgsDict(TypedDict):
-        major: NotRequired[_builtins.int]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[_builtins.int]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[_builtins.int]
-        """
-        Patch version of the model
-        """
-elif False:
-    GetGenaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentTemplateModelVersionArgsDict(TypedDict):
+    major: NotRequired[_builtins.int]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[_builtins.int]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[_builtins.int]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GetGenaiAgentTemplateModelVersionArgs:
@@ -31317,14 +30493,11 @@ class GetGenaiAgentTemplateModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GetGenaiAgentVersionsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentVersionsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiAgentVersionsFilterArgs:
@@ -31377,12 +30550,9 @@ class GetGenaiAgentVersionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiAgentVersionsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentVersionsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiAgentVersionsSortArgs:
@@ -31412,14 +30582,11 @@ class GetGenaiAgentVersionsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGenaiAgentsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiAgentsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiAgentsFilterArgs:
@@ -31472,12 +30639,9 @@ class GetGenaiAgentsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiAgentsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiAgentsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiAgentsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiAgentsSortArgs:
@@ -31507,54 +30671,51 @@ class GetGenaiAgentsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGenaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGenaiKnowledgeBaseLastIndexingJobArgs:
@@ -31734,14 +30895,11 @@ class GetGenaiKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGenaiKnowledgeBasesFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiKnowledgeBasesFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiKnowledgeBasesFilterArgs:
@@ -31794,12 +30952,9 @@ class GetGenaiKnowledgeBasesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiKnowledgeBasesSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiKnowledgeBasesSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiKnowledgeBasesSortArgs:
@@ -31829,14 +30984,11 @@ class GetGenaiKnowledgeBasesSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGenaiModelsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiModelsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiModelsFilterArgs:
@@ -31889,12 +31041,9 @@ class GetGenaiModelsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiModelsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiModelsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiModelsSortArgs:
@@ -31924,14 +31073,11 @@ class GetGenaiModelsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiOpenaiApiKeysFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiOpenaiApiKeysFilterArgs:
@@ -31984,12 +31130,9 @@ class GetGenaiOpenaiApiKeysFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiOpenaiApiKeysSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiOpenaiApiKeysSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiOpenaiApiKeysSortArgs:
@@ -32019,14 +31162,11 @@ class GetGenaiOpenaiApiKeysSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGenaiRegionsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGenaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiRegionsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiRegionsFilterArgs:
@@ -32079,12 +31219,9 @@ class GetGenaiRegionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGenaiRegionsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGenaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGenaiRegionsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGenaiRegionsSortArgs:
@@ -32114,58 +31251,55 @@ class GetGenaiRegionsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentAgentGuardrailArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Guardrail
-        """
-        is_attached: _builtins.bool
-        """
-        Indicates if the Guardrail is attached
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Guardrail
-        """
-        agent_uuid: NotRequired[_builtins.str]
-        """
-        Agent UUID for the Guardrail
-        """
-        default_response: NotRequired[_builtins.str]
-        """
-        Default response for the Guardrail
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Guardrail
-        """
-        guardrail_uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID
-        """
-        is_default: NotRequired[_builtins.bool]
-        """
-        Indicates if the Guardrail is default
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of Guardrail
-        """
-        priority: NotRequired[_builtins.int]
-        """
-        Priority of the Guardrail
-        """
-        type: NotRequired[_builtins.str]
-        """
-        Type of the Guardrail
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID
-        """
-elif False:
-    GetGradientaiAgentAgentGuardrailArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentAgentGuardrailArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Guardrail
+    """
+    is_attached: _builtins.bool
+    """
+    Indicates if the Guardrail is attached
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Guardrail
+    """
+    agent_uuid: NotRequired[_builtins.str]
+    """
+    Agent UUID for the Guardrail
+    """
+    default_response: NotRequired[_builtins.str]
+    """
+    Default response for the Guardrail
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Guardrail
+    """
+    guardrail_uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID
+    """
+    is_default: NotRequired[_builtins.bool]
+    """
+    Indicates if the Guardrail is default
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of Guardrail
+    """
+    priority: NotRequired[_builtins.int]
+    """
+    Priority of the Guardrail
+    """
+    type: NotRequired[_builtins.str]
+    """
+    Type of the Guardrail
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentAgentGuardrailArgs:
@@ -32363,34 +31497,31 @@ class GetGradientaiAgentAgentGuardrailArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Timestamp when the API Key was created
-        """
-        deleted_at: _builtins.str
-        """
-        Deleted At timestamp for the API Key
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the API Key
-        """
-        created_by: NotRequired[_builtins.str]
-        """
-        Created By user ID for the API Key
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGradientaiAgentAnthropicApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentAnthropicApiKeyArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Timestamp when the API Key was created
+    """
+    deleted_at: _builtins.str
+    """
+    Deleted At timestamp for the API Key
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the API Key
+    """
+    created_by: NotRequired[_builtins.str]
+    """
+    Created By user ID for the API Key
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentAnthropicApiKeyArgs:
@@ -32492,14 +31623,11 @@ class GetGradientaiAgentAnthropicApiKeyArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGradientaiAgentApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentApiKeyArgs:
@@ -32524,34 +31652,31 @@ class GetGradientaiAgentApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentApiKeyInfoArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        API Key value
-        """
-        deleted_at: _builtins.str
-        """
-        Deleted At timestamp for the API Key
-        """
-        created_by: NotRequired[_builtins.str]
-        """
-        Created By user ID for the API Key
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        secret_key: NotRequired[_builtins.str]
-        """
-        Updated At timestamp for the API Key
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGradientaiAgentApiKeyInfoArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentApiKeyInfoArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    API Key value
+    """
+    deleted_at: _builtins.str
+    """
+    Deleted At timestamp for the API Key
+    """
+    created_by: NotRequired[_builtins.str]
+    """
+    Created By user ID for the API Key
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    secret_key: NotRequired[_builtins.str]
+    """
+    Updated At timestamp for the API Key
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentApiKeyInfoArgs:
@@ -32654,34 +31779,31 @@ class GetGradientaiAgentApiKeyInfoArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentChatbotArgsDict(TypedDict):
-        button_background_color: NotRequired[_builtins.str]
-        """
-        Background color for the chatbot button
-        """
-        logo: NotRequired[_builtins.str]
-        """
-        Logo for the chatbot
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the chatbot
-        """
-        primary_color: NotRequired[_builtins.str]
-        """
-        Primary color for the chatbot
-        """
-        secondary_color: NotRequired[_builtins.str]
-        """
-        Secondary color for the chatbot
-        """
-        starting_message: NotRequired[_builtins.str]
-        """
-        Starting message for the chatbot
-        """
-elif False:
-    GetGradientaiAgentChatbotArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentChatbotArgsDict(TypedDict):
+    button_background_color: NotRequired[_builtins.str]
+    """
+    Background color for the chatbot button
+    """
+    logo: NotRequired[_builtins.str]
+    """
+    Logo for the chatbot
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the chatbot
+    """
+    primary_color: NotRequired[_builtins.str]
+    """
+    Primary color for the chatbot
+    """
+    secondary_color: NotRequired[_builtins.str]
+    """
+    Secondary color for the chatbot
+    """
+    starting_message: NotRequired[_builtins.str]
+    """
+    Starting message for the chatbot
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentChatbotArgs:
@@ -32786,14 +31908,11 @@ class GetGradientaiAgentChatbotArgs:
         pulumi.set(self, "starting_message", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentChatbotIdentifierArgsDict(TypedDict):
-        chatbot_id: NotRequired[_builtins.str]
-        """
-        Chatbot ID
-        """
-elif False:
-    GetGradientaiAgentChatbotIdentifierArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentChatbotIdentifierArgsDict(TypedDict):
+    chatbot_id: NotRequired[_builtins.str]
+    """
+    Chatbot ID
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentChatbotIdentifierArgs:
@@ -32818,38 +31937,35 @@ class GetGradientaiAgentChatbotIdentifierArgs:
         pulumi.set(self, "chatbot_id", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentDeploymentArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        API Key value
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the API Key
-        """
-        status: NotRequired[_builtins.str]
-        """
-        Status of the Deployment
-        """
-        url: NotRequired[_builtins.str]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-        visibility: NotRequired[_builtins.str]
-        """
-        Visibility of the Deployment
-        """
-elif False:
-    GetGradientaiAgentDeploymentArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentDeploymentArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    API Key value
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the API Key
+    """
+    status: NotRequired[_builtins.str]
+    """
+    Status of the Deployment
+    """
+    url: NotRequired[_builtins.str]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
+    visibility: NotRequired[_builtins.str]
+    """
+    Visibility of the Deployment
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentDeploymentArgs:
@@ -32968,50 +32084,47 @@ class GetGradientaiAgentDeploymentArgs:
         pulumi.set(self, "visibility", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentFunctionArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Function
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent
-        """
-        api_key: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Function
-        """
-        faasname: NotRequired[_builtins.str]
-        """
-        Name of function
-        """
-        faasnamespace: NotRequired[_builtins.str]
-        """
-        Namespace of function
-        """
-        guardrail_uuid: NotRequired[_builtins.str]
-        """
-        Guardrail UUID for the Function
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of function
-        """
-        url: NotRequired[_builtins.str]
-        """
-        Url of the Deployment
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        API Key value
-        """
-elif False:
-    GetGradientaiAgentFunctionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentFunctionArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Function
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent
+    """
+    api_key: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Function
+    """
+    faasname: NotRequired[_builtins.str]
+    """
+    Name of function
+    """
+    faasnamespace: NotRequired[_builtins.str]
+    """
+    Namespace of function
+    """
+    guardrail_uuid: NotRequired[_builtins.str]
+    """
+    Guardrail UUID for the Function
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of function
+    """
+    url: NotRequired[_builtins.str]
+    """
+    Url of the Deployment
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    API Key value
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentFunctionArgs:
@@ -33178,62 +32291,59 @@ class GetGradientaiAgentFunctionArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        uuid: _builtins.str
-        """
-        UUID of the Knowledge Base
-        """
-        database_id: NotRequired[_builtins.str]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[_builtins.str]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[_builtins.bool]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[_builtins.str]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[_builtins.str]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[Sequence[_builtins.str]]
-        """
-        List of tags
-        """
-        user_id: NotRequired[_builtins.str]
-        """
-        User ID of the Knowledge Base
-        """
-elif False:
-    GetGradientaiAgentKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    uuid: _builtins.str
+    """
+    UUID of the Knowledge Base
+    """
+    database_id: NotRequired[_builtins.str]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[_builtins.str]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[_builtins.bool]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired['GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict']
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[_builtins.str]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[_builtins.str]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[Sequence[_builtins.str]]
+    """
+    List of tags
+    """
+    user_id: NotRequired[_builtins.str]
+    """
+    User ID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentKnowledgeBaseArgs:
@@ -33446,54 +32556,51 @@ class GetGradientaiAgentKnowledgeBaseArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs:
@@ -33673,62 +32780,59 @@ class GetGradientaiAgentKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentModelArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        agreements: NotRequired[Sequence['GetGradientaiAgentModelAgreementArgsDict']]
-        """
-        Agreement information for the model
-        """
-        inference_name: NotRequired[_builtins.str]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[_builtins.str]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[_builtins.str]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[_builtins.str]
-        """
-        Provider of the Model
-        """
-        upload_complete: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[Sequence[_builtins.str]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[Sequence['GetGradientaiAgentModelVersionArgsDict']]
-        """
-        URL of the Model
-        """
-elif False:
-    GetGradientaiAgentModelArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentModelArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    agreements: NotRequired[Sequence['GetGradientaiAgentModelAgreementArgsDict']]
+    """
+    Agreement information for the model
+    """
+    inference_name: NotRequired[_builtins.str]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[_builtins.str]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[_builtins.str]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[_builtins.str]
+    """
+    Provider of the Model
+    """
+    upload_complete: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[Sequence[_builtins.str]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[Sequence['GetGradientaiAgentModelVersionArgsDict']]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentModelArgs:
@@ -33943,26 +33047,23 @@ class GetGradientaiAgentModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentModelAgreementArgsDict(TypedDict):
-        description: NotRequired[_builtins.str]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GetGradientaiAgentModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentModelAgreementArgsDict(TypedDict):
+    description: NotRequired[_builtins.str]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentModelAgreementArgs:
@@ -34035,22 +33136,19 @@ class GetGradientaiAgentModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentModelVersionArgsDict(TypedDict):
-        major: NotRequired[_builtins.int]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[_builtins.int]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[_builtins.int]
-        """
-        Patch version of the model
-        """
-elif False:
-    GetGradientaiAgentModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentModelVersionArgsDict(TypedDict):
+    major: NotRequired[_builtins.int]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[_builtins.int]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[_builtins.int]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentModelVersionArgs:
@@ -34107,14 +33205,11 @@ class GetGradientaiAgentModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
-        api_key: NotRequired[_builtins.str]
-        """
-        OpenAI API Key
-        """
-elif False:
-    GetGradientaiAgentOpenAiApiKeyArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentOpenAiApiKeyArgsDict(TypedDict):
+    api_key: NotRequired[_builtins.str]
+    """
+    OpenAI API Key
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentOpenAiApiKeyArgs:
@@ -34139,58 +33234,55 @@ class GetGradientaiAgentOpenAiApiKeyArgs:
         pulumi.set(self, "api_key", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Updated At timestamp for the Agent Template
-        """
-        description: NotRequired[_builtins.str]
-        """
-        Description of the Agent Template
-        """
-        instruction: NotRequired[_builtins.str]
-        """
-        Instruction for the Agent
-        """
-        k: NotRequired[_builtins.int]
-        """
-        K value for the Agent Template
-        """
-        knowledge_bases: NotRequired[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgsDict']]
-        """
-        List of Knowledge Bases
-        """
-        max_tokens: NotRequired[_builtins.int]
-        """
-        Maximum tokens allowed
-        """
-        models: NotRequired[Sequence['GetGradientaiAgentTemplateModelArgsDict']]
-        """
-        Model of the Agent Template
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Agent Template
-        """
-        temperature: NotRequired[_builtins.float]
-        """
-        Agent temperature setting
-        """
-        top_p: NotRequired[_builtins.float]
-        """
-        Top P sampling parameter
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        uuid of the Agent Template
-        """
-elif False:
-    GetGradientaiAgentTemplateArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Updated At timestamp for the Agent Template
+    """
+    description: NotRequired[_builtins.str]
+    """
+    Description of the Agent Template
+    """
+    instruction: NotRequired[_builtins.str]
+    """
+    Instruction for the Agent
+    """
+    k: NotRequired[_builtins.int]
+    """
+    K value for the Agent Template
+    """
+    knowledge_bases: NotRequired[Sequence['GetGradientaiAgentTemplateKnowledgeBaseArgsDict']]
+    """
+    List of Knowledge Bases
+    """
+    max_tokens: NotRequired[_builtins.int]
+    """
+    Maximum tokens allowed
+    """
+    models: NotRequired[Sequence['GetGradientaiAgentTemplateModelArgsDict']]
+    """
+    Model of the Agent Template
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Agent Template
+    """
+    temperature: NotRequired[_builtins.float]
+    """
+    Agent temperature setting
+    """
+    top_p: NotRequired[_builtins.float]
+    """
+    Top P sampling parameter
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    uuid of the Agent Template
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateArgs:
@@ -34389,62 +33481,59 @@ class GetGradientaiAgentTemplateArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
-        added_to_agent_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was added to the Agent
-        """
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        uuid: _builtins.str
-        """
-        UUID of the Knowledge Base
-        """
-        database_id: NotRequired[_builtins.str]
-        """
-        Database ID of the Knowledge Base
-        """
-        embedding_model_uuid: NotRequired[_builtins.str]
-        """
-        Embedding model UUID for the Knowledge Base
-        """
-        is_public: NotRequired[_builtins.bool]
-        """
-        Indicates if the Knowledge Base is public
-        """
-        last_indexing_job: NotRequired['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
-        """
-        Last indexing job for the Knowledge Base
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        project_id: NotRequired[_builtins.str]
-        """
-        Project ID of the Knowledge Base
-        """
-        region: NotRequired[_builtins.str]
-        """
-        Region of the Knowledge Base
-        """
-        tags: NotRequired[Sequence[_builtins.str]]
-        """
-        List of tags
-        """
-        user_id: NotRequired[_builtins.str]
-        """
-        User ID of the Knowledge Base
-        """
-elif False:
-    GetGradientaiAgentTemplateKnowledgeBaseArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateKnowledgeBaseArgsDict(TypedDict):
+    added_to_agent_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was added to the Agent
+    """
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    uuid: _builtins.str
+    """
+    UUID of the Knowledge Base
+    """
+    database_id: NotRequired[_builtins.str]
+    """
+    Database ID of the Knowledge Base
+    """
+    embedding_model_uuid: NotRequired[_builtins.str]
+    """
+    Embedding model UUID for the Knowledge Base
+    """
+    is_public: NotRequired[_builtins.bool]
+    """
+    Indicates if the Knowledge Base is public
+    """
+    last_indexing_job: NotRequired['GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict']
+    """
+    Last indexing job for the Knowledge Base
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    project_id: NotRequired[_builtins.str]
+    """
+    Project ID of the Knowledge Base
+    """
+    region: NotRequired[_builtins.str]
+    """
+    Region of the Knowledge Base
+    """
+    tags: NotRequired[Sequence[_builtins.str]]
+    """
+    List of tags
+    """
+    user_id: NotRequired[_builtins.str]
+    """
+    User ID of the Knowledge Base
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateKnowledgeBaseArgs:
@@ -34657,54 +33746,51 @@ class GetGradientaiAgentTemplateKnowledgeBaseArgs:
         pulumi.set(self, "user_id", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
@@ -34884,62 +33970,59 @@ class GetGradientaiAgentTemplateKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateModelArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the Knowledge Base
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the Knowledge Base was updated
-        """
-        agreements: NotRequired[Sequence['GetGradientaiAgentTemplateModelAgreementArgsDict']]
-        """
-        Agreement information for the model
-        """
-        inference_name: NotRequired[_builtins.str]
-        """
-        Inference name of the model
-        """
-        inference_version: NotRequired[_builtins.str]
-        """
-        Infernce version of the model
-        """
-        is_foundational: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model Base is foundational
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the Knowledge Base
-        """
-        parent_uuid: NotRequired[_builtins.str]
-        """
-        Parent UUID of the Model
-        """
-        provider: NotRequired[_builtins.str]
-        """
-        Provider of the Model
-        """
-        upload_complete: NotRequired[_builtins.bool]
-        """
-        Indicates if the Model upload is complete
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the Model
-        """
-        usecases: NotRequired[Sequence[_builtins.str]]
-        """
-        List of Usecases for the Model
-        """
-        versions: NotRequired[Sequence['GetGradientaiAgentTemplateModelVersionArgsDict']]
-        """
-        URL of the Model
-        """
-elif False:
-    GetGradientaiAgentTemplateModelArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateModelArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the Knowledge Base
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the Knowledge Base was updated
+    """
+    agreements: NotRequired[Sequence['GetGradientaiAgentTemplateModelAgreementArgsDict']]
+    """
+    Agreement information for the model
+    """
+    inference_name: NotRequired[_builtins.str]
+    """
+    Inference name of the model
+    """
+    inference_version: NotRequired[_builtins.str]
+    """
+    Infernce version of the model
+    """
+    is_foundational: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model Base is foundational
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the Knowledge Base
+    """
+    parent_uuid: NotRequired[_builtins.str]
+    """
+    Parent UUID of the Model
+    """
+    provider: NotRequired[_builtins.str]
+    """
+    Provider of the Model
+    """
+    upload_complete: NotRequired[_builtins.bool]
+    """
+    Indicates if the Model upload is complete
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the Model
+    """
+    usecases: NotRequired[Sequence[_builtins.str]]
+    """
+    List of Usecases for the Model
+    """
+    versions: NotRequired[Sequence['GetGradientaiAgentTemplateModelVersionArgsDict']]
+    """
+    URL of the Model
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateModelArgs:
@@ -35154,26 +34237,23 @@ class GetGradientaiAgentTemplateModelArgs:
         pulumi.set(self, "versions", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
-        description: NotRequired[_builtins.str]
-        """
-        Description of the agreement
-        """
-        name: NotRequired[_builtins.str]
-        """
-        Name of the agreement
-        """
-        url: NotRequired[_builtins.str]
-        """
-        URL of the agreement
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID of the agreement
-        """
-elif False:
-    GetGradientaiAgentTemplateModelAgreementArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateModelAgreementArgsDict(TypedDict):
+    description: NotRequired[_builtins.str]
+    """
+    Description of the agreement
+    """
+    name: NotRequired[_builtins.str]
+    """
+    Name of the agreement
+    """
+    url: NotRequired[_builtins.str]
+    """
+    URL of the agreement
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID of the agreement
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateModelAgreementArgs:
@@ -35246,22 +34326,19 @@ class GetGradientaiAgentTemplateModelAgreementArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentTemplateModelVersionArgsDict(TypedDict):
-        major: NotRequired[_builtins.int]
-        """
-        Major version of the model
-        """
-        minor: NotRequired[_builtins.int]
-        """
-        Minor version of the model
-        """
-        patch: NotRequired[_builtins.int]
-        """
-        Patch version of the model
-        """
-elif False:
-    GetGradientaiAgentTemplateModelVersionArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentTemplateModelVersionArgsDict(TypedDict):
+    major: NotRequired[_builtins.int]
+    """
+    Major version of the model
+    """
+    minor: NotRequired[_builtins.int]
+    """
+    Minor version of the model
+    """
+    patch: NotRequired[_builtins.int]
+    """
+    Patch version of the model
+    """
 
 @pulumi.input_type
 class GetGradientaiAgentTemplateModelVersionArgs:
@@ -35318,14 +34395,11 @@ class GetGradientaiAgentTemplateModelVersionArgs:
         pulumi.set(self, "patch", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentVersionsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiAgentVersionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentVersionsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiAgentVersionsFilterArgs:
@@ -35378,12 +34452,9 @@ class GetGradientaiAgentVersionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentVersionsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiAgentVersionsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentVersionsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiAgentVersionsSortArgs:
@@ -35413,14 +34484,11 @@ class GetGradientaiAgentVersionsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiAgentsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiAgentsFilterArgs:
@@ -35473,12 +34541,9 @@ class GetGradientaiAgentsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiAgentsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiAgentsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiAgentsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiAgentsSortArgs:
@@ -35508,54 +34573,51 @@ class GetGradientaiAgentsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
-        created_at: _builtins.str
-        """
-        Created At timestamp for the last indexing job
-        """
-        finished_at: _builtins.str
-        """
-        Timestamp when the last indexing job finished
-        """
-        knowledge_base_uuid: _builtins.str
-        """
-        UUID  of the Knowledge Base for the last indexing job
-        """
-        started_at: _builtins.str
-        """
-        Timestamp when the last indexing job started
-        """
-        updated_at: _builtins.str
-        """
-        Timestamp when the last indexing job updated
-        """
-        completed_datasources: NotRequired[_builtins.int]
-        """
-        Number of completed datasources in the last indexing job
-        """
-        data_source_uuids: NotRequired[Sequence[_builtins.str]]
-        """
-        Datasource UUIDs for the last indexing job
-        """
-        phase: NotRequired[_builtins.str]
-        """
-        Phase of the last indexing job
-        """
-        tokens: NotRequired[_builtins.int]
-        """
-        Number of tokens processed in the last indexing job
-        """
-        total_datasources: NotRequired[_builtins.int]
-        """
-        Total number of datasources in the last indexing job
-        """
-        uuid: NotRequired[_builtins.str]
-        """
-        UUID  of the last indexing job
-        """
-elif False:
-    GetGradientaiKnowledgeBaseLastIndexingJobArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiKnowledgeBaseLastIndexingJobArgsDict(TypedDict):
+    created_at: _builtins.str
+    """
+    Created At timestamp for the last indexing job
+    """
+    finished_at: _builtins.str
+    """
+    Timestamp when the last indexing job finished
+    """
+    knowledge_base_uuid: _builtins.str
+    """
+    UUID  of the Knowledge Base for the last indexing job
+    """
+    started_at: _builtins.str
+    """
+    Timestamp when the last indexing job started
+    """
+    updated_at: _builtins.str
+    """
+    Timestamp when the last indexing job updated
+    """
+    completed_datasources: NotRequired[_builtins.int]
+    """
+    Number of completed datasources in the last indexing job
+    """
+    data_source_uuids: NotRequired[Sequence[_builtins.str]]
+    """
+    Datasource UUIDs for the last indexing job
+    """
+    phase: NotRequired[_builtins.str]
+    """
+    Phase of the last indexing job
+    """
+    tokens: NotRequired[_builtins.int]
+    """
+    Number of tokens processed in the last indexing job
+    """
+    total_datasources: NotRequired[_builtins.int]
+    """
+    Total number of datasources in the last indexing job
+    """
+    uuid: NotRequired[_builtins.str]
+    """
+    UUID  of the last indexing job
+    """
 
 @pulumi.input_type
 class GetGradientaiKnowledgeBaseLastIndexingJobArgs:
@@ -35735,14 +34797,11 @@ class GetGradientaiKnowledgeBaseLastIndexingJobArgs:
         pulumi.set(self, "uuid", value)
 
 
-if not MYPY:
-    class GetGradientaiKnowledgeBasesFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiKnowledgeBasesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiKnowledgeBasesFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiKnowledgeBasesFilterArgs:
@@ -35795,12 +34854,9 @@ class GetGradientaiKnowledgeBasesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiKnowledgeBasesSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiKnowledgeBasesSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiKnowledgeBasesSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiKnowledgeBasesSortArgs:
@@ -35830,14 +34886,11 @@ class GetGradientaiKnowledgeBasesSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiModelsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiModelsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiModelsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiModelsFilterArgs:
@@ -35890,12 +34943,9 @@ class GetGradientaiModelsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiModelsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiModelsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiModelsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiModelsSortArgs:
@@ -35925,14 +34975,11 @@ class GetGradientaiModelsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiOpenaiApiKeysFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiOpenaiApiKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiOpenaiApiKeysFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiOpenaiApiKeysFilterArgs:
@@ -35985,12 +35032,9 @@ class GetGradientaiOpenaiApiKeysFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiOpenaiApiKeysSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiOpenaiApiKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiOpenaiApiKeysSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiOpenaiApiKeysSortArgs:
@@ -36020,14 +35064,11 @@ class GetGradientaiOpenaiApiKeysSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetGradientaiRegionsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        values: Sequence[_builtins.str]
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiRegionsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    values: Sequence[_builtins.str]
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiRegionsFilterArgs:
@@ -36080,12 +35121,9 @@ class GetGradientaiRegionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetGradientaiRegionsSortArgsDict(TypedDict):
-        key: _builtins.str
-        direction: NotRequired[_builtins.str]
-elif False:
-    GetGradientaiRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetGradientaiRegionsSortArgsDict(TypedDict):
+    key: _builtins.str
+    direction: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetGradientaiRegionsSortArgs:
@@ -36115,33 +35153,30 @@ class GetGradientaiRegionsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetImagesFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the images by this key. This may be one of `distribution`, `error_message`,
-        `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
-        `tags`, or `type`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves images
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetImagesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetImagesFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the images by this key. This may be one of `distribution`, `error_message`,
+    `id`, `image`, `min_disk_size`, `name`, `private`, `regions`, `size_gigabytes`, `slug`, `status`,
+    `tags`, or `type`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves images
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetImagesFilterArgs:
@@ -36226,19 +35261,16 @@ class GetImagesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetImagesSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
-        `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetImagesSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetImagesSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the images by this key. This may be one of `distribution`, `error_message`, `id`,
+    `image`, `min_disk_size`, `name`, `private`, `size_gigabytes`, `slug`, `status`, or `type`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetImagesSortArgs:
@@ -36280,11 +35312,8 @@ class GetImagesSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
-        enabled: _builtins.bool
-elif False:
-    GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict(TypedDict):
+    enabled: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
@@ -36302,11 +35331,8 @@ class GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
-        enabled: _builtins.bool
-elif False:
-    GetKubernetesClusterAmdGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterAmdGpuDevicePluginArgsDict(TypedDict):
+    enabled: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterAmdGpuDevicePluginArgs:
@@ -36324,13 +35350,10 @@ class GetKubernetesClusterAmdGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
-        expanders: NotRequired[Sequence[_builtins.str]]
-        scale_down_unneeded_time: NotRequired[_builtins.str]
-        scale_down_utilization_threshold: NotRequired[_builtins.float]
-elif False:
-    GetKubernetesClusterClusterAutoscalerConfigurationArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterClusterAutoscalerConfigurationArgsDict(TypedDict):
+    expanders: NotRequired[Sequence[_builtins.str]]
+    scale_down_unneeded_time: NotRequired[_builtins.str]
+    scale_down_utilization_threshold: NotRequired[_builtins.float]
 
 @pulumi.input_type
 class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
@@ -36373,11 +35396,8 @@ class GetKubernetesClusterClusterAutoscalerConfigurationArgs:
         pulumi.set(self, "scale_down_utilization_threshold", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
-        enabled: _builtins.bool
-elif False:
-    GetKubernetesClusterNvidiaGpuDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterNvidiaGpuDevicePluginArgsDict(TypedDict):
+    enabled: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterNvidiaGpuDevicePluginArgs:
@@ -36395,11 +35415,8 @@ class GetKubernetesClusterNvidiaGpuDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
-        enabled: _builtins.bool
-elif False:
-    GetKubernetesClusterRdmaSharedDevicePluginArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterRdmaSharedDevicePluginArgsDict(TypedDict):
+    enabled: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterRdmaSharedDevicePluginArgs:
@@ -36417,11 +35434,8 @@ class GetKubernetesClusterRdmaSharedDevicePluginArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class GetKubernetesClusterRoutingAgentArgsDict(TypedDict):
-        enabled: _builtins.bool
-elif False:
-    GetKubernetesClusterRoutingAgentArgsDict: TypeAlias = Mapping[str, Any]
+class GetKubernetesClusterRoutingAgentArgsDict(TypedDict):
+    enabled: _builtins.bool
 
 @pulumi.input_type
 class GetKubernetesClusterRoutingAgentArgs:
@@ -36439,13 +35453,10 @@ class GetKubernetesClusterRoutingAgentArgs:
         pulumi.set(self, "enabled", value)
 
 
-if not MYPY:
-    class GetPartnerAttachmentBgpArgsDict(TypedDict):
-        local_router_ip: NotRequired[_builtins.str]
-        peer_router_asn: NotRequired[_builtins.int]
-        peer_router_ip: NotRequired[_builtins.str]
-elif False:
-    GetPartnerAttachmentBgpArgsDict: TypeAlias = Mapping[str, Any]
+class GetPartnerAttachmentBgpArgsDict(TypedDict):
+    local_router_ip: NotRequired[_builtins.str]
+    peer_router_asn: NotRequired[_builtins.int]
+    peer_router_ip: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetPartnerAttachmentBgpArgs:
@@ -36488,32 +35499,29 @@ class GetPartnerAttachmentBgpArgs:
         pulumi.set(self, "peer_router_ip", value)
 
 
-if not MYPY:
-    class GetProjectsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the projects by this key. This may be one of `name`,
-        `purpose`, `description`, `environment`, or `is_default`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves projects
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetProjectsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetProjectsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the projects by this key. This may be one of `name`,
+    `purpose`, `description`, `environment`, or `is_default`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves projects
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetProjectsFilterArgs:
@@ -36596,19 +35604,16 @@ class GetProjectsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetProjectsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the projects by this key. This may be one of `name`,
-        `purpose`, `description`, or `environment`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetProjectsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetProjectsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the projects by this key. This may be one of `name`,
+    `purpose`, `description`, or `environment`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetProjectsSortArgs:
@@ -36650,32 +35655,29 @@ class GetProjectsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetRecordsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves DNS records
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetRecordsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetRecordsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+    `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves DNS records
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetRecordsFilterArgs:
@@ -36758,19 +35760,16 @@ class GetRecordsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetRecordsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
-        `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetRecordsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetRecordsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the DNS records by this key. This may be one of `domain`, `flags`, `name`, `port`,
+    `priority`, `tag`, `ttl`, `type`, `value`, or `weight`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetRecordsSortArgs:
@@ -36812,32 +35811,29 @@ class GetRecordsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetRegionsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the regions by this key. This may be one of `slug`,
-        `name`, `available`, `features`, or `sizes`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves regions
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetRegionsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetRegionsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the regions by this key. This may be one of `slug`,
+    `name`, `available`, `features`, or `sizes`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves regions
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetRegionsFilterArgs:
@@ -36920,19 +35916,16 @@ class GetRegionsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetRegionsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the regions by this key. This may be one of `slug`,
-        `name`, or `available`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetRegionsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetRegionsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the regions by this key. This may be one of `slug`,
+    `name`, or `available`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetRegionsSortArgs:
@@ -36974,33 +35967,30 @@ class GetRegionsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetSizesFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the sizes by this key. This may be one of `slug`,
-        `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
-        `price_hourly`, or `available`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        Only retrieves sizes which keys has value that matches
-        one of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetSizesFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetSizesFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the sizes by this key. This may be one of `slug`,
+    `regions`, `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`,
+    `price_hourly`, or `available`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    Only retrieves sizes which keys has value that matches
+    one of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetSizesFilterArgs:
@@ -37085,19 +36075,16 @@ class GetSizesFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetSizesSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the sizes by this key. This may be one of `slug`,
-        `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetSizesSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetSizesSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the sizes by this key. This may be one of `slug`,
+    `memory`, `vcpus`, `disk`, `transfer`, `price_monthly`, or `price_hourly`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetSizesSortArgs:
@@ -37139,31 +36126,28 @@ class GetSizesSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetSpacesBucketsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the `key` field. Only retrieves Spaces buckets
-        where the `key` field takes on one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetSpacesBucketsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetSpacesBucketsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the `key` field. Only retrieves Spaces buckets
+    where the `key` field takes on one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetSpacesBucketsFilterArgs:
@@ -37244,18 +36228,15 @@ class GetSpacesBucketsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetSpacesBucketsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetSpacesBucketsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetSpacesBucketsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the images by this key. This may be one of `bucket_domain_name`, `name`, `region`, or `urn`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetSpacesBucketsSortArgs:
@@ -37295,20 +36276,17 @@ class GetSpacesBucketsSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetSshKeysFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        match_by: NotRequired[_builtins.str]
-elif False:
-    GetSshKeysFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetSshKeysFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    A list of values to match against the key field. Only retrieves SSH keys where the key field matches one or more of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    match_by: NotRequired[_builtins.str]
 
 @pulumi.input_type
 class GetSshKeysFilterArgs:
@@ -37371,18 +36349,15 @@ class GetSshKeysFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetSshKeysSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetSshKeysSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetSshKeysSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the SSH Keys by this key. This may be one of `name`, `public_key`, or `fingerprint`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetSshKeysSortArgs:
@@ -37422,31 +36397,28 @@ class GetSshKeysSortArgs:
         pulumi.set(self, "direction", value)
 
 
-if not MYPY:
-    class GetTagsFilterArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
-        """
-        values: Sequence[_builtins.str]
-        """
-        Only retrieves tags which keys has value that matches
-        one of the values provided here.
-        """
-        all: NotRequired[_builtins.bool]
-        """
-        Set to `true` to require that a field match all of the `values` instead of just one or more of
-        them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
-        that all of the `values` are present in the list or set.
-        """
-        match_by: NotRequired[_builtins.str]
-        """
-        One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
-        match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
-        substrings to find within the string field.
-        """
-elif False:
-    GetTagsFilterArgsDict: TypeAlias = Mapping[str, Any]
+class GetTagsFilterArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Filter the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+    """
+    values: Sequence[_builtins.str]
+    """
+    Only retrieves tags which keys has value that matches
+    one of the values provided here.
+    """
+    all: NotRequired[_builtins.bool]
+    """
+    Set to `true` to require that a field match all of the `values` instead of just one or more of
+    them. This is useful when matching against multi-valued fields such as lists or sets where you want to ensure
+    that all of the `values` are present in the list or set.
+    """
+    match_by: NotRequired[_builtins.str]
+    """
+    One of `exact` (default), `re`, or `substring`. For string-typed fields, specify `re` to
+    match by using the `values` as regular expressions, or specify `substring` to match by treating the `values` as
+    substrings to find within the string field.
+    """
 
 @pulumi.input_type
 class GetTagsFilterArgs:
@@ -37527,18 +36499,15 @@ class GetTagsFilterArgs:
         pulumi.set(self, "match_by", value)
 
 
-if not MYPY:
-    class GetTagsSortArgsDict(TypedDict):
-        key: _builtins.str
-        """
-        Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
-        """
-        direction: NotRequired[_builtins.str]
-        """
-        The sort direction. This may be either `asc` or `desc`.
-        """
-elif False:
-    GetTagsSortArgsDict: TypeAlias = Mapping[str, Any]
+class GetTagsSortArgsDict(TypedDict):
+    key: _builtins.str
+    """
+    Sort the tags by this key. This may be one of `name`, `total_resource_count`,  `droplets_count`, `images_count`, `volumes_count`, `volume_snapshots_count`, or `databases_count`.
+    """
+    direction: NotRequired[_builtins.str]
+    """
+    The sort direction. This may be either `asc` or `desc`.
+    """
 
 @pulumi.input_type
 class GetTagsSortArgs:

@@ -5,6 +5,13 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a reserved IP. This data source provides the region and Droplet id
+ * as configured on your DigitalOcean account. This is useful if the reserved IP
+ * in question is not managed by Terraform or you need to find the Droplet the IP is
+ * attached to.
+ *
+ * An error is triggered if the provided reserved IP does not exist.
+ *
  * ## Example Usage
  *
  * Get the reserved IP:
@@ -61,6 +68,13 @@ export interface GetReservedIpResult {
     readonly urn: string;
 }
 /**
+ * Get information on a reserved IP. This data source provides the region and Droplet id
+ * as configured on your DigitalOcean account. This is useful if the reserved IP
+ * in question is not managed by Terraform or you need to find the Droplet the IP is
+ * attached to.
+ *
+ * An error is triggered if the provided reserved IP does not exist.
+ *
  * ## Example Usage
  *
  * Get the reserved IP:

@@ -295,6 +295,13 @@ def get_load_balancer(id: Optional[_builtins.str] = None,
                       name: Optional[_builtins.str] = None,
                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetLoadBalancerResult:
     """
+    Get information on a load balancer for use in other resources. This data source
+    provides all of the load balancers properties as configured on your DigitalOcean
+    account. This is useful if the load balancer in question is not managed by
+    Terraform or you need to utilize any of the load balancers data.
+
+    An error is triggered if the provided load balancer name does not exist.
+
     ## Example Usage
 
     Get the load balancer by name:
@@ -359,6 +366,13 @@ def get_load_balancer_output(id: Optional[pulumi.Input[Optional[_builtins.str]]]
                              name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
+    Get information on a load balancer for use in other resources. This data source
+    provides all of the load balancers properties as configured on your DigitalOcean
+    account. This is useful if the load balancer in question is not managed by
+    Terraform or you need to utilize any of the load balancers data.
+
+    An error is triggered if the provided load balancer name does not exist.
+
     ## Example Usage
 
     Get the load balancer by name:
