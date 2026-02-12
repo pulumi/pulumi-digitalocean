@@ -95,6 +95,18 @@ def get_droplets(filters: Optional[Sequence[Union['GetDropletsFilterArgs', 'GetD
                  sorts: Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]] = None,
                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDropletsResult:
     """
+    Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all Droplets will be returned.
+
+    This data source is useful if the Droplets in question are not managed by Terraform or you need to
+    utilize any of the Droplets' data.
+
+    By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+    the `gpus` attribute to `true`.
+
+    Note: You can use the `Droplet` data source to obtain metadata
+    about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter images.
@@ -158,6 +170,18 @@ def get_droplets_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['
                         sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDropletsSortArgs', 'GetDropletsSortArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletsResult]:
     """
+    Get information on Droplets for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all Droplets will be returned.
+
+    This data source is useful if the Droplets in question are not managed by Terraform or you need to
+    utilize any of the Droplets' data.
+
+    By default, only non-GPU Droplets are returned. To list only GPU Droplets, set
+    the `gpus` attribute to `true`.
+
+    Note: You can use the `Droplet` data source to obtain metadata
+    about a single Droplet if you already know the `id`, unique `name`, or unique `tag` to retrieve.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter images.

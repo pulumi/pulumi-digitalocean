@@ -5,6 +5,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+ * is not managed by Terraform or you need to utilize any of the bucket's data.
+ *
  * ## Example Usage
  *
  * Get the bucket by name:
@@ -72,6 +75,9 @@ export interface GetSpacesBucketResult {
     readonly urn: string;
 }
 /**
+ * Get information on a Spaces bucket for use in other resources. This is useful if the Spaces bucket in question
+ * is not managed by Terraform or you need to utilize any of the bucket's data.
+ *
  * ## Example Usage
  *
  * Get the bucket by name:

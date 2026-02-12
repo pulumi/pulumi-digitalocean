@@ -12,6 +12,13 @@ namespace Pulumi.DigitalOcean
     public static class GetContainerRegistry
     {
         /// <summary>
+        /// Get information on a container registry. This data source provides the name as
+        /// configured on your DigitalOcean account. This is useful if the container
+        /// registry name in question is not managed by Terraform or you need validate if
+        /// the container registry exists in the account.
+        /// 
+        /// An error is triggered if the provided container registry name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Basic Example
@@ -38,6 +45,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a container registry. This data source provides the name as
+        /// configured on your DigitalOcean account. This is useful if the container
+        /// registry name in question is not managed by Terraform or you need validate if
+        /// the container registry exists in the account.
+        /// 
+        /// An error is triggered if the provided container registry name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Basic Example
@@ -64,6 +78,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetContainerRegistryResult>("digitalocean:index/getContainerRegistry:getContainerRegistry", args ?? new GetContainerRegistryInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a container registry. This data source provides the name as
+        /// configured on your DigitalOcean account. This is useful if the container
+        /// registry name in question is not managed by Terraform or you need validate if
+        /// the container registry exists in the account.
+        /// 
+        /// An error is triggered if the provided container registry name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// ### Basic Example

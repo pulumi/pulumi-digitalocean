@@ -8,6 +8,8 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -143,6 +145,8 @@ export interface GetKubernetesClusterResult {
     readonly vpcUuid: string;
 }
 /**
+ * Retrieves information about a DigitalOcean Kubernetes cluster for use in other resources. This data source provides all of the cluster's properties as configured on your DigitalOcean account. This is useful if the cluster in question is not managed by Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript

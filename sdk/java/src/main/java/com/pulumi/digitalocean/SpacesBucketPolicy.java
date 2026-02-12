@@ -14,6 +14,52 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
+ * Provides a bucket policy resource for Spaces, DigitalOcean&#39;s object storage product.
+ * The `digitalocean.SpacesBucketPolicy` resource allows Terraform to attach bucket
+ * policy to Spaces.
+ * 
+ * The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+ * designed to be interoperable with Amazon&#39;s AWS S3 API. This allows users to
+ * interact with the service while using the tools they already know. Spaces
+ * mirrors S3&#39;s authentication framework and requests to Spaces require a key pair
+ * similar to Amazon&#39;s Access ID and Secret Key.
+ * 
+ * The authentication requirement can be met by either setting the
+ * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+ * the provider&#39;s `spacesAccessId` and `spacesSecretKey` arguments to the
+ * access ID and secret you generate via the DigitalOcean control panel. For
+ * example:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.SpacesBucket;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var static_assets = new SpacesBucket("static-assets");
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+ * 
  * ## Example Usage
  * 
  * ### Limiting access to specific IP addresses

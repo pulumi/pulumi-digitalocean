@@ -93,6 +93,11 @@ func LookupVolumeSnapshot(ctx *pulumi.Context, args *LookupVolumeSnapshotArgs, o
 
 // A collection of arguments for invoking getVolumeSnapshot.
 type LookupVolumeSnapshotArgs struct {
+	// If more than one result is returned, use the most recent volume snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// Terraform will fail. Ensure that your search is specific enough to return
+	// a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent *bool `pulumi:"mostRecent"`
 	// The name of the volume snapshot.
 	Name *string `pulumi:"name"`
@@ -135,6 +140,11 @@ func LookupVolumeSnapshotOutput(ctx *pulumi.Context, args LookupVolumeSnapshotOu
 
 // A collection of arguments for invoking getVolumeSnapshot.
 type LookupVolumeSnapshotOutputArgs struct {
+	// If more than one result is returned, use the most recent volume snapshot.
+	//
+	// > **NOTE:** If more or less than a single match is returned by the search,
+	// Terraform will fail. Ensure that your search is specific enough to return
+	// a single volume snapshot ID only, or use `mostRecent` to choose the most recent one.
 	MostRecent pulumi.BoolPtrInput `pulumi:"mostRecent"`
 	// The name of the volume snapshot.
 	Name pulumi.StringPtrInput `pulumi:"name"`

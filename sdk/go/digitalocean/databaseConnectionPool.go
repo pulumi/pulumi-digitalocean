@@ -59,8 +59,7 @@ import (
 //
 // ## Import
 //
-// # Database connection pools can be imported using the `id` of the source database cluster
-//
+// Database connection pools can be imported using the `id` of the source database cluster
 // and the `name` of the connection pool joined with a comma. For example:
 //
 // ```sh

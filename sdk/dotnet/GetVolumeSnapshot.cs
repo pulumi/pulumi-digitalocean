@@ -189,6 +189,13 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetVolumeSnapshotArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If more than one result is returned, use the most recent volume snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// Terraform will fail. Ensure that your search is specific enough to return
+        /// a single volume snapshot ID only, or use `MostRecent` to choose the most recent one.
+        /// </summary>
         [Input("mostRecent")]
         public bool? MostRecent { get; set; }
 
@@ -218,6 +225,13 @@ namespace Pulumi.DigitalOcean
 
     public sealed class GetVolumeSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// If more than one result is returned, use the most recent volume snapshot.
+        /// 
+        /// &gt; **NOTE:** If more or less than a single match is returned by the search,
+        /// Terraform will fail. Ensure that your search is specific enough to return
+        /// a single volume snapshot ID only, or use `MostRecent` to choose the most recent one.
+        /// </summary>
         [Input("mostRecent")]
         public Input<bool>? MostRecent { get; set; }
 

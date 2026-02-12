@@ -53,6 +53,10 @@ class DropletArgs:
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
                Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
                an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
@@ -187,6 +191,12 @@ class DropletArgs:
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
         return pulumi.get(self, "graceful_shutdown")
 
     @graceful_shutdown.setter
@@ -398,6 +408,10 @@ class _DropletState:
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
+        :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.str] ipv4_address: The IPv4 address
         :param pulumi.Input[_builtins.str] ipv4_address_private: The private networking IPv4 address
@@ -574,6 +588,12 @@ class _DropletState:
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
         return pulumi.get(self, "graceful_shutdown")
 
     @graceful_shutdown.setter
@@ -926,6 +946,10 @@ class Droplet(pulumi.CustomResource):
                installation errors (i.e. OS not supported) are ignored. To prevent it from
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
+        :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
                Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -1126,6 +1150,10 @@ class Droplet(pulumi.CustomResource):
                being installed, set to `false`. To make installation errors fatal, explicitly
                set it to `true`.
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
+        :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
+               should be gracefully shut down before it is deleted.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.str] ipv4_address: The IPv4 address
         :param pulumi.Input[_builtins.str] ipv4_address_private: The private networking IPv4 address
@@ -1251,6 +1279,12 @@ class Droplet(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
     def graceful_shutdown(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        A boolean indicating whether the droplet
+        should be gracefully shut down before it is deleted.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
         return pulumi.get(self, "graceful_shutdown")
 
     @_builtins.property

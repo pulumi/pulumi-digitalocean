@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Container Registries can be imported using the `name`, e.g.
+    /// Container Registries can be imported using the `Name`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname

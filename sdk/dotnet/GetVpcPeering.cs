@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean
     public static class GetVpcPeering
     {
         /// <summary>
+        /// Retrieve information about a VPC Peering for use in other resources.
+        /// 
+        /// This data source provides all of the VPC Peering's properties as configured on your 
+        /// DigitalOcean account. This is useful if the VPC Peering in question is not managed by 
+        /// Terraform or you need to utilize any of the VPC Peering's data.
+        /// 
+        /// VPC Peerings may be looked up by `Id` or `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// ### VPC Peering By Id
@@ -108,6 +116,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcPeeringResult>("digitalocean:index/getVpcPeering:getVpcPeering", args ?? new GetVpcPeeringArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieve information about a VPC Peering for use in other resources.
+        /// 
+        /// This data source provides all of the VPC Peering's properties as configured on your 
+        /// DigitalOcean account. This is useful if the VPC Peering in question is not managed by 
+        /// Terraform or you need to utilize any of the VPC Peering's data.
+        /// 
+        /// VPC Peerings may be looked up by `Id` or `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// ### VPC Peering By Id
@@ -204,6 +220,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcPeeringResult>("digitalocean:index/getVpcPeering:getVpcPeering", args ?? new GetVpcPeeringInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Retrieve information about a VPC Peering for use in other resources.
+        /// 
+        /// This data source provides all of the VPC Peering's properties as configured on your 
+        /// DigitalOcean account. This is useful if the VPC Peering in question is not managed by 
+        /// Terraform or you need to utilize any of the VPC Peering's data.
+        /// 
+        /// VPC Peerings may be looked up by `Id` or `Name`.
+        /// 
         /// ## Example Usage
         /// 
         /// ### VPC Peering By Id

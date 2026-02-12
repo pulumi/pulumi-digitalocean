@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Get information on a reserved IPv6. This data source provides the regionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+ * attached to.
+ *
+ * An error is triggered if the provided reserved IPv6 does not exist.
+ *
  * ## Example Usage
  *
  * Get the reserved IPv6:
@@ -59,6 +64,11 @@ export interface GetReservedIpv6Result {
     readonly urn: string;
 }
 /**
+ * Get information on a reserved IPv6. This data source provides the regionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+ * attached to.
+ *
+ * An error is triggered if the provided reserved IPv6 does not exist.
+ *
  * ## Example Usage
  *
  * Get the reserved IPv6:

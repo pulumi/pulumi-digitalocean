@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Retrieve information about a VPC Peering for use in other resources.
+ *
+ * This data source provides all of the VPC Peering's properties as configured on your
+ * DigitalOcean account. This is useful if the VPC Peering in question is not managed by
+ * Terraform or you need to utilize any of the VPC Peering's data.
+ *
+ * VPC Peerings may be looked up by `id` or `name`.
+ *
  * ## Example Usage
  *
  * ### VPC Peering By Id
@@ -119,6 +127,14 @@ export interface GetVpcPeeringResult {
     readonly vpcIds: string[];
 }
 /**
+ * Retrieve information about a VPC Peering for use in other resources.
+ *
+ * This data source provides all of the VPC Peering's properties as configured on your
+ * DigitalOcean account. This is useful if the VPC Peering in question is not managed by
+ * Terraform or you need to utilize any of the VPC Peering's data.
+ *
+ * VPC Peerings may be looked up by `id` or `name`.
+ *
  * ## Example Usage
  *
  * ### VPC Peering By Id

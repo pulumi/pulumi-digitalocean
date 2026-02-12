@@ -102,6 +102,14 @@ def get_vpc_peering(id: Optional[_builtins.str] = None,
                     vpc_ids: Optional[Sequence[_builtins.str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcPeeringResult:
     """
+    Retrieve information about a VPC Peering for use in other resources.
+
+    This data source provides all of the VPC Peering's properties as configured on your
+    DigitalOcean account. This is useful if the VPC Peering in question is not managed by
+    Terraform or you need to utilize any of the VPC Peering's data.
+
+    VPC Peerings may be looked up by `id` or `name`.
+
     ## Example Usage
 
     ### VPC Peering By Id
@@ -175,6 +183,14 @@ def get_vpc_peering_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] =
                            vpc_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcPeeringResult]:
     """
+    Retrieve information about a VPC Peering for use in other resources.
+
+    This data source provides all of the VPC Peering's properties as configured on your
+    DigitalOcean account. This is useful if the VPC Peering in question is not managed by
+    Terraform or you need to utilize any of the VPC Peering's data.
+
+    VPC Peerings may be looked up by `id` or `name`.
+
     ## Example Usage
 
     ### VPC Peering By Id

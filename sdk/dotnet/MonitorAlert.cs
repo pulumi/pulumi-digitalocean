@@ -17,7 +17,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Monitor alerts can be imported using the monitor alert `uuid`, e.g.
+    /// Monitor alerts can be imported using the monitor alert `Uuid`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3

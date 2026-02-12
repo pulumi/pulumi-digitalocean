@@ -12,16 +12,210 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+//
+// ## Example Usage
+//
+// ### Basic Example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("foo"),
+//				Region:  pulumi.String(digitalocean.RegionNYC1),
+//				Version: pulumi.String("latest"),
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+//					Name:      pulumi.String("worker-pool"),
+//					Size:      pulumi.String("s-2vcpu-2gb"),
+//					NodeCount: pulumi.Int(3),
+//					Taints: digitalocean.KubernetesClusterNodePoolTaintArray{
+//						&digitalocean.KubernetesClusterNodePoolTaintArgs{
+//							Key:    pulumi.String("workloadKind"),
+//							Value:  pulumi.String("database"),
+//							Effect: pulumi.String("NoSchedule"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Autoscaling Example
+//
+// Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Name:    pulumi.String("foo"),
+//				Region:  pulumi.String(digitalocean.RegionNYC1),
+//				Version: pulumi.String("1.22.8-do.1"),
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+//					Name:      pulumi.String("autoscale-worker-pool"),
+//					Size:      pulumi.String("s-2vcpu-2gb"),
+//					AutoScale: pulumi.Bool(true),
+//					MinNodes:  pulumi.Int(1),
+//					MaxNodes:  pulumi.Int(5),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Note that, currently, each node pool must always have at least one node and when using autoscaling the minNodes must be greater than or equal to 1.
+// > Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+//
+// ### Auto Upgrade Example
+//
+// DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions. You may explicitly specify the maintenance window policy.
+// For example:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			example, err := digitalocean.GetKubernetesVersions(ctx, &digitalocean.GetKubernetesVersionsArgs{
+//				VersionPrefix: pulumi.StringRef("1.22."),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewKubernetesCluster(ctx, "foo", &digitalocean.KubernetesClusterArgs{
+//				Name:        pulumi.String("foo"),
+//				Region:      pulumi.String(digitalocean.RegionNYC1),
+//				AutoUpgrade: pulumi.Bool(true),
+//				Version:     pulumi.String(example.LatestVersion),
+//				MaintenancePolicy: &digitalocean.KubernetesClusterMaintenancePolicyArgs{
+//					StartTime: pulumi.String("04:00"),
+//					Day:       pulumi.String("sunday"),
+//				},
+//				NodePool: &digitalocean.KubernetesClusterNodePoolArgs{
+//					Name:      pulumi.String("default"),
+//					Size:      pulumi.String("s-1vcpu-2gb"),
+//					NodeCount: pulumi.Int(3),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
+//
+// ### Kubernetes Terraform Provider Example
+//
+// The cluster's kubeconfig is exported as an attribute allowing you to use it with
+// the Kubernetes Terraform provider.
+//
+// > When using interpolation to pass credentials from a `KubernetesCluster`
+// resource to the Kubernetes provider, the cluster resource generally should not
+// be created in the same Terraform module where Kubernetes provider resources are
+// also used. This can lead to unpredictable errors which are hard to debug and
+// diagnose. The root issue lies with the order in which Terraform itself evaluates
+// the provider blocks vs. actual resources.
+//
+// When using the Kubernetes provider with a cluster created in a separate Terraform
+// module or configuration, use the `KubernetesCluster` data-source
+// to access the cluster's credentials. See here for a full example.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+//				Name: "prod-cluster-01",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Exec credential plugin
+//
+// Another method to ensure that the Kubernetes provider is receiving valid credentials
+// is to use an exec plugin. In order to use use this approach, the DigitalOcean
+// CLI (`doctl`) must be present. `doctl` will renew the token if needed before
+// initializing the provider.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
-// # Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with
-//
+// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with
 // the `terraform:default-node-pool` tag. The provider will automatically add this tag if
-//
 // the cluster only has a single node pool. Clusters with more than one node pool, however, will require
-//
 // that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be
-//
 // the default node pool.
 //
 // Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
@@ -30,8 +224,7 @@ import (
 // $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
 // ```
 //
-// Additional node pools must be imported separately as `digitalocean_kubernetes_cluster`
-//
+// Additional node pools must be imported separately as `KubernetesCluster`
 // resources, e.g.
 //
 // ```sh

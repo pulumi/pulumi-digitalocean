@@ -49,7 +49,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Tags can be imported using the `name`, e.g.
+    /// Tags can be imported using the `Name`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/tag:Tag mytag tagname

@@ -224,7 +224,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// An app can be imported using its `id`, e.g.
+    /// An app can be imported using its `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661

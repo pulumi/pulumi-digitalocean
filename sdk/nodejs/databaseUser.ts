@@ -100,12 +100,13 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * Database user can be imported using the `id` of the source database cluster
- *
  * and the `name` of the user joined with a comma. For example:
  *
  * ```sh
  * $ pulumi import digitalocean:index/databaseUser:DatabaseUser user-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
  * ```
+ *
+ * > **Note:** MongoDB user passwords are only available when the user is created. An existing MongoDB user that is imported will not have its `password` attribute exported. Recreate the user if it is necessary to access the password with Terraform.
  */
 export class DatabaseUser extends pulumi.CustomResource {
     /**

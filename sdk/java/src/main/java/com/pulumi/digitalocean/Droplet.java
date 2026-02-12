@@ -167,9 +167,23 @@ public class Droplet extends com.pulumi.resources.CustomResource {
     public Output<String> dropletUrn() {
         return this.dropletUrn;
     }
+    /**
+     * A boolean indicating whether the droplet
+     * should be gracefully shut down before it is deleted.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     */
     @Export(name="gracefulShutdown", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> gracefulShutdown;
 
+    /**
+     * @return A boolean indicating whether the droplet
+     * should be gracefully shut down before it is deleted.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     */
     public Output<Optional<Boolean>> gracefulShutdown() {
         return Codegen.optional(this.gracefulShutdown);
     }

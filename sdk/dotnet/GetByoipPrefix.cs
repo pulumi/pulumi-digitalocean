@@ -12,6 +12,14 @@ namespace Pulumi.DigitalOcean
     public static class GetByoipPrefix
     {
         /// <summary>
+        /// Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
+        /// prefix CIDR, region, advertisement status, and current state as configured on your
+        /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
+        /// by Terraform or you need to utilize any of the prefix's data.
+        /// 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// resource can be utilised instead. This data source is read-only.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the BYOIP prefix:
@@ -69,6 +77,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetByoipPrefixResult>("digitalocean:index/getByoipPrefix:getByoipPrefix", args ?? new GetByoipPrefixArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
+        /// prefix CIDR, region, advertisement status, and current state as configured on your
+        /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
+        /// by Terraform or you need to utilize any of the prefix's data.
+        /// 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// resource can be utilised instead. This data source is read-only.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the BYOIP prefix:
@@ -126,6 +142,14 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetByoipPrefixResult>("digitalocean:index/getByoipPrefix:getByoipPrefix", args ?? new GetByoipPrefixInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a BYOIP (Bring Your Own IP) prefix. This data source provides the
+        /// prefix CIDR, region, advertisement status, and current state as configured on your
+        /// DigitalOcean account. This is useful if the BYOIP prefix in question is not managed
+        /// by Terraform or you need to utilize any of the prefix's data.
+        /// 
+        /// **Note:** If you need to manage BYOIP prefixes using Terraform, `digitalocean.ByoipPrefix` 
+        /// resource can be utilised instead. This data source is read-only.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the BYOIP prefix:

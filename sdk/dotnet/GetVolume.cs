@@ -12,6 +12,13 @@ namespace Pulumi.DigitalOcean
     public static class GetVolume
     {
         /// <summary>
+        /// Get information on a volume for use in other resources. This data source provides
+        /// all of the volumes properties as configured on your DigitalOcean account. This is
+        /// useful if the volume in question is not managed by Terraform or you need to utilize
+        /// any of the volumes data.
+        /// 
+        /// An error is triggered if the provided volume name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the volume:
@@ -70,6 +77,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a volume for use in other resources. This data source provides
+        /// all of the volumes properties as configured on your DigitalOcean account. This is
+        /// useful if the volume in question is not managed by Terraform or you need to utilize
+        /// any of the volumes data.
+        /// 
+        /// An error is triggered if the provided volume name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the volume:
@@ -128,6 +142,13 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetVolumeResult>("digitalocean:index/getVolume:getVolume", args ?? new GetVolumeInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a volume for use in other resources. This data source provides
+        /// all of the volumes properties as configured on your DigitalOcean account. This is
+        /// useful if the volume in question is not managed by Terraform or you need to utilize
+        /// any of the volumes data.
+        /// 
+        /// An error is triggered if the provided volume name does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the volume:

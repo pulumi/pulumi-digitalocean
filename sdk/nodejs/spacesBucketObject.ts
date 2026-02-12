@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+ * The `digitalocean.SpacesBucketObject` resource allows Terraform to upload content
+ * to Spaces.
+ *
+ * The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+ * designed to be interoperable with Amazon's AWS S3 API. This allows users to
+ * interact with the service while using the tools they already know. Spaces
+ * mirrors S3's authentication framework and requests to Spaces require a key pair
+ * similar to Amazon's Access ID and Secret Key.
+ *
+ * The authentication requirement can be met by either setting the
+ * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+ * the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+ * access ID and secret you generate via the DigitalOcean control panel. For
+ * example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
+ * ```
+ *
+ * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+ *
  * ## Example Usage
  *
  * ### Create a Key in a Spaces Bucket
@@ -94,7 +119,18 @@ export class SpacesBucketObject extends pulumi.CustomResource {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     declare public readonly contentType: pulumi.Output<string>;
+    /**
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+     */
     declare public readonly etag: pulumi.Output<string>;
+    /**
+     * Allow the object to be deleted by removing any legal hold on any object version.
+     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+     *
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+     *
+     * > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+     */
     declare public readonly forceDestroy: pulumi.Output<boolean | undefined>;
     /**
      * The name of the object once it is in the bucket.
@@ -225,7 +261,18 @@ export interface SpacesBucketObjectState {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+     */
     etag?: pulumi.Input<string>;
+    /**
+     * Allow the object to be deleted by removing any legal hold on any object version.
+     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+     *
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+     *
+     * > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The name of the object once it is in the bucket.
@@ -293,7 +340,18 @@ export interface SpacesBucketObjectArgs {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      */
     contentType?: pulumi.Input<string>;
+    /**
+     * Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+     */
     etag?: pulumi.Input<string>;
+    /**
+     * Allow the object to be deleted by removing any legal hold on any object version.
+     * Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+     *
+     * If no content is provided through `source`, `content` or `contentBase64`, then the object will be empty.
+     *
+     * > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+     */
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * The name of the object once it is in the bucket.

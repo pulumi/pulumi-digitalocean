@@ -85,6 +85,15 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
                 sorts: Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainsResult:
     """
+    Get information on domains for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all domains will be returned.
+
+    This data source is useful if the domains in question are not managed by Terraform or you need to
+    utilize any of the domains' data.
+
+    Note: You can use the `Domain` data source to obtain metadata
+    about a single domain if you already know the `name`.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter domains. (This example
@@ -122,6 +131,15 @@ def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['G
                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
+    Get information on domains for use in other resources, with the ability to filter and sort the results.
+    If no filters are specified, all domains will be returned.
+
+    This data source is useful if the domains in question are not managed by Terraform or you need to
+    utilize any of the domains' data.
+
+    Note: You can use the `Domain` data source to obtain metadata
+    about a single domain if you already know the `name`.
+
     ## Example Usage
 
     Use the `filter` block with a `key` string and `values` list to filter domains. (This example

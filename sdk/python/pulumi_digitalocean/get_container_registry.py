@@ -136,6 +136,13 @@ class AwaitableGetContainerRegistryResult(GetContainerRegistryResult):
 def get_container_registry(name: Optional[_builtins.str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetContainerRegistryResult:
     """
+    Get information on a container registry. This data source provides the name as
+    configured on your DigitalOcean account. This is useful if the container
+    registry name in question is not managed by Terraform or you need validate if
+    the container registry exists in the account.
+
+    An error is triggered if the provided container registry name does not exist.
+
     ## Example Usage
 
     ### Basic Example
@@ -169,6 +176,13 @@ def get_container_registry(name: Optional[_builtins.str] = None,
 def get_container_registry_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
+    Get information on a container registry. This data source provides the name as
+    configured on your DigitalOcean account. This is useful if the container
+    registry name in question is not managed by Terraform or you need validate if
+    the container registry exists in the account.
+
+    An error is triggered if the provided container registry name does not exist.
+
     ## Example Usage
 
     ### Basic Example

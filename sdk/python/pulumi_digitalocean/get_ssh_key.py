@@ -85,6 +85,13 @@ class AwaitableGetSshKeyResult(GetSshKeyResult):
 def get_ssh_key(name: Optional[_builtins.str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSshKeyResult:
     """
+    Get information on a ssh key. This data source provides the name, public key,
+    and fingerprint as configured on your DigitalOcean account. This is useful if
+    the ssh key in question is not managed by Terraform or you need to utilize any
+    of the keys data.
+
+    An error is triggered if the provided ssh key name does not exist.
+
     ## Example Usage
 
     Get the ssh key:
@@ -118,6 +125,13 @@ def get_ssh_key(name: Optional[_builtins.str] = None,
 def get_ssh_key_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeyResult]:
     """
+    Get information on a ssh key. This data source provides the name, public key,
+    and fingerprint as configured on your DigitalOcean account. This is useful if
+    the ssh key in question is not managed by Terraform or you need to utilize any
+    of the keys data.
+
+    An error is triggered if the provided ssh key name does not exist.
+
     ## Example Usage
 
     Get the ssh key:

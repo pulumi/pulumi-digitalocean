@@ -48,6 +48,13 @@ class SpacesBucketObjectArgs:
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
+               Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[_builtins.str] source: The path to a file that will be read and uploaded as raw bytes for the object content.
         :param pulumi.Input[_builtins.str] website_redirect: Specifies a target URL for [website redirect](http://docs.aws.amazon.com/AmazonS3/latest/dev/how-to-page-redirect.html).
@@ -217,6 +224,9 @@ class SpacesBucketObjectArgs:
     @_builtins.property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -226,6 +236,14 @@ class SpacesBucketObjectArgs:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow the object to be deleted by removing any legal hold on any object version.
+        Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -300,6 +318,13 @@ class _SpacesBucketObjectState:
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
+               Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -453,6 +478,9 @@ class _SpacesBucketObjectState:
     @_builtins.property
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        """
         return pulumi.get(self, "etag")
 
     @etag.setter
@@ -462,6 +490,14 @@ class _SpacesBucketObjectState:
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Allow the object to be deleted by removing any legal hold on any object version.
+        Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
@@ -565,6 +601,31 @@ class SpacesBucketObject(pulumi.CustomResource):
                  website_redirect: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+        The `SpacesBucketObject` resource allows Terraform to upload content
+        to Spaces.
+
+        The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+        designed to be interoperable with Amazon's AWS S3 API. This allows users to
+        interact with the service while using the tools they already know. Spaces
+        mirrors S3's authentication framework and requests to Spaces require a key pair
+        similar to Amazon's Access ID and Secret Key.
+
+        The authentication requirement can be met by either setting the
+        `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+        the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+        access ID and secret you generate via the DigitalOcean control panel. For
+        example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        ```
+
+        For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+
         ## Example Usage
 
         ### Create a Key in a Spaces Bucket
@@ -599,6 +660,13 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
+               Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -612,6 +680,31 @@ class SpacesBucketObject(pulumi.CustomResource):
                  args: SpacesBucketObjectArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a bucket object resource for Spaces, DigitalOcean's object storage product.
+        The `SpacesBucketObject` resource allows Terraform to upload content
+        to Spaces.
+
+        The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+        designed to be interoperable with Amazon's AWS S3 API. This allows users to
+        interact with the service while using the tools they already know. Spaces
+        mirrors S3's authentication framework and requests to Spaces require a key pair
+        similar to Amazon's Access ID and Secret Key.
+
+        The authentication requirement can be met by either setting the
+        `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+        the provider's `spaces_access_id` and `spaces_secret_key` arguments to the
+        access ID and secret you generate via the DigitalOcean control panel. For
+        example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        static_assets = digitalocean.SpacesBucket("static-assets")
+        ```
+
+        For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+
         ## Example Usage
 
         ### Create a Key in a Spaces Bucket
@@ -741,6 +834,13 @@ class SpacesBucketObject(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] content_encoding: Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [w3c content encoding](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.11) for further information.
         :param pulumi.Input[_builtins.str] content_language: The language the content is in e.g. en-US or en-GB.
         :param pulumi.Input[_builtins.str] content_type: A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
+        :param pulumi.Input[_builtins.str] etag: Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        :param pulumi.Input[_builtins.bool] force_destroy: Allow the object to be deleted by removing any legal hold on any object version.
+               Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+               
+               If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+               
+               > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] metadata: A mapping of keys/values to provision metadata (will be automatically prefixed by `x-amz-meta-`, note that only lowercase label are currently supported by the AWS Go API).
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -846,11 +946,22 @@ class SpacesBucketObject(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def etag(self) -> pulumi.Output[_builtins.str]:
+        """
+        Used to trigger updates. The only meaningful value is `${filemd5("path/to/file")}` (Terraform 0.11.12 or later) or `${md5(file("path/to/file"))}` (Terraform 0.11.11 or earlier).
+        """
         return pulumi.get(self, "etag")
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
     def force_destroy(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        Allow the object to be deleted by removing any legal hold on any object version.
+        Default is `false`. This value should be set to `true` only if the bucket has S3 object lock enabled.
+
+        If no content is provided through `source`, `content` or `content_base64`, then the object will be empty.
+
+        > **Note:** Terraform ignores all leading `/`s in the object's `key` and treats multiple `/`s in the rest of the object's `key` as a single `/`, so values of `/index.html` and `index.html` correspond to the same S3 object as do `first//second///third//` and `first/second/third/`.
+        """
         return pulumi.get(self, "force_destroy")
 
     @_builtins.property

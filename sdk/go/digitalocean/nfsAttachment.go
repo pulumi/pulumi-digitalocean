@@ -59,7 +59,7 @@ import (
 //
 // ## Import
 //
-// NFS attachments can be imported using the `share_id` and `vpc_id` separated by a comma, e.g.
+// NFS attachments can be imported using the `shareId` and `vpcId` separated by a comma, e.g.
 //
 // ```sh
 // $ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1

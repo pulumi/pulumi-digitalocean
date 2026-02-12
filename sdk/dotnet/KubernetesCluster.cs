@@ -10,26 +10,185 @@ using Pulumi.Serialization;
 namespace Pulumi.DigitalOcean
 {
     /// <summary>
+    /// Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ### Basic Example
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Version = "latest",
+    ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///         {
+    ///             Name = "worker-pool",
+    ///             Size = "s-2vcpu-2gb",
+    ///             NodeCount = 3,
+    ///             Taints = new[]
+    ///             {
+    ///                 new DigitalOcean.Inputs.KubernetesClusterNodePoolTaintArgs
+    ///                 {
+    ///                     Key = "workloadKind",
+    ///                     Value = "database",
+    ///                     Effect = "NoSchedule",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Autoscaling Example
+    /// 
+    /// Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         Version = "1.22.8-do.1",
+    ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///         {
+    ///             Name = "autoscale-worker-pool",
+    ///             Size = "s-2vcpu-2gb",
+    ///             AutoScale = true,
+    ///             MinNodes = 1,
+    ///             MaxNodes = 5,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Note that, currently, each node pool must always have at least one node and when using autoscaling the MinNodes must be greater than or equal to 1.
+    /// &gt; Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+    /// 
+    /// ### Auto Upgrade Example
+    /// 
+    /// DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions. You may explicitly specify the maintenance window policy.
+    /// For example:
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = DigitalOcean.GetKubernetesVersions.Invoke(new()
+    ///     {
+    ///         VersionPrefix = "1.22.",
+    ///     });
+    /// 
+    ///     var foo = new DigitalOcean.KubernetesCluster("foo", new()
+    ///     {
+    ///         Name = "foo",
+    ///         Region = DigitalOcean.Region.NYC1,
+    ///         AutoUpgrade = true,
+    ///         Version = example.Apply(getKubernetesVersionsResult =&gt; getKubernetesVersionsResult.LatestVersion),
+    ///         MaintenancePolicy = new DigitalOcean.Inputs.KubernetesClusterMaintenancePolicyArgs
+    ///         {
+    ///             StartTime = "04:00",
+    ///             Day = "sunday",
+    ///         },
+    ///         NodePool = new DigitalOcean.Inputs.KubernetesClusterNodePoolArgs
+    ///         {
+    ///             Name = "default",
+    ///             Size = "s-1vcpu-2gb",
+    ///             NodeCount = 3,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
+    /// 
+    /// ### Kubernetes Terraform Provider Example
+    /// 
+    /// The cluster's kubeconfig is exported as an attribute allowing you to use it with
+    /// the Kubernetes Terraform provider.
+    /// 
+    /// &gt; When using interpolation to pass credentials from a `digitalocean.KubernetesCluster`
+    /// resource to the Kubernetes provider, the cluster resource generally should not
+    /// be created in the same Terraform module where Kubernetes provider resources are
+    /// also used. This can lead to unpredictable errors which are hard to debug and
+    /// diagnose. The root issue lies with the order in which Terraform itself evaluates
+    /// the provider blocks vs. actual resources.
+    /// 
+    /// When using the Kubernetes provider with a cluster created in a separate Terraform
+    /// module or configuration, use the `digitalocean.KubernetesCluster` data-source
+    /// to access the cluster's credentials. See here for a full example.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DigitalOcean = Pulumi.DigitalOcean;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+    ///     {
+    ///         Name = "prod-cluster-01",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Exec credential plugin
+    /// 
+    /// Another method to ensure that the Kubernetes provider is receiving valid credentials
+    /// is to use an exec plugin. In order to use use this approach, the DigitalOcean
+    /// CLI (`Doctl`) must be present. `Doctl` will renew the token if needed before
+    /// initializing the provider.
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with
-    /// 
     /// the `terraform:default-node-pool` tag. The provider will automatically add this tag if
-    /// 
     /// the cluster only has a single node pool. Clusters with more than one node pool, however, will require
-    /// 
     /// that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be
-    /// 
     /// the default node pool.
     /// 
-    /// Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
+    /// Then the Kubernetes cluster and its default node pool can be imported using the cluster's `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
     /// ```
     /// 
-    /// Additional node pools must be imported separately as `digitalocean_kubernetes_cluster`
-    /// 
+    /// Additional node pools must be imported separately as `digitalocean.KubernetesCluster`
     /// resources, e.g.
     /// 
     /// ```sh

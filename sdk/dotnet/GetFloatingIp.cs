@@ -12,6 +12,15 @@ namespace Pulumi.DigitalOcean
     public static class GetFloatingIp
     {
         /// <summary>
+        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+        /// 
+        /// Get information on a floating ip. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the floating IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided floating IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the floating IP:
@@ -42,6 +51,15 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+        /// 
+        /// Get information on a floating ip. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the floating IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided floating IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the floating IP:
@@ -72,6 +90,15 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetFloatingIpResult>("digitalocean:index/getFloatingIp:getFloatingIp", args ?? new GetFloatingIpInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// &gt; **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `digitalocean.ReservedIp` instead.
+        /// 
+        /// Get information on a floating ip. This data source provides the region and Droplet id
+        /// as configured on your DigitalOcean account. This is useful if the floating IP
+        /// in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided floating IP does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the floating IP:

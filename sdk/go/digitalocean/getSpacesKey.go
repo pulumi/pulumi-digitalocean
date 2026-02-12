@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information on a Spaces key for use in other resources. This is useful if the Spaces key in question
+// is not managed by Terraform or you need to utilize any of the key's data.
+//
 // ## Example Usage
 //
 // Get the key by access key ID:

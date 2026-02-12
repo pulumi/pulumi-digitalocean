@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information on a ssh key. This data source provides the name, public key,
+// and fingerprint as configured on your DigitalOcean account. This is useful if
+// the ssh key in question is not managed by Terraform or you need to utilize any
+// of the keys data.
+//
+// An error is triggered if the provided ssh key name does not exist.
+//
 // ## Example Usage
 //
 // Get the ssh key:

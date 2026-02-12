@@ -44,7 +44,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// BYOIP prefixes can be imported using the prefix `uuid`, e.g.
+    /// BYOIP prefixes can be imported using the prefix `Uuid`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/byoipPrefix:ByoipPrefix example 506f78a4-e098-11e5-ad9f-000f53306ae1

@@ -870,16 +870,125 @@ class KubernetesCluster(pulumi.CustomResource):
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
+        Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+
+        ## Example Usage
+
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="latest",
+            node_pool={
+                "name": "worker-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+                "taints": [{
+                    "key": "workloadKind",
+                    "value": "database",
+                    "effect": "NoSchedule",
+                }],
+            })
+        ```
+
+        ### Autoscaling Example
+
+        Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="1.22.8-do.1",
+            node_pool={
+                "name": "autoscale-worker-pool",
+                "size": "s-2vcpu-2gb",
+                "auto_scale": True,
+                "min_nodes": 1,
+                "max_nodes": 5,
+            })
+        ```
+
+        Note that, currently, each node pool must always have at least one node and when using autoscaling the min_nodes must be greater than or equal to 1.
+        > Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+
+        ### Auto Upgrade Example
+
+        DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions. You may explicitly specify the maintenance window policy.
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            auto_upgrade=True,
+            version=example.latest_version,
+            maintenance_policy={
+                "start_time": "04:00",
+                "day": "sunday",
+            },
+            node_pool={
+                "name": "default",
+                "size": "s-1vcpu-2gb",
+                "node_count": 3,
+            })
+        ```
+
+        Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
+
+        ### Kubernetes Terraform Provider Example
+
+        The cluster's kubeconfig is exported as an attribute allowing you to use it with
+        the Kubernetes Terraform provider.
+
+        > When using interpolation to pass credentials from a `KubernetesCluster`
+        resource to the Kubernetes provider, the cluster resource generally should not
+        be created in the same Terraform module where Kubernetes provider resources are
+        also used. This can lead to unpredictable errors which are hard to debug and
+        diagnose. The root issue lies with the order in which Terraform itself evaluates
+        the provider blocks vs. actual resources.
+
+        When using the Kubernetes provider with a cluster created in a separate Terraform
+        module or configuration, use the `KubernetesCluster` data-source
+        to access the cluster's credentials. See here for a full example.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+        ```
+
+        ### Exec credential plugin
+
+        Another method to ensure that the Kubernetes provider is receiving valid credentials
+        is to use an exec plugin. In order to use use this approach, the DigitalOcean
+        CLI (`doctl`) must be present. `doctl` will renew the token if needed before
+        initializing the provider.
+
+        ```python
+        import pulumi
+        ```
+
         ## Import
 
         Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with
-
         the `terraform:default-node-pool` tag. The provider will automatically add this tag if
-
         the cluster only has a single node pool. Clusters with more than one node pool, however, will require
-
         that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be
-
         the default node pool.
 
         Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
@@ -888,8 +997,7 @@ class KubernetesCluster(pulumi.CustomResource):
         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
         ```
 
-        Additional node pools must be imported separately as `digitalocean_kubernetes_cluster`
-
+        Additional node pools must be imported separately as `KubernetesCluster`
         resources, e.g.
 
         ```sh
@@ -927,16 +1035,125 @@ class KubernetesCluster(pulumi.CustomResource):
                  args: KubernetesClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
+
+        ## Example Usage
+
+        ### Basic Example
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="latest",
+            node_pool={
+                "name": "worker-pool",
+                "size": "s-2vcpu-2gb",
+                "node_count": 3,
+                "taints": [{
+                    "key": "workloadKind",
+                    "value": "database",
+                    "effect": "NoSchedule",
+                }],
+            })
+        ```
+
+        ### Autoscaling Example
+
+        Node pools may also be configured to [autoscale](https://www.digitalocean.com/docs/kubernetes/how-to/autoscale/).
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            version="1.22.8-do.1",
+            node_pool={
+                "name": "autoscale-worker-pool",
+                "size": "s-2vcpu-2gb",
+                "auto_scale": True,
+                "min_nodes": 1,
+                "max_nodes": 5,
+            })
+        ```
+
+        Note that, currently, each node pool must always have at least one node and when using autoscaling the min_nodes must be greater than or equal to 1.
+        > Autoscaling to zero (`min_nodes=0`) is in [private preview](https://docs.digitalocean.com/release-notes/kubernetes/#2025-01-07) and not available for public use.
+
+        ### Auto Upgrade Example
+
+        DigitalOcean Kubernetes clusters may also be configured to [auto upgrade](https://www.digitalocean.com/docs/kubernetes/how-to/upgrade-cluster/#automatically) patch versions. You may explicitly specify the maintenance window policy.
+        For example:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.get_kubernetes_versions(version_prefix="1.22.")
+        foo = digitalocean.KubernetesCluster("foo",
+            name="foo",
+            region=digitalocean.Region.NYC1,
+            auto_upgrade=True,
+            version=example.latest_version,
+            maintenance_policy={
+                "start_time": "04:00",
+                "day": "sunday",
+            },
+            node_pool={
+                "name": "default",
+                "size": "s-1vcpu-2gb",
+                "node_count": 3,
+            })
+        ```
+
+        Note that a data source is used to supply the version. This is needed to prevent configuration diff whenever a cluster is upgraded.
+
+        ### Kubernetes Terraform Provider Example
+
+        The cluster's kubeconfig is exported as an attribute allowing you to use it with
+        the Kubernetes Terraform provider.
+
+        > When using interpolation to pass credentials from a `KubernetesCluster`
+        resource to the Kubernetes provider, the cluster resource generally should not
+        be created in the same Terraform module where Kubernetes provider resources are
+        also used. This can lead to unpredictable errors which are hard to debug and
+        diagnose. The root issue lies with the order in which Terraform itself evaluates
+        the provider blocks vs. actual resources.
+
+        When using the Kubernetes provider with a cluster created in a separate Terraform
+        module or configuration, use the `KubernetesCluster` data-source
+        to access the cluster's credentials. See here for a full example.
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
+        ```
+
+        ### Exec credential plugin
+
+        Another method to ensure that the Kubernetes provider is receiving valid credentials
+        is to use an exec plugin. In order to use use this approach, the DigitalOcean
+        CLI (`doctl`) must be present. `doctl` will renew the token if needed before
+        initializing the provider.
+
+        ```python
+        import pulumi
+        ```
+
         ## Import
 
         Before importing a Kubernetes cluster, the cluster's default node pool must be tagged with
-
         the `terraform:default-node-pool` tag. The provider will automatically add this tag if
-
         the cluster only has a single node pool. Clusters with more than one node pool, however, will require
-
         that you manually add the `terraform:default-node-pool` tag to the node pool that you intend to be
-
         the default node pool.
 
         Then the Kubernetes cluster and its default node pool can be imported using the cluster's `id`, e.g.
@@ -945,8 +1162,7 @@ class KubernetesCluster(pulumi.CustomResource):
         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mycluster 1b8b2100-0e9f-4e8f-ad78-9eb578c2a0af
         ```
 
-        Additional node pools must be imported separately as `digitalocean_kubernetes_cluster`
-
+        Additional node pools must be imported separately as `KubernetesCluster`
         resources, e.g.
 
         ```sh

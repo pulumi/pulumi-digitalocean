@@ -15,6 +15,72 @@ import java.util.List;
 import javax.annotation.Nullable;
 
 /**
+ * Assign resources to a DigitalOcean Project. This is useful if you need to assign resources
+ * managed in Terraform to a DigitalOcean Project managed outside of Terraform.
+ * 
+ * The following resource types can be associated with a project:
+ * 
+ * * App Platform Apps
+ * * Database Clusters
+ * * Domains
+ * * Droplets
+ * * Floating IPs
+ * * Kubernetes Clusters
+ * * Load Balancers
+ * * Spaces Buckets
+ * * Volumes
+ * 
+ * ## Example Usage
+ * 
+ * The following example assigns a droplet to a Project managed outside of Terraform:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.DigitaloceanFunctions;
+ * import com.pulumi.digitalocean.inputs.GetProjectArgs;
+ * import com.pulumi.digitalocean.Droplet;
+ * import com.pulumi.digitalocean.DropletArgs;
+ * import com.pulumi.digitalocean.ProjectResources;
+ * import com.pulumi.digitalocean.ProjectResourcesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var playground = DigitaloceanFunctions.getProject(GetProjectArgs.builder()
+ *             .name("playground")
+ *             .build());
+ * 
+ *         var foobar = new Droplet("foobar", DropletArgs.builder()
+ *             .name("example")
+ *             .size("s-1vcpu-1gb")
+ *             .image("ubuntu-22-04-x64")
+ *             .region("nyc3")
+ *             .build());
+ * 
+ *         var barfoo = new ProjectResources("barfoo", ProjectResourcesArgs.builder()
+ *             .project(playground.id())
+ *             .resources(foobar.dropletUrn())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * Importing this resource is not supported.

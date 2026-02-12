@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information on a volume for use in other resources. This data source provides
+// all of the volumes properties as configured on your DigitalOcean account. This is
+// useful if the volume in question is not managed by Terraform or you need to utilize
+// any of the volumes data.
+//
+// An error is triggered if the provided volume name does not exist.
+//
 // ## Example Usage
 //
 // Get the volume:

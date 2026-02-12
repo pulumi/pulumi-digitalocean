@@ -130,7 +130,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
         ## Import
 
         Reserved IP assignments can be imported using the reserved IP itself and the `id` of
-
         the Droplet joined with a comma. For example:
 
         ```sh
@@ -175,7 +174,6 @@ class ReservedIpAssignment(pulumi.CustomResource):
         ## Import
 
         Reserved IP assignments can be imported using the reserved IP itself and the `id` of
-
         the Droplet joined with a comma. For example:
 
         ```sh

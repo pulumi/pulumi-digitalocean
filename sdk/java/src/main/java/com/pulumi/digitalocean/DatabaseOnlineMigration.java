@@ -103,7 +103,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * A MySQL database cluster&#39;s online_migration can be imported using the `id` the parent cluster, e.g.
+ * A MySQL database cluster&#39;s onlineMigration can be imported using the `id` the parent cluster, e.g.
  * 
  * ```sh
  * $ pulumi import digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration example 4b62829a-9c42-465b-aaa3-84051048e712

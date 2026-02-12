@@ -5,6 +5,31 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Provides a bucket policy resource for Spaces, DigitalOcean's object storage product.
+ * The `digitalocean.SpacesBucketPolicy` resource allows Terraform to attach bucket
+ * policy to Spaces.
+ *
+ * The [Spaces API](https://docs.digitalocean.com/reference/api/spaces-api/) was
+ * designed to be interoperable with Amazon's AWS S3 API. This allows users to
+ * interact with the service while using the tools they already know. Spaces
+ * mirrors S3's authentication framework and requests to Spaces require a key pair
+ * similar to Amazon's Access ID and Secret Key.
+ *
+ * The authentication requirement can be met by either setting the
+ * `SPACES_ACCESS_KEY_ID` and `SPACES_SECRET_ACCESS_KEY` environment variables or
+ * the provider's `spacesAccessId` and `spacesSecretKey` arguments to the
+ * access ID and secret you generate via the DigitalOcean control panel. For
+ * example:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const static_assets = new digitalocean.SpacesBucket("static-assets", {});
+ * ```
+ *
+ * For more information, See [An Introduction to DigitalOcean Spaces](https://www.digitalocean.com/community/tutorials/an-introduction-to-digitalocean-spaces)
+ *
  * ## Example Usage
  *
  * ### Limiting access to specific IP addresses

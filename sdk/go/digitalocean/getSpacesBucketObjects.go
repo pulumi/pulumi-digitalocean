@@ -11,6 +11,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **NOTE on `maxKeys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.
+//
+// The bucket-objects data source returns keys (i.e., file names) and other metadata about objects in a Spaces bucket.
 func GetSpacesBucketObjects(ctx *pulumi.Context, args *GetSpacesBucketObjectsArgs, opts ...pulumi.InvokeOption) (*GetSpacesBucketObjectsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSpacesBucketObjectsResult

@@ -138,6 +138,15 @@ def get_vpc(id: Optional[_builtins.str] = None,
             region: Optional[_builtins.str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVpcResult:
     """
+    Retrieve information about a VPC for use in other resources.
+
+    This data source provides all of the VPC's properties as configured on your
+    DigitalOcean account. This is useful if the VPC in question is not managed by
+    Terraform or you need to utilize any of the VPC's data.
+
+    VPCs may be looked up by `id` or `name`. Specifying a `region` will
+    return that that region's default VPC.
+
     ## Example Usage
 
     ### VPC By Name
@@ -190,6 +199,15 @@ def get_vpc_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVpcResult]:
     """
+    Retrieve information about a VPC for use in other resources.
+
+    This data source provides all of the VPC's properties as configured on your
+    DigitalOcean account. This is useful if the VPC in question is not managed by
+    Terraform or you need to utilize any of the VPC's data.
+
+    VPCs may be looked up by `id` or `name`. Specifying a `region` will
+    return that that region's default VPC.
+
     ## Example Usage
 
     ### VPC By Name

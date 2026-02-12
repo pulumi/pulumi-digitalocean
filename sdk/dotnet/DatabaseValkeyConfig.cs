@@ -47,7 +47,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// A Valkey database cluster's configuration can be imported using the `id` the parent cluster, e.g.
+    /// A Valkey database cluster's configuration can be imported using the `Id` the parent cluster, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97

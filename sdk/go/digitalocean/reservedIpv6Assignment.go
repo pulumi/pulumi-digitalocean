@@ -17,8 +17,7 @@ import (
 //
 // ## Import
 //
-// # Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
-//
+// Reserved IPv6 assignments can be imported using the reserved IPv6 itself and the `id` of
 // the Droplet joined with a comma. For example:
 //
 // ```sh

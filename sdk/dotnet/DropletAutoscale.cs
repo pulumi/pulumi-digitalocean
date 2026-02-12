@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// ## Import
     /// 
-    /// Droplet Autoscale pools can be imported using their `id`, e.g.
+    /// Droplet Autoscale pools can be imported using their `Id`, e.g.
     /// 
     /// ```sh
     /// $ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445

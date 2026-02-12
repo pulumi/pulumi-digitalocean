@@ -134,6 +134,9 @@ def get_kubernetes_versions(version_prefix: Optional[_builtins.str] = None,
             "node_count": 3,
         })
     ```
+
+
+    :param _builtins.str version_prefix: If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
     """
     __args__ = dict()
     __args__['versionPrefix'] = version_prefix
@@ -197,6 +200,9 @@ def get_kubernetes_versions_output(version_prefix: Optional[pulumi.Input[Optiona
             "node_count": 3,
         })
     ```
+
+
+    :param _builtins.str version_prefix: If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
     """
     __args__ = dict()
     __args__['versionPrefix'] = version_prefix

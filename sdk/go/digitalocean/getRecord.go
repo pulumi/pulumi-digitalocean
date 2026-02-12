@@ -11,6 +11,13 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information on a DNS record. This data source provides the name, TTL, and zone
+// file as configured on your DigitalOcean account. This is useful if the record
+// in question is not managed by Terraform.
+//
+// An error is triggered if the provided domain name or record are not managed with
+// your DigitalOcean account.
+//
 // ## Example Usage
 //
 // Get data from a DNS record:

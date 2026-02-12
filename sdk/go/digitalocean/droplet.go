@@ -78,7 +78,11 @@ type Droplet struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrOutput `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	DropletUrn       pulumi.StringOutput  `pulumi:"dropletUrn"`
+	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringOutput `pulumi:"image"`
@@ -193,8 +197,12 @@ type dropletState struct {
 	// set it to `true`.
 	DropletAgent *bool `pulumi:"dropletAgent"`
 	// The uniform resource name of the Droplet
-	DropletUrn       *string `pulumi:"dropletUrn"`
-	GracefulShutdown *bool   `pulumi:"gracefulShutdown"`
+	DropletUrn *string `pulumi:"dropletUrn"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image *string `pulumi:"image"`
 	// The IPv4 address
@@ -273,7 +281,11 @@ type DropletState struct {
 	// set it to `true`.
 	DropletAgent pulumi.BoolPtrInput
 	// The uniform resource name of the Droplet
-	DropletUrn       pulumi.StringPtrInput
+	DropletUrn pulumi.StringPtrInput
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringPtrInput
@@ -352,7 +364,11 @@ type dropletArgs struct {
 	// installation errors (i.e. OS not supported) are ignored. To prevent it from
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
-	DropletAgent     *bool `pulumi:"dropletAgent"`
+	DropletAgent *bool `pulumi:"dropletAgent"`
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image string `pulumi:"image"`
@@ -413,7 +429,11 @@ type DropletArgs struct {
 	// installation errors (i.e. OS not supported) are ignored. To prevent it from
 	// being installed, set to `false`. To make installation errors fatal, explicitly
 	// set it to `true`.
-	DropletAgent     pulumi.BoolPtrInput
+	DropletAgent pulumi.BoolPtrInput
+	// A boolean indicating whether the droplet
+	// should be gracefully shut down before it is deleted.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringInput
@@ -583,6 +603,10 @@ func (o DropletOutput) DropletUrn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.StringOutput { return v.DropletUrn }).(pulumi.StringOutput)
 }
 
+// A boolean indicating whether the droplet
+// should be gracefully shut down before it is deleted.
+//
+// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }

@@ -12,6 +12,11 @@ namespace Pulumi.DigitalOcean
     public static class GetReservedIpv6
     {
         /// <summary>
+        /// Get information on a reserved IPv6. This data source provides the RegionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IPv6 does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IPv6:
@@ -41,6 +46,11 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetReservedIpv6Result>("digitalocean:index/getReservedIpv6:getReservedIpv6", args ?? new GetReservedIpv6Args(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a reserved IPv6. This data source provides the RegionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IPv6 does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IPv6:
@@ -70,6 +80,11 @@ namespace Pulumi.DigitalOcean
             => global::Pulumi.Deployment.Instance.Invoke<GetReservedIpv6Result>("digitalocean:index/getReservedIpv6:getReservedIpv6", args ?? new GetReservedIpv6InvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information on a reserved IPv6. This data source provides the RegionSlug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is
+        /// attached to.
+        /// 
+        /// An error is triggered if the provided reserved IPv6 does not exist.
+        /// 
         /// ## Example Usage
         /// 
         /// Get the reserved IPv6:
