@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.digitalocean.inputs.AppSpecIngressRuleArgs;
+import com.pulumi.digitalocean.inputs.AppSpecIngressSecureHeaderArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -31,10 +32,18 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
         return Optional.ofNullable(this.rules);
     }
 
+    @Import(name="secureHeader")
+    private @Nullable Output<AppSpecIngressSecureHeaderArgs> secureHeader;
+
+    public Optional<Output<AppSpecIngressSecureHeaderArgs>> secureHeader() {
+        return Optional.ofNullable(this.secureHeader);
+    }
+
     private AppSpecIngressArgs() {}
 
     private AppSpecIngressArgs(AppSpecIngressArgs $) {
         this.rules = $.rules;
+        this.secureHeader = $.secureHeader;
     }
 
     public static Builder builder() {
@@ -84,6 +93,15 @@ public final class AppSpecIngressArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder rules(AppSpecIngressRuleArgs... rules) {
             return rules(List.of(rules));
+        }
+
+        public Builder secureHeader(@Nullable Output<AppSpecIngressSecureHeaderArgs> secureHeader) {
+            $.secureHeader = secureHeader;
+            return this;
+        }
+
+        public Builder secureHeader(AppSpecIngressSecureHeaderArgs secureHeader) {
+            return secureHeader(Output.of(secureHeader));
         }
 
         public AppSpecIngressArgs build() {

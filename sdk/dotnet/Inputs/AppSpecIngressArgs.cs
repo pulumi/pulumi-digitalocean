@@ -24,6 +24,9 @@ namespace Pulumi.DigitalOcean.Inputs
             set => _rules = value;
         }
 
+        [Input("secureHeader")]
+        public Input<Inputs.AppSpecIngressSecureHeaderArgs>? SecureHeader { get; set; }
+
         public AppSpecIngressArgs()
         {
         }

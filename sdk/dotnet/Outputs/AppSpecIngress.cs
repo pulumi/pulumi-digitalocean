@@ -17,11 +17,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         /// </summary>
         public readonly ImmutableArray<Outputs.AppSpecIngressRule> Rules;
+        public readonly Outputs.AppSpecIngressSecureHeader? SecureHeader;
 
         [OutputConstructor]
-        private AppSpecIngress(ImmutableArray<Outputs.AppSpecIngressRule> rules)
+        private AppSpecIngress(
+            ImmutableArray<Outputs.AppSpecIngressRule> rules,
+
+            Outputs.AppSpecIngressSecureHeader? secureHeader)
         {
             Rules = rules;
+            SecureHeader = secureHeader;
         }
     }
 }

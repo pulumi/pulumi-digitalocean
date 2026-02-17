@@ -28,6 +28,7 @@ import * as utilities from "./utilities";
  *     clusterId: exampleDatabaseCluster.id,
  *     notifyKeyspaceEvents: "KEA",
  *     timeout: 90,
+ *     valkeyMaxmemoryPolicy: "allkeys-random",
  * });
  * ```
  *
@@ -119,6 +120,10 @@ export class DatabaseValkeyConfig extends pulumi.CustomResource {
      * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
     declare public readonly valkeyActiveExpireEffort: pulumi.Output<number>;
+    /**
+     * Eviction policy model
+     */
+    declare public readonly valkeyMaxmemoryPolicy: pulumi.Output<string>;
 
     /**
      * Create a DatabaseValkeyConfig resource with the given unique name, arguments, and options.
@@ -146,6 +151,7 @@ export class DatabaseValkeyConfig extends pulumi.CustomResource {
             resourceInputs["ssl"] = state?.ssl;
             resourceInputs["timeout"] = state?.timeout;
             resourceInputs["valkeyActiveExpireEffort"] = state?.valkeyActiveExpireEffort;
+            resourceInputs["valkeyMaxmemoryPolicy"] = state?.valkeyMaxmemoryPolicy;
         } else {
             const args = argsOrState as DatabaseValkeyConfigArgs | undefined;
             if (args?.clusterId === undefined && !opts.urn) {
@@ -164,6 +170,7 @@ export class DatabaseValkeyConfig extends pulumi.CustomResource {
             resourceInputs["ssl"] = args?.ssl;
             resourceInputs["timeout"] = args?.timeout;
             resourceInputs["valkeyActiveExpireEffort"] = args?.valkeyActiveExpireEffort;
+            resourceInputs["valkeyMaxmemoryPolicy"] = args?.valkeyMaxmemoryPolicy;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DatabaseValkeyConfig.__pulumiType, name, resourceInputs, opts);
@@ -226,6 +233,10 @@ export interface DatabaseValkeyConfigState {
      * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
     valkeyActiveExpireEffort?: pulumi.Input<number>;
+    /**
+     * Eviction policy model
+     */
+    valkeyMaxmemoryPolicy?: pulumi.Input<string>;
 }
 
 /**
@@ -284,4 +295,8 @@ export interface DatabaseValkeyConfigArgs {
      * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
     valkeyActiveExpireEffort?: pulumi.Input<number>;
+    /**
+     * Eviction policy model
+     */
+    valkeyMaxmemoryPolicy?: pulumi.Input<string>;
 }

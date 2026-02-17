@@ -843,9 +843,19 @@
                         "$ref": "#/types/digitalocean:index/AppSpecIngressRule:AppSpecIngressRule"
                     },
                     "description": "Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.\n"
+                },
+                "secureHeader": {
+                    "$ref": "#/types/digitalocean:index/AppSpecIngressSecureHeader:AppSpecIngressSecureHeader"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "secureHeader"
+                    ]
+                }
+            }
         },
         "digitalocean:index/AppSpecIngressRule:AppSpecIngressRule": {
             "properties": {
@@ -1036,6 +1046,26 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/AppSpecIngressSecureHeader:AppSpecIngressSecureHeader": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "key",
+                        "value"
+                    ]
+                }
+            }
         },
         "digitalocean:index/AppSpecJob:AppSpecJob": {
             "properties": {
@@ -8462,9 +8492,20 @@
                         "$ref": "#/types/digitalocean:index/getAppSpecIngressRule:getAppSpecIngressRule"
                     },
                     "description": "The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.\n"
+                },
+                "secureHeader": {
+                    "$ref": "#/types/digitalocean:index/getAppSpecIngressSecureHeader:getAppSpecIngressSecureHeader"
                 }
             },
-            "type": "object"
+            "type": "object",
+            "required": [
+                "secureHeader"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getAppSpecIngressRule:getAppSpecIngressRule": {
             "properties": {
@@ -8650,6 +8691,28 @@
                 }
             },
             "type": "object"
+        },
+        "digitalocean:index/getAppSpecIngressSecureHeader:getAppSpecIngressSecureHeader": {
+            "properties": {
+                "key": {
+                    "type": "string",
+                    "description": "The name of the environment variable.\n"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "The threshold for the type of the warning.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "value"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
         },
         "digitalocean:index/getAppSpecJob:getAppSpecJob": {
             "properties": {
@@ -30591,7 +30654,7 @@
             }
         },
         "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig": {
-            "description": "Provides a virtual resource that can be used to change advanced configuration\noptions for a DigitalOcean managed Valkey database cluster.\n\n\u003e **Note** Valkey configurations are only removed from state when destroyed. The remote configuration is not unset.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleDatabaseCluster = new digitalocean.DatabaseCluster(\"example\", {\n    name: \"example-valkey-cluster\",\n    engine: \"valkey\",\n    version: \"8\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\nconst example = new digitalocean.DatabaseValkeyConfig(\"example\", {\n    clusterId: exampleDatabaseCluster.id,\n    notifyKeyspaceEvents: \"KEA\",\n    timeout: 90,\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_database_cluster = digitalocean.DatabaseCluster(\"example\",\n    name=\"example-valkey-cluster\",\n    engine=\"valkey\",\n    version=\"8\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\nexample = digitalocean.DatabaseValkeyConfig(\"example\",\n    cluster_id=example_database_cluster.id,\n    notify_keyspace_events=\"KEA\",\n    timeout=90)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster(\"example\", new()\n    {\n        Name = \"example-valkey-cluster\",\n        Engine = \"valkey\",\n        Version = \"8\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n    var example = new DigitalOcean.DatabaseValkeyConfig(\"example\", new()\n    {\n        ClusterId = exampleDatabaseCluster.Id,\n        NotifyKeyspaceEvents = \"KEA\",\n        Timeout = 90,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, \"example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-valkey-cluster\"),\n\t\t\tEngine:    pulumi.String(\"valkey\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseValkeyConfig(ctx, \"example\", \u0026digitalocean.DatabaseValkeyConfigArgs{\n\t\t\tClusterId:            exampleDatabaseCluster.ID(),\n\t\t\tNotifyKeyspaceEvents: pulumi.String(\"KEA\"),\n\t\t\tTimeout:              pulumi.Int(90),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseValkeyConfig;\nimport com.pulumi.digitalocean.DatabaseValkeyConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleDatabaseCluster = new DatabaseCluster(\"exampleDatabaseCluster\", DatabaseClusterArgs.builder()\n            .name(\"example-valkey-cluster\")\n            .engine(\"valkey\")\n            .version(\"8\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var example = new DatabaseValkeyConfig(\"example\", DatabaseValkeyConfigArgs.builder()\n            .clusterId(exampleDatabaseCluster.id())\n            .notifyKeyspaceEvents(\"KEA\")\n            .timeout(90)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DatabaseValkeyConfig\n    properties:\n      clusterId: ${exampleDatabaseCluster.id}\n      notifyKeyspaceEvents: KEA\n      timeout: 90\n  exampleDatabaseCluster:\n    type: digitalocean:DatabaseCluster\n    name: example\n    properties:\n      name: example-valkey-cluster\n      engine: valkey\n      version: '8'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA Valkey database cluster's configuration can be imported using the \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e the parent cluster, e.g.\n\n```sh\n$ pulumi import digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
+            "description": "Provides a virtual resource that can be used to change advanced configuration\noptions for a DigitalOcean managed Valkey database cluster.\n\n\u003e **Note** Valkey configurations are only removed from state when destroyed. The remote configuration is not unset.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst exampleDatabaseCluster = new digitalocean.DatabaseCluster(\"example\", {\n    name: \"example-valkey-cluster\",\n    engine: \"valkey\",\n    version: \"8\",\n    size: digitalocean.DatabaseSlug.DB_1VPCU1GB,\n    region: digitalocean.Region.NYC1,\n    nodeCount: 1,\n});\nconst example = new digitalocean.DatabaseValkeyConfig(\"example\", {\n    clusterId: exampleDatabaseCluster.id,\n    notifyKeyspaceEvents: \"KEA\",\n    timeout: 90,\n    valkeyMaxmemoryPolicy: \"allkeys-random\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample_database_cluster = digitalocean.DatabaseCluster(\"example\",\n    name=\"example-valkey-cluster\",\n    engine=\"valkey\",\n    version=\"8\",\n    size=digitalocean.DatabaseSlug.D_B_1_VPCU1_GB,\n    region=digitalocean.Region.NYC1,\n    node_count=1)\nexample = digitalocean.DatabaseValkeyConfig(\"example\",\n    cluster_id=example_database_cluster.id,\n    notify_keyspace_events=\"KEA\",\n    timeout=90,\n    valkey_maxmemory_policy=\"allkeys-random\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster(\"example\", new()\n    {\n        Name = \"example-valkey-cluster\",\n        Engine = \"valkey\",\n        Version = \"8\",\n        Size = DigitalOcean.DatabaseSlug.DB_1VPCU1GB,\n        Region = DigitalOcean.Region.NYC1,\n        NodeCount = 1,\n    });\n\n    var example = new DigitalOcean.DatabaseValkeyConfig(\"example\", new()\n    {\n        ClusterId = exampleDatabaseCluster.Id,\n        NotifyKeyspaceEvents = \"KEA\",\n        Timeout = 90,\n        ValkeyMaxmemoryPolicy = \"allkeys-random\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texampleDatabaseCluster, err := digitalocean.NewDatabaseCluster(ctx, \"example\", \u0026digitalocean.DatabaseClusterArgs{\n\t\t\tName:      pulumi.String(\"example-valkey-cluster\"),\n\t\t\tEngine:    pulumi.String(\"valkey\"),\n\t\t\tVersion:   pulumi.String(\"8\"),\n\t\t\tSize:      pulumi.String(digitalocean.DatabaseSlug_DB_1VPCU1GB),\n\t\t\tRegion:    pulumi.String(digitalocean.RegionNYC1),\n\t\t\tNodeCount: pulumi.Int(1),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDatabaseValkeyConfig(ctx, \"example\", \u0026digitalocean.DatabaseValkeyConfigArgs{\n\t\t\tClusterId:             exampleDatabaseCluster.ID(),\n\t\t\tNotifyKeyspaceEvents:  pulumi.String(\"KEA\"),\n\t\t\tTimeout:               pulumi.Int(90),\n\t\t\tValkeyMaxmemoryPolicy: pulumi.String(\"allkeys-random\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DatabaseCluster;\nimport com.pulumi.digitalocean.DatabaseClusterArgs;\nimport com.pulumi.digitalocean.DatabaseValkeyConfig;\nimport com.pulumi.digitalocean.DatabaseValkeyConfigArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var exampleDatabaseCluster = new DatabaseCluster(\"exampleDatabaseCluster\", DatabaseClusterArgs.builder()\n            .name(\"example-valkey-cluster\")\n            .engine(\"valkey\")\n            .version(\"8\")\n            .size(\"db-s-1vcpu-1gb\")\n            .region(\"nyc1\")\n            .nodeCount(1)\n            .build());\n\n        var example = new DatabaseValkeyConfig(\"example\", DatabaseValkeyConfigArgs.builder()\n            .clusterId(exampleDatabaseCluster.id())\n            .notifyKeyspaceEvents(\"KEA\")\n            .timeout(90)\n            .valkeyMaxmemoryPolicy(\"allkeys-random\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DatabaseValkeyConfig\n    properties:\n      clusterId: ${exampleDatabaseCluster.id}\n      notifyKeyspaceEvents: KEA\n      timeout: 90\n      valkeyMaxmemoryPolicy: allkeys-random\n  exampleDatabaseCluster:\n    type: digitalocean:DatabaseCluster\n    name: example\n    properties:\n      name: example-valkey-cluster\n      engine: valkey\n      version: '8'\n      size: db-s-1vcpu-1gb\n      region: nyc1\n      nodeCount: 1\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nA Valkey database cluster's configuration can be imported using the \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e the parent cluster, e.g.\n\n```sh\n$ pulumi import digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97\n```\n\n",
             "properties": {
                 "aclChannelsDefault": {
                     "type": "string",
@@ -30644,6 +30707,10 @@
                 "valkeyActiveExpireEffort": {
                     "type": "integer",
                     "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
+                },
+                "valkeyMaxmemoryPolicy": {
+                    "type": "string",
+                    "description": "Eviction policy model\n"
                 }
             },
             "required": [
@@ -30659,7 +30726,8 @@
                 "pubsubClientOutputBufferLimit",
                 "ssl",
                 "timeout",
-                "valkeyActiveExpireEffort"
+                "valkeyActiveExpireEffort",
+                "valkeyMaxmemoryPolicy"
             ],
             "inputProperties": {
                 "aclChannelsDefault": {
@@ -30714,6 +30782,10 @@
                 "valkeyActiveExpireEffort": {
                     "type": "integer",
                     "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
+                },
+                "valkeyMaxmemoryPolicy": {
+                    "type": "string",
+                    "description": "Eviction policy model\n"
                 }
             },
             "requiredInputs": [
@@ -30774,6 +30846,10 @@
                     "valkeyActiveExpireEffort": {
                         "type": "integer",
                         "description": "Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency."
+                    },
+                    "valkeyMaxmemoryPolicy": {
+                        "type": "string",
+                        "description": "Eviction policy model\n"
                     }
                 },
                 "type": "object"

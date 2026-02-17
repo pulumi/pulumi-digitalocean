@@ -17,11 +17,16 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetAppSpecIngressRuleResult> Rules;
+        public readonly Outputs.GetAppSpecIngressSecureHeaderResult SecureHeader;
 
         [OutputConstructor]
-        private GetAppSpecIngressResult(ImmutableArray<Outputs.GetAppSpecIngressRuleResult> rules)
+        private GetAppSpecIngressResult(
+            ImmutableArray<Outputs.GetAppSpecIngressRuleResult> rules,
+
+            Outputs.GetAppSpecIngressSecureHeaderResult secureHeader)
         {
             Rules = rules;
+            SecureHeader = secureHeader;
         }
     }
 }

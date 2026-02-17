@@ -517,6 +517,7 @@ export interface AppSpecIngress {
      * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules?: outputs.AppSpecIngressRule[];
+    secureHeader: outputs.AppSpecIngressSecureHeader;
 }
 
 export interface AppSpecIngressRule {
@@ -643,6 +644,14 @@ export interface AppSpecIngressRuleRedirect {
      * An optional URI path to redirect to.
      */
     uri?: string;
+}
+
+export interface AppSpecIngressSecureHeader {
+    /**
+     * The name of the environment variable.
+     */
+    key: string;
+    value: string;
 }
 
 export interface AppSpecJob {
@@ -4100,6 +4109,7 @@ export interface GetAppSpecIngress {
      * The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
      */
     rules?: outputs.GetAppSpecIngressRule[];
+    secureHeader: outputs.GetAppSpecIngressSecureHeader;
 }
 
 export interface GetAppSpecIngressRule {
@@ -4196,6 +4206,17 @@ export interface GetAppSpecIngressRuleRedirect {
     redirectCode?: number;
     scheme?: string;
     uri?: string;
+}
+
+export interface GetAppSpecIngressSecureHeader {
+    /**
+     * The name of the environment variable.
+     */
+    key: string;
+    /**
+     * The threshold for the type of the warning.
+     */
+    value: string;
 }
 
 export interface GetAppSpecJob {

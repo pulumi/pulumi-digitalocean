@@ -88,6 +88,8 @@ __all__ = [
     'AppSpecIngressRuleMatchPathArgsDict',
     'AppSpecIngressRuleRedirectArgs',
     'AppSpecIngressRuleRedirectArgsDict',
+    'AppSpecIngressSecureHeaderArgs',
+    'AppSpecIngressSecureHeaderArgsDict',
     'AppSpecJobArgs',
     'AppSpecJobArgsDict',
     'AppSpecJobAlertArgs',
@@ -3077,16 +3079,20 @@ class AppSpecIngressArgsDict(TypedDict):
     """
     Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
     """
+    secure_header: NotRequired[pulumi.Input['AppSpecIngressSecureHeaderArgsDict']]
 
 @pulumi.input_type
 class AppSpecIngressArgs:
     def __init__(__self__, *,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]] = None):
+                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]] = None,
+                 secure_header: Optional[pulumi.Input['AppSpecIngressSecureHeaderArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]] rules: Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if secure_header is not None:
+            pulumi.set(__self__, "secure_header", secure_header)
 
     @_builtins.property
     @pulumi.getter
@@ -3099,6 +3105,15 @@ class AppSpecIngressArgs:
     @rules.setter
     def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['AppSpecIngressRuleArgs']]]]):
         pulumi.set(self, "rules", value)
+
+    @_builtins.property
+    @pulumi.getter(name="secureHeader")
+    def secure_header(self) -> Optional[pulumi.Input['AppSpecIngressSecureHeaderArgs']]:
+        return pulumi.get(self, "secure_header")
+
+    @secure_header.setter
+    def secure_header(self, value: Optional[pulumi.Input['AppSpecIngressSecureHeaderArgs']]):
+        pulumi.set(self, "secure_header", value)
 
 
 class AppSpecIngressRuleArgsDict(TypedDict):
@@ -3675,6 +3690,48 @@ class AppSpecIngressRuleRedirectArgs:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "uri", value)
+
+
+class AppSpecIngressSecureHeaderArgsDict(TypedDict):
+    key: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The name of the environment variable.
+    """
+    value: NotRequired[pulumi.Input[_builtins.str]]
+
+@pulumi.input_type
+class AppSpecIngressSecureHeaderArgs:
+    def __init__(__self__, *,
+                 key: Optional[pulumi.Input[_builtins.str]] = None,
+                 value: Optional[pulumi.Input[_builtins.str]] = None):
+        """
+        :param pulumi.Input[_builtins.str] key: The name of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[_builtins.str]]:
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "value", value)
 
 
 class AppSpecJobArgsDict(TypedDict):

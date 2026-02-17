@@ -31,7 +31,8 @@ class DatabaseValkeyConfigArgs:
                  pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None):
+                 valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None,
+                 valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseValkeyConfig resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
@@ -47,6 +48,7 @@ class DatabaseValkeyConfigArgs:
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
         :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.str] valkey_maxmemory_policy: Eviction policy model
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         if acl_channels_default is not None:
@@ -73,6 +75,8 @@ class DatabaseValkeyConfigArgs:
             pulumi.set(__self__, "timeout", timeout)
         if valkey_active_expire_effort is not None:
             pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
+        if valkey_maxmemory_policy is not None:
+            pulumi.set(__self__, "valkey_maxmemory_policy", valkey_maxmemory_policy)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
@@ -230,6 +234,18 @@ class DatabaseValkeyConfigArgs:
     def valkey_active_expire_effort(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "valkey_active_expire_effort", value)
 
+    @_builtins.property
+    @pulumi.getter(name="valkeyMaxmemoryPolicy")
+    def valkey_maxmemory_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Eviction policy model
+        """
+        return pulumi.get(self, "valkey_maxmemory_policy")
+
+    @valkey_maxmemory_policy.setter
+    def valkey_maxmemory_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "valkey_maxmemory_policy", value)
+
 
 @pulumi.input_type
 class _DatabaseValkeyConfigState:
@@ -246,7 +262,8 @@ class _DatabaseValkeyConfigState:
                  pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
-                 valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None):
+                 valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None,
+                 valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseValkeyConfig resources.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
@@ -262,6 +279,7 @@ class _DatabaseValkeyConfigState:
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
         :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.str] valkey_maxmemory_policy: Eviction policy model
         """
         if acl_channels_default is not None:
             pulumi.set(__self__, "acl_channels_default", acl_channels_default)
@@ -289,6 +307,8 @@ class _DatabaseValkeyConfigState:
             pulumi.set(__self__, "timeout", timeout)
         if valkey_active_expire_effort is not None:
             pulumi.set(__self__, "valkey_active_expire_effort", valkey_active_expire_effort)
+        if valkey_maxmemory_policy is not None:
+            pulumi.set(__self__, "valkey_maxmemory_policy", valkey_maxmemory_policy)
 
     @_builtins.property
     @pulumi.getter(name="aclChannelsDefault")
@@ -446,6 +466,18 @@ class _DatabaseValkeyConfigState:
     def valkey_active_expire_effort(self, value: Optional[pulumi.Input[_builtins.int]]):
         pulumi.set(self, "valkey_active_expire_effort", value)
 
+    @_builtins.property
+    @pulumi.getter(name="valkeyMaxmemoryPolicy")
+    def valkey_maxmemory_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Eviction policy model
+        """
+        return pulumi.get(self, "valkey_maxmemory_policy")
+
+    @valkey_maxmemory_policy.setter
+    def valkey_maxmemory_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "valkey_maxmemory_policy", value)
+
 
 @pulumi.type_token("digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig")
 class DatabaseValkeyConfig(pulumi.CustomResource):
@@ -466,6 +498,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None,
+                 valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -489,7 +522,8 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         example = digitalocean.DatabaseValkeyConfig("example",
             cluster_id=example_database_cluster.id,
             notify_keyspace_events="KEA",
-            timeout=90)
+            timeout=90,
+            valkey_maxmemory_policy="allkeys-random")
         ```
 
         ## Import
@@ -515,6 +549,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
         :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.str] valkey_maxmemory_policy: Eviction policy model
         """
         ...
     @overload
@@ -544,7 +579,8 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         example = digitalocean.DatabaseValkeyConfig("example",
             cluster_id=example_database_cluster.id,
             notify_keyspace_events="KEA",
-            timeout=90)
+            timeout=90,
+            valkey_maxmemory_policy="allkeys-random")
         ```
 
         ## Import
@@ -583,6 +619,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
                  ssl: Optional[pulumi.Input[_builtins.bool]] = None,
                  timeout: Optional[pulumi.Input[_builtins.int]] = None,
                  valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None,
+                 valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -607,6 +644,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
             __props__.__dict__["ssl"] = ssl
             __props__.__dict__["timeout"] = timeout
             __props__.__dict__["valkey_active_expire_effort"] = valkey_active_expire_effort
+            __props__.__dict__["valkey_maxmemory_policy"] = valkey_maxmemory_policy
         super(DatabaseValkeyConfig, __self__).__init__(
             'digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig',
             resource_name,
@@ -629,7 +667,8 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
             pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
             ssl: Optional[pulumi.Input[_builtins.bool]] = None,
             timeout: Optional[pulumi.Input[_builtins.int]] = None,
-            valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseValkeyConfig':
+            valkey_active_expire_effort: Optional[pulumi.Input[_builtins.int]] = None,
+            valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseValkeyConfig':
         """
         Get an existing DatabaseValkeyConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -650,6 +689,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] ssl: A boolean indicating whether to require SSL to access Valkey.
         :param pulumi.Input[_builtins.int] timeout: The Valkey idle connection timeout in seconds.
         :param pulumi.Input[_builtins.int] valkey_active_expire_effort: Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
+        :param pulumi.Input[_builtins.str] valkey_maxmemory_policy: Eviction policy model
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -668,6 +708,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         __props__.__dict__["ssl"] = ssl
         __props__.__dict__["timeout"] = timeout
         __props__.__dict__["valkey_active_expire_effort"] = valkey_active_expire_effort
+        __props__.__dict__["valkey_maxmemory_policy"] = valkey_maxmemory_policy
         return DatabaseValkeyConfig(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -773,4 +814,12 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
         """
         return pulumi.get(self, "valkey_active_expire_effort")
+
+    @_builtins.property
+    @pulumi.getter(name="valkeyMaxmemoryPolicy")
+    def valkey_maxmemory_policy(self) -> pulumi.Output[_builtins.str]:
+        """
+        Eviction policy model
+        """
+        return pulumi.get(self, "valkey_maxmemory_policy")
 
