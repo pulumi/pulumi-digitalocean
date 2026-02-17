@@ -1,3 +1,0 @@
-name: floatingip-digitalocean
-description: A simple FloatingIp on DigitalOcean.
-runtime: nodejs
