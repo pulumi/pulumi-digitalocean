@@ -5,8 +5,10 @@ package com.pulumi.digitalocean.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.digitalocean.outputs.AppSpecIngressRule;
+import com.pulumi.digitalocean.outputs.AppSpecIngressSecureHeader;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -16,6 +18,7 @@ public final class AppSpecIngress {
      * 
      */
     private @Nullable List<AppSpecIngressRule> rules;
+    private @Nullable AppSpecIngressSecureHeader secureHeader;
 
     private AppSpecIngress() {}
     /**
@@ -24,6 +27,9 @@ public final class AppSpecIngress {
      */
     public List<AppSpecIngressRule> rules() {
         return this.rules == null ? List.of() : this.rules;
+    }
+    public Optional<AppSpecIngressSecureHeader> secureHeader() {
+        return Optional.ofNullable(this.secureHeader);
     }
 
     public static Builder builder() {
@@ -36,10 +42,12 @@ public final class AppSpecIngress {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<AppSpecIngressRule> rules;
+        private @Nullable AppSpecIngressSecureHeader secureHeader;
         public Builder() {}
         public Builder(AppSpecIngress defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.rules = defaults.rules;
+    	      this.secureHeader = defaults.secureHeader;
         }
 
         @CustomType.Setter
@@ -51,9 +59,16 @@ public final class AppSpecIngress {
         public Builder rules(AppSpecIngressRule... rules) {
             return rules(List.of(rules));
         }
+        @CustomType.Setter
+        public Builder secureHeader(@Nullable AppSpecIngressSecureHeader secureHeader) {
+
+            this.secureHeader = secureHeader;
+            return this;
+        }
         public AppSpecIngress build() {
             final var _resultValue = new AppSpecIngress();
             _resultValue.rules = rules;
+            _resultValue.secureHeader = secureHeader;
             return _resultValue;
         }
     }

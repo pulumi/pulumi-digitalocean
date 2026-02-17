@@ -13,6 +13,400 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetGenaiKnowledgeBasesKnowledgeBase struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt string `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt string `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId string `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic bool `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJobs []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
+	// Name of the Knowledge Base
+	Name string `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId string `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region string `pulumi:"region"`
+	// List of tags
+	Tags []string `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId string `pulumi:"userId"`
+	// UUID of the Knowledge Base
+	Uuid string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArgs and GetGenaiKnowledgeBasesKnowledgeBaseOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseArgs{...}
+type GetGenaiKnowledgeBasesKnowledgeBaseInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArgs struct {
+	// Timestamp when the Knowledge Base was added to the Agent
+	AddedToAgentAt pulumi.StringInput `pulumi:"addedToAgentAt"`
+	// Created At timestamp for the Knowledge Base
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Database ID of the Knowledge Base
+	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
+	// Embedding model UUID for the Knowledge Base
+	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
+	// Indicates if the Knowledge Base is public
+	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
+	// Last indexing job for the Knowledge Base
+	LastIndexingJobs GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
+	// Name of the Knowledge Base
+	Name pulumi.StringInput `pulumi:"name"`
+	// Project ID of the Knowledge Base
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+	// Region of the Knowledge Base
+	Region pulumi.StringInput `pulumi:"region"`
+	// List of tags
+	Tags pulumi.StringArrayInput `pulumi:"tags"`
+	// Timestamp when the Knowledge Base was updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// User ID of the Knowledge Base
+	UserId pulumi.StringInput `pulumi:"userId"`
+	// UUID of the Knowledge Base
+	Uuid pulumi.StringInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArray and GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseArray{ GetGenaiKnowledgeBasesKnowledgeBaseArgs{...} }
+type GetGenaiKnowledgeBasesKnowledgeBaseArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArray []GetGenaiKnowledgeBasesKnowledgeBaseInput
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return o
+}
+
+// Timestamp when the Knowledge Base was added to the Agent
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) AddedToAgentAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.AddedToAgentAt }).(pulumi.StringOutput)
+}
+
+// Created At timestamp for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Database ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
+}
+
+// Embedding model UUID for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
+}
+
+// Indicates if the Knowledge Base is public
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
+}
+
+// Last indexing job for the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) LastIndexingJobs() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+		return v.LastIndexingJobs
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+// Name of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Project ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+// Region of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Region }).(pulumi.StringOutput)
+}
+
+// List of tags
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the Knowledge Base was updated
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// User ID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UserId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UserId }).(pulumi.StringOutput)
+}
+
+// UUID of the Knowledge Base
+func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Uuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Uuid }).(pulumi.StringOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBase {
+		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBase)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources *int `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt string `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids []string `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt string `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase *string `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt string `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens *int `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources *int `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt string `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid *string `pulumi:"uuid"`
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...}
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs struct {
+	// Number of completed datasources in the last indexing job
+	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
+	// Created At timestamp for the last indexing job
+	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
+	// Datasource UUIDs for the last indexing job
+	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
+	// Timestamp when the last indexing job finished
+	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
+	// UUID  of the Knowledge Base for the last indexing job
+	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
+	// Phase of the last indexing job
+	Phase pulumi.StringPtrInput `pulumi:"phase"`
+	// Timestamp when the last indexing job started
+	StartedAt pulumi.StringInput `pulumi:"startedAt"`
+	// Number of tokens processed in the last indexing job
+	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
+	// Total number of datasources in the last indexing job
+	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
+	// Timestamp when the last indexing job updated
+	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
+	// UUID  of the last indexing job
+	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
+}
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
+}
+
+// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{ GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...} }
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
+	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return o
+}
+
+// Number of completed datasources in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Created At timestamp for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
+}
+
+// Datasource UUIDs for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
+}
+
+// Timestamp when the last indexing job finished
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the Knowledge Base for the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
+}
+
+// Phase of the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
+}
+
+// Timestamp when the last indexing job started
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
+}
+
+// Number of tokens processed in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
+}
+
+// Total number of datasources in the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
+}
+
+// Timestamp when the last indexing job updated
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
+}
+
+// UUID  of the last indexing job
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
+}
+
+type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
+		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
+}
+
 type GetGenaiKnowledgeBasesSort struct {
 	Direction *string `pulumi:"direction"`
 	Key       string  `pulumi:"key"`
@@ -31243,6 +31637,10 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesSortArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesSortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiModelsFilterInput)(nil)).Elem(), GetGenaiModelsFilterArgs{})
@@ -31661,6 +32059,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesSortArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiModelsFilterOutput{})

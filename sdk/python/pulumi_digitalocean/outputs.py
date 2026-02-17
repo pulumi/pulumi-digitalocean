@@ -53,6 +53,7 @@ __all__ = [
     'AppSpecIngressRuleMatchAuthority',
     'AppSpecIngressRuleMatchPath',
     'AppSpecIngressRuleRedirect',
+    'AppSpecIngressSecureHeader',
     'AppSpecJob',
     'AppSpecJobAlert',
     'AppSpecJobAlertDestinations',
@@ -300,6 +301,7 @@ __all__ = [
     'GetAppSpecIngressRuleMatchAuthorityResult',
     'GetAppSpecIngressRuleMatchPathResult',
     'GetAppSpecIngressRuleRedirectResult',
+    'GetAppSpecIngressSecureHeaderResult',
     'GetAppSpecJobResult',
     'GetAppSpecJobAlertResult',
     'GetAppSpecJobAlertDestinationsResult',
@@ -2450,13 +2452,33 @@ class AppSpecFunctionRoute(dict):
 
 @pulumi.output_type
 class AppSpecIngress(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "secureHeader":
+            suggest = "secure_header"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AppSpecIngress. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AppSpecIngress.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AppSpecIngress.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 rules: Optional[Sequence['outputs.AppSpecIngressRule']] = None):
+                 rules: Optional[Sequence['outputs.AppSpecIngressRule']] = None,
+                 secure_header: Optional['outputs.AppSpecIngressSecureHeader'] = None):
         """
         :param Sequence['AppSpecIngressRuleArgs'] rules: Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+        if secure_header is not None:
+            pulumi.set(__self__, "secure_header", secure_header)
 
     @_builtins.property
     @pulumi.getter
@@ -2465,6 +2487,11 @@ class AppSpecIngress(dict):
         Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
         """
         return pulumi.get(self, "rules")
+
+    @_builtins.property
+    @pulumi.getter(name="secureHeader")
+    def secure_header(self) -> Optional['outputs.AppSpecIngressSecureHeader']:
+        return pulumi.get(self, "secure_header")
 
 
 @pulumi.output_type
@@ -2883,6 +2910,33 @@ class AppSpecIngressRuleRedirect(dict):
         An optional URI path to redirect to.
         """
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class AppSpecIngressSecureHeader(dict):
+    def __init__(__self__, *,
+                 key: Optional[_builtins.str] = None,
+                 value: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: The name of the environment variable.
+        """
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> Optional[_builtins.str]:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> Optional[_builtins.str]:
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type
@@ -21659,12 +21713,19 @@ class GetAppSpecFunctionRouteResult(dict):
 @pulumi.output_type
 class GetAppSpecIngressResult(dict):
     def __init__(__self__, *,
+                 secure_header: 'outputs.GetAppSpecIngressSecureHeaderResult',
                  rules: Optional[Sequence['outputs.GetAppSpecIngressRuleResult']] = None):
         """
         :param Sequence['GetAppSpecIngressRuleArgs'] rules: The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
         """
+        pulumi.set(__self__, "secure_header", secure_header)
         if rules is not None:
             pulumi.set(__self__, "rules", rules)
+
+    @_builtins.property
+    @pulumi.getter(name="secureHeader")
+    def secure_header(self) -> 'outputs.GetAppSpecIngressSecureHeaderResult':
+        return pulumi.get(self, "secure_header")
 
     @_builtins.property
     @pulumi.getter
@@ -21978,6 +22039,35 @@ class GetAppSpecIngressRuleRedirectResult(dict):
     @pulumi.getter
     def uri(self) -> Optional[_builtins.str]:
         return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class GetAppSpecIngressSecureHeaderResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 value: _builtins.str):
+        """
+        :param _builtins.str key: The name of the environment variable.
+        :param _builtins.str value: The threshold for the type of the warning.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "value", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        The name of the environment variable.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def value(self) -> _builtins.str:
+        """
+        The threshold for the type of the warning.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

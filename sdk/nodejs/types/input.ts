@@ -517,6 +517,7 @@ export interface AppSpecIngress {
      * Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
      */
     rules?: pulumi.Input<pulumi.Input<inputs.AppSpecIngressRule>[]>;
+    secureHeader?: pulumi.Input<inputs.AppSpecIngressSecureHeader>;
 }
 
 export interface AppSpecIngressRule {
@@ -643,6 +644,14 @@ export interface AppSpecIngressRuleRedirect {
      * An optional URI path to redirect to.
      */
     uri?: pulumi.Input<string>;
+}
+
+export interface AppSpecIngressSecureHeader {
+    /**
+     * The name of the environment variable.
+     */
+    key?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 export interface AppSpecJob {

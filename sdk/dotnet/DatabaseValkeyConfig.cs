@@ -40,6 +40,7 @@ namespace Pulumi.DigitalOcean
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         NotifyKeyspaceEvents = "KEA",
     ///         Timeout = 90,
+    ///         ValkeyMaxmemoryPolicy = "allkeys-random",
     ///     });
     /// 
     /// });
@@ -133,6 +134,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("valkeyActiveExpireEffort")]
         public Output<int> ValkeyActiveExpireEffort { get; private set; } = null!;
+
+        /// <summary>
+        /// Eviction policy model
+        /// </summary>
+        [Output("valkeyMaxmemoryPolicy")]
+        public Output<string> ValkeyMaxmemoryPolicy { get; private set; } = null!;
 
 
         /// <summary>
@@ -258,6 +265,12 @@ namespace Pulumi.DigitalOcean
         [Input("valkeyActiveExpireEffort")]
         public Input<int>? ValkeyActiveExpireEffort { get; set; }
 
+        /// <summary>
+        /// Eviction policy model
+        /// </summary>
+        [Input("valkeyMaxmemoryPolicy")]
+        public Input<string>? ValkeyMaxmemoryPolicy { get; set; }
+
         public DatabaseValkeyConfigArgs()
         {
         }
@@ -343,6 +356,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("valkeyActiveExpireEffort")]
         public Input<int>? ValkeyActiveExpireEffort { get; set; }
+
+        /// <summary>
+        /// Eviction policy model
+        /// </summary>
+        [Input("valkeyMaxmemoryPolicy")]
+        public Input<string>? ValkeyMaxmemoryPolicy { get; set; }
 
         public DatabaseValkeyConfigState()
         {

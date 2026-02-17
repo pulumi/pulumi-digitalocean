@@ -213,6 +213,21 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
         return Optional.ofNullable(this.valkeyActiveExpireEffort);
     }
 
+    /**
+     * Eviction policy model
+     * 
+     */
+    @Import(name="valkeyMaxmemoryPolicy")
+    private @Nullable Output<String> valkeyMaxmemoryPolicy;
+
+    /**
+     * @return Eviction policy model
+     * 
+     */
+    public Optional<Output<String>> valkeyMaxmemoryPolicy() {
+        return Optional.ofNullable(this.valkeyMaxmemoryPolicy);
+    }
+
     private DatabaseValkeyConfigArgs() {}
 
     private DatabaseValkeyConfigArgs(DatabaseValkeyConfigArgs $) {
@@ -229,6 +244,7 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
         this.ssl = $.ssl;
         this.timeout = $.timeout;
         this.valkeyActiveExpireEffort = $.valkeyActiveExpireEffort;
+        this.valkeyMaxmemoryPolicy = $.valkeyMaxmemoryPolicy;
     }
 
     public static Builder builder() {
@@ -520,6 +536,27 @@ public final class DatabaseValkeyConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder valkeyActiveExpireEffort(Integer valkeyActiveExpireEffort) {
             return valkeyActiveExpireEffort(Output.of(valkeyActiveExpireEffort));
+        }
+
+        /**
+         * @param valkeyMaxmemoryPolicy Eviction policy model
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyMaxmemoryPolicy(@Nullable Output<String> valkeyMaxmemoryPolicy) {
+            $.valkeyMaxmemoryPolicy = valkeyMaxmemoryPolicy;
+            return this;
+        }
+
+        /**
+         * @param valkeyMaxmemoryPolicy Eviction policy model
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valkeyMaxmemoryPolicy(String valkeyMaxmemoryPolicy) {
+            return valkeyMaxmemoryPolicy(Output.of(valkeyMaxmemoryPolicy));
         }
 
         public DatabaseValkeyConfigArgs build() {

@@ -4338,7 +4338,8 @@ func (o AppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) AppSpecFunctio
 
 type AppSpecIngress struct {
 	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
-	Rules []AppSpecIngressRule `pulumi:"rules"`
+	Rules        []AppSpecIngressRule        `pulumi:"rules"`
+	SecureHeader *AppSpecIngressSecureHeader `pulumi:"secureHeader"`
 }
 
 // AppSpecIngressInput is an input type that accepts AppSpecIngressArgs and AppSpecIngressOutput values.
@@ -4354,7 +4355,8 @@ type AppSpecIngressInput interface {
 
 type AppSpecIngressArgs struct {
 	// Rules for configuring HTTP ingress for component routes, CORS, rewrites, and redirects.
-	Rules AppSpecIngressRuleArrayInput `pulumi:"rules"`
+	Rules        AppSpecIngressRuleArrayInput       `pulumi:"rules"`
+	SecureHeader AppSpecIngressSecureHeaderPtrInput `pulumi:"secureHeader"`
 }
 
 func (AppSpecIngressArgs) ElementType() reflect.Type {
@@ -4439,6 +4441,10 @@ func (o AppSpecIngressOutput) Rules() AppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v AppSpecIngress) []AppSpecIngressRule { return v.Rules }).(AppSpecIngressRuleArrayOutput)
 }
 
+func (o AppSpecIngressOutput) SecureHeader() AppSpecIngressSecureHeaderPtrOutput {
+	return o.ApplyT(func(v AppSpecIngress) *AppSpecIngressSecureHeader { return v.SecureHeader }).(AppSpecIngressSecureHeaderPtrOutput)
+}
+
 type AppSpecIngressPtrOutput struct{ *pulumi.OutputState }
 
 func (AppSpecIngressPtrOutput) ElementType() reflect.Type {
@@ -4471,6 +4477,15 @@ func (o AppSpecIngressPtrOutput) Rules() AppSpecIngressRuleArrayOutput {
 		}
 		return v.Rules
 	}).(AppSpecIngressRuleArrayOutput)
+}
+
+func (o AppSpecIngressPtrOutput) SecureHeader() AppSpecIngressSecureHeaderPtrOutput {
+	return o.ApplyT(func(v *AppSpecIngress) *AppSpecIngressSecureHeader {
+		if v == nil {
+			return nil
+		}
+		return v.SecureHeader
+	}).(AppSpecIngressSecureHeaderPtrOutput)
 }
 
 type AppSpecIngressRule struct {
@@ -5827,6 +5842,158 @@ func (o AppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 			return nil
 		}
 		return v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AppSpecIngressSecureHeader struct {
+	// The name of the environment variable.
+	Key   *string `pulumi:"key"`
+	Value *string `pulumi:"value"`
+}
+
+// AppSpecIngressSecureHeaderInput is an input type that accepts AppSpecIngressSecureHeaderArgs and AppSpecIngressSecureHeaderOutput values.
+// You can construct a concrete instance of `AppSpecIngressSecureHeaderInput` via:
+//
+//	AppSpecIngressSecureHeaderArgs{...}
+type AppSpecIngressSecureHeaderInput interface {
+	pulumi.Input
+
+	ToAppSpecIngressSecureHeaderOutput() AppSpecIngressSecureHeaderOutput
+	ToAppSpecIngressSecureHeaderOutputWithContext(context.Context) AppSpecIngressSecureHeaderOutput
+}
+
+type AppSpecIngressSecureHeaderArgs struct {
+	// The name of the environment variable.
+	Key   pulumi.StringPtrInput `pulumi:"key"`
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (AppSpecIngressSecureHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (i AppSpecIngressSecureHeaderArgs) ToAppSpecIngressSecureHeaderOutput() AppSpecIngressSecureHeaderOutput {
+	return i.ToAppSpecIngressSecureHeaderOutputWithContext(context.Background())
+}
+
+func (i AppSpecIngressSecureHeaderArgs) ToAppSpecIngressSecureHeaderOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressSecureHeaderOutput)
+}
+
+func (i AppSpecIngressSecureHeaderArgs) ToAppSpecIngressSecureHeaderPtrOutput() AppSpecIngressSecureHeaderPtrOutput {
+	return i.ToAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i AppSpecIngressSecureHeaderArgs) ToAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressSecureHeaderOutput).ToAppSpecIngressSecureHeaderPtrOutputWithContext(ctx)
+}
+
+// AppSpecIngressSecureHeaderPtrInput is an input type that accepts AppSpecIngressSecureHeaderArgs, AppSpecIngressSecureHeaderPtr and AppSpecIngressSecureHeaderPtrOutput values.
+// You can construct a concrete instance of `AppSpecIngressSecureHeaderPtrInput` via:
+//
+//	        AppSpecIngressSecureHeaderArgs{...}
+//
+//	or:
+//
+//	        nil
+type AppSpecIngressSecureHeaderPtrInput interface {
+	pulumi.Input
+
+	ToAppSpecIngressSecureHeaderPtrOutput() AppSpecIngressSecureHeaderPtrOutput
+	ToAppSpecIngressSecureHeaderPtrOutputWithContext(context.Context) AppSpecIngressSecureHeaderPtrOutput
+}
+
+type appSpecIngressSecureHeaderPtrType AppSpecIngressSecureHeaderArgs
+
+func AppSpecIngressSecureHeaderPtr(v *AppSpecIngressSecureHeaderArgs) AppSpecIngressSecureHeaderPtrInput {
+	return (*appSpecIngressSecureHeaderPtrType)(v)
+}
+
+func (*appSpecIngressSecureHeaderPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (i *appSpecIngressSecureHeaderPtrType) ToAppSpecIngressSecureHeaderPtrOutput() AppSpecIngressSecureHeaderPtrOutput {
+	return i.ToAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (i *appSpecIngressSecureHeaderPtrType) ToAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AppSpecIngressSecureHeaderPtrOutput)
+}
+
+type AppSpecIngressSecureHeaderOutput struct{ *pulumi.OutputState }
+
+func (AppSpecIngressSecureHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (o AppSpecIngressSecureHeaderOutput) ToAppSpecIngressSecureHeaderOutput() AppSpecIngressSecureHeaderOutput {
+	return o
+}
+
+func (o AppSpecIngressSecureHeaderOutput) ToAppSpecIngressSecureHeaderOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderOutput {
+	return o
+}
+
+func (o AppSpecIngressSecureHeaderOutput) ToAppSpecIngressSecureHeaderPtrOutput() AppSpecIngressSecureHeaderPtrOutput {
+	return o.ToAppSpecIngressSecureHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o AppSpecIngressSecureHeaderOutput) ToAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AppSpecIngressSecureHeader) *AppSpecIngressSecureHeader {
+		return &v
+	}).(AppSpecIngressSecureHeaderPtrOutput)
+}
+
+// The name of the environment variable.
+func (o AppSpecIngressSecureHeaderOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecIngressSecureHeader) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecIngressSecureHeaderOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AppSpecIngressSecureHeader) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type AppSpecIngressSecureHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (AppSpecIngressSecureHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (o AppSpecIngressSecureHeaderPtrOutput) ToAppSpecIngressSecureHeaderPtrOutput() AppSpecIngressSecureHeaderPtrOutput {
+	return o
+}
+
+func (o AppSpecIngressSecureHeaderPtrOutput) ToAppSpecIngressSecureHeaderPtrOutputWithContext(ctx context.Context) AppSpecIngressSecureHeaderPtrOutput {
+	return o
+}
+
+func (o AppSpecIngressSecureHeaderPtrOutput) Elem() AppSpecIngressSecureHeaderOutput {
+	return o.ApplyT(func(v *AppSpecIngressSecureHeader) AppSpecIngressSecureHeader {
+		if v != nil {
+			return *v
+		}
+		var ret AppSpecIngressSecureHeader
+		return ret
+	}).(AppSpecIngressSecureHeaderOutput)
+}
+
+// The name of the environment variable.
+func (o AppSpecIngressSecureHeaderPtrOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecIngressSecureHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Key
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AppSpecIngressSecureHeaderPtrOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AppSpecIngressSecureHeader) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Value
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -43535,7 +43702,8 @@ func (o GetAppSpecFunctionRouteArrayOutput) Index(i pulumi.IntInput) GetAppSpecF
 
 type GetAppSpecIngress struct {
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rules []GetAppSpecIngressRule `pulumi:"rules"`
+	Rules        []GetAppSpecIngressRule       `pulumi:"rules"`
+	SecureHeader GetAppSpecIngressSecureHeader `pulumi:"secureHeader"`
 }
 
 // GetAppSpecIngressInput is an input type that accepts GetAppSpecIngressArgs and GetAppSpecIngressOutput values.
@@ -43551,7 +43719,8 @@ type GetAppSpecIngressInput interface {
 
 type GetAppSpecIngressArgs struct {
 	// The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
-	Rules GetAppSpecIngressRuleArrayInput `pulumi:"rules"`
+	Rules        GetAppSpecIngressRuleArrayInput    `pulumi:"rules"`
+	SecureHeader GetAppSpecIngressSecureHeaderInput `pulumi:"secureHeader"`
 }
 
 func (GetAppSpecIngressArgs) ElementType() reflect.Type {
@@ -43583,6 +43752,10 @@ func (o GetAppSpecIngressOutput) ToGetAppSpecIngressOutputWithContext(ctx contex
 // The type of the alert to configure. Component app alert policies can be: `CPU_UTILIZATION`, `MEM_UTILIZATION`, or `RESTART_COUNT`.
 func (o GetAppSpecIngressOutput) Rules() GetAppSpecIngressRuleArrayOutput {
 	return o.ApplyT(func(v GetAppSpecIngress) []GetAppSpecIngressRule { return v.Rules }).(GetAppSpecIngressRuleArrayOutput)
+}
+
+func (o GetAppSpecIngressOutput) SecureHeader() GetAppSpecIngressSecureHeaderOutput {
+	return o.ApplyT(func(v GetAppSpecIngress) GetAppSpecIngressSecureHeader { return v.SecureHeader }).(GetAppSpecIngressSecureHeaderOutput)
 }
 
 type GetAppSpecIngressRule struct {
@@ -44400,6 +44573,67 @@ func (o GetAppSpecIngressRuleRedirectPtrOutput) Uri() pulumi.StringPtrOutput {
 		}
 		return v.Uri
 	}).(pulumi.StringPtrOutput)
+}
+
+type GetAppSpecIngressSecureHeader struct {
+	// The name of the environment variable.
+	Key string `pulumi:"key"`
+	// The threshold for the type of the warning.
+	Value string `pulumi:"value"`
+}
+
+// GetAppSpecIngressSecureHeaderInput is an input type that accepts GetAppSpecIngressSecureHeaderArgs and GetAppSpecIngressSecureHeaderOutput values.
+// You can construct a concrete instance of `GetAppSpecIngressSecureHeaderInput` via:
+//
+//	GetAppSpecIngressSecureHeaderArgs{...}
+type GetAppSpecIngressSecureHeaderInput interface {
+	pulumi.Input
+
+	ToGetAppSpecIngressSecureHeaderOutput() GetAppSpecIngressSecureHeaderOutput
+	ToGetAppSpecIngressSecureHeaderOutputWithContext(context.Context) GetAppSpecIngressSecureHeaderOutput
+}
+
+type GetAppSpecIngressSecureHeaderArgs struct {
+	// The name of the environment variable.
+	Key pulumi.StringInput `pulumi:"key"`
+	// The threshold for the type of the warning.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetAppSpecIngressSecureHeaderArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderOutput() GetAppSpecIngressSecureHeaderOutput {
+	return i.ToGetAppSpecIngressSecureHeaderOutputWithContext(context.Background())
+}
+
+func (i GetAppSpecIngressSecureHeaderArgs) ToGetAppSpecIngressSecureHeaderOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetAppSpecIngressSecureHeaderOutput)
+}
+
+type GetAppSpecIngressSecureHeaderOutput struct{ *pulumi.OutputState }
+
+func (GetAppSpecIngressSecureHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetAppSpecIngressSecureHeader)(nil)).Elem()
+}
+
+func (o GetAppSpecIngressSecureHeaderOutput) ToGetAppSpecIngressSecureHeaderOutput() GetAppSpecIngressSecureHeaderOutput {
+	return o
+}
+
+func (o GetAppSpecIngressSecureHeaderOutput) ToGetAppSpecIngressSecureHeaderOutputWithContext(ctx context.Context) GetAppSpecIngressSecureHeaderOutput {
+	return o
+}
+
+// The name of the environment variable.
+func (o GetAppSpecIngressSecureHeaderOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) string { return v.Key }).(pulumi.StringOutput)
+}
+
+// The threshold for the type of the warning.
+func (o GetAppSpecIngressSecureHeaderOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetAppSpecIngressSecureHeader) string { return v.Value }).(pulumi.StringOutput)
 }
 
 type GetAppSpecJob struct {
@@ -78666,400 +78900,6 @@ func (o GetGenaiKnowledgeBasesFilterArrayOutput) Index(i pulumi.IntInput) GetGen
 	}).(GetGenaiKnowledgeBasesFilterOutput)
 }
 
-type GetGenaiKnowledgeBasesKnowledgeBase struct {
-	// Timestamp when the Knowledge Base was added to the Agent
-	AddedToAgentAt string `pulumi:"addedToAgentAt"`
-	// Created At timestamp for the Knowledge Base
-	CreatedAt string `pulumi:"createdAt"`
-	// Database ID of the Knowledge Base
-	DatabaseId string `pulumi:"databaseId"`
-	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid string `pulumi:"embeddingModelUuid"`
-	// Indicates if the Knowledge Base is public
-	IsPublic bool `pulumi:"isPublic"`
-	// Last indexing job for the Knowledge Base
-	LastIndexingJobs []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob `pulumi:"lastIndexingJobs"`
-	// Name of the Knowledge Base
-	Name string `pulumi:"name"`
-	// Project ID of the Knowledge Base
-	ProjectId string `pulumi:"projectId"`
-	// Region of the Knowledge Base
-	Region string `pulumi:"region"`
-	// List of tags
-	Tags []string `pulumi:"tags"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt string `pulumi:"updatedAt"`
-	// User ID of the Knowledge Base
-	UserId string `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid string `pulumi:"uuid"`
-}
-
-// GetGenaiKnowledgeBasesKnowledgeBaseInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArgs and GetGenaiKnowledgeBasesKnowledgeBaseOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseInput` via:
-//
-//	GetGenaiKnowledgeBasesKnowledgeBaseArgs{...}
-type GetGenaiKnowledgeBasesKnowledgeBaseInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput
-	ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseArgs struct {
-	// Timestamp when the Knowledge Base was added to the Agent
-	AddedToAgentAt pulumi.StringInput `pulumi:"addedToAgentAt"`
-	// Created At timestamp for the Knowledge Base
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Database ID of the Knowledge Base
-	DatabaseId pulumi.StringInput `pulumi:"databaseId"`
-	// Embedding model UUID for the Knowledge Base
-	EmbeddingModelUuid pulumi.StringInput `pulumi:"embeddingModelUuid"`
-	// Indicates if the Knowledge Base is public
-	IsPublic pulumi.BoolInput `pulumi:"isPublic"`
-	// Last indexing job for the Knowledge Base
-	LastIndexingJobs GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput `pulumi:"lastIndexingJobs"`
-	// Name of the Knowledge Base
-	Name pulumi.StringInput `pulumi:"name"`
-	// Project ID of the Knowledge Base
-	ProjectId pulumi.StringInput `pulumi:"projectId"`
-	// Region of the Knowledge Base
-	Region pulumi.StringInput `pulumi:"region"`
-	// List of tags
-	Tags pulumi.StringArrayInput `pulumi:"tags"`
-	// Timestamp when the Knowledge Base was updated
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// User ID of the Knowledge Base
-	UserId pulumi.StringInput `pulumi:"userId"`
-	// UUID of the Knowledge Base
-	Uuid pulumi.StringInput `pulumi:"uuid"`
-}
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
-	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
-}
-
-// GetGenaiKnowledgeBasesKnowledgeBaseArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseArray and GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseArrayInput` via:
-//
-//	GetGenaiKnowledgeBasesKnowledgeBaseArray{ GetGenaiKnowledgeBasesKnowledgeBaseArgs{...} }
-type GetGenaiKnowledgeBasesKnowledgeBaseArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
-	ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseArray []GetGenaiKnowledgeBasesKnowledgeBaseInput
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
-	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseArray) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput)
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutput() GetGenaiKnowledgeBasesKnowledgeBaseOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
-	return o
-}
-
-// Timestamp when the Knowledge Base was added to the Agent
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) AddedToAgentAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.AddedToAgentAt }).(pulumi.StringOutput)
-}
-
-// Created At timestamp for the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Database ID of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) DatabaseId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.DatabaseId }).(pulumi.StringOutput)
-}
-
-// Embedding model UUID for the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) EmbeddingModelUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.EmbeddingModelUuid }).(pulumi.StringOutput)
-}
-
-// Indicates if the Knowledge Base is public
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) IsPublic() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) bool { return v.IsPublic }).(pulumi.BoolOutput)
-}
-
-// Last indexing job for the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) LastIndexingJobs() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
-		return v.LastIndexingJobs
-	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
-}
-
-// Name of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Name }).(pulumi.StringOutput)
-}
-
-// Project ID of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) ProjectId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.ProjectId }).(pulumi.StringOutput)
-}
-
-// Region of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Region() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Region }).(pulumi.StringOutput)
-}
-
-// List of tags
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Tags() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) []string { return v.Tags }).(pulumi.StringArrayOutput)
-}
-
-// Timestamp when the Knowledge Base was updated
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// User ID of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) UserId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.UserId }).(pulumi.StringOutput)
-}
-
-// UUID of the Knowledge Base
-func (o GetGenaiKnowledgeBasesKnowledgeBaseOutput) Uuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBase) string { return v.Uuid }).(pulumi.StringOutput)
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBase)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBase {
-		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBase)[vs[1].(int)]
-	}).(GetGenaiKnowledgeBasesKnowledgeBaseOutput)
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob struct {
-	// Number of completed datasources in the last indexing job
-	CompletedDatasources *int `pulumi:"completedDatasources"`
-	// Created At timestamp for the last indexing job
-	CreatedAt string `pulumi:"createdAt"`
-	// Datasource UUIDs for the last indexing job
-	DataSourceUuids []string `pulumi:"dataSourceUuids"`
-	// Timestamp when the last indexing job finished
-	FinishedAt string `pulumi:"finishedAt"`
-	// UUID  of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid string `pulumi:"knowledgeBaseUuid"`
-	// Phase of the last indexing job
-	Phase *string `pulumi:"phase"`
-	// Timestamp when the last indexing job started
-	StartedAt string `pulumi:"startedAt"`
-	// Number of tokens processed in the last indexing job
-	Tokens *int `pulumi:"tokens"`
-	// Total number of datasources in the last indexing job
-	TotalDatasources *int `pulumi:"totalDatasources"`
-	// Timestamp when the last indexing job updated
-	UpdatedAt string `pulumi:"updatedAt"`
-	// UUID  of the last indexing job
-	Uuid *string `pulumi:"uuid"`
-}
-
-// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput` via:
-//
-//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...}
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
-	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs struct {
-	// Number of completed datasources in the last indexing job
-	CompletedDatasources pulumi.IntPtrInput `pulumi:"completedDatasources"`
-	// Created At timestamp for the last indexing job
-	CreatedAt pulumi.StringInput `pulumi:"createdAt"`
-	// Datasource UUIDs for the last indexing job
-	DataSourceUuids pulumi.StringArrayInput `pulumi:"dataSourceUuids"`
-	// Timestamp when the last indexing job finished
-	FinishedAt pulumi.StringInput `pulumi:"finishedAt"`
-	// UUID  of the Knowledge Base for the last indexing job
-	KnowledgeBaseUuid pulumi.StringInput `pulumi:"knowledgeBaseUuid"`
-	// Phase of the last indexing job
-	Phase pulumi.StringPtrInput `pulumi:"phase"`
-	// Timestamp when the last indexing job started
-	StartedAt pulumi.StringInput `pulumi:"startedAt"`
-	// Number of tokens processed in the last indexing job
-	Tokens pulumi.IntPtrInput `pulumi:"tokens"`
-	// Total number of datasources in the last indexing job
-	TotalDatasources pulumi.IntPtrInput `pulumi:"totalDatasources"`
-	// Timestamp when the last indexing job updated
-	UpdatedAt pulumi.StringInput `pulumi:"updatedAt"`
-	// UUID  of the last indexing job
-	Uuid pulumi.StringPtrInput `pulumi:"uuid"`
-}
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
-	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
-}
-
-// GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput is an input type that accepts GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray and GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput` via:
-//
-//	GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{ GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{...} }
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
-	ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray []GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
-	return i.ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput)
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
-	return o
-}
-
-// Number of completed datasources in the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CompletedDatasources() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.CompletedDatasources }).(pulumi.IntPtrOutput)
-}
-
-// Created At timestamp for the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) CreatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.CreatedAt }).(pulumi.StringOutput)
-}
-
-// Datasource UUIDs for the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) DataSourceUuids() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) []string { return v.DataSourceUuids }).(pulumi.StringArrayOutput)
-}
-
-// Timestamp when the last indexing job finished
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) FinishedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.FinishedAt }).(pulumi.StringOutput)
-}
-
-// UUID  of the Knowledge Base for the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) KnowledgeBaseUuid() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.KnowledgeBaseUuid }).(pulumi.StringOutput)
-}
-
-// Phase of the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Phase() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Phase }).(pulumi.StringPtrOutput)
-}
-
-// Timestamp when the last indexing job started
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) StartedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.StartedAt }).(pulumi.StringOutput)
-}
-
-// Number of tokens processed in the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Tokens() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.Tokens }).(pulumi.IntPtrOutput)
-}
-
-// Total number of datasources in the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) TotalDatasources() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *int { return v.TotalDatasources }).(pulumi.IntPtrOutput)
-}
-
-// Timestamp when the last indexing job updated
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) UpdatedAt() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) string { return v.UpdatedAt }).(pulumi.StringOutput)
-}
-
-// UUID  of the last indexing job
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput) Uuid() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob) *string { return v.Uuid }).(pulumi.StringPtrOutput)
-}
-
-type GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput() GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) ToGetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob {
-		return vs[0].([]GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJob)[vs[1].(int)]
-	}).(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -79133,6 +78973,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleMatchPathPtrInput)(nil)).Elem(), AppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleRedirectInput)(nil)).Elem(), AppSpecIngressRuleRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressRuleRedirectPtrInput)(nil)).Elem(), AppSpecIngressRuleRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressSecureHeaderInput)(nil)).Elem(), AppSpecIngressSecureHeaderArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecIngressSecureHeaderPtrInput)(nil)).Elem(), AppSpecIngressSecureHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobInput)(nil)).Elem(), AppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobArrayInput)(nil)).Elem(), AppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppSpecJobAlertInput)(nil)).Elem(), AppSpecJobAlertArgs{})
@@ -79623,6 +79465,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleMatchPathInput)(nil)).Elem(), GetAppSpecIngressRuleMatchPathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressRuleRedirectPtrInput)(nil)).Elem(), GetAppSpecIngressRuleRedirectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecIngressSecureHeaderInput)(nil)).Elem(), GetAppSpecIngressSecureHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobInput)(nil)).Elem(), GetAppSpecJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobArrayInput)(nil)).Elem(), GetAppSpecJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAppSpecJobAlertInput)(nil)).Elem(), GetAppSpecJobAlertArgs{})
@@ -80053,10 +79896,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -80129,6 +79968,8 @@ func init() {
 	pulumi.RegisterOutputType(AppSpecIngressRuleMatchPathPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleRedirectOutput{})
 	pulumi.RegisterOutputType(AppSpecIngressRuleRedirectPtrOutput{})
+	pulumi.RegisterOutputType(AppSpecIngressSecureHeaderOutput{})
+	pulumi.RegisterOutputType(AppSpecIngressSecureHeaderPtrOutput{})
 	pulumi.RegisterOutputType(AppSpecJobOutput{})
 	pulumi.RegisterOutputType(AppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecJobAlertOutput{})
@@ -80619,6 +80460,7 @@ func init() {
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleMatchPathOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectOutput{})
 	pulumi.RegisterOutputType(GetAppSpecIngressRuleRedirectPtrOutput{})
+	pulumi.RegisterOutputType(GetAppSpecIngressSecureHeaderOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobArrayOutput{})
 	pulumi.RegisterOutputType(GetAppSpecJobAlertOutput{})
@@ -81049,8 +80891,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArrayOutput{})
 }

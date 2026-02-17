@@ -43,9 +43,10 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDatabaseValkeyConfig(ctx, "example", &digitalocean.DatabaseValkeyConfigArgs{
-//				ClusterId:            exampleDatabaseCluster.ID(),
-//				NotifyKeyspaceEvents: pulumi.String("KEA"),
-//				Timeout:              pulumi.Int(90),
+//				ClusterId:             exampleDatabaseCluster.ID(),
+//				NotifyKeyspaceEvents:  pulumi.String("KEA"),
+//				Timeout:               pulumi.Int(90),
+//				ValkeyMaxmemoryPolicy: pulumi.String("allkeys-random"),
 //			})
 //			if err != nil {
 //				return err
@@ -92,6 +93,8 @@ type DatabaseValkeyConfig struct {
 	Timeout pulumi.IntOutput `pulumi:"timeout"`
 	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntOutput `pulumi:"valkeyActiveExpireEffort"`
+	// Eviction policy model
+	ValkeyMaxmemoryPolicy pulumi.StringOutput `pulumi:"valkeyMaxmemoryPolicy"`
 }
 
 // NewDatabaseValkeyConfig registers a new resource with the given unique name, arguments, and options.
@@ -153,6 +156,8 @@ type databaseValkeyConfigState struct {
 	Timeout *int `pulumi:"timeout"`
 	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
+	// Eviction policy model
+	ValkeyMaxmemoryPolicy *string `pulumi:"valkeyMaxmemoryPolicy"`
 }
 
 type DatabaseValkeyConfigState struct {
@@ -182,6 +187,8 @@ type DatabaseValkeyConfigState struct {
 	Timeout pulumi.IntPtrInput
 	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput
+	// Eviction policy model
+	ValkeyMaxmemoryPolicy pulumi.StringPtrInput
 }
 
 func (DatabaseValkeyConfigState) ElementType() reflect.Type {
@@ -215,6 +222,8 @@ type databaseValkeyConfigArgs struct {
 	Timeout *int `pulumi:"timeout"`
 	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort *int `pulumi:"valkeyActiveExpireEffort"`
+	// Eviction policy model
+	ValkeyMaxmemoryPolicy *string `pulumi:"valkeyMaxmemoryPolicy"`
 }
 
 // The set of arguments for constructing a DatabaseValkeyConfig resource.
@@ -245,6 +254,8 @@ type DatabaseValkeyConfigArgs struct {
 	Timeout pulumi.IntPtrInput
 	// Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 	ValkeyActiveExpireEffort pulumi.IntPtrInput
+	// Eviction policy model
+	ValkeyMaxmemoryPolicy pulumi.StringPtrInput
 }
 
 func (DatabaseValkeyConfigArgs) ElementType() reflect.Type {
@@ -397,6 +408,11 @@ func (o DatabaseValkeyConfigOutput) Timeout() pulumi.IntOutput {
 // Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
 func (o DatabaseValkeyConfigOutput) ValkeyActiveExpireEffort() pulumi.IntOutput {
 	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.IntOutput { return v.ValkeyActiveExpireEffort }).(pulumi.IntOutput)
+}
+
+// Eviction policy model
+func (o DatabaseValkeyConfigOutput) ValkeyMaxmemoryPolicy() pulumi.StringOutput {
+	return o.ApplyT(func(v *DatabaseValkeyConfig) pulumi.StringOutput { return v.ValkeyMaxmemoryPolicy }).(pulumi.StringOutput)
 }
 
 type DatabaseValkeyConfigArrayOutput struct{ *pulumi.OutputState }

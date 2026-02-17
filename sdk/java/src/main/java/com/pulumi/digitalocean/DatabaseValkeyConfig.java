@@ -60,6 +60,7 @@ import javax.annotation.Nullable;
  *             .clusterId(exampleDatabaseCluster.id())
  *             .notifyKeyspaceEvents("KEA")
  *             .timeout(90)
+ *             .valkeyMaxmemoryPolicy("allkeys-random")
  *             .build());
  * 
  *     }
@@ -259,6 +260,20 @@ public class DatabaseValkeyConfig extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> valkeyActiveExpireEffort() {
         return this.valkeyActiveExpireEffort;
+    }
+    /**
+     * Eviction policy model
+     * 
+     */
+    @Export(name="valkeyMaxmemoryPolicy", refs={String.class}, tree="[0]")
+    private Output<String> valkeyMaxmemoryPolicy;
+
+    /**
+     * @return Eviction policy model
+     * 
+     */
+    public Output<String> valkeyMaxmemoryPolicy() {
+        return this.valkeyMaxmemoryPolicy;
     }
 
     /**
