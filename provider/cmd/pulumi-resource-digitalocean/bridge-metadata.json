@@ -188,6 +188,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "secure_header": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
@@ -1737,6 +1740,9 @@
                                                         }
                                                     }
                                                 }
+                                            },
+                                            "secure_header": {
+                                                "maxItemsOne": true
                                             }
                                         }
                                     }
