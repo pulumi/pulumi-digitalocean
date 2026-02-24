@@ -23,6 +23,7 @@ class NfsArgs:
                  size: pulumi.Input[_builtins.int],
                  vpc_id: pulumi.Input[_builtins.str],
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 performance_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Nfs resource.
@@ -30,12 +31,15 @@ class NfsArgs:
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC where the NFS share will be created.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
+        :param pulumi.Input[_builtins.str] performance_tier: The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
         """
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "vpc_id", vpc_id)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_tier is not None:
+            pulumi.set(__self__, "performance_tier", performance_tier)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -88,6 +92,18 @@ class NfsArgs:
         pulumi.set(self, "name", value)
 
     @_builtins.property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+        """
+        return pulumi.get(self, "performance_tier")
+
+    @performance_tier.setter
+    def performance_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_tier", value)
+
+    @_builtins.property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         return pulumi.get(self, "tags")
@@ -103,6 +119,7 @@ class _NfsState:
                  host: Optional[pulumi.Input[_builtins.str]] = None,
                  mount_path: Optional[pulumi.Input[_builtins.str]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 performance_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -114,6 +131,7 @@ class _NfsState:
         :param pulumi.Input[_builtins.str] host: The host IP of the NFS server accessible from the associated VPC.
         :param pulumi.Input[_builtins.str] mount_path: The mount path for accessing the NFS share.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
+        :param pulumi.Input[_builtins.str] performance_tier: The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
         :param pulumi.Input[_builtins.str] region: The region where the NFS share will be created.
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] status: The current status of the NFS share.
@@ -125,6 +143,8 @@ class _NfsState:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_tier is not None:
+            pulumi.set(__self__, "performance_tier", performance_tier)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if size is not None:
@@ -173,6 +193,18 @@ class _NfsState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+        """
+        return pulumi.get(self, "performance_tier")
+
+    @performance_tier.setter
+    def performance_tier(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "performance_tier", value)
 
     @_builtins.property
     @pulumi.getter
@@ -248,6 +280,7 @@ class Nfs(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 performance_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -269,7 +302,8 @@ class Nfs(pulumi.CustomResource):
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=example.id)
+            vpc_id=example.id,
+            performance_tier="standard")
         ```
 
         ## Import
@@ -283,6 +317,7 @@ class Nfs(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
+        :param pulumi.Input[_builtins.str] performance_tier: The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
         :param pulumi.Input[_builtins.str] region: The region where the NFS share will be created.
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC where the NFS share will be created.
@@ -309,7 +344,8 @@ class Nfs(pulumi.CustomResource):
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=example.id)
+            vpc_id=example.id,
+            performance_tier="standard")
         ```
 
         ## Import
@@ -336,6 +372,7 @@ class Nfs(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
+                 performance_tier: Optional[pulumi.Input[_builtins.str]] = None,
                  region: Optional[pulumi.Input[_builtins.str]] = None,
                  size: Optional[pulumi.Input[_builtins.int]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -350,6 +387,7 @@ class Nfs(pulumi.CustomResource):
             __props__ = NfsArgs.__new__(NfsArgs)
 
             __props__.__dict__["name"] = name
+            __props__.__dict__["performance_tier"] = performance_tier
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
             __props__.__dict__["region"] = region
@@ -377,6 +415,7 @@ class Nfs(pulumi.CustomResource):
             host: Optional[pulumi.Input[_builtins.str]] = None,
             mount_path: Optional[pulumi.Input[_builtins.str]] = None,
             name: Optional[pulumi.Input[_builtins.str]] = None,
+            performance_tier: Optional[pulumi.Input[_builtins.str]] = None,
             region: Optional[pulumi.Input[_builtins.str]] = None,
             size: Optional[pulumi.Input[_builtins.int]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
@@ -393,6 +432,7 @@ class Nfs(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] host: The host IP of the NFS server accessible from the associated VPC.
         :param pulumi.Input[_builtins.str] mount_path: The mount path for accessing the NFS share.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
+        :param pulumi.Input[_builtins.str] performance_tier: The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
         :param pulumi.Input[_builtins.str] region: The region where the NFS share will be created.
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] status: The current status of the NFS share.
@@ -405,6 +445,7 @@ class Nfs(pulumi.CustomResource):
         __props__.__dict__["host"] = host
         __props__.__dict__["mount_path"] = mount_path
         __props__.__dict__["name"] = name
+        __props__.__dict__["performance_tier"] = performance_tier
         __props__.__dict__["region"] = region
         __props__.__dict__["size"] = size
         __props__.__dict__["status"] = status
@@ -436,6 +477,14 @@ class Nfs(pulumi.CustomResource):
         A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+        """
+        return pulumi.get(self, "performance_tier")
 
     @_builtins.property
     @pulumi.getter

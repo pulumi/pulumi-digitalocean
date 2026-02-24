@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     name: "example-nfs",
  *     size: 50,
  *     vpcId: example.id,
+ *     performanceTier: "standard",
  * });
  * ```
  *
@@ -74,6 +75,10 @@ export class Nfs extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     */
+    declare public readonly performanceTier: pulumi.Output<string | undefined>;
+    /**
      * The region where the NFS share will be created.
      */
     declare public readonly region: pulumi.Output<string>;
@@ -108,6 +113,7 @@ export class Nfs extends pulumi.CustomResource {
             resourceInputs["host"] = state?.host;
             resourceInputs["mountPath"] = state?.mountPath;
             resourceInputs["name"] = state?.name;
+            resourceInputs["performanceTier"] = state?.performanceTier;
             resourceInputs["region"] = state?.region;
             resourceInputs["size"] = state?.size;
             resourceInputs["status"] = state?.status;
@@ -126,6 +132,7 @@ export class Nfs extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vpcId'");
             }
             resourceInputs["name"] = args?.name;
+            resourceInputs["performanceTier"] = args?.performanceTier;
             resourceInputs["region"] = args?.region;
             resourceInputs["size"] = args?.size;
             resourceInputs["tags"] = args?.tags;
@@ -157,6 +164,10 @@ export interface NfsState {
      */
     name?: pulumi.Input<string>;
     /**
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     */
+    performanceTier?: pulumi.Input<string>;
+    /**
      * The region where the NFS share will be created.
      */
     region?: pulumi.Input<string>;
@@ -184,6 +195,10 @@ export interface NfsArgs {
      * A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
     name?: pulumi.Input<string>;
+    /**
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     */
+    performanceTier?: pulumi.Input<string>;
     /**
      * The region where the NFS share will be created.
      */

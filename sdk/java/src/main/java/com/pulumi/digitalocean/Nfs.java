@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .name("example-nfs")
  *             .size(50)
  *             .vpcId(example.id())
+ *             .performanceTier("standard")
  *             .build());
  * 
  *     }
@@ -114,6 +115,20 @@ public class Nfs extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * 
+     */
+    @Export(name="performanceTier", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> performanceTier;
+
+    /**
+     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * 
+     */
+    public Output<Optional<String>> performanceTier() {
+        return Codegen.optional(this.performanceTier);
     }
     /**
      * The region where the NFS share will be created.

@@ -34,6 +34,21 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * 
+     */
+    @Import(name="performanceTier")
+    private @Nullable Output<String> performanceTier;
+
+    /**
+     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * 
+     */
+    public Optional<Output<String>> performanceTier() {
+        return Optional.ofNullable(this.performanceTier);
+    }
+
+    /**
      * The region where the NFS share will be created.
      * 
      */
@@ -89,6 +104,7 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
 
     private NfsArgs(NfsArgs $) {
         this.name = $.name;
+        this.performanceTier = $.performanceTier;
         this.region = $.region;
         this.size = $.size;
         this.tags = $.tags;
@@ -132,6 +148,27 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceTier(@Nullable Output<String> performanceTier) {
+            $.performanceTier = performanceTier;
+            return this;
+        }
+
+        /**
+         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceTier(String performanceTier) {
+            return performanceTier(Output.of(performanceTier));
         }
 
         /**
