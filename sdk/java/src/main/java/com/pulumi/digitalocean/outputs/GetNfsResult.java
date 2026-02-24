@@ -35,6 +35,11 @@ public final class GetNfsResult {
      */
     private String name;
     /**
+     * @return The performance tier of the NFS share (`standard` or `high`).
+     * 
+     */
+    private String performanceTier;
+    /**
      * @return The region where the NFS share is located.
      * 
      */
@@ -81,6 +86,13 @@ public final class GetNfsResult {
         return this.name;
     }
     /**
+     * @return The performance tier of the NFS share (`standard` or `high`).
+     * 
+     */
+    public String performanceTier() {
+        return this.performanceTier;
+    }
+    /**
      * @return The region where the NFS share is located.
      * 
      */
@@ -118,6 +130,7 @@ public final class GetNfsResult {
         private String id;
         private String mountPath;
         private String name;
+        private String performanceTier;
         private @Nullable String region;
         private Integer size;
         private String status;
@@ -129,6 +142,7 @@ public final class GetNfsResult {
     	      this.id = defaults.id;
     	      this.mountPath = defaults.mountPath;
     	      this.name = defaults.name;
+    	      this.performanceTier = defaults.performanceTier;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.status = defaults.status;
@@ -165,6 +179,14 @@ public final class GetNfsResult {
               throw new MissingRequiredPropertyException("GetNfsResult", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder performanceTier(String performanceTier) {
+            if (performanceTier == null) {
+              throw new MissingRequiredPropertyException("GetNfsResult", "performanceTier");
+            }
+            this.performanceTier = performanceTier;
             return this;
         }
         @CustomType.Setter
@@ -206,6 +228,7 @@ public final class GetNfsResult {
             _resultValue.id = id;
             _resultValue.mountPath = mountPath;
             _resultValue.name = name;
+            _resultValue.performanceTier = performanceTier;
             _resultValue.region = region;
             _resultValue.size = size;
             _resultValue.status = status;

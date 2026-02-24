@@ -69,6 +69,8 @@ type LookupNfsResult struct {
 	MountPath string `pulumi:"mountPath"`
 	// Name of the NFS share.
 	Name string `pulumi:"name"`
+	// The performance tier of the NFS share (`standard` or `high`).
+	PerformanceTier string `pulumi:"performanceTier"`
 	// The region where the NFS share is located.
 	Region *string `pulumi:"region"`
 	// The size of the NFS share in GiB.
@@ -132,6 +134,11 @@ func (o LookupNfsResultOutput) MountPath() pulumi.StringOutput {
 // Name of the NFS share.
 func (o LookupNfsResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNfsResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The performance tier of the NFS share (`standard` or `high`).
+func (o LookupNfsResultOutput) PerformanceTier() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNfsResult) string { return v.PerformanceTier }).(pulumi.StringOutput)
 }
 
 // The region where the NFS share is located.

@@ -34,6 +34,7 @@ namespace Pulumi.DigitalOcean
     ///         Name = "example-nfs",
     ///         Size = 50,
     ///         VpcId = example.Id,
+    ///         PerformanceTier = "standard",
     ///     });
     /// 
     /// });
@@ -67,6 +68,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// </summary>
+        [Output("performanceTier")]
+        public Output<string?> PerformanceTier { get; private set; } = null!;
 
         /// <summary>
         /// The region where the NFS share will be created.
@@ -151,6 +158,12 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// </summary>
+        [Input("performanceTier")]
+        public Input<string>? PerformanceTier { get; set; }
+
+        /// <summary>
         /// The region where the NFS share will be created.
         /// </summary>
         [Input("region", required: true)]
@@ -201,6 +214,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// </summary>
+        [Input("performanceTier")]
+        public Input<string>? PerformanceTier { get; set; }
 
         /// <summary>
         /// The region where the NFS share will be created.

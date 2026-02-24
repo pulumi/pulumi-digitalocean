@@ -155,6 +155,10 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// The performance tier of the NFS share (`Standard` or `High`).
+        /// </summary>
+        public readonly string PerformanceTier;
+        /// <summary>
         /// The region where the NFS share is located.
         /// </summary>
         public readonly string? Region;
@@ -178,6 +182,8 @@ namespace Pulumi.DigitalOcean
 
             string name,
 
+            string performanceTier,
+
             string? region,
 
             int size,
@@ -190,6 +196,7 @@ namespace Pulumi.DigitalOcean
             Id = id;
             MountPath = mountPath;
             Name = name;
+            PerformanceTier = performanceTier;
             Region = region;
             Size = size;
             Status = status;

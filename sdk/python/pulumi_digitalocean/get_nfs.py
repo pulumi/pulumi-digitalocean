@@ -26,7 +26,7 @@ class GetNfsResult:
     """
     A collection of values returned by getNfs.
     """
-    def __init__(__self__, host=None, id=None, mount_path=None, name=None, region=None, size=None, status=None, tags=None):
+    def __init__(__self__, host=None, id=None, mount_path=None, name=None, performance_tier=None, region=None, size=None, status=None, tags=None):
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
@@ -39,6 +39,9 @@ class GetNfsResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if performance_tier and not isinstance(performance_tier, str):
+            raise TypeError("Expected argument 'performance_tier' to be a str")
+        pulumi.set(__self__, "performance_tier", performance_tier)
         if region and not isinstance(region, str):
             raise TypeError("Expected argument 'region' to be a str")
         pulumi.set(__self__, "region", region)
@@ -85,6 +88,14 @@ class GetNfsResult:
         return pulumi.get(self, "name")
 
     @_builtins.property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> _builtins.str:
+        """
+        The performance tier of the NFS share (`standard` or `high`).
+        """
+        return pulumi.get(self, "performance_tier")
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[_builtins.str]:
         """
@@ -124,6 +135,7 @@ class AwaitableGetNfsResult(GetNfsResult):
             id=self.id,
             mount_path=self.mount_path,
             name=self.name,
+            performance_tier=self.performance_tier,
             region=self.region,
             size=self.size,
             status=self.status,
@@ -163,6 +175,7 @@ def get_nfs(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         mount_path=pulumi.get(__ret__, 'mount_path'),
         name=pulumi.get(__ret__, 'name'),
+        performance_tier=pulumi.get(__ret__, 'performance_tier'),
         region=pulumi.get(__ret__, 'region'),
         size=pulumi.get(__ret__, 'size'),
         status=pulumi.get(__ret__, 'status'),
@@ -199,6 +212,7 @@ def get_nfs_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         id=pulumi.get(__response__, 'id'),
         mount_path=pulumi.get(__response__, 'mount_path'),
         name=pulumi.get(__response__, 'name'),
+        performance_tier=pulumi.get(__response__, 'performance_tier'),
         region=pulumi.get(__response__, 'region'),
         size=pulumi.get(__response__, 'size'),
         status=pulumi.get(__response__, 'status'),

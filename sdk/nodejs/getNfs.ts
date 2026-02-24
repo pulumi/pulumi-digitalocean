@@ -64,6 +64,10 @@ export interface GetNfsResult {
      */
     readonly name: string;
     /**
+     * The performance tier of the NFS share (`standard` or `high`).
+     */
+    readonly performanceTier: string;
+    /**
      * The region where the NFS share is located.
      */
     readonly region?: string;
