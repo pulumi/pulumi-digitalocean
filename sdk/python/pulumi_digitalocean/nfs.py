@@ -27,6 +27,7 @@ class NfsArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Nfs resource.
+
         :param pulumi.Input[_builtins.str] region: The region where the NFS share will be created.
         :param pulumi.Input[_builtins.int] size: The size of the NFS share in GiB. Minimum size is 50 GiB.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the VPC where the NFS share will be created.
@@ -128,6 +129,7 @@ class _NfsState:
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Nfs resources.
+
         :param pulumi.Input[_builtins.str] host: The host IP of the NFS server accessible from the associated VPC.
         :param pulumi.Input[_builtins.str] mount_path: The mount path for accessing the NFS share.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
@@ -314,6 +316,7 @@ class Nfs(pulumi.CustomResource):
         $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
@@ -355,6 +358,7 @@ class Nfs(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NfsArgs args: The arguments to use to populate this resource's properties.

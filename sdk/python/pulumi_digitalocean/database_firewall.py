@@ -25,6 +25,7 @@ class DatabaseFirewallArgs:
                  rules: pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]):
         """
         The set of arguments for constructing a DatabaseFirewall resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target database cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
@@ -63,6 +64,7 @@ class _DatabaseFirewallState:
                  rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering DatabaseFirewall resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target database cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]] rules: A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
@@ -201,6 +203,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target database cluster.
@@ -307,6 +310,7 @@ class DatabaseFirewall(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseFirewall:DatabaseFirewall example-fw 5f55c6cd-863b-4907-99b8-7e09b0275d54
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseFirewallArgs args: The arguments to use to populate this resource's properties.

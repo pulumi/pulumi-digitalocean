@@ -27,6 +27,7 @@ class DatabaseConnectionPoolArgs:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseConnectionPool resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
         :param pulumi.Input[_builtins.str] db_name: The database for use with the connection pool.
         :param pulumi.Input[_builtins.str] mode: The PGBouncer transaction mode for the connection pool. The allowed values are session, transaction, and statement.
@@ -133,6 +134,7 @@ class _DatabaseConnectionPoolState:
                  user: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseConnectionPool resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
         :param pulumi.Input[_builtins.str] db_name: The database for use with the connection pool.
         :param pulumi.Input[_builtins.str] host: The hostname used to connect to the database connection pool.
@@ -364,6 +366,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a PostgreSQL cluster.
@@ -413,6 +416,7 @@ class DatabaseConnectionPool(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseConnectionPool:DatabaseConnectionPool pool-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,pool-01
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseConnectionPoolArgs args: The arguments to use to populate this resource's properties.

@@ -32,6 +32,7 @@ class DatabaseLogsinkRsyslogArgs:
                  tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DatabaseLogsinkRsyslog resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: UUID of the source database cluster that will forward logs.
         :param pulumi.Input[_builtins.int] port: Port number for the rsyslog server. Must be between 1 and 65535.
         :param pulumi.Input[_builtins.str] server: Hostname or IP address of the rsyslog server.
@@ -214,6 +215,7 @@ class _DatabaseLogsinkRsyslogState:
                  tls: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DatabaseLogsinkRsyslog resources.
+
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
         :param pulumi.Input[_builtins.str] client_cert: Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
         :param pulumi.Input[_builtins.str] client_key: Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
@@ -512,6 +514,7 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
 
         **Note**: The cluster ID and logsink ID must be separated by a comma.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
@@ -628,6 +631,7 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
         ```
 
         **Note**: The cluster ID and logsink ID must be separated by a comma.
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseLogsinkRsyslogArgs args: The arguments to use to populate this resource's properties.

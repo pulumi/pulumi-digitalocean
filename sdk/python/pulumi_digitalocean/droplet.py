@@ -42,6 +42,7 @@ class DropletArgs:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Droplet resource.
+
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         :param pulumi.Input['DropletBackupPolicyArgs'] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
@@ -397,6 +398,7 @@ class _DropletState:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Droplet resources.
+
         :param pulumi.Input['DropletBackupPolicyArgs'] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         :param pulumi.Input[_builtins.bool] backups: Boolean controlling if backups are made. Defaults to
                false.
@@ -935,6 +937,7 @@ class Droplet(pulumi.CustomResource):
         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']] backup_policy: An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
@@ -1017,6 +1020,7 @@ class Droplet(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/droplet:Droplet mydroplet 100823
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DropletArgs args: The arguments to use to populate this resource's properties.

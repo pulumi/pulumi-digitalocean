@@ -25,6 +25,7 @@ class ByoipPrefixArgs:
                  signature: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoipPrefix resource.
+
         :param pulumi.Input[_builtins.str] prefix: The CIDR notation of the prefix (e.g., "192.0.2.0/24").
         :param pulumi.Input[_builtins.str] region: The DigitalOcean region where the prefix will be deployed.
         :param pulumi.Input[_builtins.bool] advertised: A boolean indicating whether the prefix should be advertised.
@@ -102,6 +103,7 @@ class _ByoipPrefixState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ByoipPrefix resources.
+
         :param pulumi.Input[_builtins.bool] advertised: A boolean indicating whether the prefix should be advertised.
                Defaults to `false`.
         :param pulumi.Input[_builtins.str] failure_reason: The reason for failure if the status is "failed".
@@ -258,6 +260,7 @@ class ByoipPrefix(pulumi.CustomResource):
         $ pulumi import digitalocean:index/byoipPrefix:ByoipPrefix example 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] advertised: A boolean indicating whether the prefix should be advertised.
@@ -305,6 +308,7 @@ class ByoipPrefix(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/byoipPrefix:ByoipPrefix example 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ByoipPrefixArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class DomainArgs:
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the domain
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
@@ -66,6 +67,7 @@ class _DomainState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.str] domain_urn: The uniform resource name of the domain
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the domain. If specified, this IP
                is used to created an initial A record for the domain.
@@ -163,6 +165,7 @@ class Domain(pulumi.CustomResource):
         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ip_address: The IP address of the domain. If specified, this IP
@@ -197,6 +200,7 @@ class Domain(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/domain:Domain mydomain mytestdomain.com
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

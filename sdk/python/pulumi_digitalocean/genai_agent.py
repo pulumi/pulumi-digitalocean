@@ -60,6 +60,7 @@ class GenaiAgentArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiAgent resource.
+
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
@@ -658,6 +659,7 @@ class _GenaiAgentState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgent resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
         :param pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
@@ -1297,6 +1299,7 @@ class GenaiAgent(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiAgent resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
@@ -1345,6 +1348,7 @@ class GenaiAgent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiAgent resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiAgentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

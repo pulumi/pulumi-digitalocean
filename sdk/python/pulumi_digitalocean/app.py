@@ -27,6 +27,7 @@ class AppArgs:
                  spec: Optional[pulumi.Input['AppSpecArgs']] = None):
         """
         The set of arguments for constructing a App resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['AppDedicatedIpArgs']]] dedicated_ips: The dedicated egress IP addresses associated with the app.
         :param pulumi.Input[_builtins.int] deployment_per_page: (Optional) Controls how many deployments are requested per API page when listing deployments during create/update waits. Defaults to `20`. Reduce this value (for example `5`) if you experience API timeouts when listing deployments.
         :param pulumi.Input[_builtins.str] project_id: The ID of the project that the app is assigned to.
@@ -114,6 +115,7 @@ class _AppState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering App resources.
+
         :param pulumi.Input[_builtins.str] active_deployment_id: The ID the app's currently active deployment.
         :param pulumi.Input[_builtins.str] app_urn: The uniform resource identifier for the app.
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the app was created.
@@ -440,6 +442,7 @@ class App(pulumi.CustomResource):
         $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppDedicatedIpArgs', 'AppDedicatedIpArgsDict']]]] dedicated_ips: The dedicated egress IP addresses associated with the app.
@@ -595,6 +598,7 @@ class App(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/app:App myapp fb06ad00-351f-45c8-b5eb-13523c438661
         ```
+
 
         :param str resource_name: The name of the resource.
         :param AppArgs args: The arguments to use to populate this resource's properties.

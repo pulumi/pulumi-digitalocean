@@ -25,6 +25,7 @@ class SpacesKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SpacesKey resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['SpacesKeyGrantArgs']]] grants: A grant for the key (documented below).
         :param pulumi.Input[_builtins.str] name: The name of the key
         """
@@ -68,6 +69,7 @@ class _SpacesKeyState:
                  secret_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesKey resources.
+
         :param pulumi.Input[_builtins.str] access_key: The access key ID of the key
         :param pulumi.Input[_builtins.str] created_at: The creation time of the key
         :param pulumi.Input[Sequence[pulumi.Input['SpacesKeyGrantArgs']]] grants: A grant for the key (documented below).
@@ -209,6 +211,7 @@ class SpacesKey(pulumi.CustomResource):
             }])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['SpacesKeyGrantArgs', 'SpacesKeyGrantArgsDict']]]] grants: A grant for the key (documented below).
@@ -273,6 +276,7 @@ class SpacesKey(pulumi.CustomResource):
                 "permission": "fullaccess",
             }])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpacesKeyArgs args: The arguments to use to populate this resource's properties.

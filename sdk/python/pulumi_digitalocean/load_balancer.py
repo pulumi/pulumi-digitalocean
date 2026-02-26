@@ -49,6 +49,7 @@ class LoadBalancerArgs:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
+
         :param pulumi.Input[Union[_builtins.str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[_builtins.bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
@@ -481,6 +482,7 @@ class _LoadBalancerState:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
+
         :param pulumi.Input[Union[_builtins.str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
                or `least_connections`. The default value is `round_robin`.
         :param pulumi.Input[_builtins.bool] disable_lets_encrypt_dns_records: A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
@@ -1008,6 +1010,7 @@ class LoadBalancer(pulumi.CustomResource):
         $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union[_builtins.str, 'Algorithm']] algorithm: **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
@@ -1094,6 +1097,7 @@ class LoadBalancer(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/loadBalancer:LoadBalancer myloadbalancer 4de7ac8b-495b-4884-9a69-1050c6793cd6
         ```
+
 
         :param str resource_name: The name of the resource.
         :param LoadBalancerArgs args: The arguments to use to populate this resource's properties.

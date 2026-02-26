@@ -25,6 +25,7 @@ class VpcArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Vpc resource.
+
         :param pulumi.Input[_builtins.str] region: The DigitalOcean region slug for the VPC's location.
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 255 characters to describe the VPC.
         :param pulumi.Input[_builtins.str] ip_range: The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
@@ -99,6 +100,7 @@ class _VpcState:
                  vpc_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Vpc resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the VPC was created.
         :param pulumi.Input[_builtins.bool] default: A boolean indicating whether or not the VPC is the default one for the region.
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 255 characters to describe the VPC.
@@ -265,6 +267,7 @@ class Vpc(pulumi.CustomResource):
         $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 255 characters to describe the VPC.
@@ -324,6 +327,7 @@ class Vpc(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/vpc:Vpc example 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcArgs args: The arguments to use to populate this resource's properties.

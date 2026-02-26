@@ -24,6 +24,7 @@ class ReservedIpArgs:
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservedIp resource.
+
         :param pulumi.Input[_builtins.str] region: The region that the reserved IP is reserved to.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[_builtins.str] ip_address: The IP Address of the resource
@@ -80,6 +81,7 @@ class _ReservedIpState:
                  reserved_ip_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservedIp resources.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
         :param pulumi.Input[_builtins.str] ip_address: The IP Address of the resource
         :param pulumi.Input[_builtins.str] region: The region that the reserved IP is reserved to.
@@ -184,6 +186,7 @@ class ReservedIp(pulumi.CustomResource):
         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IP will be assigned to.
@@ -226,6 +229,7 @@ class ReservedIp(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/reservedIp:ReservedIp myip 192.168.0.1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservedIpArgs args: The arguments to use to populate this resource's properties.

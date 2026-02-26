@@ -37,6 +37,7 @@ class SpacesBucketObjectArgs:
                  website_redirect: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SpacesBucketObject resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
         :param pulumi.Input[_builtins.str] key: The name of the object once it is in the bucket.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides (Defaults to `nyc3`)
@@ -309,6 +310,7 @@ class _SpacesBucketObjectState:
                  website_redirect: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesBucketObject resources.
+
         :param pulumi.Input[_builtins.str] acl: The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to put the file in.
         :param pulumi.Input[_builtins.str] cache_control: Specifies caching behavior along the request/reply chain Read [w3c cache_control](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html#sec14.9) for further details.
@@ -649,6 +651,7 @@ class SpacesBucketObject(pulumi.CustomResource):
 
         Importing this resource is not supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: The canned ACL to apply. DigitalOcean supports "private" and "public-read". (Defaults to "private".)
@@ -727,6 +730,7 @@ class SpacesBucketObject(pulumi.CustomResource):
         ## Import
 
         Importing this resource is not supported.
+
 
         :param str resource_name: The name of the resource.
         :param SpacesBucketObjectArgs args: The arguments to use to populate this resource's properties.

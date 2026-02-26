@@ -31,6 +31,7 @@ class PartnerAttachmentArgs:
                  redundancy_zone: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a PartnerAttachment resource.
+
         :param pulumi.Input[_builtins.int] connection_bandwidth_in_mbps: The connection bandwidth in Mbps
         :param pulumi.Input[_builtins.str] naas_provider: The NaaS provider
         :param pulumi.Input[_builtins.str] region: The region where the Partner Attachment will be created
@@ -162,6 +163,7 @@ class _PartnerAttachmentState:
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering PartnerAttachment resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] childrens: The children uuids of Partner Attachment
         :param pulumi.Input[_builtins.int] connection_bandwidth_in_mbps: The connection bandwidth in Mbps
         :param pulumi.Input[_builtins.str] created_at: The date and time when the Partner Attachment was created
@@ -343,6 +345,7 @@ class PartnerAttachment(pulumi.CustomResource):
                  __props__=None):
         """
         Create a PartnerAttachment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] connection_bandwidth_in_mbps: The connection bandwidth in Mbps
@@ -361,6 +364,7 @@ class PartnerAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a PartnerAttachment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param PartnerAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

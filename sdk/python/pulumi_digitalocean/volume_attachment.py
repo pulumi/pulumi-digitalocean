@@ -23,6 +23,7 @@ class VolumeAttachmentArgs:
                  volume_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a VolumeAttachment resource.
+
         :param pulumi.Input[_builtins.int] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[_builtins.str] volume_id: ID of the Volume to be attached to the Droplet.
         """
@@ -61,6 +62,7 @@ class _VolumeAttachmentState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttachment resources.
+
         :param pulumi.Input[_builtins.int] droplet_id: ID of the Droplet to attach the volume to.
         :param pulumi.Input[_builtins.str] volume_id: ID of the Volume to be attached to the Droplet.
         """
@@ -130,6 +132,7 @@ class VolumeAttachment(pulumi.CustomResource):
             volume_id=foobar.id)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] droplet_id: ID of the Droplet to attach the volume to.
@@ -167,6 +170,7 @@ class VolumeAttachment(pulumi.CustomResource):
             droplet_id=foobar_droplet.id,
             volume_id=foobar.id)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeAttachmentArgs args: The arguments to use to populate this resource's properties.

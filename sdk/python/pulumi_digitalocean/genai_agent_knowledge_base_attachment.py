@@ -23,6 +23,7 @@ class GenaiAgentKnowledgeBaseAttachmentArgs:
                  knowledge_base_uuid: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GenaiAgentKnowledgeBaseAttachment resource.
+
         :param pulumi.Input[_builtins.str] agent_uuid: A unique identifier for an agent.
         :param pulumi.Input[_builtins.str] knowledge_base_uuid: A unique identifier for a knowledge base.
         """
@@ -61,6 +62,7 @@ class _GenaiAgentKnowledgeBaseAttachmentState:
                  knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgentKnowledgeBaseAttachment resources.
+
         :param pulumi.Input[_builtins.str] agent_uuid: A unique identifier for an agent.
         :param pulumi.Input[_builtins.str] knowledge_base_uuid: A unique identifier for a knowledge base.
         """
@@ -110,6 +112,7 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiAgentKnowledgeBaseAttachment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_uuid: A unique identifier for an agent.
@@ -123,6 +126,7 @@ class GenaiAgentKnowledgeBaseAttachment(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiAgentKnowledgeBaseAttachment resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiAgentKnowledgeBaseAttachmentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

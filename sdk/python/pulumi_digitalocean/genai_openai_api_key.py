@@ -26,6 +26,7 @@ class GenaiOpenaiApiKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiOpenaiApiKey resource.
+
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
         :param pulumi.Input[Sequence[pulumi.Input['GenaiOpenaiApiKeyModelArgs']]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
@@ -86,6 +87,7 @@ class _GenaiOpenaiApiKeyState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiOpenaiApiKey resources.
+
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
         :param pulumi.Input[_builtins.str] created_at: When the API key was created.
         :param pulumi.Input[_builtins.str] created_by: Who created the API key.
@@ -226,6 +228,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiOpenaiApiKey resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
@@ -240,6 +243,7 @@ class GenaiOpenaiApiKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiOpenaiApiKey resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiOpenaiApiKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

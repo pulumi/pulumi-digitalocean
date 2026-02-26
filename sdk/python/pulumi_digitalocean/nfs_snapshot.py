@@ -24,6 +24,7 @@ class NfsSnapshotArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a NfsSnapshot resource.
+
         :param pulumi.Input[_builtins.str] region: The region where the NFS snapshot will be created.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to snapshot.
         :param pulumi.Input[_builtins.str] name: A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
@@ -81,6 +82,7 @@ class _NfsSnapshotState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NfsSnapshot resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time when the snapshot was created.
         :param pulumi.Input[_builtins.str] name: A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
         :param pulumi.Input[_builtins.str] region: The region where the NFS snapshot will be created.
@@ -211,6 +213,7 @@ class NfsSnapshot(pulumi.CustomResource):
         $ pulumi import digitalocean:index/nfsSnapshot:NfsSnapshot foobar 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
@@ -253,6 +256,7 @@ class NfsSnapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/nfsSnapshot:NfsSnapshot foobar 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NfsSnapshotArgs args: The arguments to use to populate this resource's properties.

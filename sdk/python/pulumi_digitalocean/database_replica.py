@@ -29,6 +29,7 @@ class DatabaseReplicaArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatabaseReplica resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] name: The name for the database replica.
         :param pulumi.Input[_builtins.str] private_network_uuid: The ID of the VPC where the database replica will be located.
@@ -153,6 +154,7 @@ class _DatabaseReplicaState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseReplica resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] database: Name of the replica's default database.
         :param pulumi.Input[_builtins.str] host: Database replica's hostname.
@@ -447,6 +449,7 @@ class DatabaseReplica(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
@@ -502,6 +505,7 @@ class DatabaseReplica(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseReplica:DatabaseReplica read-replica 245bcfd0-7f31-4ce6-a2bc-475a116cca97,read-replica
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseReplicaArgs args: The arguments to use to populate this resource's properties.

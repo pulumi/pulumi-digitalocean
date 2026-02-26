@@ -28,6 +28,7 @@ class DatabaseLogsinkOpensearchArgs:
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseLogsinkOpensearch resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: UUID of the source database cluster that will forward logs.
         :param pulumi.Input[_builtins.str] endpoint: HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
         :param pulumi.Input[_builtins.str] index_prefix: Prefix for the indices where logs will be stored.
@@ -146,6 +147,7 @@ class _DatabaseLogsinkOpensearchState:
                  timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseLogsinkOpensearch resources.
+
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
         :param pulumi.Input[_builtins.str] cluster_id: UUID of the source database cluster that will forward logs.
         :param pulumi.Input[_builtins.str] endpoint: HTTPS URL to the OpenSearch or Elasticsearch cluster (e.g., `https://host:port`). **Note**: Only HTTPS URLs are supported.
@@ -393,6 +395,7 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
 
         **Note**: The cluster ID and logsink ID must be separated by a comma.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] ca_cert: CA certificate for TLS verification in PEM format. Can be specified using `file()` function. This field is marked as sensitive.
@@ -518,6 +521,7 @@ class DatabaseLogsinkOpensearch(pulumi.CustomResource):
         ```
 
         **Note**: The cluster ID and logsink ID must be separated by a comma.
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseLogsinkOpensearchArgs args: The arguments to use to populate this resource's properties.

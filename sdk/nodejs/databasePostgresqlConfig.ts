@@ -37,6 +37,10 @@ import * as utilities from "./utilities";
  * ## Import
  *
  * A PostgreSQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
+ *
+ * ```sh
+ * $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
+ * ```
  */
 export class DatabasePostgresqlConfig extends pulumi.CustomResource {
     /**

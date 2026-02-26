@@ -23,6 +23,7 @@ class ProjectResourcesArgs:
                  resources: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a ProjectResources resource.
+
         :param pulumi.Input[_builtins.str] project: the ID of the project
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
@@ -61,6 +62,7 @@ class _ProjectResourcesState:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering ProjectResources resources.
+
         :param pulumi.Input[_builtins.str] project: the ID of the project
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] resources: a list of uniform resource names (URNs) for the resources associated with the project
         """
@@ -142,6 +144,7 @@ class ProjectResources(pulumi.CustomResource):
 
         Importing this resource is not supported.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] project: the ID of the project
@@ -191,6 +194,7 @@ class ProjectResources(pulumi.CustomResource):
         ## Import
 
         Importing this resource is not supported.
+
 
         :param str resource_name: The name of the resource.
         :param ProjectResourcesArgs args: The arguments to use to populate this resource's properties.

@@ -30,6 +30,7 @@ class UptimeAlertArgs:
                  threshold: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a UptimeAlert resource.
+
         :param pulumi.Input[_builtins.str] check_id: A unique identifier for a check
         :param pulumi.Input[Sequence[pulumi.Input['UptimeAlertNotificationArgs']]] notifications: The notification settings for a trigger alert.
         :param pulumi.Input[_builtins.str] type: The type of health check to perform. Must be one of `latency`, `down`, `down_global` or `ssl_expiry`.
@@ -147,6 +148,7 @@ class _UptimeAlertState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UptimeAlert resources.
+
         :param pulumi.Input[_builtins.str] check_id: A unique identifier for a check
         :param pulumi.Input[_builtins.str] comparison: The comparison operator used against the alert's threshold. Must be one of `greater_than` or `less_than`.
         :param pulumi.Input[_builtins.str] name: A human-friendly display name.
@@ -282,6 +284,7 @@ class UptimeAlert(pulumi.CustomResource):
         $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] check_id: A unique identifier for a check
@@ -310,6 +313,7 @@ class UptimeAlert(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/uptimeAlert:UptimeAlert target 94a7d216-d821-11ee-a327-33d3239ffc4b,5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UptimeAlertArgs args: The arguments to use to populate this resource's properties.

@@ -33,6 +33,7 @@ class DatabaseRedisConfigArgs:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseRedisConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Redis cluster.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.int] io_threads: The Redis IO thread count.
@@ -236,6 +237,7 @@ class _DatabaseRedisConfigState:
                  timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseRedisConfig resources.
+
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Redis cluster.
         :param pulumi.Input[_builtins.int] io_threads: The Redis IO thread count.
@@ -478,6 +480,7 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
@@ -536,6 +539,7 @@ class DatabaseRedisConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseRedisConfig:DatabaseRedisConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseRedisConfigArgs args: The arguments to use to populate this resource's properties.

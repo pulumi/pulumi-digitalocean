@@ -23,6 +23,7 @@ class VpcPeeringArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a VpcPeering resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] vpc_ids: A set of two VPC IDs to be peered.
         :param pulumi.Input[_builtins.str] name: A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
         """
@@ -64,6 +65,7 @@ class _VpcPeeringState:
                  vpc_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering VpcPeering resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time of when the VPC Peering was created.
         :param pulumi.Input[_builtins.str] name: A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
         :param pulumi.Input[_builtins.str] status: The status of the VPC Peering.
@@ -199,6 +201,7 @@ class VpcPeering(pulumi.CustomResource):
         $ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A name for the VPC Peering. Must be unique and contain alphanumeric characters, dashes, and periods only.
@@ -272,6 +275,7 @@ class VpcPeering(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/vpcPeering:VpcPeering example 771ad360-c017-4b4e-a34e-73934f5f0190
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcPeeringArgs args: The arguments to use to populate this resource's properties.

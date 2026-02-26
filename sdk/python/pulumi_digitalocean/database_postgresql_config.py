@@ -75,6 +75,7 @@ class DatabasePostgresqlConfigArgs:
                  work_mem: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabasePostgresqlConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target PostgreSQL cluster.
         :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         :param pulumi.Input[_builtins.int] autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
@@ -914,6 +915,7 @@ class _DatabasePostgresqlConfigState:
                  work_mem: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabasePostgresqlConfig resources.
+
         :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
         :param pulumi.Input[_builtins.int] autovacuum_analyze_threshold: Specifies the minimum number of inserted, updated, or deleted tuples needed to trigger an ANALYZE in any one table. The default is 50 tuples.
         :param pulumi.Input[_builtins.int] autovacuum_freeze_max_age: Specifies the maximum age (in transactions) that a table's pg_class.relfrozenxid field can attain before a VACUUM operation is forced to prevent transaction ID wraparound within the table. Note that the system will launch autovacuum processes to prevent wraparound even when autovacuum is otherwise disabled. This parameter will cause the server to be restarted.
@@ -1785,6 +1787,11 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
 
         A PostgreSQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
 
+        ```sh
+        $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.float] autovacuum_analyze_scale_factor: Specifies a fraction, in a decimal value, of the table size to add to autovacuum_analyze_threshold when deciding whether to trigger an ANALYZE. The default is 0.2 (20% of table size).
@@ -1874,6 +1881,11 @@ class DatabasePostgresqlConfig(pulumi.CustomResource):
         ## Import
 
         A PostgreSQL database cluster's configuration can be imported using the `id` the parent cluster, e.g.
+
+        ```sh
+        $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabasePostgresqlConfigArgs args: The arguments to use to populate this resource's properties.

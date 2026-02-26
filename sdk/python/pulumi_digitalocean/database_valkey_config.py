@@ -35,6 +35,7 @@ class DatabaseValkeyConfigArgs:
                  valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseValkeyConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
@@ -266,6 +267,7 @@ class _DatabaseValkeyConfigState:
                  valkey_maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseValkeyConfig resources.
+
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Valkey cluster.
         :param pulumi.Input[_builtins.bool] frequent_snapshots: Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkey_persistence is set to off.
@@ -534,6 +536,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl_channels_default: Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
@@ -590,6 +593,7 @@ class DatabaseValkeyConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig example 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseValkeyConfigArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class FloatingIpAssignmentArgs:
                  ip_address: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a FloatingIpAssignment resource.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[_builtins.str] ip_address: The Floating IP to assign to the Droplet.
         """
@@ -61,6 +62,7 @@ class _FloatingIpAssignmentState:
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FloatingIpAssignment resources.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[_builtins.str] ip_address: The Floating IP to assign to the Droplet.
         """
@@ -138,6 +140,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
         $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
@@ -183,6 +186,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/floatingIpAssignment:FloatingIpAssignment foobar 192.0.2.1,123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FloatingIpAssignmentArgs args: The arguments to use to populate this resource's properties.

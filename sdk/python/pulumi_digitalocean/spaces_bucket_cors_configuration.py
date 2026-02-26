@@ -26,6 +26,7 @@ class SpacesBucketCorsConfigurationArgs:
                  region: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SpacesBucketCorsConfiguration resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which to apply the CORS configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
@@ -79,6 +80,7 @@ class _SpacesBucketCorsConfigurationState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesBucketCorsConfiguration resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which to apply the CORS configuration.
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]] cors_rules: Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
@@ -196,6 +198,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         $ pulumi import digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration foobar `region`,`bucket`
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket to which to apply the CORS configuration.
@@ -266,6 +269,7 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/spacesBucketCorsConfiguration:SpacesBucketCorsConfiguration foobar `region`,`bucket`
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpacesBucketCorsConfigurationArgs args: The arguments to use to populate this resource's properties.

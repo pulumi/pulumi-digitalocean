@@ -22,6 +22,7 @@ class GenaiIndexingJobCancelArgs:
                  uuid: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a GenaiIndexingJobCancel resource.
+
         :param pulumi.Input[_builtins.str] uuid: The UUID of the indexing job to cancel.
         """
         pulumi.set(__self__, "uuid", uuid)
@@ -59,6 +60,7 @@ class _GenaiIndexingJobCancelState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiIndexingJobCancel resources.
+
         :param pulumi.Input[_builtins.int] completed_datasources: Number of data sources that were completed before cancellation.
         :param pulumi.Input[_builtins.str] created_at: When the indexing job was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] data_source_uuids: List of data source UUIDs associated with this indexing job.
@@ -302,6 +304,7 @@ class GenaiIndexingJobCancel(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiIndexingJobCancel resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] uuid: The UUID of the indexing job to cancel.
@@ -314,6 +317,7 @@ class GenaiIndexingJobCancel(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiIndexingJobCancel resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiIndexingJobCancelArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

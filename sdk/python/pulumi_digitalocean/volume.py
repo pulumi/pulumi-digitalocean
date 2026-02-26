@@ -31,6 +31,7 @@ class VolumeArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Volume resource.
+
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region that the block storage volume will be created in.
         :param pulumi.Input[_builtins.int] size: The size of the block storage volume in GiB. If updated, can only be expanded.
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -188,6 +189,7 @@ class _VolumeState:
                  volume_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Volume resources.
+
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: A list of associated droplet ids.
         :param pulumi.Input[_builtins.str] filesystem_label: Filesystem label for the block storage volume.
@@ -438,6 +440,7 @@ class Volume(pulumi.CustomResource):
         $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: A free-form text field up to a limit of 1024 bytes to describe a block storage volume.
@@ -502,6 +505,7 @@ class Volume(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/volume:Volume volume 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeArgs args: The arguments to use to populate this resource's properties.

@@ -26,6 +26,7 @@ class CdnArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a Cdn resource.
+
         :param pulumi.Input[_builtins.str] origin: The fully qualified domain name, (FQDN) for a Space.
         :param pulumi.Input[_builtins.str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[_builtins.str] certificate_name: The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -119,6 +120,7 @@ class _CdnState:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Cdn resources.
+
         :param pulumi.Input[_builtins.str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[_builtins.str] certificate_name: The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         :param pulumi.Input[_builtins.str] created_at: The date and time when the CDN Endpoint was created.
@@ -295,6 +297,7 @@ class Cdn(pulumi.CustomResource):
         $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] certificate_id: **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
@@ -360,6 +363,7 @@ class Cdn(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/cdn:Cdn mycdn fb06ad00-351f-45c8-b5eb-13523c438661
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CdnArgs args: The arguments to use to populate this resource's properties.

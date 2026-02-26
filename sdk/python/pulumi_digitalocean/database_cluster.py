@@ -38,6 +38,7 @@ class DatabaseClusterArgs:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseCluster resource.
+
         :param pulumi.Input[_builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
         :param pulumi.Input[_builtins.int] node_count: Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: DigitalOcean region where the cluster will reside.
@@ -280,6 +281,7 @@ class _DatabaseClusterState:
                  version: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseCluster resources.
+
         :param pulumi.Input[_builtins.str] cluster_urn: The uniform resource name of the database cluster.
         :param pulumi.Input[_builtins.str] database: Name of the cluster's default database.
         :param pulumi.Input[_builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -877,6 +879,7 @@ class DatabaseCluster(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] engine: Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
@@ -1024,6 +1027,7 @@ class DatabaseCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseCluster:DatabaseCluster mycluster 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseClusterArgs args: The arguments to use to populate this resource's properties.

@@ -23,6 +23,7 @@ class SshKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a SshKey resource.
+
         :param pulumi.Input[_builtins.str] public_key: The public key. If this is a file, it
                can be read using the file interpolation function
         :param pulumi.Input[_builtins.str] name: The name of the SSH key for identification
@@ -65,6 +66,7 @@ class _SshKeyState:
                  public_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SshKey resources.
+
         :param pulumi.Input[_builtins.str] fingerprint: The fingerprint of the SSH key
         :param pulumi.Input[_builtins.str] name: The name of the SSH key for identification
         :param pulumi.Input[_builtins.str] public_key: The public key. If this is a file, it
@@ -158,6 +160,7 @@ class SshKey(pulumi.CustomResource):
         $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the SSH key for identification
@@ -203,6 +206,7 @@ class SshKey(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/sshKey:SshKey mykey 263654
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SshKeyArgs args: The arguments to use to populate this resource's properties.

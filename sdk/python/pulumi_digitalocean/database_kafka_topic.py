@@ -28,6 +28,7 @@ class DatabaseKafkaTopicArgs:
                  replication_factor: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseKafkaTopic resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
@@ -118,6 +119,7 @@ class _DatabaseKafkaTopicState:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaTopic resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]] configs: A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
                The `config` block is documented below.
@@ -283,6 +285,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the source database cluster. Note: This must be a Kafka cluster.
@@ -355,6 +358,7 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseKafkaTopic:DatabaseKafkaTopic topic-01 245bcfd0-7f31-4ce6-a2bc-475a116cca97,topic-01
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseKafkaTopicArgs args: The arguments to use to populate this resource's properties.

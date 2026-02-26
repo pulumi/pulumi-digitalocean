@@ -24,6 +24,7 @@ class FloatingIpArgs:
                  ip_address: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a FloatingIp resource.
+
         :param pulumi.Input[_builtins.str] region: The region that the Floating IP is reserved to.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[_builtins.str] ip_address: The IP Address of the resource
@@ -80,6 +81,7 @@ class _FloatingIpState:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FloatingIp resources.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
         :param pulumi.Input[_builtins.str] floating_ip_urn: The uniform resource name of the floating ip
         :param pulumi.Input[_builtins.str] ip_address: The IP Address of the resource
@@ -186,6 +188,7 @@ class FloatingIp(pulumi.CustomResource):
         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the Floating IP will be assigned to.
@@ -230,6 +233,7 @@ class FloatingIp(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/floatingIp:FloatingIp myip 192.168.0.1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FloatingIpArgs args: The arguments to use to populate this resource's properties.

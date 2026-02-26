@@ -31,6 +31,7 @@ class SpacesBucketArgs:
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         The set of arguments for constructing a SpacesBucket resource.
+
         :param pulumi.Input[_builtins.str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]] cors_rules: A rule of Cross-Origin Resource Sharing (documented below).
         :param pulumi.Input[_builtins.bool] force_destroy: Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
@@ -158,6 +159,7 @@ class _SpacesBucketState:
                  versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
         """
         Input properties used for looking up and filtering SpacesBucket resources.
+
         :param pulumi.Input[_builtins.str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         :param pulumi.Input[_builtins.str] bucket_domain_name: The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         :param pulumi.Input[_builtins.str] bucket_urn: The uniform resource name for the bucket
@@ -403,6 +405,7 @@ class SpacesBucket(pulumi.CustomResource):
         $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] acl: Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
@@ -492,6 +495,7 @@ class SpacesBucket(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/spacesBucket:SpacesBucket foobar `region`,`name`
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpacesBucketArgs args: The arguments to use to populate this resource's properties.

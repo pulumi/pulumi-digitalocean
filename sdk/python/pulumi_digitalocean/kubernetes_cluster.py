@@ -46,6 +46,7 @@ class KubernetesClusterArgs:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a KubernetesCluster resource.
+
         :param pulumi.Input['KubernetesClusterNodePoolArgs'] node_pool: A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The slug identifier for the region where the Kubernetes cluster will be created.
         :param pulumi.Input[_builtins.str] version: The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
@@ -406,6 +407,7 @@ class _KubernetesClusterState:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
+
         :param pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs'] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
         :param pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs'] amd_gpu_device_plugin: Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         :param pulumi.Input[_builtins.bool] auto_upgrade: A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
@@ -1004,6 +1006,7 @@ class KubernetesCluster(pulumi.CustomResource):
         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']] amd_gpu_device_metrics_exporter_plugin: Block containing options for the AMD GPU device metrics exporter component.
@@ -1168,6 +1171,7 @@ class KubernetesCluster(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/kubernetesCluster:KubernetesCluster mynodepool 9d76f410-9284-4436-9633-4066852442c8
         ```
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesClusterArgs args: The arguments to use to populate this resource's properties.

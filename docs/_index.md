@@ -189,7 +189,7 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var doToken = config.get("doToken");
+        final var doToken = config.require("doToken");
         // Create a web server
         var web = new Droplet("web");
 

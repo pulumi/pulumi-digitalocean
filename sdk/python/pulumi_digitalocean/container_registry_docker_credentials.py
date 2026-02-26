@@ -24,6 +24,7 @@ class ContainerRegistryDockerCredentialsArgs:
                  write: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a ContainerRegistryDockerCredentials resource.
+
         :param pulumi.Input[_builtins.str] registry_name: The name of the container registry.
         :param pulumi.Input[_builtins.int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
         :param pulumi.Input[_builtins.bool] write: Allow for write access to the container registry. Defaults to false.
@@ -81,6 +82,7 @@ class _ContainerRegistryDockerCredentialsState:
                  write: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistryDockerCredentials resources.
+
         :param pulumi.Input[_builtins.str] credential_expiration_time: The date and time the registry access token will expire.
         :param pulumi.Input[_builtins.str] docker_credentials: Credentials for the container registry.
         :param pulumi.Input[_builtins.int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
@@ -221,6 +223,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
             type=kubernetes.io/dockerconfigjson)
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] expiry_seconds: The amount of time to pass before the Docker credentials expire in seconds. Defaults to 1576800000, or roughly 50 years. Must be greater than 0 and less than 1576800000.
@@ -284,6 +287,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
             },
             type=kubernetes.io/dockerconfigjson)
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryDockerCredentialsArgs args: The arguments to use to populate this resource's properties.

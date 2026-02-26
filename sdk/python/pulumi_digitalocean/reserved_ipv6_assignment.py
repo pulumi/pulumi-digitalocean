@@ -23,6 +23,7 @@ class ReservedIpv6AssignmentArgs:
                  ip: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a ReservedIpv6Assignment resource.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
         :param pulumi.Input[_builtins.str] ip: The reserved IPv6 to assign to the Droplet.
         """
@@ -61,6 +62,7 @@ class _ReservedIpv6AssignmentState:
                  ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservedIpv6Assignment resources.
+
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
         :param pulumi.Input[_builtins.str] ip: The reserved IPv6 to assign to the Droplet.
         """
@@ -116,6 +118,7 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
         $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] droplet_id: The ID of Droplet that the reserved IPv6 will be assigned to.
@@ -139,6 +142,7 @@ class ReservedIpv6Assignment(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/reservedIpv6Assignment:ReservedIpv6Assignment foobar 2409:40d0:fa:27dd:9b24:7074:7b85:eee6,123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservedIpv6AssignmentArgs args: The arguments to use to populate this resource's properties.
