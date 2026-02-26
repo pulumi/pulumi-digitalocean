@@ -32,6 +32,7 @@ class VpcNatGatewayArgs:
                  udp_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a VpcNatGateway resource.
+
         :param pulumi.Input[_builtins.str] region: The region for the VPC NAT Gateway.
         :param pulumi.Input[_builtins.int] size: The size of the VPC NAT Gateway.
         :param pulumi.Input[_builtins.str] type: The type of the VPC NAT Gateway.
@@ -186,6 +187,7 @@ class _VpcNatGatewayState:
                  vpcs: Optional[pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayVpcArgs']]]] = None):
         """
         Input properties used for looking up and filtering VpcNatGateway resources.
+
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the VPC NAT Gateway.
         :param pulumi.Input[Sequence[pulumi.Input['VpcNatGatewayEgressArgs']]] egresses: Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
                `public_gateways` embedding the reserved `ipv4` addresses.
@@ -440,6 +442,7 @@ class VpcNatGateway(pulumi.CustomResource):
         $ pulumi import digitalocean:index/vpcNatGateway:VpcNatGateway my-vpc-nat-gateway-id 38e66834-d741-47ec-88e7-c70cbdcz0445
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] icmp_timeout_seconds: The egress timeout value for ICMP connections of the VPC NAT Gateway.
@@ -494,6 +497,7 @@ class VpcNatGateway(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/vpcNatGateway:VpcNatGateway my-vpc-nat-gateway-id 38e66834-d741-47ec-88e7-c70cbdcz0445
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VpcNatGatewayArgs args: The arguments to use to populate this resource's properties.

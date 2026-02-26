@@ -34,6 +34,7 @@ class KubernetesNodePoolArgs:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None):
         """
         The set of arguments for constructing a KubernetesNodePool resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
         :param pulumi.Input[Union[_builtins.str, 'DropletSlug']] size: The slug identifier for the type of Droplet to be used as workers in the node pool.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
@@ -206,6 +207,7 @@ class _KubernetesNodePoolState:
                  taints: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesNodePoolTaintArgs']]]] = None):
         """
         Input properties used for looking up and filtering KubernetesNodePool resources.
+
         :param pulumi.Input[_builtins.int] actual_node_count: A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the Kubernetes cluster to which the node pool is associated.
@@ -479,6 +481,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         is managed by the `KubernetesCluster` resource and not by this
         `KubernetesNodePool` resource.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_scale: Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
@@ -568,6 +571,7 @@ class KubernetesNodePool(pulumi.CustomResource):
         existing cluster. The provider will refuse to import the node pool in that case because the node pool
         is managed by the `KubernetesCluster` resource and not by this
         `KubernetesNodePool` resource.
+
 
         :param str resource_name: The name of the resource.
         :param KubernetesNodePoolArgs args: The arguments to use to populate this resource's properties.

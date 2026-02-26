@@ -27,6 +27,7 @@ class CustomImageArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a CustomImage resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions. (Currently only one is supported).
         :param pulumi.Input[_builtins.str] url: A URL from which the custom Linux virtual machine image may be retrieved.
         :param pulumi.Input[_builtins.str] description: An optional description for the image.
@@ -137,6 +138,7 @@ class _CustomImageState:
                  url: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering CustomImage resources.
+
         :param pulumi.Input[_builtins.str] created_at: A time value given in ISO8601 combined date and time format that represents when the image was created.
         :param pulumi.Input[_builtins.str] description: An optional description for the image.
         :param pulumi.Input[_builtins.str] distribution: An optional distribution name for the image. Valid values are documented [here](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images/operation/images_create_custom)
@@ -394,6 +396,7 @@ class CustomImage(pulumi.CustomResource):
             ssh_keys=["12345"])
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: An optional description for the image.
@@ -439,6 +442,7 @@ class CustomImage(pulumi.CustomResource):
             size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
             ssh_keys=["12345"])
         ```
+
 
         :param str resource_name: The name of the resource.
         :param CustomImageArgs args: The arguments to use to populate this resource's properties.

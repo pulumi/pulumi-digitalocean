@@ -60,6 +60,7 @@ class DatabaseOpensearchConfigArgs:
                  thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseOpensearchConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Opensearch cluster.
         :param pulumi.Input[_builtins.bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[_builtins.bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
@@ -691,6 +692,7 @@ class _DatabaseOpensearchConfigState:
                  thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseOpensearchConfig resources.
+
         :param pulumi.Input[_builtins.bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
         :param pulumi.Input[_builtins.bool] action_destructive_requires_name: Specifies whether to require explicit index names when deleting indices.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Opensearch cluster.
@@ -1394,6 +1396,7 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] action_auto_create_index_enabled: Specifices whether to allow automatic creation of indices. Default: `true`
@@ -1510,6 +1513,7 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseOpensearchConfig:DatabaseOpensearchConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseOpensearchConfigArgs args: The arguments to use to populate this resource's properties.

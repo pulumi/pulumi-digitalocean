@@ -25,6 +25,7 @@ class SpacesBucketLoggingArgs:
                  target_prefix: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a SpacesBucketLogging resource.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket which will be logged.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
         :param pulumi.Input[_builtins.str] target_bucket: The name of the bucket which will store the logs.
@@ -93,6 +94,7 @@ class _SpacesBucketLoggingState:
                  target_prefix: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesBucketLogging resources.
+
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket which will be logged.
         :param pulumi.Input[_builtins.str] region: The region where the bucket resides.
         :param pulumi.Input[_builtins.str] target_bucket: The name of the bucket which will store the logs.
@@ -219,6 +221,7 @@ class SpacesBucketLogging(pulumi.CustomResource):
         $ pulumi import digitalocean:index/spacesBucketLogging:SpacesBucketLogging example `region`,`bucket`
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] bucket: The name of the bucket which will be logged.
@@ -283,6 +286,7 @@ class SpacesBucketLogging(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/spacesBucketLogging:SpacesBucketLogging example `region`,`bucket`
         ```
+
 
         :param str resource_name: The name of the resource.
         :param SpacesBucketLoggingArgs args: The arguments to use to populate this resource's properties.

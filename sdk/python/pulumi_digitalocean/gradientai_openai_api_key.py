@@ -26,6 +26,7 @@ class GradientaiOpenaiApiKeyArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiOpenaiApiKey resource.
+
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
         :param pulumi.Input[Sequence[pulumi.Input['GradientaiOpenaiApiKeyModelArgs']]] models: Models associated with the OpenAI API key
         :param pulumi.Input[_builtins.str] name: A name for the API key.
@@ -86,6 +87,7 @@ class _GradientaiOpenaiApiKeyState:
                  uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiOpenaiApiKey resources.
+
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
         :param pulumi.Input[_builtins.str] created_at: When the API key was created.
         :param pulumi.Input[_builtins.str] created_by: Who created the API key.
@@ -221,6 +223,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GradientaiOpenaiApiKey resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] api_key: The OpenAI API key.
@@ -235,6 +238,7 @@ class GradientaiOpenaiApiKey(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GradientaiOpenaiApiKey resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GradientaiOpenaiApiKeyArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

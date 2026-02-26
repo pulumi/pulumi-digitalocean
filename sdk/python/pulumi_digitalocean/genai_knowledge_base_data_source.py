@@ -26,6 +26,7 @@ class GenaiKnowledgeBaseDataSourceArgs:
                  web_crawler_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         The set of arguments for constructing a GenaiKnowledgeBaseDataSource resource.
+
         :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID of the Knowledge Base
         """
         pulumi.set(__self__, "knowledge_base_uuid", knowledge_base_uuid)
@@ -73,6 +74,7 @@ class _GenaiKnowledgeBaseDataSourceState:
                  web_crawler_data_source: Optional[pulumi.Input['GenaiKnowledgeBaseDataSourceWebCrawlerDataSourceArgs']] = None):
         """
         Input properties used for looking up and filtering GenaiKnowledgeBaseDataSource resources.
+
         :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID of the Knowledge Base
         """
         if knowledge_base_uuid is not None:
@@ -130,6 +132,7 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] knowledge_base_uuid: UUID of the Knowledge Base
@@ -142,6 +145,7 @@ class GenaiKnowledgeBaseDataSource(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiKnowledgeBaseDataSource resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiKnowledgeBaseDataSourceArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

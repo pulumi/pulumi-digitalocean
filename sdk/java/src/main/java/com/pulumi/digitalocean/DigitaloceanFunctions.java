@@ -6733,7 +6733,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -6785,7 +6785,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -6837,7 +6837,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -6889,7 +6889,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -6941,7 +6941,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getFloatingIp(GetFloatingIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14020,7 +14020,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14070,7 +14070,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14120,7 +14120,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14170,7 +14170,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());
@@ -14220,7 +14220,7 @@ public final class DigitaloceanFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var publicIp = config.get("publicIp");
+     *         final var publicIp = config.require("publicIp");
      *         final var example = DigitaloceanFunctions.getReservedIp(GetReservedIpArgs.builder()
      *             .ipAddress(publicIp)
      *             .build());

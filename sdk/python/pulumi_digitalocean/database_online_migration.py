@@ -27,6 +27,7 @@ class DatabaseOnlineMigrationArgs:
                  ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatabaseOnlineMigration resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MySQL cluster.
         :param pulumi.Input['DatabaseOnlineMigrationSourceArgs'] source: Configuration for migration
         :param pulumi.Input[_builtins.bool] disable_ssl: When set to true, enables SSL encryption when connecting to the source database.
@@ -99,6 +100,7 @@ class _DatabaseOnlineMigrationState:
                  status: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseOnlineMigration resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MySQL cluster.
         :param pulumi.Input[_builtins.str] created_at: The date and time when the online migration was created
         :param pulumi.Input[_builtins.bool] disable_ssl: When set to true, enables SSL encryption when connecting to the source database.
@@ -260,6 +262,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MySQL cluster.
@@ -329,6 +332,7 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseOnlineMigration:DatabaseOnlineMigration example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseOnlineMigrationArgs args: The arguments to use to populate this resource's properties.

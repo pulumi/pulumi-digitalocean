@@ -24,6 +24,7 @@ class ReservedIpv6Args:
                  ip: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ReservedIpv6 resource.
+
         :param pulumi.Input[_builtins.str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         """
         pulumi.set(__self__, "region_slug", region_slug)
@@ -72,6 +73,7 @@ class _ReservedIpv6State:
                  reserved_ipv6_urn: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ReservedIpv6 resources.
+
         :param pulumi.Input[_builtins.str] region_slug: The region that the reserved IPv6 needs to be reserved to.
         :param pulumi.Input[_builtins.str] reserved_ipv6_urn: the uniform resource name for the reserved ipv6
         """
@@ -161,6 +163,7 @@ class ReservedIpv6(pulumi.CustomResource):
         2409:40d0:fa:27dd:9b24:7074:7b85:eee6
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] region_slug: The region that the reserved IPv6 needs to be reserved to.
@@ -194,6 +197,7 @@ class ReservedIpv6(pulumi.CustomResource):
         terraform import digitalocean_reserved_ipv6.myip 
         2409:40d0:fa:27dd:9b24:7074:7b85:eee6
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ReservedIpv6Args args: The arguments to use to populate this resource's properties.

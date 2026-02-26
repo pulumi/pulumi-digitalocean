@@ -23,6 +23,7 @@ class DropletSnapshotArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DropletSnapshot resource.
+
         :param pulumi.Input[_builtins.str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[_builtins.str] name: A name for the Droplet snapshot.
         """
@@ -66,6 +67,7 @@ class _DropletSnapshotState:
                  size: Optional[pulumi.Input[_builtins.float]] = None):
         """
         Input properties used for looking up and filtering DropletSnapshot resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time the Droplet snapshot was created.
         :param pulumi.Input[_builtins.str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
         :param pulumi.Input[_builtins.int] min_disk_size: The minimum size in gigabytes required for a Droplet to be created based on this snapshot.
@@ -200,6 +202,7 @@ class DropletSnapshot(pulumi.CustomResource):
         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] droplet_id: The ID of the Droplet from which the snapshot will be taken.
@@ -242,6 +245,7 @@ class DropletSnapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/dropletSnapshot:DropletSnapshot mysnapshot 123456
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DropletSnapshotArgs args: The arguments to use to populate this resource's properties.

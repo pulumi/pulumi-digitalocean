@@ -25,6 +25,7 @@ class DatabaseKafkaSchemaRegistryArgs:
                  subject_name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a DatabaseKafkaSchemaRegistry resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Kafka cluster.
         :param pulumi.Input[_builtins.str] schema: The schema definition as a string.
         :param pulumi.Input[_builtins.str] schema_type: The schema type. Available values are: avro, json, or protobuf.
@@ -93,6 +94,7 @@ class _DatabaseKafkaSchemaRegistryState:
                  subject_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaSchemaRegistry resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Kafka cluster.
         :param pulumi.Input[_builtins.str] schema: The schema definition as a string.
         :param pulumi.Input[_builtins.str] schema_type: The schema type. Available values are: avro, json, or protobuf.
@@ -202,6 +204,7 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
         \"\"\")
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Kafka cluster.
@@ -249,6 +252,7 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
         }
         \"\"\")
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseKafkaSchemaRegistryArgs args: The arguments to use to populate this resource's properties.

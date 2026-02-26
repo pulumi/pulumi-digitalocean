@@ -32,6 +32,7 @@ class MonitorAlertArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a MonitorAlert resource.
+
         :param pulumi.Input['MonitorAlertAlertsArgs'] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
@@ -213,6 +214,7 @@ class _MonitorAlertState:
                  window: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering MonitorAlert resources.
+
         :param pulumi.Input['MonitorAlertAlertsArgs'] alerts: How to send notifications about the alerts. This is a list with one element, .
                Note that for Slack, the DigitalOcean app needs to have permissions for your workspace. You can
                read more in [Slack's documentation](https://slack.com/intl/en-dk/help/articles/222386767-Manage-app-installation-settings-for-your-workspace)
@@ -430,6 +432,7 @@ class MonitorAlert(pulumi.CustomResource):
         $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['MonitorAlertAlertsArgs', 'MonitorAlertAlertsArgsDict']] alerts: How to send notifications about the alerts. This is a list with one element, .
@@ -478,6 +481,7 @@ class MonitorAlert(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/monitorAlert:MonitorAlert cpu_alert b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param MonitorAlertArgs args: The arguments to use to populate this resource's properties.

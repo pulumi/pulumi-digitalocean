@@ -32,6 +32,7 @@ class DnsRecordArgs:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DnsRecord resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain to add the record to.
         :param pulumi.Input[Union[_builtins.str, 'RecordType']] type: The type of record. Must be one of `A`, `AAAA`, `CAA`, `CNAME`, `MX`, `NS`, `TXT`, or `SRV`.
         :param pulumi.Input[_builtins.str] value: The value of the record.
@@ -198,6 +199,7 @@ class _DnsRecordState:
                  weight: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DnsRecord resources.
+
         :param pulumi.Input[_builtins.str] domain: The domain to add the record to.
         :param pulumi.Input[_builtins.int] flags: The flags of the record. Only valid when type is `CAA`. Must be between 0 and 255.
         :param pulumi.Input[_builtins.str] fqdn: The FQDN of the record
@@ -420,6 +422,7 @@ class DnsRecord(pulumi.CustomResource):
 
         >  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Domain-Records/operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain to add the record to.
@@ -475,6 +478,7 @@ class DnsRecord(pulumi.CustomResource):
         ```
 
         >  You find the `id` of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Domain-Records/operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list <domain.name>`
+
 
         :param str resource_name: The name of the resource.
         :param DnsRecordArgs args: The arguments to use to populate this resource's properties.

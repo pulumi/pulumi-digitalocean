@@ -39,6 +39,7 @@ class DatabaseKafkaConfigArgs:
                  message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseKafkaConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Kafka cluster.
         :param pulumi.Input[_builtins.bool] auto_create_topics_enable: Enable auto creation of topics.
         :param pulumi.Input[_builtins.int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
@@ -334,6 +335,7 @@ class _DatabaseKafkaConfigState:
                  message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaConfig resources.
+
         :param pulumi.Input[_builtins.bool] auto_create_topics_enable: Enable auto creation of topics.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target Kafka cluster.
         :param pulumi.Input[_builtins.int] group_initial_rebalance_delay_ms: The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
@@ -680,6 +682,7 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] auto_create_topics_enable: Enable auto creation of topics.
@@ -754,6 +757,7 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseKafkaConfig:DatabaseKafkaConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseKafkaConfigArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class ProjectArgs:
                  resources: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Project resource.
+
         :param pulumi.Input[_builtins.str] description: the description of the project
         :param pulumi.Input[_builtins.str] environment: the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
         :param pulumi.Input[_builtins.bool] is_default: a boolean indicating whether or not the project is the default project. (Default: "false")
@@ -135,6 +136,7 @@ class _ProjectState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Project resources.
+
         :param pulumi.Input[_builtins.str] created_at: the date and time when the project was created, (ISO8601)
         :param pulumi.Input[_builtins.str] description: the description of the project
         :param pulumi.Input[_builtins.str] environment: the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
@@ -364,6 +366,7 @@ class Project(pulumi.CustomResource):
         $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] description: the description of the project
@@ -441,6 +444,7 @@ class Project(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/project:Project myproject 245bcfd0-7f31-4ce6-a2bc-475a116cca97
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

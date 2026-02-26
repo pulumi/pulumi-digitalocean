@@ -34,6 +34,7 @@ class GradientaiKnowledgeBaseArgs:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiKnowledgeBase resource.
+
         :param pulumi.Input[Sequence[pulumi.Input['GradientaiKnowledgeBaseDataSourceArgs']]] datasources: Data sources for the knowledge base
         :param pulumi.Input[_builtins.str] embedding_model_uuid: The unique identifier of the embedding model
         :param pulumi.Input[_builtins.str] project_id: The unique identifier of the project to which the knowledge base belongs.
@@ -207,6 +208,7 @@ class _GradientaiKnowledgeBaseState:
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiKnowledgeBase resources.
+
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
         :param pulumi.Input[_builtins.str] created_at: The time when the knowledge base was created.
         :param pulumi.Input[_builtins.str] database_id: The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
@@ -402,6 +404,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GradientaiKnowledgeBase resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] added_to_agent_at: The time when the knowledge base was added to the agent.
@@ -422,6 +425,7 @@ class GradientaiKnowledgeBase(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GradientaiKnowledgeBase resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GradientaiKnowledgeBaseArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

@@ -75,6 +75,10 @@ import javax.annotation.Nullable;
  * 
  * A PostgreSQL database cluster&#39;s configuration can be imported using the `id` the parent cluster, e.g.
  * 
+ * ```sh
+ * $ pulumi import digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig example 52556c07-788e-4d41-b8a7-c796432197d1
+ * ```
+ * 
  */
 @ResourceType(type="digitalocean:index/databasePostgresqlConfig:DatabasePostgresqlConfig")
 public class DatabasePostgresqlConfig extends com.pulumi.resources.CustomResource {

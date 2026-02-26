@@ -23,6 +23,7 @@ class DatabaseDbArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DatabaseDb resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] name: The name for the database.
         """
@@ -62,6 +63,7 @@ class _DatabaseDbState:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseDb resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] name: The name for the database.
         """
@@ -135,6 +137,7 @@ class DatabaseDb(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
@@ -176,6 +179,7 @@ class DatabaseDb(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseDb:DatabaseDb database-example 245bcfd0-7f31-4ce6-a2bc-475a116cca97,foobar
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseDbArgs args: The arguments to use to populate this resource's properties.

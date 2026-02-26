@@ -27,6 +27,7 @@ class DatabaseUserArgs:
                  settings: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
         """
         The set of arguments for constructing a DatabaseUser resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
         :param pulumi.Input[_builtins.str] mysql_auth_plugin: The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         :param pulumi.Input[_builtins.str] name: The name for the database user.
@@ -104,6 +105,7 @@ class _DatabaseUserState:
                  settings: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
         """
         Input properties used for looking up and filtering DatabaseUser resources.
+
         :param pulumi.Input[_builtins.str] access_cert: Access certificate for TLS client authentication. (Kafka only)
         :param pulumi.Input[_builtins.str] access_key: Access key for TLS client authentication. (Kafka only)
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
@@ -333,6 +335,7 @@ class DatabaseUser(pulumi.CustomResource):
 
         > **Note:** MongoDB user passwords are only available when the user is created. An existing MongoDB user that is imported will not have its `password` attribute exported. Recreate the user if it is necessary to access the password with Terraform.
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the original source database cluster.
@@ -439,6 +442,7 @@ class DatabaseUser(pulumi.CustomResource):
         ```
 
         > **Note:** MongoDB user passwords are only available when the user is created. An existing MongoDB user that is imported will not have its `password` attribute exported. Recreate the user if it is necessary to access the password with Terraform.
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseUserArgs args: The arguments to use to populate this resource's properties.

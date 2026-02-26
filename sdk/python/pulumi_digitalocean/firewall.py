@@ -28,6 +28,7 @@ class FirewallArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: The list of the IDs of the Droplets assigned
                to the Firewall (max. 10). If you want to assign more droplets to the
                Firewall, add Tags to them and use the `tags` argument below.
@@ -127,6 +128,7 @@ class _FirewallState:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
+
         :param pulumi.Input[_builtins.str] created_at: A time value given in ISO8601 combined date and time format
                that represents when the Firewall was created.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: The list of the IDs of the Droplets assigned
@@ -366,6 +368,7 @@ class Firewall(pulumi.CustomResource):
         $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.int]]] droplet_ids: The list of the IDs of the Droplets assigned
@@ -469,6 +472,7 @@ class Firewall(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/firewall:Firewall myfirewall b8ecd2ab-2267-4a5e-8692-cbf1d32583e3
         ```
+
 
         :param str resource_name: The name of the resource.
         :param FirewallArgs args: The arguments to use to populate this resource's properties.

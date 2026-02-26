@@ -49,6 +49,7 @@ class DatabaseMysqlConfigArgs:
                  wait_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseMysqlConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MySQL cluster.
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         :param pulumi.Input[_builtins.int] backup_minute: The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
@@ -504,6 +505,7 @@ class _DatabaseMysqlConfigState:
                  wait_timeout: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseMysqlConfig resources.
+
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
         :param pulumi.Input[_builtins.int] backup_minute: The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
         :param pulumi.Input[_builtins.int] binlog_retention_period: The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
@@ -995,6 +997,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] backup_hour: The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
@@ -1064,6 +1067,7 @@ class DatabaseMysqlConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseMysqlConfig:DatabaseMysqlConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseMysqlConfigArgs args: The arguments to use to populate this resource's properties.

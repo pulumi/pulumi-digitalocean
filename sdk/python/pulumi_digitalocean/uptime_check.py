@@ -26,6 +26,7 @@ class UptimeCheckArgs:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a UptimeCheck resource.
+
         :param pulumi.Input[_builtins.str] target: The endpoint to perform healthchecks on.
         :param pulumi.Input[_builtins.bool] enabled: A boolean value indicating whether the check is enabled/disabled.
         :param pulumi.Input[_builtins.str] name: A human-friendly display name for the check.
@@ -113,6 +114,7 @@ class _UptimeCheckState:
                  type: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering UptimeCheck resources.
+
         :param pulumi.Input[_builtins.bool] enabled: A boolean value indicating whether the check is enabled/disabled.
         :param pulumi.Input[_builtins.str] name: A human-friendly display name for the check.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: An array containing the selected regions to perform healthchecks from: "us_east", "us_west", "eu_west", "se_asia"
@@ -215,6 +217,7 @@ class UptimeCheck(pulumi.CustomResource):
         $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] enabled: A boolean value indicating whether the check is enabled/disabled.
@@ -240,6 +243,7 @@ class UptimeCheck(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/uptimeCheck:UptimeCheck target 5a4981aa-9653-4bd1-bef5-d6bff52042e4
         ```
+
 
         :param str resource_name: The name of the resource.
         :param UptimeCheckArgs args: The arguments to use to populate this resource's properties.

@@ -27,6 +27,7 @@ class DatabaseMongodbConfigArgs:
                  verbosity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseMongodbConfig resource.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MongoDB cluster.
         :param pulumi.Input[_builtins.str] default_read_concern: Specifies the default consistency behavior of reads from the database. Data that is returned from the query with may or may not have been acknowledged by all nodes in the replicaset depending on this value. Learn more [here](https://www.mongodb.com/docs/manual/reference/read-concern/).
         :param pulumi.Input[_builtins.str] default_write_concern: Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
@@ -130,6 +131,7 @@ class _DatabaseMongodbConfigState:
                  verbosity: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseMongodbConfig resources.
+
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MongoDB cluster.
         :param pulumi.Input[_builtins.str] default_read_concern: Specifies the default consistency behavior of reads from the database. Data that is returned from the query with may or may not have been acknowledged by all nodes in the replicaset depending on this value. Learn more [here](https://www.mongodb.com/docs/manual/reference/read-concern/).
         :param pulumi.Input[_builtins.str] default_write_concern: Describes the level of acknowledgment requested from MongoDB for write operations clusters. This field can set to either `majority` or a number`0...n` which will describe the number of nodes that must acknowledge the write operation before it is fully accepted. Setting to `0` will request no acknowledgement of the write operation. Learn more [here](https://www.mongodb.com/docs/manual/reference/write-concern/).
@@ -272,6 +274,7 @@ class DatabaseMongodbConfig(pulumi.CustomResource):
         $ pulumi import digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] cluster_id: The ID of the target MongoDB cluster.
@@ -322,6 +325,7 @@ class DatabaseMongodbConfig(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/databaseMongodbConfig:DatabaseMongodbConfig example 4b62829a-9c42-465b-aaa3-84051048e712
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DatabaseMongodbConfigArgs args: The arguments to use to populate this resource's properties.

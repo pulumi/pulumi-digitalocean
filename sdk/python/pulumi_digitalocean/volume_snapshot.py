@@ -24,6 +24,7 @@ class VolumeSnapshotArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a VolumeSnapshot resource.
+
         :param pulumi.Input[_builtins.str] volume_id: The ID of the volume from which the volume snapshot originated.
         :param pulumi.Input[_builtins.str] name: A name for the volume snapshot.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] tags: A list of the tags to be applied to this volume snapshot.
@@ -83,6 +84,7 @@ class _VolumeSnapshotState:
                  volume_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeSnapshot resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time the volume snapshot was created.
         :param pulumi.Input[_builtins.int] min_disk_size: The minimum size in gigabytes required for a volume to be created based on this volume snapshot.
         :param pulumi.Input[_builtins.str] name: A name for the volume snapshot.
@@ -228,6 +230,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: A name for the volume snapshot.
@@ -266,6 +269,7 @@ class VolumeSnapshot(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/volumeSnapshot:VolumeSnapshot snapshot 506f78a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param VolumeSnapshotArgs args: The arguments to use to populate this resource's properties.

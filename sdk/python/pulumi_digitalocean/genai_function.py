@@ -28,6 +28,7 @@ class GenaiFunctionArgs:
                  output_schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiFunction resource.
+
         :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
         :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
         :param pulumi.Input[_builtins.str] faas_namespace: The current status of the GradientAI resource.
@@ -144,6 +145,7 @@ class _GenaiFunctionState:
                  output_schema: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiFunction resources.
+
         :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
         :param pulumi.Input[_builtins.str] description: The region where the GradientAI resource will be created.
         :param pulumi.Input[_builtins.str] faas_name: The model to use for the GradientAI resource.
@@ -288,6 +290,7 @@ class GenaiFunction(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GenaiFunction resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] agent_id: The name of the GradientAI resource.
@@ -306,6 +309,7 @@ class GenaiFunction(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GenaiFunction resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GenaiFunctionArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.

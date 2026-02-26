@@ -24,6 +24,7 @@ class NfsAttachmentArgs:
                  vpc_id: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a NfsAttachment resource.
+
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
         """
@@ -73,6 +74,7 @@ class _NfsAttachmentState:
                  vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NfsAttachment resources.
+
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
         :param pulumi.Input[_builtins.str] vpc_id: The ID of the vpc to attach the NFS share to.
         """
@@ -157,6 +159,7 @@ class NfsAttachment(pulumi.CustomResource):
         $ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] share_id: The ID of the NFS share to attach.
@@ -197,6 +200,7 @@ class NfsAttachment(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/nfsAttachment:NfsAttachment foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,d1ebc5a4-e098-11e5-ad9f-000f53306ae1
         ```
+
 
         :param str resource_name: The name of the resource.
         :param NfsAttachmentArgs args: The arguments to use to populate this resource's properties.

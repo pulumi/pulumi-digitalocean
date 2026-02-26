@@ -26,6 +26,7 @@ class DropletAutoscaleArgs:
                  name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DropletAutoscale resource.
+
         :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
                documented below.
         :param pulumi.Input['DropletAutoscaleDropletTemplateArgs'] droplet_template: The droplet template parameters for Droplet Autoscale pool, the supported arguments 
@@ -88,6 +89,7 @@ class _DropletAutoscaleState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DropletAutoscale resources.
+
         :param pulumi.Input['DropletAutoscaleConfigArgs'] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
                documented below.
         :param pulumi.Input[_builtins.str] created_at: Created at timestamp for the Droplet Autoscale pool.
@@ -263,6 +265,7 @@ class DropletAutoscale(pulumi.CustomResource):
         $ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DropletAutoscaleConfigArgs', 'DropletAutoscaleConfigArgsDict']] config: The configuration parameters for Droplet Autoscale pool, the supported arguments are 
@@ -325,6 +328,7 @@ class DropletAutoscale(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445
         ```
+
 
         :param str resource_name: The name of the resource.
         :param DropletAutoscaleArgs args: The arguments to use to populate this resource's properties.

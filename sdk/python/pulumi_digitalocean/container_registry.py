@@ -24,6 +24,7 @@ class ContainerRegistryArgs:
                  region: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerRegistry resource.
+
         :param pulumi.Input[_builtins.str] subscription_tier_slug: The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         :param pulumi.Input[_builtins.str] name: The name of the container_registry
         :param pulumi.Input[_builtins.str] region: The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
@@ -83,6 +84,7 @@ class _ContainerRegistryState:
                  subscription_tier_slug: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistry resources.
+
         :param pulumi.Input[_builtins.str] created_at: The date and time when the registry was created
         :param pulumi.Input[_builtins.str] endpoint: The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
         :param pulumi.Input[_builtins.str] name: The name of the container_registry
@@ -225,6 +227,7 @@ class ContainerRegistry(pulumi.CustomResource):
         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
         ```
 
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the container_registry
@@ -260,6 +263,7 @@ class ContainerRegistry(pulumi.CustomResource):
         ```sh
         $ pulumi import digitalocean:index/containerRegistry:ContainerRegistry myregistry registryname
         ```
+
 
         :param str resource_name: The name of the resource.
         :param ContainerRegistryArgs args: The arguments to use to populate this resource's properties.

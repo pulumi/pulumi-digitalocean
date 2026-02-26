@@ -60,6 +60,7 @@ class GradientaiAgentArgs:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiAgent resource.
+
         :param pulumi.Input[_builtins.str] instruction: Instruction for the Agent
         :param pulumi.Input[_builtins.str] model_uuid: Model UUID of the Agent
         :param pulumi.Input[_builtins.str] project_id: Project ID of the Agent
@@ -658,6 +659,7 @@ class _GradientaiAgentState:
                  user_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiAgent resources.
+
         :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentAgentGuardrailArgs']]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
         :param pulumi.Input[Sequence[pulumi.Input['GradientaiAgentAnthropicApiKeyArgs']]] anthropic_api_keys: Anthropic API Key information
         :param pulumi.Input[_builtins.str] anthropic_key_uuid: Optional Anthropic API key ID to use with Anthropic models
@@ -1292,6 +1294,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  __props__=None):
         """
         Create a GradientaiAgent resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['GradientaiAgentAgentGuardrailArgs', 'GradientaiAgentAgentGuardrailArgsDict']]]] agent_guardrails: AgentGuardrail represents a Guardrail attached to Gen AI Agent
@@ -1340,6 +1343,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Create a GradientaiAgent resource with the given unique name, props, and options.
+
         :param str resource_name: The name of the resource.
         :param GradientaiAgentArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
