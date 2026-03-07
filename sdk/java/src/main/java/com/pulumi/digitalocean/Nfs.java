@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *             .name("example-nfs")
  *             .size(50)
  *             .vpcId(example.id())
- *             .performanceTier("standard")
+ *             .performanceTier("high")
  *             .build());
  * 
  *     }
@@ -117,14 +117,16 @@ public class Nfs extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      * 
      */
     @Export(name="performanceTier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> performanceTier;
 
     /**
-     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      * 
      */
     public Output<Optional<String>> performanceTier() {

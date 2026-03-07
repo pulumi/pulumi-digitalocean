@@ -54,6 +54,7 @@ import javax.annotation.Nullable;
  *             .name("example-nfs")
  *             .size(50)
  *             .vpcId(foobar.id())
+ *             .performanceTier("high")
  *             .build());
  * 
  *         var foobarNfsAttachment = new NfsAttachment("foobarNfsAttachment", NfsAttachmentArgs.builder()

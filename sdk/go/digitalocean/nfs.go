@@ -40,7 +40,7 @@ import (
 //				Name:            pulumi.String("example-nfs"),
 //				Size:            pulumi.Int(50),
 //				VpcId:           example.ID(),
-//				PerformanceTier: pulumi.String("standard"),
+//				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,7 +67,8 @@ type Nfs struct {
 	MountPath pulumi.StringOutput `pulumi:"mountPath"`
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+	// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 	PerformanceTier pulumi.StringPtrOutput `pulumi:"performanceTier"`
 	// The region where the NFS share will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
@@ -126,7 +127,8 @@ type nfsState struct {
 	MountPath *string `pulumi:"mountPath"`
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name *string `pulumi:"name"`
-	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+	// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 	PerformanceTier *string `pulumi:"performanceTier"`
 	// The region where the NFS share will be created.
 	Region *string `pulumi:"region"`
@@ -147,7 +149,8 @@ type NfsState struct {
 	MountPath pulumi.StringPtrInput
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringPtrInput
-	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+	// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 	PerformanceTier pulumi.StringPtrInput
 	// The region where the NFS share will be created.
 	Region pulumi.StringPtrInput
@@ -168,7 +171,8 @@ func (NfsState) ElementType() reflect.Type {
 type nfsArgs struct {
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name *string `pulumi:"name"`
-	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+	// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 	PerformanceTier *string `pulumi:"performanceTier"`
 	// The region where the NFS share will be created.
 	Region string `pulumi:"region"`
@@ -183,7 +187,8 @@ type nfsArgs struct {
 type NfsArgs struct {
 	// A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
 	Name pulumi.StringPtrInput
-	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+	// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+	// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 	PerformanceTier pulumi.StringPtrInput
 	// The region where the NFS share will be created.
 	Region pulumi.StringInput
@@ -296,7 +301,8 @@ func (o NfsOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Nfs) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+// The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+// > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
 func (o NfsOutput) PerformanceTier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Nfs) pulumi.StringPtrOutput { return v.PerformanceTier }).(pulumi.StringPtrOutput)
 }

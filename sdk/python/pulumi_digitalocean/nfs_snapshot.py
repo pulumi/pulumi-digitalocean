@@ -198,7 +198,8 @@ class NfsSnapshot(pulumi.CustomResource):
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            performance_tier="high")
         foobar_nfs_snapshot = digitalocean.NfsSnapshot("foobar",
             name="example-snapshot",
             share_id=foobar_nfs.id,
@@ -242,7 +243,8 @@ class NfsSnapshot(pulumi.CustomResource):
             region="nyc1",
             name="example-nfs",
             size=50,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            performance_tier="high")
         foobar_nfs_snapshot = digitalocean.NfsSnapshot("foobar",
             name="example-snapshot",
             share_id=foobar_nfs.id,
