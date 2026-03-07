@@ -34,14 +34,16 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      * 
      */
     @Import(name="performanceTier")
     private @Nullable Output<String> performanceTier;
 
     /**
-     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * @return The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      * 
      */
     public Optional<Output<String>> performanceTier() {
@@ -151,7 +153,8 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+         * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
          * 
          * @return builder
          * 
@@ -162,7 +165,8 @@ public final class NfsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+         * @param performanceTier The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+         * &gt; **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
          * 
          * @return builder
          * 

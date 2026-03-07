@@ -22,7 +22,7 @@ import * as utilities from "./utilities";
  *     name: "example-nfs",
  *     size: 50,
  *     vpcId: example.id,
- *     performanceTier: "standard",
+ *     performanceTier: "high",
  * });
  * ```
  *
@@ -75,7 +75,8 @@ export class Nfs extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      */
     declare public readonly performanceTier: pulumi.Output<string | undefined>;
     /**
@@ -164,7 +165,8 @@ export interface NfsState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      */
     performanceTier?: pulumi.Input<string>;
     /**
@@ -196,7 +198,8 @@ export interface NfsArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `standard`. Changing this will cause the performance tier to be switched.
+     * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
+     * > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      */
     performanceTier?: pulumi.Input<string>;
     /**

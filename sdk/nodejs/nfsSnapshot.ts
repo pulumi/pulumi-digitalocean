@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     name: "example-nfs",
  *     size: 50,
  *     vpcId: foobar.id,
+ *     performanceTier: "high",
  * });
  * const foobarNfsSnapshot = new digitalocean.NfsSnapshot("foobar", {
  *     name: "example-snapshot",

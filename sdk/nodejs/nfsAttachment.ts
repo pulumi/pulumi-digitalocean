@@ -22,6 +22,7 @@ import * as utilities from "./utilities";
  *     name: "example-nfs",
  *     size: 50,
  *     vpcId: foobar.id,
+ *     performanceTier: "high",
  * });
  * const foobarNfsAttachment = new digitalocean.NfsAttachment("foobar", {
  *     shareId: foobarNfs.id,

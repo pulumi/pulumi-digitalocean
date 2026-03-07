@@ -55,6 +55,7 @@ import javax.annotation.Nullable;
  *             .name("example-nfs")
  *             .size(50)
  *             .vpcId(foobar.id())
+ *             .performanceTier("high")
  *             .build());
  * 
  *         var foobarNfsSnapshot = new NfsSnapshot("foobarNfsSnapshot", NfsSnapshotArgs.builder()

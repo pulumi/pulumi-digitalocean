@@ -34,6 +34,7 @@ namespace Pulumi.DigitalOcean
     ///         Name = "example-nfs",
     ///         Size = 50,
     ///         VpcId = foobar.Id,
+    ///         PerformanceTier = "high",
     ///     });
     /// 
     ///     var foobarNfsSnapshot = new DigitalOcean.NfsSnapshot("foobar", new()

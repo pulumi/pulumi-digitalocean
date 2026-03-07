@@ -145,7 +145,8 @@ class NfsAttachment(pulumi.CustomResource):
             region="atl1",
             name="example-nfs",
             size=50,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            performance_tier="high")
         foobar_nfs_attachment = digitalocean.NfsAttachment("foobar",
             share_id=foobar_nfs.id,
             vpc_id=foobar.id)
@@ -187,7 +188,8 @@ class NfsAttachment(pulumi.CustomResource):
             region="atl1",
             name="example-nfs",
             size=50,
-            vpc_id=foobar.id)
+            vpc_id=foobar.id,
+            performance_tier="high")
         foobar_nfs_attachment = digitalocean.NfsAttachment("foobar",
             share_id=foobar_nfs.id,
             vpc_id=foobar.id)

@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean
     ///         Name = "example-nfs",
     ///         Size = 50,
     ///         VpcId = example.Id,
-    ///         PerformanceTier = "standard",
+    ///         PerformanceTier = "high",
     ///     });
     /// 
     /// });
@@ -70,7 +70,8 @@ namespace Pulumi.DigitalOcean
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `High`. Changing this will cause the performance tier to be switched.
+        /// &gt; **Note:** You cannot downgrade the performance tier from `High` to `Standard` after creation. Upgrades from `Standard` to `High` are allowed.
         /// </summary>
         [Output("performanceTier")]
         public Output<string?> PerformanceTier { get; private set; } = null!;
@@ -158,7 +159,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `High`. Changing this will cause the performance tier to be switched.
+        /// &gt; **Note:** You cannot downgrade the performance tier from `High` to `Standard` after creation. Upgrades from `Standard` to `High` are allowed.
         /// </summary>
         [Input("performanceTier")]
         public Input<string>? PerformanceTier { get; set; }
@@ -216,7 +218,8 @@ namespace Pulumi.DigitalOcean
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `Standard`. Changing this will cause the performance tier to be switched.
+        /// The performance tier for the NFS share. Can be `Standard` or `High`. Defaults to `High`. Changing this will cause the performance tier to be switched.
+        /// &gt; **Note:** You cannot downgrade the performance tier from `High` to `Standard` after creation. Upgrades from `Standard` to `High` are allowed.
         /// </summary>
         [Input("performanceTier")]
         public Input<string>? PerformanceTier { get; set; }

@@ -36,10 +36,11 @@ import (
 //				return err
 //			}
 //			foobarNfs, err := digitalocean.NewNfs(ctx, "foobar", &digitalocean.NfsArgs{
-//				Region: pulumi.String("nyc1"),
-//				Name:   pulumi.String("example-nfs"),
-//				Size:   pulumi.Int(50),
-//				VpcId:  foobar.ID(),
+//				Region:          pulumi.String("nyc1"),
+//				Name:            pulumi.String("example-nfs"),
+//				Size:            pulumi.Int(50),
+//				VpcId:           foobar.ID(),
+//				PerformanceTier: pulumi.String("high"),
 //			})
 //			if err != nil {
 //				return err
