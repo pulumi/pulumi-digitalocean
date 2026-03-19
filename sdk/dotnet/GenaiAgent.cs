@@ -247,6 +247,12 @@ namespace Pulumi.DigitalOcean
         [Output("userId")]
         public Output<string?> UserId { get; private set; } = null!;
 
+        /// <summary>
+        /// Identifier for the workspace
+        /// </summary>
+        [Output("workspaceUuid")]
+        public Output<string?> WorkspaceUuid { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a GenaiAgent resource with the given unique name, arguments, and options.
@@ -611,6 +617,12 @@ namespace Pulumi.DigitalOcean
         [Input("userId")]
         public Input<string>? UserId { get; set; }
 
+        /// <summary>
+        /// Identifier for the workspace
+        /// </summary>
+        [Input("workspaceUuid")]
+        public Input<string>? WorkspaceUuid { get; set; }
+
         public GenaiAgentArgs()
         {
         }
@@ -948,6 +960,12 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }
+
+        /// <summary>
+        /// Identifier for the workspace
+        /// </summary>
+        [Input("workspaceUuid")]
+        public Input<string>? WorkspaceUuid { get; set; }
 
         public GenaiAgentState()
         {

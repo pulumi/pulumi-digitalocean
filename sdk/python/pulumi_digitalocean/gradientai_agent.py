@@ -57,7 +57,8 @@ class GradientaiAgentArgs:
                  templates: Optional[pulumi.Input[Sequence[pulumi.Input['GradientaiAgentTemplateArgs']]]] = None,
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GradientaiAgent resource.
 
@@ -98,6 +99,7 @@ class GradientaiAgentArgs:
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         pulumi.set(__self__, "instruction", instruction)
         pulumi.set(__self__, "model_uuid", model_uuid)
@@ -169,6 +171,8 @@ class GradientaiAgentArgs:
             pulumi.set(__self__, "url", url)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if workspace_uuid is not None:
+            pulumi.set(__self__, "workspace_uuid", workspace_uuid)
 
     @_builtins.property
     @pulumi.getter
@@ -614,6 +618,18 @@ class GradientaiAgentArgs:
     def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
+
+    @workspace_uuid.setter
+    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_uuid", value)
+
 
 @pulumi.input_type
 class _GradientaiAgentState:
@@ -656,7 +672,8 @@ class _GradientaiAgentState:
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GradientaiAgent resources.
 
@@ -699,6 +716,7 @@ class _GradientaiAgentState:
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         if agent_guardrails is not None:
             pulumi.set(__self__, "agent_guardrails", agent_guardrails)
@@ -778,6 +796,8 @@ class _GradientaiAgentState:
             pulumi.set(__self__, "url", url)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if workspace_uuid is not None:
+            pulumi.set(__self__, "workspace_uuid", workspace_uuid)
 
     @_builtins.property
     @pulumi.getter(name="agentGuardrails")
@@ -1247,6 +1267,18 @@ class _GradientaiAgentState:
     def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
+
+    @workspace_uuid.setter
+    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_uuid", value)
+
 
 @pulumi.type_token("digitalocean:index/gradientaiAgent:GradientaiAgent")
 class GradientaiAgent(pulumi.CustomResource):
@@ -1291,6 +1323,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GradientaiAgent resource with the given unique name, props, and options.
@@ -1334,6 +1367,7 @@ class GradientaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         ...
     @overload
@@ -1396,6 +1430,7 @@ class GradientaiAgent(pulumi.CustomResource):
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1450,6 +1485,7 @@ class GradientaiAgent(pulumi.CustomResource):
             __props__.__dict__["top_p"] = top_p
             __props__.__dict__["url"] = url
             __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["workspace_uuid"] = workspace_uuid
             __props__.__dict__["route_created_at"] = None
             __props__.__dict__["updated_at"] = None
         alias_opts = pulumi.ResourceOptions(aliases=[pulumi.Alias(type_="digitalocean:index/genaiAgent:GenaiAgent")])
@@ -1502,7 +1538,8 @@ class GradientaiAgent(pulumi.CustomResource):
             top_p: Optional[pulumi.Input[_builtins.float]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GradientaiAgent':
+            user_id: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GradientaiAgent':
         """
         Get an existing GradientaiAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1549,6 +1586,7 @@ class GradientaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1593,6 +1631,7 @@ class GradientaiAgent(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["url"] = url
         __props__.__dict__["user_id"] = user_id
+        __props__.__dict__["workspace_uuid"] = workspace_uuid
         return GradientaiAgent(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1906,4 +1945,12 @@ class GradientaiAgent(pulumi.CustomResource):
         User ID linked with the Agent
         """
         return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
 

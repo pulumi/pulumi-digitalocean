@@ -94,6 +94,8 @@ type GenaiAgent struct {
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrOutput `pulumi:"workspaceUuid"`
 }
 
 // NewGenaiAgent registers a new resource with the given unique name, arguments, and options.
@@ -216,6 +218,8 @@ type genaiAgentState struct {
 	Url *string `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId *string `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid *string `pulumi:"workspaceUuid"`
 }
 
 type GenaiAgentState struct {
@@ -297,6 +301,8 @@ type GenaiAgentState struct {
 	Url pulumi.StringPtrInput
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrInput
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrInput
 }
 
 func (GenaiAgentState) ElementType() reflect.Type {
@@ -378,6 +384,8 @@ type genaiAgentArgs struct {
 	Url *string `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId *string `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid *string `pulumi:"workspaceUuid"`
 }
 
 // The set of arguments for constructing a GenaiAgent resource.
@@ -456,6 +464,8 @@ type GenaiAgentArgs struct {
 	Url pulumi.StringPtrInput
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrInput
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrInput
 }
 
 func (GenaiAgentArgs) ElementType() reflect.Type {
@@ -738,6 +748,11 @@ func (o GenaiAgentOutput) Url() pulumi.StringPtrOutput {
 // User ID linked with the Agent
 func (o GenaiAgentOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GenaiAgent) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the workspace
+func (o GenaiAgentOutput) WorkspaceUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GenaiAgent) pulumi.StringPtrOutput { return v.WorkspaceUuid }).(pulumi.StringPtrOutput)
 }
 
 type GenaiAgentArrayOutput struct{ *pulumi.OutputState }

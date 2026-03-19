@@ -93,6 +93,8 @@ type GradientaiAgent struct {
 	Url pulumi.StringPtrOutput `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrOutput `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrOutput `pulumi:"workspaceUuid"`
 }
 
 // NewGradientaiAgent registers a new resource with the given unique name, arguments, and options.
@@ -221,6 +223,8 @@ type gradientaiAgentState struct {
 	Url *string `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId *string `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid *string `pulumi:"workspaceUuid"`
 }
 
 type GradientaiAgentState struct {
@@ -302,6 +306,8 @@ type GradientaiAgentState struct {
 	Url pulumi.StringPtrInput
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrInput
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrInput
 }
 
 func (GradientaiAgentState) ElementType() reflect.Type {
@@ -383,6 +389,8 @@ type gradientaiAgentArgs struct {
 	Url *string `pulumi:"url"`
 	// User ID linked with the Agent
 	UserId *string `pulumi:"userId"`
+	// Identifier for the workspace
+	WorkspaceUuid *string `pulumi:"workspaceUuid"`
 }
 
 // The set of arguments for constructing a GradientaiAgent resource.
@@ -461,6 +469,8 @@ type GradientaiAgentArgs struct {
 	Url pulumi.StringPtrInput
 	// User ID linked with the Agent
 	UserId pulumi.StringPtrInput
+	// Identifier for the workspace
+	WorkspaceUuid pulumi.StringPtrInput
 }
 
 func (GradientaiAgentArgs) ElementType() reflect.Type {
@@ -743,6 +753,11 @@ func (o GradientaiAgentOutput) Url() pulumi.StringPtrOutput {
 // User ID linked with the Agent
 func (o GradientaiAgentOutput) UserId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GradientaiAgent) pulumi.StringPtrOutput { return v.UserId }).(pulumi.StringPtrOutput)
+}
+
+// Identifier for the workspace
+func (o GradientaiAgentOutput) WorkspaceUuid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GradientaiAgent) pulumi.StringPtrOutput { return v.WorkspaceUuid }).(pulumi.StringPtrOutput)
 }
 
 type GradientaiAgentArrayOutput struct{ *pulumi.OutputState }

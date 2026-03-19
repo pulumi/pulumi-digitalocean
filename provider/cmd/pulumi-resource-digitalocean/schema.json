@@ -32170,6 +32170,10 @@
                 "userId": {
                     "type": "string",
                     "description": "User ID linked with the Agent"
+                },
+                "workspaceUuid": {
+                    "type": "string",
+                    "description": "Identifier for the workspace"
                 }
             },
             "required": [
@@ -32381,6 +32385,10 @@
                 "userId": {
                     "type": "string",
                     "description": "User ID linked with the Agent"
+                },
+                "workspaceUuid": {
+                    "type": "string",
+                    "description": "Identifier for the workspace"
                 }
             },
             "requiredInputs": [
@@ -32595,6 +32603,10 @@
                     "userId": {
                         "type": "string",
                         "description": "User ID linked with the Agent"
+                    },
+                    "workspaceUuid": {
+                        "type": "string",
+                        "description": "Identifier for the workspace"
                     }
                 },
                 "type": "object"
@@ -33587,6 +33599,10 @@
                 "userId": {
                     "type": "string",
                     "description": "User ID linked with the Agent"
+                },
+                "workspaceUuid": {
+                    "type": "string",
+                    "description": "Identifier for the workspace"
                 }
             },
             "required": [
@@ -33798,6 +33814,10 @@
                 "userId": {
                     "type": "string",
                     "description": "User ID linked with the Agent"
+                },
+                "workspaceUuid": {
+                    "type": "string",
+                    "description": "Identifier for the workspace"
                 }
             },
             "requiredInputs": [
@@ -34012,6 +34032,10 @@
                     "userId": {
                         "type": "string",
                         "description": "User ID linked with the Agent"
+                    },
+                    "workspaceUuid": {
+                        "type": "string",
+                        "description": "Identifier for the workspace"
                     }
                 },
                 "type": "object"
