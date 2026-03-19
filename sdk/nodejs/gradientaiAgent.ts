@@ -191,6 +191,10 @@ export class GradientaiAgent extends pulumi.CustomResource {
      * User ID linked with the Agent
      */
     declare public readonly userId: pulumi.Output<string | undefined>;
+    /**
+     * Identifier for the workspace
+     */
+    declare public readonly workspaceUuid: pulumi.Output<string | undefined>;
 
     /**
      * Create a GradientaiAgent resource with the given unique name, arguments, and options.
@@ -244,6 +248,7 @@ export class GradientaiAgent extends pulumi.CustomResource {
             resourceInputs["updatedAt"] = state?.updatedAt;
             resourceInputs["url"] = state?.url;
             resourceInputs["userId"] = state?.userId;
+            resourceInputs["workspaceUuid"] = state?.workspaceUuid;
         } else {
             const args = argsOrState as GradientaiAgentArgs | undefined;
             if (args?.instruction === undefined && !opts.urn) {
@@ -295,6 +300,7 @@ export class GradientaiAgent extends pulumi.CustomResource {
             resourceInputs["topP"] = args?.topP;
             resourceInputs["url"] = args?.url;
             resourceInputs["userId"] = args?.userId;
+            resourceInputs["workspaceUuid"] = args?.workspaceUuid;
             resourceInputs["routeCreatedAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }
@@ -465,6 +471,10 @@ export interface GradientaiAgentState {
      * User ID linked with the Agent
      */
     userId?: pulumi.Input<string>;
+    /**
+     * Identifier for the workspace
+     */
+    workspaceUuid?: pulumi.Input<string>;
 }
 
 /**
@@ -619,4 +629,8 @@ export interface GradientaiAgentArgs {
      * User ID linked with the Agent
      */
     userId?: pulumi.Input<string>;
+    /**
+     * Identifier for the workspace
+     */
+    workspaceUuid?: pulumi.Input<string>;
 }

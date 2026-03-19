@@ -586,6 +586,20 @@ public class GenaiAgent extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> userId() {
         return Codegen.optional(this.userId);
     }
+    /**
+     * Identifier for the workspace
+     * 
+     */
+    @Export(name="workspaceUuid", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> workspaceUuid;
+
+    /**
+     * @return Identifier for the workspace
+     * 
+     */
+    public Output<Optional<String>> workspaceUuid() {
+        return Codegen.optional(this.workspaceUuid);
+    }
 
     /**
      *

@@ -589,6 +589,21 @@ public final class GradientaiAgentArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.userId);
     }
 
+    /**
+     * Identifier for the workspace
+     * 
+     */
+    @Import(name="workspaceUuid")
+    private @Nullable Output<String> workspaceUuid;
+
+    /**
+     * @return Identifier for the workspace
+     * 
+     */
+    public Optional<Output<String>> workspaceUuid() {
+        return Optional.ofNullable(this.workspaceUuid);
+    }
+
     private GradientaiAgentArgs() {}
 
     private GradientaiAgentArgs(GradientaiAgentArgs $) {
@@ -629,6 +644,7 @@ public final class GradientaiAgentArgs extends com.pulumi.resources.ResourceArgs
         this.topP = $.topP;
         this.url = $.url;
         this.userId = $.userId;
+        this.workspaceUuid = $.workspaceUuid;
     }
 
     public static Builder builder() {
@@ -1584,6 +1600,27 @@ public final class GradientaiAgentArgs extends com.pulumi.resources.ResourceArgs
          */
         public Builder userId(String userId) {
             return userId(Output.of(userId));
+        }
+
+        /**
+         * @param workspaceUuid Identifier for the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceUuid(@Nullable Output<String> workspaceUuid) {
+            $.workspaceUuid = workspaceUuid;
+            return this;
+        }
+
+        /**
+         * @param workspaceUuid Identifier for the workspace
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workspaceUuid(String workspaceUuid) {
+            return workspaceUuid(Output.of(workspaceUuid));
         }
 
         public GradientaiAgentArgs build() {

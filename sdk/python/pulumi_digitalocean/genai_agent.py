@@ -57,7 +57,8 @@ class GenaiAgentArgs:
                  templates: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]] = None,
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiAgent resource.
 
@@ -98,6 +99,7 @@ class GenaiAgentArgs:
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         pulumi.set(__self__, "instruction", instruction)
         pulumi.set(__self__, "model_uuid", model_uuid)
@@ -169,6 +171,8 @@ class GenaiAgentArgs:
             pulumi.set(__self__, "url", url)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if workspace_uuid is not None:
+            pulumi.set(__self__, "workspace_uuid", workspace_uuid)
 
     @_builtins.property
     @pulumi.getter
@@ -614,6 +618,18 @@ class GenaiAgentArgs:
     def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
+
+    @workspace_uuid.setter
+    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_uuid", value)
+
 
 @pulumi.input_type
 class _GenaiAgentState:
@@ -656,7 +672,8 @@ class _GenaiAgentState:
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgent resources.
 
@@ -699,6 +716,7 @@ class _GenaiAgentState:
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         if agent_guardrails is not None:
             pulumi.set(__self__, "agent_guardrails", agent_guardrails)
@@ -778,6 +796,8 @@ class _GenaiAgentState:
             pulumi.set(__self__, "url", url)
         if user_id is not None:
             pulumi.set(__self__, "user_id", user_id)
+        if workspace_uuid is not None:
+            pulumi.set(__self__, "workspace_uuid", workspace_uuid)
 
     @_builtins.property
     @pulumi.getter(name="agentGuardrails")
@@ -1247,6 +1267,18 @@ class _GenaiAgentState:
     def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
+
+    @workspace_uuid.setter
+    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "workspace_uuid", value)
+
 
 warnings.warn("""digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""", DeprecationWarning)
 
@@ -1296,6 +1328,7 @@ class GenaiAgent(pulumi.CustomResource):
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GenaiAgent resource with the given unique name, props, and options.
@@ -1339,6 +1372,7 @@ class GenaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] top_p: Top P sampling parameter
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         ...
     @overload
@@ -1401,6 +1435,7 @@ class GenaiAgent(pulumi.CustomResource):
                  top_p: Optional[pulumi.Input[_builtins.float]] = None,
                  url: Optional[pulumi.Input[_builtins.str]] = None,
                  user_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiAgent is deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1456,6 +1491,7 @@ class GenaiAgent(pulumi.CustomResource):
             __props__.__dict__["top_p"] = top_p
             __props__.__dict__["url"] = url
             __props__.__dict__["user_id"] = user_id
+            __props__.__dict__["workspace_uuid"] = workspace_uuid
             __props__.__dict__["route_created_at"] = None
             __props__.__dict__["updated_at"] = None
         super(GenaiAgent, __self__).__init__(
@@ -1506,7 +1542,8 @@ class GenaiAgent(pulumi.CustomResource):
             top_p: Optional[pulumi.Input[_builtins.float]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None,
             url: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiAgent':
+            user_id: Optional[pulumi.Input[_builtins.str]] = None,
+            workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiAgent':
         """
         Get an existing GenaiAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1553,6 +1590,7 @@ class GenaiAgent(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] updated_at: Timestamp when the Agent was updated
         :param pulumi.Input[_builtins.str] url: URL for the Agent
         :param pulumi.Input[_builtins.str] user_id: User ID linked with the Agent
+        :param pulumi.Input[_builtins.str] workspace_uuid: Identifier for the workspace
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1597,6 +1635,7 @@ class GenaiAgent(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["url"] = url
         __props__.__dict__["user_id"] = user_id
+        __props__.__dict__["workspace_uuid"] = workspace_uuid
         return GenaiAgent(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -1910,4 +1949,12 @@ class GenaiAgent(pulumi.CustomResource):
         User ID linked with the Agent
         """
         return pulumi.get(self, "user_id")
+
+    @_builtins.property
+    @pulumi.getter(name="workspaceUuid")
+    def workspace_uuid(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        Identifier for the workspace
+        """
+        return pulumi.get(self, "workspace_uuid")
 
