@@ -7121,6 +7121,26 @@
                 "enabled"
             ]
         },
+        "digitalocean:index/KubernetesClusterSso:KubernetesClusterSso": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean",
+                    "description": "Boolean flag whether the component is enabled or not.\n"
+                },
+                "required": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "enabled",
+                        "required"
+                    ]
+                }
+            }
+        },
         "digitalocean:index/KubernetesNodePoolNode:KubernetesNodePoolNode": {
             "properties": {
                 "createdAt": {
@@ -23928,6 +23948,26 @@
                 }
             }
         },
+        "digitalocean:index/getKubernetesClusterSso:getKubernetesClusterSso": {
+            "properties": {
+                "enabled": {
+                    "type": "boolean"
+                },
+                "required": {
+                    "type": "boolean"
+                }
+            },
+            "type": "object",
+            "required": [
+                "enabled",
+                "required"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
         "digitalocean:index/getLoadBalancerDomain:getLoadBalancerDomain": {
             "properties": {
                 "certificateId": {
@@ -34956,6 +34996,12 @@
                     "type": "string",
                     "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n"
                 },
+                "ssos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
+                    }
+                },
                 "status": {
                     "type": "string",
                     "description": "A string indicating the current status of the individual node.\n"
@@ -35093,6 +35139,12 @@
                     "type": "string",
                     "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
                     "willReplaceOnChanges": true
+                },
+                "ssos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
+                    }
                 },
                 "surgeUpgrade": {
                     "type": "boolean",
@@ -35232,6 +35284,12 @@
                         "type": "string",
                         "description": "The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).\n",
                         "willReplaceOnChanges": true
+                    },
+                    "ssos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/KubernetesClusterSso:KubernetesClusterSso"
+                        }
                     },
                     "status": {
                         "type": "string",
@@ -42683,6 +42741,12 @@
                     "routingAgent": {
                         "$ref": "#/types/digitalocean:index/getKubernetesClusterRoutingAgent:getKubernetesClusterRoutingAgent"
                     },
+                    "ssos": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterSso:getKubernetesClusterSso"
+                        }
+                    },
                     "tags": {
                         "type": "array",
                         "items": {
@@ -42789,6 +42853,12 @@
                     "serviceSubnet": {
                         "description": "The range of assignable IP addresses for services running in the Kubernetes cluster.\n",
                         "type": "string"
+                    },
+                    "ssos": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getKubernetesClusterSso:getKubernetesClusterSso"
+                        },
+                        "type": "array"
                     },
                     "status": {
                         "description": "A string indicating the current status of the individual node.\n",
