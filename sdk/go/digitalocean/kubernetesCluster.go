@@ -277,7 +277,8 @@ type KubernetesCluster struct {
 	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
 	RoutingAgent KubernetesClusterRoutingAgentOutput `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ServiceSubnet pulumi.StringOutput `pulumi:"serviceSubnet"`
+	ServiceSubnet pulumi.StringOutput             `pulumi:"serviceSubnet"`
+	Ssos          KubernetesClusterSsoArrayOutput `pulumi:"ssos"`
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Enable/disable surge upgrades for a cluster. Default: true
@@ -379,7 +380,8 @@ type kubernetesClusterState struct {
 	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
 	RoutingAgent *KubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ServiceSubnet *string `pulumi:"serviceSubnet"`
+	ServiceSubnet *string                `pulumi:"serviceSubnet"`
+	Ssos          []KubernetesClusterSso `pulumi:"ssos"`
 	// A string indicating the current status of the individual node.
 	Status *string `pulumi:"status"`
 	// Enable/disable surge upgrades for a cluster. Default: true
@@ -440,6 +442,7 @@ type KubernetesClusterState struct {
 	RoutingAgent KubernetesClusterRoutingAgentPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringPtrInput
+	Ssos          KubernetesClusterSsoArrayInput
 	// A string indicating the current status of the individual node.
 	Status pulumi.StringPtrInput
 	// Enable/disable surge upgrades for a cluster. Default: true
@@ -493,7 +496,8 @@ type kubernetesClusterArgs struct {
 	// Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
 	RoutingAgent *KubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
-	ServiceSubnet *string `pulumi:"serviceSubnet"`
+	ServiceSubnet *string                `pulumi:"serviceSubnet"`
+	Ssos          []KubernetesClusterSso `pulumi:"ssos"`
 	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade *bool `pulumi:"surgeUpgrade"`
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -541,6 +545,7 @@ type KubernetesClusterArgs struct {
 	RoutingAgent KubernetesClusterRoutingAgentPtrInput
 	// The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 	ServiceSubnet pulumi.StringPtrInput
+	Ssos          KubernetesClusterSsoArrayInput
 	// Enable/disable surge upgrades for a cluster. Default: true
 	SurgeUpgrade pulumi.BoolPtrInput
 	// A list of tag names to be applied to the Kubernetes cluster.
@@ -758,6 +763,10 @@ func (o KubernetesClusterOutput) RoutingAgent() KubernetesClusterRoutingAgentOut
 // The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
 func (o KubernetesClusterOutput) ServiceSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v *KubernetesCluster) pulumi.StringOutput { return v.ServiceSubnet }).(pulumi.StringOutput)
+}
+
+func (o KubernetesClusterOutput) Ssos() KubernetesClusterSsoArrayOutput {
+	return o.ApplyT(func(v *KubernetesCluster) KubernetesClusterSsoArrayOutput { return v.Ssos }).(KubernetesClusterSsoArrayOutput)
 }
 
 // A string indicating the current status of the individual node.

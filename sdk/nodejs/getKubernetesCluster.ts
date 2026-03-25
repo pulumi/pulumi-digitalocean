@@ -32,6 +32,7 @@ export function getKubernetesCluster(args: GetKubernetesClusterArgs, opts?: pulu
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
+        "ssos": args.ssos,
         "tags": args.tags,
     }, opts);
 }
@@ -51,6 +52,7 @@ export interface GetKubernetesClusterArgs {
     nvidiaGpuDevicePlugin?: inputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
     rdmaSharedDevicePlugin?: inputs.GetKubernetesClusterRdmaSharedDevicePlugin;
     routingAgent?: inputs.GetKubernetesClusterRoutingAgent;
+    ssos?: inputs.GetKubernetesClusterSso[];
     /**
      * A list of tag names applied to the node pool.
      */
@@ -118,6 +120,7 @@ export interface GetKubernetesClusterResult {
      * The range of assignable IP addresses for services running in the Kubernetes cluster.
      */
     readonly serviceSubnet: string;
+    readonly ssos?: outputs.GetKubernetesClusterSso[];
     /**
      * A string indicating the current status of the individual node.
      */
@@ -169,6 +172,7 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
         "nvidiaGpuDevicePlugin": args.nvidiaGpuDevicePlugin,
         "rdmaSharedDevicePlugin": args.rdmaSharedDevicePlugin,
         "routingAgent": args.routingAgent,
+        "ssos": args.ssos,
         "tags": args.tags,
     }, opts);
 }
@@ -188,6 +192,7 @@ export interface GetKubernetesClusterOutputArgs {
     nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs>;
     rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs>;
     routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs>;
+    ssos?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterSsoArgs>[]>;
     /**
      * A list of tag names applied to the node pool.
      */

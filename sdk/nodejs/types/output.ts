@@ -14872,6 +14872,11 @@ export interface GetKubernetesClusterRoutingAgent {
     enabled: boolean;
 }
 
+export interface GetKubernetesClusterSso {
+    enabled: boolean;
+    required: boolean;
+}
+
 export interface GetLoadBalancerDomain {
     /**
      * certificate ID for TLS handshaking
@@ -17028,6 +17033,14 @@ export interface KubernetesClusterRoutingAgent {
      * Boolean flag whether the routing-agent should be enabled or not.
      */
     enabled: boolean;
+}
+
+export interface KubernetesClusterSso {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled: boolean;
+    required: boolean;
 }
 
 export interface KubernetesNodePoolNode {

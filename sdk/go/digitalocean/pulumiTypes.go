@@ -36220,6 +36220,109 @@ func (o KubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type KubernetesClusterSso struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled  *bool `pulumi:"enabled"`
+	Required *bool `pulumi:"required"`
+}
+
+// KubernetesClusterSsoInput is an input type that accepts KubernetesClusterSsoArgs and KubernetesClusterSsoOutput values.
+// You can construct a concrete instance of `KubernetesClusterSsoInput` via:
+//
+//	KubernetesClusterSsoArgs{...}
+type KubernetesClusterSsoInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterSsoOutput() KubernetesClusterSsoOutput
+	ToKubernetesClusterSsoOutputWithContext(context.Context) KubernetesClusterSsoOutput
+}
+
+type KubernetesClusterSsoArgs struct {
+	// Boolean flag whether the component is enabled or not.
+	Enabled  pulumi.BoolPtrInput `pulumi:"enabled"`
+	Required pulumi.BoolPtrInput `pulumi:"required"`
+}
+
+func (KubernetesClusterSsoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterSso)(nil)).Elem()
+}
+
+func (i KubernetesClusterSsoArgs) ToKubernetesClusterSsoOutput() KubernetesClusterSsoOutput {
+	return i.ToKubernetesClusterSsoOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterSsoArgs) ToKubernetesClusterSsoOutputWithContext(ctx context.Context) KubernetesClusterSsoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterSsoOutput)
+}
+
+// KubernetesClusterSsoArrayInput is an input type that accepts KubernetesClusterSsoArray and KubernetesClusterSsoArrayOutput values.
+// You can construct a concrete instance of `KubernetesClusterSsoArrayInput` via:
+//
+//	KubernetesClusterSsoArray{ KubernetesClusterSsoArgs{...} }
+type KubernetesClusterSsoArrayInput interface {
+	pulumi.Input
+
+	ToKubernetesClusterSsoArrayOutput() KubernetesClusterSsoArrayOutput
+	ToKubernetesClusterSsoArrayOutputWithContext(context.Context) KubernetesClusterSsoArrayOutput
+}
+
+type KubernetesClusterSsoArray []KubernetesClusterSsoInput
+
+func (KubernetesClusterSsoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterSso)(nil)).Elem()
+}
+
+func (i KubernetesClusterSsoArray) ToKubernetesClusterSsoArrayOutput() KubernetesClusterSsoArrayOutput {
+	return i.ToKubernetesClusterSsoArrayOutputWithContext(context.Background())
+}
+
+func (i KubernetesClusterSsoArray) ToKubernetesClusterSsoArrayOutputWithContext(ctx context.Context) KubernetesClusterSsoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(KubernetesClusterSsoArrayOutput)
+}
+
+type KubernetesClusterSsoOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterSsoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*KubernetesClusterSso)(nil)).Elem()
+}
+
+func (o KubernetesClusterSsoOutput) ToKubernetesClusterSsoOutput() KubernetesClusterSsoOutput {
+	return o
+}
+
+func (o KubernetesClusterSsoOutput) ToKubernetesClusterSsoOutputWithContext(ctx context.Context) KubernetesClusterSsoOutput {
+	return o
+}
+
+// Boolean flag whether the component is enabled or not.
+func (o KubernetesClusterSsoOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterSso) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+func (o KubernetesClusterSsoOutput) Required() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v KubernetesClusterSso) *bool { return v.Required }).(pulumi.BoolPtrOutput)
+}
+
+type KubernetesClusterSsoArrayOutput struct{ *pulumi.OutputState }
+
+func (KubernetesClusterSsoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]KubernetesClusterSso)(nil)).Elem()
+}
+
+func (o KubernetesClusterSsoArrayOutput) ToKubernetesClusterSsoArrayOutput() KubernetesClusterSsoArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterSsoArrayOutput) ToKubernetesClusterSsoArrayOutputWithContext(ctx context.Context) KubernetesClusterSsoArrayOutput {
+	return o
+}
+
+func (o KubernetesClusterSsoArrayOutput) Index(i pulumi.IntInput) KubernetesClusterSsoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) KubernetesClusterSso {
+		return vs[0].([]KubernetesClusterSso)[vs[1].(int)]
+	}).(KubernetesClusterSsoOutput)
+}
+
 type KubernetesNodePoolNode struct {
 	// The date and time when the node was created.
 	CreatedAt *string `pulumi:"createdAt"`
@@ -78788,118 +78891,6 @@ func (o GetGenaiKnowledgeBaseLastIndexingJobArrayOutput) Index(i pulumi.IntInput
 	}).(GetGenaiKnowledgeBaseLastIndexingJobOutput)
 }
 
-type GetGenaiKnowledgeBasesFilter struct {
-	All     *bool    `pulumi:"all"`
-	Key     string   `pulumi:"key"`
-	MatchBy *string  `pulumi:"matchBy"`
-	Values  []string `pulumi:"values"`
-}
-
-// GetGenaiKnowledgeBasesFilterInput is an input type that accepts GetGenaiKnowledgeBasesFilterArgs and GetGenaiKnowledgeBasesFilterOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterInput` via:
-//
-//	GetGenaiKnowledgeBasesFilterArgs{...}
-type GetGenaiKnowledgeBasesFilterInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput
-	ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterOutput
-}
-
-type GetGenaiKnowledgeBasesFilterArgs struct {
-	All     pulumi.BoolPtrInput     `pulumi:"all"`
-	Key     pulumi.StringInput      `pulumi:"key"`
-	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
-	Values  pulumi.StringArrayInput `pulumi:"values"`
-}
-
-func (GetGenaiKnowledgeBasesFilterArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
-	return i.ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterOutput)
-}
-
-// GetGenaiKnowledgeBasesFilterArrayInput is an input type that accepts GetGenaiKnowledgeBasesFilterArray and GetGenaiKnowledgeBasesFilterArrayOutput values.
-// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterArrayInput` via:
-//
-//	GetGenaiKnowledgeBasesFilterArray{ GetGenaiKnowledgeBasesFilterArgs{...} }
-type GetGenaiKnowledgeBasesFilterArrayInput interface {
-	pulumi.Input
-
-	ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput
-	ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterArrayOutput
-}
-
-type GetGenaiKnowledgeBasesFilterArray []GetGenaiKnowledgeBasesFilterInput
-
-func (GetGenaiKnowledgeBasesFilterArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
-}
-
-func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
-	return i.ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Background())
-}
-
-func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterArrayOutput)
-}
-
-type GetGenaiKnowledgeBasesFilterOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesFilterOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) All() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) Key() pulumi.StringOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) string { return v.Key }).(pulumi.StringOutput)
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) MatchBy() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
-}
-
-func (o GetGenaiKnowledgeBasesFilterOutput) Values() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
-}
-
-type GetGenaiKnowledgeBasesFilterArrayOutput struct{ *pulumi.OutputState }
-
-func (GetGenaiKnowledgeBasesFilterArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
-}
-
-func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
-	return o
-}
-
-func (o GetGenaiKnowledgeBasesFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesFilterOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesFilter {
-		return vs[0].([]GetGenaiKnowledgeBasesFilter)[vs[1].(int)]
-	}).(GetGenaiKnowledgeBasesFilterOutput)
-}
-
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpInput)(nil)).Elem(), AppDedicatedIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppDedicatedIpArrayInput)(nil)).Elem(), AppDedicatedIpArray{})
@@ -79351,6 +79342,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRdmaSharedDevicePluginPtrInput)(nil)).Elem(), KubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), KubernetesClusterRoutingAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterSsoInput)(nil)).Elem(), KubernetesClusterSsoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesClusterSsoArrayInput)(nil)).Elem(), KubernetesClusterSsoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeInput)(nil)).Elem(), KubernetesNodePoolNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolNodeArrayInput)(nil)).Elem(), KubernetesNodePoolNodeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KubernetesNodePoolTaintInput)(nil)).Elem(), KubernetesNodePoolTaintArgs{})
@@ -79894,8 +79887,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseIndexingJobsMetaArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseIndexingJobsMetaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBaseLastIndexingJobArrayInput)(nil)).Elem(), GetGenaiKnowledgeBaseLastIndexingJobArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArray{})
 	pulumi.RegisterOutputType(AppDedicatedIpOutput{})
 	pulumi.RegisterOutputType(AppDedicatedIpArrayOutput{})
 	pulumi.RegisterOutputType(AppSpecOutput{})
@@ -80346,6 +80337,8 @@ func init() {
 	pulumi.RegisterOutputType(KubernetesClusterRdmaSharedDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentOutput{})
 	pulumi.RegisterOutputType(KubernetesClusterRoutingAgentPtrOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterSsoOutput{})
+	pulumi.RegisterOutputType(KubernetesClusterSsoArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolNodeArrayOutput{})
 	pulumi.RegisterOutputType(KubernetesNodePoolTaintOutput{})
@@ -80889,6 +80882,4 @@ func init() {
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseIndexingJobsMetaArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBaseLastIndexingJobArrayOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterOutput{})
-	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterArrayOutput{})
 }

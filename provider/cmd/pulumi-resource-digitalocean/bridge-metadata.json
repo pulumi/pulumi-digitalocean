@@ -1192,6 +1192,9 @@
                     "routing_agent": {
                         "maxItemsOne": true
                     },
+                    "sso": {
+                        "maxItemsOne": false
+                    },
                     "tags": {
                         "maxItemsOne": false
                     }
@@ -3271,6 +3274,9 @@
                     },
                     "routing_agent": {
                         "maxItemsOne": true
+                    },
+                    "sso": {
+                        "maxItemsOne": false
                     },
                     "tags": {
                         "maxItemsOne": false

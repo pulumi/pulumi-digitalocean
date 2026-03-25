@@ -464,6 +464,8 @@ __all__ = [
     'KubernetesClusterRdmaSharedDevicePluginArgsDict',
     'KubernetesClusterRoutingAgentArgs',
     'KubernetesClusterRoutingAgentArgsDict',
+    'KubernetesClusterSsoArgs',
+    'KubernetesClusterSsoArgsDict',
     'KubernetesNodePoolNodeArgs',
     'KubernetesNodePoolNodeArgsDict',
     'KubernetesNodePoolTaintArgs',
@@ -674,6 +676,8 @@ __all__ = [
     'GetKubernetesClusterRdmaSharedDevicePluginArgsDict',
     'GetKubernetesClusterRoutingAgentArgs',
     'GetKubernetesClusterRoutingAgentArgsDict',
+    'GetKubernetesClusterSsoArgs',
+    'GetKubernetesClusterSsoArgsDict',
     'GetPartnerAttachmentBgpArgs',
     'GetPartnerAttachmentBgpArgsDict',
     'GetProjectsFilterArgs',
@@ -24907,6 +24911,48 @@ class KubernetesClusterRoutingAgentArgs:
         pulumi.set(self, "enabled", value)
 
 
+class KubernetesClusterSsoArgsDict(TypedDict):
+    enabled: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    Boolean flag whether the component is enabled or not.
+    """
+    required: NotRequired[pulumi.Input[_builtins.bool]]
+
+@pulumi.input_type
+class KubernetesClusterSsoArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 required: Optional[pulumi.Input[_builtins.bool]] = None):
+        """
+        :param pulumi.Input[_builtins.bool] enabled: Boolean flag whether the component is enabled or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "required", value)
+
+
 class KubernetesNodePoolNodeArgsDict(TypedDict):
     created_at: NotRequired[pulumi.Input[_builtins.str]]
     """
@@ -35508,6 +35554,37 @@ class GetKubernetesClusterRoutingAgentArgs:
     @enabled.setter
     def enabled(self, value: _builtins.bool):
         pulumi.set(self, "enabled", value)
+
+
+class GetKubernetesClusterSsoArgsDict(TypedDict):
+    enabled: _builtins.bool
+    required: _builtins.bool
+
+@pulumi.input_type
+class GetKubernetesClusterSsoArgs:
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 required: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: _builtins.bool):
+        pulumi.set(self, "enabled", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        return pulumi.get(self, "required")
+
+    @required.setter
+    def required(self, value: _builtins.bool):
+        pulumi.set(self, "required", value)
 
 
 class GetPartnerAttachmentBgpArgsDict(TypedDict):

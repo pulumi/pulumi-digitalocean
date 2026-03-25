@@ -41,6 +41,7 @@ class KubernetesClusterArgs:
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
                  service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
                  surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
@@ -104,6 +105,8 @@ class KubernetesClusterArgs:
             pulumi.set(__self__, "routing_agent", routing_agent)
         if service_subnet is not None:
             pulumi.set(__self__, "service_subnet", service_subnet)
+        if ssos is not None:
+            pulumi.set(__self__, "ssos", ssos)
         if surge_upgrade is not None:
             pulumi.set(__self__, "surge_upgrade", surge_upgrade)
         if tags is not None:
@@ -337,6 +340,15 @@ class KubernetesClusterArgs:
         pulumi.set(self, "service_subnet", value)
 
     @_builtins.property
+    @pulumi.getter
+    def ssos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+        return pulumi.get(self, "ssos")
+
+    @ssos.setter
+    def ssos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
+        pulumi.set(self, "ssos", value)
+
+    @_builtins.property
     @pulumi.getter(name="surgeUpgrade")
     def surge_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -399,6 +411,7 @@ class _KubernetesClusterState:
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
                  service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
                  status: Optional[pulumi.Input[_builtins.str]] = None,
                  surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -483,6 +496,8 @@ class _KubernetesClusterState:
             pulumi.set(__self__, "routing_agent", routing_agent)
         if service_subnet is not None:
             pulumi.set(__self__, "service_subnet", service_subnet)
+        if ssos is not None:
+            pulumi.set(__self__, "ssos", ssos)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if surge_upgrade is not None:
@@ -771,6 +786,15 @@ class _KubernetesClusterState:
 
     @_builtins.property
     @pulumi.getter
+    def ssos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+        return pulumi.get(self, "ssos")
+
+    @ssos.setter
+    def ssos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
+        pulumi.set(self, "ssos", value)
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A string indicating the current status of the individual node.
@@ -866,6 +890,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
                  service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
                  surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1206,6 +1231,7 @@ class KubernetesCluster(pulumi.CustomResource):
                  registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
                  routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
                  service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
                  surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  version: Optional[pulumi.Input[_builtins.str]] = None,
@@ -1241,6 +1267,7 @@ class KubernetesCluster(pulumi.CustomResource):
             __props__.__dict__["registry_integration"] = registry_integration
             __props__.__dict__["routing_agent"] = routing_agent
             __props__.__dict__["service_subnet"] = service_subnet
+            __props__.__dict__["ssos"] = ssos
             __props__.__dict__["surge_upgrade"] = surge_upgrade
             __props__.__dict__["tags"] = tags
             if version is None and not opts.urn:
@@ -1289,6 +1316,7 @@ class KubernetesCluster(pulumi.CustomResource):
             registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
             routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
             service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
+            ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
             status: Optional[pulumi.Input[_builtins.str]] = None,
             surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
             tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -1358,6 +1386,7 @@ class KubernetesCluster(pulumi.CustomResource):
         __props__.__dict__["registry_integration"] = registry_integration
         __props__.__dict__["routing_agent"] = routing_agent
         __props__.__dict__["service_subnet"] = service_subnet
+        __props__.__dict__["ssos"] = ssos
         __props__.__dict__["status"] = status
         __props__.__dict__["surge_upgrade"] = surge_upgrade
         __props__.__dict__["tags"] = tags
@@ -1546,6 +1575,11 @@ class KubernetesCluster(pulumi.CustomResource):
         The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "service_subnet")
+
+    @_builtins.property
+    @pulumi.getter
+    def ssos(self) -> pulumi.Output[Optional[Sequence['outputs.KubernetesClusterSso']]]:
+        return pulumi.get(self, "ssos")
 
     @_builtins.property
     @pulumi.getter

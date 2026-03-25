@@ -20,6 +20,7 @@ import com.pulumi.digitalocean.outputs.KubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.KubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.KubernetesClusterRoutingAgent;
+import com.pulumi.digitalocean.outputs.KubernetesClusterSso;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -601,6 +602,12 @@ public class KubernetesCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> serviceSubnet() {
         return this.serviceSubnet;
+    }
+    @Export(name="ssos", refs={List.class,KubernetesClusterSso.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<KubernetesClusterSso>> ssos;
+
+    public Output<Optional<List<KubernetesClusterSso>>> ssos() {
+        return Codegen.optional(this.ssos);
     }
     /**
      * A string indicating the current status of the individual node.

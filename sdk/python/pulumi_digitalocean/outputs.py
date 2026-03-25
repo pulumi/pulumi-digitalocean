@@ -241,6 +241,7 @@ __all__ = [
     'KubernetesClusterNvidiaGpuDevicePlugin',
     'KubernetesClusterRdmaSharedDevicePlugin',
     'KubernetesClusterRoutingAgent',
+    'KubernetesClusterSso',
     'KubernetesNodePoolNode',
     'KubernetesNodePoolTaint',
     'LoadBalancerDomain',
@@ -695,6 +696,7 @@ __all__ = [
     'GetKubernetesClusterNvidiaGpuDevicePluginResult',
     'GetKubernetesClusterRdmaSharedDevicePluginResult',
     'GetKubernetesClusterRoutingAgentResult',
+    'GetKubernetesClusterSsoResult',
     'GetLoadBalancerDomainResult',
     'GetLoadBalancerFirewallResult',
     'GetLoadBalancerForwardingRuleResult',
@@ -18929,6 +18931,33 @@ class KubernetesClusterRoutingAgent(dict):
         Boolean flag whether the routing-agent should be enabled or not.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class KubernetesClusterSso(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[_builtins.bool] = None,
+                 required: Optional[_builtins.bool] = None):
+        """
+        :param _builtins.bool enabled: Boolean flag whether the component is enabled or not.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if required is not None:
+            pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> Optional[_builtins.bool]:
+        """
+        Boolean flag whether the component is enabled or not.
+        """
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> Optional[_builtins.bool]:
+        return pulumi.get(self, "required")
 
 
 @pulumi.output_type
@@ -52656,6 +52685,25 @@ class GetKubernetesClusterRoutingAgentResult(dict):
     @pulumi.getter
     def enabled(self) -> _builtins.bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetKubernetesClusterSsoResult(dict):
+    def __init__(__self__, *,
+                 enabled: _builtins.bool,
+                 required: _builtins.bool):
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "required", required)
+
+    @_builtins.property
+    @pulumi.getter
+    def enabled(self) -> _builtins.bool:
+        return pulumi.get(self, "enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def required(self) -> _builtins.bool:
+        return pulumi.get(self, "required")
 
 
 @pulumi.output_type

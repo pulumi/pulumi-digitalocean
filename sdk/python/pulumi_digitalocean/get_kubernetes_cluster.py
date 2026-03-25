@@ -28,7 +28,7 @@ class GetKubernetesClusterResult:
     """
     A collection of values returned by getKubernetesCluster.
     """
-    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
+    def __init__(__self__, amd_gpu_device_metrics_exporter_plugin=None, amd_gpu_device_plugin=None, auto_upgrade=None, cluster_autoscaler_configurations=None, cluster_subnet=None, control_plane_firewalls=None, created_at=None, endpoint=None, ha=None, id=None, ipv4_address=None, kube_configs=None, kubeconfig_expire_seconds=None, maintenance_policies=None, name=None, node_pools=None, nvidia_gpu_device_plugin=None, rdma_shared_device_plugin=None, region=None, routing_agent=None, service_subnet=None, ssos=None, status=None, surge_upgrade=None, tags=None, updated_at=None, urn=None, version=None, vpc_uuid=None):
         if amd_gpu_device_metrics_exporter_plugin and not isinstance(amd_gpu_device_metrics_exporter_plugin, dict):
             raise TypeError("Expected argument 'amd_gpu_device_metrics_exporter_plugin' to be a dict")
         pulumi.set(__self__, "amd_gpu_device_metrics_exporter_plugin", amd_gpu_device_metrics_exporter_plugin)
@@ -92,6 +92,9 @@ class GetKubernetesClusterResult:
         if service_subnet and not isinstance(service_subnet, str):
             raise TypeError("Expected argument 'service_subnet' to be a str")
         pulumi.set(__self__, "service_subnet", service_subnet)
+        if ssos and not isinstance(ssos, list):
+            raise TypeError("Expected argument 'ssos' to be a list")
+        pulumi.set(__self__, "ssos", ssos)
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
@@ -257,6 +260,11 @@ class GetKubernetesClusterResult:
 
     @_builtins.property
     @pulumi.getter
+    def ssos(self) -> Optional[Sequence['outputs.GetKubernetesClusterSsoResult']]:
+        return pulumi.get(self, "ssos")
+
+    @_builtins.property
+    @pulumi.getter
     def status(self) -> _builtins.str:
         """
         A string indicating the current status of the individual node.
@@ -336,6 +344,7 @@ class AwaitableGetKubernetesClusterResult(GetKubernetesClusterResult):
             region=self.region,
             routing_agent=self.routing_agent,
             service_subnet=self.service_subnet,
+            ssos=self.ssos,
             status=self.status,
             surge_upgrade=self.surge_upgrade,
             tags=self.tags,
@@ -353,6 +362,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
                            nvidia_gpu_device_plugin: Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']] = None,
                            rdma_shared_device_plugin: Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']] = None,
                            routing_agent: Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']] = None,
+                           ssos: Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]] = None,
                            tags: Optional[Sequence[_builtins.str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKubernetesClusterResult:
     """
@@ -380,6 +390,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
     __args__['rdmaSharedDevicePlugin'] = rdma_shared_device_plugin
     __args__['routingAgent'] = routing_agent
+    __args__['ssos'] = ssos
     __args__['tags'] = tags
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult).value
@@ -406,6 +417,7 @@ def get_kubernetes_cluster(amd_gpu_device_metrics_exporter_plugin: Optional[Unio
         region=pulumi.get(__ret__, 'region'),
         routing_agent=pulumi.get(__ret__, 'routing_agent'),
         service_subnet=pulumi.get(__ret__, 'service_subnet'),
+        ssos=pulumi.get(__ret__, 'ssos'),
         status=pulumi.get(__ret__, 'status'),
         surge_upgrade=pulumi.get(__ret__, 'surge_upgrade'),
         tags=pulumi.get(__ret__, 'tags'),
@@ -421,6 +433,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: Option
                                   nvidia_gpu_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterNvidiaGpuDevicePluginArgs', 'GetKubernetesClusterNvidiaGpuDevicePluginArgsDict']]]] = None,
                                   rdma_shared_device_plugin: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRdmaSharedDevicePluginArgs', 'GetKubernetesClusterRdmaSharedDevicePluginArgsDict']]]] = None,
                                   routing_agent: Optional[pulumi.Input[Optional[Union['GetKubernetesClusterRoutingAgentArgs', 'GetKubernetesClusterRoutingAgentArgsDict']]]] = None,
+                                  ssos: Optional[pulumi.Input[Optional[Sequence[Union['GetKubernetesClusterSsoArgs', 'GetKubernetesClusterSsoArgsDict']]]]] = None,
                                   tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKubernetesClusterResult]:
     """
@@ -448,6 +461,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: Option
     __args__['nvidiaGpuDevicePlugin'] = nvidia_gpu_device_plugin
     __args__['rdmaSharedDevicePlugin'] = rdma_shared_device_plugin
     __args__['routingAgent'] = routing_agent
+    __args__['ssos'] = ssos
     __args__['tags'] = tags
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('digitalocean:index/getKubernetesCluster:getKubernetesCluster', __args__, opts=opts, typ=GetKubernetesClusterResult)
@@ -473,6 +487,7 @@ def get_kubernetes_cluster_output(amd_gpu_device_metrics_exporter_plugin: Option
         region=pulumi.get(__response__, 'region'),
         routing_agent=pulumi.get(__response__, 'routing_agent'),
         service_subnet=pulumi.get(__response__, 'service_subnet'),
+        ssos=pulumi.get(__response__, 'ssos'),
         status=pulumi.get(__response__, 'status'),
         surge_upgrade=pulumi.get(__response__, 'surge_upgrade'),
         tags=pulumi.get(__response__, 'tags'),

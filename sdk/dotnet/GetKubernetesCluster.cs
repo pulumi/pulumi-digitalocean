@@ -119,6 +119,14 @@ namespace Pulumi.DigitalOcean
         [Input("routingAgent")]
         public Inputs.GetKubernetesClusterRoutingAgentArgs? RoutingAgent { get; set; }
 
+        [Input("ssos")]
+        private List<Inputs.GetKubernetesClusterSsoArgs>? _ssos;
+        public List<Inputs.GetKubernetesClusterSsoArgs> Ssos
+        {
+            get => _ssos ?? (_ssos = new List<Inputs.GetKubernetesClusterSsoArgs>());
+            set => _ssos = value;
+        }
+
         [Input("tags")]
         private List<string>? _tags;
 
@@ -170,6 +178,14 @@ namespace Pulumi.DigitalOcean
 
         [Input("routingAgent")]
         public Input<Inputs.GetKubernetesClusterRoutingAgentInputArgs>? RoutingAgent { get; set; }
+
+        [Input("ssos")]
+        private InputList<Inputs.GetKubernetesClusterSsoInputArgs>? _ssos;
+        public InputList<Inputs.GetKubernetesClusterSsoInputArgs> Ssos
+        {
+            get => _ssos ?? (_ssos = new InputList<Inputs.GetKubernetesClusterSsoInputArgs>());
+            set => _ssos = value;
+        }
 
         [Input("tags")]
         private InputList<string>? _tags;
@@ -250,6 +266,7 @@ namespace Pulumi.DigitalOcean
         /// The range of assignable IP addresses for services running in the Kubernetes cluster.
         /// </summary>
         public readonly string ServiceSubnet;
+        public readonly ImmutableArray<Outputs.GetKubernetesClusterSsoResult> Ssos;
         /// <summary>
         /// A string indicating the current status of the individual node.
         /// </summary>
@@ -320,6 +337,8 @@ namespace Pulumi.DigitalOcean
 
             string serviceSubnet,
 
+            ImmutableArray<Outputs.GetKubernetesClusterSsoResult> ssos,
+
             string status,
 
             bool surgeUpgrade,
@@ -355,6 +374,7 @@ namespace Pulumi.DigitalOcean
             Region = region;
             RoutingAgent = routingAgent;
             ServiceSubnet = serviceSubnet;
+            Ssos = ssos;
             Status = status;
             SurgeUpgrade = surgeUpgrade;
             Tags = tags;
