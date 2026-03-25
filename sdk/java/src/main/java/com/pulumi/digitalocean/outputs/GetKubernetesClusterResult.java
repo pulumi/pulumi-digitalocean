@@ -14,6 +14,7 @@ import com.pulumi.digitalocean.outputs.GetKubernetesClusterNodePool;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterNvidiaGpuDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRdmaSharedDevicePlugin;
 import com.pulumi.digitalocean.outputs.GetKubernetesClusterRoutingAgent;
+import com.pulumi.digitalocean.outputs.GetKubernetesClusterSso;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -94,6 +95,7 @@ public final class GetKubernetesClusterResult {
      * 
      */
     private String serviceSubnet;
+    private @Nullable List<GetKubernetesClusterSso> ssos;
     /**
      * @return A string indicating the current status of the individual node.
      * 
@@ -238,6 +240,9 @@ public final class GetKubernetesClusterResult {
     public String serviceSubnet() {
         return this.serviceSubnet;
     }
+    public List<GetKubernetesClusterSso> ssos() {
+        return this.ssos == null ? List.of() : this.ssos;
+    }
     /**
      * @return A string indicating the current status of the individual node.
      * 
@@ -314,6 +319,7 @@ public final class GetKubernetesClusterResult {
         private String region;
         private GetKubernetesClusterRoutingAgent routingAgent;
         private String serviceSubnet;
+        private @Nullable List<GetKubernetesClusterSso> ssos;
         private String status;
         private Boolean surgeUpgrade;
         private @Nullable List<String> tags;
@@ -345,6 +351,7 @@ public final class GetKubernetesClusterResult {
     	      this.region = defaults.region;
     	      this.routingAgent = defaults.routingAgent;
     	      this.serviceSubnet = defaults.serviceSubnet;
+    	      this.ssos = defaults.ssos;
     	      this.status = defaults.status;
     	      this.surgeUpgrade = defaults.surgeUpgrade;
     	      this.tags = defaults.tags;
@@ -534,6 +541,15 @@ public final class GetKubernetesClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder ssos(@Nullable List<GetKubernetesClusterSso> ssos) {
+
+            this.ssos = ssos;
+            return this;
+        }
+        public Builder ssos(GetKubernetesClusterSso... ssos) {
+            return ssos(List.of(ssos));
+        }
+        @CustomType.Setter
         public Builder status(String status) {
             if (status == null) {
               throw new MissingRequiredPropertyException("GetKubernetesClusterResult", "status");
@@ -613,6 +629,7 @@ public final class GetKubernetesClusterResult {
             _resultValue.region = region;
             _resultValue.routingAgent = routingAgent;
             _resultValue.serviceSubnet = serviceSubnet;
+            _resultValue.ssos = ssos;
             _resultValue.status = status;
             _resultValue.surgeUpgrade = surgeUpgrade;
             _resultValue.tags = tags;

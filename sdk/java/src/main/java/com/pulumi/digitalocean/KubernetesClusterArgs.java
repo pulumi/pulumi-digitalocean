@@ -16,6 +16,7 @@ import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterNvidiaGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.KubernetesClusterRoutingAgentArgs;
+import com.pulumi.digitalocean.inputs.KubernetesClusterSsoArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -292,6 +293,13 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.serviceSubnet);
     }
 
+    @Import(name="ssos")
+    private @Nullable Output<List<KubernetesClusterSsoArgs>> ssos;
+
+    public Optional<Output<List<KubernetesClusterSsoArgs>>> ssos() {
+        return Optional.ofNullable(this.ssos);
+    }
+
     /**
      * Enable/disable surge upgrades for a cluster. Default: true
      * 
@@ -373,6 +381,7 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
         this.registryIntegration = $.registryIntegration;
         this.routingAgent = $.routingAgent;
         this.serviceSubnet = $.serviceSubnet;
+        this.ssos = $.ssos;
         this.surgeUpgrade = $.surgeUpgrade;
         this.tags = $.tags;
         this.version = $.version;
@@ -791,6 +800,19 @@ public final class KubernetesClusterArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder serviceSubnet(String serviceSubnet) {
             return serviceSubnet(Output.of(serviceSubnet));
+        }
+
+        public Builder ssos(@Nullable Output<List<KubernetesClusterSsoArgs>> ssos) {
+            $.ssos = ssos;
+            return this;
+        }
+
+        public Builder ssos(List<KubernetesClusterSsoArgs> ssos) {
+            return ssos(Output.of(ssos));
+        }
+
+        public Builder ssos(KubernetesClusterSsoArgs... ssos) {
+            return ssos(List.of(ssos));
         }
 
         /**

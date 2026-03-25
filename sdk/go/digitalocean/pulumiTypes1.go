@@ -13,6 +13,118 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type GetGenaiKnowledgeBasesFilter struct {
+	All     *bool    `pulumi:"all"`
+	Key     string   `pulumi:"key"`
+	MatchBy *string  `pulumi:"matchBy"`
+	Values  []string `pulumi:"values"`
+}
+
+// GetGenaiKnowledgeBasesFilterInput is an input type that accepts GetGenaiKnowledgeBasesFilterArgs and GetGenaiKnowledgeBasesFilterOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterInput` via:
+//
+//	GetGenaiKnowledgeBasesFilterArgs{...}
+type GetGenaiKnowledgeBasesFilterInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput
+	ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterOutput
+}
+
+type GetGenaiKnowledgeBasesFilterArgs struct {
+	All     pulumi.BoolPtrInput     `pulumi:"all"`
+	Key     pulumi.StringInput      `pulumi:"key"`
+	MatchBy pulumi.StringPtrInput   `pulumi:"matchBy"`
+	Values  pulumi.StringArrayInput `pulumi:"values"`
+}
+
+func (GetGenaiKnowledgeBasesFilterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
+	return i.ToGetGenaiKnowledgeBasesFilterOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesFilterArgs) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterOutput)
+}
+
+// GetGenaiKnowledgeBasesFilterArrayInput is an input type that accepts GetGenaiKnowledgeBasesFilterArray and GetGenaiKnowledgeBasesFilterArrayOutput values.
+// You can construct a concrete instance of `GetGenaiKnowledgeBasesFilterArrayInput` via:
+//
+//	GetGenaiKnowledgeBasesFilterArray{ GetGenaiKnowledgeBasesFilterArgs{...} }
+type GetGenaiKnowledgeBasesFilterArrayInput interface {
+	pulumi.Input
+
+	ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput
+	ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Context) GetGenaiKnowledgeBasesFilterArrayOutput
+}
+
+type GetGenaiKnowledgeBasesFilterArray []GetGenaiKnowledgeBasesFilterInput
+
+func (GetGenaiKnowledgeBasesFilterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
+	return i.ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(context.Background())
+}
+
+func (i GetGenaiKnowledgeBasesFilterArray) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGenaiKnowledgeBasesFilterArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesFilterOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesFilterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutput() GetGenaiKnowledgeBasesFilterOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) ToGetGenaiKnowledgeBasesFilterOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) All() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *bool { return v.All }).(pulumi.BoolPtrOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) string { return v.Key }).(pulumi.StringOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) MatchBy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) *string { return v.MatchBy }).(pulumi.StringPtrOutput)
+}
+
+func (o GetGenaiKnowledgeBasesFilterOutput) Values() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetGenaiKnowledgeBasesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
+}
+
+type GetGenaiKnowledgeBasesFilterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGenaiKnowledgeBasesFilterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGenaiKnowledgeBasesFilter)(nil)).Elem()
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutput() GetGenaiKnowledgeBasesFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) ToGetGenaiKnowledgeBasesFilterArrayOutputWithContext(ctx context.Context) GetGenaiKnowledgeBasesFilterArrayOutput {
+	return o
+}
+
+func (o GetGenaiKnowledgeBasesFilterArrayOutput) Index(i pulumi.IntInput) GetGenaiKnowledgeBasesFilterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGenaiKnowledgeBasesFilter {
+		return vs[0].([]GetGenaiKnowledgeBasesFilter)[vs[1].(int)]
+	}).(GetGenaiKnowledgeBasesFilterOutput)
+}
+
 type GetGenaiKnowledgeBasesKnowledgeBase struct {
 	// Timestamp when the Knowledge Base was added to the Agent
 	AddedToAgentAt string `pulumi:"addedToAgentAt"`
@@ -27361,6 +27473,106 @@ func (o GetKubernetesClusterRoutingAgentPtrOutput) Enabled() pulumi.BoolPtrOutpu
 	}).(pulumi.BoolPtrOutput)
 }
 
+type GetKubernetesClusterSso struct {
+	Enabled  bool `pulumi:"enabled"`
+	Required bool `pulumi:"required"`
+}
+
+// GetKubernetesClusterSsoInput is an input type that accepts GetKubernetesClusterSsoArgs and GetKubernetesClusterSsoOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterSsoInput` via:
+//
+//	GetKubernetesClusterSsoArgs{...}
+type GetKubernetesClusterSsoInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterSsoOutput() GetKubernetesClusterSsoOutput
+	ToGetKubernetesClusterSsoOutputWithContext(context.Context) GetKubernetesClusterSsoOutput
+}
+
+type GetKubernetesClusterSsoArgs struct {
+	Enabled  pulumi.BoolInput `pulumi:"enabled"`
+	Required pulumi.BoolInput `pulumi:"required"`
+}
+
+func (GetKubernetesClusterSsoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterSso)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterSsoArgs) ToGetKubernetesClusterSsoOutput() GetKubernetesClusterSsoOutput {
+	return i.ToGetKubernetesClusterSsoOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterSsoArgs) ToGetKubernetesClusterSsoOutputWithContext(ctx context.Context) GetKubernetesClusterSsoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterSsoOutput)
+}
+
+// GetKubernetesClusterSsoArrayInput is an input type that accepts GetKubernetesClusterSsoArray and GetKubernetesClusterSsoArrayOutput values.
+// You can construct a concrete instance of `GetKubernetesClusterSsoArrayInput` via:
+//
+//	GetKubernetesClusterSsoArray{ GetKubernetesClusterSsoArgs{...} }
+type GetKubernetesClusterSsoArrayInput interface {
+	pulumi.Input
+
+	ToGetKubernetesClusterSsoArrayOutput() GetKubernetesClusterSsoArrayOutput
+	ToGetKubernetesClusterSsoArrayOutputWithContext(context.Context) GetKubernetesClusterSsoArrayOutput
+}
+
+type GetKubernetesClusterSsoArray []GetKubernetesClusterSsoInput
+
+func (GetKubernetesClusterSsoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterSso)(nil)).Elem()
+}
+
+func (i GetKubernetesClusterSsoArray) ToGetKubernetesClusterSsoArrayOutput() GetKubernetesClusterSsoArrayOutput {
+	return i.ToGetKubernetesClusterSsoArrayOutputWithContext(context.Background())
+}
+
+func (i GetKubernetesClusterSsoArray) ToGetKubernetesClusterSsoArrayOutputWithContext(ctx context.Context) GetKubernetesClusterSsoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKubernetesClusterSsoArrayOutput)
+}
+
+type GetKubernetesClusterSsoOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterSsoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKubernetesClusterSso)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterSsoOutput) ToGetKubernetesClusterSsoOutput() GetKubernetesClusterSsoOutput {
+	return o
+}
+
+func (o GetKubernetesClusterSsoOutput) ToGetKubernetesClusterSsoOutputWithContext(ctx context.Context) GetKubernetesClusterSsoOutput {
+	return o
+}
+
+func (o GetKubernetesClusterSsoOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterSso) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetKubernetesClusterSsoOutput) Required() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetKubernetesClusterSso) bool { return v.Required }).(pulumi.BoolOutput)
+}
+
+type GetKubernetesClusterSsoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKubernetesClusterSsoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKubernetesClusterSso)(nil)).Elem()
+}
+
+func (o GetKubernetesClusterSsoArrayOutput) ToGetKubernetesClusterSsoArrayOutput() GetKubernetesClusterSsoArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterSsoArrayOutput) ToGetKubernetesClusterSsoArrayOutputWithContext(ctx context.Context) GetKubernetesClusterSsoArrayOutput {
+	return o
+}
+
+func (o GetKubernetesClusterSsoArrayOutput) Index(i pulumi.IntInput) GetKubernetesClusterSsoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKubernetesClusterSso {
+		return vs[0].([]GetKubernetesClusterSso)[vs[1].(int)]
+	}).(GetKubernetesClusterSsoOutput)
+}
+
 type GetLoadBalancerDomain struct {
 	// certificate ID for TLS handshaking
 	CertificateId string `pulumi:"certificateId"`
@@ -31637,6 +31849,8 @@ func (o GetVpcNatGatewayVpcArrayOutput) Index(i pulumi.IntInput) GetVpcNatGatewa
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesFilterArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseArrayInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobInput)(nil)).Elem(), GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobArgs{})
@@ -31993,6 +32207,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRdmaSharedDevicePluginPtrInput)(nil)).Elem(), GetKubernetesClusterRdmaSharedDevicePluginArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterRoutingAgentPtrInput)(nil)).Elem(), GetKubernetesClusterRoutingAgentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterSsoInput)(nil)).Elem(), GetKubernetesClusterSsoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKubernetesClusterSsoArrayInput)(nil)).Elem(), GetKubernetesClusterSsoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainInput)(nil)).Elem(), GetLoadBalancerDomainArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerDomainArrayInput)(nil)).Elem(), GetLoadBalancerDomainArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetLoadBalancerFirewallInput)(nil)).Elem(), GetLoadBalancerFirewallArgs{})
@@ -32059,6 +32275,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayEgressPublicGatewayArrayInput)(nil)).Elem(), GetVpcNatGatewayEgressPublicGatewayArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcInput)(nil)).Elem(), GetVpcNatGatewayVpcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetVpcNatGatewayVpcArrayInput)(nil)).Elem(), GetVpcNatGatewayVpcArray{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterOutput{})
+	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseArrayOutput{})
 	pulumi.RegisterOutputType(GetGenaiKnowledgeBasesKnowledgeBaseLastIndexingJobOutput{})
@@ -32415,6 +32633,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKubernetesClusterRdmaSharedDevicePluginPtrOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentOutput{})
 	pulumi.RegisterOutputType(GetKubernetesClusterRoutingAgentPtrOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterSsoOutput{})
+	pulumi.RegisterOutputType(GetKubernetesClusterSsoArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerDomainOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerDomainArrayOutput{})
 	pulumi.RegisterOutputType(GetLoadBalancerFirewallOutput{})

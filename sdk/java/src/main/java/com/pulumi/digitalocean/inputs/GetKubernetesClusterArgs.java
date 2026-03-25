@@ -11,6 +11,7 @@ import com.pulumi.digitalocean.inputs.GetKubernetesClusterClusterAutoscalerConfi
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs;
 import com.pulumi.digitalocean.inputs.GetKubernetesClusterRoutingAgentArgs;
+import com.pulumi.digitalocean.inputs.GetKubernetesClusterSsoArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
@@ -88,6 +89,13 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         return Optional.ofNullable(this.routingAgent);
     }
 
+    @Import(name="ssos")
+    private @Nullable Output<List<GetKubernetesClusterSsoArgs>> ssos;
+
+    public Optional<Output<List<GetKubernetesClusterSsoArgs>>> ssos() {
+        return Optional.ofNullable(this.ssos);
+    }
+
     /**
      * A list of tag names applied to the node pool.
      * 
@@ -114,6 +122,7 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
         this.nvidiaGpuDevicePlugin = $.nvidiaGpuDevicePlugin;
         this.rdmaSharedDevicePlugin = $.rdmaSharedDevicePlugin;
         this.routingAgent = $.routingAgent;
+        this.ssos = $.ssos;
         this.tags = $.tags;
     }
 
@@ -221,6 +230,19 @@ public final class GetKubernetesClusterArgs extends com.pulumi.resources.InvokeA
 
         public Builder routingAgent(GetKubernetesClusterRoutingAgentArgs routingAgent) {
             return routingAgent(Output.of(routingAgent));
+        }
+
+        public Builder ssos(@Nullable Output<List<GetKubernetesClusterSsoArgs>> ssos) {
+            $.ssos = ssos;
+            return this;
+        }
+
+        public Builder ssos(List<GetKubernetesClusterSsoArgs> ssos) {
+            return ssos(Output.of(ssos));
+        }
+
+        public Builder ssos(GetKubernetesClusterSsoArgs... ssos) {
+            return ssos(List.of(ssos));
         }
 
         /**

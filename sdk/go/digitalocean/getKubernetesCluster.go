@@ -59,6 +59,7 @@ type LookupKubernetesClusterArgs struct {
 	NvidiaGpuDevicePlugin  *GetKubernetesClusterNvidiaGpuDevicePlugin  `pulumi:"nvidiaGpuDevicePlugin"`
 	RdmaSharedDevicePlugin *GetKubernetesClusterRdmaSharedDevicePlugin `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           *GetKubernetesClusterRoutingAgent           `pulumi:"routingAgent"`
+	Ssos                   []GetKubernetesClusterSso                   `pulumi:"ssos"`
 	// A list of tag names applied to the node pool.
 	Tags []string `pulumi:"tags"`
 }
@@ -97,7 +98,8 @@ type LookupKubernetesClusterResult struct {
 	Region       string                           `pulumi:"region"`
 	RoutingAgent GetKubernetesClusterRoutingAgent `pulumi:"routingAgent"`
 	// The range of assignable IP addresses for services running in the Kubernetes cluster.
-	ServiceSubnet string `pulumi:"serviceSubnet"`
+	ServiceSubnet string                    `pulumi:"serviceSubnet"`
+	Ssos          []GetKubernetesClusterSso `pulumi:"ssos"`
 	// A string indicating the current status of the individual node.
 	Status       string `pulumi:"status"`
 	SurgeUpgrade bool   `pulumi:"surgeUpgrade"`
@@ -133,6 +135,7 @@ type LookupKubernetesClusterOutputArgs struct {
 	NvidiaGpuDevicePlugin  GetKubernetesClusterNvidiaGpuDevicePluginPtrInput  `pulumi:"nvidiaGpuDevicePlugin"`
 	RdmaSharedDevicePlugin GetKubernetesClusterRdmaSharedDevicePluginPtrInput `pulumi:"rdmaSharedDevicePlugin"`
 	RoutingAgent           GetKubernetesClusterRoutingAgentPtrInput           `pulumi:"routingAgent"`
+	Ssos                   GetKubernetesClusterSsoArrayInput                  `pulumi:"ssos"`
 	// A list of tag names applied to the node pool.
 	Tags pulumi.StringArrayInput `pulumi:"tags"`
 }
@@ -264,6 +267,10 @@ func (o LookupKubernetesClusterResultOutput) RoutingAgent() GetKubernetesCluster
 // The range of assignable IP addresses for services running in the Kubernetes cluster.
 func (o LookupKubernetesClusterResultOutput) ServiceSubnet() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKubernetesClusterResult) string { return v.ServiceSubnet }).(pulumi.StringOutput)
+}
+
+func (o LookupKubernetesClusterResultOutput) Ssos() GetKubernetesClusterSsoArrayOutput {
+	return o.ApplyT(func(v LookupKubernetesClusterResult) []GetKubernetesClusterSso { return v.Ssos }).(GetKubernetesClusterSsoArrayOutput)
 }
 
 // A string indicating the current status of the individual node.

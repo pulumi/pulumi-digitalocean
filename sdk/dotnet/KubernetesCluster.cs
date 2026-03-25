@@ -333,6 +333,9 @@ namespace Pulumi.DigitalOcean
         [Output("serviceSubnet")]
         public Output<string> ServiceSubnet { get; private set; } = null!;
 
+        [Output("ssos")]
+        public Output<ImmutableArray<Outputs.KubernetesClusterSso>> Ssos { get; private set; } = null!;
+
         /// <summary>
         /// A string indicating the current status of the individual node.
         /// </summary>
@@ -530,6 +533,14 @@ namespace Pulumi.DigitalOcean
         [Input("serviceSubnet")]
         public Input<string>? ServiceSubnet { get; set; }
 
+        [Input("ssos")]
+        private InputList<Inputs.KubernetesClusterSsoArgs>? _ssos;
+        public InputList<Inputs.KubernetesClusterSsoArgs> Ssos
+        {
+            get => _ssos ?? (_ssos = new InputList<Inputs.KubernetesClusterSsoArgs>());
+            set => _ssos = value;
+        }
+
         /// <summary>
         /// Enable/disable surge upgrades for a cluster. Default: true
         /// </summary>
@@ -718,6 +729,14 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("serviceSubnet")]
         public Input<string>? ServiceSubnet { get; set; }
+
+        [Input("ssos")]
+        private InputList<Inputs.KubernetesClusterSsoGetArgs>? _ssos;
+        public InputList<Inputs.KubernetesClusterSsoGetArgs> Ssos
+        {
+            get => _ssos ?? (_ssos = new InputList<Inputs.KubernetesClusterSsoGetArgs>());
+            set => _ssos = value;
+        }
 
         /// <summary>
         /// A string indicating the current status of the individual node.

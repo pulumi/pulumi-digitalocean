@@ -7213,6 +7213,16 @@ export interface GetKubernetesClusterRoutingAgentArgs {
     enabled?: pulumi.Input<boolean>;
 }
 
+export interface GetKubernetesClusterSso {
+    enabled?: boolean;
+    required?: boolean;
+}
+
+export interface GetKubernetesClusterSsoArgs {
+    enabled?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean>;
+}
+
 export interface GetPartnerAttachmentBgp {
     localRouterIp?: string;
     peerRouterAsn?: number;
@@ -9207,6 +9217,14 @@ export interface KubernetesClusterRoutingAgent {
      * Boolean flag whether the routing-agent should be enabled or not.
      */
     enabled: pulumi.Input<boolean>;
+}
+
+export interface KubernetesClusterSso {
+    /**
+     * Boolean flag whether the component is enabled or not.
+     */
+    enabled?: pulumi.Input<boolean>;
+    required?: pulumi.Input<boolean>;
 }
 
 export interface KubernetesNodePoolNode {

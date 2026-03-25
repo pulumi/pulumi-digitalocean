@@ -266,6 +266,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     declare public readonly serviceSubnet: pulumi.Output<string>;
+    declare public readonly ssos: pulumi.Output<outputs.KubernetesClusterSso[] | undefined>;
     /**
      * A string indicating the current status of the individual node.
      */
@@ -327,6 +328,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["registryIntegration"] = state?.registryIntegration;
             resourceInputs["routingAgent"] = state?.routingAgent;
             resourceInputs["serviceSubnet"] = state?.serviceSubnet;
+            resourceInputs["ssos"] = state?.ssos;
             resourceInputs["status"] = state?.status;
             resourceInputs["surgeUpgrade"] = state?.surgeUpgrade;
             resourceInputs["tags"] = state?.tags;
@@ -362,6 +364,7 @@ export class KubernetesCluster extends pulumi.CustomResource {
             resourceInputs["registryIntegration"] = args?.registryIntegration;
             resourceInputs["routingAgent"] = args?.routingAgent;
             resourceInputs["serviceSubnet"] = args?.serviceSubnet;
+            resourceInputs["ssos"] = args?.ssos;
             resourceInputs["surgeUpgrade"] = args?.surgeUpgrade;
             resourceInputs["tags"] = args?.tags;
             resourceInputs["version"] = args?.version;
@@ -474,6 +477,7 @@ export interface KubernetesClusterState {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     serviceSubnet?: pulumi.Input<string>;
+    ssos?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterSso>[]>;
     /**
      * A string indicating the current status of the individual node.
      */
@@ -573,6 +577,7 @@ export interface KubernetesClusterArgs {
      * The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
      */
     serviceSubnet?: pulumi.Input<string>;
+    ssos?: pulumi.Input<pulumi.Input<inputs.KubernetesClusterSso>[]>;
     /**
      * Enable/disable surge upgrades for a cluster. Default: true
      */
