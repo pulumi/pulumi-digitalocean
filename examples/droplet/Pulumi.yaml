@@ -1,3 +1,0 @@
-name: droplet-digitalocean
-description: A simple droplet on DigitalOcean.
-runtime: nodejs
