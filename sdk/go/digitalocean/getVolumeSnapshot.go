@@ -71,7 +71,7 @@ import (
 //				Region:     pulumi.String(digitalocean.RegionNYC3),
 //				Name:       pulumi.String("baz"),
 //				Size:       pulumi.Int(100),
-//				SnapshotId: pulumi.String(snapshot.Id),
+//				SnapshotId: pulumi.String(pulumi.String(snapshot.Id)),
 //			})
 //			if err != nil {
 //				return err

@@ -46,7 +46,7 @@ import (
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				SshKeys: pulumi.StringArray{
-//					pulumi.Int(example.Id),
+//					pulumi.String(pulumi.Int(example.Id)),
 //				},
 //			})
 //			if err != nil {

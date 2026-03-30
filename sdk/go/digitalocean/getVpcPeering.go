@@ -72,7 +72,7 @@ import (
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: pulumi.String(example.VpcIds[0]),
+//				VpcUuid: pulumi.String(pulumi.String(example.VpcIds[0])),
 //			})
 //			if err != nil {
 //				return err
@@ -134,7 +134,7 @@ import (
 //				Size:    pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Image:   pulumi.String("ubuntu-18-04-x64"),
 //				Region:  pulumi.String(digitalocean.RegionNYC3),
-//				VpcUuid: pulumi.String(example.VpcIds[0]),
+//				VpcUuid: pulumi.String(pulumi.String(example.VpcIds[0])),
 //			})
 //			if err != nil {
 //				return err

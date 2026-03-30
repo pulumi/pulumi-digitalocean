@@ -48,7 +48,7 @@ import (
 //				Name:     pulumi.String("web-1"),
 //				Region:   pulumi.String(digitalocean.RegionNYC2),
 //				Size:     pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
-//				UserData: pulumi.String(bootstrapScript.Body),
+//				UserData: pulumi.String(pulumi.String(bootstrapScript.Body)),
 //			})
 //			if err != nil {
 //				return err

@@ -45,7 +45,7 @@ import (
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),
 //				Tags: pulumi.StringArray{
-//					pulumi.String(example.Name),
+//					pulumi.String(pulumi.String(example.Name)),
 //				},
 //			})
 //			if err != nil {
