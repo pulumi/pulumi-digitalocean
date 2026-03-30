@@ -83,8 +83,8 @@ import (
 //			_, err = digitalocean.NewVolume(ctx, "foobar", &digitalocean.VolumeArgs{
 //				Region:     pulumi.String(digitalocean.RegionLON1),
 //				Name:       pulumi.String("foo"),
-//				Size:       pulumi.Int(foobar.MinDiskSize),
-//				SnapshotId: pulumi.String(foobar.Id),
+//				Size:       pulumi.Int(pulumi.Int(foobar.MinDiskSize)),
+//				SnapshotId: pulumi.String(pulumi.String(foobar.Id)),
 //			})
 //			if err != nil {
 //				return err

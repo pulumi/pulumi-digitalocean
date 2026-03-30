@@ -124,7 +124,7 @@ import (
 //				Name:        pulumi.String("foo"),
 //				Region:      pulumi.String(digitalocean.RegionNYC1),
 //				AutoUpgrade: pulumi.Bool(true),
-//				Version:     pulumi.String(example.LatestVersion),
+//				Version:     pulumi.String(pulumi.String(example.LatestVersion)),
 //				MaintenancePolicy: &digitalocean.KubernetesClusterMaintenancePolicyArgs{
 //					StartTime: pulumi.String("04:00"),
 //					Day:       pulumi.String("sunday"),

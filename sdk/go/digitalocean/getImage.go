@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewDroplet(ctx, "example", &digitalocean.DropletArgs{
-//				Image:  pulumi.Int(example.Id),
+//				Image:  pulumi.String(pulumi.Int(example.Id)),
 //				Name:   pulumi.String("example-1"),
 //				Region: pulumi.String(digitalocean.RegionNYC2),
 //				Size:   pulumi.String(digitalocean.DropletSlugDropletS1VCPU1GB),

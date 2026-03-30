@@ -59,7 +59,7 @@ import (
 //				return err
 //			}
 //			_, err = digitalocean.NewProjectResources(ctx, "barfoo", &digitalocean.ProjectResourcesArgs{
-//				Project: pulumi.String(playground.Id),
+//				Project: pulumi.String(pulumi.String(playground.Id)),
 //				Resources: pulumi.StringArray{
 //					foobar.DropletUrn,
 //				},

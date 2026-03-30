@@ -79,7 +79,7 @@ import (
 //			}
 //			_, err = digitalocean.NewVolumeAttachment(ctx, "foobar", &digitalocean.VolumeAttachmentArgs{
 //				DropletId: exampleDroplet.ID(),
-//				VolumeId:  pulumi.String(example.Id),
+//				VolumeId:  pulumi.String(pulumi.String(example.Id)),
 //			})
 //			if err != nil {
 //				return err
