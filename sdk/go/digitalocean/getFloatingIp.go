@@ -38,8 +38,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			publicIp := cfg.RequireObject("publicIp")
-//			example, err := digitalocean.LookupFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
+//			var publicIp interface{}
+//			cfg.RequireObject("publicIp", &publicIp)
+//			example, err := digitalocean.GetFloatingIp(ctx, &digitalocean.LookupFloatingIpArgs{
 //				IpAddress: publicIp,
 //			}, nil)
 //			if err != nil {

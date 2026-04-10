@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_ = digitalocean.LookupReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{
+//			_ = digitalocean.GetReservedIpv6Output(ctx, digitalocean.GetReservedIpv6OutputArgs{
 //				Ip: foo.Ip,
 //			}, nil)
 //			return nil

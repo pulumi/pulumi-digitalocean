@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
+//			_, err := digitalocean.GetVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
 //				Name: pulumi.StringRef(my_existing_vpc_nat_gateway.Name),
 //			}, nil)
 //			if err != nil {
@@ -59,7 +59,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
+//			_, err := digitalocean.GetVpcNatGateway(ctx, &digitalocean.LookupVpcNatGatewayArgs{
 //				Id: pulumi.StringRef(my_existing_vpc_nat_gateway.Id),
 //			}, nil)
 //			if err != nil {

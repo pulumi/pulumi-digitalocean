@@ -29,7 +29,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Name = my_existing_autoscale_pool.Name,
         ///     });
@@ -47,7 +47,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Id = my_existing_autoscale_pool.Id,
         ///     });
@@ -76,7 +76,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Name = my_existing_autoscale_pool.Name,
         ///     });
@@ -94,7 +94,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Id = my_existing_autoscale_pool.Id,
         ///     });
@@ -123,7 +123,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Name = my_existing_autoscale_pool.Name,
         ///     });
@@ -141,7 +141,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_autoscale_pool = DigitalOcean.GetDropletAutoscale.Invoke(new()
+        ///     var my_imported_autoscale_pool = DigitalOcean.Index.GetDropletAutoscale.Invoke(new()
         ///     {
         ///         Id = my_existing_autoscale_pool.Id,
         ///     });

@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetRecords.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetRecords.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Filters = new[]
@@ -46,7 +46,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mailServers"] = Std.Join.Invoke(new()
+        ///         ["mailServers"] = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
@@ -75,7 +75,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetRecords.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetRecords.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Filters = new[]
@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mailServers"] = Std.Join.Invoke(new()
+        ///         ["mailServers"] = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),
@@ -122,7 +122,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetRecords.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetRecords.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Filters = new[]
@@ -140,7 +140,7 @@ namespace Pulumi.DigitalOcean
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["mailServers"] = Std.Join.Invoke(new()
+        ///         ["mailServers"] = Std.Index.Join.Invoke(new()
         ///         {
         ///             Separator = ",",
         ///             Input = example.Apply(getRecordsResult =&gt; getRecordsResult.Records).Select(__item =&gt; __item.Value).ToList(),

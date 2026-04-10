@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("example", new()
+    ///     var exampleDatabaseCluster = new DigitalOcean.Index.DatabaseCluster("example", new()
     ///     {
     ///         Name = "example-redis-cluster",
     ///         Engine = "redis",
@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.DatabaseRedisConfig("example", new()
+    ///     var example = new DigitalOcean.Index.DatabaseRedisConfig("example", new()
     ///     {
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         MaxmemoryPolicy = "allkeys-lru",

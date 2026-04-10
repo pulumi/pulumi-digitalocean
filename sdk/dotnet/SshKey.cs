@@ -27,17 +27,17 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new SSH key
-    ///     var @default = new DigitalOcean.SshKey("default", new()
+    ///     var @default = new DigitalOcean.Index.SshKey("default", new()
     ///     {
     ///         Name = "Terraform Example",
-    ///         PublicKey = Std.File.Invoke(new()
+    ///         PublicKey = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "/Users/terraform/.ssh/id_rsa.pub",
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
     ///     // Create a new Droplet using the SSH key
-    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     var web = new DigitalOcean.Index.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-18-04-x64",
     ///         Name = "web-1",

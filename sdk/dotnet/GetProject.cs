@@ -25,9 +25,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = DigitalOcean.GetProject.Invoke();
+        ///     var @default = DigitalOcean.Index.GetProject.Invoke();
         /// 
-        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     var staging = DigitalOcean.Index.GetProject.Invoke(new()
         ///     {
         ///         Name = "My Staging Project",
         ///     });
@@ -52,9 +52,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = DigitalOcean.GetProject.Invoke();
+        ///     var @default = DigitalOcean.Index.GetProject.Invoke();
         /// 
-        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     var staging = DigitalOcean.Index.GetProject.Invoke(new()
         ///     {
         ///         Name = "My Staging Project",
         ///     });
@@ -79,9 +79,9 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = DigitalOcean.GetProject.Invoke();
+        ///     var @default = DigitalOcean.Index.GetProject.Invoke();
         /// 
-        ///     var staging = DigitalOcean.GetProject.Invoke(new()
+        ///     var staging = DigitalOcean.Index.GetProject.Invoke(new()
         ///     {
         ///         Name = "My Staging Project",
         ///     });

@@ -32,14 +32,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
+        ///     var bootstrapScript = DigitalOcean.Index.GetSpacesBucketObject.Invoke(new()
         ///     {
         ///         Bucket = "ourcorp-deploy-config",
         ///         Region = "nyc3",
         ///         Key = "droplet-bootstrap-script.sh",
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -75,14 +75,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
+        ///     var bootstrapScript = DigitalOcean.Index.GetSpacesBucketObject.Invoke(new()
         ///     {
         ///         Bucket = "ourcorp-deploy-config",
         ///         Region = "nyc3",
         ///         Key = "droplet-bootstrap-script.sh",
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -118,14 +118,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var bootstrapScript = DigitalOcean.GetSpacesBucketObject.Invoke(new()
+        ///     var bootstrapScript = DigitalOcean.Index.GetSpacesBucketObject.Invoke(new()
         ///     {
         ///         Bucket = "ourcorp-deploy-config",
         ///         Region = "nyc3",
         ///         Key = "droplet-bootstrap-script.sh",
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",

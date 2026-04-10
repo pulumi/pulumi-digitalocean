@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetSpacesKey.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetSpacesKey.Invoke(new()
         ///     {
         ///         AccessKey = "ACCESS_KEY_ID",
         ///     });
@@ -58,7 +58,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetSpacesKey.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetSpacesKey.Invoke(new()
         ///     {
         ///         AccessKey = "ACCESS_KEY_ID",
         ///     });
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetSpacesKey.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetSpacesKey.Invoke(new()
         ///     {
         ///         AccessKey = "ACCESS_KEY_ID",
         ///     });

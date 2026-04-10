@@ -91,7 +91,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var doToken = config.RequireObject<dynamic>("doToken");
     // Create a web server
-    var web = new DigitalOcean.Droplet("web");
+    var web = new DigitalOcean.Index.Droplet("web");
 
 });
 
@@ -121,7 +121,8 @@ import (
 func main() {
 	pulumi.Run(func(ctx *pulumi.Context) error {
 		cfg := config.New(ctx, "")
-		doToken := cfg.RequireObject("doToken")
+		var doToken interface{}
+		cfg.RequireObject("doToken", &doToken)
 		// Create a web server
 		_, err := digitalocean.NewDroplet(ctx, "web", nil)
 		if err != nil {

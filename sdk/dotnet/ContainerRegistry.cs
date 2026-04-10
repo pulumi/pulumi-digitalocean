@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new container registry
-    ///     var foobar = new DigitalOcean.ContainerRegistry("foobar", new()
+    ///     var foobar = new DigitalOcean.Index.ContainerRegistry("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///         SubscriptionTierSlug = "starter",

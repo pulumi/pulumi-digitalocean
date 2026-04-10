@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupSshKey(ctx, &digitalocean.LookupSshKeyArgs{
+//			example, err := digitalocean.GetSshKey(ctx, &digitalocean.LookupSshKeyArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {

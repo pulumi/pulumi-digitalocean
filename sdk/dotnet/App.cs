@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
+    ///     var golang_sample = new DigitalOcean.Index.App("golang-sample", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var static_site_example = new DigitalOcean.App("static-site-example", new()
+    ///     var static_site_example = new DigitalOcean.Index.App("static-site-example", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
@@ -100,7 +100,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
+    ///     var golang_sample = new DigitalOcean.Index.App("golang-sample", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
@@ -152,7 +152,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var golang_sample = new DigitalOcean.App("golang-sample", new()
+    ///     var golang_sample = new DigitalOcean.Index.App("golang-sample", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {
@@ -191,7 +191,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var maintenance_example = new DigitalOcean.App("maintenance-example", new()
+    ///     var maintenance_example = new DigitalOcean.Index.App("maintenance-example", new()
     ///     {
     ///         Spec = new DigitalOcean.Inputs.AppSpecArgs
     ///         {

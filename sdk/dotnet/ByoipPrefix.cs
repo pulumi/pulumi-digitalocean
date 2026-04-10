@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new BYOIP prefix
-    ///     var example = new DigitalOcean.ByoipPrefix("example", new()
+    ///     var example = new DigitalOcean.Index.ByoipPrefix("example", new()
     ///     {
     ///         Prefix = "192.0.2.0/24",
     ///         Signature = prefixSignature,

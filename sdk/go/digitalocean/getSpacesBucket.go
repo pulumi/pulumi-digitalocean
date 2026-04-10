@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
+//			example, err := digitalocean.GetSpacesBucket(ctx, &digitalocean.LookupSpacesBucketArgs{
 //				Name:   "my-spaces-bucket",
 //				Region: "nyc3",
 //			}, nil)

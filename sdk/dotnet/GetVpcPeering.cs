@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
@@ -50,12 +50,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -77,7 +77,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
@@ -95,12 +95,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -136,7 +136,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
@@ -154,12 +154,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -181,7 +181,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
@@ -199,12 +199,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -240,7 +240,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
@@ -258,12 +258,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Id = "example-id",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -285,7 +285,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
@@ -303,12 +303,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpcPeering.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpcPeering.Invoke(new()
         ///     {
         ///         Name = "example-peering",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,

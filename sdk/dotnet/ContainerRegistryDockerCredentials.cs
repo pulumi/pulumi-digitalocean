@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
+    ///     var example = new DigitalOcean.Index.ContainerRegistryDockerCredentials("example", new()
     ///     {
     ///         RegistryName = "example",
     ///     });
@@ -48,12 +48,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = DigitalOcean.GetContainerRegistry.Invoke(new()
+    ///     var example = DigitalOcean.Index.GetContainerRegistry.Invoke(new()
     ///     {
     ///         Name = "example",
     ///     });
     /// 
-    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.Index.ContainerRegistryDockerCredentials("example", new()
     ///     {
     ///         RegistryName = "example",
     ///     });
@@ -75,12 +75,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.ContainerRegistryDockerCredentials("example", new()
+    ///     var exampleContainerRegistryDockerCredentials = new DigitalOcean.Index.ContainerRegistryDockerCredentials("example", new()
     ///     {
     ///         RegistryName = "example",
     ///     });
     /// 
-    ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+    ///     var example = DigitalOcean.Index.GetKubernetesCluster.Invoke(new()
     ///     {
     ///         Name = "prod-cluster-01",
     ///     });

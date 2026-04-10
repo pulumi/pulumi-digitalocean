@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new()
+    ///     var mysql_example = new DigitalOcean.Index.DatabaseCluster("mysql-example", new()
     ///     {
     ///         Name = "example-mysql-cluster",
     ///         Engine = "mysql",
@@ -67,7 +67,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var valkey_example = new DigitalOcean.DatabaseCluster("valkey-example", new()
+    ///     var valkey_example = new DigitalOcean.Index.DatabaseCluster("valkey-example", new()
     ///     {
     ///         Name = "example-valkey-cluster",
     ///         Engine = "valkey",
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
+    ///     var kafka_example = new DigitalOcean.Index.DatabaseCluster("kafka-example", new()
     ///     {
     ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
@@ -111,7 +111,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mongodb_example = new DigitalOcean.DatabaseCluster("mongodb-example", new()
+    ///     var mongodb_example = new DigitalOcean.Index.DatabaseCluster("mongodb-example", new()
     ///     {
     ///         Name = "example-mongo-cluster",
     ///         Engine = "mongodb",
@@ -133,7 +133,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var opensearch_example = new DigitalOcean.DatabaseCluster("opensearch-example", new()
+    ///     var opensearch_example = new DigitalOcean.Index.DatabaseCluster("opensearch-example", new()
     ///     {
     ///         Name = "example-opensearch-cluster",
     ///         Engine = "opensearch",
@@ -156,7 +156,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var doby = new DigitalOcean.DatabaseCluster("doby", new()
+    ///     var doby = new DigitalOcean.Index.DatabaseCluster("doby", new()
     ///     {
     ///         Name = "dobydb",
     ///         Engine = "pg",
@@ -170,7 +170,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var dobyBackup = new DigitalOcean.DatabaseCluster("doby_backup", new()
+    ///     var dobyBackup = new DigitalOcean.Index.DatabaseCluster("doby_backup", new()
     ///     {
     ///         Name = "dobydupe",
     ///         Engine = "pg",

@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var config = new Config();
         ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetReservedIp.Invoke(new()
         ///     {
         ///         IpAddress = publicIp,
         ///     });
@@ -70,7 +70,7 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var config = new Config();
         ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetReservedIp.Invoke(new()
         ///     {
         ///         IpAddress = publicIp,
         ///     });
@@ -107,7 +107,7 @@ namespace Pulumi.DigitalOcean
         /// {
         ///     var config = new Config();
         ///     var publicIp = config.RequireObject&lt;dynamic&gt;("publicIp");
-        ///     var example = DigitalOcean.GetReservedIp.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetReservedIp.Invoke(new()
         ///     {
         ///         IpAddress = publicIp,
         ///     });

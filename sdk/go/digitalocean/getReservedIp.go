@@ -36,8 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			publicIp := cfg.RequireObject("publicIp")
-//			example, err := digitalocean.LookupReservedIp(ctx, &digitalocean.LookupReservedIpArgs{
+//			var publicIp interface{}
+//			cfg.RequireObject("publicIp", &publicIp)
+//			example, err := digitalocean.GetReservedIp(ctx, &digitalocean.LookupReservedIpArgs{
 //				IpAddress: publicIp,
 //			}, nil)
 //			if err != nil {

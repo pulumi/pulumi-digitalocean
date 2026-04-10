@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
@@ -51,12 +51,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -93,7 +93,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
@@ -111,12 +111,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -153,7 +153,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
@@ -171,12 +171,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetVpc.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetVpc.Invoke(new()
         ///     {
         ///         Name = "example-network",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
         ///     {
         ///         Name = "example-01",
         ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,

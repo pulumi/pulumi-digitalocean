@@ -174,7 +174,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
+//			_, err := digitalocean.GetKubernetesCluster(ctx, &digitalocean.LookupKubernetesClusterArgs{
 //				Name: "prod-cluster-01",
 //			}, nil)
 //			if err != nil {

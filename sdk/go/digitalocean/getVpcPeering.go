@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+//			_, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 //				Id: pulumi.StringRef("example-id"),
 //			}, nil)
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+//			example, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 //				Id: pulumi.StringRef("example-id"),
 //			}, nil)
 //			if err != nil {
@@ -97,7 +97,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+//			_, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 //				Name: pulumi.StringRef("example-peering"),
 //			}, nil)
 //			if err != nil {
@@ -123,7 +123,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
+//			example, err := digitalocean.GetVpcPeering(ctx, &digitalocean.LookupVpcPeeringArgs{
 //				Name: pulumi.StringRef("example-peering"),
 //			}, nil)
 //			if err != nil {

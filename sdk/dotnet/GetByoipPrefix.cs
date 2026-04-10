@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
@@ -50,12 +50,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
         /// 
-        ///     var exampleGetByoipPrefixResources = DigitalOcean.GetByoipPrefixResources.Invoke(new()
+        ///     var exampleGetByoipPrefixResources = DigitalOcean.Index.GetByoipPrefixResources.Invoke(new()
         ///     {
         ///         ByoipPrefixUuid = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Uuid),
         ///     });
@@ -97,7 +97,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
@@ -115,12 +115,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
         /// 
-        ///     var exampleGetByoipPrefixResources = DigitalOcean.GetByoipPrefixResources.Invoke(new()
+        ///     var exampleGetByoipPrefixResources = DigitalOcean.Index.GetByoipPrefixResources.Invoke(new()
         ///     {
         ///         ByoipPrefixUuid = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Uuid),
         ///     });
@@ -162,7 +162,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
@@ -180,12 +180,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetByoipPrefix.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetByoipPrefix.Invoke(new()
         ///     {
         ///         Uuid = "506f78a4-e098-11e5-ad9f-000f53306ae1",
         ///     });
         /// 
-        ///     var exampleGetByoipPrefixResources = DigitalOcean.GetByoipPrefixResources.Invoke(new()
+        ///     var exampleGetByoipPrefixResources = DigitalOcean.Index.GetByoipPrefixResources.Invoke(new()
         ///     {
         ///         ByoipPrefixUuid = example.Apply(getByoipPrefixResult =&gt; getByoipPrefixResult.Uuid),
         ///     });

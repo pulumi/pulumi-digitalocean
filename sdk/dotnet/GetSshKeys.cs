@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {
@@ -57,7 +57,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -100,7 +100,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {
@@ -125,7 +125,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -168,7 +168,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {
@@ -193,7 +193,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var keys = DigitalOcean.GetSshKeys.Invoke(new()
+        ///     var keys = DigitalOcean.Index.GetSshKeys.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

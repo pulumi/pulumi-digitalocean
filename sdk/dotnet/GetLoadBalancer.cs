@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Name = "app",
         ///     });
@@ -53,7 +53,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Id = "loadbalancer_id",
         ///     });
@@ -84,7 +84,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Name = "app",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Id = "loadbalancer_id",
         ///     });
@@ -137,7 +137,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Name = "app",
         ///     });
@@ -159,7 +159,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetLoadBalancer.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetLoadBalancer.Invoke(new()
         ///     {
         ///         Id = "loadbalancer_id",
         ///     });

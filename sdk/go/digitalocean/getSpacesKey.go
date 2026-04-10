@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupSpacesKey(ctx, &digitalocean.LookupSpacesKeyArgs{
+//			example, err := digitalocean.GetSpacesKey(ctx, &digitalocean.LookupSpacesKeyArgs{
 //				AccessKey: "ACCESS_KEY_ID",
 //			}, nil)
 //			if err != nil {

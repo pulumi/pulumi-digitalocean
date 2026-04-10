@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var static_assets = new DigitalOcean.SpacesBucket("static-assets");
+    ///     var static_assets = new DigitalOcean.Index.SpacesBucket("static-assets");
     /// 
     /// });
     /// ```
@@ -54,13 +54,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.SpacesBucket("foobar", new()
+    ///     var foobar = new DigitalOcean.Index.SpacesBucket("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
-    ///     var foobarSpacesBucketPolicy = new DigitalOcean.SpacesBucketPolicy("foobar", new()
+    ///     var foobarSpacesBucketPolicy = new DigitalOcean.Index.SpacesBucketPolicy("foobar", new()
     ///     {
     ///         Region = foobar.Region,
     ///         Bucket = foobar.Name,

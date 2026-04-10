@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.VpcPeering("example", new()
+    ///     var example = new DigitalOcean.Index.VpcPeering("example", new()
     ///     {
     ///         Name = "example-peering",
     ///         VpcIds = new[]
@@ -51,19 +51,19 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var vpc1 = new DigitalOcean.Vpc("vpc1", new()
+    ///     var vpc1 = new DigitalOcean.Index.Vpc("vpc1", new()
     ///     {
     ///         Name = "vpc1",
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var vpc2 = new DigitalOcean.Vpc("vpc2", new()
+    ///     var vpc2 = new DigitalOcean.Index.Vpc("vpc2", new()
     ///     {
     ///         Name = "vpc2",
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var example = new DigitalOcean.VpcPeering("example", new()
+    ///     var example = new DigitalOcean.Index.VpcPeering("example", new()
     ///     {
     ///         Name = "example-peering",
     ///         VpcIds = new[]
@@ -73,7 +73,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var example1 = new DigitalOcean.Droplet("example1", new()
+    ///     var example1 = new DigitalOcean.Index.Droplet("example1", new()
     ///     {
     ///         Name = "example1",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -82,7 +82,7 @@ namespace Pulumi.DigitalOcean
     ///         VpcUuid = vpc1.Id,
     ///     });
     /// 
-    ///     var example2 = new DigitalOcean.Droplet("example2", new()
+    ///     var example2 = new DigitalOcean.Index.Droplet("example2", new()
     ///     {
     ///         Name = "example2",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,

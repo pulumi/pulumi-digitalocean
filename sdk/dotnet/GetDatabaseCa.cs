@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
+        ///     var ca = DigitalOcean.Index.GetDatabaseCa.Invoke(new()
         ///     {
         ///         ClusterId = "aaa-bbb-ccc-ddd",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
+        ///     var ca = DigitalOcean.Index.GetDatabaseCa.Invoke(new()
         ///     {
         ///         ClusterId = "aaa-bbb-ccc-ddd",
         ///     });
@@ -80,7 +80,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ca = DigitalOcean.GetDatabaseCa.Invoke(new()
+        ///     var ca = DigitalOcean.Index.GetDatabaseCa.Invoke(new()
         ///     {
         ///         ClusterId = "aaa-bbb-ccc-ddd",
         ///     });

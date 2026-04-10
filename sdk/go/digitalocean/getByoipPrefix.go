@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
+//			_, err := digitalocean.GetByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
 //				Uuid: "506f78a4-e098-11e5-ad9f-000f53306ae1",
 //			}, nil)
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
+//			example, err := digitalocean.GetByoipPrefix(ctx, &digitalocean.LookupByoipPrefixArgs{
 //				Uuid: "506f78a4-e098-11e5-ad9f-000f53306ae1",
 //			}, nil)
 //			if err != nil {

@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("example", new()
+    ///     var exampleDatabaseCluster = new DigitalOcean.Index.DatabaseCluster("example", new()
     ///     {
     ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 3,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.DatabaseKafkaConfig("example", new()
+    ///     var example = new DigitalOcean.Index.DatabaseKafkaConfig("example", new()
     ///     {
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         GroupInitialRebalanceDelayMs = 3000,

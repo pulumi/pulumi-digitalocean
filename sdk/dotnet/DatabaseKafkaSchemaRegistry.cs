@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
+    ///     var kafka_example = new DigitalOcean.Index.DatabaseCluster("kafka-example", new()
     ///     {
     ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var schema_01 = new DigitalOcean.DatabaseKafkaSchemaRegistry("schema-01", new()
+    ///     var schema_01 = new DigitalOcean.Index.DatabaseKafkaSchemaRegistry("schema-01", new()
     ///     {
     ///         ClusterId = kafka_example.Id,
     ///         SubjectName = "test-schema",

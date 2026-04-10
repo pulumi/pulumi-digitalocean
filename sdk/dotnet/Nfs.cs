@@ -22,13 +22,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Vpc("example", new()
+    ///     var example = new DigitalOcean.Index.Vpc("example", new()
     ///     {
     ///         Name = "example-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     var exampleNfs = new DigitalOcean.Nfs("example", new()
+    ///     var exampleNfs = new DigitalOcean.Index.Nfs("example", new()
     ///     {
     ///         Region = "nyc1",
     ///         Name = "example-nfs",

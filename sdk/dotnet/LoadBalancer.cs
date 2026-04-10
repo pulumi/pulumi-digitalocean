@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var web = new DigitalOcean.Droplet("web", new()
+    ///     var web = new DigitalOcean.Index.Droplet("web", new()
     ///     {
     ///         Name = "web-1",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
-    ///     var @public = new DigitalOcean.LoadBalancer("public", new()
+    ///     var @public = new DigitalOcean.Index.LoadBalancer("public", new()
     ///     {
     ///         Name = "loadbalancer-1",
     ///         Region = DigitalOcean.Region.NYC3,

@@ -43,7 +43,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			playground, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+//			playground, err := digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{
 //				Name: pulumi.StringRef("playground"),
 //			}, nil)
 //			if err != nil {

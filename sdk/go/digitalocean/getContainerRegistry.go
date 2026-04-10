@@ -36,7 +36,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
+//			_, err := digitalocean.GetContainerRegistry(ctx, &digitalocean.LookupContainerRegistryArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {

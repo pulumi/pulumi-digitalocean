@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupTag(ctx, &digitalocean.LookupTagArgs{
+//			example, err := digitalocean.GetTag(ctx, &digitalocean.LookupTagArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {
