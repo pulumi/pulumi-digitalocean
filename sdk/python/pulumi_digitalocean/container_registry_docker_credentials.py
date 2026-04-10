@@ -213,7 +213,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
-        example_secret = kubernetes.index.Secret("example",
+        example_secret = kubernetes.Secret("example",
             metadata=[{
                 name: docker-cfg,
             }],
@@ -278,7 +278,7 @@ class ContainerRegistryDockerCredentials(pulumi.CustomResource):
 
         example_container_registry_docker_credentials = digitalocean.ContainerRegistryDockerCredentials("example", registry_name="example")
         example = digitalocean.get_kubernetes_cluster(name="prod-cluster-01")
-        example_secret = kubernetes.index.Secret("example",
+        example_secret = kubernetes.Secret("example",
             metadata=[{
                 name: docker-cfg,
             }],

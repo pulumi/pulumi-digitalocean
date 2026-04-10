@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDomain.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
@@ -88,7 +88,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDomain.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDomain.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDomain.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });

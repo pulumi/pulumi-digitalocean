@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetNfs.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetNfs.Invoke(new()
         ///     {
         ///         Name = "example-nfs",
         ///         Region = "nyc1",
@@ -53,7 +53,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetNfs.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetNfs.Invoke(new()
         ///     {
         ///         Name = "example-nfs",
         ///         Region = "nyc1",
@@ -80,7 +80,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetNfs.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetNfs.Invoke(new()
         ///     {
         ///         Name = "example-nfs",
         ///         Region = "nyc1",

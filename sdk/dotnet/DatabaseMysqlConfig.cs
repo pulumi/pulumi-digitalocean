@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleDatabaseCluster = new DigitalOcean.DatabaseCluster("example", new()
+    ///     var exampleDatabaseCluster = new DigitalOcean.Index.DatabaseCluster("example", new()
     ///     {
     ///         Name = "example-mysql-cluster",
     ///         Engine = "mysql",
@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.DatabaseMysqlConfig("example", new()
+    ///     var example = new DigitalOcean.Index.DatabaseMysqlConfig("example", new()
     ///     {
     ///         ClusterId = exampleDatabaseCluster.Id,
     ///         ConnectTimeout = 10,

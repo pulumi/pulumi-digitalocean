@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Volume("foobar", new()
+    ///     var foobar = new DigitalOcean.Index.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.NYC1,
     ///         Name = "baz",
@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
     ///         Description = "an example volume",
     ///     });
     /// 
-    ///     var foobarDroplet = new DigitalOcean.Droplet("foobar", new()
+    ///     var foobarDroplet = new DigitalOcean.Index.Droplet("foobar", new()
     ///     {
     ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -39,7 +39,7 @@ namespace Pulumi.DigitalOcean
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
-    ///     var foobarVolumeAttachment = new DigitalOcean.VolumeAttachment("foobar", new()
+    ///     var foobarVolumeAttachment = new DigitalOcean.Index.VolumeAttachment("foobar", new()
     ///     {
     ///         DropletId = foobarDroplet.Id,
     ///         VolumeId = foobar.Id,
@@ -58,12 +58,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+    ///     var foobar = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
     ///     {
     ///         Name = "baz",
     ///     });
     /// 
-    ///     var foobarVolume = new DigitalOcean.Volume("foobar", new()
+    ///     var foobarVolume = new DigitalOcean.Index.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.LON1,
     ///         Name = "foo",

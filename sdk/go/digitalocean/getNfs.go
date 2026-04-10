@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupNfs(ctx, &digitalocean.LookupNfsArgs{
+//			_, err := digitalocean.GetNfs(ctx, &digitalocean.LookupNfsArgs{
 //				Name:   "example-nfs",
 //				Region: pulumi.StringRef("nyc1"),
 //			}, nil)

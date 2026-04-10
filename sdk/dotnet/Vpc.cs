@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Vpc("example", new()
+    ///     var example = new DigitalOcean.Index.Vpc("example", new()
     ///     {
     ///         Name = "example-project-network",
     ///         Region = "nyc3",
@@ -49,13 +49,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Vpc("example", new()
+    ///     var example = new DigitalOcean.Index.Vpc("example", new()
     ///     {
     ///         Name = "example-project-network",
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
+    ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
     ///     {
     ///         Name = "example-01",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,

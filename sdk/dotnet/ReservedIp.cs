@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Droplet("example", new()
+    ///     var example = new DigitalOcean.Index.Droplet("example", new()
     ///     {
     ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -34,7 +34,7 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var exampleReservedIp = new DigitalOcean.ReservedIp("example", new()
+    ///     var exampleReservedIp = new DigitalOcean.Index.ReservedIp("example", new()
     ///     {
     ///         DropletId = example.Id,
     ///         Region = example.Region,

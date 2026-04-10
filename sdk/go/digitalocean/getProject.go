@@ -28,11 +28,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{}, nil)
+//			_, err := digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = digitalocean.LookupProject(ctx, &digitalocean.LookupProjectArgs{
+//			_, err = digitalocean.GetProject(ctx, &digitalocean.LookupProjectArgs{
 //				Name: pulumi.StringRef("My Staging Project"),
 //			}, nil)
 //			if err != nil {

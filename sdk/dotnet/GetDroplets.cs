@@ -38,7 +38,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small_with_backups = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -130,7 +130,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -158,7 +158,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small_with_backups = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -222,7 +222,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -250,7 +250,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var small_with_backups = DigitalOcean.GetDroplets.Invoke(new()
+        ///     var small_with_backups = DigitalOcean.Index.GetDroplets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

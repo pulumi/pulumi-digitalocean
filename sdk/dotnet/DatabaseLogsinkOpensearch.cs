@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.DatabaseLogsinkOpensearch("example", new()
+    ///     var example = new DigitalOcean.Index.DatabaseLogsinkOpensearch("example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "opensearch-logs",
@@ -68,14 +68,14 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_secure = new DigitalOcean.DatabaseLogsinkOpensearch("example-secure", new()
+    ///     var example_secure = new DigitalOcean.Index.DatabaseLogsinkOpensearch("example-secure", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "opensearch-secure",
     ///         Endpoint = "https://user:password@opensearch.example.com:9200",
     ///         IndexPrefix = "secure-logs",
     ///         IndexDaysMax = 14,
-    ///         CaCert = Std.File.Invoke(new()
+    ///         CaCert = Std.Index.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -95,7 +95,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var elasticsearch = new DigitalOcean.DatabaseLogsinkOpensearch("elasticsearch", new()
+    ///     var elasticsearch = new DigitalOcean.Index.DatabaseLogsinkOpensearch("elasticsearch", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "elasticsearch-logs",
@@ -117,7 +117,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var mysql_example = new DigitalOcean.DatabaseCluster("mysql-example", new()
+    ///     var mysql_example = new DigitalOcean.Index.DatabaseCluster("mysql-example", new()
     ///     {
     ///         Name = "example-mysql-cluster",
     ///         Engine = "mysql",
@@ -127,7 +127,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var mysql = new DigitalOcean.DatabaseLogsinkOpensearch("mysql", new()
+    ///     var mysql = new DigitalOcean.Index.DatabaseLogsinkOpensearch("mysql", new()
     ///     {
     ///         ClusterId = mysql_example.Id,
     ///         Name = "mysql-logs",

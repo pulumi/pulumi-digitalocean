@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupCertificate(ctx, &digitalocean.LookupCertificateArgs{
+//			_, err := digitalocean.GetCertificate(ctx, &digitalocean.LookupCertificateArgs{
 //				Name: "example",
 //			}, nil)
 //			if err != nil {

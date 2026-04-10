@@ -27,7 +27,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
+//			example, err := digitalocean.GetDatabaseCluster(ctx, &digitalocean.LookupDatabaseClusterArgs{
 //				Name: "example-cluster",
 //			}, nil)
 //			if err != nil {

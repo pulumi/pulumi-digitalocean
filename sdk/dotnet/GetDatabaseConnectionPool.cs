@@ -24,12 +24,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.GetDatabaseConnectionPool.Invoke(new()
+        ///     var read_only = DigitalOcean.Index.GetDatabaseConnectionPool.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "pool-01",
@@ -58,12 +58,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.GetDatabaseConnectionPool.Invoke(new()
+        ///     var read_only = DigitalOcean.Index.GetDatabaseConnectionPool.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "pool-01",
@@ -92,12 +92,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDatabaseCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "example-cluster",
         ///     });
         /// 
-        ///     var read_only = DigitalOcean.GetDatabaseConnectionPool.Invoke(new()
+        ///     var read_only = DigitalOcean.Index.GetDatabaseConnectionPool.Invoke(new()
         ///     {
         ///         ClusterId = example.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "pool-01",

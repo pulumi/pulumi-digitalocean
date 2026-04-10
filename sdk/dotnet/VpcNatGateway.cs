@@ -25,13 +25,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var my_vpc = new DigitalOcean.Vpc("my-vpc", new()
+    ///     var my_vpc = new DigitalOcean.Index.Vpc("my-vpc", new()
     ///     {
     ///         Name = "terraform-example",
     ///         Region = "nyc3",
     ///     });
     /// 
-    ///     var my_vpc_nat_gateway = new DigitalOcean.VpcNatGateway("my-vpc-nat-gateway", new()
+    ///     var my_vpc_nat_gateway = new DigitalOcean.Index.VpcNatGateway("my-vpc-nat-gateway", new()
     ///     {
     ///         Name = "terraform-example",
     ///         Type = "PUBLIC",

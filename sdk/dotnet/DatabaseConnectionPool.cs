@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var pool_01 = new DigitalOcean.DatabaseConnectionPool("pool-01", new()
+    ///     var pool_01 = new DigitalOcean.Index.DatabaseConnectionPool("pool-01", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "pool-01",

@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
+//			_, err := digitalocean.GetDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
 //				Name: pulumi.StringRef(my_existing_autoscale_pool.Name),
 //			}, nil)
 //			if err != nil {
@@ -58,7 +58,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
+//			_, err := digitalocean.GetDropletAutoscale(ctx, &digitalocean.LookupDropletAutoscaleArgs{
 //				Id: pulumi.StringRef(my_existing_autoscale_pool.Id),
 //			}, nil)
 //			if err != nil {

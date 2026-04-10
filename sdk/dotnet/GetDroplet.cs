@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Name = "web",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Tag = "web",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
@@ -104,7 +104,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Name = "web",
         ///     });
@@ -126,7 +126,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Tag = "web",
         ///     });
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });
@@ -176,7 +176,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Name = "web",
         ///     });
@@ -198,7 +198,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Tag = "web",
         ///     });
@@ -216,7 +216,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetDroplet.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetDroplet.Invoke(new()
         ///     {
         ///         Id = exampleDigitaloceanKubernetesCluster.NodePool[0].Nodes[0].DropletId,
         ///     });

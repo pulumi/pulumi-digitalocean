@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -64,7 +64,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -117,7 +117,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {
@@ -157,7 +157,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -172,7 +172,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -193,7 +193,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -225,7 +225,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -246,7 +246,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {
@@ -286,7 +286,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -301,7 +301,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -322,7 +322,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -354,7 +354,7 @@ namespace Pulumi.DigitalOcean
         ///         },
         ///     });
         /// 
-        ///     var web = new DigitalOcean.Droplet("web", new()
+        ///     var web = new DigitalOcean.Index.Droplet("web", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "web-1",
@@ -375,7 +375,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.GetSizes.Invoke(new()
+        ///     var main = DigitalOcean.Index.GetSizes.Invoke(new()
         ///     {
         ///         Sorts = new[]
         ///         {

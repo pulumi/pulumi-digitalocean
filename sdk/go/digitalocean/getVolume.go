@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+//			_, err := digitalocean.GetVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)
@@ -61,7 +61,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupVolume(ctx, &digitalocean.LookupVolumeArgs{
+//			example, err := digitalocean.GetVolume(ctx, &digitalocean.LookupVolumeArgs{
 //				Name:   "app-data",
 //				Region: pulumi.StringRef("nyc3"),
 //			}, nil)

@@ -32,7 +32,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -109,7 +109,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -136,7 +136,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -186,7 +186,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -213,7 +213,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var nyc3 = DigitalOcean.GetSpacesBuckets.Invoke(new()
+        ///     var nyc3 = DigitalOcean.Index.GetSpacesBuckets.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

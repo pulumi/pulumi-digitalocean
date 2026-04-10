@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetAccount.Invoke();
+        ///     var example = DigitalOcean.Index.GetAccount.Invoke();
         /// 
         /// });
         /// ```
@@ -49,7 +49,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetAccount.Invoke();
+        ///     var example = DigitalOcean.Index.GetAccount.Invoke();
         /// 
         /// });
         /// ```
@@ -72,7 +72,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetAccount.Invoke();
+        ///     var example = DigitalOcean.Index.GetAccount.Invoke();
         /// 
         /// });
         /// ```

@@ -37,12 +37,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var playground = DigitalOcean.GetProject.Invoke(new()
+    ///     var playground = DigitalOcean.Index.GetProject.Invoke(new()
     ///     {
     ///         Name = "playground",
     ///     });
     /// 
-    ///     var foobar = new DigitalOcean.Droplet("foobar", new()
+    ///     var foobar = new DigitalOcean.Index.Droplet("foobar", new()
     ///     {
     ///         Name = "example",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
     ///         Region = DigitalOcean.Region.NYC3,
     ///     });
     /// 
-    ///     var barfoo = new DigitalOcean.ProjectResources("barfoo", new()
+    ///     var barfoo = new DigitalOcean.Index.ProjectResources("barfoo", new()
     ///     {
     ///         Project = playground.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Resources = new[]

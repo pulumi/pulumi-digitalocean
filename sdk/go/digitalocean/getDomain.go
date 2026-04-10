@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := digitalocean.LookupDomain(ctx, &digitalocean.LookupDomainArgs{
+//			example, err := digitalocean.GetDomain(ctx, &digitalocean.LookupDomainArgs{
 //				Name: "example.com",
 //			}, nil)
 //			if err != nil {

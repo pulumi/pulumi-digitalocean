@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetKubernetesCluster.Invoke(new()
         ///     {
         ///         Name = "prod-cluster-01",
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetKubernetesCluster.Invoke(new()
         ///     {
         ///         Name = "prod-cluster-01",
         ///     });
@@ -72,7 +72,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.GetKubernetesCluster.Invoke(new()
+        ///     var example = DigitalOcean.Index.GetKubernetesCluster.Invoke(new()
         ///     {
         ///         Name = "prod-cluster-01",
         ///     });

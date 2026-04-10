@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
+        ///     var sfo2 = DigitalOcean.Index.GetRegion.Invoke(new()
         ///     {
         ///         Slug = "sfo2",
         ///     });
@@ -54,7 +54,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
+        ///     var sfo2 = DigitalOcean.Index.GetRegion.Invoke(new()
         ///     {
         ///         Slug = "sfo2",
         ///     });
@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var sfo2 = DigitalOcean.GetRegion.Invoke(new()
+        ///     var sfo2 = DigitalOcean.Index.GetRegion.Invoke(new()
         ///     {
         ///         Slug = "sfo2",
         ///     });

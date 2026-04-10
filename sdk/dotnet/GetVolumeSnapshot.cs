@@ -28,7 +28,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -48,14 +48,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     var foobar = new DigitalOcean.Index.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
         ///         Name = "baz",
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -106,14 +106,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     var foobar = new DigitalOcean.Index.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
         ///         Name = "baz",
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
@@ -164,14 +164,14 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var snapshot = DigitalOcean.GetVolumeSnapshot.Invoke(new()
+        ///     var snapshot = DigitalOcean.Index.GetVolumeSnapshot.Invoke(new()
         ///     {
         ///         NameRegex = "^web",
         ///         Region = "nyc3",
         ///         MostRecent = true,
         ///     });
         /// 
-        ///     var foobar = new DigitalOcean.Volume("foobar", new()
+        ///     var foobar = new DigitalOcean.Index.Volume("foobar", new()
         ///     {
         ///         Region = DigitalOcean.Region.NYC3,
         ///         Name = "baz",
