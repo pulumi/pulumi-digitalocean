@@ -2236,6 +2236,40 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: pulumi.Input<string>;
 }
 
+export interface DedicatedInferenceModelDeployment {
+    /**
+     * The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
+     */
+    accelerators: pulumi.Input<pulumi.Input<inputs.DedicatedInferenceModelDeploymentAccelerator>[]>;
+    /**
+     * The unique ID of the model.
+     */
+    modelId?: pulumi.Input<string>;
+    /**
+     * The provider of the model (e.g. `digitalocean`, `huggingface`).
+     */
+    modelProvider: pulumi.Input<string>;
+    /**
+     * The slug identifier for the model to deploy.
+     */
+    modelSlug: pulumi.Input<string>;
+}
+
+export interface DedicatedInferenceModelDeploymentAccelerator {
+    /**
+     * The slug identifier for the GPU accelerator type.
+     */
+    acceleratorSlug: pulumi.Input<string>;
+    /**
+     * The number of accelerator units to allocate. Must be at least 1.
+     */
+    scale: pulumi.Input<number>;
+    /**
+     * The accelerator type.
+     */
+    type: pulumi.Input<string>;
+}
+
 export interface DropletAutoscaleConfig {
     /**
      * The cooldown duration between scaling events for the Droplet Autoscale pool.
@@ -2289,6 +2323,10 @@ export interface DropletAutoscaleDropletTemplate {
      * Project UUID to create the Droplet Autoscale pool underlying resource(s).
      */
     projectId?: pulumi.Input<string>;
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     */
+    publicNetworking?: pulumi.Input<boolean>;
     /**
      * Region slug of the Droplet Autoscale pool underlying resource(s).
      */
@@ -3663,6 +3701,186 @@ export interface GetAppDedicatedIpArgs {
      * The status of the dedicated egress IP.
      */
     status?: pulumi.Input<string>;
+}
+
+export interface GetDedicatedInferenceAcceleratorsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferenceAcceleratorsFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `createdAt`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDedicatedInferenceAcceleratorsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the accelerators by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
+export interface GetDedicatedInferenceAcceleratorsSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the accelerators by this key. This may be one of the keys listed in `filter`.
+     */
+    key: pulumi.Input<string>;
+}
+
+export interface GetDedicatedInferenceTokensFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the tokens by this key. This may be one of `id`, `name`, `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferenceTokensFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the tokens by this key. This may be one of `id`, `name`, `createdAt`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDedicatedInferenceTokensSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the tokens by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
+export interface GetDedicatedInferenceTokensSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the tokens by this key. This may be one of the keys listed in `filter`.
+     */
+    key: pulumi.Input<string>;
+}
+
+export interface GetDedicatedInferencesFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpcUuid`, `publicEndpointFqdn`, `privateEndpointFqdn`, `createdAt`, `updatedAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferencesFilterArgs {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: pulumi.Input<boolean>;
+    /**
+     * Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpcUuid`, `publicEndpointFqdn`, `privateEndpointFqdn`, `createdAt`, `updatedAt`.
+     */
+    key: pulumi.Input<string>;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
+     */
+    matchBy?: pulumi.Input<string>;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: pulumi.Input<pulumi.Input<string>[]>;
+}
+
+export interface GetDedicatedInferencesSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
+export interface GetDedicatedInferencesSortArgs {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: pulumi.Input<string>;
+    /**
+     * Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
+     */
+    key: pulumi.Input<string>;
 }
 
 export interface GetDomainsFilter {

@@ -28,6 +28,11 @@ public final class GetDropletAutoscaleDropletTemplate {
      */
     private String projectId;
     /**
+     * @return Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
+     * 
+     */
+    private Boolean publicNetworking;
+    /**
      * @return Droplet region
      * 
      */
@@ -84,6 +89,13 @@ public final class GetDropletAutoscaleDropletTemplate {
      */
     public String projectId() {
         return this.projectId;
+    }
+    /**
+     * @return Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
+     * 
+     */
+    public Boolean publicNetworking() {
+        return this.publicNetworking;
     }
     /**
      * @return Droplet region
@@ -147,6 +159,7 @@ public final class GetDropletAutoscaleDropletTemplate {
         private String image;
         private Boolean ipv6;
         private String projectId;
+        private Boolean publicNetworking;
         private String region;
         private String size;
         private List<String> sshKeys;
@@ -160,6 +173,7 @@ public final class GetDropletAutoscaleDropletTemplate {
     	      this.image = defaults.image;
     	      this.ipv6 = defaults.ipv6;
     	      this.projectId = defaults.projectId;
+    	      this.publicNetworking = defaults.publicNetworking;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.sshKeys = defaults.sshKeys;
@@ -191,6 +205,14 @@ public final class GetDropletAutoscaleDropletTemplate {
               throw new MissingRequiredPropertyException("GetDropletAutoscaleDropletTemplate", "projectId");
             }
             this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicNetworking(Boolean publicNetworking) {
+            if (publicNetworking == null) {
+              throw new MissingRequiredPropertyException("GetDropletAutoscaleDropletTemplate", "publicNetworking");
+            }
+            this.publicNetworking = publicNetworking;
             return this;
         }
         @CustomType.Setter
@@ -260,6 +282,7 @@ public final class GetDropletAutoscaleDropletTemplate {
             _resultValue.image = image;
             _resultValue.ipv6 = ipv6;
             _resultValue.projectId = projectId;
+            _resultValue.publicNetworking = publicNetworking;
             _resultValue.region = region;
             _resultValue.size = size;
             _resultValue.sshKeys = sshKeys;

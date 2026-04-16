@@ -139,6 +139,8 @@ __all__ = [
     'DatabaseUserSetting',
     'DatabaseUserSettingAcl',
     'DatabaseUserSettingOpensearchAcl',
+    'DedicatedInferenceModelDeployment',
+    'DedicatedInferenceModelDeploymentAccelerator',
     'DropletAutoscaleConfig',
     'DropletAutoscaleCurrentUtilization',
     'DropletAutoscaleDropletTemplate',
@@ -383,6 +385,22 @@ __all__ = [
     'GetDatabaseUserSettingResult',
     'GetDatabaseUserSettingAclResult',
     'GetDatabaseUserSettingOpensearchAclResult',
+    'GetDedicatedInferenceAcceleratorsAcceleratorResult',
+    'GetDedicatedInferenceAcceleratorsFilterResult',
+    'GetDedicatedInferenceAcceleratorsSortResult',
+    'GetDedicatedInferenceGpuModelConfigGpuModelConfigResult',
+    'GetDedicatedInferenceModelDeploymentResult',
+    'GetDedicatedInferenceModelDeploymentAcceleratorResult',
+    'GetDedicatedInferenceSizesSizeResult',
+    'GetDedicatedInferenceSizesSizeDiskResult',
+    'GetDedicatedInferenceSizesSizeGpusResult',
+    'GetDedicatedInferenceSizesSizeSizeCategoryResult',
+    'GetDedicatedInferenceTokensFilterResult',
+    'GetDedicatedInferenceTokensSortResult',
+    'GetDedicatedInferenceTokensTokenResult',
+    'GetDedicatedInferencesDedicatedInferenceResult',
+    'GetDedicatedInferencesFilterResult',
+    'GetDedicatedInferencesSortResult',
     'GetDomainsDomainResult',
     'GetDomainsFilterResult',
     'GetDomainsSortResult',
@@ -8548,6 +8566,136 @@ class DatabaseUserSettingOpensearchAcl(dict):
 
 
 @pulumi.output_type
+class DedicatedInferenceModelDeployment(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "modelProvider":
+            suggest = "model_provider"
+        elif key == "modelSlug":
+            suggest = "model_slug"
+        elif key == "modelId":
+            suggest = "model_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DedicatedInferenceModelDeployment. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DedicatedInferenceModelDeployment.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DedicatedInferenceModelDeployment.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerators: Sequence['outputs.DedicatedInferenceModelDeploymentAccelerator'],
+                 model_provider: _builtins.str,
+                 model_slug: _builtins.str,
+                 model_id: Optional[_builtins.str] = None):
+        """
+        :param Sequence['DedicatedInferenceModelDeploymentAcceleratorArgs'] accelerators: The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
+        :param _builtins.str model_provider: The provider of the model (e.g. `digitalocean`, `huggingface`).
+        :param _builtins.str model_slug: The slug identifier for the model to deploy.
+        :param _builtins.str model_id: The unique ID of the model.
+        """
+        pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "model_provider", model_provider)
+        pulumi.set(__self__, "model_slug", model_slug)
+        if model_id is not None:
+            pulumi.set(__self__, "model_id", model_id)
+
+    @_builtins.property
+    @pulumi.getter
+    def accelerators(self) -> Sequence['outputs.DedicatedInferenceModelDeploymentAccelerator']:
+        """
+        The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
+        """
+        return pulumi.get(self, "accelerators")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProvider")
+    def model_provider(self) -> _builtins.str:
+        """
+        The provider of the model (e.g. `digitalocean`, `huggingface`).
+        """
+        return pulumi.get(self, "model_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSlug")
+    def model_slug(self) -> _builtins.str:
+        """
+        The slug identifier for the model to deploy.
+        """
+        return pulumi.get(self, "model_slug")
+
+    @_builtins.property
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> Optional[_builtins.str]:
+        """
+        The unique ID of the model.
+        """
+        return pulumi.get(self, "model_id")
+
+
+@pulumi.output_type
+class DedicatedInferenceModelDeploymentAccelerator(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "acceleratorSlug":
+            suggest = "accelerator_slug"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DedicatedInferenceModelDeploymentAccelerator. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DedicatedInferenceModelDeploymentAccelerator.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DedicatedInferenceModelDeploymentAccelerator.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 accelerator_slug: _builtins.str,
+                 scale: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.str accelerator_slug: The slug identifier for the GPU accelerator type.
+        :param _builtins.int scale: The number of accelerator units to allocate. Must be at least 1.
+        :param _builtins.str type: The accelerator type.
+        """
+        pulumi.set(__self__, "accelerator_slug", accelerator_slug)
+        pulumi.set(__self__, "scale", scale)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorSlug")
+    def accelerator_slug(self) -> _builtins.str:
+        """
+        The slug identifier for the GPU accelerator type.
+        """
+        return pulumi.get(self, "accelerator_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def scale(self) -> _builtins.int:
+        """
+        The number of accelerator units to allocate. Must be at least 1.
+        """
+        return pulumi.get(self, "scale")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The accelerator type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class DropletAutoscaleConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -8697,6 +8845,8 @@ class DropletAutoscaleDropletTemplate(dict):
             suggest = "ssh_keys"
         elif key == "projectId":
             suggest = "project_id"
+        elif key == "publicNetworking":
+            suggest = "public_networking"
         elif key == "userData":
             suggest = "user_data"
         elif key == "vpcUuid":
@@ -8722,6 +8872,7 @@ class DropletAutoscaleDropletTemplate(dict):
                  ssh_keys: Sequence[_builtins.str],
                  ipv6: Optional[_builtins.bool] = None,
                  project_id: Optional[_builtins.str] = None,
+                 public_networking: Optional[_builtins.bool] = None,
                  tags: Optional[Sequence[_builtins.str]] = None,
                  user_data: Optional[_builtins.str] = None,
                  vpc_uuid: Optional[_builtins.str] = None,
@@ -8733,6 +8884,7 @@ class DropletAutoscaleDropletTemplate(dict):
         :param Sequence[_builtins.str] ssh_keys: SSH fingerprints to add to the Droplet Autoscale pool underlying resource(s).
         :param _builtins.bool ipv6: Boolean flag to enable IPv6 networking on the Droplet Autoscale pool underlying resource(s).
         :param _builtins.str project_id: Project UUID to create the Droplet Autoscale pool underlying resource(s).
+        :param _builtins.bool public_networking: A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
         :param Sequence[_builtins.str] tags: List of tags to add to the Droplet Autoscale pool underlying resource(s).
         :param _builtins.str user_data: Custom user data that can be added to the Droplet Autoscale pool underlying resource(s). This can be a 
                cloud init script that user may configure to setup their application workload.
@@ -8749,6 +8901,8 @@ class DropletAutoscaleDropletTemplate(dict):
             pulumi.set(__self__, "ipv6", ipv6)
         if project_id is not None:
             pulumi.set(__self__, "project_id", project_id)
+        if public_networking is not None:
+            pulumi.set(__self__, "public_networking", public_networking)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
         if user_data is not None:
@@ -8805,6 +8959,14 @@ class DropletAutoscaleDropletTemplate(dict):
         Project UUID to create the Droplet Autoscale pool underlying resource(s).
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicNetworking")
+    def public_networking(self) -> Optional[_builtins.bool]:
+        """
+        A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        """
+        return pulumi.get(self, "public_networking")
 
     @_builtins.property
     @pulumi.getter
@@ -26043,6 +26205,809 @@ class GetDatabaseUserSettingOpensearchAclResult(dict):
 
 
 @pulumi.output_type
+class GetDedicatedInferenceAcceleratorsAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 slug: _builtins.str,
+                 status: _builtins.str):
+        """
+        :param _builtins.str created_at: The date and time when the accelerator was created.
+        :param _builtins.str id: The unique ID of the accelerator.
+        :param _builtins.str name: The name of the accelerator.
+        :param _builtins.str slug: The slug identifier for the accelerator type.
+        :param _builtins.str status: The current status of the accelerator.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "status", status)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time when the accelerator was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID of the accelerator.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the accelerator.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> _builtins.str:
+        """
+        The slug identifier for the accelerator type.
+        """
+        return pulumi.get(self, "slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The current status of the accelerator.
+        """
+        return pulumi.get(self, "status")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceAcceleratorsFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the `values` instead of just one.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceAcceleratorsSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the accelerators by this key. This may be one of the keys listed in `filter`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the accelerators by this key. This may be one of the keys listed in `filter`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceGpuModelConfigGpuModelConfigResult(dict):
+    def __init__(__self__, *,
+                 gpu_slugs: Sequence[_builtins.str],
+                 is_model_gated: _builtins.bool,
+                 model_name: _builtins.str,
+                 model_slug: _builtins.str):
+        """
+        :param Sequence[_builtins.str] gpu_slugs: The GPU slugs that support this model.
+        :param _builtins.bool is_model_gated: Whether the model requires gated access (e.g. a HuggingFace token).
+        :param _builtins.str model_name: The human-readable name of the model.
+        :param _builtins.str model_slug: The slug identifier for the model.
+        """
+        pulumi.set(__self__, "gpu_slugs", gpu_slugs)
+        pulumi.set(__self__, "is_model_gated", is_model_gated)
+        pulumi.set(__self__, "model_name", model_name)
+        pulumi.set(__self__, "model_slug", model_slug)
+
+    @_builtins.property
+    @pulumi.getter(name="gpuSlugs")
+    def gpu_slugs(self) -> Sequence[_builtins.str]:
+        """
+        The GPU slugs that support this model.
+        """
+        return pulumi.get(self, "gpu_slugs")
+
+    @_builtins.property
+    @pulumi.getter(name="isModelGated")
+    def is_model_gated(self) -> _builtins.bool:
+        """
+        Whether the model requires gated access (e.g. a HuggingFace token).
+        """
+        return pulumi.get(self, "is_model_gated")
+
+    @_builtins.property
+    @pulumi.getter(name="modelName")
+    def model_name(self) -> _builtins.str:
+        """
+        The human-readable name of the model.
+        """
+        return pulumi.get(self, "model_name")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSlug")
+    def model_slug(self) -> _builtins.str:
+        """
+        The slug identifier for the model.
+        """
+        return pulumi.get(self, "model_slug")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceModelDeploymentResult(dict):
+    def __init__(__self__, *,
+                 accelerators: Sequence['outputs.GetDedicatedInferenceModelDeploymentAcceleratorResult'],
+                 model_id: _builtins.str,
+                 model_provider: _builtins.str,
+                 model_slug: _builtins.str):
+        """
+        :param Sequence['GetDedicatedInferenceModelDeploymentAcceleratorArgs'] accelerators: The GPU accelerators allocated for this model deployment. Each element contains:
+        :param _builtins.str model_id: The unique ID of the model.
+        :param _builtins.str model_provider: The provider of the model.
+        :param _builtins.str model_slug: The slug identifier for the model.
+        """
+        pulumi.set(__self__, "accelerators", accelerators)
+        pulumi.set(__self__, "model_id", model_id)
+        pulumi.set(__self__, "model_provider", model_provider)
+        pulumi.set(__self__, "model_slug", model_slug)
+
+    @_builtins.property
+    @pulumi.getter
+    def accelerators(self) -> Sequence['outputs.GetDedicatedInferenceModelDeploymentAcceleratorResult']:
+        """
+        The GPU accelerators allocated for this model deployment. Each element contains:
+        """
+        return pulumi.get(self, "accelerators")
+
+    @_builtins.property
+    @pulumi.getter(name="modelId")
+    def model_id(self) -> _builtins.str:
+        """
+        The unique ID of the model.
+        """
+        return pulumi.get(self, "model_id")
+
+    @_builtins.property
+    @pulumi.getter(name="modelProvider")
+    def model_provider(self) -> _builtins.str:
+        """
+        The provider of the model.
+        """
+        return pulumi.get(self, "model_provider")
+
+    @_builtins.property
+    @pulumi.getter(name="modelSlug")
+    def model_slug(self) -> _builtins.str:
+        """
+        The slug identifier for the model.
+        """
+        return pulumi.get(self, "model_slug")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceModelDeploymentAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 accelerator_slug: _builtins.str,
+                 scale: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.str accelerator_slug: The slug identifier for the GPU accelerator type.
+        :param _builtins.int scale: The number of accelerator units allocated.
+        :param _builtins.str type: The accelerator type.
+        """
+        pulumi.set(__self__, "accelerator_slug", accelerator_slug)
+        pulumi.set(__self__, "scale", scale)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="acceleratorSlug")
+    def accelerator_slug(self) -> _builtins.str:
+        """
+        The slug identifier for the GPU accelerator type.
+        """
+        return pulumi.get(self, "accelerator_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def scale(self) -> _builtins.int:
+        """
+        The number of accelerator units allocated.
+        """
+        return pulumi.get(self, "scale")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The accelerator type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceSizesSizeResult(dict):
+    def __init__(__self__, *,
+                 cpu: _builtins.int,
+                 currency: _builtins.str,
+                 disks: Sequence['outputs.GetDedicatedInferenceSizesSizeDiskResult'],
+                 gpu_slug: _builtins.str,
+                 gpus: Sequence['outputs.GetDedicatedInferenceSizesSizeGpusResult'],
+                 memory: _builtins.int,
+                 price_per_hour: _builtins.str,
+                 regions: Sequence[_builtins.str],
+                 size_categories: Sequence['outputs.GetDedicatedInferenceSizesSizeSizeCategoryResult']):
+        """
+        :param _builtins.int cpu: The number of vCPUs.
+        :param _builtins.str currency: The currency for the price.
+        :param Sequence['GetDedicatedInferenceSizesSizeDiskArgs'] disks: The disks attached to this size. Each element contains:
+        :param _builtins.str gpu_slug: The slug identifier for this GPU size.
+        :param Sequence['GetDedicatedInferenceSizesSizeGpusArgs'] gpus: GPU hardware details. Each element contains:
+        :param _builtins.int memory: The amount of memory in MiB.
+        :param _builtins.str price_per_hour: The hourly price for this GPU size.
+        :param Sequence[_builtins.str] regions: The regions where this GPU size is available.
+        :param Sequence['GetDedicatedInferenceSizesSizeSizeCategoryArgs'] size_categories: The category this size belongs to. Each element contains:
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "currency", currency)
+        pulumi.set(__self__, "disks", disks)
+        pulumi.set(__self__, "gpu_slug", gpu_slug)
+        pulumi.set(__self__, "gpus", gpus)
+        pulumi.set(__self__, "memory", memory)
+        pulumi.set(__self__, "price_per_hour", price_per_hour)
+        pulumi.set(__self__, "regions", regions)
+        pulumi.set(__self__, "size_categories", size_categories)
+
+    @_builtins.property
+    @pulumi.getter
+    def cpu(self) -> _builtins.int:
+        """
+        The number of vCPUs.
+        """
+        return pulumi.get(self, "cpu")
+
+    @_builtins.property
+    @pulumi.getter
+    def currency(self) -> _builtins.str:
+        """
+        The currency for the price.
+        """
+        return pulumi.get(self, "currency")
+
+    @_builtins.property
+    @pulumi.getter
+    def disks(self) -> Sequence['outputs.GetDedicatedInferenceSizesSizeDiskResult']:
+        """
+        The disks attached to this size. Each element contains:
+        """
+        return pulumi.get(self, "disks")
+
+    @_builtins.property
+    @pulumi.getter(name="gpuSlug")
+    def gpu_slug(self) -> _builtins.str:
+        """
+        The slug identifier for this GPU size.
+        """
+        return pulumi.get(self, "gpu_slug")
+
+    @_builtins.property
+    @pulumi.getter
+    def gpus(self) -> Sequence['outputs.GetDedicatedInferenceSizesSizeGpusResult']:
+        """
+        GPU hardware details. Each element contains:
+        """
+        return pulumi.get(self, "gpus")
+
+    @_builtins.property
+    @pulumi.getter
+    def memory(self) -> _builtins.int:
+        """
+        The amount of memory in MiB.
+        """
+        return pulumi.get(self, "memory")
+
+    @_builtins.property
+    @pulumi.getter(name="pricePerHour")
+    def price_per_hour(self) -> _builtins.str:
+        """
+        The hourly price for this GPU size.
+        """
+        return pulumi.get(self, "price_per_hour")
+
+    @_builtins.property
+    @pulumi.getter
+    def regions(self) -> Sequence[_builtins.str]:
+        """
+        The regions where this GPU size is available.
+        """
+        return pulumi.get(self, "regions")
+
+    @_builtins.property
+    @pulumi.getter(name="sizeCategories")
+    def size_categories(self) -> Sequence['outputs.GetDedicatedInferenceSizesSizeSizeCategoryResult']:
+        """
+        The category this size belongs to. Each element contains:
+        """
+        return pulumi.get(self, "size_categories")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceSizesSizeDiskResult(dict):
+    def __init__(__self__, *,
+                 size_gb: _builtins.int,
+                 type: _builtins.str):
+        """
+        :param _builtins.int size_gb: The disk size in GiB.
+        :param _builtins.str type: The disk type.
+        """
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> _builtins.int:
+        """
+        The disk size in GiB.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The disk type.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceSizesSizeGpusResult(dict):
+    def __init__(__self__, *,
+                 count: _builtins.int,
+                 slug: _builtins.str,
+                 vram_gb: _builtins.int):
+        """
+        :param _builtins.int count: The number of GPUs.
+        :param _builtins.str slug: The GPU model slug.
+        :param _builtins.int vram_gb: The VRAM per GPU in GiB.
+        """
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "slug", slug)
+        pulumi.set(__self__, "vram_gb", vram_gb)
+
+    @_builtins.property
+    @pulumi.getter
+    def count(self) -> _builtins.int:
+        """
+        The number of GPUs.
+        """
+        return pulumi.get(self, "count")
+
+    @_builtins.property
+    @pulumi.getter
+    def slug(self) -> _builtins.str:
+        """
+        The GPU model slug.
+        """
+        return pulumi.get(self, "slug")
+
+    @_builtins.property
+    @pulumi.getter(name="vramGb")
+    def vram_gb(self) -> _builtins.int:
+        """
+        The VRAM per GPU in GiB.
+        """
+        return pulumi.get(self, "vram_gb")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceSizesSizeSizeCategoryResult(dict):
+    def __init__(__self__, *,
+                 fleet_name: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str fleet_name: The fleet name associated with the size category.
+        :param _builtins.str name: The display name of the size category.
+        """
+        pulumi.set(__self__, "fleet_name", fleet_name)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="fleetName")
+    def fleet_name(self) -> _builtins.str:
+        """
+        The fleet name associated with the size category.
+        """
+        return pulumi.get(self, "fleet_name")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The display name of the size category.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceTokensFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the tokens by this key. This may be one of `id`, `name`, `created_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the `values` instead of just one.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the tokens by this key. This may be one of `id`, `name`, `created_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceTokensSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the tokens by this key. This may be one of the keys listed in `filter`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the tokens by this key. This may be one of the keys listed in `filter`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
+class GetDedicatedInferenceTokensTokenResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str):
+        """
+        :param _builtins.str created_at: The date and time when the token was created.
+        :param _builtins.str id: The unique ID of the token.
+        :param _builtins.str name: The name of the token.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time when the token was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID of the token.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the token.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetDedicatedInferencesDedicatedInferenceResult(dict):
+    def __init__(__self__, *,
+                 created_at: _builtins.str,
+                 id: _builtins.str,
+                 name: _builtins.str,
+                 private_endpoint_fqdn: _builtins.str,
+                 public_endpoint_fqdn: _builtins.str,
+                 region: _builtins.str,
+                 status: _builtins.str,
+                 updated_at: _builtins.str,
+                 vpc_uuid: _builtins.str):
+        """
+        :param _builtins.str created_at: The date and time when the dedicated inference endpoint was created.
+        :param _builtins.str id: The unique ID of the dedicated inference endpoint.
+        :param _builtins.str name: The name of the dedicated inference endpoint.
+        :param _builtins.str private_endpoint_fqdn: The fully-qualified domain name of the private endpoint.
+        :param _builtins.str public_endpoint_fqdn: The fully-qualified domain name of the public endpoint, if enabled.
+        :param _builtins.str region: The region where the dedicated inference endpoint is deployed.
+        :param _builtins.str status: The current status of the dedicated inference endpoint.
+        :param _builtins.str updated_at: The date and time when the dedicated inference endpoint was last updated.
+        :param _builtins.str vpc_uuid: The UUID of the VPC the dedicated inference endpoint is deployed in.
+        """
+        pulumi.set(__self__, "created_at", created_at)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
+        pulumi.set(__self__, "region", region)
+        pulumi.set(__self__, "status", status)
+        pulumi.set(__self__, "updated_at", updated_at)
+        pulumi.set(__self__, "vpc_uuid", vpc_uuid)
+
+    @_builtins.property
+    @pulumi.getter(name="createdAt")
+    def created_at(self) -> _builtins.str:
+        """
+        The date and time when the dedicated inference endpoint was created.
+        """
+        return pulumi.get(self, "created_at")
+
+    @_builtins.property
+    @pulumi.getter
+    def id(self) -> _builtins.str:
+        """
+        The unique ID of the dedicated inference endpoint.
+        """
+        return pulumi.get(self, "id")
+
+    @_builtins.property
+    @pulumi.getter
+    def name(self) -> _builtins.str:
+        """
+        The name of the dedicated inference endpoint.
+        """
+        return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="privateEndpointFqdn")
+    def private_endpoint_fqdn(self) -> _builtins.str:
+        """
+        The fully-qualified domain name of the private endpoint.
+        """
+        return pulumi.get(self, "private_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="publicEndpointFqdn")
+    def public_endpoint_fqdn(self) -> _builtins.str:
+        """
+        The fully-qualified domain name of the public endpoint, if enabled.
+        """
+        return pulumi.get(self, "public_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter
+    def region(self) -> _builtins.str:
+        """
+        The region where the dedicated inference endpoint is deployed.
+        """
+        return pulumi.get(self, "region")
+
+    @_builtins.property
+    @pulumi.getter
+    def status(self) -> _builtins.str:
+        """
+        The current status of the dedicated inference endpoint.
+        """
+        return pulumi.get(self, "status")
+
+    @_builtins.property
+    @pulumi.getter(name="updatedAt")
+    def updated_at(self) -> _builtins.str:
+        """
+        The date and time when the dedicated inference endpoint was last updated.
+        """
+        return pulumi.get(self, "updated_at")
+
+    @_builtins.property
+    @pulumi.getter(name="vpcUuid")
+    def vpc_uuid(self) -> _builtins.str:
+        """
+        The UUID of the VPC the dedicated inference endpoint is deployed in.
+        """
+        return pulumi.get(self, "vpc_uuid")
+
+
+@pulumi.output_type
+class GetDedicatedInferencesFilterResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 values: Sequence[_builtins.str],
+                 all: Optional[_builtins.bool] = None,
+                 match_by: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpc_uuid`, `public_endpoint_fqdn`, `private_endpoint_fqdn`, `created_at`, `updated_at`.
+        :param Sequence[_builtins.str] values: A list of values to match against the `key` field.
+        :param _builtins.bool all: Set to `true` to require that a field match all of the `values` instead of just one.
+        :param _builtins.str match_by: One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "values", values)
+        if all is not None:
+            pulumi.set(__self__, "all", all)
+        if match_by is not None:
+            pulumi.set(__self__, "match_by", match_by)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpc_uuid`, `public_endpoint_fqdn`, `private_endpoint_fqdn`, `created_at`, `updated_at`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def values(self) -> Sequence[_builtins.str]:
+        """
+        A list of values to match against the `key` field.
+        """
+        return pulumi.get(self, "values")
+
+    @_builtins.property
+    @pulumi.getter
+    def all(self) -> Optional[_builtins.bool]:
+        """
+        Set to `true` to require that a field match all of the `values` instead of just one.
+        """
+        return pulumi.get(self, "all")
+
+    @_builtins.property
+    @pulumi.getter(name="matchBy")
+    def match_by(self) -> Optional[_builtins.str]:
+        """
+        One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
+        """
+        return pulumi.get(self, "match_by")
+
+
+@pulumi.output_type
+class GetDedicatedInferencesSortResult(dict):
+    def __init__(__self__, *,
+                 key: _builtins.str,
+                 direction: Optional[_builtins.str] = None):
+        """
+        :param _builtins.str key: Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
+        :param _builtins.str direction: The sort direction. This may be either `asc` or `desc`.
+        """
+        pulumi.set(__self__, "key", key)
+        if direction is not None:
+            pulumi.set(__self__, "direction", direction)
+
+    @_builtins.property
+    @pulumi.getter
+    def key(self) -> _builtins.str:
+        """
+        Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
+        """
+        return pulumi.get(self, "key")
+
+    @_builtins.property
+    @pulumi.getter
+    def direction(self) -> Optional[_builtins.str]:
+        """
+        The sort direction. This may be either `asc` or `desc`.
+        """
+        return pulumi.get(self, "direction")
+
+
+@pulumi.output_type
 class GetDomainsDomainResult(dict):
     def __init__(__self__, *,
                  name: _builtins.str,
@@ -26283,6 +27248,7 @@ class GetDropletAutoscaleDropletTemplateResult(dict):
                  image: _builtins.str,
                  ipv6: _builtins.bool,
                  project_id: _builtins.str,
+                 public_networking: _builtins.bool,
                  region: _builtins.str,
                  size: _builtins.str,
                  ssh_keys: Sequence[_builtins.str],
@@ -26294,6 +27260,7 @@ class GetDropletAutoscaleDropletTemplateResult(dict):
         :param _builtins.str image: Droplet image
         :param _builtins.bool ipv6: Enable droplet IPv6
         :param _builtins.str project_id: Droplet project ID
+        :param _builtins.bool public_networking: Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
         :param _builtins.str region: Droplet region
         :param _builtins.str size: Droplet size
         :param Sequence[_builtins.str] ssh_keys: Droplet SSH keys
@@ -26305,6 +27272,7 @@ class GetDropletAutoscaleDropletTemplateResult(dict):
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "ipv6", ipv6)
         pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "public_networking", public_networking)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "ssh_keys", ssh_keys)
@@ -26336,6 +27304,14 @@ class GetDropletAutoscaleDropletTemplateResult(dict):
         Droplet project ID
         """
         return pulumi.get(self, "project_id")
+
+    @_builtins.property
+    @pulumi.getter(name="publicNetworking")
+    def public_networking(self) -> _builtins.bool:
+        """
+        Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
+        """
+        return pulumi.get(self, "public_networking")
 
     @_builtins.property
     @pulumi.getter

@@ -33,6 +33,8 @@ from .database_redis_config import *
 from .database_replica import *
 from .database_user import *
 from .database_valkey_config import *
+from .dedicated_inference import *
+from .dedicated_inference_token import *
 from .dns_record import *
 from .domain import *
 from .droplet import *
@@ -62,6 +64,12 @@ from .get_database_connection_pool import *
 from .get_database_metrics_credentials import *
 from .get_database_replica import *
 from .get_database_user import *
+from .get_dedicated_inference import *
+from .get_dedicated_inference_accelerators import *
+from .get_dedicated_inference_gpu_model_config import *
+from .get_dedicated_inference_sizes import *
+from .get_dedicated_inference_tokens import *
+from .get_dedicated_inferences import *
 from .get_domain import *
 from .get_domains import *
 from .get_droplet import *
@@ -388,6 +396,22 @@ _utilities.register(
   "fqn": "pulumi_digitalocean",
   "classes": {
    "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig": "DatabaseValkeyConfig"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/dedicatedInference",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/dedicatedInference:DedicatedInference": "DedicatedInference"
+  }
+ },
+ {
+  "pkg": "digitalocean",
+  "mod": "index/dedicatedInferenceToken",
+  "fqn": "pulumi_digitalocean",
+  "classes": {
+   "digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken": "DedicatedInferenceToken"
   }
  },
  {

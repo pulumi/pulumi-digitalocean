@@ -51,9 +51,79 @@ import (
 //
 // ```
 //
+// ### Moving Share Between VPCs
+//
+// To move an NFS share from one VPC to another using the Reassign API:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			source, err := digitalocean.NewVpc(ctx, "source", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("source-vpc"),
+//				Region: pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			destination, err := digitalocean.NewVpc(ctx, "destination", &digitalocean.VpcArgs{
+//				Name:   pulumi.String("destination-vpc"),
+//				Region: pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			example, err := digitalocean.NewNfs(ctx, "example", &digitalocean.NfsArgs{
+//				Region:          pulumi.String("nyc1"),
+//				Name:            pulumi.String("example-nfs"),
+//				Size:            pulumi.Int(50),
+//				VpcId:           source.ID(),
+//				PerformanceTier: pulumi.String("high"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Attach to source VPC
+//			sourceNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, "source", &digitalocean.NfsAttachmentArgs{
+//				ShareId: example.ID(),
+//				VpcId:   source.ID(),
+//				Region:  pulumi.String("nyc1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Reassign to destination VPC - uses the efficient Reassign API
+//			_, err = digitalocean.NewNfsAttachment(ctx, "destination", &digitalocean.NfsAttachmentArgs{
+//				ShareId: example.ID(),
+//				VpcId:   destination.ID(),
+//				Region:  pulumi.String("nyc1"),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				sourceNfsAttachment,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Notes
+//
+// Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+//
 // ## Import
 //
-// NFS shares can be imported using the `share id` and the `region` , e.g.
+// NFS shares can be imported using the `share id` and the `region`, e.g.
 //
 // ```sh
 // $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1

@@ -33,6 +33,7 @@ class DropletArgs:
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
@@ -56,8 +57,6 @@ class DropletArgs:
                set it to `true`.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
                Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
                an existing Droplet, [additional OS-level configuration](https://docs.digitalocean.com/products/networking/ipv6/how-to/enable/#on-existing-droplets)
@@ -69,6 +68,11 @@ class DropletArgs:
         :param pulumi.Input[_builtins.str] name: The Droplet name.
         :param pulumi.Input[_builtins.bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
+               By default, this is always enabled on new droplets.
+               But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -108,6 +112,8 @@ class DropletArgs:
             pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
             pulumi.set(__self__, "private_networking", private_networking)
+        if public_networking is not None:
+            pulumi.set(__self__, "public_networking", public_networking)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resize_disk is not None:
@@ -195,8 +201,6 @@ class DropletArgs:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -270,6 +274,22 @@ class DropletArgs:
     @private_networking.setter
     def private_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
         pulumi.set(self, "private_networking", value)
+
+    @_builtins.property
+    @pulumi.getter(name="publicNetworking")
+    def public_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean indicating whether to enables public networking for the Droplet or not.
+        By default, this is always enabled on new droplets.
+        But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
+        return pulumi.get(self, "public_networking")
+
+    @public_networking.setter
+    def public_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "public_networking", value)
 
     @_builtins.property
     @pulumi.getter
@@ -386,6 +406,7 @@ class _DropletState:
                  price_hourly: Optional[pulumi.Input[_builtins.float]] = None,
                  price_monthly: Optional[pulumi.Input[_builtins.float]] = None,
                  private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
@@ -412,8 +433,6 @@ class _DropletState:
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.str] ipv4_address: The IPv4 address
         :param pulumi.Input[_builtins.str] ipv4_address_private: The private networking IPv4 address
@@ -431,6 +450,11 @@ class _DropletState:
         :param pulumi.Input[_builtins.float] price_monthly: Droplet monthly price
         :param pulumi.Input[_builtins.bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
+               By default, this is always enabled on new droplets.
+               But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -491,6 +515,8 @@ class _DropletState:
             pulumi.log.warn("""private_networking is deprecated: This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
         if private_networking is not None:
             pulumi.set(__self__, "private_networking", private_networking)
+        if public_networking is not None:
+            pulumi.set(__self__, "public_networking", public_networking)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if resize_disk is not None:
@@ -593,8 +619,6 @@ class _DropletState:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -751,6 +775,22 @@ class _DropletState:
         pulumi.set(self, "private_networking", value)
 
     @_builtins.property
+    @pulumi.getter(name="publicNetworking")
+    def public_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        A boolean indicating whether to enables public networking for the Droplet or not.
+        By default, this is always enabled on new droplets.
+        But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
+        return pulumi.get(self, "public_networking")
+
+    @public_networking.setter
+    def public_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "public_networking", value)
+
+    @_builtins.property
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
         """
@@ -895,6 +935,7 @@ class Droplet(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
@@ -951,8 +992,6 @@ class Droplet(pulumi.CustomResource):
                set it to `true`.
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.bool] ipv6: Boolean controlling if IPv6 is enabled. Defaults to false.
                Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -965,6 +1004,11 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] name: The Droplet name.
         :param pulumi.Input[_builtins.bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
+               By default, this is always enabled on new droplets.
+               But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -1047,6 +1091,7 @@ class Droplet(pulumi.CustomResource):
                  monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
                  name: Optional[pulumi.Input[_builtins.str]] = None,
                  private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
                  region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
                  resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
                  size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
@@ -1076,6 +1121,7 @@ class Droplet(pulumi.CustomResource):
             __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["name"] = name
             __props__.__dict__["private_networking"] = private_networking
+            __props__.__dict__["public_networking"] = public_networking
             __props__.__dict__["region"] = region
             __props__.__dict__["resize_disk"] = resize_disk
             if size is None and not opts.urn:
@@ -1126,6 +1172,7 @@ class Droplet(pulumi.CustomResource):
             price_hourly: Optional[pulumi.Input[_builtins.float]] = None,
             price_monthly: Optional[pulumi.Input[_builtins.float]] = None,
             private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
+            public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
             region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
             resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
             size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
@@ -1156,8 +1203,6 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] droplet_urn: The uniform resource name of the Droplet
         :param pulumi.Input[_builtins.bool] graceful_shutdown: A boolean indicating whether the droplet
                should be gracefully shut down before it is deleted.
-               
-               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[_builtins.str] image: The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         :param pulumi.Input[_builtins.str] ipv4_address: The IPv4 address
         :param pulumi.Input[_builtins.str] ipv4_address_private: The private networking IPv4 address
@@ -1175,6 +1220,11 @@ class Droplet(pulumi.CustomResource):
         :param pulumi.Input[_builtins.float] price_monthly: Droplet monthly price
         :param pulumi.Input[_builtins.bool] private_networking: **Deprecated** Boolean controlling if private networking
                is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
+        :param pulumi.Input[_builtins.bool] public_networking: A boolean indicating whether to enables public networking for the Droplet or not.
+               By default, this is always enabled on new droplets.
+               But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+               
+               > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         :param pulumi.Input[Union[_builtins.str, 'Region']] region: The region where the Droplet will be created.
         :param pulumi.Input[_builtins.bool] resize_disk: Boolean controlling whether to increase the disk
                size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -1217,6 +1267,7 @@ class Droplet(pulumi.CustomResource):
         __props__.__dict__["price_hourly"] = price_hourly
         __props__.__dict__["price_monthly"] = price_monthly
         __props__.__dict__["private_networking"] = private_networking
+        __props__.__dict__["public_networking"] = public_networking
         __props__.__dict__["region"] = region
         __props__.__dict__["resize_disk"] = resize_disk
         __props__.__dict__["size"] = size
@@ -1286,8 +1337,6 @@ class Droplet(pulumi.CustomResource):
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
-
-        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
         """
         return pulumi.get(self, "graceful_shutdown")
 
@@ -1390,6 +1439,18 @@ class Droplet(pulumi.CustomResource):
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
         """
         return pulumi.get(self, "private_networking")
+
+    @_builtins.property
+    @pulumi.getter(name="publicNetworking")
+    def public_networking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+        """
+        A boolean indicating whether to enables public networking for the Droplet or not.
+        By default, this is always enabled on new droplets.
+        But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+
+        > **NOTE:** If you use `volume_ids` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volume_ids` must not be mixed with external `VolumeAttachment` resources for a given instance.
+        """
+        return pulumi.get(self, "public_networking")
 
     @_builtins.property
     @pulumi.getter

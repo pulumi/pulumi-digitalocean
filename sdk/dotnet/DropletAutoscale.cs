@@ -70,6 +70,7 @@ namespace Pulumi.DigitalOcean
     /// - apt-get update
     /// - apt-get install -y stress-ng
     /// ",
+    ///             PublicNetworking = false,
     ///         },
     ///     });
     /// 

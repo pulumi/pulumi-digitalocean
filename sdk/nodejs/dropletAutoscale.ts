@@ -48,6 +48,7 @@ import * as utilities from "./utilities";
  * - apt-get update
  * - apt-get install -y stress-ng
  * `,
+ *         publicNetworking: false,
  *     },
  * });
  * ```

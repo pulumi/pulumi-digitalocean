@@ -26,6 +26,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string? ProjectId;
         /// <summary>
+        /// A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        /// </summary>
+        public readonly bool? PublicNetworking;
+        /// <summary>
         /// Region slug of the Droplet Autoscale pool underlying resource(s).
         /// </summary>
         public readonly string Region;
@@ -65,6 +69,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string? projectId,
 
+            bool? publicNetworking,
+
             string region,
 
             string size,
@@ -82,6 +88,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Image = image;
             Ipv6 = ipv6;
             ProjectId = projectId;
+            PublicNetworking = publicNetworking;
             Region = region;
             Size = size;
             SshKeys = sshKeys;

@@ -81,8 +81,6 @@ type Droplet struct {
 	DropletUrn pulumi.StringOutput `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrOutput `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringOutput `pulumi:"image"`
@@ -115,6 +113,12 @@ type Droplet struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolOutput `pulumi:"privateNetworking"`
+	// A boolean indicating whether to enables public networking for the Droplet or not.
+	// By default, this is always enabled on new droplets.
+	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	PublicNetworking pulumi.BoolPtrOutput `pulumi:"publicNetworking"`
 	// The region where the Droplet will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
@@ -200,8 +204,6 @@ type dropletState struct {
 	DropletUrn *string `pulumi:"dropletUrn"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image *string `pulumi:"image"`
@@ -234,6 +236,12 @@ type dropletState struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
+	// A boolean indicating whether to enables public networking for the Droplet or not.
+	// By default, this is always enabled on new droplets.
+	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	PublicNetworking *bool `pulumi:"publicNetworking"`
 	// The region where the Droplet will be created.
 	Region *string `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
@@ -284,8 +292,6 @@ type DropletState struct {
 	DropletUrn pulumi.StringPtrInput
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringPtrInput
@@ -318,6 +324,12 @@ type DropletState struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
+	// A boolean indicating whether to enables public networking for the Droplet or not.
+	// By default, this is always enabled on new droplets.
+	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	PublicNetworking pulumi.BoolPtrInput
 	// The region where the Droplet will be created.
 	Region pulumi.StringPtrInput
 	// Boolean controlling whether to increase the disk
@@ -367,8 +379,6 @@ type dropletArgs struct {
 	DropletAgent *bool `pulumi:"dropletAgent"`
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown *bool `pulumi:"gracefulShutdown"`
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image string `pulumi:"image"`
@@ -390,6 +400,12 @@ type dropletArgs struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking *bool `pulumi:"privateNetworking"`
+	// A boolean indicating whether to enables public networking for the Droplet or not.
+	// By default, this is always enabled on new droplets.
+	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	PublicNetworking *bool `pulumi:"publicNetworking"`
 	// The region where the Droplet will be created.
 	Region *string `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
@@ -432,8 +448,6 @@ type DropletArgs struct {
 	DropletAgent pulumi.BoolPtrInput
 	// A boolean indicating whether the droplet
 	// should be gracefully shut down before it is deleted.
-	//
-	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 	GracefulShutdown pulumi.BoolPtrInput
 	// The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
 	Image pulumi.StringInput
@@ -455,6 +469,12 @@ type DropletArgs struct {
 	//
 	// Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 	PrivateNetworking pulumi.BoolPtrInput
+	// A boolean indicating whether to enables public networking for the Droplet or not.
+	// By default, this is always enabled on new droplets.
+	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+	//
+	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+	PublicNetworking pulumi.BoolPtrInput
 	// The region where the Droplet will be created.
 	Region pulumi.StringPtrInput
 	// Boolean controlling whether to increase the disk
@@ -605,8 +625,6 @@ func (o DropletOutput) DropletUrn() pulumi.StringOutput {
 
 // A boolean indicating whether the droplet
 // should be gracefully shut down before it is deleted.
-//
-// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
 func (o DropletOutput) GracefulShutdown() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.GracefulShutdown }).(pulumi.BoolPtrOutput)
 }
@@ -676,6 +694,15 @@ func (o DropletOutput) PriceMonthly() pulumi.Float64Output {
 // Deprecated: This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
 func (o DropletOutput) PrivateNetworking() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Droplet) pulumi.BoolOutput { return v.PrivateNetworking }).(pulumi.BoolOutput)
+}
+
+// A boolean indicating whether to enables public networking for the Droplet or not.
+// By default, this is always enabled on new droplets.
+// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+//
+// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
+func (o DropletOutput) PublicNetworking() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.PublicNetworking }).(pulumi.BoolPtrOutput)
 }
 
 // The region where the Droplet will be created.

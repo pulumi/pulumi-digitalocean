@@ -96,8 +96,6 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Output("gracefulShutdown")]
         public Output<bool?> GracefulShutdown { get; private set; } = null!;
@@ -176,6 +174,16 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Output("privateNetworking")]
         public Output<bool> PrivateNetworking { get; private set; } = null!;
+
+        /// <summary>
+        /// A boolean indicating whether to enables public networking for the Droplet or not.
+        /// By default, this is always enabled on new droplets.
+        /// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
+        [Output("publicNetworking")]
+        public Output<bool?> PublicNetworking { get; private set; } = null!;
 
         /// <summary>
         /// The region where the Droplet will be created.
@@ -318,8 +326,6 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
@@ -365,6 +371,16 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
+
+        /// <summary>
+        /// A boolean indicating whether to enables public networking for the Droplet or not.
+        /// By default, this is always enabled on new droplets.
+        /// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
+        [Input("publicNetworking")]
+        public Input<bool>? PublicNetworking { get; set; }
 
         /// <summary>
         /// The region where the Droplet will be created.
@@ -490,8 +506,6 @@ namespace Pulumi.DigitalOcean
         /// <summary>
         /// A boolean indicating whether the droplet
         /// should be gracefully shut down before it is deleted.
-        /// 
-        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Input("gracefulShutdown")]
         public Input<bool>? GracefulShutdown { get; set; }
@@ -570,6 +584,16 @@ namespace Pulumi.DigitalOcean
         /// </summary>
         [Input("privateNetworking")]
         public Input<bool>? PrivateNetworking { get; set; }
+
+        /// <summary>
+        /// A boolean indicating whether to enables public networking for the Droplet or not.
+        /// By default, this is always enabled on new droplets.
+        /// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        /// 
+        /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+        /// </summary>
+        [Input("publicNetworking")]
+        public Input<bool>? PublicNetworking { get; set; }
 
         /// <summary>
         /// The region where the Droplet will be created.
