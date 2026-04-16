@@ -83,8 +83,6 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
      * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-     * 
      */
     @Import(name="gracefulShutdown")
     private @Nullable Output<Boolean> gracefulShutdown;
@@ -92,8 +90,6 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
-     * 
-     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      * 
      */
     public Optional<Output<Boolean>> gracefulShutdown() {
@@ -208,6 +204,29 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
     @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
     public Optional<Output<Boolean>> privateNetworking() {
         return Optional.ofNullable(this.privateNetworking);
+    }
+
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not.
+     * By default, this is always enabled on new droplets.
+     * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     */
+    @Import(name="publicNetworking")
+    private @Nullable Output<Boolean> publicNetworking;
+
+    /**
+     * @return A boolean indicating whether to enables public networking for the Droplet or not.
+     * By default, this is always enabled on new droplets.
+     * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     * 
+     */
+    public Optional<Output<Boolean>> publicNetworking() {
+        return Optional.ofNullable(this.publicNetworking);
     }
 
     /**
@@ -359,6 +378,7 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         this.monitoring = $.monitoring;
         this.name = $.name;
         this.privateNetworking = $.privateNetworking;
+        this.publicNetworking = $.publicNetworking;
         this.region = $.region;
         this.resizeDisk = $.resizeDisk;
         this.size = $.size;
@@ -466,8 +486,6 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
          * 
-         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
-         * 
          * @return builder
          * 
          */
@@ -479,8 +497,6 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param gracefulShutdown A boolean indicating whether the droplet
          * should be gracefully shut down before it is deleted.
-         * 
-         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
          * 
          * @return builder
          * 
@@ -633,6 +649,35 @@ public final class DropletArgs extends com.pulumi.resources.ResourceArgs {
         @Deprecated /* This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region. */
         public Builder privateNetworking(Boolean privateNetworking) {
             return privateNetworking(Output.of(privateNetworking));
+        }
+
+        /**
+         * @param publicNetworking A boolean indicating whether to enables public networking for the Droplet or not.
+         * By default, this is always enabled on new droplets.
+         * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+         * 
+         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicNetworking(@Nullable Output<Boolean> publicNetworking) {
+            $.publicNetworking = publicNetworking;
+            return this;
+        }
+
+        /**
+         * @param publicNetworking A boolean indicating whether to enables public networking for the Droplet or not.
+         * By default, this is always enabled on new droplets.
+         * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+         * 
+         * &gt; **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicNetworking(Boolean publicNetworking) {
+            return publicNetworking(Output.of(publicNetworking));
         }
 
         /**

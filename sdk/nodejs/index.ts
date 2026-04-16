@@ -135,6 +135,16 @@ export type DatabaseValkeyConfig = import("./databaseValkeyConfig").DatabaseValk
 export const DatabaseValkeyConfig: typeof import("./databaseValkeyConfig").DatabaseValkeyConfig = null as any;
 utilities.lazyLoad(exports, ["DatabaseValkeyConfig"], () => require("./databaseValkeyConfig"));
 
+export { DedicatedInferenceArgs, DedicatedInferenceState } from "./dedicatedInference";
+export type DedicatedInference = import("./dedicatedInference").DedicatedInference;
+export const DedicatedInference: typeof import("./dedicatedInference").DedicatedInference = null as any;
+utilities.lazyLoad(exports, ["DedicatedInference"], () => require("./dedicatedInference"));
+
+export { DedicatedInferenceTokenArgs, DedicatedInferenceTokenState } from "./dedicatedInferenceToken";
+export type DedicatedInferenceToken = import("./dedicatedInferenceToken").DedicatedInferenceToken;
+export const DedicatedInferenceToken: typeof import("./dedicatedInferenceToken").DedicatedInferenceToken = null as any;
+utilities.lazyLoad(exports, ["DedicatedInferenceToken"], () => require("./dedicatedInferenceToken"));
+
 export { DnsRecordArgs, DnsRecordState } from "./dnsRecord";
 export type DnsRecord = import("./dnsRecord").DnsRecord;
 export const DnsRecord: typeof import("./dnsRecord").DnsRecord = null as any;
@@ -279,6 +289,36 @@ export { GetDatabaseUserArgs, GetDatabaseUserResult, GetDatabaseUserOutputArgs }
 export const getDatabaseUser: typeof import("./getDatabaseUser").getDatabaseUser = null as any;
 export const getDatabaseUserOutput: typeof import("./getDatabaseUser").getDatabaseUserOutput = null as any;
 utilities.lazyLoad(exports, ["getDatabaseUser","getDatabaseUserOutput"], () => require("./getDatabaseUser"));
+
+export { GetDedicatedInferenceArgs, GetDedicatedInferenceResult, GetDedicatedInferenceOutputArgs } from "./getDedicatedInference";
+export const getDedicatedInference: typeof import("./getDedicatedInference").getDedicatedInference = null as any;
+export const getDedicatedInferenceOutput: typeof import("./getDedicatedInference").getDedicatedInferenceOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInference","getDedicatedInferenceOutput"], () => require("./getDedicatedInference"));
+
+export { GetDedicatedInferenceAcceleratorsArgs, GetDedicatedInferenceAcceleratorsResult, GetDedicatedInferenceAcceleratorsOutputArgs } from "./getDedicatedInferenceAccelerators";
+export const getDedicatedInferenceAccelerators: typeof import("./getDedicatedInferenceAccelerators").getDedicatedInferenceAccelerators = null as any;
+export const getDedicatedInferenceAcceleratorsOutput: typeof import("./getDedicatedInferenceAccelerators").getDedicatedInferenceAcceleratorsOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInferenceAccelerators","getDedicatedInferenceAcceleratorsOutput"], () => require("./getDedicatedInferenceAccelerators"));
+
+export { GetDedicatedInferenceGpuModelConfigResult } from "./getDedicatedInferenceGpuModelConfig";
+export const getDedicatedInferenceGpuModelConfig: typeof import("./getDedicatedInferenceGpuModelConfig").getDedicatedInferenceGpuModelConfig = null as any;
+export const getDedicatedInferenceGpuModelConfigOutput: typeof import("./getDedicatedInferenceGpuModelConfig").getDedicatedInferenceGpuModelConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInferenceGpuModelConfig","getDedicatedInferenceGpuModelConfigOutput"], () => require("./getDedicatedInferenceGpuModelConfig"));
+
+export { GetDedicatedInferenceSizesResult } from "./getDedicatedInferenceSizes";
+export const getDedicatedInferenceSizes: typeof import("./getDedicatedInferenceSizes").getDedicatedInferenceSizes = null as any;
+export const getDedicatedInferenceSizesOutput: typeof import("./getDedicatedInferenceSizes").getDedicatedInferenceSizesOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInferenceSizes","getDedicatedInferenceSizesOutput"], () => require("./getDedicatedInferenceSizes"));
+
+export { GetDedicatedInferenceTokensArgs, GetDedicatedInferenceTokensResult, GetDedicatedInferenceTokensOutputArgs } from "./getDedicatedInferenceTokens";
+export const getDedicatedInferenceTokens: typeof import("./getDedicatedInferenceTokens").getDedicatedInferenceTokens = null as any;
+export const getDedicatedInferenceTokensOutput: typeof import("./getDedicatedInferenceTokens").getDedicatedInferenceTokensOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInferenceTokens","getDedicatedInferenceTokensOutput"], () => require("./getDedicatedInferenceTokens"));
+
+export { GetDedicatedInferencesArgs, GetDedicatedInferencesResult, GetDedicatedInferencesOutputArgs } from "./getDedicatedInferences";
+export const getDedicatedInferences: typeof import("./getDedicatedInferences").getDedicatedInferences = null as any;
+export const getDedicatedInferencesOutput: typeof import("./getDedicatedInferences").getDedicatedInferencesOutput = null as any;
+utilities.lazyLoad(exports, ["getDedicatedInferences","getDedicatedInferencesOutput"], () => require("./getDedicatedInferences"));
 
 export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
 export const getDomain: typeof import("./getDomain").getDomain = null as any;
@@ -882,6 +922,10 @@ const _module = {
                 return new DatabaseUser(name, <any>undefined, { urn })
             case "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig":
                 return new DatabaseValkeyConfig(name, <any>undefined, { urn })
+            case "digitalocean:index/dedicatedInference:DedicatedInference":
+                return new DedicatedInference(name, <any>undefined, { urn })
+            case "digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken":
+                return new DedicatedInferenceToken(name, <any>undefined, { urn })
             case "digitalocean:index/dnsRecord:DnsRecord":
                 return new DnsRecord(name, <any>undefined, { urn })
             case "digitalocean:index/domain:Domain":
@@ -1021,6 +1065,8 @@ pulumi.runtime.registerResourceModule("digitalocean", "index/databaseRedisConfig
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseReplica", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseUser", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/databaseValkeyConfig", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/dedicatedInference", _module)
+pulumi.runtime.registerResourceModule("digitalocean", "index/dedicatedInferenceToken", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/dnsRecord", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/domain", _module)
 pulumi.runtime.registerResourceModule("digitalocean", "index/droplet", _module)

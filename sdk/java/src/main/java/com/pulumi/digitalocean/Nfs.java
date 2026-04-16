@@ -63,9 +63,83 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Moving Share Between VPCs
+ * 
+ * To move an NFS share from one VPC to another using the Reassign API:
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.digitalocean.Vpc;
+ * import com.pulumi.digitalocean.VpcArgs;
+ * import com.pulumi.digitalocean.Nfs;
+ * import com.pulumi.digitalocean.NfsArgs;
+ * import com.pulumi.digitalocean.NfsAttachment;
+ * import com.pulumi.digitalocean.NfsAttachmentArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var source = new Vpc("source", VpcArgs.builder()
+ *             .name("source-vpc")
+ *             .region("nyc1")
+ *             .build());
+ * 
+ *         var destination = new Vpc("destination", VpcArgs.builder()
+ *             .name("destination-vpc")
+ *             .region("nyc1")
+ *             .build());
+ * 
+ *         var example = new Nfs("example", NfsArgs.builder()
+ *             .region("nyc1")
+ *             .name("example-nfs")
+ *             .size(50)
+ *             .vpcId(source.id())
+ *             .performanceTier("high")
+ *             .build());
+ * 
+ *         // Attach to source VPC
+ *         var sourceNfsAttachment = new NfsAttachment("sourceNfsAttachment", NfsAttachmentArgs.builder()
+ *             .shareId(example.id())
+ *             .vpcId(source.id())
+ *             .region("nyc1")
+ *             .build());
+ * 
+ *         // Reassign to destination VPC - uses the efficient Reassign API
+ *         var destinationNfsAttachment = new NfsAttachment("destinationNfsAttachment", NfsAttachmentArgs.builder()
+ *             .shareId(example.id())
+ *             .vpcId(destination.id())
+ *             .region("nyc1")
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(sourceNfsAttachment)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ## Notes
+ * 
+ * Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+ * 
  * ## Import
  * 
- * NFS shares can be imported using the `share id` and the `region` , e.g.
+ * NFS shares can be imported using the `share id` and the `region`, e.g.
  * 
  * ```sh
  * $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1

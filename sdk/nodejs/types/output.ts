@@ -2236,6 +2236,40 @@ export interface DatabaseUserSettingOpensearchAcl {
     permission: string;
 }
 
+export interface DedicatedInferenceModelDeployment {
+    /**
+     * The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
+     */
+    accelerators: outputs.DedicatedInferenceModelDeploymentAccelerator[];
+    /**
+     * The unique ID of the model.
+     */
+    modelId: string;
+    /**
+     * The provider of the model (e.g. `digitalocean`, `huggingface`).
+     */
+    modelProvider: string;
+    /**
+     * The slug identifier for the model to deploy.
+     */
+    modelSlug: string;
+}
+
+export interface DedicatedInferenceModelDeploymentAccelerator {
+    /**
+     * The slug identifier for the GPU accelerator type.
+     */
+    acceleratorSlug: string;
+    /**
+     * The number of accelerator units to allocate. Must be at least 1.
+     */
+    scale: number;
+    /**
+     * The accelerator type.
+     */
+    type: string;
+}
+
 export interface DropletAutoscaleConfig {
     /**
      * The cooldown duration between scaling events for the Droplet Autoscale pool.
@@ -2289,6 +2323,10 @@ export interface DropletAutoscaleDropletTemplate {
      * Project UUID to create the Droplet Autoscale pool underlying resource(s).
      */
     projectId?: string;
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     */
+    publicNetworking: boolean;
     /**
      * Region slug of the Droplet Autoscale pool underlying resource(s).
      */
@@ -5599,6 +5637,302 @@ export interface GetDatabaseUserSettingOpensearchAcl {
     permission: string;
 }
 
+export interface GetDedicatedInferenceAcceleratorsAccelerator {
+    /**
+     * The date and time when the accelerator was created.
+     */
+    createdAt: string;
+    /**
+     * The unique ID of the accelerator.
+     */
+    id: string;
+    /**
+     * The name of the accelerator.
+     */
+    name: string;
+    /**
+     * The slug identifier for the accelerator type.
+     */
+    slug: string;
+    /**
+     * The current status of the accelerator.
+     */
+    status: string;
+}
+
+export interface GetDedicatedInferenceAcceleratorsFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the accelerators by this key. This may be one of `id`, `name`, `slug`, `status`, `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferenceAcceleratorsSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the accelerators by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
+export interface GetDedicatedInferenceGpuModelConfigGpuModelConfig {
+    /**
+     * The GPU slugs that support this model.
+     */
+    gpuSlugs: string[];
+    /**
+     * Whether the model requires gated access (e.g. a HuggingFace token).
+     */
+    isModelGated: boolean;
+    /**
+     * The human-readable name of the model.
+     */
+    modelName: string;
+    /**
+     * The slug identifier for the model.
+     */
+    modelSlug: string;
+}
+
+export interface GetDedicatedInferenceModelDeployment {
+    /**
+     * The GPU accelerators allocated for this model deployment. Each element contains:
+     */
+    accelerators: outputs.GetDedicatedInferenceModelDeploymentAccelerator[];
+    /**
+     * The unique ID of the model.
+     */
+    modelId: string;
+    /**
+     * The provider of the model.
+     */
+    modelProvider: string;
+    /**
+     * The slug identifier for the model.
+     */
+    modelSlug: string;
+}
+
+export interface GetDedicatedInferenceModelDeploymentAccelerator {
+    /**
+     * The slug identifier for the GPU accelerator type.
+     */
+    acceleratorSlug: string;
+    /**
+     * The number of accelerator units allocated.
+     */
+    scale: number;
+    /**
+     * The accelerator type.
+     */
+    type: string;
+}
+
+export interface GetDedicatedInferenceSizesSize {
+    /**
+     * The number of vCPUs.
+     */
+    cpu: number;
+    /**
+     * The currency for the price.
+     */
+    currency: string;
+    /**
+     * The disks attached to this size. Each element contains:
+     */
+    disks: outputs.GetDedicatedInferenceSizesSizeDisk[];
+    /**
+     * The slug identifier for this GPU size.
+     */
+    gpuSlug: string;
+    /**
+     * GPU hardware details. Each element contains:
+     */
+    gpus: outputs.GetDedicatedInferenceSizesSizeGpus[];
+    /**
+     * The amount of memory in MiB.
+     */
+    memory: number;
+    /**
+     * The hourly price for this GPU size.
+     */
+    pricePerHour: string;
+    /**
+     * The regions where this GPU size is available.
+     */
+    regions: string[];
+    /**
+     * The category this size belongs to. Each element contains:
+     */
+    sizeCategories: outputs.GetDedicatedInferenceSizesSizeSizeCategory[];
+}
+
+export interface GetDedicatedInferenceSizesSizeDisk {
+    /**
+     * The disk size in GiB.
+     */
+    sizeGb: number;
+    /**
+     * The disk type.
+     */
+    type: string;
+}
+
+export interface GetDedicatedInferenceSizesSizeGpus {
+    /**
+     * The number of GPUs.
+     */
+    count: number;
+    /**
+     * The GPU model slug.
+     */
+    slug: string;
+    /**
+     * The VRAM per GPU in GiB.
+     */
+    vramGb: number;
+}
+
+export interface GetDedicatedInferenceSizesSizeSizeCategory {
+    /**
+     * The fleet name associated with the size category.
+     */
+    fleetName: string;
+    /**
+     * The display name of the size category.
+     */
+    name: string;
+}
+
+export interface GetDedicatedInferenceTokensFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the tokens by this key. This may be one of `id`, `name`, `createdAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferenceTokensSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the tokens by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
+export interface GetDedicatedInferenceTokensToken {
+    /**
+     * The date and time when the token was created.
+     */
+    createdAt: string;
+    /**
+     * The unique ID of the token.
+     */
+    id: string;
+    /**
+     * The name of the token.
+     */
+    name: string;
+}
+
+export interface GetDedicatedInferencesDedicatedInference {
+    /**
+     * The date and time when the dedicated inference endpoint was created.
+     */
+    createdAt: string;
+    /**
+     * The unique ID of the dedicated inference endpoint.
+     */
+    id: string;
+    /**
+     * The name of the dedicated inference endpoint.
+     */
+    name: string;
+    /**
+     * The fully-qualified domain name of the private endpoint.
+     */
+    privateEndpointFqdn: string;
+    /**
+     * The fully-qualified domain name of the public endpoint, if enabled.
+     */
+    publicEndpointFqdn: string;
+    /**
+     * The region where the dedicated inference endpoint is deployed.
+     */
+    region: string;
+    /**
+     * The current status of the dedicated inference endpoint.
+     */
+    status: string;
+    /**
+     * The date and time when the dedicated inference endpoint was last updated.
+     */
+    updatedAt: string;
+    /**
+     * The UUID of the VPC the dedicated inference endpoint is deployed in.
+     */
+    vpcUuid: string;
+}
+
+export interface GetDedicatedInferencesFilter {
+    /**
+     * Set to `true` to require that a field match all of the `values` instead of just one.
+     */
+    all?: boolean;
+    /**
+     * Filter the dedicated inference endpoints by this key. This may be one of `id`, `name`, `region`, `status`, `vpcUuid`, `publicEndpointFqdn`, `privateEndpointFqdn`, `createdAt`, `updatedAt`.
+     */
+    key: string;
+    /**
+     * One of `exact` (default), `re`, or `substring`. For string-typed fields, the match mode controls how the filter is applied.
+     */
+    matchBy?: string;
+    /**
+     * A list of values to match against the `key` field.
+     */
+    values: string[];
+}
+
+export interface GetDedicatedInferencesSort {
+    /**
+     * The sort direction. This may be either `asc` or `desc`.
+     */
+    direction?: string;
+    /**
+     * Sort the dedicated inference endpoints by this key. This may be one of the keys listed in `filter`.
+     */
+    key: string;
+}
+
 export interface GetDomainsDomain {
     /**
      * (Required) The name of the domain.
@@ -5700,6 +6034,10 @@ export interface GetDropletAutoscaleDropletTemplate {
      * Droplet project ID
      */
     projectId: string;
+    /**
+     * Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.
+     */
+    publicNetworking: boolean;
     /**
      * Droplet region
      */

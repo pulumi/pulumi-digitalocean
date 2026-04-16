@@ -254,6 +254,7 @@ class DropletAutoscale(pulumi.CustomResource):
         - apt-get update
         - apt-get install -y stress-ng
         \"\"\",
+                "public_networking": False,
             })
         ```
 
@@ -318,6 +319,7 @@ class DropletAutoscale(pulumi.CustomResource):
         - apt-get update
         - apt-get install -y stress-ng
         \"\"\",
+                "public_networking": False,
             })
         ```
 

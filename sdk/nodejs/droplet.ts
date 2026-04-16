@@ -99,8 +99,6 @@ export class Droplet extends pulumi.CustomResource {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     declare public readonly gracefulShutdown: pulumi.Output<boolean | undefined>;
     /**
@@ -156,6 +154,14 @@ export class Droplet extends pulumi.CustomResource {
      * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     declare public readonly privateNetworking: pulumi.Output<boolean>;
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not.
+     * By default, this is always enabled on new droplets.
+     * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     */
+    declare public readonly publicNetworking: pulumi.Output<boolean | undefined>;
     /**
      * The region where the Droplet will be created.
      */
@@ -237,6 +243,7 @@ export class Droplet extends pulumi.CustomResource {
             resourceInputs["priceHourly"] = state?.priceHourly;
             resourceInputs["priceMonthly"] = state?.priceMonthly;
             resourceInputs["privateNetworking"] = state?.privateNetworking;
+            resourceInputs["publicNetworking"] = state?.publicNetworking;
             resourceInputs["region"] = state?.region;
             resourceInputs["resizeDisk"] = state?.resizeDisk;
             resourceInputs["size"] = state?.size;
@@ -265,6 +272,7 @@ export class Droplet extends pulumi.CustomResource {
             resourceInputs["monitoring"] = args?.monitoring;
             resourceInputs["name"] = args?.name;
             resourceInputs["privateNetworking"] = args?.privateNetworking;
+            resourceInputs["publicNetworking"] = args?.publicNetworking;
             resourceInputs["region"] = args?.region;
             resourceInputs["resizeDisk"] = args?.resizeDisk;
             resourceInputs["size"] = args?.size;
@@ -324,8 +332,6 @@ export interface DropletState {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
@@ -381,6 +387,14 @@ export interface DropletState {
      * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not.
+     * By default, this is always enabled on new droplets.
+     * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     */
+    publicNetworking?: pulumi.Input<boolean>;
     /**
      * The region where the Droplet will be created.
      */
@@ -456,8 +470,6 @@ export interface DropletArgs {
     /**
      * A boolean indicating whether the droplet
      * should be gracefully shut down before it is deleted.
-     *
-     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
     gracefulShutdown?: pulumi.Input<boolean>;
     /**
@@ -492,6 +504,14 @@ export interface DropletArgs {
      * @deprecated This parameter has been deprecated. Use `vpcUuid` instead to specify a VPC network for the Droplet. If no `vpcUuid` is provided, the Droplet will be placed in your account's default VPC for the region.
      */
     privateNetworking?: pulumi.Input<boolean>;
+    /**
+     * A boolean indicating whether to enables public networking for the Droplet or not.
+     * By default, this is always enabled on new droplets.
+     * But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     *
+     * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
+     */
+    publicNetworking?: pulumi.Input<boolean>;
     /**
      * The region where the Droplet will be created.
      */

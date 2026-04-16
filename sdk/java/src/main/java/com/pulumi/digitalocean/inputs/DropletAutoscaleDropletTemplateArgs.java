@@ -64,6 +64,21 @@ public final class DropletAutoscaleDropletTemplateArgs extends com.pulumi.resour
     }
 
     /**
+     * A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     */
+    @Import(name="publicNetworking")
+    private @Nullable Output<Boolean> publicNetworking;
+
+    /**
+     * @return A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     */
+    public Optional<Output<Boolean>> publicNetworking() {
+        return Optional.ofNullable(this.publicNetworking);
+    }
+
+    /**
      * Region slug of the Droplet Autoscale pool underlying resource(s).
      * 
      */
@@ -180,6 +195,7 @@ public final class DropletAutoscaleDropletTemplateArgs extends com.pulumi.resour
         this.image = $.image;
         this.ipv6 = $.ipv6;
         this.projectId = $.projectId;
+        this.publicNetworking = $.publicNetworking;
         this.region = $.region;
         this.size = $.size;
         this.sshKeys = $.sshKeys;
@@ -268,6 +284,27 @@ public final class DropletAutoscaleDropletTemplateArgs extends com.pulumi.resour
          */
         public Builder projectId(String projectId) {
             return projectId(Output.of(projectId));
+        }
+
+        /**
+         * @param publicNetworking A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicNetworking(@Nullable Output<Boolean> publicNetworking) {
+            $.publicNetworking = publicNetworking;
+            return this;
+        }
+
+        /**
+         * @param publicNetworking A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder publicNetworking(Boolean publicNetworking) {
+            return publicNetworking(Output.of(publicNetworking));
         }
 
         /**

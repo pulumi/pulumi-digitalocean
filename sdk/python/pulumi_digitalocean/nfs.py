@@ -312,9 +312,46 @@ class Nfs(pulumi.CustomResource):
             performance_tier="high")
         ```
 
+        ### Moving Share Between VPCs
+
+        To move an NFS share from one VPC to another using the Reassign API:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        source = digitalocean.Vpc("source",
+            name="source-vpc",
+            region="nyc1")
+        destination = digitalocean.Vpc("destination",
+            name="destination-vpc",
+            region="nyc1")
+        example = digitalocean.Nfs("example",
+            region="nyc1",
+            name="example-nfs",
+            size=50,
+            vpc_id=source.id,
+            performance_tier="high")
+        # Attach to source VPC
+        source_nfs_attachment = digitalocean.NfsAttachment("source",
+            share_id=example.id,
+            vpc_id=source.id,
+            region="nyc1")
+        # Reassign to destination VPC - uses the efficient Reassign API
+        destination_nfs_attachment = digitalocean.NfsAttachment("destination",
+            share_id=example.id,
+            vpc_id=destination.id,
+            region="nyc1",
+            opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))
+        ```
+
+        ## Notes
+
+        Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+
         ## Import
 
-        NFS shares can be imported using the `share id` and the `region` , e.g.
+        NFS shares can be imported using the `share id` and the `region`, e.g.
 
         ```sh
         $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1
@@ -356,9 +393,46 @@ class Nfs(pulumi.CustomResource):
             performance_tier="high")
         ```
 
+        ### Moving Share Between VPCs
+
+        To move an NFS share from one VPC to another using the Reassign API:
+
+        ```python
+        import pulumi
+        import pulumi_digitalocean as digitalocean
+
+        source = digitalocean.Vpc("source",
+            name="source-vpc",
+            region="nyc1")
+        destination = digitalocean.Vpc("destination",
+            name="destination-vpc",
+            region="nyc1")
+        example = digitalocean.Nfs("example",
+            region="nyc1",
+            name="example-nfs",
+            size=50,
+            vpc_id=source.id,
+            performance_tier="high")
+        # Attach to source VPC
+        source_nfs_attachment = digitalocean.NfsAttachment("source",
+            share_id=example.id,
+            vpc_id=source.id,
+            region="nyc1")
+        # Reassign to destination VPC - uses the efficient Reassign API
+        destination_nfs_attachment = digitalocean.NfsAttachment("destination",
+            share_id=example.id,
+            vpc_id=destination.id,
+            region="nyc1",
+            opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))
+        ```
+
+        ## Notes
+
+        Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+
         ## Import
 
-        NFS shares can be imported using the `share id` and the `region` , e.g.
+        NFS shares can be imported using the `share id` and the `region`, e.g.
 
         ```sh
         $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1

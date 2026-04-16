@@ -31,6 +31,14 @@ import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseReplicaPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
 import com.pulumi.digitalocean.inputs.GetDatabaseUserPlainArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsPlainArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferencePlainArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensPlainArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+import com.pulumi.digitalocean.inputs.GetDedicatedInferencesPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainPlainArgs;
 import com.pulumi.digitalocean.inputs.GetDomainsArgs;
@@ -180,6 +188,12 @@ import com.pulumi.digitalocean.outputs.GetDatabaseConnectionPoolResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseMetricsCredentialsResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseReplicaResult;
 import com.pulumi.digitalocean.outputs.GetDatabaseUserResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferenceAcceleratorsResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferenceGpuModelConfigResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferenceResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferenceSizesResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferenceTokensResult;
+import com.pulumi.digitalocean.outputs.GetDedicatedInferencesResult;
 import com.pulumi.digitalocean.outputs.GetDomainResult;
 import com.pulumi.digitalocean.outputs.GetDomainsResult;
 import com.pulumi.digitalocean.outputs.GetDropletAutoscaleResult;
@@ -3162,6 +3176,2412 @@ public final class DigitaloceanFunctions {
      */
     public static CompletableFuture<GetDatabaseUserResult> getDatabaseUserPlain(GetDatabaseUserPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("digitalocean:index/getDatabaseUser:getDatabaseUser", TypeShape.of(GetDatabaseUserResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a dedicated inference endpoint for use in other resources. This
+     * data source provides all of the endpoint&#39;s properties as configured on your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+     *             .id("endpoint-id")
+     *             .build());
+     * 
+     *         ctx.export("endpointStatus", example.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceResult> getDedicatedInference(GetDedicatedInferenceArgs args) {
+        return getDedicatedInference(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a dedicated inference endpoint for use in other resources. This
+     * data source provides all of the endpoint&#39;s properties as configured on your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+     *             .id("endpoint-id")
+     *             .build());
+     * 
+     *         ctx.export("endpointStatus", example.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceResult> getDedicatedInferencePlain(GetDedicatedInferencePlainArgs args) {
+        return getDedicatedInferencePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on a dedicated inference endpoint for use in other resources. This
+     * data source provides all of the endpoint&#39;s properties as configured on your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+     *             .id("endpoint-id")
+     *             .build());
+     * 
+     *         ctx.export("endpointStatus", example.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceResult> getDedicatedInference(GetDedicatedInferenceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInference:getDedicatedInference", TypeShape.of(GetDedicatedInferenceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a dedicated inference endpoint for use in other resources. This
+     * data source provides all of the endpoint&#39;s properties as configured on your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+     *             .id("endpoint-id")
+     *             .build());
+     * 
+     *         ctx.export("endpointStatus", example.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceResult> getDedicatedInference(GetDedicatedInferenceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInference:getDedicatedInference", TypeShape.of(GetDedicatedInferenceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on a dedicated inference endpoint for use in other resources. This
+     * data source provides all of the endpoint&#39;s properties as configured on your
+     * DigitalOcean account.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()
+     *             .id("endpoint-id")
+     *             .build());
+     * 
+     *         ctx.export("endpointStatus", example.status());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceResult> getDedicatedInferencePlain(GetDedicatedInferencePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInference:getDedicatedInference", TypeShape.of(GetDedicatedInferenceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+     * with the ability to filter and sort the results.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("accelerators", example.accelerators());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by slug
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("gpu-h100x1-80gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs args) {
+        return getDedicatedInferenceAccelerators(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+     * with the ability to filter and sort the results.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("accelerators", example.accelerators());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by slug
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("gpu-h100x1-80gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAcceleratorsPlain(GetDedicatedInferenceAcceleratorsPlainArgs args) {
+        return getDedicatedInferenceAcceleratorsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+     * with the ability to filter and sort the results.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("accelerators", example.accelerators());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by slug
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("gpu-h100x1-80gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators", TypeShape.of(GetDedicatedInferenceAcceleratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+     * with the ability to filter and sort the results.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("accelerators", example.accelerators());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by slug
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("gpu-h100x1-80gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators", TypeShape.of(GetDedicatedInferenceAcceleratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,
+     * with the ability to filter and sort the results.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("accelerators", example.accelerators());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by slug
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()
+     *                 .key("slug")
+     *                 .values("gpu-h100x1-80gb")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceAcceleratorsResult> getDedicatedInferenceAcceleratorsPlain(GetDedicatedInferenceAcceleratorsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators", TypeShape.of(GetDedicatedInferenceAcceleratorsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfig() {
+        return getDedicatedInferenceGpuModelConfig(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfigPlain() {
+        return getDedicatedInferenceGpuModelConfigPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfig(InvokeArgs args) {
+        return getDedicatedInferenceGpuModelConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfigPlain(InvokeArgs args) {
+        return getDedicatedInferenceGpuModelConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfig(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig", TypeShape.of(GetDedicatedInferenceGpuModelConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfig(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig", TypeShape.of(GetDedicatedInferenceGpuModelConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the supported GPU and model compatibility matrix for dedicated inference
+     * endpoints. Use this data source to discover which models can be deployed on which
+     * GPU types.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("gpuModelConfigs", available.gpuModelConfigs());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceGpuModelConfigResult> getDedicatedInferenceGpuModelConfigPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig", TypeShape.of(GetDedicatedInferenceGpuModelConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes() {
+        return getDedicatedInferenceSizes(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizesPlain() {
+        return getDedicatedInferenceSizesPlain(InvokeArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes(InvokeArgs args) {
+        return getDedicatedInferenceSizes(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizesPlain(InvokeArgs args) {
+        return getDedicatedInferenceSizesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes", TypeShape.of(GetDedicatedInferenceSizesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizes(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes", TypeShape.of(GetDedicatedInferenceSizesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the available GPU sizes and their configurations for dedicated inference
+     * endpoints, including pricing, hardware specifications, and region availability.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
+     * 
+     *         ctx.export("enabledRegions", available.enabledRegions());
+     *         ctx.export("sizes", available.sizes());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceSizesResult> getDedicatedInferenceSizesPlain(InvokeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes", TypeShape.of(GetDedicatedInferenceSizesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of API tokens for a dedicated inference endpoint, with the ability
+     * to filter and sort the results.
+     * 
+     * &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+     * token metadata (ID, name, creation time) is available.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("tokens", example.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-token")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs args) {
+        return getDedicatedInferenceTokens(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of API tokens for a dedicated inference endpoint, with the ability
+     * to filter and sort the results.
+     * 
+     * &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+     * token metadata (ID, name, creation time) is available.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("tokens", example.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-token")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokensPlain(GetDedicatedInferenceTokensPlainArgs args) {
+        return getDedicatedInferenceTokensPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of API tokens for a dedicated inference endpoint, with the ability
+     * to filter and sort the results.
+     * 
+     * &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+     * token metadata (ID, name, creation time) is available.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("tokens", example.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-token")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens", TypeShape.of(GetDedicatedInferenceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of API tokens for a dedicated inference endpoint, with the ability
+     * to filter and sort the results.
+     * 
+     * &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+     * token metadata (ID, name, creation time) is available.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("tokens", example.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-token")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens", TypeShape.of(GetDedicatedInferenceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of API tokens for a dedicated inference endpoint, with the ability
+     * to filter and sort the results.
+     * 
+     * &gt; **Note:** Token values (secrets) are not returned by this data source. Only
+     * token metadata (ID, name, creation time) is available.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())
+     *             .build());
+     * 
+     *         ctx.export("tokens", example.tokens());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()
+     *             .dedicatedInferenceId(example.id())
+     *             .filters(GetDedicatedInferenceTokensFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-token")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferenceTokensResult> getDedicatedInferenceTokensPlain(GetDedicatedInferenceTokensPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens", TypeShape.of(GetDedicatedInferenceTokensResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferencesResult> getDedicatedInferences() {
+        return getDedicatedInferences(GetDedicatedInferencesArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferencesResult> getDedicatedInferencesPlain() {
+        return getDedicatedInferencesPlain(GetDedicatedInferencesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferencesResult> getDedicatedInferences(GetDedicatedInferencesArgs args) {
+        return getDedicatedInferences(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferencesResult> getDedicatedInferencesPlain(GetDedicatedInferencesPlainArgs args) {
+        return getDedicatedInferencesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferencesResult> getDedicatedInferences(GetDedicatedInferencesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferences:getDedicatedInferences", TypeShape.of(GetDedicatedInferencesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetDedicatedInferencesResult> getDedicatedInferences(GetDedicatedInferencesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("digitalocean:index/getDedicatedInferences:getDedicatedInferences", TypeShape.of(GetDedicatedInferencesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns a list of dedicated inference endpoints in your DigitalOcean account,
+     * with the ability to filter and sort the results. If no filters are specified, all
+     * endpoints will be returned.
+     * 
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .build());
+     * 
+     *         ctx.export("allEndpoints", all.dedicatedInferences());
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by name
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("name")
+     *                 .values("my-inference")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * ### Filter by region
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.digitalocean.DigitaloceanFunctions;
+     * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()
+     *             .filters(GetDedicatedInferencesFilterArgs.builder()
+     *                 .key("region")
+     *                 .values("tor1")
+     *                 .build())
+     *             .sorts(GetDedicatedInferencesSortArgs.builder()
+     *                 .key("name")
+     *                 .direction("asc")
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetDedicatedInferencesResult> getDedicatedInferencesPlain(GetDedicatedInferencesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("digitalocean:index/getDedicatedInferences:getDedicatedInferences", TypeShape.of(GetDedicatedInferencesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get information on a domain. This data source provides the name, TTL, and zone

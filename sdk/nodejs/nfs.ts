@@ -26,9 +26,52 @@ import * as utilities from "./utilities";
  * });
  * ```
  *
+ * ### Moving Share Between VPCs
+ *
+ * To move an NFS share from one VPC to another using the Reassign API:
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as digitalocean from "@pulumi/digitalocean";
+ *
+ * const source = new digitalocean.Vpc("source", {
+ *     name: "source-vpc",
+ *     region: "nyc1",
+ * });
+ * const destination = new digitalocean.Vpc("destination", {
+ *     name: "destination-vpc",
+ *     region: "nyc1",
+ * });
+ * const example = new digitalocean.Nfs("example", {
+ *     region: "nyc1",
+ *     name: "example-nfs",
+ *     size: 50,
+ *     vpcId: source.id,
+ *     performanceTier: "high",
+ * });
+ * // Attach to source VPC
+ * const sourceNfsAttachment = new digitalocean.NfsAttachment("source", {
+ *     shareId: example.id,
+ *     vpcId: source.id,
+ *     region: "nyc1",
+ * });
+ * // Reassign to destination VPC - uses the efficient Reassign API
+ * const destinationNfsAttachment = new digitalocean.NfsAttachment("destination", {
+ *     shareId: example.id,
+ *     vpcId: destination.id,
+ *     region: "nyc1",
+ * }, {
+ *     dependsOn: [sourceNfsAttachment],
+ * });
+ * ```
+ *
+ * ## Notes
+ *
+ * Multiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.
+ *
  * ## Import
  *
- * NFS shares can be imported using the `share id` and the `region` , e.g.
+ * NFS shares can be imported using the `share id` and the `region`, e.g.
  *
  * ```sh
  * $ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1

@@ -31,6 +31,12 @@ namespace Pulumi.DigitalOcean.Inputs
         public Input<string>? ProjectId { get; set; }
 
         /// <summary>
+        /// A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+        /// </summary>
+        [Input("publicNetworking")]
+        public Input<bool>? PublicNetworking { get; set; }
+
+        /// <summary>
         /// Region slug of the Droplet Autoscale pool underlying resource(s).
         /// </summary>
         [Input("region", required: true)]

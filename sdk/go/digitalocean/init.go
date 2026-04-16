@@ -73,6 +73,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DatabaseUser{}
 	case "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig":
 		r = &DatabaseValkeyConfig{}
+	case "digitalocean:index/dedicatedInference:DedicatedInference":
+		r = &DedicatedInference{}
+	case "digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken":
+		r = &DedicatedInferenceToken{}
 	case "digitalocean:index/dnsRecord:DnsRecord":
 		r = &DnsRecord{}
 	case "digitalocean:index/domain:Domain":
@@ -340,6 +344,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"digitalocean",
 		"index/databaseValkeyConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/dedicatedInference",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"digitalocean",
+		"index/dedicatedInferenceToken",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

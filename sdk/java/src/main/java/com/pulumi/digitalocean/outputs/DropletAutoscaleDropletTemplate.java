@@ -30,6 +30,11 @@ public final class DropletAutoscaleDropletTemplate {
      */
     private @Nullable String projectId;
     /**
+     * @return A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     */
+    private @Nullable Boolean publicNetworking;
+    /**
      * @return Region slug of the Droplet Autoscale pool underlying resource(s).
      * 
      */
@@ -89,6 +94,13 @@ public final class DropletAutoscaleDropletTemplate {
      */
     public Optional<String> projectId() {
         return Optional.ofNullable(this.projectId);
+    }
+    /**
+     * @return A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
+     * 
+     */
+    public Optional<Boolean> publicNetworking() {
+        return Optional.ofNullable(this.publicNetworking);
     }
     /**
      * @return Region slug of the Droplet Autoscale pool underlying resource(s).
@@ -155,6 +167,7 @@ public final class DropletAutoscaleDropletTemplate {
         private String image;
         private @Nullable Boolean ipv6;
         private @Nullable String projectId;
+        private @Nullable Boolean publicNetworking;
         private String region;
         private String size;
         private List<String> sshKeys;
@@ -168,6 +181,7 @@ public final class DropletAutoscaleDropletTemplate {
     	      this.image = defaults.image;
     	      this.ipv6 = defaults.ipv6;
     	      this.projectId = defaults.projectId;
+    	      this.publicNetworking = defaults.publicNetworking;
     	      this.region = defaults.region;
     	      this.size = defaults.size;
     	      this.sshKeys = defaults.sshKeys;
@@ -195,6 +209,12 @@ public final class DropletAutoscaleDropletTemplate {
         public Builder projectId(@Nullable String projectId) {
 
             this.projectId = projectId;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder publicNetworking(@Nullable Boolean publicNetworking) {
+
+            this.publicNetworking = publicNetworking;
             return this;
         }
         @CustomType.Setter
@@ -256,6 +276,7 @@ public final class DropletAutoscaleDropletTemplate {
             _resultValue.image = image;
             _resultValue.ipv6 = ipv6;
             _resultValue.projectId = projectId;
+            _resultValue.publicNetworking = publicNetworking;
             _resultValue.region = region;
             _resultValue.size = size;
             _resultValue.sshKeys = sshKeys;

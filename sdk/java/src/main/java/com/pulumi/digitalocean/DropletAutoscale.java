@@ -88,6 +88,7 @@ import javax.annotation.Nullable;
  * - apt-get update
  * - apt-get install -y stress-ng
  *                 """)
+ *                 .publicNetworking(false)
  *                 .build())
  *             .build());
  * 

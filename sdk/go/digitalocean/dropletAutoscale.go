@@ -78,6 +78,7 @@ import (
 // - apt-get install -y stress-ng
 // `),
 //
+//					PublicNetworking: pulumi.Bool(false),
 //				},
 //			})
 //			if err != nil {
