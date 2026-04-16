@@ -3204,6 +3204,67 @@
                 "permission"
             ]
         },
+        "digitalocean:index/DedicatedInferenceModelDeployment:DedicatedInferenceModelDeployment": {
+            "properties": {
+                "accelerators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DedicatedInferenceModelDeploymentAccelerator:DedicatedInferenceModelDeploymentAccelerator"
+                    },
+                    "description": "The GPU accelerators to allocate for this model deployment. Each \u003cspan pulumi-lang-nodejs=\"`accelerators`\" pulumi-lang-dotnet=\"`Accelerators`\" pulumi-lang-go=\"`accelerators`\" pulumi-lang-python=\"`accelerators`\" pulumi-lang-yaml=\"`accelerators`\" pulumi-lang-java=\"`accelerators`\"\u003e`accelerators`\u003c/span\u003e block supports:\n"
+                },
+                "modelId": {
+                    "type": "string",
+                    "description": "The unique ID of the model.\n"
+                },
+                "modelProvider": {
+                    "type": "string",
+                    "description": "The provider of the model (e.g. \u003cspan pulumi-lang-nodejs=\"`digitalocean`\" pulumi-lang-dotnet=\"`Digitalocean`\" pulumi-lang-go=\"`digitalocean`\" pulumi-lang-python=\"`digitalocean`\" pulumi-lang-yaml=\"`digitalocean`\" pulumi-lang-java=\"`digitalocean`\"\u003e`digitalocean`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`huggingface`\" pulumi-lang-dotnet=\"`Huggingface`\" pulumi-lang-go=\"`huggingface`\" pulumi-lang-python=\"`huggingface`\" pulumi-lang-yaml=\"`huggingface`\" pulumi-lang-java=\"`huggingface`\"\u003e`huggingface`\u003c/span\u003e).\n"
+                },
+                "modelSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for the model to deploy.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accelerators",
+                "modelProvider",
+                "modelSlug"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "accelerators",
+                        "modelId",
+                        "modelProvider",
+                        "modelSlug"
+                    ]
+                }
+            }
+        },
+        "digitalocean:index/DedicatedInferenceModelDeploymentAccelerator:DedicatedInferenceModelDeploymentAccelerator": {
+            "properties": {
+                "acceleratorSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for the GPU accelerator type.\n"
+                },
+                "scale": {
+                    "type": "integer",
+                    "description": "The number of accelerator units to allocate. Must be at least 1.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The accelerator type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acceleratorSlug",
+                "scale",
+                "type"
+            ]
+        },
         "digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig": {
             "properties": {
                 "cooldownMinutes": {
@@ -3268,6 +3329,10 @@
                     "type": "string",
                     "description": "Project UUID to create the Droplet Autoscale pool underlying resource(s).\n"
                 },
+                "publicNetworking": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether to enables public networking for the Droplet or not. By default, this is always enabled on new droplets. But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Region slug of the Droplet Autoscale pool underlying resource(s).\n"
@@ -3309,7 +3374,18 @@
                 "region",
                 "size",
                 "sshKeys"
-            ]
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredOutputs": [
+                        "image",
+                        "publicNetworking",
+                        "region",
+                        "size",
+                        "sshKeys"
+                    ]
+                }
+            }
         },
         "digitalocean:index/DropletBackupPolicy:DropletBackupPolicy": {
             "properties": {
@@ -10760,6 +10836,496 @@
                 }
             }
         },
+        "digitalocean:index/getDedicatedInferenceAcceleratorsAccelerator:getDedicatedInferenceAcceleratorsAccelerator": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the accelerator was created.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID of the accelerator.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the accelerator.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The slug identifier for the accelerator type.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the accelerator.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "id",
+                "name",
+                "slug",
+                "status"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceAcceleratorsFilter:getDedicatedInferenceAcceleratorsFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to require that a field match all of the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\"\u003e`values`\u003c/span\u003e instead of just one.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the accelerators by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`slug`\" pulumi-lang-dotnet=\"`Slug`\" pulumi-lang-go=\"`slug`\" pulumi-lang-python=\"`slug`\" pulumi-lang-yaml=\"`slug`\" pulumi-lang-java=\"`slug`\"\u003e`slug`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\"\u003e`status`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`exact`\" pulumi-lang-dotnet=\"`Exact`\" pulumi-lang-go=\"`exact`\" pulumi-lang-python=\"`exact`\" pulumi-lang-yaml=\"`exact`\" pulumi-lang-java=\"`exact`\"\u003e`exact`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\"\u003e`re`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\"\u003e`substring`\u003c/span\u003e.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\"\u003e`key`\u003c/span\u003e field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getDedicatedInferenceAcceleratorsSort:getDedicatedInferenceAcceleratorsSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\"\u003e`asc`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\"\u003e`desc`\u003c/span\u003e.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the accelerators by this key. This may be one of the keys listed in \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getDedicatedInferenceGpuModelConfigGpuModelConfig:getDedicatedInferenceGpuModelConfigGpuModelConfig": {
+            "properties": {
+                "gpuSlugs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The GPU slugs that support this model.\n"
+                },
+                "isModelGated": {
+                    "type": "boolean",
+                    "description": "Whether the model requires gated access (e.g. a HuggingFace token).\n"
+                },
+                "modelName": {
+                    "type": "string",
+                    "description": "The human-readable name of the model.\n"
+                },
+                "modelSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for the model.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "gpuSlugs",
+                "isModelGated",
+                "modelName",
+                "modelSlug"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceModelDeployment:getDedicatedInferenceModelDeployment": {
+            "properties": {
+                "accelerators": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDedicatedInferenceModelDeploymentAccelerator:getDedicatedInferenceModelDeploymentAccelerator"
+                    },
+                    "description": "The GPU accelerators allocated for this model deployment. Each element contains:\n"
+                },
+                "modelId": {
+                    "type": "string",
+                    "description": "The unique ID of the model.\n"
+                },
+                "modelProvider": {
+                    "type": "string",
+                    "description": "The provider of the model.\n"
+                },
+                "modelSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for the model.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "accelerators",
+                "modelId",
+                "modelProvider",
+                "modelSlug"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceModelDeploymentAccelerator:getDedicatedInferenceModelDeploymentAccelerator": {
+            "properties": {
+                "acceleratorSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for the GPU accelerator type.\n"
+                },
+                "scale": {
+                    "type": "integer",
+                    "description": "The number of accelerator units allocated.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The accelerator type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "acceleratorSlug",
+                "scale",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceSizesSize:getDedicatedInferenceSizesSize": {
+            "properties": {
+                "cpu": {
+                    "type": "integer",
+                    "description": "The number of vCPUs.\n"
+                },
+                "currency": {
+                    "type": "string",
+                    "description": "The currency for the price.\n"
+                },
+                "disks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDedicatedInferenceSizesSizeDisk:getDedicatedInferenceSizesSizeDisk"
+                    },
+                    "description": "The disks attached to this size. Each element contains:\n"
+                },
+                "gpuSlug": {
+                    "type": "string",
+                    "description": "The slug identifier for this GPU size.\n"
+                },
+                "gpus": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDedicatedInferenceSizesSizeGpus:getDedicatedInferenceSizesSizeGpus"
+                    },
+                    "description": "GPU hardware details. Each element contains:\n"
+                },
+                "memory": {
+                    "type": "integer",
+                    "description": "The amount of memory in MiB.\n"
+                },
+                "pricePerHour": {
+                    "type": "string",
+                    "description": "The hourly price for this GPU size.\n"
+                },
+                "regions": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The regions where this GPU size is available.\n"
+                },
+                "sizeCategories": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/getDedicatedInferenceSizesSizeSizeCategory:getDedicatedInferenceSizesSizeSizeCategory"
+                    },
+                    "description": "The category this size belongs to. Each element contains:\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "cpu",
+                "currency",
+                "disks",
+                "gpus",
+                "gpuSlug",
+                "memory",
+                "pricePerHour",
+                "regions",
+                "sizeCategories"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceSizesSizeDisk:getDedicatedInferenceSizesSizeDisk": {
+            "properties": {
+                "sizeGb": {
+                    "type": "integer",
+                    "description": "The disk size in GiB.\n"
+                },
+                "type": {
+                    "type": "string",
+                    "description": "The disk type.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "sizeGb",
+                "type"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceSizesSizeGpus:getDedicatedInferenceSizesSizeGpus": {
+            "properties": {
+                "count": {
+                    "type": "integer",
+                    "description": "The number of GPUs.\n"
+                },
+                "slug": {
+                    "type": "string",
+                    "description": "The GPU model slug.\n"
+                },
+                "vramGb": {
+                    "type": "integer",
+                    "description": "The VRAM per GPU in GiB.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "count",
+                "slug",
+                "vramGb"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceSizesSizeSizeCategory:getDedicatedInferenceSizesSizeSizeCategory": {
+            "properties": {
+                "fleetName": {
+                    "type": "string",
+                    "description": "The fleet name associated with the size category.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The display name of the size category.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "fleetName",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceTokensFilter:getDedicatedInferenceTokensFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to require that a field match all of the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\"\u003e`values`\u003c/span\u003e instead of just one.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the tokens by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\"\u003e`createdAt`\u003c/span\u003e.\n"
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`exact`\" pulumi-lang-dotnet=\"`Exact`\" pulumi-lang-go=\"`exact`\" pulumi-lang-python=\"`exact`\" pulumi-lang-yaml=\"`exact`\" pulumi-lang-java=\"`exact`\"\u003e`exact`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\"\u003e`re`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\"\u003e`substring`\u003c/span\u003e.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\"\u003e`key`\u003c/span\u003e field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getDedicatedInferenceTokensSort:getDedicatedInferenceTokensSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\"\u003e`asc`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\"\u003e`desc`\u003c/span\u003e.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the tokens by this key. This may be one of the keys listed in \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
+        "digitalocean:index/getDedicatedInferenceTokensToken:getDedicatedInferenceTokensToken": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the token was created.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID of the token.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the token.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "id",
+                "name"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferencesDedicatedInference:getDedicatedInferencesDedicatedInference": {
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the dedicated inference endpoint was created.\n"
+                },
+                "id": {
+                    "type": "string",
+                    "description": "The unique ID of the dedicated inference endpoint.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "The name of the dedicated inference endpoint.\n"
+                },
+                "privateEndpointFqdn": {
+                    "type": "string",
+                    "description": "The fully-qualified domain name of the private endpoint.\n"
+                },
+                "publicEndpointFqdn": {
+                    "type": "string",
+                    "description": "The fully-qualified domain name of the public endpoint, if enabled.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region where the dedicated inference endpoint is deployed.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the dedicated inference endpoint.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the dedicated inference endpoint was last updated.\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The UUID of the VPC the dedicated inference endpoint is deployed in.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "createdAt",
+                "id",
+                "name",
+                "privateEndpointFqdn",
+                "publicEndpointFqdn",
+                "region",
+                "status",
+                "updatedAt",
+                "vpcUuid"
+            ],
+            "language": {
+                "nodejs": {
+                    "requiredInputs": []
+                }
+            }
+        },
+        "digitalocean:index/getDedicatedInferencesFilter:getDedicatedInferencesFilter": {
+            "properties": {
+                "all": {
+                    "type": "boolean",
+                    "description": "Set to \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e to require that a field match all of the \u003cspan pulumi-lang-nodejs=\"`values`\" pulumi-lang-dotnet=\"`Values`\" pulumi-lang-go=\"`values`\" pulumi-lang-python=\"`values`\" pulumi-lang-yaml=\"`values`\" pulumi-lang-java=\"`values`\"\u003e`values`\u003c/span\u003e instead of just one.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Filter the dedicated inference endpoints by this key. This may be one of \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`name`\" pulumi-lang-dotnet=\"`Name`\" pulumi-lang-go=\"`name`\" pulumi-lang-python=\"`name`\" pulumi-lang-yaml=\"`name`\" pulumi-lang-java=\"`name`\"\u003e`name`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`status`\" pulumi-lang-dotnet=\"`Status`\" pulumi-lang-go=\"`status`\" pulumi-lang-python=\"`status`\" pulumi-lang-yaml=\"`status`\" pulumi-lang-java=\"`status`\"\u003e`status`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`publicEndpointFqdn`\" pulumi-lang-dotnet=\"`PublicEndpointFqdn`\" pulumi-lang-go=\"`publicEndpointFqdn`\" pulumi-lang-python=\"`public_endpoint_fqdn`\" pulumi-lang-yaml=\"`publicEndpointFqdn`\" pulumi-lang-java=\"`publicEndpointFqdn`\"\u003e`publicEndpointFqdn`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`privateEndpointFqdn`\" pulumi-lang-dotnet=\"`PrivateEndpointFqdn`\" pulumi-lang-go=\"`privateEndpointFqdn`\" pulumi-lang-python=\"`private_endpoint_fqdn`\" pulumi-lang-yaml=\"`privateEndpointFqdn`\" pulumi-lang-java=\"`privateEndpointFqdn`\"\u003e`privateEndpointFqdn`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`createdAt`\" pulumi-lang-dotnet=\"`CreatedAt`\" pulumi-lang-go=\"`createdAt`\" pulumi-lang-python=\"`created_at`\" pulumi-lang-yaml=\"`createdAt`\" pulumi-lang-java=\"`createdAt`\"\u003e`createdAt`\u003c/span\u003e, \u003cspan pulumi-lang-nodejs=\"`updatedAt`\" pulumi-lang-dotnet=\"`UpdatedAt`\" pulumi-lang-go=\"`updatedAt`\" pulumi-lang-python=\"`updated_at`\" pulumi-lang-yaml=\"`updatedAt`\" pulumi-lang-java=\"`updatedAt`\"\u003e`updatedAt`\u003c/span\u003e.\n"
+                },
+                "matchBy": {
+                    "type": "string",
+                    "description": "One of \u003cspan pulumi-lang-nodejs=\"`exact`\" pulumi-lang-dotnet=\"`Exact`\" pulumi-lang-go=\"`exact`\" pulumi-lang-python=\"`exact`\" pulumi-lang-yaml=\"`exact`\" pulumi-lang-java=\"`exact`\"\u003e`exact`\u003c/span\u003e (default), \u003cspan pulumi-lang-nodejs=\"`re`\" pulumi-lang-dotnet=\"`Re`\" pulumi-lang-go=\"`re`\" pulumi-lang-python=\"`re`\" pulumi-lang-yaml=\"`re`\" pulumi-lang-java=\"`re`\"\u003e`re`\u003c/span\u003e, or \u003cspan pulumi-lang-nodejs=\"`substring`\" pulumi-lang-dotnet=\"`Substring`\" pulumi-lang-go=\"`substring`\" pulumi-lang-python=\"`substring`\" pulumi-lang-yaml=\"`substring`\" pulumi-lang-java=\"`substring`\"\u003e`substring`\u003c/span\u003e. For string-typed fields, the match mode controls how the filter is applied.\n"
+                },
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "A list of values to match against the \u003cspan pulumi-lang-nodejs=\"`key`\" pulumi-lang-dotnet=\"`Key`\" pulumi-lang-go=\"`key`\" pulumi-lang-python=\"`key`\" pulumi-lang-yaml=\"`key`\" pulumi-lang-java=\"`key`\"\u003e`key`\u003c/span\u003e field.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key",
+                "values"
+            ]
+        },
+        "digitalocean:index/getDedicatedInferencesSort:getDedicatedInferencesSort": {
+            "properties": {
+                "direction": {
+                    "type": "string",
+                    "description": "The sort direction. This may be either \u003cspan pulumi-lang-nodejs=\"`asc`\" pulumi-lang-dotnet=\"`Asc`\" pulumi-lang-go=\"`asc`\" pulumi-lang-python=\"`asc`\" pulumi-lang-yaml=\"`asc`\" pulumi-lang-java=\"`asc`\"\u003e`asc`\u003c/span\u003e or \u003cspan pulumi-lang-nodejs=\"`desc`\" pulumi-lang-dotnet=\"`Desc`\" pulumi-lang-go=\"`desc`\" pulumi-lang-python=\"`desc`\" pulumi-lang-yaml=\"`desc`\" pulumi-lang-java=\"`desc`\"\u003e`desc`\u003c/span\u003e.\n"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "Sort the dedicated inference endpoints by this key. This may be one of the keys listed in \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e.\n"
+                }
+            },
+            "type": "object",
+            "required": [
+                "key"
+            ]
+        },
         "digitalocean:index/getDomainsDomain:getDomainsDomain": {
             "properties": {
                 "name": {
@@ -10909,6 +11475,10 @@
                     "type": "string",
                     "description": "Droplet project ID\n"
                 },
+                "publicNetworking": {
+                    "type": "boolean",
+                    "description": "Enables public networking for the Droplet. By default, this is always enabled on new Droplets, but by explicitly setting it to false, you can create a Droplet with public networking entirely disabled.\n"
+                },
                 "region": {
                     "type": "string",
                     "description": "Droplet region\n"
@@ -10949,6 +11519,7 @@
                 "image",
                 "ipv6",
                 "projectId",
+                "publicNetworking",
                 "region",
                 "size",
                 "sshKeys",
@@ -30895,6 +31466,231 @@
                 "type": "object"
             }
         },
+        "digitalocean:index/dedicatedInference:DedicatedInference": {
+            "description": "Provides a DigitalOcean Dedicated Inference resource. This can be used to create,\nmodify, and delete dedicated inference endpoints for running GPU-accelerated\nmodel inference.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.DedicatedInference(\"example\", {\n    name: \"my-inference-endpoint\",\n    region: \"tor1\",\n    modelDeployments: [{\n        modelSlug: \"deepseek-r1-distill-qwen-14b\",\n        modelProvider: \"digitalocean\",\n        accelerators: [{\n            acceleratorSlug: \"gpu-h100x1-80gb\",\n            scale: 1,\n            type: \"nvidia_h100\",\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.DedicatedInference(\"example\",\n    name=\"my-inference-endpoint\",\n    region=\"tor1\",\n    model_deployments=[{\n        \"model_slug\": \"deepseek-r1-distill-qwen-14b\",\n        \"model_provider\": \"digitalocean\",\n        \"accelerators\": [{\n            \"accelerator_slug\": \"gpu-h100x1-80gb\",\n            \"scale\": 1,\n            \"type\": \"nvidia_h100\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Index.DedicatedInference(\"example\", new()\n    {\n        Name = \"my-inference-endpoint\",\n        Region = \"tor1\",\n        ModelDeployments = new[]\n        {\n            new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentArgs\n            {\n                ModelSlug = \"deepseek-r1-distill-qwen-14b\",\n                ModelProvider = \"digitalocean\",\n                Accelerators = new[]\n                {\n                    new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentAcceleratorArgs\n                    {\n                        AcceleratorSlug = \"gpu-h100x1-80gb\",\n                        Scale = 1,\n                        Type = \"nvidia_h100\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDedicatedInference(ctx, \"example\", \u0026digitalocean.DedicatedInferenceArgs{\n\t\t\tName:   pulumi.String(\"my-inference-endpoint\"),\n\t\t\tRegion: pulumi.String(\"tor1\"),\n\t\t\tModelDeployments: digitalocean.DedicatedInferenceModelDeploymentArray{\n\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentArgs{\n\t\t\t\t\tModelSlug:     pulumi.String(\"deepseek-r1-distill-qwen-14b\"),\n\t\t\t\t\tModelProvider: pulumi.String(\"digitalocean\"),\n\t\t\t\t\tAccelerators: digitalocean.DedicatedInferenceModelDeploymentAcceleratorArray{\n\t\t\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentAcceleratorArgs{\n\t\t\t\t\t\t\tAcceleratorSlug: pulumi.String(\"gpu-h100x1-80gb\"),\n\t\t\t\t\t\t\tScale:           pulumi.Int(1),\n\t\t\t\t\t\t\tType:            pulumi.String(\"nvidia_h100\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DedicatedInference;\nimport com.pulumi.digitalocean.DedicatedInferenceArgs;\nimport com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new DedicatedInference(\"example\", DedicatedInferenceArgs.builder()\n            .name(\"my-inference-endpoint\")\n            .region(\"tor1\")\n            .modelDeployments(DedicatedInferenceModelDeploymentArgs.builder()\n                .modelSlug(\"deepseek-r1-distill-qwen-14b\")\n                .modelProvider(\"digitalocean\")\n                .accelerators(DedicatedInferenceModelDeploymentAcceleratorArgs.builder()\n                    .acceleratorSlug(\"gpu-h100x1-80gb\")\n                    .scale(1)\n                    .type(\"nvidia_h100\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DedicatedInference\n    properties:\n      name: my-inference-endpoint\n      region: tor1\n      modelDeployments:\n        - modelSlug: deepseek-r1-distill-qwen-14b\n          modelProvider: digitalocean\n          accelerators:\n            - acceleratorSlug: gpu-h100x1-80gb\n              scale: 1\n              type: nvidia_h100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### With Public Endpoint\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst _public = new digitalocean.DedicatedInference(\"public\", {\n    name: \"my-public-inference\",\n    region: \"tor1\",\n    enablePublicEndpoint: true,\n    modelDeployments: [{\n        modelSlug: \"deepseek-r1-distill-qwen-14b\",\n        modelProvider: \"digitalocean\",\n        accelerators: [{\n            acceleratorSlug: \"gpu-h100x1-80gb\",\n            scale: 1,\n            type: \"nvidia_h100\",\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\npublic = digitalocean.DedicatedInference(\"public\",\n    name=\"my-public-inference\",\n    region=\"tor1\",\n    enable_public_endpoint=True,\n    model_deployments=[{\n        \"model_slug\": \"deepseek-r1-distill-qwen-14b\",\n        \"model_provider\": \"digitalocean\",\n        \"accelerators\": [{\n            \"accelerator_slug\": \"gpu-h100x1-80gb\",\n            \"scale\": 1,\n            \"type\": \"nvidia_h100\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @public = new DigitalOcean.Index.DedicatedInference(\"public\", new()\n    {\n        Name = \"my-public-inference\",\n        Region = \"tor1\",\n        EnablePublicEndpoint = true,\n        ModelDeployments = new[]\n        {\n            new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentArgs\n            {\n                ModelSlug = \"deepseek-r1-distill-qwen-14b\",\n                ModelProvider = \"digitalocean\",\n                Accelerators = new[]\n                {\n                    new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentAcceleratorArgs\n                    {\n                        AcceleratorSlug = \"gpu-h100x1-80gb\",\n                        Scale = 1,\n                        Type = \"nvidia_h100\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDedicatedInference(ctx, \"public\", \u0026digitalocean.DedicatedInferenceArgs{\n\t\t\tName:                 pulumi.String(\"my-public-inference\"),\n\t\t\tRegion:               pulumi.String(\"tor1\"),\n\t\t\tEnablePublicEndpoint: pulumi.Bool(true),\n\t\t\tModelDeployments: digitalocean.DedicatedInferenceModelDeploymentArray{\n\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentArgs{\n\t\t\t\t\tModelSlug:     pulumi.String(\"deepseek-r1-distill-qwen-14b\"),\n\t\t\t\t\tModelProvider: pulumi.String(\"digitalocean\"),\n\t\t\t\t\tAccelerators: digitalocean.DedicatedInferenceModelDeploymentAcceleratorArray{\n\t\t\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentAcceleratorArgs{\n\t\t\t\t\t\t\tAcceleratorSlug: pulumi.String(\"gpu-h100x1-80gb\"),\n\t\t\t\t\t\t\tScale:           pulumi.Int(1),\n\t\t\t\t\t\t\tType:            pulumi.String(\"nvidia_h100\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DedicatedInference;\nimport com.pulumi.digitalocean.DedicatedInferenceArgs;\nimport com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var public_ = new DedicatedInference(\"public\", DedicatedInferenceArgs.builder()\n            .name(\"my-public-inference\")\n            .region(\"tor1\")\n            .enablePublicEndpoint(true)\n            .modelDeployments(DedicatedInferenceModelDeploymentArgs.builder()\n                .modelSlug(\"deepseek-r1-distill-qwen-14b\")\n                .modelProvider(\"digitalocean\")\n                .accelerators(DedicatedInferenceModelDeploymentAcceleratorArgs.builder()\n                    .acceleratorSlug(\"gpu-h100x1-80gb\")\n                    .scale(1)\n                    .type(\"nvidia_h100\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  public:\n    type: digitalocean:DedicatedInference\n    properties:\n      name: my-public-inference\n      region: tor1\n      enablePublicEndpoint: true\n      modelDeployments:\n        - modelSlug: deepseek-r1-distill-qwen-14b\n          modelProvider: digitalocean\n          accelerators:\n            - acceleratorSlug: gpu-h100x1-80gb\n              scale: 1\n              type: nvidia_h100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### With VPC\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst _private = new digitalocean.DedicatedInference(\"private\", {\n    name: \"my-private-inference\",\n    region: \"tor1\",\n    vpcUuid: example.id,\n    modelDeployments: [{\n        modelSlug: \"deepseek-r1-distill-qwen-14b\",\n        modelProvider: \"digitalocean\",\n        accelerators: [{\n            acceleratorSlug: \"gpu-h100x1-80gb\",\n            scale: 1,\n            type: \"nvidia_h100\",\n        }],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nprivate = digitalocean.DedicatedInference(\"private\",\n    name=\"my-private-inference\",\n    region=\"tor1\",\n    vpc_uuid=example[\"id\"],\n    model_deployments=[{\n        \"model_slug\": \"deepseek-r1-distill-qwen-14b\",\n        \"model_provider\": \"digitalocean\",\n        \"accelerators\": [{\n            \"accelerator_slug\": \"gpu-h100x1-80gb\",\n            \"scale\": 1,\n            \"type\": \"nvidia_h100\",\n        }],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @private = new DigitalOcean.Index.DedicatedInference(\"private\", new()\n    {\n        Name = \"my-private-inference\",\n        Region = \"tor1\",\n        VpcUuid = example.Id,\n        ModelDeployments = new[]\n        {\n            new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentArgs\n            {\n                ModelSlug = \"deepseek-r1-distill-qwen-14b\",\n                ModelProvider = \"digitalocean\",\n                Accelerators = new[]\n                {\n                    new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentAcceleratorArgs\n                    {\n                        AcceleratorSlug = \"gpu-h100x1-80gb\",\n                        Scale = 1,\n                        Type = \"nvidia_h100\",\n                    },\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.NewDedicatedInference(ctx, \"private\", \u0026digitalocean.DedicatedInferenceArgs{\n\t\t\tName:    pulumi.String(\"my-private-inference\"),\n\t\t\tRegion:  pulumi.String(\"tor1\"),\n\t\t\tVpcUuid: pulumi.Any(example.Id),\n\t\t\tModelDeployments: digitalocean.DedicatedInferenceModelDeploymentArray{\n\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentArgs{\n\t\t\t\t\tModelSlug:     pulumi.String(\"deepseek-r1-distill-qwen-14b\"),\n\t\t\t\t\tModelProvider: pulumi.String(\"digitalocean\"),\n\t\t\t\t\tAccelerators: digitalocean.DedicatedInferenceModelDeploymentAcceleratorArray{\n\t\t\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentAcceleratorArgs{\n\t\t\t\t\t\t\tAcceleratorSlug: pulumi.String(\"gpu-h100x1-80gb\"),\n\t\t\t\t\t\t\tScale:           pulumi.Int(1),\n\t\t\t\t\t\t\tType:            pulumi.String(\"nvidia_h100\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DedicatedInference;\nimport com.pulumi.digitalocean.DedicatedInferenceArgs;\nimport com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var private_ = new DedicatedInference(\"private\", DedicatedInferenceArgs.builder()\n            .name(\"my-private-inference\")\n            .region(\"tor1\")\n            .vpcUuid(example.id())\n            .modelDeployments(DedicatedInferenceModelDeploymentArgs.builder()\n                .modelSlug(\"deepseek-r1-distill-qwen-14b\")\n                .modelProvider(\"digitalocean\")\n                .accelerators(DedicatedInferenceModelDeploymentAcceleratorArgs.builder()\n                    .acceleratorSlug(\"gpu-h100x1-80gb\")\n                    .scale(1)\n                    .type(\"nvidia_h100\")\n                    .build())\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  private:\n    type: digitalocean:DedicatedInference\n    properties:\n      name: my-private-inference\n      region: tor1\n      vpcUuid: ${example.id}\n      modelDeployments:\n        - modelSlug: deepseek-r1-distill-qwen-14b\n          modelProvider: digitalocean\n          accelerators:\n            - acceleratorSlug: gpu-h100x1-80gb\n              scale: 1\n              type: nvidia_h100\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDedicated inference endpoints can be imported using their \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dedicatedInference:DedicatedInference example endpoint-id\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the dedicated inference endpoint was created.\n"
+                },
+                "enablePublicEndpoint": {
+                    "type": "boolean",
+                    "description": "Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. This field is immutable after creation and changing it forces a new resource.\n"
+                },
+                "huggingFaceToken": {
+                    "type": "string",
+                    "description": "A HuggingFace token for accessing gated models.\n",
+                    "secret": true
+                },
+                "modelDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DedicatedInferenceModelDeployment:DedicatedInferenceModelDeployment"
+                    },
+                    "description": "The list of model deployments to run on the dedicated inference endpoint. Each \u003cspan pulumi-lang-nodejs=\"`modelDeployments`\" pulumi-lang-dotnet=\"`ModelDeployments`\" pulumi-lang-go=\"`modelDeployments`\" pulumi-lang-python=\"`model_deployments`\" pulumi-lang-yaml=\"`modelDeployments`\" pulumi-lang-java=\"`modelDeployments`\"\u003e`modelDeployments`\u003c/span\u003e block supports:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the dedicated inference endpoint.\n"
+                },
+                "privateEndpointFqdn": {
+                    "type": "string",
+                    "description": "The fully-qualified domain name of the private endpoint.\n"
+                },
+                "publicEndpointFqdn": {
+                    "type": "string",
+                    "description": "The fully-qualified domain name of the public endpoint, if enabled.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.\n"
+                },
+                "status": {
+                    "type": "string",
+                    "description": "The current status of the dedicated inference endpoint.\n"
+                },
+                "updatedAt": {
+                    "type": "string",
+                    "description": "The date and time when the dedicated inference endpoint was last updated.\n"
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.\n"
+                }
+            },
+            "required": [
+                "createdAt",
+                "modelDeployments",
+                "name",
+                "privateEndpointFqdn",
+                "publicEndpointFqdn",
+                "region",
+                "status",
+                "updatedAt"
+            ],
+            "inputProperties": {
+                "enablePublicEndpoint": {
+                    "type": "boolean",
+                    "description": "Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. This field is immutable after creation and changing it forces a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "huggingFaceToken": {
+                    "type": "string",
+                    "description": "A HuggingFace token for accessing gated models.\n",
+                    "secret": true
+                },
+                "modelDeployments": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/types/digitalocean:index/DedicatedInferenceModelDeployment:DedicatedInferenceModelDeployment"
+                    },
+                    "description": "The list of model deployments to run on the dedicated inference endpoint. Each \u003cspan pulumi-lang-nodejs=\"`modelDeployments`\" pulumi-lang-dotnet=\"`ModelDeployments`\" pulumi-lang-go=\"`modelDeployments`\" pulumi-lang-python=\"`model_deployments`\" pulumi-lang-yaml=\"`modelDeployments`\" pulumi-lang-java=\"`modelDeployments`\"\u003e`modelDeployments`\u003c/span\u003e block supports:\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the dedicated inference endpoint.\n"
+                },
+                "region": {
+                    "type": "string",
+                    "description": "The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "vpcUuid": {
+                    "type": "string",
+                    "description": "The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "modelDeployments",
+                "region"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DedicatedInference resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the dedicated inference endpoint was created.\n"
+                    },
+                    "enablePublicEndpoint": {
+                        "type": "boolean",
+                        "description": "Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e. This field is immutable after creation and changing it forces a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "huggingFaceToken": {
+                        "type": "string",
+                        "description": "A HuggingFace token for accessing gated models.\n",
+                        "secret": true
+                    },
+                    "modelDeployments": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/DedicatedInferenceModelDeployment:DedicatedInferenceModelDeployment"
+                        },
+                        "description": "The list of model deployments to run on the dedicated inference endpoint. Each \u003cspan pulumi-lang-nodejs=\"`modelDeployments`\" pulumi-lang-dotnet=\"`ModelDeployments`\" pulumi-lang-go=\"`modelDeployments`\" pulumi-lang-python=\"`model_deployments`\" pulumi-lang-yaml=\"`modelDeployments`\" pulumi-lang-java=\"`modelDeployments`\"\u003e`modelDeployments`\u003c/span\u003e block supports:\n"
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A human-readable name for the dedicated inference endpoint.\n"
+                    },
+                    "privateEndpointFqdn": {
+                        "type": "string",
+                        "description": "The fully-qualified domain name of the private endpoint.\n"
+                    },
+                    "publicEndpointFqdn": {
+                        "type": "string",
+                        "description": "The fully-qualified domain name of the public endpoint, if enabled.\n"
+                    },
+                    "region": {
+                        "type": "string",
+                        "description": "The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "status": {
+                        "type": "string",
+                        "description": "The current status of the dedicated inference endpoint.\n"
+                    },
+                    "updatedAt": {
+                        "type": "string",
+                        "description": "The date and time when the dedicated inference endpoint was last updated.\n"
+                    },
+                    "vpcUuid": {
+                        "type": "string",
+                        "description": "The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.\n",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken": {
+            "description": "Provides a DigitalOcean Dedicated Inference Token resource. This can be used to\ncreate and revoke API tokens for dedicated inference endpoints.\n\n\u003e **Note:** The \u003cspan pulumi-lang-nodejs=\"`token`\" pulumi-lang-dotnet=\"`Token`\" pulumi-lang-go=\"`token`\" pulumi-lang-python=\"`token`\" pulumi-lang-yaml=\"`token`\" pulumi-lang-java=\"`token`\"\u003e`token`\u003c/span\u003e attribute is only available immediately after creation\nand cannot be retrieved afterwards. Make sure to store it securely.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.DedicatedInference(\"example\", {\n    name: \"my-inference-endpoint\",\n    region: \"tor1\",\n    modelDeployments: [{\n        modelSlug: \"deepseek-r1-distill-qwen-14b\",\n        modelProvider: \"digitalocean\",\n        accelerators: [{\n            acceleratorSlug: \"gpu-h100x1-80gb\",\n            scale: 1,\n            type: \"nvidia_h100\",\n        }],\n    }],\n});\nconst exampleDedicatedInferenceToken = new digitalocean.DedicatedInferenceToken(\"example\", {\n    dedicatedInferenceId: example.id,\n    name: \"my-api-token\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.DedicatedInference(\"example\",\n    name=\"my-inference-endpoint\",\n    region=\"tor1\",\n    model_deployments=[{\n        \"model_slug\": \"deepseek-r1-distill-qwen-14b\",\n        \"model_provider\": \"digitalocean\",\n        \"accelerators\": [{\n            \"accelerator_slug\": \"gpu-h100x1-80gb\",\n            \"scale\": 1,\n            \"type\": \"nvidia_h100\",\n        }],\n    }])\nexample_dedicated_inference_token = digitalocean.DedicatedInferenceToken(\"example\",\n    dedicated_inference_id=example.id,\n    name=\"my-api-token\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Index.DedicatedInference(\"example\", new()\n    {\n        Name = \"my-inference-endpoint\",\n        Region = \"tor1\",\n        ModelDeployments = new[]\n        {\n            new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentArgs\n            {\n                ModelSlug = \"deepseek-r1-distill-qwen-14b\",\n                ModelProvider = \"digitalocean\",\n                Accelerators = new[]\n                {\n                    new DigitalOcean.Inputs.DedicatedInferenceModelDeploymentAcceleratorArgs\n                    {\n                        AcceleratorSlug = \"gpu-h100x1-80gb\",\n                        Scale = 1,\n                        Type = \"nvidia_h100\",\n                    },\n                },\n            },\n        },\n    });\n\n    var exampleDedicatedInferenceToken = new DigitalOcean.Index.DedicatedInferenceToken(\"example\", new()\n    {\n        DedicatedInferenceId = example.Id,\n        Name = \"my-api-token\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewDedicatedInference(ctx, \"example\", \u0026digitalocean.DedicatedInferenceArgs{\n\t\t\tName:   pulumi.String(\"my-inference-endpoint\"),\n\t\t\tRegion: pulumi.String(\"tor1\"),\n\t\t\tModelDeployments: digitalocean.DedicatedInferenceModelDeploymentArray{\n\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentArgs{\n\t\t\t\t\tModelSlug:     pulumi.String(\"deepseek-r1-distill-qwen-14b\"),\n\t\t\t\t\tModelProvider: pulumi.String(\"digitalocean\"),\n\t\t\t\t\tAccelerators: digitalocean.DedicatedInferenceModelDeploymentAcceleratorArray{\n\t\t\t\t\t\t\u0026digitalocean.DedicatedInferenceModelDeploymentAcceleratorArgs{\n\t\t\t\t\t\t\tAcceleratorSlug: pulumi.String(\"gpu-h100x1-80gb\"),\n\t\t\t\t\t\t\tScale:           pulumi.Int(1),\n\t\t\t\t\t\t\tType:            pulumi.String(\"nvidia_h100\"),\n\t\t\t\t\t\t},\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDedicatedInferenceToken(ctx, \"example\", \u0026digitalocean.DedicatedInferenceTokenArgs{\n\t\t\tDedicatedInferenceId: example.ID(),\n\t\t\tName:                 pulumi.String(\"my-api-token\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DedicatedInference;\nimport com.pulumi.digitalocean.DedicatedInferenceArgs;\nimport com.pulumi.digitalocean.inputs.DedicatedInferenceModelDeploymentArgs;\nimport com.pulumi.digitalocean.DedicatedInferenceToken;\nimport com.pulumi.digitalocean.DedicatedInferenceTokenArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new DedicatedInference(\"example\", DedicatedInferenceArgs.builder()\n            .name(\"my-inference-endpoint\")\n            .region(\"tor1\")\n            .modelDeployments(DedicatedInferenceModelDeploymentArgs.builder()\n                .modelSlug(\"deepseek-r1-distill-qwen-14b\")\n                .modelProvider(\"digitalocean\")\n                .accelerators(DedicatedInferenceModelDeploymentAcceleratorArgs.builder()\n                    .acceleratorSlug(\"gpu-h100x1-80gb\")\n                    .scale(1)\n                    .type(\"nvidia_h100\")\n                    .build())\n                .build())\n            .build());\n\n        var exampleDedicatedInferenceToken = new DedicatedInferenceToken(\"exampleDedicatedInferenceToken\", DedicatedInferenceTokenArgs.builder()\n            .dedicatedInferenceId(example.id())\n            .name(\"my-api-token\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:DedicatedInference\n    properties:\n      name: my-inference-endpoint\n      region: tor1\n      modelDeployments:\n        - modelSlug: deepseek-r1-distill-qwen-14b\n          modelProvider: digitalocean\n          accelerators:\n            - acceleratorSlug: gpu-h100x1-80gb\n              scale: 1\n              type: nvidia_h100\n  exampleDedicatedInferenceToken:\n    type: digitalocean:DedicatedInferenceToken\n    name: example\n    properties:\n      dedicatedInferenceId: ${example.id}\n      name: my-api-token\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDedicated inference tokens can be imported using the composite ID\n`{dedicated_inference_id}:{token_id}`, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken example endpoint-id:token-id\n```\n\n",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "description": "The date and time when the token was created.\n"
+                },
+                "dedicatedInferenceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.\n"
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the token. Changing this forces a new resource.\n"
+                },
+                "token": {
+                    "type": "string",
+                    "description": "(Sensitive) The token value. Only available immediately after creation and not retrievable afterwards.\n",
+                    "secret": true
+                }
+            },
+            "required": [
+                "createdAt",
+                "dedicatedInferenceId",
+                "name",
+                "token"
+            ],
+            "inputProperties": {
+                "dedicatedInferenceId": {
+                    "type": "string",
+                    "description": "The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.\n",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string",
+                    "description": "A human-readable name for the token. Changing this forces a new resource.\n",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "dedicatedInferenceId"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering DedicatedInferenceToken resources.\n",
+                "properties": {
+                    "createdAt": {
+                        "type": "string",
+                        "description": "The date and time when the token was created.\n"
+                    },
+                    "dedicatedInferenceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated inference endpoint this token belongs to. Changing this forces a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "name": {
+                        "type": "string",
+                        "description": "A human-readable name for the token. Changing this forces a new resource.\n",
+                        "willReplaceOnChanges": true
+                    },
+                    "token": {
+                        "type": "string",
+                        "description": "(Sensitive) The token value. Only available immediately after creation and not retrievable afterwards.\n",
+                        "secret": true
+                    }
+                },
+                "type": "object"
+            }
+        },
         "digitalocean:index/dnsRecord:DnsRecord": {
             "description": "Provides a DigitalOcean DNS record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst _default = new digitalocean.Domain(\"default\", {name: \"example.com\"});\n// Add an A record to the domain for www.example.com.\nconst www = new digitalocean.DnsRecord(\"www\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.A,\n    name: \"www\",\n    value: \"192.168.0.11\",\n});\n// Add a MX record for the example.com domain itself.\nconst mx = new digitalocean.DnsRecord(\"mx\", {\n    domain: _default.id,\n    type: digitalocean.RecordType.MX,\n    name: \"@\",\n    priority: 10,\n    value: \"mail.example.com.\",\n});\nexport const wwwFqdn = www.fqdn;\nexport const mxFqdn = mx.fqdn;\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\ndefault = digitalocean.Domain(\"default\", name=\"example.com\")\n# Add an A record to the domain for www.example.com.\nwww = digitalocean.DnsRecord(\"www\",\n    domain=default.id,\n    type=digitalocean.RecordType.A,\n    name=\"www\",\n    value=\"192.168.0.11\")\n# Add a MX record for the example.com domain itself.\nmx = digitalocean.DnsRecord(\"mx\",\n    domain=default.id,\n    type=digitalocean.RecordType.MX,\n    name=\"@\",\n    priority=10,\n    value=\"mail.example.com.\")\npulumi.export(\"wwwFqdn\", www.fqdn)\npulumi.export(\"mxFqdn\", mx.fqdn)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var @default = new DigitalOcean.Index.Domain(\"default\", new()\n    {\n        Name = \"example.com\",\n    });\n\n    // Add an A record to the domain for www.example.com.\n    var www = new DigitalOcean.Index.DnsRecord(\"www\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.A,\n        Name = \"www\",\n        Value = \"192.168.0.11\",\n    });\n\n    // Add a MX record for the example.com domain itself.\n    var mx = new DigitalOcean.Index.DnsRecord(\"mx\", new()\n    {\n        Domain = @default.Id,\n        Type = DigitalOcean.RecordType.MX,\n        Name = \"@\",\n        Priority = 10,\n        Value = \"mail.example.com.\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"wwwFqdn\"] = www.Fqdn,\n        [\"mxFqdn\"] = mx.Fqdn,\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_default, err := digitalocean.NewDomain(ctx, \"default\", \u0026digitalocean.DomainArgs{\n\t\t\tName: pulumi.String(\"example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add an A record to the domain for www.example.com.\n\t\twww, err := digitalocean.NewDnsRecord(ctx, \"www\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain: _default.ID(),\n\t\t\tType:   pulumi.String(digitalocean.RecordTypeA),\n\t\t\tName:   pulumi.String(\"www\"),\n\t\t\tValue:  pulumi.String(\"192.168.0.11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Add a MX record for the example.com domain itself.\n\t\tmx, err := digitalocean.NewDnsRecord(ctx, \"mx\", \u0026digitalocean.DnsRecordArgs{\n\t\t\tDomain:   _default.ID(),\n\t\t\tType:     pulumi.String(digitalocean.RecordTypeMX),\n\t\t\tName:     pulumi.String(\"@\"),\n\t\t\tPriority: pulumi.Int(10),\n\t\t\tValue:    pulumi.String(\"mail.example.com.\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"wwwFqdn\", www.Fqdn)\n\t\tctx.Export(\"mxFqdn\", mx.Fqdn)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Domain;\nimport com.pulumi.digitalocean.DomainArgs;\nimport com.pulumi.digitalocean.DnsRecord;\nimport com.pulumi.digitalocean.DnsRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var default_ = new Domain(\"default\", DomainArgs.builder()\n            .name(\"example.com\")\n            .build());\n\n        // Add an A record to the domain for www.example.com.\n        var www = new DnsRecord(\"www\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"A\")\n            .name(\"www\")\n            .value(\"192.168.0.11\")\n            .build());\n\n        // Add a MX record for the example.com domain itself.\n        var mx = new DnsRecord(\"mx\", DnsRecordArgs.builder()\n            .domain(default_.id())\n            .type(\"MX\")\n            .name(\"@\")\n            .priority(10)\n            .value(\"mail.example.com.\")\n            .build());\n\n        ctx.export(\"wwwFqdn\", www.fqdn());\n        ctx.export(\"mxFqdn\", mx.fqdn());\n    }\n}\n```\n```yaml\nresources:\n  default:\n    type: digitalocean:Domain\n    properties:\n      name: example.com\n  # Add an A record to the domain for www.example.com.\n  www:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: A\n      name: www\n      value: 192.168.0.11\n  # Add a MX record for the example.com domain itself.\n  mx:\n    type: digitalocean:DnsRecord\n    properties:\n      domain: ${default.id}\n      type: MX\n      name: '@'\n      priority: 10\n      value: mail.example.com.\noutputs:\n  # Output the FQDN for the www A record.\n  wwwFqdn: ${www.fqdn}\n  # Output the FQDN for the MX record.\n  mxFqdn: ${mx.fqdn}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nRecords can be imported using the domain name and record \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e when joined with a comma. See the following example:\n\n```sh\n$ pulumi import digitalocean:index/dnsRecord:DnsRecord example_record example.com,12345678\n```\n\n\u003e  You find the \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e of the records [using the DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Domain-Records/operation/domains_list_records) or CLI. Run the follow command to list the IDs for all DNS records on a domain: `doctl compute domain records list \u003cdomain.name\u003e`\n\n",
             "properties": {
@@ -31164,7 +31960,7 @@
                 },
                 "gracefulShutdown": {
                     "type": "boolean",
-                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n"
+                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
                 },
                 "image": {
                     "type": "string",
@@ -31213,6 +32009,10 @@
                     "type": "boolean",
                     "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region.\n",
                     "deprecationMessage": "This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region."
+                },
+                "publicNetworking": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether to enables public networking for the Droplet or not.\nBy default, this is always enabled on new droplets.\nBut, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n"
                 },
                 "region": {
                     "type": "string",
@@ -31301,7 +32101,7 @@
                 },
                 "gracefulShutdown": {
                     "type": "boolean",
-                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n"
+                    "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
                 },
                 "image": {
                     "type": "string",
@@ -31329,6 +32129,11 @@
                     "type": "boolean",
                     "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region.\n",
                     "deprecationMessage": "This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region."
+                },
+                "publicNetworking": {
+                    "type": "boolean",
+                    "description": "A boolean indicating whether to enables public networking for the Droplet or not.\nBy default, this is always enabled on new droplets.\nBut, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n",
+                    "willReplaceOnChanges": true
                 },
                 "region": {
                     "type": "string",
@@ -31427,7 +32232,7 @@
                     },
                     "gracefulShutdown": {
                         "type": "boolean",
-                        "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n"
+                        "description": "A boolean indicating whether the droplet\nshould be gracefully shut down before it is deleted.\n"
                     },
                     "image": {
                         "type": "string",
@@ -31478,6 +32283,11 @@
                         "type": "boolean",
                         "description": "**Deprecated** Boolean controlling if private networking\nis enabled. This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region.\n",
                         "deprecationMessage": "This parameter has been deprecated. Use \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e instead to specify a VPC network for the Droplet. If no \u003cspan pulumi-lang-nodejs=\"`vpcUuid`\" pulumi-lang-dotnet=\"`VpcUuid`\" pulumi-lang-go=\"`vpcUuid`\" pulumi-lang-python=\"`vpc_uuid`\" pulumi-lang-yaml=\"`vpcUuid`\" pulumi-lang-java=\"`vpcUuid`\"\u003e`vpcUuid`\u003c/span\u003e is provided, the Droplet will be placed in your account's default VPC for the region."
+                    },
+                    "publicNetworking": {
+                        "type": "boolean",
+                        "description": "A boolean indicating whether to enables public networking for the Droplet or not.\nBy default, this is always enabled on new droplets.\nBut, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.\n\n\u003e **NOTE:** If you use \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, \u003cspan pulumi-lang-nodejs=\"`volumeIds`\" pulumi-lang-dotnet=\"`VolumeIds`\" pulumi-lang-go=\"`volumeIds`\" pulumi-lang-python=\"`volume_ids`\" pulumi-lang-yaml=\"`volumeIds`\" pulumi-lang-java=\"`volumeIds`\"\u003e`volumeIds`\u003c/span\u003e must not be mixed with external \u003cspan pulumi-lang-nodejs=\"`digitalocean.VolumeAttachment`\" pulumi-lang-dotnet=\"`digitalocean.VolumeAttachment`\" pulumi-lang-go=\"`VolumeAttachment`\" pulumi-lang-python=\"`VolumeAttachment`\" pulumi-lang-yaml=\"`digitalocean.VolumeAttachment`\" pulumi-lang-java=\"`digitalocean.VolumeAttachment`\"\u003e`digitalocean.VolumeAttachment`\u003c/span\u003e resources for a given instance.\n",
+                        "willReplaceOnChanges": true
                     },
                     "region": {
                         "type": "string",
@@ -31555,7 +32365,7 @@
             }
         },
         "digitalocean:index/dropletAutoscale:DropletAutoscale": {
-            "description": "Provides a DigitalOcean Droplet Autoscale resource. This can be used to create, modify, \nread and delete Droplet Autoscale pools.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst my_ssh_key = new digitalocean.SshKey(\"my-ssh-key\", {\n    name: \"terraform-example\",\n    publicKey: std.file({\n        input: \"/Users/terraform/.ssh/id_rsa.pub\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst my_tag = new digitalocean.Tag(\"my-tag\", {name: \"terraform-example\"});\nconst my_autoscale_pool = new digitalocean.DropletAutoscale(\"my-autoscale-pool\", {\n    name: \"terraform-example\",\n    config: {\n        minInstances: 10,\n        maxInstances: 50,\n        targetCpuUtilization: 0.5,\n        targetMemoryUtilization: 0.5,\n        cooldownMinutes: 5,\n    },\n    dropletTemplate: {\n        size: \"c-2\",\n        region: \"nyc3\",\n        image: \"ubuntu-24-04-x64\",\n        tags: [my_tag.id],\n        sshKeys: [my_ssh_key.id],\n        withDropletAgent: true,\n        ipv6: true,\n        userData: `\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nmy_ssh_key = digitalocean.SshKey(\"my-ssh-key\",\n    name=\"terraform-example\",\n    public_key=std.file(input=\"/Users/terraform/.ssh/id_rsa.pub\").result)\nmy_tag = digitalocean.Tag(\"my-tag\", name=\"terraform-example\")\nmy_autoscale_pool = digitalocean.DropletAutoscale(\"my-autoscale-pool\",\n    name=\"terraform-example\",\n    config={\n        \"min_instances\": 10,\n        \"max_instances\": 50,\n        \"target_cpu_utilization\": 0.5,\n        \"target_memory_utilization\": 0.5,\n        \"cooldown_minutes\": 5,\n    },\n    droplet_template={\n        \"size\": \"c-2\",\n        \"region\": \"nyc3\",\n        \"image\": \"ubuntu-24-04-x64\",\n        \"tags\": [my_tag.id],\n        \"ssh_keys\": [my_ssh_key.id],\n        \"with_droplet_agent\": True,\n        \"ipv6\": True,\n        \"user_data\": \"\"\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\"\"\",\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_ssh_key = new DigitalOcean.Index.SshKey(\"my-ssh-key\", new()\n    {\n        Name = \"terraform-example\",\n        PublicKey = Std.Index.File.Invoke(new()\n        {\n            Input = \"/Users/terraform/.ssh/id_rsa.pub\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var my_tag = new DigitalOcean.Index.Tag(\"my-tag\", new()\n    {\n        Name = \"terraform-example\",\n    });\n\n    var my_autoscale_pool = new DigitalOcean.Index.DropletAutoscale(\"my-autoscale-pool\", new()\n    {\n        Name = \"terraform-example\",\n        Config = new DigitalOcean.Inputs.DropletAutoscaleConfigArgs\n        {\n            MinInstances = 10,\n            MaxInstances = 50,\n            TargetCpuUtilization = 0.5,\n            TargetMemoryUtilization = 0.5,\n            CooldownMinutes = 5,\n        },\n        DropletTemplate = new DigitalOcean.Inputs.DropletAutoscaleDropletTemplateArgs\n        {\n            Size = \"c-2\",\n            Region = \"nyc3\",\n            Image = \"ubuntu-24-04-x64\",\n            Tags = new[]\n            {\n                my_tag.Id,\n            },\n            SshKeys = new[]\n            {\n                my_ssh_key.Id,\n            },\n            WithDropletAgent = true,\n            Ipv6 = true,\n            UserData = @\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\",\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/Users/terraform/.ssh/id_rsa.pub\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_ssh_key, err := digitalocean.NewSshKey(ctx, \"my-ssh-key\", \u0026digitalocean.SshKeyArgs{\n\t\t\tName:      pulumi.String(\"terraform-example\"),\n\t\t\tPublicKey: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_tag, err := digitalocean.NewTag(ctx, \"my-tag\", \u0026digitalocean.TagArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDropletAutoscale(ctx, \"my-autoscale-pool\", \u0026digitalocean.DropletAutoscaleArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t\tConfig: \u0026digitalocean.DropletAutoscaleConfigArgs{\n\t\t\t\tMinInstances:            pulumi.Int(10),\n\t\t\t\tMaxInstances:            pulumi.Int(50),\n\t\t\t\tTargetCpuUtilization:    pulumi.Float64(0.5),\n\t\t\t\tTargetMemoryUtilization: pulumi.Float64(0.5),\n\t\t\t\tCooldownMinutes:         pulumi.Int(5),\n\t\t\t},\n\t\t\tDropletTemplate: \u0026digitalocean.DropletAutoscaleDropletTemplateArgs{\n\t\t\t\tSize:   pulumi.String(\"c-2\"),\n\t\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\t\tImage:  pulumi.String(\"ubuntu-24-04-x64\"),\n\t\t\t\tTags: pulumi.StringArray{\n\t\t\t\t\tmy_tag.ID(),\n\t\t\t\t},\n\t\t\t\tSshKeys: pulumi.StringArray{\n\t\t\t\t\tmy_ssh_key.ID(),\n\t\t\t\t},\n\t\t\t\tWithDropletAgent: pulumi.Bool(true),\n\t\t\t\tIpv6:             pulumi.Bool(true),\n\t\t\t\tUserData: pulumi.String(`\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SshKey;\nimport com.pulumi.digitalocean.SshKeyArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.digitalocean.Tag;\nimport com.pulumi.digitalocean.TagArgs;\nimport com.pulumi.digitalocean.DropletAutoscale;\nimport com.pulumi.digitalocean.DropletAutoscaleArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleConfigArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleDropletTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_ssh_key = new SshKey(\"my-ssh-key\", SshKeyArgs.builder()\n            .name(\"terraform-example\")\n            .publicKey(StdFunctions.file(FileArgs.builder()\n                .input(\"/Users/terraform/.ssh/id_rsa.pub\")\n                .build()).result())\n            .build());\n\n        var my_tag = new Tag(\"my-tag\", TagArgs.builder()\n            .name(\"terraform-example\")\n            .build());\n\n        var my_autoscale_pool = new DropletAutoscale(\"my-autoscale-pool\", DropletAutoscaleArgs.builder()\n            .name(\"terraform-example\")\n            .config(DropletAutoscaleConfigArgs.builder()\n                .minInstances(10)\n                .maxInstances(50)\n                .targetCpuUtilization(0.5)\n                .targetMemoryUtilization(0.5)\n                .cooldownMinutes(5)\n                .build())\n            .dropletTemplate(DropletAutoscaleDropletTemplateArgs.builder()\n                .size(\"c-2\")\n                .region(\"nyc3\")\n                .image(\"ubuntu-24-04-x64\")\n                .tags(my_tag.id())\n                .sshKeys(my_ssh_key.id())\n                .withDropletAgent(true)\n                .ipv6(true)\n                .userData(\"\"\"\n\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n                \"\"\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-ssh-key:\n    type: digitalocean:SshKey\n    properties:\n      name: terraform-example\n      publicKey:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /Users/terraform/.ssh/id_rsa.pub\n          return: result\n  my-tag:\n    type: digitalocean:Tag\n    properties:\n      name: terraform-example\n  my-autoscale-pool:\n    type: digitalocean:DropletAutoscale\n    properties:\n      name: terraform-example\n      config:\n        minInstances: 10\n        maxInstances: 50\n        targetCpuUtilization: 0.5\n        targetMemoryUtilization: 0.5\n        cooldownMinutes: 5\n      dropletTemplate:\n        size: c-2\n        region: nyc3\n        image: ubuntu-24-04-x64\n        tags:\n          - ${[\"my-tag\"].id}\n        sshKeys:\n          - ${[\"my-ssh-key\"].id}\n        withDropletAgent: true\n        ipv6: true\n        userData: |2\n          #cloud-config\n          runcmd:\n          - apt-get update\n          - apt-get install -y stress-ng\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplet Autoscale pools can be imported using their \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445\n```\n\n",
+            "description": "Provides a DigitalOcean Droplet Autoscale resource. This can be used to create, modify, \nread and delete Droplet Autoscale pools.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\nimport * as std from \"@pulumi/std\";\n\nconst my_ssh_key = new digitalocean.SshKey(\"my-ssh-key\", {\n    name: \"terraform-example\",\n    publicKey: std.file({\n        input: \"/Users/terraform/.ssh/id_rsa.pub\",\n    }).then(invoke =\u003e invoke.result),\n});\nconst my_tag = new digitalocean.Tag(\"my-tag\", {name: \"terraform-example\"});\nconst my_autoscale_pool = new digitalocean.DropletAutoscale(\"my-autoscale-pool\", {\n    name: \"terraform-example\",\n    config: {\n        minInstances: 10,\n        maxInstances: 50,\n        targetCpuUtilization: 0.5,\n        targetMemoryUtilization: 0.5,\n        cooldownMinutes: 5,\n    },\n    dropletTemplate: {\n        size: \"c-2\",\n        region: \"nyc3\",\n        image: \"ubuntu-24-04-x64\",\n        tags: [my_tag.id],\n        sshKeys: [my_ssh_key.id],\n        withDropletAgent: true,\n        ipv6: true,\n        userData: `\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`,\n        publicNetworking: false,\n    },\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\nimport pulumi_std as std\n\nmy_ssh_key = digitalocean.SshKey(\"my-ssh-key\",\n    name=\"terraform-example\",\n    public_key=std.file(input=\"/Users/terraform/.ssh/id_rsa.pub\").result)\nmy_tag = digitalocean.Tag(\"my-tag\", name=\"terraform-example\")\nmy_autoscale_pool = digitalocean.DropletAutoscale(\"my-autoscale-pool\",\n    name=\"terraform-example\",\n    config={\n        \"min_instances\": 10,\n        \"max_instances\": 50,\n        \"target_cpu_utilization\": 0.5,\n        \"target_memory_utilization\": 0.5,\n        \"cooldown_minutes\": 5,\n    },\n    droplet_template={\n        \"size\": \"c-2\",\n        \"region\": \"nyc3\",\n        \"image\": \"ubuntu-24-04-x64\",\n        \"tags\": [my_tag.id],\n        \"ssh_keys\": [my_ssh_key.id],\n        \"with_droplet_agent\": True,\n        \"ipv6\": True,\n        \"user_data\": \"\"\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\"\"\",\n        \"public_networking\": False,\n    })\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\nusing Std = Pulumi.Std;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var my_ssh_key = new DigitalOcean.Index.SshKey(\"my-ssh-key\", new()\n    {\n        Name = \"terraform-example\",\n        PublicKey = Std.Index.File.Invoke(new()\n        {\n            Input = \"/Users/terraform/.ssh/id_rsa.pub\",\n        }).Apply(invoke =\u003e invoke.Result),\n    });\n\n    var my_tag = new DigitalOcean.Index.Tag(\"my-tag\", new()\n    {\n        Name = \"terraform-example\",\n    });\n\n    var my_autoscale_pool = new DigitalOcean.Index.DropletAutoscale(\"my-autoscale-pool\", new()\n    {\n        Name = \"terraform-example\",\n        Config = new DigitalOcean.Inputs.DropletAutoscaleConfigArgs\n        {\n            MinInstances = 10,\n            MaxInstances = 50,\n            TargetCpuUtilization = 0.5,\n            TargetMemoryUtilization = 0.5,\n            CooldownMinutes = 5,\n        },\n        DropletTemplate = new DigitalOcean.Inputs.DropletAutoscaleDropletTemplateArgs\n        {\n            Size = \"c-2\",\n            Region = \"nyc3\",\n            Image = \"ubuntu-24-04-x64\",\n            Tags = new[]\n            {\n                my_tag.Id,\n            },\n            SshKeys = new[]\n            {\n                my_ssh_key.Id,\n            },\n            WithDropletAgent = true,\n            Ipv6 = true,\n            UserData = @\"\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n\",\n            PublicNetworking = false,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi-std/sdk/go/std\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tinvokeFile, err := std.File(ctx, \u0026std.FileArgs{\n\t\t\tInput: \"/Users/terraform/.ssh/id_rsa.pub\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_ssh_key, err := digitalocean.NewSshKey(ctx, \"my-ssh-key\", \u0026digitalocean.SshKeyArgs{\n\t\t\tName:      pulumi.String(\"terraform-example\"),\n\t\t\tPublicKey: pulumi.String(invokeFile.Result),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tmy_tag, err := digitalocean.NewTag(ctx, \"my-tag\", \u0026digitalocean.TagArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewDropletAutoscale(ctx, \"my-autoscale-pool\", \u0026digitalocean.DropletAutoscaleArgs{\n\t\t\tName: pulumi.String(\"terraform-example\"),\n\t\t\tConfig: \u0026digitalocean.DropletAutoscaleConfigArgs{\n\t\t\t\tMinInstances:            pulumi.Int(10),\n\t\t\t\tMaxInstances:            pulumi.Int(50),\n\t\t\t\tTargetCpuUtilization:    pulumi.Float64(0.5),\n\t\t\t\tTargetMemoryUtilization: pulumi.Float64(0.5),\n\t\t\t\tCooldownMinutes:         pulumi.Int(5),\n\t\t\t},\n\t\t\tDropletTemplate: \u0026digitalocean.DropletAutoscaleDropletTemplateArgs{\n\t\t\t\tSize:   pulumi.String(\"c-2\"),\n\t\t\t\tRegion: pulumi.String(\"nyc3\"),\n\t\t\t\tImage:  pulumi.String(\"ubuntu-24-04-x64\"),\n\t\t\t\tTags: pulumi.StringArray{\n\t\t\t\t\tmy_tag.ID(),\n\t\t\t\t},\n\t\t\t\tSshKeys: pulumi.StringArray{\n\t\t\t\t\tmy_ssh_key.ID(),\n\t\t\t\t},\n\t\t\t\tWithDropletAgent: pulumi.Bool(true),\n\t\t\t\tIpv6:             pulumi.Bool(true),\n\t\t\t\tUserData: pulumi.String(`\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n`),\n\t\t\t\tPublicNetworking: pulumi.Bool(false),\n\t\t\t},\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.SshKey;\nimport com.pulumi.digitalocean.SshKeyArgs;\nimport com.pulumi.std.StdFunctions;\nimport com.pulumi.std.inputs.FileArgs;\nimport com.pulumi.digitalocean.Tag;\nimport com.pulumi.digitalocean.TagArgs;\nimport com.pulumi.digitalocean.DropletAutoscale;\nimport com.pulumi.digitalocean.DropletAutoscaleArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleConfigArgs;\nimport com.pulumi.digitalocean.inputs.DropletAutoscaleDropletTemplateArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var my_ssh_key = new SshKey(\"my-ssh-key\", SshKeyArgs.builder()\n            .name(\"terraform-example\")\n            .publicKey(StdFunctions.file(FileArgs.builder()\n                .input(\"/Users/terraform/.ssh/id_rsa.pub\")\n                .build()).result())\n            .build());\n\n        var my_tag = new Tag(\"my-tag\", TagArgs.builder()\n            .name(\"terraform-example\")\n            .build());\n\n        var my_autoscale_pool = new DropletAutoscale(\"my-autoscale-pool\", DropletAutoscaleArgs.builder()\n            .name(\"terraform-example\")\n            .config(DropletAutoscaleConfigArgs.builder()\n                .minInstances(10)\n                .maxInstances(50)\n                .targetCpuUtilization(0.5)\n                .targetMemoryUtilization(0.5)\n                .cooldownMinutes(5)\n                .build())\n            .dropletTemplate(DropletAutoscaleDropletTemplateArgs.builder()\n                .size(\"c-2\")\n                .region(\"nyc3\")\n                .image(\"ubuntu-24-04-x64\")\n                .tags(my_tag.id())\n                .sshKeys(my_ssh_key.id())\n                .withDropletAgent(true)\n                .ipv6(true)\n                .userData(\"\"\"\n\n#cloud-config\nruncmd:\n- apt-get update\n- apt-get install -y stress-ng\n                \"\"\")\n                .publicNetworking(false)\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  my-ssh-key:\n    type: digitalocean:SshKey\n    properties:\n      name: terraform-example\n      publicKey:\n        fn::invoke:\n          function: std:file\n          arguments:\n            input: /Users/terraform/.ssh/id_rsa.pub\n          return: result\n  my-tag:\n    type: digitalocean:Tag\n    properties:\n      name: terraform-example\n  my-autoscale-pool:\n    type: digitalocean:DropletAutoscale\n    properties:\n      name: terraform-example\n      config:\n        minInstances: 10\n        maxInstances: 50\n        targetCpuUtilization: 0.5\n        targetMemoryUtilization: 0.5\n        cooldownMinutes: 5\n      dropletTemplate:\n        size: c-2\n        region: nyc3\n        image: ubuntu-24-04-x64\n        tags:\n          - ${[\"my-tag\"].id}\n        sshKeys:\n          - ${[\"my-ssh-key\"].id}\n        withDropletAgent: true\n        ipv6: true\n        userData: |2\n          #cloud-config\n          runcmd:\n          - apt-get update\n          - apt-get install -y stress-ng\n        publicNetworking: false\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDroplet Autoscale pools can be imported using their \u003cspan pulumi-lang-nodejs=\"`id`\" pulumi-lang-dotnet=\"`Id`\" pulumi-lang-go=\"`id`\" pulumi-lang-python=\"`id`\" pulumi-lang-yaml=\"`id`\" pulumi-lang-java=\"`id`\"\u003e`id`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/dropletAutoscale:DropletAutoscale my-autoscale-pool 38e66834-d741-47ec-88e7-c70cbdcz0445\n```\n\n",
             "properties": {
                 "config": {
                     "$ref": "#/types/digitalocean:index/DropletAutoscaleConfig:DropletAutoscaleConfig",
@@ -36148,7 +36958,7 @@
             }
         },
         "digitalocean:index/nfs:Nfs": {
-            "description": "Provides a DigitalOcean NFS share which can be mounted to Droplets to provide shared storage.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst exampleNfs = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: example.id,\n    performanceTier: \"high\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nexample_nfs = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=example.id,\n    performance_tier=\"high\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Index.Vpc(\"example\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var exampleNfs = new DigitalOcean.Index.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = example.Id,\n        PerformanceTier = \"high\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           example.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var exampleNfs = new Nfs(\"exampleNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(example.id())\n            .performanceTier(\"high\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  exampleNfs:\n    type: digitalocean:Nfs\n    name: example\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${example.id}\n      performanceTier: high\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nNFS shares can be imported using the `share id` and the \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e , e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1\n```\n\n",
+            "description": "Provides a DigitalOcean NFS share which can be mounted to Droplets to provide shared storage.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = new digitalocean.Vpc(\"example\", {\n    name: \"example-vpc\",\n    region: \"nyc1\",\n});\nconst exampleNfs = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: example.id,\n    performanceTier: \"high\",\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.Vpc(\"example\",\n    name=\"example-vpc\",\n    region=\"nyc1\")\nexample_nfs = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=example.id,\n    performance_tier=\"high\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = new DigitalOcean.Index.Vpc(\"example\", new()\n    {\n        Name = \"example-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var exampleNfs = new DigitalOcean.Index.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = example.Id,\n        PerformanceTier = \"high\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.NewVpc(ctx, \"example\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"example-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t_, err = digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           example.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var example = new Vpc(\"example\", VpcArgs.builder()\n            .name(\"example-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var exampleNfs = new Nfs(\"exampleNfs\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(example.id())\n            .performanceTier(\"high\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  example:\n    type: digitalocean:Vpc\n    properties:\n      name: example-vpc\n      region: nyc1\n  exampleNfs:\n    type: digitalocean:Nfs\n    name: example\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${example.id}\n      performanceTier: high\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Moving Share Between VPCs\n\nTo move an NFS share from one VPC to another using the Reassign API:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst source = new digitalocean.Vpc(\"source\", {\n    name: \"source-vpc\",\n    region: \"nyc1\",\n});\nconst destination = new digitalocean.Vpc(\"destination\", {\n    name: \"destination-vpc\",\n    region: \"nyc1\",\n});\nconst example = new digitalocean.Nfs(\"example\", {\n    region: \"nyc1\",\n    name: \"example-nfs\",\n    size: 50,\n    vpcId: source.id,\n    performanceTier: \"high\",\n});\n// Attach to source VPC\nconst sourceNfsAttachment = new digitalocean.NfsAttachment(\"source\", {\n    shareId: example.id,\n    vpcId: source.id,\n    region: \"nyc1\",\n});\n// Reassign to destination VPC - uses the efficient Reassign API\nconst destinationNfsAttachment = new digitalocean.NfsAttachment(\"destination\", {\n    shareId: example.id,\n    vpcId: destination.id,\n    region: \"nyc1\",\n}, {\n    dependsOn: [sourceNfsAttachment],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nsource = digitalocean.Vpc(\"source\",\n    name=\"source-vpc\",\n    region=\"nyc1\")\ndestination = digitalocean.Vpc(\"destination\",\n    name=\"destination-vpc\",\n    region=\"nyc1\")\nexample = digitalocean.Nfs(\"example\",\n    region=\"nyc1\",\n    name=\"example-nfs\",\n    size=50,\n    vpc_id=source.id,\n    performance_tier=\"high\")\n# Attach to source VPC\nsource_nfs_attachment = digitalocean.NfsAttachment(\"source\",\n    share_id=example.id,\n    vpc_id=source.id,\n    region=\"nyc1\")\n# Reassign to destination VPC - uses the efficient Reassign API\ndestination_nfs_attachment = digitalocean.NfsAttachment(\"destination\",\n    share_id=example.id,\n    vpc_id=destination.id,\n    region=\"nyc1\",\n    opts = pulumi.ResourceOptions(depends_on=[source_nfs_attachment]))\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var source = new DigitalOcean.Index.Vpc(\"source\", new()\n    {\n        Name = \"source-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var destination = new DigitalOcean.Index.Vpc(\"destination\", new()\n    {\n        Name = \"destination-vpc\",\n        Region = \"nyc1\",\n    });\n\n    var example = new DigitalOcean.Index.Nfs(\"example\", new()\n    {\n        Region = \"nyc1\",\n        Name = \"example-nfs\",\n        Size = 50,\n        VpcId = source.Id,\n        PerformanceTier = \"high\",\n    });\n\n    // Attach to source VPC\n    var sourceNfsAttachment = new DigitalOcean.Index.NfsAttachment(\"source\", new()\n    {\n        ShareId = example.Id,\n        VpcId = source.Id,\n        Region = \"nyc1\",\n    });\n\n    // Reassign to destination VPC - uses the efficient Reassign API\n    var destinationNfsAttachment = new DigitalOcean.Index.NfsAttachment(\"destination\", new()\n    {\n        ShareId = example.Id,\n        VpcId = destination.Id,\n        Region = \"nyc1\",\n    }, new CustomResourceOptions\n    {\n        DependsOn =\n        {\n            sourceNfsAttachment,\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tsource, err := digitalocean.NewVpc(ctx, \"source\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"source-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tdestination, err := digitalocean.NewVpc(ctx, \"destination\", \u0026digitalocean.VpcArgs{\n\t\t\tName:   pulumi.String(\"destination-vpc\"),\n\t\t\tRegion: pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\texample, err := digitalocean.NewNfs(ctx, \"example\", \u0026digitalocean.NfsArgs{\n\t\t\tRegion:          pulumi.String(\"nyc1\"),\n\t\t\tName:            pulumi.String(\"example-nfs\"),\n\t\t\tSize:            pulumi.Int(50),\n\t\t\tVpcId:           source.ID(),\n\t\t\tPerformanceTier: pulumi.String(\"high\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Attach to source VPC\n\t\tsourceNfsAttachment, err := digitalocean.NewNfsAttachment(ctx, \"source\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   source.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\t// Reassign to destination VPC - uses the efficient Reassign API\n\t\t_, err = digitalocean.NewNfsAttachment(ctx, \"destination\", \u0026digitalocean.NfsAttachmentArgs{\n\t\t\tShareId: example.ID(),\n\t\t\tVpcId:   destination.ID(),\n\t\t\tRegion:  pulumi.String(\"nyc1\"),\n\t\t}, pulumi.DependsOn([]pulumi.Resource{\n\t\t\tsourceNfsAttachment,\n\t\t}))\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.Vpc;\nimport com.pulumi.digitalocean.VpcArgs;\nimport com.pulumi.digitalocean.Nfs;\nimport com.pulumi.digitalocean.NfsArgs;\nimport com.pulumi.digitalocean.NfsAttachment;\nimport com.pulumi.digitalocean.NfsAttachmentArgs;\nimport com.pulumi.resources.CustomResourceOptions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        var source = new Vpc(\"source\", VpcArgs.builder()\n            .name(\"source-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var destination = new Vpc(\"destination\", VpcArgs.builder()\n            .name(\"destination-vpc\")\n            .region(\"nyc1\")\n            .build());\n\n        var example = new Nfs(\"example\", NfsArgs.builder()\n            .region(\"nyc1\")\n            .name(\"example-nfs\")\n            .size(50)\n            .vpcId(source.id())\n            .performanceTier(\"high\")\n            .build());\n\n        // Attach to source VPC\n        var sourceNfsAttachment = new NfsAttachment(\"sourceNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(source.id())\n            .region(\"nyc1\")\n            .build());\n\n        // Reassign to destination VPC - uses the efficient Reassign API\n        var destinationNfsAttachment = new NfsAttachment(\"destinationNfsAttachment\", NfsAttachmentArgs.builder()\n            .shareId(example.id())\n            .vpcId(destination.id())\n            .region(\"nyc1\")\n            .build(), CustomResourceOptions.builder()\n                .dependsOn(sourceNfsAttachment)\n                .build());\n\n    }\n}\n```\n```yaml\nresources:\n  source:\n    type: digitalocean:Vpc\n    properties:\n      name: source-vpc\n      region: nyc1\n  destination:\n    type: digitalocean:Vpc\n    properties:\n      name: destination-vpc\n      region: nyc1\n  example:\n    type: digitalocean:Nfs\n    properties:\n      region: nyc1\n      name: example-nfs\n      size: 50\n      vpcId: ${source.id}\n      performanceTier: high\n  # Attach to source VPC\n  sourceNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: source\n    properties:\n      shareId: ${example.id}\n      vpcId: ${source.id}\n      region: nyc1\n  # Reassign to destination VPC - uses the efficient Reassign API\n  destinationNfsAttachment:\n    type: digitalocean:NfsAttachment\n    name: destination\n    properties:\n      shareId: ${example.id}\n      vpcId: ${destination.id}\n      region: nyc1\n    options:\n      dependsOn:\n        - ${sourceNfsAttachment}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Notes\n\nMultiple NFS shares can now be attached to the same VPC, providing greater flexibility for storage management.\n\n## Import\n\nNFS shares can be imported using the `share id` and the \u003cspan pulumi-lang-nodejs=\"`region`\" pulumi-lang-dotnet=\"`Region`\" pulumi-lang-go=\"`region`\" pulumi-lang-python=\"`region`\" pulumi-lang-yaml=\"`region`\" pulumi-lang-java=\"`region`\"\u003e`region`\u003c/span\u003e, e.g.\n\n```sh\n$ pulumi import digitalocean:index/nfs:Nfs foobar 506f78a4-e098-11e5-ad9f-000f53306ae1,atl1\n```\n\n",
             "properties": {
                 "host": {
                     "type": "string",
@@ -39784,6 +40594,333 @@
                     "password",
                     "role",
                     "settings",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInference:getDedicatedInference": {
+            "description": "Get information on a dedicated inference endpoint for use in other resources. This\ndata source provides all of the endpoint's properties as configured on your\nDigitalOcean account.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDedicatedInference({\n    id: \"endpoint-id\",\n});\nexport const endpointStatus = example.then(example =\u003e example.status);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_dedicated_inference(id=\"endpoint-id\")\npulumi.export(\"endpointStatus\", example.status)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.Index.GetDedicatedInference.Invoke(new()\n    {\n        Id = \"endpoint-id\",\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"endpointStatus\"] = example.Apply(getDedicatedInferenceResult =\u003e getDedicatedInferenceResult.Status),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetDedicatedInference(ctx, \u0026digitalocean.LookupDedicatedInferenceArgs{\n\t\t\tId: \"endpoint-id\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"endpointStatus\", example.Status)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getDedicatedInference(GetDedicatedInferenceArgs.builder()\n            .id(\"endpoint-id\")\n            .build());\n\n        ctx.export(\"endpointStatus\", example.status());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getDedicatedInference\n      arguments:\n        id: endpoint-id\noutputs:\n  endpointStatus: ${example.status}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedInference.\n",
+                "properties": {
+                    "id": {
+                        "type": "string",
+                        "description": "The ID of the dedicated inference endpoint.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "id"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInference.\n",
+                "properties": {
+                    "createdAt": {
+                        "description": "The date and time when the dedicated inference endpoint was created.\n",
+                        "type": "string"
+                    },
+                    "enablePublicEndpoint": {
+                        "description": "Whether the public HTTPS endpoint is enabled.\n",
+                        "type": "boolean"
+                    },
+                    "id": {
+                        "type": "string"
+                    },
+                    "modelDeployments": {
+                        "description": "The list of model deployments running on the endpoint. Each element contains:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceModelDeployment:getDedicatedInferenceModelDeployment"
+                        },
+                        "type": "array"
+                    },
+                    "name": {
+                        "description": "The name of the dedicated inference endpoint.\n",
+                        "type": "string"
+                    },
+                    "privateEndpointFqdn": {
+                        "description": "The fully-qualified domain name of the private endpoint.\n",
+                        "type": "string"
+                    },
+                    "publicEndpointFqdn": {
+                        "description": "The fully-qualified domain name of the public endpoint, if enabled.\n",
+                        "type": "string"
+                    },
+                    "region": {
+                        "description": "The region where the dedicated inference endpoint is deployed.\n",
+                        "type": "string"
+                    },
+                    "status": {
+                        "description": "The current status of the dedicated inference endpoint.\n",
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "description": "The date and time when the dedicated inference endpoint was last updated.\n",
+                        "type": "string"
+                    },
+                    "vpcUuid": {
+                        "description": "The UUID of the VPC the dedicated inference endpoint is deployed in.\n",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "createdAt",
+                    "enablePublicEndpoint",
+                    "id",
+                    "modelDeployments",
+                    "name",
+                    "privateEndpointFqdn",
+                    "publicEndpointFqdn",
+                    "region",
+                    "status",
+                    "updatedAt",
+                    "vpcUuid"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators": {
+            "description": "Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,\nwith the ability to filter and sort the results.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDedicatedInferenceAccelerators({\n    dedicatedInferenceId: exampleDigitaloceanDedicatedInference.id,\n});\nexport const accelerators = example.then(example =\u003e example.accelerators);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_dedicated_inference_accelerators(dedicated_inference_id=example_digitalocean_dedicated_inference[\"id\"])\npulumi.export(\"accelerators\", example.accelerators)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()\n    {\n        DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"accelerators\"] = example.Apply(getDedicatedInferenceAcceleratorsResult =\u003e getDedicatedInferenceAcceleratorsResult.Accelerators),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetDedicatedInferenceAccelerators(ctx, \u0026digitalocean.GetDedicatedInferenceAcceleratorsArgs{\n\t\t\tDedicatedInferenceId: exampleDigitaloceanDedicatedInference.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"accelerators\", example.Accelerators)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()\n            .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())\n            .build());\n\n        ctx.export(\"accelerators\", example.accelerators());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceAccelerators\n      arguments:\n        dedicatedInferenceId: ${exampleDigitaloceanDedicatedInference.id}\noutputs:\n  accelerators: ${example.accelerators}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Filter by slug\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst filtered = digitalocean.getDedicatedInferenceAccelerators({\n    dedicatedInferenceId: example.id,\n    filters: [{\n        key: \"slug\",\n        values: [\"gpu-h100x1-80gb\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfiltered = digitalocean.get_dedicated_inference_accelerators(dedicated_inference_id=example[\"id\"],\n    filters=[{\n        \"key\": \"slug\",\n        \"values\": [\"gpu-h100x1-80gb\"],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()\n    {\n        DedicatedInferenceId = example.Id,\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDedicatedInferenceAcceleratorsFilterInputArgs\n            {\n                Key = \"slug\",\n                Values = new[]\n                {\n                    \"gpu-h100x1-80gb\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDedicatedInferenceAccelerators(ctx, \u0026digitalocean.GetDedicatedInferenceAcceleratorsArgs{\n\t\t\tDedicatedInferenceId: example.Id,\n\t\t\tFilters: []digitalocean.GetDedicatedInferenceAcceleratorsFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"slug\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"gpu-h100x1-80gb\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered = DigitaloceanFunctions.getDedicatedInferenceAccelerators(GetDedicatedInferenceAcceleratorsArgs.builder()\n            .dedicatedInferenceId(example.id())\n            .filters(GetDedicatedInferenceAcceleratorsFilterArgs.builder()\n                .key(\"slug\")\n                .values(\"gpu-h100x1-80gb\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filtered:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceAccelerators\n      arguments:\n        dedicatedInferenceId: ${example.id}\n        filters:\n          - key: slug\n            values:\n              - gpu-h100x1-80gb\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedInferenceAccelerators.\n",
+                "properties": {
+                    "dedicatedInferenceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated inference endpoint to list accelerators for.\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceAcceleratorsFilter:getDedicatedInferenceAcceleratorsFilter"
+                        },
+                        "description": "Filter the results. The \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceAcceleratorsSort:getDedicatedInferenceAcceleratorsSort"
+                        },
+                        "description": "Sort the results. The \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e block is documented below.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "dedicatedInferenceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInferenceAccelerators.\n",
+                "properties": {
+                    "accelerators": {
+                        "description": "A list of accelerators satisfying any \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e criteria. Each element contains:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceAcceleratorsAccelerator:getDedicatedInferenceAcceleratorsAccelerator"
+                        },
+                        "type": "array"
+                    },
+                    "dedicatedInferenceId": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceAcceleratorsFilter:getDedicatedInferenceAcceleratorsFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceAcceleratorsSort:getDedicatedInferenceAcceleratorsSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "accelerators",
+                    "dedicatedInferenceId",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig": {
+            "description": "Returns the supported GPU and model compatibility matrix for dedicated inference\nendpoints. Use this data source to discover which models can be deployed on which\nGPU types.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst available = digitalocean.getDedicatedInferenceGpuModelConfig({});\nexport const gpuModelConfigs = available.then(available =\u003e available.gpuModelConfigs);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\navailable = digitalocean.get_dedicated_inference_gpu_model_config()\npulumi.export(\"gpuModelConfigs\", available.gpu_model_configs)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var available = DigitalOcean.Index.GetDedicatedInferenceGpuModelConfig.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"gpuModelConfigs\"] = available.Apply(getDedicatedInferenceGpuModelConfigResult =\u003e getDedicatedInferenceGpuModelConfigResult.GpuModelConfigs),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tavailable, err := digitalocean.GetDedicatedInferenceGpuModelConfig(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"gpuModelConfigs\", available.GpuModelConfigs)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var available = DigitaloceanFunctions.getDedicatedInferenceGpuModelConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"gpuModelConfigs\", available.gpuModelConfigs());\n    }\n}\n```\n```yaml\nvariables:\n  available:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceGpuModelConfig\n      arguments: {}\noutputs:\n  gpuModelConfigs: ${available.gpuModelConfigs}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInferenceGpuModelConfig.\n",
+                "properties": {
+                    "gpuModelConfigs": {
+                        "description": "The list of supported GPU and model combinations. Each element contains:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceGpuModelConfigGpuModelConfig:getDedicatedInferenceGpuModelConfigGpuModelConfig"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "gpuModelConfigs",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes": {
+            "description": "Returns the available GPU sizes and their configurations for dedicated inference\nendpoints, including pricing, hardware specifications, and region availability.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst available = digitalocean.getDedicatedInferenceSizes({});\nexport const enabledRegions = available.then(available =\u003e available.enabledRegions);\nexport const sizes = available.then(available =\u003e available.sizes);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\navailable = digitalocean.get_dedicated_inference_sizes()\npulumi.export(\"enabledRegions\", available.enabled_regions)\npulumi.export(\"sizes\", available.sizes)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var available = DigitalOcean.Index.GetDedicatedInferenceSizes.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"enabledRegions\"] = available.Apply(getDedicatedInferenceSizesResult =\u003e getDedicatedInferenceSizesResult.EnabledRegions),\n        [\"sizes\"] = available.Apply(getDedicatedInferenceSizesResult =\u003e getDedicatedInferenceSizesResult.Sizes),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tavailable, err := digitalocean.GetDedicatedInferenceSizes(ctx, map[string]interface{}{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"enabledRegions\", available.EnabledRegions)\n\t\tctx.Export(\"sizes\", available.Sizes)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var available = DigitaloceanFunctions.getDedicatedInferenceSizes(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);\n\n        ctx.export(\"enabledRegions\", available.enabledRegions());\n        ctx.export(\"sizes\", available.sizes());\n    }\n}\n```\n```yaml\nvariables:\n  available:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceSizes\n      arguments: {}\noutputs:\n  enabledRegions: ${available.enabledRegions}\n  sizes: ${available.sizes}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInferenceSizes.\n",
+                "properties": {
+                    "enabledRegions": {
+                        "description": "The list of region slugs where dedicated inference endpoints can be deployed.\n",
+                        "items": {
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "sizes": {
+                        "description": "The list of available GPU sizes. Each element contains:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceSizesSize:getDedicatedInferenceSizesSize"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "enabledRegions",
+                    "sizes",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens": {
+            "description": "Returns a list of API tokens for a dedicated inference endpoint, with the ability\nto filter and sort the results.\n\n\u003e **Note:** Token values (secrets) are not returned by this data source. Only\ntoken metadata (ID, name, creation time) is available.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst example = digitalocean.getDedicatedInferenceTokens({\n    dedicatedInferenceId: exampleDigitaloceanDedicatedInference.id,\n});\nexport const tokens = example.then(example =\u003e example.tokens);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nexample = digitalocean.get_dedicated_inference_tokens(dedicated_inference_id=example_digitalocean_dedicated_inference[\"id\"])\npulumi.export(\"tokens\", example.tokens)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()\n    {\n        DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,\n    });\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"tokens\"] = example.Apply(getDedicatedInferenceTokensResult =\u003e getDedicatedInferenceTokensResult.Tokens),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\texample, err := digitalocean.GetDedicatedInferenceTokens(ctx, \u0026digitalocean.GetDedicatedInferenceTokensArgs{\n\t\t\tDedicatedInferenceId: exampleDigitaloceanDedicatedInference.Id,\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"tokens\", example.Tokens)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()\n            .dedicatedInferenceId(exampleDigitaloceanDedicatedInference.id())\n            .build());\n\n        ctx.export(\"tokens\", example.tokens());\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceTokens\n      arguments:\n        dedicatedInferenceId: ${exampleDigitaloceanDedicatedInference.id}\noutputs:\n  tokens: ${example.tokens}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Filter by name\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst filtered = digitalocean.getDedicatedInferenceTokens({\n    dedicatedInferenceId: example.id,\n    filters: [{\n        key: \"name\",\n        values: [\"my-token\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfiltered = digitalocean.get_dedicated_inference_tokens(dedicated_inference_id=example[\"id\"],\n    filters=[{\n        \"key\": \"name\",\n        \"values\": [\"my-token\"],\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered = DigitalOcean.Index.GetDedicatedInferenceTokens.Invoke(new()\n    {\n        DedicatedInferenceId = example.Id,\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDedicatedInferenceTokensFilterInputArgs\n            {\n                Key = \"name\",\n                Values = new[]\n                {\n                    \"my-token\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDedicatedInferenceTokens(ctx, \u0026digitalocean.GetDedicatedInferenceTokensArgs{\n\t\t\tDedicatedInferenceId: example.Id,\n\t\t\tFilters: []digitalocean.GetDedicatedInferenceTokensFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-token\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered = DigitaloceanFunctions.getDedicatedInferenceTokens(GetDedicatedInferenceTokensArgs.builder()\n            .dedicatedInferenceId(example.id())\n            .filters(GetDedicatedInferenceTokensFilterArgs.builder()\n                .key(\"name\")\n                .values(\"my-token\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filtered:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferenceTokens\n      arguments:\n        dedicatedInferenceId: ${example.id}\n        filters:\n          - key: name\n            values:\n              - my-token\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedInferenceTokens.\n",
+                "properties": {
+                    "dedicatedInferenceId": {
+                        "type": "string",
+                        "description": "The ID of the dedicated inference endpoint to list tokens for.\n"
+                    },
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceTokensFilter:getDedicatedInferenceTokensFilter"
+                        },
+                        "description": "Filter the results. The \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceTokensSort:getDedicatedInferenceTokensSort"
+                        },
+                        "description": "Sort the results. The \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e block is documented below.\n"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "dedicatedInferenceId"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInferenceTokens.\n",
+                "properties": {
+                    "dedicatedInferenceId": {
+                        "type": "string"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceTokensFilter:getDedicatedInferenceTokensFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceTokensSort:getDedicatedInferenceTokensSort"
+                        },
+                        "type": "array"
+                    },
+                    "tokens": {
+                        "description": "A list of tokens satisfying any \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e criteria. Each element contains:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferenceTokensToken:getDedicatedInferenceTokensToken"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "dedicatedInferenceId",
+                    "tokens",
+                    "id"
+                ],
+                "type": "object"
+            }
+        },
+        "digitalocean:index/getDedicatedInferences:getDedicatedInferences": {
+            "description": "Returns a list of dedicated inference endpoints in your DigitalOcean account,\nwith the ability to filter and sort the results. If no filters are specified, all\nendpoints will be returned.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst all = digitalocean.getDedicatedInferences({});\nexport const allEndpoints = all.then(all =\u003e all.dedicatedInferences);\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nall = digitalocean.get_dedicated_inferences()\npulumi.export(\"allEndpoints\", all.dedicated_inferences)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var all = DigitalOcean.Index.GetDedicatedInferences.Invoke();\n\n    return new Dictionary\u003cstring, object?\u003e\n    {\n        [\"allEndpoints\"] = all.Apply(getDedicatedInferencesResult =\u003e getDedicatedInferencesResult.DedicatedInferences),\n    };\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\tall, err := digitalocean.GetDedicatedInferences(ctx, \u0026digitalocean.GetDedicatedInferencesArgs{}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\tctx.Export(\"allEndpoints\", all.DedicatedInferences)\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var all = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()\n            .build());\n\n        ctx.export(\"allEndpoints\", all.dedicatedInferences());\n    }\n}\n```\n```yaml\nvariables:\n  all:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferences\n      arguments: {}\noutputs:\n  allEndpoints: ${all.dedicatedInferences}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Filter by name\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst filtered = digitalocean.getDedicatedInferences({\n    filters: [{\n        key: \"name\",\n        values: [\"my-inference\"],\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nfiltered = digitalocean.get_dedicated_inferences(filters=[{\n    \"key\": \"name\",\n    \"values\": [\"my-inference\"],\n}])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var filtered = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDedicatedInferencesFilterInputArgs\n            {\n                Key = \"name\",\n                Values = new[]\n                {\n                    \"my-inference\",\n                },\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDedicatedInferences(ctx, \u0026digitalocean.GetDedicatedInferencesArgs{\n\t\t\tFilters: []digitalocean.GetDedicatedInferencesFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"name\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"my-inference\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var filtered = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()\n            .filters(GetDedicatedInferencesFilterArgs.builder()\n                .key(\"name\")\n                .values(\"my-inference\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  filtered:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferences\n      arguments:\n        filters:\n          - key: name\n            values:\n              - my-inference\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n### Filter by region\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as digitalocean from \"@pulumi/digitalocean\";\n\nconst byRegion = digitalocean.getDedicatedInferences({\n    filters: [{\n        key: \"region\",\n        values: [\"tor1\"],\n    }],\n    sorts: [{\n        key: \"name\",\n        direction: \"asc\",\n    }],\n});\n```\n```python\nimport pulumi\nimport pulumi_digitalocean as digitalocean\n\nby_region = digitalocean.get_dedicated_inferences(filters=[{\n        \"key\": \"region\",\n        \"values\": [\"tor1\"],\n    }],\n    sorts=[{\n        \"key\": \"name\",\n        \"direction\": \"asc\",\n    }])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DigitalOcean = Pulumi.DigitalOcean;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var byRegion = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()\n    {\n        Filters = new[]\n        {\n            new DigitalOcean.Inputs.GetDedicatedInferencesFilterInputArgs\n            {\n                Key = \"region\",\n                Values = new[]\n                {\n                    \"tor1\",\n                },\n            },\n        },\n        Sorts = new[]\n        {\n            new DigitalOcean.Inputs.GetDedicatedInferencesSortInputArgs\n            {\n                Key = \"name\",\n                Direction = \"asc\",\n            },\n        },\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := digitalocean.GetDedicatedInferences(ctx, \u0026digitalocean.GetDedicatedInferencesArgs{\n\t\t\tFilters: []digitalocean.GetDedicatedInferencesFilter{\n\t\t\t\t{\n\t\t\t\t\tKey: \"region\",\n\t\t\t\t\tValues: []string{\n\t\t\t\t\t\t\"tor1\",\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t},\n\t\t\tSorts: []digitalocean.GetDedicatedInferencesSort{\n\t\t\t\t{\n\t\t\t\t\tKey:       \"name\",\n\t\t\t\t\tDirection: pulumi.StringRef(\"asc\"),\n\t\t\t\t},\n\t\t\t},\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.digitalocean.DigitaloceanFunctions;\nimport com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var byRegion = DigitaloceanFunctions.getDedicatedInferences(GetDedicatedInferencesArgs.builder()\n            .filters(GetDedicatedInferencesFilterArgs.builder()\n                .key(\"region\")\n                .values(\"tor1\")\n                .build())\n            .sorts(GetDedicatedInferencesSortArgs.builder()\n                .key(\"name\")\n                .direction(\"asc\")\n                .build())\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  byRegion:\n    fn::invoke:\n      function: digitalocean:getDedicatedInferences\n      arguments:\n        filters:\n          - key: region\n            values:\n              - tor1\n        sorts:\n          - key: name\n            direction: asc\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "inputs": {
+                "description": "A collection of arguments for invoking getDedicatedInferences.\n",
+                "properties": {
+                    "filters": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferencesFilter:getDedicatedInferencesFilter"
+                        },
+                        "description": "Filter the results. The \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e block is documented below.\n"
+                    },
+                    "sorts": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferencesSort:getDedicatedInferencesSort"
+                        },
+                        "description": "Sort the results. The \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e block is documented below.\n"
+                    }
+                },
+                "type": "object"
+            },
+            "outputs": {
+                "description": "A collection of values returned by getDedicatedInferences.\n",
+                "properties": {
+                    "dedicatedInferences": {
+                        "description": "A list of dedicated inference endpoints satisfying any \u003cspan pulumi-lang-nodejs=\"`filter`\" pulumi-lang-dotnet=\"`Filter`\" pulumi-lang-go=\"`filter`\" pulumi-lang-python=\"`filter`\" pulumi-lang-yaml=\"`filter`\" pulumi-lang-java=\"`filter`\"\u003e`filter`\u003c/span\u003e and \u003cspan pulumi-lang-nodejs=\"`sort`\" pulumi-lang-dotnet=\"`Sort`\" pulumi-lang-go=\"`sort`\" pulumi-lang-python=\"`sort`\" pulumi-lang-yaml=\"`sort`\" pulumi-lang-java=\"`sort`\"\u003e`sort`\u003c/span\u003e criteria. Each element contains the following attributes:\n",
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferencesDedicatedInference:getDedicatedInferencesDedicatedInference"
+                        },
+                        "type": "array"
+                    },
+                    "filters": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferencesFilter:getDedicatedInferencesFilter"
+                        },
+                        "type": "array"
+                    },
+                    "id": {
+                        "description": "The provider-assigned unique ID for this managed resource.",
+                        "type": "string"
+                    },
+                    "sorts": {
+                        "items": {
+                            "$ref": "#/types/digitalocean:index/getDedicatedInferencesSort:getDedicatedInferencesSort"
+                        },
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "dedicatedInferences",
                     "id"
                 ],
                 "type": "object"

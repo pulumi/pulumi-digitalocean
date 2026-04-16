@@ -740,6 +740,26 @@
                 "current": "digitalocean:index/databaseValkeyConfig:DatabaseValkeyConfig",
                 "majorVersion": 4
             },
+            "digitalocean_dedicated_inference": {
+                "current": "digitalocean:index/dedicatedInference:DedicatedInference",
+                "majorVersion": 4,
+                "fields": {
+                    "model_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "accelerators": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference_token": {
+                "current": "digitalocean:index/dedicatedInferenceToken:DedicatedInferenceToken",
+                "majorVersion": 4
+            },
             "digitalocean_domain": {
                 "current": "digitalocean:index/domain:Domain",
                 "majorVersion": 4
@@ -2192,6 +2212,132 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference": {
+                "current": "digitalocean:index/getDedicatedInference:getDedicatedInference",
+                "majorVersion": 4,
+                "fields": {
+                    "model_deployments": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "accelerators": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference_accelerators": {
+                "current": "digitalocean:index/getDedicatedInferenceAccelerators:getDedicatedInferenceAccelerators",
+                "majorVersion": 4,
+                "fields": {
+                    "accelerators": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference_gpu_model_config": {
+                "current": "digitalocean:index/getDedicatedInferenceGpuModelConfig:getDedicatedInferenceGpuModelConfig",
+                "majorVersion": 4,
+                "fields": {
+                    "gpu_model_configs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "gpu_slugs": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference_sizes": {
+                "current": "digitalocean:index/getDedicatedInferenceSizes:getDedicatedInferenceSizes",
+                "majorVersion": 4,
+                "fields": {
+                    "enabled_regions": {
+                        "maxItemsOne": false
+                    },
+                    "sizes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "disks": {
+                                    "maxItemsOne": false
+                                },
+                                "gpu": {
+                                    "maxItemsOne": false
+                                },
+                                "regions": {
+                                    "maxItemsOne": false
+                                },
+                                "size_category": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "digitalocean_dedicated_inference_tokens": {
+                "current": "digitalocean:index/getDedicatedInferenceTokens:getDedicatedInferenceTokens",
+                "majorVersion": 4,
+                "fields": {
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
+                    },
+                    "tokens": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "digitalocean_dedicated_inferences": {
+                "current": "digitalocean:index/getDedicatedInferences:getDedicatedInferences",
+                "majorVersion": 4,
+                "fields": {
+                    "dedicated_inferences": {
+                        "maxItemsOne": false
+                    },
+                    "filter": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "values": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sort": {
+                        "maxItemsOne": false
                     }
                 }
             },
