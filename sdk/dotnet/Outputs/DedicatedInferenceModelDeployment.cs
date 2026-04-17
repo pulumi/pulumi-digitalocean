@@ -29,6 +29,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The slug identifier for the model to deploy.
         /// </summary>
         public readonly string ModelSlug;
+        /// <summary>
+        /// The provider-specific model ID. Required when ModelProvider is 'hugging_face', optional for 'modelcatalog'.
+        /// </summary>
+        public readonly string? ProviderModelId;
 
         [OutputConstructor]
         private DedicatedInferenceModelDeployment(
@@ -38,12 +42,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string modelProvider,
 
-            string modelSlug)
+            string modelSlug,
+
+            string? providerModelId)
         {
             Accelerators = accelerators;
             ModelId = modelId;
             ModelProvider = modelProvider;
             ModelSlug = modelSlug;
+            ProviderModelId = providerModelId;
         }
     }
 }

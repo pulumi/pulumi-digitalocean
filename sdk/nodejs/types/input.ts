@@ -2253,6 +2253,10 @@ export interface DedicatedInferenceModelDeployment {
      * The slug identifier for the model to deploy.
      */
     modelSlug: pulumi.Input<string>;
+    /**
+     * The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
+     */
+    providerModelId?: pulumi.Input<string>;
 }
 
 export interface DedicatedInferenceModelDeploymentAccelerator {

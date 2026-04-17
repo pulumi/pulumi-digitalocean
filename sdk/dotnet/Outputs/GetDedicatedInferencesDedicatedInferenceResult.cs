@@ -30,6 +30,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// </summary>
         public readonly string PrivateEndpointFqdn;
         /// <summary>
+        /// The list of provider model IDs for the dedicated inference endpoint.
+        /// </summary>
+        public readonly ImmutableArray<string> ProviderModelIds;
+        /// <summary>
         /// The fully-qualified domain name of the public endpoint, if enabled.
         /// </summary>
         public readonly string PublicEndpointFqdn;
@@ -60,6 +64,8 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string privateEndpointFqdn,
 
+            ImmutableArray<string> providerModelIds,
+
             string publicEndpointFqdn,
 
             string region,
@@ -74,6 +80,7 @@ namespace Pulumi.DigitalOcean.Outputs
             Id = id;
             Name = name;
             PrivateEndpointFqdn = privateEndpointFqdn;
+            ProviderModelIds = providerModelIds;
             PublicEndpointFqdn = publicEndpointFqdn;
             Region = region;
             Status = status;

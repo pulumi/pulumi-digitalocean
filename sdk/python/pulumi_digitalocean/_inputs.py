@@ -11133,6 +11133,10 @@ class DedicatedInferenceModelDeploymentArgsDict(TypedDict):
     """
     The unique ID of the model.
     """
+    provider_model_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    The provider-specific model ID. Required when model_provider is 'hugging_face', optional for 'modelcatalog'.
+    """
 
 @pulumi.input_type
 class DedicatedInferenceModelDeploymentArgs:
@@ -11140,18 +11144,22 @@ class DedicatedInferenceModelDeploymentArgs:
                  accelerators: pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentAcceleratorArgs']]],
                  model_provider: pulumi.Input[_builtins.str],
                  model_slug: pulumi.Input[_builtins.str],
-                 model_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 model_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 provider_model_id: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['DedicatedInferenceModelDeploymentAcceleratorArgs']]] accelerators: The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
         :param pulumi.Input[_builtins.str] model_provider: The provider of the model (e.g. `digitalocean`, `huggingface`).
         :param pulumi.Input[_builtins.str] model_slug: The slug identifier for the model to deploy.
         :param pulumi.Input[_builtins.str] model_id: The unique ID of the model.
+        :param pulumi.Input[_builtins.str] provider_model_id: The provider-specific model ID. Required when model_provider is 'hugging_face', optional for 'modelcatalog'.
         """
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "model_provider", model_provider)
         pulumi.set(__self__, "model_slug", model_slug)
         if model_id is not None:
             pulumi.set(__self__, "model_id", model_id)
+        if provider_model_id is not None:
+            pulumi.set(__self__, "provider_model_id", provider_model_id)
 
     @_builtins.property
     @pulumi.getter
@@ -11200,6 +11208,18 @@ class DedicatedInferenceModelDeploymentArgs:
     @model_id.setter
     def model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "model_id", value)
+
+    @_builtins.property
+    @pulumi.getter(name="providerModelId")
+    def provider_model_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        The provider-specific model ID. Required when model_provider is 'hugging_face', optional for 'modelcatalog'.
+        """
+        return pulumi.get(self, "provider_model_id")
+
+    @provider_model_id.setter
+    def provider_model_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "provider_model_id", value)
 
 
 class DedicatedInferenceModelDeploymentAcceleratorArgsDict(TypedDict):

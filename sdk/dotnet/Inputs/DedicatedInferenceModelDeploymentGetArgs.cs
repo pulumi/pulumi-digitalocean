@@ -42,6 +42,12 @@ namespace Pulumi.DigitalOcean.Inputs
         [Input("modelSlug", required: true)]
         public Input<string> ModelSlug { get; set; } = null!;
 
+        /// <summary>
+        /// The provider-specific model ID. Required when ModelProvider is 'hugging_face', optional for 'modelcatalog'.
+        /// </summary>
+        [Input("providerModelId")]
+        public Input<string>? ProviderModelId { get; set; }
+
         public DedicatedInferenceModelDeploymentGetArgs()
         {
         }

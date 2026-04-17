@@ -8576,6 +8576,8 @@ class DedicatedInferenceModelDeployment(dict):
             suggest = "model_slug"
         elif key == "modelId":
             suggest = "model_id"
+        elif key == "providerModelId":
+            suggest = "provider_model_id"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in DedicatedInferenceModelDeployment. Access the value via the '{suggest}' property getter instead.")
@@ -8592,18 +8594,22 @@ class DedicatedInferenceModelDeployment(dict):
                  accelerators: Sequence['outputs.DedicatedInferenceModelDeploymentAccelerator'],
                  model_provider: _builtins.str,
                  model_slug: _builtins.str,
-                 model_id: Optional[_builtins.str] = None):
+                 model_id: Optional[_builtins.str] = None,
+                 provider_model_id: Optional[_builtins.str] = None):
         """
         :param Sequence['DedicatedInferenceModelDeploymentAcceleratorArgs'] accelerators: The GPU accelerators to allocate for this model deployment. Each `accelerators` block supports:
         :param _builtins.str model_provider: The provider of the model (e.g. `digitalocean`, `huggingface`).
         :param _builtins.str model_slug: The slug identifier for the model to deploy.
         :param _builtins.str model_id: The unique ID of the model.
+        :param _builtins.str provider_model_id: The provider-specific model ID. Required when model_provider is 'hugging_face', optional for 'modelcatalog'.
         """
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "model_provider", model_provider)
         pulumi.set(__self__, "model_slug", model_slug)
         if model_id is not None:
             pulumi.set(__self__, "model_id", model_id)
+        if provider_model_id is not None:
+            pulumi.set(__self__, "provider_model_id", provider_model_id)
 
     @_builtins.property
     @pulumi.getter
@@ -8636,6 +8642,14 @@ class DedicatedInferenceModelDeployment(dict):
         The unique ID of the model.
         """
         return pulumi.get(self, "model_id")
+
+    @_builtins.property
+    @pulumi.getter(name="providerModelId")
+    def provider_model_id(self) -> Optional[_builtins.str]:
+        """
+        The provider-specific model ID. Required when model_provider is 'hugging_face', optional for 'modelcatalog'.
+        """
+        return pulumi.get(self, "provider_model_id")
 
 
 @pulumi.output_type
@@ -26406,17 +26420,20 @@ class GetDedicatedInferenceModelDeploymentResult(dict):
                  accelerators: Sequence['outputs.GetDedicatedInferenceModelDeploymentAcceleratorResult'],
                  model_id: _builtins.str,
                  model_provider: _builtins.str,
-                 model_slug: _builtins.str):
+                 model_slug: _builtins.str,
+                 provider_model_id: _builtins.str):
         """
         :param Sequence['GetDedicatedInferenceModelDeploymentAcceleratorArgs'] accelerators: The GPU accelerators allocated for this model deployment. Each element contains:
         :param _builtins.str model_id: The unique ID of the model.
         :param _builtins.str model_provider: The provider of the model.
         :param _builtins.str model_slug: The slug identifier for the model.
+        :param _builtins.str provider_model_id: The provider-specific model ID.
         """
         pulumi.set(__self__, "accelerators", accelerators)
         pulumi.set(__self__, "model_id", model_id)
         pulumi.set(__self__, "model_provider", model_provider)
         pulumi.set(__self__, "model_slug", model_slug)
+        pulumi.set(__self__, "provider_model_id", provider_model_id)
 
     @_builtins.property
     @pulumi.getter
@@ -26449,6 +26466,14 @@ class GetDedicatedInferenceModelDeploymentResult(dict):
         The slug identifier for the model.
         """
         return pulumi.get(self, "model_slug")
+
+    @_builtins.property
+    @pulumi.getter(name="providerModelId")
+    def provider_model_id(self) -> _builtins.str:
+        """
+        The provider-specific model ID.
+        """
+        return pulumi.get(self, "provider_model_id")
 
 
 @pulumi.output_type
@@ -26825,6 +26850,7 @@ class GetDedicatedInferencesDedicatedInferenceResult(dict):
                  id: _builtins.str,
                  name: _builtins.str,
                  private_endpoint_fqdn: _builtins.str,
+                 provider_model_ids: Sequence[_builtins.str],
                  public_endpoint_fqdn: _builtins.str,
                  region: _builtins.str,
                  status: _builtins.str,
@@ -26835,6 +26861,7 @@ class GetDedicatedInferencesDedicatedInferenceResult(dict):
         :param _builtins.str id: The unique ID of the dedicated inference endpoint.
         :param _builtins.str name: The name of the dedicated inference endpoint.
         :param _builtins.str private_endpoint_fqdn: The fully-qualified domain name of the private endpoint.
+        :param Sequence[_builtins.str] provider_model_ids: The list of provider model IDs for the dedicated inference endpoint.
         :param _builtins.str public_endpoint_fqdn: The fully-qualified domain name of the public endpoint, if enabled.
         :param _builtins.str region: The region where the dedicated inference endpoint is deployed.
         :param _builtins.str status: The current status of the dedicated inference endpoint.
@@ -26845,6 +26872,7 @@ class GetDedicatedInferencesDedicatedInferenceResult(dict):
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "private_endpoint_fqdn", private_endpoint_fqdn)
+        pulumi.set(__self__, "provider_model_ids", provider_model_ids)
         pulumi.set(__self__, "public_endpoint_fqdn", public_endpoint_fqdn)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "status", status)
@@ -26882,6 +26910,14 @@ class GetDedicatedInferencesDedicatedInferenceResult(dict):
         The fully-qualified domain name of the private endpoint.
         """
         return pulumi.get(self, "private_endpoint_fqdn")
+
+    @_builtins.property
+    @pulumi.getter(name="providerModelIds")
+    def provider_model_ids(self) -> Sequence[_builtins.str]:
+        """
+        The list of provider model IDs for the dedicated inference endpoint.
+        """
+        return pulumi.get(self, "provider_model_ids")
 
     @_builtins.property
     @pulumi.getter(name="publicEndpointFqdn")
