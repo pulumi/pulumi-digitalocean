@@ -2324,7 +2324,14 @@
                 "majorVersion": 4,
                 "fields": {
                     "dedicated_inferences": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "provider_model_id": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "filter": {
                         "maxItemsOne": false,

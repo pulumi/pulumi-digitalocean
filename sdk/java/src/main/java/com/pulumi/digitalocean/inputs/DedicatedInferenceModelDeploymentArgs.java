@@ -78,6 +78,21 @@ public final class DedicatedInferenceModelDeploymentArgs extends com.pulumi.reso
         return this.modelSlug;
     }
 
+    /**
+     * The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+     * 
+     */
+    @Import(name="providerModelId")
+    private @Nullable Output<String> providerModelId;
+
+    /**
+     * @return The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+     * 
+     */
+    public Optional<Output<String>> providerModelId() {
+        return Optional.ofNullable(this.providerModelId);
+    }
+
     private DedicatedInferenceModelDeploymentArgs() {}
 
     private DedicatedInferenceModelDeploymentArgs(DedicatedInferenceModelDeploymentArgs $) {
@@ -85,6 +100,7 @@ public final class DedicatedInferenceModelDeploymentArgs extends com.pulumi.reso
         this.modelId = $.modelId;
         this.modelProvider = $.modelProvider;
         this.modelSlug = $.modelSlug;
+        this.providerModelId = $.providerModelId;
     }
 
     public static Builder builder() {
@@ -197,6 +213,27 @@ public final class DedicatedInferenceModelDeploymentArgs extends com.pulumi.reso
          */
         public Builder modelSlug(String modelSlug) {
             return modelSlug(Output.of(modelSlug));
+        }
+
+        /**
+         * @param providerModelId The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerModelId(@Nullable Output<String> providerModelId) {
+            $.providerModelId = providerModelId;
+            return this;
+        }
+
+        /**
+         * @param providerModelId The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder providerModelId(String providerModelId) {
+            return providerModelId(Output.of(providerModelId));
         }
 
         public DedicatedInferenceModelDeploymentArgs build() {

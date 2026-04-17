@@ -34,6 +34,11 @@ public final class DedicatedInferenceModelDeployment {
      * 
      */
     private String modelSlug;
+    /**
+     * @return The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+     * 
+     */
+    private @Nullable String providerModelId;
 
     private DedicatedInferenceModelDeployment() {}
     /**
@@ -64,6 +69,13 @@ public final class DedicatedInferenceModelDeployment {
     public String modelSlug() {
         return this.modelSlug;
     }
+    /**
+     * @return The provider-specific model ID. Required when modelProvider is &#39;hugging_face&#39;, optional for &#39;modelcatalog&#39;.
+     * 
+     */
+    public Optional<String> providerModelId() {
+        return Optional.ofNullable(this.providerModelId);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -78,6 +90,7 @@ public final class DedicatedInferenceModelDeployment {
         private @Nullable String modelId;
         private String modelProvider;
         private String modelSlug;
+        private @Nullable String providerModelId;
         public Builder() {}
         public Builder(DedicatedInferenceModelDeployment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -85,6 +98,7 @@ public final class DedicatedInferenceModelDeployment {
     	      this.modelId = defaults.modelId;
     	      this.modelProvider = defaults.modelProvider;
     	      this.modelSlug = defaults.modelSlug;
+    	      this.providerModelId = defaults.providerModelId;
         }
 
         @CustomType.Setter
@@ -120,12 +134,19 @@ public final class DedicatedInferenceModelDeployment {
             this.modelSlug = modelSlug;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerModelId(@Nullable String providerModelId) {
+
+            this.providerModelId = providerModelId;
+            return this;
+        }
         public DedicatedInferenceModelDeployment build() {
             final var _resultValue = new DedicatedInferenceModelDeployment();
             _resultValue.accelerators = accelerators;
             _resultValue.modelId = modelId;
             _resultValue.modelProvider = modelProvider;
             _resultValue.modelSlug = modelSlug;
+            _resultValue.providerModelId = providerModelId;
             return _resultValue;
         }
     }

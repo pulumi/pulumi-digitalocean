@@ -19687,6 +19687,8 @@ type DedicatedInferenceModelDeployment struct {
 	ModelProvider string `pulumi:"modelProvider"`
 	// The slug identifier for the model to deploy.
 	ModelSlug string `pulumi:"modelSlug"`
+	// The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
+	ProviderModelId *string `pulumi:"providerModelId"`
 }
 
 // DedicatedInferenceModelDeploymentInput is an input type that accepts DedicatedInferenceModelDeploymentArgs and DedicatedInferenceModelDeploymentOutput values.
@@ -19709,6 +19711,8 @@ type DedicatedInferenceModelDeploymentArgs struct {
 	ModelProvider pulumi.StringInput `pulumi:"modelProvider"`
 	// The slug identifier for the model to deploy.
 	ModelSlug pulumi.StringInput `pulumi:"modelSlug"`
+	// The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
+	ProviderModelId pulumi.StringPtrInput `pulumi:"providerModelId"`
 }
 
 func (DedicatedInferenceModelDeploymentArgs) ElementType() reflect.Type {
@@ -19782,6 +19786,11 @@ func (o DedicatedInferenceModelDeploymentOutput) ModelProvider() pulumi.StringOu
 // The slug identifier for the model to deploy.
 func (o DedicatedInferenceModelDeploymentOutput) ModelSlug() pulumi.StringOutput {
 	return o.ApplyT(func(v DedicatedInferenceModelDeployment) string { return v.ModelSlug }).(pulumi.StringOutput)
+}
+
+// The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
+func (o DedicatedInferenceModelDeploymentOutput) ProviderModelId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DedicatedInferenceModelDeployment) *string { return v.ProviderModelId }).(pulumi.StringPtrOutput)
 }
 
 type DedicatedInferenceModelDeploymentArrayOutput struct{ *pulumi.OutputState }
@@ -58173,6 +58182,8 @@ type GetDedicatedInferenceModelDeployment struct {
 	ModelProvider string `pulumi:"modelProvider"`
 	// The slug identifier for the model.
 	ModelSlug string `pulumi:"modelSlug"`
+	// The provider-specific model ID.
+	ProviderModelId string `pulumi:"providerModelId"`
 }
 
 // GetDedicatedInferenceModelDeploymentInput is an input type that accepts GetDedicatedInferenceModelDeploymentArgs and GetDedicatedInferenceModelDeploymentOutput values.
@@ -58195,6 +58206,8 @@ type GetDedicatedInferenceModelDeploymentArgs struct {
 	ModelProvider pulumi.StringInput `pulumi:"modelProvider"`
 	// The slug identifier for the model.
 	ModelSlug pulumi.StringInput `pulumi:"modelSlug"`
+	// The provider-specific model ID.
+	ProviderModelId pulumi.StringInput `pulumi:"providerModelId"`
 }
 
 func (GetDedicatedInferenceModelDeploymentArgs) ElementType() reflect.Type {
@@ -58268,6 +58281,11 @@ func (o GetDedicatedInferenceModelDeploymentOutput) ModelProvider() pulumi.Strin
 // The slug identifier for the model.
 func (o GetDedicatedInferenceModelDeploymentOutput) ModelSlug() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedInferenceModelDeployment) string { return v.ModelSlug }).(pulumi.StringOutput)
+}
+
+// The provider-specific model ID.
+func (o GetDedicatedInferenceModelDeploymentOutput) ProviderModelId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDedicatedInferenceModelDeployment) string { return v.ProviderModelId }).(pulumi.StringOutput)
 }
 
 type GetDedicatedInferenceModelDeploymentArrayOutput struct{ *pulumi.OutputState }
@@ -59257,6 +59275,8 @@ type GetDedicatedInferencesDedicatedInference struct {
 	Name string `pulumi:"name"`
 	// The fully-qualified domain name of the private endpoint.
 	PrivateEndpointFqdn string `pulumi:"privateEndpointFqdn"`
+	// The list of provider model IDs for the dedicated inference endpoint.
+	ProviderModelIds []string `pulumi:"providerModelIds"`
 	// The fully-qualified domain name of the public endpoint, if enabled.
 	PublicEndpointFqdn string `pulumi:"publicEndpointFqdn"`
 	// The region where the dedicated inference endpoint is deployed.
@@ -59289,6 +59309,8 @@ type GetDedicatedInferencesDedicatedInferenceArgs struct {
 	Name pulumi.StringInput `pulumi:"name"`
 	// The fully-qualified domain name of the private endpoint.
 	PrivateEndpointFqdn pulumi.StringInput `pulumi:"privateEndpointFqdn"`
+	// The list of provider model IDs for the dedicated inference endpoint.
+	ProviderModelIds pulumi.StringArrayInput `pulumi:"providerModelIds"`
 	// The fully-qualified domain name of the public endpoint, if enabled.
 	PublicEndpointFqdn pulumi.StringInput `pulumi:"publicEndpointFqdn"`
 	// The region where the dedicated inference endpoint is deployed.
@@ -59370,6 +59392,11 @@ func (o GetDedicatedInferencesDedicatedInferenceOutput) Name() pulumi.StringOutp
 // The fully-qualified domain name of the private endpoint.
 func (o GetDedicatedInferencesDedicatedInferenceOutput) PrivateEndpointFqdn() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDedicatedInferencesDedicatedInference) string { return v.PrivateEndpointFqdn }).(pulumi.StringOutput)
+}
+
+// The list of provider model IDs for the dedicated inference endpoint.
+func (o GetDedicatedInferencesDedicatedInferenceOutput) ProviderModelIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDedicatedInferencesDedicatedInference) []string { return v.ProviderModelIds }).(pulumi.StringArrayOutput)
 }
 
 // The fully-qualified domain name of the public endpoint, if enabled.

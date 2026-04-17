@@ -29,6 +29,10 @@ namespace Pulumi.DigitalOcean.Outputs
         /// The slug identifier for the model.
         /// </summary>
         public readonly string ModelSlug;
+        /// <summary>
+        /// The provider-specific model ID.
+        /// </summary>
+        public readonly string ProviderModelId;
 
         [OutputConstructor]
         private GetDedicatedInferenceModelDeploymentResult(
@@ -38,12 +42,15 @@ namespace Pulumi.DigitalOcean.Outputs
 
             string modelProvider,
 
-            string modelSlug)
+            string modelSlug,
+
+            string providerModelId)
         {
             Accelerators = accelerators;
             ModelId = modelId;
             ModelProvider = modelProvider;
             ModelSlug = modelSlug;
+            ProviderModelId = providerModelId;
         }
     }
 }

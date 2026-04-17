@@ -6,6 +6,7 @@ package com.pulumi.digitalocean.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 
 @CustomType
@@ -30,6 +31,11 @@ public final class GetDedicatedInferencesDedicatedInference {
      * 
      */
     private String privateEndpointFqdn;
+    /**
+     * @return The list of provider model IDs for the dedicated inference endpoint.
+     * 
+     */
+    private List<String> providerModelIds;
     /**
      * @return The fully-qualified domain name of the public endpoint, if enabled.
      * 
@@ -86,6 +92,13 @@ public final class GetDedicatedInferencesDedicatedInference {
         return this.privateEndpointFqdn;
     }
     /**
+     * @return The list of provider model IDs for the dedicated inference endpoint.
+     * 
+     */
+    public List<String> providerModelIds() {
+        return this.providerModelIds;
+    }
+    /**
      * @return The fully-qualified domain name of the public endpoint, if enabled.
      * 
      */
@@ -134,6 +147,7 @@ public final class GetDedicatedInferencesDedicatedInference {
         private String id;
         private String name;
         private String privateEndpointFqdn;
+        private List<String> providerModelIds;
         private String publicEndpointFqdn;
         private String region;
         private String status;
@@ -146,6 +160,7 @@ public final class GetDedicatedInferencesDedicatedInference {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.privateEndpointFqdn = defaults.privateEndpointFqdn;
+    	      this.providerModelIds = defaults.providerModelIds;
     	      this.publicEndpointFqdn = defaults.publicEndpointFqdn;
     	      this.region = defaults.region;
     	      this.status = defaults.status;
@@ -184,6 +199,17 @@ public final class GetDedicatedInferencesDedicatedInference {
             }
             this.privateEndpointFqdn = privateEndpointFqdn;
             return this;
+        }
+        @CustomType.Setter
+        public Builder providerModelIds(List<String> providerModelIds) {
+            if (providerModelIds == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedInferencesDedicatedInference", "providerModelIds");
+            }
+            this.providerModelIds = providerModelIds;
+            return this;
+        }
+        public Builder providerModelIds(String... providerModelIds) {
+            return providerModelIds(List.of(providerModelIds));
         }
         @CustomType.Setter
         public Builder publicEndpointFqdn(String publicEndpointFqdn) {
@@ -231,6 +257,7 @@ public final class GetDedicatedInferencesDedicatedInference {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.privateEndpointFqdn = privateEndpointFqdn;
+            _resultValue.providerModelIds = providerModelIds;
             _resultValue.publicEndpointFqdn = publicEndpointFqdn;
             _resultValue.region = region;
             _resultValue.status = status;

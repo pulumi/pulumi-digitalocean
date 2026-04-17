@@ -32,6 +32,11 @@ public final class GetDedicatedInferenceModelDeployment {
      * 
      */
     private String modelSlug;
+    /**
+     * @return The provider-specific model ID.
+     * 
+     */
+    private String providerModelId;
 
     private GetDedicatedInferenceModelDeployment() {}
     /**
@@ -62,6 +67,13 @@ public final class GetDedicatedInferenceModelDeployment {
     public String modelSlug() {
         return this.modelSlug;
     }
+    /**
+     * @return The provider-specific model ID.
+     * 
+     */
+    public String providerModelId() {
+        return this.providerModelId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -76,6 +88,7 @@ public final class GetDedicatedInferenceModelDeployment {
         private String modelId;
         private String modelProvider;
         private String modelSlug;
+        private String providerModelId;
         public Builder() {}
         public Builder(GetDedicatedInferenceModelDeployment defaults) {
     	      Objects.requireNonNull(defaults);
@@ -83,6 +96,7 @@ public final class GetDedicatedInferenceModelDeployment {
     	      this.modelId = defaults.modelId;
     	      this.modelProvider = defaults.modelProvider;
     	      this.modelSlug = defaults.modelSlug;
+    	      this.providerModelId = defaults.providerModelId;
         }
 
         @CustomType.Setter
@@ -120,12 +134,21 @@ public final class GetDedicatedInferenceModelDeployment {
             this.modelSlug = modelSlug;
             return this;
         }
+        @CustomType.Setter
+        public Builder providerModelId(String providerModelId) {
+            if (providerModelId == null) {
+              throw new MissingRequiredPropertyException("GetDedicatedInferenceModelDeployment", "providerModelId");
+            }
+            this.providerModelId = providerModelId;
+            return this;
+        }
         public GetDedicatedInferenceModelDeployment build() {
             final var _resultValue = new GetDedicatedInferenceModelDeployment();
             _resultValue.accelerators = accelerators;
             _resultValue.modelId = modelId;
             _resultValue.modelProvider = modelProvider;
             _resultValue.modelSlug = modelSlug;
+            _resultValue.providerModelId = providerModelId;
             return _resultValue;
         }
     }

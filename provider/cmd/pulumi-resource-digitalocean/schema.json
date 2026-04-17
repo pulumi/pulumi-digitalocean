@@ -3224,6 +3224,10 @@
                 "modelSlug": {
                     "type": "string",
                     "description": "The slug identifier for the model to deploy.\n"
+                },
+                "providerModelId": {
+                    "type": "string",
+                    "description": "The provider-specific model ID. Required when\u003cspan pulumi-lang-nodejs=\" modelProvider \" pulumi-lang-dotnet=\" ModelProvider \" pulumi-lang-go=\" modelProvider \" pulumi-lang-python=\" model_provider \" pulumi-lang-yaml=\" modelProvider \" pulumi-lang-java=\" modelProvider \"\u003e modelProvider \u003c/span\u003eis 'hugging_face', optional for 'modelcatalog'.\n"
                 }
             },
             "type": "object",
@@ -3238,7 +3242,8 @@
                         "accelerators",
                         "modelId",
                         "modelProvider",
-                        "modelSlug"
+                        "modelSlug",
+                        "providerModelId"
                     ]
                 }
             }
@@ -10972,6 +10977,10 @@
                 "modelSlug": {
                     "type": "string",
                     "description": "The slug identifier for the model.\n"
+                },
+                "providerModelId": {
+                    "type": "string",
+                    "description": "The provider-specific model ID.\n"
                 }
             },
             "type": "object",
@@ -10979,7 +10988,8 @@
                 "accelerators",
                 "modelId",
                 "modelProvider",
-                "modelSlug"
+                "modelSlug",
+                "providerModelId"
             ],
             "language": {
                 "nodejs": {
@@ -11243,6 +11253,13 @@
                     "type": "string",
                     "description": "The fully-qualified domain name of the private endpoint.\n"
                 },
+                "providerModelIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "The list of provider model IDs for the dedicated inference endpoint.\n"
+                },
                 "publicEndpointFqdn": {
                     "type": "string",
                     "description": "The fully-qualified domain name of the public endpoint, if enabled.\n"
@@ -11270,6 +11287,7 @@
                 "id",
                 "name",
                 "privateEndpointFqdn",
+                "providerModelIds",
                 "publicEndpointFqdn",
                 "region",
                 "status",

@@ -2253,6 +2253,10 @@ export interface DedicatedInferenceModelDeployment {
      * The slug identifier for the model to deploy.
      */
     modelSlug: string;
+    /**
+     * The provider-specific model ID. Required when modelProvider is 'hugging_face', optional for 'modelcatalog'.
+     */
+    providerModelId: string;
 }
 
 export interface DedicatedInferenceModelDeploymentAccelerator {
@@ -5726,6 +5730,10 @@ export interface GetDedicatedInferenceModelDeployment {
      * The slug identifier for the model.
      */
     modelSlug: string;
+    /**
+     * The provider-specific model ID.
+     */
+    providerModelId: string;
 }
 
 export interface GetDedicatedInferenceModelDeploymentAccelerator {
@@ -5881,6 +5889,10 @@ export interface GetDedicatedInferencesDedicatedInference {
      * The fully-qualified domain name of the private endpoint.
      */
     privateEndpointFqdn: string;
+    /**
+     * The list of provider model IDs for the dedicated inference endpoint.
+     */
+    providerModelIds: string[];
     /**
      * The fully-qualified domain name of the public endpoint, if enabled.
      */
