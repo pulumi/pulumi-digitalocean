@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetFirewall.Invoke(new()
+        ///     var example = DigitalOcean.GetFirewall.Invoke(new()
         ///     {
         ///         FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetFirewall.Invoke(new()
+        ///     var example = DigitalOcean.GetFirewall.Invoke(new()
         ///     {
         ///         FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetFirewall.Invoke(new()
+        ///     var example = DigitalOcean.GetFirewall.Invoke(new()
         ///     {
         ///         FirewallId = "1df48973-6eef-4214-854f-fa7726e7e583",
         ///     });

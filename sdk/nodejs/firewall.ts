@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * });
  * const webFirewall = new digitalocean.Firewall("web", {
  *     name: "only-22-80-and-443",
- *     dropletIds: [web.id],
+ *     dropletIds: [web.id.apply(x =>Number(x))],
  *     inboundRules: [
  *         {
  *             protocol: "tcp",

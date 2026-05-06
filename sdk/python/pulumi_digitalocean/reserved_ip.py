@@ -174,7 +174,7 @@ class ReservedIp(pulumi.CustomResource):
             ipv6=True,
             private_networking=True)
         example_reserved_ip = digitalocean.ReservedIp("example",
-            droplet_id=example.id,
+            droplet_id=example.id.apply(lambda x: int(x)),
             region=example.region)
         ```
 
@@ -218,7 +218,7 @@ class ReservedIp(pulumi.CustomResource):
             ipv6=True,
             private_networking=True)
         example_reserved_ip = digitalocean.ReservedIp("example",
-            droplet_id=example.id,
+            droplet_id=example.id.apply(lambda x: int(x)),
             region=example.region)
         ```
 

@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example1 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
@@ -49,12 +49,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
         ///         Name = "example-1",
@@ -75,7 +75,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example2 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Slug = "ubuntu-18-04-x64",
         ///     });
@@ -106,7 +106,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example1 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
@@ -124,12 +124,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
         ///         Name = "example-1",
@@ -150,7 +150,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example2 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Slug = "ubuntu-18-04-x64",
         ///     });
@@ -181,7 +181,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example1 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example1 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
@@ -199,12 +199,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Name = "example-1.0.0",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = example.Apply(getImageResult =&gt; getImageResult.Id),
         ///         Name = "example-1",
@@ -225,7 +225,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example2 = DigitalOcean.Index.GetImage.Invoke(new()
+        ///     var example2 = DigitalOcean.GetImage.Invoke(new()
         ///     {
         ///         Slug = "ubuntu-18-04-x64",
         ///     });

@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Name = my_existing_vpc_nat_gateway.Name,
         ///     });
@@ -48,7 +48,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Id = my_existing_vpc_nat_gateway.Id,
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Name = my_existing_vpc_nat_gateway.Name,
         ///     });
@@ -96,7 +96,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Id = my_existing_vpc_nat_gateway.Id,
         ///     });
@@ -126,7 +126,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Name = my_existing_vpc_nat_gateway.Name,
         ///     });
@@ -144,7 +144,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var my_imported_vpc_nat_gateway = DigitalOcean.Index.GetVpcNatGateway.Invoke(new()
+        ///     var my_imported_vpc_nat_gateway = DigitalOcean.GetVpcNatGateway.Invoke(new()
         ///     {
         ///         Id = my_existing_vpc_nat_gateway.Id,
         ///     });

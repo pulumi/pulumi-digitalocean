@@ -299,7 +299,7 @@ class Firewall(pulumi.CustomResource):
             region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("web",
             name="only-22-80-and-443",
-            droplet_ids=[web.id],
+            droplet_ids=[web.id.apply(lambda x: int(x))],
             inbound_rules=[
                 {
                     "protocol": "tcp",
@@ -404,7 +404,7 @@ class Firewall(pulumi.CustomResource):
             region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("web",
             name="only-22-80-and-443",
-            droplet_ids=[web.id],
+            droplet_ids=[web.id.apply(lambda x: int(x))],
             inbound_rules=[
                 {
                     "protocol": "tcp",

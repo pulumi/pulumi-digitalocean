@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetDedicatedInferenceGpuModelConfig.Invoke();
+        ///     var available = DigitalOcean.GetDedicatedInferenceGpuModelConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -53,7 +53,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetDedicatedInferenceGpuModelConfig.Invoke();
+        ///     var available = DigitalOcean.GetDedicatedInferenceGpuModelConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -80,7 +80,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetDedicatedInferenceGpuModelConfig.Invoke();
+        ///     var available = DigitalOcean.GetDedicatedInferenceGpuModelConfig.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

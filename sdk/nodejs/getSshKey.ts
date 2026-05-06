@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [example.then(example => example.id)],
+ *     sshKeys: [output(example.then(example => example.id)).apply(x =>String(x))],
  * });
  * ```
  */
@@ -91,7 +91,7 @@ export interface GetSshKeyResult {
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
- *     sshKeys: [example.then(example => example.id)],
+ *     sshKeys: [output(example.then(example => example.id)).apply(x =>String(x))],
  * });
  * ```
  */

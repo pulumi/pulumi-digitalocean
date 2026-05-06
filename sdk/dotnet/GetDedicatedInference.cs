@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInference.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInference.Invoke(new()
         ///     {
         ///         Id = "endpoint-id",
         ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInference.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInference.Invoke(new()
         ///     {
         ///         Id = "endpoint-id",
         ///     });
@@ -86,7 +86,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInference.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInference.Invoke(new()
         ///     {
         ///         Id = "endpoint-id",
         ///     });

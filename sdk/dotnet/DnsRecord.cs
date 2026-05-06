@@ -22,13 +22,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new DigitalOcean.Index.Domain("default", new()
+    ///     var @default = new DigitalOcean.Domain("default", new()
     ///     {
     ///         Name = "example.com",
     ///     });
     /// 
     ///     // Add an A record to the domain for www.example.com.
-    ///     var www = new DigitalOcean.Index.DnsRecord("www", new()
+    ///     var www = new DigitalOcean.DnsRecord("www", new()
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.A,
@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Add a MX record for the example.com domain itself.
-    ///     var mx = new DigitalOcean.Index.DnsRecord("mx", new()
+    ///     var mx = new DigitalOcean.DnsRecord("mx", new()
     ///     {
     ///         Domain = @default.Id,
     ///         Type = DigitalOcean.RecordType.MX,

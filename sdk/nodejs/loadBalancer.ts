@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *         port: 22,
  *         protocol: "tcp",
  *     },
- *     dropletIds: [web.id],
+ *     dropletIds: [web.id.apply(x =>Number(x))],
  * });
  * ```
  *

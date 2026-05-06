@@ -26,13 +26,13 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new tag
-    ///     var foobar = new DigitalOcean.Index.Tag("foobar", new()
+    ///     var foobar = new DigitalOcean.Tag("foobar", new()
     ///     {
     ///         Name = "foobar",
     ///     });
     /// 
     ///     // Create a new Droplet in nyc3 with the foobar tag
-    ///     var web = new DigitalOcean.Index.Droplet("web", new()
+    ///     var web = new DigitalOcean.Droplet("web", new()
     ///     {
     ///         Image = "ubuntu-18-04-x64",
     ///         Name = "web-1",

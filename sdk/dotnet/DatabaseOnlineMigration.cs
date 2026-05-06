@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var source = new DigitalOcean.Index.DatabaseCluster("source", new()
+    ///     var source = new DigitalOcean.DatabaseCluster("source", new()
     ///     {
     ///         Name = "st01",
     ///         Engine = "mysql",
@@ -41,7 +41,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var destination = new DigitalOcean.Index.DatabaseCluster("destination", new()
+    ///     var destination = new DigitalOcean.DatabaseCluster("destination", new()
     ///     {
     ///         Name = "dt01",
     ///         Engine = "mysql",
@@ -55,13 +55,13 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var sourceDb = new DigitalOcean.Index.DatabaseDb("source_db", new()
+    ///     var sourceDb = new DigitalOcean.DatabaseDb("source_db", new()
     ///     {
     ///         ClusterId = source.Id,
     ///         Name = "terraform-db-om-source",
     ///     });
     /// 
-    ///     var foobar = new DigitalOcean.Index.DatabaseOnlineMigration("foobar", new()
+    ///     var foobar = new DigitalOcean.DatabaseOnlineMigration("foobar", new()
     ///     {
     ///         ClusterId = destination.Id,
     ///         Source = new DigitalOcean.Inputs.DatabaseOnlineMigrationSourceArgs

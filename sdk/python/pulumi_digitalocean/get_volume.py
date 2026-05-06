@@ -189,7 +189,7 @@ def get_volume(description: Optional[_builtins.str] = None,
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
+        droplet_id=example_droplet.id.apply(lambda x: int(x)),
         volume_id=example.id)
     ```
 
@@ -254,7 +254,7 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[_builtins.str]
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
+        droplet_id=example_droplet.id.apply(lambda x: int(x)),
         volume_id=example.id)
     ```
 

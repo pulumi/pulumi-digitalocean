@@ -31,7 +31,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetRecord.Invoke(new()
+        ///     var example = DigitalOcean.GetRecord.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Name = "test",
@@ -81,7 +81,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetRecord.Invoke(new()
+        ///     var example = DigitalOcean.GetRecord.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Name = "test",
@@ -131,7 +131,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetRecord.Invoke(new()
+        ///     var example = DigitalOcean.GetRecord.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         Name = "test",

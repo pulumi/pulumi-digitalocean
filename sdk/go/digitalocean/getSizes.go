@@ -19,7 +19,100 @@ import (
 //
 // Most common usage will probably be to supply a size to Droplet:
 //
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			main, err := digitalocean.GetSizes(ctx, &digitalocean.GetSizesArgs{
+//				Filters: []digitalocean.GetSizesFilter{
+//					{
+//						Key: "slug",
+//						Values: []string{
+//							"s-1vcpu-1gb",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("web-1"),
+//				Region: pulumi.String(digitalocean.RegionSGP1),
+//				Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // The data source also supports multiple filters and sorts. For example, to fetch sizes with 1 or 2 virtual CPU that are available "sgp1" region, then pick the cheapest one:
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-digitalocean/sdk/v4/go/digitalocean"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			main, err := digitalocean.GetSizes(ctx, &digitalocean.GetSizesArgs{
+//				Filters: []digitalocean.GetSizesFilter{
+//					{
+//						Key: "vcpus",
+//						Values: []string{
+//							"1",
+//							"2",
+//						},
+//					},
+//					{
+//						Key: "regions",
+//						Values: []string{
+//							"sgp1",
+//						},
+//					},
+//				},
+//				Sorts: []digitalocean.GetSizesSort{
+//					{
+//						Key:       "price_monthly",
+//						Direction: pulumi.StringRef("asc"),
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = digitalocean.NewDroplet(ctx, "web", &digitalocean.DropletArgs{
+//				Image:  pulumi.String("ubuntu-18-04-x64"),
+//				Name:   pulumi.String("web-1"),
+//				Region: pulumi.String(digitalocean.RegionSGP1),
+//				Size:   digitalocean.DropletSlug(main.Sizes[0].Slug),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // The data source can also handle multiple sorts. In which case, the sort will be applied in the order it is defined. For example, to sort by memory in ascending order, then sort by disk in descending order between sizes with same memory:
 //

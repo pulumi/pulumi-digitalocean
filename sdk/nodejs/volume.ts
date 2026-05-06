@@ -30,7 +30,7 @@ import * as utilities from "./utilities";
  *     region: digitalocean.Region.NYC1,
  * });
  * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: foobarDroplet.id,
+ *     dropletId: foobarDroplet.id.apply(x =>Number(x)),
  *     volumeId: foobar.id,
  * });
  * ```

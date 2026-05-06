@@ -128,7 +128,7 @@ class VolumeAttachment(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 
@@ -167,7 +167,7 @@ class VolumeAttachment(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 

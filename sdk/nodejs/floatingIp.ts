@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  *     privateNetworking: true,
  * });
  * const foobarFloatingIp = new digitalocean.FloatingIp("foobar", {
- *     dropletId: foobar.id,
+ *     dropletId: foobar.id.apply(x =>Number(x)),
  *     region: foobar.region,
  * });
  * ```

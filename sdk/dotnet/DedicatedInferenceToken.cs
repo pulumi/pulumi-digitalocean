@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Index.DedicatedInference("example", new()
+    ///     var example = new DigitalOcean.DedicatedInference("example", new()
     ///     {
     ///         Name = "my-inference-endpoint",
     ///         Region = "tor1",
@@ -49,7 +49,7 @@ namespace Pulumi.DigitalOcean
     ///         },
     ///     });
     /// 
-    ///     var exampleDedicatedInferenceToken = new DigitalOcean.Index.DedicatedInferenceToken("example", new()
+    ///     var exampleDedicatedInferenceToken = new DigitalOcean.DedicatedInferenceToken("example", new()
     ///     {
     ///         DedicatedInferenceId = example.Id,
     ///         Name = "my-api-token",

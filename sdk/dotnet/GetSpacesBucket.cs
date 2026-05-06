@@ -27,7 +27,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetSpacesBucket.Invoke(new()
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
         ///     {
         ///         Name = "my-spaces-bucket",
         ///         Region = "nyc3",
@@ -59,7 +59,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetSpacesBucket.Invoke(new()
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
         ///     {
         ///         Name = "my-spaces-bucket",
         ///         Region = "nyc3",
@@ -91,7 +91,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetSpacesBucket.Invoke(new()
+        ///     var example = DigitalOcean.GetSpacesBucket.Invoke(new()
         ///     {
         ///         Name = "my-spaces-bucket",
         ///         Region = "nyc3",

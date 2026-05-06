@@ -126,7 +126,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
             private_networking=True)
         example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("example",
             ip_address=example.ip_address,
-            droplet_id=example_droplet.id)
+            droplet_id=example_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -171,7 +171,7 @@ class ReservedIpAssignment(pulumi.CustomResource):
             private_networking=True)
         example_reserved_ip_assignment = digitalocean.ReservedIpAssignment("example",
             ip_address=example.ip_address,
-            droplet_id=example_droplet.id)
+            droplet_id=example_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import

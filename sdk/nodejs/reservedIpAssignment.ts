@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("example", {
  *     ipAddress: example.ipAddress,
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  * });
  * ```
  *

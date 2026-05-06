@@ -281,8 +281,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -320,8 +320,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -359,8 +359,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -398,8 +398,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -437,8 +437,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -476,8 +476,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -515,8 +515,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -555,8 +555,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -598,8 +598,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -641,8 +641,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -684,8 +684,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -727,8 +727,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetAppArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -776,8 +776,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -810,8 +810,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -868,8 +868,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -902,8 +902,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -960,8 +960,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -994,8 +994,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1052,8 +1052,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1086,8 +1086,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1144,8 +1144,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1178,8 +1178,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixArgs;
      * import com.pulumi.digitalocean.inputs.GetByoipPrefixResourcesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1315,8 +1315,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1362,8 +1362,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1409,8 +1409,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1456,8 +1456,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1503,8 +1503,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1567,8 +1567,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1616,8 +1616,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1665,8 +1665,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1714,8 +1714,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1763,8 +1763,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetContainerRegistryArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1803,8 +1803,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1844,8 +1844,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1885,8 +1885,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1926,8 +1926,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -1967,8 +1967,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseCaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2008,8 +2008,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2049,8 +2049,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2090,8 +2090,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2131,8 +2131,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2172,8 +2172,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2214,8 +2214,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2261,8 +2261,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2308,8 +2308,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2355,8 +2355,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2402,8 +2402,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseConnectionPoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2447,8 +2447,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2486,8 +2486,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2525,8 +2525,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2564,8 +2564,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2603,8 +2603,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2642,8 +2642,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2681,8 +2681,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2722,8 +2722,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2769,8 +2769,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2816,8 +2816,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2863,8 +2863,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2910,8 +2910,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseReplicaArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -2957,8 +2957,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3004,8 +3004,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3051,8 +3051,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3098,8 +3098,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3145,8 +3145,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDatabaseClusterArgs;
      * import com.pulumi.digitalocean.inputs.GetDatabaseUserArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3193,8 +3193,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3236,8 +3236,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3279,8 +3279,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3322,8 +3322,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3365,8 +3365,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3407,8 +3407,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3441,8 +3441,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3486,8 +3486,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3520,8 +3520,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3565,8 +3565,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3599,8 +3599,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3644,8 +3644,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3678,8 +3678,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3723,8 +3723,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3757,8 +3757,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceAcceleratorsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3802,8 +3802,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3842,8 +3842,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3882,8 +3882,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3922,8 +3922,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -3962,8 +3962,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4002,8 +4002,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4042,8 +4042,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4081,8 +4081,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4121,8 +4121,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4161,8 +4161,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4201,8 +4201,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4241,8 +4241,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4281,8 +4281,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4321,8 +4321,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4365,8 +4365,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4399,8 +4399,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4447,8 +4447,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4481,8 +4481,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4529,8 +4529,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4563,8 +4563,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4611,8 +4611,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4645,8 +4645,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4693,8 +4693,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4727,8 +4727,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferenceTokensArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4773,8 +4773,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4806,8 +4806,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4842,8 +4842,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4891,8 +4891,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4924,8 +4924,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -4960,8 +4960,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5009,8 +5009,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5042,8 +5042,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5078,8 +5078,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5127,8 +5127,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5160,8 +5160,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5196,8 +5196,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5245,8 +5245,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5278,8 +5278,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5314,8 +5314,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5363,8 +5363,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5396,8 +5396,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5432,8 +5432,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5481,8 +5481,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5514,8 +5514,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5550,8 +5550,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDedicatedInferencesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5605,8 +5605,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5654,8 +5654,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5703,8 +5703,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5752,8 +5752,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5801,8 +5801,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5852,8 +5852,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5906,8 +5906,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -5960,8 +5960,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6014,8 +6014,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6068,8 +6068,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6122,8 +6122,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6176,8 +6176,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDomainsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6228,8 +6228,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6262,8 +6262,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6295,8 +6295,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6343,8 +6343,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6377,8 +6377,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6410,8 +6410,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6458,8 +6458,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6492,8 +6492,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6525,8 +6525,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6573,8 +6573,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6607,8 +6607,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6640,8 +6640,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6688,8 +6688,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6722,8 +6722,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6755,8 +6755,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6803,8 +6803,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6837,8 +6837,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6870,8 +6870,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6918,8 +6918,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6952,8 +6952,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -6985,8 +6985,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7030,8 +7030,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7063,8 +7063,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7108,8 +7108,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7141,8 +7141,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7186,8 +7186,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7219,8 +7219,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7264,8 +7264,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7297,8 +7297,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7342,8 +7342,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7375,8 +7375,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7420,8 +7420,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7453,8 +7453,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7498,8 +7498,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7531,8 +7531,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletAutoscaleArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7575,8 +7575,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7612,8 +7612,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7665,8 +7665,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7702,8 +7702,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7755,8 +7755,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7792,8 +7792,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7845,8 +7845,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7882,8 +7882,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7935,8 +7935,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -7972,8 +7972,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8025,8 +8025,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8062,8 +8062,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8115,8 +8115,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8152,8 +8152,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetDropletSnapshotArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8215,8 +8215,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8251,8 +8251,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8317,8 +8317,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8353,8 +8353,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8419,8 +8419,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8455,8 +8455,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8521,8 +8521,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8557,8 +8557,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8623,8 +8623,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8659,8 +8659,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8725,8 +8725,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8761,8 +8761,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8827,8 +8827,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8863,8 +8863,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetDropletsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8917,8 +8917,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -8960,8 +8960,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9003,8 +9003,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9046,8 +9046,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9089,8 +9089,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFirewallArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9139,8 +9139,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9191,8 +9191,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9243,8 +9243,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9295,8 +9295,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -9347,8 +9347,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetFloatingIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10463,8 +10463,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10498,8 +10498,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10538,8 +10538,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10585,8 +10585,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10620,8 +10620,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10660,8 +10660,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10707,8 +10707,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10742,8 +10742,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10782,8 +10782,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10829,8 +10829,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10864,8 +10864,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10904,8 +10904,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10951,8 +10951,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -10986,8 +10986,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11026,8 +11026,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11073,8 +11073,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11108,8 +11108,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11148,8 +11148,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11195,8 +11195,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11230,8 +11230,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11270,8 +11270,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImageArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11322,8 +11322,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11358,8 +11358,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11422,8 +11422,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11458,8 +11458,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11522,8 +11522,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11558,8 +11558,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11622,8 +11622,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11658,8 +11658,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11722,8 +11722,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11758,8 +11758,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11822,8 +11822,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11858,8 +11858,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11922,8 +11922,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -11958,8 +11958,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetImagesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12010,8 +12010,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12050,8 +12050,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12090,8 +12090,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12130,8 +12130,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12170,8 +12170,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesClusterArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12212,8 +12212,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12248,8 +12248,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12294,8 +12294,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12347,8 +12347,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12383,8 +12383,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12429,8 +12429,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12482,8 +12482,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12518,8 +12518,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12564,8 +12564,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12617,8 +12617,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12653,8 +12653,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12699,8 +12699,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12752,8 +12752,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12788,8 +12788,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12834,8 +12834,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12887,8 +12887,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12923,8 +12923,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -12969,8 +12969,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13022,8 +13022,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetKubernetesVersionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13058,8 +13058,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13104,8 +13104,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.KubernetesCluster;
      * import com.pulumi.digitalocean.KubernetesClusterArgs;
      * import com.pulumi.digitalocean.inputs.KubernetesClusterNodePoolArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13162,8 +13162,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13196,8 +13196,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13243,8 +13243,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13277,8 +13277,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13324,8 +13324,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13358,8 +13358,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13405,8 +13405,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13439,8 +13439,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13486,8 +13486,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13520,8 +13520,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13567,8 +13567,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13601,8 +13601,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13648,8 +13648,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13682,8 +13682,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetLoadBalancerArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13724,8 +13724,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetNfsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13767,8 +13767,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetNfsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13810,8 +13810,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetNfsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13853,8 +13853,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetNfsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -13896,8 +13896,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetNfsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14029,8 +14029,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14073,8 +14073,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14117,8 +14117,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14161,8 +14161,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14205,8 +14205,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14249,8 +14249,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14293,8 +14293,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14346,8 +14346,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14382,8 +14382,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14444,8 +14444,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14480,8 +14480,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14542,8 +14542,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14578,8 +14578,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14640,8 +14640,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14676,8 +14676,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14738,8 +14738,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14774,8 +14774,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14836,8 +14836,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14872,8 +14872,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14934,8 +14934,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -14970,8 +14970,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetProjectsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15029,8 +15029,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15079,8 +15079,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15129,8 +15129,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15179,8 +15179,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15229,8 +15229,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRecordArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15277,8 +15277,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15330,8 +15330,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15383,8 +15383,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15436,8 +15436,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15489,8 +15489,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetRecordsArgs;
      * import com.pulumi.std.StdFunctions;
      * import com.pulumi.std.inputs.JoinArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15538,8 +15538,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15580,8 +15580,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15622,8 +15622,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15664,8 +15664,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15706,8 +15706,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15755,8 +15755,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15791,8 +15791,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15851,8 +15851,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15887,8 +15887,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15947,8 +15947,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -15983,8 +15983,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16043,8 +16043,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16079,8 +16079,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16139,8 +16139,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16175,8 +16175,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16235,8 +16235,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16271,8 +16271,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16331,8 +16331,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16367,8 +16367,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetRegionsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16426,8 +16426,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16476,8 +16476,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16526,8 +16526,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16576,8 +16576,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16626,8 +16626,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16676,8 +16676,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.ReservedIpv6Args;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16727,8 +16727,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.ReservedIpv6Args;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16778,8 +16778,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.ReservedIpv6Args;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16829,8 +16829,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.ReservedIpv6Args;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16880,8 +16880,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.ReservedIpv6Args;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetReservedIpv6Args;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16930,8 +16930,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -16975,8 +16975,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17029,8 +17029,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17083,8 +17083,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17128,8 +17128,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17182,8 +17182,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17236,8 +17236,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17281,8 +17281,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17335,8 +17335,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17389,8 +17389,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17434,8 +17434,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17488,8 +17488,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17542,8 +17542,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17587,8 +17587,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17641,8 +17641,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17695,8 +17695,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17740,8 +17740,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17794,8 +17794,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17848,8 +17848,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17893,8 +17893,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17947,8 +17947,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSizesArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -17998,8 +17998,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18043,8 +18043,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18088,8 +18088,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18133,8 +18133,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18178,8 +18178,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18230,8 +18230,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18290,8 +18290,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18350,8 +18350,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18410,8 +18410,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18470,8 +18470,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketObjectArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18573,8 +18573,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18608,8 +18608,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18663,8 +18663,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18698,8 +18698,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18753,8 +18753,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18788,8 +18788,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18843,8 +18843,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18878,8 +18878,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18933,8 +18933,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -18968,8 +18968,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19023,8 +19023,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19058,8 +19058,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19113,8 +19113,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19148,8 +19148,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesBucketsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19198,8 +19198,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19242,8 +19242,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19286,8 +19286,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19330,8 +19330,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19374,8 +19374,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSpacesKeyArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19424,8 +19424,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19481,8 +19481,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19538,8 +19538,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19595,8 +19595,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19652,8 +19652,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetSshKeyArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19708,8 +19708,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19744,8 +19744,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19797,8 +19797,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19833,8 +19833,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19886,8 +19886,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19922,8 +19922,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -19975,8 +19975,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20011,8 +20011,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20064,8 +20064,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20100,8 +20100,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20153,8 +20153,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20189,8 +20189,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20242,8 +20242,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20278,8 +20278,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetSshKeysArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20331,8 +20331,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetTagArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20387,8 +20387,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetTagArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20443,8 +20443,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetTagArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20499,8 +20499,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetTagArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20555,8 +20555,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetTagArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20605,8 +20605,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20651,8 +20651,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20697,8 +20697,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20743,8 +20743,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20789,8 +20789,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20835,8 +20835,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20881,8 +20881,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetTagsArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20932,8 +20932,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -20970,8 +20970,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DropletArgs;
      * import com.pulumi.digitalocean.VolumeAttachment;
      * import com.pulumi.digitalocean.VolumeAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21030,8 +21030,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21068,8 +21068,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DropletArgs;
      * import com.pulumi.digitalocean.VolumeAttachment;
      * import com.pulumi.digitalocean.VolumeAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21128,8 +21128,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21166,8 +21166,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DropletArgs;
      * import com.pulumi.digitalocean.VolumeAttachment;
      * import com.pulumi.digitalocean.VolumeAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21226,8 +21226,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21264,8 +21264,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DropletArgs;
      * import com.pulumi.digitalocean.VolumeAttachment;
      * import com.pulumi.digitalocean.VolumeAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21324,8 +21324,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21362,8 +21362,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.DropletArgs;
      * import com.pulumi.digitalocean.VolumeAttachment;
      * import com.pulumi.digitalocean.VolumeAttachmentArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21419,8 +21419,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21456,8 +21456,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21509,8 +21509,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21546,8 +21546,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21599,8 +21599,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21636,8 +21636,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21689,8 +21689,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21726,8 +21726,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21779,8 +21779,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21816,8 +21816,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21869,8 +21869,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21906,8 +21906,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21959,8 +21959,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -21996,8 +21996,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVolumeSnapshotArgs;
      * import com.pulumi.digitalocean.Volume;
      * import com.pulumi.digitalocean.VolumeArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22054,8 +22054,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22089,8 +22089,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22146,8 +22146,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22181,8 +22181,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22238,8 +22238,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22273,8 +22273,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22330,8 +22330,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22365,8 +22365,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22422,8 +22422,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22457,8 +22457,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22514,8 +22514,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22549,8 +22549,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22606,8 +22606,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22641,8 +22641,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22695,8 +22695,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22728,8 +22728,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22774,8 +22774,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22807,8 +22807,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22853,8 +22853,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22886,8 +22886,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22932,8 +22932,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -22965,8 +22965,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23011,8 +23011,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23044,8 +23044,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23090,8 +23090,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23123,8 +23123,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23169,8 +23169,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23202,8 +23202,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcNatGatewayArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23250,8 +23250,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23285,8 +23285,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23326,8 +23326,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23361,8 +23361,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23417,8 +23417,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23452,8 +23452,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23493,8 +23493,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23528,8 +23528,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23584,8 +23584,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23619,8 +23619,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23660,8 +23660,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23695,8 +23695,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23751,8 +23751,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23786,8 +23786,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23827,8 +23827,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23862,8 +23862,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23918,8 +23918,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23953,8 +23953,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -23994,8 +23994,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24029,8 +24029,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24085,8 +24085,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24120,8 +24120,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24161,8 +24161,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24196,8 +24196,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24252,8 +24252,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24287,8 +24287,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24328,8 +24328,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.digitalocean.DigitaloceanFunctions;
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -24363,8 +24363,8 @@ public final class DigitaloceanFunctions {
      * import com.pulumi.digitalocean.inputs.GetVpcPeeringArgs;
      * import com.pulumi.digitalocean.Droplet;
      * import com.pulumi.digitalocean.DropletArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

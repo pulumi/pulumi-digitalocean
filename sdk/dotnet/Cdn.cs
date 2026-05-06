@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Spaces Bucket
-    ///     var mybucket = new DigitalOcean.Index.SpacesBucket("mybucket", new()
+    ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
     ///         Name = "example",
     ///         Region = DigitalOcean.Region.SFO2,
@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Add a CDN endpoint to the Spaces Bucket
-    ///     var mycdn = new DigitalOcean.Index.Cdn("mycdn", new()
+    ///     var mycdn = new DigitalOcean.Cdn("mycdn", new()
     ///     {
     ///         Origin = mybucket.BucketDomainName,
     ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new Spaces Bucket
-    ///     var mybucket = new DigitalOcean.Index.SpacesBucket("mybucket", new()
+    ///     var mybucket = new DigitalOcean.SpacesBucket("mybucket", new()
     ///     {
     ///         Name = "example",
     ///         Region = DigitalOcean.Region.SFO2,
@@ -64,7 +64,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Create a DigitalOcean managed Let's Encrypt Certificate
-    ///     var cert = new DigitalOcean.Index.Certificate("cert", new()
+    ///     var cert = new DigitalOcean.Certificate("cert", new()
     ///     {
     ///         Name = "cdn-cert",
     ///         Type = DigitalOcean.CertificateType.LetsEncrypt,
@@ -75,7 +75,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Add a CDN endpoint with a custom sub-domain to the Spaces Bucket
-    ///     var mycdn = new DigitalOcean.Index.Cdn("mycdn", new()
+    ///     var mycdn = new DigitalOcean.Cdn("mycdn", new()
     ///     {
     ///         Origin = mybucket.BucketDomainName,
     ///         CustomDomain = "static.example.com",

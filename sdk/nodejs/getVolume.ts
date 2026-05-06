@@ -43,7 +43,7 @@ import * as utilities from "./utilities";
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  *     volumeId: example.then(example => example.id),
  * });
  * ```
@@ -153,7 +153,7 @@ export interface GetVolumeResult {
  *     region: digitalocean.Region.NYC3,
  * });
  * const foobar = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  *     volumeId: example.then(example => example.id),
  * });
  * ```

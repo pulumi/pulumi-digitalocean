@@ -128,7 +128,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
             ip_address=foobar.ip_address,
-            droplet_id=foobar_droplet.id)
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -175,7 +175,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
             ip_address=foobar.ip_address,
-            droplet_id=foobar_droplet.id)
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import

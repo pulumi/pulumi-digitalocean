@@ -35,7 +35,7 @@ import * as utilities from "./utilities";
  *     name: "example-1.0.0",
  * });
  * const exampleDroplet = new digitalocean.Droplet("example", {
- *     image: example.then(example => example.id),
+ *     image: output(example.then(example => example.id)).apply(x =>String(x)),
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,
@@ -184,7 +184,7 @@ export interface GetImageResult {
  *     name: "example-1.0.0",
  * });
  * const exampleDroplet = new digitalocean.Droplet("example", {
- *     image: example.then(example => example.id),
+ *     image: output(example.then(example => example.id)).apply(x =>String(x)),
  *     name: "example-1",
  *     region: digitalocean.Region.NYC2,
  *     size: digitalocean.DropletSlug.DropletS1VCPU1GB,

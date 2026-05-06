@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
  *     ipAddress: foobar.ipAddress,
- *     dropletId: foobarDroplet.id,
+ *     dropletId: foobarDroplet.id.apply(x =>Number(x)),
  * });
  * ```
  *

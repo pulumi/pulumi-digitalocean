@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -35,7 +35,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var user_example = new DigitalOcean.Index.DatabaseUser("user-example", new()
+    ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "foobar",
@@ -53,7 +53,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -63,7 +63,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var replica_example = new DigitalOcean.Index.DatabaseReplica("replica-example", new()
+    ///     var replica_example = new DigitalOcean.DatabaseReplica("replica-example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "replica-example",
@@ -71,7 +71,7 @@ namespace Pulumi.DigitalOcean
     ///         Region = DigitalOcean.Region.NYC1,
     ///     });
     /// 
-    ///     var user_example = new DigitalOcean.Index.DatabaseUser("user-example", new()
+    ///     var user_example = new DigitalOcean.DatabaseUser("user-example", new()
     ///     {
     ///         ClusterId = replica_example.Uuid,
     ///         Name = "foobar",
@@ -89,7 +89,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var kafka_example = new DigitalOcean.Index.DatabaseCluster("kafka-example", new()
+    ///     var kafka_example = new DigitalOcean.DatabaseCluster("kafka-example", new()
     ///     {
     ///         Name = "example-kafka-cluster",
     ///         Engine = "kafka",
@@ -99,13 +99,13 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 3,
     ///     });
     /// 
-    ///     var foobarTopic = new DigitalOcean.Index.DatabaseKafkaTopic("foobar_topic", new()
+    ///     var foobarTopic = new DigitalOcean.DatabaseKafkaTopic("foobar_topic", new()
     ///     {
     ///         ClusterId = foobar.Id,
     ///         Name = "topic-1",
     ///     });
     /// 
-    ///     var foobarUser = new DigitalOcean.Index.DatabaseUser("foobar_user", new()
+    ///     var foobarUser = new DigitalOcean.DatabaseUser("foobar_user", new()
     ///     {
     ///         ClusterId = foobar.Id,
     ///         Name = "example-user",

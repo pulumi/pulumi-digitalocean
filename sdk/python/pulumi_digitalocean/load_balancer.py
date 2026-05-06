@@ -993,7 +993,7 @@ class LoadBalancer(pulumi.CustomResource):
                 "port": 22,
                 "protocol": "tcp",
             },
-            droplet_ids=[web.id])
+            droplet_ids=[web.id.apply(lambda x: int(x))])
         ```
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -1081,7 +1081,7 @@ class LoadBalancer(pulumi.CustomResource):
                 "port": 22,
                 "protocol": "tcp",
             },
-            droplet_ids=[web.id])
+            droplet_ids=[web.id.apply(lambda x: int(x))])
         ```
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`

@@ -24,7 +24,7 @@ import * as utilities from "./utilities";
  *     privateNetworking: true,
  * });
  * const exampleReservedIp = new digitalocean.ReservedIp("example", {
- *     dropletId: example.id,
+ *     dropletId: example.id.apply(x =>Number(x)),
  *     region: example.region,
  * });
  * ```

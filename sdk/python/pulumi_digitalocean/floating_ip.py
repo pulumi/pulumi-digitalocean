@@ -176,7 +176,7 @@ class FloatingIp(pulumi.CustomResource):
             ipv6=True,
             private_networking=True)
         foobar_floating_ip = digitalocean.FloatingIp("foobar",
-            droplet_id=foobar.id,
+            droplet_id=foobar.id.apply(lambda x: int(x)),
             region=foobar.region)
         ```
 
@@ -222,7 +222,7 @@ class FloatingIp(pulumi.CustomResource):
             ipv6=True,
             private_networking=True)
         foobar_floating_ip = digitalocean.FloatingIp("foobar",
-            droplet_id=foobar.id,
+            droplet_id=foobar.id.apply(lambda x: int(x)),
             region=foobar.region)
         ```
 
