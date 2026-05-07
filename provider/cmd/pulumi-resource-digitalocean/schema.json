@@ -32095,6 +32095,7 @@
                 "priceHourly",
                 "priceMonthly",
                 "privateNetworking",
+                "publicNetworking",
                 "region",
                 "size",
                 "status",

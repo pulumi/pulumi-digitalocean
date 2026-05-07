@@ -1442,7 +1442,7 @@ class Droplet(pulumi.CustomResource):
 
     @_builtins.property
     @pulumi.getter(name="publicNetworking")
-    def public_networking(self) -> pulumi.Output[Optional[_builtins.bool]]:
+    def public_networking(self) -> pulumi.Output[_builtins.bool]:
         """
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
