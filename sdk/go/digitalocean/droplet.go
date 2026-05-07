@@ -118,7 +118,7 @@ type Droplet struct {
 	// But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
 	//
 	// > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
-	PublicNetworking pulumi.BoolPtrOutput `pulumi:"publicNetworking"`
+	PublicNetworking pulumi.BoolOutput `pulumi:"publicNetworking"`
 	// The region where the Droplet will be created.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// Boolean controlling whether to increase the disk
@@ -701,8 +701,8 @@ func (o DropletOutput) PrivateNetworking() pulumi.BoolOutput {
 // But, by explicitly setting it to false, you can create a droplet with public networking entirely disabled.
 //
 // > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `VolumeAttachment` resources for a given instance.
-func (o DropletOutput) PublicNetworking() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *Droplet) pulumi.BoolPtrOutput { return v.PublicNetworking }).(pulumi.BoolPtrOutput)
+func (o DropletOutput) PublicNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Droplet) pulumi.BoolOutput { return v.PublicNetworking }).(pulumi.BoolOutput)
 }
 
 // The region where the Droplet will be created.

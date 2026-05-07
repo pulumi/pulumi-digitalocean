@@ -183,7 +183,7 @@ namespace Pulumi.DigitalOcean
         /// &gt; **NOTE:** If you use `VolumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `VolumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
         /// </summary>
         [Output("publicNetworking")]
-        public Output<bool?> PublicNetworking { get; private set; } = null!;
+        public Output<bool> PublicNetworking { get; private set; } = null!;
 
         /// <summary>
         /// The region where the Droplet will be created.

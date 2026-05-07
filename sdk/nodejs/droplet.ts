@@ -161,7 +161,7 @@ export class Droplet extends pulumi.CustomResource {
      *
      * > **NOTE:** If you use `volumeIds` on a Droplet, Terraform will assume management over the full set volumes for the instance, and treat additional volumes as a drift. For this reason, `volumeIds` must not be mixed with external `digitalocean.VolumeAttachment` resources for a given instance.
      */
-    declare public readonly publicNetworking: pulumi.Output<boolean | undefined>;
+    declare public readonly publicNetworking: pulumi.Output<boolean>;
     /**
      * The region where the Droplet will be created.
      */
