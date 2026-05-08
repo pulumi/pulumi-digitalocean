@@ -170,10 +170,10 @@ export interface GetImagesOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetImagesFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetImagesSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetImagesSortArgs>[] | undefined>;
 }

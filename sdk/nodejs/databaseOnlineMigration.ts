@@ -168,27 +168,27 @@ export interface DatabaseOnlineMigrationState {
     /**
      * The ID of the target MySQL cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the online migration was created
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * When set to true, enables SSL encryption when connecting to the source database.
      */
-    disableSsl?: pulumi.Input<boolean>;
+    disableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * A list of databases that should be ignored during migration.
      */
-    ignoreDbs?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoreDbs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for migration
      */
-    source?: pulumi.Input<inputs.DatabaseOnlineMigrationSource>;
+    source?: pulumi.Input<inputs.DatabaseOnlineMigrationSource | undefined>;
     /**
      * The status of the online migration
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -202,11 +202,11 @@ export interface DatabaseOnlineMigrationArgs {
     /**
      * When set to true, enables SSL encryption when connecting to the source database.
      */
-    disableSsl?: pulumi.Input<boolean>;
+    disableSsl?: pulumi.Input<boolean | undefined>;
     /**
      * A list of databases that should be ignored during migration.
      */
-    ignoreDbs?: pulumi.Input<pulumi.Input<string>[]>;
+    ignoreDbs?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Configuration for migration
      */

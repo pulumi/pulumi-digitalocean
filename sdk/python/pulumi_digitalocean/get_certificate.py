@@ -168,7 +168,7 @@ def get_certificate(name: Optional[_builtins.str] = None,
         state=pulumi.get(__ret__, 'state'),
         type=pulumi.get(__ret__, 'type'),
         uuid=pulumi.get(__ret__, 'uuid'))
-def get_certificate_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_certificate_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Get information on a certificate. This data source provides the name, type, state,

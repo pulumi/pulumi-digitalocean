@@ -60,8 +60,8 @@ class DatabaseFirewallArgs:
 @pulumi.input_type
 class _DatabaseFirewallState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]] = None):
         """
         Input properties used for looking up and filtering DatabaseFirewall resources.
 
@@ -75,26 +75,26 @@ class _DatabaseFirewallState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target database cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]:
+    def rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]:
         """
         A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
         """
         return pulumi.get(self, "rules")
 
     @rules.setter
-    def rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]):
+    def rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseFirewallRuleArgs']]]]):
         pulumi.set(self, "rules", value)
 
 
@@ -104,8 +104,8 @@ class DatabaseFirewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database firewall resource allowing you to restrict
@@ -327,8 +327,8 @@ class DatabaseFirewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -354,8 +354,8 @@ class DatabaseFirewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None) -> 'DatabaseFirewall':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseFirewallRuleArgs', 'DatabaseFirewallRuleArgsDict']]]]] = None) -> 'DatabaseFirewall':
         """
         Get an existing DatabaseFirewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

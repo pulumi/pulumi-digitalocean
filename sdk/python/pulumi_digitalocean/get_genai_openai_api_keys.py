@@ -98,8 +98,8 @@ def get_genai_openai_api_keys(filters: Optional[Sequence[Union['GetGenaiOpenaiAp
         id=pulumi.get(__ret__, 'id'),
         openai_api_keys=pulumi.get(__ret__, 'openai_api_keys'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_openai_api_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiOpenaiApiKeysFilterArgs', 'GetGenaiOpenaiApiKeysFilterArgsDict']]]]] = None,
-                                     sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiOpenaiApiKeysSortArgs', 'GetGenaiOpenaiApiKeysSortArgsDict']]]]] = None,
+def get_genai_openai_api_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiOpenaiApiKeysFilterArgs', 'GetGenaiOpenaiApiKeysFilterArgsDict']]]]] = None,
+                                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiOpenaiApiKeysSortArgs', 'GetGenaiOpenaiApiKeysSortArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiOpenaiApiKeysResult]:
     """
     Use this data source to access information about an existing resource.

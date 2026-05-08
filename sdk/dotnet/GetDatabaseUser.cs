@@ -24,12 +24,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var main = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "main-cluster",
         ///     });
         /// 
-        ///     var example = DigitalOcean.Index.GetDatabaseUser.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseUser.Invoke(new()
         ///     {
         ///         ClusterId = main.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "example-user",
@@ -58,12 +58,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var main = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "main-cluster",
         ///     });
         /// 
-        ///     var example = DigitalOcean.Index.GetDatabaseUser.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseUser.Invoke(new()
         ///     {
         ///         ClusterId = main.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "example-user",
@@ -92,12 +92,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var main = DigitalOcean.Index.GetDatabaseCluster.Invoke(new()
+        ///     var main = DigitalOcean.GetDatabaseCluster.Invoke(new()
         ///     {
         ///         Name = "main-cluster",
         ///     });
         /// 
-        ///     var example = DigitalOcean.Index.GetDatabaseUser.Invoke(new()
+        ///     var example = DigitalOcean.GetDatabaseUser.Invoke(new()
         ///     {
         ///         ClusterId = main.Apply(getDatabaseClusterResult =&gt; getDatabaseClusterResult.Id),
         ///         Name = "example-user",

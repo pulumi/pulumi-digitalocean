@@ -20,8 +20,8 @@ __all__ = ['ContainerRegistryArgs', 'ContainerRegistry']
 class ContainerRegistryArgs:
     def __init__(__self__, *,
                  subscription_tier_slug: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ContainerRegistry resource.
 
@@ -49,39 +49,39 @@ class ContainerRegistryArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the container_registry
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
 @pulumi.input_type
 class _ContainerRegistryState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 server_url: Optional[pulumi.Input[_builtins.str]] = None,
-                 storage_usage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 subscription_tier_slug: Optional[pulumi.Input[_builtins.str]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 server_url: pulumi.Input[Optional[_builtins.str]] = None,
+                 storage_usage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 subscription_tier_slug: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ContainerRegistry resources.
 
@@ -110,86 +110,86 @@ class _ContainerRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the registry was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The URL endpoint of the container registry. Ex: `registry.digitalocean.com/my_registry`
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the container_registry
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The slug identifier of for region where registry data will be stored. When not provided, a region will be selected automatically.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="serverUrl")
-    def server_url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server_url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain of the container registry. Ex: `registry.digitalocean.com`
         """
         return pulumi.get(self, "server_url")
 
     @server_url.setter
-    def server_url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server_url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server_url", value)
 
     @_builtins.property
     @pulumi.getter(name="storageUsageBytes")
-    def storage_usage_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def storage_usage_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of storage used in the registry in bytes.
         """
         return pulumi.get(self, "storage_usage_bytes")
 
     @storage_usage_bytes.setter
-    def storage_usage_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def storage_usage_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "storage_usage_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="subscriptionTierSlug")
-    def subscription_tier_slug(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subscription_tier_slug(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The slug identifier for the subscription tier to use (`starter`, `basic`, or `professional`)
         """
         return pulumi.get(self, "subscription_tier_slug")
 
     @subscription_tier_slug.setter
-    def subscription_tier_slug(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subscription_tier_slug(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subscription_tier_slug", value)
 
 
@@ -199,9 +199,9 @@ class ContainerRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_tier_slug: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_tier_slug: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Container Registry resource. A Container Registry is
@@ -280,9 +280,9 @@ class ContainerRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 subscription_tier_slug: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 subscription_tier_slug: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -311,13 +311,13 @@ class ContainerRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            server_url: Optional[pulumi.Input[_builtins.str]] = None,
-            storage_usage_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            subscription_tier_slug: Optional[pulumi.Input[_builtins.str]] = None) -> 'ContainerRegistry':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            server_url: pulumi.Input[Optional[_builtins.str]] = None,
+            storage_usage_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            subscription_tier_slug: pulumi.Input[Optional[_builtins.str]] = None) -> 'ContainerRegistry':
         """
         Get an existing ContainerRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

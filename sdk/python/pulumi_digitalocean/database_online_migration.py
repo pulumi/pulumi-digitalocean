@@ -23,8 +23,8 @@ class DatabaseOnlineMigrationArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
                  source: pulumi.Input['DatabaseOnlineMigrationSourceArgs'],
-                 disable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatabaseOnlineMigration resource.
 
@@ -66,38 +66,38 @@ class DatabaseOnlineMigrationArgs:
 
     @_builtins.property
     @pulumi.getter(name="disableSsl")
-    def disable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, enables SSL encryption when connecting to the source database.
         """
         return pulumi.get(self, "disable_ssl")
 
     @disable_ssl.setter
-    def disable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreDbs")
-    def ignore_dbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_dbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of databases that should be ignored during migration.
         """
         return pulumi.get(self, "ignore_dbs")
 
     @ignore_dbs.setter
-    def ignore_dbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_dbs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_dbs", value)
 
 
 @pulumi.input_type
 class _DatabaseOnlineMigrationState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source: Optional[pulumi.Input['DatabaseOnlineMigrationSourceArgs']] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source: pulumi.Input[Optional['DatabaseOnlineMigrationSourceArgs']] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseOnlineMigration resources.
 
@@ -123,74 +123,74 @@ class _DatabaseOnlineMigrationState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target MySQL cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the online migration was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="disableSsl")
-    def disable_ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         When set to true, enables SSL encryption when connecting to the source database.
         """
         return pulumi.get(self, "disable_ssl")
 
     @disable_ssl.setter
-    def disable_ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_ssl", value)
 
     @_builtins.property
     @pulumi.getter(name="ignoreDbs")
-    def ignore_dbs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ignore_dbs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of databases that should be ignored during migration.
         """
         return pulumi.get(self, "ignore_dbs")
 
     @ignore_dbs.setter
-    def ignore_dbs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ignore_dbs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ignore_dbs", value)
 
     @_builtins.property
     @pulumi.getter
-    def source(self) -> Optional[pulumi.Input['DatabaseOnlineMigrationSourceArgs']]:
+    def source(self) -> pulumi.Input[Optional['DatabaseOnlineMigrationSourceArgs']]:
         """
         Configuration for migration
         """
         return pulumi.get(self, "source")
 
     @source.setter
-    def source(self, value: Optional[pulumi.Input['DatabaseOnlineMigrationSourceArgs']]):
+    def source(self, value: pulumi.Input[Optional['DatabaseOnlineMigrationSourceArgs']]):
         pulumi.set(self, "source", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the online migration
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
 
@@ -200,10 +200,10 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source: Optional[pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to start an online migration
@@ -349,10 +349,10 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 disable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 source: Optional[pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -382,12 +382,12 @@ class DatabaseOnlineMigration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            disable_ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            ignore_dbs: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            source: Optional[pulumi.Input[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseOnlineMigration':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disable_ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            ignore_dbs: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            source: pulumi.Input[Optional[Union['DatabaseOnlineMigrationSourceArgs', 'DatabaseOnlineMigrationSourceArgsDict']]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseOnlineMigration':
         """
         Get an existing DatabaseOnlineMigration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

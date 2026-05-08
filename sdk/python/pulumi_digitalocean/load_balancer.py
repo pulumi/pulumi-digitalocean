@@ -22,31 +22,31 @@ __all__ = ['LoadBalancerArgs', 'LoadBalancer']
 @pulumi.input_type
 class LoadBalancerArgs:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]] = None,
-                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 droplet_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backend_keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
-                 glb_settings: Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']] = None,
-                 healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
-                 http_idle_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
-                 target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional['LoadBalancerFirewallArgs']] = None,
+                 forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
+                 glb_settings: pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']] = None,
+                 healthcheck: pulumi.Input[Optional['LoadBalancerHealthcheckArgs']] = None,
+                 http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 sticky_sessions: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']] = None,
+                 target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LoadBalancer resource.
 
@@ -141,7 +141,7 @@ class LoadBalancerArgs:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-    def algorithm(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]]:
+    def algorithm(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]]:
         """
         **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         or `least_connections`. The default value is `round_robin`.
@@ -149,72 +149,72 @@ class LoadBalancerArgs:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]]):
+    def algorithm(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="disableLetsEncryptDnsRecords")
-    def disable_lets_encrypt_dns_records(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_lets_encrypt_dns_records(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         """
         return pulumi.get(self, "disable_lets_encrypt_dns_records")
 
     @disable_lets_encrypt_dns_records.setter
-    def disable_lets_encrypt_dns_records(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_lets_encrypt_dns_records(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_lets_encrypt_dns_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
         A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def droplet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of the IDs of each droplet to be attached to the Load Balancer.
         """
         return pulumi.get(self, "droplet_ids")
 
     @droplet_ids.setter
-    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def droplet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "droplet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletTag")
-    def droplet_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def droplet_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         """
         return pulumi.get(self, "droplet_tag")
 
     @droplet_tag.setter
-    def droplet_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def droplet_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "droplet_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackendKeepalive")
-    def enable_backend_keepalive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backend_keepalive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         """
         return pulumi.get(self, "enable_backend_keepalive")
 
     @enable_backend_keepalive.setter
-    def enable_backend_keepalive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backend_keepalive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backend_keepalive", value)
 
     @_builtins.property
     @pulumi.getter(name="enableProxyProtocol")
-    def enable_proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether PROXY
         Protocol should be used to pass information from connecting client requests to
@@ -223,24 +223,24 @@ class LoadBalancerArgs:
         return pulumi.get(self, "enable_proxy_protocol")
 
     @enable_proxy_protocol.setter
-    def enable_proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def firewall(self) -> Optional[pulumi.Input['LoadBalancerFirewallArgs']]:
+    def firewall(self) -> pulumi.Input[Optional['LoadBalancerFirewallArgs']]:
         """
         A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         """
         return pulumi.get(self, "firewall")
 
     @firewall.setter
-    def firewall(self, value: Optional[pulumi.Input['LoadBalancerFirewallArgs']]):
+    def firewall(self, value: pulumi.Input[Optional['LoadBalancerFirewallArgs']]):
         pulumi.set(self, "firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRules")
-    def forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]:
+    def forwarding_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]:
         """
         A list of `forwarding_rule` to be assigned to the
         Load Balancer. The `forwarding_rule` block is documented below.
@@ -248,24 +248,24 @@ class LoadBalancerArgs:
         return pulumi.get(self, "forwarding_rules")
 
     @forwarding_rules.setter
-    def forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]):
+    def forwarding_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]):
         pulumi.set(self, "forwarding_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="glbSettings")
-    def glb_settings(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]:
+    def glb_settings(self) -> pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']]:
         """
         A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
         """
         return pulumi.get(self, "glb_settings")
 
     @glb_settings.setter
-    def glb_settings(self, value: Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]):
+    def glb_settings(self, value: pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']]):
         pulumi.set(self, "glb_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def healthcheck(self) -> Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]:
+    def healthcheck(self) -> pulumi.Input[Optional['LoadBalancerHealthcheckArgs']]:
         """
         A `healthcheck` block to be assigned to the
         Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -273,72 +273,72 @@ class LoadBalancerArgs:
         return pulumi.get(self, "healthcheck")
 
     @healthcheck.setter
-    def healthcheck(self, value: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]):
+    def healthcheck(self, value: pulumi.Input[Optional['LoadBalancerHealthcheckArgs']]):
         pulumi.set(self, "healthcheck", value)
 
     @_builtins.property
     @pulumi.getter(name="httpIdleTimeoutSeconds")
-    def http_idle_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_idle_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         """
         return pulumi.get(self, "http_idle_timeout_seconds")
 
     @http_idle_timeout_seconds.setter
-    def http_idle_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_idle_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_idle_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Load Balancer name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkStack")
-    def network_stack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_stack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
         """
         return pulumi.get(self, "network_stack")
 
     @network_stack.setter
-    def network_stack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_stack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpToHttps")
-    def redirect_http_to_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def redirect_http_to_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether
         HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -347,48 +347,48 @@ class LoadBalancerArgs:
         return pulumi.get(self, "redirect_http_to_https")
 
     @redirect_http_to_https.setter
-    def redirect_http_to_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def redirect_http_to_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "redirect_http_to_https", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region to start in
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeUnit")
-    def size_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size_unit")
 
     @size_unit.setter
-    def size_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_unit", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessions")
-    def sticky_sessions(self) -> Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]:
+    def sticky_sessions(self) -> pulumi.Input[Optional['LoadBalancerStickySessionsArgs']]:
         """
         A `sticky_sessions` block to be assigned to the
         Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
@@ -396,90 +396,90 @@ class LoadBalancerArgs:
         return pulumi.get(self, "sticky_sessions")
 
     @sticky_sessions.setter
-    def sticky_sessions(self, value: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]):
+    def sticky_sessions(self, value: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']]):
         pulumi.set(self, "sticky_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")
-    def target_load_balancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_load_balancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         """
         return pulumi.get(self, "target_load_balancer_ids")
 
     @target_load_balancer_ids.setter
-    def target_load_balancer_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_load_balancer_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_load_balancer_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicy")
-    def tls_cipher_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_cipher_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         """
         return pulumi.get(self, "tls_cipher_policy")
 
     @tls_cipher_policy.setter
-    def tls_cipher_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_cipher_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_cipher_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the load balancer will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
 @pulumi.input_type
 class _LoadBalancerState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]] = None,
-                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 droplet_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backend_keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input['LoadBalancerFirewallArgs']] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
-                 glb_settings: Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']] = None,
-                 healthcheck: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']] = None,
-                 http_idle_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-                 load_balancer_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 sticky_sessions: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']] = None,
-                 target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional['LoadBalancerFirewallArgs']] = None,
+                 forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]] = None,
+                 glb_settings: pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']] = None,
+                 healthcheck: pulumi.Input[Optional['LoadBalancerHealthcheckArgs']] = None,
+                 http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+                 load_balancer_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 sticky_sessions: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']] = None,
+                 target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering LoadBalancer resources.
 
@@ -584,7 +584,7 @@ class _LoadBalancerState:
     @_builtins.property
     @pulumi.getter
     @_utilities.deprecated("""This field has been deprecated. You can no longer specify an algorithm for load balancers.""")
-    def algorithm(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]]:
+    def algorithm(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]]:
         """
         **Deprecated** This field has been deprecated. You can no longer specify an algorithm for load balancers.
         or `least_connections`. The default value is `round_robin`.
@@ -592,72 +592,72 @@ class _LoadBalancerState:
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]]):
+    def algorithm(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="disableLetsEncryptDnsRecords")
-    def disable_lets_encrypt_dns_records(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def disable_lets_encrypt_dns_records(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
         """
         return pulumi.get(self, "disable_lets_encrypt_dns_records")
 
     @disable_lets_encrypt_dns_records.setter
-    def disable_lets_encrypt_dns_records(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def disable_lets_encrypt_dns_records(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "disable_lets_encrypt_dns_records", value)
 
     @_builtins.property
     @pulumi.getter
-    def domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
+    def domains(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]:
         """
         A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
         """
         return pulumi.get(self, "domains")
 
     @domains.setter
-    def domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]):
+    def domains(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerDomainArgs']]]]):
         pulumi.set(self, "domains", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def droplet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         A list of the IDs of each droplet to be attached to the Load Balancer.
         """
         return pulumi.get(self, "droplet_ids")
 
     @droplet_ids.setter
-    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def droplet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "droplet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletTag")
-    def droplet_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def droplet_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
         """
         return pulumi.get(self, "droplet_tag")
 
     @droplet_tag.setter
-    def droplet_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def droplet_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "droplet_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="enableBackendKeepalive")
-    def enable_backend_keepalive(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_backend_keepalive(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
         """
         return pulumi.get(self, "enable_backend_keepalive")
 
     @enable_backend_keepalive.setter
-    def enable_backend_keepalive(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_backend_keepalive(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_backend_keepalive", value)
 
     @_builtins.property
     @pulumi.getter(name="enableProxyProtocol")
-    def enable_proxy_protocol(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_proxy_protocol(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether PROXY
         Protocol should be used to pass information from connecting client requests to
@@ -666,24 +666,24 @@ class _LoadBalancerState:
         return pulumi.get(self, "enable_proxy_protocol")
 
     @enable_proxy_protocol.setter
-    def enable_proxy_protocol(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_proxy_protocol(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_proxy_protocol", value)
 
     @_builtins.property
     @pulumi.getter
-    def firewall(self) -> Optional[pulumi.Input['LoadBalancerFirewallArgs']]:
+    def firewall(self) -> pulumi.Input[Optional['LoadBalancerFirewallArgs']]:
         """
         A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
         """
         return pulumi.get(self, "firewall")
 
     @firewall.setter
-    def firewall(self, value: Optional[pulumi.Input['LoadBalancerFirewallArgs']]):
+    def firewall(self, value: pulumi.Input[Optional['LoadBalancerFirewallArgs']]):
         pulumi.set(self, "firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="forwardingRules")
-    def forwarding_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]:
+    def forwarding_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]:
         """
         A list of `forwarding_rule` to be assigned to the
         Load Balancer. The `forwarding_rule` block is documented below.
@@ -691,24 +691,24 @@ class _LoadBalancerState:
         return pulumi.get(self, "forwarding_rules")
 
     @forwarding_rules.setter
-    def forwarding_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]):
+    def forwarding_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['LoadBalancerForwardingRuleArgs']]]]):
         pulumi.set(self, "forwarding_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="glbSettings")
-    def glb_settings(self) -> Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]:
+    def glb_settings(self) -> pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']]:
         """
         A block containing `glb_settings` required to define target rules for a Global Load Balancer. The `glb_settings` block is documented below.
         """
         return pulumi.get(self, "glb_settings")
 
     @glb_settings.setter
-    def glb_settings(self, value: Optional[pulumi.Input['LoadBalancerGlbSettingsArgs']]):
+    def glb_settings(self, value: pulumi.Input[Optional['LoadBalancerGlbSettingsArgs']]):
         pulumi.set(self, "glb_settings", value)
 
     @_builtins.property
     @pulumi.getter
-    def healthcheck(self) -> Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]:
+    def healthcheck(self) -> pulumi.Input[Optional['LoadBalancerHealthcheckArgs']]:
         """
         A `healthcheck` block to be assigned to the
         Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
@@ -716,105 +716,105 @@ class _LoadBalancerState:
         return pulumi.get(self, "healthcheck")
 
     @healthcheck.setter
-    def healthcheck(self, value: Optional[pulumi.Input['LoadBalancerHealthcheckArgs']]):
+    def healthcheck(self, value: pulumi.Input[Optional['LoadBalancerHealthcheckArgs']]):
         pulumi.set(self, "healthcheck", value)
 
     @_builtins.property
     @pulumi.getter(name="httpIdleTimeoutSeconds")
-    def http_idle_timeout_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_idle_timeout_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
         """
         return pulumi.get(self, "http_idle_timeout_seconds")
 
     @http_idle_timeout_seconds.setter
-    def http_idle_timeout_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_idle_timeout_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_idle_timeout_seconds", value)
 
     @_builtins.property
     @pulumi.getter
-    def ip(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ip of the Load Balancer
         """
         return pulumi.get(self, "ip")
 
     @ip.setter
-    def ip(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="loadBalancerUrn")
-    def load_balancer_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def load_balancer_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name for the Load Balancer
         """
         return pulumi.get(self, "load_balancer_urn")
 
     @load_balancer_urn.setter
-    def load_balancer_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def load_balancer_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "load_balancer_urn", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Load Balancer name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def network(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
         """
         return pulumi.get(self, "network")
 
     @network.setter
-    def network(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network", value)
 
     @_builtins.property
     @pulumi.getter(name="networkStack")
-    def network_stack(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def network_stack(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
         """
         return pulumi.get(self, "network_stack")
 
     @network_stack.setter
-    def network_stack(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def network_stack(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "network_stack", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="redirectHttpToHttps")
-    def redirect_http_to_https(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def redirect_http_to_https(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether
         HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
@@ -823,57 +823,57 @@ class _LoadBalancerState:
         return pulumi.get(self, "redirect_http_to_https")
 
     @redirect_http_to_https.setter
-    def redirect_http_to_https(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def redirect_http_to_https(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "redirect_http_to_https", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region to start in
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def size(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def size(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="sizeUnit")
-    def size_unit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def size_unit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `size_unit` may be provided.
         """
         return pulumi.get(self, "size_unit")
 
     @size_unit.setter
-    def size_unit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def size_unit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "size_unit", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="stickySessions")
-    def sticky_sessions(self) -> Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]:
+    def sticky_sessions(self) -> pulumi.Input[Optional['LoadBalancerStickySessionsArgs']]:
         """
         A `sticky_sessions` block to be assigned to the
         Load Balancer. The `sticky_sessions` block is documented below. Only 1 sticky_sessions block is allowed.
@@ -881,55 +881,55 @@ class _LoadBalancerState:
         return pulumi.get(self, "sticky_sessions")
 
     @sticky_sessions.setter
-    def sticky_sessions(self, value: Optional[pulumi.Input['LoadBalancerStickySessionsArgs']]):
+    def sticky_sessions(self, value: pulumi.Input[Optional['LoadBalancerStickySessionsArgs']]):
         pulumi.set(self, "sticky_sessions", value)
 
     @_builtins.property
     @pulumi.getter(name="targetLoadBalancerIds")
-    def target_load_balancer_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def target_load_balancer_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of Load Balancer IDs to be attached behind a Global Load Balancer.
         """
         return pulumi.get(self, "target_load_balancer_ids")
 
     @target_load_balancer_ids.setter
-    def target_load_balancer_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def target_load_balancer_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "target_load_balancer_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="tlsCipherPolicy")
-    def tls_cipher_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def tls_cipher_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
         """
         return pulumi.get(self, "tls_cipher_policy")
 
     @tls_cipher_policy.setter
-    def tls_cipher_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def tls_cipher_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "tls_cipher_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
-    def type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "type", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the load balancer will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
@@ -939,31 +939,31 @@ class LoadBalancer(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]] = None,
-                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 droplet_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backend_keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
-                 glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
-                 healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
-                 http_idle_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
-                 target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+                 forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+                 glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+                 healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
+                 http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+                 target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Load Balancer resource. This can be used to create,
@@ -993,7 +993,7 @@ class LoadBalancer(pulumi.CustomResource):
                 "port": 22,
                 "protocol": "tcp",
             },
-            droplet_ids=[web.id])
+            droplet_ids=[web.id.apply(lambda x: int(x))])
         ```
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -1081,7 +1081,7 @@ class LoadBalancer(pulumi.CustomResource):
                 "port": 22,
                 "protocol": "tcp",
             },
-            droplet_ids=[web.id])
+            droplet_ids=[web.id.apply(lambda x: int(x))])
         ```
 
         When managing certificates attached to the load balancer, make sure to add the `create_before_destroy`
@@ -1114,31 +1114,31 @@ class LoadBalancer(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]] = None,
-                 disable_lets_encrypt_dns_records: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 droplet_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 enable_backend_keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
-                 enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-                 firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
-                 forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
-                 glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
-                 healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
-                 http_idle_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 network: Optional[pulumi.Input[_builtins.str]] = None,
-                 network_stack: Optional[pulumi.Input[_builtins.str]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 redirect_http_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[_builtins.str]] = None,
-                 size_unit: Optional[pulumi.Input[_builtins.int]] = None,
-                 sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
-                 target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 type: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+                 disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+                 enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+                 firewall: pulumi.Input[Optional[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+                 forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+                 glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+                 healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
+                 http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 network: pulumi.Input[Optional[_builtins.str]] = None,
+                 network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[_builtins.str]] = None,
+                 size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+                 sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+                 target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 type: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1187,35 +1187,35 @@ class LoadBalancer(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[Union[_builtins.str, 'Algorithm']]] = None,
-            disable_lets_encrypt_dns_records: Optional[pulumi.Input[_builtins.bool]] = None,
-            domains: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
-            droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            droplet_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            enable_backend_keepalive: Optional[pulumi.Input[_builtins.bool]] = None,
-            enable_proxy_protocol: Optional[pulumi.Input[_builtins.bool]] = None,
-            firewall: Optional[pulumi.Input[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
-            forwarding_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
-            glb_settings: Optional[pulumi.Input[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
-            healthcheck: Optional[pulumi.Input[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
-            http_idle_timeout_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            ip: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6: Optional[pulumi.Input[_builtins.str]] = None,
-            load_balancer_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            network: Optional[pulumi.Input[_builtins.str]] = None,
-            network_stack: Optional[pulumi.Input[_builtins.str]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            redirect_http_to_https: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            size: Optional[pulumi.Input[_builtins.str]] = None,
-            size_unit: Optional[pulumi.Input[_builtins.int]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            sticky_sessions: Optional[pulumi.Input[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
-            target_load_balancer_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            tls_cipher_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            type: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'LoadBalancer':
+            algorithm: pulumi.Input[Optional[Union[_builtins.str, 'Algorithm']]] = None,
+            disable_lets_encrypt_dns_records: pulumi.Input[Optional[_builtins.bool]] = None,
+            domains: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerDomainArgs', 'LoadBalancerDomainArgsDict']]]]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            droplet_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            enable_backend_keepalive: pulumi.Input[Optional[_builtins.bool]] = None,
+            enable_proxy_protocol: pulumi.Input[Optional[_builtins.bool]] = None,
+            firewall: pulumi.Input[Optional[Union['LoadBalancerFirewallArgs', 'LoadBalancerFirewallArgsDict']]] = None,
+            forwarding_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['LoadBalancerForwardingRuleArgs', 'LoadBalancerForwardingRuleArgsDict']]]]] = None,
+            glb_settings: pulumi.Input[Optional[Union['LoadBalancerGlbSettingsArgs', 'LoadBalancerGlbSettingsArgsDict']]] = None,
+            healthcheck: pulumi.Input[Optional[Union['LoadBalancerHealthcheckArgs', 'LoadBalancerHealthcheckArgsDict']]] = None,
+            http_idle_timeout_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            ip: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.str]] = None,
+            load_balancer_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            network: pulumi.Input[Optional[_builtins.str]] = None,
+            network_stack: pulumi.Input[Optional[_builtins.str]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_http_to_https: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[_builtins.str]] = None,
+            size_unit: pulumi.Input[Optional[_builtins.int]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            sticky_sessions: pulumi.Input[Optional[Union['LoadBalancerStickySessionsArgs', 'LoadBalancerStickySessionsArgsDict']]] = None,
+            target_load_balancer_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            tls_cipher_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'LoadBalancer':
         """
         Get an existing LoadBalancer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

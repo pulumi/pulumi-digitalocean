@@ -24,7 +24,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseMetricsCredentials.Invoke();
+        ///     var example = DigitalOcean.GetDatabaseMetricsCredentials.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -50,7 +50,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseMetricsCredentials.Invoke();
+        ///     var example = DigitalOcean.GetDatabaseMetricsCredentials.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -76,7 +76,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDatabaseMetricsCredentials.Invoke();
+        ///     var example = DigitalOcean.GetDatabaseMetricsCredentials.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {

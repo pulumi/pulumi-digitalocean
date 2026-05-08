@@ -25,7 +25,7 @@ import * as utilities from "./utilities";
  * });
  * const webFirewall = new digitalocean.Firewall("web", {
  *     name: "only-22-80-and-443",
- *     dropletIds: [web.id],
+ *     dropletIds: [web.id.apply(x =>Number(x))],
  *     inboundRules: [
  *         {
  *             protocol: "tcp",
@@ -210,43 +210,43 @@ export interface FirewallState {
      * A time value given in ISO8601 combined date and time format
      * that represents when the Firewall was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The list of the IDs of the Droplets assigned
      * to the Firewall (max. 10). If you want to assign more droplets to the
      * Firewall, add Tags to them and use the `tags` argument below.
      */
-    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inboundRule` block is documented below.
      */
-    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[] | undefined>;
     /**
      * The Firewall name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outboundRule` block is documented below.
      */
-    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[] | undefined>;
     /**
      * An list of object containing the fields, "dropletId",
      * "removing", and "status".  It is provided to detail exactly which Droplets
      * are having their security policies updated.  When empty, all changes
      * have been successfully applied.
      */
-    pendingChanges?: pulumi.Input<pulumi.Input<inputs.FirewallPendingChange>[]>;
+    pendingChanges?: pulumi.Input<pulumi.Input<inputs.FirewallPendingChange>[] | undefined>;
     /**
      * A status string indicating the current state of the Firewall.
      * This can be "waiting", "succeeded", or "failed".
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The names of the Tags assigned to the Firewall (max. 5).
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -258,23 +258,23 @@ export interface FirewallArgs {
      * to the Firewall (max. 10). If you want to assign more droplets to the
      * Firewall, add Tags to them and use the `tags` argument below.
      */
-    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The inbound access rule block for the Firewall.
      * The `inboundRule` block is documented below.
      */
-    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[]>;
+    inboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallInboundRule>[] | undefined>;
     /**
      * The Firewall name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The outbound access rule block for the Firewall.
      * The `outboundRule` block is documented below.
      */
-    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[]>;
+    outboundRules?: pulumi.Input<pulumi.Input<inputs.FirewallOutboundRule>[] | undefined>;
     /**
      * The names of the Tags assigned to the Firewall (max. 5).
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

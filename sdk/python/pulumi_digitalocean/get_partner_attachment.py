@@ -176,10 +176,10 @@ def get_partner_attachment(bgp: Optional[Union['GetPartnerAttachmentBgpArgs', 'G
         region=pulumi.get(__ret__, 'region'),
         state=pulumi.get(__ret__, 'state'),
         vpc_ids=pulumi.get(__ret__, 'vpc_ids'))
-def get_partner_attachment_output(bgp: Optional[pulumi.Input[Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']]]] = None,
-                                  id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                  redundancy_zone: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_partner_attachment_output(bgp: pulumi.Input[Optional[Optional[Union['GetPartnerAttachmentBgpArgs', 'GetPartnerAttachmentBgpArgsDict']]]] = None,
+                                  id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                  redundancy_zone: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPartnerAttachmentResult]:
     """
     Use this data source to access information about an existing resource.

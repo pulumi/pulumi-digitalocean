@@ -149,8 +149,8 @@ def get_projects(filters: Optional[Sequence[Union['GetProjectsFilterArgs', 'GetP
         id=pulumi.get(__ret__, 'id'),
         projects=pulumi.get(__ret__, 'projects'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_projects_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
+def get_projects_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsFilterArgs', 'GetProjectsFilterArgsDict']]]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetProjectsSortArgs', 'GetProjectsSortArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectsResult]:
     """
     Retrieve information about all DigitalOcean projects associated with an account, with

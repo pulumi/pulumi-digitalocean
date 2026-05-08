@@ -387,131 +387,131 @@ export class DatabaseCluster extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DatabaseCluster resources.
  */
 export interface DatabaseClusterState {
-    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * The uniform resource name of the database cluster.
      */
-    clusterUrn?: pulumi.Input<string>;
+    clusterUrn?: pulumi.Input<string | undefined>;
     /**
      * Name of the cluster's default database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
-    engine?: pulumi.Input<string>;
+    engine?: pulumi.Input<string | undefined>;
     /**
      * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
-    evictionPolicy?: pulumi.Input<string>;
+    evictionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Database cluster's hostname.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[] | undefined>;
     /**
      * A list of metrics endpoints for the database cluster, providing URLs to access Prometheus-compatible metrics.
      */
-    metricsEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+    metricsEndpoints?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The name of the database cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * Password for the cluster's default user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Network port that the database cluster is listening on.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the database cluster will be located.
      */
-    privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string | undefined>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * Database Droplet size associated with the cluster (ex. `db-s-1vcpu-1gb`). See the DigitalOcean API for a [list of valid size slugs](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_list_options).
      */
-    size?: pulumi.Input<string | enums.DatabaseSlug>;
+    size?: pulumi.Input<string | enums.DatabaseSlug | undefined>;
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
-    sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string | undefined>;
     /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
-    storageSizeMib?: pulumi.Input<string>;
+    storageSizeMib?: pulumi.Input<string | undefined>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Name of the OpenSearch dashboard db.
      */
-    uiDatabase?: pulumi.Input<string>;
+    uiDatabase?: pulumi.Input<string | undefined>;
     /**
      * Hostname for the OpenSearch dashboard.
      */
-    uiHost?: pulumi.Input<string>;
+    uiHost?: pulumi.Input<string | undefined>;
     /**
      * Password for the OpenSearch dashboard's default user.
      */
-    uiPassword?: pulumi.Input<string>;
+    uiPassword?: pulumi.Input<string | undefined>;
     /**
      * Network port that the OpenSearch dashboard is listening on.
      */
-    uiPort?: pulumi.Input<number>;
+    uiPort?: pulumi.Input<number | undefined>;
     /**
      * The full URI for connecting to the OpenSearch dashboard.
      */
-    uiUri?: pulumi.Input<string>;
+    uiUri?: pulumi.Input<string | undefined>;
     /**
      * Username for OpenSearch dashboard's default user.
      */
-    uiUser?: pulumi.Input<string>;
+    uiUser?: pulumi.Input<string | undefined>;
     /**
      * The full URI for connecting to the database cluster.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Username for the cluster's default user.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
      * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a DatabaseCluster resource.
  */
 export interface DatabaseClusterArgs {
-    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore>;
+    backupRestore?: pulumi.Input<inputs.DatabaseClusterBackupRestore | undefined>;
     /**
      * Database engine used by the cluster (ex. `pg` for PostgreSQL, `mysql` for MySQL, `valkey` for Valkey, `mongodb` for MongoDB, or `kafka` for Kafka).
      */
@@ -519,15 +519,15 @@ export interface DatabaseClusterArgs {
     /**
      * A string specifying the eviction policy for a Valkey cluster. Valid values are: `noeviction`, `allkeysLru`, `allkeysRandom`, `volatileLru`, `volatileRandom`, or `volatileTtl`.
      */
-    evictionPolicy?: pulumi.Input<string>;
+    evictionPolicy?: pulumi.Input<string | undefined>;
     /**
      * Defines when the automatic maintenance should be performed for the database cluster.
      */
-    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[]>;
+    maintenanceWindows?: pulumi.Input<pulumi.Input<inputs.DatabaseClusterMaintenanceWindow>[] | undefined>;
     /**
      * The name of the database cluster.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Number of nodes that will be included in the cluster. For `kafka` clusters, this must be 3.
      */
@@ -535,11 +535,11 @@ export interface DatabaseClusterArgs {
     /**
      * The ID of the VPC where the database cluster will be located.
      */
-    privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the database cluster is assigned to. If excluded when creating a new database cluster, it will be assigned to your default project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean region where the cluster will reside.
      */
@@ -551,18 +551,18 @@ export interface DatabaseClusterArgs {
     /**
      * A comma separated string specifying the  SQL modes for a MySQL cluster.
      */
-    sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string | undefined>;
     /**
      * Defines the disk size, in MiB, allocated to the cluster. This can be adjusted on MySQL and PostgreSQL clusters based on predefined ranges for each slug/droplet size.
      */
-    storageSizeMib?: pulumi.Input<string>;
+    storageSizeMib?: pulumi.Input<string | undefined>;
     /**
      * A list of tag names to be applied to the database cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Engine version used by the cluster (ex. `14` for PostgreSQL 14).
      * When this value is changed, a call to the [Upgrade major Version for a Database](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Databases/operation/databases_update_major_version) API operation is made with the new version.
      */
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<string | undefined>;
 }

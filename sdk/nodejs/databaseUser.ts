@@ -219,36 +219,36 @@ export interface DatabaseUserState {
     /**
      * Access certificate for TLS client authentication. (Kafka only)
      */
-    accessCert?: pulumi.Input<string>;
+    accessCert?: pulumi.Input<string | undefined>;
     /**
      * Access key for TLS client authentication. (Kafka only)
      */
-    accessKey?: pulumi.Input<string>;
+    accessKey?: pulumi.Input<string | undefined>;
     /**
      * The ID of the original source database cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      */
-    mysqlAuthPlugin?: pulumi.Input<string>;
+    mysqlAuthPlugin?: pulumi.Input<string | undefined>;
     /**
      * The name for the database user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password for the database user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Role for the database user. The value will be either "primary" or "normal".
      */
-    role?: pulumi.Input<string>;
+    role?: pulumi.Input<string | undefined>;
     /**
      * Contains optional settings for the user.
      * The `settings` block is documented below.
      */
-    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[]>;
+    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[] | undefined>;
 }
 
 /**
@@ -262,14 +262,14 @@ export interface DatabaseUserArgs {
     /**
      * The authentication method to use for connections to the MySQL user account. The valid values are `mysqlNativePassword` or `cachingSha2Password` (this is the default).
      */
-    mysqlAuthPlugin?: pulumi.Input<string>;
+    mysqlAuthPlugin?: pulumi.Input<string | undefined>;
     /**
      * The name for the database user.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Contains optional settings for the user.
      * The `settings` block is documented below.
      */
-    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[]>;
+    settings?: pulumi.Input<pulumi.Input<inputs.DatabaseUserSetting>[] | undefined>;
 }

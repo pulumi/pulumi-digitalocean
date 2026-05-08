@@ -127,8 +127,8 @@ def get_domains(filters: Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDom
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_domains_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
-                       sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]]]] = None,
+def get_domains_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsFilterArgs', 'GetDomainsFilterArgsDict']]]]] = None,
+                       sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDomainsSortArgs', 'GetDomainsSortArgsDict']]]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDomainsResult]:
     """
     Get information on domains for use in other resources, with the ability to filter and sort the results.

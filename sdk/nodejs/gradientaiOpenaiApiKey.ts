@@ -117,35 +117,35 @@ export interface GradientaiOpenaiApiKeyState {
     /**
      * The OpenAI API key.
      */
-    apiKey?: pulumi.Input<string>;
+    apiKey?: pulumi.Input<string | undefined>;
     /**
      * When the API key was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Who created the API key.
      */
-    createdBy?: pulumi.Input<string>;
+    createdBy?: pulumi.Input<string | undefined>;
     /**
      * When the API key was deleted.
      */
-    deletedAt?: pulumi.Input<string>;
+    deletedAt?: pulumi.Input<string | undefined>;
     /**
      * Models associated with the OpenAI API key
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModel>[] | undefined>;
     /**
      * A name for the API key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * When the API key was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the API key.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -159,9 +159,9 @@ export interface GradientaiOpenaiApiKeyArgs {
     /**
      * Models associated with the OpenAI API key
      */
-    models?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModel>[]>;
+    models?: pulumi.Input<pulumi.Input<inputs.GradientaiOpenaiApiKeyModel>[] | undefined>;
     /**
      * A name for the API key.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

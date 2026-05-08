@@ -53,6 +53,6 @@ export function getGenaiOpenaiApiKeysOutput(args?: GetGenaiOpenaiApiKeysOutputAr
  * A collection of arguments for invoking getGenaiOpenaiApiKeys.
  */
 export interface GetGenaiOpenaiApiKeysOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiOpenaiApiKeysFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiOpenaiApiKeysSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiOpenaiApiKeysFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiOpenaiApiKeysSortArgs>[] | undefined>;
 }

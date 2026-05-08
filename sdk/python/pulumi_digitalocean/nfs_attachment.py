@@ -69,9 +69,9 @@ class NfsAttachmentArgs:
 @pulumi.input_type
 class _NfsAttachmentState:
     def __init__(__self__, *,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering NfsAttachment resources.
 
@@ -87,35 +87,35 @@ class _NfsAttachmentState:
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="shareId")
-    def share_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def share_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the NFS share to attach.
         """
         return pulumi.get(self, "share_id")
 
     @share_id.setter
-    def share_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def share_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "share_id", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcId")
-    def vpc_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the vpc to attach the NFS share to.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
-    def vpc_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_id", value)
 
 
@@ -125,9 +125,9 @@ class NfsAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages attaching a NFS share to a vpc.
@@ -219,9 +219,9 @@ class NfsAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 share_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 share_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -250,9 +250,9 @@ class NfsAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            share_id: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'NfsAttachment':
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            share_id: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'NfsAttachment':
         """
         Get an existing NfsAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

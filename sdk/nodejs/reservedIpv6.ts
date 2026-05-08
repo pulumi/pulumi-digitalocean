@@ -103,24 +103,24 @@ export class ReservedIpv6 extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ReservedIpv6 resources.
  */
 export interface ReservedIpv6State {
-    dropletId?: pulumi.Input<number>;
-    ip?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<number | undefined>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The region that the reserved IPv6 needs to be reserved to.
      */
-    regionSlug?: pulumi.Input<string>;
+    regionSlug?: pulumi.Input<string | undefined>;
     /**
      * the uniform resource name for the reserved ipv6
      */
-    reservedIpv6Urn?: pulumi.Input<string>;
+    reservedIpv6Urn?: pulumi.Input<string | undefined>;
 }
 
 /**
  * The set of arguments for constructing a ReservedIpv6 resource.
  */
 export interface ReservedIpv6Args {
-    dropletId?: pulumi.Input<number>;
-    ip?: pulumi.Input<string>;
+    dropletId?: pulumi.Input<number | undefined>;
+    ip?: pulumi.Input<string | undefined>;
     /**
      * The region that the reserved IPv6 needs to be reserved to.
      */

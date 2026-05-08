@@ -198,38 +198,38 @@ export interface NfsState {
     /**
      * The host IP of the NFS server accessible from the associated VPC.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The mount path for accessing the NFS share.
      */
-    mountPath?: pulumi.Input<string>;
+    mountPath?: pulumi.Input<string | undefined>;
     /**
      * A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
      * > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      */
-    performanceTier?: pulumi.Input<string>;
+    performanceTier?: pulumi.Input<string | undefined>;
     /**
      * The region where the NFS share will be created.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The size of the NFS share in GiB. Minimum size is 50 GiB.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * The current status of the NFS share.
      */
-    status?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    status?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the VPC where the NFS share will be created.
      */
-    vpcId?: pulumi.Input<string>;
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcId?: pulumi.Input<string | undefined>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**
@@ -239,12 +239,12 @@ export interface NfsArgs {
     /**
      * A name for the NFS share. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters. The name must begin with a letter.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The performance tier for the NFS share. Can be `standard` or `high`. Defaults to `high`. Changing this will cause the performance tier to be switched.
      * > **Note:** You cannot downgrade the performance tier from `high` to `standard` after creation. Upgrades from `standard` to `high` are allowed.
      */
-    performanceTier?: pulumi.Input<string>;
+    performanceTier?: pulumi.Input<string | undefined>;
     /**
      * The region where the NFS share will be created.
      */
@@ -253,7 +253,7 @@ export interface NfsArgs {
      * The size of the NFS share in GiB. Minimum size is 50 GiB.
      */
     size: pulumi.Input<number>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The ID of the VPC where the NFS share will be created.
      */

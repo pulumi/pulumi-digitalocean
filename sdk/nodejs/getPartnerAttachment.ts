@@ -60,8 +60,8 @@ export function getPartnerAttachmentOutput(args?: GetPartnerAttachmentOutputArgs
  * A collection of arguments for invoking getPartnerAttachment.
  */
 export interface GetPartnerAttachmentOutputArgs {
-    bgp?: pulumi.Input<inputs.GetPartnerAttachmentBgpArgs>;
-    id?: pulumi.Input<string>;
-    name?: pulumi.Input<string>;
-    redundancyZone?: pulumi.Input<string>;
+    bgp?: pulumi.Input<inputs.GetPartnerAttachmentBgpArgs | undefined>;
+    id?: pulumi.Input<string | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    redundancyZone?: pulumi.Input<string | undefined>;
 }

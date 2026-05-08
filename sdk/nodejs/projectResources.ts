@@ -122,11 +122,11 @@ export interface ProjectResourcesState {
     /**
      * the ID of the project
      */
-    project?: pulumi.Input<string>;
+    project?: pulumi.Input<string | undefined>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

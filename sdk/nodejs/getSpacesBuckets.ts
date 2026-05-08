@@ -148,10 +148,10 @@ export interface GetSpacesBucketsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSpacesBucketsSortArgs>[] | undefined>;
 }

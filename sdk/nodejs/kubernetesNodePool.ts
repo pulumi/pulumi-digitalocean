@@ -216,53 +216,53 @@ export interface KubernetesNodePoolState {
     /**
      * A computed field representing the actual number of nodes in the node pool, which is especially useful when auto-scaling is enabled.
      */
-    actualNodeCount?: pulumi.Input<number>;
+    actualNodeCount?: pulumi.Input<number | undefined>;
     /**
      * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      */
-    autoScale?: pulumi.Input<boolean>;
+    autoScale?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
-    maxNodes?: pulumi.Input<number>;
+    maxNodes?: pulumi.Input<number | undefined>;
     /**
      * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      */
-    minNodes?: pulumi.Input<number>;
+    minNodes?: pulumi.Input<number | undefined>;
     /**
      * A name for the node pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * A list of nodes in the pool. Each node exports the following attributes:
      */
-    nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolNode>[]>;
+    nodes?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolNode>[] | undefined>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
-    size?: pulumi.Input<string | enums.DropletSlug>;
+    size?: pulumi.Input<string | enums.DropletSlug | undefined>;
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[] | undefined>;
 }
 
 /**
@@ -272,7 +272,7 @@ export interface KubernetesNodePoolArgs {
     /**
      * Enable auto-scaling of the number of nodes in the node pool within the given min/max range.
      */
-    autoScale?: pulumi.Input<boolean>;
+    autoScale?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Kubernetes cluster to which the node pool is associated.
      */
@@ -280,23 +280,23 @@ export interface KubernetesNodePoolArgs {
     /**
      * A map of key/value pairs to apply to nodes in the pool. The labels are exposed in the Kubernetes API as labels in the metadata of the corresponding [Node resources](https://kubernetes.io/docs/concepts/architecture/nodes/).
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * If auto-scaling is enabled, this represents the maximum number of nodes that the node pool can be scaled up to.
      */
-    maxNodes?: pulumi.Input<number>;
+    maxNodes?: pulumi.Input<number | undefined>;
     /**
      * If auto-scaling is enabled, this represents the minimum number of nodes that the node pool can be scaled down to.
      */
-    minNodes?: pulumi.Input<number>;
+    minNodes?: pulumi.Input<number | undefined>;
     /**
      * A name for the node pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of Droplet instances in the node pool. If auto-scaling is enabled, this should only be set if the desired result is to explicitly reset the number of nodes to this value. If auto-scaling is enabled, and the node count is outside of the given min/max range, it will use the min nodes value.
      */
-    nodeCount?: pulumi.Input<number>;
+    nodeCount?: pulumi.Input<number | undefined>;
     /**
      * The slug identifier for the type of Droplet to be used as workers in the node pool.
      */
@@ -304,11 +304,11 @@ export interface KubernetesNodePoolArgs {
     /**
      * A list of tag names to be applied to the Kubernetes cluster.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * A list of taints applied to all nodes in the pool.
      *
      * This resource supports customized create timeouts. The default timeout is 30 minutes.
      */
-    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[]>;
+    taints?: pulumi.Input<pulumi.Input<inputs.KubernetesNodePoolTaint>[] | undefined>;
 }

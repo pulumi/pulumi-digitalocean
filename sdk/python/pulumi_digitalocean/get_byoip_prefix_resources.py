@@ -110,7 +110,7 @@ def get_byoip_prefix_resources(byoip_prefix_uuid: Optional[_builtins.str] = None
         addresses=pulumi.get(__ret__, 'addresses'),
         byoip_prefix_uuid=pulumi.get(__ret__, 'byoip_prefix_uuid'),
         id=pulumi.get(__ret__, 'id'))
-def get_byoip_prefix_resources_output(byoip_prefix_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_byoip_prefix_resources_output(byoip_prefix_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetByoipPrefixResourcesResult]:
     """
     Get information about IP addresses that have been **already assigned** from a

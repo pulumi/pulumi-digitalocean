@@ -49,6 +49,6 @@ export function getGradientaiRegionsOutput(args?: GetGradientaiRegionsOutputArgs
  * A collection of arguments for invoking getGradientaiRegions.
  */
 export interface GetGradientaiRegionsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiRegionsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiRegionsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiRegionsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiRegionsSortArgs>[] | undefined>;
 }

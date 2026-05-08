@@ -132,5 +132,5 @@ export interface GetAppOutputArgs {
     /**
      * A list of dedicated egress IP addresses associated with the app.
      */
-    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.GetAppDedicatedIpArgs>[]>;
+    dedicatedIps?: pulumi.Input<pulumi.Input<inputs.GetAppDedicatedIpArgs>[] | undefined>;
 }

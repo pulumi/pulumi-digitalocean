@@ -23,7 +23,7 @@ namespace Pulumi.DigitalOcean
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Create a new domain
-    ///     var @default = new DigitalOcean.Index.Domain("default", new()
+    ///     var @default = new DigitalOcean.Domain("default", new()
     ///     {
     ///         Name = "example.com",
     ///         IpAddress = foo.Ipv4Address,

@@ -21,12 +21,12 @@ __all__ = ['DatabaseReplicaArgs', 'DatabaseReplica']
 class DatabaseReplicaArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a DatabaseReplica resource.
 
@@ -65,93 +65,93 @@ class DatabaseReplicaArgs:
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the database replica.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the database replica will be located.
         """
         return pulumi.get(self, "private_network_uuid")
 
     @private_network_uuid.setter
-    def private_network_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         DigitalOcean region where the replica will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]:
+    def size(self) -> pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]):
+    def size(self, value: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSizeMib")
-    def storage_size_mib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_size_mib")
 
     @storage_size_mib.setter
-    def storage_size_mib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size_mib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size_mib", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the database replica.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _DatabaseReplicaState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 database: Optional[pulumi.Input[_builtins.str]] = None,
-                 host: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 private_host: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 uri: Optional[pulumi.Input[_builtins.str]] = None,
-                 user: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 database: pulumi.Input[Optional[_builtins.str]] = None,
+                 host: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 private_host: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 uri: pulumi.Input[Optional[_builtins.str]] = None,
+                 user: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseReplica resources.
 
@@ -206,191 +206,191 @@ class _DatabaseReplicaState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the original source database cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def database(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the replica's default database.
         """
         return pulumi.get(self, "database")
 
     @database.setter
-    def database(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def database(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "database", value)
 
     @_builtins.property
     @pulumi.getter
-    def host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Database replica's hostname.
         """
         return pulumi.get(self, "host")
 
     @host.setter
-    def host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "host", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the database replica.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the replica's default user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Network port that the database replica is listening on.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter(name="privateHost")
-    def private_host(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_host(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Same as `host`, but only accessible from resources within the account and in the same region.
         """
         return pulumi.get(self, "private_host")
 
     @private_host.setter
-    def private_host(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_host(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_host", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworkUuid")
-    def private_network_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_network_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the database replica will be located.
         """
         return pulumi.get(self, "private_network_uuid")
 
     @private_network_uuid.setter
-    def private_network_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_network_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_network_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="privateUri")
-    def private_uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def private_uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Same as `uri`, but only accessible from resources within the account and in the same region.
         """
         return pulumi.get(self, "private_uri")
 
     @private_uri.setter
-    def private_uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def private_uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "private_uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         DigitalOcean region where the replica will reside.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]:
+    def size(self) -> pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]:
         """
         Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]]):
+    def size(self, value: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="storageSizeMib")
-    def storage_size_mib(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def storage_size_mib(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "storage_size_mib")
 
     @storage_size_mib.setter
-    def storage_size_mib(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def storage_size_mib(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "storage_size_mib", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the database replica.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def uri(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uri(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The full URI for connecting to the database replica.
         """
         return pulumi.get(self, "uri")
 
     @uri.setter
-    def uri(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uri(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uri", value)
 
     @_builtins.property
     @pulumi.getter
-    def user(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Username for the replica's default user.
         """
         return pulumi.get(self, "user")
 
     @user.setter
-    def user(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -400,13 +400,13 @@ class DatabaseReplica(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database replica resource.
@@ -522,13 +522,13 @@ class DatabaseReplica(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-                 storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+                 storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -568,22 +568,22 @@ class DatabaseReplica(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            database: Optional[pulumi.Input[_builtins.str]] = None,
-            host: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            private_host: Optional[pulumi.Input[_builtins.str]] = None,
-            private_network_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            private_uri: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            size: Optional[pulumi.Input[Union[_builtins.str, 'DatabaseSlug']]] = None,
-            storage_size_mib: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            uri: Optional[pulumi.Input[_builtins.str]] = None,
-            user: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseReplica':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            database: pulumi.Input[Optional[_builtins.str]] = None,
+            host: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            private_host: pulumi.Input[Optional[_builtins.str]] = None,
+            private_network_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            private_uri: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DatabaseSlug']]] = None,
+            storage_size_mib: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            uri: pulumi.Input[Optional[_builtins.str]] = None,
+            user: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseReplica':
         """
         Get an existing DatabaseReplica resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

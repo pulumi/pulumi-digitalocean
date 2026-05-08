@@ -164,28 +164,28 @@ export interface DatabaseKafkaTopicState {
     /**
      * The ID of the source database cluster. Note: This must be a Kafka cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
      * The `config` block is documented below.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.DatabaseKafkaTopicConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.DatabaseKafkaTopicConfig>[] | undefined>;
     /**
      * The name for the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
     /**
      * The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -200,17 +200,17 @@ export interface DatabaseKafkaTopicArgs {
      * A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
      * The `config` block is documented below.
      */
-    configs?: pulumi.Input<pulumi.Input<inputs.DatabaseKafkaTopicConfig>[]>;
+    configs?: pulumi.Input<pulumi.Input<inputs.DatabaseKafkaTopicConfig>[] | undefined>;
     /**
      * The name for the topic.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
      */
-    partitionCount?: pulumi.Input<number>;
+    partitionCount?: pulumi.Input<number | undefined>;
     /**
      * The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
      */
-    replicationFactor?: pulumi.Input<number>;
+    replicationFactor?: pulumi.Input<number | undefined>;
 }

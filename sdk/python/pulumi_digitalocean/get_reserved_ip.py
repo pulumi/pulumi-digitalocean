@@ -132,7 +132,7 @@ def get_reserved_ip(ip_address: Optional[_builtins.str] = None,
         ip_address=pulumi.get(__ret__, 'ip_address'),
         region=pulumi.get(__ret__, 'region'),
         urn=pulumi.get(__ret__, 'urn'))
-def get_reserved_ip_output(ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+def get_reserved_ip_output(ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpResult]:
     """
     Get information on a reserved IP. This data source provides the region and Droplet id

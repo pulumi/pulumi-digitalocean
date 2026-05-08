@@ -221,10 +221,10 @@ export interface GetSizesOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetSizesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetSizesFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetSizesSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetSizesSortArgs>[] | undefined>;
 }

@@ -26,12 +26,12 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.FloatingIp("foobar", new()
+    ///     var foobar = new DigitalOcean.FloatingIp("foobar", new()
     ///     {
     ///         Region = "sgp1",
     ///     });
     /// 
-    ///     var foobarDroplet = new DigitalOcean.Index.Droplet("foobar", new()
+    ///     var foobarDroplet = new DigitalOcean.Droplet("foobar", new()
     ///     {
     ///         Name = "baz",
     ///         Size = DigitalOcean.DropletSlug.DropletS1VCPU1GB,
@@ -41,7 +41,7 @@ namespace Pulumi.DigitalOcean
     ///         PrivateNetworking = true,
     ///     });
     /// 
-    ///     var foobarFloatingIpAssignment = new DigitalOcean.Index.FloatingIpAssignment("foobar", new()
+    ///     var foobarFloatingIpAssignment = new DigitalOcean.FloatingIpAssignment("foobar", new()
     ///     {
     ///         IpAddress = foobar.IpAddress,
     ///         DropletId = foobarDroplet.Id,

@@ -90,15 +90,15 @@ export function getGenaiKnowledgeBaseOutput(args?: GetGenaiKnowledgeBaseOutputAr
  * A collection of arguments for invoking getGenaiKnowledgeBase.
  */
 export interface GetGenaiKnowledgeBaseOutputArgs {
-    addedToAgentAt?: pulumi.Input<string>;
-    databaseId?: pulumi.Input<string>;
-    embeddingModelUuid?: pulumi.Input<string>;
-    isPublic?: pulumi.Input<boolean>;
-    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBaseLastIndexingJobArgs>[]>;
-    name?: pulumi.Input<string>;
-    projectId?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    userId?: pulumi.Input<string>;
-    uuid?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
+    databaseId?: pulumi.Input<string | undefined>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
+    isPublic?: pulumi.Input<boolean | undefined>;
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBaseLastIndexingJobArgs>[] | undefined>;
+    name?: pulumi.Input<string | undefined>;
+    projectId?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    userId?: pulumi.Input<string | undefined>;
+    uuid?: pulumi.Input<string | undefined>;
 }

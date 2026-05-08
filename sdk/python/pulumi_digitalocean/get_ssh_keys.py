@@ -139,8 +139,8 @@ def get_ssh_keys(filters: Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSs
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'),
         ssh_keys=pulumi.get(__ret__, 'ssh_keys'))
-def get_ssh_keys_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]]]] = None,
-                        sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
+def get_ssh_keys_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysFilterArgs', 'GetSshKeysFilterArgsDict']]]]] = None,
+                        sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetSshKeysSortArgs', 'GetSshKeysSortArgsDict']]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeysResult]:
     """
     Get information on SSH Keys for use in other resources.

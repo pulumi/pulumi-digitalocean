@@ -184,59 +184,59 @@ export interface DatabaseValkeyConfigState {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    aclChannelsDefault?: pulumi.Input<string>;
+    aclChannelsDefault?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target Valkey cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      */
-    frequentSnapshots?: pulumi.Input<boolean>;
+    frequentSnapshots?: pulumi.Input<boolean | undefined>;
     /**
      * The Valkey IO thread count.
      */
-    ioThreads?: pulumi.Input<number>;
+    ioThreads?: pulumi.Input<number | undefined>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    lfuDecayTime?: pulumi.Input<number>;
+    lfuDecayTime?: pulumi.Input<number | undefined>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    lfuLogFactor?: pulumi.Input<number>;
+    lfuLogFactor?: pulumi.Input<number | undefined>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * The number of Valkey databases. Changing this will cause a restart of Valkey service.
      */
-    numberOfDatabases?: pulumi.Input<number>;
+    numberOfDatabases?: pulumi.Input<number | undefined>;
     /**
      * When persistence is 'rdb', Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    persistence?: pulumi.Input<string>;
+    persistence?: pulumi.Input<string | undefined>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    pubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    pubsubClientOutputBufferLimit?: pulumi.Input<number | undefined>;
     /**
      * A boolean indicating whether to require SSL to access Valkey.
      */
-    ssl?: pulumi.Input<boolean>;
+    ssl?: pulumi.Input<boolean | undefined>;
     /**
      * The Valkey idle connection timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
-    valkeyActiveExpireEffort?: pulumi.Input<number>;
+    valkeyActiveExpireEffort?: pulumi.Input<number | undefined>;
     /**
      * Eviction policy model
      */
-    valkeyMaxmemoryPolicy?: pulumi.Input<string>;
+    valkeyMaxmemoryPolicy?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -246,7 +246,7 @@ export interface DatabaseValkeyConfigArgs {
     /**
      * Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Valkey' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
      */
-    aclChannelsDefault?: pulumi.Input<string>;
+    aclChannelsDefault?: pulumi.Input<string | undefined>;
     /**
      * The ID of the target Valkey cluster.
      */
@@ -254,49 +254,49 @@ export interface DatabaseValkeyConfigArgs {
     /**
      * Frequent RDB snapshots. When enabled, Valkey will create frequent local RDB snapshots. When disabled, Valkey will only take RDB snapshots when a backup is created, based on the backup schedule. This setting is ignored when valkeyPersistence is set to off.
      */
-    frequentSnapshots?: pulumi.Input<boolean>;
+    frequentSnapshots?: pulumi.Input<boolean | undefined>;
     /**
      * The Valkey IO thread count.
      */
-    ioThreads?: pulumi.Input<number>;
+    ioThreads?: pulumi.Input<number | undefined>;
     /**
      * The LFU maxmemory policy counter decay time in minutes.
      */
-    lfuDecayTime?: pulumi.Input<number>;
+    lfuDecayTime?: pulumi.Input<number | undefined>;
     /**
      * The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
      */
-    lfuLogFactor?: pulumi.Input<number>;
+    lfuLogFactor?: pulumi.Input<number | undefined>;
     /**
      * The `notify-keyspace-events` option. Requires at least `K` or `E`.
      */
-    notifyKeyspaceEvents?: pulumi.Input<string>;
+    notifyKeyspaceEvents?: pulumi.Input<string | undefined>;
     /**
      * The number of Valkey databases. Changing this will cause a restart of Valkey service.
      */
-    numberOfDatabases?: pulumi.Input<number>;
+    numberOfDatabases?: pulumi.Input<number | undefined>;
     /**
      * When persistence is 'rdb', Valkey does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is 'off', no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
      */
-    persistence?: pulumi.Input<string>;
+    persistence?: pulumi.Input<string | undefined>;
     /**
      * The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
      */
-    pubsubClientOutputBufferLimit?: pulumi.Input<number>;
+    pubsubClientOutputBufferLimit?: pulumi.Input<number | undefined>;
     /**
      * A boolean indicating whether to require SSL to access Valkey.
      */
-    ssl?: pulumi.Input<boolean>;
+    ssl?: pulumi.Input<boolean | undefined>;
     /**
      * The Valkey idle connection timeout in seconds.
      */
-    timeout?: pulumi.Input<number>;
+    timeout?: pulumi.Input<number | undefined>;
     /**
      * Active expire effort. Valkey reclaims expired keys both when accessed and in the background. The background process scans for expired keys to free memory. Increasing the active-expire-effort setting (default 1, max 10) uses more CPU to reclaim expired keys faster, reducing memory usage but potentially increasing latency.
      */
-    valkeyActiveExpireEffort?: pulumi.Input<number>;
+    valkeyActiveExpireEffort?: pulumi.Input<number | undefined>;
     /**
      * Eviction policy model
      */
-    valkeyMaxmemoryPolicy?: pulumi.Input<string>;
+    valkeyMaxmemoryPolicy?: pulumi.Input<string | undefined>;
 }

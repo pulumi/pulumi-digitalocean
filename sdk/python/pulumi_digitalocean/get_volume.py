@@ -189,7 +189,7 @@ def get_volume(description: Optional[_builtins.str] = None,
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
+        droplet_id=example_droplet.id.apply(lambda x: int(x)),
         volume_id=example.id)
     ```
 
@@ -216,9 +216,9 @@ def get_volume(description: Optional[_builtins.str] = None,
         size=pulumi.get(__ret__, 'size'),
         tags=pulumi.get(__ret__, 'tags'),
         urn=pulumi.get(__ret__, 'urn'))
-def get_volume_output(description: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                      name: Optional[pulumi.Input[_builtins.str]] = None,
-                      region: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_volume_output(description: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                      name: pulumi.Input[Optional[_builtins.str]] = None,
+                      region: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVolumeResult]:
     """
     Get information on a volume for use in other resources. This data source provides
@@ -254,7 +254,7 @@ def get_volume_output(description: Optional[pulumi.Input[Optional[_builtins.str]
         image="ubuntu-18-04-x64",
         region=digitalocean.Region.NYC3)
     foobar = digitalocean.VolumeAttachment("foobar",
-        droplet_id=example_droplet.id,
+        droplet_id=example_droplet.id.apply(lambda x: int(x)),
         volume_id=example.id)
     ```
 

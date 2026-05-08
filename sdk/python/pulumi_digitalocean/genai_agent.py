@@ -25,40 +25,40 @@ class GenaiAgentArgs:
                  model_uuid: pulumi.Input[_builtins.str],
                  project_id: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 agent_guardrails: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]] = None,
-                 anthropic_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]] = None,
-                 child_agents: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 functions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 k: Optional[pulumi.Input[_builtins.int]] = None,
-                 knowledge_base_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]] = None,
-                 max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_ai_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]] = None,
-                 open_ai_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agents: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]] = None,
-                 provide_citations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 retrieval_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
-                 templates: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]] = None,
-                 top_p: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]] = None,
+                 anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 k: pulumi.Input[Optional[_builtins.int]] = None,
+                 knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]] = None,
+                 max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]] = None,
+                 open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]] = None,
+                 provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]] = None,
+                 top_p: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a GenaiAgent resource.
 
@@ -224,456 +224,456 @@ class GenaiAgentArgs:
 
     @_builtins.property
     @pulumi.getter(name="agentGuardrails")
-    def agent_guardrails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]:
+    def agent_guardrails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]:
         """
         AgentGuardrail represents a Guardrail attached to Gen AI Agent
         """
         return pulumi.get(self, "agent_guardrails")
 
     @agent_guardrails.setter
-    def agent_guardrails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]):
+    def agent_guardrails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]):
         pulumi.set(self, "agent_guardrails", value)
 
     @_builtins.property
     @pulumi.getter(name="anthropicApiKeys")
-    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]:
+    def anthropic_api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]:
         """
         Anthropic API Key information
         """
         return pulumi.get(self, "anthropic_api_keys")
 
     @anthropic_api_keys.setter
-    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]):
+    def anthropic_api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]):
         pulumi.set(self, "anthropic_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="anthropicKeyUuid")
-    def anthropic_key_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anthropic_key_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional Anthropic API key ID to use with Anthropic models
         """
         return pulumi.get(self, "anthropic_key_uuid")
 
     @anthropic_key_uuid.setter
-    def anthropic_key_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anthropic_key_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anthropic_key_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyInfos")
-    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]:
+    def api_key_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "api_key_infos")
 
     @api_key_infos.setter
-    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]):
+    def api_key_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]):
         pulumi.set(self, "api_key_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeys")
-    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]:
+    def api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]:
         """
         List of API Keys
         """
         return pulumi.get(self, "api_keys")
 
     @api_keys.setter
-    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]):
+    def api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]):
         pulumi.set(self, "api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="chatbotIdentifiers")
-    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]:
+    def chatbot_identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]:
         """
         List of Chatbot Identifiers
         """
         return pulumi.get(self, "chatbot_identifiers")
 
     @chatbot_identifiers.setter
-    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]):
+    def chatbot_identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]):
         pulumi.set(self, "chatbot_identifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]:
+    def chatbots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]:
         """
         ChatBot configuration
         """
         return pulumi.get(self, "chatbots")
 
     @chatbots.setter
-    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]):
+    def chatbots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]):
         pulumi.set(self, "chatbots", value)
 
     @_builtins.property
     @pulumi.getter(name="childAgents")
-    def child_agents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]:
+    def child_agents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]:
         """
         List of child agents
         """
         return pulumi.get(self, "child_agents")
 
     @child_agents.setter
-    def child_agents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]):
+    def child_agents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]):
         pulumi.set(self, "child_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the Agent was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]:
+    def deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]):
+    def deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the Agent
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def functions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]:
+    def functions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]:
         """
         List of Functions
         """
         return pulumi.get(self, "functions")
 
     @functions.setter
-    def functions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]):
+    def functions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]):
         pulumi.set(self, "functions", value)
 
     @_builtins.property
     @pulumi.getter(name="ifCase")
-    def if_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def if_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If case condition
         """
         return pulumi.get(self, "if_case")
 
     @if_case.setter
-    def if_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def if_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "if_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def k(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def k(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         K value
         """
         return pulumi.get(self, "k")
 
     @k.setter
-    def k(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def k(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "k", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuids")
-    def knowledge_base_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def knowledge_base_uuids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Ids of the knowledge base(s) to attach to the agent
         """
         return pulumi.get(self, "knowledge_base_uuids")
 
     @knowledge_base_uuids.setter
-    def knowledge_base_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def knowledge_base_uuids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "knowledge_base_uuids", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBases")
-    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]:
+    def knowledge_bases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]:
         """
         List of Knowledge Bases
         """
         return pulumi.get(self, "knowledge_bases")
 
     @knowledge_bases.setter
-    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]):
+    def knowledge_bases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]):
         pulumi.set(self, "knowledge_bases", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTokens")
-    def max_tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum tokens allowed
         """
         return pulumi.get(self, "max_tokens")
 
     @max_tokens.setter
-    def max_tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_tokens", value)
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]:
         """
         Model of the Agent
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Agent
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openAiApiKeys")
-    def open_ai_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]:
+    def open_ai_api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]:
         """
         OpenAI API Key information
         """
         return pulumi.get(self, "open_ai_api_keys")
 
     @open_ai_api_keys.setter
-    def open_ai_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]):
+    def open_ai_api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]):
         pulumi.set(self, "open_ai_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="openAiKeyUuid")
-    def open_ai_key_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def open_ai_key_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional OpenAI API key ID to use with OpenAI models
         """
         return pulumi.get(self, "open_ai_key_uuid")
 
     @open_ai_key_uuid.setter
-    def open_ai_key_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def open_ai_key_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "open_ai_key_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="parentAgents")
-    def parent_agents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]:
+    def parent_agents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]:
         """
         List of child agents
         """
         return pulumi.get(self, "parent_agents")
 
     @parent_agents.setter
-    def parent_agents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]):
+    def parent_agents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]):
         pulumi.set(self, "parent_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="provideCitations")
-    def provide_citations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def provide_citations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the agent should provide citations in responses
         """
         return pulumi.get(self, "provide_citations")
 
     @provide_citations.setter
-    def provide_citations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def provide_citations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "provide_citations", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalMethod")
-    def retrieval_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrieval_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Retrieval method used
         """
         return pulumi.get(self, "retrieval_method")
 
     @retrieval_method.setter
-    def retrieval_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrieval_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrieval_method", value)
 
     @_builtins.property
     @pulumi.getter(name="routeCreatedBy")
-    def route_created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who created the route
         """
         return pulumi.get(self, "route_created_by")
 
     @route_created_by.setter
-    def route_created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="routeName")
-    def route_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route name
         """
         return pulumi.get(self, "route_name")
 
     @route_name.setter
-    def route_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routeUuid")
-    def route_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route UUID
         """
         return pulumi.get(self, "route_uuid")
 
     @route_uuid.setter
-    def route_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temperature(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def temperature(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Agent temperature setting
         """
         return pulumi.get(self, "temperature")
 
     @temperature.setter
-    def temperature(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "temperature", value)
 
     @_builtins.property
     @pulumi.getter
-    def templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]:
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]:
         """
         Agent Template
         """
         return pulumi.get(self, "templates")
 
     @templates.setter
-    def templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]):
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]):
         pulumi.set(self, "templates", value)
 
     @_builtins.property
     @pulumi.getter(name="topP")
-    def top_p(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def top_p(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Top P sampling parameter
         """
         return pulumi.get(self, "top_p")
 
     @top_p.setter
-    def top_p(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def top_p(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "top_p", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the Agent
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID linked with the Agent
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceUuid")
-    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the workspace
         """
         return pulumi.get(self, "workspace_uuid")
 
     @workspace_uuid.setter
-    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_uuid", value)
 
 
 @pulumi.input_type
 class _GenaiAgentState:
     def __init__(__self__, *,
-                 agent_guardrails: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]] = None,
-                 anthropic_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]] = None,
-                 child_agents: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 functions: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input[_builtins.str]] = None,
-                 k: Optional[pulumi.Input[_builtins.int]] = None,
-                 knowledge_base_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]] = None,
-                 max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_ai_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]] = None,
-                 open_ai_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agents: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provide_citations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
-                 templates: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]] = None,
-                 top_p: Optional[pulumi.Input[_builtins.float]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]] = None,
+                 anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 k: pulumi.Input[Optional[_builtins.int]] = None,
+                 knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]] = None,
+                 max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]] = None,
+                 open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]] = None,
+                 top_p: pulumi.Input[Optional[_builtins.float]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering GenaiAgent resources.
 
@@ -801,482 +801,482 @@ class _GenaiAgentState:
 
     @_builtins.property
     @pulumi.getter(name="agentGuardrails")
-    def agent_guardrails(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]:
+    def agent_guardrails(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]:
         """
         AgentGuardrail represents a Guardrail attached to Gen AI Agent
         """
         return pulumi.get(self, "agent_guardrails")
 
     @agent_guardrails.setter
-    def agent_guardrails(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]):
+    def agent_guardrails(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAgentGuardrailArgs']]]]):
         pulumi.set(self, "agent_guardrails", value)
 
     @_builtins.property
     @pulumi.getter(name="anthropicApiKeys")
-    def anthropic_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]:
+    def anthropic_api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]:
         """
         Anthropic API Key information
         """
         return pulumi.get(self, "anthropic_api_keys")
 
     @anthropic_api_keys.setter
-    def anthropic_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]):
+    def anthropic_api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentAnthropicApiKeyArgs']]]]):
         pulumi.set(self, "anthropic_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="anthropicKeyUuid")
-    def anthropic_key_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def anthropic_key_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional Anthropic API key ID to use with Anthropic models
         """
         return pulumi.get(self, "anthropic_key_uuid")
 
     @anthropic_key_uuid.setter
-    def anthropic_key_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def anthropic_key_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "anthropic_key_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeyInfos")
-    def api_key_infos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]:
+    def api_key_infos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "api_key_infos")
 
     @api_key_infos.setter
-    def api_key_infos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]):
+    def api_key_infos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyInfoArgs']]]]):
         pulumi.set(self, "api_key_infos", value)
 
     @_builtins.property
     @pulumi.getter(name="apiKeys")
-    def api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]:
+    def api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]:
         """
         List of API Keys
         """
         return pulumi.get(self, "api_keys")
 
     @api_keys.setter
-    def api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]):
+    def api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentApiKeyArgs']]]]):
         pulumi.set(self, "api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="chatbotIdentifiers")
-    def chatbot_identifiers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]:
+    def chatbot_identifiers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]:
         """
         List of Chatbot Identifiers
         """
         return pulumi.get(self, "chatbot_identifiers")
 
     @chatbot_identifiers.setter
-    def chatbot_identifiers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]):
+    def chatbot_identifiers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotIdentifierArgs']]]]):
         pulumi.set(self, "chatbot_identifiers", value)
 
     @_builtins.property
     @pulumi.getter
-    def chatbots(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]:
+    def chatbots(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]:
         """
         ChatBot configuration
         """
         return pulumi.get(self, "chatbots")
 
     @chatbots.setter
-    def chatbots(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]):
+    def chatbots(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChatbotArgs']]]]):
         pulumi.set(self, "chatbots", value)
 
     @_builtins.property
     @pulumi.getter(name="childAgents")
-    def child_agents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]:
+    def child_agents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]:
         """
         List of child agents
         """
         return pulumi.get(self, "child_agents")
 
     @child_agents.setter
-    def child_agents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]):
+    def child_agents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentChildAgentArgs']]]]):
         pulumi.set(self, "child_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the Agent was created
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def deployments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]:
+    def deployments(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]:
         """
         List of API Key Infos
         """
         return pulumi.get(self, "deployments")
 
     @deployments.setter
-    def deployments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]):
+    def deployments(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentDeploymentArgs']]]]):
         pulumi.set(self, "deployments", value)
 
     @_builtins.property
     @pulumi.getter
-    def description(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def description(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Description for the Agent
         """
         return pulumi.get(self, "description")
 
     @description.setter
-    def description(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def description(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "description", value)
 
     @_builtins.property
     @pulumi.getter
-    def functions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]:
+    def functions(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]:
         """
         List of Functions
         """
         return pulumi.get(self, "functions")
 
     @functions.setter
-    def functions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]):
+    def functions(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentFunctionArgs']]]]):
         pulumi.set(self, "functions", value)
 
     @_builtins.property
     @pulumi.getter(name="ifCase")
-    def if_case(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def if_case(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         If case condition
         """
         return pulumi.get(self, "if_case")
 
     @if_case.setter
-    def if_case(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def if_case(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "if_case", value)
 
     @_builtins.property
     @pulumi.getter
-    def instruction(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def instruction(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Instruction for the Agent
         """
         return pulumi.get(self, "instruction")
 
     @instruction.setter
-    def instruction(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def instruction(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "instruction", value)
 
     @_builtins.property
     @pulumi.getter
-    def k(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def k(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         K value
         """
         return pulumi.get(self, "k")
 
     @k.setter
-    def k(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def k(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "k", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBaseUuids")
-    def knowledge_base_uuids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def knowledge_base_uuids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Ids of the knowledge base(s) to attach to the agent
         """
         return pulumi.get(self, "knowledge_base_uuids")
 
     @knowledge_base_uuids.setter
-    def knowledge_base_uuids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def knowledge_base_uuids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "knowledge_base_uuids", value)
 
     @_builtins.property
     @pulumi.getter(name="knowledgeBases")
-    def knowledge_bases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]:
+    def knowledge_bases(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]:
         """
         List of Knowledge Bases
         """
         return pulumi.get(self, "knowledge_bases")
 
     @knowledge_bases.setter
-    def knowledge_bases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]):
+    def knowledge_bases(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentKnowledgeBaseArgs']]]]):
         pulumi.set(self, "knowledge_bases", value)
 
     @_builtins.property
     @pulumi.getter(name="maxTokens")
-    def max_tokens(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def max_tokens(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum tokens allowed
         """
         return pulumi.get(self, "max_tokens")
 
     @max_tokens.setter
-    def max_tokens(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def max_tokens(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "max_tokens", value)
 
     @_builtins.property
     @pulumi.getter(name="modelUuid")
-    def model_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def model_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Model UUID of the Agent
         """
         return pulumi.get(self, "model_uuid")
 
     @model_uuid.setter
-    def model_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def model_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "model_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def models(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]:
+    def models(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]:
         """
         Model of the Agent
         """
         return pulumi.get(self, "models")
 
     @models.setter
-    def models(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]):
+    def models(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentModelArgs']]]]):
         pulumi.set(self, "models", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Name of the Agent
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="openAiApiKeys")
-    def open_ai_api_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]:
+    def open_ai_api_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]:
         """
         OpenAI API Key information
         """
         return pulumi.get(self, "open_ai_api_keys")
 
     @open_ai_api_keys.setter
-    def open_ai_api_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]):
+    def open_ai_api_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentOpenAiApiKeyArgs']]]]):
         pulumi.set(self, "open_ai_api_keys", value)
 
     @_builtins.property
     @pulumi.getter(name="openAiKeyUuid")
-    def open_ai_key_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def open_ai_key_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Optional OpenAI API key ID to use with OpenAI models
         """
         return pulumi.get(self, "open_ai_key_uuid")
 
     @open_ai_key_uuid.setter
-    def open_ai_key_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def open_ai_key_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "open_ai_key_uuid", value)
 
     @_builtins.property
     @pulumi.getter(name="parentAgents")
-    def parent_agents(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]:
+    def parent_agents(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]:
         """
         List of child agents
         """
         return pulumi.get(self, "parent_agents")
 
     @parent_agents.setter
-    def parent_agents(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]):
+    def parent_agents(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentParentAgentArgs']]]]):
         pulumi.set(self, "parent_agents", value)
 
     @_builtins.property
     @pulumi.getter(name="projectId")
-    def project_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def project_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Project ID of the Agent
         """
         return pulumi.get(self, "project_id")
 
     @project_id.setter
-    def project_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def project_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "project_id", value)
 
     @_builtins.property
     @pulumi.getter(name="provideCitations")
-    def provide_citations(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def provide_citations(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Indicates if the agent should provide citations in responses
         """
         return pulumi.get(self, "provide_citations")
 
     @provide_citations.setter
-    def provide_citations(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def provide_citations(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "provide_citations", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Region where the Agent is deployed
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="retrievalMethod")
-    def retrieval_method(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def retrieval_method(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Retrieval method used
         """
         return pulumi.get(self, "retrieval_method")
 
     @retrieval_method.setter
-    def retrieval_method(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def retrieval_method(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "retrieval_method", value)
 
     @_builtins.property
     @pulumi.getter(name="routeCreatedAt")
-    def route_created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the route was created
         """
         return pulumi.get(self, "route_created_at")
 
     @route_created_at.setter
-    def route_created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="routeCreatedBy")
-    def route_created_by(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_created_by(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User who created the route
         """
         return pulumi.get(self, "route_created_by")
 
     @route_created_by.setter
-    def route_created_by(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_created_by(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_created_by", value)
 
     @_builtins.property
     @pulumi.getter(name="routeName")
-    def route_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route name
         """
         return pulumi.get(self, "route_name")
 
     @route_name.setter
-    def route_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_name", value)
 
     @_builtins.property
     @pulumi.getter(name="routeUuid")
-    def route_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def route_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Route UUID
         """
         return pulumi.get(self, "route_uuid")
 
     @route_uuid.setter
-    def route_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def route_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "route_uuid", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of Tags
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter
-    def temperature(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def temperature(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Agent temperature setting
         """
         return pulumi.get(self, "temperature")
 
     @temperature.setter
-    def temperature(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def temperature(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "temperature", value)
 
     @_builtins.property
     @pulumi.getter
-    def templates(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]:
+    def templates(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]:
         """
         Agent Template
         """
         return pulumi.get(self, "templates")
 
     @templates.setter
-    def templates(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]):
+    def templates(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['GenaiAgentTemplateArgs']]]]):
         pulumi.set(self, "templates", value)
 
     @_builtins.property
     @pulumi.getter(name="topP")
-    def top_p(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def top_p(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Top P sampling parameter
         """
         return pulumi.get(self, "top_p")
 
     @top_p.setter
-    def top_p(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def top_p(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "top_p", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Timestamp when the Agent was updated
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def url(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def url(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         URL for the Agent
         """
         return pulumi.get(self, "url")
 
     @url.setter
-    def url(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def url(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "url", value)
 
     @_builtins.property
     @pulumi.getter(name="userId")
-    def user_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         User ID linked with the Agent
         """
         return pulumi.get(self, "user_id")
 
     @user_id.setter
-    def user_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_id", value)
 
     @_builtins.property
     @pulumi.getter(name="workspaceUuid")
-    def workspace_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def workspace_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Identifier for the workspace
         """
         return pulumi.get(self, "workspace_uuid")
 
     @workspace_uuid.setter
-    def workspace_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def workspace_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "workspace_uuid", value)
 
 
@@ -1291,44 +1291,44 @@ class GenaiAgent(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
-                 anthropic_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input[_builtins.str]] = None,
-                 k: Optional[pulumi.Input[_builtins.int]] = None,
-                 knowledge_base_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
-                 max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_ai_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
-                 open_ai_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provide_citations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
-                 templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
-                 top_p: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 k: pulumi.Input[Optional[_builtins.int]] = None,
+                 knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+                 top_p: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Create a GenaiAgent resource with the given unique name, props, and options.
@@ -1398,44 +1398,44 @@ class GenaiAgent(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 agent_guardrails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-                 anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
-                 anthropic_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-                 api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-                 chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-                 chatbots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-                 child_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
-                 description: Optional[pulumi.Input[_builtins.str]] = None,
-                 functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
-                 if_case: Optional[pulumi.Input[_builtins.str]] = None,
-                 instruction: Optional[pulumi.Input[_builtins.str]] = None,
-                 k: Optional[pulumi.Input[_builtins.int]] = None,
-                 knowledge_base_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
-                 max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-                 model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 open_ai_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
-                 open_ai_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 parent_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
-                 project_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 provide_citations: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 retrieval_method: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_created_by: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 route_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 temperature: Optional[pulumi.Input[_builtins.float]] = None,
-                 templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
-                 top_p: Optional[pulumi.Input[_builtins.float]] = None,
-                 url: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
+                 anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+                 anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
+                 api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
+                 chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
+                 chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
+                 child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+                 description: pulumi.Input[Optional[_builtins.str]] = None,
+                 functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+                 if_case: pulumi.Input[Optional[_builtins.str]] = None,
+                 instruction: pulumi.Input[Optional[_builtins.str]] = None,
+                 k: pulumi.Input[Optional[_builtins.int]] = None,
+                 knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+                 max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+                 model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+                 open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+                 project_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 temperature: pulumi.Input[Optional[_builtins.float]] = None,
+                 templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+                 top_p: pulumi.Input[Optional[_builtins.float]] = None,
+                 url: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         pulumi.log.warn("""GenaiAgent is deprecated: digitalocean.GenaiAgent has been deprecated in favor of digitalocean.GradientaiAgent""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1504,46 +1504,46 @@ class GenaiAgent(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            agent_guardrails: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
-            anthropic_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
-            anthropic_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            api_key_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
-            api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
-            chatbot_identifiers: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
-            chatbots: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
-            child_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            deployments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
-            description: Optional[pulumi.Input[_builtins.str]] = None,
-            functions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
-            if_case: Optional[pulumi.Input[_builtins.str]] = None,
-            instruction: Optional[pulumi.Input[_builtins.str]] = None,
-            k: Optional[pulumi.Input[_builtins.int]] = None,
-            knowledge_base_uuids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            knowledge_bases: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
-            max_tokens: Optional[pulumi.Input[_builtins.int]] = None,
-            model_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            open_ai_api_keys: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
-            open_ai_key_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            parent_agents: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
-            project_id: Optional[pulumi.Input[_builtins.str]] = None,
-            provide_citations: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            retrieval_method: Optional[pulumi.Input[_builtins.str]] = None,
-            route_created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            route_created_by: Optional[pulumi.Input[_builtins.str]] = None,
-            route_name: Optional[pulumi.Input[_builtins.str]] = None,
-            route_uuid: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            temperature: Optional[pulumi.Input[_builtins.float]] = None,
-            templates: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
-            top_p: Optional[pulumi.Input[_builtins.float]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            url: Optional[pulumi.Input[_builtins.str]] = None,
-            user_id: Optional[pulumi.Input[_builtins.str]] = None,
-            workspace_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'GenaiAgent':
+            agent_guardrails: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAgentGuardrailArgs', 'GenaiAgentAgentGuardrailArgsDict']]]]] = None,
+            anthropic_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentAnthropicApiKeyArgs', 'GenaiAgentAnthropicApiKeyArgsDict']]]]] = None,
+            anthropic_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            api_key_infos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyInfoArgs', 'GenaiAgentApiKeyInfoArgsDict']]]]] = None,
+            api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentApiKeyArgs', 'GenaiAgentApiKeyArgsDict']]]]] = None,
+            chatbot_identifiers: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotIdentifierArgs', 'GenaiAgentChatbotIdentifierArgsDict']]]]] = None,
+            chatbots: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChatbotArgs', 'GenaiAgentChatbotArgsDict']]]]] = None,
+            child_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentChildAgentArgs', 'GenaiAgentChildAgentArgsDict']]]]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            deployments: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentDeploymentArgs', 'GenaiAgentDeploymentArgsDict']]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            functions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentFunctionArgs', 'GenaiAgentFunctionArgsDict']]]]] = None,
+            if_case: pulumi.Input[Optional[_builtins.str]] = None,
+            instruction: pulumi.Input[Optional[_builtins.str]] = None,
+            k: pulumi.Input[Optional[_builtins.int]] = None,
+            knowledge_base_uuids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            knowledge_bases: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentKnowledgeBaseArgs', 'GenaiAgentKnowledgeBaseArgsDict']]]]] = None,
+            max_tokens: pulumi.Input[Optional[_builtins.int]] = None,
+            model_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            models: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentModelArgs', 'GenaiAgentModelArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            open_ai_api_keys: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentOpenAiApiKeyArgs', 'GenaiAgentOpenAiApiKeyArgsDict']]]]] = None,
+            open_ai_key_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            parent_agents: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentParentAgentArgs', 'GenaiAgentParentAgentArgsDict']]]]] = None,
+            project_id: pulumi.Input[Optional[_builtins.str]] = None,
+            provide_citations: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            retrieval_method: pulumi.Input[Optional[_builtins.str]] = None,
+            route_created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            route_created_by: pulumi.Input[Optional[_builtins.str]] = None,
+            route_name: pulumi.Input[Optional[_builtins.str]] = None,
+            route_uuid: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            temperature: pulumi.Input[Optional[_builtins.float]] = None,
+            templates: pulumi.Input[Optional[Sequence[pulumi.Input[Union['GenaiAgentTemplateArgs', 'GenaiAgentTemplateArgsDict']]]]] = None,
+            top_p: pulumi.Input[Optional[_builtins.float]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            url: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            workspace_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'GenaiAgent':
         """
         Get an existing GenaiAgent resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

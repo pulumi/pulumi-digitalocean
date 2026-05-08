@@ -49,6 +49,6 @@ export function getGradientaiModelsOutput(args?: GetGradientaiModelsOutputArgs, 
  * A collection of arguments for invoking getGradientaiModels.
  */
 export interface GetGradientaiModelsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiModelsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiModelsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiModelsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiModelsSortArgs>[] | undefined>;
 }

@@ -22,9 +22,9 @@ __all__ = ['DatabaseUserArgs', 'DatabaseUser']
 class DatabaseUserArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 mysql_auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
+                 mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
         """
         The set of arguments for constructing a DatabaseUser resource.
 
@@ -56,31 +56,31 @@ class DatabaseUserArgs:
 
     @_builtins.property
     @pulumi.getter(name="mysqlAuthPlugin")
-    def mysql_auth_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mysql_auth_plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         """
         return pulumi.get(self, "mysql_auth_plugin")
 
     @mysql_auth_plugin.setter
-    def mysql_auth_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mysql_auth_plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mysql_auth_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the database user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]:
+    def settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]:
         """
         Contains optional settings for the user.
         The `settings` block is documented below.
@@ -88,21 +88,21 @@ class DatabaseUserArgs:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]):
+    def settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]):
         pulumi.set(self, "settings", value)
 
 
 @pulumi.input_type
 class _DatabaseUserState:
     def __init__(__self__, *,
-                 access_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 access_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql_auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 password: Optional[pulumi.Input[_builtins.str]] = None,
-                 role: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
+                 access_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 access_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 password: pulumi.Input[Optional[_builtins.str]] = None,
+                 role: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]] = None):
         """
         Input properties used for looking up and filtering DatabaseUser resources.
 
@@ -135,91 +135,91 @@ class _DatabaseUserState:
 
     @_builtins.property
     @pulumi.getter(name="accessCert")
-    def access_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access certificate for TLS client authentication. (Kafka only)
         """
         return pulumi.get(self, "access_cert")
 
     @access_cert.setter
-    def access_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="accessKey")
-    def access_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def access_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Access key for TLS client authentication. (Kafka only)
         """
         return pulumi.get(self, "access_key")
 
     @access_key.setter
-    def access_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def access_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "access_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the original source database cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="mysqlAuthPlugin")
-    def mysql_auth_plugin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def mysql_auth_plugin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The authentication method to use for connections to the MySQL user account. The valid values are `mysql_native_password` or `caching_sha2_password` (this is the default).
         """
         return pulumi.get(self, "mysql_auth_plugin")
 
     @mysql_auth_plugin.setter
-    def mysql_auth_plugin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def mysql_auth_plugin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "mysql_auth_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the database user.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def password(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def password(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Password for the database user.
         """
         return pulumi.get(self, "password")
 
     @password.setter
-    def password(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def password(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "password", value)
 
     @_builtins.property
     @pulumi.getter
-    def role(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def role(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Role for the database user. The value will be either "primary" or "normal".
         """
         return pulumi.get(self, "role")
 
     @role.setter
-    def role(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def role(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "role", value)
 
     @_builtins.property
     @pulumi.getter
-    def settings(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]:
+    def settings(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]:
         """
         Contains optional settings for the user.
         The `settings` block is documented below.
@@ -227,7 +227,7 @@ class _DatabaseUserState:
         return pulumi.get(self, "settings")
 
     @settings.setter
-    def settings(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]):
+    def settings(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseUserSettingArgs']]]]):
         pulumi.set(self, "settings", value)
 
 
@@ -237,10 +237,10 @@ class DatabaseUser(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql_auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database user resource. When creating a new database cluster, a default admin user with name `doadmin` will be created. Then, this resource can be used to provide additional normal users inside the cluster.
@@ -459,10 +459,10 @@ class DatabaseUser(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 mysql_auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -494,14 +494,14 @@ class DatabaseUser(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            access_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            access_key: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            mysql_auth_plugin: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            password: Optional[pulumi.Input[_builtins.str]] = None,
-            role: Optional[pulumi.Input[_builtins.str]] = None,
-            settings: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None) -> 'DatabaseUser':
+            access_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            access_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            mysql_auth_plugin: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            password: pulumi.Input[Optional[_builtins.str]] = None,
+            role: pulumi.Input[Optional[_builtins.str]] = None,
+            settings: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseUserSettingArgs', 'DatabaseUserSettingArgsDict']]]]] = None) -> 'DatabaseUser':
         """
         Get an existing DatabaseUser resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

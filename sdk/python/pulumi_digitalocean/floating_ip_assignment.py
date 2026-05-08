@@ -58,8 +58,8 @@ class FloatingIpAssignmentArgs:
 @pulumi.input_type
 class _FloatingIpAssignmentState:
     def __init__(__self__, *,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None):
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering FloatingIpAssignment resources.
 
@@ -73,26 +73,26 @@ class _FloatingIpAssignmentState:
 
     @_builtins.property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def droplet_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of Droplet that the Floating IP will be assigned to.
         """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
-    def droplet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def droplet_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "droplet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ip_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Floating IP to assign to the Droplet.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ip_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ip_address", value)
 
 
@@ -102,8 +102,8 @@ class FloatingIpAssignment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This resource will be removed in a future release. Please use `ReservedIpAssignment` instead.
@@ -128,7 +128,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
             ip_address=foobar.ip_address,
-            droplet_id=foobar_droplet.id)
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -175,7 +175,7 @@ class FloatingIpAssignment(pulumi.CustomResource):
             private_networking=True)
         foobar_floating_ip_assignment = digitalocean.FloatingIpAssignment("foobar",
             ip_address=foobar.ip_address,
-            droplet_id=foobar_droplet.id)
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)))
         ```
 
         ## Import
@@ -203,8 +203,8 @@ class FloatingIpAssignment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -230,8 +230,8 @@ class FloatingIpAssignment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-            ip_address: Optional[pulumi.Input[_builtins.str]] = None) -> 'FloatingIpAssignment':
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            ip_address: pulumi.Input[Optional[_builtins.str]] = None) -> 'FloatingIpAssignment':
         """
         Get an existing FloatingIpAssignment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

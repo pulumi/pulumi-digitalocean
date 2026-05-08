@@ -22,10 +22,10 @@ __all__ = ['DatabaseKafkaTopicArgs', 'DatabaseKafkaTopic']
 class DatabaseKafkaTopicArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None):
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseKafkaTopic resource.
 
@@ -60,7 +60,7 @@ class DatabaseKafkaTopicArgs:
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]:
         """
         A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
         The `config` block is documented below.
@@ -68,55 +68,55 @@ class DatabaseKafkaTopicArgs:
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the topic.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionCount")
-    def partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
         """
         return pulumi.get(self, "partition_count")
 
     @partition_count.setter
-    def partition_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_count", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
         """
         return pulumi.get(self, "replication_factor")
 
     @replication_factor.setter
-    def replication_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication_factor", value)
 
 
 @pulumi.input_type
 class _DatabaseKafkaTopicState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaTopic resources.
 
@@ -143,19 +143,19 @@ class _DatabaseKafkaTopicState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the source database cluster. Note: This must be a Kafka cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]:
+    def configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]:
         """
         A set of advanced configuration parameters. Defaults will be set for any of the parameters that are not included.
         The `config` block is documented below.
@@ -163,55 +163,55 @@ class _DatabaseKafkaTopicState:
         return pulumi.get(self, "configs")
 
     @configs.setter
-    def configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]):
+    def configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['DatabaseKafkaTopicConfigArgs']]]]):
         pulumi.set(self, "configs", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name for the topic.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="partitionCount")
-    def partition_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def partition_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of partitions for the topic. Default and minimum set at 3, maximum is 2048.
         """
         return pulumi.get(self, "partition_count")
 
     @partition_count.setter
-    def partition_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def partition_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "partition_count", value)
 
     @_builtins.property
     @pulumi.getter(name="replicationFactor")
-    def replication_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def replication_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of nodes that topics are replicated across. Default and minimum set at 2, maximum is the number of nodes in the cluster.
         """
         return pulumi.get(self, "replication_factor")
 
     @replication_factor.setter
-    def replication_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def replication_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "replication_factor", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the topic. Possible values are 'active', 'configuring', and 'deleting'.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
 
@@ -221,11 +221,11 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kafka topic for Kafka clusters.
@@ -375,11 +375,11 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 partition_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -407,12 +407,12 @@ class DatabaseKafkaTopic(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            partition_count: Optional[pulumi.Input[_builtins.int]] = None,
-            replication_factor: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseKafkaTopic':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['DatabaseKafkaTopicConfigArgs', 'DatabaseKafkaTopicConfigArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            partition_count: pulumi.Input[Optional[_builtins.int]] = None,
+            replication_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseKafkaTopic':
         """
         Get an existing DatabaseKafkaTopic resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -138,9 +138,9 @@ export interface GetDedicatedInferenceTokensOutputArgs {
     /**
      * Filter the results. The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceTokensFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceTokensFilterArgs>[] | undefined>;
     /**
      * Sort the results. The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceTokensSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceTokensSortArgs>[] | undefined>;
 }

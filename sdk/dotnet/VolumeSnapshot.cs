@@ -22,7 +22,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.Volume("foobar", new()
+    ///     var foobar = new DigitalOcean.Volume("foobar", new()
     ///     {
     ///         Region = DigitalOcean.Region.NYC1,
     ///         Name = "baz",
@@ -30,7 +30,7 @@ namespace Pulumi.DigitalOcean
     ///         Description = "an example volume",
     ///     });
     /// 
-    ///     var foobarVolumeSnapshot = new DigitalOcean.Index.VolumeSnapshot("foobar", new()
+    ///     var foobarVolumeSnapshot = new DigitalOcean.VolumeSnapshot("foobar", new()
     ///     {
     ///         Name = "foo",
     ///         VolumeId = foobar.Id,

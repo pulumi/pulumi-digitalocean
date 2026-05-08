@@ -267,115 +267,115 @@ export interface DatabaseMysqlConfigState {
     /**
      * The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
      */
-    backupHour?: pulumi.Input<number>;
+    backupHour?: pulumi.Input<number | undefined>;
     /**
      * The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
      */
-    backupMinute?: pulumi.Input<number>;
+    backupMinute?: pulumi.Input<number | undefined>;
     /**
      * The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      */
-    binlogRetentionPeriod?: pulumi.Input<number>;
+    binlogRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The ID of the target MySQL cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
      */
-    connectTimeout?: pulumi.Input<number>;
+    connectTimeout?: pulumi.Input<number | undefined>;
     /**
      * Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
      */
-    defaultTimeZone?: pulumi.Input<string>;
+    defaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
      */
-    groupConcatMaxLen?: pulumi.Input<number>;
+    groupConcatMaxLen?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, before cached statistics expire.
      */
-    informationSchemaStatsExpiry?: pulumi.Input<number>;
+    informationSchemaStatsExpiry?: pulumi.Input<number | undefined>;
     /**
      * The minimum length of words that an InnoDB FULLTEXT index stores.
      */
-    innodbFtMinTokenSize?: pulumi.Input<number>;
+    innodbFtMinTokenSize?: pulumi.Input<number | undefined>;
     /**
      * The InnoDB FULLTEXT index stopword list for all InnoDB tables.
      */
-    innodbFtServerStopwordTable?: pulumi.Input<string>;
+    innodbFtServerStopwordTable?: pulumi.Input<string | undefined>;
     /**
      * The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
      */
-    innodbLockWaitTimeout?: pulumi.Input<number>;
+    innodbLockWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
      */
-    innodbLogBufferSize?: pulumi.Input<number>;
+    innodbLogBufferSize?: pulumi.Input<number | undefined>;
     /**
      * The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
-    innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    innodbOnlineAlterLogMaxSize?: pulumi.Input<number | undefined>;
     /**
      * When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
      */
-    innodbPrintAllDeadlocks?: pulumi.Input<boolean>;
+    innodbPrintAllDeadlocks?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
      */
-    innodbRollbackOnTimeout?: pulumi.Input<boolean>;
+    innodbRollbackOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * The time, in seconds, the server waits for activity on an interactive. connection before closing it.
      */
-    interactiveTimeout?: pulumi.Input<number>;
+    interactiveTimeout?: pulumi.Input<number | undefined>;
     /**
      * The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
      */
-    internalTmpMemStorageEngine?: pulumi.Input<string>;
+    internalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
      * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      */
-    longQueryTime?: pulumi.Input<number>;
+    longQueryTime?: pulumi.Input<number | undefined>;
     /**
      * The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
      */
-    maxAllowedPacket?: pulumi.Input<number>;
+    maxAllowedPacket?: pulumi.Input<number | undefined>;
     /**
      * The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      */
-    maxHeapTableSize?: pulumi.Input<number>;
+    maxHeapTableSize?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, to wait for more data from an existing connection. aborting the read.
      */
-    netReadTimeout?: pulumi.Input<number>;
+    netReadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      */
-    netWriteTimeout?: pulumi.Input<number>;
+    netWriteTimeout?: pulumi.Input<number | undefined>;
     /**
      * When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
      */
-    slowQueryLog?: pulumi.Input<boolean>;
+    slowQueryLog?: pulumi.Input<boolean | undefined>;
     /**
      * The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
      */
-    sortBufferSize?: pulumi.Input<number>;
+    sortBufferSize?: pulumi.Input<number | undefined>;
     /**
      * Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
      */
-    sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string | undefined>;
     /**
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
      */
-    sqlRequirePrimaryKey?: pulumi.Input<boolean>;
+    sqlRequirePrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      */
-    tmpTableSize?: pulumi.Input<number>;
+    tmpTableSize?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      */
-    waitTimeout?: pulumi.Input<number>;
+    waitTimeout?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -385,15 +385,15 @@ export interface DatabaseMysqlConfigArgs {
     /**
      * The hour of day (in UTC) when backup for the service starts. New backup only starts if previous backup has already completed.
      */
-    backupHour?: pulumi.Input<number>;
+    backupHour?: pulumi.Input<number | undefined>;
     /**
      * The minute of the backup hour when backup for the service starts. New backup only starts if previous backup has already completed.
      */
-    backupMinute?: pulumi.Input<number>;
+    backupMinute?: pulumi.Input<number | undefined>;
     /**
      * The minimum amount of time, in seconds, to keep binlog entries before deletion. This may be extended for services that require binlog entries for longer than the default, for example if using the MySQL Debezium Kafka connector.
      */
-    binlogRetentionPeriod?: pulumi.Input<number>;
+    binlogRetentionPeriod?: pulumi.Input<number | undefined>;
     /**
      * The ID of the target MySQL cluster.
      */
@@ -401,97 +401,97 @@ export interface DatabaseMysqlConfigArgs {
     /**
      * The number of seconds that the mysqld server waits for a connect packet before responding with bad handshake.
      */
-    connectTimeout?: pulumi.Input<number>;
+    connectTimeout?: pulumi.Input<number | undefined>;
     /**
      * Default server time zone, in the form of an offset from UTC (from -12:00 to +12:00), a time zone name (EST), or `SYSTEM` to use the MySQL server default.
      */
-    defaultTimeZone?: pulumi.Input<string>;
+    defaultTimeZone?: pulumi.Input<string | undefined>;
     /**
      * The maximum permitted result length, in bytes, for the `GROUP_CONCAT()` function.
      */
-    groupConcatMaxLen?: pulumi.Input<number>;
+    groupConcatMaxLen?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, before cached statistics expire.
      */
-    informationSchemaStatsExpiry?: pulumi.Input<number>;
+    informationSchemaStatsExpiry?: pulumi.Input<number | undefined>;
     /**
      * The minimum length of words that an InnoDB FULLTEXT index stores.
      */
-    innodbFtMinTokenSize?: pulumi.Input<number>;
+    innodbFtMinTokenSize?: pulumi.Input<number | undefined>;
     /**
      * The InnoDB FULLTEXT index stopword list for all InnoDB tables.
      */
-    innodbFtServerStopwordTable?: pulumi.Input<string>;
+    innodbFtServerStopwordTable?: pulumi.Input<string | undefined>;
     /**
      * The time, in seconds, that an InnoDB transaction waits for a row lock. before giving up.
      */
-    innodbLockWaitTimeout?: pulumi.Input<number>;
+    innodbLockWaitTimeout?: pulumi.Input<number | undefined>;
     /**
      * The size of the buffer, in bytes, that InnoDB uses to write to the log files. on disk.
      */
-    innodbLogBufferSize?: pulumi.Input<number>;
+    innodbLogBufferSize?: pulumi.Input<number | undefined>;
     /**
      * The upper limit, in bytes, of the size of the temporary log files used during online DDL operations for InnoDB tables.
      */
-    innodbOnlineAlterLogMaxSize?: pulumi.Input<number>;
+    innodbOnlineAlterLogMaxSize?: pulumi.Input<number | undefined>;
     /**
      * When enabled, records information about all deadlocks in InnoDB user transactions in the error log. Disabled by default.
      */
-    innodbPrintAllDeadlocks?: pulumi.Input<boolean>;
+    innodbPrintAllDeadlocks?: pulumi.Input<boolean | undefined>;
     /**
      * When enabled, transaction timeouts cause InnoDB to abort and roll back the entire transaction.
      */
-    innodbRollbackOnTimeout?: pulumi.Input<boolean>;
+    innodbRollbackOnTimeout?: pulumi.Input<boolean | undefined>;
     /**
      * The time, in seconds, the server waits for activity on an interactive. connection before closing it.
      */
-    interactiveTimeout?: pulumi.Input<number>;
+    interactiveTimeout?: pulumi.Input<number | undefined>;
     /**
      * The storage engine for in-memory internal temporary tables. Supported values are: `TempTable`, `MEMORY`.
      */
-    internalTmpMemStorageEngine?: pulumi.Input<string>;
+    internalTmpMemStorageEngine?: pulumi.Input<string | undefined>;
     /**
      * The time, in seconds, for a query to take to execute before being captured by `slowQueryLogs`. Default is `10` seconds.
      */
-    longQueryTime?: pulumi.Input<number>;
+    longQueryTime?: pulumi.Input<number | undefined>;
     /**
      * The size of the largest message, in bytes, that can be received by the server. Default is `67108864` (64M).
      */
-    maxAllowedPacket?: pulumi.Input<number>;
+    maxAllowedPacket?: pulumi.Input<number | undefined>;
     /**
      * The maximum size, in bytes, of internal in-memory tables. Also set `tmpTableSize`. Default is `16777216` (16M)
      */
-    maxHeapTableSize?: pulumi.Input<number>;
+    maxHeapTableSize?: pulumi.Input<number | undefined>;
     /**
      * The time, in seconds, to wait for more data from an existing connection. aborting the read.
      */
-    netReadTimeout?: pulumi.Input<number>;
+    netReadTimeout?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds to wait for a block to be written to a connection before aborting the write.
      */
-    netWriteTimeout?: pulumi.Input<number>;
+    netWriteTimeout?: pulumi.Input<number | undefined>;
     /**
      * When enabled, captures slow queries. When disabled, also truncates the mysql.slow_log table. Default is false.
      */
-    slowQueryLog?: pulumi.Input<boolean>;
+    slowQueryLog?: pulumi.Input<boolean | undefined>;
     /**
      * The sort buffer size, in bytes, for `ORDER BY` optimization. Default is `262144`. (256K).
      */
-    sortBufferSize?: pulumi.Input<number>;
+    sortBufferSize?: pulumi.Input<number | undefined>;
     /**
      * Global SQL mode. If empty, uses MySQL server defaults. Must only include uppercase alphabetic characters, underscores, and commas.
      */
-    sqlMode?: pulumi.Input<string>;
+    sqlMode?: pulumi.Input<string | undefined>;
     /**
      * Require primary key to be defined for new tables or old tables modified with ALTER TABLE and fail if missing. It is recommended to always have primary keys because various functionality may break if any large table is missing them.
      */
-    sqlRequirePrimaryKey?: pulumi.Input<boolean>;
+    sqlRequirePrimaryKey?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum size, in bytes, of internal in-memory tables. Also set `maxHeapTableSize`. Default is `16777216` (16M).
      */
-    tmpTableSize?: pulumi.Input<number>;
+    tmpTableSize?: pulumi.Input<number | undefined>;
     /**
      * The number of seconds the server waits for activity on a noninteractive connection before closing it.
      */
-    waitTimeout?: pulumi.Input<number>;
+    waitTimeout?: pulumi.Input<number | undefined>;
 }

@@ -86,11 +86,11 @@ export interface GenaiAgentKnowledgeBaseAttachmentState {
     /**
      * A unique identifier for an agent.
      */
-    agentUuid?: pulumi.Input<string>;
+    agentUuid?: pulumi.Input<string | undefined>;
     /**
      * A unique identifier for a knowledge base.
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
 }
 
 /**

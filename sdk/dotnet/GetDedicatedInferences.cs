@@ -26,7 +26,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = DigitalOcean.Index.GetDedicatedInferences.Invoke();
+        ///     var all = DigitalOcean.GetDedicatedInferences.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -45,7 +45,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -73,7 +73,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byRegion = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var byRegion = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -117,7 +117,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = DigitalOcean.Index.GetDedicatedInferences.Invoke();
+        ///     var all = DigitalOcean.GetDedicatedInferences.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -136,7 +136,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -164,7 +164,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byRegion = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var byRegion = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -208,7 +208,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var all = DigitalOcean.Index.GetDedicatedInferences.Invoke();
+        ///     var all = DigitalOcean.GetDedicatedInferences.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
@@ -227,7 +227,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -255,7 +255,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var byRegion = DigitalOcean.Index.GetDedicatedInferences.Invoke(new()
+        ///     var byRegion = DigitalOcean.GetDedicatedInferences.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

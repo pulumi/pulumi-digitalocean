@@ -24,23 +24,23 @@ class DropletArgs:
     def __init__(__self__, *,
                  image: pulumi.Input[_builtins.str],
                  size: pulumi.Input[Union[_builtins.str, 'DropletSlug']],
-                 backup_policy: Optional[pulumi.Input['DropletBackupPolicyArgs']] = None,
-                 backups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 droplet_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_policy: pulumi.Input[Optional['DropletBackupPolicyArgs']] = None,
+                 backups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Droplet resource.
 
@@ -155,19 +155,19 @@ class DropletArgs:
 
     @_builtins.property
     @pulumi.getter(name="backupPolicy")
-    def backup_policy(self) -> Optional[pulumi.Input['DropletBackupPolicyArgs']]:
+    def backup_policy(self) -> pulumi.Input[Optional['DropletBackupPolicyArgs']]:
         """
         An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         """
         return pulumi.get(self, "backup_policy")
 
     @backup_policy.setter
-    def backup_policy(self, value: Optional[pulumi.Input['DropletBackupPolicyArgs']]):
+    def backup_policy(self, value: pulumi.Input[Optional['DropletBackupPolicyArgs']]):
         pulumi.set(self, "backup_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling if backups are made. Defaults to
         false.
@@ -175,12 +175,12 @@ class DropletArgs:
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletAgent")
-    def droplet_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def droplet_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to install the
         DigitalOcean agent used for providing access to the Droplet web console in
@@ -192,12 +192,12 @@ class DropletArgs:
         return pulumi.get(self, "droplet_agent")
 
     @droplet_agent.setter
-    def droplet_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def droplet_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "droplet_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
-    def graceful_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def graceful_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
@@ -205,12 +205,12 @@ class DropletArgs:
         return pulumi.get(self, "graceful_shutdown")
 
     @graceful_shutdown.setter
-    def graceful_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def graceful_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "graceful_shutdown", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
         Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -220,24 +220,24 @@ class DropletArgs:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address
         """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
         Defaults to false. If set to `true`, you can configure monitor alert policies
@@ -246,25 +246,25 @@ class DropletArgs:
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Droplet name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworking")
     @_utilities.deprecated("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
-    def private_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
@@ -272,12 +272,12 @@ class DropletArgs:
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
-    def private_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworking")
-    def public_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
@@ -288,24 +288,24 @@ class DropletArgs:
         return pulumi.get(self, "public_networking")
 
     @public_networking.setter
-    def public_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_networking", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region where the Droplet will be created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resizeDisk")
-    def resize_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def resize_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling whether to increase the disk
         size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -315,12 +315,12 @@ class DropletArgs:
         return pulumi.get(self, "resize_disk")
 
     @resize_disk.setter
-    def resize_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def resize_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "resize_disk", value)
 
     @_builtins.property
     @pulumi.getter(name="sshKeys")
-    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssh_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of SSH key IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use the
@@ -332,91 +332,91 @@ class DropletArgs:
         return pulumi.get(self, "ssh_keys")
 
     @ssh_keys.setter
-    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssh_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssh_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the tags to be applied to this Droplet.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeIds")
-    def volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def volume_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
         """
         return pulumi.get(self, "volume_ids")
 
     @volume_ids.setter
-    def volume_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def volume_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "volume_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the Droplet will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
 @pulumi.input_type
 class _DropletState:
     def __init__(__self__, *,
-                 backup_policy: Optional[pulumi.Input['DropletBackupPolicyArgs']] = None,
-                 backups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 disk: Optional[pulumi.Input[_builtins.int]] = None,
-                 droplet_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 droplet_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv4_address_private: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 locked: Optional[pulumi.Input[_builtins.bool]] = None,
-                 memory: Optional[pulumi.Input[_builtins.int]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 price_hourly: Optional[pulumi.Input[_builtins.float]] = None,
-                 price_monthly: Optional[pulumi.Input[_builtins.float]] = None,
-                 private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
-                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 vcpus: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 backup_policy: pulumi.Input[Optional['DropletBackupPolicyArgs']] = None,
+                 backups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 disk: pulumi.Input[Optional[_builtins.int]] = None,
+                 droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 droplet_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv4_address_private: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 locked: pulumi.Input[Optional[_builtins.bool]] = None,
+                 memory: pulumi.Input[Optional[_builtins.int]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 price_hourly: pulumi.Input[Optional[_builtins.float]] = None,
+                 price_monthly: pulumi.Input[Optional[_builtins.float]] = None,
+                 private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+                 ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 vcpus: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Droplet resources.
 
@@ -540,19 +540,19 @@ class _DropletState:
 
     @_builtins.property
     @pulumi.getter(name="backupPolicy")
-    def backup_policy(self) -> Optional[pulumi.Input['DropletBackupPolicyArgs']]:
+    def backup_policy(self) -> pulumi.Input[Optional['DropletBackupPolicyArgs']]:
         """
         An object specifying the backup policy for the Droplet. If omitted and `backups` is `true`, the backup plan will default to daily.
         """
         return pulumi.get(self, "backup_policy")
 
     @backup_policy.setter
-    def backup_policy(self, value: Optional[pulumi.Input['DropletBackupPolicyArgs']]):
+    def backup_policy(self, value: pulumi.Input[Optional['DropletBackupPolicyArgs']]):
         pulumi.set(self, "backup_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def backups(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def backups(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling if backups are made. Defaults to
         false.
@@ -560,33 +560,33 @@ class _DropletState:
         return pulumi.get(self, "backups")
 
     @backups.setter
-    def backups(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def backups(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "backups", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def disk(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def disk(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The size of the instance's disk in GB
         """
         return pulumi.get(self, "disk")
 
     @disk.setter
-    def disk(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def disk(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "disk", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletAgent")
-    def droplet_agent(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def droplet_agent(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to install the
         DigitalOcean agent used for providing access to the Droplet web console in
@@ -598,24 +598,24 @@ class _DropletState:
         return pulumi.get(self, "droplet_agent")
 
     @droplet_agent.setter
-    def droplet_agent(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def droplet_agent(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "droplet_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletUrn")
-    def droplet_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def droplet_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name of the Droplet
         """
         return pulumi.get(self, "droplet_urn")
 
     @droplet_urn.setter
-    def droplet_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def droplet_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "droplet_urn", value)
 
     @_builtins.property
     @pulumi.getter(name="gracefulShutdown")
-    def graceful_shutdown(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def graceful_shutdown(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the droplet
         should be gracefully shut down before it is deleted.
@@ -623,48 +623,48 @@ class _DropletState:
         return pulumi.get(self, "graceful_shutdown")
 
     @graceful_shutdown.setter
-    def graceful_shutdown(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def graceful_shutdown(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "graceful_shutdown", value)
 
     @_builtins.property
     @pulumi.getter
-    def image(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def image(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Droplet image ID or slug. This could be either image ID or droplet snapshot ID. You can find image IDs and slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Images).
         """
         return pulumi.get(self, "image")
 
     @image.setter
-    def image(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def image(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "image", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv4 address
         """
         return pulumi.get(self, "ipv4_address")
 
     @ipv4_address.setter
-    def ipv4_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_address", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4AddressPrivate")
-    def ipv4_address_private(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_address_private(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The private networking IPv4 address
         """
         return pulumi.get(self, "ipv4_address_private")
 
     @ipv4_address_private.setter
-    def ipv4_address_private(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_address_private(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_address_private", value)
 
     @_builtins.property
     @pulumi.getter
-    def ipv6(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ipv6(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling if IPv6 is enabled. Defaults to false.
         Once enabled for a Droplet, IPv6 can not be disabled. When enabling IPv6 on
@@ -674,45 +674,45 @@ class _DropletState:
         return pulumi.get(self, "ipv6")
 
     @ipv6.setter
-    def ipv6(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ipv6(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ipv6", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv6Address")
-    def ipv6_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv6_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The IPv6 address
         """
         return pulumi.get(self, "ipv6_address")
 
     @ipv6_address.setter
-    def ipv6_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv6_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv6_address", value)
 
     @_builtins.property
     @pulumi.getter
-    def locked(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def locked(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Is the Droplet locked
         """
         return pulumi.get(self, "locked")
 
     @locked.setter
-    def locked(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def locked(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "locked", value)
 
     @_builtins.property
     @pulumi.getter
-    def memory(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def memory(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "memory")
 
     @memory.setter
-    def memory(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def memory(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "memory", value)
 
     @_builtins.property
     @pulumi.getter
-    def monitoring(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def monitoring(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling whether monitoring agent is installed.
         Defaults to false. If set to `true`, you can configure monitor alert policies
@@ -721,49 +721,49 @@ class _DropletState:
         return pulumi.get(self, "monitoring")
 
     @monitoring.setter
-    def monitoring(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def monitoring(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "monitoring", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Droplet name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="priceHourly")
-    def price_hourly(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def price_hourly(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Droplet hourly price
         """
         return pulumi.get(self, "price_hourly")
 
     @price_hourly.setter
-    def price_hourly(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def price_hourly(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "price_hourly", value)
 
     @_builtins.property
     @pulumi.getter(name="priceMonthly")
-    def price_monthly(self) -> Optional[pulumi.Input[_builtins.float]]:
+    def price_monthly(self) -> pulumi.Input[Optional[_builtins.float]]:
         """
         Droplet monthly price
         """
         return pulumi.get(self, "price_monthly")
 
     @price_monthly.setter
-    def price_monthly(self, value: Optional[pulumi.Input[_builtins.float]]):
+    def price_monthly(self, value: pulumi.Input[Optional[_builtins.float]]):
         pulumi.set(self, "price_monthly", value)
 
     @_builtins.property
     @pulumi.getter(name="privateNetworking")
     @_utilities.deprecated("""This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.""")
-    def private_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **Deprecated** Boolean controlling if private networking
         is enabled. This parameter has been deprecated. Use `vpc_uuid` instead to specify a VPC network for the Droplet. If no `vpc_uuid` is provided, the Droplet will be placed in your account's default VPC for the region.
@@ -771,12 +771,12 @@ class _DropletState:
         return pulumi.get(self, "private_networking")
 
     @private_networking.setter
-    def private_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_networking", value)
 
     @_builtins.property
     @pulumi.getter(name="publicNetworking")
-    def public_networking(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def public_networking(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to enables public networking for the Droplet or not.
         By default, this is always enabled on new droplets.
@@ -787,24 +787,24 @@ class _DropletState:
         return pulumi.get(self, "public_networking")
 
     @public_networking.setter
-    def public_networking(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def public_networking(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "public_networking", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region where the Droplet will be created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="resizeDisk")
-    def resize_disk(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def resize_disk(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Boolean controlling whether to increase the disk
         size when resizing a Droplet. It defaults to `true`. When set to `false`,
@@ -814,24 +814,24 @@ class _DropletState:
         return pulumi.get(self, "resize_disk")
 
     @resize_disk.setter
-    def resize_disk(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def resize_disk(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "resize_disk", value)
 
     @_builtins.property
     @pulumi.getter
-    def size(self) -> Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]]:
+    def size(self) -> pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]]:
         """
         The unique slug that identifies the type of Droplet. You may list the available slugs using the [DigitalOcean API](https://docs.digitalocean.com/reference/api/digitalocean/#tag/Sizes).
         """
         return pulumi.get(self, "size")
 
     @size.setter
-    def size(self, value: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]]):
+    def size(self, value: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]]):
         pulumi.set(self, "size", value)
 
     @_builtins.property
     @pulumi.getter(name="sshKeys")
-    def ssh_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def ssh_keys(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of SSH key IDs or fingerprints to enable in
         the format `[12345, 123456]`. To retrieve this info, use the
@@ -843,79 +843,79 @@ class _DropletState:
         return pulumi.get(self, "ssh_keys")
 
     @ssh_keys.setter
-    def ssh_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def ssh_keys(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "ssh_keys", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The status of the Droplet
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the tags to be applied to this Droplet.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="userData")
-    def user_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string of the desired User Data provided [during Droplet creation](https://docs.digitalocean.com/products/droplets/how-to/provide-user-data/). Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "user_data")
 
     @user_data.setter
-    def user_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def vcpus(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def vcpus(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of the instance's virtual CPUs
         """
         return pulumi.get(self, "vcpus")
 
     @vcpus.setter
-    def vcpus(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def vcpus(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "vcpus", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeIds")
-    def volume_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def volume_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of the IDs of each [block storage volume](https://www.terraform.io/providers/digitalocean/digitalocean/latest/docs/resources/volume) to be attached to the Droplet.
         """
         return pulumi.get(self, "volume_ids")
 
     @volume_ids.setter
-    def volume_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def volume_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "volume_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the Droplet will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
@@ -925,25 +925,25 @@ class Droplet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
-                 backups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 droplet_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
-                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+                 backups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+                 ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Droplet resource. This can be used to create,
@@ -1081,25 +1081,25 @@ class Droplet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
-                 backups: Optional[pulumi.Input[_builtins.bool]] = None,
-                 droplet_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-                 graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-                 image: Optional[pulumi.Input[_builtins.str]] = None,
-                 ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-                 size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
-                 ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 user_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+                 backups: pulumi.Input[Optional[_builtins.bool]] = None,
+                 droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+                 graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+                 image: pulumi.Input[Optional[_builtins.str]] = None,
+                 ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+                 size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+                 ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 user_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1153,36 +1153,36 @@ class Droplet(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            backup_policy: Optional[pulumi.Input[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
-            backups: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            disk: Optional[pulumi.Input[_builtins.int]] = None,
-            droplet_agent: Optional[pulumi.Input[_builtins.bool]] = None,
-            droplet_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            graceful_shutdown: Optional[pulumi.Input[_builtins.bool]] = None,
-            image: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv4_address_private: Optional[pulumi.Input[_builtins.str]] = None,
-            ipv6: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipv6_address: Optional[pulumi.Input[_builtins.str]] = None,
-            locked: Optional[pulumi.Input[_builtins.bool]] = None,
-            memory: Optional[pulumi.Input[_builtins.int]] = None,
-            monitoring: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            price_hourly: Optional[pulumi.Input[_builtins.float]] = None,
-            price_monthly: Optional[pulumi.Input[_builtins.float]] = None,
-            private_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-            public_networking: Optional[pulumi.Input[_builtins.bool]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            resize_disk: Optional[pulumi.Input[_builtins.bool]] = None,
-            size: Optional[pulumi.Input[Union[_builtins.str, 'DropletSlug']]] = None,
-            ssh_keys: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            user_data: Optional[pulumi.Input[_builtins.str]] = None,
-            vcpus: Optional[pulumi.Input[_builtins.int]] = None,
-            volume_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'Droplet':
+            backup_policy: pulumi.Input[Optional[Union['DropletBackupPolicyArgs', 'DropletBackupPolicyArgsDict']]] = None,
+            backups: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            disk: pulumi.Input[Optional[_builtins.int]] = None,
+            droplet_agent: pulumi.Input[Optional[_builtins.bool]] = None,
+            droplet_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            graceful_shutdown: pulumi.Input[Optional[_builtins.bool]] = None,
+            image: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv4_address_private: pulumi.Input[Optional[_builtins.str]] = None,
+            ipv6: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv6_address: pulumi.Input[Optional[_builtins.str]] = None,
+            locked: pulumi.Input[Optional[_builtins.bool]] = None,
+            memory: pulumi.Input[Optional[_builtins.int]] = None,
+            monitoring: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            price_hourly: pulumi.Input[Optional[_builtins.float]] = None,
+            price_monthly: pulumi.Input[Optional[_builtins.float]] = None,
+            private_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+            public_networking: pulumi.Input[Optional[_builtins.bool]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            resize_disk: pulumi.Input[Optional[_builtins.bool]] = None,
+            size: pulumi.Input[Optional[Union[_builtins.str, 'DropletSlug']]] = None,
+            ssh_keys: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            user_data: pulumi.Input[Optional[_builtins.str]] = None,
+            vcpus: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'Droplet':
         """
         Get an existing Droplet resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -144,45 +144,45 @@ export interface GradientaiKnowledgeBaseState {
     /**
      * The time when the knowledge base was added to the agent.
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * The time when the knowledge base was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Data sources for the knowledge base
      */
-    datasources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSource>[]>;
+    datasources?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseDataSource>[] | undefined>;
     /**
      * The unique identifier of the embedding model
      */
-    embeddingModelUuid?: pulumi.Input<string>;
+    embeddingModelUuid?: pulumi.Input<string | undefined>;
     /**
      * Indicates whether the knowledge base is public or private.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The last indexing job for the knowledge base.
      */
-    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseLastIndexingJob>[]>;
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseLastIndexingJob>[] | undefined>;
     /**
      * The name of the knowledge base.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the project to which the knowledge base belongs.
      */
-    projectId?: pulumi.Input<string>;
-    region?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    projectId?: pulumi.Input<string | undefined>;
+    region?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the VPC to which the knowledge base belongs.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -192,11 +192,11 @@ export interface GradientaiKnowledgeBaseArgs {
     /**
      * The time when the knowledge base was added to the agent.
      */
-    addedToAgentAt?: pulumi.Input<string>;
+    addedToAgentAt?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the DigitalOcean OpenSearch database this knowledge base will use
      */
-    databaseId?: pulumi.Input<string>;
+    databaseId?: pulumi.Input<string | undefined>;
     /**
      * Data sources for the knowledge base
      */
@@ -208,23 +208,23 @@ export interface GradientaiKnowledgeBaseArgs {
     /**
      * Indicates whether the knowledge base is public or private.
      */
-    isPublic?: pulumi.Input<boolean>;
+    isPublic?: pulumi.Input<boolean | undefined>;
     /**
      * The last indexing job for the knowledge base.
      */
-    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseLastIndexingJob>[]>;
+    lastIndexingJobs?: pulumi.Input<pulumi.Input<inputs.GradientaiKnowledgeBaseLastIndexingJob>[] | undefined>;
     /**
      * The name of the knowledge base.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the project to which the knowledge base belongs.
      */
     projectId: pulumi.Input<string>;
     region: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The unique identifier of the VPC to which the knowledge base belongs.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }

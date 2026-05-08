@@ -22,14 +22,14 @@ class DatabaseLogsinkRsyslogArgs:
                  cluster_id: pulumi.Input[_builtins.str],
                  port: pulumi.Input[_builtins.int],
                  server: pulumi.Input[_builtins.str],
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 logline: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 structured_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 logline: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a DatabaseLogsinkRsyslog resource.
 
@@ -103,116 +103,116 @@ class DatabaseLogsinkRsyslogArgs:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
         """
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def logline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
         """
         return pulumi.get(self, "logline")
 
     @logline.setter
-    def logline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logline", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="structuredData")
-    def structured_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def structured_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content of the structured data block for RFC5424 messages.
         """
         return pulumi.get(self, "structured_data")
 
     @structured_data.setter
-    def structured_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def structured_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "structured_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls", value)
 
 
 @pulumi.input_type
 class _DatabaseLogsinkRsyslogState:
     def __init__(__self__, *,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 logline: Optional[pulumi.Input[_builtins.str]] = None,
-                 logsink_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 structured_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None):
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 logline: pulumi.Input[Optional[_builtins.str]] = None,
+                 logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering DatabaseLogsinkRsyslog resources.
 
@@ -256,146 +256,146 @@ class _DatabaseLogsinkRsyslogState:
 
     @_builtins.property
     @pulumi.getter(name="caCert")
-    def ca_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ca_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         CA certificate for TLS verification in PEM format. Can be specified using `file()` function.
         """
         return pulumi.get(self, "ca_cert")
 
     @ca_cert.setter
-    def ca_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ca_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ca_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientCert")
-    def client_cert(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_cert(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client certificate for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`.
         """
         return pulumi.get(self, "client_cert")
 
     @client_cert.setter
-    def client_cert(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_cert(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_cert", value)
 
     @_builtins.property
     @pulumi.getter(name="clientKey")
-    def client_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def client_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Client private key for mutual TLS authentication in PEM format. **Note**: Requires `tls` to be `true`. This field is marked as sensitive.
         """
         return pulumi.get(self, "client_key")
 
     @client_key.setter
-    def client_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def client_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "client_key", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         UUID of the source database cluster that will forward logs.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def format(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def format(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Log format to use. Must be one of `rfc5424` (default), `rfc3164`, or `custom`.
         """
         return pulumi.get(self, "format")
 
     @format.setter
-    def format(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def format(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "format", value)
 
     @_builtins.property
     @pulumi.getter
-    def logline(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logline(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom logline template. **Required** when `format` is set to `custom`. Supports rsyslog-style templating with the following tokens: `%HOSTNAME%`, `%app-name%`, `%msg%`, `%msgid%`, `%pri%`, `%procid%`, `%structured-data%`, `%timestamp%`, and `%timestamp:::date-rfc3339%`.
         """
         return pulumi.get(self, "logline")
 
     @logline.setter
-    def logline(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logline(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logline", value)
 
     @_builtins.property
     @pulumi.getter(name="logsinkId")
-    def logsink_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def logsink_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique identifier for the logsink as returned by the DigitalOcean API.
         """
         return pulumi.get(self, "logsink_id")
 
     @logsink_id.setter
-    def logsink_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def logsink_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "logsink_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Display name for the logsink. **Note**: This is immutable; changing it will force recreation of the resource.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def port(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def port(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Port number for the rsyslog server. Must be between 1 and 65535.
         """
         return pulumi.get(self, "port")
 
     @port.setter
-    def port(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def port(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "port", value)
 
     @_builtins.property
     @pulumi.getter
-    def server(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def server(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Hostname or IP address of the rsyslog server.
         """
         return pulumi.get(self, "server")
 
     @server.setter
-    def server(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def server(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "server", value)
 
     @_builtins.property
     @pulumi.getter(name="structuredData")
-    def structured_data(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def structured_data(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Content of the structured data block for RFC5424 messages.
         """
         return pulumi.get(self, "structured_data")
 
     @structured_data.setter
-    def structured_data(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def structured_data(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "structured_data", value)
 
     @_builtins.property
     @pulumi.getter
-    def tls(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def tls(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable TLS encryption for the rsyslog connection. Defaults to `false`. **Note**: It is highly recommended to enable TLS as log messages may contain sensitive information.
         """
         return pulumi.get(self, "tls")
 
     @tls.setter
-    def tls(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def tls(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "tls", value)
 
 
@@ -405,17 +405,17 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 logline: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 structured_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 logline: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean database logsink resource allowing you to forward logs from a managed database cluster to an external rsyslog server.
@@ -648,17 +648,17 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-                 client_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 format: Optional[pulumi.Input[_builtins.str]] = None,
-                 logline: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 port: Optional[pulumi.Input[_builtins.int]] = None,
-                 server: Optional[pulumi.Input[_builtins.str]] = None,
-                 structured_data: Optional[pulumi.Input[_builtins.str]] = None,
-                 tls: Optional[pulumi.Input[_builtins.bool]] = None,
+                 ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+                 client_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 format: pulumi.Input[Optional[_builtins.str]] = None,
+                 logline: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 port: pulumi.Input[Optional[_builtins.int]] = None,
+                 server: pulumi.Input[Optional[_builtins.str]] = None,
+                 structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+                 tls: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -698,18 +698,18 @@ class DatabaseLogsinkRsyslog(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            ca_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_cert: Optional[pulumi.Input[_builtins.str]] = None,
-            client_key: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            format: Optional[pulumi.Input[_builtins.str]] = None,
-            logline: Optional[pulumi.Input[_builtins.str]] = None,
-            logsink_id: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            port: Optional[pulumi.Input[_builtins.int]] = None,
-            server: Optional[pulumi.Input[_builtins.str]] = None,
-            structured_data: Optional[pulumi.Input[_builtins.str]] = None,
-            tls: Optional[pulumi.Input[_builtins.bool]] = None) -> 'DatabaseLogsinkRsyslog':
+            ca_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_cert: pulumi.Input[Optional[_builtins.str]] = None,
+            client_key: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            format: pulumi.Input[Optional[_builtins.str]] = None,
+            logline: pulumi.Input[Optional[_builtins.str]] = None,
+            logsink_id: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            port: pulumi.Input[Optional[_builtins.int]] = None,
+            server: pulumi.Input[Optional[_builtins.str]] = None,
+            structured_data: pulumi.Input[Optional[_builtins.str]] = None,
+            tls: pulumi.Input[Optional[_builtins.bool]] = None) -> 'DatabaseLogsinkRsyslog':
         """
         Get an existing DatabaseLogsinkRsyslog resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

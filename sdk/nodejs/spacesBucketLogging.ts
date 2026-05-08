@@ -152,19 +152,19 @@ export interface SpacesBucketLoggingState {
     /**
      * The name of the bucket which will be logged.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The region where the bucket resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The name of the bucket which will store the logs.
      */
-    targetBucket?: pulumi.Input<string>;
+    targetBucket?: pulumi.Input<string | undefined>;
     /**
      * The prefix for the log files.
      */
-    targetPrefix?: pulumi.Input<string>;
+    targetPrefix?: pulumi.Input<string | undefined>;
 }
 
 /**

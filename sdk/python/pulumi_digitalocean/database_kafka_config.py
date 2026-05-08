@@ -20,23 +20,23 @@ __all__ = ['DatabaseKafkaConfigArgs', 'DatabaseKafkaConfig']
 class DatabaseKafkaConfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 auto_create_topics_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_max_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_min_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_index_interval_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_message_downconversion_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_preallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_roll_jitter_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_segment_delete_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseKafkaConfig resource.
 
@@ -109,230 +109,230 @@ class DatabaseKafkaConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateTopicsEnable")
-    def auto_create_topics_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_topics_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auto creation of topics.
         """
         return pulumi.get(self, "auto_create_topics_enable")
 
     @auto_create_topics_enable.setter
-    def auto_create_topics_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_topics_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_topics_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
-    def group_initial_rebalance_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_initial_rebalance_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
         """
         return pulumi.get(self, "group_initial_rebalance_delay_ms")
 
     @group_initial_rebalance_delay_ms.setter
-    def group_initial_rebalance_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_initial_rebalance_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_initial_rebalance_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
-    def group_max_session_timeout_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_max_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
     @group_max_session_timeout_ms.setter
-    def group_max_session_timeout_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_max_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_max_session_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMinSessionTimeoutMs")
-    def group_min_session_timeout_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_min_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         """
         return pulumi.get(self, "group_min_session_timeout_ms")
 
     @group_min_session_timeout_ms.setter
-    def group_min_session_timeout_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_min_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_min_session_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
-    def log_cleaner_delete_retention_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_cleaner_delete_retention_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long are delete records retained?
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
     @log_cleaner_delete_retention_ms.setter
-    def log_cleaner_delete_retention_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_cleaner_delete_retention_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_cleaner_delete_retention_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
-    def log_cleaner_min_compaction_lag_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_cleaner_min_compaction_lag_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @log_cleaner_min_compaction_lag_ms.setter
-    def log_cleaner_min_compaction_lag_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_cleaner_min_compaction_lag_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_cleaner_min_compaction_lag_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_flush_interval_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
         """
         return pulumi.get(self, "log_flush_interval_ms")
 
     @log_flush_interval_ms.setter
-    def log_flush_interval_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_flush_interval_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_flush_interval_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logIndexIntervalBytes")
-    def log_index_interval_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_index_interval_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval with which Kafka adds an entry to the offset index.
         """
         return pulumi.get(self, "log_index_interval_bytes")
 
     @log_index_interval_bytes.setter
-    def log_index_interval_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_index_interval_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_index_interval_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="logMessageDownconversionEnable")
-    def log_message_downconversion_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_message_downconversion_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         """
         return pulumi.get(self, "log_message_downconversion_enable")
 
     @log_message_downconversion_enable.setter
-    def log_message_downconversion_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_message_downconversion_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_message_downconversion_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
-    def log_message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_message_timestamp_difference_max_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
         """
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
     @log_message_timestamp_difference_max_ms.setter
-    def log_message_timestamp_difference_max_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_message_timestamp_difference_max_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_message_timestamp_difference_max_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logPreallocate")
-    def log_preallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_preallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether to preallocate a file when creating a new segment.
         """
         return pulumi.get(self, "log_preallocate")
 
     @log_preallocate.setter
-    def log_preallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_preallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_preallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_retention_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum size of the log before deleting messages.
         """
         return pulumi.get(self, "log_retention_bytes")
 
     @log_retention_bytes.setter
-    def log_retention_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_retention_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_retention_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of hours to keep a log file before deleting it.
         """
         return pulumi.get(self, "log_retention_hours")
 
     @log_retention_hours.setter
-    def log_retention_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_retention_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
         """
         return pulumi.get(self, "log_retention_ms")
 
     @log_retention_ms.setter
-    def log_retention_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_retention_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_retention_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logRollJitterMs")
-    def log_roll_jitter_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_roll_jitter_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
         """
         return pulumi.get(self, "log_roll_jitter_ms")
 
     @log_roll_jitter_ms.setter
-    def log_roll_jitter_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_roll_jitter_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_roll_jitter_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logSegmentDeleteDelayMs")
-    def log_segment_delete_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_segment_delete_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time to wait before deleting a file from the filesystem.
         """
         return pulumi.get(self, "log_segment_delete_delay_ms")
 
     @log_segment_delete_delay_ms.setter
-    def log_segment_delete_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_segment_delete_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_segment_delete_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="messageMaxBytes")
-    def message_max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of message that the server can receive.
         """
         return pulumi.get(self, "message_max_bytes")
 
     @message_max_bytes.setter
-    def message_max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_max_bytes", value)
 
 
 @pulumi.input_type
 class _DatabaseKafkaConfigState:
     def __init__(__self__, *,
-                 auto_create_topics_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_max_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_min_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_index_interval_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_message_downconversion_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_preallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_roll_jitter_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_segment_delete_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None):
+                 auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaConfig resources.
 
@@ -394,218 +394,218 @@ class _DatabaseKafkaConfigState:
 
     @_builtins.property
     @pulumi.getter(name="autoCreateTopicsEnable")
-    def auto_create_topics_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_create_topics_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable auto creation of topics.
         """
         return pulumi.get(self, "auto_create_topics_enable")
 
     @auto_create_topics_enable.setter
-    def auto_create_topics_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_create_topics_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_create_topics_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target Kafka cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="groupInitialRebalanceDelayMs")
-    def group_initial_rebalance_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_initial_rebalance_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
         """
         return pulumi.get(self, "group_initial_rebalance_delay_ms")
 
     @group_initial_rebalance_delay_ms.setter
-    def group_initial_rebalance_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_initial_rebalance_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_initial_rebalance_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMaxSessionTimeoutMs")
-    def group_max_session_timeout_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_max_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         """
         return pulumi.get(self, "group_max_session_timeout_ms")
 
     @group_max_session_timeout_ms.setter
-    def group_max_session_timeout_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_max_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_max_session_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="groupMinSessionTimeoutMs")
-    def group_min_session_timeout_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def group_min_session_timeout_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
         """
         return pulumi.get(self, "group_min_session_timeout_ms")
 
     @group_min_session_timeout_ms.setter
-    def group_min_session_timeout_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def group_min_session_timeout_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "group_min_session_timeout_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logCleanerDeleteRetentionMs")
-    def log_cleaner_delete_retention_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_cleaner_delete_retention_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         How long are delete records retained?
         """
         return pulumi.get(self, "log_cleaner_delete_retention_ms")
 
     @log_cleaner_delete_retention_ms.setter
-    def log_cleaner_delete_retention_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_cleaner_delete_retention_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_cleaner_delete_retention_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logCleanerMinCompactionLagMs")
-    def log_cleaner_min_compaction_lag_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_cleaner_min_compaction_lag_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
         """
         return pulumi.get(self, "log_cleaner_min_compaction_lag_ms")
 
     @log_cleaner_min_compaction_lag_ms.setter
-    def log_cleaner_min_compaction_lag_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_cleaner_min_compaction_lag_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_cleaner_min_compaction_lag_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logFlushIntervalMs")
-    def log_flush_interval_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_flush_interval_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
         """
         return pulumi.get(self, "log_flush_interval_ms")
 
     @log_flush_interval_ms.setter
-    def log_flush_interval_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_flush_interval_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_flush_interval_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logIndexIntervalBytes")
-    def log_index_interval_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_index_interval_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The interval with which Kafka adds an entry to the offset index.
         """
         return pulumi.get(self, "log_index_interval_bytes")
 
     @log_index_interval_bytes.setter
-    def log_index_interval_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_index_interval_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_index_interval_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="logMessageDownconversionEnable")
-    def log_message_downconversion_enable(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_message_downconversion_enable(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
         """
         return pulumi.get(self, "log_message_downconversion_enable")
 
     @log_message_downconversion_enable.setter
-    def log_message_downconversion_enable(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_message_downconversion_enable(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_message_downconversion_enable", value)
 
     @_builtins.property
     @pulumi.getter(name="logMessageTimestampDifferenceMaxMs")
-    def log_message_timestamp_difference_max_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_message_timestamp_difference_max_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
         """
         return pulumi.get(self, "log_message_timestamp_difference_max_ms")
 
     @log_message_timestamp_difference_max_ms.setter
-    def log_message_timestamp_difference_max_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_message_timestamp_difference_max_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_message_timestamp_difference_max_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logPreallocate")
-    def log_preallocate(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def log_preallocate(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Controls whether to preallocate a file when creating a new segment.
         """
         return pulumi.get(self, "log_preallocate")
 
     @log_preallocate.setter
-    def log_preallocate(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def log_preallocate(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "log_preallocate", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionBytes")
-    def log_retention_bytes(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_retention_bytes(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum size of the log before deleting messages.
         """
         return pulumi.get(self, "log_retention_bytes")
 
     @log_retention_bytes.setter
-    def log_retention_bytes(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_retention_bytes(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_retention_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionHours")
-    def log_retention_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_retention_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of hours to keep a log file before deleting it.
         """
         return pulumi.get(self, "log_retention_hours")
 
     @log_retention_hours.setter
-    def log_retention_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_retention_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_retention_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="logRetentionMs")
-    def log_retention_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_retention_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
         """
         return pulumi.get(self, "log_retention_ms")
 
     @log_retention_ms.setter
-    def log_retention_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_retention_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_retention_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logRollJitterMs")
-    def log_roll_jitter_ms(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def log_roll_jitter_ms(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
         """
         return pulumi.get(self, "log_roll_jitter_ms")
 
     @log_roll_jitter_ms.setter
-    def log_roll_jitter_ms(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def log_roll_jitter_ms(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "log_roll_jitter_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="logSegmentDeleteDelayMs")
-    def log_segment_delete_delay_ms(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def log_segment_delete_delay_ms(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The amount of time to wait before deleting a file from the filesystem.
         """
         return pulumi.get(self, "log_segment_delete_delay_ms")
 
     @log_segment_delete_delay_ms.setter
-    def log_segment_delete_delay_ms(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def log_segment_delete_delay_ms(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "log_segment_delete_delay_ms", value)
 
     @_builtins.property
     @pulumi.getter(name="messageMaxBytes")
-    def message_max_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def message_max_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The maximum size of message that the server can receive.
         """
         return pulumi.get(self, "message_max_bytes")
 
     @message_max_bytes.setter
-    def message_max_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def message_max_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "message_max_bytes", value)
 
 
@@ -615,24 +615,24 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_topics_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_max_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_min_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_index_interval_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_message_downconversion_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_preallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_roll_jitter_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_segment_delete_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -774,24 +774,24 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_create_topics_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 group_initial_rebalance_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_max_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 group_min_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_delete_retention_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_flush_interval_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_index_interval_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_message_downconversion_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_message_timestamp_difference_max_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_preallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-                 log_retention_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 log_retention_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_roll_jitter_ms: Optional[pulumi.Input[_builtins.str]] = None,
-                 log_segment_delete_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-                 message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None,
+                 auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+                 log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+                 log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+                 message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -831,24 +831,24 @@ class DatabaseKafkaConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            auto_create_topics_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            group_initial_rebalance_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            group_max_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            group_min_session_timeout_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            log_cleaner_delete_retention_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            log_cleaner_min_compaction_lag_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            log_flush_interval_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            log_index_interval_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            log_message_downconversion_enable: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_message_timestamp_difference_max_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            log_preallocate: Optional[pulumi.Input[_builtins.bool]] = None,
-            log_retention_bytes: Optional[pulumi.Input[_builtins.str]] = None,
-            log_retention_hours: Optional[pulumi.Input[_builtins.int]] = None,
-            log_retention_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            log_roll_jitter_ms: Optional[pulumi.Input[_builtins.str]] = None,
-            log_segment_delete_delay_ms: Optional[pulumi.Input[_builtins.int]] = None,
-            message_max_bytes: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseKafkaConfig':
+            auto_create_topics_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            group_initial_rebalance_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            group_max_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            group_min_session_timeout_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            log_cleaner_delete_retention_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            log_cleaner_min_compaction_lag_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_flush_interval_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_index_interval_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            log_message_downconversion_enable: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_message_timestamp_difference_max_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_preallocate: pulumi.Input[Optional[_builtins.bool]] = None,
+            log_retention_bytes: pulumi.Input[Optional[_builtins.str]] = None,
+            log_retention_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            log_retention_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_roll_jitter_ms: pulumi.Input[Optional[_builtins.str]] = None,
+            log_segment_delete_delay_ms: pulumi.Input[Optional[_builtins.int]] = None,
+            message_max_bytes: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabaseKafkaConfig':
         """
         Get an existing DatabaseKafkaConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

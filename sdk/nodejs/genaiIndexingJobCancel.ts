@@ -161,63 +161,63 @@ export interface GenaiIndexingJobCancelState {
     /**
      * Number of data sources that were completed before cancellation.
      */
-    completedDatasources?: pulumi.Input<number>;
+    completedDatasources?: pulumi.Input<number | undefined>;
     /**
      * When the indexing job was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * List of data source UUIDs associated with this indexing job.
      */
-    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[]>;
+    dataSourceUuids?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * When the indexing job was finished.
      */
-    finishedAt?: pulumi.Input<string>;
+    finishedAt?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the knowledge base associated with this indexing job.
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
     /**
      * Current phase of the indexing job.
      */
-    phase?: pulumi.Input<string>;
+    phase?: pulumi.Input<string | undefined>;
     /**
      * When the indexing job was started.
      */
-    startedAt?: pulumi.Input<string>;
+    startedAt?: pulumi.Input<string | undefined>;
     /**
      * The status of the indexing job after cancellation.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Number of tokens processed before cancellation.
      */
-    tokens?: pulumi.Input<number>;
+    tokens?: pulumi.Input<number | undefined>;
     /**
      * Total number of data sources in the indexing job.
      */
-    totalDatasources?: pulumi.Input<number>;
+    totalDatasources?: pulumi.Input<number | undefined>;
     /**
      * Total number of items that failed during indexing.
      */
-    totalItemsFailed?: pulumi.Input<number>;
+    totalItemsFailed?: pulumi.Input<number | undefined>;
     /**
      * Total number of items that were successfully indexed.
      */
-    totalItemsIndexed?: pulumi.Input<number>;
+    totalItemsIndexed?: pulumi.Input<number | undefined>;
     /**
      * Total number of items that were skipped during indexing.
      */
-    totalItemsSkipped?: pulumi.Input<number>;
+    totalItemsSkipped?: pulumi.Input<number | undefined>;
     /**
      * When the indexing job was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the indexing job to cancel.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**

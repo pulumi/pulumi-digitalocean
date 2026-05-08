@@ -148,9 +148,9 @@ export interface GetLoadBalancerOutputArgs {
     /**
      * The ID of load balancer.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of load balancer.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

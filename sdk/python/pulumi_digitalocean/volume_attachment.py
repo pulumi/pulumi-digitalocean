@@ -58,8 +58,8 @@ class VolumeAttachmentArgs:
 @pulumi.input_type
 class _VolumeAttachmentState:
     def __init__(__self__, *,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None):
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering VolumeAttachment resources.
 
@@ -73,26 +73,26 @@ class _VolumeAttachmentState:
 
     @_builtins.property
     @pulumi.getter(name="dropletId")
-    def droplet_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def droplet_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         ID of the Droplet to attach the volume to.
         """
         return pulumi.get(self, "droplet_id")
 
     @droplet_id.setter
-    def droplet_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def droplet_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "droplet_id", value)
 
     @_builtins.property
     @pulumi.getter(name="volumeId")
-    def volume_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def volume_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         ID of the Volume to be attached to the Droplet.
         """
         return pulumi.get(self, "volume_id")
 
     @volume_id.setter
-    def volume_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def volume_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "volume_id", value)
 
 
@@ -102,8 +102,8 @@ class VolumeAttachment(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Manages attaching a Volume to a Droplet.
@@ -128,7 +128,7 @@ class VolumeAttachment(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 
@@ -167,7 +167,7 @@ class VolumeAttachment(pulumi.CustomResource):
             image="ubuntu-18-04-x64",
             region=digitalocean.Region.NYC1)
         foobar_volume_attachment = digitalocean.VolumeAttachment("foobar",
-            droplet_id=foobar_droplet.id,
+            droplet_id=foobar_droplet.id.apply(lambda x: int(x)),
             volume_id=foobar.id)
         ```
 
@@ -187,8 +187,8 @@ class VolumeAttachment(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 volume_id: Optional[pulumi.Input[_builtins.str]] = None,
+                 droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 volume_id: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -214,8 +214,8 @@ class VolumeAttachment(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            droplet_id: Optional[pulumi.Input[_builtins.int]] = None,
-            volume_id: Optional[pulumi.Input[_builtins.str]] = None) -> 'VolumeAttachment':
+            droplet_id: pulumi.Input[Optional[_builtins.int]] = None,
+            volume_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'VolumeAttachment':
         """
         Get an existing VolumeAttachment resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

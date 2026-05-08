@@ -30,12 +30,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "example-1",
@@ -72,12 +72,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "example-1",
@@ -114,12 +114,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetTag.Invoke(new()
+        ///     var example = DigitalOcean.GetTag.Invoke(new()
         ///     {
         ///         Name = "example",
         ///     });
         /// 
-        ///     var exampleDroplet = new DigitalOcean.Index.Droplet("example", new()
+        ///     var exampleDroplet = new DigitalOcean.Droplet("example", new()
         ///     {
         ///         Image = "ubuntu-18-04-x64",
         ///         Name = "example-1",

@@ -106,19 +106,19 @@ export interface GetSpacesBucketObjectsOutputArgs {
     /**
      * A character used to group keys (Default: none)
      */
-    delimiter?: pulumi.Input<string>;
+    delimiter?: pulumi.Input<string | undefined>;
     /**
      * Encodes keys using this method (Default: none; besides none, only "url" can be used)
      */
-    encodingType?: pulumi.Input<string>;
+    encodingType?: pulumi.Input<string | undefined>;
     /**
      * Maximum object keys to return (Default: 1000)
      */
-    maxKeys?: pulumi.Input<number>;
+    maxKeys?: pulumi.Input<number | undefined>;
     /**
      * Limits results to object keys with this prefix (Default: none)
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The slug of the region where the bucket is stored.
      */

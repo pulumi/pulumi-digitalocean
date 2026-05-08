@@ -362,8 +362,8 @@ def get_load_balancer(id: Optional[_builtins.str] = None,
         target_load_balancer_ids=pulumi.get(__ret__, 'target_load_balancer_ids'),
         type=pulumi.get(__ret__, 'type'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_load_balancer_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                             name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_load_balancer_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                             name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLoadBalancerResult]:
     """
     Get information on a load balancer for use in other resources. This data source

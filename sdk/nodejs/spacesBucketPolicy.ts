@@ -160,15 +160,15 @@ export interface SpacesBucketPolicyState {
     /**
      * The name of the bucket to which to apply the policy.
      */
-    bucket?: pulumi.Input<string>;
+    bucket?: pulumi.Input<string | undefined>;
     /**
      * The text of the policy.
      */
-    policy?: pulumi.Input<string>;
+    policy?: pulumi.Input<string | undefined>;
     /**
      * The region where the bucket resides.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
 }
 
 /**

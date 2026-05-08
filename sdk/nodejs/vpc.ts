@@ -156,31 +156,31 @@ export interface VpcState {
     /**
      * The date and time of when the VPC was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A boolean indicating whether or not the VPC is the default one for the region.
      */
-    default?: pulumi.Input<boolean>;
+    default?: pulumi.Input<boolean | undefined>;
     /**
      * A free-form text field up to a limit of 255 characters to describe the VPC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The DigitalOcean region slug for the VPC's location.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The uniform resource name (URN) for the VPC.
      */
-    vpcUrn?: pulumi.Input<string>;
+    vpcUrn?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -190,15 +190,15 @@ export interface VpcArgs {
     /**
      * A free-form text field up to a limit of 255 characters to describe the VPC.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The range of IP addresses for the VPC in CIDR notation. Network ranges cannot overlap with other networks in the same account and must be in range of private addresses as defined in RFC1918. It may not be larger than `/16` or smaller than `/24`.
      */
-    ipRange?: pulumi.Input<string>;
+    ipRange?: pulumi.Input<string | undefined>;
     /**
      * A name for the VPC. Must be unique and contain alphanumeric characters, dashes, and periods only.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The DigitalOcean region slug for the VPC's location.
      */

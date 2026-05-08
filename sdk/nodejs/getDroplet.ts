@@ -45,7 +45,7 @@ import * as utilities from "./utilities";
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getDroplet({
- *     id: exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId,
+ *     id: Number(exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId),
  * });
  * ```
  */
@@ -226,7 +226,7 @@ export interface GetDropletResult {
  * import * as digitalocean from "@pulumi/digitalocean";
  *
  * const example = digitalocean.getDroplet({
- *     id: exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId,
+ *     id: Number(exampleDigitaloceanKubernetesCluster.nodePool[0].nodes[0].dropletId),
  * });
  * ```
  */
@@ -248,19 +248,19 @@ export interface GetDropletOutputArgs {
     /**
      * A boolean value specifying whether or not to search GPU Droplets
      */
-    gpu?: pulumi.Input<boolean>;
+    gpu?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the Droplet
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * The name of the Droplet.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * A tag applied to the Droplet.
      *
      * To include GPU Droplets when searching by name, use:
      */
-    tag?: pulumi.Input<string>;
+    tag?: pulumi.Input<string | undefined>;
 }

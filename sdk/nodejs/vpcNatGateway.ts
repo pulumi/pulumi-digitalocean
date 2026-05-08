@@ -194,57 +194,57 @@ export interface VpcNatGatewayState {
     /**
      * Created at timestamp for the VPC NAT Gateway.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Embeds the list of public egresses assigned to the VPC NAT Gateway: resolves as list of
      * `publicGateways` embedding the reserved `ipv4` addresses.
      */
-    egresses?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgress>[]>;
+    egresses?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayEgress>[] | undefined>;
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
      */
-    icmpTimeoutSeconds?: pulumi.Input<number>;
+    icmpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the VPC NAT Gateway.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of the project to which the VPC NAT Gateway will be assigned.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region for the VPC NAT Gateway.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The size of the VPC NAT Gateway.
      */
-    size?: pulumi.Input<number>;
+    size?: pulumi.Input<number | undefined>;
     /**
      * State of the VPC NAT Gateway
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The egress timeout value for TCP connections of the VPC NAT Gateway.
      */
-    tcpTimeoutSeconds?: pulumi.Input<number>;
+    tcpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The type of the VPC NAT Gateway.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The egress timeout value for UDP connections of the VPC NAT Gateway.
      */
-    udpTimeoutSeconds?: pulumi.Input<number>;
+    udpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * Updated at timestamp for the VPC NAT Gateway.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
      * documented below.
      */
-    vpcs?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayVpc>[]>;
+    vpcs?: pulumi.Input<pulumi.Input<inputs.VpcNatGatewayVpc>[] | undefined>;
 }
 
 /**
@@ -254,15 +254,15 @@ export interface VpcNatGatewayArgs {
     /**
      * The egress timeout value for ICMP connections of the VPC NAT Gateway.
      */
-    icmpTimeoutSeconds?: pulumi.Input<number>;
+    icmpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of the VPC NAT Gateway.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * ID of the project to which the VPC NAT Gateway will be assigned.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * The region for the VPC NAT Gateway.
      */
@@ -274,7 +274,7 @@ export interface VpcNatGatewayArgs {
     /**
      * The egress timeout value for TCP connections of the VPC NAT Gateway.
      */
-    tcpTimeoutSeconds?: pulumi.Input<number>;
+    tcpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The type of the VPC NAT Gateway.
      */
@@ -282,7 +282,7 @@ export interface VpcNatGatewayArgs {
     /**
      * The egress timeout value for UDP connections of the VPC NAT Gateway.
      */
-    udpTimeoutSeconds?: pulumi.Input<number>;
+    udpTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The ingress VPC configuration of the VPC NAT Gateway, the supported arguments are
      * documented below.

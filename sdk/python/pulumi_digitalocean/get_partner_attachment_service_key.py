@@ -101,7 +101,7 @@ def get_partner_attachment_service_key(attachment_id: Optional[_builtins.str] = 
         id=pulumi.get(__ret__, 'id'),
         state=pulumi.get(__ret__, 'state'),
         value=pulumi.get(__ret__, 'value'))
-def get_partner_attachment_service_key_output(attachment_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_partner_attachment_service_key_output(attachment_id: pulumi.Input[Optional[_builtins.str]] = None,
                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPartnerAttachmentServiceKeyResult]:
     """
     Use this data source to access information about an existing resource.

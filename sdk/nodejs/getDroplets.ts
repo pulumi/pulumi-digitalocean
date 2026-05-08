@@ -181,14 +181,14 @@ export interface GetDropletsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDropletsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDropletsFilterArgs>[] | undefined>;
     /**
      * A boolean value specifying whether or not to list GPU Droplets
      */
-    gpus?: pulumi.Input<boolean>;
+    gpus?: pulumi.Input<boolean | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetDropletsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDropletsSortArgs>[] | undefined>;
 }

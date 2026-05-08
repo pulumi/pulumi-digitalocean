@@ -139,9 +139,9 @@ def get_dedicated_inference_accelerators(dedicated_inference_id: Optional[_built
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_dedicated_inference_accelerators_output(dedicated_inference_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                                filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']]]]] = None,
-                                                sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']]]]] = None,
+def get_dedicated_inference_accelerators_output(dedicated_inference_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                                filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsFilterArgs', 'GetDedicatedInferenceAcceleratorsFilterArgsDict']]]]] = None,
+                                                sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferenceAcceleratorsSortArgs', 'GetDedicatedInferenceAcceleratorsSortArgsDict']]]]] = None,
                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferenceAcceleratorsResult]:
     """
     Returns a list of accelerators (GPUs) attached to a dedicated inference endpoint,

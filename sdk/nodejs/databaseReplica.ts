@@ -206,64 +206,64 @@ export interface DatabaseReplicaState {
     /**
      * The ID of the original source database cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * Name of the replica's default database.
      */
-    database?: pulumi.Input<string>;
+    database?: pulumi.Input<string | undefined>;
     /**
      * Database replica's hostname.
      */
-    host?: pulumi.Input<string>;
+    host?: pulumi.Input<string | undefined>;
     /**
      * The name for the database replica.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Password for the replica's default user.
      */
-    password?: pulumi.Input<string>;
+    password?: pulumi.Input<string | undefined>;
     /**
      * Network port that the database replica is listening on.
      */
-    port?: pulumi.Input<number>;
+    port?: pulumi.Input<number | undefined>;
     /**
      * Same as `host`, but only accessible from resources within the account and in the same region.
      */
-    privateHost?: pulumi.Input<string>;
+    privateHost?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the database replica will be located.
      */
-    privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string | undefined>;
     /**
      * Same as `uri`, but only accessible from resources within the account and in the same region.
      */
-    privateUri?: pulumi.Input<string>;
+    privateUri?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean region where the replica will reside.
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
-    size?: pulumi.Input<string | enums.DatabaseSlug>;
-    storageSizeMib?: pulumi.Input<string>;
+    size?: pulumi.Input<string | enums.DatabaseSlug | undefined>;
+    storageSizeMib?: pulumi.Input<string | undefined>;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The full URI for connecting to the database replica.
      */
-    uri?: pulumi.Input<string>;
+    uri?: pulumi.Input<string | undefined>;
     /**
      * Username for the replica's default user.
      */
-    user?: pulumi.Input<string>;
+    user?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the database replica. The uuid can be used to reference the database replica as the target database cluster in other resources. See example  "Create firewall rule for database replica" above.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -277,22 +277,22 @@ export interface DatabaseReplicaArgs {
     /**
      * The name for the database replica.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the database replica will be located.
      */
-    privateNetworkUuid?: pulumi.Input<string>;
+    privateNetworkUuid?: pulumi.Input<string | undefined>;
     /**
      * DigitalOcean region where the replica will reside.
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * Database Droplet size associated with the replica (ex. `db-s-1vcpu-1gb`). Note that when resizing an existing replica, its size can only be increased. Decreasing its size is not supported.
      */
-    size?: pulumi.Input<string | enums.DatabaseSlug>;
-    storageSizeMib?: pulumi.Input<string>;
+    size?: pulumi.Input<string | enums.DatabaseSlug | undefined>;
+    storageSizeMib?: pulumi.Input<string | undefined>;
     /**
      * A list of tag names to be applied to the database replica.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

@@ -75,9 +75,9 @@ class SpacesBucketCorsConfigurationArgs:
 @pulumi.input_type
 class _SpacesBucketCorsConfigurationState:
     def __init__(__self__, *,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None):
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering SpacesBucketCorsConfiguration resources.
 
@@ -94,38 +94,38 @@ class _SpacesBucketCorsConfigurationState:
 
     @_builtins.property
     @pulumi.getter
-    def bucket(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket to which to apply the CORS configuration.
         """
         return pulumi.get(self, "bucket")
 
     @bucket.setter
-    def bucket(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]]:
         """
         Set of origins and methods (cross-origin access that you want to allow). See below. You can configure up to 100 rules.
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsConfigurationCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The region where the bucket resides.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
 
@@ -135,9 +135,9 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a CORS configuration resource for Spaces, DigitalOcean's object storage product.
@@ -286,9 +286,9 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
+                 bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,9 +317,9 @@ class SpacesBucketCorsConfiguration(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            bucket: Optional[pulumi.Input[_builtins.str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None) -> 'SpacesBucketCorsConfiguration':
+            bucket: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsConfigurationCorsRuleArgs', 'SpacesBucketCorsConfigurationCorsRuleArgsDict']]]]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None) -> 'SpacesBucketCorsConfiguration':
         """
         Get an existing SpacesBucketCorsConfiguration resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -181,20 +181,20 @@ export function getKubernetesClusterOutput(args: GetKubernetesClusterOutputArgs,
  * A collection of arguments for invoking getKubernetesCluster.
  */
 export interface GetKubernetesClusterOutputArgs {
-    amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs>;
-    amdGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDevicePluginArgs>;
-    clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[]>;
-    kubeconfigExpireSeconds?: pulumi.Input<number>;
+    amdGpuDeviceMetricsExporterPlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs | undefined>;
+    amdGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterAmdGpuDevicePluginArgs | undefined>;
+    clusterAutoscalerConfigurations?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterClusterAutoscalerConfigurationArgs>[] | undefined>;
+    kubeconfigExpireSeconds?: pulumi.Input<number | undefined>;
     /**
      * The name of Kubernetes cluster.
      */
     name: pulumi.Input<string>;
-    nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs>;
-    rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs>;
-    routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs>;
-    ssos?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterSsoArgs>[]>;
+    nvidiaGpuDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterNvidiaGpuDevicePluginArgs | undefined>;
+    rdmaSharedDevicePlugin?: pulumi.Input<inputs.GetKubernetesClusterRdmaSharedDevicePluginArgs | undefined>;
+    routingAgent?: pulumi.Input<inputs.GetKubernetesClusterRoutingAgentArgs | undefined>;
+    ssos?: pulumi.Input<pulumi.Input<inputs.GetKubernetesClusterSsoArgs>[] | undefined>;
     /**
      * A list of tag names applied to the node pool.
      */
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

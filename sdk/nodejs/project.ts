@@ -187,43 +187,43 @@ export interface ProjectState {
     /**
      * the date and time when the project was created, (ISO8601)
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * the description of the project
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * a boolean indicating whether or not the project is the default project. (Default: "false")
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the id of the project owner.
      */
-    ownerId?: pulumi.Input<number>;
+    ownerId?: pulumi.Input<number | undefined>;
     /**
      * the unique universal identifier of the project owner.
      */
-    ownerUuid?: pulumi.Input<string>;
+    ownerUuid?: pulumi.Input<string | undefined>;
     /**
      * the purpose of the project, (Default: "Web Application")
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * the date and time when the project was last updated, (ISO8601)
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -233,25 +233,25 @@ export interface ProjectArgs {
     /**
      * the description of the project
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * the environment of the project's resources. The possible values are: `Development`, `Staging`, `Production`)
      */
-    environment?: pulumi.Input<string>;
+    environment?: pulumi.Input<string | undefined>;
     /**
      * a boolean indicating whether or not the project is the default project. (Default: "false")
      */
-    isDefault?: pulumi.Input<boolean>;
+    isDefault?: pulumi.Input<boolean | undefined>;
     /**
      * The name of the Project
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * the purpose of the project, (Default: "Web Application")
      */
-    purpose?: pulumi.Input<string>;
+    purpose?: pulumi.Input<string | undefined>;
     /**
      * a list of uniform resource names (URNs) for the resources associated with the project
      */
-    resources?: pulumi.Input<pulumi.Input<string>[]>;
+    resources?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

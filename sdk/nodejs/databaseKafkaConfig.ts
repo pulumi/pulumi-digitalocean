@@ -222,75 +222,75 @@ export interface DatabaseKafkaConfigState {
     /**
      * Enable auto creation of topics.
      */
-    autoCreateTopicsEnable?: pulumi.Input<boolean>;
+    autoCreateTopicsEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the target Kafka cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
      */
-    groupInitialRebalanceDelayMs?: pulumi.Input<number>;
+    groupInitialRebalanceDelayMs?: pulumi.Input<number | undefined>;
     /**
      * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    groupMaxSessionTimeoutMs?: pulumi.Input<number>;
+    groupMaxSessionTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    groupMinSessionTimeoutMs?: pulumi.Input<number>;
+    groupMinSessionTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * How long are delete records retained?
      */
-    logCleanerDeleteRetentionMs?: pulumi.Input<number>;
+    logCleanerDeleteRetentionMs?: pulumi.Input<number | undefined>;
     /**
      * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
-    logCleanerMinCompactionLagMs?: pulumi.Input<string>;
+    logCleanerMinCompactionLagMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
      */
-    logFlushIntervalMs?: pulumi.Input<string>;
+    logFlushIntervalMs?: pulumi.Input<string | undefined>;
     /**
      * The interval with which Kafka adds an entry to the offset index.
      */
-    logIndexIntervalBytes?: pulumi.Input<number>;
+    logIndexIntervalBytes?: pulumi.Input<number | undefined>;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      */
-    logMessageDownconversionEnable?: pulumi.Input<boolean>;
+    logMessageDownconversionEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
      */
-    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string | undefined>;
     /**
      * Controls whether to preallocate a file when creating a new segment.
      */
-    logPreallocate?: pulumi.Input<boolean>;
+    logPreallocate?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum size of the log before deleting messages.
      */
-    logRetentionBytes?: pulumi.Input<string>;
+    logRetentionBytes?: pulumi.Input<string | undefined>;
     /**
      * The number of hours to keep a log file before deleting it.
      */
-    logRetentionHours?: pulumi.Input<number>;
+    logRetentionHours?: pulumi.Input<number | undefined>;
     /**
      * The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
      */
-    logRetentionMs?: pulumi.Input<string>;
+    logRetentionMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
      */
-    logRollJitterMs?: pulumi.Input<string>;
+    logRollJitterMs?: pulumi.Input<string | undefined>;
     /**
      * The amount of time to wait before deleting a file from the filesystem.
      */
-    logSegmentDeleteDelayMs?: pulumi.Input<number>;
+    logSegmentDeleteDelayMs?: pulumi.Input<number | undefined>;
     /**
      * The maximum size of message that the server can receive.
      */
-    messageMaxBytes?: pulumi.Input<number>;
+    messageMaxBytes?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -300,7 +300,7 @@ export interface DatabaseKafkaConfigArgs {
     /**
      * Enable auto creation of topics.
      */
-    autoCreateTopicsEnable?: pulumi.Input<boolean>;
+    autoCreateTopicsEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the target Kafka cluster.
      */
@@ -308,65 +308,65 @@ export interface DatabaseKafkaConfigArgs {
     /**
      * The amount of time, in milliseconds, the group coordinator will wait for more consumers to join a new group before performing the first rebalance. A longer delay means potentially fewer rebalances, but increases the time until processing begins. The default value for this is 3 seconds. During development and testing it might be desirable to set this to 0 in order to not delay test execution time.
      */
-    groupInitialRebalanceDelayMs?: pulumi.Input<number>;
+    groupInitialRebalanceDelayMs?: pulumi.Input<number | undefined>;
     /**
      * The maximum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    groupMaxSessionTimeoutMs?: pulumi.Input<number>;
+    groupMaxSessionTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * The minimum allowed session timeout for registered consumers. Longer timeouts give consumers more time to process messages in between heartbeats at the cost of a longer time to detect failures.
      */
-    groupMinSessionTimeoutMs?: pulumi.Input<number>;
+    groupMinSessionTimeoutMs?: pulumi.Input<number | undefined>;
     /**
      * How long are delete records retained?
      */
-    logCleanerDeleteRetentionMs?: pulumi.Input<number>;
+    logCleanerDeleteRetentionMs?: pulumi.Input<number | undefined>;
     /**
      * The minimum time a message will remain uncompacted in the log. Only applicable for logs that are being compacted.
      */
-    logCleanerMinCompactionLagMs?: pulumi.Input<string>;
+    logCleanerMinCompactionLagMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum time in ms that a message in any topic is kept in memory before flushed to disk. If not set, the value in log.flush.scheduler.interval.ms is used.
      */
-    logFlushIntervalMs?: pulumi.Input<string>;
+    logFlushIntervalMs?: pulumi.Input<string | undefined>;
     /**
      * The interval with which Kafka adds an entry to the offset index.
      */
-    logIndexIntervalBytes?: pulumi.Input<number>;
+    logIndexIntervalBytes?: pulumi.Input<number | undefined>;
     /**
      * This configuration controls whether down-conversion of message formats is enabled to satisfy consume requests.
      */
-    logMessageDownconversionEnable?: pulumi.Input<boolean>;
+    logMessageDownconversionEnable?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum difference allowed between the timestamp when a broker receives a message and the timestamp specified in the message.
      */
-    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string>;
+    logMessageTimestampDifferenceMaxMs?: pulumi.Input<string | undefined>;
     /**
      * Controls whether to preallocate a file when creating a new segment.
      */
-    logPreallocate?: pulumi.Input<boolean>;
+    logPreallocate?: pulumi.Input<boolean | undefined>;
     /**
      * The maximum size of the log before deleting messages.
      */
-    logRetentionBytes?: pulumi.Input<string>;
+    logRetentionBytes?: pulumi.Input<string | undefined>;
     /**
      * The number of hours to keep a log file before deleting it.
      */
-    logRetentionHours?: pulumi.Input<number>;
+    logRetentionHours?: pulumi.Input<number | undefined>;
     /**
      * The number of milliseconds to keep a log file before deleting it (in milliseconds), If not set, the value in log.retention.minutes is used. If set to -1, no time limit is applied.
      */
-    logRetentionMs?: pulumi.Input<string>;
+    logRetentionMs?: pulumi.Input<string | undefined>;
     /**
      * The maximum jitter to subtract from logRollTimeMillis (in milliseconds). If not set, the value in log.roll.jitter.hours is used.
      */
-    logRollJitterMs?: pulumi.Input<string>;
+    logRollJitterMs?: pulumi.Input<string | undefined>;
     /**
      * The amount of time to wait before deleting a file from the filesystem.
      */
-    logSegmentDeleteDelayMs?: pulumi.Input<number>;
+    logSegmentDeleteDelayMs?: pulumi.Input<number | undefined>;
     /**
      * The maximum size of message that the server can receive.
      */
-    messageMaxBytes?: pulumi.Input<number>;
+    messageMaxBytes?: pulumi.Input<number | undefined>;
 }

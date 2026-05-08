@@ -85,7 +85,7 @@ def get_genai_knowledge_base_data_sources(knowledge_base_uuid: Optional[_builtin
         datasources=pulumi.get(__ret__, 'datasources'),
         id=pulumi.get(__ret__, 'id'),
         knowledge_base_uuid=pulumi.get(__ret__, 'knowledge_base_uuid'))
-def get_genai_knowledge_base_data_sources_output(knowledge_base_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_genai_knowledge_base_data_sources_output(knowledge_base_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiKnowledgeBaseDataSourcesResult]:
     """
     Use this data source to access information about an existing resource.

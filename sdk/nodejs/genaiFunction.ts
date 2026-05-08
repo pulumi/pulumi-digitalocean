@@ -131,35 +131,35 @@ export interface GenaiFunctionState {
     /**
      * The name of the GradientAI resource.
      */
-    agentId?: pulumi.Input<string>;
+    agentId?: pulumi.Input<string | undefined>;
     /**
      * The region where the GradientAI resource will be created.
      */
-    description?: pulumi.Input<string>;
+    description?: pulumi.Input<string | undefined>;
     /**
      * The model to use for the GradientAI resource.
      */
-    faasName?: pulumi.Input<string>;
+    faasName?: pulumi.Input<string | undefined>;
     /**
      * The current status of the GradientAI resource.
      */
-    faasNamespace?: pulumi.Input<string>;
+    faasNamespace?: pulumi.Input<string | undefined>;
     /**
      * The creation timestamp of the GradientAI resource.
      */
-    functionName?: pulumi.Input<string>;
+    functionName?: pulumi.Input<string | undefined>;
     /**
      * The unique identifier of the GradientAI function.
      */
-    functionUuid?: pulumi.Input<string>;
+    functionUuid?: pulumi.Input<string | undefined>;
     /**
      * The input schema of the GradientAI resource.
      */
-    inputSchema?: pulumi.Input<string>;
+    inputSchema?: pulumi.Input<string | undefined>;
     /**
      * The output schema of the GradientAI resource.
      */
-    outputSchema?: pulumi.Input<string>;
+    outputSchema?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -177,7 +177,7 @@ export interface GenaiFunctionArgs {
     /**
      * The model to use for the GradientAI resource.
      */
-    faasName?: pulumi.Input<string>;
+    faasName?: pulumi.Input<string | undefined>;
     /**
      * The current status of the GradientAI resource.
      */
@@ -193,5 +193,5 @@ export interface GenaiFunctionArgs {
     /**
      * The output schema of the GradientAI resource.
      */
-    outputSchema?: pulumi.Input<string>;
+    outputSchema?: pulumi.Input<string | undefined>;
 }

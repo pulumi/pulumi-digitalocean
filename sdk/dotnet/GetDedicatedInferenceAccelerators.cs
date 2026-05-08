@@ -25,7 +25,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -47,7 +47,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]
@@ -83,7 +83,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -105,7 +105,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]
@@ -141,7 +141,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var example = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = exampleDigitaloceanDedicatedInference.Id,
         ///     });
@@ -163,7 +163,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var filtered = DigitalOcean.Index.GetDedicatedInferenceAccelerators.Invoke(new()
+        ///     var filtered = DigitalOcean.GetDedicatedInferenceAccelerators.Invoke(new()
         ///     {
         ///         DedicatedInferenceId = example.Id,
         ///         Filters = new[]

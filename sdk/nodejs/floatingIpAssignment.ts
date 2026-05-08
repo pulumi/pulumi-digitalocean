@@ -28,7 +28,7 @@ import * as utilities from "./utilities";
  * });
  * const foobarFloatingIpAssignment = new digitalocean.FloatingIpAssignment("foobar", {
  *     ipAddress: foobar.ipAddress,
- *     dropletId: foobarDroplet.id,
+ *     dropletId: foobarDroplet.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -116,11 +116,11 @@ export interface FloatingIpAssignmentState {
     /**
      * The ID of Droplet that the Floating IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The Floating IP to assign to the Droplet.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
 }
 
 /**

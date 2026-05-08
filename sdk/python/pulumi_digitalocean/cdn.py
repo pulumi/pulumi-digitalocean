@@ -20,10 +20,10 @@ __all__ = ['CdnArgs', 'Cdn']
 class CdnArgs:
     def __init__(__self__, *,
                  origin: pulumi.Input[_builtins.str],
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a Cdn resource.
 
@@ -61,63 +61,63 @@ class CdnArgs:
     @_builtins.property
     @pulumi.getter(name="certificateId")
     @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
         return pulumi.get(self, "certificate_name")
 
     @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         """
         return pulumi.get(self, "custom_domain")
 
     @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
 @pulumi.input_type
 class _CdnState:
     def __init__(__self__, *,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None):
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering Cdn resources.
 
@@ -150,86 +150,86 @@ class _CdnState:
     @_builtins.property
     @pulumi.getter(name="certificateId")
     @_utilities.deprecated("""Certificate IDs may change, for example when a Let's Encrypt certificate is auto-renewed. Please specify 'certificate_name' instead.""")
-    def certificate_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         **Deprecated** The ID of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
         return pulumi.get(self, "certificate_id")
 
     @certificate_id.setter
-    def certificate_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_id", value)
 
     @_builtins.property
     @pulumi.getter(name="certificateName")
-    def certificate_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def certificate_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The unique name of a DigitalOcean managed TLS certificate used for SSL when a custom subdomain is provided.
         """
         return pulumi.get(self, "certificate_name")
 
     @certificate_name.setter
-    def certificate_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def certificate_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "certificate_name", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the CDN Endpoint was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="customDomain")
-    def custom_domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def custom_domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified domain name (FQDN) of the custom subdomain used with the CDN Endpoint.
         """
         return pulumi.get(self, "custom_domain")
 
     @custom_domain.setter
-    def custom_domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def custom_domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "custom_domain", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified domain name (FQDN) from which the CDN-backed content is served.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def origin(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def origin(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The fully qualified domain name, (FQDN) for a Space.
         """
         return pulumi.get(self, "origin")
 
     @origin.setter
-    def origin(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def origin(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "origin", value)
 
     @_builtins.property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ttl(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time to live for the CDN Endpoint, in seconds. Default is 3600 seconds.
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ttl(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -239,11 +239,11 @@ class Cdn(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean CDN Endpoint resource for use with Spaces.
@@ -380,11 +380,11 @@ class Cdn(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 origin: Optional[pulumi.Input[_builtins.str]] = None,
-                 ttl: Optional[pulumi.Input[_builtins.int]] = None,
+                 certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 origin: pulumi.Input[Optional[_builtins.str]] = None,
+                 ttl: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -413,13 +413,13 @@ class Cdn(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            certificate_id: Optional[pulumi.Input[_builtins.str]] = None,
-            certificate_name: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            custom_domain: Optional[pulumi.Input[_builtins.str]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            origin: Optional[pulumi.Input[_builtins.str]] = None,
-            ttl: Optional[pulumi.Input[_builtins.int]] = None) -> 'Cdn':
+            certificate_id: pulumi.Input[Optional[_builtins.str]] = None,
+            certificate_name: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            custom_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            origin: pulumi.Input[Optional[_builtins.str]] = None,
+            ttl: pulumi.Input[Optional[_builtins.int]] = None) -> 'Cdn':
         """
         Get an existing Cdn resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

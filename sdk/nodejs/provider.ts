@@ -88,39 +88,39 @@ export interface ProviderArgs {
     /**
      * The URL to use for the DigitalOcean API.
      */
-    apiEndpoint?: pulumi.Input<string>;
+    apiEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The maximum number of retries on a failed API request.
      */
-    httpRetryMax?: pulumi.Input<number>;
+    httpRetryMax?: pulumi.Input<number | undefined>;
     /**
      * The maximum wait time (in seconds) between failed API requests.
      */
-    httpRetryWaitMax?: pulumi.Input<number>;
+    httpRetryWaitMax?: pulumi.Input<number | undefined>;
     /**
      * The minimum wait time (in seconds) between failed API requests.
      */
-    httpRetryWaitMin?: pulumi.Input<number>;
+    httpRetryWaitMin?: pulumi.Input<number | undefined>;
     /**
      * The rate of requests per second to limit the HTTP client.
      */
-    requestsPerSecond?: pulumi.Input<number>;
+    requestsPerSecond?: pulumi.Input<number | undefined>;
     /**
      * The access key ID for Spaces API operations.
      */
-    spacesAccessId?: pulumi.Input<string>;
+    spacesAccessId?: pulumi.Input<string | undefined>;
     /**
      * The URL to use for the DigitalOcean Spaces API.
      */
-    spacesEndpoint?: pulumi.Input<string>;
+    spacesEndpoint?: pulumi.Input<string | undefined>;
     /**
      * The secret access key for Spaces API operations.
      */
-    spacesSecretKey?: pulumi.Input<string>;
+    spacesSecretKey?: pulumi.Input<string | undefined>;
     /**
      * The token key for API operations.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

@@ -53,6 +53,6 @@ export function getGenaiRegionsOutput(args?: GetGenaiRegionsOutputArgs, opts?: p
  * A collection of arguments for invoking getGenaiRegions.
  */
 export interface GetGenaiRegionsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiRegionsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiRegionsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiRegionsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiRegionsSortArgs>[] | undefined>;
 }

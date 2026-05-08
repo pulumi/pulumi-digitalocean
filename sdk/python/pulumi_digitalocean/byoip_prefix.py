@@ -21,8 +21,8 @@ class ByoipPrefixArgs:
     def __init__(__self__, *,
                  prefix: pulumi.Input[_builtins.str],
                  region: pulumi.Input[_builtins.str],
-                 advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-                 signature: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+                 signature: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a ByoipPrefix resource.
 
@@ -66,7 +66,7 @@ class ByoipPrefixArgs:
 
     @_builtins.property
     @pulumi.getter
-    def advertised(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertised(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the prefix should be advertised.
         Defaults to `false`.
@@ -74,12 +74,12 @@ class ByoipPrefixArgs:
         return pulumi.get(self, "advertised")
 
     @advertised.setter
-    def advertised(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertised(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertised", value)
 
     @_builtins.property
     @pulumi.getter
-    def signature(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cryptographic signature proving ownership of the prefix.
         This is required during creation but can be omitted in subsequent updates.
@@ -87,20 +87,20 @@ class ByoipPrefixArgs:
         return pulumi.get(self, "signature")
 
     @signature.setter
-    def signature(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature", value)
 
 
 @pulumi.input_type
 class _ByoipPrefixState:
     def __init__(__self__, *,
-                 advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-                 failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature: Optional[pulumi.Input[_builtins.str]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+                 failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature: pulumi.Input[Optional[_builtins.str]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ByoipPrefix resources.
 
@@ -131,7 +131,7 @@ class _ByoipPrefixState:
 
     @_builtins.property
     @pulumi.getter
-    def advertised(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def advertised(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether the prefix should be advertised.
         Defaults to `false`.
@@ -139,48 +139,48 @@ class _ByoipPrefixState:
         return pulumi.get(self, "advertised")
 
     @advertised.setter
-    def advertised(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def advertised(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "advertised", value)
 
     @_builtins.property
     @pulumi.getter(name="failureReason")
-    def failure_reason(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def failure_reason(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The reason for failure if the status is "failed".
         """
         return pulumi.get(self, "failure_reason")
 
     @failure_reason.setter
-    def failure_reason(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def failure_reason(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "failure_reason", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefix(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def prefix(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The CIDR notation of the prefix (e.g., "192.0.2.0/24").
         """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
-    def prefix(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def prefix(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "prefix", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def region(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The DigitalOcean region where the prefix will be deployed.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def region(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def signature(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The cryptographic signature proving ownership of the prefix.
         This is required during creation but can be omitted in subsequent updates.
@@ -188,31 +188,31 @@ class _ByoipPrefixState:
         return pulumi.get(self, "signature")
 
     @signature.setter
-    def signature(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The UUID of the BYOIP prefix.
         """
         return pulumi.get(self, "uuid")
 
     @uuid.setter
-    def uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "uuid", value)
 
 
@@ -222,10 +222,10 @@ class ByoipPrefix(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean BYOIP (Bring Your Own IP) prefix resource. This can be used to
@@ -325,10 +325,10 @@ class ByoipPrefix(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-                 prefix: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature: Optional[pulumi.Input[_builtins.str]] = None,
+                 advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+                 prefix: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -359,13 +359,13 @@ class ByoipPrefix(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            advertised: Optional[pulumi.Input[_builtins.bool]] = None,
-            failure_reason: Optional[pulumi.Input[_builtins.str]] = None,
-            prefix: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[_builtins.str]] = None,
-            signature: Optional[pulumi.Input[_builtins.str]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'ByoipPrefix':
+            advertised: pulumi.Input[Optional[_builtins.bool]] = None,
+            failure_reason: pulumi.Input[Optional[_builtins.str]] = None,
+            prefix: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[_builtins.str]] = None,
+            signature: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'ByoipPrefix':
         """
         Get an existing ByoipPrefix resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

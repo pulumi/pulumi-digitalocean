@@ -134,7 +134,7 @@ def get_floating_ip(ip_address: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         ip_address=pulumi.get(__ret__, 'ip_address'),
         region=pulumi.get(__ret__, 'region'))
-def get_floating_ip_output(ip_address: Optional[pulumi.Input[_builtins.str]] = None,
+def get_floating_ip_output(ip_address: pulumi.Input[Optional[_builtins.str]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFloatingIpResult]:
     """
     > **Deprecated:** DigitalOcean Floating IPs have been renamed reserved IPs. This data source will be removed in a future release. Please use `ReservedIp` instead.

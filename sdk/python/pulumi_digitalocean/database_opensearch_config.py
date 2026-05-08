@@ -20,44 +20,44 @@ __all__ = ['DatabaseOpensearchConfigArgs', 'DatabaseOpensearchConfig']
 class DatabaseOpensearchConfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 action_auto_create_index_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 action_destructive_requires_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_max_shards_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_security_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_max_content_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_header_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_initial_line_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_fielddata_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_index_buffer_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_max_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_min_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_queries_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_query_bool_max_clause_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_mb_per_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_max_age_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_max_docs: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_check_period_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugins_alerting_filter_by_backend_roles_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 script_max_compilations_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseOpensearchConfig resource.
 
@@ -193,503 +193,503 @@ class DatabaseOpensearchConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
-    def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def action_auto_create_index_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifices whether to allow automatic creation of indices. Default: `true`
         """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
     @action_auto_create_index_enabled.setter
-    def action_auto_create_index_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def action_auto_create_index_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "action_auto_create_index_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="actionDestructiveRequiresName")
-    def action_destructive_requires_name(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def action_destructive_requires_name(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to require explicit index names when deleting indices.
         """
         return pulumi.get(self, "action_destructive_requires_name")
 
     @action_destructive_requires_name.setter
-    def action_destructive_requires_name(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def action_destructive_requires_name(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "action_destructive_requires_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMaxShardsPerNode")
-    def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_max_shards_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of shards allowed per data node.
         """
         return pulumi.get(self, "cluster_max_shards_per_node")
 
     @cluster_max_shards_per_node.setter
-    def cluster_max_shards_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_max_shards_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_max_shards_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
-    def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_routing_allocation_node_concurrent_recoveries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
         """
         return pulumi.get(self, "cluster_routing_allocation_node_concurrent_recoveries")
 
     @cluster_routing_allocation_node_concurrent_recoveries.setter
-    def cluster_routing_allocation_node_concurrent_recoveries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_routing_allocation_node_concurrent_recoveries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_routing_allocation_node_concurrent_recoveries", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecurityAudit")
-    def enable_security_audit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_security_audit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow security audit logging. Default: `false`
         """
         return pulumi.get(self, "enable_security_audit")
 
     @enable_security_audit.setter
-    def enable_security_audit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_security_audit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_security_audit", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxContentLengthBytes")
-    def http_max_content_length_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_content_length_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`
         """
         return pulumi.get(self, "http_max_content_length_bytes")
 
     @http_max_content_length_bytes.setter
-    def http_max_content_length_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_content_length_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_content_length_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxHeaderSizeBytes")
-    def http_max_header_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_header_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of allowed headers, in bytes. Default: `8192`
         """
         return pulumi.get(self, "http_max_header_size_bytes")
 
     @http_max_header_size_bytes.setter
-    def http_max_header_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_header_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_header_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxInitialLineLengthBytes")
-    def http_max_initial_line_length_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_initial_line_length_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum length of an HTTP URL, in bytes. Default: `4096`
         """
         return pulumi.get(self, "http_max_initial_line_length_bytes")
 
     @http_max_initial_line_length_bytes.setter
-    def http_max_initial_line_length_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_initial_line_length_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_initial_line_length_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesFielddataCacheSizePercentage")
-    def indices_fielddata_cache_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_fielddata_cache_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.
         """
         return pulumi.get(self, "indices_fielddata_cache_size_percentage")
 
     @indices_fielddata_cache_size_percentage.setter
-    def indices_fielddata_cache_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_fielddata_cache_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_fielddata_cache_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryIndexBufferSizePercentage")
-    def indices_memory_index_buffer_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_index_buffer_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`
         """
         return pulumi.get(self, "indices_memory_index_buffer_size_percentage")
 
     @indices_memory_index_buffer_size_percentage.setter
-    def indices_memory_index_buffer_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_index_buffer_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_index_buffer_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryMaxIndexBufferSizeMb")
-    def indices_memory_max_index_buffer_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_max_index_buffer_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.
         """
         return pulumi.get(self, "indices_memory_max_index_buffer_size_mb")
 
     @indices_memory_max_index_buffer_size_mb.setter
-    def indices_memory_max_index_buffer_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_max_index_buffer_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_max_index_buffer_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryMinIndexBufferSizeMb")
-    def indices_memory_min_index_buffer_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_min_index_buffer_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`
         """
         return pulumi.get(self, "indices_memory_min_index_buffer_size_mb")
 
     @indices_memory_min_index_buffer_size_mb.setter
-    def indices_memory_min_index_buffer_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_min_index_buffer_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_min_index_buffer_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesQueriesCacheSizePercentage")
-    def indices_queries_cache_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_queries_cache_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`
         """
         return pulumi.get(self, "indices_queries_cache_size_percentage")
 
     @indices_queries_cache_size_percentage.setter
-    def indices_queries_cache_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_queries_cache_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_queries_cache_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesQueryBoolMaxClauseCount")
-    def indices_query_bool_max_clause_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_query_bool_max_clause_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`
         """
         return pulumi.get(self, "indices_query_bool_max_clause_count")
 
     @indices_query_bool_max_clause_count.setter
-    def indices_query_bool_max_clause_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_query_bool_max_clause_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_query_bool_max_clause_count", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesRecoveryMaxConcurrentFileChunks")
-    def indices_recovery_max_concurrent_file_chunks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_recovery_max_concurrent_file_chunks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of file chunks sent in parallel for each recovery. Default: `2`
         """
         return pulumi.get(self, "indices_recovery_max_concurrent_file_chunks")
 
     @indices_recovery_max_concurrent_file_chunks.setter
-    def indices_recovery_max_concurrent_file_chunks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_recovery_max_concurrent_file_chunks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_recovery_max_concurrent_file_chunks", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesRecoveryMaxMbPerSec")
-    def indices_recovery_max_mb_per_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_recovery_max_mb_per_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`
         """
         return pulumi.get(self, "indices_recovery_max_mb_per_sec")
 
     @indices_recovery_max_mb_per_sec.setter
-    def indices_recovery_max_mb_per_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_recovery_max_mb_per_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_recovery_max_mb_per_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="ismEnabled")
-    def ism_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ism_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether ISM is enabled or not. Default: `true`
         """
         return pulumi.get(self, "ism_enabled")
 
     @ism_enabled.setter
-    def ism_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ism_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ism_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryEnabled")
-    def ism_history_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ism_history_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
         """
         return pulumi.get(self, "ism_history_enabled")
 
     @ism_history_enabled.setter
-    def ism_history_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ism_history_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ism_history_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryMaxAgeHours")
-    def ism_history_max_age_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_max_age_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum age before rolling over the audit history index, in hours. Default: `24`
         """
         return pulumi.get(self, "ism_history_max_age_hours")
 
     @ism_history_max_age_hours.setter
-    def ism_history_max_age_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_max_age_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_max_age_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryMaxDocs")
-    def ism_history_max_docs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_max_docs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of documents before rolling over the audit history index. Default: `2500000`
         """
         return pulumi.get(self, "ism_history_max_docs")
 
     @ism_history_max_docs.setter
-    def ism_history_max_docs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_max_docs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_max_docs", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryRolloverCheckPeriodHours")
-    def ism_history_rollover_check_period_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_rollover_check_period_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time between rollover checks for the audit history index, in hours. Default: `8`
         """
         return pulumi.get(self, "ism_history_rollover_check_period_hours")
 
     @ism_history_rollover_check_period_hours.setter
-    def ism_history_rollover_check_period_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_rollover_check_period_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_rollover_check_period_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryRolloverRetentionPeriodDays")
-    def ism_history_rollover_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_rollover_retention_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of time long audit history indices are kept, in days. Default: `30`
         """
         return pulumi.get(self, "ism_history_rollover_retention_period_days")
 
     @ism_history_rollover_retention_period_days.setter
-    def ism_history_rollover_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_rollover_retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_rollover_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter(name="overrideMainResponseVersion")
-    def override_main_response_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override_main_response_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
         """
         return pulumi.get(self, "override_main_response_version")
 
     @override_main_response_version.setter
-    def override_main_response_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override_main_response_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override_main_response_version", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginsAlertingFilterByBackendRolesEnabled")
-    def plugins_alerting_filter_by_backend_roles_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def plugins_alerting_filter_by_backend_roles_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable filtering of alerting by backend roles. Default: `false`
         """
         return pulumi.get(self, "plugins_alerting_filter_by_backend_roles_enabled")
 
     @plugins_alerting_filter_by_backend_roles_enabled.setter
-    def plugins_alerting_filter_by_backend_roles_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def plugins_alerting_filter_by_backend_roles_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "plugins_alerting_filter_by_backend_roles_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="reindexRemoteWhitelists")
-    def reindex_remote_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reindex_remote_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         """
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @reindex_remote_whitelists.setter
-    def reindex_remote_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reindex_remote_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reindex_remote_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptMaxCompilationsRate")
-    def script_max_compilations_rate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_max_compilations_rate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limits the number of inline script compilations within a period of time. Default is `use-context`
         """
         return pulumi.get(self, "script_max_compilations_rate")
 
     @script_max_compilations_rate.setter
-    def script_max_compilations_rate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_max_compilations_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_max_compilations_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="searchMaxBuckets")
-    def search_max_buckets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_max_buckets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of aggregation buckets allowed in a single response. Default: `10000`
         """
         return pulumi.get(self, "search_max_buckets")
 
     @search_max_buckets.setter
-    def search_max_buckets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_max_buckets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_max_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
-    def thread_pool_analyze_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_analyze_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the analyze thread pool.
         """
         return pulumi.get(self, "thread_pool_analyze_queue_size")
 
     @thread_pool_analyze_queue_size.setter
-    def thread_pool_analyze_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_analyze_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_analyze_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolAnalyzeSize")
-    def thread_pool_analyze_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_analyze_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_analyze_size")
 
     @thread_pool_analyze_size.setter
-    def thread_pool_analyze_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_analyze_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_analyze_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolForceMergeSize")
-    def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_force_merge_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
     @thread_pool_force_merge_size.setter
-    def thread_pool_force_merge_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_force_merge_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_force_merge_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolGetQueueSize")
-    def thread_pool_get_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_get_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the get thread pool.
         """
         return pulumi.get(self, "thread_pool_get_queue_size")
 
     @thread_pool_get_queue_size.setter
-    def thread_pool_get_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_get_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_get_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolGetSize")
-    def thread_pool_get_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_get_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_get_size")
 
     @thread_pool_get_size.setter
-    def thread_pool_get_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_get_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_get_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchQueueSize")
-    def thread_pool_search_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the search thread pool.
         """
         return pulumi.get(self, "thread_pool_search_queue_size")
 
     @thread_pool_search_queue_size.setter
-    def thread_pool_search_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchSize")
-    def thread_pool_search_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_search_size")
 
     @thread_pool_search_size.setter
-    def thread_pool_search_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchThrottledQueueSize")
-    def thread_pool_search_throttled_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_throttled_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the search throttled thread pool.
         """
         return pulumi.get(self, "thread_pool_search_throttled_queue_size")
 
     @thread_pool_search_throttled_queue_size.setter
-    def thread_pool_search_throttled_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_throttled_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_throttled_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchThrottledSize")
-    def thread_pool_search_throttled_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_throttled_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_search_throttled_size")
 
     @thread_pool_search_throttled_size.setter
-    def thread_pool_search_throttled_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_throttled_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_throttled_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolWriteQueueSize")
-    def thread_pool_write_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_write_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the write thread pool.
         """
         return pulumi.get(self, "thread_pool_write_queue_size")
 
     @thread_pool_write_queue_size.setter
-    def thread_pool_write_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_write_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_write_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolWriteSize")
-    def thread_pool_write_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_write_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_write_size")
 
     @thread_pool_write_size.setter
-    def thread_pool_write_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_write_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_write_size", value)
 
 
 @pulumi.input_type
 class _DatabaseOpensearchConfigState:
     def __init__(__self__, *,
-                 action_auto_create_index_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 action_destructive_requires_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_max_shards_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_security_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_max_content_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_header_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_initial_line_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_fielddata_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_index_buffer_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_max_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_min_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_queries_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_query_bool_max_clause_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_mb_per_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_max_age_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_max_docs: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_check_period_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugins_alerting_filter_by_backend_roles_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 script_max_compilations_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None):
+                 action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseOpensearchConfig resources.
 
@@ -814,470 +814,470 @@ class _DatabaseOpensearchConfigState:
 
     @_builtins.property
     @pulumi.getter(name="actionAutoCreateIndexEnabled")
-    def action_auto_create_index_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def action_auto_create_index_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifices whether to allow automatic creation of indices. Default: `true`
         """
         return pulumi.get(self, "action_auto_create_index_enabled")
 
     @action_auto_create_index_enabled.setter
-    def action_auto_create_index_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def action_auto_create_index_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "action_auto_create_index_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="actionDestructiveRequiresName")
-    def action_destructive_requires_name(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def action_destructive_requires_name(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to require explicit index names when deleting indices.
         """
         return pulumi.get(self, "action_destructive_requires_name")
 
     @action_destructive_requires_name.setter
-    def action_destructive_requires_name(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def action_destructive_requires_name(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "action_destructive_requires_name", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target Opensearch cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterMaxShardsPerNode")
-    def cluster_max_shards_per_node(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_max_shards_per_node(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of shards allowed per data node.
         """
         return pulumi.get(self, "cluster_max_shards_per_node")
 
     @cluster_max_shards_per_node.setter
-    def cluster_max_shards_per_node(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_max_shards_per_node(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_max_shards_per_node", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterRoutingAllocationNodeConcurrentRecoveries")
-    def cluster_routing_allocation_node_concurrent_recoveries(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def cluster_routing_allocation_node_concurrent_recoveries(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum concurrent incoming/outgoing shard recoveries (normally replicas) are allowed to happen per node. Default: `2`
         """
         return pulumi.get(self, "cluster_routing_allocation_node_concurrent_recoveries")
 
     @cluster_routing_allocation_node_concurrent_recoveries.setter
-    def cluster_routing_allocation_node_concurrent_recoveries(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def cluster_routing_allocation_node_concurrent_recoveries(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "cluster_routing_allocation_node_concurrent_recoveries", value)
 
     @_builtins.property
     @pulumi.getter(name="enableSecurityAudit")
-    def enable_security_audit(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def enable_security_audit(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether to allow security audit logging. Default: `false`
         """
         return pulumi.get(self, "enable_security_audit")
 
     @enable_security_audit.setter
-    def enable_security_audit(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def enable_security_audit(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "enable_security_audit", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxContentLengthBytes")
-    def http_max_content_length_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_content_length_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum content length for HTTP requests to the OpenSearch HTTP API, in bytes. Default: `100000000`
         """
         return pulumi.get(self, "http_max_content_length_bytes")
 
     @http_max_content_length_bytes.setter
-    def http_max_content_length_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_content_length_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_content_length_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxHeaderSizeBytes")
-    def http_max_header_size_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_header_size_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum size of allowed headers, in bytes. Default: `8192`
         """
         return pulumi.get(self, "http_max_header_size_bytes")
 
     @http_max_header_size_bytes.setter
-    def http_max_header_size_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_header_size_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_header_size_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="httpMaxInitialLineLengthBytes")
-    def http_max_initial_line_length_bytes(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def http_max_initial_line_length_bytes(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum length of an HTTP URL, in bytes. Default: `4096`
         """
         return pulumi.get(self, "http_max_initial_line_length_bytes")
 
     @http_max_initial_line_length_bytes.setter
-    def http_max_initial_line_length_bytes(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def http_max_initial_line_length_bytes(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "http_max_initial_line_length_bytes", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesFielddataCacheSizePercentage")
-    def indices_fielddata_cache_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_fielddata_cache_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap memory used for field data cache, expressed as a percentage. Decreasing the value too much will increase overhead of loading field data. Increasing the value too much will decrease amount of heap available for other operations.
         """
         return pulumi.get(self, "indices_fielddata_cache_size_percentage")
 
     @indices_fielddata_cache_size_percentage.setter
-    def indices_fielddata_cache_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_fielddata_cache_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_fielddata_cache_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryIndexBufferSizePercentage")
-    def indices_memory_index_buffer_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_index_buffer_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Total amount of heap used for indexing buffer before writing segments to disk, expressed as a percentage. Too low value will slow down indexing; too high value will increase indexing performance but causes performance issues for query performance. Default: `10`
         """
         return pulumi.get(self, "indices_memory_index_buffer_size_percentage")
 
     @indices_memory_index_buffer_size_percentage.setter
-    def indices_memory_index_buffer_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_index_buffer_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_index_buffer_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryMaxIndexBufferSizeMb")
-    def indices_memory_max_index_buffer_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_max_index_buffer_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. The default is unbounded.
         """
         return pulumi.get(self, "indices_memory_max_index_buffer_size_mb")
 
     @indices_memory_max_index_buffer_size_mb.setter
-    def indices_memory_max_index_buffer_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_max_index_buffer_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_max_index_buffer_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesMemoryMinIndexBufferSizeMb")
-    def indices_memory_min_index_buffer_size_mb(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_memory_min_index_buffer_size_mb(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Minimum amount of heap used for indexing buffer before writing segments to disk, in mb. Works in conjunction with indices_memory_index_buffer_size_percentage, each being enforced. Default: `48`
         """
         return pulumi.get(self, "indices_memory_min_index_buffer_size_mb")
 
     @indices_memory_min_index_buffer_size_mb.setter
-    def indices_memory_min_index_buffer_size_mb(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_memory_min_index_buffer_size_mb(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_memory_min_index_buffer_size_mb", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesQueriesCacheSizePercentage")
-    def indices_queries_cache_size_percentage(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_queries_cache_size_percentage(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum amount of heap used for query cache. Too low value will decrease query performance and increase performance for other operations; too high value will cause issues with other functionality. Default: `10`
         """
         return pulumi.get(self, "indices_queries_cache_size_percentage")
 
     @indices_queries_cache_size_percentage.setter
-    def indices_queries_cache_size_percentage(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_queries_cache_size_percentage(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_queries_cache_size_percentage", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesQueryBoolMaxClauseCount")
-    def indices_query_bool_max_clause_count(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_query_bool_max_clause_count(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of clauses Lucene BooleanQuery can have. Only increase it if necessary, as it may cause performance issues. Default: `1024`
         """
         return pulumi.get(self, "indices_query_bool_max_clause_count")
 
     @indices_query_bool_max_clause_count.setter
-    def indices_query_bool_max_clause_count(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_query_bool_max_clause_count(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_query_bool_max_clause_count", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesRecoveryMaxConcurrentFileChunks")
-    def indices_recovery_max_concurrent_file_chunks(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_recovery_max_concurrent_file_chunks(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of file chunks sent in parallel for each recovery. Default: `2`
         """
         return pulumi.get(self, "indices_recovery_max_concurrent_file_chunks")
 
     @indices_recovery_max_concurrent_file_chunks.setter
-    def indices_recovery_max_concurrent_file_chunks(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_recovery_max_concurrent_file_chunks(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_recovery_max_concurrent_file_chunks", value)
 
     @_builtins.property
     @pulumi.getter(name="indicesRecoveryMaxMbPerSec")
-    def indices_recovery_max_mb_per_sec(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def indices_recovery_max_mb_per_sec(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Limits total inbound and outbound recovery traffic for each node, expressed in mb per second. Applies to both peer recoveries as well as snapshot recoveries (i.e., restores from a snapshot). Default: `40`
         """
         return pulumi.get(self, "indices_recovery_max_mb_per_sec")
 
     @indices_recovery_max_mb_per_sec.setter
-    def indices_recovery_max_mb_per_sec(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def indices_recovery_max_mb_per_sec(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "indices_recovery_max_mb_per_sec", value)
 
     @_builtins.property
     @pulumi.getter(name="ismEnabled")
-    def ism_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ism_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether ISM is enabled or not. Default: `true`
         """
         return pulumi.get(self, "ism_enabled")
 
     @ism_enabled.setter
-    def ism_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ism_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ism_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryEnabled")
-    def ism_history_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ism_history_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Specifies whether audit history is enabled or not. The logs from ISM are automatically indexed to a logs document. Default: `true`
         """
         return pulumi.get(self, "ism_history_enabled")
 
     @ism_history_enabled.setter
-    def ism_history_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ism_history_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ism_history_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryMaxAgeHours")
-    def ism_history_max_age_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_max_age_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum age before rolling over the audit history index, in hours. Default: `24`
         """
         return pulumi.get(self, "ism_history_max_age_hours")
 
     @ism_history_max_age_hours.setter
-    def ism_history_max_age_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_max_age_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_max_age_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryMaxDocs")
-    def ism_history_max_docs(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_max_docs(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of documents before rolling over the audit history index. Default: `2500000`
         """
         return pulumi.get(self, "ism_history_max_docs")
 
     @ism_history_max_docs.setter
-    def ism_history_max_docs(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_max_docs(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_max_docs", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryRolloverCheckPeriodHours")
-    def ism_history_rollover_check_period_hours(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_rollover_check_period_hours(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The time between rollover checks for the audit history index, in hours. Default: `8`
         """
         return pulumi.get(self, "ism_history_rollover_check_period_hours")
 
     @ism_history_rollover_check_period_hours.setter
-    def ism_history_rollover_check_period_hours(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_rollover_check_period_hours(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_rollover_check_period_hours", value)
 
     @_builtins.property
     @pulumi.getter(name="ismHistoryRolloverRetentionPeriodDays")
-    def ism_history_rollover_retention_period_days(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def ism_history_rollover_retention_period_days(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Length of time long audit history indices are kept, in days. Default: `30`
         """
         return pulumi.get(self, "ism_history_rollover_retention_period_days")
 
     @ism_history_rollover_retention_period_days.setter
-    def ism_history_rollover_retention_period_days(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def ism_history_rollover_retention_period_days(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "ism_history_rollover_retention_period_days", value)
 
     @_builtins.property
     @pulumi.getter(name="overrideMainResponseVersion")
-    def override_main_response_version(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def override_main_response_version(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Compatibility mode sets OpenSearch to report its version as 7.10 so clients continue to work. Default: `false`
         """
         return pulumi.get(self, "override_main_response_version")
 
     @override_main_response_version.setter
-    def override_main_response_version(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def override_main_response_version(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "override_main_response_version", value)
 
     @_builtins.property
     @pulumi.getter(name="pluginsAlertingFilterByBackendRolesEnabled")
-    def plugins_alerting_filter_by_backend_roles_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def plugins_alerting_filter_by_backend_roles_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable or disable filtering of alerting by backend roles. Default: `false`
         """
         return pulumi.get(self, "plugins_alerting_filter_by_backend_roles_enabled")
 
     @plugins_alerting_filter_by_backend_roles_enabled.setter
-    def plugins_alerting_filter_by_backend_roles_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def plugins_alerting_filter_by_backend_roles_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "plugins_alerting_filter_by_backend_roles_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="reindexRemoteWhitelists")
-    def reindex_remote_whitelists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def reindex_remote_whitelists(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         Allowlist of remote IP addresses for reindexing. Changing this value will cause all OpenSearch instances to restart.
         """
         return pulumi.get(self, "reindex_remote_whitelists")
 
     @reindex_remote_whitelists.setter
-    def reindex_remote_whitelists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def reindex_remote_whitelists(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "reindex_remote_whitelists", value)
 
     @_builtins.property
     @pulumi.getter(name="scriptMaxCompilationsRate")
-    def script_max_compilations_rate(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def script_max_compilations_rate(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Limits the number of inline script compilations within a period of time. Default is `use-context`
         """
         return pulumi.get(self, "script_max_compilations_rate")
 
     @script_max_compilations_rate.setter
-    def script_max_compilations_rate(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def script_max_compilations_rate(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "script_max_compilations_rate", value)
 
     @_builtins.property
     @pulumi.getter(name="searchMaxBuckets")
-    def search_max_buckets(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def search_max_buckets(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Maximum number of aggregation buckets allowed in a single response. Default: `10000`
         """
         return pulumi.get(self, "search_max_buckets")
 
     @search_max_buckets.setter
-    def search_max_buckets(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def search_max_buckets(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "search_max_buckets", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolAnalyzeQueueSize")
-    def thread_pool_analyze_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_analyze_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the analyze thread pool.
         """
         return pulumi.get(self, "thread_pool_analyze_queue_size")
 
     @thread_pool_analyze_queue_size.setter
-    def thread_pool_analyze_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_analyze_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_analyze_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolAnalyzeSize")
-    def thread_pool_analyze_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_analyze_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the analyze operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_analyze_size")
 
     @thread_pool_analyze_size.setter
-    def thread_pool_analyze_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_analyze_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_analyze_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolForceMergeSize")
-    def thread_pool_force_merge_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_force_merge_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the force merge operation thread pool. This pool is used for forcing a merge between shards of one or more indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_force_merge_size")
 
     @thread_pool_force_merge_size.setter
-    def thread_pool_force_merge_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_force_merge_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_force_merge_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolGetQueueSize")
-    def thread_pool_get_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_get_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the get thread pool.
         """
         return pulumi.get(self, "thread_pool_get_queue_size")
 
     @thread_pool_get_queue_size.setter
-    def thread_pool_get_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_get_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_get_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolGetSize")
-    def thread_pool_get_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_get_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the get operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_get_size")
 
     @thread_pool_get_size.setter
-    def thread_pool_get_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_get_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_get_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchQueueSize")
-    def thread_pool_search_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the search thread pool.
         """
         return pulumi.get(self, "thread_pool_search_queue_size")
 
     @thread_pool_search_queue_size.setter
-    def thread_pool_search_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchSize")
-    def thread_pool_search_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the search operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_search_size")
 
     @thread_pool_search_size.setter
-    def thread_pool_search_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchThrottledQueueSize")
-    def thread_pool_search_throttled_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_throttled_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the search throttled thread pool.
         """
         return pulumi.get(self, "thread_pool_search_throttled_queue_size")
 
     @thread_pool_search_throttled_queue_size.setter
-    def thread_pool_search_throttled_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_throttled_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_throttled_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolSearchThrottledSize")
-    def thread_pool_search_throttled_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_search_throttled_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the search throttled operation thread pool. This pool is used for searching frozen indices. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_search_throttled_size")
 
     @thread_pool_search_throttled_size.setter
-    def thread_pool_search_throttled_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_search_throttled_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_search_throttled_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolWriteQueueSize")
-    def thread_pool_write_queue_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_write_queue_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Size of queue for operations in the write thread pool.
         """
         return pulumi.get(self, "thread_pool_write_queue_size")
 
     @thread_pool_write_queue_size.setter
-    def thread_pool_write_queue_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_write_queue_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_write_queue_size", value)
 
     @_builtins.property
     @pulumi.getter(name="threadPoolWriteSize")
-    def thread_pool_write_size(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def thread_pool_write_size(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         Number of workers in the write operation thread pool. Do note this may have maximum value depending on CPU count - value is automatically lowered if set to higher than maximum value.
         """
         return pulumi.get(self, "thread_pool_write_size")
 
     @thread_pool_write_size.setter
-    def thread_pool_write_size(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def thread_pool_write_size(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "thread_pool_write_size", value)
 
 
@@ -1287,45 +1287,45 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_auto_create_index_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 action_destructive_requires_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_max_shards_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_security_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_max_content_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_header_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_initial_line_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_fielddata_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_index_buffer_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_max_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_min_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_queries_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_query_bool_max_clause_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_mb_per_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_max_age_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_max_docs: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_check_period_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugins_alerting_filter_by_backend_roles_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 script_max_compilations_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -1530,45 +1530,45 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 action_auto_create_index_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 action_destructive_requires_name: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_max_shards_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-                 cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[_builtins.int]] = None,
-                 enable_security_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-                 http_max_content_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_header_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 http_max_initial_line_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_fielddata_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_index_buffer_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_max_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_memory_min_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_queries_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_query_bool_max_clause_count: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[_builtins.int]] = None,
-                 indices_recovery_max_mb_per_sec: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ism_history_max_age_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_max_docs: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_check_period_hours: Optional[pulumi.Input[_builtins.int]] = None,
-                 ism_history_rollover_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-                 override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
-                 plugins_alerting_filter_by_backend_roles_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 script_max_compilations_rate: Optional[pulumi.Input[_builtins.str]] = None,
-                 search_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_analyze_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_get_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_search_throttled_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-                 thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None,
+                 action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+                 cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+                 enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+                 http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+                 indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+                 ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+                 override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+                 plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+                 search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+                 thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1629,45 +1629,45 @@ class DatabaseOpensearchConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            action_auto_create_index_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            action_destructive_requires_name: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_max_shards_per_node: Optional[pulumi.Input[_builtins.int]] = None,
-            cluster_routing_allocation_node_concurrent_recoveries: Optional[pulumi.Input[_builtins.int]] = None,
-            enable_security_audit: Optional[pulumi.Input[_builtins.bool]] = None,
-            http_max_content_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            http_max_header_size_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            http_max_initial_line_length_bytes: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_fielddata_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_memory_index_buffer_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_memory_max_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_memory_min_index_buffer_size_mb: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_queries_cache_size_percentage: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_query_bool_max_clause_count: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_recovery_max_concurrent_file_chunks: Optional[pulumi.Input[_builtins.int]] = None,
-            indices_recovery_max_mb_per_sec: Optional[pulumi.Input[_builtins.int]] = None,
-            ism_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ism_history_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            ism_history_max_age_hours: Optional[pulumi.Input[_builtins.int]] = None,
-            ism_history_max_docs: Optional[pulumi.Input[_builtins.int]] = None,
-            ism_history_rollover_check_period_hours: Optional[pulumi.Input[_builtins.int]] = None,
-            ism_history_rollover_retention_period_days: Optional[pulumi.Input[_builtins.int]] = None,
-            override_main_response_version: Optional[pulumi.Input[_builtins.bool]] = None,
-            plugins_alerting_filter_by_backend_roles_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            reindex_remote_whitelists: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            script_max_compilations_rate: Optional[pulumi.Input[_builtins.str]] = None,
-            search_max_buckets: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_analyze_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_analyze_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_force_merge_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_get_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_get_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_search_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_search_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_search_throttled_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_search_throttled_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_write_queue_size: Optional[pulumi.Input[_builtins.int]] = None,
-            thread_pool_write_size: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseOpensearchConfig':
+            action_auto_create_index_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            action_destructive_requires_name: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_max_shards_per_node: pulumi.Input[Optional[_builtins.int]] = None,
+            cluster_routing_allocation_node_concurrent_recoveries: pulumi.Input[Optional[_builtins.int]] = None,
+            enable_security_audit: pulumi.Input[Optional[_builtins.bool]] = None,
+            http_max_content_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            http_max_header_size_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            http_max_initial_line_length_bytes: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_fielddata_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_index_buffer_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_max_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_memory_min_index_buffer_size_mb: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_queries_cache_size_percentage: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_query_bool_max_clause_count: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_recovery_max_concurrent_file_chunks: pulumi.Input[Optional[_builtins.int]] = None,
+            indices_recovery_max_mb_per_sec: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ism_history_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            ism_history_max_age_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_max_docs: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_rollover_check_period_hours: pulumi.Input[Optional[_builtins.int]] = None,
+            ism_history_rollover_retention_period_days: pulumi.Input[Optional[_builtins.int]] = None,
+            override_main_response_version: pulumi.Input[Optional[_builtins.bool]] = None,
+            plugins_alerting_filter_by_backend_roles_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            reindex_remote_whitelists: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            script_max_compilations_rate: pulumi.Input[Optional[_builtins.str]] = None,
+            search_max_buckets: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_analyze_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_analyze_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_force_merge_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_get_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_get_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_throttled_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_search_throttled_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_write_queue_size: pulumi.Input[Optional[_builtins.int]] = None,
+            thread_pool_write_size: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabaseOpensearchConfig':
         """
         Get an existing DatabaseOpensearchConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -155,9 +155,9 @@ export interface GetDedicatedInferencesOutputArgs {
     /**
      * Filter the results. The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferencesFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferencesFilterArgs>[] | undefined>;
     /**
      * Sort the results. The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferencesSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferencesSortArgs>[] | undefined>;
 }

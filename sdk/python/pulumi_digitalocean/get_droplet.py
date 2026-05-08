@@ -390,7 +390,7 @@ def get_droplet(gpu: Optional[_builtins.bool] = None,
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_droplet(id=example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"])
+    example = digitalocean.get_droplet(id=int(example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"]))
     ```
 
 
@@ -437,10 +437,10 @@ def get_droplet(gpu: Optional[_builtins.bool] = None,
         vcpus=pulumi.get(__ret__, 'vcpus'),
         volume_ids=pulumi.get(__ret__, 'volume_ids'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_droplet_output(gpu: Optional[pulumi.Input[Optional[_builtins.bool]]] = None,
-                       id: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                       name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                       tag: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_droplet_output(gpu: pulumi.Input[Optional[Optional[_builtins.bool]]] = None,
+                       id: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                       name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                       tag: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletResult]:
     """
     Get information on a Droplet for use in other resources. This data source provides
@@ -478,7 +478,7 @@ def get_droplet_output(gpu: Optional[pulumi.Input[Optional[_builtins.bool]]] = N
     import pulumi
     import pulumi_digitalocean as digitalocean
 
-    example = digitalocean.get_droplet(id=example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"])
+    example = digitalocean.get_droplet(id=int(example_digitalocean_kubernetes_cluster["nodePool"][0]["nodes"][0]["dropletId"]))
     ```
 
 

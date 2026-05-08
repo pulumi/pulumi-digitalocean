@@ -204,7 +204,7 @@ def get_dedicated_inference(id: Optional[_builtins.str] = None,
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'),
         vpc_uuid=pulumi.get(__ret__, 'vpc_uuid'))
-def get_dedicated_inference_output(id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_dedicated_inference_output(id: pulumi.Input[Optional[_builtins.str]] = None,
                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferenceResult]:
     """
     Get information on a dedicated inference endpoint for use in other resources. This

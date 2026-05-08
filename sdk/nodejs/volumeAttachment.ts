@@ -29,7 +29,7 @@ import * as utilities from "./utilities";
  *     region: digitalocean.Region.NYC1,
  * });
  * const foobarVolumeAttachment = new digitalocean.VolumeAttachment("foobar", {
- *     dropletId: foobarDroplet.id,
+ *     dropletId: foobarDroplet.id.apply(x =>Number(x)),
  *     volumeId: foobar.id,
  * });
  * ```
@@ -109,11 +109,11 @@ export interface VolumeAttachmentState {
     /**
      * ID of the Droplet to attach the volume to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * ID of the Volume to be attached to the Droplet.
      */
-    volumeId?: pulumi.Input<string>;
+    volumeId?: pulumi.Input<string | undefined>;
 }
 
 /**

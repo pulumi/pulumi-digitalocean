@@ -173,7 +173,7 @@ def get_tag(name: Optional[_builtins.str] = None,
         total_resource_count=pulumi.get(__ret__, 'total_resource_count'),
         volume_snapshots_count=pulumi.get(__ret__, 'volume_snapshots_count'),
         volumes_count=pulumi.get(__ret__, 'volumes_count'))
-def get_tag_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_tag_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagResult]:
     """
     Get information on a tag. This data source provides the name as configured on

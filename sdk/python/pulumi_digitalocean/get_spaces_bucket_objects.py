@@ -180,12 +180,12 @@ def get_spaces_bucket_objects(bucket: Optional[_builtins.str] = None,
         owners=pulumi.get(__ret__, 'owners'),
         prefix=pulumi.get(__ret__, 'prefix'),
         region=pulumi.get(__ret__, 'region'))
-def get_spaces_bucket_objects_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                     delimiter: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     encoding_type: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     max_keys: Optional[pulumi.Input[Optional[_builtins.int]]] = None,
-                                     prefix: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                     region: Optional[pulumi.Input[_builtins.str]] = None,
+def get_spaces_bucket_objects_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                     delimiter: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     encoding_type: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     max_keys: pulumi.Input[Optional[Optional[_builtins.int]]] = None,
+                                     prefix: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                     region: pulumi.Input[Optional[_builtins.str]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketObjectsResult]:
     """
     > **NOTE on `max_keys`:** Retrieving very large numbers of keys can adversely affect Terraform's performance.

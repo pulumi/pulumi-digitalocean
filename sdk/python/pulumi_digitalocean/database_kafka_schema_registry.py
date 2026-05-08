@@ -88,10 +88,10 @@ class DatabaseKafkaSchemaRegistryArgs:
 @pulumi.input_type
 class _DatabaseKafkaSchemaRegistryState:
     def __init__(__self__, *,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DatabaseKafkaSchemaRegistry resources.
 
@@ -111,50 +111,50 @@ class _DatabaseKafkaSchemaRegistryState:
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target Kafka cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def schema(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema definition as a string.
         """
         return pulumi.get(self, "schema")
 
     @schema.setter
-    def schema(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema", value)
 
     @_builtins.property
     @pulumi.getter(name="schemaType")
-    def schema_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def schema_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The schema type. Available values are: avro, json, or protobuf.
         """
         return pulumi.get(self, "schema_type")
 
     @schema_type.setter
-    def schema_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def schema_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "schema_type", value)
 
     @_builtins.property
     @pulumi.getter(name="subjectName")
-    def subject_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def subject_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the schema subject.
         """
         return pulumi.get(self, "subject_name")
 
     @subject_name.setter
-    def subject_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def subject_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "subject_name", value)
 
 
@@ -164,10 +164,10 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kafka schema registry for Kafka clusters.
@@ -269,10 +269,10 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema: Optional[pulumi.Input[_builtins.str]] = None,
-                 schema_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 subject_name: Optional[pulumi.Input[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema: pulumi.Input[Optional[_builtins.str]] = None,
+                 schema_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 subject_name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -304,10 +304,10 @@ class DatabaseKafkaSchemaRegistry(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            schema: Optional[pulumi.Input[_builtins.str]] = None,
-            schema_type: Optional[pulumi.Input[_builtins.str]] = None,
-            subject_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'DatabaseKafkaSchemaRegistry':
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            schema: pulumi.Input[Optional[_builtins.str]] = None,
+            schema_type: pulumi.Input[Optional[_builtins.str]] = None,
+            subject_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'DatabaseKafkaSchemaRegistry':
         """
         Get an existing DatabaseKafkaSchemaRegistry resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

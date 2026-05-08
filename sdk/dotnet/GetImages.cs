@@ -36,7 +36,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntu = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -64,7 +64,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -126,7 +126,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntu = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -154,7 +154,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -216,7 +216,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var ubuntu = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var ubuntu = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {
@@ -244,7 +244,7 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var available = DigitalOcean.Index.GetImages.Invoke(new()
+        ///     var available = DigitalOcean.GetImages.Invoke(new()
         ///     {
         ///         Filters = new[]
         ///         {

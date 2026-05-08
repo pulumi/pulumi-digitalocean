@@ -132,9 +132,9 @@ export interface GetDedicatedInferenceAcceleratorsOutputArgs {
     /**
      * Filter the results. The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceAcceleratorsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceAcceleratorsFilterArgs>[] | undefined>;
     /**
      * Sort the results. The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceAcceleratorsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDedicatedInferenceAcceleratorsSortArgs>[] | undefined>;
 }

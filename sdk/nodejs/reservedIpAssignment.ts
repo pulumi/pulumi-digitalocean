@@ -26,7 +26,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleReservedIpAssignment = new digitalocean.ReservedIpAssignment("example", {
  *     ipAddress: example.ipAddress,
- *     dropletId: exampleDroplet.id,
+ *     dropletId: exampleDroplet.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -114,11 +114,11 @@ export interface ReservedIpAssignmentState {
     /**
      * The ID of Droplet that the reserved IP will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The reserved IP to assign to the Droplet.
      */
-    ipAddress?: pulumi.Input<string>;
+    ipAddress?: pulumi.Input<string | undefined>;
 }
 
 /**

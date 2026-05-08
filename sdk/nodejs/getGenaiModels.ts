@@ -53,6 +53,6 @@ export function getGenaiModelsOutput(args?: GetGenaiModelsOutputArgs, opts?: pul
  * A collection of arguments for invoking getGenaiModels.
  */
 export interface GetGenaiModelsOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiModelsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiModelsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiModelsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiModelsSortArgs>[] | undefined>;
 }

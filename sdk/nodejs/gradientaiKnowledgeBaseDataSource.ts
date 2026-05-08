@@ -81,9 +81,9 @@ export interface GradientaiKnowledgeBaseDataSourceState {
     /**
      * UUID of the Knowledge Base
      */
-    knowledgeBaseUuid?: pulumi.Input<string>;
-    spacesDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource>;
-    webCrawlerDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>;
+    knowledgeBaseUuid?: pulumi.Input<string | undefined>;
+    spacesDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
+    webCrawlerDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
 }
 
 /**
@@ -94,6 +94,6 @@ export interface GradientaiKnowledgeBaseDataSourceArgs {
      * UUID of the Knowledge Base
      */
     knowledgeBaseUuid: pulumi.Input<string>;
-    spacesDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource>;
-    webCrawlerDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource>;
+    spacesDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceSpacesDataSource | undefined>;
+    webCrawlerDataSource?: pulumi.Input<inputs.GradientaiKnowledgeBaseDataSourceWebCrawlerDataSource | undefined>;
 }

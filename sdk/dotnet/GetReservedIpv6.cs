@@ -29,12 +29,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = new DigitalOcean.Index.ReservedIpv6("foo", new()
+        ///     var foo = new DigitalOcean.ReservedIpv6("foo", new()
         ///     {
         ///         RegionSlug = "nyc3",
         ///     });
         /// 
-        ///     var foobar = DigitalOcean.Index.GetReservedIpv6.Invoke(new()
+        ///     var foobar = DigitalOcean.GetReservedIpv6.Invoke(new()
         ///     {
         ///         Ip = foo.Ip,
         ///     });
@@ -63,12 +63,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = new DigitalOcean.Index.ReservedIpv6("foo", new()
+        ///     var foo = new DigitalOcean.ReservedIpv6("foo", new()
         ///     {
         ///         RegionSlug = "nyc3",
         ///     });
         /// 
-        ///     var foobar = DigitalOcean.Index.GetReservedIpv6.Invoke(new()
+        ///     var foobar = DigitalOcean.GetReservedIpv6.Invoke(new()
         ///     {
         ///         Ip = foo.Ip,
         ///     });
@@ -97,12 +97,12 @@ namespace Pulumi.DigitalOcean
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foo = new DigitalOcean.Index.ReservedIpv6("foo", new()
+        ///     var foo = new DigitalOcean.ReservedIpv6("foo", new()
         ///     {
         ///         RegionSlug = "nyc3",
         ///     });
         /// 
-        ///     var foobar = DigitalOcean.Index.GetReservedIpv6.Invoke(new()
+        ///     var foobar = DigitalOcean.GetReservedIpv6.Invoke(new()
         ///     {
         ///         Ip = foo.Ip,
         ///     });

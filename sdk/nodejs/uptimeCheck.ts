@@ -106,23 +106,23 @@ export interface UptimeCheckState {
     /**
      * A boolean value indicating whether the check is enabled/disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A human-friendly display name for the check.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The endpoint to perform healthchecks on.
      */
-    target?: pulumi.Input<string>;
+    target?: pulumi.Input<string | undefined>;
     /**
      * The type of health check to perform: 'ping' 'http' 'https'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -132,15 +132,15 @@ export interface UptimeCheckArgs {
     /**
      * A boolean value indicating whether the check is enabled/disabled.
      */
-    enabled?: pulumi.Input<boolean>;
+    enabled?: pulumi.Input<boolean | undefined>;
     /**
      * A human-friendly display name for the check.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * An array containing the selected regions to perform healthchecks from: "usEast", "usWest", "euWest", "seAsia"
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The endpoint to perform healthchecks on.
      */
@@ -148,5 +148,5 @@ export interface UptimeCheckArgs {
     /**
      * The type of health check to perform: 'ping' 'http' 'https'.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }

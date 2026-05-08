@@ -171,34 +171,34 @@ export interface DropletAutoscaleState {
      * The configuration parameters for Droplet Autoscale pool, the supported arguments are 
      * documented below.
      */
-    config?: pulumi.Input<inputs.DropletAutoscaleConfig>;
+    config?: pulumi.Input<inputs.DropletAutoscaleConfig | undefined>;
     /**
      * Created at timestamp for the Droplet Autoscale pool.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The current average resource utilization of the Droplet Autoscale pool, this attribute further
      * embeds `memory` and `cpu` attributes to respectively report utilization data.
      */
-    currentUtilizations?: pulumi.Input<pulumi.Input<inputs.DropletAutoscaleCurrentUtilization>[]>;
+    currentUtilizations?: pulumi.Input<pulumi.Input<inputs.DropletAutoscaleCurrentUtilization>[] | undefined>;
     /**
      * The droplet template parameters for Droplet Autoscale pool, the supported arguments 
      * are documented below.
      */
-    dropletTemplate?: pulumi.Input<inputs.DropletAutoscaleDropletTemplate>;
+    dropletTemplate?: pulumi.Input<inputs.DropletAutoscaleDropletTemplate | undefined>;
     /**
      * The name of the Droplet Autoscale pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Droplet Autoscale pool health status; this reflects if the pool is currently healthy and ready to accept
      * traffic, or in an error state and needs user intervention.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * Updated at timestamp for the Droplet Autoscale pool.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -218,5 +218,5 @@ export interface DropletAutoscaleArgs {
     /**
      * The name of the Droplet Autoscale pool.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
 }

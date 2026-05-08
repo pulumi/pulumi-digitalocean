@@ -173,7 +173,7 @@ def get_container_registry(name: Optional[_builtins.str] = None,
         server_url=pulumi.get(__ret__, 'server_url'),
         storage_usage_bytes=pulumi.get(__ret__, 'storage_usage_bytes'),
         subscription_tier_slug=pulumi.get(__ret__, 'subscription_tier_slug'))
-def get_container_registry_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_container_registry_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetContainerRegistryResult]:
     """
     Get information on a container registry. This data source provides the name as

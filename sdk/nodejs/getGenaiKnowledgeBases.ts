@@ -53,6 +53,6 @@ export function getGenaiKnowledgeBasesOutput(args?: GetGenaiKnowledgeBasesOutput
  * A collection of arguments for invoking getGenaiKnowledgeBases.
  */
 export interface GetGenaiKnowledgeBasesOutputArgs {
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBasesFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBasesSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBasesFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGenaiKnowledgeBasesSortArgs>[] | undefined>;
 }

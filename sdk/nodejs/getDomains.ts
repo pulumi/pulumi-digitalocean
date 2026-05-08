@@ -120,10 +120,10 @@ export interface GetDomainsOutputArgs {
      * Filter the results.
      * The `filter` block is documented below.
      */
-    filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetDomainsFilterArgs>[] | undefined>;
     /**
      * Sort the results.
      * The `sort` block is documented below.
      */
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetDomainsSortArgs>[]>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetDomainsSortArgs>[] | undefined>;
 }

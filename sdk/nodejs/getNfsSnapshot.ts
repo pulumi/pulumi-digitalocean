@@ -72,11 +72,11 @@ export function getNfsSnapshotOutput(args: GetNfsSnapshotOutputArgs, opts?: pulu
  * A collection of arguments for invoking getNfsSnapshot.
  */
 export interface GetNfsSnapshotOutputArgs {
-    name?: pulumi.Input<string>;
-    nameRegex?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    nameRegex?: pulumi.Input<string | undefined>;
     /**
      * The region where the NFS snapshot is located.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     shareId: pulumi.Input<string>;
 }

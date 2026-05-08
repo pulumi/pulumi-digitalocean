@@ -21,11 +21,11 @@ __all__ = ['FirewallArgs', 'Firewall']
 @pulumi.input_type
 class FirewallArgs:
     def __init__(__self__, *,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         The set of arguments for constructing a Firewall resource.
 
@@ -52,7 +52,7 @@ class FirewallArgs:
 
     @_builtins.property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def droplet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The list of the IDs of the Droplets assigned
         to the Firewall (max. 10). If you want to assign more droplets to the
@@ -61,12 +61,12 @@ class FirewallArgs:
         return pulumi.get(self, "droplet_ids")
 
     @droplet_ids.setter
-    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def droplet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "droplet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="inboundRules")
-    def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]:
+    def inbound_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]:
         """
         The inbound access rule block for the Firewall.
         The `inbound_rule` block is documented below.
@@ -74,24 +74,24 @@ class FirewallArgs:
         return pulumi.get(self, "inbound_rules")
 
     @inbound_rules.setter
-    def inbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]):
+    def inbound_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]):
         pulumi.set(self, "inbound_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundRules")
-    def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]:
+    def outbound_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]:
         """
         The outbound access rule block for the Firewall.
         The `outbound_rule` block is documented below.
@@ -99,33 +99,33 @@ class FirewallArgs:
         return pulumi.get(self, "outbound_rules")
 
     @outbound_rules.setter
-    def outbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]):
+    def outbound_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]):
         pulumi.set(self, "outbound_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of the Tags assigned to the Firewall (max. 5).
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
 @pulumi.input_type
 class _FirewallState:
     def __init__(__self__, *,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
-                 pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]] = None,
+                 pending_changes: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering Firewall resources.
 
@@ -166,7 +166,7 @@ class _FirewallState:
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A time value given in ISO8601 combined date and time format
         that represents when the Firewall was created.
@@ -174,12 +174,12 @@ class _FirewallState:
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="dropletIds")
-    def droplet_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]:
+    def droplet_ids(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]:
         """
         The list of the IDs of the Droplets assigned
         to the Firewall (max. 10). If you want to assign more droplets to the
@@ -188,12 +188,12 @@ class _FirewallState:
         return pulumi.get(self, "droplet_ids")
 
     @droplet_ids.setter
-    def droplet_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]]):
+    def droplet_ids(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]]):
         pulumi.set(self, "droplet_ids", value)
 
     @_builtins.property
     @pulumi.getter(name="inboundRules")
-    def inbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]:
+    def inbound_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]:
         """
         The inbound access rule block for the Firewall.
         The `inbound_rule` block is documented below.
@@ -201,24 +201,24 @@ class _FirewallState:
         return pulumi.get(self, "inbound_rules")
 
     @inbound_rules.setter
-    def inbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]):
+    def inbound_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallInboundRuleArgs']]]]):
         pulumi.set(self, "inbound_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The Firewall name
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="outboundRules")
-    def outbound_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]:
+    def outbound_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]:
         """
         The outbound access rule block for the Firewall.
         The `outbound_rule` block is documented below.
@@ -226,12 +226,12 @@ class _FirewallState:
         return pulumi.get(self, "outbound_rules")
 
     @outbound_rules.setter
-    def outbound_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]):
+    def outbound_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallOutboundRuleArgs']]]]):
         pulumi.set(self, "outbound_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="pendingChanges")
-    def pending_changes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]]:
+    def pending_changes(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]]:
         """
         An list of object containing the fields, "droplet_id",
         "removing", and "status".  It is provided to detail exactly which Droplets
@@ -241,12 +241,12 @@ class _FirewallState:
         return pulumi.get(self, "pending_changes")
 
     @pending_changes.setter
-    def pending_changes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]]):
+    def pending_changes(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['FirewallPendingChangeArgs']]]]):
         pulumi.set(self, "pending_changes", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A status string indicating the current state of the Firewall.
         This can be "waiting", "succeeded", or "failed".
@@ -254,19 +254,19 @@ class _FirewallState:
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         The names of the Tags assigned to the Firewall (max. 5).
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
 
@@ -276,11 +276,11 @@ class Firewall(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Cloud Firewall resource. This can be used to create,
@@ -299,7 +299,7 @@ class Firewall(pulumi.CustomResource):
             region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("web",
             name="only-22-80-and-443",
-            droplet_ids=[web.id],
+            droplet_ids=[web.id.apply(lambda x: int(x))],
             inbound_rules=[
                 {
                     "protocol": "tcp",
@@ -404,7 +404,7 @@ class Firewall(pulumi.CustomResource):
             region=digitalocean.Region.NYC3)
         web_firewall = digitalocean.Firewall("web",
             name="only-22-80-and-443",
-            droplet_ids=[web.id],
+            droplet_ids=[web.id.apply(lambda x: int(x))],
             inbound_rules=[
                 {
                     "protocol": "tcp",
@@ -489,11 +489,11 @@ class Firewall(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-                 inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+                 inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -521,14 +521,14 @@ class Firewall(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            droplet_ids: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.int]]]] = None,
-            inbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            outbound_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
-            pending_changes: Optional[pulumi.Input[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Firewall':
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            droplet_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.int]]]] = None,
+            inbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallInboundRuleArgs', 'FirewallInboundRuleArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            outbound_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallOutboundRuleArgs', 'FirewallOutboundRuleArgsDict']]]]] = None,
+            pending_changes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['FirewallPendingChangeArgs', 'FirewallPendingChangeArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'Firewall':
         """
         Get an existing Firewall resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

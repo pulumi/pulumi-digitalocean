@@ -142,8 +142,8 @@ def get_dedicated_inferences(filters: Optional[Sequence[Union['GetDedicatedInfer
         filters=pulumi.get(__ret__, 'filters'),
         id=pulumi.get(__ret__, 'id'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_dedicated_inferences_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']]]]] = None,
-                                    sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']]]]] = None,
+def get_dedicated_inferences_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesFilterArgs', 'GetDedicatedInferencesFilterArgsDict']]]]] = None,
+                                    sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetDedicatedInferencesSortArgs', 'GetDedicatedInferencesSortArgsDict']]]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDedicatedInferencesResult]:
     """
     Returns a list of dedicated inference endpoints in your DigitalOcean account,

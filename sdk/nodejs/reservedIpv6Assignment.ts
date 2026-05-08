@@ -92,11 +92,11 @@ export interface ReservedIpv6AssignmentState {
     /**
      * The ID of Droplet that the reserved IPv6 will be assigned to.
      */
-    dropletId?: pulumi.Input<number>;
+    dropletId?: pulumi.Input<number | undefined>;
     /**
      * The reserved IPv6 to assign to the Droplet.
      */
-    ip?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
 }
 
 /**

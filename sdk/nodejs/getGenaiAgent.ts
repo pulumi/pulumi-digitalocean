@@ -156,30 +156,30 @@ export function getGenaiAgentOutput(args: GetGenaiAgentOutputArgs, opts?: pulumi
  * A collection of arguments for invoking getGenaiAgent.
  */
 export interface GetGenaiAgentOutputArgs {
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentAgentGuardrailArgs>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentAgentGuardrailArgs>[] | undefined>;
     agentId: pulumi.Input<string>;
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentAnthropicApiKeyArgs>[]>;
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentApiKeyInfoArgs>[]>;
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentApiKeyArgs>[]>;
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentChatbotIdentifierArgs>[]>;
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentChatbotArgs>[]>;
-    deployments?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentDeploymentArgs>[]>;
-    description?: pulumi.Input<string>;
-    functions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentFunctionArgs>[]>;
-    ifCase?: pulumi.Input<string>;
-    k?: pulumi.Input<number>;
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentKnowledgeBaseArgs>[]>;
-    maxTokens?: pulumi.Input<number>;
-    models?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelArgs>[]>;
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentOpenAiApiKeyArgs>[]>;
-    retrievalMethod?: pulumi.Input<string>;
-    routeCreatedBy?: pulumi.Input<string>;
-    routeName?: pulumi.Input<string>;
-    routeUuid?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    temperature?: pulumi.Input<number>;
-    templates?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateArgs>[]>;
-    topP?: pulumi.Input<number>;
-    url?: pulumi.Input<string>;
-    userId?: pulumi.Input<string>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentAnthropicApiKeyArgs>[] | undefined>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentApiKeyInfoArgs>[] | undefined>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentApiKeyArgs>[] | undefined>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentChatbotIdentifierArgs>[] | undefined>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentChatbotArgs>[] | undefined>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentDeploymentArgs>[] | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentFunctionArgs>[] | undefined>;
+    ifCase?: pulumi.Input<string | undefined>;
+    k?: pulumi.Input<number | undefined>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentKnowledgeBaseArgs>[] | undefined>;
+    maxTokens?: pulumi.Input<number | undefined>;
+    models?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentModelArgs>[] | undefined>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentOpenAiApiKeyArgs>[] | undefined>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
+    routeName?: pulumi.Input<string | undefined>;
+    routeUuid?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    temperature?: pulumi.Input<number | undefined>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GetGenaiAgentTemplateArgs>[] | undefined>;
+    topP?: pulumi.Input<number | undefined>;
+    url?: pulumi.Input<string | undefined>;
+    userId?: pulumi.Input<string | undefined>;
 }

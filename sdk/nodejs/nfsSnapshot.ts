@@ -135,24 +135,24 @@ export interface NfsSnapshotState {
     /**
      * The date and time when the snapshot was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region where the NFS snapshot will be created.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NFS share to snapshot.
      */
-    shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string | undefined>;
     /**
      * The size of the snapshot in GiB.
      */
-    size?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
+    size?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -162,7 +162,7 @@ export interface NfsSnapshotArgs {
     /**
      * A name for the NFS snapshot. Must be lowercase and composed only of numbers, letters, and "-", up to a limit of 64 characters.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region where the NFS snapshot will be created.
      */

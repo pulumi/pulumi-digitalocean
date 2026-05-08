@@ -36,7 +36,7 @@ import * as utilities from "./utilities";
  *         port: 22,
  *         protocol: "tcp",
  *     },
- *     dropletIds: [web.id],
+ *     dropletIds: [web.id.apply(x =>Number(x))],
  * });
  * ```
  *
@@ -292,120 +292,120 @@ export interface LoadBalancerState {
      *
      * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
-    algorithm?: pulumi.Input<string | enums.Algorithm>;
+    algorithm?: pulumi.Input<string | enums.Algorithm | undefined>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
-    disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
+    disableLetsEncryptDnsRecords?: pulumi.Input<boolean | undefined>;
     /**
      * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
-    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
+    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[] | undefined>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    dropletTag?: pulumi.Input<string>;
+    dropletTag?: pulumi.Input<string | undefined>;
     /**
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      */
-    enableBackendKeepalive?: pulumi.Input<boolean>;
+    enableBackendKeepalive?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
      */
-    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall | undefined>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[] | undefined>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      */
-    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
+    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings | undefined>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck | undefined>;
     /**
      * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
      */
-    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    httpIdleTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The ip of the Load Balancer
      */
-    ip?: pulumi.Input<string>;
-    ipv6?: pulumi.Input<string>;
+    ip?: pulumi.Input<string | undefined>;
+    ipv6?: pulumi.Input<string | undefined>;
     /**
      * The uniform resource name for the Load Balancer
      */
-    loadBalancerUrn?: pulumi.Input<string>;
+    loadBalancerUrn?: pulumi.Input<string | undefined>;
     /**
      * The Load Balancer name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
      */
-    networkStack?: pulumi.Input<string>;
+    networkStack?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    redirectHttpToHttps?: pulumi.Input<boolean>;
+    redirectHttpToHttps?: pulumi.Input<boolean | undefined>;
     /**
      * The region to start in
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
-    sizeUnit?: pulumi.Input<number>;
-    status?: pulumi.Input<string>;
+    sizeUnit?: pulumi.Input<number | undefined>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions | undefined>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */
-    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
      */
-    tlsCipherPolicy?: pulumi.Input<string>;
+    tlsCipherPolicy?: pulumi.Input<string | undefined>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -418,108 +418,108 @@ export interface LoadBalancerArgs {
      *
      * @deprecated This field has been deprecated. You can no longer specify an algorithm for load balancers.
      */
-    algorithm?: pulumi.Input<string | enums.Algorithm>;
+    algorithm?: pulumi.Input<string | enums.Algorithm | undefined>;
     /**
      * A boolean value indicating whether to disable automatic DNS record creation for Let's Encrypt certificates that are added to the load balancer. Default value is `false`.
      */
-    disableLetsEncryptDnsRecords?: pulumi.Input<boolean>;
+    disableLetsEncryptDnsRecords?: pulumi.Input<boolean | undefined>;
     /**
      * A list of `domains` required to ingress traffic to a Global Load Balancer. The `domains` block is documented below.
      */
-    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[]>;
+    domains?: pulumi.Input<pulumi.Input<inputs.LoadBalancerDomain>[] | undefined>;
     /**
      * A list of the IDs of each droplet to be attached to the Load Balancer.
      */
-    dropletIds?: pulumi.Input<pulumi.Input<number>[]>;
+    dropletIds?: pulumi.Input<pulumi.Input<number>[] | undefined>;
     /**
      * The name of a Droplet tag corresponding to Droplets to be assigned to the Load Balancer.
      */
-    dropletTag?: pulumi.Input<string>;
+    dropletTag?: pulumi.Input<string | undefined>;
     /**
      * A boolean value indicating whether HTTP keepalive connections are maintained to target Droplets. Default value is `false`.
      */
-    enableBackendKeepalive?: pulumi.Input<boolean>;
+    enableBackendKeepalive?: pulumi.Input<boolean | undefined>;
     /**
      * A boolean value indicating whether PROXY
      * Protocol should be used to pass information from connecting client requests to
      * the backend service. Default value is `false`.
      */
-    enableProxyProtocol?: pulumi.Input<boolean>;
+    enableProxyProtocol?: pulumi.Input<boolean | undefined>;
     /**
      * A block containing rules for allowing/denying traffic to the Load Balancer. The `firewall` block is documented below. Only 1 firewall is allowed.
      */
-    firewall?: pulumi.Input<inputs.LoadBalancerFirewall>;
+    firewall?: pulumi.Input<inputs.LoadBalancerFirewall | undefined>;
     /**
      * A list of `forwardingRule` to be assigned to the
      * Load Balancer. The `forwardingRule` block is documented below.
      */
-    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[]>;
+    forwardingRules?: pulumi.Input<pulumi.Input<inputs.LoadBalancerForwardingRule>[] | undefined>;
     /**
      * A block containing `glbSettings` required to define target rules for a Global Load Balancer. The `glbSettings` block is documented below.
      */
-    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings>;
+    glbSettings?: pulumi.Input<inputs.LoadBalancerGlbSettings | undefined>;
     /**
      * A `healthcheck` block to be assigned to the
      * Load Balancer. The `healthcheck` block is documented below. Only 1 healthcheck is allowed.
      */
-    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck>;
+    healthcheck?: pulumi.Input<inputs.LoadBalancerHealthcheck | undefined>;
     /**
      * Specifies the idle timeout for HTTPS connections on the load balancer in seconds.
      */
-    httpIdleTimeoutSeconds?: pulumi.Input<number>;
+    httpIdleTimeoutSeconds?: pulumi.Input<number | undefined>;
     /**
      * The Load Balancer name
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The type of network the Load Balancer is accessible from. It must be either of `INTERNAL` or `EXTERNAL`. Defaults to `EXTERNAL`.
      */
-    network?: pulumi.Input<string>;
+    network?: pulumi.Input<string | undefined>;
     /**
      * The network stack determines the allocation of ipv4/ipv6 addresses to the load balancer. It must be either of `IPV4` or `DUALSTACK`. Defaults to `IPV4`.
      */
-    networkStack?: pulumi.Input<string>;
+    networkStack?: pulumi.Input<string | undefined>;
     /**
      * The ID of the project that the load balancer is associated with. If no ID is provided at creation, the load balancer associates with the user's default project.
      */
-    projectId?: pulumi.Input<string>;
+    projectId?: pulumi.Input<string | undefined>;
     /**
      * A boolean value indicating whether
      * HTTP requests to the Load Balancer on port 80 will be redirected to HTTPS on port 443.
      * Default value is `false`.
      */
-    redirectHttpToHttps?: pulumi.Input<boolean>;
+    redirectHttpToHttps?: pulumi.Input<boolean | undefined>;
     /**
      * The region to start in
      */
-    region?: pulumi.Input<string | enums.Region>;
+    region?: pulumi.Input<string | enums.Region | undefined>;
     /**
      * The size of the Load Balancer. It must be either `lb-small`, `lb-medium`, or `lb-large`. Defaults to `lb-small`. Only one of `size` or `sizeUnit` may be provided.
      */
-    size?: pulumi.Input<string>;
+    size?: pulumi.Input<string | undefined>;
     /**
      * The size of the Load Balancer. It must be in the range (1, 200). Defaults to `1`. Only one of `size` or `sizeUnit` may be provided.
      */
-    sizeUnit?: pulumi.Input<number>;
+    sizeUnit?: pulumi.Input<number | undefined>;
     /**
      * A `stickySessions` block to be assigned to the
      * Load Balancer. The `stickySessions` block is documented below. Only 1 stickySessions block is allowed.
      */
-    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions>;
+    stickySessions?: pulumi.Input<inputs.LoadBalancerStickySessions | undefined>;
     /**
      * A list of Load Balancer IDs to be attached behind a Global Load Balancer.
      */
-    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[]>;
+    targetLoadBalancerIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The tls cipher policy controls the cipher suites to be used by the load balancer. It must be either of `DEFAULT` or `STRONG`. Defaults to `DEFAULT`.
      */
-    tlsCipherPolicy?: pulumi.Input<string>;
+    tlsCipherPolicy?: pulumi.Input<string | undefined>;
     /**
      * The type of the Load Balancer. It must be either of `REGIONAL`, `REGIONAL_NETWORK`, or `GLOBAL`. Defaults to `REGIONAL`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The ID of the VPC where the load balancer will be located.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }

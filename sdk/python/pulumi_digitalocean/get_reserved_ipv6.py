@@ -128,7 +128,7 @@ def get_reserved_ipv6(ip: Optional[_builtins.str] = None,
         ip=pulumi.get(__ret__, 'ip'),
         region_slug=pulumi.get(__ret__, 'region_slug'),
         urn=pulumi.get(__ret__, 'urn'))
-def get_reserved_ipv6_output(ip: Optional[pulumi.Input[_builtins.str]] = None,
+def get_reserved_ipv6_output(ip: pulumi.Input[Optional[_builtins.str]] = None,
                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservedIpv6Result]:
     """
     Get information on a reserved IPv6. This data source provides the region_slug and droplet id as configured on your DigitalOcean account. This is useful if the reserved IPv6 in question is not managed by Terraform or you need to find the Droplet the IP is

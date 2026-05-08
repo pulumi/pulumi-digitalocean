@@ -20,17 +20,17 @@ __all__ = ['DatabaseRedisConfigArgs', 'DatabaseRedisConfig']
 class DatabaseRedisConfigArgs:
     def __init__(__self__, *,
                  cluster_id: pulumi.Input[_builtins.str],
-                 acl_channels_default: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_threads: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_decay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_log_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_keyspace_events: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_databases: Optional[pulumi.Input[_builtins.int]] = None,
-                 persistence: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+                 persistence: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         The set of arguments for constructing a DatabaseRedisConfig resource.
 
@@ -87,115 +87,115 @@ class DatabaseRedisConfigArgs:
 
     @_builtins.property
     @pulumi.getter(name="aclChannelsDefault")
-    def acl_channels_default(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_channels_default(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         """
         return pulumi.get(self, "acl_channels_default")
 
     @acl_channels_default.setter
-    def acl_channels_default(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_channels_default(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_channels_default", value)
 
     @_builtins.property
     @pulumi.getter(name="ioThreads")
-    def io_threads(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def io_threads(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Redis IO thread count.
         """
         return pulumi.get(self, "io_threads")
 
     @io_threads.setter
-    def io_threads(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def io_threads(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "io_threads", value)
 
     @_builtins.property
     @pulumi.getter(name="lfuDecayTime")
-    def lfu_decay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lfu_decay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The LFU maxmemory policy counter decay time in minutes.
         """
         return pulumi.get(self, "lfu_decay_time")
 
     @lfu_decay_time.setter
-    def lfu_decay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lfu_decay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lfu_decay_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lfuLogFactor")
-    def lfu_log_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lfu_log_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
         """
         return pulumi.get(self, "lfu_log_factor")
 
     @lfu_log_factor.setter
-    def lfu_log_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lfu_log_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lfu_log_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="maxmemoryPolicy")
-    def maxmemory_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maxmemory_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
         """
         return pulumi.get(self, "maxmemory_policy")
 
     @maxmemory_policy.setter
-    def maxmemory_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maxmemory_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maxmemory_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyKeyspaceEvents")
-    def notify_keyspace_events(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_keyspace_events(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `notify-keyspace-events` option. Requires at least `K` or `E`.
         """
         return pulumi.get(self, "notify_keyspace_events")
 
     @notify_keyspace_events.setter
-    def notify_keyspace_events(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_keyspace_events(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_keyspace_events", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfDatabases")
-    def number_of_databases(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_databases(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Redis databases. Changing this will cause a restart of Redis service.
         """
         return pulumi.get(self, "number_of_databases")
 
     @number_of_databases.setter
-    def number_of_databases(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_databases(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_databases", value)
 
     @_builtins.property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def persistence(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def persistence(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "persistence", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubClientOutputBufferLimit")
-    def pubsub_client_output_buffer_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pubsub_client_output_buffer_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         """
         return pulumi.get(self, "pubsub_client_output_buffer_limit")
 
     @pubsub_client_output_buffer_limit.setter
-    def pubsub_client_output_buffer_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pubsub_client_output_buffer_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pubsub_client_output_buffer_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to require SSL to access Redis.
         - When enabled, Redis accepts only SSL connections on port `25061`.
@@ -204,37 +204,37 @@ class DatabaseRedisConfigArgs:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Redis idle connection timeout in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
 @pulumi.input_type
 class _DatabaseRedisConfigState:
     def __init__(__self__, *,
-                 acl_channels_default: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_threads: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_decay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_log_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_keyspace_events: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_databases: Optional[pulumi.Input[_builtins.int]] = None,
-                 persistence: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None):
+                 acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+                 persistence: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering DatabaseRedisConfig resources.
 
@@ -280,127 +280,127 @@ class _DatabaseRedisConfigState:
 
     @_builtins.property
     @pulumi.getter(name="aclChannelsDefault")
-    def acl_channels_default(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl_channels_default(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Determines default pub/sub channels' ACL for new users if an ACL is not supplied. When this option is not defined, `allchannels` is assumed to keep backward compatibility. This option doesn't affect Redis' `acl-pubsub-default` configuration. Supported values are: `allchannels` and `resetchannels`
         """
         return pulumi.get(self, "acl_channels_default")
 
     @acl_channels_default.setter
-    def acl_channels_default(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl_channels_default(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl_channels_default", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterId")
-    def cluster_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the target Redis cluster.
         """
         return pulumi.get(self, "cluster_id")
 
     @cluster_id.setter
-    def cluster_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_id", value)
 
     @_builtins.property
     @pulumi.getter(name="ioThreads")
-    def io_threads(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def io_threads(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Redis IO thread count.
         """
         return pulumi.get(self, "io_threads")
 
     @io_threads.setter
-    def io_threads(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def io_threads(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "io_threads", value)
 
     @_builtins.property
     @pulumi.getter(name="lfuDecayTime")
-    def lfu_decay_time(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lfu_decay_time(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The LFU maxmemory policy counter decay time in minutes.
         """
         return pulumi.get(self, "lfu_decay_time")
 
     @lfu_decay_time.setter
-    def lfu_decay_time(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lfu_decay_time(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lfu_decay_time", value)
 
     @_builtins.property
     @pulumi.getter(name="lfuLogFactor")
-    def lfu_log_factor(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def lfu_log_factor(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The counter logarithm factor for volatile-lfu and allkeys-lfu maxmemory policies.
         """
         return pulumi.get(self, "lfu_log_factor")
 
     @lfu_log_factor.setter
-    def lfu_log_factor(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def lfu_log_factor(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "lfu_log_factor", value)
 
     @_builtins.property
     @pulumi.getter(name="maxmemoryPolicy")
-    def maxmemory_policy(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def maxmemory_policy(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string specifying the desired eviction policy for the Redis cluster.Supported values are: `noeviction`, `allkeys-lru`, `allkeys-random`, `volatile-lru`, `volatile-random`, `volatile-ttl`
         """
         return pulumi.get(self, "maxmemory_policy")
 
     @maxmemory_policy.setter
-    def maxmemory_policy(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def maxmemory_policy(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "maxmemory_policy", value)
 
     @_builtins.property
     @pulumi.getter(name="notifyKeyspaceEvents")
-    def notify_keyspace_events(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def notify_keyspace_events(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The `notify-keyspace-events` option. Requires at least `K` or `E`.
         """
         return pulumi.get(self, "notify_keyspace_events")
 
     @notify_keyspace_events.setter
-    def notify_keyspace_events(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def notify_keyspace_events(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "notify_keyspace_events", value)
 
     @_builtins.property
     @pulumi.getter(name="numberOfDatabases")
-    def number_of_databases(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def number_of_databases(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of Redis databases. Changing this will cause a restart of Redis service.
         """
         return pulumi.get(self, "number_of_databases")
 
     @number_of_databases.setter
-    def number_of_databases(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def number_of_databases(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "number_of_databases", value)
 
     @_builtins.property
     @pulumi.getter
-    def persistence(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def persistence(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         When persistence is `rdb`, Redis does RDB dumps each 10 minutes if any key is changed. Also RDB dumps are done according to backup schedule for backup purposes. When persistence is `off`, no RDB dumps and backups are done, so data can be lost at any moment if service is restarted for any reason, or if service is powered off. Also service can't be forked.
         """
         return pulumi.get(self, "persistence")
 
     @persistence.setter
-    def persistence(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def persistence(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "persistence", value)
 
     @_builtins.property
     @pulumi.getter(name="pubsubClientOutputBufferLimit")
-    def pubsub_client_output_buffer_limit(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def pubsub_client_output_buffer_limit(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The output buffer limit for pub/sub clients in MB. The value is the hard limit, the soft limit is 1/4 of the hard limit. When setting the limit, be mindful of the available memory in the selected service plan.
         """
         return pulumi.get(self, "pubsub_client_output_buffer_limit")
 
     @pubsub_client_output_buffer_limit.setter
-    def pubsub_client_output_buffer_limit(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def pubsub_client_output_buffer_limit(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "pubsub_client_output_buffer_limit", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssl(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ssl(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean indicating whether to require SSL to access Redis.
         - When enabled, Redis accepts only SSL connections on port `25061`.
@@ -409,19 +409,19 @@ class _DatabaseRedisConfigState:
         return pulumi.get(self, "ssl")
 
     @ssl.setter
-    def ssl(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ssl(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ssl", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeout(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def timeout(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The Redis idle connection timeout in seconds.
         """
         return pulumi.get(self, "timeout")
 
     @timeout.setter
-    def timeout(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def timeout(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "timeout", value)
 
 
@@ -431,18 +431,18 @@ class DatabaseRedisConfig(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_channels_default: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_threads: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_decay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_log_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_keyspace_events: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_databases: Optional[pulumi.Input[_builtins.int]] = None,
-                 persistence: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+                 persistence: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         """
         Provides a virtual resource that can be used to change advanced configuration
@@ -556,18 +556,18 @@ class DatabaseRedisConfig(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl_channels_default: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 io_threads: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_decay_time: Optional[pulumi.Input[_builtins.int]] = None,
-                 lfu_log_factor: Optional[pulumi.Input[_builtins.int]] = None,
-                 maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
-                 notify_keyspace_events: Optional[pulumi.Input[_builtins.str]] = None,
-                 number_of_databases: Optional[pulumi.Input[_builtins.int]] = None,
-                 persistence: Optional[pulumi.Input[_builtins.str]] = None,
-                 pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
-                 ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-                 timeout: Optional[pulumi.Input[_builtins.int]] = None,
+                 acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+                 lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+                 maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+                 notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+                 number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+                 persistence: pulumi.Input[Optional[_builtins.str]] = None,
+                 pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+                 ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+                 timeout: pulumi.Input[Optional[_builtins.int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -601,18 +601,18 @@ class DatabaseRedisConfig(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl_channels_default: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_id: Optional[pulumi.Input[_builtins.str]] = None,
-            io_threads: Optional[pulumi.Input[_builtins.int]] = None,
-            lfu_decay_time: Optional[pulumi.Input[_builtins.int]] = None,
-            lfu_log_factor: Optional[pulumi.Input[_builtins.int]] = None,
-            maxmemory_policy: Optional[pulumi.Input[_builtins.str]] = None,
-            notify_keyspace_events: Optional[pulumi.Input[_builtins.str]] = None,
-            number_of_databases: Optional[pulumi.Input[_builtins.int]] = None,
-            persistence: Optional[pulumi.Input[_builtins.str]] = None,
-            pubsub_client_output_buffer_limit: Optional[pulumi.Input[_builtins.int]] = None,
-            ssl: Optional[pulumi.Input[_builtins.bool]] = None,
-            timeout: Optional[pulumi.Input[_builtins.int]] = None) -> 'DatabaseRedisConfig':
+            acl_channels_default: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_id: pulumi.Input[Optional[_builtins.str]] = None,
+            io_threads: pulumi.Input[Optional[_builtins.int]] = None,
+            lfu_decay_time: pulumi.Input[Optional[_builtins.int]] = None,
+            lfu_log_factor: pulumi.Input[Optional[_builtins.int]] = None,
+            maxmemory_policy: pulumi.Input[Optional[_builtins.str]] = None,
+            notify_keyspace_events: pulumi.Input[Optional[_builtins.str]] = None,
+            number_of_databases: pulumi.Input[Optional[_builtins.int]] = None,
+            persistence: pulumi.Input[Optional[_builtins.str]] = None,
+            pubsub_client_output_buffer_limit: pulumi.Input[Optional[_builtins.int]] = None,
+            ssl: pulumi.Input[Optional[_builtins.bool]] = None,
+            timeout: pulumi.Input[Optional[_builtins.int]] = None) -> 'DatabaseRedisConfig':
         """
         Get an existing DatabaseRedisConfig resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

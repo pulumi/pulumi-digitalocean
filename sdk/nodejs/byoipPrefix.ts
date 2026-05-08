@@ -146,32 +146,32 @@ export interface ByoipPrefixState {
      * A boolean indicating whether the prefix should be advertised.
      * Defaults to `false`.
      */
-    advertised?: pulumi.Input<boolean>;
+    advertised?: pulumi.Input<boolean | undefined>;
     /**
      * The reason for failure if the status is "failed".
      */
-    failureReason?: pulumi.Input<string>;
+    failureReason?: pulumi.Input<string | undefined>;
     /**
      * The CIDR notation of the prefix (e.g., "192.0.2.0/24").
      */
-    prefix?: pulumi.Input<string>;
+    prefix?: pulumi.Input<string | undefined>;
     /**
      * The DigitalOcean region where the prefix will be deployed.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The cryptographic signature proving ownership of the prefix.
      * This is required during creation but can be omitted in subsequent updates.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
     /**
      * The current status of the BYOIP prefix (e.g., "verified", "pending", "failed").
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the BYOIP prefix.
      */
-    uuid?: pulumi.Input<string>;
+    uuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -182,7 +182,7 @@ export interface ByoipPrefixArgs {
      * A boolean indicating whether the prefix should be advertised.
      * Defaults to `false`.
      */
-    advertised?: pulumi.Input<boolean>;
+    advertised?: pulumi.Input<boolean | undefined>;
     /**
      * The CIDR notation of the prefix (e.g., "192.0.2.0/24").
      */
@@ -195,5 +195,5 @@ export interface ByoipPrefixArgs {
      * The cryptographic signature proving ownership of the prefix.
      * This is required during creation but can be omitted in subsequent updates.
      */
-    signature?: pulumi.Input<string>;
+    signature?: pulumi.Input<string | undefined>;
 }

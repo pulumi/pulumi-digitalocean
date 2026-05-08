@@ -186,11 +186,11 @@ export interface DatabaseFirewallState {
     /**
      * The ID of the target database cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * A rule specifying a resource allowed to access the database cluster. The following arguments must be specified:
      */
-    rules?: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[]>;
+    rules?: pulumi.Input<pulumi.Input<inputs.DatabaseFirewallRule>[] | undefined>;
 }
 
 /**

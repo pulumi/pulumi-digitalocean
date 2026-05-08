@@ -173,5 +173,5 @@ export interface GetKubernetesVersionsOutputArgs {
     /**
      * If provided, Terraform will only return versions that match the string prefix. For example, `1.15.` will match all 1.15.x series releases.
      */
-    versionPrefix?: pulumi.Input<string>;
+    versionPrefix?: pulumi.Input<string | undefined>;
 }

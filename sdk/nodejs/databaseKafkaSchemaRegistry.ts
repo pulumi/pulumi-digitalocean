@@ -134,19 +134,19 @@ export interface DatabaseKafkaSchemaRegistryState {
     /**
      * The ID of the target Kafka cluster.
      */
-    clusterId?: pulumi.Input<string>;
+    clusterId?: pulumi.Input<string | undefined>;
     /**
      * The schema definition as a string.
      */
-    schema?: pulumi.Input<string>;
+    schema?: pulumi.Input<string | undefined>;
     /**
      * The schema type. Available values are: avro, json, or protobuf.
      */
-    schemaType?: pulumi.Input<string>;
+    schemaType?: pulumi.Input<string | undefined>;
     /**
      * The name of the schema subject.
      */
-    subjectName?: pulumi.Input<string>;
+    subjectName?: pulumi.Input<string | undefined>;
 }
 
 /**

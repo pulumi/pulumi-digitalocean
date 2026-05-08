@@ -98,8 +98,8 @@ def get_genai_knowledge_bases(filters: Optional[Sequence[Union['GetGenaiKnowledg
         id=pulumi.get(__ret__, 'id'),
         knowledge_bases=pulumi.get(__ret__, 'knowledge_bases'),
         sorts=pulumi.get(__ret__, 'sorts'))
-def get_genai_knowledge_bases_output(filters: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict']]]]] = None,
-                                     sorts: Optional[pulumi.Input[Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict']]]]] = None,
+def get_genai_knowledge_bases_output(filters: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesFilterArgs', 'GetGenaiKnowledgeBasesFilterArgsDict']]]]] = None,
+                                     sorts: pulumi.Input[Optional[Optional[Sequence[Union['GetGenaiKnowledgeBasesSortArgs', 'GetGenaiKnowledgeBasesSortArgsDict']]]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiKnowledgeBasesResult]:
     """
     Use this data source to access information about an existing resource.

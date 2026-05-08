@@ -216,47 +216,47 @@ export interface DedicatedInferenceState {
     /**
      * The date and time when the dedicated inference endpoint was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
      */
-    enablePublicEndpoint?: pulumi.Input<boolean>;
+    enablePublicEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * A HuggingFace token for accessing gated models.
      */
-    huggingFaceToken?: pulumi.Input<string>;
+    huggingFaceToken?: pulumi.Input<string | undefined>;
     /**
      * The list of model deployments to run on the dedicated inference endpoint. Each `modelDeployments` block supports:
      */
-    modelDeployments?: pulumi.Input<pulumi.Input<inputs.DedicatedInferenceModelDeployment>[]>;
+    modelDeployments?: pulumi.Input<pulumi.Input<inputs.DedicatedInferenceModelDeployment>[] | undefined>;
     /**
      * A human-readable name for the dedicated inference endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified domain name of the private endpoint.
      */
-    privateEndpointFqdn?: pulumi.Input<string>;
+    privateEndpointFqdn?: pulumi.Input<string | undefined>;
     /**
      * The fully-qualified domain name of the public endpoint, if enabled.
      */
-    publicEndpointFqdn?: pulumi.Input<string>;
+    publicEndpointFqdn?: pulumi.Input<string | undefined>;
     /**
      * The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
      */
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The current status of the dedicated inference endpoint.
      */
-    status?: pulumi.Input<string>;
+    status?: pulumi.Input<string | undefined>;
     /**
      * The date and time when the dedicated inference endpoint was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -266,11 +266,11 @@ export interface DedicatedInferenceArgs {
     /**
      * Whether to enable a public HTTPS endpoint for the dedicated inference endpoint. Defaults to `false`. This field is immutable after creation and changing it forces a new resource.
      */
-    enablePublicEndpoint?: pulumi.Input<boolean>;
+    enablePublicEndpoint?: pulumi.Input<boolean | undefined>;
     /**
      * A HuggingFace token for accessing gated models.
      */
-    huggingFaceToken?: pulumi.Input<string>;
+    huggingFaceToken?: pulumi.Input<string | undefined>;
     /**
      * The list of model deployments to run on the dedicated inference endpoint. Each `modelDeployments` block supports:
      */
@@ -278,7 +278,7 @@ export interface DedicatedInferenceArgs {
     /**
      * A human-readable name for the dedicated inference endpoint.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The region slug where the dedicated inference endpoint will be deployed. Changing this forces a new resource.
      */
@@ -286,5 +286,5 @@ export interface DedicatedInferenceArgs {
     /**
      * The UUID of the VPC to deploy the dedicated inference endpoint into. Changing this forces a new resource.
      */
-    vpcUuid?: pulumi.Input<string>;
+    vpcUuid?: pulumi.Input<string | undefined>;
 }

@@ -116,15 +116,15 @@ export class NfsAttachment extends pulumi.CustomResource {
  * Input properties used for looking up and filtering NfsAttachment resources.
  */
 export interface NfsAttachmentState {
-    region?: pulumi.Input<string>;
+    region?: pulumi.Input<string | undefined>;
     /**
      * The ID of the NFS share to attach.
      */
-    shareId?: pulumi.Input<string>;
+    shareId?: pulumi.Input<string | undefined>;
     /**
      * The ID of the vpc to attach the NFS share to.
      */
-    vpcId?: pulumi.Input<string>;
+    vpcId?: pulumi.Input<string | undefined>;
 }
 
 /**

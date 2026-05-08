@@ -22,13 +22,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DigitalOcean.Index.Vpc("example", new()
+    ///     var example = new DigitalOcean.Vpc("example", new()
     ///     {
     ///         Name = "example-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     var exampleNfs = new DigitalOcean.Index.Nfs("example", new()
+    ///     var exampleNfs = new DigitalOcean.Nfs("example", new()
     ///     {
     ///         Region = "nyc1",
     ///         Name = "example-nfs",
@@ -52,19 +52,19 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var source = new DigitalOcean.Index.Vpc("source", new()
+    ///     var source = new DigitalOcean.Vpc("source", new()
     ///     {
     ///         Name = "source-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     var destination = new DigitalOcean.Index.Vpc("destination", new()
+    ///     var destination = new DigitalOcean.Vpc("destination", new()
     ///     {
     ///         Name = "destination-vpc",
     ///         Region = "nyc1",
     ///     });
     /// 
-    ///     var example = new DigitalOcean.Index.Nfs("example", new()
+    ///     var example = new DigitalOcean.Nfs("example", new()
     ///     {
     ///         Region = "nyc1",
     ///         Name = "example-nfs",
@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Attach to source VPC
-    ///     var sourceNfsAttachment = new DigitalOcean.Index.NfsAttachment("source", new()
+    ///     var sourceNfsAttachment = new DigitalOcean.NfsAttachment("source", new()
     ///     {
     ///         ShareId = example.Id,
     ///         VpcId = source.Id,
@@ -82,7 +82,7 @@ namespace Pulumi.DigitalOcean
     ///     });
     /// 
     ///     // Reassign to destination VPC - uses the efficient Reassign API
-    ///     var destinationNfsAttachment = new DigitalOcean.Index.NfsAttachment("destination", new()
+    ///     var destinationNfsAttachment = new DigitalOcean.NfsAttachment("destination", new()
     ///     {
     ///         ShareId = example.Id,
     ///         VpcId = destination.Id,

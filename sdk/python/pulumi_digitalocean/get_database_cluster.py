@@ -419,8 +419,8 @@ def get_database_cluster(name: Optional[_builtins.str] = None,
         urn=pulumi.get(__ret__, 'urn'),
         user=pulumi.get(__ret__, 'user'),
         version=pulumi.get(__ret__, 'version'))
-def get_database_cluster_output(name: Optional[pulumi.Input[_builtins.str]] = None,
-                                tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_database_cluster_output(name: pulumi.Input[Optional[_builtins.str]] = None,
+                                tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseClusterResult]:
     """
     Provides information on a DigitalOcean database cluster resource.

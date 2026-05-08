@@ -22,13 +22,13 @@ __all__ = ['SpacesBucketArgs', 'SpacesBucket']
 @pulumi.input_type
 class SpacesBucketArgs:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 versioning: pulumi.Input[Optional['SpacesBucketVersioningArgs']] = None):
         """
         The set of arguments for constructing a SpacesBucket resource.
 
@@ -60,103 +60,103 @@ class SpacesBucketArgs:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
     @_utilities.deprecated("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]:
         """
         A configuration of object lifecycle management (documented below).
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['SpacesBucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['SpacesBucketVersioningArgs']]:
         """
         A state of versioning (documented below)
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['SpacesBucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['SpacesBucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
 
 @pulumi.input_type
 class _SpacesBucketState:
     def __init__(__self__, *,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 bucket_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input['SpacesBucketVersioningArgs']] = None):
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 bucket_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 versioning: pulumi.Input[Optional['SpacesBucketVersioningArgs']] = None):
         """
         Input properties used for looking up and filtering SpacesBucket resources.
 
@@ -197,123 +197,123 @@ class _SpacesBucketState:
 
     @_builtins.property
     @pulumi.getter
-    def acl(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def acl(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Canned ACL applied on bucket creation: `private` or `public-read` (Defaults to `private`)
         """
         return pulumi.get(self, "acl")
 
     @acl.setter
-    def acl(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def acl(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "acl", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketDomainName")
-    def bucket_domain_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_domain_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FQDN of the bucket (e.g. bucket-name.nyc3.digitaloceanspaces.com)
         """
         return pulumi.get(self, "bucket_domain_name")
 
     @bucket_domain_name.setter
-    def bucket_domain_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_domain_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_domain_name", value)
 
     @_builtins.property
     @pulumi.getter(name="bucketUrn")
-    def bucket_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def bucket_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name for the bucket
         """
         return pulumi.get(self, "bucket_urn")
 
     @bucket_urn.setter
-    def bucket_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def bucket_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "bucket_urn", value)
 
     @_builtins.property
     @pulumi.getter(name="corsRules")
     @_utilities.deprecated("""Terraform will only perform drift detection if a configuration value is provided. Use the resource `SpacesBucketCorsConfiguration` instead.""")
-    def cors_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]:
+    def cors_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]:
         """
         A rule of Cross-Origin Resource Sharing (documented below).
         """
         return pulumi.get(self, "cors_rules")
 
     @cors_rules.setter
-    def cors_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]):
+    def cors_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketCorsRuleArgs']]]]):
         pulumi.set(self, "cors_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The FQDN of the bucket without the bucket name (e.g. nyc3.digitaloceanspaces.com)
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter(name="forceDestroy")
-    def force_destroy(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def force_destroy(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Unless `true`, the bucket will only be destroyed if empty (Defaults to `false`)
         """
         return pulumi.get(self, "force_destroy")
 
     @force_destroy.setter
-    def force_destroy(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def force_destroy(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "force_destroy", value)
 
     @_builtins.property
     @pulumi.getter(name="lifecycleRules")
-    def lifecycle_rules(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]:
+    def lifecycle_rules(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]:
         """
         A configuration of object lifecycle management (documented below).
         """
         return pulumi.get(self, "lifecycle_rules")
 
     @lifecycle_rules.setter
-    def lifecycle_rules(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]):
+    def lifecycle_rules(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['SpacesBucketLifecycleRuleArgs']]]]):
         pulumi.set(self, "lifecycle_rules", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name of the bucket
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The region where the bucket resides (Defaults to `nyc3`)
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter
-    def versioning(self) -> Optional[pulumi.Input['SpacesBucketVersioningArgs']]:
+    def versioning(self) -> pulumi.Input[Optional['SpacesBucketVersioningArgs']]:
         """
         A state of versioning (documented below)
         """
         return pulumi.get(self, "versioning")
 
     @versioning.setter
-    def versioning(self, value: Optional[pulumi.Input['SpacesBucketVersioningArgs']]):
+    def versioning(self, value: pulumi.Input[Optional['SpacesBucketVersioningArgs']]):
         pulumi.set(self, "versioning", value)
 
 
@@ -323,13 +323,13 @@ class SpacesBucket(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 versioning: pulumi.Input[Optional[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
                  __props__=None):
         """
         Provides a bucket resource for Spaces, DigitalOcean's object storage product.
@@ -512,13 +512,13 @@ class SpacesBucket(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 acl: Optional[pulumi.Input[_builtins.str]] = None,
-                 cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
-                 force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-                 lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
+                 acl: pulumi.Input[Optional[_builtins.str]] = None,
+                 cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
+                 force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+                 lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 versioning: pulumi.Input[Optional[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -548,16 +548,16 @@ class SpacesBucket(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            acl: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_domain_name: Optional[pulumi.Input[_builtins.str]] = None,
-            bucket_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            cors_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            force_destroy: Optional[pulumi.Input[_builtins.bool]] = None,
-            lifecycle_rules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            versioning: Optional[pulumi.Input[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None) -> 'SpacesBucket':
+            acl: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            bucket_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            cors_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketCorsRuleArgs', 'SpacesBucketCorsRuleArgsDict']]]]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            force_destroy: pulumi.Input[Optional[_builtins.bool]] = None,
+            lifecycle_rules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SpacesBucketLifecycleRuleArgs', 'SpacesBucketLifecycleRuleArgsDict']]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            versioning: pulumi.Input[Optional[Union['SpacesBucketVersioningArgs', 'SpacesBucketVersioningArgsDict']]] = None) -> 'SpacesBucket':
         """
         Get an existing SpacesBucket resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

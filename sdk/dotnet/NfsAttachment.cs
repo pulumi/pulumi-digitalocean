@@ -22,13 +22,13 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DigitalOcean.Index.Vpc("foobar", new()
+    ///     var foobar = new DigitalOcean.Vpc("foobar", new()
     ///     {
     ///         Name = "example-vpc",
     ///         Region = "atl1",
     ///     });
     /// 
-    ///     var foobarNfs = new DigitalOcean.Index.Nfs("foobar", new()
+    ///     var foobarNfs = new DigitalOcean.Nfs("foobar", new()
     ///     {
     ///         Region = "atl1",
     ///         Name = "example-nfs",
@@ -37,7 +37,7 @@ namespace Pulumi.DigitalOcean
     ///         PerformanceTier = "high",
     ///     });
     /// 
-    ///     var foobarNfsAttachment = new DigitalOcean.Index.NfsAttachment("foobar", new()
+    ///     var foobarNfsAttachment = new DigitalOcean.NfsAttachment("foobar", new()
     ///     {
     ///         ShareId = foobarNfs.Id,
     ///         VpcId = foobar.Id,

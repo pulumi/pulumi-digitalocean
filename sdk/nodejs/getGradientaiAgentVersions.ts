@@ -52,6 +52,6 @@ export function getGradientaiAgentVersionsOutput(args: GetGradientaiAgentVersion
  */
 export interface GetGradientaiAgentVersionsOutputArgs {
     agentId: pulumi.Input<string>;
-    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentVersionsFilterArgs>[]>;
-    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentVersionsSortArgs>[]>;
+    filters?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentVersionsFilterArgs>[] | undefined>;
+    sorts?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentVersionsSortArgs>[] | undefined>;
 }

@@ -152,30 +152,30 @@ export function getGradientaiAgentOutput(args: GetGradientaiAgentOutputArgs, opt
  * A collection of arguments for invoking getGradientaiAgent.
  */
 export interface GetGradientaiAgentOutputArgs {
-    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentAgentGuardrailArgs>[]>;
+    agentGuardrails?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentAgentGuardrailArgs>[] | undefined>;
     agentId: pulumi.Input<string>;
-    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentAnthropicApiKeyArgs>[]>;
-    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentApiKeyInfoArgs>[]>;
-    apiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentApiKeyArgs>[]>;
-    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentChatbotIdentifierArgs>[]>;
-    chatbots?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentChatbotArgs>[]>;
-    deployments?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentDeploymentArgs>[]>;
-    description?: pulumi.Input<string>;
-    functions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentFunctionArgs>[]>;
-    ifCase?: pulumi.Input<string>;
-    k?: pulumi.Input<number>;
-    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentKnowledgeBaseArgs>[]>;
-    maxTokens?: pulumi.Input<number>;
-    models?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelArgs>[]>;
-    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentOpenAiApiKeyArgs>[]>;
-    retrievalMethod?: pulumi.Input<string>;
-    routeCreatedBy?: pulumi.Input<string>;
-    routeName?: pulumi.Input<string>;
-    routeUuid?: pulumi.Input<string>;
-    tags?: pulumi.Input<pulumi.Input<string>[]>;
-    temperature?: pulumi.Input<number>;
-    templates?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateArgs>[]>;
-    topP?: pulumi.Input<number>;
-    url?: pulumi.Input<string>;
-    userId?: pulumi.Input<string>;
+    anthropicApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentAnthropicApiKeyArgs>[] | undefined>;
+    apiKeyInfos?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentApiKeyInfoArgs>[] | undefined>;
+    apiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentApiKeyArgs>[] | undefined>;
+    chatbotIdentifiers?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentChatbotIdentifierArgs>[] | undefined>;
+    chatbots?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentChatbotArgs>[] | undefined>;
+    deployments?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentDeploymentArgs>[] | undefined>;
+    description?: pulumi.Input<string | undefined>;
+    functions?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentFunctionArgs>[] | undefined>;
+    ifCase?: pulumi.Input<string | undefined>;
+    k?: pulumi.Input<number | undefined>;
+    knowledgeBases?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentKnowledgeBaseArgs>[] | undefined>;
+    maxTokens?: pulumi.Input<number | undefined>;
+    models?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentModelArgs>[] | undefined>;
+    openAiApiKeys?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentOpenAiApiKeyArgs>[] | undefined>;
+    retrievalMethod?: pulumi.Input<string | undefined>;
+    routeCreatedBy?: pulumi.Input<string | undefined>;
+    routeName?: pulumi.Input<string | undefined>;
+    routeUuid?: pulumi.Input<string | undefined>;
+    tags?: pulumi.Input<pulumi.Input<string>[] | undefined>;
+    temperature?: pulumi.Input<number | undefined>;
+    templates?: pulumi.Input<pulumi.Input<inputs.GetGradientaiAgentTemplateArgs>[] | undefined>;
+    topP?: pulumi.Input<number | undefined>;
+    url?: pulumi.Input<string | undefined>;
+    userId?: pulumi.Input<string | undefined>;
 }

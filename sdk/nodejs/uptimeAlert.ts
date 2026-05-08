@@ -128,31 +128,31 @@ export interface UptimeAlertState {
     /**
      * A unique identifier for a check
      */
-    checkId?: pulumi.Input<string>;
+    checkId?: pulumi.Input<string | undefined>;
     /**
      * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly display name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification settings for a trigger alert.
      */
-    notifications?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotification>[]>;
+    notifications?: pulumi.Input<pulumi.Input<inputs.UptimeAlertNotification>[] | undefined>;
     /**
      * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -166,11 +166,11 @@ export interface UptimeAlertArgs {
     /**
      * The comparison operator used against the alert's threshold. Must be one of `greaterThan` or `lessThan`.
      */
-    comparison?: pulumi.Input<string>;
+    comparison?: pulumi.Input<string | undefined>;
     /**
      * A human-friendly display name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The notification settings for a trigger alert.
      */
@@ -178,11 +178,11 @@ export interface UptimeAlertArgs {
     /**
      * Period of time the threshold must be exceeded to trigger the alert. Must be one of `2m`, `3m`, `5m`, `10m`, `15m`, `30m` or `1h`.
      */
-    period?: pulumi.Input<string>;
+    period?: pulumi.Input<string | undefined>;
     /**
      * The threshold at which the alert will enter a trigger state. The specific threshold is dependent on the alert type.
      */
-    threshold?: pulumi.Input<number>;
+    threshold?: pulumi.Input<number | undefined>;
     /**
      * The type of health check to perform. Must be one of `latency`, `down`, `downGlobal` or `sslExpiry`.
      */

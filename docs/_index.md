@@ -91,7 +91,7 @@ return await Deployment.RunAsync(() =>
     var config = new Config();
     var doToken = config.RequireObject<dynamic>("doToken");
     // Create a web server
-    var web = new DigitalOcean.Index.Droplet("web");
+    var web = new DigitalOcean.Droplet("web");
 
 });
 
@@ -150,7 +150,7 @@ configuration:
   # Set the variable value in *.tfvars file
   # or using -var="do_token=..." CLI option
   doToken:
-    type: dynamic
+    type: object
 resources:
   # Create a web server
   web:
@@ -176,8 +176,8 @@ import com.pulumi.Context;
 import com.pulumi.Pulumi;
 import com.pulumi.core.Output;
 import com.pulumi.digitalocean.Droplet;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Map;
 import java.io.File;
 import java.nio.file.Files;

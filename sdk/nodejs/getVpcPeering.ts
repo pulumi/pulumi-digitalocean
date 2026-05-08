@@ -212,13 +212,13 @@ export interface GetVpcPeeringOutputArgs {
     /**
      * The unique identifier of an existing VPC Peering.
      */
-    id?: pulumi.Input<string>;
+    id?: pulumi.Input<string | undefined>;
     /**
      * The name of an existing VPC Peering.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The list of VPC IDs involved in the peering.
      */
-    vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
+    vpcIds?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }

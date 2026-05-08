@@ -158,8 +158,8 @@ def get_droplet_autoscale(id: Optional[_builtins.str] = None,
         name=pulumi.get(__ret__, 'name'),
         status=pulumi.get(__ret__, 'status'),
         updated_at=pulumi.get(__ret__, 'updated_at'))
-def get_droplet_autoscale_output(id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                 name: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_droplet_autoscale_output(id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                 name: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDropletAutoscaleResult]:
     """
     Get information on a Droplet Autoscale pool for use with other managed resources. This datasource provides all the

@@ -25,26 +25,26 @@ class KubernetesClusterArgs:
                  node_pool: pulumi.Input['KubernetesClusterNodePoolArgs'],
                  region: pulumi.Input[Union[_builtins.str, 'Region']],
                  version: pulumi.Input[_builtins.str],
-                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
-                 amd_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
-                 cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
-                 destroy_all_associated_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 nvidia_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
-                 rdma_shared_device_plugin: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
-                 registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
-                 service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
-                 surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
+                 cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_firewall: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']] = None,
+                 destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
+                 registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing_agent: pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']] = None,
+                 service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
+                 surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a KubernetesCluster resource.
 
@@ -152,272 +152,272 @@ class KubernetesClusterArgs:
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
-    def amd_gpu_device_metrics_exporter_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
+    def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
         """
         Block containing options for the AMD GPU device metrics exporter component.
         """
         return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
 
     @amd_gpu_device_metrics_exporter_plugin.setter
-    def amd_gpu_device_metrics_exporter_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
+    def amd_gpu_device_metrics_exporter_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
         pulumi.set(self, "amd_gpu_device_metrics_exporter_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDevicePlugin")
-    def amd_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]:
+    def amd_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]:
         """
         Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         """
         return pulumi.get(self, "amd_gpu_device_plugin")
 
     @amd_gpu_device_plugin.setter
-    def amd_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]):
+    def amd_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]):
         pulumi.set(self, "amd_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         """
         return pulumi.get(self, "auto_upgrade")
 
     @auto_upgrade.setter
-    def auto_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAutoscalerConfigurations")
-    def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+    def cluster_autoscaler_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
         """
         Block containing options for cluster auto-scaling.
         """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @cluster_autoscaler_configurations.setter
-    def cluster_autoscaler_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
+    def cluster_autoscaler_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
         pulumi.set(self, "cluster_autoscaler_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSubnet")
-    def cluster_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "cluster_subnet")
 
     @cluster_subnet.setter
-    def cluster_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneFirewall")
-    def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+    def control_plane_firewall(self) -> pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]:
         """
         A block representing the cluster's control plane firewall
         """
         return pulumi.get(self, "control_plane_firewall")
 
     @control_plane_firewall.setter
-    def control_plane_firewall(self, value: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]):
+    def control_plane_firewall(self, value: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]):
         pulumi.set(self, "control_plane_firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyAllAssociatedResources")
-    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def destroy_all_associated_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         """
         return pulumi.get(self, "destroy_all_associated_resources")
 
     @destroy_all_associated_resources.setter
-    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def destroy_all_associated_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "destroy_all_associated_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeconfigExpireSeconds")
-    def kubeconfig_expire_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kubeconfig_expire_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         """
         return pulumi.get(self, "kubeconfig_expire_seconds")
 
     @kubeconfig_expire_seconds.setter
-    def kubeconfig_expire_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kubeconfig_expire_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kubeconfig_expire_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']]:
         """
         A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         """
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
-    def nvidia_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
+    def nvidia_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
         """
         Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         """
         return pulumi.get(self, "nvidia_gpu_device_plugin")
 
     @nvidia_gpu_device_plugin.setter
-    def nvidia_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
+    def nvidia_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
         pulumi.set(self, "nvidia_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
-    def rdma_shared_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+    def rdma_shared_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]:
         return pulumi.get(self, "rdma_shared_device_plugin")
 
     @rdma_shared_device_plugin.setter
-    def rdma_shared_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]):
+    def rdma_shared_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]):
         pulumi.set(self, "rdma_shared_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="registryIntegration")
-    def registry_integration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def registry_integration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         """
         return pulumi.get(self, "registry_integration")
 
     @registry_integration.setter
-    def registry_integration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def registry_integration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "registry_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="routingAgent")
-    def routing_agent(self) -> Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']]:
+    def routing_agent(self) -> pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']]:
         """
         Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         """
         return pulumi.get(self, "routing_agent")
 
     @routing_agent.setter
-    def routing_agent(self, value: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']]):
+    def routing_agent(self, value: pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']]):
         pulumi.set(self, "routing_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceSubnet")
-    def service_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "service_subnet")
 
     @service_subnet.setter
-    def service_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+    def ssos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
         return pulumi.get(self, "ssos")
 
     @ssos.setter
-    def ssos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
+    def ssos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
         pulumi.set(self, "ssos", value)
 
     @_builtins.property
     @pulumi.getter(name="surgeUpgrade")
-    def surge_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def surge_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable surge upgrades for a cluster. Default: true
         """
         return pulumi.get(self, "surge_upgrade")
 
     @surge_upgrade.setter
-    def surge_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def surge_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "surge_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the Kubernetes cluster will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
 @pulumi.input_type
 class _KubernetesClusterState:
     def __init__(__self__, *,
-                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
-                 amd_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
-                 cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 cluster_urn: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_firewall: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 destroy_all_associated_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-                 kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
-                 kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintenance_policy: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']] = None,
-                 nvidia_gpu_device_plugin: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
-                 rdma_shared_device_plugin: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing_agent: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']] = None,
-                 service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
-                 status: Optional[pulumi.Input[_builtins.str]] = None,
-                 surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None):
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]] = None,
+                 cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_firewall: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+                 kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]] = None,
+                 kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintenance_policy: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool: pulumi.Input[Optional['KubernetesClusterNodePoolArgs']] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing_agent: pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']] = None,
+                 service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]] = None,
+                 status: pulumi.Input[Optional[_builtins.str]] = None,
+                 surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering KubernetesCluster resources.
 
@@ -513,356 +513,356 @@ class _KubernetesClusterState:
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDeviceMetricsExporterPlugin")
-    def amd_gpu_device_metrics_exporter_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
+    def amd_gpu_device_metrics_exporter_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]:
         """
         Block containing options for the AMD GPU device metrics exporter component.
         """
         return pulumi.get(self, "amd_gpu_device_metrics_exporter_plugin")
 
     @amd_gpu_device_metrics_exporter_plugin.setter
-    def amd_gpu_device_metrics_exporter_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
+    def amd_gpu_device_metrics_exporter_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs']]):
         pulumi.set(self, "amd_gpu_device_metrics_exporter_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="amdGpuDevicePlugin")
-    def amd_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]:
+    def amd_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]:
         """
         Block containing options for the AMD GPU device plugin component. If not specified, the component will be enabled by default for clusters with AMD GPU nodes.
         """
         return pulumi.get(self, "amd_gpu_device_plugin")
 
     @amd_gpu_device_plugin.setter
-    def amd_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterAmdGpuDevicePluginArgs']]):
+    def amd_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterAmdGpuDevicePluginArgs']]):
         pulumi.set(self, "amd_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="autoUpgrade")
-    def auto_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         A boolean value indicating whether the cluster will be automatically upgraded to new patch releases during its maintenance window.
         """
         return pulumi.get(self, "auto_upgrade")
 
     @auto_upgrade.setter
-    def auto_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_upgrade", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterAutoscalerConfigurations")
-    def cluster_autoscaler_configurations(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
+    def cluster_autoscaler_configurations(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]:
         """
         Block containing options for cluster auto-scaling.
         """
         return pulumi.get(self, "cluster_autoscaler_configurations")
 
     @cluster_autoscaler_configurations.setter
-    def cluster_autoscaler_configurations(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
+    def cluster_autoscaler_configurations(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterClusterAutoscalerConfigurationArgs']]]]):
         pulumi.set(self, "cluster_autoscaler_configurations", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterSubnet")
-    def cluster_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of IP addresses in the overlay network of the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "cluster_subnet")
 
     @cluster_subnet.setter
-    def cluster_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_subnet", value)
 
     @_builtins.property
     @pulumi.getter(name="clusterUrn")
-    def cluster_urn(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def cluster_urn(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The uniform resource name (URN) for the Kubernetes cluster.
         """
         return pulumi.get(self, "cluster_urn")
 
     @cluster_urn.setter
-    def cluster_urn(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def cluster_urn(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "cluster_urn", value)
 
     @_builtins.property
     @pulumi.getter(name="controlPlaneFirewall")
-    def control_plane_firewall(self) -> Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]:
+    def control_plane_firewall(self) -> pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]:
         """
         A block representing the cluster's control plane firewall
         """
         return pulumi.get(self, "control_plane_firewall")
 
     @control_plane_firewall.setter
-    def control_plane_firewall(self, value: Optional[pulumi.Input['KubernetesClusterControlPlaneFirewallArgs']]):
+    def control_plane_firewall(self, value: pulumi.Input[Optional['KubernetesClusterControlPlaneFirewallArgs']]):
         pulumi.set(self, "control_plane_firewall", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the node was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter(name="destroyAllAssociatedResources")
-    def destroy_all_associated_resources(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def destroy_all_associated_resources(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         **Use with caution.** When set to true, all associated DigitalOcean resources created via the Kubernetes API (load balancers, volumes, and volume snapshots) will be destroyed along with the cluster when it is destroyed.
         """
         return pulumi.get(self, "destroy_all_associated_resources")
 
     @destroy_all_associated_resources.setter
-    def destroy_all_associated_resources(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def destroy_all_associated_resources(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "destroy_all_associated_resources", value)
 
     @_builtins.property
     @pulumi.getter
-    def endpoint(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def endpoint(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The base URL of the API server on the Kubernetes master node.
         """
         return pulumi.get(self, "endpoint")
 
     @endpoint.setter
-    def endpoint(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def endpoint(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "endpoint", value)
 
     @_builtins.property
     @pulumi.getter
-    def ha(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def ha(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable the high availability control plane for a cluster. Once enabled for a cluster, high availability cannot be disabled. Default: false
         """
         return pulumi.get(self, "ha")
 
     @ha.setter
-    def ha(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def ha(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "ha", value)
 
     @_builtins.property
     @pulumi.getter(name="ipv4Address")
-    def ipv4_address(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def ipv4_address(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The public IPv4 address of the Kubernetes master node. This will not be set if high availability is configured on the cluster (v1.21+)
         """
         return pulumi.get(self, "ipv4_address")
 
     @ipv4_address.setter
-    def ipv4_address(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def ipv4_address(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "ipv4_address", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeConfigs")
-    def kube_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]:
+    def kube_configs(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]:
         """
         A representation of the Kubernetes cluster's kubeconfig with the following attributes:
         """
         return pulumi.get(self, "kube_configs")
 
     @kube_configs.setter
-    def kube_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]):
+    def kube_configs(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterKubeConfigArgs']]]]):
         pulumi.set(self, "kube_configs", value)
 
     @_builtins.property
     @pulumi.getter(name="kubeconfigExpireSeconds")
-    def kubeconfig_expire_seconds(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def kubeconfig_expire_seconds(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The duration in seconds that the returned Kubernetes credentials will be valid. If not set or 0, the credentials will have a 7 day expiry.
         """
         return pulumi.get(self, "kubeconfig_expire_seconds")
 
     @kubeconfig_expire_seconds.setter
-    def kubeconfig_expire_seconds(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def kubeconfig_expire_seconds(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "kubeconfig_expire_seconds", value)
 
     @_builtins.property
     @pulumi.getter(name="maintenancePolicy")
-    def maintenance_policy(self) -> Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]:
+    def maintenance_policy(self) -> pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']]:
         """
         A block representing the cluster's maintenance window. Updates will be applied within this window. If not specified, a default maintenance window will be chosen. `auto_upgrade` must be set to `true` for this to have an effect.
         """
         return pulumi.get(self, "maintenance_policy")
 
     @maintenance_policy.setter
-    def maintenance_policy(self, value: Optional[pulumi.Input['KubernetesClusterMaintenancePolicyArgs']]):
+    def maintenance_policy(self, value: pulumi.Input[Optional['KubernetesClusterMaintenancePolicyArgs']]):
         pulumi.set(self, "maintenance_policy", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A name for the Kubernetes cluster.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="nodePool")
-    def node_pool(self) -> Optional[pulumi.Input['KubernetesClusterNodePoolArgs']]:
+    def node_pool(self) -> pulumi.Input[Optional['KubernetesClusterNodePoolArgs']]:
         """
         A block representing the cluster's default node pool. Additional node pools may be added to the cluster using the `KubernetesNodePool` resource. The following arguments may be specified:
         """
         return pulumi.get(self, "node_pool")
 
     @node_pool.setter
-    def node_pool(self, value: Optional[pulumi.Input['KubernetesClusterNodePoolArgs']]):
+    def node_pool(self, value: pulumi.Input[Optional['KubernetesClusterNodePoolArgs']]):
         pulumi.set(self, "node_pool", value)
 
     @_builtins.property
     @pulumi.getter(name="nvidiaGpuDevicePlugin")
-    def nvidia_gpu_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
+    def nvidia_gpu_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]:
         """
         Block containing options for the NVIDIA GPU device plugin component. If not specified, the component will be enabled by default for clusters with NVIDIA GPU nodes.
         """
         return pulumi.get(self, "nvidia_gpu_device_plugin")
 
     @nvidia_gpu_device_plugin.setter
-    def nvidia_gpu_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
+    def nvidia_gpu_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterNvidiaGpuDevicePluginArgs']]):
         pulumi.set(self, "nvidia_gpu_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter(name="rdmaSharedDevicePlugin")
-    def rdma_shared_device_plugin(self) -> Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]:
+    def rdma_shared_device_plugin(self) -> pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]:
         return pulumi.get(self, "rdma_shared_device_plugin")
 
     @rdma_shared_device_plugin.setter
-    def rdma_shared_device_plugin(self, value: Optional[pulumi.Input['KubernetesClusterRdmaSharedDevicePluginArgs']]):
+    def rdma_shared_device_plugin(self, value: pulumi.Input[Optional['KubernetesClusterRdmaSharedDevicePluginArgs']]):
         pulumi.set(self, "rdma_shared_device_plugin", value)
 
     @_builtins.property
     @pulumi.getter
-    def region(self) -> Optional[pulumi.Input[Union[_builtins.str, 'Region']]]:
+    def region(self) -> pulumi.Input[Optional[Union[_builtins.str, 'Region']]]:
         """
         The slug identifier for the region where the Kubernetes cluster will be created.
         """
         return pulumi.get(self, "region")
 
     @region.setter
-    def region(self, value: Optional[pulumi.Input[Union[_builtins.str, 'Region']]]):
+    def region(self, value: pulumi.Input[Optional[Union[_builtins.str, 'Region']]]):
         pulumi.set(self, "region", value)
 
     @_builtins.property
     @pulumi.getter(name="registryIntegration")
-    def registry_integration(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def registry_integration(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enables or disables the DigitalOcean container registry integration for the cluster. This requires that a container registry has first been created for the account. Default: false
         """
         return pulumi.get(self, "registry_integration")
 
     @registry_integration.setter
-    def registry_integration(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def registry_integration(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "registry_integration", value)
 
     @_builtins.property
     @pulumi.getter(name="routingAgent")
-    def routing_agent(self) -> Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']]:
+    def routing_agent(self) -> pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']]:
         """
         Block containing options for the routing-agent component. If not specified, the routing-agent component will not be installed in the cluster.
         """
         return pulumi.get(self, "routing_agent")
 
     @routing_agent.setter
-    def routing_agent(self, value: Optional[pulumi.Input['KubernetesClusterRoutingAgentArgs']]):
+    def routing_agent(self, value: pulumi.Input[Optional['KubernetesClusterRoutingAgentArgs']]):
         pulumi.set(self, "routing_agent", value)
 
     @_builtins.property
     @pulumi.getter(name="serviceSubnet")
-    def service_subnet(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def service_subnet(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The range of assignable IP addresses for services running in the Kubernetes cluster. For more information, see [here](https://docs.digitalocean.com/products/kubernetes/how-to/create-clusters/#create-with-vpc-native).
         """
         return pulumi.get(self, "service_subnet")
 
     @service_subnet.setter
-    def service_subnet(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def service_subnet(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "service_subnet", value)
 
     @_builtins.property
     @pulumi.getter
-    def ssos(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
+    def ssos(self) -> pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]:
         return pulumi.get(self, "ssos")
 
     @ssos.setter
-    def ssos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
+    def ssos(self, value: pulumi.Input[Optional[Sequence[pulumi.Input['KubernetesClusterSsoArgs']]]]):
         pulumi.set(self, "ssos", value)
 
     @_builtins.property
     @pulumi.getter
-    def status(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def status(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A string indicating the current status of the individual node.
         """
         return pulumi.get(self, "status")
 
     @status.setter
-    def status(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def status(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "status", value)
 
     @_builtins.property
     @pulumi.getter(name="surgeUpgrade")
-    def surge_upgrade(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def surge_upgrade(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Enable/disable surge upgrades for a cluster. Default: true
         """
         return pulumi.get(self, "surge_upgrade")
 
     @surge_upgrade.setter
-    def surge_upgrade(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def surge_upgrade(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "surge_upgrade", value)
 
     @_builtins.property
     @pulumi.getter
-    def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def tags(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         A list of tag names to be applied to the Kubernetes cluster.
         """
         return pulumi.get(self, "tags")
 
     @tags.setter
-    def tags(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def tags(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "tags", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The date and time when the node was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def version(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def version(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The slug identifier for the version of Kubernetes used for the cluster. Use [doctl](https://github.com/digitalocean/doctl) to find the available versions `doctl kubernetes options versions`. (**Note:** A cluster may only be upgraded to newer versions in-place. If the version is decreased, a new resource will be created.)
         """
         return pulumi.get(self, "version")
 
     @version.setter
-    def version(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def version(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "version", value)
 
     @_builtins.property
     @pulumi.getter(name="vpcUuid")
-    def vpc_uuid(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def vpc_uuid(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The ID of the VPC where the Kubernetes cluster will be located.
         """
         return pulumi.get(self, "vpc_uuid")
 
     @vpc_uuid.setter
-    def vpc_uuid(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def vpc_uuid(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "vpc_uuid", value)
 
 
@@ -872,29 +872,29 @@ class KubernetesCluster(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-                 amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
-                 cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-                 destroy_all_associated_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-                 nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-                 rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
-                 service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
-                 surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                 cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+                 destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+                 service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+                 surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DigitalOcean Kubernetes cluster resource. This can be used to create, delete, and modify clusters. For more information see the [official documentation](https://www.digitalocean.com/docs/kubernetes/).
@@ -1213,29 +1213,29 @@ class KubernetesCluster(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-                 amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-                 auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
-                 cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-                 destroy_all_associated_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-                 ha: Optional[pulumi.Input[_builtins.bool]] = None,
-                 kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-                 maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-                 nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-                 rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
-                 region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-                 registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-                 routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
-                 service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-                 ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
-                 surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-                 tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 version: Optional[pulumi.Input[_builtins.str]] = None,
-                 vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+                 amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+                 amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+                 auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+                 cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+                 destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+                 ha: pulumi.Input[Optional[_builtins.bool]] = None,
+                 kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+                 maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+                 nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+                 rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+                 region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+                 registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+                 routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+                 service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+                 ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+                 surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+                 tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 version: pulumi.Input[Optional[_builtins.str]] = None,
+                 vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1293,36 +1293,36 @@ class KubernetesCluster(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            amd_gpu_device_metrics_exporter_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
-            amd_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
-            auto_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-            cluster_autoscaler_configurations: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
-            cluster_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            cluster_urn: Optional[pulumi.Input[_builtins.str]] = None,
-            control_plane_firewall: Optional[pulumi.Input[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            destroy_all_associated_resources: Optional[pulumi.Input[_builtins.bool]] = None,
-            endpoint: Optional[pulumi.Input[_builtins.str]] = None,
-            ha: Optional[pulumi.Input[_builtins.bool]] = None,
-            ipv4_address: Optional[pulumi.Input[_builtins.str]] = None,
-            kube_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]]] = None,
-            kubeconfig_expire_seconds: Optional[pulumi.Input[_builtins.int]] = None,
-            maintenance_policy: Optional[pulumi.Input[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            node_pool: Optional[pulumi.Input[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
-            nvidia_gpu_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
-            rdma_shared_device_plugin: Optional[pulumi.Input[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
-            region: Optional[pulumi.Input[Union[_builtins.str, 'Region']]] = None,
-            registry_integration: Optional[pulumi.Input[_builtins.bool]] = None,
-            routing_agent: Optional[pulumi.Input[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
-            service_subnet: Optional[pulumi.Input[_builtins.str]] = None,
-            ssos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
-            status: Optional[pulumi.Input[_builtins.str]] = None,
-            surge_upgrade: Optional[pulumi.Input[_builtins.bool]] = None,
-            tags: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            version: Optional[pulumi.Input[_builtins.str]] = None,
-            vpc_uuid: Optional[pulumi.Input[_builtins.str]] = None) -> 'KubernetesCluster':
+            amd_gpu_device_metrics_exporter_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgs', 'KubernetesClusterAmdGpuDeviceMetricsExporterPluginArgsDict']]] = None,
+            amd_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterAmdGpuDevicePluginArgs', 'KubernetesClusterAmdGpuDevicePluginArgsDict']]] = None,
+            auto_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            cluster_autoscaler_configurations: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterClusterAutoscalerConfigurationArgs', 'KubernetesClusterClusterAutoscalerConfigurationArgsDict']]]]] = None,
+            cluster_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            cluster_urn: pulumi.Input[Optional[_builtins.str]] = None,
+            control_plane_firewall: pulumi.Input[Optional[Union['KubernetesClusterControlPlaneFirewallArgs', 'KubernetesClusterControlPlaneFirewallArgsDict']]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            destroy_all_associated_resources: pulumi.Input[Optional[_builtins.bool]] = None,
+            endpoint: pulumi.Input[Optional[_builtins.str]] = None,
+            ha: pulumi.Input[Optional[_builtins.bool]] = None,
+            ipv4_address: pulumi.Input[Optional[_builtins.str]] = None,
+            kube_configs: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterKubeConfigArgs', 'KubernetesClusterKubeConfigArgsDict']]]]] = None,
+            kubeconfig_expire_seconds: pulumi.Input[Optional[_builtins.int]] = None,
+            maintenance_policy: pulumi.Input[Optional[Union['KubernetesClusterMaintenancePolicyArgs', 'KubernetesClusterMaintenancePolicyArgsDict']]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            node_pool: pulumi.Input[Optional[Union['KubernetesClusterNodePoolArgs', 'KubernetesClusterNodePoolArgsDict']]] = None,
+            nvidia_gpu_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterNvidiaGpuDevicePluginArgs', 'KubernetesClusterNvidiaGpuDevicePluginArgsDict']]] = None,
+            rdma_shared_device_plugin: pulumi.Input[Optional[Union['KubernetesClusterRdmaSharedDevicePluginArgs', 'KubernetesClusterRdmaSharedDevicePluginArgsDict']]] = None,
+            region: pulumi.Input[Optional[Union[_builtins.str, 'Region']]] = None,
+            registry_integration: pulumi.Input[Optional[_builtins.bool]] = None,
+            routing_agent: pulumi.Input[Optional[Union['KubernetesClusterRoutingAgentArgs', 'KubernetesClusterRoutingAgentArgsDict']]] = None,
+            service_subnet: pulumi.Input[Optional[_builtins.str]] = None,
+            ssos: pulumi.Input[Optional[Sequence[pulumi.Input[Union['KubernetesClusterSsoArgs', 'KubernetesClusterSsoArgsDict']]]]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            surge_upgrade: pulumi.Input[Optional[_builtins.bool]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            version: pulumi.Input[Optional[_builtins.str]] = None,
+            vpc_uuid: pulumi.Input[Optional[_builtins.str]] = None) -> 'KubernetesCluster':
         """
         Get an existing KubernetesCluster resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -106,7 +106,7 @@ def get_ssh_key(name: Optional[_builtins.str] = None,
         name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        ssh_keys=[example.id])
+        ssh_keys=[output(example.id).apply(lambda x: str(x))])
     ```
 
 
@@ -122,7 +122,7 @@ def get_ssh_key(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         public_key=pulumi.get(__ret__, 'public_key'))
-def get_ssh_key_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_ssh_key_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSshKeyResult]:
     """
     Get information on a ssh key. This data source provides the name, public key,
@@ -146,7 +146,7 @@ def get_ssh_key_output(name: Optional[pulumi.Input[_builtins.str]] = None,
         name="example-1",
         region=digitalocean.Region.NYC2,
         size=digitalocean.DropletSlug.DROPLET_S1_VCPU1_GB,
-        ssh_keys=[example.id])
+        ssh_keys=[output(example.id).apply(lambda x: str(x))])
     ```
 
 

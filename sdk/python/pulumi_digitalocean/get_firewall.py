@@ -204,11 +204,11 @@ def get_firewall(droplet_ids: Optional[Sequence[_builtins.int]] = None,
         pending_changes=pulumi.get(__ret__, 'pending_changes'),
         status=pulumi.get(__ret__, 'status'),
         tags=pulumi.get(__ret__, 'tags'))
-def get_firewall_output(droplet_ids: Optional[pulumi.Input[Optional[Sequence[_builtins.int]]]] = None,
-                        firewall_id: Optional[pulumi.Input[_builtins.str]] = None,
-                        inbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
-                        outbound_rules: Optional[pulumi.Input[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]]]] = None,
-                        tags: Optional[pulumi.Input[Optional[Sequence[_builtins.str]]]] = None,
+def get_firewall_output(droplet_ids: pulumi.Input[Optional[Optional[Sequence[_builtins.int]]]] = None,
+                        firewall_id: pulumi.Input[Optional[_builtins.str]] = None,
+                        inbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallInboundRuleArgs', 'GetFirewallInboundRuleArgsDict']]]]] = None,
+                        outbound_rules: pulumi.Input[Optional[Optional[Sequence[Union['GetFirewallOutboundRuleArgs', 'GetFirewallOutboundRuleArgsDict']]]]] = None,
+                        tags: pulumi.Input[Optional[Optional[Sequence[_builtins.str]]]] = None,
                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFirewallResult]:
     """
     Get information on a DigitalOcean Firewall.

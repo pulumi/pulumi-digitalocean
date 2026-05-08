@@ -85,7 +85,7 @@ def get_genai_indexing_job_data_sources(indexing_job_uuid: Optional[_builtins.st
         id=pulumi.get(__ret__, 'id'),
         indexed_data_sources=pulumi.get(__ret__, 'indexed_data_sources'),
         indexing_job_uuid=pulumi.get(__ret__, 'indexing_job_uuid'))
-def get_genai_indexing_job_data_sources_output(indexing_job_uuid: Optional[pulumi.Input[_builtins.str]] = None,
+def get_genai_indexing_job_data_sources_output(indexing_job_uuid: pulumi.Input[Optional[_builtins.str]] = None,
                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGenaiIndexingJobDataSourcesResult]:
     """
     Use this data source to access information about an existing resource.

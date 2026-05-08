@@ -322,11 +322,11 @@ def get_spaces_bucket_object(bucket: Optional[_builtins.str] = None,
         region=pulumi.get(__ret__, 'region'),
         version_id=pulumi.get(__ret__, 'version_id'),
         website_redirect_location=pulumi.get(__ret__, 'website_redirect_location'))
-def get_spaces_bucket_object_output(bucket: Optional[pulumi.Input[_builtins.str]] = None,
-                                    key: Optional[pulumi.Input[_builtins.str]] = None,
-                                    range: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
-                                    region: Optional[pulumi.Input[_builtins.str]] = None,
-                                    version_id: Optional[pulumi.Input[Optional[_builtins.str]]] = None,
+def get_spaces_bucket_object_output(bucket: pulumi.Input[Optional[_builtins.str]] = None,
+                                    key: pulumi.Input[Optional[_builtins.str]] = None,
+                                    range: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
+                                    region: pulumi.Input[Optional[_builtins.str]] = None,
+                                    version_id: pulumi.Input[Optional[Optional[_builtins.str]]] = None,
                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSpacesBucketObjectResult]:
     """
     The Spaces object data source allows access to the metadata and

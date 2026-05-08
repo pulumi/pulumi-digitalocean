@@ -33,7 +33,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var postgres_example = new DigitalOcean.Index.DatabaseCluster("postgres-example", new()
+    ///     var postgres_example = new DigitalOcean.DatabaseCluster("postgres-example", new()
     ///     {
     ///         Name = "example-postgres-cluster",
     ///         Engine = "pg",
@@ -43,7 +43,7 @@ namespace Pulumi.DigitalOcean
     ///         NodeCount = 1,
     ///     });
     /// 
-    ///     var example = new DigitalOcean.Index.DatabaseLogsinkRsyslog("example", new()
+    ///     var example = new DigitalOcean.DatabaseLogsinkRsyslog("example", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "rsyslog-prod",
@@ -66,7 +66,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_tls = new DigitalOcean.Index.DatabaseLogsinkRsyslog("example-tls", new()
+    ///     var example_tls = new DigitalOcean.DatabaseLogsinkRsyslog("example-tls", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "rsyslog-secure",
@@ -74,7 +74,7 @@ namespace Pulumi.DigitalOcean
     ///         Port = 6514,
     ///         Tls = true,
     ///         Format = "rfc5424",
-    ///         CaCert = Std.Index.File.Invoke(new()
+    ///         CaCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -94,7 +94,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_mtls = new DigitalOcean.Index.DatabaseLogsinkRsyslog("example-mtls", new()
+    ///     var example_mtls = new DigitalOcean.DatabaseLogsinkRsyslog("example-mtls", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "rsyslog-mtls",
@@ -102,15 +102,15 @@ namespace Pulumi.DigitalOcean
     ///         Port = 6514,
     ///         Tls = true,
     ///         Format = "rfc5424",
-    ///         CaCert = Std.Index.File.Invoke(new()
+    ///         CaCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/ca.pem",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ClientCert = Std.Index.File.Invoke(new()
+    ///         ClientCert = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/client.crt",
     ///         }).Apply(invoke =&gt; invoke.Result),
-    ///         ClientKey = Std.Index.File.Invoke(new()
+    ///         ClientKey = Std.File.Invoke(new()
     ///         {
     ///             Input = "/path/to/client.key",
     ///         }).Apply(invoke =&gt; invoke.Result),
@@ -129,7 +129,7 @@ namespace Pulumi.DigitalOcean
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example_custom = new DigitalOcean.Index.DatabaseLogsinkRsyslog("example-custom", new()
+    ///     var example_custom = new DigitalOcean.DatabaseLogsinkRsyslog("example-custom", new()
     ///     {
     ///         ClusterId = postgres_example.Id,
     ///         Name = "rsyslog-custom",
